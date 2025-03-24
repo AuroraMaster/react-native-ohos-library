@@ -337,8 +337,8 @@ For details, see [react-native-gifted-charts](https://github.com/Abhinandan-Kush
 | width | width of the pointer | number | no | all | yes
 | radius | radius of the pointer | number | no | all | yes
 | pointerColor | pointer color | ColorValue | no | all | yes
-| pointerColorsForDataSet | When using pointers with dataSet, you can set pointer colors on each data line using the pointerColorsForDataSet which is an array of color values. | ColorValue[] | no | all | yes
-| secondaryPointerColor | Secondary pointer color | ColorValue | no | all | yes
+| pointerColorsForDataSet | When using pointers with dataSet, you can set pointer colors on each data line using the pointerColorsForDataSet which is an array of color values. | ColorValue[] | no | all | no
+| secondaryPointerColor | Secondary pointer color | ColorValue | no | all | no
 | pointerComponent | is a function that returns the component to be rendered as a pointer | Function | no | all | yes
 | showPointerStrip | show pointer bar | boolean | no | all | yes
 | pointerStripWidth | width of the pointer bar | number | no | all | yes
