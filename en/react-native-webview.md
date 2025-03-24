@@ -16,10 +16,10 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-webview Releases](https://github.com/react-native-oh-library/react-native-webview/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+
+Find the matching version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-webview Releases](https://github.com/react-native-oh-library/react-native-webview /releases). For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
-
 
 
 <!-- tabs:start -->
@@ -52,10 +52,6 @@ export default function WebViewDemo() {
 }
 ```
 
-## Use Codegen
-
-If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
-
 ## Link
 
 Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
@@ -76,7 +72,6 @@ Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 ### 2. Introducing Native Code
 
 Currently, two methods are available:
-
 
 Method 1 (recommended): Use the HAR file.
 
@@ -105,7 +100,66 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 3.Introducing webview Component to ArkTS
+### 3. Configuring CMakeLists and Introducing WebViewPackage
+
+Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
+set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
++set(OH_MODULE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULE_DIR}/@react-native-oh-tpl/react-native-webview/src/main/cpp" ./webview)
+
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_webview)
+# RNOH_END: manual_package_linking_2
+```
+
+Open `entry/src/main/cpp/PackageProvider.cpp` and add the following code:
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "SamplePackage.h"
++ #include "WebViewPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+      std::make_shared<SamplePackage>(ctx),
++     std::make_shared<WebViewPackage>(ctx)
+    };
+}
+```
+
+### 4. Introducing webview Component to ArkTS
 
 Find `function buildCustomRNComponent()`, which is usually located in `entry/src/main/ets/pages/index.ets` or `entry/src/main/ets/rn/LoadBundle.ets`, and add the following code:
 
@@ -138,7 +192,7 @@ const arkTsComponentNames: Array<string> = [
   ];
 ```
 
-### 4.Introducing WebViewPackage to ArkTS
+### 5. Introducing WebViewPackage to ArkTS
 
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
@@ -155,7 +209,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 5.Running
+### 6. Running
 
 Click the `sync` button in the upper right corner.
 
@@ -177,12 +231,13 @@ To use this repository, you need to use the correct React-Native and RNOH versio
 Check the release version information in the release address of the third-party library: [ @react-native-oh-tpl/react-native-webview Releases](https://github.com/react-native-oh-library/react-native-webview/releases)
 
 ## Properties
+> [!WARNING] The "ignoreSilentHardwareSwitch" needs to be set to "true" for the web page to have sound when playing.
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-详情请查看[webview 官方文档](https://github.com/react-native-webview/react-native-webview/blob/master/docs/Reference.md)
+For details, see [webview official document](https://github.com/react-native-webview/react-native-webview/blob/master/docs/Reference.md)
 
 | Name                                                     | Description                                                  | Type     | Required | Platform            | HarmonyOS Support                                            |
 |----------------------------------------------------------| ------------------------------------------------------------ | -------- |----------|---------------------| ------------------------------------------------------------ |
@@ -222,7 +277,7 @@ Check the release version information in the release address of the third-party 
 | `allowsAirPlayForMediaPlayback?` | A Boolean value indicating whether AirPlay is allowed. The default value is `false`. | boolean | NO | iOS and macOS | NO |
 | `contentInset?` | The amount by which the web view content is inset from the edges of the scroll view. Defaults to {top: 0, left: 0, bottom: 0, right: 0}. | object | NO | iOS | NO |
 | `contentInsetAdjustmentBehavior?` | This property specifies how the safe area insets are used to modify the content area of the scroll view. The default value of this property is "never". Available on iOS 11 and later. Defaults to `never`. | string | NO | iOS | NO |
-| `contentMode?` | Controls the type of content to load. Available on iOS 13 and later. Defaults to `recommended`, which loads mobile content on iPhone & iPad Mini but desktop content on larger iPads. | string | No | iOS |No|
+| `contentMode?` | Controls the type of content to load. Available on iOS 13 and later. Defaults to `recommended`, which loads mobile content on iPhone & iPad Mini but desktop content on larger iPads. | string | No | iOS |NO|
 | `dataDetectorTypes?` | Determines the types of data converted to clickable URLs in the web view's content. By default only phone numbers are detected. | string, or array | NO | ios | NO |
 | `setBuiltInZoomControls?` | Sets whether the WebView should use its built-in zoom mechanisms. The default value is `true`. Setting this to `false` will prevent the use of a pinch gesture to control zooming. | boolean | NO | Android | NO |
 | `setDisplayZoomControls?` | Sets whether the WebView should display on-screen zoom controls when using the built-in zoom mechanisms (see `setBuiltInZoomControls`). The default value is `false`. | boolean | NO | Android | NO |
@@ -248,7 +303,7 @@ Check the release version information in the release address of the third-party 
 | `applicationNameForUserAgent?` | Append to the existing user-agent. Setting `userAgent` will override this. | string | No | All | yes |
 | `thirdPartyCookiesEnabled?` | Boolean value to enable third party cookies in the `WebView`. Used on Android Lollipop and above only as third party cookies are enabled by default on Android Kitkat and below and on iOS. The default value is `true`. | boolean | No | All | yes |
 
-##  事件回调
+##  Event callback
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
@@ -299,3 +354,4 @@ Check the release version information in the release address of the third-party 
 ## License
 
 This project is licensed under [The MIT License (MIT)](https://github.com/react-native-webview/react-native-webview/blob/master/LICENSE).
+
