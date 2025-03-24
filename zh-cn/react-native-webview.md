@@ -20,6 +20,7 @@
 
 进入到工程目录并输入以下命令：
 
+
 <!-- tabs:start -->
 
 #### **npm**
@@ -49,10 +50,6 @@ export default function WebViewDemo() {
   );
 }
 ```
-
-## 使用 Codegen
-
-本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
@@ -105,7 +102,66 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 3.在 ArkTs 侧引入 webview 组件
+### 3.配置 CMakeLists 和引入 WebViewPackage
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
+set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
++set(OH_MODULE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULE_DIR}/@react-native-oh-tpl/react-native-webview/src/main/cpp" ./webview)
+
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_webview)
+# RNOH_END: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "SamplePackage.h"
++ #include "WebViewPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+      std::make_shared<SamplePackage>(ctx),
++     std::make_shared<WebViewPackage>(ctx)
+    };
+}
+```
+
+### 4.在 ArkTs 侧引入 webview 组件
 
 找到 **function buildCustomComponent()**，一般位于 `entry/src/main/ets/pages/index.ets` 或 `entry/src/main/ets/rn/LoadBundle.ets`，添加：
 
@@ -138,7 +194,7 @@ const arkTsComponentNames: Array<string> = [
   ];
 ```
 
-### 4.在 ArkTs 侧引入 WebViewPackage
+### 5.在 ArkTs 侧引入 WebViewPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
@@ -155,7 +211,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 5.运行
+### 6.运行
 
 点击右上角的 `sync` 按钮
 
@@ -177,12 +233,14 @@ ohpm install
 请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[ @react-native-oh-tpl/react-native-webview Releases](https://github.com/react-native-oh-library/react-native-webview/releases)
 
 ## 属性
+> [!WARNING]ignoreSilentHardwareSwitch需要设置true网页播放才有声音
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
 详情请查看[webview 官方文档](https://github.com/react-native-webview/react-native-webview/blob/master/docs/Reference.md)
+
 | Name                                                     | Description                                                  | Type     | Required | Platform            | HarmonyOS Support                                            |
 |----------------------------------------------------------| ------------------------------------------------------------ | -------- |----------|---------------------| ------------------------------------------------------------ |
 | `source`                                                 | Loads static HTML or a URI (with optional headers) in the WebView | object   | yes      | All                 | partially (Only of:  **Load uri :** uri  headers  **Static HTML :** html  baseUrl) |
@@ -221,7 +279,7 @@ ohpm install
 | `allowsAirPlayForMediaPlayback?` | A Boolean value indicating whether AirPlay is allowed. The default value is `false`. | boolean | NO | iOS and macOS | NO |
 | `contentInset?` | The amount by which the web view content is inset from the edges of the scroll view. Defaults to {top: 0, left: 0, bottom: 0, right: 0}. | object | NO | iOS | NO |
 | `contentInsetAdjustmentBehavior?` | This property specifies how the safe area insets are used to modify the content area of the scroll view. The default value of this property is "never". Available on iOS 11 and later. Defaults to `never`. | string | NO | iOS | NO |
-| `contentMode?` | Controls the type of content to load. Available on iOS 13 and later. Defaults to `recommended`, which loads mobile content on iPhone & iPad Mini but desktop content on larger iPads. | string | No | iOS |No|
+| `contentMode?` | Controls the type of content to load. Available on iOS 13 and later. Defaults to `recommended`, which loads mobile content on iPhone & iPad Mini but desktop content on larger iPads. | string | No | iOS |NO|
 | `dataDetectorTypes?` | Determines the types of data converted to clickable URLs in the web view's content. By default only phone numbers are detected. | string, or array | NO | ios | NO |
 | `setBuiltInZoomControls?` | Sets whether the WebView should use its built-in zoom mechanisms. The default value is `true`. Setting this to `false` will prevent the use of a pinch gesture to control zooming. | boolean | NO | Android | NO |
 | `setDisplayZoomControls?` | Sets whether the WebView should display on-screen zoom controls when using the built-in zoom mechanisms (see `setBuiltInZoomControls`). The default value is `false`. | boolean | NO | Android | NO |
