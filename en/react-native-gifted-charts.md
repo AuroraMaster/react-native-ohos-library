@@ -121,7 +121,7 @@ For details, see [react-native-gifted-charts](https://github.com/Abhinandan-Kush
 | negativeStepHeight | Height of 1 step/section in the Y axis for negative values (in the 4th quadrant) | number | no | all | yes
 | spacing | Distance between 2 consecutive bars in the Bar chart | number | no | all | yes
 | backgroundColor | Background color of the Bar chart | ColorValue | no | all | yes
-| sectionColors | Background color of the horizontal sections of the chart | Array<ColorValue> | no | all | yes
+| sectionColors | Background color of the horizontal sections of the chart | Array<ColorValue> | no | all | no
 | scrollref | ref object that can be used to control the horizontal ScrollView inside which the chart is rendered | any | no | all | yes
 | scrollToIndex | scroll to a particular index on chart load | number | no | all | yes
 | disableScroll | To disable horizontal scroll | boolean | no | all | yes
@@ -445,7 +445,7 @@ For details, see [react-native-gifted-charts](https://github.com/Abhinandan-Kush
 | spacing | Distance between 2 consecutive bars in the Bar chart | number | no | all | yes
 | adjustToWidth | When set to true, it auto computes the spacing value to fit the Line chart in the available width | boolean | no | all | yes
 | backgroundColor | Background color of the Bar chart | ColorValue | no | all | yes
-| sectionColors | Background color of the horizontal sections of the chart | Array<ColorValue> | no | all | yes
+| sectionColors | Background color of the horizontal sections of the chart | Array<ColorValue> | no | all | no
 | scrollref | ref object that can be used to control the horizontal ScrollView inside which the chart is rendered | any | no | all | yes
 | scrollToIndex | scroll to a particular index on chart load | number | no | all | yes
 | disableScroll | To disable horizontal scroll | boolean | no | all | yes
@@ -1023,7 +1023,8 @@ For details, see [react-native-gifted-charts](https://github.com/Abhinandan-Kush
 - [ ] PopulationPyramid yAxisLabelFontFamily 不生效,svg 问题。[issue#21](https://github.com/react-native-oh-library/react-native-gifted-charts/issues/21)
 - [ ] PopulationPyramid midAxisLabelFontFamily 不生效,svg 问题。[issue#22](https://github.com/react-native-oh-library/react-native-gifted-charts/issues/22)
 - [ ] PieChart/PieChartPro font 不生效,svg 问题。[issue#23](https://github.com/react-native-oh-library/react-native-gifted-charts/issues/23)
-
+- [ ] The sectionColors attribute is supported in Community version 1.4.21, but is not supported in the current HarmonyOS release
+- 
 ## Others
 
 - BarChart/LineChart rulesConfigArray 属性设置第一条不生效,效果与 iOS/Android 一致。[issue#892](https://github.com/Abhinandan-Kushwaha/react-native-gifted-charts/issues/893)
