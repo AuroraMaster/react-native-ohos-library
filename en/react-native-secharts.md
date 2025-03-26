@@ -32,6 +32,17 @@ npm install react-native-secharts@1.7.0
 yarn add react-native-secharts@1.7.0
 ```
 
+> [!WARNING] The online echart file link that the library depends on has expired and needs to be replaced with a new domain name link to be introduced to use it normally
+
+```js
+
+// node_modules\react-native-secharts\main\dist\tmp\templates.js
+
+//     <script type="text/javascript" src="https://cdn.bootcss.com/echarts/4.2.1/echarts.min.js"></script> // The linked certificate expired on Monday, March 10, 2025 at 09:02:41
++      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.2.1/echarts.min.js"></script>
+
+```
+
 <!-- tabs:end -->
 
 The following code shows the basic use scenario of the repository:
