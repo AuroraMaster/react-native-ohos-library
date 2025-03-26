@@ -32,6 +32,17 @@ npm install react-native-secharts@1.7.0
 yarn add react-native-secharts@1.7.0
 ```
 
+> [!WARNING] 该库依赖的在线echart文件链接已失效，需要替换新域名链接引入才能正常使用
+
+```js
+
+// node_modules\react-native-secharts\main\dist\tmp\templates.js
+
+//     <script type="text/javascript" src="https://cdn.bootcss.com/echarts/4.2.1/echarts.min.js"></script> // 该链接证书已于2025年3月10日星期一 09:02:41失效
++      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.2.1/echarts.min.js"></script>
+
+```
+
 <!-- tabs:end -->
 
 下面的代码展示了这个库的基本使用场景：
