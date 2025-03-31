@@ -32,6 +32,10 @@ npm install @ant-design/react-native@5.2.2
 yarn add @ant-design/react-native@5.2.2
 ```
 
+> [!TIP] The library specifies that in version 5.2.2, the corresponding dependency ^ in package.json needs to be removed after the dependency installation command is executed
+>
+> "@ant-design/react-native": "^5.2.2"  改为  "@ant-design/react-native": "5.2.2"
+
 > [!WARNING] @bang88/react-native-ultimate-listview 这个依赖库还没鸿蒙化，会影响到里面的一个 ListView 组件，如果想暂时解决掉这个报错的话，可以在 node_modules\@bang88\react-native-ultimate-listview\src 目录下添加一个 refreshableScrollView.js 文件。
 
 ## 链接字体图标
