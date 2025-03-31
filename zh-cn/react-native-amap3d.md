@@ -128,6 +128,22 @@ function AMapDemo() {
       onDragEnd={({ nativeEvent }) =>
         Alert.alert(`onDragEnd: ${nativeEvent.latitude}, ${nativeEvent.longitude}`)}
     />
+    <Marker
+        draggable={true}
+        flat={false}
+        position={{ latitude: 45.806901, longitude: 117.397972 }}
+    >
+        <Text
+            style={{
+                color: "#fff",
+                backgroundColor: "#ff6977",
+                margin:5,
+                width:"14%",
+            }}
+        >
+            {"testMarker"}
+        </Text>
+    </Marker>
     </MapView>
 	</View>
   );
@@ -371,26 +387,26 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 ### MapView
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
-| ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| mapType  | 地图类型         | int  | yes | iOS      | yes |
-| initialCameraPosition  | 初始状态         | CameraPosition  | yes | iOS      | yes |
-| myLocationEnabled  | 是否显示当前定位         | boolean  | yes | iOS      | no |
-| indoorViewEnabled  | 是否显示室内地图         | boolean  | yes | iOS      | no |
-| buildingsEnabled  | 是否显示3D建筑         | boolean  | yes | iOS      | no |
-| labelsEnabled  | 是否显示标注         | boolean  | yes | iOS      | yes |
-| compassEnabled  | 是否显示指南针         | boolean  | yes | iOS      | no |
-| zoomControlsEnabled  | 是否显示放大缩小按钮         | boolean  | yes | iOS      | yes |
-| scaleControlsEnabled  | 是否显示比例尺         | boolean  | yes | iOS      | yes |
-| trafficEnabled  | 是否显示路况         | boolean  | yes | iOS      | yes |
-| maxZoom  | 最大缩放级别         | float  | yes | iOS      | yes |
-| minZoom  | 最小缩放级别         | float  | yes | iOS      | yes |
-| zoomGesturesEnabled  | 是否启用缩放手势，用于放大缩小         | boolean  | yes | iOS      | yes |
-| scrollGesturesEnabled  | 是否启用滑动手势，用于平移         | boolean  | yes | iOS      | yes |
-| rotateGesturesEnabled  | 是否启用旋转手势，用于调整方向         | boolean  | yes | iOS      | yes |
-| tiltGesturesEnabled  | 是否启用倾斜手势，用于改变视角         | boolean  | yes | iOS      | yes |
-| distanceFilter  | 设定定位的最小更新距离         | float  | yes | iOS      | no|
-| headingFilter  | 设定最小更新角度，默认为 1 度         | float  | yes | iOS      | no |
+| Name | Description | Type | Required | Platform  | HarmonyOS Support |
+| ---- | ----------- | ---- | -------- |-----------|-------------------|
+| mapType  | 地图类型         | int  | yes | iOS       | yes               |
+| initialCameraPosition  | 初始状态         | CameraPosition  | yes | iOS       | yes               |
+| myLocationEnabled  | 是否显示当前定位         | boolean  | yes | iOS       | no                |
+| indoorViewEnabled  | 是否显示室内地图         | boolean  | yes | iOS       | no                |
+| buildingsEnabled  | 是否显示3D建筑         | boolean  | yes | iOS       | no                |
+| labelsEnabled  | 是否显示标注         | boolean  | yes | iOS       | yes               |
+| compassEnabled  | 是否显示指南针         | boolean  | yes | iOS       | yes               |
+| zoomControlsEnabled  | 是否显示放大缩小按钮         | boolean  | yes | iOS       | yes               |
+| scaleControlsEnabled  | 是否显示比例尺         | boolean  | yes | iOS       | yes               |
+| trafficEnabled  | 是否显示路况         | boolean  | yes | iOS       | yes               |
+| maxZoom  | 最大缩放级别         | float  | yes | iOS       | yes               |
+| minZoom  | 最小缩放级别         | float  | yes | iOS       | yes               |
+| zoomGesturesEnabled  | 是否启用缩放手势，用于放大缩小         | boolean  | yes | iOS       | yes               |
+| scrollGesturesEnabled  | 是否启用滑动手势，用于平移         | boolean  | yes | iOS       | yes               |
+| rotateGesturesEnabled  | 是否启用旋转手势，用于调整方向         | boolean  | yes | iOS       | yes               |
+| tiltGesturesEnabled  | 是否启用倾斜手势，用于改变视角         | boolean  | yes | iOS       | yes               |
+| distanceFilter  | 设定定位的最小更新距离         | float  | yes | iOS       | no                |
+| headingFilter  | 设定最小更新角度，默认为 1 度         | float  | yes | iOS       | no                |
 
 ### Circle
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
@@ -406,7 +422,7 @@ ohpm install
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | position  | 坐标         | LatLng  | yes | iOS      | yes |
-| icon  | 图标         | ImageSourcePropType  | yes | iOS      | no |
+| icon  | 图标         | ImageSourcePropType  | yes | iOS      | yes |
 | draggable  | 是否可拖拽         | boolean  | yes | iOS      | yes |
 | flat  | 是否平贴地图         | boolean  | yes | iOS      | yes |
 | zIndex  | 层级         | Float  | yes | iOS      | yes |
@@ -440,28 +456,28 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 ### MapView
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
-| ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| onPress  | 点击事件        | LatLng | yes | iOS      | yes |
-| onPressPoi  | 标注点击事件        | Poi | yes | iOS      | yes |
-| onLongPress  | 长按事件        | LatLng | yes | iOS      | yes |
-| onCameraMove  | 地图状态改变事件，随地图状态变化不停地触发        | CameraEvent | yes | iOS      | no |
-| onCameraIdle  | 地图状态改变事件，在停止变化后触发        | CameraEvent | yes | iOS      | no |
-| onLoad  | 地图初始化完成事件        | void | yes | iOS      | yes |
-| onLocation  | 地图定位更新事件        | GeolocationPosition | no | iOS      | no |
-| onCallback  | 回调事件        | void | yes | iOS      | no |
-| moveCamera  | 移动视角        | void | yes | iOS      | no |
-| call  | 调用        | void | yes | iOS      | no |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---- | ----------- | ---- | -------- | -------- |-------------------|
+| onPress  | 点击事件        | LatLng | yes | iOS      | yes               |
+| onPressPoi  | 标注点击事件        | Poi | yes | iOS      | yes               |
+| onLongPress  | 长按事件        | LatLng | yes | iOS      | yes               |
+| onCameraMove  | 地图状态改变事件，随地图状态变化不停地触发        | CameraEvent | yes | iOS      | yes               |
+| onCameraIdle  | 地图状态改变事件，在停止变化后触发        | CameraEvent | yes | iOS      | no                |
+| onLoad  | 地图初始化完成事件        | void | yes | iOS      | yes               |
+| onLocation  | 地图定位更新事件        | GeolocationPosition | no | iOS      | no                |
+| onCallback  | 回调事件        | void | yes | iOS      | no                |
+| moveCamera  | 移动视角        | void | yes | iOS      | yes                |
+| call  | 调用        | void | yes | iOS      | no                |
 
 
 ### Marker
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
-| ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| onPress  | 点击事件        | void | yes | iOS      | yes |
-| onDragStart  | 拖放开始事件        | void | yes | iOS      | yes |
-| onDrag  | 拖放进行事件，类似于mousemove，在结束之前会不断调用        | void | yes | iOS      | yes |
-| onDragEnd  | 拖放结束事件        | LatLng | yes | iOS      | yes |
-| update  | 触发自定义view更新        | void | yes | iOS      | no | 
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---- | ----------- | ---- | -------- | -------- |-------------------|
+| onPress  | 点击事件        | void | yes | iOS      | yes               |
+| onDragStart  | 拖放开始事件        | void | yes | iOS      | yes               |
+| onDrag  | 拖放进行事件，类似于mousemove，在结束之前会不断调用        | void | yes | iOS      | yes               |
+| onDragEnd  | 拖放结束事件        | LatLng | yes | iOS      | yes               |
+| update  | 触发自定义view更新        | void | yes | iOS      | yes               | 
 
 ### Polyline
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
@@ -482,29 +498,23 @@ ohpm install
 ## 遗留问题
 - [ ] initSDK：hramony暂不支持: [issue#16](https://github.com/react-native-oh-library/react-native-amap3d/issues/16)
 - [ ] getVersion：hramony暂不支持: [issue#17](https://github.com/react-native-oh-library/react-native-amap3d/issues/17)
+
 ### MapView
 - [ ] indoorViewEnabled：高德SDK暂不支持: [issue#6](https://github.com/react-native-oh-library/react-native-amap3d/issues/6)
-- [ ] compassEnabled：高德SDK暂不支持: [issue#7](https://github.com/react-native-oh-library/react-native-amap3d/issues/7)
 - [ ] buildingsEnabled：高德SDK暂不支持: [issue#33](https://github.com/react-native-oh-library/react-native-amap3d/issues/33)
 - [ ] myLocationEnabled：高德SDK暂不支持: [issue#29](https://github.com/react-native-oh-library/react-native-amap3d/issues/29)
 - [ ] distanceFilter：高德SDK暂不支持: [issue#11](https://github.com/react-native-oh-library/react-native-amap3d/issues/11)
 - [ ] anchor:高德SDK暂不支持: [issue#34](https://github.com/react-native-oh-library/react-native-amap3d/issues/34)
 - [ ] centerOffset:高德SDK暂不支持: [issue#35](https://github.com/react-native-oh-library/react-native-amap3d/issues/35)
-- [X] zoomControlsEnabled：高德SDK暂不支持: [issue#8](https://github.com/react-native-oh-library/react-native-amap3d/issues/8)
-- [X] scaleControlsEnabled：高德SDK暂不支持: [issue#9](https://github.com/react-native-oh-library/react-native-amap3d/issues/9)
 - [ ] headingFilter：高德SDK暂不支持: [issue#12](https://github.com/react-native-oh-library/react-native-amap3d/issues/12)
 - [ ] geodesic：高德SDK暂不支持: [issue#36](https://github.com/react-native-oh-library/react-native-amap3d/issues/36)
-- [x] onCameraMove: 高德SDK暂不支持： [issue#14](https://github.com/react-native-oh-library/react-native-amap3d/issues/14)
 - [ ] onCameraIdle: 高德SDK暂不支持: [issue#15](https://github.com/react-native-oh-library/react-native-amap3d/issues/15)
-- [X] onPressPoi：高德SDK暂不支持: [issue#13](https://github.com/react-native-oh-library/react-native-amap3d/issues/13)
 - [ ] onLocation：高德SDK暂不支持: [issue#10](https://github.com/react-native-oh-library/react-native-amap3d/issues/10)
 - [ ] onCallback：高德SDK部分支持: [issue#21](https://github.com/react-native-oh-library/react-native-amap3d/issues/21)
-- [x] moveCamera：harmony暂不支持: [issue#19](https://github.com/react-native-oh-library/react-native-amap3d/issues/19)
 - [ ] call：harmony暂不支持: [issue#5](https://github.com/react-native-oh-library/react-native-amap3d/issues/5)
 
 ### Marker
-- [ ] icon：高德SDK暂不支持: [issue#20](https://github.com/react-native-oh-library/react-native-amap3d/issues/20)
-- [ ] update：harmony暂不支持: [issue#18](https://github.com/react-native-oh-library/react-native-amap3d/issues/18)
+- [ ] marker自定义宽度自适应: [issue#64](https://github.com/react-native-oh-library/react-native-amap3d/issues/64)
 ### Cluster
 - [ ] Cluster：高德SDK暂不支持添加该组件: [issue#2](https://github.com/react-native-oh-library/react-native-amap3d/issues/2)
 ### HeatMap
