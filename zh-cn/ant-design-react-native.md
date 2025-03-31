@@ -34,6 +34,11 @@ yarn add @ant-design/react-native@5.2.2
 
 > [!TIP] 本库还依赖了[@react-native-oh-tpl/slider](/zh-cn/react-native-community-slider.md)、[@react-native-oh-tpl/react-native-gesture-handler](/zh-cn/react-native-gesture-handler.md)、[@react-native-oh-tpl/react-native-modal-popover](/zh-cn/react-native-modal-popover.md)、[@react-native-oh-tpl/react-native-reanimated](/zh-cn/react-native-reanimated.md)和[react-native-community/segmented-control](/zh-cn/react-native-community-segmented-control.md)
 
+> [!TIP] 本库指定5.2.2版本,在执行完依赖安装命令后需要去除掉package.json中对应依赖项中的^
+> 
+> "@ant-design/react-native": "^5.2.2"  改为  "@ant-design/react-native": "5.2.2"
+
+
 > **Warning:**
 > @bang88/react-native-ultimate-listview 这个依赖库还没鸿蒙化，会影响到里面的一个 ListView 组件，如果想暂时解决掉这个报错的话，可以在 node_modules\@bang88\react-native-ultimate-listview\src 目录下添加一个 refreshableScrollView.js 文件。
 
