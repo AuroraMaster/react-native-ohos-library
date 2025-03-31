@@ -572,7 +572,7 @@ For details, see [react-native-gifted-charts](https://github.com/Abhinandan-Kush
 | rotateLabel | To rotate the X axis labels (by 60deg) | boolean | no | all | yes
 | hideOrigin | To hide the y Axis label at origin (i.e. 0) | boolean | no | all | yes
 | secondaryYAxis | displays and controls the properties of the secondary Y axis on the right side | secondaryYAxisType | no | all |yes
-| secondaryData | the secondary data that will be rendered along the secondary Y axis | Array of items | no | all |yes
+| secondaryData | the secondary data that will be rendered along the secondary Y axis | Array of items | no | all |no
 | secondaryLineConfig | properties of the secondary data line (secondaryLineConfigType is described below) | secondaryLineConfigType| no | all |yes
 
 **Line related props**
