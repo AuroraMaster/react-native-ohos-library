@@ -809,6 +809,7 @@ The following component attributes are currently supported:
 
 - 网站文档图标要用@expo/vector-icons（需要用到 expo 脚手架才可以），如果没有用到 expo 脚手架的可以用[react-native-vector-icons 文档](/zh-cn/react-native-vector-icons.md)平替
 - Tooltip 当用户与元素交互时，工具提示会提供简短的信息性消息。工具提示的启动方法包括：通过鼠标悬停手势或键盘悬停手势。这个组件是在 web 端用的
+- AlertDialog warns that the pop-up animation will flash after upgrading the new RN architecture. This scene has the same performance on iOS and Android.
 
 ## License
 
