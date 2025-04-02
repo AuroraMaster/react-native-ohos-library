@@ -49,7 +49,7 @@ import {
 export default function App() {
   return (
     <View>
-      Button
+      <Button
         title="savePhotos"
         onPress={() => {
           CameraRoll.saveAsset("https://res.vmallres.com/uomcdn/CN/cms/202408/5442d69d916d4bcf9ee740d595a164fb.jpg").then((res) => {
