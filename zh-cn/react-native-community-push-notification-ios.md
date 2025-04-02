@@ -264,7 +264,20 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 2.5. 运行
+### 2.5. 在 ArkTs 侧Ability中添加
+
+打开 `entry/src/main/ets/entryability/EntryAbility.ets`，在onNewWant回调中添加：
+
+```diff
+  ...
++ import { PushNotificationModule } from '@react-native-ohos/push-notification-ios/ts';
+  ...
+onNewWant(want: Want, _launchParam: AbilityConstant.LaunchParam): void {
++ PushNotificationModule.getInstance().didReceiveRemoteNotification(want);
+}
+```
+
+### 2.6. 运行
 
 点击右上角的 `sync` 按钮
 
