@@ -265,7 +265,20 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 2.5. Running
+### 2.5. Introducing PushNotificationModule to ArkTS
+
+Open the `entry/src/main/ets/entryability/EntryAbility.ets`，file and add the following code：
+
+```diff
+  ...
++ import { PushNotificationModule } from '@react-native-ohos/push-notification-ios/ts';
+  ...
+onNewWant(want: Want, _launchParam: AbilityConstant.LaunchParam): void {
++ PushNotificationModule.getInstance().didReceiveRemoteNotification(want);
+}
+```
+
+### 2.6. Running
 
 Click the `sync` button in the upper right corner.
 
