@@ -686,7 +686,7 @@ export default function () {
 | focusedDataPointHeight | Height of the data points when focused due to press event | number | no | all | yes
 | focusedDataPointColor | Color of the data points when focused due to press event | ColorValue | no | all | yes
 | focusedDataPointRadius | Radius of the data points when focused due to press event | number| no | all | yes
-| focusedCustomDataPoint | Custom data point when focused due to press event| Function| no | all | yes
+| focusedCustomDataPoint | Custom data point when focused due to press event| Function| no | all | no
 | textColor | Color of the dataPointText | ColorValue | no | all | yes
 | textFontSize | Font size of the dataPointText | number | no | all | yes
 | textShiftX | To shift the dataPointText text horizontally | number | no | all | yes
@@ -758,7 +758,7 @@ export default function () {
 | focusedDataPointHeight | Height of the data points when focused due to press | number | no | all | yes
 | focusedDataPointColor | Color of the data points when focused due to press | ColorValue | no | all | yes
 | focusedDataPointRadius | Radius of the data points when focused due to press | number | no | all | yes
-| focusedCustomDataPoint | Custom data point when focused due to press event | Function | no | all | yes
+| focusedCustomDataPoint | Custom data point when focused due to press event | Function | no | all | no
 
 **Props for Area Chart**
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
@@ -1005,7 +1005,7 @@ export default function () {
 
 - [ ] PieChart 设置圆环设置为 3D，中间圆环显示问题，svg 问题。 [issue#7](https://github.com/react-native-oh-library/react-native-gifted-charts/issues/7)
 - [x] BarChart 设置 barBackgroundPattern 显示问题，svg 问题。 [issue#6](https://github.com/react-native-oh-library/react-native-gifted-charts/issues/6)
-- [ ] LineChart 设置 customDataPoint 不显示，svg 问题。 [issue#8](https://github.com/react-native-oh-library/react-native-gifted-charts/issues/8)
+- [ ] LineChart 设置 focusedCustomDataPoint和customDataPoint 不显示，svg 问题。 [issue#8](https://github.com/react-native-oh-library/react-native-gifted-charts/issues/8)
 - [ ] PieChartPro 饼图设置 animated 为 true，动画会卡顿，RN 框架问题。 [issue#9](https://github.com/react-native-oh-library/react-native-gifted-charts/issues/9)
 - [ ] LineChart/BarChart dataPointLabelComponent 不生效,svg 问题。[issue#10](https://github.com/react-native-oh-library/react-native-gifted-charts/issues/10)
 - [ ] LineChart/BarChart dataPointLabelWidth 不生效,svg 问题。[issue#11](https://github.com/react-native-oh-library/react-native-gifted-charts/issues/11)
