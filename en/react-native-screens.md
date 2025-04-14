@@ -16,116 +16,294 @@
 
 ## Installation and Usage
 
+The HarmonyOS implementation of this library depends on the native code from @react-native-oh-tpl/native and @react-navigation/native-stack and @react-native-oh-tpl/react-native-safe-area-context and @react-native-oh-tpl/react-native-gesture-handler. If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly.
+
+If it is not included, follow the guide provided in [@react-native-oh-tpl/native](/en/react-navigation-native.md) and [@react-native-oh-tpl/native-stack](/en/react-navigation-native-stack.md) and [@react-native-oh-tpl/react-native-safe-area-context](/en/react-native-safe-area-context.md) and [@react-native-oh-tpl/react-native-gesture-handler](/en/react-native-gesture-handler.md) to add it to your project.
+
+Please visit the Releases page of the third-party library to check the corresponding version information: [@react-native-oh-tpl/react-native-screens Releases](https://github.com/react-native-oh-library/react-native-harmony-screens/releases). For older versions that have not been published to npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+
 Go to the project directory and execute the following instruction:
-
-<!-- tabs:start -->
-
 #### **npm**
 
 ```bash
-npm install @react-navigation/native
-npm install @react-native-oh-tpl/stack
-npm install @react-native-oh-tpl/react-native-safe-area-context
-npm install react-native-screens@3.29.0
+npm install @react-native-oh-tpl/react-native-screens
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-navigation/native
-yarn add @react-navigation/stack
-yarn add @react-native-oh-tpl/react-native-safe-area-context
-yarn add react-native-screens@3.29.0
+npm install @react-native-oh-tpl/react-native-screens
 ```
-
-<!-- tabs:end -->
 
 The following code shows the basic use scenario of the repository:
 
 > [!WARNING] The name of the imported repository remains unchanged.
 
 ```js
-import React from 'react';
-import {ScrollView, Button, View, Text} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import * as React from 'react';
+import { Button, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { enableScreens } from "react-native-screens";
+enableScreens(true);
 
-enableScreens(false);
-function Home({navigation}) {
-    return (
-        <ScrollView
-            style={{backgroundColor: 'yellow'}}
-            contentInsetAdjustmentBehavior="automatic">
-            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-                <Text>Home Screen</Text>
-            </View>
-            <Button title="To Detail" onPress={() => navigation.push('Detail')} />
-        </ScrollView>
-    );
+function HomeScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button
+        title="Go to Profile"
+        onPress={() => navigation.navigate('Profile')}
+      />
+    </View>
+  );
 }
 
-function Detail({navigation}) {
-    return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Text>Details Screen</Text>
-            <Button title="To Home" onPress={() => navigation.goBack()} />
-        </View>
-    );
+function ProfileScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button
+        title="Go to Notifications"
+        onPress={() => navigation.navigate('Notifications')}
+      />
+      <Button title="Go back" onPress={() => navigation.goBack()} />
+    </View>
+  );
 }
 
-const Stack = createStackNavigator();
-
-function NativeNavigation() {
-    return (
-        <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen
-                    name="Home"
-                    component={Home}
-                    options={{title: 'Home的title'}}
-                />
-                <Stack.Screen
-                    name="Detail"
-                    component={Detail}
-                    options={{title: 'Detail的title'}}
-                />
-            </Stack.Navigator>
-        </NavigationContainer>
-    );
+function NotificationsScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button
+        title="Go to Settings"
+        onPress={() => navigation.navigate('Settings')}
+      />
+      <Button title="Go back" onPress={() => navigation.goBack()} />
+    </View>
+  );
 }
 
-export default function RNScreenTest() {
-    return <NativeNavigation />;
+function SettingsScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button title="Go back" onPress={() => navigation.goBack()} />
+    </View>
+  );
+}
+
+const Stack = createNativeStackNavigator();
+
+function MyStack() {
+  return (
+    <Stack.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        headerTintColor: '#999999',
+        headerStyle: { backgroundColor: '#ff00ff' },
+      }}
+    >
+      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Notifications" component={NotificationsScreen} />
+      <Stack.Screen name="Profile" component={ProfileScreen} />
+      <Stack.Screen name="Settings" component={SettingsScreen} />
+    </Stack.Navigator>
+  );
+}
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <MyStack />
+    </NavigationContainer>
+  );
 }
 
 ```
 
-#### 禁用 `react-native-screens`
 
-因为 ArkUI侧未提供capi接口，容器组件需要capi化，故本库未实现harmonyOS原生化，所以 react-native-screens 禁用 HarmonyOS 原生屏幕使用 react-native views 即可，请在您的入口文件中添加以下代码。 (例如. `App.js`):
+## Use Codegen
 
-```js
-import { enableScreens } from "react-native-screens";
-
-enableScreens(false);
-```
-
-您还可以通过[detachInactiveScreens](https://reactnavigation.org/docs/stack-navigator#detachinactivescreens)在每个导航器中禁用原生屏幕。
+If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](https://gitee.com/react-native-oh-library/usage-docs/blob/master/en/codegen.md).
 
 ## Link
 
-The HarmonyOS implementation of this library depends on the native code from @react-native-oh-tpl/stack and @react-native-oh-tpl/react-native-safe-area-context. If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly.
+Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
-If it is not included, follow the guide provided in [@react-native-oh-tpl/stack](/en/react-navigation-stack.md) and [@react-native-oh-tpl/react-native-safe-area-context](/en/react-native-safe-area-context.md) to add it to your project.
+### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
+
+```json
+{
+  ...
+  "overrides": {
+    "@rnoh/react-native-openharmony" : "file:../node_modules/@rnoh/react-native-harmony/harmony/react_native_openharmony.har"
+  }
+}
+```
+### 2. Introducing Native Code
+
+Currently, two methods are available:
+
+
+Method 1 (recommended): Use the HAR file.
+
+> [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
+
+Open `entry/oh-package.json5` file and add the following dependencies:
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../../node_modules/@rnoh/react-native-harmony/harmony/react_native_openharmony.har",
+    "@react-native-oh-tpl/react-native-screens": "file:../../node_modules/@react-native-oh-tpl/react-native-screens/harmony/screens.har"
+  }
+```
+
+Click the `sync` button in the upper right corner.
+
+Alternatively, run the following instruction on the terminal:
+
+```bash
+cd entry
+ohpm install
+```
+
+Method 2: Directly link to the source code.
+
+> [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
+
+### 3. Configuring CMakeLists and Introducing Package
+
+Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules/@rnoh/react-native-openharmony/src/main/cpp")
++ set(OH_MODULES_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_GENERATED_DIR "${CMAKE_CURRENT_SOURCE_DIR}/generated")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES_DIR}/@react-native-oh-tpl/react-native-screens/src/main/cpp" ./rnoh_screens)
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_screens)
+# RNOH_END: manual_package_linking_2
+```
+
+Open `entry/src/main/cpp/PackageProvider.cpp`, add:
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
++ #include "RnohReactNativeHarmonyScreensPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++        std::make_shared<rnoh::RnohReactNativeHarmonyScreensPackage>(ctx),
+    };
+}
+```
+
+### 4. Introducing Component to ArkTS
+
+Find `function buildCustomRNComponent()`, which is usually located in `entry/src/main/ets/pages/index.ets` or `entry/src/main/ets/rn/LoadBundle.ets`, and add the following code:
+
+```diff
+  ...
++ import { componentBuilder } from "@react-native-oh-tpl/react-native-screens"
+
+@Builder
+export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
+  ...
+  Stack() {
++    componentBuilder(ctx)
+  }
+  ...
+}
+...
+```
+
+> [!TIP] If the repository uses a mixed solution, the component name needs to be added. 
+
+Find the constant `arkTsComponentNames` in `entry/src/main/ets/pages/index.ets` or `entry/src/main/ets/rn/LoadBundle.ets` and add the component name to the array.
+
+```diff
+const arkTsComponentNames: Array<string> = [
++ "RNSScreen", 
++ "RNSFullWindowOverlay", 
++ "RNSModalScreen", 
++ "RNSScreenContainer", 
++ "RNSScreenNavigationContainer", 
++ "RNSScreenStack", 
++ "RNSScreenStackHeaderSubview", 
++ "RNSSearchBar", 
++ "RNSScreenStackHeaderConfig", 
++ "RNSScreenStackHeaderSubview"
+];
+```
+
+### 5. Introducing Package to ArkTS
+
+Open `src/main/ets/RNOHPackagesFactory.ets`, add:
+
+```diff
+import type { RNPackageContext, RNPackage } from '@rnoh/react-native-openharmony';
++ import RnohReactNativeHarmonyScreensPackage from '@react-native-oh-tpl/react-native-screens';
+
+export function createRNOHPackages(ctx: RNPackageContext): RNPackage[] {
+  return [
+    new SamplePackage(ctx),
++    new RnohReactNativeHarmonyScreensPackage(ctx),
+  ];
+}
+
+```
+
+### 6. Running
+
+Click the `sync` button in the upper right corner.
+
+Alternatively, run the following instruction on the terminal:
+
+```bash
+cd entry
+ohpm install
+```
+
+Then build and run the code.
 
 ## Constraints
 
 ### Compatibility
 
-This document is verified based on the following versions:
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-1.RNOH:0.72.29; SDK:HarmonyOS-NEXT-DB6 5.0.0.61; IDE:DevEco Studio 5.0.3.706; ROM:3.0.0.60;
+Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-screens Releases](https://github.com/react-native-oh-library/react-native-harmony-screens/releases)
 
 ## Properties
 
@@ -133,27 +311,57 @@ This document is verified based on the following versions:
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-| Name                                                      | Description                                                                           | Type     | Required | Platform    | HarmonyOS Support |
-|-----------------------------------------------------------|---------------------------------------------------------------------------------------|----------|----------|-------------|-------------------|
-| enableScreens                                             | 支持原生及其 React Native View                                                              | function | No       | iOS Android | Yes               |
-| enableFreeze                                              | 对 react-freeze 的支持，使用 ReactSuspense 机制来防止 React 组件树的部分渲染                              | function | No       | iOS Android | Yes               |
-| createNativeStackNavigator                                | 提供屏幕切换的能力                                                                             | function | No       | iOS Android | NO                |
-| NativeStackNavigationProp                                 | 切换页面属性的封装                                                                             | object   | No       | iOS Android | Yes               |
-| NativeStackNavigationOptions                              | 导航栏属性设置封装                                                                             | object   | No       | iOS Android | NO                |
-| FullWindowOverlay                                         | 一个组件，可以将其子组件放在其他组件之上                                                                  | object   | No       | iOS Android | NO                |
-| SearchBarProps                                            | 搜索栏的属性设置封装                                                                            | object   | No       | iOS Android | NO                |
-| SearchBarCommands                                         | 搜索栏的操作封装                                                                              | object   | No       | iOS Android | NO                |
-| useTransitionProgress                                     | 提供屏幕过渡的动画插值器                                                                          | function | No       | iOS Android | NO                |
-| userReanimatedTransitionProgress ReanimatedScreenProvider | 屏幕切换期间调用的帧回调，用于 react-native-reanimated 2.0 及其以上的版本，并使用 ReanimatedScreenProvider 进行封装 | function | No       | iOS Android | NO                |
-| userHeaderHeight                                          | 计算静态标题栏的高度，当屏幕方向发生更改，此值会发生更改                                                          | function | No       | iOS Android | NO                |
-| userAnimatedHeaderHeight                                  | 动态计算标题栏的高度，此值会随着每个视图布局变化而变化                                                           | function | No       | iOS Android | NO                |
+| Name                                                      | Description                                                  | Type     | Required | Platform    | HarmonyOS Support |
+| --------------------------------------------------------- | ------------------------------------------------------------ | -------- | -------- | ----------- | ----------------- |
+| enableScreens                                             | Support native and its React Native View                               | function | No       | iOS Android | Yes               |
+| enableFreeze                                              | Support for react-freeze, using ReactSuspende mechanism to prevent partial rendering of React component tree  | function | No       | iOS Android | Yes               |
+| onAppear                                 | A callback that gets called when the current screen appears        | function | No       | iOS Android |   Yes |
+| onDisappear                              | A callback that gets called when the current screen disappears.    | function | No       | iOS Android |   Yes |
+| onWillAppear                             | A callback that gets called when the current screen will appear       | function | No       | iOS Android |   Yes |
+| onWillDisappear                          | A callback that gets called when the current screen will disappear       | function | No       | iOS Android |   Yes |
+| fullScreenSwipeEnabled                   | Boolean indicating whether the swipe gesture should work on whole screen         | property | No       | iOS Android |   Yes |
+| gestureEnabled                           |  Whether you can use gestures to dismiss this screen | property | No       | iOS Android |   Yes |
+| statusBarColor                           | Sets the status bar color       | property | No       | iOS Android |   No  |
+| screenOrientation                        | In which orientation should the screen appear     | property | No       | iOS Android |   Yes |
+| statusBarStyle                           | Sets the status bar color       | property | No       | iOS Android |   Yes |
+| statusBarTranslucent                     | Sets the translucency of the status bar       | property | No       | iOS Android | Yes |
+| statusBarHidden			   | Whether the status bar should be hidden on this screen       | property | No       | iOS Android |   Yes |
+| gestureResponseDistance                  |  Use it to restrict the distance from the edges of screen in which the gesture should be recognized      | property | No       | iOS Android |   Yes |
+| stackPresentation                        | how should the screen be presented       | property | No       | iOS Android |   Yes |
+| stackAnimation                           | ow the screen should appear/disappear when pushed or popped at the top of the stack       | property | No       | iOS Android |   Yes |
+| replaceAnimation                         | How should the screen replacing another screen animate       | property | No       | iOS Android |   Yes |
+| backgroundColor                          | Controls the color of the navigation header       | property | No       | iOS Android |   Yes |
+| hidden                           | When set to true the header will be hidden while the parent Screen is on the top of the stack       | property | No       | iOS Android |   Yes |
+| translucent                      | Boolean indicating whether the navigation bar is translucent       | property | No       | iOS Android |   Yes |
+| hideBackButton                   | Boolean indicating whether to hide the back button in header      | property | No       | iOS Android |   Yes |
+| backTitle                        | Title to display in the back button.       | property | No       | iOS Android |   Yes |
+| backTitleFontSize                | Allows for customizing font size to be used for back button title    | property | No       | iOS Android |   Yes |
+| backTitleVisible                 |  Whether the back button title should be visible or nots    | property | No       | iOS Android |   Yes |
+| title                            | String that can be displayed in the header as a fallback for `headerTitle`       | property | No       | iOS Android |   Yes |
+| titleFontSize                    | Customize the size of the font to be used for the title.        | property | No       | iOS Android |   Yes |
+| titleFontWeight                  | Customize the weight of the font to be used for the title.       | property | No       | iOS Android |   Yes |
+| titleColor                       | Allows for setting text color of the title | property | No       | iOS Android |   Yes |
+| type                             | Subtitle type      | property | No       | iOS Android |   Yes |
+| onSearchFocus                    | Search bar focus       | function | No       | iOS Android |   Yes |
+| onSearchBlur                     | Search bar loses focus       | function | No       | iOS Android |   Yes |
+| onSearchButtonPress              | A callback that gets called when the search button is pressed       | function | No       | iOS Android |   Yes |
+| onCancelButtonPress              | A callback that gets called when the cancel button is pressed       | function | No       | iOS Android |   Yes |
+| onChangeText                     | A callback that gets called when the text changes       | function | No       | iOS Android |   Yes |
+| cancelButtonText                 | The text to be used instead of default `Cancel` button text       | property | No       | iOS Android |   Yes |
+| barTintColor                     | The search field background color       | property | No       | iOS Android |   Yes |
+| tintColor                        | The color for the cursor caret and cancel button text       | property | No       | iOS Android |   Yes |
+| textColor                        | text color       | property | No       | iOS Android |   Yes |
+| inputType                        | Sets type of the input. Defaults to `text`.       | property | No       | iOS Android |   Yes |
+| onClose                          | A callback that gets called when search bar is closed       | function | No       | iOS Android |   Yes |
+| onOpen                           | A callback that gets called when search bar is opened       | function | No       | iOS Android |   Yes |
+| headerIconColor                  | The search and close icon color shown in the header       | property | No       | iOS Android |   Yes |
+| shouldShowHintSearchIcon         | Show the search hint icon when search bar is focused       | property | No       | iOS Android |   Yes |
 
 ## Known Issues
-
-- [ ] ArkUI侧未提供capi接口，容器组件需要capi化，故本库未实现harmonyOS原生化适配，harmonyOS侧仅支持部分属性。
+- [ ] The formSheet page is currently using a regular page, and the Context.openBindSheet system method used on this page has a misalignment of the binding position of the JS page, resulting in unresponsive button events. Need to be supplemented after system correction.  [issue#4](https://github.com/react-native-oh-library/react-native-harmony-screens/issues/4)
 
 ## Others
 
 ## License
 
-This project is licensed under [The MIT License (MIT)](https://github.com/software-mansion/react-native-screens/blob/main/LICENSE).
+This project is licensed under [The MIT License (MIT)](https://github.com/react-native-oh-library/react-native-harmony-screens/blob/sig/LICENSE).
