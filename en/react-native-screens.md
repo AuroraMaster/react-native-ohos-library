@@ -33,7 +33,7 @@ npm install react-native-screens@3.29.0
 
 ```bash
 yarn add @react-navigation/native
-yarn add @react-navigation/stack
+yarn add @react-native-oh-tpl/stack
 yarn add @react-native-oh-tpl/react-native-safe-area-context
 yarn add react-native-screens@3.29.0
 ```
