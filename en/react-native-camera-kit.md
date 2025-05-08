@@ -128,7 +128,7 @@ export const ScanCodeDemo: React.FC = (): JSX.Element => {
     <>
       <View>
         <Camera
-          style={{width: '100%', height: 400}}
+          style={{width: 300, height: 400}}
           ref={nativeRef}
           maxZoom={50}
           cameraType={CameraType.Back}
