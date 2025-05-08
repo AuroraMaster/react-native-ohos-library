@@ -277,7 +277,7 @@ export default function () {
 | xAxisLabelsVerticalShift | prop to adjust the vertical position of X axis labels (move X axis labels up or down) | number | no | all | yes
 | labelsExtraHeight | used to display large rotated labels on X-axis (use this only when using the **rotateLabel** prop) | number | no | all | yes
 | secondaryYAxis | displays and controls the properties of the secondary Y axis on the right side | secondaryYAxisType | no | all | yes
-| secondaryData | the secondary data that will be rendered along the secondary Y axis | Array of items | no | all | yes
+| secondaryData | the secondary data that will be rendered along the secondary Y axis | Array of items | no | all | no
 
 **Bar related props**
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
@@ -570,7 +570,7 @@ export default function () {
 | rotateLabel | To rotate the X axis labels (by 60deg) | boolean | no | all | yes
 | hideOrigin | To hide the y Axis label at origin (i.e. 0) | boolean | no | all | yes
 | secondaryYAxis | displays and controls the properties of the secondary Y axis on the right side | secondaryYAxisType | no | all |yes
-| secondaryData | the secondary data that will be rendered along the secondary Y axis | Array of items | no | all |no
+| secondaryData | the secondary data that will be rendered along the secondary Y axis | Array of items | no | all | yes
 | secondaryLineConfig | properties of the secondary data line (secondaryLineConfigType is described below) | secondaryLineConfigType| no | all |yes
 
 **Line related props**
