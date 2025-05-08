@@ -279,7 +279,7 @@ For details, see [react-native-gifted-charts](https://github.com/Abhinandan-Kush
 | xAxisLabelsVerticalShift | prop to adjust the vertical position of X axis labels (move X axis labels up or down) | number | no | all | yes
 | labelsExtraHeight | used to display large rotated labels on X-axis (use this only when using the **rotateLabel** prop) | number | no | all | yes
 | secondaryYAxis | displays and controls the properties of the secondary Y axis on the right side | secondaryYAxisType | no | all | yes
-| secondaryData | the secondary data that will be rendered along the secondary Y axis | Array of items | no | all | yes
+| secondaryData | the secondary data that will be rendered along the secondary Y axis | Array of items | no | all | no
 
 **Bar related props**
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
@@ -572,7 +572,7 @@ For details, see [react-native-gifted-charts](https://github.com/Abhinandan-Kush
 | rotateLabel | To rotate the X axis labels (by 60deg) | boolean | no | all | yes
 | hideOrigin | To hide the y Axis label at origin (i.e. 0) | boolean | no | all | yes
 | secondaryYAxis | displays and controls the properties of the secondary Y axis on the right side | secondaryYAxisType | no | all |yes
-| secondaryData | the secondary data that will be rendered along the secondary Y axis | Array of items | no | all |no
+| secondaryData | the secondary data that will be rendered along the secondary Y axis | Array of items | no | all | yes
 | secondaryLineConfig | properties of the secondary data line (secondaryLineConfigType is described below) | secondaryLineConfigType| no | all |yes
 
 **Line related props**
@@ -957,7 +957,7 @@ For details, see [react-native-gifted-charts](https://github.com/Abhinandan-Kush
 | midAxisLabelFontStyle        | self explanatory                                                                                                 | FontStyle                  | no       | all      | yes               |
 | midAxisLabelFontWeight       | self explanatory                                                                                                 | FontWeight                 | no       | all      | yes               |
 | midAxisLabelFontFamily       | self explanatory                                                                                                 | string                     | no       | all      | no                |
-| barLabelWidth                | width of the labels displayed behind the bars (both left and right bars)                                         | number                     | no       | all      | no               |
+| barLabelWidth                | width of the labels displayed behind the bars (both left and right bars)                                         | number                     | no       | all      | yes               |
 | barLabelFontSize             | font size of the labels displayed behind the bars (both left and right bars)                                     | number                     | no       | all      | yes               |
 | barLabelColor                | color of the of the labels displayed behind the bars (both left and right bars)                                  | ColorValue                 | no       | all      | yes               |
 | barLabelFontStyle            | font style of the labels displayed behind the bars (both left and right bars)                                    | FontStyle                  | no       | all      | yes               |
