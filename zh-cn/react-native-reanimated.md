@@ -247,7 +247,7 @@ ohpm install
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
 | Name               | Description                                                                                                                                                                                                                | Type     | Required | Platform | HarmonyOS Support |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | -------- | ----------------- |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |----------| -------- | -------- | ----------------- |
 | `withTiming`       | withTiming lets you create an animation based on duration and easing..                                                                                                                                                     | function | No       | All      | yes               |
 | `withSpring`       | withSpring lets you create spring-based animations.                                                                                                                                                                        | function | No       | All      | yes               |
 | `withDecay`        | withDecay lets you create animations that mimic objects in motion with friction. The animation will start with the provided velocity and slow down over time according to the given deceleration rate until it stops.      | function | No       | All      | yes               |
@@ -261,6 +261,7 @@ ohpm install
 | `runOnUI`          | runOnUI lets you asynchronously run workletized functions on the UI thread.                                                                                                                                                | function | No       | All      | yes               |
 | `measure`          | measure lets you synchronously get the dimensions and position of a view on the screen, all on the UI thread.                                                                                                              | function | No       | All      | yes               |
 | `Easing`           | easing set motion trajectory                                                                                                                                                                                               | function | No       | All      | yes               |
+| `useAnimatedKeyboard`           | useAnimatedKeyboard lets you create animations based on state and height of the virtual keyboard.                                                                                                             | function | No       | All      | yes               |
 
 ## 遗留问题
 
