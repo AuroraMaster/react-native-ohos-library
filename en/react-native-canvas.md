@@ -92,8 +92,7 @@ const CanvasDemo = () => {
 
       //draw a picture
       const image = new CanvasImage(canvas);
-      image.src =
-        "https://upload.wikimedia.org/wikipedia/commons/6/63/Biho_Takashi._Bat_Before_the_Moon%2C_ca._1910.jpg";
+      image.src ="https://tse4-mm.cn.bing.net/th/id/OIP-C.e6iItqBlqt6l6K261WPMXAHaFj?w=227&h=180&c=7&r=0&o=5&pid=1.7";
       image.addEventListener("load", () => {
         context.drawImage(image, 10, 250, 100, 100);
       });
