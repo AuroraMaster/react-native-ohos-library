@@ -350,25 +350,25 @@ ohpm install
 | getApiVersion()                               | 获取 API 版本号    | Function | no       | Android/iOS | no                |
 | openWXApp()                                   | 打开微信           | Function | no       | Android/iOS | yes               |
 | sendAuthRequest([scope[, state]])             | 微信授权登录       | Function | no       | Android/iOS | yes               |
-| shareText(ShareTextMetadata)                  | 分享/收藏 文本     | Function | no       | Android/iOS | partially         |
-| shareImage(ShareImageMetadata)                | 分享/收藏 图片     | Function | no       | Android/iOS | partially         |
-| shareLocalImage(ShareImageMetadata)           | 分享/收藏 本地图片 | Function | no       | Android/iOS | partially         |
-| shareFile(ShareFileMetadata)                  | 分享文件           | Function | no       | Android/iOS | no                |
-| shareMusic(ShareMusicMetadata)                | 分享音频           | Function | no       | Android/iOS | no                |
-| shareVideo(ShareVideoMetadata)                | 分享视频           | Function | no       | Android/iOS | no                |
-| shareWebpage (ShareWebpageMetadata)           | 分享网页           | Function | no       | Android/iOS | no                |
-| shareMiniProgram(ShareMiniProgramMetadata)    | 分享小程序         | Function | no       | Android/iOS | partially         |
+| shareText(ShareTextMetadata)                  | 分享/收藏 文本     | Function | no       | Android/iOS | partially(Session、Timeline)          |
+| shareImage(ShareImageMetadata)                | 分享/收藏 图片     | Function | no       | Android/iOS | partially(Session、Timeline)          |
+| shareLocalImage(ShareImageMetadata)           | 分享/收藏 本地图片  | Function | no       | Android/iOS | partially(Session、Timeline)          |
+| shareFile(ShareFileMetadata)                  | 分享文件           | Function | no       | Android/iOS | partially(Session)         |
+| shareMusic(ShareMusicMetadata)                | 分享音频           | Function | no       | Android/iOS | no                         |
+| shareVideo(ShareVideoMetadata)                | 分享视频           | Function | no       | Android/iOS | partially(Session)         |
+| shareWebpage (ShareWebpageMetadata)           | 分享网页           | Function | no       | Android/iOS | partially(Session)         |
+| shareMiniProgram(ShareMiniProgramMetadata)    | 分享小程序         | Function | no       | Android/iOS | partially(Session)         |
 | launchMiniProgram (LaunchMiniProgramMetadata) | 跳到小程序         | Function | no       | Android/iOS | yes               |
 | chooseInvoice (ChooseInvoice)                 | 选择发票           | Function | no       | Android/iOS | no                |
 | pay(payload)                                  | 支付               | Function | no       | Android/iOS | yes               |
-| subscribeMessage(SubscribeMessageMetadata)    | 一次性订阅消息     | Function | no       | Android/iOS | no                |
+| subscribeMessage(SubscribeMessageMetadata)    | 一次性订阅消息     | Function | no        | Android/iOS | no                 |
 
 ## 遗留问题
 
 ## 其他
 
-- ShareText、ShareImage、ShareLocalImage、ShareMiniProgram 只支持分享，不支持收藏，原因为目前微信 Open SDK 还不支持 HarmonyOS 平台的收藏
-- isWXAppSupportApi、getApiVersion、ShareFile、ShareMusic、ShareVideo、ShareWebpage、ChooseInvoice、subscribeMessage 这些接口目前在 HarmonyOS 微信 Open SDK 还不支持
+- ShareText、ShareImage、ShareLocalImage、ShareMiniProgram、ShareFile、ShareVideo、ShareWebpage 只支持分享，不支持收藏，原因为目前微信 Open SDK 还不支持 HarmonyOS 平台的收藏
+- isWXAppSupportApi、getApiVersion、ShareMusic、ChooseInvoice、subscribeMessage 这些接口目前在 HarmonyOS 微信 Open SDK 还不支持
 
 ## 开源协议
 

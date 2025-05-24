@@ -343,21 +343,21 @@ Check the release version information in the release address of the third-party 
 | --------------------------------------------- | ------------------ | -------- | -------- | ----------- | ----------------- |
 | registerApp(appid)                            | register               | Function | no       | Android/iOS | yes               |
 | isWXAppInstalled()                            | Determine whether WeChat is installed | Function | no       | Android/iOS | yes               |
-| isWXAppSupportApi()                           | Check support       | Function | no       | Android/iOS | no                |
-| getApiVersion()                               | Get API version number    | Function | no       | Android/iOS | no                |
-| openWXApp()                                   | Open WeChat           | Function | no       | Android/iOS | yes               |
-| sendAuthRequest([scope[, state]])             | WeChat authorized login       | Function | no       | Android/iOS | yes               |
-| shareText(ShareTextMetadata)                  | Share/Collect Text     | Function | no       | Android/iOS | partially         |
-| shareImage(ShareImageMetadata)                | Share Image     | Function | no       | Android/iOS | partially         |
-| shareLocalImage(ShareImageMetadata)           | Share LocalImage | Function | no       | Android/iOS | partially         |
-| shareFile(ShareFileMetadata)                  | Share File           | Function | no       | Android/iOS | no                |
-| shareMusic(ShareMusicMetadata)                | Share Music           | Function | no       | Android/iOS | no                |
-| shareVideo(ShareVideoMetadata)                | Share Video           | Function | no       | Android/iOS | no                |
-| shareWebpage (ShareWebpageMetadata)           | Share Webpage           | Function | no       | Android/iOS | no                |
-| shareMiniProgram(ShareMiniProgramMetadata)    | Share MiniProgram         | Function | no       | Android/iOS | partially                |
-| launchMiniProgram (LaunchMiniProgramMetadata) | Launch MiniProgram         | Function | no       | Android/iOS | yes               |
-| chooseInvoice (ChooseInvoice)                 | Select invoice           | Function | no       | Android/iOS | no                |
-| pay(payload)                                  | pay               | Function | no       | Android/iOS | yes               |
+| isWXAppSupportApi()                           | Check support          | Function | no       | Android/iOS | no                |
+| getApiVersion()                               | Get API version number | Function | no       | Android/iOS | no                |
+| openWXApp()                                   | Open WeChat            | Function | no       | Android/iOS | yes               |
+| sendAuthRequest([scope[, state]])             | WeChat authorized login| Function | no       | Android/iOS | yes               |
+| shareText(ShareTextMetadata)                  | Share/Collect Text     | Function | no       | Android/iOS | partially(Session、Timeline)      |
+| shareImage(ShareImageMetadata)                | Share Image            | Function | no       | Android/iOS | partially(Session、Timeline)      |
+| shareLocalImage(ShareImageMetadata)           | Share LocalImage       | Function | no       | Android/iOS | partially(Session、Timeline)      |
+| shareFile(ShareFileMetadata)                  | Share File             | Function | no       | Android/iOS | partially(Session)                |
+| shareMusic(ShareMusicMetadata)                | Share Music            | Function | no       | Android/iOS | no                                |
+| shareVideo(ShareVideoMetadata)                | Share Video            | Function | no       | Android/iOS | partially(Session)                |
+| shareWebpage (ShareWebpageMetadata)           | Share Webpage          | Function | no       | Android/iOS | partially(Session)                |
+| shareMiniProgram(ShareMiniProgramMetadata)    | Share MiniProgram      | Function | no       | Android/iOS | partially(Session)                |
+| launchMiniProgram (LaunchMiniProgramMetadata) | Launch MiniProgram     | Function | no       | Android/iOS | yes               |
+| chooseInvoice (ChooseInvoice)                 | Select invoice         | Function | no       | Android/iOS | no                |
+| pay(payload)                                  | pay                    | Function | no       | Android/iOS | yes               |
 | subscribeMessage(SubscribeMessageMetadata)    | 
 One-time subscription to messages     | Function | no       | Android/iOS | no                |
 
@@ -365,8 +365,8 @@ One-time subscription to messages     | Function | no       | Android/iOS | no  
 
 ## Others
 
-- ShareText、ShareImage、ShareLocalImage、ShareMiniProgram: Only sharing is supported, collection is not supported, because the WeChat Open SDK currently does not support collection on the HarmonyOS platform.
-- isWXAppSupportApi、getApiVersion、ShareFile、ShareMusic、ShareVideo、ShareWebpage、ChooseInvoice、subscribeMessage. These interfaces are currently not supported by HarmonyOS WeChat Open SDK.
+- ShareText、ShareImage、ShareLocalImage、ShareMiniProgram、ShareFile、ShareVideo、ShareWebpage: Only sharing is supported, collection is not supported, because the WeChat Open SDK currently does not support collection on the HarmonyOS platform.
+- isWXAppSupportApi、getApiVersion、ShareMusic、ChooseInvoice、subscribeMessage. These interfaces are currently not supported by HarmonyOS WeChat Open SDK.
 
 ## License
 
