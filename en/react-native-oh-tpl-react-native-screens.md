@@ -19,7 +19,9 @@
 
 The implementation of this library depends on the native  code from @react-native-oh-tpl/native and @react-navigation/native-stack and @react-native-oh-tpl/react-native-safe-area-context and @react-native-oh-tpl/react-native-gesture-handler. If this library is included into your application, there is no need to include it again; you can skip the steps in this section and use it directly.
 
-If it is not included, follow the guide provided in [@react-native-oh-tpl/native](/en/react-navigation-native.md) and [@react-native-oh-tpl/native-stack](/en/react-navigation-native-stack.md) and [@react-native-oh-tpl/react-native-safe-area-context](/en/react-native-safe-area-context.md) and [@react-native-oh-tpl/react-native-gesture-handler](/en/react-native-gesture-handler.md) to add it to your project.
+Note: If the `@react-native-oh-tpl/native-stack` library has been introduced, please uninstall it. Otherwise, this library will fail to be referenced and cannot be used.
+
+If it is not included, follow the guide provided in [@react-native-oh-tpl/native](/en/react-navigation-native.md) and [@react-native-oh-tpl/react-native-safe-area-context](/en/react-native-safe-area-context.md) and [@react-native-oh-tpl/react-native-gesture-handler](/en/react-native-gesture-handler.md) to add it to your project.
 
 Please visit the Releases page of the third-party library to check the corresponding version information: [@react-native-oh-tpl/react-native-screens Releases](https://github.com/react-native-oh-library/react-native-harmony-screens/releases). For older versions that have not been published to npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
@@ -28,12 +30,14 @@ Go to the project directory and execute the following instruction:
 
 ```bash
 npm install @react-native-oh-tpl/react-native-screens
+npm install @react-navigation/native-stack@^6.9.13
 ```
 
 #### **yarn**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-screens
+yarn install @react-native-oh-tpl/react-native-screens
+yarn install @react-navigation/native-stack@^6.9.13
 ```
 
 The following code shows the basic use scenario of the repository:
