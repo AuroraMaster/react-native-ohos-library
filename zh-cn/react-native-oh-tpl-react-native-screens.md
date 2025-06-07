@@ -19,7 +19,9 @@
 
 本库实现依赖 @react-navigation/native 、 @react-navigation/native-stack 、 @react-native-oh-tpl/react-native-safe-area-context 、 @react-native-oh-tpl/react-native-gesture-handler 的原生端代码，如已在工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
 
-如未引入请参照 [@react-navigation/native 文档的 Link 章节](/zh-cn/react-navigation-native.md) ， [@react-navigation/native-stack 文档的 Link 章节](/zh-cn/react-navigation-native-stack.md) ，[@react-native-oh-tpl/react-native-gesture-handler 文档的 Link 章节](/zh-cn/react-native-gesture-handler.md) ，[@react-native-oh-tpl/react-native-safe-area-context 文档的 Link 章节](/zh-cn/react-native-safe-area-context.md)进行引入。
+注：若已引入 `@react-native-oh-tpl/native-stack` 库，请务必卸载，否则本库将无法正确指向，导致无法使用。
+
+如未引入请参照 [@react-navigation/native 文档的 Link 章节](/zh-cn/react-navigation-native.md) ，[@react-native-oh-tpl/react-native-gesture-handler 文档的 Link 章节](/zh-cn/react-native-gesture-handler.md) ，[@react-native-oh-tpl/react-native-safe-area-context 文档的 Link 章节](/zh-cn/react-native-safe-area-context.md)进行引入。
 
 请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-screens Releases](https://github.com/react-native-oh-library/react-native-harmony-screens/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -29,12 +31,14 @@
 
 ```bash
 npm install @react-native-oh-tpl/react-native-screens
+npm install @react-navigation/native-stack@^6.9.13
 ```
 
 #### **yarn**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-screens
+yarn install @react-native-oh-tpl/react-native-screens
+yarn install @react-navigation/native-stack@^6.9.13
 ```
 
 下面的代码展示了这个库的基本使用场景：
