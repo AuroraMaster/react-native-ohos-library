@@ -223,4 +223,4 @@ This document is verified based on the following versions:
 
 ## License
 
-This project is licensed under [MIT License](https://github.com/reduxjs/redux-toolkit?tab=readme-ov-file).
+This project is licensed under [MIT License](https://github.com/reduxjs/redux-toolkit/blob/master/LICENSE).
