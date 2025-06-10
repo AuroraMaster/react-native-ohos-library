@@ -258,3 +258,5 @@ The following shows the verified APIs:
 ## Others
 
 ## License
+
+This project is licensed under [MIT License](https://github.com/moment/moment/blob/develop/LICENSE).
