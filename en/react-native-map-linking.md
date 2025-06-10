@@ -11,7 +11,7 @@ This third-party library has been migrated to Gitee and is now available for dir
 | Version                   | Package Name                                  | Repository                                                                                | Release                                                                                                     |
 | ------------------------- | --------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | <= 1.0.1-0.0.1@deprecated | @react-native-oh-tpl/react-native-map-linking | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-map-linking) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-map-linking/releases) |
-| > 1.0.1                   | @react-native-ohos/react-native-map-linking   | [Gitee](https://gitee.com/openharmony-sig/rntpc_react-native-map-linking)                 | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_react-native-map-linking/releases)                 |
+| > 1.0.1                   | @react-native-ohos/react-native-map-linking   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-map-linking)                 | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-map-linking/releases)                 |
 
 ## 1. Installation and Usage
 
@@ -161,4 +161,4 @@ Check the release version information in the release address of the third-party 
 
 ## 6. License
 
-This project is licensed under [The MIT License (MIT)](https://gitee.com/openharmony-sig/rntpc_react-native-map-linking/blob/master/LICENSE).
+This project is licensed under [The MIT License (MIT)](https://github.com/starlight36/react-native-map-linking/blob/master/LICENSE).
