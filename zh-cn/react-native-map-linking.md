@@ -11,7 +11,7 @@
 | Version                   | Package Name                                  | Repository                                                                                | Release                                                                                                     |
 | ------------------------- | --------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | <= 1.0.1-0.0.1@deprecated | @react-native-oh-tpl/react-native-map-linking | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-map-linking) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-map-linking/releases) |
-| > 1.0.1                   | @react-native-ohos/react-native-map-linking   | [Gitee](https://gitee.com/openharmony-sig/rntpc_react-native-map-linking)                 | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_react-native-map-linking/releases)                 |
+| > 1.0.1                   | @react-native-ohos/react-native-map-linking   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-map-linking)                 | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-map-linking/releases)                 |
 
 ## 1. 安装与使用
 
@@ -162,4 +162,4 @@ export default MapLinkingDemo;
 
 ## 6. 开源协议
 
-本项目基于 [The MIT License (MIT)](https://gitee.com/openharmony-sig/rntpc_react-native-map-linking/blob/master/LICENSE) ，请自由地享受和参与开源。
+本项目基于 [The MIT License (MIT)](https://github.com/starlight36/react-native-map-linking/blob/master/LICENSE) ，请自由地享受和参与开源。
