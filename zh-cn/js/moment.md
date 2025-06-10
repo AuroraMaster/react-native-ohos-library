@@ -259,3 +259,5 @@ moment().format("hh:mm:ss a");
 ## 其他
 
 ## 开源协议
+
+本项目基于 [The MIT License (MIT)](https://github.com/moment/moment/blob/develop/LICENSE)，请自由地享受和参与开源。
