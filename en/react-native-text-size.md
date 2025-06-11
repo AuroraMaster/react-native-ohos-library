@@ -125,7 +125,7 @@ export default function TextSizeExample() {
     <ScrollView style={{ flexGrow: 1 }}>
       <View style={{ paddingLeft: 12, paddingRight: 12 }}>
         <Text>
-         measure:[fontFamily: undefined,fontSize: 20,fontStyle: 'normal', 正斜fontWeight: '700']
+         measure:[fontFamily: undefined,fontSize: 20,fontStyle: 'normal', fontWeight: '700']
         </Text>
         <Text style={{
           width: width,
@@ -160,25 +160,25 @@ export default function TextSizeExample() {
           style={{ width: '100%', height: 28, borderWidth: 2, borderColor: 'black' }}
         />
         <Text>
-          specsForTextStyles:获取系统默认配置的字体的具体信息
+          specsForTextStyles: Obtains the default font information.
         </Text>
         <Text>
           {JSON.stringify(key)}
         </Text>
         <Text>
-          fontFamilyNames:获取系统默认配置的字体
+          fontFamilyNames: Obtains the default fonts.
         </Text>
         <Text>
           {res}
         </Text>
         <Text>
-          fontNamesForFamilyName:获取系统字体的属性
+          fontNamesForFamilyName: Obtains the property of the system font.
         </Text>
         <Text>
           {res2}
         </Text>
         <Text>
-          fontFromSpecs:返回从给定规范中获得的字体特征
+          fontFromSpecs: Returns the font features obtained from the given specification.
         </Text>
         <Text>
           {JSON.stringify(info)}
@@ -327,7 +327,7 @@ To use this repository, you need to use the correct React-Native and RNOH versio
 
 Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-text-size Releases](https://github.com/react-native-oh-library/react-native-text-size/releases)
 
-## APIs
+## API
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
@@ -347,8 +347,8 @@ Check the release version information in the release address of the third-party 
 
 ## Known Issues
 
-- [ ] fontFamilyNames&fontNamesForFamilyName 问题:需要依赖手机文件 font 目录下的 json 文件，该文件目前没有预置在手机目录下，会导致该接口调用为空。后续底层框架侧修复该问题 [issue#1](https://github.com/react-native-oh-library/react-native-text-size/issues/1)
-- [ ] measure方法缺少lineInfo的返回处理 [issue#2](https://github.com/react-native-oh-library/react-native-text-size/issues/8)
+- [ ] **fontFamilyNames** and **fontNamesForFamilyName** issues: The JSON file in the **font** directory of the mobile phone is required. Currently, the JSON file is not preset in the mobile phone directory, which will cause the API call to return null. This issue will be resolved on the bottom-layer framework side: [issue#1](https://github.com/react-native-oh-library/react-native-text-size/issues/1)
+- [ ] The **measure** method does not return **lineInfo**: [issue#2](https://github.com/react-native-oh-library/react-native-text-size/issues/8).
 
 ## Others
 
