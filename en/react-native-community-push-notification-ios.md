@@ -298,7 +298,7 @@ Then build and run the code.
 Check the release version information in the release address of the third-party library: [@react-native-ohos/push-notification-ios Releases](https://gitee.com/openharmony-sig/rntpc_ios/releases)
 
 
-## 4. APIs
+## 4. API
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
@@ -350,8 +350,8 @@ _NotificationRequest:_
 
 ## 6. Known Issues
 
-- [ ] HarmonyOS 的 NotificationManager 的规格和 IOS 不一致，其 NotificationRequest 所含参数，在 HarmonyOS 上部分没有适配对应参数，问题: [issue#1](https://github.com/react-native-oh-library/react-native-push-notification-ios/issues/4)
-- [ ] 原库部分接口在 HarmonyOS 中没有对应接口处理相关逻辑，问题: [issue#2](https://github.com/react-native-oh-library/react-native-push-notification-ios/issues/3)
+- [ ] The **NotificationManager** specifications of HarmonyOS are different from those of iOS. Some parameters contained in **NotificationRequest** are not adapted to HarmonyOS: [issue#1](https://github.com/react-native-oh-library/react-native-push-notification-ios/issues/4).
+- [ ] Some APIs in the source library do not have the corresponding API processing logic on HarmonyOS: [issue#2](https://github.com/react-native-oh-library/react-native-push-notification-ios/issues/3).
 
 ## 7. Others
 

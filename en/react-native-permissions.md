@@ -40,7 +40,7 @@ yarn add @react-native-oh-tpl/react-native-permissions
 
 The following code shows the basic use scenario of the repository:
 
-> [!WARNING] 在使用import...from "react-native-permissions" 导入时因为原库没有抛出关于HarmonyOS有关字段,在使用PERMISSIONS.HARMONY.ACCESS_BLUETOOTH编辑器会报ts类型错误没有HARMONY字段（使用可以正常编译运行），所以想要使用PERMISSIONS.HARMONY.ACCESS_BLUETOOTH，可以使用 import...from "@react-native-oh-tpl/react-native-permissions"
+> [!WARNING] When using **import ... from "react-native-permissions"**, a TypeScript type error occurs because the original library does not include the HarmonyOS fields. Specifically, when trying to use **PERMISSIONS.HARMONY.ACCESS_BLUETOOTH**, TypeScript throws an error indicating that the **HARMONY** field is missing. (However, the code will still compile and run correctly.) To resolve this issue and use **PERMISSIONS.HARMONY.ACCESS_BLUETOOTH**, you should instead use **import...from "@react-native-oh-tpl/react-native-permissions"**.
 
 ```js
 import { ScrollView, StyleSheet, View, Text, Button } from "react-native";
@@ -65,21 +65,21 @@ export function PermissionsExample() {
   return (
     <View style={styles.sectionContainer}>
       <Button
-        title="查询相机权限"
+        title="Query Camera Permissions"
         onPress={async () => {
           let check = await RTNPermissions.check("ohos.permission.CAMERA");
           console.info("RTNPermissions===== check", check);
         }}
       />
       <Button
-        title="设置相机权限"
+        title="Set Camera Permissions"
         onPress={async () => {
           let request = await RTNPermissions.request("ohos.permission.CAMERA");
           console.info("RTNPermissions===== request", request);
         }}
       />
       <Button
-        title={"查询多个权限"}
+        title={"Query Multiple Permissions"}
         onPress={async () => {
           let checkMultiple = await RTNPermissions.checkMultiple(
             permissionNormal
@@ -88,7 +88,7 @@ export function PermissionsExample() {
         }}
       />
       <Button
-        title={"设置多个权限"}
+        title={"Set Multiple Permissions"}
         onPress={async () => {
           let requestMultiple = await RTNPermissions.requestMultiple(
             permissionNormal
@@ -257,13 +257,13 @@ To use this repository, you need to use the correct React-Native and RNOH versio
 
 Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-permissions Releases](https://github.com/react-native-oh-library/react-native-permissions/releases)
 
-### 权限申请使用的工作流程
+### Applying for and Using a Permission
 
-应用在访问数据或者执行操作时，需要评估该行为是否需要应用具备相关的权限。如果确认需要目标权限，则需要在应用安装包中申请目标权限。
+You need to determine whether your application needs related permissions before accessing data or performing an operation. If permissions are required, you must request the permissions in the application installation package.
 
-然后，需要判断目标权限是否属于用户授权类。如果是，应用需要使用动态授权弹框来提供用户授权界面，请求用户授权目标权限。
+Determine whether the required permissions need user authorization. If yes, display a dialog box dynamically to request user authorization.
 
-当用户授予应用所需权限后，应用可成功访问目标数据或执行目标操作。
+After the user grants the permissions, the application can access the data or perform the operation.
 
 ```
  ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
@@ -306,9 +306,9 @@ Check the release version information in the release address of the third-party 
         └─────────────────┘                     └─────────────────┘
 ```
 
-### 权限要求
+### Required Permissions
 
-需要在`entry/src/main/module.json5`中声明权限并创建 reason string value。
+You need to declare the permissions in `entry/src/main/module.json5` and create the reason string value.
 
 ```
 "requestPermissions": [
@@ -335,39 +335,39 @@ Check the release version information in the release address of the third-party 
 ]
 ```
 
-reason 字段的内容写作规范及建议如下：
+How to set:
 
-    保持句子简洁、不要加入多余的分割符号。
-
-    建议句式：用于某事。
-
-    示例：用于扫码拍照。
+    Keep the sentence concise without redundant separators.
+    
+    Recommended sentence pattern: Used for something/Used to do something/Used for doing something.
+    
+    Example: Used for code scanning and photographing.
 
 ```
     {
       "name": "reason",
-      "value": "允许应用使用相机。"
+      "value": "Allows an application to use the camera."
     },
 ```
 
-### 权限等级说明
+### Levels of Permissions
 
-根据权限对于不同等级应用有不同的开放范围，权限类型对应分为以下三种，等级依次提高。
+The permissions available to applications vary with the APL. The permission levels include the following in ascending order of seniority.
 
-- **normal 权限**
+- **normal**
 
-  normal 权限允许应用访问超出默认规则外的普通系统资源。这些系统资源的开放（包括数据和功能）对用户隐私以及其他应用带来的风险很小。
+  The **normal** permission allows access to common system resources beyond the default rules. Access to these resources (including data and functions) has minor risks on user privacy and other applications.
 
-  该类型的权限仅向 APL 等级为 normal 及以上的应用开放。
+  The permissions of this level are available to applications of the **normal** or higher APL.
 
-- **system_basic 权限**
+- **system_basic**
 
-  system_basic 权限允许应用访问操作系统基础服务相关的资源。这部分系统基础服务属于系统提供或者预置的基础功能，比如系统设置、身份认证等。这些系统资源的开放对用户隐私以及其他应用带来的风险较大。
+  The **system_basic** permission allows access to resources related to basic OS services. The basic services are basic functions provided or preconfigured by the system, such as system settings and identity authentication. Access to these resources may have considerable risks to user privacy and other applications.
 
-  该类型的权限仅向 APL 等级为 system_basic 及以上的应用开放。
+  The permissions of this level are available only to applications of the **system_basic** or **system_core** APL.
 
 ```
-normal权限列表
+normal permission list
     'ohos.permission.APPROXIMATELY_LOCATION',
     'ohos.permission.LOCATION_IN_BACKGROUND'
     'ohos.permission.LOCATION'
@@ -382,7 +382,7 @@ normal权限列表
     'ohos.permission.MEDIA_LOCATION',
     'ohos.permission.ACCESS_BLUETOOTH'
 
-system_basic列表
+system_basic permission list
     'ohos.permission.READ_WHOLE_CALENDAR'
     'ohos.permission.WRITE_WHOLE_CALENDAR'
     'ohos.permission.ANSWER_CALL'
@@ -407,34 +407,34 @@ system_basic列表
 
 ```
 
-注：
-ohos.permission.LOCATION_IN_BACKGROUND 允许应用在后台运行时获取设备位置信息。
-由于安全隐私要求，应用不能通过弹窗的形式被授予后台位置权限，应用如果需要使用后台位置权限，需要引导用户到设置界面手动授予。
-申请流程：
-通过弹窗申请前台位置权限。存在两种允许情况：
-申请前台模糊位置权限：ohos.permission.APPROXIMATELY_LOCATION。
-申请前台精确位置权限：ohos.permission.APPROXIMATELY_LOCATION 和 ohos.permission.LOCATION。
-当用户点击弹窗授予前台位置权限后，应用通过弹窗、提示窗等形式告知用户前往设置界面授予后台位置权限。
-用户在设置界面中的选择“始终允许”应用访问位置信息权限，完成手动授予。
+Note:
+**ohos.permission.LOCATION_IN_BACKGROUND** allows an app running in the background to obtain the device location.
+For security purposes, this permission cannot be granted to applications in a dialog box. If an application needs this permission, direct the user to manually grant this permission on the **Settings** screen.
+Request process:
+Request the foreground location permissions in the dialog box. You can request either of the following permissions:
+Request **ohos.permission.APPROXIMATELY_LOCATION**.
+Request **ohos.permission.APPROXIMATELY_LOCATION** and **ohos.permission.LOCATION**.
+After the user grants the foreground location permissions, display a message to direct the user to go to the **Settings** screen to grant the **ohos.permission.LOCATION_IN_BACKGROUND** permission.
+The permission is granted to the application if the user selects **Always allow** on the **Settings** screen.
 
-## APIs
+## API
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-| Name                    | Description    | Type           | Required | Platform    | HarmonyOS Support        |
-| ----------------------- | ------------------|----|---------| ----------- | ------------------------ |
-| check                   | 检查单个权限    | Function          | no      | iOS,Android | yes                      |
-| checkNotifications      | 检查通知权限    | Function          | no      | iOS,Android | yes                      |
-| openSettings            | 打开设置页      | Function          | no      | iOS,Android | yes                      |
-| request                 | 设置单个权限    | Function          | no      | iOS,Android | yes                      |
-| requestNotifications    | 设置通知权限    | Function          | no      | iOS,Android | yes                      |
-| checkMultiple           | 检查多个权限    | Function          | no      | Android     | yes                      |
-| requestMultiple         | 设置多个权限    | Function          | no      | Android     | yes                      |
-| checkLocationAccuracy   | 检查设备位置权限  | Function          | no      | iOS         | no(使用 check()查询权限) |
-| requestLocationAccuracy | 请求访问设备位置的权限  | Function          | no      | iOS         | no(使用 request()设置权限) |
-| openPhotoPicker         | 打开图片选择 | Function          | no      | iOS         | yes( iOS 需要在`PhotoLibrary`权限为`limited`才能调用，HarmonyOS不需要任何权限直接调用) |
+| Name                    | Description            | Type     | Required | Platform    | HarmonyOS Support                                            |
+| ----------------------- | ---------------------- | -------- | -------- | ----------- | ------------------------------------------------------------ |
+| check                   | Checks a single permission.          | Function | no       | iOS, Android| yes                                                          |
+| checkNotifications      | Checks the notification permission.          | Function | no       | iOS, Android| yes                                                          |
+| openSettings            | Opens the settings page.            | Function | no       | iOS, Android| yes                                                          |
+| request                 | Sets a single permission.          | Function | no       | iOS, Android| yes                                                          |
+| requestNotifications    | Set the notification permission.          | Function | no       | iOS, Android| yes                                                          |
+| checkMultiple           | Checks multiple permissions.          | Function | no       | Android     | yes                                                          |
+| requestMultiple         | Sets multiple permissions.          | Function | no       | Android     | yes                                                          |
+| checkLocationAccuracy   | Checks the device location permission.      | Function | no       | iOS         | no (Use **check()** to query permissions.)                                    |
+| requestLocationAccuracy | Requests the permission to access the device location.| Function | no       | iOS         | no (Use **request()** to set permissions.)                                  |
+| openPhotoPicker         | Opens the photo picker.          | Function | no       | iOS         | yes (For iOS, the API can be called only when the `PhotoLibrary` permission is `limited`. For HarmonyOS, the API can be directly called without any permission.)|
 
 ## Known Issues
 
