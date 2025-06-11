@@ -1,4 +1,4 @@
-> 模板版本：v0.2.2
+> Template version: V0.2.2
 
 <p align="center">
   <h1 align="center"> <code>react-native-blob-util</code> </h1>
@@ -12,15 +12,15 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-blob-util)
+> [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-blob-util)
 
-## 安装与使用
+## Installation and Usage
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-blob-util Releases](https://github.com/react-native-oh-library/react-native-blob-util/releases)，并下载适用版本的 tgz 包。
+Find the matching version information in the release address of the third-party library and download an applicable .tgz package: [@react-native-oh-tpl/react-native-blob-util Releases](https://github.com/react-native-oh-library/react-native-blob-util/releases).
 
-进入到工程目录并输入以下命令：
+Go to the project directory and execute the following instructions:
 
-> [!TIP] # 处替换为 tgz 包的路径
+> [!TIP] Replace the content with the path of the .tgz package at the comment sign (#).
 
 <!-- tabs:start -->
 
@@ -38,9 +38,9 @@ yarn add @react-native-oh-tpl/react-native-blob-util@file:#
 
 <!-- tabs:end -->
 
-下面的代码展示了这个库的基本使用场景：
+The following code shows the basic use scenario of the repository:
 
-> [!WARNING] 使用时 import 的库名不变。
+> [!WARNING] The name of the imported repository should remain unchanged.
 
 ```js
 import React, { useState } from "react";
@@ -185,17 +185,17 @@ export default function BlobUtilDemo() {
   };
 
   const addListener = () => {
-    let obj = "addListener是空实现";
+    let obj = "addListener is an empty implementation.";
     setResult(obj);
   };
 
   const removeListeners = () => {
-    let obj = "removeListeners是空实现";
+    let obj = "removeListeners is an empty implementation.";
     setResult(obj);
   };
 
   const emitExpiredEvent = () => {
-    let obj = "emitExpiredEvent是空实现,三方库没有调用";
+    let obj = "emitExpiredEvent is an empty implementation and is not invoked by a third-party library.";
     setResult(obj);
   };
 
@@ -212,55 +212,55 @@ export default function BlobUtilDemo() {
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.getConstants()</Text>
             <Button
-              title="运行"
+              title="Run"
               color="#841584"
               onPress={getConstants}
             ></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.createFile()</Text>
-            <Button title="运行" color="#841584" onPress={createFile}></Button>
+            <Button title="Run" color="#841584" onPress={createFile}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.unlink()</Text>
-            <Button title="运行" color="#841584" onPress={unlink}></Button>
+            <Button title="Run" color="#841584" onPress={unlink}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>
               BlobUtilTurboModule.copyFileToCache()
             </Text>
             <Button
-              title="运行"
+              title="Run"
               color="#841584"
               onPress={copyFileToCache}
             ></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.writeFile()</Text>
-            <Button title="运行" color="#841584" onPress={writeFile}></Button>
+            <Button title="Run" color="#841584" onPress={writeFile}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.stat()</Text>
-            <Button title="运行" color="#841584" onPress={stat}></Button>
+            <Button title="Run" color="#841584" onPress={stat}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.mkdir()</Text>
-            <Button title="运行" color="#841584" onPress={mkdir}></Button>
+            <Button title="Run" color="#841584" onPress={mkdir}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.writeStream()</Text>
-            <Button title="运行" color="#841584" onPress={writeStream}></Button>
+            <Button title="Run" color="#841584" onPress={writeStream}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.ls()</Text>
-            <Button title="运行" color="#841584" onPress={ls}></Button>
+            <Button title="Run" color="#841584" onPress={ls}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>
               BlobUtilTurboModule.createFileASCII()
             </Text>
             <Button
-              title="运行"
+              title="Run"
               color="#841584"
               onPress={createFileASCII}
             ></Button>
@@ -270,69 +270,69 @@ export default function BlobUtilDemo() {
               BlobUtilTurboModule.writeFileArray()
             </Text>
             <Button
-              title="运行"
+              title="Run"
               color="#841584"
               onPress={writeFileArray}
             ></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.exists()</Text>
-            <Button title="运行" color="#841584" onPress={exists}></Button>
+            <Button title="Run" color="#841584" onPress={exists}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.lstat()</Text>
-            <Button title="运行" color="#841584" onPress={lstat}></Button>
+            <Button title="Run" color="#841584" onPress={lstat}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.hash()</Text>
-            <Button title="运行" color="#841584" onPress={hash}></Button>
+            <Button title="Run" color="#841584" onPress={hash}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.readFile()</Text>
-            <Button title="运行" color="#841584" onPress={readFile}></Button>
+            <Button title="Run" color="#841584" onPress={readFile}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.slice()</Text>
-            <Button title="运行" color="#841584" onPress={slice}></Button>
+            <Button title="Run" color="#841584" onPress={slice}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.df()</Text>
-            <Button title="运行" color="#841584" onPress={df}></Button>
+            <Button title="Run" color="#841584" onPress={df}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.closeStream()</Text>
-            <Button title="运行" color="#841584" onPress={closeStream}></Button>
+            <Button title="Run" color="#841584" onPress={closeStream}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>
               BlobUtilTurboModule.writeArrayChunk()
             </Text>
             <Button
-              title="运行"
+              title="Run"
               color="#841584"
               onPress={writeArrayChunk}
             ></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.writeChunk()</Text>
-            <Button title="运行" color="#841584" onPress={writeChunk}></Button>
+            <Button title="Run" color="#841584" onPress={writeChunk}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.readStream()</Text>
-            <Button title="运行" color="#841584" onPress={readStream}></Button>
+            <Button title="Run" color="#841584" onPress={readStream}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.mv()</Text>
-            <Button title="运行" color="#841584" onPress={mv}></Button>
+            <Button title="Run" color="#841584" onPress={mv}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>addListener()</Text>
-            <Button title="运行" color="#841584" onPress={addListener}></Button>
+            <Button title="Run" color="#841584" onPress={addListener}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>removeListeners()</Text>
             <Button
-              title="运行"
+              title="Run"
               color="#841584"
               onPress={removeListeners}
             ></Button>
@@ -340,7 +340,7 @@ export default function BlobUtilDemo() {
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>emitExpiredEvent()</Text>
             <Button
-              title="运行"
+              title="Run"
               color="#841584"
               onPress={emitExpiredEvent}
             ></Button>
@@ -411,11 +411,11 @@ const styles = StyleSheet.create({
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure AutoLink.
 
-首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
+Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
-### 1.在工程根目录的 `oh-package.json5` 添加 overrides 字段
+### 1. Adding the **overrides** Field to `oh-package.json5` File in the Root Directory of the Project
 
 ```
 {
@@ -426,18 +426,18 @@ const styles = StyleSheet.create({
 }
 ```
 
-### 2.引入原生端代码
+### 2. Introducing Native Code
 
-目前有两种方法：
+Currently, two methods are available:
 
-1. 通过 har 包引入（在 IDE 完善相关功能后该方法会被遗弃，目前首选此方法）；
-2. 直接链接源码。
+1. Use the HAR file (this method will be deprecated once the IDE supports the relevant functionality and is preferred currently).
+2. Directly link to the source code.
 
-方法一：通过 har 包引入
+Method 1 (recommended): Use the HAR file.
 
-> [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
+> [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
 
-打开 `entry/oh-package.json5`，添加以下依赖
+Open `entry/oh-package.json5` and add the following dependencies:
 
 ```json
 "dependencies": {
@@ -446,23 +446,23 @@ const styles = StyleSheet.create({
   }
 ```
 
-点击右上角的 `sync` 按钮
+Click the `sync` button in the upper right corner.
 
-或者在终端执行：
+Alternatively, run the following instruction on the terminal:
 
 ```bash
 cd entry
 ohpm install
 ```
 
-方法二：直接链接源码
+Method 2: Directly link to the source code.
 
-> [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
+> [!TIP] For details, see [Introducing Native Code](/zh-cn/link-source-code.md)
 
 
-### 3.配置 CMakeLists 和引入 BlobUtilPackage
+### 3. Configuring CMakeLists and Introducing BlobUtilPackage
 
-打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
 ```diff
 project(rnapp)
@@ -500,7 +500,7 @@ target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
 # RNOH_END: rnoh_blob_util
 ```
 
-打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+Open `entry/src/main/cpp/PackageProvider.cpp` and add the following code:
 
 ```diff
 #include "RNOH/PackageProvider.h"
@@ -519,9 +519,9 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 4.在 ArkTs 侧引入 BlobUtilPackage
+### 4. Introducing BlobUtilPackage to ArkTs
 
-打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
+Open `entry/src/main/ets/RNPackagesFactory.ts` and add the following code:
 
 ```diff
 ...
@@ -535,41 +535,41 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 5.运行
+### 5. Running
 
-点击右上角的 `sync` 按钮
+Click the `sync` button in the upper right corner.
 
-或者在终端执行：
+Alternatively, run the following instruction on the terminal:
 
 ```bash
 cd entry
 ohpm install
 ```
 
-然后编译、运行即可。
+Build and run the code.
 
-## 约束与限制
+## Constraints
 
-### 兼容性
+### Compatibility
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+To use this library, you need to use the correct React Native and RNOH versions. In addition, use the matching DevEco Studio and the ROM on your phone.
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-blob-util Releases](https://github.com/react-native-oh-library/react-native-blob-util/releases)
+Find the matching version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-blob-util Releases](https://github.com/react-native-oh-library/react-native-blob-util/releases).
 
 ## API
 
-> [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
+> [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
-> [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
+> [!TIP] If the value of **HarmonyOS Support** is **Yes**, it means that the HarmonyOS platform supports this property; **No** means the opposite; **Partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 #### Fetch API
 
 ##### ReactNativeBlobUtil.fetch
 
 | Name    | Description|Type | Required | Platform    | HarmonyOS Support |
 | ------- | --------|--- | -------- | ----------- | ----------------- |
-| progress | 进度   | Function    | No       | iOS/Android | yes                |
-| uploadProgress | 上传进度  | Function        | No       | iOS/Android | yes                |
-| cancel | 取消   | Function       | No       | iOS/Android | yes                |
+| progress | Progress     | Function    | No       | iOS/Android | yes                |
+| uploadProgress | Upload progress  | Function        | No       | iOS/Android | yes                |
+| cancel | Cancellation   | Function       | No       | iOS/Android | yes                |
 
 
 
@@ -579,9 +579,9 @@ ohpm install
 
 |        Name         | Description| Type   | Required | Platform | HarmonyOS Support |
 | :-----------------: | :------|----: | :------: | :------: | :---------------: |
-|  actionViewIntent   | 动作视图意图| Function  |    No    | Android  |        No         |
-|  getContentIntent   | 获取内容意图| Function  |    No    | Android  |        No         |
-| addCompleteDownload | 添加完整下载| Function  |    No    | Android  |        No         |
+|  actionViewIntent   | Action view intent| Function  |    No    | Android  |        No         |
+|  getContentIntent   | Obtains the content intent| Function  |    No    | Android  |        No         |
+| addCompleteDownload | Adds a complete download| Function  |    No    | Android  |        No         |
 
 #### File System Access API
 
@@ -589,26 +589,26 @@ ohpm install
 
 |    Name     |            Description  | Type             | Required |  Platform   | HarmonyOS Support |
 | :---------: | :---------------------| -----------: | :------: | :---------: | :---------------: |
-|    dirs     |                目录 | Function               |    NO    | iOS/Android |        yes        |
-| createFile  |              创建文件 | Function             |    NO    | iOS/Android |        yes        |
-|  writeFile  |               写文件   | Function            |    NO    | iOS/Android |        yes        |
-| writeStream |                写流    | Function            |    NO    | iOS/Android |        yes        |
-| appendFile  |              追加文件   | Function           |    NO    | iOS/Android |        yes        |
-|  readFile   |              读取文件  | Function            |    NO    | iOS/Android |        yes        |
-|    hash     |                哈希   | Function             |    NO    | iOS/Android |        yes        |
-| readStream  |                读流    | Function            |    NO    | iOS/Android |        yes        |
-|    mkdir    |              创建目录   | Function           |    NO    | iOS/Android |        yes        |
-|     ls      |        查看当下的文件和目录| Function        |    NO    | iOS/Android |        yes        |
-|     mv      |            移动文件位置  | Function          |    NO    | iOS/Android |        yes        |
-|     cp      |              复制文件   | Function           |    NO    | iOS/Android |        yes        |
-|   exists    |          检查文件是否存在 | Function         |    NO    | iOS/Android |        yes        |
-|    isDir    |             是否是目录  | Function           |    NO    | iOS/Android |        yes        |
-|   unlink    |              删除文件   | Function           |    NO    | iOS/Android |        yes        |
-|    lstat    |      获取目录下文件的统计数据 | Function     |    NO    | iOS/Android |        yes        |
-|    stat     |   类似地获取数据或目录的统计信息| Function   |    NO    | iOS/Android |        yes        |
-|  scanFile   |              扫描文件    | Function          |    NO    |   Android   |        no         |
-|    asset    |                资产      | Function          |    NO    | iOS/Android |        yes        |
-|     df      | 获取设备的可用磁盘空间和总磁盘空间| Function |    NO    | iOS/Android |        yes        |
+|    dirs     |                Directory | Function               |    NO    | iOS/Android |        yes        |
+| createFile  |              Creates a file | Function             |    NO    | iOS/Android |        yes        |
+|  writeFile  |               Writes a file   | Function            |    NO    | iOS/Android |        yes        |
+| writeStream |                Writes a stream    | Function            |    NO    | iOS/Android |        yes        |
+| appendFile  |              Appends a file   | Function           |    NO    | iOS/Android |        yes        |
+|  readFile   |              Reads a file  | Function            |    NO    | iOS/Android |        yes        |
+|    hash     |                Hash   | Function             |    NO    | iOS/Android |        yes        |
+| readStream  |                Reads a stream    | Function            |    NO    | iOS/Android |        yes        |
+|    mkdir    |              Creates a directory   | Function           |    NO    | iOS/Android |        yes        |
+|     ls      |        Views the current files and directory| Function        |    NO    | iOS/Android |        yes        |
+|     mv      |            Moves a file  | Function          |    NO    | iOS/Android |        yes        |
+|     cp      |              Copies a file   | Function           |    NO    | iOS/Android |        yes        |
+|   exists    |          Checks whether a file exists | Function         |    NO    | iOS/Android |        yes        |
+|    isDir    |             Checks whether a node is a directory  | Function           |    NO    | iOS/Android |        yes        |
+|   unlink    |              Removes a file   | Function           |    NO    | iOS/Android |        yes        |
+|    lstat    |      Obtains statistics of files in a directory | Function     |    NO    | iOS/Android |        yes        |
+|    stat     |   Obtains data or directory statistics similarly| Function   |    NO    | iOS/Android |        yes        |
+|  scanFile   |              Scans a file    | Function          |    NO    |   Android   |        no         |
+|    asset    |                Asset      | Function          |    NO    | iOS/Android |        yes        |
+|     df      | Obtains the available disk space and total disk space of a device| Function |    NO    | iOS/Android |        yes        |
 
 #### iOS API
 
@@ -616,8 +616,8 @@ ohpm install
 
 | Name            | Description      | Type                      | Required | Platform | HarmonyOS Support |
 | --------------- | ----------------------| ---------------- | -------- | -------- | ----------------- |
-| previewDocument | 文档查看器--需要系统权限  | Function             | No       | iOS      | yes                |
-| openDocument    | 显示与文件交互的选项菜单--需要系统权限| Function | No       | iOS      | yes                |
+| previewDocument | Views documents. This operation requires system permissions.  | Function             | No       | iOS      | yes                |
+| openDocument    | Displays the option menu for interacting with files. This operation requires system permissions.| Function | No       | iOS      | yes                |
 
 #### Network Utils
 
@@ -625,8 +625,8 @@ ohpm install
 
 | Name          | Description| Type | Required | Platform    | HarmonyOS Support |
 | ------------- | ----------- | ---| ----- | ----------- | ----------------- |
-| getCookies    | 获取 cookie| Function | No       | iOS/Android | no                |
-| removeCookies | 删除 cookie| Function | No       | iOS/Android | no               |
+| getCookies    | Obtains cookie| Function | No       | iOS/Android | no                |
+| removeCookies | Removes cookie| Function | No       | iOS/Android | no               |
 
 #### Session API
 
@@ -634,10 +634,10 @@ ohpm install
 
 | Name    | Description| Type | Required | Platform    | HarmonyOS Support |
 | ------- | ----------- | --| ------ | ----------- | ----------------- |
-| add | 向此会话添加文件路径   | Function     | No       | iOS/Android | yes                |
-| remove | 从此会话中删除会话条目而不删除文件  | Function      | No       | iOS/Android | yes                |
-| list | 返回包含此会话中的文件路径的数组   | Function     | No       | iOS/Android | yes                |
-| dispose | 删除会话中的所有文件  | Function      | No       | iOS/Android | yes                |
+| add | Adds a file path to the current session.   | Function     | No       | iOS/Android | yes                |
+| remove |  Removes session entries from the current session without deleting files.  | Function      | No       | iOS/Android | yes                |
+| list | Returns an array containing the file paths in the current session.   | Function     | No       | iOS/Android | yes                |
+| dispose | Disposes all files in a session.  | Function      | No       | iOS/Android | yes                |
 
 #### MediaStore(Android Media Storage)
 
@@ -645,24 +645,24 @@ ohpm install
 
 | Name             | Description | Type   | Required | Platform | HarmonyOS Support |
 | ---------------- | --------| ------ | -------- | -------- | ----------------- |
-| CopyToMediaStore | 复制到媒体存储| Function | No       | Android  | no                |
-| createMediaFile  | 创建媒体文件| Function   | No       | Android  | no                |
-| writeMediaFile   | 写媒体文件 | Function    | No       | Android  | no                |
-| copyToInternal   | 复制到内部 | Function    | No       | Android  | no                |
+| CopyToMediaStore | Copies to media storage.| Function | No       | Android  | no                |
+| createMediaFile  | Creates a media file.| Function   | No       | Android  | no                |
+| writeMediaFile   | Writes a media file. | Function    | No       | Android  | no                |
+| copyToInternal   | Copies to internal. | Function    | No       | Android  | no                |
 
 #### Utils API
 
 | Name   | Description| Type | Required | Platform    | HarmonyOS Support |
 | ------ | ----------- | ---| ----- | ----------- | ----------------- |
-| wrap   |  使文件路径可以被识别| Function           | No       | iOS/Android | yes                |
-| base64 |   使用base64编码解码| Function          | No       | iOS/Android | yes                |
-| session |  用于管理缓存文件 | Function          | No       | iOS/Android | yes                |
+| wrap   |   Wraps a file path to make it recognizable.| Function           | No       | iOS/Android | yes                |
+| base64 |   Enables Base64 encoding and decoding.| Function          | No       | iOS/Android | yes                |
+| session |  Manages cache files. | Function          | No       | iOS/Android | yes                |
 
-## 遗留问题
- - [ ] blob-util在使用getCookies、removeCookies	在Android、iOS、Harmony OS 上使用都会报错: [issue#381](https://github.com/RonRadtke/react-native-blob-util/issues/381)
-## 其他
+## Known Issues
+ - [ ] blob-util throws errors when using **getCookies** and **removeCookies** on Android, iOS, and HarmonyOS: [issue#381](https://github.com/RonRadtke/react-native-blob-util/issues/381).
+## Other
 
-## 开源协议
+## License
 
-本项目基于 [The MIT License (MIT)](https://github.com/RonRadtke/react-native-blob-util/blob/master/LICENSE) ，请自由地享受和参与开源。
+This project is licensed under [MIT License](https://github.com/RonRadtke/react-native-blob-util/blob/master/LICENSE).
 

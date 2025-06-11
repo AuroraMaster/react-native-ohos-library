@@ -217,11 +217,11 @@ All of the props under _Properties_ in addition to the following:
 
 ## Known Issues
 
-- [x] 已解决：1、Progress.Circle 中的属性 fill 在 HarmonyOS 上默认显示黑色和默认无色不一致，定位是 svg 的属性配置有问题，当前通过修改 Circle.js 中默认 fill 的属性进行规避，后续 svg 修复该问题[issue#6](https://github.com/react-native-oh-library/react-native-svg/issues/6)后，修改的代码会移除。
+- [x] Resolved: 1. The property **fill** in **Progress.Circle** is displayed in black by default on HarmonyOS, which is different from the default colorless mode. The cause is that the property configuration of the SVG is incorrect. Currently, the default **fill** property in **Circle.js** is modified to avoid this issue. After this issue, i.e., [issue#6](https://github.com/react-native-oh-library/react-native-svg/issues/6), is resolved in the SVG, the modified code will be removed.
 
-- [x] 已解决：2、Progress.Circle中的属性color, unfilledColor,borderWith,borderColor中圆的颜色，在进行静态配置的时候颜色显示正常，在使用Button进行动态改变的时候，中间的圆会显示黑色和默认的颜色不一致，定位是svg的属性配置有问题，当前通过修改Circle.js中默认fill的属性进行规避，后续 svg 修复该问题[issue#7](https://github.com/react-native-oh-library/react-native-svg/issues/7)后，修改的代码会移除。
+- [x] Resolved: 2. The color of the circle in property **color**, **unfilledColor**, **borderWith**, and **borderColor** of **Progress.Circle** is displayed properly during static configuration. When the **Button** control is used to dynamically change the color, the color of the circle in the middle is displayed in black, which is different from the default color. The cause is that the SVG property configuration is incorrect. Currently, the default **fill** property in **Circle.js** is modified to avoid this issue. After this issue, i.e., [issue#7](https://github.com/react-native-oh-library/react-native-svg/issues/7), is resolved in the SVG, the modified code will be removed.
 
-- [x] 已解决：3、Progress.pie中的属性color,borderWith,borderColor中内圆的颜色，在进行静态配置的时候颜色显示正常，在使用Button进行动态改变的时候，中间的圆会显示黑色和默认的颜色不一致，定位是svg的属性有问题，pie传入给svg的值是正常的，svg处理逻辑有问题，修改svg修复该问题[issue#8](https://github.com/react-native-oh-library/react-native-svg/issues/8)
+- [x] Resolved: 3. The color of the inner circle in property **color**, **borderWith**, and **borderColor** of **Progress.pie** is displayed properly during static configuration. When the **Button** control is used to dynamically change the color, the color of the inner circle in the middle is displayed in black, which is different from the default color. The cause is that the SVG property is incorrect. The value transferred by **pie** to the SVG is normal. However, the SVG processing logic is incorrect. The SVG is modified to rectify the issue, i.e., [issue#8](https://github.com/react-native-oh-library/react-native-svg/issues/8).
 
 ## Others
 

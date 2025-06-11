@@ -186,17 +186,17 @@ export default function BlobUtilDemo() {
   };
 
   const addListener = () => {
-    let obj = "addListener是空实现";
+    let obj = "addListener is an empty implementation.";
     setResult(obj);
   };
 
   const removeListeners = () => {
-    let obj = "removeListeners是空实现";
+    let obj = "removeListeners an empty implementation.";
     setResult(obj);
   };
 
   const emitExpiredEvent = () => {
-    let obj = "emitExpiredEvent是空实现,三方库没有调用";
+    let obj = "emitExpiredEvent is an empty implementation and is not invoked by a third-party library.";
     setResult(obj);
   };
 
@@ -213,55 +213,55 @@ export default function BlobUtilDemo() {
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.getConstants()</Text>
             <Button
-              title="运行"
+              title="Run"
               color="#841584"
               onPress={getConstants}
             ></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.createFile()</Text>
-            <Button title="运行" color="#841584" onPress={createFile}></Button>
+            <Button title="Run" color="#841584" onPress={createFile}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.unlink()</Text>
-            <Button title="运行" color="#841584" onPress={unlink}></Button>
+            <Button title="Run" color="#841584" onPress={unlink}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>
               BlobUtilTurboModule.copyFileToCache()
             </Text>
             <Button
-              title="运行"
+              title="Run"
               color="#841584"
               onPress={copyFileToCache}
             ></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.writeFile()</Text>
-            <Button title="运行" color="#841584" onPress={writeFile}></Button>
+            <Button title="Run" color="#841584" onPress={writeFile}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.stat()</Text>
-            <Button title="运行" color="#841584" onPress={stat}></Button>
+            <Button title="Run" color="#841584" onPress={stat}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.mkdir()</Text>
-            <Button title="运行" color="#841584" onPress={mkdir}></Button>
+            <Button title="Run" color="#841584" onPress={mkdir}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.writeStream()</Text>
-            <Button title="运行" color="#841584" onPress={writeStream}></Button>
+            <Button title="Run" color="#841584" onPress={writeStream}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.ls()</Text>
-            <Button title="运行" color="#841584" onPress={ls}></Button>
+            <Button title="Run" color="#841584" onPress={ls}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>
               BlobUtilTurboModule.createFileASCII()
             </Text>
             <Button
-              title="运行"
+              title="Run"
               color="#841584"
               onPress={createFileASCII}
             ></Button>
@@ -271,69 +271,69 @@ export default function BlobUtilDemo() {
               BlobUtilTurboModule.writeFileArray()
             </Text>
             <Button
-              title="运行"
+              title="Run"
               color="#841584"
               onPress={writeFileArray}
             ></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.exists()</Text>
-            <Button title="运行" color="#841584" onPress={exists}></Button>
+            <Button title="Run" color="#841584" onPress={exists}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.lstat()</Text>
-            <Button title="运行" color="#841584" onPress={lstat}></Button>
+            <Button title="Run" color="#841584" onPress={lstat}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.hash()</Text>
-            <Button title="运行" color="#841584" onPress={hash}></Button>
+            <Button title="Run" color="#841584" onPress={hash}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.readFile()</Text>
-            <Button title="运行" color="#841584" onPress={readFile}></Button>
+            <Button title="Run" color="#841584" onPress={readFile}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.slice()</Text>
-            <Button title="运行" color="#841584" onPress={slice}></Button>
+            <Button title="Run" color="#841584" onPress={slice}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.df()</Text>
-            <Button title="运行" color="#841584" onPress={df}></Button>
+            <Button title="Run" color="#841584" onPress={df}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.closeStream()</Text>
-            <Button title="运行" color="#841584" onPress={closeStream}></Button>
+            <Button title="Run" color="#841584" onPress={closeStream}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>
               BlobUtilTurboModule.writeArrayChunk()
             </Text>
             <Button
-              title="运行"
+              title="Run"
               color="#841584"
               onPress={writeArrayChunk}
             ></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.writeChunk()</Text>
-            <Button title="运行" color="#841584" onPress={writeChunk}></Button>
+            <Button title="Run" color="#841584" onPress={writeChunk}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.readStream()</Text>
-            <Button title="运行" color="#841584" onPress={readStream}></Button>
+            <Button title="Run" color="#841584" onPress={readStream}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.mv()</Text>
-            <Button title="运行" color="#841584" onPress={mv}></Button>
+            <Button title="Run" color="#841584" onPress={mv}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>addListener()</Text>
-            <Button title="运行" color="#841584" onPress={addListener}></Button>
+            <Button title="Run" color="#841584" onPress={addListener}></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>removeListeners()</Text>
             <Button
-              title="运行"
+              title="Run"
               color="#841584"
               onPress={removeListeners}
             ></Button>
@@ -341,7 +341,7 @@ export default function BlobUtilDemo() {
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>emitExpiredEvent()</Text>
             <Button
-              title="运行"
+              title="Run"
               color="#841584"
               onPress={emitExpiredEvent}
             ></Button>
@@ -508,9 +508,9 @@ Check the release version information in the release address of the third-party 
 
 | Name    | Description|Type | Required | Platform    | HarmonyOS Support |
 | ------- | --------|--- | -------- | ----------- | ----------------- |
-| progress | 进度   | Function    | No       | iOS/Android | yes                |
-| uploadProgress | 上传进度  | Function        | No       | iOS/Android | yes                |
-| cancel | 取消   | Function       | No       | iOS/Android | yes                |
+| progress | Progress.    | Function    | No       | iOS/Android | yes                |
+| uploadProgress | Upload progress.  | Function        | No       | iOS/Android | yes                |
+| cancel | Cancellation   | Function       | No       | iOS/Android | yes                |
 
 #### Android API
 
@@ -518,9 +518,9 @@ Check the release version information in the release address of the third-party 
 
 |        Name         | Description| Type   | Required | Platform | HarmonyOS Support |
 | :-----------------: | :------|----: | :------: | :------: | :---------------: |
-|  actionViewIntent   | 动作视图意图| Function  |    No    | Android  |        No         |
-|  getContentIntent   | 获取内容意图| Function  |    No    | Android  |        No         |
-| addCompleteDownload | 添加完整下载| Function  |    No    | Android  |        No         |
+|  actionViewIntent   | Action view intent.| Function  |    No    | Android  |        No         |
+|  getContentIntent   | Obtains the content intent.| Function  |    No    | Android  |        No         |
+| addCompleteDownload | Adds a complete download.| Function  |    No    | Android  |        No         |
 
 #### File System Access API
 
@@ -528,26 +528,26 @@ Check the release version information in the release address of the third-party 
 
 |    Name     |            Description  | Type             | Required |  Platform   | HarmonyOS Support |
 | :---------: | :---------------------| -----------: | :------: | :---------: | :---------------: |
-|    dirs     |                目录 | Function               |    NO    | iOS/Android |        yes        |
-| createFile  |              创建文件 | Function             |    NO    | iOS/Android |        yes        |
-|  writeFile  |               写文件   | Function            |    NO    | iOS/Android |        yes        |
-| writeStream |                写流    | Function            |    NO    | iOS/Android |        yes        |
-| appendFile  |              追加文件   | Function           |    NO    | iOS/Android |        yes        |
-|  readFile   |              读取文件  | Function            |    NO    | iOS/Android |        yes        |
-|    hash     |                哈希   | Function             |    NO    | iOS/Android |        yes        |
-| readStream  |                读流    | Function            |    NO    | iOS/Android |        yes        |
-|    mkdir    |              创建目录   | Function           |    NO    | iOS/Android |        yes        |
-|     ls      |        查看当下的文件和目录| Function        |    NO    | iOS/Android |        yes        |
-|     mv      |            移动文件位置  | Function          |    NO    | iOS/Android |        yes        |
-|     cp      |              复制文件   | Function           |    NO    | iOS/Android |        yes        |
-|   exists    |          检查文件是否存在 | Function         |    NO    | iOS/Android |        yes        |
-|    isDir    |             是否是目录  | Function           |    NO    | iOS/Android |        yes        |
-|   unlink    |              删除文件   | Function           |    NO    | iOS/Android |        yes        |
-|    lstat    |      获取目录下文件的统计数据 | Function     |    NO    | iOS/Android |        yes        |
-|    stat     |   类似地获取数据或目录的统计信息| Function   |    NO    | iOS/Android |        yes        |
-|  scanFile   |              扫描文件    | Function          |    NO    |   Android   |        no         |
-|    asset    |                资产      | Function          |    NO    | iOS/Android |        yes        |
-|     df      | 获取设备的可用磁盘空间和总磁盘空间| Function |    NO    | iOS/Android |        yes        |
+|    dirs     |                Directory structure.  | Function               |    NO    | iOS/Android |        yes        |
+| createFile  |              Creates a file. | Function             |    NO    | iOS/Android |        yes        |
+|  writeFile  |               Writes a file.   | Function            |    NO    | iOS/Android |        yes        |
+| writeStream |                Writes a stream.    | Function            |    NO    | iOS/Android |        yes        |
+| appendFile  |              Appends a file.   | Function           |    NO    | iOS/Android |        yes        |
+|  readFile   |              Reads a file.  | Function            |    NO    | iOS/Android |        yes        |
+|    hash     |                Hash.   | Function             |    NO    | iOS/Android |        yes        |
+| readStream  |                Reads a stream.    | Function            |    NO    | iOS/Android |        yes        |
+|    mkdir    |              Creates a directory.    | Function           |    NO    | iOS/Android |        yes        |
+|     ls      |        Views the current files and directory. | Function        |    NO    | iOS/Android |        yes        |
+|     mv      |            Moves a file.  | Function          |    NO    | iOS/Android |        yes        |
+|     cp      |              Copies a file.    | Function           |    NO    | iOS/Android |        yes        |
+|   exists    |          Checks whether a file exists.  | Function         |    NO    | iOS/Android |        yes        |
+|    isDir    |             Checks whether a node is a directory.  | Function           |    NO    | iOS/Android |        yes        |
+|   unlink    |              Removes a file.   | Function           |    NO    | iOS/Android |        yes        |
+|    lstat    |      Obtains statistics of files in a directory.  | Function     |    NO    | iOS/Android |        yes        |
+|    stat     |   Obtains data or directory statistics similarly.| Function   |    NO    | iOS/Android |        yes        |
+|  scanFile   |              Scans a file.    | Function          |    NO    |   Android   |        no         |
+|    asset    |                Assets.       | Function          |    NO    | iOS/Android |        yes        |
+|     df      | Obtains the available disk space and total disk space of a device.| Function |    NO    | iOS/Android |        yes        |
 
 #### iOS API
 
@@ -555,8 +555,8 @@ Check the release version information in the release address of the third-party 
 
 | Name            | Description      | Type                      | Required | Platform | HarmonyOS Support |
 | --------------- | ----------------------| ---------------- | -------- | -------- | ----------------- |
-| previewDocument | 文档查看器--需要系统权限  | Function             | No       | iOS      | yes                |
-| openDocument    | 显示与文件交互的选项菜单--需要系统权限| Function | No       | iOS      | yes                |
+| previewDocument | Views documents, requiring system permissions.   | Function             | No       | iOS      | yes                |
+| openDocument    | Displays the option menu for interacting with files, requiring system permissions.| Function | No       | iOS      | yes                |
 
 #### Network Utils
 
@@ -564,8 +564,8 @@ Check the release version information in the release address of the third-party 
 
 | Name          | Description| Type | Required | Platform    | HarmonyOS Support |
 | ------------- | ----------- | ---| ----- | ----------- | ----------------- |
-| getCookies    | 获取 cookie| Function | No       | iOS/Android | no                |
-| removeCookies | 删除 cookie| Function | No       | iOS/Android | no               |
+| getCookies    | Obtains cookie| Function | No       | iOS/Android | no                |
+| removeCookies | Removes cookie| Function | No       | iOS/Android | no               |
 
 #### Session API
 
@@ -573,10 +573,10 @@ Check the release version information in the release address of the third-party 
 
 | Name    | Description| Type | Required | Platform    | HarmonyOS Support |
 | ------- | ----------- | --| ------ | ----------- | ----------------- |
-| add | 向此会话添加文件路径   | Function     | No       | iOS/Android | yes                |
-| remove | 从此会话中删除会话条目而不删除文件  | Function      | No       | iOS/Android | yes                |
-| list | 返回包含此会话中的文件路径的数组   | Function     | No       | iOS/Android | yes                |
-| dispose | 删除会话中的所有文件  | Function      | No       | iOS/Android | yes                |
+| add | Adds a file path to the current session.   | Function     | No       | iOS/Android | yes                |
+| remove | Removes session entries from the current session without deleting files.  | Function      | No       | iOS/Android | yes                |
+| list | Returns an array containing the file paths in the current session.    | Function     | No       | iOS/Android | yes                |
+| dispose | Disposes all files in a session.    | Function      | No       | iOS/Android | yes                |
 
 #### MediaStore(Android Media Storage)
 
@@ -584,22 +584,22 @@ Check the release version information in the release address of the third-party 
 
 | Name             | Description | Type   | Required | Platform | HarmonyOS Support |
 | ---------------- | --------| ------ | -------- | -------- | ----------------- |
-| CopyToMediaStore | 复制到媒体存储| Function | No       | Android  | no                |
-| createMediaFile  | 创建媒体文件| Function   | No       | Android  | no                |
-| writeMediaFile   | 写媒体文件 | Function    | No       | Android  | no                |
-| copyToInternal   | 复制到内部 | Function    | No       | Android  | no                |
+| CopyToMediaStore | Copies to media storage.| Function | No       | Android  | no                |
+| createMediaFile  | Creates a media file. | Function   | No       | Android  | no                |
+| writeMediaFile   | Writes a media file. | Function    | No       | Android  | no                |
+| copyToInternal   | Copies to internal. | Function    | No       | Android  | no                |
 
 #### Utils API
 
 | Name   | Description| Type | Required | Platform    | HarmonyOS Support |
 | ------ | ----------- | ---| ----- | ----------- | ----------------- |
-| wrap   |  使文件路径可以被识别| Function           | No       | iOS/Android | yes                |
-| base64 |   使用base64编码解码| Function          | No       | iOS/Android | yes                |
-| session |  用于管理缓存文件 | Function          | No       | iOS/Android | yes                |
+| wrap   |  Wraps a file path to make it recognizable.| Function           | No       | iOS/Android | yes                |
+| base64 |   Enables Base64 encoding and decoding.| Function          | No       | iOS/Android | yes                |
+| session |  Manages cache files.  | Function          | No       | iOS/Android | yes                |
 
 ## Known Issues
 
- - [ ] blob-util在使用getCookies、removeCookies	在Android、iOS、Harmony OS 上使用都会报错: [issue#381](https://github.com/RonRadtke/react-native-blob-util/issues/381)
+ - [ ] An error occurs when **blob-util** uses **getCookies** and **removeCookies** on Android, iOS, and HarmonyOS: [issue#381](https://github.com/RonRadtke/react-native-blob-util/issues/381).
 
 ## Others
 
