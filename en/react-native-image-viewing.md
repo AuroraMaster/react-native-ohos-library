@@ -219,9 +219,9 @@ Check the release version information in the release address of the third-party 
 
 ## Known Issues
 
-- [x] 组件上下滑动关闭暂未实现，由于 scrollView 的 naticeEvent.velocityPropertiesHarmonyOS 暂不支持 [issue#6](https://github.com/react-native-oh-library/react-native-image-viewing/issues/6)
-- [x] 组件双击放大方法暂未实现，由于 doubleTapToZoomEnabledPropertiesHarmonyOS 暂不支持 [issue#7](https://github.com/react-native-oh-library/react-native-image-viewing/issues/7)
-- [x] 组件 animationType 淡入淡出效果暂未实现，由于 modal 组件未适配 [issue#8](https://github.com/react-native-oh-library/react-native-image-viewing/issues/8)
+- [x] The swipe-to-close property is not implemented because the **naticeEvent.velocity** property of **scrollView** is not supported by HarmonyOS: [issue#6](https://github.com/react-native-oh-library/react-native-image-viewing/issues/6).
+- [x] The **doubleTapToZoomEnabled** property is not supported by HarmonyOS: [issue#7](https://github.com/react-native-oh-library/react-native-image-viewing/issues/7).
+- [x] The fade-in/fade-out effect of the **animationType** property is not implemented because the adaptation of the **modal** component is not completed: [issue#8](https://github.com/react-native-oh-library/react-native-image-viewing/issues/8).
 
 ## Others
 
