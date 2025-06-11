@@ -12,7 +12,7 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/dohooo/react-native-reanimated-carousel)
+> [!TIP] [Github 地址](https://github.com/dohooo/react-native-reanimated-carousel/tree/v3.5.1)
 
 ## 安装与使用
 

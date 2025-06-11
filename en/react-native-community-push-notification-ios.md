@@ -5,14 +5,14 @@
 </p>
 
 
-This project is based on [@react-native-community/push-notification-ios@1.11.0](https://github.com/react-native-push-notification/ios)。
+This project is based on [@react-native-community/push-notification-ios@1.11.0](https://github.com/react-native-push-notification/ios/tree/v1.11.0)。
 
 This third-party library has been migrated to Gitee and is now available for direct download from npm, the new package name is: `@react-native-ohos/push-notification-ios`, The version correspondence details are as follows:
 
 | Version                    | Package Name                                      | Repository         | Release                    |
 |----------------------------| ------------------------------------------------- | ------------------ | -------------------------- |
 | <= 1.11.0-0.1.3@deprecated | @react-native-oh-tpl/push-notification-ios | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-push-notification-ios) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-push-notification-ios/releases) |
-| > 1.11.0                   | @react-native-ohos/push-notification-ios   | [Gitee](https://gitee.com/openharmony-sig/rntpc_ios) | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_ios/releases) |
+| > 1.11.0                   | @react-native-ohos/push-notification-ios   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_ios) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_ios/releases) |
 
 ## 1. Installation and Usage
 

@@ -4,14 +4,14 @@
   <h1 align="center"> <code>react-native-marquee</code> </h1>
 </p>
 
-本项目基于 [react-native-marquee@0.5.0](https://github.com/kyo504/react-native-marquee) 开发。
+本项目基于 [react-native-marquee@0.5.0](https://github.com/kyo504/react-native-marquee/tree/v0.5.0) 开发。
 
 该第三方库的仓库已迁移至 Gitee，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-marquee`，具体版本所属关系如下：
 
 | Version                   | Package Name                                      | Repository         | Release                    |
 | ------------------------- | ------------------------------------------------- | ------------------ | -------------------------- |
 | <= 0.5.0-0.0.1@deprecated | @react-native-oh-tpl/react-native-marquee | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-marquee) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-marquee/releases) |
-| > 0.5.1                  | @react-native-ohos/react-native-marquee   | [Gitee](https://gitee.com/openharmony-sig/rntpc_react-native-marquee) | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_react-native-marquee/releases) |
+| > 0.5.1                  | @react-native-ohos/react-native-marquee   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-marquee) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-marquee/releases) |
 
 ## 1. 安装与使用
 

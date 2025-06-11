@@ -4,14 +4,14 @@
   <h1 align="center"> <code>@react-native-community/push-notification-ios</code> </h1>
 </p>
 
-本项目基于 [@react-native-community/push-notification-ios@1.11.0](https://github.com/react-native-push-notification/ios) 开发。
+本项目基于 [@react-native-community/push-notification-ios@1.11.0](https://github.com/react-native-push-notification/ios/tree/v1.11.0) 开发。
 
 该第三方库的仓库已迁移至 Gitee，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/push-notification-ios`，具体版本所属关系如下：
 
 | Version                    | Package Name                                      | Repository         | Release                    |
 |----------------------------| ------------------------------------------------- | ------------------ | -------------------------- |
 | <= 1.11.0-0.1.3@deprecated | @react-native-oh-tpl/push-notification-ios | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-push-notification-ios) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-push-notification-ios/releases) |
-| > 1.11.0                   | @react-native-ohos/push-notification-ios   | [Gitee](https://gitee.com/openharmony-sig/rntpc_ios) | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_ios/releases) |
+| > 1.11.0                   | @react-native-ohos/push-notification-ios   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_ios) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_ios/releases) |
 
 ## 1. 安装与使用
 

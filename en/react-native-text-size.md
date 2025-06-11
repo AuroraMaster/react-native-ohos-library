@@ -125,7 +125,7 @@ export default function TextSizeExample() {
     <ScrollView style={{ flexGrow: 1 }}>
       <View style={{ paddingLeft: 12, paddingRight: 12 }}>
         <Text>
-         measure:[fontFamily: undefined,fontSize: 20,fontStyle: 'normal', fontWeight: '700']
+         measure:[fontFamily: undefined,fontSize: 20,fontStyle: 'normal', 正斜fontWeight: '700']
         </Text>
         <Text style={{
           width: width,
@@ -160,25 +160,25 @@ export default function TextSizeExample() {
           style={{ width: '100%', height: 28, borderWidth: 2, borderColor: 'black' }}
         />
         <Text>
-          specsForTextStyles: Obtains the default font information.
+          specsForTextStyles:获取系统默认配置的字体的具体信息
         </Text>
         <Text>
           {JSON.stringify(key)}
         </Text>
         <Text>
-          fontFamilyNames: Obtains the default fonts.
+          fontFamilyNames:获取系统默认配置的字体
         </Text>
         <Text>
           {res}
         </Text>
         <Text>
-          fontNamesForFamilyName: Obtains the property of the system font.
+          fontNamesForFamilyName:获取系统字体的属性
         </Text>
         <Text>
           {res2}
         </Text>
         <Text>
-          fontFromSpecs: Returns the font features obtained from the given specification.
+          fontFromSpecs:返回从给定规范中获得的字体特征
         </Text>
         <Text>
           {JSON.stringify(info)}
@@ -333,7 +333,7 @@ Check the release version information in the release address of the third-party 
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-> [!TIP] 参数信息查看 [Github 地址](https://github.com/react-native-oh-library/react-native-text-size)
+> [!TIP] 参数信息查看 [Github 地址](https://github.com/aMarCruz/react-native-text-size?tab=readme-ov-file#api)
 
 | Name                   | Description                                                                     | Type                            | Required | Platform | HarmonyOS Support |
 | ---------------------- | ------------------------------------------------------------------------------- | ------------------------------- | -------- | -------- | ----------------- |

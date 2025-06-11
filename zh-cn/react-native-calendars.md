@@ -12,7 +12,7 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/wix/react-native-calendars)
+> [!TIP] [Github 地址](https://github.com/wix/react-native-calendars/tree/1.1304.1)
 
 ## 安装与使用
 
