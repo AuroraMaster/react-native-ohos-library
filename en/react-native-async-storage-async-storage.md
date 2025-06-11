@@ -67,7 +67,7 @@ const getData = async () => {
 };
 ```
 
-下面的代码展示了这个库的Hooks使用场景：
+The following code shows the basic use scenario of the repository:
 
 > [!WARNING] The name of the imported repository remains unchanged.
 
@@ -273,7 +273,7 @@ Check the release version information in the release address of the third-party 
 
 ## Known Issues
 
-- [ ] Harmony 的 taskpool 支持类型有限，无法用 taskpool 实现，仅用简单的线程锁替代,无法设置指定的存储大小: [issue#8](https://github.com/react-native-oh-library/async-storage/issues/8)
+- [ ] The task pool in Harmony has limited support for task types, which restricts its implementation. Simply using a thread lock cannot specify the storage size: [issue#8](https://github.com/react-native-oh-library/async-storage/issues/8)
 
 ## Others
 

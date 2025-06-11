@@ -39,7 +39,7 @@ The following code shows the basic use scenario of the repository:
 
 > [!WARNING] The name of the imported repository remains unchanged.
 
-#### 自带字体图标对照网页
+#### Websites Providing the Internal Font Icons
 
 [Explore all icons](https://oblador.github.io/react-native-vector-icons/).
 
@@ -59,9 +59,9 @@ The following code shows the basic use scenario of the repository:
 - [`Zocial`](http://zocial.smcllns.com/) by Sam Collins (v1.4.0 with _100_ icons)
 - [`SimpleLineIcons`](https://simplelineicons.github.io/) crafted by Sabbir & Contributors (v2.5.5 with _189_ icons)
 
-### 本库自带字体的使用
+### Usage of the Internal Fonts
 
-> [!ATTENTION] 使用字体时，请确保 entry/src/main/ets/assets/fonts 和 entry/src/main/resource/rawfile/assets/assets/fonts 下同时拥有要使用的 ttf 文件，否则图标不能正常显示
+> [!ATTENTION] When using internal fonts, ensure that the .ttf files to be used exists in both **entry/src/main/ets/assets/fonts** and **entry/src/main/resource/rawfile/assets/assets/fonts**. Otherwise, the icon cannot be displayed properly.
 
 ```js
 import FontAwesome from "react-native-vector-icons/FontAwesome";
@@ -73,22 +73,22 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 ></FontAwesome.Button>;
 ```
 
-### 外部字体使用
+### Usage of the External Fonts
 
-> [!ATTENTION] 使用外部字体时，请确保 entry/src/main/ets/assets/fonts 和 entry/src/main/resource/rawfile/assets/assets/fonts 下同时拥有要使用的 ttf 文件，否则图标不能正常显示
-> 使用外部字体时，不管是用户自己制作的字体文件还是从网站下载的字体文件，都需要有 _.ttf 和 _.json 文件(文件目录不固定，能引用到就可以了)
+> [!ATTENTION] When using external fonts, ensure that the .ttf files to be used exists in both **entry/src/main/ets/assets/fonts** and **entry/src/main/resource/rawfile/assets/assets/fonts**. Otherwise, the icon cannot be displayed properly.
+> When external fonts are used, the .ttf and .json files are required regardless of whether the font is created by you or downloaded from the website. (The file directory is not fixed.)
 
-#### 用户自制字体文件
+#### Custom Font Files
 
-用户自己制作的字体文件导入使用，以下字体文件名和字体家族名仅供参考，以用户实际输出字体文件信息为准
+To import a custom font file, the following names of the font file and font family are for reference only. Use the actual font file information.
 
 ```js
 import { createIconSet } from "react-native-vector-icons";
 
 const CustomTest = createIconSet(
-  require("../assets/fonts/test.json"), // 引入本地assets下的字体资源
+  require("../assets/fonts/test.json"), // Import font resources from local assets.
   "poppy-icon",
-  "../assets/fonts/test.ttf" // 引入本地assets下的字体资源
+  "../assets/fonts/test.ttf" // Import font resources from local assets.
 );
 
 <CustomFont.Button
@@ -98,9 +98,9 @@ const CustomTest = createIconSet(
 ></CustomFont.Button>;
 ```
 
-#### [fontello](http://fontello.com)网站中的字体使用
+#### [Fonts from Fontello](http://fontello.com)
 
-从[fontello](http://fontello.com)网站选择合适的字体之后下载对应的字体文件和配置文件导入使用
+Download the font file and configuration file of a proper font from [Fontello](http://fontello.com), and import them.
 
 ```js
 import { createIconSetFromFontello } from "react-native-vector-icons";
@@ -109,7 +109,7 @@ import fontelloConfig from "../assets/fonts/config.json";
 const CustomFontello = createIconSetFromFontello(
   fontelloConfig,
   "fontello",
-  "../assets/fonts/fontello.ttf" // 引入本地assets下的字体资源
+  "../assets/fonts/fontello.ttf" // Import font resources from local assets.
 );
 
 <CustomFontello.Button
@@ -119,18 +119,18 @@ const CustomFontello = createIconSetFromFontello(
 ></CustomFontello.Button>;
 ```
 
-#### [IcoMoon](https://icomoon.io/app)网站中的字体使用
+#### [Fonts from IcoMoon](https://icomoon.io/app)
 
-从[IcoMoon](https://icomoon.io/app)网站选择合适的字体之后下载对应的字体文件和配置文件导入使用
+Download the font file and configuration file of a proper font from [IcoMoon](https://icomoon.io/app), and import them.
 
 ```js
 import { createIconSetFromIcoMoon } from "react-native-vector-icons";
-import icoMoonConfig from "../assets/fonts/selection.json"; // 引入本地assets下的字体资源
+import icoMoonConfig from "../assets/fonts/selection.json"; // Import font resources from local assets.
 
 const CustomFontIcoMoon = createIconSetFromIcoMoon(
   icoMoonConfig,
   "icomoon",
-  "../assets/fonts/icomoon.ttf" // 引入本地assets下的字体资源
+  "../assets/fonts/icomoon.ttf" // Import font resources from local assets.
 );
 
 <CustomFontIcoMoon.Button
@@ -148,7 +148,7 @@ const CustomFontIcoMoon = createIconSetFromIcoMoon(
 import React from "react";
 import { ScrollView } from "react-native";
 
-//导入原库自带字体
+// Import the internal fonts of the original library.
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import FontAwesome6 from "react-native-vector-icons/FontAwesome6";
 import Fontisto from "react-native-vector-icons/Fontisto";
@@ -174,25 +174,25 @@ import icoMoonConfig from "../assets/fonts/icomoon-selection.json";
 import fontelloConfig from "../assets/fonts/fontello-config.json";
 
 export function VectorIconsDemo() {
-  //引入用户自制字体
+  // Import the custom fonts.
   const CustomTest = createIconSet(
-    require("../assets/fonts/test.json"), // 引入本地assets下的字体资源
+    require("../assets/fonts/test.json"), // Import font resources from local assets.
     "poppy-icon",
-    "../assets/fonts/test.ttf" // 引入本地assets下的字体资源
+    "../assets/fonts/test.ttf" // Import font resources from local assets.
   );
 
-  //引入 IcoMoon 自定义字体
+  // Import the custom fonts from IcoMoon.
   const CustomIconMoon = createIconSetFromIcoMoon(
     icoMoonConfig,
     "icomoon",
-    "../assets/fonts/icomoon.ttf" // 引入本地assets下的字体资源
+    "../assets/fonts/icomoon.ttf" // Import font resources from local assets.
   );
 
-  //引入 fontello 自定义字体
+  // Import the custom fonts from Fontello.
   const CustomFontello = createIconSetFromFontello(
     fontelloConfig,
     "fontello",
-    "../assets/fonts/fontello.ttf" // 引入本地assets下的字体资源
+    "../assets/fonts/fontello.ttf" // Import font resources from local assets.
   );
 
   return (
@@ -303,13 +303,13 @@ Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually 
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
-### 在 ArkTs 侧引入和注册字体文件
+### Introducing and Registering a Font File to ArkTs
 
-步骤一：
-复制 `node_modules/react-native-vector-icons/Fonts` 目录下的字体文件到 `entry/src/main/resources/rawfile/fonts` 目录下(如使用了外部字体文件，需要将\*.ttf 文件复制过来)
+Step 1:
+Copy the font file in the `node_modules/react-native-vector-icons/Fonts` directory to the `entry/src/main/resources/rawfile/fonts` directory. If an external font file is used, copy the \*.ttf file.
 
-步骤二：
-打开 `entry/src/main/ets/pages/Index.ets`，添加以下代码
+Step 2:
+Open the `entry/src/main/ets/pages/Index.ets` file and add the following code:
 
 ```ts
 RNApp({
@@ -334,7 +334,7 @@ RNApp({
       'Octicons': $rawfile('fonts/Octicons.ttf'),
       'simple-line-icons': $rawfile('fonts/SimpleLineIcons.ttf'),
       'zocial': $rawfile('fonts/Zocial.ttf'),
-      // 以下三种为外部字体，这里是举例说明，以用户实际为准
+      // The following three external fonts are used as examples.
       'icomoon': $rawfile('fonts/icomoon.ttf'),
       'fontello': $rawfile('fonts/fontello.ttf'),
       'poppy-icon': $rawfile('fonts/test.ttf')
@@ -344,7 +344,7 @@ RNApp({
 })
 ```
 
-#### 提醒：自定义字体也需要用同样的方法在此注册
+#### Note: You need to register a custom font here in the same way.
 
 ## Constraints
 
@@ -352,7 +352,7 @@ RNApp({
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-请使用 Api 11 及以上版本，低版本会导致 font 注册不成功，图标显示不出来。
+If their versions are earlier than API version 11, the font registration fails and the icon cannot be displayed.
 
 This document is verified based on the following versions:
 
@@ -360,7 +360,7 @@ This document is verified based on the following versions:
 
 ## Known Issues
 
-- [ ] getImageSource 和 getImageSourceSync 原生方法可以将字体文件绘制成 Bitmap 位图供 `Image` 组件使用，Harmony OS 侧暂时不支持
+- [ ] The native methods **getImageSource** and **getImageSourceSync** can be used to draw a font file into a bitmap for the `Image` component to use. Currently, the HarmonyOS platform does not support this feature.
 
 ## Others
 

@@ -458,26 +458,26 @@ Check the release version information in the release address of the third-party 
 
 ### Permission Requirements
 
-> [!TIP] 如需自建项目使用华为地图可以跳过以下第一步，并前往[华为开发者联盟](https://developer.huawei.com/consumer/cn/wiki/index.php)平台申请对应项目和应用程序
+> [!TIP] If you want to use HUAWEI Maps in a self-built project, skip the first step and go to the [HUAWEI Developers](https://developer.huawei.com/consumer/cn/wiki/index.php) platform to apply for the corresponding project and application.
 
-> [!TIP] 详细配置参考华为开发者官网[地图服务](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/appgallery-connect-0000001751989088)
+> [!TIP] For details about the configuration, see [Map Kit](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/appgallery-connect-0000001751989088) on the HUAWEI Developers website.
 
-以下是示例项目配置
+The following is an example project configuration.
 
-1.打开 `工程目录/AppScope/app.json5`,修改
+1. Open the `project_directory/AppScope/app.json5` file and modify the following:
 
 ```
- bundleName:"com.example.rnmapdemo" //自建项目请与开发者平台上的包名一致
+ bundleName:"com.example.rnmapdemo" // For a self-built project, the bundle name must be the same as that on the developer platform.
 ```
 
-2.打开 `entry/src/main/module.json5`，添加相关配置
+2. Open the `entry/src/main/module.json5` file and add related configurations.
 
 ```diff
 ...
-   "metadata": [ // 配置如下信息 测试地图功能
+   "metadata": [ // Configure the following information to test the map function:
 +       {
 +       "name": "client_id",
-+       "value": "110168601"  //配置为从华为开发者平台获取的Client ID，自建项目请与开发者平台上的client id一致
++       "value": "110168601"  // Set this parameter to the client ID obtained from the HUAWEI Developer platform. For a self-built project, the client ID must be the same as that on the developer platform.
 +       }
    ],
    "requestPermissions": [
@@ -507,9 +507,9 @@ Check the release version information in the release address of the third-party 
     ]
 ```
 
-3.在 entry 目录下添加申请地图权限的原因
+3. Add the reason for applying for the map permission in the **entry** directory.
 
-打开 `entry/src/main/resources/base/element/string.json`，添加：
+Open `entry/src/main/resources/base/element/string.json` and add the following:
 
 ```diff
 ...
@@ -523,7 +523,7 @@ Check the release version information in the release address of the third-party 
 }
 ```
 
-4.打开 `工程目录/build-profile.json5` 在 app 节点下修改
+4. Open the `project_directory/build-profile.json5` file and modify the file under the **app** node.
 
 ```
  signingConfigs: [
@@ -531,13 +531,13 @@ Check the release version information in the release address of the third-party 
       "name": "default",
       "type": "HarmonyOS",
       "material": {
-        "storePassword": "0000001F46D5FEE280574FA23000DE66587FD7FA83EEFEF6D5890B713F4B512621FD3A4F5F6965E94C20441708BCE7", //自建项目配置的指纹证书密码
-        "certpath": "E:/aboutKey/rnmapdemo.cer", //自建项目配置的指纹证书
+        "storePassword": "0000001F46D5FEE280574FA23000DE66587FD7FA83EEFEF6D5890B713F4B512621FD3A4F5F6965E94C20441708BCE7", // Fingerprint certificate password configured for a self-built 
+        "certpath": "E:/aboutKey/rnmapdemo.cer", // Fingerprint certificate 
         "keyAlias": "key0",
-        "keyPassword": "0000001F2B30EA30206AEBA445E5E69F5A42C4FA4F829039AEBEA0167FF3591ADCAED98732BE405314206771508E5C", //自建项目配置的指纹证书密码
-        "profile": "E:/aboutKey/rnmapDebug.p7b",  //自建项目配置的指纹证书
+        "keyPassword": "0000001F2B30EA30206AEBA445E5E69F5A42C4FA4F829039AEBEA0167FF3591ADCAED98732BE405314206771508E5C", //Fingerprint certificate password configured for a self-built project
+        "profile": "E:/aboutKey/rnmapDebug.p7b",  // Fingerprint certificate configured for a self-built project
         "signAlg": "SHA256withECDSA",
-        "storeFile": "E:/aboutKey/rnmapdemo.p12" //自建项目配置的指纹证书
+        "storeFile": "E:/aboutKey/rnmapdemo.p12" // Fingerprint certificate configured for a self-built project
       }
     }
   ]
@@ -601,11 +601,11 @@ Check the release version information in the release address of the third-party 
 | isAccessibilityElement          | Determines whether the MapView captures VoiceOver touches or forwards them to children. When `true`, map markers are not visible to VoiceOver. **Note:** iOS Maps only.                                                                                                                          | Boolean                                 | false      | no       | ios         | no                |
 | cameraZoomRange                 | Map camera distance limits. `minCenterCoordinateDistance` for minimum distance, `maxCenterCoordinateDistance` for maximum, `animated` for animated zoom range changes. Takes precedence if conflicting with `minZoomLevel`, `maxZoomLevel`. **Note**: iOS 13.0+ only.                            | cameraZoomRange                         |            | no       | ios         | no                |
 
-注：HarmonyOS 侧的 mapType 支持以下字符串值
+Note: **mapType** on HarmonyOS supports the following string values:
 
 'none' \ 'standard' \ 'terrain'
 
-注：HarmonyOS 侧的双击放大由 zoomEnabled 开启，zoomTapEnabled 不能单独关闭该功能。
+Note: The double-tap zoom-in function on HarmonyOS is enabled by **zoomEnabled**, and cannot be disabled by **zoomTapEnabled**.
 
 ### Static Methods
 
@@ -703,7 +703,7 @@ Check the release version information in the release address of the third-party 
 | lineDashPattern | An array of numbers specifying the dash pattern to use for the path. The array contains one or more numbers that indicate the lengths (measured in points) of the line segments and gaps in the pattern. The values in the array alternate, starting with the first line segment length, followed by the first gap length, followed by the second line segment length, and so on.                                                                                                 | Array<Number> |                       | no       | ios/android | yes               |
 | tappable        | Boolean to allow a polyline to be tappable and use the onPress function.                                                                                                                                                                                                                                                                                                                                                                                                          | Bool          |                       | no       | ios/android | yes               |
 
-注：HarmonyOS 侧的 lineJoin 支持以下字符串值
+Note: **lineJoin** on HarmonyOS supports the following string values:
 
 'default' \ 'bevel' \ 'round'
 
@@ -731,7 +731,7 @@ Check the release version information in the release address of the third-party 
 | tappable        | Boolean to allow a polygon to be tappable and use the onPress function.                                                                                                                                                                                                                                                                                                                                                                                                           | Bool                 | false                   | no       | ios/android | yes               |
 | zIndex          | (Android Only) The order in which this polygon overlay is drawn with respect to other overlays. An overlay with a larger z-index is drawn over overlays with smaller z-indices. The order of overlays with the same z-index is arbitrary. The default zIndex is 0.                                                                                                                                                                                                                | Number               | 0                       | no       | ios/android | yes               |
 
-注：HarmonyOS 侧的 lineJoin 支持以下字符串值
+Note: **lineJoin** on HarmonyOS supports the following string values:
 
 'default' \ 'bevel' \ 'round'
 
@@ -873,7 +873,7 @@ Check the release version information in the release address of the third-party 
 
 ## Cluster
 
-> [!TIP] 点聚合组件是新开发组件，在原库上不存在。
+> [!TIP] The **Cluster** component is newly developed and does not exist in the original database.
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
@@ -883,17 +883,17 @@ Check the release version information in the release address of the third-party 
 
 | Name              | Description                       | Type                        | Default  | Required | Platform    | HarmonyOS Support |
 | ----------------- | --------------------------------- | --------------------------- | -------- | -------- | ----------- | ----------------- |
-| distance          | 聚合节点聚合的距离，单位vp        | number                      |          | yes      |             | yes               |
-| clusterItems      | 待聚合节点数组                    | Array<{ position: LatLng }> |          | yes      |             | yes               |
+| distance          | Clustering distance, in vp.        | number                      |          | yes      |             | yes               |
+| clusterItems      | Array of nodes to be clustered.                    | Array<{ position: LatLng }> |          | yes      |             | yes               |
 
 ## Known Issues
 
-- [ ] AIRMap 和 AIRMapMarker 中 Animated 未实现 [issues#1](https://github.com/react-native-oh-library/react-native-maps/issues/1)
-- [X] AIRMapOverlay 组件目前华为地图中不支持往地图组件中添加自定义 view [issues#2](https://github.com/react-native-oh-library/react-native-maps/issues/2)
-- [ ] AIRMap AIRMapMarker AIRMapPolyline AIRMapPolygon AIRMapCircle 组件在 HarmonyOS 中的不支持属性是因为华为地图没提供对应的属性 [issues#3](https://github.com/react-native-oh-library/react-native-maps/issues/3)
-- [ ] AIRMapCallout AIRMapCalloutSubview 组件为 marker 子组件，华为地图中 marker 有自带的，但是目前不支持自定义样式显示 [issues#4](https://github.com/react-native-oh-library/react-native-maps/issues/4)
-- [ ] AIRMapUrlTile AIRMapWMSTile 瓦片地图加载方式华为地图不支持 [issues#5](https://github.com/react-native-oh-library/react-native-maps/issues/5)
-- [ ] Heatmap 华为地图不支持 [issues#6](https://github.com/react-native-oh-library/react-native-maps/issues/6)
+- [ ] Animated in AIRMap and AIRMapMarker is not implemented. [issues#1](https://github.com/react-native-oh-library/react-native-maps/issues/1)
+- [X] Currently, the AIRMapOverlay component does not support adding custom views to the map component. [issues#2](https://github.com/react-native-oh-library/react-native-maps/issues/2)
+- [ ] The AIRMap, AIRMapMarker, AIRMapPolyline, AIRMapPolygon, and AIRMapCircle component does not support properties on HarmonyOS because HUAWEI Maps does not provide the corresponding properties. [issues#3](https://github.com/react-native-oh-library/react-native-maps/issues/3)
+- [ ] The AIRMapCallout and AIRMapCalloutSubview components are subcomponents of the Marker component. HUAWEI Maps has a built-in Marker component, but the styles cannot be customized.  [issues#4](https://github.com/react-native-oh-library/react-native-maps/issues/4)
+- [ ] The AIRMapUrlTile AIRMapWMSTile loading mode is not supported by HUAWEI Maps. [issues#5](https://github.com/react-native-oh-library/react-native-maps/issues/5)
+- [ ] The Heatmap is not supported by HUAWEI Maps. [issues#6](https://github.com/react-native-oh-library/react-native-maps/issues/6)
 
 ## Others
 
