@@ -335,7 +335,7 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-> [!TIP] 参数信息查看 [Github 地址](https://github.com/react-native-oh-library/react-native-text-size)
+> [!TIP] 参数信息查看 [Github 地址](https://github.com/aMarCruz/react-native-text-size?tab=readme-ov-file#api)
 
 | Name                   | Description                                                                     | Type                            | Required | Platform | HarmonyOS Support |
 | ---------------------- | ------------------------------------------------------------------------------- | ------------------------------- | -------- | -------- | ----------------- |

@@ -13,7 +13,7 @@
     </a>
 </p>
 
-> [! TIP] [Github address](https://github.com/magicismight/react-native-root-siblings)
+> [! TIP] [Github address](https://github.com/magicismight/react-native-root-siblings/tree/v5.0.1)
 
 ## Installation and Usage
 

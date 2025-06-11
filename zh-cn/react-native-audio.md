@@ -4,14 +4,14 @@
   <h1 align="center"> <code>react-native-audio</code> </h1>
 </p>
 
-本项目基于 [react-native-audio@4.2.2](https://github.com/jsierles/react-native-audio) 开发。
+本项目基于 [react-native-audio@4.2.2](https://github.com/jsierles/react-native-audio/tree/v4.2.2) 开发。
 
 该第三方库的仓库已迁移至 Gitee，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-audio`，具体版本所属关系如下：
 
 | Version                        | Package Name                             | Repository                                                   | Release                                                      |
 | ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | <= 4.2.2@deprecated | @react-native-oh-library/react-native-audio  | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-audio) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-audio/releases) |
-| > 4.2.2                        | @react-native-ohos/react-native-audio | [Gitee](https://gitee.com/openharmony-sig/rntpc_react-native-audio) | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_react-native-audio/releases) |
+| > 4.2.2                        | @react-native-ohos/react-native-audio | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-audio) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-audio/releases) |
 
 ## 安装与使用
 

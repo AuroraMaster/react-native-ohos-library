@@ -4,14 +4,14 @@
   <h1 align="center"> <code>react-native-sensors</code> </h1>
 </p>
 
-本项目基于 [react-native-sensors@7.2.1-rc.2](https://github.com/react-native-sensors/react-native-sensors) 开发。
+本项目基于 [react-native-sensors@7.2.1-rc.2](https://github.com/react-native-sensors/react-native-sensors/tree/v7.2.1-rc.2) 开发。
 
 该第三方库的仓库已迁移至 Gitee，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-sensors`，具体版本所属关系如下：
 
 | Version                        | Package Name                                  | Repository                                                   | Release                                                      |
 | ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | <= 7.2.1-rc.2-0.0.1@deprecated | @react-native-oh-library/react-native-sensors | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-sensors) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-sensors/releases) |
-| > 7.2.1                        | @react-native-ohos/react-native-sensors       | [Gitee](https://gitee.com/openharmony-sig/rntpc_react-native-sensors) | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_react-native-sensors/releases) |
+| > 7.2.1                        | @react-native-ohos/react-native-sensors       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-sensors) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-sensors/releases) |
 
 ## 1. 安装与使用
 
