@@ -1,10 +1,10 @@
 > 模板版本：v0.2.2
 
 <p align="center">
-  <h1 align="center"> <code>react-native-swiper</code> </h1>
+  <h1 align="center"> <code>@react-native-oh-tpl/react-native-swiper</code> </h1>
 </p>
 <p align="center">
-        <a href="https://github.com/leecade/react-native-swiper/blob/master">
+        <a href="https://github.com/react-native-oh-library/react-native-swiper/blob/master">
         <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
     </a>
     <a href="https://github.com/leecade/react-native-swiper/blob/master/LICENSE">
@@ -12,8 +12,7 @@
     </a>
 </p>
 
-
-> [!TIP] [Github 地址](https://github.com/leecade/react-native-swiper)
+> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-swiper)
 
 ## 安装与使用
 
@@ -22,13 +21,13 @@
 #### **npm**
 
 ```bash
-npm i react-native-swiper@1.6.0 --save
+npm i @react-native-oh-tpl/react-native-swiper --save
 ```
 
 #### **yarn**
 
 ```bash
-yarn add react-native-swiper@1.6.0
+yarn add @react-native-oh-tpl/react-native-swiper
 ```
 
 <!-- tabs:end -->
