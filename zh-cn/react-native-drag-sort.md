@@ -13,7 +13,7 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/mochixuan/react-native-drag-sort)
+> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-drag-sort)
 
 ## 安装与使用
 

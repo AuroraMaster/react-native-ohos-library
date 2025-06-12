@@ -38,7 +38,7 @@ yarn add @react-native-oh-tpl/cookies
 
 <!-- tabs:end -->
 
-HarmonyOS 中使用 react-native-cookies 需要配合 react-native-webview 使用，具体请参考[@react-native-oh-tpl/react-native-webview](/en/react-native-webview.md)
+On HarmonyOS, **react-native-cookies** must be used together with **react-native-webview**. For details, see [@react-native-oh-tpl/react-native-webview](/en/react-native-webview.md).
 
 The following code shows the basic use scenario of the repository:
 
@@ -73,7 +73,7 @@ export interface Cookies {
 
 export default function CookiesPage() {
   const httpUrl = "https://www.baidu.com";
-  const [result, setResult] = useState("请点击按钮，进行操作");
+  const [result, setResult] = useState("Touch the button to perform the operation.");
   const webViewRef = useRef(null);
   return (
     <View style={styles.container}>
@@ -90,12 +90,12 @@ export default function CookiesPage() {
         onPress={async () => {
           let cookieResult = await CookieManager.clearAll(true);
           let result = cookieResult
-            ? "清除所有cookie成功"
-            : "清除所有cookie失败";
+            ? "All cookies cleared successfully."
+            : "Failed to clear all cookies.";
           setResult(result + "");
         }}
       >
-        <Text>clearAll()【清除所有cookie】</Text>
+        <Text>clearAll()【Clear all cookies.】</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -105,7 +105,7 @@ export default function CookiesPage() {
           setResult(JSON.stringify(cookieResult));
         }}
       >
-        <Text>get()【根据url获取cookie】</Text>
+        <Text>get()【Obtain cookies using the URL.】</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -114,12 +114,12 @@ export default function CookiesPage() {
           let curCookie: Cookie = { name: "myAddCookie", value: "myNewCookie" };
           let cookieResult = await CookieManager.set(httpUrl, curCookie, true);
           let result = cookieResult
-            ? "根据url设置cookie成功"
-            : "根据url设置cookie失败";
+            ? "Cookies set using the URL successfully."
+            : "Failed to set the cookies using the URL.";
           setResult(result);
         }}
       >
-        <Text>set()【根据url设置cookie】</Text>
+        <Text>set()【Set cookies using the URL.】</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -131,12 +131,12 @@ export default function CookiesPage() {
             true
           );
           let result = cookieResult
-            ? "根据名称删除cookie成功"
-            : "根据名称删除cookie失败";
+            ? "Cookies deleted by name successfully."
+            : "Failed to delete cookies by name.";
           setResult(result);
         }}
       >
-        <Text>clearByName()【根据名称删除cookie】</Text>
+        <Text>clearByName()【Delete cookies by name.】</Text>
       </TouchableOpacity>   
 
       <TouchableOpacity
@@ -144,12 +144,12 @@ export default function CookiesPage() {
         onPress={async () => {
           let cookieResult = await CookieManager.removeSessionCookies();
           let result = cookieResult
-            ? "清除会话cookie成功"
-            : "清除会话cookie失败";
+            ? "Session cookies cleared successfully."
+            : "Failed to clear session cookies.";
           setResult(result);
         }}
       >
-        <Text>removeSessionCookies()【清除会话cookie】</Text>
+        <Text>removeSessionCookies()【Clear session cookies.】</Text>
       </TouchableOpacity>
     </View>
   );
@@ -345,7 +345,7 @@ Check the release version information in the release address of the third-party 
 
 ## Known Issues
 
-- [ ] 这四个方法getAll,setFromResponse,getFromResponse,flush 在ios是可用的andriod不可用，Harmony没有对应的api 问题: [issue#1](https://github.com/react-native-oh-library/react-native-cookies/issues/1)
+- [ ] The **getAll**, **setFromResponse**, **getFromResponse**, and **flush** methods are available on iOS, but not on Android. HarmonyOS does not have the corresponding API: [issue#1](https://github.com/react-native-oh-library/react-native-cookies/issues/1).
 
 ## Others
 

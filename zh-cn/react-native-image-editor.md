@@ -4,7 +4,7 @@
   <h1 align="center"> <code>@react-native-community/image-editor</code> </h1>
 </p>
 
-本项目基于 [@react-native-community/image-editor@3.2.0](https://github.com/callstack/react-native-image-editor) 开发。
+本项目基于 [@react-native-community/image-editor@3.2.0](https://github.com/callstack/react-native-image-editor/tree/3.2.0) 开发。
 
 该第三方库的仓库已迁移至 Gitee，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/image-editor`，具体版本所属关系如下：
 

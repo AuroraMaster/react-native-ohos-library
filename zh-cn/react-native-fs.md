@@ -4,7 +4,7 @@
   <h1 align="center"> <code>react-native-fs</code> </h1>
 </p>
 
-本项目基于 [react-native-fs@2.20.0](https://github.com/itinance/react-native-fs) 开发。
+本项目基于 [react-native-fs@2.20.0](https://github.com/itinance/react-native-fs/tree/v2.20.0) 开发。
 
 | Version                     | Package Name                         | Repository                                                                       | Release                                                                                            |
 | --------------------------- | ------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |

@@ -13,7 +13,7 @@
     </a>
 </p>
 
-> [!TIP] [GitHub address](https://github.com/oblador/react-native-vector-icons)
+> [!TIP] [GitHub address](https://github.com/oblador/react-native-vector-icons/tree/v10.0.3)
 
 ## Installation and Usage
 

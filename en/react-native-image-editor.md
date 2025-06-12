@@ -4,7 +4,7 @@
   <h1 align="center"> <code>@react-native-community/image-editor</code> </h1>
 </p>
 
-This project is based on [@react-native-community/image-editor@3.2.0](https://github.com/callstack/react-native-image-editor).
+This project is based on [@react-native-community/image-editor@3.2.0](https://github.com/callstack/react-native-image-editor/tree/3.2.0).
 
 This third-party library has been migrated to Gitee and is now available for direct download from npm, the new package name is: `@react-native-ohos/image-editor`, The version correspondence details are as follows:
 
