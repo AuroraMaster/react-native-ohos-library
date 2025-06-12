@@ -60,6 +60,7 @@ import Orientation, {
   useDeviceOrientationChange,
   useLockListener,
 } from "react-native-orientation-locker";
+import React from 'react';
 
 export function OrientationLockerExample() {
   const [showVideo, setShowVideo] = useState(true);
@@ -318,7 +319,7 @@ This document is verified based on the following versions:
 
 > [!tip] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-For details, see [react-native-orientation-locker](https://github.com/react-native-oh-library/react-native-orientation-locker)
+For details, see [react-native-orientation-locker](https://github.com/wonday/react-native-orientation-locker)
 
 | Name                  | Description                                                  | Type     | Required | Platform    | HarmonyOS Support |
 | --------------------- | ------------------------------------------------------------ | -------- | -------- | ----------- | ----------------- |
@@ -336,7 +337,7 @@ For details, see [react-native-orientation-locker](https://github.com/react-nati
 
 > [!tip] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-For details, see [react-native-orientation-locker](https://github.com/react-native-oh-library/react-native-orientation-locker)
+For details, see [react-native-orientation-locker](https://github.com/wonday/react-native-orientation-locker)
 
 | Name                            | Description                                                  | Type     | Required | Platform    | HarmonyOS Support |
 | ------------------------------- | ------------------------------------------------------------ | -------- | -------- | ----------- | ----------------- |
