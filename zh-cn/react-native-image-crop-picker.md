@@ -4,7 +4,7 @@
   <h1 align="center"> <code>react-native-image-crop-picker</code> </h1>
 </p>
 
-本项目基于 [react-native-image-crop-picker@0.40.3](https://github.com/ivpusic/react-native-image-crop-picker) 开发。
+本项目基于 [react-native-image-crop-picker@0.40.3](https://github.com/ivpusic/react-native-image-crop-picker/tree/v0.40.3) 开发。
 
 | Version                     | Package Name                         | Repository                                                                       | Release                                                                                            |
 | --------------------------- | ------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |

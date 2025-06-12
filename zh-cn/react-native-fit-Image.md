@@ -15,7 +15,7 @@
 
 
 
-> [!TIP] [Github 地址](https://github.com/huiseoul/react-native-fit-image)
+> [!TIP] [Github 地址](https://github.com/huiseoul/react-native-fit-image/tree/v1.5.5)
 
 ## 安装与使用
 

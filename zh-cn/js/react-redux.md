@@ -9,7 +9,7 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/reduxjs/react-redux?tab=readme-ov-file)
+> [!TIP] [Github 地址](https://github.com/reduxjs/react-redux/tree/v9.1.0?tab=readme-ov-file)
 
 ## 安装与使用
 

@@ -3,7 +3,8 @@
 <p align="center">
   <h1 align="center"> <code>react-native-fs</code> </h1>
 </p>
-This project is based on [react-native-fs@2.20.0](https://github.com/itinance/react-native-fs)。
+
+This project is based on [react-native-fs@2.20.0](https://github.com/itinance/react-native-fs/tree/v2.20.0)。
 
 | Version                     | Package Name                         | Repository                                                                       | Release                                                                                            |
 | --------------------------- | ------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
