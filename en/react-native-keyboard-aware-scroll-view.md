@@ -132,8 +132,8 @@ For details, see [react-native-keyboard-aware-scroll-view](https://github.com/AP
 
 ## Known Issues
 
-- [ ] RN0.72.28版本新架构暂未支持UIManager.viewIsDescendantOf() API，该API功能为：判断组件节点嵌套关系，并在callback中返回boolean类型参数: [issue#12](https://github.com/react-native-oh-library/react-native-keyboard-aware-scroll-view/issues/12)
-- [ ] 键盘抬起部分生命周期未HarmonyOS化，功能不受影响 问题:[issue#17](https://github.com/react-native-oh-library/react-native-keyboard-aware-scroll-view/issues/17)
+- [ ] The new architecture of RN0.72.28 does not currently support the UIManager. viewIsDescendantOf() API, which is used to determine the nested relationship between component nodes and return boolean type parameters in the callback. [issue#12](https://github.com/react-native-oh-library/react-native-keyboard-aware-scroll-view/issues/12)
+- [ ] The lifecycle of the raised part of the keyboard is not adapted, and its functionality is not affected. Issue:[issue#17](https://github.com/react-native-oh-library/react-native-keyboard-aware-scroll-view/issues/17)
 
 ## Others
 

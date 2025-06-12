@@ -159,7 +159,7 @@ export function Counter() {
 
 ## 静态方法
 
-详情查看[React Redux官方文档](https://cn.react-redux.js.org/introduction/getting-started)
+详情查看[React Redux官方文档](https://cn.react-redux.js.org/introduction/getting-started/#hooks)
 
 #### **Hooks**
 
