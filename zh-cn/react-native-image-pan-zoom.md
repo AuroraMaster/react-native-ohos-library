@@ -132,6 +132,15 @@ ImageZoom
 | `onPanResponderTerminationRequest` | Override onPanResponderTerminationRequest behavior                                                                                                                    | () => boolean                                                                                                                      | NO       | ALL      | YES               |                                                                                            
 | `useHardwareTextureAndroid`        | for disabling rendering to hardware texture on Android                                                                                                                | boolean                                                                                                                            | NO       | Android  | NO                |                                                                      
 
+
+| Name      | Description                                    | Type   | Required | Platform    | HarmonyOS Support |
+| --------- | ---------------------------------------------- | ------ | -------- | ----------- | ----------------- |
+| reset      | Reset the position and the scale of the image     | () => void  | NO      | iOS/Android | YES               |
+| resetScale      |  Reset the scale of the image   | () => void  | NO      | iOS/Android | YES               |
+| centerOn      | Centers the image in the position indicated. ICenterOn={ x: number, y: number, scale: number, duration: number }    | ICenterOn | NO      | iOS/Android | YES               |
+
+
+
 ## 遗留问题
 
 - [x] 双指缩放在 harmony 框架侧不支持使用 [issues#1](https://github.com/react-native-oh-library/react-native-image-zoom/issues/1)
