@@ -257,7 +257,7 @@ Check the release version information in the release address of the third-party 
 
 ## Known Issues
 
-- [ ] cornerRadius和cardElevation属性同时调用的时会导致阴影不显示: [#issues14](https://github.com/react-native-oh-library/react-native-cardview/issues/14)
+- [ ] When the cornerRadius and cardElevation properties are called simultaneously, the shadow will not be displayed: [#issues14](https://github.com/react-native-oh-library/react-native-cardview/issues/14)
 
 ## Others
 
