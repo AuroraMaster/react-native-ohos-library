@@ -442,4 +442,4 @@ The permission is granted to the application if the user selects **Always allow*
 
 ## License
 
-This project is licensed under [The MIT License (MIT)](https://github.com/react-native-oh-library/react-native-permissions/blob/master/LICENSE).
+This project is licensed under [The MIT License (MIT)](https://github.com/zoontek/react-native-permissions/blob/master/LICENSE).
