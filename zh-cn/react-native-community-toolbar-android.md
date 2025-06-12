@@ -4,7 +4,7 @@
   <h1 align="center"> <code>@react-native-community/toolbar-android</code> </h1>
 </p>
 
-本项目基于 [@react-native-toolbar-android/toolbar-android@v0.2.1](https://github.com/react-native-toolbar-android/toolbar-android) 开发。
+本项目基于 [@react-native-toolbar-android/toolbar-android@v0.2.1](https://github.com/react-native-toolbar-android/toolbar-android/tree/v0.2.1) 开发。
 
 该第三方库的仓库已迁移至 Gitee，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/toolbar-android`，具体版本所属关系如下：
 

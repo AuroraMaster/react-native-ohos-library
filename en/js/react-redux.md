@@ -149,7 +149,7 @@ This document is verified based on the following versions:
 
 ## Static Methods
 
-For details, see [React Redux Official Documents](https://cn.react-redux.js.org/introduction/getting-started)
+For details, see [React Redux Official Documents](https://cn.react-redux.js.org/introduction/getting-started/#hooks)
 
 #### **Hooks**
 
