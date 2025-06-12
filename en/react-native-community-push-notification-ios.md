@@ -357,4 +357,4 @@ _NotificationRequest:_
 
 ## 8. License
 
-This project is licensed under [The MIT License (MIT)](https://gitee.com/openharmony-sig/rntpc_ios/blob/master/LICENSE).
+This project is licensed under [The MIT License (MIT)](https://github.com/react-native-push-notification/ios/blob/master/LICENSE).

@@ -235,4 +235,4 @@ gyroscope Required permissions: ohos.permission.GYROSCOPE
 
 ## 6. License
 
-This project is licensed under [The MIT License (MIT)](https://gitee.com/openharmony-sig/rntpc_react-native-sensors/blob/master/LICENSE), Please enjoy and participate freely in open source.
+This project is licensed under [The MIT License (MIT)](https://github.com/react-native-sensors/react-native-sensors/blob/master/LICENSE), Please enjoy and participate freely in open source.

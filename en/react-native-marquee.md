@@ -99,5 +99,5 @@ MarqueeText component basically inherits [TextProps](https://reactnative.dev/doc
 
 ## 6. License
 
-This project is licensed under [The MIT License (MIT)](https://gitee.com/openharmony-sig/rntpc_react-native-marquee/blob/master/LICENSE).
+This project is licensed under [The MIT License (MIT)](https://github.com/kyo504/react-native-marquee/blob/master/LICENSE).
 

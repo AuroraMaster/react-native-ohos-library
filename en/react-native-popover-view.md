@@ -183,4 +183,4 @@ This document is verified based on the following versions:
 
 ## License
 
-This project is licensed under [MIT License](https://github.com/react-native-oh-library/react-native-popover-view/blob/sig/LICENSE).
+This project is licensed under [MIT License](https://github.com/SteffeyDev/react-native-popover-view/blob/master/LICENSE).

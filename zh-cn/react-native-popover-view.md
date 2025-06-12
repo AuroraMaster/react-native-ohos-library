@@ -181,4 +181,4 @@ export default PopoverDemo;
 
 ## 开源协议
 
-本项目基于 [MIT License](https://github.com/react-native-oh-library/react-native-popover-view/blob/sig/LICENSE) ，请自由地享受和参与开源。
+本项目基于 [MIT License](https://github.com/SteffeyDev/react-native-popover-view/blob/master/LICENSE) ，请自由地享受和参与开源。
