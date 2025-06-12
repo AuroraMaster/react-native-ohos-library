@@ -327,4 +327,5 @@ See for details [EventBus](https://github.com/krasimir/EventBus/blob/master/READ
 
 ## License
 
-This project is licensed under [The MIT License (MIT)](https://www.mit-license.org/).
+This project is licensed under [The MIT License (MIT)](https://github.com/krasimir/EventBus/blob/master/LICENSE).
+
