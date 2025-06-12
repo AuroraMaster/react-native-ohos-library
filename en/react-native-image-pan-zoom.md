@@ -134,21 +134,31 @@ ImageZoom
 | `onPanResponderTerminationRequest` | Override onPanResponderTerminationRequest behavior                                                                                                                    | () => boolean                                                                                                                      | NO       | ALL      | YES               |
 | `useHardwareTextureAndroid`        | for disabling rendering to hardware texture on Android                                                                                                                | boolean                                                                                                                            | NO       | Android  | NO                |
 
+
+
+| Name      | Description                                    | Type   | Required | Platform    | HarmonyOS Support |
+| --------- | ---------------------------------------------- | ------ | -------- | ----------- | ----------------- |
+| reset      | Reset the position and the scale of the image     | () => void  | NO      | iOS/Android | YES               |
+| resetScale      |  Reset the scale of the image   | () => void  | NO      | iOS/Android | YES               |
+| centerOn      | Centers the image in the position indicated. ICenterOn={ x: number, y: number, scale: number, duration: number }    | ICenterOn | NO      | iOS/Android | YES               |
+
+
+
 ## Known Issues
 
-- [x] 双指缩放在 harmony 框架侧不支持使用 [issues#1](https://github.com/react-native-oh-library/react-native-image-zoom/issues/1)
+- [x] Two-finger pinch-to-zoom is not supported on the Harmony framework side [issues#1](https://github.com/react-native-oh-library/react-native-image-zoom/issues/1)
 
-- [x] 长按图片后，rn 框架图片拖拽 Properties 导致程序崩溃 [issues#2](https://github.com/react-native-oh-library/react-native-image-zoom/issues/2)
+- [x] After long-pressing an image, the app crashes due to image drag properties in the React Native (RN) framework [issues#2](https://github.com/react-native-oh-library/react-native-image-zoom/issues/2)
 
-- [x] onPanResponderTerminationRequest 方法，harmony 端与 android 端表现不一致 [issues#3](https://github.com/react-native-oh-library/react-native-image-zoom/issues/3)
+- [x] The onPanResponderTerminationRequest method behaves inconsistently between the Harmony and Android platforms [issues#3](https://github.com/react-native-oh-library/react-native-image-zoom/issues/3)
 
 ## Others
 
-- 下滑图片，然后双击放大，再次下滑表现异常，已在源库基础上修改[上库地址](https://github.com/react-native-oh-library/react-native-image-zoom)，源库已被存档，不能新建 issue，特此记录
+- Swiping down on an image, then double-tapping to zoom in, and swiping down again results in abnormal behavior. Modifications have been made based on the original repository[repository link](https://github.com/react-native-oh-library/react-native-image-zoom).The original repository has been archived, so new issues cannot be created. This is being documented here for reference.
 
-- onDragLeft 此回调函数源码未实现，详见:[issues#103](https://github.com/ascoders/react-native-image-zoom/issues/103)
+- The onDragLeft callback function is not implemented in the source code. For details, see:[issues#103](https://github.com/ascoders/react-native-image-zoom/issues/103)
 
-- useHardwareTextureAndroid 此 Properties 仅 Android 生效
+- The useHardwareTextureAndroid property only takes effect on Android
 
 ## License
 
