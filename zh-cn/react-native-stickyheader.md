@@ -95,11 +95,11 @@ function App() {
         >
           <View style={{ height: 60, backgroundColor: "#d22222" }} />
         </StickyHeader>
-        <FlatList
-          data={data}
-          keyExtractor={keyExtractor}
-          renderItem={renderItem}
-        />
+        {data.map((item) => (
+                <View style={{ height: 50, backgroundColor: "#ffffff" }}>
+                    <Text>{item}</Text>
+                </View>
+            ))}
       </Animated.ScrollView>
     </View>
   );
