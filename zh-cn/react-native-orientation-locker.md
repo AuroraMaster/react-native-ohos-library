@@ -318,6 +318,19 @@ ohpm install
 1. RNOH: 0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
 2. RNOH: 0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
 
+### 权限要求
+由于此库获取加速度传感器的数据，使用时需要配置对应的权限，权限需配置在entry/src/main目录下module.json5 中添加如下权限:
+
+```diff
+...
+"requestPermissions": [
+...
++      {
++        "name": "ohos.permission.ACCELEROMETER"
++       }
+    ]
+```
+
 ## API
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
