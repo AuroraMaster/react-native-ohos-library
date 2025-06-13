@@ -308,12 +308,12 @@ ohpm install
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
 | Name              | Description                                                                                                                                                                   | Type            | Required | Platform        | HarmonyOS Support  |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | -------- | ----------------| ------------------ |
-| bind              | Build a specific event type of binding instance. When the event is triggered, corresponding expression will be executed and touch off transform in specified element.         | string          | yes      | iOS/Android     |      yes           |
-| unbind            | unbind specified binding instance.                                                                                                                                            | void            | yes      | iOS/Android     |      yes           |
-| unbindAll         | unbind all binding instance                                                                                                                                                   | void            | yes      | iOS/Android     |      yes           |
-| prepare           | launch bind. This method is only useful for pan type binding.                                                                                                                 | void            | yes      | iOS/Android     |      yes           |
-| getComputedStyle  | get styles of specified view.                                                                                                                                                 | Promise<string> | yes      | iOS/Android     |      yes           |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |----------| ----------------| ------------------ |
+| bind              | Build a specific event type of binding instance. When the event is triggered, corresponding expression will be executed and touch off transform in specified element.         | string          | no       | iOS/Android     |      yes           |
+| unbind            | unbind specified binding instance.                                                                                                                                            | void            | no      | iOS/Android     |      yes           |
+| unbindAll         | unbind all binding instance                                                                                                                                                   | void            | no      | iOS/Android     |      yes           |
+| prepare           | launch bind. This method is only useful for pan type binding.                                                                                                                 | void            | no      | iOS/Android     |      yes           |
+| getComputedStyle  | get styles of specified view.                                                                                                                                                 | Promise<string> | no      | iOS/Android     |      yes           |
 
 ## 遗留问题
 
