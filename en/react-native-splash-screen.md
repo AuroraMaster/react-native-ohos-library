@@ -4,14 +4,14 @@
   <h1 align="center"> <code>react-native-splash-screen</code> </h1>
 </p>
 
-This project is based on [react-native-splash-screen@3.3.0](https://github.com/crazycodeboy/react-native-splash-screen).
+This project is based on [react-native-splash-screen@3.3.0](https://github.com/crazycodeboy/react-native-splash-screen/tree/v3.3.0).
 
-This third-party library has been migrated to Gitee and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-splash-screen`, The version correspondence details are as follows:
+This third-party library has been migrated to GitCode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-splash-screen`, The version correspondence details are as follows:
 
-| Version                   | Package Name                                      | Repository         | Release                    |
-|---------------------------| ------------------------------------------------- | ------------------ | -------------------------- |
+| Version                   | Package Name                                      | Repository                                                                                  | Release                                                                                                       |
+|---------------------------| ------------------------------------------------- |---------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
 | <= 3.3.0-0.0.2@deprecated | @react-native-oh-tpl/react-native-splash-screen | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-splash-screen) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-splash-screen/releases) |
-| > 3.3.0                   | @react-native-ohos/react-native-splash-screen   | [Gitee](https://gitee.com/openharmony-sig/rntpc_react-native-splash-screen) | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_react-native-splash-screen/releases) |
+| > 3.3.0                   | @react-native-ohos/react-native-splash-screen   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-splash-screen)             | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-splash-screen/releases)             |
 
 ## 1. Installation and Usage
 
@@ -206,11 +206,41 @@ ohpm install
 
 Then build and run the code.
 
+
+The following code demonstrates the basic usage scenario of this library:
+
+```jsx
+import React from 'react';
+import { Text, View } from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
+
+class App extends React.Component {
+  componentDidMount() {
+    SplashScreen.hide();
+  }
+
+  render() {
+    return (
+      <View style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
+        <Text>Hello, world!</Text>
+      </View>
+    )
+  }
+}
+
+export default App;
+
+```
+
 ## 3. Constraints
 
 ### 3.1. Compatibility
 
-Check the release version information in the release address of the third-party library: [@react-native-ohos/react-native-splash-screen Releases](https://gitee.com/openharmony-sig/rntpc_react-native-splash-screen/releases)
+Check the release version information in the release address of the third-party library: [@react-native-ohos/react-native-splash-screen Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-splash-screen/releases)
 
 ## 4. API
 
@@ -240,9 +270,9 @@ Check the release version information in the release address of the third-party 
 
 ## 6. Others
 
-- 在 iOS 中，show() 方法的工作原理是： 在入口 application 方法中，首先加载 App 首页，然后使用 while 循环让界面停留在 App 启动屏，此时首页仍然会异步加载，加载完成后，停止 while 循环即可隐藏启动屏，显示首页。
-HarmonyOS 中，在入口 onWindowStageCreate 中调用 windowStage.loadContent 加载首页，如果此时使用 while 循环，首页无法异步加载。
+- In iOS, the working principle of the show() method is as follows: In the entry application method, the home page of the App is first loaded, and then a while loop is used to keep the interface on the App's splash screen. During this time, the home page still loads asynchronously. Once the loading is complete, stopping the while loop will hide the splash screen and display the home page.
+  In HarmonyOS, the home page is loaded by calling windowStage.loadContent in the entry onWindowStageCreate method. If a while loop is used at this point, the home page cannot be loaded asynchronously.
 
 ## 7.License
 
-This project is licensed under [The MIT License (MIT)](https://gitee.com/openharmony-sig/rntpc_react-native-splash-screen/blob/master/LICENSE).
+This project is licensed under [The MIT License (MIT)](https://gitcode.com/openharmony-sig/rntpc_react-native-splash-screen/blob/master/LICENSE).

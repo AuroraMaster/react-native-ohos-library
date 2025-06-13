@@ -4,14 +4,14 @@
   <h1 align="center"> <code>react-native-splash-screen</code> </h1>
 </p>
 
-本项目基于 [react-native-splash-screen@3.3.0](https://github.com/crazycodeboy/react-native-splash-screen) 开发。
+本项目基于 [react-native-splash-screen@3.3.0](https://github.com/crazycodeboy/react-native-splash-screen/tree/v3.3.0) 开发。
 
-该第三方库的仓库已迁移至 Gitee，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-splash-screen`，具体版本所属关系如下：
+该第三方库的仓库已迁移至 GitCode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-splash-screen`，具体版本所属关系如下：
 
-| Version                   | Package Name                                      | Repository         | Release                    |
-|---------------------------| ------------------------------------------------- | ------------------ | -------------------------- |
+| Version                   | Package Name                                      | Repository                                                                                  | Release                                                                                                       |
+|---------------------------| ------------------------------------------------- |---------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
 | <= 3.3.0-0.0.2@deprecated | @react-native-oh-tpl/react-native-splash-screen | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-splash-screen) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-splash-screen/releases) |
-| > 3.3.0                   | @react-native-ohos/react-native-splash-screen   | [Gitee](https://gitee.com/openharmony-sig/rntpc_react-native-splash-screen) | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_react-native-splash-screen/releases) |
+| > 3.3.0                   | @react-native-ohos/react-native-splash-screen   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-splash-screen)             | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-splash-screen/releases)             |
 
 ## 1. 安装与使用
 
@@ -207,6 +207,34 @@ ohpm install
 
 然后编译、运行即可。
 
+下面的代码展示了这个库的基本使用场景：
+
+```jsx
+import React from 'react';
+import { Text, View } from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
+
+class App extends React.Component {
+  componentDidMount() {
+    SplashScreen.hide();
+  }
+
+  render() {
+    return (
+      <View style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
+        <Text>Hello, world!</Text>
+      </View>
+    )
+  }
+}
+
+export default App;
+
+```
 
 ## 3. 约束与限制
 
@@ -214,7 +242,7 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/react-native-splash-screen Releases](https://gitee.com/openharmony-sig/rntpc_react-native-splash-screen/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/react-native-splash-screen Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-splash-screen/releases)
 
 
 ## 4. API
@@ -250,4 +278,4 @@ HarmonyOS 中，在入口 onWindowStageCreate 中调用 windowStage.loadContent 
 
 ## 7. 开源协议
 
-本项目基于 [The MIT License (MIT)](https://gitee.com/openharmony-sig/rntpc_react-native-splash-screen/blob/master/LICENSE) ，请自由地享受和参与开源。
+本项目基于 [The MIT License (MIT)](https://gitcode.com/openharmony-sig/rntpc_react-native-splash-screen/blob/master/LICENSE) ，请自由地享受和参与开源。
