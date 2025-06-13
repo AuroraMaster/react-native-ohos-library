@@ -125,7 +125,7 @@ export default function TextSizeExample() {
     <ScrollView style={{ flexGrow: 1 }}>
       <View style={{ paddingLeft: 12, paddingRight: 12 }}>
         <Text>
-         measure:[fontFamily: undefined,fontSize: 20,fontStyle: 'normal', 正斜fontWeight: '700']
+         measure:[fontFamily: undefined,fontSize: 20,fontStyle: 'normal', fontWeight: '700']
         </Text>
         <Text style={{
           width: width,
@@ -160,25 +160,25 @@ export default function TextSizeExample() {
           style={{ width: '100%', height: 28, borderWidth: 2, borderColor: 'black' }}
         />
         <Text>
-          specsForTextStyles:获取系统默认配置的字体的具体信息
+          specsForTextStyles: Obtains the default font information.
         </Text>
         <Text>
           {JSON.stringify(key)}
         </Text>
         <Text>
-          fontFamilyNames:获取系统默认配置的字体
+          fontFamilyNames: Obtains the default fonts.
         </Text>
         <Text>
           {res}
         </Text>
         <Text>
-          fontNamesForFamilyName:获取系统字体的属性
+          fontNamesForFamilyName: Obtains the property of the system font.
         </Text>
         <Text>
           {res2}
         </Text>
         <Text>
-          fontFromSpecs:返回从给定规范中获得的字体特征
+          fontFromSpecs: Returns the font features obtained from the given specification.
         </Text>
         <Text>
           {JSON.stringify(info)}
