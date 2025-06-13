@@ -74,12 +74,6 @@ const App: () => React$Node = () => {
 export default App;
 ```
 
-## Link
-
-目前 HarmonyOS 暂不支持` AutoLink`，所以` Link` 步骤需要手动配置。
-
-首先需要使用 `DevEco Studio` 打开项目里的 HarmonyOS 工程 `harmony`
-
 ## 约束与限制
 
 ### 兼容性
