@@ -98,7 +98,7 @@ const App = () => {
           value={value}
           countBy={1}
           interval={150}
-          formatter={(val) => {
+          formatter={(val: any) => {
             return "$ " + parseFloat(val).toFixed(2);
           }}
         />
