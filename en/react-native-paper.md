@@ -41,8 +41,10 @@ The following code shows the basic use scenario of the repository:
 1.Wrap your root component in from . If you have a vanilla React Native project, it's a good idea to add it in the component which is passed to . This will usually be in the file. If you have an Expo project, you can do this inside the exported component in the file.`PaperProvider``react-native-paper``AppRegistry.registerComponent``index.js``App.js`
 
 ```js
+import { AppRegistry } from 'react-native';
 import { PaperProvider } from 'react-native-paper';
-import App from '../App';
+import App from './src/APP';
+import { name as appName } from './app.json';
 
 export default function PaperExample() {
     return (
@@ -53,9 +55,192 @@ export default function PaperExample() {
 }
 AppRegistry.registerComponent(appName, () => PaperExample);
 ```
-2.If you have another provider (such as ), wrap it outside so that the context is available to components rendered inside a from the library:`Redux``PaperProvider``Modal`
 
+2.App.json file (the following is the name of the test project)
 ```js
+{
+  "name": "app_name",
+  "displayName": "tester",
+}
+```
+
+3.Create a new Navigation.tsx file in the components directory
+```js
+import React, {useEffect} from 'react';
+import {
+  FlatList,
+  Image,
+  Platform,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+
+const NavigationContext = React.createContext<
+  | {
+      currentPageName: string;
+      navigateTo: (pageName: string) => void;
+      registerPageName: (pageName: string) => void;
+      registeredPageNames: string[];
+    }
+  | undefined
+>(undefined);
+
+const PALETTE = {
+  REACT_CYAN_LIGHT: 'hsl(193, 95%, 68%)',
+  REACT_CYAN_DARK: 'hsl(193, 95%, 30%)',
+};
+
+export function NavigationContainer({
+  initialPage = 'INDEX',
+  children,
+}: {
+  initialPage?: string;
+  children: any;
+}) {
+  const [currentPageName, setCurrentPageName] = React.useState(initialPage);
+  const [registeredPageNames, setRegisteredPageNames] = React.useState<
+    string[]
+  >([]);
+
+  return (
+    <NavigationContext.Provider
+      value={{
+        currentPageName,
+        navigateTo: setCurrentPageName,
+        registerPageName: (pageName: string) => {
+          setRegisteredPageNames(pageNames => {
+            if (pageNames.includes(pageName)) {
+              return pageNames;
+            }
+            return [...pageNames, pageName];
+          });
+        },
+        registeredPageNames,
+      }}>
+      <View style={{width: '100%', height: '100%', flexDirection: 'column'}}>
+        <Page name="INDEX" children={<IndexPage />}>
+        </Page>
+        {children}
+      </View>
+    </NavigationContext.Provider>
+  );
+}
+
+export function useNavigation() {
+  return React.useContext(NavigationContext)!;
+}
+
+export function Page({name, children}: {name: string; children: any}) {
+  const {currentPageName, navigateTo, registerPageName} = useNavigation();
+
+  useEffect(() => {
+    if (name !== 'INDEX') {
+      registerPageName(name);
+    }
+  }, [name]);
+
+  return name === currentPageName ? (
+    <View style={{width: '100%', height: '100%'}}>
+      {name !== 'INDEX' && (
+        <View style={{backgroundColor: PALETTE.REACT_CYAN_DARK}}>
+          <TouchableOpacity
+            onPress={() => {
+              navigateTo('INDEX');
+            }}>
+            <Text
+              style={[styles.buttonText, {color: PALETTE.REACT_CYAN_LIGHT}]}>
+              {'‹ Back'}
+            </Text>
+          </TouchableOpacity>
+        </View>
+      )}
+      <View style={{width: '100%', flex: 1}}>{children}</View>
+    </View>
+  ) : null;
+}
+
+export function IndexPage() {
+  const {navigateTo, registeredPageNames} = useNavigation();
+
+  return (
+    <FlatList
+      data={registeredPageNames}
+      ListHeaderComponent={
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            paddingHorizontal: 16,
+            paddingVertical: 16,
+          }}>
+          <Image
+            style={{width: 32, height: 32}}
+            resizeMode="contain"
+            source={require('../assets/images/react-native-logo.png')}
+          />
+          <Text
+            style={{
+              color: '#EEE',
+              fontSize: 24,
+              fontWeight: 'bold',
+              padding: 16,
+            }}>
+            RN Tester
+            {'rnohArchitecture' in Platform.constants
+              ? (` (${Platform.constants.rnohArchitecture})` as string)
+              : ''}
+          </Text>
+        </View>
+      }
+      renderItem={({item}) => {
+        return (
+          <View style={{backgroundColor: PALETTE.REACT_CYAN_DARK}}>
+            <TouchableOpacity
+              onPress={() => {
+                navigateTo(item);
+              }}>
+              <Text style={styles.buttonText}>{item}</Text>
+            </TouchableOpacity>
+          </View>
+        );
+      }}
+      ItemSeparatorComponent={() => (
+        <View
+          style={{height: StyleSheet.hairlineWidth, backgroundColor: '#666'}}
+        />
+      )}
+    />
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+    height: '100%',
+    backgroundColor: '#888',
+  },
+  buttonText: {
+    width: '100%',
+    fontWeight: 'bold',
+    paddingHorizontal: 16,
+    paddingVertical: 24,
+    color: 'white',
+    backgroundColor: 'black',
+  },
+});
+
+```
+
+4.After packaging PaperProvider, we need to pass the displayed components to Providers. In this section, we use the ActiveIndicator as an example to demonstrate. Create a new file named test.tsx in the src directory and put the following code into it.
+```js
+import * as React from 'react';
+import { View, StatusBar, SafeAreaView } from 'react-native';
+import { PortalProvider } from '@gorhom/portal';
+import { ActivityIndicator, MD2Colors } from 'react-native-paper';
+import { NavigationContainer, Page } from './components';
+
 export default function App() {
   return (
     <View style={{backgroundColor: 'black'}}>
@@ -65,29 +250,16 @@ export default function App() {
           <PortalProvider>
            <View id="__harmony::ready" />
             <Page name="EXAMPLE: ActivityIndicatorDemo">
-              <ActivityIndicatorDemo/>
+              <ActivityIndicator animating={true} color={MD2Colors.red800} />
             </Page>
-            ......
           </PortalProvider>
         </NavigationContainer>
       </SafeAreaView>
-      </StatusBar>
     </View>      
   );
 }
 ```
-3.Activity indicator is used to present progress of some activity in the app. It can be used as a drop-in for the ActivityIndicator shipped with React Native.
 
-```js
-import * as React from 'react';
-import { ActivityIndicator, MD2Colors } from 'react-native-paper';
-
-const ActivityIndicatorDemo = () => (
-  <ActivityIndicator animating={true} color={MD2Colors.red800} />
-);
-
-export default ActivityIndicatorDemo;
-```
 ## Link
 
 The HarmonyOS implementation of this library depends on the native code from @react-native-oh-tpl/react-native-safe-area-context and @react-native-oh-tpl/react-native-vector-icons. If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly.

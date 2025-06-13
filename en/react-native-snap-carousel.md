@@ -185,7 +185,7 @@ Check the release version information in the release address of the third-party 
 
 ## Known Issues
 
-- [ ] enableMomentum属性在ios设备上效果不明显，Harmony上效果使用正常: [issue#1](https://github.com/react-native-oh-library/react-native-snap-carousel/issues/4)
+- [ ] The **enableMomentum** property does not work effectively on iOS devices, but is normal on HarmonyOS devices: [issue#1](https://github.com/react-native-oh-library/react-native-snap-carousel/issues/4).
 
 ## Others
 
