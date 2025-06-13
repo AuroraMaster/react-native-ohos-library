@@ -43,6 +43,8 @@ Make your own `showModal` and use it in any component without any `isShow` state
 
 ```jsx
 import RootSiblingsManager from 'react-native-root-siblings';
+import React from 'react';
+import { View, Text, Button } from 'react-native';
 
 export const showModal = (renderModal) => {
   let rootNode;
@@ -54,7 +56,16 @@ export const showModal = (renderModal) => {
   return onClose;
 };
 
-import WelcomeModal from './WelcomeModal';
+const WelcomeModal = ({ onClose }) => {
+    return (
+        <View>
+            <Text>Welcome!</Text>
+            <Text>Thanks for using out app!</Text>
+            <Button title="Close" onPress={onClose} />
+        </View>
+    )
+
+};
 
 export function showWelcomeModal() {
   showModal((onClose) => <WelcomeModal onClose={onClose} />);

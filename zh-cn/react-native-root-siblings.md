@@ -37,12 +37,14 @@ yarn add react-native-root-siblings@5.0.1
 
 > [! WARNING] 使用时 import 的库名不变。
 
-The easiest way to create overlays( `Modal` , `Popover` , `Dialog` etc) for both `react` and `react-native` . 
+为 React 和 React-native 创建叠加层（Modal、Popover、Dialog 等）的最简单方法。
 
-Make your own `showModal` and use it in any component without any `isShow` state or even in a pure function call.
+创建您自己的 showModal 并在任何组件中使用它，无需任何 isShow 状态，甚至可以在纯函数调用中使用它。
 
 ```jsx
 import RootSiblingsManager from 'react-native-root-siblings';
+import React from 'react';
+import { View, Text, Button } from 'react-native';
 
 export const showModal = (renderModal) => {
   let rootNode;
@@ -54,7 +56,16 @@ export const showModal = (renderModal) => {
   return onClose;
 };
 
-import WelcomeModal from './WelcomeModal';
+const WelcomeModal = ({ onClose }) => {
+    return (
+        <View>
+            <Text>Welcome!</Text>
+            <Text>Thanks for using out app!</Text>
+            <Button title="Close" onPress={onClose}/>
+        </View>
+    )
+
+};
 
 export function showWelcomeModal() {
   showModal((onClose) => <WelcomeModal onClose={onClose} />);
@@ -70,7 +81,7 @@ setTimeout(showWelcomeModal, 3000);
 
 ---
 
-Insert `RootSiblingParent` between your providers and root app in your root render function.
+在根渲染函数中，在组件和根应用程序之间插入“RootSiblingParent”。
 
 ```jsx
 import { RootSiblingParent } from 'react-native-root-siblings';
@@ -84,9 +95,9 @@ return (
 );      
 ```
 
-`RootSiblingParent` works as a mounting base and can be mounted multiple times. Only the last mounted one would be active.
+RootSiblingParent 充当挂载基座，可以多次挂载。只有最后挂载的那个才会处于活动状态。
 
-In react native, a view has a higher hierarchy if it's more close to the root level.
+在 React Native 中，视图越靠近根级别，其层次结构就越高。
 
 ```jsx
 <RootSiblingParent>
@@ -110,9 +121,9 @@ In react native, a view has a higher hierarchy if it's more close to the root le
 </RootSiblingParent>
 ```
 
-In react we have `createPortal` but still it's not so convenient as it can not be used outside of a component. 
+在 React 中，有 `createPortal`，但它仍然不太方便，因为它不能在组件外部使用。
 
-`react-native-root-siblings` provides the most possible flexibility:
+`react-native-root-siblings` 提供了最大的灵活性：
 
 ### Imperative API
 
@@ -124,9 +135,8 @@ let sibling = new RootSiblings(<View
 />);
 ```
 
-This will create a View element cover all of your app elements, 
-and returns a sibling instance.
-You can create a sibling anywhere, no matter in a component, hook or even a pure function.
+创建一个覆盖所有应用元素的 View 元素，并返回一个同级实例。
+可以在任何位置创建同级实例，无论是在组件、钩子中，还是在纯函数中。
 
 2. Update sibling element
 
@@ -136,7 +146,7 @@ sibling.update(<View
 />);
 ```
 
-This will update the sibling instance to a View with blue backgroundColor and cover the screen by `10` offset distance.
+将同级实例更新为具有蓝色背景颜色的视图，并覆盖屏幕“10”偏移距离。
 
 3. Destroy sibling element
 
@@ -144,9 +154,9 @@ This will update the sibling instance to a View with blue backgroundColor and co
 sibling.destroy();
 ```
 
-This will remove the sibling element.
+删除同级元素。
 
-### Component API
+### 组件 API
 
 ```jsx
 import { RootSiblingPortal } from 'react-native-root-siblings';
@@ -163,7 +173,7 @@ class extends Component {
 
 ```
 
-### EXAMPLE
+### 使用示例
 
 ```jsx
 import React, {
