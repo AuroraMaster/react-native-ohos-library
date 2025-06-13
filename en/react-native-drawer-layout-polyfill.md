@@ -13,7 +13,7 @@
 </p>
 
 
-> [!TIP] [GitHub address](https://github.com/rnc-archive/react-native-drawer-layout-polyfill)
+> [!TIP] [GitHub address](https://github.com/rnc-archive/react-native-drawer-layout-polyfill/tree/v2.0.0)
 
 ## Installation and Usage
 
@@ -54,11 +54,11 @@ const App = () => {
   const [value, onChangeText] = useState("");
 
   const open = () => {
-    drawerLayoutRef.current.openDrawer();
+    drawerLayoutRef.current?.openDrawer();
   };
 
   const close = () => {
-    drawerLayoutRef.current.closeDrawer();
+    drawerLayoutRef.current?.closeDrawer();
   };
 
   const changeDrawerPosition = () => {
