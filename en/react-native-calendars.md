@@ -33,10 +33,20 @@ The following code shows the basic use scenario of the repository:
 ```js
 import React, { useState } from "react";
 import { Calendar, CalendarList, Agenda ,AgendaList,CalendarProvider,ExpandableCalendar,Timeline,WeekCalendar} from "react-native-calendars";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 
 const MySvgComponent = () => {
   const [selected, setSelected] = useState("");
+  const data = [
+    {
+        title: "Main",
+        data: "Pizza"
+    },
+    {
+        title: "sides",
+        data: "French Fries"
+    }
+  ]
   return (
     <View style={styles.container}>
       <Calendar
@@ -47,19 +57,25 @@ const MySvgComponent = () => {
           [selected]: {
             selected: true,
             disableTouchEvent: true,
-            selectedDotColor: "orange",
+            selectedColor: "orange",
           },
         }}
       />
       <Agenda
         items={{
-        '2012-05-22': [{name: 'item 1 - any js object'}],
-        '2012-05-23': [{name: 'item 2 - any js object', height: 80}],
+        '2012-05-22': [{name: 'item 1 - any js object', height: 80, day: ''}],
+        '2012-05-23': [{name: 'item 2 - any js object', height: 80, day: ''}],
         '2012-05-24': [],
-        '2012-05-25': [{name: 'item 3 - any js object'}, {name: 'any js object'}]
+        '2012-05-25': [{name: 'item 3 - any js object', height: 80, day: ''}, {name: 'any js object', height: 80, day: ''}]
        }}
       />
        <AgendaList
+        section={data}
+        renderItem={({ item }) => (
+            <View style={{ padding: 20 }}>
+                <Text>{ item.name } - { item.data } </Text>
+            </View>
+        )}
         scrollToNextEvent={true}
       />
        <CalendarProvider
