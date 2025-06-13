@@ -172,8 +172,6 @@ Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 }
 ```
 
-### 2.引入原生端代码
-
 ### 2. Introducing Native Code
 
 Currently, two methods are available:
