@@ -6,7 +6,7 @@
 
 本项目基于 [react-native-marquee@0.5.0](https://github.com/kyo504/react-native-marquee/tree/v0.5.0) 开发。
 
-该第三方库的仓库已迁移至 Gitee，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-marquee`，具体版本所属关系如下：
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-marquee`，具体版本所属关系如下：
 
 | Version                   | Package Name                                      | Repository         | Release                    |
 | ------------------------- | ------------------------------------------------- | ------------------ | -------------------------- |
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
 
 ### 2.1 兼容性
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/react-native-marquee Releases](https://gitee.com/openharmony-sig/rntpc_react-native-marquee/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/react-native-marquee Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-marquee/releases)
 
 
 ## 3. 属性
@@ -91,11 +91,20 @@ const styles = StyleSheet.create({
 | onMarqueeComplete | 字幕完成动画并停止时的回调                                   | function | no | All      | yes               |
 | consecutive       | 一个标志，用于启用模仿HTML字幕元素默认行为的连续模式。如果循环为false，则不生效 | boolean  | no | All      | yes               |
 
-## 4. 遗留问题
+## 4. 方法
 
-## 5. 其他
+这些方法是可选的，你可以使用 isOpen 属性代替。
 
-## 6. 开源协议
+| Name     | Description     | Type   | Required | Platform | HarmonyOS Support |
+| ---------| --------------- | -------- | -------- | -------- | ----------------- |
+| start    | Start animation | Function | no       | All      | yes               |
+| stop     | Stop animation  | Function | no       | All      | yes               |
 
-本项目基于 [The MIT License (MIT)](https://github.com/kyo504/react-native-marquee/blob/master/LICENSE) ，请自由地享受和参与开源。
+## 5. 遗留问题
+
+## 6. 其他
+
+## 7. 开源协议
+
+本项目基于 [The MIT License (MIT)](https://gitcode.com/openharmony-sig/rntpc_react-native-marquee/blob/master/LICENSE) ，请自由地享受和参与开源。
 

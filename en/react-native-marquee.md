@@ -6,7 +6,7 @@
 
 This project is based on [react-native-marquee@0.5.0](https://github.com/kyo504/react-native-marquee/tree/v0.5.0)。
 
-This third-party library has been migrated to Gitee and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-marquee`, The version correspondence details are as follows:
+This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-marquee`, The version correspondence details are as follows:
 
 | Version                   | Package Name                                      | Repository         | Release                    |
 | ------------------------- | ------------------------------------------------- | ------------------ | -------------------------- |
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
 
 ### 2.1 Compatibility
 
-Check the release version information in the release address of the third-party library: [@react-native-ohos/react-native-marquee Releases](https://gitee.com/openharmony-sig/rntpc_react-native-marquee/releases)
+Check the release version information in the release address of the third-party library: [@react-native-ohos/react-native-marquee Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-marquee/releases)
 
 ## 3. Properties
 
@@ -93,11 +93,21 @@ MarqueeText component basically inherits [TextProps](https://reactnative.dev/doc
 | onMarqueeComplete | A callback for when the marquee finishes animation and stops              | function | no      | All      | yes               |
 | consecutive       | A flag to enable consecutive mode that imitates the default behavior of HTML marquee element. Does not take effect if loop is false | boolean  | no      | All      | yes               |
 
-## 4. Known Issues
+## 4. Methods
 
-## 5. Others
+These methods are optional, you can use the isOpen property instead
 
-## 6. License
+| Name     | Description     | Type   | Required | Platform | HarmonyOS Support |
+| ---------| --------------- | -------- | -------- | -------- | ----------------- |
+| start    | Start animation | Function | no       | All      | yes               |
+| stop     | Stop animation  | Function | no       | All      | yes               |
 
-This project is licensed under [The MIT License (MIT)](https://github.com/kyo504/react-native-marquee/blob/master/LICENSE).
+
+## 5. Known Issues
+
+## 6. Others
+
+## 7. License
+
+This project is licensed under [The MIT License (MIT)](https://gitcode.com/openharmony-sig/rntpc_react-native-marquee/blob/master/LICENSE).
 
