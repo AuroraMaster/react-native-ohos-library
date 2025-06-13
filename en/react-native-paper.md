@@ -13,7 +13,7 @@
     </a>
 </p>
 
-> [!TIP] [GitHub address](https://github.com/callstack/react-native-paper)
+> [!TIP] [GitHub address](https://github.com/callstack/react-native-paper/tree/v5.12.3)
 
 
 ## Installation and Usage
@@ -23,11 +23,11 @@
 #### **yarn**
 
 ```bash
-yarn add react-native-paper@^5.12.3
+yarn add react-native-paper@5.12.3
 ```
 #### **npm**
 ```bash
-npm install react-native-paper@^5.12.3
+npm install react-native-paper@5.12.3
 ```
 <!-- tabs:end -->
 
@@ -106,7 +106,7 @@ This document is verified based on the following versions:
 
 ## Component
 
-View details[Paper](https://callstack.github.io/react-native-paper)
+View details[Paper](https://callstack.github.io/react-native-paper/docs/components/ActivityIndicator/)
 
 > [!tip] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
