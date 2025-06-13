@@ -309,11 +309,11 @@ Check the release version information in the release address of the third-party 
 
 | Name              | Description                                                                                                                                                                   | Type            | Required | Platform        | HarmonyOS Support  |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | -------- | ----------------| ------------------ |
-| bind              | Build a specific event type of binding instance. When the event is triggered, corresponding expression will be executed and touch off transform in specified element.         | string          | yes      | iOS/Android     |      yes           |
-| unbind            | unbind specified binding instance.                                                                                                                                            | void            | yes      | iOS/Android     |      yes           |
-| unbindAll         | unbind all binding instance                                                                                                                                                   | void            | yes      | iOS/Android     |      yes           |
-| prepare           | launch bind. This method is only useful for pan type binding.                                                                                                                 | void            | yes      | iOS/Android     |      yes           |
-| getComputedStyle  | get styles of specified view.                                                                                                                                                 | Promise<string> | yes      | iOS/Android     |      yes           |
+| bind              | Build a specific event type of binding instance. When the event is triggered, corresponding expression will be executed and touch off transform in specified element.         | string          | no      | iOS/Android     |      yes           |
+| unbind            | unbind specified binding instance.                                                                                                                                            | void            | no      | iOS/Android     |      yes           |
+| unbindAll         | unbind all binding instance                                                                                                                                                   | void            | no      | iOS/Android     |      yes           |
+| prepare           | launch bind. This method is only useful for pan type binding.                                                                                                                 | void            | no      | iOS/Android     |      yes           |
+| getComputedStyle  | get styles of specified view.                                                                                                                                                 | Promise<string> | no      | iOS/Android     |      yes           |
 
 ## Known Issues
 
