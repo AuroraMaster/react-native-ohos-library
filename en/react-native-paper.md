@@ -332,22 +332,22 @@ View details[Paper](https://callstack.github.io/react-native-paper/docs/componen
 **ActivityIndicator**：Activity indicator is used to present progress of some activity in the app. It can be used as a drop-in for the ActivityIndicator shipped with React Native
 |  Name   | Description |      Type       | Required | Platform | HarmonyOS Support |
 | :-----: | :---------: | :-------------: | -------- | -------- | ----------------- |
-|  animating  |  Whether to show the indicator or hide it   | boolean | Yes      | All      | Yes               |
-| color  |  The color of the spinner   | string | Yes      | All      | Yes               |
-| size |  Size of the indicator   |      small \| large \| number     | No       | All      | Yes               |
-|  hidesWhenStopped  |    Whether the indicator should hide when not animating     |     boolean      | No       | All      | Yes               |
-|  theme   |  theme | ThemeProp | Yes      | All      | Yes               |
-|  style   |  style | Animated.WithAnimatedValue<StyleProp<ViewStyle>> | Yes      | All      | Yes               |
+|  animating  |  Whether to show the indicator or hide it   | boolean | NO      | All      | Yes               |
+| color  |  The color of the spinner   | string | NO      | All      | Yes               |
+| size |  Size of the indicator   |      small \| large \| number     | NO       | All      | Yes               |
+|  hidesWhenStopped  |    Whether the indicator should hide when not animating     |     boolean      | NO       | All      | Yes               |
+|  theme   |  theme | ThemeProp | NO      | All      | Yes               |
+|  style   |  style | Animated.WithAnimatedValue<StyleProp<ViewStyle>> | NO      | All      | Yes               |
 
 **Appbar**：A component to display action items in a bar. It can be placed at the top or bottom
 |  Name   | Description |      Type       | Required | Platform | HarmonyOS Support |
 | :-----: | :---------: | :-------------: | -------- | -------- | ----------------- |
-|  children   |  Content of the Appbar   | React.ReactNode | Yes      | All      | Yes               |
-| mode   |  Mode of the Appbar.   | small \| medium \| large \| center-aligned | Yes      | All      | Yes               |
-| elevated  |  Whether Appbar background should have the elevation along with primary color pigment.   |     boolean      | No       | All      | Yes               |
-|  safeAreaInsets   |   Safe area insets for the Appbar     |     { bottom?: number; top?: number; left?: number; right?: number; }      | No       | All      | Yes               |
-|  theme   |  theme | ThemeProp | Yes      | All      | Yes               |
-|  style   |  style | Animated.WithAnimatedValue<StyleProp<ViewStyle>> | Yes      | All      | Yes               |
+|  children   |  Content of the Appbar   | React.ReactNode | NO      | All      | Yes               |
+| mode   |  Mode of the Appbar.   | small \| medium \| large \| center-aligned | NO      | All      | Yes               |
+| elevated  |  Whether Appbar background should have the elevation along with primary color pigment.   |     boolean      | NO       | All      | Yes               |
+|  safeAreaInsets   |   Safe area insets for the Appbar     |     { bottom?: number; top?: number; left?: number; right?: number; }      | NO       | All      | Yes               |
+|  theme   |  theme | ThemeProp | NO      | All      | Yes               |
+|  style   |  style | Animated.WithAnimatedValue<StyleProp<ViewStyle>> | NO      | All      | Yes               |
 
 **Appbar.Action**：A component used to display an action item in the appbar.
 
