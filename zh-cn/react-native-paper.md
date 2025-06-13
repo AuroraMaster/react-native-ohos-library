@@ -13,7 +13,7 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/callstack/react-native-paper)
+> [!TIP] [Github 地址](https://github.com/callstack/react-native-paper/tree/v5.12.3)
 
 
 ## 安装与使用
@@ -23,11 +23,11 @@
 #### **yarn**
 
 ```bash
-yarn add react-native-paper@^5.12.3
+yarn add react-native-paper@5.12.3
 ```
 #### **npm**
 ```bash
-npm install react-native-paper@^5.12.3
+npm install react-native-paper@5.12.3
 ```
 <!-- tabs:end -->
 
@@ -103,7 +103,7 @@ export default ActivityIndicatorDemo;
 
 ## 组件
 
-详情查看[Paper官方文档](https://callstack.github.io/react-native-paper)
+详情查看[Paper官方文档](https://callstack.github.io/react-native-paper/docs/components/ActivityIndicator/)
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
