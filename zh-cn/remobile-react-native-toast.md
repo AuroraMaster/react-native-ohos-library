@@ -202,15 +202,15 @@ ohpm install
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
-| ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| show()  | Displays the location of the toast, its duration, the content of the message | function  | yes | android      | yes |
-| showShortTop()  | Display the top Toast for a short time | function  | yes | android      | yes |
-| showShortCenter()  | Display the center Toast for a short time | function  | yes | android      | yes |
-| showShortBottom()  | Display the bottom Toast for a short time | function  | yes | android      | yes |
-| showLongTop()  | Display the top Toast for a long time | function  | yes | android      | yes |
-| showLongCenter()  | Display the center Toast for a long time | function  | yes | android      | yes |
-| showLongBottom()  | Display the bottom Toast for a long time | function  | yes | android      | yes |
-| hide()  | Hide the toast that is being displayed         | function  | yes | android      | no |
+| ---- | ----------- | ---- |---------| -------- | ------------------ |
+| show()  | Displays the location of the toast, its duration, the content of the message | function  | no     | android      | yes |
+| showShortTop()  | Display the top Toast for a short time | function  | no     | android      | yes |
+| showShortCenter()  | Display the center Toast for a short time | function  | no     | android      | yes |
+| showShortBottom()  | Display the bottom Toast for a short time | function  | no     | android      | yes |
+| showLongTop()  | Display the top Toast for a long time | function  | no     | android      | yes |
+| showLongCenter()  | Display the center Toast for a long time | function  | no     | android      | yes |
+| showLongBottom()  | Display the bottom Toast for a long time | function  | no     | android      | yes |
+| hide()  | Hide the toast that is being displayed         | function  | no      | android      | no |
 
 ## 遗留问题
 

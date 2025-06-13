@@ -17,7 +17,7 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-toast Releases](https://github.com/react-native-oh-library/react-native-toast/releases).
+Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-toast Releases](https://github.com/react-native-oh-library/react-native-toast/releases).For older versions that have not been released to npm, please refer to the [Installation Guide] (/zh cn/tgz usage. md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -199,15 +199,15 @@ Check the release version information in the release address of the third-party 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
-| ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| show()  | Displays the location of the toast, its duration, the content of the message | function  | yes | android      | yes |
-| showShortTop()  | Display the top Toast for a short time | function  | yes | android      | yes |
-| showShortCenter()  | Display the center Toast for a short time | function  | yes | android      | yes |
-| showShortBottom()  | Display the bottom Toast for a short time | function  | yes | android      | yes |
-| showLongTop()  | Display the top Toast for a long time | function  | yes | android      | yes |
-| showLongCenter()  | Display the center Toast for a long time | function  | yes | android      | yes |
-| showLongBottom()  | Display the bottom Toast for a long time | function  | yes | android      | yes |
-| hide()  | Hide the toast that is being displayed         | function  | yes | android      | no |
+| ---- | ----------- | ---- |----------| -------- | ------------------ |
+| show()  | Displays the location of the toast, its duration, the content of the message | function  | no      | android      | yes |
+| showShortTop()  | Display the top Toast for a short time | function  | no      | android      | yes |
+| showShortCenter()  | Display the center Toast for a short time | function  | no      | android      | yes |
+| showShortBottom()  | Display the bottom Toast for a short time | function  | no      | android      | yes |
+| showLongTop()  | Display the top Toast for a long time | function  | no      | android      | yes |
+| showLongCenter()  | Display the center Toast for a long time | function  | no      | android      | yes |
+| showLongBottom()  | Display the bottom Toast for a long time | function  | no      | android      | yes |
+| hide()  | Hide the toast that is being displayed         | function  | no       | android      | no |
 
 ## Known Issues
 
