@@ -344,7 +344,7 @@ Check the release version information in the release address of the third-party 
 
 ## Known Issues
 
-- [ ] 方法getNumberOfChannels,setSystemVolume,getSystemVolume,setPan，getPan，setPitch，getPitch，setSpeakerphoneOn，setMode，enableInSilenceMode，enable，setCategory， setActive 在Harmony没有对应的api 问题: [issue#1](https://github.com/react-native-oh-library/react-native-sound/issues/21)
+- [ ] The **getNumberOfChannels**, **setSystemVolume**, **getSystemVolume**, **setPan**, **getPan**, **setPitch**, **getPitch**, **setSpeakerphoneOn**, **setMode**, **enableInSilenceMode**, **enable**, **setCategory**, and **setActive** methods do not have corresponding APIs on HarmonyOS: [issue#1](https://github.com/react-native-oh-library/react-native-sound/issues/21).
 
 ## Others
 
