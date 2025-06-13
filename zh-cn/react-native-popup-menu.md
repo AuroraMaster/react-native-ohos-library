@@ -14,7 +14,7 @@
 
 
 
-> [!TIP] [Github 地址](https://github.com/instea/react-native-popup-menu)
+> [!TIP] [Github 地址](https://github.com/instea/react-native-popup-menu/tree/58b78642808ab28012f429d59a2c302dc41b5924)
 
 ## 安装与使用
 
@@ -44,7 +44,7 @@ import { MenuProvider } from "react-native-popup-menu";
 
 export const App = () => (
   <MenuProvider>
-    <YourApp />
+    <YourComponent />
   </MenuProvider>
 );
 
@@ -55,19 +55,23 @@ import {
   MenuOption,
   MenuTrigger,
 } from "react-native-popup-menu";
-
+import {
+    Text,
+    View,
+    Alert,
+} from "react-native";
 export const YourComponent = () => (
   <View>
     <Text>Hello world!</Text>
     <Menu>
       <MenuTrigger text="Select action" />
       <MenuOptions>
-        <MenuOption onSelect={() => alert(`Save`)} text="Save" />
-        <MenuOption onSelect={() => alert(`Delete`)}>
+        <MenuOption onSelect={() => Alert.alert(`Save`)} text="Save" />
+        <MenuOption onSelect={() => Alert.alert(`Delete`)}>
           <Text style={{ color: "red" }}>Delete</Text>
         </MenuOption>
         <MenuOption
-          onSelect={() => alert(`Not called`)}
+          onSelect={() => Alert.alert(`Not called`)}
           disabled={true}
           text="Disabled"
         />
