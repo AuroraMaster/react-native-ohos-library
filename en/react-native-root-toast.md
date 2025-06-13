@@ -13,7 +13,7 @@
     </a>
 </p>
 
-> [!TIP] [GitHub address](https://github.com/magicismight/react-native-root-toast)
+> [!TIP] [GitHub address](https://github.com/magicismight/react-native-root-toast/tree/v3.5.1)
 
 ## Installation and Usage
 

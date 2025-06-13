@@ -13,7 +13,7 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/magicismight/react-native-root-toast)
+> [!TIP] [Github 地址](https://github.com/magicismight/react-native-root-toast/tree/v3.5.1)
 
 ## 安装与使用
 
