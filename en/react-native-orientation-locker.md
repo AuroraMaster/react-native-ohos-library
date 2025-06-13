@@ -313,6 +313,20 @@ This document is verified based on the following versions:
 1. RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.200; ROM: 3.0.0.18;
 2. RNOH: 0.72.33; SDK: OpenHarmony 5.0.0.71 (API Version 12 Release); IDE: DevEco Studio 5.0.3.900; ROM: NEXT.0.0.71;
 
+### Permission Requirements
+Due to the fact that this library obtains data from acceleration sensors, corresponding permissions need to be configured when using it. 
+The permissions need to be configured in the entry/src/main directory and added to module.json5 as follows::
+
+```diff
+...
+"requestPermissions": [
+...
++      {
++        "name": "ohos.permission.ACCELEROMETER"
++       }
+    ]
+```
+
 ## API
 
 > [!tip] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
