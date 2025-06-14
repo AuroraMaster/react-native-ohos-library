@@ -117,7 +117,7 @@ RootSiblingParent 充当挂载基座，可以多次挂载。只有最后挂载�
         </RootSiblingPortal>
       </ScreenView>
     </NavigationView>
-  </View>
+  </RootView>
 </RootSiblingParent>
 ```
 
