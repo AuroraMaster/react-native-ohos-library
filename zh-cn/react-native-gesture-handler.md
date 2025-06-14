@@ -222,7 +222,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
-+ import { GestureHandlerPackage } from '@react-native-oh-tpl/react-native-gesture-handler/ts';
++ import GestureHandlerPackage from '@react-native-oh-tpl/react-native-gesture-handler';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
