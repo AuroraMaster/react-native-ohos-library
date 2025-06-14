@@ -40,11 +40,11 @@ const MySvgComponent = () => {
   const data = [
     {
         title: "Main",
-        data: "Pizza"
+        data: ["Pizza"]
     },
     {
         title: "sides",
-        data: "French Fries"
+        data: ["French Fries"]
     }
   ]
   return (
@@ -70,7 +70,7 @@ const MySvgComponent = () => {
        }}
       />
        <AgendaList
-        section={data}
+        sections={data}
         renderItem={({ item }) => (
             <View style={{ padding: 20 }}>
                 <Text>{ item.name } - { item.data } </Text>

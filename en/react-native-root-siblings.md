@@ -117,7 +117,7 @@ In react native, a view has a higher hierarchy if it's more close to the root le
         </RootSiblingPortal>
       </ScreenView>
     </NavigationView>
-  </View>
+  </RootView>
 </RootSiblingParent>
 ```
 
