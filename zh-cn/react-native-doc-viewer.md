@@ -77,7 +77,6 @@ export default class DocumentViewerExample extends Component {
       console.log(data.close);
       this.setState({donebuttonclicked: data.close});
     })
-    this.didPressToObjcButton = this.didPressToObjcButton.bind(this);
   }
 
   componentDidMount(){
@@ -246,7 +245,7 @@ export default class DocumentViewerExample extends Component {
   handlePressb64 = () => {
     if(Platform.OS === 'ios'){
       OpenFile.openDocb64([{
-        base64:"{BASE64String}"
+        base64:"{BASE64String}",
         fileName:"sample",
         fileType:"png"
       }], (error, url) => {
@@ -258,7 +257,7 @@ export default class DocumentViewerExample extends Component {
         })
     }else{
       OpenFile.openDocb64([{
-        base64:"{BASE64String}"
+        base64:"{BASE64String}",
         fileName:"sample",
         fileType:"png",
         cache:true
@@ -270,6 +269,7 @@ export default class DocumentViewerExample extends Component {
           }
         })
     }
+  }
 
     /*
   * Video File
@@ -287,9 +287,10 @@ export default class DocumentViewerExample extends Component {
       Alert.alert("Android coming soon");
     }
   }
-
-
-  <Button
+  render() {
+    return (<View style={{paddingTop: 100}}>
+    
+        <Button
           onPress={this.handlePress.bind(this)}
           title="Press Me Open Doc Url"
           accessibilityLabel="See a Document"
@@ -319,6 +320,10 @@ export default class DocumentViewerExample extends Component {
           title="Press Me Open Video"
           accessibilityLabel="See a Document"
         />
+    </View>)
+  }
+
+
 }
 ```
 
