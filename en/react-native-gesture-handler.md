@@ -220,7 +220,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 Open the`entry/src/main/ets/RNPackagesFactory.ts ` file and add the following code:
 
 ```diff
-+ import { GestureHandlerPackage } from '@react-native-oh-tpl/react-native-gesture-handler/ts';
++ import GestureHandlerPackage from '@react-native-oh-tpl/react-native-gesture-handler';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
