@@ -40,6 +40,7 @@ yarn add @react-native-oh-tpl/react-native-syan-image-picker
 <!-- tabs:end -->
 
 The following code shows the basic use scenario of the repository:
+Create an imagePicker.js file
 
 > [!WARNING] The name of the imported repository remains unchanged.
 
@@ -52,106 +53,196 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
-  Dimensions
+  Dimensions,
+  Button
 } from 'react-native';
 import SYImagePicker from "react-native-syan-image-picker";
 
-export default class App extends Component<{}> {
- constructor(props) {
+export default class App extends React.Component {
+  constructor(props) {
     super(props);
     this.state = {
       photos: [],
     };
   }
- /**
- * 开启压缩，选择一张照片先裁剪然后再压缩，并支持base64编码
- **/
-SYImagePicker.showImagePicker(
+  /**
+  * Enable compression. Select a photo to crop and compress, and enable Base64 encoding.
+  **/
+  handleOpenImagePicker = () => {
+    SYImagePicker.showImagePicker(
         {
-          /**
-          * imageCount为1才支持裁剪
-          **/
-          imageCount: 1, 
-          isCrop: true,
-          quality: 90,
-          compress: true, // 开启压缩
-          enableBase64: false,
-        },
-        (err, photos) => {
-          if (!err) {
-            this.setState({
-              photos,
-            });
-          } else {
-            console.log(err);
-          }
+            isCamera: true,
+            imageCount: 1,
+            quality: 10,
+            compress: true,
+            enableBase64: true,
+            isCrop: true,
+        }, (err, photos) => {
+            if (!err) {
+                this.setState({video: []});
+                this.setState({
+                    photos: photos,
+                });
+                {photos.map((item, index) => {
+                        console.log("rn_syan_image_picker showImagePicker result: ",
+                            "uri:" + item.uri + "-- " +
+                            "width:" + item.width + "-- " +
+                            "height:" + item.height + "-- " +
+                            "type:" + item.type + "-- " +
+                            "size:" + item.size + "-- " +
+                            "original_uri:" + item.original_uri + "-- " +
+                            "base64:" + item.base64 + "-- ");
+                    })
+                }
+            } else {
+                console.log(err);
+            }
         },
     );
-/**
- * 关闭压缩，多选照片并支持base64编码
- **/
- handleAsyncSelectPhoto = async () => {
+  };
+  handleOpenImagePicker1 = () => {
+    SYImagePicker.showImagePicker(
+        {
+            isCamera: true,
+            imageCount: 1,
+            quality: 90,
+            compress: true,
+            enableBase64: true,
+            isCrop: true,
+        }, (err, photos) => {
+            if (!err) {
+                this.setState({video: []});
+                this.setState({
+                    photos: photos,
+                });
+                {photos.map((item, index) => {
+                    console.log("rn_syan_image_picker showImagePicker result: ",
+                        "uri:" + item.uri + "-- " +
+                        "width:" + item.width + "-- " +
+                        "height:" + item.height + "-- " +
+                        "type:" + item.type + "-- " +
+                        "size:" + item.size + "-- " +
+                        "original_uri:" + item.original_uri + "-- " +
+                        "base64:" + item.base64 + "-- ");
+                })
+                }
+            } else {
+                console.log(err);
+            }
+        },
+    );
+  };
+  /**
+   * Disable compression. Select multiple photos and enable Base64 encoding.
+   **/
+  handleAsyncSelectPhoto = async () => {
     SYImagePicker.removeAllPhoto()
     try {
       const photos = await SYImagePicker.asyncShowImagePicker({
-        imageCount: 8, //指定选择的照片数量
-        enableBase64: true, // 支持base64编码
+        imageCount: 8, // Set the number of photos to select.
+        enableBase64: true, // Enable Base64 encoding.
       });
-      // 选择成功
+      // The selection is successful.
       this.setState({
         photos: [...this.state.photos, ...photos],
       });
     } catch (err) {
       console.log(err);
-      // 取消选择，err.message为"取消"
+      // Cancel selection. The value of err.message is "Cancelled".
     }
   };
-/**
-* 缓存清除
-**/
-handleDeleteCache = () => {
+  /**
+  * Clear cache.
+  **/
+  handleDeleteCache = () => {
     SYImagePicker.deleteCache();
   };
 
-/**
-* 移除选中的图片
-**/
-handleDeletePhoto = index => {
-  const { selectedPhotos: oldPhotos } = this.state;
-  const selectedPhotos = oldPhotos.filter((photo, photoIndex) => photoIndex !== index);
-  // 更新原生图片数组
-  SYImagePicker.removePhotoAtIndex(index);
+  /**
+  * Delete the first image using the index
+  **/
+  handleRemoveAtIndex=()=>{
+    const {photos} = this.state;
+    if(!!photos && photos.length > 0){
+        SYImagePicker.removePhotoAtIndex(0);
+    }
+  };
+
+  /**
+  * Remove all selected photos.
+  **/
+  handleRemoveAll=()=>{
+    SYImagePicker.removeAllPhoto();
+  };
+
+  /**
+  * Take a photo
+  **/
+  handleLaunchCamera = async () => {
+    SYImagePicker.openCamera(
+        {isCrop: true, showCropCircle: true, showCropFrame: false, videoMaximumDuration: 5},
+        (err, photos) => {
+            if (!err) {
+                this.setState({video: []});
+                this.setState({
+                    photos: photos,
+                });
+                {photos.map((item, index) => {
+                        console.log("rn_syan_image_picker handleLaunchCamera result: ",
+                            "uri:" + item.uri + "-- " +
+                            "width:" + item.width + "-- " +
+                            "height:" + item.height + "-- " +
+                            "type:" + item.type + "-- " +
+                            "size:" + item.size + "-- " +
+                            "original_uri:" + item.original_uri + "-- " +
+                            "base64:" + item.base64 + "-- ");
+                    })
+                }
+            }
+        },
+    );
+  };
+
+  /**
+  * Select videos.
+  **/
+  handleOpenVideoPicker = () => {
+    SYImagePicker.openVideoPicker(
+        {allowPickingMultipleVideo: true, videoCount: 10},
+        (err, res) => {
+            if (!err) {
+                this.setState({photos: []});
+                this.setState({
+                    video: res,
+                });
+                {res.map((item, index) => {
+                    console.log("rn_syan_image_picker handleOpenVideoPicker result: ",
+                        "uri:" + item.uri + "-- " +
+                        "width:" + item.width + "-- " +
+                        "height:" + item.height + "-- " +
+                        "type:" + item.type + "--" +
+                        "size:" + item.size + "-- " +
+                        "original_uri:" + item.original_uri + "-- " +
+                        "base64:" + item.base64 + "-- ");
+                })}
+            }
+        },
+    );
+  };
+
+  render() {
+    return (
+      <View>
+         <Button title={'Enable compression(quality=10)'} onPress={this.handleOpenImagePicker}/>
+         <Button title={'Enable compression(quality=90)'} onPress={this.handleOpenImagePicker1}/>
+         <Button title={'Clear cache'} onPress={this.handleDeleteCache}/>
+         <Button title={'Delete the first image using the index'} onPress={this.handleRemoveAtIndex}/>
+         <Button title={'Remove all selected photos'} onPress={this.handleRemoveAll}/>
+         <Button title={'Take a photo'} onPress={this.handleLaunchCamera}/>
+         <Button title={'Select videos'} onPress={this.handleOpenVideoPicker}/>
+      </View>
+    )
   }
-
-/**
-* 移除选中的全部图片
-**/
-STImagePicke.removeAllPhoto()
-
-/**
-* 调用相机
-**/
-SyanImagePicker.openCamera(options, (err, photos) => {
-  if (err) {
-    // 取消选择
-    return;
-  }
-  // 选择成功，渲染图片
-  // ...
-})
-
-/**
-* 选择视频
-**/
-SyanImagePicker.openVideoPicker(options, (err, videos) => {
-  if (err) {
-    // 取消选择
-    return;
-  }
-  // 选择成功，处理视频
-  // ...
-})
-
 }
 ```
 
@@ -351,56 +442,56 @@ This document is verified based on the following versions:
 
 
 
-## ImagePickerOption(选择图片或数据的配置项)
+## ImagePickerOption(Configuration Options for Selecting Photos or Data)
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
 | Name                            | Description                                                  | Type    | Required |  Platform   | HarmonyOS Support |
 | ------------------------------- | ------------------------------------------------------------ | ------- | :------: | :---------: | :---------------: |
-| imageCount                      | 最大选择图片数目，默认6                                      | number  |   yes    | iOS/Android |        yes        |
-| isCamera                        | 是否允许用户在内部拍照，默认true                             | boolean |   yes    | iOS/Android |        yes        |
-| isCrop                          | 是否允许裁剪，默认false, imageCount 为1才生效                | boolean |   yes    | iOS/Android |        yes        |
-| compress                        | 是否压缩照片                                                 | boolean |   yes    | iOS/Android |        yes        |
-| quality                         | 压缩质量                                                     | number  |   yes    | iOS/Android |        yes        |
-| enableBase64                    | 是否返回base64编码，默认不返回                               | boolean |   yes    | iOS/Android |        yes        |
-| videoCount                      | 选择的视频个数                                               | number  |   yes    | iOS/Android |        yes        |
-| allowPickingMultipleVideo       | 允许选择多个视频                                             | boolean |   yes    | iOS/Android |        yes        |
-| isRecordSelected                | 是否已选图片                                                 | bool    |   yes    | iOS/Android |        yes         |
-| CropW                           | 裁剪宽度，默认屏幕宽度60%                                    | number  |   yes    | iOS/Android |        yes         |
-| CropH                           | 裁剪高度，默认屏幕宽度60%                                    | number  |   yes    | iOS/Android |        yes         |
-| isGif                           | 是否允许选择GIF，默认false，暂无回调GIF数据                  | boolean |   yes    | iOS/Android |        no         |
-| showCropCircle                  | 是否显示圆形裁剪区域，默认false                              | boolean |   yes    | iOS/Android |        yes         |
-| circleCropRadius                | 圆形裁剪半径，默认屏幕宽度一半                               | number  |   yes    | iOS/Android |        yes         |
-| showCropFrame                   | 是否显示裁剪区域，默认true                                   | boolean |   yes    | Android |        no         |
-| showCropGrid                    | 是否隐藏裁剪区域网格，默认false                              | boolean |   yes    | Android |        no         |
-| freeStyleCropEnabled            | 裁剪框是否可拖拽                                             | boolean |   yes    | Android |        no         |
-| rotateEnabled                   | 裁剪是否可旋转图片                                           | boolean |   yes    | Android |        no         |
-| scaleEnabled                    | 裁剪是否可放大缩小图片                                       | boolean |   yes    | Android |        no         |
-| compressFocusAlpha              | 压缩时保留图片透明度（开启后png压缩后尺寸会变大但是透明度会保留) | boolean |   yes    | iOS/Android |        no         |
-| minimumCompressSize             | 小于100kb的图片不压缩（Android）                             | number  |   yes    | Android |        no         |
-| allowPickingOriginalPhoto       | 选择原生图片                                                 | boolean |   yes    | iOS/Android |        yes         |
-| MaxSecond                       | 选择视频最大时长，默认是180秒                                | number  |   yes    | Android |        no         |
-| videoMaximumDuration            | 视频最大拍摄时间，默认是10分钟，单位是秒                     | number  |   yes    | iOS/Android |        yes         |
-| isWeChatStyle                   | 是否是微信风格选择界面 Android Only                          | boolean |   yes    | Android |        no         |
-| sortAscendingByModificationDate | 对照片排序，按修改时间升序，默认是YES。如果设置为NO,最新的照片会显示在最前面，内部的拍照按钮会排在第一个 | boolean |   yes    | iOS/Android |        no         |
-| MinSecond                       | 选择视频最小时长，默认是1秒                                  | number  |   yes    | Android |        no         |
-| showSelectedIndex               | 是否显示序号， 默认不显示                                    | boolean |   yes    | iOS/Android |        no         |
+| imageCount                      | Maximum number of photos that can be selected. The default value is **6**.                                     | number  |   yes    | iOS/Android |        yes        |
+| isCamera                        | Whether the user is allowed to take a photo using the built-in camera. The default value is **true**.                            | boolean |   yes    | iOS/Android |        yes        |
+| isCrop                          | Whether to allow cropping. The default value is **false**. This option is valid only when **imageCount** is set to **1**.               | boolean |   yes    | iOS/Android |        yes        |
+| compress                        | Whether to compress photos.                                                | boolean |   yes    | iOS/Android |        yes        |
+| quality                         | Compression quality.                                                    | number  |   yes    | iOS/Android |        yes        |
+| enableBase64                    | Whether to return Base64 encoding. Disabled by default.                              | boolean |   yes    | iOS/Android |        yes        |
+| videoCount                      | Number of selected videos.                                              | number  |   yes    | iOS/Android |        yes        |
+| allowPickingMultipleVideo       | Whether to allow selecting multiple videos.                                            | boolean |   yes    | iOS/Android |        yes        |
+| isRecordSelected                | Whether a photo is selected.                                                | bool    |   yes    | iOS/Android |        yes        |
+| CropW                           | Cropping width. The default value is 60% of the screen width.                                   | number  |   yes    | iOS/Android |        yes        |
+| CropH                           | Cropping height. The default value is 60% of the screen height.                                   | number  |   yes    | iOS/Android |        yes        |
+| isGif                           | Whether to allow selecting GIFs. The default value is **false** and no callback for GIF data is provided.                 | boolean |   yes    | iOS/Android |        no         |
+| showCropCircle                  | Whether to display a circular cropping area. The default value is **false**.                             | boolean |   yes    | iOS/Android |        yes        |
+| circleCropRadius                | Cropping radius of a circle. The default value is half of the screen width.                              | number  |   yes    | iOS/Android |        yes        |
+| showCropFrame                   | Whether to display the cropping area. The default value is **true**.                                  | boolean |   yes    |   Android   |        no         |
+| showCropGrid                    | Whether to hide the cropping area. The default value is **false**.                             | boolean |   yes    |   Android   |        no         |
+| freeStyleCropEnabled            | Whether the cropping frame can be dragged.                                            | boolean |   yes    |   Android   |        no         |
+| rotateEnabled                   | Whether to allow rotating the photo when it is being cropped.                                          | boolean |   yes    |   Android   |        no         |
+| scaleEnabled                    | Whether to allow scaling the photo when it is being cropped.                                      | boolean |   yes    |   Android   |        no         |
+| compressFocusAlpha              | Whether to preserve image opacity during compression. (Enabling this will increase the size of the PNG image after compression, but the opacity will be retained.)| boolean |   yes    | iOS/Android |        no         |
+| minimumCompressSize             | Minimum size for compressing. Photos smaller than 100 KB are not compressed (Android).                            | number  |   yes    |   Android   |        no         |
+| allowPickingOriginalPhoto       | Whether to allow selecting native photos.                                                | boolean |   yes    | iOS/Android |        yes        |
+| MaxSecond                       | Maximum video duration. The default value is 180 seconds.                               | number  |   yes    |   Android   |        no         |
+| videoMaximumDuration            | Maximum video shooting duration, in seconds. The default value is 10 minutes.                    | number  |   yes    | iOS/Android |        yes        |
+| isWeChatStyle                   | Whether the WeChat style is used for the selection screen (Android only).                         | boolean |   yes    |   Android   |        no         |
+| sortAscendingByModificationDate | Whether to sort photos by modification time in ascending order. The default value is **YES**. If it is set to **NO**, the latest photo will be displayed first, and the built-in camera button will be placed at the top.| boolean |   yes    | iOS/Android |        no         |
+| MinSecond                       | Minimum video duration. The default value is 1 second.                                 | number  |   yes    |   Android   |        no         |
+| showSelectedIndex               | Whether to display the sequence number. By default, the sequence number is not displayed.                                   | boolean |   yes    | iOS/Android |        no         |
 
-## SelectedPhoto（选择的图片或视频的返回结果）
+## SelectedPhoto（Returned Result of the Selected Photo or Video）
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
 | Name         | Description                                                  | Type   | Required | Platform    | HarmonyOS Support |
 | ------------ | ------------------------------------------------------------ | ------ | -------- | ----------- | ----------------- |
-| width        | 图片宽度                                                     | number | yes      | iOS/Android | yes               |
-| height       | 图片高度                                                     | number | yes      | iOS/Android | yes               |
-| original_uri | 图片原始路径                                                 | string | yes      | iOS/Android | yes               |
-| uri          | 图片路径                                                     | string | yes      | iOS/Android | yes               |
-| type         | 文件类型                                                     | string | yes      | iOS/Android | yes               |
-| size         | 图片大小，单位为字节 b                                       | number | yes      | iOS/Android | yes               |
-| base64       | 图片的 base64 编码，如果 enableBase64 设置 false，则不返回该属性 | string | yes      | iOS/Android | yes               |
+| width        | Photo width.                                                    | number | yes      | iOS/Android | yes               |
+| height       | Photo height.                                                    | number | yes      | iOS/Android | yes               |
+| original_uri | Original photo path.                                                | string | yes      | iOS/Android | yes               |
+| uri          | Photo path.                                                    | string | yes      | iOS/Android | yes               |
+| type         | File type.                                                    | string | yes      | iOS/Android | yes               |
+| size         | Photo size, in bytes.                                      | number | yes      | iOS/Android | yes               |
+| base64       | Base64 encoding of a photo, which is not returned if **enableBase64** is set to **false**.| string | yes      | iOS/Android | yes               |
 
 ## API
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
@@ -409,22 +500,22 @@ This document is verified based on the following versions:
 
 | Name                 | Description                        | Type                                                     | Required | Platform    | HarmonyOS Support |
 | -------------------- | ---------------------------------- | -------------------------------------------------------- | -------- | ----------- | ----------------- |
-| showImagePicker      | 打开图片选择器，选择图片           | callback: (err: null \| string, photos: SelectedPhoto[]) | yes      | iOS/Android | yes               |
-| asyncShowImagePicker | 打开图片选择器，选择图片           | Promise<SelectedPhoto[]>                                 | yes      | iOS/Android | yes               |
-| openCamera           | 打开相机拍照，并可以选择所拍的照片 | callback: (err: null \| string, photos: SelectedPhoto[]) | yes      | iOS/Android | yes               |
-| asyncOpenCamera      | 打开相机拍照，并可以选择所拍的照片 | Promise<SelectedPhoto[]>                                 | yes      | iOS/Android | yes               |
-| deleteCache          | 清除缓存                           | void                                                     | yes      | iOS/Android | yes               |
-| removePhotoAtIndex   | 删除已选择照片的索引               | void                                                     | yes      | iOS/Android | yes               |
-| removeAllPhoto       | 删除所有已选择的照片               | void                                                     | yes      | iOS/Android | yes               |
-| openVideoPicker      | 打开视频选择器,选择视频            | callback: (err: null \| string, photos: SelectedPhoto[]) | yes      | iOS/Android | yes               |
+| showImagePicker      | Opens the image picker and selects photos.          | callback: (err: null \| string, photos: SelectedPhoto[]) | yes      | iOS/Android | yes               |
+| asyncShowImagePicker | Opens the image picker and selects photos.          | Promise<SelectedPhoto[]>                                 | yes      | iOS/Android | yes               |
+| openCamera           | Opens the camera to take a photo or select a photo.| callback: (err: null \| string, photos: SelectedPhoto[]) | yes      | iOS/Android | yes               |
+| asyncOpenCamera      | Opens the camera to take a photo or select a photo.| Promise<SelectedPhoto[]>                                 | yes      | iOS/Android | yes               |
+| deleteCache          | Clears cache.                          | void                                                     | yes      | iOS/Android | yes               |
+| removePhotoAtIndex   | Removes the index of the selected photo.              | void                                                     | yes      | iOS/Android | yes               |
+| removeAllPhoto       | Removes all selected photos.              | void                                                     | yes      | iOS/Android | yes               |
+| openVideoPicker      | Opens the video picker and selects videos.           | callback: (err: null \| string, photos: SelectedPhoto[]) | yes      | iOS/Android | yes               |
 
 ## Known Issues
 
-- [ ]  isRecordSelected: 是否已选图片[issues#2](https://github.com/react-native-oh-library/react-native-syan-image-picker/issues/2)
-- [ ]  isGif: 是否允许选择GIF[issues#5](https://github.com/react-native-oh-library/react-native-syan-image-picker/issues/5)
-- [ ]  compressFocusAlpha: 压缩时保留图片透明度[issues#13](https://github.com/react-native-oh-library/react-native-syan-image-picker/issues/13)
-- [ ]  sortAscendingByModificationDate: 对照片排序，按修改时间升序[issues#19](https://github.com/react-native-oh-library/react-native-syan-image-picker/issues/19)
-- [ ]  showSelectedIndex: 是否显示序号[issues#21](https://github.com/react-native-oh-library/react-native-syan-image-picker/issues/21)
+- [] isRecordSelected: whether a photo is selected [issues#2](https://github.com/react-native-oh-library/react-native-syan-image-picker/issues/2)
+- [] isGif: whether to allow selecting GIFs [issues#5](https://github.com/react-native-oh-library/react-native-syan-image-picker/issues/5)
+- [] compressFocusAlpha: whether to preserve image opacity during compression [issues#13](https://github.com/react-native-oh-library/react-native-syan-image-picker/issues/13)
+- [ ] sortAscendingByModificationDate: whether to sort photos by modification time in ascending order [issues#19](https://github.com/react-native-oh-library/react-native-syan-image-picker/issues/19)
+- [ ] showSelectedIndex: whether to display the sequence number [issues#21](https://github.com/react-native-oh-library/react-native-syan-image-picker/issues/21)
 
 ## Others
 

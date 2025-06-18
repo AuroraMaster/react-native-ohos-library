@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-详情见[react-native-progress](https://github.com/oblador/react-native-progress)
+详情见[react-native-progress](https://github.com/oblador/react-native-progress?tab=readme-ov-file#properties-for-all-progress-components)
 
 ### Properties for all progress components:
 

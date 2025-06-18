@@ -12,7 +12,7 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/reduxjs/redux-toolkit)
+> [!TIP] [Github 地址](https://github.com/reduxjs/redux-toolkit/tree/v2.2.1)
 
 ## 安装与使用
 

@@ -148,7 +148,7 @@ Check the release version information in the release address of the third-party 
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-详情见[react-native-progress](https://github.com/oblador/react-native-progress)
+详情见[react-native-progress](https://github.com/oblador/react-native-progress?tab=readme-ov-file#properties-for-all-progress-components)
 
 ### Properties for all progress components:
 

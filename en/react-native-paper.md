@@ -43,7 +43,7 @@ The following code shows the basic use scenario of the repository:
 ```js
 import { AppRegistry } from 'react-native';
 import { PaperProvider } from 'react-native-paper';
-import App from './src/APP';
+import App from './src/test';
 import { name as appName } from './app.json';
 
 export default function PaperExample() {

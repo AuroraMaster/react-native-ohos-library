@@ -191,7 +191,7 @@ AppRegistry.registerComponent("myproject", () => SwiperComponent);
 | onTouchEnd          | You could hold the touch start for a long time              | `function` | `e` / `state` / `context` | All      | YES               |
 | onResponderRelease  | When lifting up - you could pause forever before \* lifting | `function` | `e` / `state` / `context` | All      | YES               |
 
-> Note: each ScrollResponder be injected with two params: `state` and `context`, you can get `state` and `context`(ref to swiper's `this`) from params, for example:
+> 注意：每个ScrollResponder都注入了两个参数：state和context，你可以从params中获取state和context（引用swiper的this），例如：
 
 ```jsx
 var swiper = React.createClass({

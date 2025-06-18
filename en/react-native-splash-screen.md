@@ -275,4 +275,4 @@ Check the release version information in the release address of the third-party 
 
 ## 7.License
 
-This project is licensed under [The MIT License (MIT)](https://gitcode.com/openharmony-sig/rntpc_react-native-splash-screen/blob/master/LICENSE).
+This project is licensed under [The MIT License (MIT)](https://github.com/crazycodeboy/react-native-splash-screen/blob/v3.3.0/LICENSE).

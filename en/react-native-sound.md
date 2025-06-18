@@ -309,7 +309,7 @@ Check the release version information in the release address of the third-party 
 | setMode                  | Set session mode                            | function  | No       | iOS       | no               |
 | setSpeakerphoneOn       | Set up speakers                          | function  | No       | Android       | no               |
 
-## APIs
+## API
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 

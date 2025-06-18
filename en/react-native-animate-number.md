@@ -14,7 +14,7 @@
 
 
 
-> [!TIP] [Github address](https://github.com/wkh237/react-native-animate-number)
+> [!TIP] [Github address](https://github.com/wkh237/react-native-animate-number/tree/0.1.2)
 
 ## Installation and Usage
 
