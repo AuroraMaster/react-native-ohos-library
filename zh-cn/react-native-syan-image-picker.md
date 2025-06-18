@@ -38,6 +38,7 @@ yarn add @react-native-oh-tpl/react-native-syan-image-picker
 <!-- tabs:end -->
 
 下面的代码展示了这个库的基本使用场景：
+新建imagePicker.js文件
 
 > [!WARNING] 使用时 import 的库名不变。
 
@@ -50,45 +51,89 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
-  Dimensions
+  Dimensions,
+  Button
 } from 'react-native';
 import SYImagePicker from "react-native-syan-image-picker";
 
-export default class App extends Component<{}> {
- constructor(props) {
+export default class App extends React.Component {
+  constructor(props) {
     super(props);
     this.state = {
       photos: [],
     };
   }
- /**
- * 开启压缩，选择一张照片先裁剪然后再压缩，并支持base64编码
- **/
-SYImagePicker.showImagePicker(
+  /**
+  * 开启压缩，选择一张照片先裁剪然后再压缩，并支持base64编码
+  **/
+  handleOpenImagePicker = () => {
+    SYImagePicker.showImagePicker(
         {
-          /**
-          * imageCount为1才支持裁剪
-          **/
-          imageCount: 1, 
-          isCrop: true,
-          quality: 90,
-          compress: true, // 开启压缩
-          enableBase64: false,
-        },
-        (err, photos) => {
-          if (!err) {
-            this.setState({
-              photos,
-            });
-          } else {
-            console.log(err);
-          }
+            isCamera: true,
+            imageCount: 1,
+            quality: 10,
+            compress: true,
+            enableBase64: true,
+            isCrop: true,
+        }, (err, photos) => {
+            if (!err) {
+                this.setState({video: []});
+                this.setState({
+                    photos: photos,
+                });
+                {photos.map((item, index) => {
+                        console.log("rn_syan_image_picker showImagePicker result: ",
+                            "uri:" + item.uri + "-- " +
+                            "width:" + item.width + "-- " +
+                            "height:" + item.height + "-- " +
+                            "type:" + item.type + "-- " +
+                            "size:" + item.size + "-- " +
+                            "original_uri:" + item.original_uri + "-- " +
+                            "base64:" + item.base64 + "-- ");
+                    })
+                }
+            } else {
+                console.log(err);
+            }
         },
     );
-/**
- * 关闭压缩，多选照片并支持base64编码
- **/
- handleAsyncSelectPhoto = async () => {
+  };
+  handleOpenImagePicker1 = () => {
+    SYImagePicker.showImagePicker(
+        {
+            isCamera: true,
+            imageCount: 1,
+            quality: 90,
+            compress: true,
+            enableBase64: true,
+            isCrop: true,
+        }, (err, photos) => {
+            if (!err) {
+                this.setState({video: []});
+                this.setState({
+                    photos: photos,
+                });
+                {photos.map((item, index) => {
+                    console.log("rn_syan_image_picker showImagePicker result: ",
+                        "uri:" + item.uri + "-- " +
+                        "width:" + item.width + "-- " +
+                        "height:" + item.height + "-- " +
+                        "type:" + item.type + "-- " +
+                        "size:" + item.size + "-- " +
+                        "original_uri:" + item.original_uri + "-- " +
+                        "base64:" + item.base64 + "-- ");
+                })
+                }
+            } else {
+                console.log(err);
+            }
+        },
+    );
+  };
+  /**
+   * 关闭压缩，多选照片并支持base64编码
+   **/
+  handleAsyncSelectPhoto = async () => {
     SYImagePicker.removeAllPhoto()
     try {
       const photos = await SYImagePicker.asyncShowImagePicker({
@@ -104,52 +149,98 @@ SYImagePicker.showImagePicker(
       // 取消选择，err.message为"取消"
     }
   };
-/**
-* 缓存清除
-**/
-handleDeleteCache = () => {
+  /**
+  * 缓存清除
+  **/
+  handleDeleteCache = () => {
     SYImagePicker.deleteCache();
   };
 
-/**
-* 移除选中的图片
-**/
-handleDeletePhoto = index => {
-  const { selectedPhotos: oldPhotos } = this.state;
-  const selectedPhotos = oldPhotos.filter((photo, photoIndex) => photoIndex !== index);
-  // 更新原生图片数组
-  SYImagePicker.removePhotoAtIndex(index);
+  /**
+  * 通过索引删除图片(第一张)
+  **/
+  handleRemoveAtIndex=()=>{
+    const {photos} = this.state;
+    if(!!photos && photos.length > 0){
+        SYImagePicker.removePhotoAtIndex(0);
+    }
+  };
+
+  /**
+  * 移除选中的全部图片
+  **/
+  handleRemoveAll=()=>{
+    SYImagePicker.removeAllPhoto();
+  };
+
+  /**
+  * 拍照
+  **/
+  handleLaunchCamera = async () => {
+    SYImagePicker.openCamera(
+        {isCrop: true, showCropCircle: true, showCropFrame: false, videoMaximumDuration: 5},
+        (err, photos) => {
+            if (!err) {
+                this.setState({video: []});
+                this.setState({
+                    photos: photos,
+                });
+                {photos.map((item, index) => {
+                        console.log("rn_syan_image_picker handleLaunchCamera result: ",
+                            "uri:" + item.uri + "-- " +
+                            "width:" + item.width + "-- " +
+                            "height:" + item.height + "-- " +
+                            "type:" + item.type + "-- " +
+                            "size:" + item.size + "-- " +
+                            "original_uri:" + item.original_uri + "-- " +
+                            "base64:" + item.base64 + "-- ");
+                    })
+                }
+            }
+        },
+    );
+  };
+
+  /**
+  * 选择视频
+  **/
+  handleOpenVideoPicker = () => {
+    SYImagePicker.openVideoPicker(
+        {allowPickingMultipleVideo: true, videoCount: 10},
+        (err, res) => {
+            if (!err) {
+                this.setState({photos: []});
+                this.setState({
+                    video: res,
+                });
+                {res.map((item, index) => {
+                    console.log("rn_syan_image_picker handleOpenVideoPicker result: ",
+                        "uri:" + item.uri + "-- " +
+                        "width:" + item.width + "-- " +
+                        "height:" + item.height + "-- " +
+                        "type:" + item.type + "--" +
+                        "size:" + item.size + "-- " +
+                        "original_uri:" + item.original_uri + "-- " +
+                        "base64:" + item.base64 + "-- ");
+                })}
+            }
+        },
+    );
+  };
+
+  render() {
+    return (
+      <View>
+         <Button title={'开启压缩(quality=10)'} onPress={this.handleOpenImagePicker}/>
+         <Button title={'开启压缩(quality=90)'} onPress={this.handleOpenImagePicker1}/>
+         <Button title={'缓存清除'} onPress={this.handleDeleteCache}/>
+         <Button title={'通过索引删除图片(第一张)'} onPress={this.handleRemoveAtIndex}/>
+         <Button title={'刪除全部图片'} onPress={this.handleRemoveAll}/>
+         <Button title={'拍照'} onPress={this.handleLaunchCamera}/>
+         <Button title={'选择视频'} onPress={this.handleOpenVideoPicker}/>
+      </View>
+    )
   }
-
-/**
-* 移除选中的全部图片
-**/
-STImagePicke.removeAllPhoto()
-
-/**
-* 调用相机
-**/
-SyanImagePicker.openCamera(options, (err, photos) => {
-  if (err) {
-    // 取消选择
-    return;
-  }
-  // 选择成功，渲染图片
-  // ...
-})
-
-/**
-* 选择视频
-**/
-SyanImagePicker.openVideoPicker(options, (err, videos) => {
-  if (err) {
-    // 取消选择
-    return;
-  }
-  // 选择成功，处理视频
-  // ...
-})
-
 }
 ```
 

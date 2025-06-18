@@ -14,7 +14,7 @@
 
 
 
-> [!TIP] [Github 地址](https://github.com/wkh237/react-native-animate-number)
+> [!TIP] [Github 地址](https://github.com/wkh237/react-native-animate-number/tree/0.1.2)
 
 ## 安装与使用
 

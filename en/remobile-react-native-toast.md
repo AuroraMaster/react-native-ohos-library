@@ -17,7 +17,7 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-toast Releases](https://github.com/react-native-oh-library/react-native-toast/releases).For older versions that have not been released to npm, please refer to the [Installation Guide] (/zh cn/tgz usage. md) to install the tgz package.
+Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-toast Releases](https://github.com/react-native-oh-library/react-native-toast/releases).For older versions that have not been released to npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 

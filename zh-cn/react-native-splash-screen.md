@@ -278,4 +278,4 @@ HarmonyOS 中，在入口 onWindowStageCreate 中调用 windowStage.loadContent 
 
 ## 7. 开源协议
 
-本项目基于 [The MIT License (MIT)](https://gitcode.com/openharmony-sig/rntpc_react-native-splash-screen/blob/master/LICENSE) ，请自由地享受和参与开源。
+本项目基于 [The MIT License (MIT)](https://github.com/crazycodeboy/react-native-splash-screen/blob/v3.3.0/LICENSE) ，请自由地享受和参与开源。

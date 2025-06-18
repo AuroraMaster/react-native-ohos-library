@@ -9,7 +9,7 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/moment/moment)
+> [!TIP] [Github 地址](https://github.com/moment/moment/tree/2.30.1)
 
 ## 安装与使用
 

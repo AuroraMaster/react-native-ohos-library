@@ -311,7 +311,7 @@ Check the release version information in the release address of the third-party 
 | moveFile                | Moves the file located at `filepath` to `destPath`.          | function | iOS/Android | No       | yes               |                   |
 | read                    | Reads `length` bytes from the given `position` of the file at `path` and returns contents. | function | iOS/Android | No       | yes               |                   |
 | write                   | Write the `contents` to `filepath` at the given random access position. | function | iOS/Android | No       | yes               |                   |
-| touch                   | Sets the modification timestamp `mtime`of the file at `filepath`. | function | iOS/Android | No       | partially         |                   |
+| touch                   | Sets the modification timestamp `mtime`of the file at `filepath`. | function | iOS/Android | No       | yes         |                   |
 | stat                    | Stats an item at `filepath`.                                 | function | iOS/Android | No       | yes               |                   |
 | readDir                 | Reads the contents of `path`.                                | function | iOS/Android | No       | yes               |                   |
 | readDirAssets           | Reads the contents of `dirpath ` in the Android app's assets folder. | function | Android     | No       | No                | Android only      |
@@ -338,8 +338,8 @@ Check the release version information in the release address of the third-party 
 
 ## Known Issues
 
-- [ ] HarmonyOS 的 hash 哈希 API 中关于算法参数 algorithm 目前仅支持"md5"、"sha1"、 "sha256"，其他相关算法参数目前不支持，问题: [issue#1](https://github.com/react-native-oh-library/react-native-fs/issues/1)
-- [ ] 原库部分接口在 HarmonyOS 中没有对应文件路径常量及接口处理相关逻辑，问题: [issue#2](https://github.com/react-native-oh-library/react-native-fs/issues/2)
+- [ ] The algorithm parameter algorithm in the hash API of HarmonyOS currently only supports "md5", "sha1", and "sha256". Other related algorithm parameters are currently not supported. Problem: [issue#1](https://github.com/react-native-oh-library/react-native-fs/issues/1)
+- [ ] Some interfaces in the original library do not have corresponding file path constants and interface processing related logic in HarmonyOS. Problem:[issue#2](https://github.com/react-native-oh-library/react-native-fs/issues/2)
 
 ## Others
 

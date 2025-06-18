@@ -315,7 +315,7 @@ ohpm install
 | moveFile                | Moves the file located at `filepath` to `destPath`.          | function | iOS/Android | No       | yes               |                   |
 | read                    | Reads `length` bytes from the given `position` of the file at `path` and returns contents. | function | iOS/Android | No       | yes               |                   |
 | write                   | Write the `contents` to `filepath` at the given random access position. | function | iOS/Android | No       | yes               |                   |
-| touch                   | Sets the modification timestamp `mtime`of the file at `filepath`. | function | iOS/Android | No       | partially         |                   |
+| touch                   | Sets the modification timestamp `mtime`of the file at `filepath`. | function | iOS/Android | No       | yes         |                   |
 | stat                    | Stats an item at `filepath`.                                 | function | iOS/Android | No       | yes               |                   |
 | readDir                 | Reads the contents of `path`.                                | function | iOS/Android | No       | yes               |                   |
 | readDirAssets           | Reads the contents of `dirpath ` in the Android app's assets folder. | function | Android     | No       | No                | Android only      |

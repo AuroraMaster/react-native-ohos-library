@@ -42,7 +42,7 @@ paper使用需要安装react-native-safe-area-context来处理安全区域。另
 ```js
 import { AppRegistry } from 'react-native';
 import { PaperProvider } from 'react-native-paper';
-import App from './src/APP';
+import App from './src/test';
 import { name as appName } from './app.json';
 
 export default function PaperExample() {

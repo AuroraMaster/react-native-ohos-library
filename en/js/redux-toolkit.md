@@ -12,7 +12,7 @@
     </a>
 </p>
 
-> [!TIP] [Github address](https://github.com/reduxjs/redux-toolkit)
+> [!TIP] [Github address](https://github.com/reduxjs/redux-toolkit/tree/v2.2.1)
 
 ## Installation and Usage
 
