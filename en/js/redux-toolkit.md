@@ -18,7 +18,7 @@
 
 > [!TIP] This library depends on the react-redux library. For details about how to install this library, see [react-redux documentation](./react-redux.md).
 
-Find the matching version information in the release address of a third-party library and download an applicable .tgz package: [redux-toolkit Releases](redux-toolkit Releases](https://github.com/reduxjs/redux-toolkit/releases).
+Find the matching version information in the release address of a third-party library and download an applicable .tgz package: [redux-toolkit Releases](https://github.com/reduxjs/redux-toolkit/releases).
 
 <!-- tabs:start -->
 
@@ -164,58 +164,58 @@ This document is verified based on the following versions:
 
 | Name                     | Description                                                  | Type     | Required | Platform | HarmonyOS Support |
 | ------------------------ | ------------------------------------------------------------ | -------- | -------- | -------- | ----------------- |
-| configureStore           | Method used to create **store**.                             | Function | yes      | All      | yes               |
-| reducer                  | Parameter of **configureStore**.                             | Object   | yes      | All      | yes               |
-| middleware               | Parameter of **configureStore**, which is used to store the array of middleware. | Array    | yes      | All      | yes               |
-| devTools                 | Parameter of **configureStore**, which is used for browser debugging. | Boolean  | yes      | Web      | no                |
-| preloadedState           | Parameter of **configureStore**, which is used to specify the default value of **state**. | Object   | yes      | All      | yes               |
-| enhancers                | Parameter of **configureStore**, which is used to customize the enhancer array. | Array    | yes      | All      | yes               |
-| getDefaultMiddleware     | Method used to obtain the default middleware list.           | Function | yes      | All      | yes               |
-| immutableCheck           | Property of the object parameters in **getDefaultMiddleware**. | Boolean  | yes      | All      | yes               |
-| serializableCheck        | Property of the object parameters in **getDefaultMiddleware**. | Boolean  | yes      | All      | yes               |
-| actionCreatorCheck       | Property of the object parameters in **getDefaultMiddleware**. | Boolean  | yes      | All      | yes               |
-| createListenerMiddleware | Method used to create a listener for the middleware.         | Function | yes      | All      | yes               |
-| middleware               | Property of **createListenerMiddleware**, which indicates the middleware list. | Array    | yes      | All      | yes               |
-| startListening           | Property of **createListenerMiddleware**, which is used to start a listening. | Function | yes      | All      | yes               |
-| stopListening            | Property of **createListenerMiddleware**, which is used to stop a listening. | Function | yes      | All      | yes               |
-| clearListeners           | Property of **createListenerMiddleware**, which is used to clear all listening events. | Function | yes      | All      | yes               |
-| addListener              | Property of **createListenerMiddleware**, which is used to add a listener. | Function | yes      | All      | yes               |
-| removeListener           | Property of **createListenerMiddleware**, which is used to remove a listener. | Function | yes      | All      | yes               |
-| clearAllListeners        | Property of **createListenerMiddleware**, which is used to clear all listeners. | Function | yes      | All      | yes               |
-| createDynamicMiddleware  | Method used to create a middleware.                          | Function | yes      | All      | yes               |
-| getDefaultEnhancers      | Method used to obtain the default enhancers.                 | Function | yes      | All      | yes               |
-| createReducer            | Method used to create a reducer.                             | Function | yes      | All      | yes               |
-| addCase                  | Method for the **createReducer** function to return the object parameters, which is used to add an action. | Function | yes      | All      | yes               |
-| addMatcher               | Method for the **createReducer** function to return the object parameters, which is used to add a matcher. | Function | yes      | All      | yes               |
-| addDefaultCase           | Method for the **createReducer** function to return the object parameters, which is used to add a default action. | Function | yes      | All      | yes               |
-| createAction             | Method used to create an action.                             | Function | yes      | All      | yes               |
-| createSlice              | Method used to create a slice.                               | Function | yes      | All      | yes               |
-| name                     | Property of **createSlice**, which indicates the name of **store**. | String   | yes      | All      | yes               |
-| initialState             | Property of **createSlice**, which indicates the default value of **store**. | object   | yes      | All      | yes               |
-| reducers                 | Property of **createSlice**, which is a **reducers** object. | Object   | yes      | All      | yes               |
-| extraReducers            | Property of **createSlice**, which is an additional **reducers** object. | Object   | yes      | All      | yes               |
-| createAsyncThunk         | Method used to create an asynchronous action.                | Function | yes      | All      | yes               |
-| createEntityAdapter      | Method used to create an entity adapter.                     | Function | yes      | All      | yes               |
-| selectId                 | Property of **createEntityAdapter**, which indicates a unique ID. | String   | yes      | All      | yes               |
-| sortComparer             | Property of **createEntityAdapter**, which indicates the sorting method. | Function | yes      | All      | yes               |
-| getInitialState          | Property of **createEntityAdapter**, which indicates the default state. | Object   | yes      | All      | yes               |
-| combineSlices            | Method used to combine two slices.                           | Function | yes      | All      | yes               |
-| createSelector           | Method used to create a selector.                            | Function | yes      | All      | yes               |
+| configureStore           | Method used to create **store**.                             | Function | NO      | All      | yes               |
+| reducer                  | Parameter of **configureStore**.                             | Object   | NO      | All      | yes               |
+| middleware               | Parameter of **configureStore**, which is used to store the array of middleware. | Array    | NO      | All      | yes               |
+| devTools                 | Parameter of **configureStore**, which is used for browser debugging. | Boolean  | NO      | Web      | no                |
+| preloadedState           | Parameter of **configureStore**, which is used to specify the default value of **state**. | Object   | NO      | All      | yes               |
+| enhancers                | Parameter of **configureStore**, which is used to customize the enhancer array. | Array    | NO      | All      | yes               |
+| getDefaultMiddleware     | Method used to obtain the default middleware list.           | Function | NO      | All      | yes               |
+| immutableCheck           | Property of the object parameters in **getDefaultMiddleware**. | Boolean  | NO      | All      | yes               |
+| serializableCheck        | Property of the object parameters in **getDefaultMiddleware**. | Boolean  | NO      | All      | yes               |
+| actionCreatorCheck       | Property of the object parameters in **getDefaultMiddleware**. | Boolean  | NO      | All      | yes               |
+| createListenerMiddleware | Method used to create a listener for the middleware.         | Function | NO      | All      | yes               |
+| middleware               | Property of **createListenerMiddleware**, which indicates the middleware list. | Array    | NO      | All      | yes               |
+| startListening           | Property of **createListenerMiddleware**, which is used to start a listening. | Function | NO      | All      | yes               |
+| stopListening            | Property of **createListenerMiddleware**, which is used to stop a listening. | Function | NO      | All      | yes               |
+| clearListeners           | Property of **createListenerMiddleware**, which is used to clear all listening events. | Function | NO      | All      | yes               |
+| addListener              | Property of **createListenerMiddleware**, which is used to add a listener. | Function | NO      | All      | yes               |
+| removeListener           | Property of **createListenerMiddleware**, which is used to remove a listener. | Function | NO      | All      | yes               |
+| clearAllListeners        | Property of **createListenerMiddleware**, which is used to clear all listeners. | Function | NO      | All      | yes               |
+| createDynamicMiddleware  | Method used to create a middleware.                          | Function | NO      | All      | yes               |
+| getDefaultEnhancers      | Method used to obtain the default enhancers.                 | Function | NO      | All      | yes               |
+| createReducer            | Method used to create a reducer.                             | Function | NO      | All      | yes               |
+| addCase                  | Method for the **createReducer** function to return the object parameters, which is used to add an action. | Function | NO      | All      | yes               |
+| addMatcher               | Method for the **createReducer** function to return the object parameters, which is used to add a matcher. | Function | NO      | All      | yes               |
+| addDefaultCase           | Method for the **createReducer** function to return the object parameters, which is used to add a default action. | Function | NO      | All      | yes               |
+| createAction             | Method used to create an action.                             | Function | NO      | All      | yes               |
+| createSlice              | Method used to create a slice.                               | Function | NO      | All      | yes               |
+| name                     | Property of **createSlice**, which indicates the name of **store**. | String   | NO      | All      | yes               |
+| initialState             | Property of **createSlice**, which indicates the default value of **store**. | object   | NO      | All      | yes               |
+| reducers                 | Property of **createSlice**, which is a **reducers** object. | Object   | NO      | All      | yes               |
+| extraReducers            | Property of **createSlice**, which is an additional **reducers** object. | Object   | NO      | All      | yes               |
+| createAsyncThunk         | Method used to create an asynchronous action.                | Function | NO      | All      | yes               |
+| createEntityAdapter      | Method used to create an entity adapter.                     | Function | NO      | All      | yes               |
+| selectId                 | Property of **createEntityAdapter**, which indicates a unique ID. | String   | NO      | All      | yes               |
+| sortComparer             | Property of **createEntityAdapter**, which indicates the sorting method. | Function | NO      | All      | yes               |
+| getInitialState          | Property of **createEntityAdapter**, which indicates the default state. | Object   | NO      | All      | yes               |
+| combineSlices            | Method used to combine two slices.                           | Function | NO      | All      | yes               |
+| createSelector           | Method used to create a selector.                            | Function | NO      | All      | yes               |
 |                          |                                                              |          |          |          |                   |
 
 ## Utilities
 
 | Name                | Description                                               | Type     | Required | Platform | HarmonyOS Support |
 | ------------------- | --------------------------------------------------------- | -------- | -------- | -------- | ----------------- |
-| isAllOf             | Checks whether all actions are passed.                    | Function | yes      | All      | yes               |
-| isAnyOf             | Checks whether an action is passed.                       | Function | yes      | All      | yes               |
-| isAsyncThunkAction  | Checks whether an action is asynchronous.                 | Function | yes      | All      | yes               |
-| isPending           | Checks whether an action is pending.                      | Function | yes      | All      | yes               |
-| isRejected          | Checks whether an action is fulfilled.                    | Function | yes      | All      | yes               |
-| isFulfilled         | Checks whether an action is rejected.                     | Function | yes      | All      | yes               |
-| isRejectedWithValue | Checks whether an action is rejected with a return value. | Function | yes      | All      | yes               |
-| nanoid              | Method used to generate a random string.                  | Function | yes      | All      | yes               |
-| miniSerializeError  | Method used to display error information.                 | Function | yes      | All      | yes               |
+| isAllOf             | Checks whether all actions are passed.                    | Function | NO      | All      | yes               |
+| isAnyOf             | Checks whether an action is passed.                       | Function | NO      | All      | yes               |
+| isAsyncThunkAction  | Checks whether an action is asynchronous.                 | Function | NO      | All      | yes               |
+| isPending           | Checks whether an action is pending.                      | Function | NO      | All      | yes               |
+| isRejected          | Checks whether an action is fulfilled.                    | Function | NO      | All      | yes               |
+| isFulfilled         | Checks whether an action is rejected.                     | Function | NO      | All      | yes               |
+| isRejectedWithValue | Checks whether an action is rejected with a return value. | Function | NO      | All      | yes               |
+| nanoid              | Method used to generate a random string.                  | Function | NO      | All      | yes               |
+| miniSerializeError  | Method used to display error information.                 | Function | NO      | All      | yes               |
 
 ## Known Issues
 

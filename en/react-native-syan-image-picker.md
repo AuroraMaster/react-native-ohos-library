@@ -48,21 +48,36 @@ Create an imagePicker.js file
 import React from "react";
 import {
   StyleSheet,
-  Text,
   View,
   Image,
   ScrollView,
-  TouchableOpacity,
   Dimensions,
   Button
 } from 'react-native';
-import SYImagePicker from "react-native-syan-image-picker";
+import RNCVideo from 'react-native-video';
+import SYImagePicker, { SelectedPhoto } from "react-native-syan-image-picker";
 
-export default class App extends React.Component {
-  constructor(props) {
+const {width} = Dimensions.get('window');
+
+interface State {
+  photos: SelectedPhoto[]
+  video: SelectedPhoto[]
+}
+
+interface ItemType {
+  height: number,
+  original_uri: string,
+  size: number,
+  width: number,
+  uri: string,
+}
+
+export default class App extends React.Component<{}, State> {
+  constructor(props: any) {
     super(props);
     this.state = {
       photos: [],
+      video: [],
     };
   }
   /**
@@ -72,9 +87,9 @@ export default class App extends React.Component {
     SYImagePicker.showImagePicker(
         {
             isCamera: true,
-            imageCount: 1,
+            imageCount: 1, // Cropping can be enabled only when **imageCount** is set to **1**.
             quality: 10,
-            compress: true,
+            compress: true, // Enable compression.
             enableBase64: true,
             isCrop: true,
         }, (err, photos) => {
@@ -231,8 +246,10 @@ export default class App extends React.Component {
   };
 
   render() {
+    const { photos } = this.state;
+    const { video } = this.state; 
     return (
-      <View>
+      <View style={{marginTop: 100}}>
          <Button title={'Enable compression(quality=10)'} onPress={this.handleOpenImagePicker}/>
          <Button title={'Enable compression(quality=90)'} onPress={this.handleOpenImagePicker1}/>
          <Button title={'Clear cache'} onPress={this.handleDeleteCache}/>
@@ -240,10 +257,56 @@ export default class App extends React.Component {
          <Button title={'Remove all selected photos'} onPress={this.handleRemoveAll}/>
          <Button title={'Take a photo'} onPress={this.handleLaunchCamera}/>
          <Button title={'Select videos'} onPress={this.handleOpenVideoPicker}/>
+         <ScrollView contentContainerStyle={styles.scroll}>
+            {video.map((item: ItemType, index: number) => {
+              const videoSource = {
+                uri: item.uri, isNetwork: false
+              };
+              return (
+                <RNCVideo
+                  style={styles.video}
+                  source={videoSource}>
+                </RNCVideo>
+              );
+            })}
+                
+            {photos.map((item: ItemType, index: number) => {
+              let source = {uri: item.original_uri};
+                return (
+                  <Image
+                   key={`image-${index}`}
+                   style={styles.image}
+                   source={source}
+                   resizeMode={'contain'}
+                  />
+                );
+              })
+            }
+         </ScrollView>
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+    scroll: {
+        padding: 5,
+        flexWrap: 'wrap',
+        flexDirection: 'row',
+    },
+    image: {
+        margin: 10,
+        width: (width - 80) / 3,
+        height: (width - 80) / 3,
+        backgroundColor: '#F0F0F0',
+    },
+    video: {
+        margin: 10,
+        width: (width - 80) / 3,
+        height: (width - 80) / 4,
+    }
+});
+
 ```
 
 ## Use Codegen
