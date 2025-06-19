@@ -165,57 +165,57 @@ export function Counter() {
 
 | Name                     | Description                                       | Type     | Required | Platform | HarmonyOS Support |
 | ------------------------ | ------------------------------------------------- | -------- | -------- | -------- | ----------------- |
-| configureStore           | 创建store的方法                                   | Function | yes      | All      | yes               |
-| reducer                  | configureStore参数，reducer对象                   | Object   | yes      | All      | yes               |
-| middleware               | configureStore参数，存放中间件的数组              | Array    | yes      | All      | yes               |
-| devTools                 | configureStore参数，浏览器调试用具                | Boolean  | yes      | Web      | no                |
-| preloadedState           | configureStore参数，默认的state值                 | Object   | yes      | All      | yes               |
-| enhancers                | configureStore参数，存放增强功能数组              | Array    | yes      | All      | yes               |
-| getDefaultMiddleware     | 获取默认中间件列表                                | Function | yes      | All      | yes               |
-| immutableCheck           | getDefaultMiddleware对象参数属性                  | Boolean  | yes      | All      | yes               |
-| serializableCheck        | getDefaultMiddleware对象参数属性                  | Boolean  | yes      | All      | yes               |
-| actionCreatorCheck       | getDefaultMiddleware对象参数属性                  | Boolean  | yes      | All      | yes               |
-| createListenerMiddleware | 创建中间件监听函数                                | Function | yes      | All      | yes               |
-| middleware               | createListenerMiddleware属性，中间件列表          | Array    | yes      | All      | yes               |
-| startListening           | createListenerMiddleware属性，添加一个监听        | Function | yes      | All      | yes               |
-| stopListening            | createListenerMiddleware属性，暂停一个监听        | Function | yes      | All      | yes               |
-| clearListeners           | createListenerMiddleware属性，清除所有监听        | Function | yes      | All      | yes               |
-| addListener              | createListenerMiddleware属性，添加一个监听        | Function | yes      | All      | yes               |
-| removeListener           | createListenerMiddleware属性，暂停一个监听        | Function | yes      | All      | yes               |
-| clearAllListeners        | createListenerMiddleware属性，清除所有监听        | Function | yes      | All      | yes               |
-| createDynamicMiddleware  | 创建一个中间件                                    | Function | yes      | All      | yes               |
-| getDefaultEnhancers      | 获取默认增强功能组件                              | Function | yes      | All      | yes               |
-| createReducer            | 创建reducer                                       | Function | yes      | All      | yes               |
-| addCase                  | createReducer函数返回对象参数方法，添加action     | Function | yes      | All      | yes               |
-| addMatcher               | createReducer函数返回对象参数方法，添加过滤条件   | Function | yes      | All      | yes               |
-| addDefaultCase           | createReducer函数返回对象参数方法，添加默认action | Function | yes      | All      | yes               |
-| createAction             | 创建action                                        | Function | yes      | All      | yes               |
-| createSlice              | 创建slice切片                                     | Function | yes      | All      | yes               |
-| name                     | createSlice属性，store名字                        | String   | yes      | All      | yes               |
-| initialState             | createSlice属性，store默认值                      | object   | yes      | All      | yes               |
-| reducers                 | createSlice属性，reducer对象                      | Object   | yes      | All      | yes               |
-| extraReducers            | createSlice属性，额外的reducer对象                | Object   | yes      | All      | yes               |
-| createAsyncThunk         | 创建异步action                                    | Function | yes      | All      | yes               |
-| createEntityAdapter      | 创建适配器                                        | Function | yes      | All      | yes               |
-| selectId                 | createEntityAdapter属性，表示唯一ID               | String   | yes      | All      | yes               |
-| sortComparer             | createEntityAdapter属性，排序方法                 | Function | yes      | All      | yes               |
-| getInitialState          | createEntityAdapter属性，默认状态                 | Object   | yes      | All      | yes               |
-| combineSlices            | 结合两个Slice切片                                 | Function | yes      | All      | yes               |
-| createSelector           | 创建select选择器                                  | Function | yes      | All      | yes               |
+| configureStore           | 创建store的方法                                   | Function | NO      | All      | yes               |
+| reducer                  | configureStore参数，reducer对象                   | Object   | NO      | All      | yes               |
+| middleware               | configureStore参数，存放中间件的数组              | Array    | NO      | All      | yes               |
+| devTools                 | configureStore参数，浏览器调试用具                | Boolean  | NO      | Web      | no                |
+| preloadedState           | configureStore参数，默认的state值                 | Object   | NO      | All      | yes               |
+| enhancers                | configureStore参数，存放增强功能数组              | Array    | NO      | All      | yes               |
+| getDefaultMiddleware     | 获取默认中间件列表                                | Function | NO      | All      | yes               |
+| immutableCheck           | getDefaultMiddleware对象参数属性                  | Boolean  | NO      | All      | yes               |
+| serializableCheck        | getDefaultMiddleware对象参数属性                  | Boolean  | NO      | All      | yes               |
+| actionCreatorCheck       | getDefaultMiddleware对象参数属性                  | Boolean  | NO      | All      | yes               |
+| createListenerMiddleware | 创建中间件监听函数                                | Function | NO      | All      | yes               |
+| middleware               | createListenerMiddleware属性，中间件列表          | Array    | NO      | All      | yes               |
+| startListening           | createListenerMiddleware属性，添加一个监听        | Function | NO      | All      | yes               |
+| stopListening            | createListenerMiddleware属性，暂停一个监听        | Function | NO      | All      | yes               |
+| clearListeners           | createListenerMiddleware属性，清除所有监听        | Function | NO      | All      | yes               |
+| addListener              | createListenerMiddleware属性，添加一个监听        | Function | NO      | All      | yes               |
+| removeListener           | createListenerMiddleware属性，暂停一个监听        | Function | NO      | All      | yes               |
+| clearAllListeners        | createListenerMiddleware属性，清除所有监听        | Function | NO      | All      | yes               |
+| createDynamicMiddleware  | 创建一个中间件                                    | Function | NO      | All      | yes               |
+| getDefaultEnhancers      | 获取默认增强功能组件                              | Function | NO      | All      | yes               |
+| createReducer            | 创建reducer                                       | Function | NO      | All      | yes               |
+| addCase                  | createReducer函数返回对象参数方法，添加action     | Function | NO      | All      | yes               |
+| addMatcher               | createReducer函数返回对象参数方法，添加过滤条件   | Function | NO      | All      | yes               |
+| addDefaultCase           | createReducer函数返回对象参数方法，添加默认action | Function | NO      | All      | yes               |
+| createAction             | 创建action                                        | Function | NO      | All      | yes               |
+| createSlice              | 创建slice切片                                     | Function | NO      | All      | yes               |
+| name                     | createSlice属性，store名字                        | String   | NO      | All      | yes               |
+| initialState             | createSlice属性，store默认值                      | object   | NO      | All      | yes               |
+| reducers                 | createSlice属性，reducer对象                      | Object   | NO      | All      | yes               |
+| extraReducers            | createSlice属性，额外的reducer对象                | Object   | NO      | All      | yes               |
+| createAsyncThunk         | 创建异步action                                    | Function | NO      | All      | yes               |
+| createEntityAdapter      | 创建适配器                                        | Function | NO      | All      | yes               |
+| selectId                 | createEntityAdapter属性，表示唯一ID               | String   | NO      | All      | yes               |
+| sortComparer             | createEntityAdapter属性，排序方法                 | Function | NO      | All      | yes               |
+| getInitialState          | createEntityAdapter属性，默认状态                 | Object   | NO      | All      | yes               |
+| combineSlices            | 结合两个Slice切片                                 | Function | NO      | All      | yes               |
+| createSelector           | 创建select选择器                                  | Function | NO      | All      | yes               |
 
 ## 工具方法
 
 | Name                | Description                    | Type     | Required | Platform | HarmonyOS Support |
 | ------------------- | ------------------------------ | -------- | -------- | -------- | ----------------- |
-| isAllOf             | 判断action是否全部通过         | Function | yes      | All      | yes               |
-| isAnyOf             | 判断action是否有一个通过       | Function | yes      | All      | yes               |
-| isAsyncThunkAction  | 判断action是否是异步           | Function | yes      | All      | yes               |
-| isPending           | 判断action是否在执行中         | Function | yes      | All      | yes               |
-| isRejected          | 判断action是否执行失败         | Function | yes      | All      | yes               |
-| isFulfilled         | 判断action是否执行完成         | Function | yes      | All      | yes               |
-| isRejectedWithValue | 判断action是否执行失败并返回值 | Function | yes      | All      | yes               |
-| nanoid              | 生成随机字符串                 | Function | yes      | All      | yes               |
-| miniSerializeError  | 打印错误信息                   | Function | yes      | All      | yes               |
+| isAllOf             | 判断action是否全部通过         | Function | NO      | All      | yes               |
+| isAnyOf             | 判断action是否有一个通过       | Function | NO      | All      | yes               |
+| isAsyncThunkAction  | 判断action是否是异步           | Function | NO      | All      | yes               |
+| isPending           | 判断action是否在执行中         | Function | NO      | All      | yes               |
+| isRejected          | 判断action是否执行失败         | Function | NO      | All      | yes               |
+| isFulfilled         | 判断action是否执行完成         | Function | NO      | All      | yes               |
+| isRejectedWithValue | 判断action是否执行失败并返回值 | Function | NO      | All      | yes               |
+| nanoid              | 生成随机字符串                 | Function | NO      | All      | yes               |
+| miniSerializeError  | 打印错误信息                   | Function | NO      | All      | yes               |
 
 ## 遗留问题
 
