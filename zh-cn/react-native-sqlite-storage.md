@@ -53,23 +53,44 @@ const database_name = 'Test.db';
 const database_version = '1.0';
 const database_displayname = 'SQLite Test Database';
 const database_size = 200000;
-let db;
-const Item = ({title}) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-);
-class SQLiteDemo extends Component {
-  constructor() {
-    super();
+let db: any;
+const Item = (props: any) => {
+  const { title } = props;
+  return(
+    <View>
+      <Text>{title}</Text>
+    </View>
+  )
+};
+
+interface SQLiteDemo {
+  progress: string[]
+}
+
+interface State {
+  progress: string[]
+}
+
+interface rowsType {
+  item: any,
+  length: number
+}
+
+interface ResultType {
+  rows: rowsType
+}
+
+class SQLiteDemo extends Component<{}, State> {
+  constructor(props: any) {
+    super(props);
     this.progress = [];
     this.state = {
       progress: [],
     };
   }
 
-  updateProgress = (text, resetState) => {
-    let progress = [];
+  updateProgress = (text: string, resetState?: boolean) => {
+    let progress: string[] = [];
     if (!resetState) {
       progress = [...this.progress];
     }
@@ -84,7 +105,7 @@ class SQLiteDemo extends Component {
     this.closeDatabase();
   };
 
-  errorCB = err => {
+  errorCB = (err: any) => {
     console.log('error: ', err);
     this.updateProgress('Error: ' + (err.message || err));
     return false;
@@ -108,7 +129,7 @@ class SQLiteDemo extends Component {
   };
 
   // eslint-disable-next-line no-shadow
-  populateDatabase = db => {
+  populateDatabase = (db: any) => {
     this.updateProgress('Database integrity check');
     db.executeSql(
       'SELECT 1 FROM Version LIMIT 1',
@@ -119,7 +140,7 @@ class SQLiteDemo extends Component {
           this.updateProgress('Processing completed');
         });
       },
-      error => {
+      (error: any) => {
         console.log('received version error:', error);
         this.updateProgress('Database not yet ready ... populating data');
         db.transaction(this.populateDB, this.errorCB, () => {
@@ -134,7 +155,7 @@ class SQLiteDemo extends Component {
     );
   };
 
-  populateDB = tx => {
+  populateDB = (tx: any) => {
     this.updateProgress('Executing DROP stmts');
 
     tx.executeSql('DROP TABLE IF EXISTS Employees;');
@@ -256,7 +277,7 @@ class SQLiteDemo extends Component {
     console.log('all config SQL done');
   };
 
-  queryEmployees = async tx => {
+  queryEmployees = async (tx: any) => {
     console.log('Executing JSON1 queries...');
 
     // 1. JSON_OBJECT
@@ -357,7 +378,7 @@ class SQLiteDemo extends Component {
     );
   };
 
-  querySuccess = (tx, results) => {
+  querySuccess = (tx: any, results: ResultType) => {
     this.updateProgress('Query completed');
     var len = results.rows.length;
     for (let i = 0; i < len; i++) {
@@ -417,16 +438,6 @@ class SQLiteDemo extends Component {
 
   }
 
-  renderProgressEntry = entry => {
-    return (
-      <View style={listStyles.li}>
-        <View>
-          <Text style={listStyles.liText}>{entry}</Text>
-        </View>
-      </View>
-    );
-  };
-
   render = () => {
     return (
       <View style={styles.mainContainer}>
@@ -447,7 +458,7 @@ class SQLiteDemo extends Component {
         <FlatList
           data={this.state.progress}
           renderItem={({item}) => <Item title={item} />}
-          keyExtractor={item => item.i}
+          keyExtractor={(item: any )=> item.i}
         />
       </View>
     );
