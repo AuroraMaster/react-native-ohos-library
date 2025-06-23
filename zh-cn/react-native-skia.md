@@ -990,7 +990,7 @@ ohpm install
 | ------ | ---------------------------------------------------------- | ------- | -------- | ----------- | ----------------- |
 | glyphs | Glyphs to draw                                             | Glyph[] | yes      | android/ios | yes               |
 | x      | x coordinate of the origin of the entire run. Default is 0 | number  | no       | android/ios | yes               |
-| y      | y coordinate of the origin of the entire run. Default is 0 | number  | yno      | android/ios | yes               |
+| y      | y coordinate of the origin of the entire run. Default is 0 | number  | no       | android/ios | yes               |
 | font   | Font to use                                                | SkFont  | yes      | android/ios | yes               |
 
 ### TextPath
@@ -1065,4 +1065,4 @@ ohpm install
 
 ## 开源协议
 
-本项目基于 [The MIT License (MIT)](https://github.com/react-native-oh-library/react-native-skia/blob/sig/LICENSE.md) ，请自由地享受和参与开源。
+本项目基于 [The MIT License (MIT)](https://github.com/Shopify/react-native-skia/blob/main/LICENSE.md) ，请自由地享受和参与开源。

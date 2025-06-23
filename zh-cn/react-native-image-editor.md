@@ -70,7 +70,7 @@ interface State {
   cropHorizontal: boolean;
 }
 
-export default class ImageEditor extends Component<Props, State> {
+export default class ImageEditorComponent extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -91,7 +91,7 @@ export default class ImageEditor extends Component<Props, State> {
       offset: { x: 100, y: 100 },
       size: { width: 300, height: 300 },
       quality: 1,
-      format: "jpeg",
+      format: "jpeg" as "jpeg",
     };
     if (
       cropData.size.width + cropData.offset.x > this.state.photoWidth ||
@@ -113,7 +113,7 @@ export default class ImageEditor extends Component<Props, State> {
         },
       });
 
-      if (this.state.targetSize.width >= this.state.targetSize.height) {
+      if (this.state.targetSize && this.state.targetSize.width >= this.state.targetSize.height) {
         this.setState({
           cropHorizontal: true,
         });

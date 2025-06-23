@@ -39,47 +39,101 @@ react-native-sensors is used as an example.
 > [!WARNING] The name of the imported repository remains unchanged.
 
 ```js
-import {
-  accelerometer,
-  gyroscope,
-  setUpdateIntervalForType,
-  magnetometer,
-  barometer,
-  orientation,
-  gravity,
-} from "react-native-sensors";
-
-//accelerometer  accelerometer: Observable<{x: number, y: number, z: number, timestamp: string}>
-accelerometer.subscribe(({ x, y, z, timestamp }) =>
-  console.log("accelerometer", { x, y, z, timestamp })
-);
-
-//gyroscope  gyroscope: Observable<{x: number, y: number, z: number, timestamp: string}>
-gyroscope
-  .pipe(filter((speed) => speed.x > 1))
-  .subscribe(({ x, y, z, timestamp }) =>
-    console.log("gyroscope", { x, y, z, timestamp })
-  );
-
-//magnetometer magnetometer: Observable<{x: number, y: number, z: number, timestamp: string}>
-magnetometer.subscribe(({ x, y, z, timestamp }) =>
-  console.log("magnetometer", { x, y, z, timestamp })
-);
-
-//barometer barometer: Observable<{pressure: number}>
-barometer.subscribe(({ pressure }) => console.log("barometer", { pressure }));
-
-//orientation orientation: Observable<{x: number, y: number, z: number, timestamp: string}>
-orientation.subscribe(({ x, y, z, timestamp }) =>
-  console.log("orientation", { x, y, z, timestamp })
-);
-
-//gravity gravity: Observable<{x: number, y: number, z: number, timestamp: string}>
-gravity.subscribe(({ x, y, z, timestamp }) =>
-  console.log("gravity", { x, y, z, timestamp })
-);
-// setUpdateIntervalForType(type: string, interval: number)
-setUpdateIntervalForType(SensorTypes.accelerometer, 100);
+import React from "react";
+import { Alert } from "react-native";
+import { Subscription } from "rxjs";
+import { Button, View, Text, TextInput, StyleSheet } from 'react-native';
+import { accelerometer, gyroscope, magnetometer, barometer, orientation, gravity, setUpdateIntervalForType, setLogLevelForType } from 'react-native-sensors';
+export const App = () => {
+    const [value, setValue] = React.useState('15');
+    const [sensors, setSensorsValue] = React.useState('');
+    const [IsProintLog, setIsProintLog] = React.useState(true);
+    const setInterVal = () => {
+        if(!sensors) return
+        if (IsProintLog) {
+            setUpdateIntervalForType(sensors, value);
+            setIsProintLog(false)
+            let sensorsSubscription: Subscription;
+            switch (sensors) {
+                case 'accelerometer':
+                    sensorsSubscription = accelerometer.subscribe();
+                    break;
+                case 'gyroscope':
+                    sensorsSubscription = gyroscope.subscribe();
+                    break;
+                case 'magnetometer':
+                    sensorsSubscription = magnetometer.subscribe();
+                    break;
+                case 'barometer':
+                    sensorsSubscription = barometer.subscribe();
+                    break;
+                case 'orientation':
+                    sensorsSubscription = orientation.subscribe();
+                    break;
+                case 'gravity':
+                    sensorsSubscription = gravity.subscribe();
+                    break;
+                default:
+            }
+            const timer = setTimeout(() => {
+                sensorsSubscription.unsubscribe();
+                clearTimeout(timer)
+                setIsProintLog(true)
+            }, 5000);
+        }
+    }
+    const setLogLevel0 = () => {
+        setLogLevelForType(sensors, 0)
+    }
+    const setLogLevel1 = () => {
+        setLogLevelForType(sensors, 1)
+    }
+    const setLogLevel2 = () => {
+        setLogLevelForType(sensors, 2)
+    }
+    const handleChangeText = (text:string) => {
+        if (!text) {
+            Alert.alert('Please enter the interval time and it cannot be empty!');
+            return
+        }
+        const numericValue = text.replace(/[^0-9]/g, "");
+        setValue(numericValue);
+    }
+    const styles = StyleSheet.create({
+        divider: {
+            height: 1,
+            backgroundColor: '#CCCCCC',
+            marginVertical: 5,
+        }
+    })
+    return (
+        <View>
+            <Text>Operation process: 1. Enter the interval time 2. Select the sensor type 3. Select the output log level 4. Click the log print button. Please ensure that the equipment is supported</Text>
+            <View style={styles.divider}></View>
+            <Text>setUpdateIntervalForType Set the data collection frequency</Text>
+            <TextInput style={{ height: 40, borderColor: 'gray', borderWidth: 1 }} keyboardType="numeric" onChangeText={handleChangeText} value={value} placeholder="The unit is ms"></TextInput>
+            <Button onPress={() => { setSensorsValue('accelerometer') }} title="accelerometer"></Button>
+            <View style={styles.divider}></View>
+            <Button onPress={() => { setSensorsValue('gyroscope') }} title="gyroscope"></Button>
+            <View style={styles.divider}></View>
+            <Button onPress={() => { setSensorsValue('magnetometer') }} title="magnetometer"></Button>
+            <View style={styles.divider}></View>
+            <Button onPress={() => { setSensorsValue('barometer') }} title="barometer"></Button>
+            <View style={styles.divider}></View>
+            <Button onPress={() => { setSensorsValue('orientation') }} title="orientation"></Button>
+            <View style={styles.divider}></View>
+            <Button onPress={() => { setSensorsValue('gravity') }} title="gravity"></Button>
+            <View style={styles.divider}></View>
+            <View style={{ display: 'flex', justifyContent: 'space-around', flexDirection: 'row' }}>
+                <View style={{ width: '25%', flex: 1 }}><Button onPress={setLogLevel0} title="Set the logLevel level to 0"></Button></View>
+                <View style={{ width: '25%', flex: 1 }}><Button onPress={setLogLevel1} title="Set the logLevel level to 1"></Button></View>
+                <View style={{ width: '25%', flex: 1 }}><Button onPress={setLogLevel2} title="Set the logLevel level to 2"></Button></View>
+            </View>
+            <Button disabled={!IsProintLog} onPress={setInterVal} title="setUpdateIntervalForType log printing"></Button>
+        </View>
+    )
+}
+export default App;
 ```
 
 ## 2. Manual Link

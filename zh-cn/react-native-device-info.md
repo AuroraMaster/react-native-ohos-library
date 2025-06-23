@@ -42,18 +42,112 @@ yarn add @react-native-oh-tpl/react-native-device-info
 > [!WARNING] 使用时 import 的库名不变。
 
 ```js
-
+import {
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  useColorScheme,
+  View,
+} from 'react-native';
+import React, { useState, useEffect } from 'react';
 import DeviceInfo from 'react-native-device-info';
-  DeviceInfo.getBundleId();
-  DeviceInfo.getVersion();
-  DeviceInfo.getReadableVersion();
-  DeviceInfo.getBuildNumber();
-  DeviceInfo.isTablet();
-  DeviceInfo.getApplicationName();
-  DeviceInfo.getBrand();
-  DeviceInfo.getModel();
-  DeviceInfo.getDeviceType();
-  DeviceInfo.getDeviceNameSync();
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+
+function App() {
+  const isDarkMode = useColorScheme() === 'dark';
+  const [deviceInfo, setDeviceInfo] = useState({
+    BundleId: '',
+    Version: '',
+    ReadableVersion: '',
+    BuildNumber: '',
+    Tablet: false,
+    ApplicationName: '',
+    Brand: '',
+    Model: '',
+    DeviceType: '',
+    DeviceNameSync: '',
+  });
+
+  useEffect(() => {
+    const fetchDeviceInfo = async () => {
+      const BundleId = await DeviceInfo.getBundleId();
+      const Version = await DeviceInfo.getVersion();
+      const ReadableVersion = await DeviceInfo.getReadableVersion();
+      const BuildNumber = await DeviceInfo.getBuildNumber();
+      const Tablet = await DeviceInfo.isTablet();
+      const ApplicationName = await DeviceInfo.getApplicationName();
+      const Brand = await DeviceInfo.getBrand();
+      const Model = await DeviceInfo.getModel();
+      const DeviceType = await DeviceInfo.getDeviceType();
+      const DeviceNameSync = await DeviceInfo.getDeviceNameSync();
+
+      setDeviceInfo({
+        BundleId,
+        Version,
+        ReadableVersion,
+        BuildNumber,
+        Tablet,
+        ApplicationName,
+        Brand,
+        Model,
+        DeviceType,
+        DeviceNameSync,
+      });
+    };
+
+    fetchDeviceInfo();
+  }, []);
+
+  const backgroundStyle = {
+    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  };
+
+  return (
+    <SafeAreaView style={backgroundStyle}>
+      <StatusBar
+        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        backgroundColor={backgroundStyle.backgroundColor}
+      />
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        style={backgroundStyle}>
+        <View
+          style={{
+            backgroundColor: isDarkMode ? Colors.black : Colors.white,
+            padding: 16,
+          }}>
+          <Text style={styles.sectionTitle}>Device Information</Text>
+          <Text style={styles.infoText}>BundleId: {deviceInfo.BundleId}</Text>
+          <Text style={styles.infoText}>Version: {deviceInfo.Version}</Text>
+          <Text style={styles.infoText}>ReadableVersion: {deviceInfo.ReadableVersion}</Text>
+          <Text style={styles.infoText}>BuildNumber: {deviceInfo.BuildNumber}</Text>
+          <Text style={styles.infoText}>Tablet: {deviceInfo.Tablet ? 'Yes' : 'No'}</Text>
+          <Text style={styles.infoText}>ApplicationName: {deviceInfo.ApplicationName}</Text>
+          <Text style={styles.infoText}>Brand: {deviceInfo.Brand}</Text>
+          <Text style={styles.infoText}>Model: {deviceInfo.Model}</Text>
+          <Text style={styles.infoText}>DeviceType: {deviceInfo.DeviceType}</Text>
+          <Text style={styles.infoText}>DeviceNameSync: {deviceInfo.DeviceNameSync}</Text>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  sectionTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 16,
+  },
+  infoText: {
+    fontSize: 16,
+    marginBottom: 8,
+  },
+});
+
+export default App;
 ```
 ## 使用 Codegen
 
@@ -174,91 +268,91 @@ ohpm install
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| getAndroidId  |Gets the ANDROID_ID. See API documentation for appropriate use.  | Promise<string>| yes | Android      | no |
-| getApiLevel  | Gets the API level.  | Promise<number>| yes | Android      | yes |
-| getApplicationName  | Gets the application name.  | string | yes | IOS/Android/Windows/visionOS      | yes |
-| getAvailableLocationProviders  | Returns an object of platform-specfic location providers/servcies, with value whether or not they are currently available.boolean       | Promise<object>  | yes | IOS/Android/visionOS      | yes |
-| getBaseOs  | The base OS build the product is based on.      | Promise<string>  | yes | Android/Windows/Web      | yes |
-| getBuildId  | Gets build number of the operating system.      | Promise<string>  | yes | IOS/Android/Windows/visionOS      | yes |
-| getBatteryLevel  | Gets the battery level of the device as a float comprised between 0 and 1.        | Promise<number>  | yes | IOS/Android /Windows/Web/visionOS     | yes |
-| getBootloader  | The system bootloader version number.        | Promise<string>  | yes | Android      | yes |
-| getBrand  | Gets the device brand.        | string  | yes | IOS/Android/Windows/visionOS      | yes |
-| getBuildNumber  | Gets the application build number.       | string  | yes | IOS/Android/Windows/visionOS      | yes |
-| getBundleId  | Gets the application bundle identifier.        | string  | yes | IOS/Android/Windows/visionOS      | yes |
-| isCameraPresent  | Tells if the device has any camera now.        | Promise<boolean>  | yes | Android/Windows/Web      | yes |
-| getCarrier  | Gets the carrier name (network operator).        | Promise<string>  | yes | IOS/Android      | yes |
-| getCodename  | The current development codename, or the string "REL" if this is a release build.         | Promise<string>  | yes | Android      | yes |
-| getDevice  |  The name of the industrial design.        | Promise<string>  | yes | Android      | yes |
-| getDeviceId  |Gets the device ID.        | string  | yes | IOS/Android/Windows/visionOS     | no |
-| getDeviceType  | TReturns the device's type as a string     | string  | yes | IOS/Android/visionOS      | yes |
-| getDisplay  | A build ID string meant for displaying to the user.     | Promise<string>  | yes | Android      | yes |
-| getDeviceName  | Gets the device name.        | Promise<string>  | yes | IOS/Android/Windows/visionOS      | yes |
-| getDeviceNameSync  | Gets the device name.      | string  | yes | IOS/Android/Windows/visionOS      | yes |
-| getDeviceToken  | Gets the device token (see DeviceCheck). Only available for iOS 11.0+ on real devices. This will reject the promise when getDeviceToken is not supported, be careful with exception handling.       | Promise<string>  | yes | IOS/visionOS      | no |
-| getFirstInstallTime  | Gets the time at which the app was first installed, in milliseconds.         | Promise<number>  | yes | IOS/Android/Windows/visionOS      | yes |
-| getFingerprint  | A string that uniquely identifies this build.         | Promise<string>  | yes | Windows      | no |
-| getFontScale  | Gets the device font scale. The font scale is the ratio of the current system font to the "normal" font size, so if normal text is 10pt and the system font is currently 15pt, the font scale would be 1.5 This can be used to determine if accessability settings has been changed for the device; you may want to re-layout certain views if the font scale is significantly larger ( > 2.0 )         | Promise<number>  | yes | IOS/Android/Windows      | yes |
-| getFreeDiskStorage  | Method that gets available storage size, in bytes, taking into account both root and data file systems calculation.         | Promise<number>  | yes | IOS/Android/Windows/Web/visionOS      | no |
-| getFreeDiskStorageOld  | Old implementation of method that gets available storage size, in bytes.         | Promise<number>  | yes | IOS/Android/Windows/Web/visionOS      | no |
-| getHardware  | The name of the hardware (from the kernel command line or /proc).         | Promise<string>  | yes | Android      | yes |
-| getHost  |  Hostname        | Promise<string>  | yes | Android/Windows      | yes|
-| getHostNames  | Hostnames       | Promise<string[]> | yes | Windows      | no |
-| getIpAddress  | Deprecated Gets the device current IP address. (of wifi only) Switch to react-native-netinfo/netinfo or react-native-network-info       | Promise<string>  | yes |  IOS/Android/Windows/visionOS      | yes |
-| getIncremental  | The internal value used by the underlying source control to represent this build.        | Promise<string>  | yes | Android      | yes |
-| getInstallerPackageName  | The internal value used by the underlying source control to represent this build.         | Promise<string>  | yes | IOS/Android/Windows/visoinOS      | yes |
-| getInstallReferrer  | Gets the referrer string upon application installation.         | Promise<string>  | yes | Android/Windows/Web      | no |
-| getInstanceId  | Gets the application instance ID.        | Promise<string>  | yes | Android      | yes|
-| getLastUpdateTime  | Gets the time at which the app was last updated, in milliseconds.        | Promise<number>  | yes | Android      | yes |
-| getMacAddress  | Gets the network adapter MAC address.        | Promise<string>  | yes | IOS/Android/visionOS      | no |
-| getManufacturer  | Gets the device manufacturer.        | Promise<string>  | yes | IOS/Android/visoinOS      | yes |
-| getManufacturerSync  | Gets the device manufacturer.        | string  | yes | IOS/Android/visoinOS      | yes |
-| getMaxMemory  | Returns the maximum amount of memory that the VM will attempt to use, in bytes.        | Promise<number>  | yes | Android/Windows/Web      | no |
-| getModel  | Gets the device model.     | string  | yes | IOS/Android      | yes |
-| getPowerState  | Gets the power state of the device including the battery level, whether it is plugged in, and if the system is currently operating in low power mode.    | Promise<object>  | yes | IOS/Android/Windows/Web/visionOS      | yes |
-| getProduct  | The name of the overall product.        | Promise<string>  | yes | Android      | yes |
-| getPreviewSdkInt  | The developer preview revision of a prerelease SDK.        | Promise<number>  | yes | Android      | no |
-| getReadableVersion  | Gets the application human readable version (same as getVersion() + '.' + getBuildNumber())         | string  | yes | IOS/Android/Windows/visionOS      | yes |
-| getSerialNumber  | Gets the device serial number. Will be 'unknown' in almost all cases unless you have a privileged app and you know what you're doing.       | Promise<string>  | yes | Android/Windows      | no |
-| getSecurityPatch  | The user-visible security patch level.        | Promise<string>  | yes | Android      | yes |
-| getSystemAvailableFeatures  | Returns a list of available system features on Android.         | Promise<string[]>  | yes | Android      | no |
-| getSystemName  | Gets the device OS name.        | string  | yes | IOS/Android/Windows/visoinOS      | yes |
-| getSystemVersion  | Gets the device OS version.         | string  | yes | IOS/Android/Windows/visoinOS      | yes |
-| getTags  | Comma-separated tags describing the build.        | Promise<string>  | yes | Android      | no |
-| getType  | The type of build.        | Promise<string>  | yes | Android      | yes |
-| getTotalDiskCapacity  | Method that gets full disk storage size, in bytes, taking into account both root and data file systems calculation.        | Promise<number>  | yes | Android      | no |
-| getTotalDiskCapacityOld  | Old implementation of method that gets full disk storage size, in bytes.        | Promise<number>  | yes | Android      | no |
-| getTotalMemory  | Gets the device total memory, in bytes.        | Promise<number>  | yes | IOS/Android/Web/visionOS      | no |
-| getUniqueId  | Gets the device unique ID. On Android it is currently identical to in this module.          | Promise<string>  | yes | IOS/Android/Windows/visionOS      | no |
-| getUsedMemory  | Gets the app memory usage, in bytes.          | Promise<string>  | yes | IOS/Android/Windows/Web/visionOs      | yes |
-| getUserAgent  | Gets the device User Agent.          | Promise<string>  | yes | IOS/Android/Web/visionOs      | no |
-| getUserAgentSync  | Gets the device User Agent.          | string  | yes | Android/Web     | no |
-| getVersion  | Gets the application version. Take into account that a version string is device/OS formatted and can contain any additional data (such as build number etc.). If you want to be sure about version format, you can use a regular expression to get the desired portion of the returned version string.      | string  | yes | IOS/Android/Windows/visionOS      | yes |
-| getBrightness  | Gets the current brightness level of the device's main screen. Currently iOS only. Returns a number between 0.0 and 1.0, inclusive.        | Promise<number>  | yes | IOS     | no |
-| hasGms  | Tells if the device supports Google Mobile Services.         | Promise<boolean>  | yes | Android      | yes |
-| hasHms  | Tells if the device supports Huawei Mobile Services.         | Promise<boolean>  | yes | Android      | yes |
-| hasNotch  | Tells if the device has a notch.         | boolean  | yes | IOS/Android/Windows/visionOS      | no |
-| hasDynamicIsland  | Tells if the device has a dynamic island.         | boolean  | yes | IOS/Android/Windows/visionOS      | no |
-| hasSystemFeature  | Tells if the device has a specific system feature.         | Promise<boolean>  | yes | Android      | no |
-| isAirplaneMode  | Tells if the device is in Airplane Mode.       | Promise<boolean>  | yes | Android/ Web     | yes |
-| isBatteryCharging  | Tells if the battery is currently charging.         | Promise<boolean>  | yes | IOS/Android/Windows/Web/visionOS      | yes |
-| isEmulator  | Tells if the application is running in an emulator.        | Promise<boolean>  | yes | IOS/Android/Windows/visionOS      | no |
-| isKeyboardConnected  | Tells if the device has a keyboard connected.        | Promise<boolean>  | yes | Windows      | yes |
-| isLandscape  | Tells if the device is currently in landscape mode.        | Promise<boolean>  | yes | IOS/Android/Windows/visionOs      | yes |
-| isLocationEnabled  | Allow access to user's location information        | Promise<boolean>  | yes | IOS/Android/Web/visionOS      | yes |
-| isMouseConnected  | Tells if the device has a mouse connected.         | Promise<boolean>  | yes | Windows   | yes |
-| isHeadphonesConnected  | Tells if the device has a Headphones connected.         | Promise<boolean>  | yes | IOS/Android/visionOS      | yes |
-| isWiredHeadphonesConnected  | Tells if the device has a WiredHeadphones connected.         | Promise<boolean>  | yes | IOS/Android/visionOS      | yes |
-| isBluetoothHeadphonesConnected  | Tells if the device has a BluetoothHeadphones connected.         | Promise<boolean>  | yes | IOS/Android/visionOS      | yes |
-| isPinOrFingerprintSet  | Tells if a PIN number or a fingerprint was set for the device.         | Promise<boolean>  | yes | IOS/Android/Windows/visoinOs      | yes |
-| isTablet  | Tells if the device is a tablet.         | boolean  | yes | IOS/Android/Windows/visoinOs      | yes |
-| isLowRamDevice  |  Tells if the device has low RAM.          | boolean  | yes | Android      | yes |
-| isDisplayZoomed  | Tells if the user changed Display Zoom to Zoomed       | boolean  | yes | IOS     | no |
-| isTabletMode  | Tells if the device is in tablet mode.       | Promise<boolean>  | yes | Windows     | no |
-| supported32BitAbis  | device support 32  Abis       | Promise<string[]>  | yes | Windows     | yes |
-| supported64BitAbis  | device support 64 Abis       | Promise<string[]>  | yes | Windows     | yes |
-| supportedAbis  | device support Abis      | Promise<string[]>  | yes | IOS/Android/Windows/visoinOS     | yes|
-| syncUniqueId  | This method is intended for iOS,This synchronizes uniqueId with IDFV or sets new a random string,On iOS it uses the DeviceUID uid identifier. On other platforms it just call getUniqueId() in this module.       | Promise<string>  | yes | IOS/visionOS     | no |
-| getSupportedMediaTypeList  | This method gets the list of supported media codecs.       | Promise<string[]>  | yes | IOS/Android      | yes |
+| getAndroidId  |Gets the ANDROID_ID. See API documentation for appropriate use.  | Promise<string>| No | Android      | no |
+| getApiLevel  | Gets the API level.  | Promise<number>| No | Android      | yes |
+| getApplicationName  | Gets the application name.  | string | No | IOS/Android/Windows/visionOS      | yes |
+| getAvailableLocationProviders  | Returns an object of platform-specfic location providers/servcies, with value whether or not they are currently available.boolean       | Promise<object>  | No | IOS/Android/visionOS      | yes |
+| getBaseOs  | The base OS build the product is based on.      | Promise<string>  | No | Android/Windows/Web      | yes |
+| getBuildId  | Gets build number of the operating system.      | Promise<string>  | No | IOS/Android/Windows/visionOS      | yes |
+| getBatteryLevel  | Gets the battery level of the device as a float comprised between 0 and 1.        | Promise<number>  | No | IOS/Android /Windows/Web/visionOS     | yes |
+| getBootloader  | The system bootloader version number.        | Promise<string>  | No | Android      | yes |
+| getBrand  | Gets the device brand.        | string  | No | IOS/Android/Windows/visionOS      | yes |
+| getBuildNumber  | Gets the application build number.       | string  | No | IOS/Android/Windows/visionOS      | yes |
+| getBundleId  | Gets the application bundle identifier.        | string  | No | IOS/Android/Windows/visionOS      | yes |
+| isCameraPresent  | Tells if the device has any camera now.        | Promise<boolean>  | No | Android/Windows/Web      | yes |
+| getCarrier  | Gets the carrier name (network operator).        | Promise<string>  | No | IOS/Android      | yes |
+| getCodename  | The current development codename, or the string "REL" if this is a release build.         | Promise<string>  | No | Android      | yes |
+| getDevice  |  The name of the industrial design.        | Promise<string>  | No | Android      | yes |
+| getDeviceId  |Gets the device ID.        | string  | No | IOS/Android/Windows/visionOS     | no |
+| getDeviceType  | TReturns the device's type as a string     | string  | No | IOS/Android/visionOS      | yes |
+| getDisplay  | A build ID string meant for displaying to the user.     | Promise<string>  | No | Android      | yes |
+| getDeviceName  | Gets the device name.        | Promise<string>  | No | IOS/Android/Windows/visionOS      | yes |
+| getDeviceNameSync  | Gets the device name.      | string  | No | IOS/Android/Windows/visionOS      | yes |
+| getDeviceToken  | Gets the device token (see DeviceCheck). Only available for iOS 11.0+ on real devices. This will reject the promise when getDeviceToken is not supported, be careful with exception handling.       | Promise<string>  | No | IOS/visionOS      | no |
+| getFirstInstallTime  | Gets the time at which the app was first installed, in milliseconds.         | Promise<number>  | No | IOS/Android/Windows/visionOS      | yes |
+| getFingerprint  | A string that uniquely identifies this build.         | Promise<string>  | No | Windows      | no |
+| getFontScale  | Gets the device font scale. The font scale is the ratio of the current system font to the "normal" font size, so if normal text is 10pt and the system font is currently 15pt, the font scale would be 1.5 This can be used to determine if accessability settings has been changed for the device; you may want to re-layout certain views if the font scale is significantly larger ( > 2.0 )         | Promise<number>  | No | IOS/Android/Windows      | yes |
+| getFreeDiskStorage  | Method that gets available storage size, in bytes, taking into account both root and data file systems calculation.         | Promise<number>  | No | IOS/Android/Windows/Web/visionOS      | no |
+| getFreeDiskStorageOld  | Old implementation of method that gets available storage size, in bytes.         | Promise<number>  | No | IOS/Android/Windows/Web/visionOS      | no |
+| getHardware  | The name of the hardware (from the kernel command line or /proc).         | Promise<string>  | No | Android      | yes |
+| getHost  |  Hostname        | Promise<string>  | No | Android/Windows      | yes|
+| getHostNames  | Hostnames       | Promise<string[]> | No | Windows      | no |
+| getIpAddress  | Deprecated Gets the device current IP address. (of wifi only) Switch to react-native-netinfo/netinfo or react-native-network-info       | Promise<string>  | No |  IOS/Android/Windows/visionOS      | yes |
+| getIncremental  | The internal value used by the underlying source control to represent this build.        | Promise<string>  | No | Android      | yes |
+| getInstallerPackageName  | The internal value used by the underlying source control to represent this build.         | Promise<string>  | No | IOS/Android/Windows/visoinOS      | yes |
+| getInstallReferrer  | Gets the referrer string upon application installation.         | Promise<string>  | No | Android/Windows/Web      | no |
+| getInstanceId  | Gets the application instance ID.        | Promise<string>  | No | Android      | yes|
+| getLastUpdateTime  | Gets the time at which the app was last updated, in milliseconds.        | Promise<number>  | No | Android      | yes |
+| getMacAddress  | Gets the network adapter MAC address.        | Promise<string>  | No | IOS/Android/visionOS      | no |
+| getManufacturer  | Gets the device manufacturer.        | Promise<string>  | No | IOS/Android/visoinOS      | yes |
+| getManufacturerSync  | Gets the device manufacturer.        | string  | No | IOS/Android/visoinOS      | yes |
+| getMaxMemory  | Returns the maximum amount of memory that the VM will attempt to use, in bytes.        | Promise<number>  | No | Android/Windows/Web      | no |
+| getModel  | Gets the device model.     | string  | No | IOS/Android      | yes |
+| getPowerState  | Gets the power state of the device including the battery level, whether it is plugged in, and if the system is currently operating in low power mode.    | Promise<object>  | No | IOS/Android/Windows/Web/visionOS      | yes |
+| getProduct  | The name of the overall product.        | Promise<string>  | No | Android      | yes |
+| getPreviewSdkInt  | The developer preview revision of a prerelease SDK.        | Promise<number>  | No | Android      | no |
+| getReadableVersion  | Gets the application human readable version (same as getVersion() + '.' + getBuildNumber())         | string  | No | IOS/Android/Windows/visionOS      | yes |
+| getSerialNumber  | Gets the device serial number. Will be 'unknown' in almost all cases unless you have a privileged app and you know what you're doing.       | Promise<string>  | No | Android/Windows      | no |
+| getSecurityPatch  | The user-visible security patch level.        | Promise<string>  | No | Android      | yes |
+| getSystemAvailableFeatures  | Returns a list of available system features on Android.         | Promise<string[]>  | No | Android      | no |
+| getSystemName  | Gets the device OS name.        | string  | No | IOS/Android/Windows/visoinOS      | yes |
+| getSystemVersion  | Gets the device OS version.         | string  | No | IOS/Android/Windows/visoinOS      | yes |
+| getTags  | Comma-separated tags describing the build.        | Promise<string>  | No | Android      | no |
+| getType  | The type of build.        | Promise<string>  | No | Android      | yes |
+| getTotalDiskCapacity  | Method that gets full disk storage size, in bytes, taking into account both root and data file systems calculation.        | Promise<number>  | No | Android      | no |
+| getTotalDiskCapacityOld  | Old implementation of method that gets full disk storage size, in bytes.        | Promise<number>  | No | Android      | no |
+| getTotalMemory  | Gets the device total memory, in bytes.        | Promise<number>  | No | IOS/Android/Web/visionOS      | no |
+| getUniqueId  | Gets the device unique ID. On Android it is currently identical to in this module.          | Promise<string>  | No | IOS/Android/Windows/visionOS      | no |
+| getUsedMemory  | Gets the app memory usage, in bytes.          | Promise<string>  | No | IOS/Android/Windows/Web/visionOs      | yes |
+| getUserAgent  | Gets the device User Agent.          | Promise<string>  | No | IOS/Android/Web/visionOs      | no |
+| getUserAgentSync  | Gets the device User Agent.          | string  | No | Android/Web     | no |
+| getVersion  | Gets the application version. Take into account that a version string is device/OS formatted and can contain any additional data (such as build number etc.). If you want to be sure about version format, you can use a regular expression to get the desired portion of the returned version string.      | string  | No | IOS/Android/Windows/visionOS      | yes |
+| getBrightness  | Gets the current brightness level of the device's main screen. Currently iOS only. Returns a number between 0.0 and 1.0, inclusive.        | Promise<number>  | No | IOS     | no |
+| hasGms  | Tells if the device supports Google Mobile Services.         | Promise<boolean>  | No | Android      | yes |
+| hasHms  | Tells if the device supports Huawei Mobile Services.         | Promise<boolean>  | No | Android      | yes |
+| hasNotch  | Tells if the device has a notch.         | boolean  | No | IOS/Android/Windows/visionOS      | no |
+| hasDynamicIsland  | Tells if the device has a dynamic island.         | boolean  | No | IOS/Android/Windows/visionOS      | no |
+| hasSystemFeature  | Tells if the device has a specific system feature.         | Promise<boolean>  | No | Android      | no |
+| isAirplaneMode  | Tells if the device is in Airplane Mode.       | Promise<boolean>  | No | Android/ Web     | yes |
+| isBatteryCharging  | Tells if the battery is currently charging.         | Promise<boolean>  | No | IOS/Android/Windows/Web/visionOS      | yes |
+| isEmulator  | Tells if the application is running in an emulator.        | Promise<boolean>  | No | IOS/Android/Windows/visionOS      | no |
+| isKeyboardConnected  | Tells if the device has a keyboard connected.        | Promise<boolean>  | No | Windows      | yes |
+| isLandscape  | Tells if the device is currently in landscape mode.        | Promise<boolean>  | No | IOS/Android/Windows/visionOs      | yes |
+| isLocationEnabled  | Allow access to user's location information        | Promise<boolean>  | No | IOS/Android/Web/visionOS      | yes |
+| isMouseConnected  | Tells if the device has a mouse connected.         | Promise<boolean>  | No | Windows   | yes |
+| isHeadphonesConnected  | Tells if the device has a Headphones connected.         | Promise<boolean>  | No | IOS/Android/visionOS      | yes |
+| isWiredHeadphonesConnected  | Tells if the device has a WiredHeadphones connected.         | Promise<boolean>  | No | IOS/Android/visionOS      | yes |
+| isBluetoothHeadphonesConnected  | Tells if the device has a BluetoothHeadphones connected.         | Promise<boolean>  | No | IOS/Android/visionOS      | yes |
+| isPinOrFingerprintSet  | Tells if a PIN number or a fingerprint was set for the device.         | Promise<boolean>  | No | IOS/Android/Windows/visoinOs      | yes |
+| isTablet  | Tells if the device is a tablet.         | boolean  | No | IOS/Android/Windows/visoinOs      | yes |
+| isLowRamDevice  |  Tells if the device has low RAM.          | boolean  | No | Android      | yes |
+| isDisplayZoomed  | Tells if the user changed Display Zoom to Zoomed       | boolean  | No | IOS     | no |
+| isTabletMode  | Tells if the device is in tablet mode.       | Promise<boolean>  | No | Windows     | no |
+| supported32BitAbis  | device support 32  Abis       | Promise<string[]>  | No | Windows     | yes |
+| supported64BitAbis  | device support 64 Abis       | Promise<string[]>  | No | Windows     | yes |
+| supportedAbis  | device support Abis      | Promise<string[]>  | No | IOS/Android/Windows/visoinOS     | yes|
+| syncUniqueId  | This method is intended for iOS,This synchronizes uniqueId with IDFV or sets new a random string,On iOS it uses the DeviceUID uid identifier. On other platforms it just call getUniqueId() in this module.       | Promise<string>  | No | IOS/visionOS     | no |
+| getSupportedMediaTypeList  | This method gets the list of supported media codecs.       | Promise<string[]>  | No | IOS/Android      | yes |
 
 
 ## 遗留问题

@@ -46,7 +46,7 @@ import {
     Achromatopsia,
     Brightness
 } from 'react-native-color-matrix-image-filters';
-
+import React from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 
 export const ColorMatrixImageFiltersTest = () => {

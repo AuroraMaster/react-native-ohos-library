@@ -373,7 +373,7 @@ ohpm install
 
 #### blurType
 
-> [!TIP] 如果要使用自适应模糊效果需要配置深色模式[配置文档](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/arkts-light-dark-color-adaptation-V5#section1421172621111)如果不配置深色模式则自适应模糊效果将没有深色模式，只有浅色模式。
+> [!TIP] 如果要使用自适应模糊效果需要配置深色模式[配置文档](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ui-dark-light-color-adaptation)如果不配置深色模式则自适应模糊效果将没有深色模式，只有浅色模式。
 
 | Name                     | Description                                                                                            | Platform              | HarmonyOS Support |
 | ------------------------ | ------------------------------------------------------------------------------------------------------ |-----------------------| ----------------- |

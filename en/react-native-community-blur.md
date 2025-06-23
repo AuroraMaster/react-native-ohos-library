@@ -16,7 +16,7 @@
 
 ## Installation and Usage
 
-本库已经适配`C-API版本`从版本`4.4.0-0.1.0`开始的版本为`C-API版本`，`C-API版本`在性能和速度上都优于`ArkTS版本`。
+This library has been adapted to C-API versions starting from version 4.4.0-0.1.0. The C-API versions offer better performance and speed compared to the ArkTS versions.
 
 Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-community-blur Releases](https://github.com/react-native-oh-library/react-native-blur/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
@@ -121,7 +121,7 @@ export const Blurs = () => {
 
 export const BlurDemo = () => {
   const [showBlurs, setShowBlurs] = React.useState(false);
-    //'../assets/bgimage.jpeg' 此路径的图片为本地图片，在使用demo时将此图片的路径换为自己本地图片路径
+    //'../assets/bgimage.jpeg' This path refers to a local image. When using the demo, replace this image path with your own local image path.
   return (
     <View style={styles.container}>
       <Image
@@ -299,7 +299,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 4.Introducing BlurView Component to ArkTS (使用4.4.0-0.1.0及之后的版本忽略这步配置)
+### 4.Introducing BlurView Component to ArkTS (Skip this configuration step when using version 4.4.0-0.1.0 or later.)
 
 Find `function buildCustomRNComponent()`, which is usually located in `entry/src/main/ets/pages/index.ets` or `entry/src/main/ets/rn/LoadBundle.ets`, and add the following code:
 
@@ -370,7 +370,7 @@ Check the release version information in the release address of the third-party 
 
 #### blurType
 
-> [!TIP] 如果要使用自适应模糊效果需要配置深色模式[配置文档](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/arkts-light-dark-color-adaptation-V5#section1421172621111)如果不配置深色模式则自适应模糊效果将没有深色模式，只有浅色模式。
+> [!TIP] To use the adaptive blur effect, you need to configure dark mode. [Configuration Document](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ui-dark-light-color-adaptation)If dark mode is not configured, the adaptive blur effect will not support dark mode and will only work in light mode.
 
 | Name                     | Description                                                                                            | Platform              | HarmonyOS Support |
 | ------------------------ | ------------------------------------------------------------------------------------------------------ |-----------------------| ----------------- |
@@ -409,8 +409,8 @@ Check the release version information in the release address of the third-party 
 
 ## Known Issues
 
-- [ ] @react-native-community/blur的 VibrancyView组件未实现HarmonyOS化 [issue#7](https://github.com/react-native-oh-library/react-native-blur/issues/7)
-- [ ] @react-native-community/blur的reducedTransparencyFallbackColor属性未实现 HarmonyOS化[issue#8](https://github.com/react-native-oh-library/react-native-blur/issues/8)
+- [ ] The VibrancyView component from @react-native-community/blur has not been adapted for HarmonyOS. [issue#7](https://github.com/react-native-oh-library/react-native-blur/issues/7)
+- [ ] The reducedTransparencyFallbackColor property of @react-native-community/blur has not been adapted for HarmonyOS.[issue#8](https://github.com/react-native-oh-library/react-native-blur/issues/8)
 
 ## Others
 

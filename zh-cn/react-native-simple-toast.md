@@ -58,9 +58,10 @@ import {
 import Toast from 'react-native-simple-toast';
 import { useState } from 'react';
 
-export default function App() {
-  const [modalVisible, setModalVisible] = useState(false);
 
+
+const ToastTest = () => {
+  const [modalVisible, setModalVisible] = useState(false);
   return (
     <>
       <Modal
@@ -86,31 +87,87 @@ export default function App() {
       </Modal>
 
       <ScrollView
+        contentContainerStyle={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
         keyboardDismissMode={'on-drag'}
         keyboardShouldPersistTaps={'always'}
         automaticallyAdjustKeyboardInsets
         style={{ backgroundColor: 'white' }}
       >
-      <View style={styles.container}>
-        <Button
-          title={'simple toast'}
-          onPress={() => {
-            Toast.show('This is a toast.', Toast.SHORT);
-          }}
-      />
-      <Button
-      title={'tap to dismiss toast'}
-      onPress={() => {
-        Toast.show('Tap to dismiss toast.', Toast.LONG, {
-        tapToDismissEnabled: true,
-      });
-    }}
-  /> 
-    </View>
-    </ScrollView> 
-  </>
+        <View style={styles.container}>
+          <Button
+            title={'simple toast'}
+            color={'#2196F3'}
+            onPress={() => {
+              Toast.show('This is a toast.', Toast.SHORT);
+            }}
+          />
+          <View style={{ height: 20 }} />
+          <Button
+            title={'tap to dismiss toast'}
+            color={'#f44336'}
+            onPress={() => {
+              Toast.show('Tap to dismiss toast.', Toast.LONG, {
+                tapToDismissEnabled: true,
+              });
+            }}
+          />
+        </View>
+      </ScrollView>
+    </>
   );
-}
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 16,
+    backgroundColor: '#fff',
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.3)',
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 8,
+    padding: 32,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalText: {
+    marginBottom: 16,
+    textAlign: 'center',
+    fontSize: 18,
+    color: '#333',
+  },
+  button: {
+    borderRadius: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    elevation: 2,
+    backgroundColor: '#2196F3',
+  },
+  buttonClose: {
+    backgroundColor: '#f44336',
+    marginTop: 12,
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+});
+
+export default ToastTest;
 ```
 ## 约束与限制
 
@@ -130,9 +187,9 @@ RNOH：0.72.23; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.
 
 | Name                   | Description               | Required | Platform | HarmonyOS Support |
 | ---------------------- |---------------------------| -------- |----------|-------------------|
-| show(message, duration, options)        | 吐司                        | No       | All      | partially         |
-| showWithGravity(message, duration, gravity, options)   | 可设置top,bottom和center位置的吐司 | No       | All      | No                |
-| showWithGravityAndOffset(message,duration,gravity,xOffset,yOffset,options,); | 可设置x轴和y轴偏移的吐司             | No       | All      | No                |
+| show(message, duration, options)        | 展示轻提示                        | No       | All      | partially         |
+| showWithGravity(message, duration, gravity, options)   | 可设置为顶部、底部和居中位置的轻提示 | No       | All      | No                |
+| showWithGravityAndOffset(message,duration,gravity,xOffset,yOffset,options,); | 可设置x轴和y轴偏移的轻提示           | No       | All      | No                |
 
 
 ## 属性

@@ -25,7 +25,7 @@
 ####  npm
 
 ```bash
-npm install react-native-reanimated-table@^0.0.2
+npm install react-native-reanimated-table@0.0.2
 ```
 
 #### yarn
@@ -110,13 +110,13 @@ const styles = StyleSheet.create({
 | Name                      | Description                                                  | **Type** | Required | Platform    | HarmonyOS Support |
 | ------------------------- | ------------------------------------------------------------ | -------- | ----------- | ----------------- | ----------------- |
 | data                      | Table data.                                                  | Array    | Yes | All         | Yes               |
-| style                     | Container style.                                             | Style   | Yes | All         | Yes               |
-| borderStyle               | Table border line width and color.                           | Object   | Yes | All         | Yes               |
-| textStyle                 | Cell font style.                                             | Style   | Yes | All         | Yes               |
-| flexArr                   | Flex value per column.                                       | Array   | Yes | All         | Yes               |
-| widthArr                  | Width per column.                                            | Array   | Yes | All         | Yes               |
-| heightArr                 | Height per line.                                             | Array   | Yes | All         | Yes               |
-| ...props                  | more props                                                   | any     | Yes  | All         | Yes               |
+| style                     | Container style.                                             | Style    | No | All         | Yes               |
+| borderStyle               | Table border line width and color.                           | Object   | No | All         | Yes               |
+| textStyle                 | Cell font style.                                             | Style    | No | All         | Yes               |
+| flexArr                   | Flex value per column.                                       | Array    | No | All         | Yes               |
+| widthArr                  | Width per column.                                            | Array    | No | All         | Yes               |
+| heightArr                 | Height per line.                                             | Array    | No | All         | Yes               |
+| ...props                  | more props                                                   | any      | No | All         | Yes               |
 
 
 ## 其他
