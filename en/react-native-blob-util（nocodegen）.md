@@ -102,29 +102,31 @@ export default function BlobUtilDemo() {
   const writeArrayChunk = () => {
     ReactNativeBlobUtil.fs
       .writeStream(result + "/text.txt", "ascii", false)
-      .then((reactNativeBlobUtilWriteStream) => {
-        reactNativeBlobUtilWriteStream.encoding = "ascii";
-        reactNativeBlobUtilWriteStream.write(["101", "32", "97"]);
+      .then((reactNativeBlobUtilWriteStream:any) => {
+        reactNativeBlobUtilWriteStream.write([101, 32, 97]);
+        reactNativeBlobUtilWriteStream.close();
       });
   };
 
   const writeChunk = () => {
     ReactNativeBlobUtil.fs
       .writeStream(result + "/text.txt", "utf8", false)
-      .then((reactNativeBlobUtilWriteStream) => {
+      .then((reactNativeBlobUtilWriteStream:any) => {
         reactNativeBlobUtilWriteStream.write("Zm9vIChXcml0ZSBCYXNlNjQpMQ==");
+        reactNativeBlobUtilWriteStream.close();
       });
   };
 
   const closeStream = () => {
     ReactNativeBlobUtil.fs
       .writeStream(result + "/text.txt", "utf8", false)
-      .then((reactNativeBlobUtilWriteStream) => {
+      .then((reactNativeBlobUtilWriteStream:any) => {
         setTimeout(() => {
           reactNativeBlobUtilWriteStream.close();
         }, 1000);
       });
   };
+
   const readStream = () => {
     ReactNativeBlobUtil.fs.readStream(result + "/text.txt", "utf8", 4000, 200);
   };
@@ -205,7 +207,7 @@ export default function BlobUtilDemo() {
         <Text style={styles.title}>BlobUtil</Text>
       </View>
       <View style={styles.inputArea}>
-        <Text style={styles.baseText}>{result}</Text>
+        <Text style={styles.baseText} ellipsizeMode="tail" numberOfLines={2}>{result}</Text>
       </View>
       <ScrollView style={styles.scrollView}>
         <View style={{ flexDirection: "column" }}>
@@ -365,8 +367,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     fontSize: 16,
-    ellipsizeMode: "tail",
-    numberOfLines: 2,
   },
   titleArea: {
     width: "90%",

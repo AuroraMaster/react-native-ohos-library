@@ -34,7 +34,7 @@ npm install @react-native-oh-tpl/react-native-image-crop-picker@file:#
 yarn add @react-native-oh-tpl/react-native-image-crop-picker@file:#
 ```
 
-The usage scenario is the same [react-native-image-crop-picker](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-image-crop-picker.md#yarn)
+The usage scenario is the same [react-native-image-crop-picker](https://gitee.com/react-native-oh-library/usage-docs/blob/master/en/react-native-image-crop-picker.md#yarn)
 
 ## Link
 
@@ -276,15 +276,15 @@ Check the release version information in the release address of the third-party 
 
 ## API
 
-[react-native-image-crop-picker](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-image-crop-picker.md#api)
+[react-native-image-crop-picker](https://gitee.com/react-native-oh-library/usage-docs/blob/master/en/react-native-image-crop-picker.md#api)
 
 ## Properties
 
-[react-native-image-crop-picker](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-image-crop-picker.md#%E5%B1%9E%E6%80%A7)
+[react-native-image-crop-picker](https://gitee.com/react-native-oh-library/usage-docs/blob/master/en/react-native-image-crop-picker.md#%E5%B1%9E%E6%80%A7)
 
 ## Known Issues
 
-[react-native-image-crop-picker](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-image-crop-picker.md#%E9%81%97%E7%95%99%E9%97%AE%E9%A2%98)
+[react-native-image-crop-picker](https://gitee.com/react-native-oh-library/usage-docs/blob/master/en/react-native-image-crop-picker.md#%E9%81%97%E7%95%99%E9%97%AE%E9%A2%98)
 
 ## Others
 

@@ -328,38 +328,38 @@ Check the release version information in the release address of the third-party 
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| contentStyle | set content style	        | ViewStyle  | yes | iOS/Android      | yes |
-| bounces  | 	Bounces if the content offset is out of the content view. It won't be bounces on the horizontal direction if the content view is not wider than the wrapper view although bounces is true. But it will on the vertical direction.        | boolean  | yes | iOS/Android      | yes |
-| scrollEnabled  | scrollEnabled         | boolean  | yes | iOS/Android      | yes |
-| directionalLockEnabled  | When true, the SpringScrollView will try to lock to only vertical or horizontal scrolling while dragging.        | boolean  | yes | iOS/Android      | yes |
-| initialContentOffset  | initial content offset. Only works when initiation.         |  Offset  | yes | iOS/Android      | yes |
-| showsVerticalScrollIndicator  | showsVerticalScrollIndicator         |  boolean | yes | iOS/Android      | no |
-| showsHorizontalScrollIndicator  | showsHorizontalScrollIndicator         |  boolean  | yes | iOS/Android      | no |
-| refreshHeader  | refresh header         |  React.ComponentClass<RefreshHeaderPropType,RefreshHeaderStateType>  | yes | iOS/Android      | yes |
-| loadingFooter  | loading header         |  React.ComponentClass<LoadingFooterPropType,LoadingFooterStateType>  | yes | iOS/Android      | yes |
-| onRefresh | he callback when refreshing. When this props is configured, a refresh header will be add on the top of the SpringScrollView         |  	()=>any  | yes | iOS/Android      | yes |
-| onLoading()  | The callback of loading. If set this prop, a loading footer will add to the botom of the SpringScrollView         |  ()=>any  | yes | iOS/Android      | yes |
-| allLoaded  | Whether the data is all loaded.         |  boolean  | yes | iOS/Android      | yes |
-| textInputRefs  |  text input      |  any[]  | yes | iOS/Android      | yes |
-| inverted  | inverted. It is a service for LargeList.         |  boolean  | yes | iOS/Android      | yes |
-| inputToolBarHeight  | set height of the input toolbar        |  number  | yes | iOS/Android      | yes |
-| dragToHideKeyboard  | hide the currently displayed keyboard        |  boolean  | yes | iOS/Android      | yes |
-| onTouchBegin()  | begin touch         | ()=>any  | yes | iOS/Android      | yes|
-| onTouchEnd()   | touch finished         | ()=>any | yes | iOS/Android      | yes|
-| beginRefresh()  | If you want to begin refreshing programally without finger draging, call this method after initialized.         | Promise<any>  | yes | iOS/Android      | yes|
-| endRefresh()  | End the refreshing status.        | void  | yes | iOS/Android      | yes|
-| endLoading()  | End the loading status.        | void  | yes | iOS/Android      | yes|
-| scrollTo()  | animate scroll to a specific position          | Promise<void>  | yes | iOS/Android      | yes|
-| scroll()  | scroll animation to a specific position        | Promise<void>  | yes | iOS/Android      | yes|
-| scrollToBegin()  | scroll begin         | Promise<void>  | yes | iOS/Android      | yes|
-| scrollToEnd()  | scroll end         | Promise<void>  | yes | iOS/Android      | yes|
-| onScroll()  | scroll         | (evt: ScrollEvent) => any  | yes | iOS/Android      | yes|
-| onNativeContentOffsetExtract  |  calculate content offset       |  NativeContentOffset | yes | iOS/Android      | yes|
-| onScrollBeginDrag()  | an event that is triggered when the user starts dragging (scrolling) content.         | ()=>any  | yes | iOS/Android     | yes|
-| onMomentumScrollBegin()  | When the user scrolls content and the momentum scroll animation begins, it triggers an event.         | ()=>any  | yes | iOS/Android      | yes|
-| onMomentumScrollEnd()  | When the user scrolls content and the momentum scroll animation ends, it triggers an event.         | ()=>any  | yes | iOS/Android      | yes|
-| onSizeChange  | The callback when the wrapper view size changed.         | (size: Size) => any | yes | iOS/Android      | yes |
-| onContentSizeChange  | The callback when the content view size changed.         | (size: Size) => any  | yes | iOS/Android      | yes |
+| contentStyle | set content style	        | ViewStyle | no | iOS/Android | yes |
+| bounces      | Bounces if the content offset is out of the content view. It won't be bounces on the horizontal direction if the content view is not wider than the wrapper view although bounces is true. But it will on the vertical direction. | boolean   | no | iOS/Android | yes |
+| scrollEnabled  | scrollEnabled     | boolean   | no | iOS/Android | yes |
+| directionalLockEnabled | When true, the SpringScrollView will try to lock to only vertical or horizontal scrolling while dragging. | boolean   | no | iOS/Android | yes |
+| initialContentOffset   | initial content offset. Only works when initiation.  | Offset    | no | iOS/Android | yes |
+| showsVerticalScrollIndicator   | showsVerticalScrollIndicator | boolean   | no | iOS/Android | no  |
+| showsHorizontalScrollIndicator | showsHorizontalScrollIndicator     | boolean   | no | iOS/Android | no  |
+| refreshHeader  | refresh header    | React.ComponentClass<RefreshHeaderPropType,RefreshHeaderStateType> | no | iOS/Android | yes |
+| loadingFooter  | loading header    | React.ComponentClass<LoadingFooterPropType,LoadingFooterStateType> | no | iOS/Android | yes |
+| onRefresh    | he callback when refreshing. When this props is configured, a refresh header will be add on the top of the SpringScrollView | ()=>any   | no | iOS/Android | yes |
+| onLoading()  | The callback of loading. If set this prop, a loading footer will add to the botom of the SpringScrollView | ()=>any   | no | iOS/Android | yes |
+| allLoaded    | Whether the data is all loaded.    | boolean   | no | iOS/Android | yes |
+| textInputRefs  | text input  | any[]     | no | iOS/Android | yes |
+| inverted     | inverted. It is a service for LargeList.   | boolean   | no | iOS/Android | yes |
+| inputToolBarHeight     | set height of the input toolbar    | number    | no | iOS/Android | yes |
+| dragToHideKeyboard     | hide the currently displayed keyboard      | boolean   | no | iOS/Android | yes |
+| onTouchBegin()   | begin touch | ()=>any   | no | iOS/Android | yes |
+| onTouchEnd() | touch finished    | ()=>any   | no | iOS/Android | yes |
+| beginRefresh()   | If you want to begin refreshing programally without finger draging, call this method after initialized. | Promise<any>      | no | iOS/Android | yes |
+| endRefresh() | End the refreshing status.   | void      | no | iOS/Android | yes |
+| endLoading() | End the loading status.  | void      | no | iOS/Android | yes |
+| scrollTo()   | animate scroll to a specific position      | Promise<void>     | no | iOS/Android | yes |
+| scroll()     | scroll animation to a specific position    | Promise<void>     | no | iOS/Android | yes |
+| scrollToBegin()  | scroll begin      | Promise<void>     | no | iOS/Android | yes |
+| scrollToEnd()  | scroll end  | Promise<void>     | no | iOS/Android | yes |
+| onScroll()   | scroll    | (evt: ScrollEvent) => any  | no | iOS/Android | yes |
+| onNativeContentOffsetExtract   | calculate content offset   | NativeContentOffset      | no | iOS/Android | yes |
+| onScrollBeginDrag()    | an event that is triggered when the user starts dragging (scrolling) content. | ()=>any   | no | iOS/Android | yes |
+| onMomentumScrollBegin()  | When the user scrolls content and the momentum scroll animation begins, it triggers an event. | ()=>any   | no | iOS/Android | yes |
+| onMomentumScrollEnd()  | When the user scrolls content and the momentum scroll animation ends, it triggers an event. | ()=>any   | no | iOS/Android | yes |
+| onSizeChange | The callback when the wrapper view size changed.     | (size: Size) => any      | no | iOS/Android | yes |
+| onContentSizeChange    | The callback when the content view size changed.     | (size: Size) => any      | no | iOS/Android | yes |
 
 ## Known Issues
 

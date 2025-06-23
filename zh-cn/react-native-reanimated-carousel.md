@@ -196,39 +196,39 @@ const styles = StyleSheet.create({
 
 ### Basic Props
 
-| Name | Description | Required | Default | Type | Platform | HarmonyOS Support |
-| --- | --- | --- | --- | --- | --- | --- |
-| data | Carousel items data set | yes |  | T[] | All | yes |
-| renderItem | Render carousel item | yes |  | (info: { item: T, index: number, animationValue: SharedValue\<number> }) => React.ReactElement | All | yes |
-| defaultScrollOffsetValue | The default animated value of the carousel. | no | useSharedValue<number>(0) | boolean | All | yes |
-| autoFillData | Auto fill data array to allow loop playback when the loop props is true.([1] => [1, 1, 1]；[1, 2] => [1, 2, 1, 2]) | no | true | boolean | All | yes |
-| vertical | Layout items vertically instead of horizontally | no | false | boolean | All | yes |
-| width | Specified carousel item width | `vertical` no `horizontal` yes | '100%' | number \| undefined | All | yes |
-| height | Specified carousel item height | `vertical` yes `horizontal` no | '100%' | number \| undefined | All | yes |
-| mode | Carousel Animated transitions | no | default | 'horizontal-stack'\|'vertical-stack'\|'parallax' | All | yes |
-| modeConfig | Stack layout animation style. Different modes correspond to different configurations | no | { snapDirection: 'left',moveSize: window.width,stackInterval: 30,scaleInterval: 0.08,rotateZDeg: 135} |  | All | yes |
-| style | Carousel container style | no | {} | ViewStyle | All | yes |
-| defaultIndex | Default index | no | 0 | number | All | yes |
-| autoPlay | Auto play | no | false | boolean | All | yes |
-| autoPlayReverse | Auto play reverse playback | no | false | boolean | All | yes |
-| autoPlayInterval | Auto play playback interval | no | 1000 | number | All | yes |
-| scrollAnimationDuration | Time a scroll animation takes to finish | no | 500 | number | All | yes |
-| loop | Carousel loop playback | no | true | boolean | All | yes |
-| testID | Used to locate this view in end-to-end tests | no |  | string | All | yes |
-| onSnapToItem | Callback fired when navigating to an item | no |  | (index: number) => void | All | yes |
-| onScrollBegin | Callback fired when scroll begin | no |  | () => void | All | yes |
-| onScrollEnd | Callback fired when scroll end | no |  | (index: number) => void | All | yes |
-| withAnimation | Specifies the scrolling animation effect | no |  | {type: 'spring';config: WithSpringConfig;} \| {type: 'timing';config: WithTimingConfig;} | All | yes |
-| panGestureHandlerProps | PanGestureHandler props | no | {} | Omit<Partial\<PanGestureHandlerProps\>,'onHandlerStateChange'> | All | yes |
-| windowSize | The maximum number of items that can respond to pan gesture events, `0` means all items will respond to pan gesture events | no | 0 | number | All | yes |
-| onProgressChange | On progress change. `offsetProgress`:Total of offset distance (0 390 780 ...); `absoluteProgress`:Convert to index (0 1 2 ...) | no |  | onProgressChange?: (offsetProgress: number,absoluteProgress: number) => void | All | yes |
-| pagingEnabled | When true, the scroll view stops on multiples of the scroll view's size when scrolling | no | true | boolean | All | yes |
-| overscrollEnabled | If enabled, the item will scroll to the first placement when scrolling past the edge rather than closing to the last. (previous conditions: loop=false) | no | true | boolean | All | yes |
-| snapEnabled | If enabled, releasing the touch will scroll to the nearest item, valid when pagingEnabled=false | no | true | boolean | All | yes |
-| enabled | when false, Carousel will not respond to any gestures | no | true | boolean | All | yes |
-| customConfig | Custom carousel config | no |  | () => {type?: 'negative' \| 'positive';viewCount?: number;} | All | yes |
-| customAnimation | Custom animations | no |  | (value: number) => Animated.AnimatedStyleProp<ViewStyle> | All | yes |
-| maxScrollDistancePerSwipe | Maximum offset value for one scroll. If `props.vertical = true`, this will be `maxScrollDistancePerSwipeY`. If `props.vertical = false`, this will be `maxScrollDistancePerSwipeX`. | no |  | number | All | yes |
+| Name                      | Description                                                  | Required                       | Default                                                      | Type                                                         | Platform | HarmonyOS Support |
+| ------------------------- | ------------------------------------------------------------ | ------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | ----------------- |
+| data                      | Carousel items data set                                      | yes                            |                                                              | T[]                                                          | All      | yes               |
+| renderItem                | Render carousel item                                         | yes                            |                                                              | (info: { item: T, index: number, animationValue: SharedValue\<number> }) => React.ReactElement | All      | yes               |
+| defaultScrollOffsetValue  | The default animated value of the carousel.                  | no                             | useSharedValue<number>(0)                                    | boolean                                                      | All      | yes               |
+| autoFillData              | Auto fill data array to allow loop playback when the loop props is true.([1] => [1, 1, 1]；[1, 2] => [1, 2, 1, 2]) | no                             | true                                                         | boolean                                                      | All      | yes               |
+| vertical                  | Layout items vertically instead of horizontally              | no                             | false                                                        | boolean                                                      | All      | yes               |
+| width                     | Specified carousel item width                                | `vertical` no `horizontal` yes | '100%'                                                       | number \| undefined                                          | All      | yes               |
+| height                    | Specified carousel item height                               | `vertical` yes `horizontal` no | '100%'                                                       | number \| undefined                                          | All      | yes               |
+| mode                      | Carousel Animated transitions                                | no                             | default                                                      | 'horizontal-stack'\|'vertical-stack'\|'parallax'             | All      | yes               |
+| modeConfig                | Stack layout animation style. Different modes correspond to different configurations | no                             | { snapDirection: 'left',moveSize: window.width,stackInterval: 30,scaleInterval: 0.08,rotateZDeg: 135} |                                                              | All      | yes               |
+| style                     | Carousel container style                                     | no                             | {}                                                           | ViewStyle                                                    | All      | yes               |
+| defaultIndex              | Default index                                                | no                             | 0                                                            | number                                                       | All      | yes               |
+| autoPlay                  | Auto play                                                    | no                             | false                                                        | boolean                                                      | All      | yes               |
+| autoPlayReverse           | Auto play reverse playback                                   | no                             | false                                                        | boolean                                                      | All      | yes               |
+| autoPlayInterval          | Auto play playback interval                                  | no                             | 1000                                                         | number                                                       | All      | yes               |
+| scrollAnimationDuration   | Time a scroll animation takes to finish                      | no                             | 500                                                          | number                                                       | All      | yes               |
+| loop                      | Carousel loop playback                                       | no                             | true                                                         | boolean                                                      | All      | yes               |
+| testID                    | Used to locate this view in end-to-end tests                 | no                             |                                                              | string                                                       | All      | yes               |
+| onSnapToItem              | Callback fired when navigating to an item                    | no                             |                                                              | (index: number) => void                                      | All      | yes               |
+| onScrollBegin             | Callback fired when scroll begin                             | no                             |                                                              | () => void                                                   | All      | yes               |
+| onScrollEnd               | Callback fired when scroll end                               | no                             |                                                              | (index: number) => void                                      | All      | yes               |
+| withAnimation             | Specifies the scrolling animation effect                     | no                             |                                                              | {type: 'spring';config: WithSpringConfig;} \| {type: 'timing';config: WithTimingConfig;} | All      | yes               |
+| panGestureHandlerProps    | PanGestureHandler props                                      | no                             | {}                                                           | Omit<Partial\<PanGestureHandlerProps\>,'onHandlerStateChange'> | All      | yes               |
+| windowSize                | The maximum number of items that can respond to pan gesture events, `0` means all items will respond to pan gesture events | no                             | 0                                                            | number                                                       | All      | yes               |
+| onProgressChange          | On progress change. `offsetProgress`:Total of offset distance (0 390 780 ...); `absoluteProgress`:Convert to index (0 1 2 ...) | no                             |                                                              | onProgressChange?: (offsetProgress: number,absoluteProgress: number) => void | All      | yes               |
+| pagingEnabled             | When true, the scroll view stops on multiples of the scroll view's size when scrolling | no                             | true                                                         | boolean                                                      | All      | yes               |
+| overscrollEnabled         | If enabled, the item will scroll to the first placement when scrolling past the edge rather than closing to the last. (previous conditions: loop=false) | no                             | true                                                         | boolean                                                      | All      | yes               |
+| snapEnabled               | If enabled, releasing the touch will scroll to the nearest item, valid when pagingEnabled=false | no                             | true                                                         | boolean                                                      | All      | yes               |
+| enabled                   | when false, Carousel will not respond to any gestures        | no                             | true                                                         | boolean                                                      | All      | yes               |
+| customConfig              | Custom carousel config                                       | no                             |                                                              | () => {type?: 'negative' \| 'positive';viewCount?: number;}  | All      | yes               |
+| customAnimation           | Custom animations                                            | no                             |                                                              | (value: number) => Animated.AnimatedStyleProp<ViewStyle>     | All      | yes               |
+| maxScrollDistancePerSwipe | Maximum offset value for one scroll. If `props.vertical = true`, this will be `maxScrollDistancePerSwipeY`. If `props.vertical = false`, this will be `maxScrollDistancePerSwipeX`. | no                             |                                                              | number                                                       | All      | yes               |
 
 ### `modeConfig` Parallax
 
