@@ -80,10 +80,10 @@ export default function App() {
 
   const readItemFromStorage = async () => {
     const item = await getItem();
-    setValue(item);
+    setValue(item === null ? '' : item);
   };
 
-  const writeItemToStorage = async (newValue) => {
+  const writeItemToStorage = async (newValue: any) => {
     await setItem(newValue);
     setValue(newValue);
   };
