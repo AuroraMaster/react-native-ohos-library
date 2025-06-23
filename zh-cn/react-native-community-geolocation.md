@@ -43,6 +43,7 @@ yarn add @react-native-oh-tpl/geolocation
 ```js
 import Geolocation from "@react-native-community/geolocation";
 import { Button } from "react-native";
+import React from 'react';
 
 export function GeolocationDemo(): JSX.Element {
   const tap = () => {

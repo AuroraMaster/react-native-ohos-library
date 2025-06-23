@@ -45,6 +45,7 @@ The following code shows the basic use scenario of the repository:
 ```js
 import Geolocation from "@react-native-community/geolocation";
 import { Button } from "react-native";
+import React from 'react';
 
 export function GeolocationDemo(): JSX.Element {
   const tap = () => {
@@ -272,7 +273,7 @@ Open the `entry/src/main/resources/base/element/string.json` file and add the fo
 
 ## Known Issues
 
-- [ ] @react-native-oh-tpl/geolocation 部分属性未完全实现 HarmonyOS 化，maximumAge 延时问题: [issue#6](https://github.com/react-native-oh-library/react-native-geolocation/issues/6)
+- [ ] Some attributes of @react-native-oh-tpl/geolocation have not been fully implemented for HarmonyOS, and there is a delay issue with maximumAge: [issue#6](https://github.com/react-native-oh-library/react-native-geolocation/issues/6).
 
 ## Others
 

@@ -300,10 +300,16 @@ const bottomViewHeight = 40;
 const getW = (index, isWidth) =>
   isWidth ? (index % 3 === 0 ? width - 40 : (width - 60) / 2) : 80;
 
-export default class AnySizeDragSortDemo extends React.Component {
+type State = {
+  items: { text: string, width: number, height: number }[];
+  movedKey: any
+}
+
+export default class AnySizeDragSortDemo extends React.Component<any, State> {
+  sortableViewRef: React.RefObject<any>;
   constructor(props) {
     super(props);
-    const items = [];
+    const items:State["items"] = [];
     for (let i = 0; i < 26; i++) {
       items.push({
         text: String.fromCharCode(65 + i),
