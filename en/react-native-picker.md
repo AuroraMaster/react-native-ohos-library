@@ -308,4 +308,4 @@ Check the release version information in the release address of the third-party 
 
 ## License
 
-This project is licensed under [The MIT License (MIT)](https://mit-license.org/).
+This project is licensed under [The MIT License (MIT)](https://github.com/react-native-oh-library/react-native-picker/blob/sig/LICENSE).

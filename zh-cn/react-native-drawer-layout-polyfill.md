@@ -43,7 +43,7 @@ import { Button, Text, StyleSheet, View, TextInput } from "react-native";
 import DrawerLayout from "react-native-drawer-layout-polyfill";
 
 const App = () => {
-  const drawerLayoutRef = useRef(null);
+  const drawerLayoutRef = useRef<{ openDrawer: () => void, closeDrawer: () => void }>(null);
   const [drawerPosition, setDrawerPosition] = useState("left");
   const [keyboardDismissMode, setKeyboardDismissMode] = useState("none");
   const [drawerLockMode, setDrawerLockMode] = useState("unlocked ");
@@ -86,27 +86,27 @@ const App = () => {
     }
   };
 
-  const changeDrawerLockMode = (type) => {
+  const changeDrawerLockMode = (type: string) => {
     console.log("drawerLockMode-修改弹框锁定模式", type);
     setDrawerLockMode(type);
   };
 
-  const handleDrawerOpen = (e) => {
+  const handleDrawerOpen = (e: any) => {
     console.log("onDrawerOpen-打开弹框的回调");
     setIsOpen("打开");
   };
 
-  const handleDrawerClose = (e) => {
+  const handleDrawerClose = (e: any) => {
     console.log("onDrawerClose-关闭弹框的回调");
     setIsOpen("关闭");
   };
 
-  const handleDrawerSlide = (e) => {
+  const handleDrawerSlide = (e: any) => {
     console.log("onDrawerSlide-导航视图发生交互时的回调函数");
     setDrawerSlideOutput(JSON.stringify(e.nativeEvent));
   };
 
-  const handleDrawerStateChanged = (e) => {
+  const handleDrawerStateChanged = (e: any) => {
     console.log("onDrawerStateChanged-导航视图的状态发生变化时的回调函数");
     setDrawerStateChangedOutput(JSON.stringify(e));
   };
