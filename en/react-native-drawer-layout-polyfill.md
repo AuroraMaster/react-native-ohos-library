@@ -43,7 +43,7 @@ import { Button, Text, StyleSheet, View, TextInput } from "react-native";
 import DrawerLayout from "react-native-drawer-layout-polyfill";
 
 const App = () => {
-  const drawerLayoutRef = useRef(null);
+  const drawerLayoutRef = useRef<{ openDrawer: () => void, closeDrawer: () => void }>(null);
   const [drawerPosition, setDrawerPosition] = useState("left");
   const [keyboardDismissMode, setKeyboardDismissMode] = useState("none");
   const [drawerLockMode, setDrawerLockMode] = useState("unlocked ");
@@ -86,27 +86,27 @@ const App = () => {
     }
   };
 
-  const changeDrawerLockMode = (type) => {
+  const changeDrawerLockMode = (type: string) => {
     console.log("drawerLockMode-Modify the lock mode of the pop-up box", type);
     setDrawerLockMode(type);
   };
 
-  const handleDrawerOpen = (e) => {
+  const handleDrawerOpen = (e: any) => {
     console.log("onDrawerOpen-Open the callback in the pop-up box");
     setIsOpen("Open");
   };
 
-  const handleDrawerClose = (e) => {
+  const handleDrawerClose = (e: any) => {
     console.log("onDrawerClose-Turn off the bomb frame");
     setIsOpen("closure");
   };
 
-  const handleDrawerSlide = (e) => {
+  const handleDrawerSlide = (e: any) => {
     console.log("onDrawerSlide-The callback function when navigation view occurs when interacting");
     setDrawerSlideOutput(JSON.stringify(e.nativeEvent));
   };
 
-  const handleDrawerStateChanged = (e) => {
+  const handleDrawerStateChanged = (e: any) => {
     console.log("onDrawerStateChanged-The recovery function when the state of the navigation view changes");
     setDrawerStateChangedOutput(JSON.stringify(e));
   };

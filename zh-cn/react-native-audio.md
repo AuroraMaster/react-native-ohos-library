@@ -43,11 +43,21 @@ import { SafeAreaView, StatusBar, Text, Button, TextInput, View, Switch, StyleSh
 import { AudioRecorder, AudioUtils } from 'react-native-audio';
 
 type FileType = {
+    [key: string]: any,
     base64: string;
     duration: number;
     status: string;
     audioFileSize: number;
     audioFileURL: string;
+}
+
+interface ObjectDataType {
+  currentTime: number,
+  duration: number,
+  status: string,
+  audioFileSize: number,
+  audioFileURL: string,
+  base64: string,
 }
 
 export default () => {
@@ -77,10 +87,10 @@ export default () => {
                 MeasurementMode: false,//only ios
                 IncludeBase64: true
             })
-        AudioRecorder.onProgress = (data) => {
+        AudioRecorder.onProgress = (data: ObjectDataType) => {
             setSecond(data.currentTime);
         }
-        AudioRecorder.onFinished = (data) => {
+        AudioRecorder.onFinished = (data: ObjectDataType) => {
             const { duration, status, audioFileSize, audioFileURL } = data
             let str = data.base64.slice(0, 20);
             setFile({ base64: str + '...', duration, status, audioFileSize, audioFileURL })
@@ -154,7 +164,7 @@ export default () => {
                 </View>
             </View>
 
-            {!!file.base64 && <View style={{ marginTop: 10, borderColor: '#aaa', borderWidth: 1, padding: 10 }}>
+            {!!file?.base64 && <View style={{ marginTop: 10, borderColor: '#aaa', borderWidth: 1, padding: 10 }}>
                 <View style={{ marginTop: 10, display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                     <Text>录音文件：</Text>
                     <Text style={{ fontSize: 12 }}>{`audio_demo.m4a`}</Text>

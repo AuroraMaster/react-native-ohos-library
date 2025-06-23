@@ -40,7 +40,13 @@ The following code shows the basic use scenario of the repository:
 
 ```js
 // your entry point
-import { MenuProvider } from "react-native-popup-menu";
+import {
+  MenuProvider,
+  Menu,
+  MenuOptions,
+  MenuOption,
+  MenuTrigger,
+} from "react-native-popup-menu";
 
 export const App = () => (
   <MenuProvider>
@@ -49,12 +55,6 @@ export const App = () => (
 );
 
 // somewhere in your app
-import {
-  Menu,
-  MenuOptions,
-  MenuOption,
-  MenuTrigger,
-} from "react-native-popup-menu";
 import {
     Text,
     View,
