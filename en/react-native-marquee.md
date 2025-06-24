@@ -109,5 +109,5 @@ These methods are optional, you can use the isOpen property instead
 
 ## 7. License
 
-This project is licensed under [The MIT License (MIT)](https://gitcode.com/openharmony-sig/rntpc_react-native-marquee/blob/master/LICENSE).
+This project is licensed under [The MIT License (MIT)](https://github.com/kyo504/react-native-marquee/blob/master/LICENSE).
 
