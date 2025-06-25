@@ -241,9 +241,11 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
+Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-skia Releases](https://github.com/react-native-oh-library/react-native-skia/releases)
+
 [!TIP] [skia Official ducoments](https://shopify.github.io/react-native-skia/docs/getting-started/installation)
 
-[!TIP]Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-skia Releases](https://github.com/react-native-oh-library/react-native-skia/releases)
+[!TIP] To use this library, you need to configure [@react-native-oh-tpl/react-native-reanimated](https://gitee.com/react-native-oh-library/usage-docs/blob/master/en/react-native-reanimated.md)
 
 ## Components
 
