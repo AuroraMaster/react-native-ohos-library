@@ -70,14 +70,6 @@ export default function BlobUtilDemo() {
     await ReactNativeBlobUtil.fs.ls(ReactNativeBlobUtil.fs.dirs.CacheDir);
   };
 
-  const createFileASCII = async () => {
-    await ReactNativeBlobUtil.fs.createFile(
-      result + "/text.txt",
-      [102, 111, 111],
-      "ascii"
-    );
-  };
-
   const unlink = () => {
     ReactNativeBlobUtil.fs.unlink(result + "/text.txt");
   };
@@ -256,16 +248,6 @@ export default function BlobUtilDemo() {
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>BlobUtilTurboModule.ls()</Text>
             <Button title="Run" color="#841584" onPress={ls}></Button>
-          </View>
-          <View style={styles.baseArea}>
-            <Text style={{ flex: 1 }}>
-              BlobUtilTurboModule.createFileASCII()
-            </Text>
-            <Button
-              title="Run"
-              color="#841584"
-              onPress={createFileASCII}
-            ></Button>
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>

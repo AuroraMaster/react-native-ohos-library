@@ -31,7 +31,7 @@ npm install react-native-reanimated-table@0.0.2
 #### yarn
 
 ```bash
-yarn add react-native-reanimated-table@^0.0.2
+yarn add react-native-reanimated-table@0.0.2
 ```
 
 <!-- tabs:end -->

@@ -71,14 +71,6 @@ export default function BlobUtilDemo() {
     await ReactNativeBlobUtil.fs.ls(ReactNativeBlobUtil.fs.dirs.CacheDir);
   };
 
-  const createFileASCII = async () => {
-    await ReactNativeBlobUtil.fs.createFile(
-      result + "/text.txt",
-      [102, 111, 111],
-      "ascii"
-    );
-  };
-
   const unlink = () => {
     ReactNativeBlobUtil.fs.unlink(result + "/text.txt");
   };
@@ -259,16 +251,6 @@ export default function BlobUtilDemo() {
           </View>
           <View style={styles.baseArea}>
             <Text style={{ flex: 1 }}>
-              BlobUtilTurboModule.createFileASCII()
-            </Text>
-            <Button
-              title="Run"
-              color="#841584"
-              onPress={createFileASCII}
-            ></Button>
-          </View>
-          <View style={styles.baseArea}>
-            <Text style={{ flex: 1 }}>
               BlobUtilTurboModule.writeFileArray()
             </Text>
             <Button
@@ -433,6 +415,9 @@ Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 ### 2. Introducing Native Code
 
 Currently, two methods are available:
+
+1. Use the HAR file (this method will be deprecated once the IDE supports the relevant functionality and is preferred currently).
+2. Directly link to the source code.
 
 Method 1 (recommended): Use the HAR file.
 
