@@ -12,7 +12,7 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/eranbo/react-native-base64)
+> [!TIP] [Github 地址](https://github.com/eranbo/react-native-base64/releases/tag/0.2.1)
 
 ## 安装与使用
 
@@ -59,7 +59,7 @@ export function Base64Page(): JSX.Element {
    const [word, setWord] = useState('react native');
    const encodeWord = base64.encode(word);
    const decodeWord = base64.decode(encodeWord);
-   const wordEqualDecodeWord = `word equal decode word: ${word === decodeWord}`；
+   const wordEqualDecodeWord = `word equal decode word: ${word === decodeWord}`;
    const byteArrayWord = Uint8Array.from(word.split(''), w => w.charCodeAt(0));
    const encodeWordFromByteArray = base64.encodeFromByteArray(byteArrayWord);
    const decodeFromByteArray = base64.decode(encodeWordFromByteArray);

@@ -46,9 +46,11 @@ yarn add @react-native-oh-tpl/react-native-system-setting
 >[!WARNING] 使用时 import 的库名不变。
 
 ```tsx
-import React, { useEffect, useState } from 'react'
-import SystemSetting, { EmitterSubscription } from 'react-native-system-setting'
-import { ScrollView, Text, View, StyleSheet, TouchableOpacity } from 'react-native'
+import React, { useEffect, useState } from 'react';
+import SystemSetting, {
+  EmitterSubscription,
+} from 'react-native-system-setting';
+import { ScrollView, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 
 const SystemSettingDemo: React.FC = (): JSX.Element => {
     const [bluetoothEnabled, setBluetoothEnabled] = useState<boolean>()
@@ -56,6 +58,7 @@ const SystemSettingDemo: React.FC = (): JSX.Element => {
         const enabled = await SystemSetting.isBluetoothEnabled()
         setBluetoothEnabled(enabled)
     }
+    let bluetoothEvent: Function = () => {};
     return (
         <>
             <ScrollView>

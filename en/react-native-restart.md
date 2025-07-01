@@ -43,6 +43,7 @@ The following code shows the basic use scenario of the repository:
 > [!WARNING] The name of the imported repository remains unchanged.
 
 ```js
+import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import RNRestart from 'react-native-restart';
 
@@ -171,4 +172,4 @@ Check the release version information in the release address of the third-party 
 
 ## License
 
-This project is licensed under [The MIT License (MIT)](https://github.com/avishayil/react-native-restart/blob/master/LICENSE)，请自由地享受和参与开源。
+This project is licensed under [The MIT License (MIT)](https://github.com/avishayil/react-native-restart/blob/master/LICENSE)

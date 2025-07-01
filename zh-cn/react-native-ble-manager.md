@@ -45,7 +45,7 @@ yarn add @react-native-oh-tpl/react-native-ble-manager
 
 ```js
 import React, { useState, useEffect } from 'react';
-import { ScrollView, StyleSheet, Button, View, Text, NativeEventEmitter, NativeModules, TouchableHighlight, FlatList, Alert } from 'react-native';
+import { StyleSheet, Button, View, Text, NativeEventEmitter, NativeModules, TouchableHighlight, FlatList, Alert } from 'react-native';
 import ReactNativeBleManager from 'react-native-ble-manager';
 import { Peripheral } from 'react-native-ble-manager';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
@@ -185,21 +185,21 @@ export default function BleManagerDemo() {
                     </View>
                     <View style={{ height: 50, width: 120 }}>
                         <Button title='readRSSI' onPress={() => {
-                            ReactNativeBleManager.readRSSI(item.id).then((data) => {
+                            ReactNativeBleManager.readRSSI(item.id).then((data: any) => {
                                 Alert.alert(data + "")
                             })
                         }}></Button>
                     </View>
                     <View style={{ height: 50, width: 120 }}>
                         <Button title='requestMTU' onPress={() => {
-                            ReactNativeBleManager.requestMTU(item.id, 10).then((res)=>{
+                            ReactNativeBleManager.requestMTU(item.id, 10).then((res: any)=>{
                                 Alert.alert(res + "")
                             })
                         }}></Button>
                     </View>
                     <View style={{ height: 50, width: 120 }}>
                         <Button title='checkState' onPress={() => {
-                            ReactNativeBleManager.checkState().then((res)=>{
+                            ReactNativeBleManager.checkState().then((res: any)=>{
                                 Alert.alert(JSON.stringify(res))
                             })
                         }}></Button>

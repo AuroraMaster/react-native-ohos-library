@@ -12,7 +12,7 @@ This third-party library has been migrated to Gitee and is now available for dir
 | Version                   | Package Name                                      | Repository         | Release                    |
 | ------------------------- | ------------------------------------------------- | ------------------ | -------------------------- |
 | <= 0.5.16-0.1.0@deprecated | @react-native-oh-tpl/checkbox | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-checkbox) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-checkbox/releases) |
-| >= 0.5.17                   | @react-native-ohos/checkbox   | [Gitee](https://gitee.com/openharmony-sig/rntpc_react-native-checkbox) | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_react-native-checkbox/releases) |
+| >= 0.5.17                   | @react-native-ohos/checkbox   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-checkbox) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-checkbox/releases) |
 
 ## 1. Installation and Usage
 
@@ -291,4 +291,4 @@ Check the release version information in the release address of the third-party 
 
 ## 8. License
 
-This project is licensed under [The MIT License (MIT)](https://gitee.com/openharmony-sig/rntpc_react-native-checkbox/blob/master/LICENSE).
+This project is licensed under [The MIT License (MIT)](https://github.com/react-native-checkbox/react-native-checkbox/blob/develop/LICENSE).
