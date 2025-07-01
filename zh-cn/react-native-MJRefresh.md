@@ -46,8 +46,13 @@ import React, { Component } from "react";
 import { Text, View } from "react-native";
 import MJRefresh, { ScrollView } from "react-native-mjrefresh";
 
-export default class MjRefreshDemo extends Component {
-  constructor(props) {
+interface State {
+  text: string,
+  refreshing: Boolean,
+}
+
+export default class MjRefreshDemo extends Component<{}, State> {
+  constructor(props: any) {
     super(props);
   }
 
@@ -55,6 +60,11 @@ export default class MjRefreshDemo extends Component {
     text: "下拉刷新",
     refreshing: false
   }
+  _mjrefresh: any = null;
+  _hw = {
+    finishRefresh: () => {}
+  }
+
   _onRefresh = () => {
     setTimeout(() => {
       this._hw && this._hw.finishRefresh();
@@ -65,7 +75,7 @@ export default class MjRefreshDemo extends Component {
       <ScrollView
         refreshControl={
           <MJRefresh
-            ref={ref => this._mjrefresh = ref}
+            ref={(ref: any) => this._mjrefresh = ref}
             onRefresh={
               () => {
                 this.setState({
@@ -83,7 +93,7 @@ export default class MjRefreshDemo extends Component {
                 text: '释放刷新'
               })
             }}
-            onPulling={e => {
+            onPulling={(e: any) => {
               console.log('cbdtest onPulling:' + e.nativeEvent.percent)
               if (e.nativeEvent.percent < 0.1) {
                 this.setState({
@@ -248,10 +258,10 @@ ohpm install
 
 | Name               | Description | Type     | Required | Platform | HarmonyOS Support (ArkTS) |HarmonyOS Support (CAPI) |
 | :----------------- | ----------- | -------- | -------- | -------- | ----------------- |----------------- |
-| onRefresh          | System Path | function | No       | IOS      | yes               |yes               |
-| onRefreshIdle      | System Path | function | No       | IOS      | yes               |yes               |
-| onReleaseToRefresh | System Path | function | No       | IOS      | yes               |yes               |
-| onPulling          | System Path | function | No       | IOS      | yes               |yes               |
+| onRefresh          | 刷新时触发 | function | No       | IOS      | yes               |yes               |
+| onRefreshIdle      | 刷新闲置时触发 | function | No       | IOS      | yes               |yes               |
+| onReleaseToRefresh | 可释放刷新时触发 | function | No       | IOS      | yes               |yes               |
+| onPulling          | header下拉过程中触发 | function | No       | IOS      | yes               |yes               |
 
 ## 静态方法
 
@@ -263,8 +273,8 @@ ohpm install
 
 | Name          | Description | Type     | Required | Platform | HarmonyOS Support (ArkTS) | HarmonyOS Support (CAPI) |
 | :------------ | ----------- | -------- | -------- | -------- | ----------------- |----------------- |
-| beginRefresh  | System Path | function | No       | IOS      | yes               |yes               |
-| finishRefresh | System Path | function | No       | IOS      | yes               |yes               |
+| beginRefresh  | 开始刷新 | function | No       | IOS      | yes               |yes               |
+| finishRefresh | 结束刷新 | function | No       | IOS      | yes               |yes               |
 
 ## 其他
 

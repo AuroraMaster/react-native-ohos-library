@@ -158,21 +158,21 @@ Check the release version information in the release address of the third-party 
 
 | Name          | Description                            | type     | Required | Platform | HarmonyOS Support |
 | ------------- | -------------------------------------- | -------- | -------- | -------- | ----------------- |
-| easing        | 缓动函数                               | function | no       | All      | yes               |
-| inDelay       | 组件加载时开始动画前的延迟时间（毫秒） | number   | no       | All      | yes               |
-| inDuration    | 组件加载时动画的持续时间（毫秒）       | number   | no       | All      | yes               |
-| outDelay      | 组件销毁时开始动画前的延迟时间（毫秒） | number   | no       | All      | yes               |
-| outDuration   | 组件销毁时动画的持续时间（毫秒）       | number   | no       | All      | yes               |
-| pointerEvents | 控制View是否可以成为触摸事件的目标     | string   | no       | All      | yes               |
-| style         | 组件样式                               | style    | no       | All      | yes               |
+| easing        | Easing function for animations.                               | function | no       | All      | yes               |
+| inDelay       | Delay before starting the animation when the component loads (milliseconds). | number   | no       | All      | yes               |
+| inDuration    | Duration of the animation when the component loads (milliseconds).       | number   | no       | All      | yes               |
+| outDelay      | Delay before starting the animation when the component is destroyed (milliseconds). | number   | no       | All      | yes               |
+| outDuration   | Duration of the animation when the component is destroyed (milliseconds).	       | number   | no       | All      | yes               |
+| pointerEvents | Controls whether the view can be the target of touch events.      | string   | no       | All      | yes               |
+| style         | Styles for the component.                               | style    | no       | All      | yes               |
 
 ## Known Issues
 
 ## Others
 
-- [ ] 原库使用refs方法，现在改为使用react.createRef方法代替。问题: [issue#1](https://github.com/react-native-oh-library/react-native-transitiongroup/issues/1)
-- [ ] 原库中使用的ViewPropTypes，现在改为使用PropTypes方法代替。问题: [issue#2](https://github.com/react-native-oh-library/react-native-transitiongroup/issues/2)
+- [ ] The **refs** method used in the original library is replaced by the **react.createRef**  method: [issue#1](https://github.com/react-native-oh-library/react-native-transitiongroup/issues/1)
+- [ ] The **ViewPropTypes** method used in the original library is replaced by the **PropTypes**  method: [issue#2](https://github.com/react-native-oh-library/react-native-transitiongroup/issues/2)
 
 ## License
 
-This project is licensed under [The MIT License (MIT)](https://www.mit-license.org).
+This project is licensed under [The MIT License (MIT)](https://github.com/react-native-oh-library/react-native-transitiongroup/blob/sig/LICENSE).

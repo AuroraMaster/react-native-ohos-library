@@ -48,8 +48,13 @@ import React, { Component } from "react";
 import { Text, View } from "react-native";
 import MJRefresh, { ScrollView } from "react-native-mjrefresh";
 
-export default class MjRefreshDemo extends Component {
-  constructor(props) {
+interface State {
+  text: string,
+  refreshing: Boolean,
+}
+
+export default class MjRefreshDemo extends Component<{}, State> {
+  constructor(props: any) {
     super(props);
   }
 
@@ -57,6 +62,11 @@ export default class MjRefreshDemo extends Component {
     text: "Pull to Refresh",
     refreshing: false
   }
+  _mjrefresh: any = null;
+  _hw = {
+    finishRefresh: () => {}
+  }
+
   _onRefresh = () => {
     setTimeout(() => {
       this._hw && this._hw.finishRefresh();
@@ -67,7 +77,7 @@ export default class MjRefreshDemo extends Component {
       <ScrollView
         refreshControl={
           <MJRefresh
-            ref={ref => this._mjrefresh = ref}
+            ref={(ref: any) => this._mjrefresh = ref}
             onRefresh={
               () => {
                 this.setState({
@@ -85,7 +95,7 @@ export default class MjRefreshDemo extends Component {
                 text: 'Release to Refresh'
               })
             }}
-            onPulling={e => {
+            onPulling={(e: any) => {
               console.log('cbdtest onPulling:' + e.nativeEvent.percent)
               if (e.nativeEvent.percent < 0.1) {
                 this.setState({
@@ -248,10 +258,10 @@ For more details, see [react-native-MJRefresh](https://github.com/react-native-s
 
 | Name               | Description | Type     | Required | Platform | HarmonyOS Support (ArkTS) |HarmonyOS Support (CAPI) |
 | :----------------- | ----------- | -------- | -------- | -------- | ----------------- |----------------- |
-| onRefresh          | System Path | function | No       | IOS      | yes               |yes               |
-| onRefreshIdle      | System Path | function | No       | IOS      | yes               |yes               |
-| onReleaseToRefresh | System Path | function | No       | IOS      | yes               |yes               |
-| onPulling          | System Path | function | No       | IOS      | yes               |yes               |
+| onRefresh          | Triggered when refresh | function | No       | IOS      | yes               |yes               |
+| onRefreshIdle      | Triggered when refreshing idle | function | No       | IOS      | yes               |yes               |
+| onReleaseToRefresh | Triggered when refreshing can be released | function | No       | IOS      | yes               |yes               |
+| onPulling          | Triggered when header is pulled down | function | No       | IOS      | yes               |yes               |
 
 ## Static Methods
 
@@ -263,8 +273,8 @@ For more details, see [react-native-MJRefresh](https://github.com/react-native-s
 
 | Name          | Description | Type     | Required | Platform | HarmonyOS Support (ArkTS) | HarmonyOS Support (CAPI) |
 | :------------ | ----------- | -------- | -------- | -------- | ----------------- |----------------- |
-| beginRefresh  | System Path | function | No       | IOS      | yes               |yes               |
-| finishRefresh | System Path | function | No       | IOS      | yes               |yes               |
+| beginRefresh  | Start refreshing | function | No       | IOS      | yes               |yes               |
+| finishRefresh | End Refresh | function | No       | IOS      | yes               |yes               |
 
 ## Others
 

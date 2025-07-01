@@ -12,7 +12,7 @@
     </a>
 </p>
 
-> [!TIP] [GitHub address](https://github.com/imchintan/react-native-crypto-js)
+> [!TIP] [GitHub address](https://github.com/imchintan/react-native-crypto-js/releases/tag/1.0.0)
 
 ## Installation and Usage
 
@@ -147,14 +147,14 @@ This document is verified based on the following versions:
 
 | Name             | Description | Type | Required | Platform | HarmonyOS Support |
 | -------------------- | --------------- | -------- | -------- | -------- | ----------------- |
-| CryptoJS.AES.encrypt | AES encryption | string   | yes      | Android、iOS      | yes               |
-| CryptoJS.AES.decrypt | AES decryption | string   | yes      | Android、iOS      | yes               |
-| CryptoJS.MD5         | MD5 encryption | string   | yes      | Android、iOS      | yes               |
-| CryptoJS.HmacMD5     | HmacMD5 encryption | string   | yes      | no       | no                |
+| CryptoJS.AES.encrypt | AES encryption | string   | No      | Android、iOS      | yes               |
+| CryptoJS.AES.decrypt | AES decryption | string   | No      | Android、iOS      | yes               |
+| CryptoJS.MD5         | MD5 encryption | string   | No      | Android、iOS      | yes               |
+| CryptoJS.HmacMD5     | HmacMD5 encryption | string   | No      | no       | no                |
 
 ## Known Issues
 
-- [ ] 原库使用CryptoJS.HmacMD5会报错"cannot readproperty ‘init’ of underfined"，如果需要使用HmacMD5算法可以安装使用rn-crypto-js库，用法与react-native-crypto-js相同: [issue#4](https://github.com/imchintan/react-native-crypto-js/issues/3)
+- [ ] If the source library uses CryptoJS.HmacMD5, the error message "cannot readproperty'init' of underfined" is displayed. To use the HmacMD5 algorithm, install the **rn-crypto-js** library, whose usage is the same as that of **react-native-crypto-js**: [issue#4](https://github.com/imchintan/react-native-crypto-js/issues/3)
 
 ## Others
 
