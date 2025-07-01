@@ -9,7 +9,7 @@
     </a>
 </p>
 
-> [!TIP] [GitHub address](https://github.com/rt2zz/redux-persist)
+> [!TIP] [GitHub address](https://github.com/rt2zz/redux-persist/releases/tag/v6.0.0)
 
 ## Installation and Usage
 
@@ -27,7 +27,7 @@ npm install redux-persist@6.0.0
 
 To achieve persistence, you also need to rely on the 'HarmonyOS-enabled async-storage' library for native database reading and writing, as shown in the installation and use documents below：
 
-> [async-storage Installation and use documentation](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-async-storage-async-storage.md)
+> [async-storage Installation and use documentation](https://gitee.com/react-native-oh-library/usage-docs/blob/master/en/react-native-async-storage-async-storage.md)
 
 <!-- tabs:end -->
 

@@ -68,15 +68,15 @@ export const E_ReactNativeTranslucentModal: React.FC = (): JSX.Element => {
         <Modal transparent={transparent} animationType={animationType}
             visible={visible} onRequestClose={() => setVisible(!visible)}>
             <TouchableWithoutFeedback onPress={() => setVisible(false)}>
-             {/* 注意：1、此图片组件为示例，需要根据自己的项目需求，去引入对应组件；
-                2、示例图片地址需要根据自己的项目情况去引入 */}
+             {/* Note: 1. This image component is used as an example. You need to import your component as needed.
+                2. The sample image address needs to be replaced as needed. */}
                 <Image source={{ uri: "https://hbimg.huabanimg.com/ed258f740ab675e3b3a0b6e7abc44eb7bd832c523396b-cJL1G9_fw658"}} style={STYLES.imageBackground} />
             </TouchableWithoutFeedback>
         </Modal>
-        <Button title="显示Modal" onPress={() => setVisible(true)}></Button>
-        <Button title="设置transparent为true" onPress={() => setTransparent(true)}></Button>
-        <Button title="设置animationType为'slide'" onPress={() => setAnimationType('slide')}></Button>
-        <Button title="设置animationType为'fade'" onPress={() => setAnimationType('fade')}></Button>
+        <Button title="Display Modal" onPress={() => setVisible(true)}></Button>
+        <Button title="Set transparent to true" onPress={() => setTransparent(true)}></Button>
+        <Button title="Set animationType to 'slide'" onPress={() => setAnimationType('slide')}></Button>
+        <Button title="Set animationType to 'fade'" onPress={() => setAnimationType('fade')}></Button>
     </View>;
 }
 
@@ -96,14 +96,14 @@ Properties
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-> [!TIP] react-native提供的Modal组件，在HarmonyOS、iOS平台一样可以实现状态栏沉浸式效果。
+> [!TIP] The **Modal** component provided by React Native can implement the immersive effect of the status bar on the HarmonyOS and iOS platforms.
 
 | Name                          | Description                                         | Type     | Required | Platform | HarmonyOS Support |
 | ----------------------------- | --------------------------------------------------- | -------- | -------- | -------- | ----------------- |
-| `animationType`               | Animation type of modal.                            | string   | yes      | All      | yes               |
-| `transparent`                 | Whether the background of the modal is transparent. | boolean  | yes      | All      | yes               |
-| `visible`                     | Controls whether the modal is displayed.            | boolean  | yes      | All      | yes               |
-| `onRequestClose?: () => void` | Called when the model request close.                | function | yes      | ALL      | yes               |
+| `animationType`               | Animation type of modal.                            | string   | No      | All      | yes               |
+| `transparent`                 | Whether the background of the modal is transparent. | boolean  | No      | All      | yes               |
+| `visible`                     | Controls whether the modal is displayed.            | boolean  | No      | All      | yes               |
+| `onRequestClose?: () => void` | Called when the model request close.                | function | No      | ALL      | yes               |
 
 ## Known Issues
 

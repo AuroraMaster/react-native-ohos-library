@@ -12,7 +12,7 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/imchintan/react-native-crypto-js)
+> [!TIP] [Github 地址](https://github.com/imchintan/react-native-crypto-js/releases/tag/1.0.0)
 
 ## 安装与使用
 
@@ -147,10 +147,10 @@ export const ReactNativeCryptoJsExample = () => {
 
 | Name             | Description | Type | Required | Platform | HarmonyOS Support |
 | -------------------- | --------------- | -------- | -------- | -------- | ----------------- |
-| CryptoJS.AES.encrypt | AES encryption | string   | yes      | Android、iOS      | yes               |
-| CryptoJS.AES.decrypt | AES decryption | string   | yes      | Android、iOS      | yes               |
-| CryptoJS.MD5         | MD5 encryption | string   | yes      | Android、iOS      | yes               |
-| CryptoJS.HmacMD5     | HmacMD5 encryption | string   | yes      | no       | no                |
+| CryptoJS.AES.encrypt | AES encryption | string   | No      | Android、iOS      | yes               |
+| CryptoJS.AES.decrypt | AES decryption | string   | No      | Android、iOS      | yes               |
+| CryptoJS.MD5         | MD5 encryption | string   | No      | Android、iOS      | yes               |
+| CryptoJS.HmacMD5     | HmacMD5 encryption | string   | No      | no       | no                |
 
 ## 遗留问题
 

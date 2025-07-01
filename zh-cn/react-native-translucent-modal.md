@@ -98,10 +98,10 @@ export const E_ReactNativeTranslucentModal: React.FC = (): JSX.Element => {
 
 | Name                          | Description                                         | Type     | Required | Platform | HarmonyOS Support |
 | ----------------------------- | --------------------------------------------------- | -------- | -------- | -------- | ----------------- |
-| `animationType`               | Animation type of modal.                            | string   | yes      | All      | yes               |
-| `transparent`                 | Whether the background of the modal is transparent. | boolean  | yes      | All      | yes               |
-| `visible`                     | Controls whether the modal is displayed.            | boolean  | yes      | All      | yes               |
-| `onRequestClose?: () => void` | Called when the model request close.                | function | yes      | ALL      | yes               |
+| `animationType`               | Animation type of modal.                            | string   | No      | All      | yes               |
+| `transparent`                 | Whether the background of the modal is transparent. | boolean  | No      | All      | yes               |
+| `visible`                     | Controls whether the modal is displayed.            | boolean  | No      | All      | yes               |
+| `onRequestClose?: () => void` | Called when the model request close.                | function | No      | ALL      | yes               |
 
 ## 遗留问题
 
