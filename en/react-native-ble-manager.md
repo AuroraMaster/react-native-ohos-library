@@ -45,7 +45,7 @@ The following code shows the basic use scenario of the repository:
 
 ```js
 import React, { useState, useEffect } from 'react';
-import { ScrollView, StyleSheet, Button, View, Text, NativeEventEmitter, NativeModules, TouchableHighlight, FlatList, Alert } from 'react-native';
+import { StyleSheet, Button, View, Text, NativeEventEmitter, NativeModules, TouchableHighlight, FlatList, Alert } from 'react-native';
 import ReactNativeBleManager from 'react-native-ble-manager';
 import { Peripheral } from 'react-native-ble-manager';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
@@ -185,21 +185,21 @@ export default function BleManagerDemo() {
                     </View>
                     <View style={{ height: 50, width: 120 }}>
                         <Button title='readRSSI' onPress={() => {
-                            ReactNativeBleManager.readRSSI(item.id).then((data) => {
+                            ReactNativeBleManager.readRSSI(item.id).then((data: any) => {
                                 Alert.alert(data + "")
                             })
                         }}></Button>
                     </View>
                     <View style={{ height: 50, width: 120 }}>
                         <Button title='requestMTU' onPress={() => {
-                            ReactNativeBleManager.requestMTU(item.id, 10).then((res)=>{
+                            ReactNativeBleManager.requestMTU(item.id, 10).then((res: any)=>{
                                 Alert.alert(res + "")
                             })
                         }}></Button>
                     </View>
                     <View style={{ height: 50, width: 120 }}>
                         <Button title='checkState' onPress={() => {
-                            ReactNativeBleManager.checkState().then((res)=>{
+                            ReactNativeBleManager.checkState().then((res: any)=>{
                                 Alert.alert(JSON.stringify(res))
                             })
                         }}></Button>
@@ -456,7 +456,7 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
-> [!TIP] 因本库需要两台手机去进行对端扫描和连接，所以两台手机各装一个 har 包编译（`ble_managerGatt.har` 和 `ble_managerServers.har`）
+> [!TIP] This library requires two mobile phones to scan and connect to the peer end. Therefore, a .har file (`ble_managerGatt.har` and `ble_managerServers.har`) needs to be installed on each of the two mobile phones for compilation.
 
 the first mobile phone: `ble_managerGatt.har`
 
@@ -529,9 +529,9 @@ Check the release version information in the release address of the third-party 
 
 ### Permission Requirements
 
-- 由于此库涉及蓝牙系统控制功能，使用对应接口时则需要配置对应的权限，权限需配置在 entry/src/main 目录下 module.json5 文件中。其中部分权限需弹窗向用户申请授权。具体权限配置见文档：[程序访问控制](https://gitee.com/openharmony/docs/blob/master/en/application-dev/security/AccessToken/Readme-CN.md#/openharmony/docs/blob/master/en/application-dev/security/AccessToken/app-permission-mgmt-overview.md)。
+- This library involves the Bluetooth system control function. Therefore, you need to configure the corresponding permission in the **module.json5** file in the **entry/src/main** directory when using the corresponding APIs. Some permissions need to be requested from users in a pop-up window. For details about the permission configuration, see [Application Access Control](https://gitee.com/openharmony/docs/blob/master/en/application-dev/security/AccessToken/Readme-CN.md#/openharmony/docs/blob/master/en/application-dev/security/AccessToken/app-permission-mgmt-overview.md).
 
-- 此库部分功能与接口需要 normal 权限：ohos.permission.ACCESS_BLUETOOTH。
+- Some functions and APIs of this library require the **normal** permission **ohos.permission.ACCESS_BLUETOOTH**.
 
 ## API
 
@@ -579,19 +579,19 @@ Check the release version information in the release address of the third-party 
 
 ## Known Issues
 
-- [ ] refreshCache 用于清理和刷新蓝牙设备缓存的一部分 [issue#3](https://github.com/react-native-oh-library/react-native-ble-manager/issues/3)
-- [ ] requestConnectionPriority 用于请求蓝牙连接优先级 [issue#4](https://github.com/react-native-oh-library/react-native-ble-manager/issues/4)
-- [ ] startNotificationUseBuffer 用来启动一个带缓冲区的通知服务 [issue#6](https://github.com/react-native-oh-library/react-native-ble-manager/issues/6)
-- [ ] CompanionScan 扫描配套设备[issue#5](https://github.com/react-native-oh-library/react-native-ble-manager/issues/5)
-- [ ] getAssociatedPeripherals 检索相关外围设备（从配套管理器） [issue#7](https://github.com/react-native-oh-library/react-native-ble-manager/issues/7)
-- [ ] removeAssociatedPeripheral 移除相关外围设备 [issue#8](https://github.com/react-native-oh-library/react-native-ble-manager/issues/8)
-- [ ] setName 创建设置蓝牙适配器名称 [issue#9](https://github.com/react-native-oh-library/react-native-ble-manager/issues/9)
-- [ ] supportsCompanion 检查当前设备是否支持配套设备管理器 [issue#10](https://github.com/react-native-oh-library/react-native-ble-manager/issues/10)
-- [ ] stopNotification 停止指定特征的通知 [issue#11](https://github.com/react-native-oh-library/react-native-ble-manager/issues/11)
-- [ ] writeWithoutResponse 写入不响应指定特性 [issue#12](https://github.com/react-native-oh-library/react-native-ble-manager/issues/12)
-- [ ] removeBond 删除已配对的设备 [issue#13](https://github.com/react-native-oh-library/react-native-ble-manager/issues/13)
-- [ ] getMaximumWriteValueLengthForWithoutResponse 用于获取在不带响应的情况下可以写入的最大数据长度 [issue#14](https://github.com/react-native-oh-library/react-native-ble-manager/issues/14)
-- [ ] getMaximumWriteValueLengthForWithResponse 它用于获取在带有响应的情况下可以写入的最大数据长度 [issue#15](https://github.com/react-native-oh-library/react-native-ble-manager/issues/15)
+- [ ] **refreshCache** is used to clear and refresh the cache of a Bluetooth device: [issue#3](https://github.com/react-native-oh-library/react-native-ble-manager/issues/3).
+- [ ] **requestConnectionPriority** is used to request the Bluetooth connection priority: [issue#4](https://github.com/react-native-oh-library/react-native-ble-manager/issues/4).
+- [ ] **startNotificationUseBuffer** is used to start a notification service with a buffer: [issue#6](https://github.com/react-native-oh-library/react-native-ble-manager/issues/6).
+- [ ] **CompanionScan** is used to scan auxiliary devices: [issue#5](https://github.com/react-native-oh-library/react-native-ble-manager/issues/5).
+- [ ] **getAssociatedPeripherals** is used to retrieve associated peripherals (from the mapping manager): [issue#7](https://github.com/react-native-oh-library/react-native-ble-manager/issues/7).
+- [ ] **removeAssociatedPeripheral** is used to remove related peripheral devices: [issue#8](https://github.com/react-native-oh-library/react-native-ble-manager/issues/8).
+- [ ] **setName** is used to create and set the name of a Bluetooth adapter: [issue#9](https://github.com/react-native-oh-library/react-native-ble-manager/issues/9).
+- [ ] **supportsCompanion** is used to check whether the current device supports the mapping device manager: [issue#10](https://github.com/react-native-oh-library/react-native-ble-manager/issues/10).
+- [ ] **stopNotification** is used to stop a notification with a certain feature: [issue#11](https://github.com/react-native-oh-library/react-native-ble-manager/issues/11).
+- [ ] **writeWithoutResponse** is used to write without respond to a certain feature: [issue#12](https://github.com/react-native-oh-library/react-native-ble-manager/issues/12).
+- [ ] **removeBond** is used to delete a paired device: [issue#13](https://github.com/react-native-oh-library/react-native-ble-manager/issues/13).
+- [ ] **getMaximumWriteValueLengthForWithoutResponse** is used to obtain the maximum value that can be written in the case of no response: [issue#14](https://github.com/react-native-oh-library/react-native-ble-manager/issues/14).
+- [ ] **getMaximumWriteValueLengthForWithResponse** is used to obtain the maximum value that can be written in the case of a response: [issue#15](https://github.com/react-native-oh-library/react-native-ble-manager/issues/15).
 
 ## Others
 

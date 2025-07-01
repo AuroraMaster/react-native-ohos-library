@@ -44,10 +44,8 @@ The following code shows the basic use scenario of the repository:
 > [!WARNING] The name of the imported repository remains unchanged.
 
 ```tsx
-import React, { useEffect, useState } from "react";
-import SystemSetting, {
-  EmitterSubscription,
-} from "react-native-system-setting";
+import React, { useState } from "react";
+import SystemSetting from "react-native-system-setting";
 import {
   ScrollView,
   Text,
@@ -62,6 +60,7 @@ const SystemSettingDemo: React.FC = (): JSX.Element => {
     const enabled = await SystemSetting.isBluetoothEnabled();
     setBluetoothEnabled(enabled);
   };
+  let bluetoothEvent: Function = () => {};
   return (
     <>
       <ScrollView>
@@ -163,7 +162,7 @@ export default SystemSettingDemo;
 
 ## Use Codegen
 
-If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/zh-cn/codegen.md).
+If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
@@ -210,7 +209,7 @@ ohpm install
 
 Method 2: Directly link to the source code.
 
-> [!TIP] For details, see [Directly Linking Source Code](/zh-cn/link-source-code.md).
+> [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
 ### 3. Introducing RNSystemSettingPackage to ArkTS
 
@@ -251,11 +250,11 @@ Check the release version information in the release address of the third-party 
 
 ### Permission Requirements
 
-由于此库涉及蓝牙、亮度等系统控制功能，使用对应接口时则需要配置对应的权限，权限需配置在 entry/src/main 目录下 module.json5 文件中。其中部分权限需弹窗向用户申请授权。具体权限配置见文档: [程序访问控制](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/security/AccessToken/Readme-CN.md#/openharmony/docs/blob/master/zh-cn/application-dev/security/AccessToken/app-permission-mgmt-overview.md)。
+This library involves system control functions such as Bluetooth and brightness. Therefore, you need to configure the corresponding permission in the **module.json5** file in the **entry/src/main** directory when using the corresponding APIs. Some permissions need to be requested from users in a pop-up window. For details about the permission configuration, see [Application Access Control](https://gitee.com/openharmony/docs/blob/master/en/application-dev/security/AccessToken/Readme-EN.md#/openharmony/docs/blob/master/en/application-dev/security/AccessToken/app-permission-mgmt-overview.md)。
 
-此库部分功能与接口需要 normal 权限: ohos.permission.ACCESS_BLUETOOTH、ohos.permission.GET_WIFI_INFO。
+Some functions and APIs of this library require the **normal** permissions **ohos.permission.ACCESS_BLUETOOTH** and **ohos.permission.GET_WIFI_INFO**.
 
-此库部分功能与接口需要 full sdk 与 system_basic 权限: ohos.permission.MANAGE_SECURE_SETTINGS、ohos.permission.MANAGE_WIFI_CONNECTION 等，[full sdk 获取地址](https://eco-betaclub.rnd.huawei.com/#/download/DevEco%20Studio/newest)，[system_basic 权限获取方式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/determine-application-mode-0000001774120042-V5)。
+Some functions and APIs of this library require the [**full sdk**](https://eco-betaclub.rnd.huawei.com/#/download/DevEco%20Studio/newest) and [**system_basic**](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/determine-application-mode-0000001774120042-V5) permissions, such as **ohos.permission.MANAGE_SECURE_SETTINGS** and **ohos.permission.MANAGE_WIFI_CONNECTION**.
 
 ## API
 
@@ -303,18 +302,18 @@ For details, see [react-native-system-setting](https://github.com/c19354837/reac
 
 ## Others
 
-由于仅支持 Android/iOS 特有功能，HarmonyOS 暂无法实现的接口: [issue#11](https://github.com/react-native-oh-library/react-native-system-setting/issues/11)
+HarmonyOS does not support certain APIs that are exclusive to Android/iOS: [issue#11](https://github.com/react-native-oh-library/react-native-system-setting/issues/11).
 
 ## Known Issues
 
-- [ ] 由于系统音量权限问题，HarmonyOS 暂无法实现的接口: [issue#3](https://github.com/react-native-oh-library/react-native-system-setting/issues/3)
-- [ ] 由于系统亮度与亮度模式权限问题，HarmonyOS 暂无法实现的接口: [issue#4](https://github.com/react-native-oh-library/react-native-system-setting/issues/4)
-- [ ] 由于系统 WiFi 权限问题，HarmonyOS 暂无法实现的接口: [issue#5](https://github.com/react-native-oh-library/react-native-system-setting/issues/5)
-- [ ] 由于系统未支持删除音量监听器，HarmonyOS 暂无法实现的接口: [issue#6](https://github.com/react-native-oh-library/react-native-system-setting/issues/6)
-- [ ] 由于系统未支持位置服务模式监听器相关接口，HarmonyOS 暂无法实现的接口: [issue#7](https://github.com/react-native-oh-library/react-native-system-setting/issues/7)
-- [ ] 由于系统未支持位置服务模式获取相关接口，HarmonyOS 暂无法实现的接口: [issue#8](https://github.com/react-native-oh-library/react-native-system-setting/issues/8)
-- [ ] 由于系统未支持获取飞行模式状态相关接口，HarmonyOS 暂无法实现的接口: [issue#9](https://github.com/react-native-oh-library/react-native-system-setting/issues/9)
-- [ ] 由于系统未支持飞行模式开关监听器相关接口，HarmonyOS 暂无法实现的接口: [issue#10](https://github.com/react-native-oh-library/react-native-system-setting/issues/10)
+- [ ] HarmonyOS does not support certain APIs due to the system volume permission: [issue#3](https://github.com/react-native-oh-library/react-native-system-setting/issues/3).
+- [ ] HarmonyOS does not support certain APIs due to the system brightness and brightness mode permission: [issue#4](https://github.com/react-native-oh-library/react-native-system-setting/issues/4).
+- [ ] HarmonyOS does not support certain APIs due to the system Wi-Fi permission: [issue#5](https://github.com/react-native-oh-library/react-native-system-setting/issues/5).
+- [ ] HarmonyOS does not support certain APIs because the system does not support the deletion of volume listeners: [issue#6](https://github.com/react-native-oh-library/react-native-system-setting/issues/6).
+- [ ] HarmonyOS does not support certain APIs because the system does not support the location service mode listener APIs: [issue#7](https://github.com/react-native-oh-library/react-native-system-setting/issues/7).
+- [ ] HarmonyOS does not support certain APIs because the system does not support the API for obtaining the location service mode: [issue#8](https://github.com/react-native-oh-library/react-native-system-setting/issues/8).
+- [ ] HarmonyOS does not support certain APIs because the system does not support the API for obtaining the airplane mode status: [issue#9](https://github.com/react-native-oh-library/react-native-system-setting/issues/9).
+- [ ] HarmonyOS does not support certain APIs because the system does not support the API for enabling or disabling the airplane mode listener: [issue#10](https://github.com/react-native-oh-library/react-native-system-setting/issues/10).
 
 ## License
 

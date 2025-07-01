@@ -12,7 +12,7 @@
 | Version                   | Package Name                                      | Repository         | Release                    |
 | ------------------------- | ------------------------------------------------- | ------------------ | -------------------------- |
 | <= 0.5.16-0.1.0@deprecated | @react-native-oh-tpl/checkbox | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-checkbox) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-checkbox/releases) |
-| >= 0.5.17                   | @react-native-ohos/checkbox   | [Gitee](https://gitee.com/openharmony-sig/rntpc_react-native-checkbox) | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_react-native-checkbox/releases) |
+| >= 0.5.17                   | @react-native-ohos/checkbox   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-checkbox) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-checkbox/releases) |
 
 ## 1. 安装与使用
 
@@ -290,4 +290,4 @@ ohpm install
 
 ## 8. 开源协议
 
-本项目基于 [The MIT License (MIT)](https://gitee.com/openharmony-sig/rntpc_react-native-checkbox/blob/master/LICENSE) ，请自由地享受和参与开源。
+本项目基于 [The MIT License (MIT)](https://github.com/react-native-checkbox/react-native-checkbox/blob/develop/LICENSE) ，请自由地享受和参与开源。

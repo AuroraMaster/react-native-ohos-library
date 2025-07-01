@@ -84,10 +84,10 @@ const AppContent = () => {
   }, [canStart]) 
 
   React.useEffect(() => {
-    eventEmitter.on('start', () => console.log('start'))
-    eventEmitter.on('stop', () => console.log('stop'))
-    eventEmitter.on('stepChange', () => console.log(`stepChange`))
-    return () => eventEmitter.off('*', null)
+    eventEmitter?.on('start', () => console.log('start'))
+    eventEmitter?.on('stop', () => console.log('stop'))
+    eventEmitter?.on('stepChange', () => console.log(`stepChange`))
+    return () => eventEmitter?.off('*', () => {})
   }, [])
   return (
     <View style={styles.container}>
@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
 
 The HarmonyOS implementation of this library depends on the native code from @react-native-oh-tpl/react-native-svg. If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly. 
 
-If it is not included, follow the guide provided in @react-native-oh-tpl/react-native-svg to add it to your project.
+If it is not included, follow the guide provided in [@react-native-oh-tpl/react-native-svg](https://gitee.com/react-native-oh-library/usage-docs/blob/master/en/react-native-svg-capi.md#link) to add it to your project.
 
 ## Constraints
 

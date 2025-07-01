@@ -42,6 +42,7 @@ yarn add @react-native-oh-tpl/react-native-restart
 > [!WARNING] 使用时 import 的库名不变。
 
 ```js
+import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import RNRestart from 'react-native-restart';
 

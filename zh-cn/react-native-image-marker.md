@@ -323,9 +323,9 @@ ohpm install
 
 | Name        | Description             | Type   | Required | Platform    | HarmonyOS Support |
 | ----------- | ----------------------- | ------ | -------- | ----------- | ----------------- |
-| png  | iamge type png | string | no      | iOS/Android | yes               |
-| jpg | iamge type jpg | string | no      | iOS/Android | yes               |
-| base64 | iamge type base64 | string | no      | iOS/Android | yes               |
+| png  | image type png | string | no      | iOS/Android | yes               |
+| jpg | image type jpg | string | no      | iOS/Android | yes               |
+| base64 | image type base64 | string | no      | iOS/Android | yes               |
 ##### PositionOptions 
 
 | Name        | Description             | Type   | Required | Platform    | HarmonyOS Support |

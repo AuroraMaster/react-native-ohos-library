@@ -82,10 +82,10 @@ const AppContent = () => {
   }, [canStart]) 
 
   React.useEffect(() => {
-    eventEmitter.on('start', () => console.log('start'))
-    eventEmitter.on('stop', () => console.log('stop'))
-    eventEmitter.on('stepChange', () => console.log(`stepChange`))
-    return () => eventEmitter.off('*', null)
+    eventEmitter?.on('start', () => console.log('start'))
+    eventEmitter?.on('stop', () => console.log('stop'))
+    eventEmitter?.on('stepChange', () => console.log(`stepChange`))
+    return () => eventEmitter?.off('*', () => {})
   }, [])
   return (
     <View style={styles.container}>
