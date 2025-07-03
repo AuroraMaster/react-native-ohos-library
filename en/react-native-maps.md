@@ -460,7 +460,7 @@ Check the release version information in the release address of the third-party 
 
 > [!TIP] If you want to use HUAWEI Maps in a self-built project, skip the first step and go to the [HUAWEI Developers](https://developer.huawei.com/consumer/cn/wiki/index.php) platform to apply for the corresponding project and application.
 
-> [!TIP] For details about the configuration, see [Map Kit](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/appgallery-connect-0000001751989088) on the HUAWEI Developers website.
+> [!TIP] For details about the configuration, see [Map Kit](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/map-introduction?ha_source=sousuo&ha_sourceId=89000251) on the HUAWEI Developers website.
 
 The following is an example project configuration.
 

@@ -20,14 +20,14 @@ Find the matching version information in the release address of a third-party li
 
 The HarmonyOS implementation of this library depends on the native code from @react-native-oh-tpl/react-native-reanimated、@react-native-oh-tpl/react-native-gesture-handler. If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly.
 
-If it is not included, follow the guide provided in [@react-native-oh-tpl/react-native-reanimated docs](/zh-cn/react-native-reanimated.md)、[@react-native-oh-tpl/react-native-gesture-handler docs](/zh-cn/react-native-gesture-handler.md) to add it to your project.
+If it is not included, follow the guide provided in [@react-native-oh-tpl/react-native-reanimated docs](/en/react-native-reanimated.md)、[@react-native-oh-tpl/react-native-gesture-handler docs](/en/react-native-gesture-handler.md) to add it to your project.
 
-下面是根据使用组件情况按需引入依赖项:
+The following describes how to introduce dependencies as needed based on the component usage:
 
-- [@react-native-community/blur](/zh-cn/react-native-community-blur.md) （Card 组件）
+- [@react-native-community/blur](/en/react-native-community-blur.md) （**Card** component）
 
-- [@react-native-community/datetimepicker](/zh-cn/react-native-community-datetimepicker.md) （DateTimePicker 组件）
-- [@react-native-community/netinfo](/zh-cn/react-native-community-netinfo.md) （ConnectionStatusBar 组件）
+- [@react-native-community/datetimepicker](/en/react-native-community-datetimepicker.md) （**DateTimePicker** component）
+- [@react-native-community/netinfo](/en/react-native-community-netinfo.md) （**ConnectionStatusBar** component）
 
 Go to the project directory and execute the following instruction:
 
@@ -121,7 +121,7 @@ class MyScreen extends Component {
 
 ## Use Codegen
 
-If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/zh-cn/codegen.md).
+If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
@@ -168,7 +168,7 @@ ohpm install
 
 Method 2: Directly link to the source code.
 
-> [!TIP] For details, see [Directly Linking Source Code](/zh-cn/link-source-code.md).
+> [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
 ### 3. Configuring CMakeLists and Introducing UiLibPackage
 
@@ -310,7 +310,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-**Text**: 文本组件，该组件扩展了[Text](https://reactnative.dev/docs/text)属性。
+**Text**: text component, which extends the [Text](https://reactnative.dev/docs/text) properties.
 
 | Name            | Description                                                                                               | Type                                | Required | Platform    | HarmonyOS Support |
 | --------------- | --------------------------------------------------------------------------------------------------------- | ----------------------------------- | -------- | ----------- | ----------------- |
@@ -323,7 +323,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | underline       | Whether to add an underline                                                                               | boolean                             | no       | iOS/Android | yes               |
 | uppercase       | Whether to change the text to uppercase                                                                   | boolean                             | no       | iOS/Android | yes               |
 
-**TouchableOpacity**: 触摸反馈透明度组件，该组件扩展了[TouchableOpacity](https://reactnative.dev/docs/touchableopacity)属性。
+**TouchableOpacity**: touch feedback opacity component, which extends the [TouchableOpacity](https://reactnative.dev/docs/touchableopacity) properties.
 
 | Name                  | Description                                                                                  | Type                                                                           | Required | Platform    | HarmonyOS Support |
 | --------------------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | -------- | ----------- | ----------------- |
@@ -337,7 +337,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | throttleTime          | Throttle time in MS for onPress callback                                                     | number                                                                         | no       | iOS/Android | yes               |
 | useNative             | Should use an enhanced native implementation with extra features                             | boolean                                                                        | no       | iOS/Android | yes               |
 
-**View**: 容器组件，该组件扩展了[View](https://reactnative.dev/docs/view)属性。
+**View**: container component, which extends the [View](https://reactnative.dev/docs/view) properties.
 
 | Name            | Description                                                    | Type             | Required | Platform    | HarmonyOS Support |
 | --------------- | -------------------------------------------------------------- | ---------------- | -------- | ----------- | ----------------- |
@@ -350,7 +350,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | style           | Custom style                                                   | ViewStyle        | no       | iOS/Android | yes               |
 | useSafeArea     | If true, will render as SafeAreaView                           | boolean          | no       | iOS/Android | yes               |
 
-**ActionBar**: 快速操作栏，每个操作都支持按钮组件道具，该组件扩展了[View](https://wix.github.io/react-native-ui-lib/docs/components/basic/View)属性。
+**ActionBar**: action bar component, which extends the [View](https://wix.github.io/react-native-ui-lib/docs/components/basic/View) properties. Each operation supports the button component.
 
 | Name            | Description                                                           | Type          | Required | Platform    | HarmonyOS Support |
 | --------------- | --------------------------------------------------------------------- | ------------- | -------- | ----------- | ----------------- |
@@ -362,7 +362,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | style           | Component's style                                                     | ViewStyle     | no       | iOS/Android | yes               |
 | useSafeArea     | In iOS, use safe area, in case component attached to the bottom       | boolean       | no       | iOS/Android | yes               |
 
-**Button**: 按钮组件，该组件扩展了[TouchableOpacity](https://wix.github.io/react-native-ui-lib/docs/components/basic/TouchableOpacity)属性。
+**Button**: button component, which extends the [TouchableOpacity](https://wix.github.io/react-native-ui-lib/docs/components/basic/TouchableOpacity) properties.
 
 | Name                     | Description                                                                                                                        | Type                                            | Required | Platform    | HarmonyOS Support |
 | :----------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- | -------- | ----------- | ----------------- |
@@ -396,7 +396,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | size                     | Size of the button [large, medium, small, xSmall]                                                                                  | ButtonSize                                      | no       | iOS/Android | yes               |
 | supportRTL               | whether the icon should flip horizontally on RTL locals                                                                            | boolean                                         | no       | iOS/Android | yes               |
 
-**Checkbox**: 复选框组件，该组件扩展了[TouchableOpacity](https://wix.github.io/react-native-ui-lib/docs/components/basic/TouchableOpacity)属性。
+**Checkbox**: check box component, which extends the [TouchableOpacity](https://wix.github.io/react-native-ui-lib/docs/components/basic/TouchableOpacity) properties.
 
 | Name             | Description                                                                      | Type                       | Required | Platform    | HarmonyOS Support |
 | ---------------- | -------------------------------------------------------------------------------- | -------------------------- | -------- | ----------- | ----------------- |
@@ -417,7 +417,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | style            | Custom styling for the Checkbox                                                  | ViewStyle                  | no       | iOS/Android | yes               |
 | value            | The Checkbox value. If true the switch will be turned on. Default value is false | boolean                    | no       | iOS/Android | yes               |
 
-**Chip**: 芯片组件，该组件扩展了[TouchableOpacity](https://wix.github.io/react-native-ui-lib/docs/components/basic/TouchableOpacity)，[View](https://wix.github.io/react-native-ui-lib/docs/components/basic/View)属性。
+**Chip**: chip component, which extends the [TouchableOpacity](https://wix.github.io/react-native-ui-lib/docs/components/basic/TouchableOpacity) and [View](https://wix.github.io/react-native-ui-lib/docs/components/basic/View) properties.
 
 | Name                  | Description                                                                  | Type                                      | Required | Platform    | HarmonyOS Support |
 | --------------------- | ---------------------------------------------------------------------------- | ----------------------------------------- | -------- | ----------- | ----------------- |
@@ -446,7 +446,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | useCounter            | Display badge as counter (no background)                                     | boolean                                   | no       | iOS/Android | yes               |
 | useSizeAsMinimum      | Uses size as minWidth and minHeight                                          | boolean                                   | no       | iOS/Android | yes               |
 
-**RadioButton**: 单选按钮组件。
+**RadioButton**: radio button component.
 
 | Name           | Description                                                                                           | Type                        | Required | Platform    | HarmonyOS Support |
 | -------------- | ----------------------------------------------------------------------------------------------------- | --------------------------- | -------- | ----------- | ----------------- |
@@ -465,14 +465,14 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | size           | The size of the radio button, affect both width & height                                              | number                      | no       | iOS/Android | yes               |
 | value          | The identifier value of the radio button. must be different than other RadioButtons in the same group | string \| number \| boolean | no       | iOS/Android | yes               |
 
-**RadioGroup**: 包裹单选按钮组件，和 RadioButton 配合使用。
+**RadioGroup**: wraps the **RadioButton** component and is used together with it.
 
 | Name          | Description                                                                         | Type                                                                                                         | Required | Platform    | HarmonyOS Support |
 | ------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | -------- | ----------- | ----------------- |
 | initialValue  | The initial value of the selected radio button                                      | string \| number \| boolean                                                                                  | no       | iOS/Android | yes               |
 | onValueChange | Invoked once when value changes, by selecting one of the radio buttons in the group | ((value?: string) => void)\|((value?: number) => void)\|((value?: boolean) => void)\|((value?: any) => void) | no       | iOS/Android | yes               |
 
-**Slider**: 滑块组件。
+**Slider**: slider component.
 
 | Name                  | Description                                                                               | Type                                 | Required | Platform    | HarmonyOS Support |
 | --------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------ | -------- | ----------- | ----------------- |
@@ -504,7 +504,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | useRange              | If true the Slider will display a second thumb for the min value                          | boolean                              | no       | iOS/Android | yes               |
 | value                 | Initial value                                                                             | number                               | no       | iOS/Android | yes               |
 
-**Switch**: 开关切换组件。
+**Switch**: switch component.
 
 | Name          | Description                                                                           | Type                     | Required | Platform    | HarmonyOS Support |
 | ------------- | ------------------------------------------------------------------------------------- | ------------------------ | -------- | ----------- | ----------------- |
@@ -523,7 +523,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | value         | The value of the switch. If true the switch will be turned on. Default value is false | boolean                  | no       | iOS/Android | yes               |
 | width         | The Switch width                                                                      | number                   | no       | iOS/Android | yes               |
 
-**ChipsInput**: 芯片输入组件，该组件扩展了[TextField](https://wix.github.io/react-native-ui-lib/docs/components/form/TextField)属性。
+**ChipsInput**: chip input component, which extends the [TextField](https://wix.github.io/react-native-ui-lib/docs/components/form/TextField) properties.
 
 | Name             | Description                                          | Type                                          | Required | Platform    | HarmonyOS Support |
 | ---------------- | ---------------------------------------------------- | --------------------------------------------- | -------- | ----------- | ----------------- |
@@ -532,7 +532,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | maxChips         | The maximum chips to allow adding                    | number                                        | no       | iOS/Android | yes               |
 | onChange         | Callback for chips change (adding or removing chip)  | (newChips, changeReason, updatedChip) => void | no       | iOS/Android | yes               |
 
-**ColorPalette**: 调色板组件。
+**ColorPalette**: color palette component.
 
 | Name            | Description                                                                     | Type                                          | Required | Platform    | HarmonyOS Support |
 | --------------- | ------------------------------------------------------------------------------- | --------------------------------------------- | -------- | ----------- | ----------------- |
@@ -550,7 +550,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | usePagination   | Whether to use pagination when number of colors exceeds the number of rows      | boolean                                       | no       | iOS/Android | yes               |
 | value           | The value of the selected swatch                                                | string                                        | no       | iOS/Android | yes               |
 
-**ColorPicker**: 选色器组件。
+**ColorPicker**: color picker component.
 
 | Name                | Description                                                       | Type                                                                           | Required | Platform    | HarmonyOS Support |
 | ------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------ | -------- | ----------- | ----------------- |
@@ -562,7 +562,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | testID              | The test id for e2e tests                                         | string                                                                         | no       | iOS/Android | yes               |
 | value               | The value of the selected swatch                                  | string                                                                         | no       | iOS/Android | yes               |
 
-**ColorSwatch**: 颜色样板组件。
+**ColorSwatch**: color swatch component.
 
 | Name        | Description                                                                                                                    | Type                                          | Required | Platform    | HarmonyOS Support |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------- | -------- | ----------- | ----------------- |
@@ -577,7 +577,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | unavailable | Is the initial state is unavailable                                                                                            | boolean                                       | no       | iOS/Android | yes               |
 | value       | Must be different than other ColorSwatches in the same group，The identifier value of the ColorSwatch in a ColorSwatch palette | string                                        | no       | iOS/Android | yes               |
 
-**DateTimePicker**: 时间选择组件，该组件扩展了[TextField](https://wix.github.io/react-native-ui-lib/docs/components/form/TextField)属性，依赖[@react-native-community/datetimepicker](/zh-cn/react-native-community-datetimepicker)库。
+**DateTimePicker**: date and time picker component, which extends the [TextField](https://wix.github.io/react-native-ui-lib/docs/components/form/TextField) properties and depends on the [@react-native-community/datetimepicker](/en/react-native-community-datetimepicker) library.
 
 | Name                    | Description                                                                                                                                                                                                                                                                                                                                                                             | Type                                              | Required | Platform    | HarmonyOS Support |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- | -------- | ----------- | ----------------- |
@@ -598,14 +598,14 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | timeZoneOffsetInMinutes | iOS only, Allows changing of the timeZone of the date picker. By default it uses the device's time zone                                                                                                                                                                                                                                                                                 | number                                            | no       | iOS         | yes               |
 | value                   | Defaults to device's date and time, The initial value to set the picker to                                                                                                                                                                                                                                                                                                              | Date                                              | no       | iOS/Android | yes               |
 
-**MaskedInput**: 掩码输入组件，该组件扩展了[TextInput](https://reactnative.dev/docs/textinput)属性。
+**MaskedInput**: mask input component, which extends the [TextInput](https://reactnative.dev/docs/textinput) properties.
 
 | Name             | Description                                                                            | Type               | Required | Platform    | HarmonyOS Support |
 | ---------------- | -------------------------------------------------------------------------------------- | ------------------ | -------- | ----------- | ----------------- |
 | containerStyle   | container style for the masked input container                                         | ViewStyle          | no       | iOS/Android | yes               |
 | renderMaskedText | callback for rendering the custom input out of the value returns from the actual input | React.ReactElement | no       | iOS/Android | yes               |
 
-**NumberInput**: 数字输入框组件。
+**NumberInput**: number box component.
 
 | Name              | Description                                                                                         | Type                            | Required | Platform    | HarmonyOS Support |
 | ----------------- | --------------------------------------------------------------------------------------------------- | ------------------------------- | -------- | ----------- | ----------------- |
@@ -620,7 +620,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | trailingText      | A trailing text                                                                                     | string                          | no       | iOS/Android | yes               |
 | trailingTextStyle | The style of the trailing text                                                                      | ViewStyle                       | no       | iOS/Android | yes               |
 
-**Picker**: 弹窗选择组件。
+**Picker**: dialog box picker component.
 
 | Name               | Description                                                                                            | Type                                                                  | Required | Platform    | HarmonyOS Support |
 | ------------------ | ------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------- | -------- | ----------- | ----------------- |
@@ -649,7 +649,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | useWheelPicker     | Use wheel picker instead of a list picker                                                              | boolean                                                               | no       | iOS/Android | yes               |
 | value              | Picker current value                                                                                   | string \| number                                                      | no       | iOS/Android | yes               |
 
-**Picker.Item**: 弹窗选择 Item 组件，配合 Picker 组件使用。
+**Picker.Item**: dialog box item picker component, which is used together with the **Picker** component.
 
 | Name              | Description                                                           | Type                                                                      | Required | Platform    | HarmonyOS Support |
 | ----------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------- | -------- | ----------- | ----------------- |
@@ -664,7 +664,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | selectedIconColor | Pass to change the selected icon color                                | ImageSource                                                               | no       | iOS/Android | yes               |
 | value             | Item's value                                                          | string \| number                                                          | no       | iOS/Android | yes               |
 
-**SectionsWheelPicker**: 滚动选择组件。
+**SectionsWheelPicker**: scrolling picker component.
 
 | Name                | Description                                         | Type             | Required | Platform    | HarmonyOS Support |
 | ------------------- | --------------------------------------------------- | ---------------- | -------- | ----------- | ----------------- |
@@ -677,7 +677,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | testID              | The component test id                               | string           | no       | iOS/Android | yes               |
 | textStyle           | Row text style                                      | TextStyle        | no       | iOS/Android | yes               |
 
-**SegmentedControl**: 切换值组件。
+**SegmentedControl**: value-switching component.
 
 | Name                  | Description                                     | Type                      | Required | Platform    | HarmonyOS Support |
 | --------------------- | ----------------------------------------------- | ------------------------- | -------- | ----------- | ----------------- |
@@ -698,7 +698,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | testID                | Component test id                               | string                    | no       | iOS/Android | yes               |
 | throttleTime          | Trailing throttle time of changing index in ms. | number                    | no       | iOS/Android | yes               |
 
-**Stepper**: 步进器组件。
+**Stepper**: stepper component.
 
 | Name               | Description                                         | Type                                     | Required | Platform    | HarmonyOS Support |
 | ------------------ | --------------------------------------------------- | ---------------------------------------- | -------- | ----------- | ----------------- |
@@ -712,7 +712,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | testID             | Test id for component                               | string                                   | no       | iOS/Android | yes               |
 | value              | Stepper value                                       | number                                   | no       | iOS/Android | yes               |
 
-**TextField**: 文本域组件，扩展了[TextInput](https://reactnative.dev/docs/textinput)属性。
+**TextField**: text field component, which extends the [TextInput](https://reactnative.dev/docs/textinput) properties.
 
 | Name                      | Description                                                                                            | Type                                                         | Required | Platform    | HarmonyOS Support |
 | ------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------ | -------- | ----------- | ----------------- |
@@ -754,7 +754,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | validationMessagePosition | The position of the validation message (top/bottom)                                                    | ValidationMessagePosition                                    | no       | iOS/Android | yes               |
 | validationMessageStyle    | Custom style for the validation message                                                                | TextStyle                                                    | no       | iOS/Android | yes               |
 
-**WheelPicker**: 轮式拾取器组件。
+**WheelPicker**: wheel picker component.
 
 | Name                | Description                                                                                 | Type                                            | Required | Platform    | HarmonyOS Support |
 | ------------------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------- | -------- | ----------- | ----------------- |
@@ -775,7 +775,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | testID              | test identifier                                                                             | string                                          | no       | iOS/Android | yes               |
 | textStyle           | Row text custom style                                                                       | TextStyle                                       | no       | iOS/Android | yes               |
 
-**Incubator.Dialog**: 弹出对话框组件。
+**Incubator.Dialog**: popup dialog component.
 
 | Name                  | Description                                                                                                                                                                                                     | Type                          | Required | Platform    | HarmonyOS Support |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | -------- | ----------- | ----------------- |
@@ -789,7 +789,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | testID                | Used to locate this view in end-to-end tests.The container has the original id.Supported inner elements IDs:`${TestID}.modal` - the Modal's id.`${TestID}. overlayFadingBackground` - the fading background id. | string                        | no       | iOS/Android | yes               |
 | visible               | The visibility of the dialog                                                                                                                                                                                    | boolean                       | no       | iOS/Android | yes               |
 
-**Dialog.Header**: 弹窗头部组件。
+**Dialog.Header**: dialog box header component.
 
 | Name                  | Description                                                                         | Type                 | Required | Platform    | HarmonyOS Support |
 | --------------------- | ----------------------------------------------------------------------------------- | -------------------- | -------- | ----------- | ----------------- |
@@ -808,7 +808,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | topAccessory          | Pass to render a top element above the title                                        | ReactElement         | no       | iOS/Android | yes               |
 | trailingAccessory     | Pass to render a trailing element                                                   | ReactElement         | no       | iOS/Android | yes               |
 
-**Incubator.Slider**: 滑块组件。
+**Incubator.Slider**: slider component.
 
 | Name                   | Description                                                                               | Type                                 | Required | Platform    | HarmonyOS Support |
 | ---------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------ | -------- | ----------- | ----------------- |
@@ -843,7 +843,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | useRange               | If true the Slider will display a second thumb for the min value                          | boolean                              | no       | iOS/Android | yes               |
 | value                  | Initial value                                                                             | number                               | no       | iOS/Android | yes               |
 
-**Incubator.Toast**: 非中断式弹窗组件。
+**Incubator.Toast**: non-interruptive dialog box component.
 
 | Name                 | Description                                                                                                                                                               | Type                                                           | Required | Platform    | HarmonyOS Support |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- | -------- | ----------- | ----------------- |
@@ -871,7 +871,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | visible              | Whether to show or hide the toast                                                                                                                                         | boolean                                                        | no       | iOS/Android | yes               |
 | zIndex               | Custom zIndex for toast                                                                                                                                                   | number                                                         | no       | iOS/Android | yes               |
 
-**Dash**: 阔折现组件。
+**Dash**: dash line component.
 
 | Name           | Description                           | Type      | Required | Platform    | HarmonyOS Support |
 | -------------- | ------------------------------------- | --------- | -------- | ----------- | ----------------- |
@@ -883,7 +883,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | thickness      | The thickness of the dashes           | number    | no       | iOS/Android | yes               |
 | vertical       | Is the dashed line should be vertical | boolean   | no       | iOS/Android | yes               |
 
-**ExpandableSection**: 展开收起组件。
+**ExpandableSection**: expandable component.
 
 | Name          | Description                                              | Type            | Required | Platform    | HarmonyOS Support |
 | ------------- | -------------------------------------------------------- | --------------- | -------- | ----------- | ----------------- |
@@ -894,7 +894,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | testID        | testing identifier                                       | string          | no       | iOS/Android | yes               |
 | top           | Should it open above the 'sectionHeader'                 | boolean         | no       | iOS/Android | yes               |
 
-**Fader**: 渐变淡入淡出组件。
+**Fader**: gradient fader component.
 
 | Name      | Description                                        | Type                         | Required | Platform    | HarmonyOS Support |
 | --------- | -------------------------------------------------- | ---------------------------- | -------- | ----------- | ----------------- |
@@ -903,7 +903,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | tintColor | Change the tint color of the fade view             | string                       | no       | iOS/Android | yes               |
 | visible   | Whether the fader is visible (default is true)     | boolean                      | no       | iOS/Android | yes               |
 
-**Gradient**: 渐变色组件。
+**Gradient**: gradient component.
 
 | Name          | Description                       | Type          | Required | Platform    | HarmonyOS Support |
 | ------------- | --------------------------------- | ------------- | -------- | ----------- | ----------------- |
@@ -912,7 +912,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | style         | Additional style to the component | ViewStyle     | no       | iOS/Android | yes               |
 | type          | hue \| lightness \| saturation    | GradientTypes | no       | iOS/Android | yes               |
 
-**KeyboardAccessoryView**: 键盘附件视图。
+**KeyboardAccessoryView**: keyboard accessory view.
 
 | Name                  | Description                                                                                                | Type                     | Required | Platform    | HarmonyOS Support |
 | --------------------- | ---------------------------------------------------------------------------------------------------------- | ------------------------ | -------- | ----------- | ----------------- |
@@ -925,13 +925,13 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | onRequestShowKeyboard | Callback that will be called if KeyboardRegistry.requestShowKeyboard is called.                            | () => void               | no       | iOS/Android | no                |
 | renderContent         | Content to be rendered above the keyboard                                                                  | () => React.ReactElement | no       | iOS/Android | yes               |
 
-**KeyboardAwareInsetsView**: 用于在使用键盘时添加插入，可能会隐藏部分屏幕，该组件扩展了[KeyboardTrackingView](https://wix.github.io/react-native-ui-lib/docs/components/infra/KeyboardTrackingView)属性，此组件仅适用与 iOS。
+**KeyboardAwareInsetsView**: adds insets when the keyboard is in use, which may hide parts of the screen. This component extends the [KeyboardTrackingView](https://wix.github.io/react-native-ui-lib/docs/components/infra/KeyboardTrackingView) properties and is applicable only to iOS.
 
 | Name                    | Description                                                                     | Type      | Required | Platform | HarmonyOS Support |
 | ----------------------- | ------------------------------------------------------------------------------- | --------- | -------- | -------- | ----------------- |
 | KeyboardAwareInsetsView | Used to add an inset when a keyboard is used and might hide part of the screen. | Component | no       | iOS      | no                |
 
-**KeyboardRegistry**: 用于注册键盘并在键盘上执行某些操作。
+**KeyboardRegistry**: used to register the keyboard and perform certain operations on it.
 
 | Name                | Description                                                                                                                                                                                                                                    | Type            | Required | Platform    | HarmonyOS Support |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | -------- | ----------- | ----------------- |
@@ -945,7 +945,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | removeListeners     | Remove a listener for a callback. globalID (string) - ID that includes the componentID and the event name (i.e. if componentID='kb1' globalID='kb1.onItemSelected')                                                                            | static function | no       | iOS/Android | yes               |
 | requestShowKeyboard | Request to show the keyboard componentID (string) - the ID of the keyboard.                                                                                                                                                                    | static function | no       | iOS/Android | yes               |
 
-**KeyboardTrackingView**: 为该视图及其子视图启用“键盘跟踪”的 UI 组件。通常用于该视图内有 TextField 或 TextInput 的情况，该组件仅适用于 iOS。
+**KeyboardTrackingView**: UI component for enabling keyboard tracking for the view and its sub-views. This component is used when the view contains **TextField** or **TextInput** and is applicable only to iOS.
 
 | Name                                 | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Type      | Required | Platform | HarmonyOS Support |
 | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | -------- | -------- | ----------------- |
@@ -963,7 +963,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | useSafeArea                          | Whether or not to handle SafeArea.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | boolean   | no       | iOS      | no                |
 | usesBottomTabs                       | Whether or not to include bottom tab bar inset.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | boolean   | no       | iOS      | no                |
 
-**Overlay**: 带类型覆盖视图，为 Image 组件属性，扩展了[image](https://reactnative.dev/docs/image)组件。
+**Overlay**: type-specific overlay view for the **Image** component, which extends the [image](https://reactnative.dev/docs/image) component.
 
 | Name          | Description                                               | Type                                                 | Required | Platform    | HarmonyOS Support |
 | ------------- | --------------------------------------------------------- | ---------------------------------------------------- | -------- | ----------- | ----------------- |
@@ -972,7 +972,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | intensity     | The intensity of the gradient.                            | low \|medium \|high                                  | no       | iOS/Android | yes               |
 | type          | The type of overlay to set on top of the image            | vertical \| top \| bottom \| solid (OverlayTypeType) | no       | iOS/Android | yes               |
 
-**Card**: 卡片组件，扩展了[TouchableOpacity](https://wix.github.io/react-native-ui-lib/docs/components/basic/TouchableOpacity)组件，依赖[@react-native-community/blur](/zh-cn/react-native-community-blur.md)。
+**Card**: card component, which extends the [TouchableOpacity](https://wix.github.io/react-native-ui-lib/docs/components/basic/TouchableOpacity) component and depends on [@react-native-community/blur](/en/react-native-community-blur.md).
 
 | Name             | Description                                                                                             | Type                 | Required | Platform    | HarmonyOS Support |
 | ---------------- | ------------------------------------------------------------------------------------------------------- | -------------------- | -------- | ----------- | ----------------- |
@@ -989,7 +989,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | selectionOptions | Custom options for styling the selection indication                                                     | CardSelectionOptions | no       | iOS/Android | yes               |
 | width            | Card custom width                                                                                       | number \| string     | no       | iOS/Android | yes               |
 
-**Card.Image**: Card 组件的内部组件（最好是直接子组件），扩展了[Image](https://wix.github.io/react-native-ui-lib/docs/components/media/Image)组件。
+**Card.Image**: internal component (preferably a direct subcomponent) of the **Card** component, which extends the [Image](https://wix.github.io/react-native-ui-lib/docs/components/media/Image) component.
 
 | Name     | Description                                                                                                                                                                                                                  | Type     | Required | Platform    | HarmonyOS Support |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | ----------- | ----------------- |
@@ -997,7 +997,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | position | The Image position which determines the appropriate flex-ness of the image and border radius (for Android) this prop derived automatically from Card parent component if it rendered as a direct child of the Card component | string[] | no       | iOS/Android | yes               |
 | width    | Width                                                                                                                                                                                                                        | number   | no       | iOS/Android | yes               |
 
-**Card.Section**: 用于在 Card 组件内轻松渲染内容的内部组件，扩展了[View](https://wix.github.io/react-native-ui-lib/docs/components/basic/View)组件。
+**Card.Section**: internal component used to easily render content in the **Card** component, which extends the [View](https://wix.github.io/react-native-ui-lib/docs/components/basic/View) component.
 
 | Name            | Description                                                                              | Type                | Required | Platform    | HarmonyOS Support |
 | --------------- | ---------------------------------------------------------------------------------------- | ------------------- | -------- | ----------- | ----------------- |
@@ -1010,7 +1010,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | leadingIcon     | Image props for a leading icon to render before the text                                 | ImageProps          | no       | iOS/Android | yes               |
 | trailingIcon    | Image props for a trailing icon to render after the text                                 | ImageProps          | no       | iOS/Android | yes               |
 
-**Carousel**: 轮播组件，扩展了[ScrollView](https://reactnative.dev/docs/scrollview)组件。
+**Carousel**: carousel component, which extends the [ScrollView](https://reactnative.dev/docs/scrollview) component.
 
 | Name                      | Description                                                                                                                              | Type                                    | Required | Platform    | HarmonyOS Support |
 | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- | -------- | ----------- | ----------------- |
@@ -1036,7 +1036,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | pagingEnabled             | Will block multiple pages scroll (will not work with 'pageWidth' prop)                                                                   | boolean                                 | no       | iOS/Android | yes               |
 | showCounter               | Whether to show a page counter (will not work with 'pageWidth' prop)                                                                     | boolean                                 | no       | iOS/Android | yes               |
 
-**LoaderScreen**: 全屏显示组件，通常用于页面加载 loading，扩展了[Activityindicator](https://reactnative.dev/docs/activityindicator)组件。
+**LoaderScreen**: full-screen display component for page loading, which extends the [Activityindicator](https://reactnative.dev/docs/activityindicator) component.
 
 | Name            | Description                                                  | Type             | Required | Platform    | HarmonyOS Support |
 | --------------- | ------------------------------------------------------------ | ---------------- | -------- | ----------- | ----------------- |
@@ -1048,7 +1048,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | messageStyle    | message style                                                | TextStyle        | no       | iOS/Android | yes               |
 | overlay         | Show the screen as an absolute overlay                       | boolean          | no       | iOS/Android | yes               |
 
-**StackAggregator**: 堆栈聚合器组件。
+**StackAggregator**: stack aggregator component.
 
 | Name                  | Description                                                                 | Type                         | Required | Platform    | HarmonyOS Support |
 | --------------------- | --------------------------------------------------------------------------- | ---------------------------- | -------- | ----------- | ----------------- |
@@ -1063,7 +1063,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | onCollapseWillChange  | A callback for collapse state will change (value is future collapsed state) | (changed: boolean) => void   | no       | iOS/Android | yes               |
 | onItemPress           | A callback for item press                                                   | (index: number) => void      | no       | iOS/Android | yes               |
 
-**StateScreen**: 显示全屏组件。
+**StateScreen**: full-screen display component.
 
 | Name        | Description                                                                        | Type           | Required | Platform    | HarmonyOS Support |
 | ----------- | ---------------------------------------------------------------------------------- | -------------- | -------- | ----------- | ----------------- |
@@ -1073,7 +1073,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | testID      | Use to identify the container in tests                                             | string         | no       | iOS/Android | yes               |
 | title       | To to show as the title                                                            | string         | no       | iOS/Android | yes               |
 
-**Drawer**: 抽屉组件，如果您的应用程序与 RNN 配合使用，则您的屏幕必须使用“react-native-gesture-handler”中的 gestureHandlerRootHOC 进行包装。请参阅[这里](https://kmagiera.github.io/react-native-gesture-handler/docs/getting-started.html#with-wix-react-native-navigation-https-githubcom-wix-react-native-navigation)。
+**Drawer**: drawer component. If your app works with RNN, your screen must be packaged using **gestureHandlerRootHOC** in **react-native-gesture-handler**. [Check for details](https://kmagiera.github.io/react-native-gesture-handler/docs/getting-started.html#with-wix-react-native-navigation-https-githubcom-wix-react-native-navigation).
 
 | Name                 | Description                                                                                   | Type                                                  | Required | Platform    | HarmonyOS Support |
 | -------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------- | -------- | ----------- | ----------------- |
@@ -1102,7 +1102,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | testID               | The test id for e2e tests                                                                     | string                                                | no       | iOS/Android | yes               |
 | useNativeAnimations  | Perform the animation in natively                                                             | boolean                                               | no       | iOS/Android | yes               |
 
-**GridList**: 网格列表组件，扩展了[FlatList](https://reactnative.dev/docs/flatlist)组件。
+**GridList**: grid list component, which extends the [FlatList](https://reactnative.dev/docs/flatlist) component.
 
 | Name                  | Description                                                                                                                                | Type                                | Required | Platform    | HarmonyOS Support |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------- | -------- | ----------- | ----------------- |
@@ -1114,7 +1114,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | maxItemWidth          | Allow a responsive item width to the maximum item width                                                                                    | number                              | no       | iOS/Android | yes               |
 | numColumns            | Number of items to show in a row (ignored when passing maxItemWidth)                                                                       | number                              | no       | iOS/Android | yes               |
 
-**GridListItem**: 单个网格视图/列表项组件。
+**GridListItem**: single grid view/list item component.
 
 | Name                      | Description                                                 | Type                               | Required | Platform    | HarmonyOS Support |
 | ------------------------- | ----------------------------------------------------------- | ---------------------------------- | -------- | ----------- | ----------------- |
@@ -1143,7 +1143,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | titleLines                | Title content number of lines                               | number                             | no       | iOS/Android | yes               |
 | titleTypography           | Title content typography                                    | string                             | no       | iOS/Android | yes               |
 
-**GridView**: 网格视图组件。
+**GridView**: grid view component.
 
 | Name                 | Description                                                                                                                                | Type                                            | Required | Platform    | HarmonyOS Support |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------- | -------- | ----------- | ----------------- |
@@ -1156,7 +1156,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | renderCustomItem     | Pass to render a custom item                                                                                                               | (item: GridListItemProps) => React.ReactElement | no       | iOS/Android | yes               |
 | viewWidth            | pass the desired grid view width (will improve loading time)                                                                               | number                                          | no       | iOS/Android | yes               |
 
-**ListItem**: 列表中列表项组件，该组件扩展了[TouchableOpacity](https://reactnative.dev/docs/touchableopacity)属性。
+**ListItem**: list item component within a list, which extends the [TouchableOpacity](https://reactnative.dev/docs/touchableopacity) properties.
 
 | Name             | Description                                | Type                                                         | Required | Platform    | HarmonyOS Support |
 | ---------------- | ------------------------------------------ | ------------------------------------------------------------ | -------- | ----------- | ----------------- |
@@ -1169,7 +1169,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | testID           | The test id for e2e tests                  | string                                                       | no       | iOS/Android | yes               |
 | underlayColor    | The inner element pressed backgroundColor  | string                                                       | no       | iOS/Android | yes               |
 
-**ListItem.Part**: 用于在 ListItem 内进行布局的子 ListItem 组件。
+**ListItem.Part**: sub-component of **ListItem** used for layout within a ListItem.
 
 | Name           | Description                                   | Type      | Required | Platform    | HarmonyOS Support |
 | -------------- | --------------------------------------------- | --------- | -------- | ----------- | ----------------- |
@@ -1180,7 +1180,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | right          | this part content will be aligned to right    | boolean   | no       | iOS/Android | yes               |
 | row            | this part content direction will be row       | boolean   | no       | iOS/Android | yes               |
 
-**SortableGridList**: 可排序网格列表组件，该组件扩展了[GridList](https://wix.github.io/react-native-ui-lib/docs/components/lists/GridList)组件属性。
+**SortableGridList**: sortable grid list component, which extends the [GridList](https://wix.github.io/react-native-ui-lib/docs/components/lists/GridList) properties.
 
 | Name          | Description                                                                                                                                                                                           | Type                                         | Required | Platform    | HarmonyOS Support |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | -------- | ----------- | ----------------- |
@@ -1189,7 +1189,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | onOrderChange | Order change callback                                                                                                                                                                                 | (newData: T[], newOrder: ItemsOrder) => void | no       | iOS/Android | yes               |
 | renderItem    | Custom render item callback                                                                                                                                                                           | FlatListProps ['renderItem']                 | no       | iOS/Android | yes               |
 
-**SortableList**: 可排序列表组件，该组件扩展了[FlatList](https://reactnative.dev/docs/flatlist)组件属性。
+**SortableList**: sortable list component, which extends the [FlatList](https://reactnative.dev/docs/flatlist) properties.
 
 | Name          | Description                                                                                                                                                                                                           | Type                                                                                               | Required | Platform    | HarmonyOS Support |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------- | ----------- | ----------------- |
@@ -1199,7 +1199,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | onOrderChange | A callback to get the new order (or swapped items).                                                                                                                                                                   | (data: ItemT[]) => void                                                                            | no       | iOS/Android | yes               |
 | scale         | Scale the item once dragged.                                                                                                                                                                                          | number                                                                                             | no       | iOS/Android | yes               |
 
-**Timeline**: 时间线组件，该组件扩展了[View](https://reactnative.dev/docs/view)组件属性。
+**Timeline**: timeline component, which extends the [View](https://reactnative.dev/docs/view) properties.
 
 | Name            | Description                                                                              | Type                               | Required | Platform    | HarmonyOS Support |
 | --------------- | ---------------------------------------------------------------------------------------- | ---------------------------------- | -------- | ----------- | ----------------- |
@@ -1211,7 +1211,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | testID          | The test id for e2e tests                                                                | string                             | no       | iOS/Android | yes               |
 | topLine         | The top line props                                                                       | LineProps                          | no       | iOS/Android | yes               |
 
-**AnimatedImage**: 图像加载后以动画淡入的图像组件，该组件扩展了[Image](https://wix.github.io/react-native-ui-lib/docs/components/media/Image)组件属性。
+**AnimatedImage**: image component that fades in with animation after the image is loaded, which extends the [Image](https://wix.github.io/react-native-ui-lib/docs/components/media/Image) properties.
 
 | Name              | Description                                              | Type        | Required | Platform    | HarmonyOS Support |
 | ----------------- | -------------------------------------------------------- | ----------- | -------- | ----------- | ----------------- |
@@ -1219,7 +1219,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | containerStyle    | Additional spacing styles for the container              | ViewStyle   | no       | iOS/Android | yes               |
 | loader            | A component to render while the image is loading         | JSX.element | no       | iOS/Android | yes               |
 
-**AnimatedScanner**: 该组件扩展了[Animated.View](https://reactnative.dev/docs/animated)组件属性。
+**AnimatedScanner**: extends the [Animated.View](https://reactnative.dev/docs/animated) properties.
 
 | Name            | Description                                              | Type                         | Required | Platform    | HarmonyOS Support |
 | --------------- | -------------------------------------------------------- | ---------------------------- | -------- | ----------- | ----------------- |
@@ -1232,7 +1232,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | progress        | Animated value between 0 and 100                         | number                       | no       | iOS/Android | yes               |
 | testID          | Used as a testing identifier                             | string                       | no       | iOS/Android | yes               |
 
-**Avatar**: 头像组件，该组件扩展了[TouchableOpacity](https://wix.github.io/react-native-ui-lib/docs/components/basic/TouchableOpacity)，[Image](https://wix.github.io/react-native-ui-lib/docs/components/media/Image)组件属性。
+**Avatar**: avatar component, which extends the [TouchableOpacity](https://wix.github.io/react-native-ui-lib/docs/components/basic/TouchableOpacity) and [Image](https://wix.github.io/react-native-ui-lib/docs/components/media/Image) properties.
 
 | Name             | Description                                                                                                                                                                          | Type                                              | Required | Platform    | HarmonyOS Support |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------- | -------- | ----------- | ----------------- |
@@ -1262,7 +1262,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | testID           | Test identifier                                                                                                                                                                      | string                                            | no       | iOS/Android | yes               |
 | useAutoColors    | Hash the name (or label) to get a color, so each name will have a specific color. Default is false.                                                                                  | boolean                                           | no       | iOS/Android | yes               |
 
-**Icon**: 图标组件，该组件扩展了[Image](https://reactnative.dev/docs/image)组件属性。
+**Icon**: icon component, which extends the [Image](https://reactnative.dev/docs/image) properties.
 
 | Name        | Description                                              | Type              | Required | Platform    | HarmonyOS Support |
 | ----------- | -------------------------------------------------------- | ----------------- | -------- | ----------- | ----------------- |
@@ -1273,7 +1273,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | supportRTL  | whether the image should flip horizontally on RTL locals | boolean           | no       | iOS/Android | yes               |
 | tintColor   | The icon tint                                            | string            | no       | iOS/Android | yes               |
 
-**Image**: 图片组件，该组件扩展了[Image](https://reactnative.dev/docs/image)组件属性。
+**Image**: image component, which extends the [Image](https://reactnative.dev/docs/image) properties.
 
 | Name                   | Description                                                                                                                                                       | Type                                | Required | Platform    | HarmonyOS Support |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- | -------- | ----------- | ----------------- |
@@ -1293,7 +1293,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | tintColor              | the asset tint                                                                                                                                                    | string                              | no       | iOS/Android | yes               |
 | useBackgroundContainer | Use a container for the Image, this can solve issues on Android when animation needs to be performed on the same view; i.e. animation related crashes on Android. | boolean                             | no       | iOS/Android | yes               |
 
-**Marquee**: 滑动文本组件。
+**Marquee**: scrolling text component.
 
 | Name           | Description                             | Type               | Required | Platform    | HarmonyOS Support |
 | -------------- | --------------------------------------- | ------------------ | -------- | ----------- | ----------------- |
@@ -1304,13 +1304,13 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | labelStyle     | Marquee label style                     | TextProps['style'] | no       | iOS/Android | yes               |
 | numberOfReps   | Marquee animation number of repetitions | number             | no       | iOS/Android | yes               |
 
-**ProgressiveImage**: 带动画的图像组件，该组件扩展了[AnimatedImage](https://wix.github.io/react-native-ui-lib/docs/components/media/AnimatedImage)组件属性。
+**ProgressiveImage**: image component with animation, which extends the [AnimatedImage](https://wix.github.io/react-native-ui-lib/docs/components/media/AnimatedImage) properties.
 
 | Name            | Description                                                            | Type        | Required | Platform    | HarmonyOS Support |
 | --------------- | ---------------------------------------------------------------------- | ----------- | -------- | ----------- | ----------------- |
 | thumbnailSource | Small thumbnail source to display while the full-size image is loading | ImageSource | no       | iOS/Android | yes               |
 
-**PageControl**: 页面指示器组件。
+**PageControl**: page indicator component.
 
 | Name            | Description                                                                                                                                                                                                 | Type                               | Required | Platform    | HarmonyOS Support |
 | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | -------- | ----------- | ----------------- |
@@ -1326,7 +1326,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | spacing         | The space between the siblings page indicators                                                                                                                                                              | number                             | no       | iOS/Android | yes               |
 | testID          | Used to identify the pageControl in tests                                                                                                                                                                   | string                             | no       | iOS/Android | yes               |
 
-**TabController**: 具有延迟加载机制的选项卡控制器组件，该组件基于 react-native-gesture-handler，使用 react-native-navigation 时，请确保使用 gestureHandlerRootHOC 包裹屏幕。
+**TabController**: tab controller component with the lazy loading mechanism. This component is based on **react-native-gesture-handler**. When using **react-native-navigation**, ensure that **gestureHandlerRootHOC** is used to wrap the screen.
 
 | Name              | Description                                                              | Type                                               | Required | Platform    | HarmonyOS Support |
 | ----------------- | ------------------------------------------------------------------------ | -------------------------------------------------- | -------- | ----------- | ----------------- |
@@ -1336,13 +1336,13 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | items             | The list of tab bar items                                                | TabControllerItemProps []                          | no       | iOS/Android | yes               |
 | onChangeIndex     | Callback for when index has change (will not be called on ignored items) | (index: number, prevIndex: number \| null) => void | no       | iOS/Android | yes               |
 
-**TabController.PageCarousel**: TabController 的 PageCarousel 组件，该组件扩展了[ScrollView](https://reactnative.dev/docs/scrollview)组件属性。
+**TabController.PageCarousel**: **PageCarousel** component of **TabController**, which extends the [ScrollView](https://reactnative.dev/docs/scrollview) properties.
 
 | Name                       | Description                                                                                                                           | Type      | Required | Platform    | HarmonyOS Support |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | --------- | -------- | ----------- | ----------------- |
 | TabController.PageCarousel | TabController's PageCarousel component，You must pass asCarousel flag to TabController and render your TabPages inside a PageCarousel | Component | no       | iOS/Android | yes               |
 
-**TabController.TabBar**: TabController 的 TabBar 组件。
+**TabController.TabBar**: **TabBar** component of the **TabController**.
 
 | Name                  | Description                                  | Type      | Required | Platform    | HarmonyOS Support |
 | --------------------- | -------------------------------------------- | --------- | -------- | ----------- | ----------------- |
@@ -1366,7 +1366,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | testID                | The component test id                        | string    | no       | iOS/Android | yes               |
 | uppercase             | Whether to change the text to uppercase      | boolean   | no       | iOS/Android | yes               |
 
-**TabController.TabBarItem**: TabController 的 TabBarItem 组件。
+**TabController.TabBarItem**: **TabBarItem** component of the **TabController**.
 
 | Name                  | Description                                          | Type                    | Required | Platform    | HarmonyOS Support |
 | --------------------- | ---------------------------------------------------- | ----------------------- | -------- | ----------- | ----------------- |
@@ -1392,7 +1392,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | uppercase             | Whether to change the text to uppercase              | boolean                 | no       | iOS/Android | yes               |
 | width                 | A fixed width for the item                           | number                  | no       | iOS/Android | yes               |
 
-**TabController.TabPage**: TabController 的 TabPage 组件。
+**TabController.TabPage**: **TabPage** component of the **TabController**.
 
 | Name          | Description                                                                | Type              | Required | Platform    | HarmonyOS Support |
 | ------------- | -------------------------------------------------------------------------- | ----------------- | -------- | ----------- | ----------------- |
@@ -1402,7 +1402,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | renderLoading | Render a custom loading page when lazy loading                             | () => JSX.Element | no       | iOS/Android | yes               |
 | testID        | The component test id                                                      | string            | no       | iOS/Android | yes               |
 
-**Wizard**: 向导组件。
+**Wizard**: wizard component.
 
 | Name                 | Description                                                                                                                                 | Type                    | Required | Platform    | HarmonyOS Support |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | -------- | ----------- | ----------------- |
@@ -1412,7 +1412,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | onActiveIndexChanged | Callback that is called when the active step is changed (i.e. a step was clicked on). The new activeIndex will be the input of the callback | (index: number) => void | no       | iOS/Android | yes               |
 | testID               | The component test id                                                                                                                       | string                  | no       | iOS/Android | yes               |
 
-**Wizard.Step**: 向导组件中 Step 组件。
+**Wizard.Step**: step component of the wizard component.
 
 | Name                  | Description                                                         | Type             | Required | Platform    | HarmonyOS Support |
 | --------------------- | ------------------------------------------------------------------- | ---------------- | -------- | ----------- | ----------------- |
@@ -1429,7 +1429,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | labelStyle            | Additional styles for the label                                     | TextStyle        | no       | iOS/Android | yes               |
 | state                 | The state of the step (Wizard.States.X)                             | WizardStepStates | no       | iOS/Android | yes               |
 
-**ActionSheet**: 弹窗选择组件。
+**ActionSheet**: dialog box picker component.
 
 | Name                   | Description                                                                                                             | Type                                                                                           | Required | Platform    | HarmonyOS Support |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | -------- | ----------- | ----------------- |
@@ -1451,7 +1451,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | useSafeArea            | In iOS, use safe area, in case component attached to the bottom                                                         | boolean                                                                                        | no       | iOS/Android | yes               |
 | visible                | Whether to show the action sheet or not                                                                                 | boolean                                                                                        | no       | iOS/Android | yes               |
 
-**Dialog**: 弹窗组件。
+**Dialog**: dialog box component.
 
 | Name                   | Description                                                                                                                                                 | Type                        | Required | Platform    | HarmonyOS Support |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | -------- | ----------- | ----------------- |
@@ -1469,7 +1469,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | visible                | Control visibility of the component                                                                                                                         | boolean                     | no       | iOS/Android | yes               |
 | width                  | Width                                                                                                                                                       | string \| number            | no       | iOS/Android | yes               |
 
-**FeatureHighlight**: 功能发现组件，FeatureHighlight 组件必须是 render() 返回的根视图的直接子级，如果要突出显示的元素没有样式属性，请添加 'style={{opacity: 1}}' 以便 Android 操作系统可以检测到它，FeatureHighlight 使用 native 库，你需要引入它。
+**FeatureHighlight**: feature discovery component, which must be a direct child of the root view returned by **render()**. If the element to be highlighted does not have style properties, add **'style={{opacity: 1}}'** so that the Android operating system can detect it. **FeatureHighlight** uses a native library, so you need to import it.
 
 | Name                 | Description                                                                                                      | Type                                      | Required | Platform    | HarmonyOS Support |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------- | ----------------------------------------- | -------- | ----------- | ----------------- |
@@ -1494,7 +1494,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | titleStyle           | Title text style                                                                                                 | TextStyle                                 | no       | iOS/Android | yes               |
 | visible              | Determines if to present the feature highlight component                                                         | boolean                                   | no       | iOS/Android | yes               |
 
-**FloatingButton**: 具有渐变的悬浮按钮。
+**FloatingButton**: floating button with gradient.
 
 | Name                  | Description                                                                                                      | Type                  | Required | Platform    | HarmonyOS Support |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------- | --------------------- | -------- | ----------- | ----------------- |
@@ -1509,7 +1509,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | visible               | Whether the component is visible                                                                                 | boolean               | no       | iOS/Android | yes               |
 | withoutAnimation      | Whether to show/hide the button without animation                                                                | boolean               | no       | iOS/Android | yes               |
 
-**Modal**: 模态框组件，该组件扩展了[Modal](https://reactnative.dev/docs/modal)组件属性。
+**Modal**: modal box component, which extends the [Modal](https://reactnative.dev/docs/modal) properties.
 
 | Name                      | Description                                                                                                                                                                                                               | Type                                   | Required | Platform    | HarmonyOS Support |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- | -------- | ----------- | ----------------- |
@@ -1521,7 +1521,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | testID                    | The modal's end-to-end test identifier                                                                                                                                                                                    | string                                 | no       | iOS/Android | yes               |
 | useGestureHandlerRootView | Android only. Should add a GestureHandlerRootView                                                                                                                                                                         | boolean                                | no       | Android     | no                |
 
-**Modal.TopBar**: 模态框的 TopBar 组件。
+**Modal.TopBar**: **TopBar** component of the modal box.
 
 | Name              | Description                                                | Type                                   | Required | Platform    | HarmonyOS Support |
 | ----------------- | ---------------------------------------------------------- | -------------------------------------- | -------- | ----------- | ----------------- |
@@ -1542,13 +1542,13 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | title             | Title to display in the center of the top bar              | string                                 | no       | iOS/Android | yes               |
 | titleStyle        | Title custom style                                         | TextStyle                              | no       | iOS/Android | yes               |
 
-**Toast**: 非中断式弹窗组件， 请考虑转向我们新的 Toast 实现并使用 Incubator.Toast 代替。
+**Toast**: non-interruptive dialog box component. Use our new toast implementation and use **Incubator.Toast** instead.
 
 | Name  | Description                    | Type      | Required | Platform    | HarmonyOS Support |
 | ----- | ------------------------------ | --------- | -------- | ----------- | ----------------- |
 | Toast | A customizable Toast component | Component | no       | iOS/Android | yes               |
 
-**Badge**: 圆形彩色徽章组件。
+**Badge**: round color badge component.
 
 | Name                | Description                                                                                                                                                                                                                                                                                                    | Type                       | Required | Platform    | HarmonyOS Support |
 | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | -------- | ----------- | ----------------- |
@@ -1568,7 +1568,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | onPress             | Called when the badge is pressed                                                                                                                                                                                                                                                                               | (props: any) => void       | no       | iOS/Android | yes               |
 | size                | Badge's size                                                                                                                                                                                                                                                                                                   | number                     | no       | iOS/Android | yes               |
 
-**ConnectionStatusBar**: 顶部栏显示无网络连接状态，该组件依赖[@react-native-community/netinfo](/zh-cn/react-native-community-netinfo.md) 库。
+**ConnectionStatusBar**: top bar that displays the no network connection status, which depends on the [@react-native-community/netinfo](/en/react-native-community-netinfo.md) library.
 
 | Name                | Description                                         | Type                                               | Required | Platform    | HarmonyOS Support |
 | ------------------- | --------------------------------------------------- | -------------------------------------------------- | -------- | ----------- | ----------------- |
@@ -1577,7 +1577,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | onConnectionChange  | Handler to get connection change events propagation | (isConnected: boolean, isInitial: boolean) => void | no       | iOS/Android | yes               |
 | useAbsolutePosition | Use absolute position for the component             | boolean                                            | no       | iOS/Android | yes               |
 
-**ProgressBar**: 进度条组件。
+**ProgressBar**: progress bar component.
 
 | Name          | Description                                              | Type        | Required | Platform    | HarmonyOS Support |
 | ------------- | -------------------------------------------------------- | ----------- | -------- | ----------- | ----------------- |
@@ -1587,7 +1587,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | progressColor | Progress color                                           | string      | no       | iOS/Android | yes               |
 | style         | Override container style                                 | ViewStyle   | no       | iOS/Android | yes               |
 
-**SkeletonView**: 骨架视图组件，用于内容还未加载临时显示骨架，该组件需要安装[react-native-shimmer-placeholder](/zh-cn/react-native-shimmer-placeholder.md)和[react-native-linear-gradient](/zh-cn/react-native-linear-gradient.md)库。
+**SkeletonView**: skeleton view component, which is used to temporarily display the skeleton when the content is not loaded. This component requires the [react-native-shimmer-placeholder](/en/react-native-shimmer-placeholder.md) and [react-native-linear-gradient](/en/react-native-linear-gradient.md) libraries.
 
 | Name          | Description                                                                                                                                                                                      | Type                                   | Required | Platform    | HarmonyOS Support |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------- | -------- | ----------- | ----------------- |
@@ -1613,7 +1613,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-**Color**: 可以进行全局样式预设，通过 Color 获取预设样式。
+**Color**: allows global style presets, with preset styles accessible through **Color**.
 
 | Name         | Description                                                                      | Type                                             | Required | Platform    | HarmonyOS Support |
 | ------------ | -------------------------------------------------------------------------------- | ------------------------------------------------ | -------- | ----------- | ----------------- |
@@ -1623,19 +1623,19 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | getColorTint | Get color tint                                                                   | (color: string, num: number) => string           | no       | iOS/Android | yes               |
 | isDark       | returns `true` if a color is considered dark (bright colors will return `false`) | (color: string) => boolean                       | no       | iOS/Android | yes               |
 
-**ThemeManager**: 使用 ThemeManager 为您的应用程序设置默认的全局行为。
+**ThemeManager**: sets the default global behavior for your app.
 
 | Name              | Description                                                          | Type                                                                                                            | Required | Platform    | HarmonyOS Support |
 | ----------------- | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | -------- | ----------- | ----------------- |
 | setComponentTheme | Set default props for a component by passing an object or a callback | (componentName, defaultPropsObject) => void \| (componentName, componentProps => newDefaultPropsObject) => void | no       | iOS/Android | yes               |
 
-**Typography**: 设置样式属性，可直接通过“属性”的方式给组件设置样式。
+**Typography**: sets style properties, which can be applied to components directly through the "properties" approach.
 
 | Name             | Description                   | Type                                             | Required | Platform    | HarmonyOS Support |
 | ---------------- | ----------------------------- | ------------------------------------------------ | -------- | ----------- | ----------------- |
 | loadTypographies | Set style attribute variables | ({[name: string]: {[key: string]: any}}) => void | no       | iOS/Android | yes               |
 
-**Spacings**: 设置空间大小变量，可通过 “属性-变量名” 的方式设置样式。
+**Spacings**: sets spacing size variables, which can be applied using the "property-variable name" approach.
 
 | Name             | Description             | Type                                | Required | Platform    | HarmonyOS Support |
 | ---------------- | ----------------------- | ----------------------------------- | -------- | ----------- | ----------------- |
@@ -1643,8 +1643,8 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 
 ## Known Issues
 
-- [ ] KeyboardTrackingView 组件，将输入框子节点保持在键盘上方后点击事件位置异常: [issue#4](https://github.com/react-native-oh-library/react-native-ui-lib/issues/4)
-- [ ] 原生组件 KeyboardAccessoryView 切换自定义键盘未实现: [issue#3](https://github.com/react-native-oh-library/react-native-ui-lib/issues/3)
+- [ ] In the **KeyboardTrackingView** component, the child input field stays above the keyboard, but the click event position is incorrect: [issue#4](https://github.com/react-native-oh-library/react-native-ui-lib/issues/4).
+- [ ] The native component **KeyboardAccessoryView** is not implemented for switching to the custom keyboard: [issue#3](https://github.com/react-native-oh-library/react-native-ui-lib/issues/3).
 
 ## Others
 

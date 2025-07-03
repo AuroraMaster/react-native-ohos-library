@@ -12,25 +12,21 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/wcandillon/react-native-redash/)
+> [!TIP] [Github 地址](https://github.com/wcandillon/react-native-redash/releases/tag/v18.1.3)
 
 ## 安装与使用
 
 #### **yarn**
 
 ```bash
-yarn add react-native-redash@^18.1.3
+yarn add react-native-redash@18.1.3
 ```
 
 #### **npm**
 
 ```bash
-npm install react-native-redash@^18.1.3
+npm install react-native-redash@18.1.3
 ```
-
-<!-- tabs:end -->
-
-> [!TIP] redash库依赖react-native-reanimated动画库， 请参照文档的Link章节进行引进。
 
 下面的代码展示了这个库的基本使用场景：
 

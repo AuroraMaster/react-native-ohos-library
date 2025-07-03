@@ -460,7 +460,7 @@ ohpm install
 
 > [!TIP] 如需自建项目使用华为地图可以跳过以下第一步，并前往[华为开发者联盟](https://developer.huawei.com/consumer/cn/wiki/index.php)平台申请对应项目和应用程序
 
-> [!TIP] 详细配置参考华为开发者官网[地图服务](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/appgallery-connect-0000001751989088)
+> [!TIP] 详细配置参考华为开发者官网[地图服务](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/map-introduction?ha_source=sousuo&ha_sourceId=89000251)
 
 以下是示例项目配置
 

@@ -13,7 +13,7 @@
 </p>
 
 
-> [!TIP] [Github 地址](https://github.com/software-mansion/react-native-screens)
+> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-harmony-screens)
 
 ## 安装与使用
 
@@ -31,14 +31,14 @@
 
 ```bash
 npm install @react-native-oh-tpl/react-native-screens
-npm install @react-navigation/native-stack@^6.9.13
+npm install @react-navigation/native-stack@6.9.13
 ```
 
 #### **yarn**
 
 ```bash
 yarn install @react-native-oh-tpl/react-native-screens
-yarn install @react-navigation/native-stack@^6.9.13
+yarn install @react-navigation/native-stack@6.9.13
 ```
 
 下面的代码展示了这个库的基本使用场景：
@@ -373,4 +373,4 @@ ohpm install
 
 ## 开源协议
 
-本项目基于 [The MIT License (MIT)](https://github.com/react-native-oh-library/react-native-harmony-screens/blob/sig/LICENSE) ，请自由地享受和参与开源。
+本项目基于 [The MIT License (MIT)](https://github.com/software-mansion/react-native-screens/blob/main/LICENSE) ，请自由地享受和参与开源。
