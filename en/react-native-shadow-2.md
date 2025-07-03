@@ -13,7 +13,7 @@
     </a>
 </p>
 
-> [!TIP] [GitHub address](https://github.com/SrBrahma/react-native-shadow-2)
+> [!TIP] [GitHub address](https://github.com/ftzi/react-native-shadow-2/tree/c9b373a4f46472a73f728c10a85d44aedba79793)
 
 ## Installation and Usage
 

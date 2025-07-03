@@ -12,7 +12,7 @@
     </a>
 </p>
 
-> [!TIP] [GitHub address](https://github.com/wcandillon/react-native-redash/)
+> [!TIP] [GitHub address](https://github.com/wcandillon/react-native-redash/releases/tag/v18.1.3)
 
 ## Installation and Usage
 
@@ -21,13 +21,13 @@ Go to the project directory and execute the following instruction:
 #### **yarn**
 
 ```bash
-yarn add react-native-redash@^18.1.3
+yarn add react-native-redash@18.1.3
 ```
 
 #### **npm**
 
 ```bash
-npm install react-native-redash@^18.1.3
+npm install react-native-redash@18.1.3
 ```
 
 <!-- tabs:end -->
@@ -185,7 +185,7 @@ import { mix,
         const point = cartesian2Canvas({ x: -500, y: 200 }, { x: 500, y: 200 });
         setText(JSON.stringify(point))
     }
-    /** 用于处理笛卡尔坐标转换为极坐标 */
+    /** Converts Cartesian coordinates to polar coordinates. */
     const handleCartesian2Polar = () => {
         const x = 0;
         const y = 100;
@@ -374,9 +374,9 @@ import { mix,
   });
 ```
 
-动画演示示例
+Animation Demonstration
 
-1.位置移动演示动画，通过snapPoint运行指定的位置地点
+1. Demonstration of movements. Use **snapPoint** to run a specified position.
 
 ```js
 import { snapPoint } from "react-native-redash/src/Physics";
@@ -432,7 +432,7 @@ export default function RadashDemo() {
 }
 ```
 
-2.颜色渐变动画演示，通过mixColor进行颜色渐变
+2. Demonstration of color gradient animation. Use **mixColor** to perform color gradient.
 
 ```js
 import { mixColor } from "react-native-redash/src/Colors";
@@ -473,7 +473,7 @@ export default function RadashDemo() {
 }
 ```
 
-3.redash目前有两个动画辅助方法：useTiming、useSpring。useTiming可以使用贝塞尔曲线来进行运动,useSpring可以不将持续时间作为参数，而是由sprin物理特性作为运动轨迹。
+3. The **redash** library has two animation auxiliary methods: **useTiming** and **useSpring**. **useTiming** can use the Bezier curve for movements, while **useSpring** can employ the **spring** physical characteristics as the movement trajectory instead of using duration as a parameter.
 
 ```js
 import { useTiming, useSpring } from "react-native-redash/src/Transitions";
@@ -512,7 +512,7 @@ export default function RadashDemo() {
 }
 ```
 
-4.redash提供能接受字符串动画节点属性的文本组件
+4. **redash** provides a text component that can accept the property of the string-based animation node.
 
 ```js
 import { ReText } from "react-native-redash";
@@ -556,7 +556,7 @@ This document is verified based on the following versions:
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-如下是已验证接口展示:
+The following shows the verified APIs:
 
 ### **Animations**
 

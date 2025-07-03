@@ -13,7 +13,7 @@
 </p>
 
 
-> [!TIP] [GitHub address](https://github.com/software-mansion/react-native-screens)
+> [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-harmony-screens)
 
 ## Installation and Usage
 
@@ -30,14 +30,14 @@ Go to the project directory and execute the following instruction:
 
 ```bash
 npm install @react-native-oh-tpl/react-native-screens
-npm install @react-navigation/native-stack@^6.9.13
+npm install @react-navigation/native-stack@6.9.13
 ```
 
 #### **yarn**
 
 ```bash
 yarn install @react-native-oh-tpl/react-native-screens
-yarn install @react-navigation/native-stack@^6.9.13
+yarn install @react-navigation/native-stack@6.9.13
 ```
 
 The following code shows the basic use scenario of the repository:
@@ -369,4 +369,4 @@ Check the release version information in the release address of the third-party 
 
 ## License
 
-This project is licensed under [The MIT License (MIT)](https://github.com/react-native-oh-library/react-native-harmony-screens/blob/sig/LICENSE).
+This project is licensed under [The MIT License (MIT)](https://github.com/software-mansion/react-native-screens/blob/main/LICENSE).

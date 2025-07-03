@@ -265,4 +265,4 @@ Check the release version information in the release address of the third-party 
 
 ## License
 
-This project is licensed under [The MIT License (MIT)](https://github.com/react-native-oh-library/react-native-color-matrix-image-filters/blob/master/LICENSE).
+This project is licensed under [The MIT License (MIT)](https://github.com/iyegoroff/react-native-color-matrix-image-filters/blob/master/LICENSE).

@@ -12,7 +12,7 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/software-mansion/react-native-screens)
+> [!TIP] [Github 地址](https://github.com/software-mansion/react-native-screens/releases/tag/3.29.0)
 
 ## 安装与使用
 

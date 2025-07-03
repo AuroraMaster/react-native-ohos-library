@@ -12,7 +12,7 @@
     </a>
 </p>
 
-> [!TIP] [GitHub address](https://github.com/software-mansion/react-native-screens)
+> [!TIP] [GitHub address](https://github.com/software-mansion/react-native-screens/releases/tag/3.29.0)
 
 ## Installation and Usage
 
@@ -103,7 +103,7 @@ export default function RNScreenTest() {
 
 #### 禁用 `react-native-screens`
 
-因为 ArkUI侧未提供capi接口，容器组件需要capi化，故本库未实现harmonyOS原生化，所以 react-native-screens 禁用 HarmonyOS 原生屏幕使用 react-native views 即可，请在您的入口文件中添加以下代码。 (例如. `App.js`):
+Since ArkUI does not provide CAPIs, the container components need to be CAPI-enabled. Therefore, this library does not implement HarmonyOS native functionality. As a result, **react-native-screens** disables the use of HarmonyOS native screens and uses React Native views instead. Please add the following code to your entry file. For example:`App.js`):
 
 ```js
 import { enableScreens } from "react-native-screens";
@@ -111,7 +111,7 @@ import { enableScreens } from "react-native-screens";
 enableScreens(false);
 ```
 
-您还可以通过[detachInactiveScreens](https://reactnavigation.org/docs/stack-navigator#detachinactivescreens)在每个导航器中禁用原生屏幕。
+You can also disable the native screen in each navigator using [detachInactiveScreens](https://reactnavigation.org/docs/stack-navigator#detachinactivescreens).
 
 ## Link
 
@@ -135,22 +135,22 @@ This document is verified based on the following versions:
 
 | Name                                                      | Description                                                                           | Type     | Required | Platform    | HarmonyOS Support |
 |-----------------------------------------------------------|---------------------------------------------------------------------------------------|----------|----------|-------------|-------------------|
-| enableScreens                                             | 支持原生及其 React Native View                                                              | function | No       | iOS Android | Yes               |
-| enableFreeze                                              | 对 react-freeze 的支持，使用 ReactSuspense 机制来防止 React 组件树的部分渲染                              | function | No       | iOS Android | Yes               |
-| createNativeStackNavigator                                | 提供屏幕切换的能力                                                                             | function | No       | iOS Android | NO                |
-| NativeStackNavigationProp                                 | 切换页面属性的封装                                                                             | object   | No       | iOS Android | Yes               |
-| NativeStackNavigationOptions                              | 导航栏属性设置封装                                                                             | object   | No       | iOS Android | NO                |
-| FullWindowOverlay                                         | 一个组件，可以将其子组件放在其他组件之上                                                                  | object   | No       | iOS Android | NO                |
-| SearchBarProps                                            | 搜索栏的属性设置封装                                                                            | object   | No       | iOS Android | NO                |
-| SearchBarCommands                                         | 搜索栏的操作封装                                                                              | object   | No       | iOS Android | NO                |
-| useTransitionProgress                                     | 提供屏幕过渡的动画插值器                                                                          | function | No       | iOS Android | NO                |
-| userReanimatedTransitionProgress ReanimatedScreenProvider | 屏幕切换期间调用的帧回调，用于 react-native-reanimated 2.0 及其以上的版本，并使用 ReanimatedScreenProvider 进行封装 | function | No       | iOS Android | NO                |
-| userHeaderHeight                                          | 计算静态标题栏的高度，当屏幕方向发生更改，此值会发生更改                                                          | function | No       | iOS Android | NO                |
-| userAnimatedHeaderHeight                                  | 动态计算标题栏的高度，此值会随着每个视图布局变化而变化                                                           | function | No       | iOS Android | NO                |
+| enableScreens                                             | Supports both native and React Native View. View                                                              | function | No       | iOS Android | Yes               |
+| enableFreeze                                              | Supports **react-freeze** and uses **ReactSuspense** to prevent partial rendering of the React component tree.| function | No       | iOS Android | Yes               |
+| createNativeStackNavigator                                | Provides screen switching capabilities.                                          | function | No       | iOS Android | NO                |
+| NativeStackNavigationProp                                 | Encapsulates the property of page switching.                                          | object   | No       | iOS Android | Yes               |
+| NativeStackNavigationOptions                              | Encapsulates the property settings of the navigation bar.                                          | object   | No       | iOS Android | NO                |
+| FullWindowOverlay                                         | A component that allows placing its child components above other components.                    | object   | No       | iOS Android | NO                |
+| SearchBarProps                                            | Encapsulates the property settings of the search bar.                                        | object   | No       | iOS Android | NO                |
+| SearchBarCommands                                         | Encapsulates the operations of the search bar.                                            | object   | No       | iOS Android | NO                |
+| useTransitionProgress                                     | Provides an animation interpolator for screen transitions.                                    | function | No       | iOS Android | NO                |
+| userReanimatedTransitionProgress ReanimatedScreenProvider | Frame callback called during screen transitions, used for react-native-reanimated 2.0 and above, encapsulated with **ReanimatedScreenProvider**.| function | No       | iOS Android | NO                |
+| userHeaderHeight                                          | Calculates the height of the static header bar. This value changes when the screen orientation changes.    | function | No       | iOS Android | NO                |
+| userAnimatedHeaderHeight                                  | Dynamically calculates the height of the header bar. This value changes with each view layout change.      | function | No       | iOS Android | NO                |
 
 ## Known Issues
 
-- [ ] ArkUI侧未提供capi接口，容器组件需要capi化，故本库未实现harmonyOS原生化适配，harmonyOS侧仅支持部分属性。
+- [ ] ArkUI does not provide CAPIs, and the container components need to be CAPI-enabled. Therefore, this library does not implement native HarmonyOS adaptation. HarmonyOS only supports a subset of properties.
 
 ## Others
 
