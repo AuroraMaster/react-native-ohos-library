@@ -16,7 +16,7 @@
 
 
 
-> [!TIP] [GitHub address](https://github.com/WrathChaos/react-native-bounceable)
+> [!TIP] [GitHub address](https://github.com/WrathChaos/react-native-bounceable/tree/1.0.3)
 
 ## Installation and Usage
 
@@ -36,15 +36,15 @@ yarn add @freakycoder/react-native-bounceable@1.0.3
 
 The following code shows the basic use scenario of the repository:
 
-1、引入库文件
+1. Import library files.
 
 ```jsx
 import RNBounceable from "@freakycoder/react-native-bounceable";
 ```
 
-2、使用场景：
+2. Use case:
 
-您可以将**任何子组件**放入 **RNBounceable** 组件中，当它被按下时，它会使其反弹
+You can put **any subcomponent** into the **RNBounceable** component, which bounces when it is pressed.
 
 ```jsx
 <RNBounceable onPress={() => {}}>
@@ -54,7 +54,7 @@ import RNBounceable from "@freakycoder/react-native-bounceable";
 </RNBounceable>
 ```
 
-详细使用场景
+Detailed use case:
 
 ```javascript
 import React from 'react';

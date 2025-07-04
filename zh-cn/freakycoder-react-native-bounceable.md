@@ -16,7 +16,7 @@
 
 
 
-> [!TIP] [Github 地址](https://github.com/WrathChaos/react-native-bounceable)
+> [!TIP] [Github 地址](https://github.com/WrathChaos/react-native-bounceable/tree/1.0.3)
 
 ## 安装与使用
 
