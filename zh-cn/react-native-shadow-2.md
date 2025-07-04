@@ -42,6 +42,7 @@ yarn add react-native-shadow-2@7.0.8
 ```tsx
 import {Text, ScrollView, View, StyleSheet} from 'react-native';
 import {Shadow} from 'react-native-shadow-2';
+import React from 'react';
 
 export function Shadow2Demo() {
   return (

@@ -9,7 +9,7 @@
     </a>
 </p>
 
-> [!TIP] [Github address](https://github.com/lindell/JsBarcode)
+> [!TIP] [Github address](https://github.com/lindell/JsBarcode/tree/v3.11.6)
 
 ## Installation and Usage
 
