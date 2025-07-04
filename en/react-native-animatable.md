@@ -12,7 +12,7 @@
     </a>
 </p>
 
-> [!TIP] [GitHub address](https://github.com/oblador/react-native-animatable)
+> [!TIP] [GitHub address](https://github.com/oblador/react-native-animatable/tree/v1.4.0)
 
 ## Installation and Usage
 
@@ -39,7 +39,7 @@ The following code shows the basic use scenario of the repository:
 > [!WARNING] The name of the imported repository remains unchanged.
 
 ```js
-import { useState } from "react";
+import React, { useState } from 'react';
 import { TouchableOpacity } from "react-native";
 import * as Animatable from "react-native-animatable";
 
