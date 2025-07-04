@@ -42,6 +42,7 @@ The following code shows the basic use scenario of the repository:
 ```tsx
 import {Text, ScrollView, View, StyleSheet} from 'react-native';
 import {Shadow} from 'react-native-shadow-2';
+import React from 'react';
 
 export function Shadow2Demo() {
   return (

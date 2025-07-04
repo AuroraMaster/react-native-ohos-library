@@ -13,7 +13,7 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/oblador/react-native-collapsible)
+> [!TIP] [Github 地址](https://github.com/oblador/react-native-collapsible/tree/v1.6.1)
 
 ## 安装与使用
 

@@ -13,7 +13,7 @@
     </a>
 </p>
 
-> [!TIP] [GitHub address](https://github.com/redux-utilities/redux-actions)
+> [!TIP] [GitHub address](https://github.com/redux-utilities/redux-actions/tree/v2.6.5)
 
 ## Installation and Usage
 

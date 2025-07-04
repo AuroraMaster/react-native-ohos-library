@@ -13,7 +13,7 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/Monte9/react-native-ratings)
+> [!TIP] [Github 地址](https://github.com/Monte9/react-native-ratings/tree/v8.1.0)
 
 ## 安装与使用
 

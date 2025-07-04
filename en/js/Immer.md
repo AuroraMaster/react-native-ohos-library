@@ -13,7 +13,7 @@
     </a>
 </p>
 
-> [!TIP] [Github address](https://github.com/immerjs/immer)
+> [!TIP] [Github address](https://github.com/immerjs/immer/tree/v10.0.4)
 
 ## Installation and Usage
 
