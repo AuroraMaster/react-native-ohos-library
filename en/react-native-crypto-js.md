@@ -49,7 +49,6 @@ import {
   Alert
 } from 'react-native';
 import CryptoJS from "react-native-crypto-js";
-//import CryptoJS from "rn-crypto-js";
 
 function encrypt_str(text: string) {
   let ciphertext = CryptoJS.AES.encrypt(text, 'secret key 123').toString();
@@ -78,12 +77,6 @@ function decrypt_obj(text: string) {
 
 function MD5_encrypt_str(text: string) {
   let ciphertext = CryptoJS.MD5(text).toString();
-  Alert.alert('encrypt：', ciphertext, [{ text: 'OK' }]);
-  return ciphertext;
-}
-
-function HMD5_encrypt_str(text: string) {
-  let ciphertext = CryptoJS.HmacMD5(text, 'secret key 123').toString();
   Alert.alert('encrypt：', ciphertext, [{ text: 'OK' }]);
   return ciphertext;
 }
@@ -120,11 +113,6 @@ export const ReactNativeCryptoJsExample = () => {
         <TextInput style={{ height: 40 }} placeholder="Please enter the content." onChangeText={(cryptText1: React.SetStateAction<string>) => setCryptText1(cryptText1)} defaultValue={cryptText1} />
       </View>
       <Button onPress={() => { MD5_encrypt_str(cryptText1) }} title="encrypt" />
-      <Text>  Encrypt and decrypt character strings using the HmacMD5 algorithm. </Text>
-      <View style={{ padding: 10 }}>
-        <TextInput style={{ height: 40 }} placeholder="Please enter the content." onChangeText={(cryptText2: React.SetStateAction<string>) => setCryptText2(cryptText2)} defaultValue={cryptText2} />
-      </View>
-      <Button onPress={() => { HMD5_encrypt_str(cryptText2) }} title="encrypt" />
     </ScrollView>
   );
 };
