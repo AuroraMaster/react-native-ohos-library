@@ -453,7 +453,7 @@ ohpm install
 | baiduHeatMapEnabled     | 是否启用百度热力图                        | Boolean  | no      | All      | no                |
 | zoomGesturesEnabled     | 允许手势缩放                           | Boolean  | no      | All      | yes                |
 | scrollGesturesEnabled   | 允许拖动                             | Boolean  | no      | All      | yes                |
-| mapType                 | 地图类型                             | Number   | no      | All      | partially                |
+| mapType                 | 地图类型                             | Number   | no      | All      | partially（React Native中有三种地图，有一种空白地图不支持）                |
 | zoom                    | 地图的缩放级别                          | Number   | no      | All      | yes                |
 | showsUserLocation       | 是否显示定位                           | Boolean  | no      | All      | yes                |
 | locationData            | 定位信息 {latitude: 0, longitude: 0} | Object   | no      | All      | yes                |
