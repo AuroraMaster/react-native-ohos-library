@@ -280,7 +280,7 @@ Check the release version information in the release address of the third-party 
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-For details, see [react-native-orientation](https://github.com/react-native-oh-library/react-native-orientation)
+For details, see [react-native-orientation](https://github.com/yamill/react-native-orientation?tab=readme-ov-file#api)
 
 | Name                   | Description                                                              | Type     | Required | Platform    | HarmonyOS Support |
 | ---------------------- | ------------------------------------------------------------------------ | -------- | -------- | ----------- | ----------------- |
@@ -298,7 +298,7 @@ For details, see [react-native-orientation](https://github.com/react-native-oh-l
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-For details, see [react-native-orientation](https://github.com/react-native-oh-library/react-native-orientation)
+For details, see [react-native-orientation](https://github.com/yamill/react-native-orientation?tab=readme-ov-file#orientation-events)
 
 | Name                              | Description                                       | Type     | Required | Platform    | HarmonyOS Support |
 | --------------------------------- | ------------------------------------------------- | -------- | -------- | ----------- | ----------------- |
@@ -311,4 +311,4 @@ For details, see [react-native-orientation](https://github.com/react-native-oh-l
 
 ## License
 
-This project is licensed under [ISC License](https://github.com/react-native-oh-library/react-native-orientation/blob/master/LICENSE).
+This project is licensed under [ISC License](https://github.com/yamill/react-native-orientation/blob/master/LICENSE.md).
