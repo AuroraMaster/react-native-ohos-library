@@ -12,7 +12,7 @@
     </a>
 </p>
 
-> [!TIP] [GitHub address](https://github.com/itenl/react-native-scrollable-tabview)
+> [!TIP] [GitHub address](https://github.com/itenl/react-native-scrollable-tabview/tree/v1.1.7)
 
 ## Installation and Usage
 

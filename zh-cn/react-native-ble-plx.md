@@ -41,20 +41,19 @@ yarn add @react-native-oh-tpl/react-native-ble-plx
 > [!WARNING] 使用时 import 的库名不变。
 
 ```js
+import React from 'react';
+import { View, Button, Alert } from 'react-native';
 import {
-  BleError,
   BleErrorCode,
   BleManager,
   Device,
-  State as BluetoothState,
-  LogLevel,
+  Service,
+  Descriptor,
   type DeviceId,
-  type TransactionId,
   type UUID,
   type Characteristic,
-  type Base64,
-  type Subscription
-} from 'react-native-ble-plx'
+} from 'react-native-ble-plx';
+import Toast from 'react-native-simple-toast';
 
 class BLEServiceInstance {
   manager: BleManager
@@ -66,7 +65,7 @@ class BLEServiceInstance {
   }
 
   scanDevices = async (onDeviceFound: (device: Device) => void, UUIDs: UUID[] | null = null) => {
-    this.manager.startDeviceScan(UUIDs, null, (error, device) => {
+    this.manager.startDeviceScan(UUIDs, null, (error: any, device: any) => {
       if (error) {
         console.error(error.message)
         this.manager.stopDeviceScan()
@@ -83,11 +82,11 @@ class BLEServiceInstance {
       this.manager.stopDeviceScan()
       this.manager
         .connectToDevice(deviceId)
-        .then(device => {
+        .then((device: any) => {
           this.device = device
           resolve(device)
         })
-        .catch(error => {
+        .catch((error: any) => {
           if (error.errorCode === BleErrorCode.DeviceAlreadyConnected && this.device) {
             resolve(this.device)
           } else {
@@ -96,51 +95,110 @@ class BLEServiceInstance {
           }
         })
     })
+}
 
-  discoverAllServicesAndCharacteristicsForDevice = async () =>
-    new Promise<Device>((resolve, reject) => {
-      if (!this.device) {
-        reject(new Error(deviceNotConnectedErrorText))
-        return
-      }
-      this.manager
-        .discoverAllServicesAndCharacteristicsForDevice(this.device.id)
-        .then(device => {
-          resolve(device)
-          this.device = device
-        })
-        .catch(error => {
-          reject(error)
-        })
-    })
+class App extends React.Component {
+  deviceName: string = 'time'
+  serviceUuid: string = '00001820-0000-1000-8000-00805F9B34FB'
+  characteristicUuid: string = '00001820-0000-1000-8000-00805F9B34FB'
+  descriptorUuid: string = '00002903-0000-1000-8000-00805F9B34FB'
 
-  readCharacteristicForDevice = async (serviceUUID: UUID, characteristicUUID: UUID) =>
-    new Promise<Characteristic>((resolve, reject) => {
-      if (!this.device) {
-        reject(new Error(deviceNotConnectedErrorText))
-        return
-      }
-      this.manager
-        .readCharacteristicForDevice(this.device.id, serviceUUID, characteristicUUID)
-        .then(characteristic => {
-          resolve(characteristic)
-        })
-        .catch(error => {
-          console.error(error.message)
-        })
-    })
+  device?: Device;
 
-  writeCharacteristicWithResponseForDevice = async (serviceUUID: UUID, characteristicUUID: UUID, time: Base64) => {
-    if (!this.device) {
-      console.error(deviceNotConnectedErrorText)
-      throw new Error(deviceNotConnectedErrorText)
-    }
-    return this.manager
-      .writeCharacteristicWithResponseForDevice(this.device.id, serviceUUID, characteristicUUID, time)
-      .catch(error => {
-        console.error(error.message)
-      })
+  service?: Service;
+
+  characteristic?: Characteristic;
+
+  descriptor?: Descriptor;
+
+  showLog(text: string) {
+    Toast.show(text, Toast.SHORT);
+    console.log('bleplx showLog:' + text);
+  };
+
+  ble = new BLEServiceInstance((text: string) => {
+    this.showLog(text);
+  });
+
+  enable = () => {
+    this.ble.manager.enable();
+    Toast.show('enable', Toast.SHORT)
   }
+
+  disable = () => {
+    this.ble.manager.disable();
+    Toast.show('disable', Toast.SHORT)
+  }
+
+  startScan = () => {
+    console.log('startScan');
+    Toast.show('开始扫描外设', Toast.LONG)
+    this.ble.manager.startDeviceScan(null, null, (error: any, device: any) => {
+      if (device?.name) {
+        console.log('bleplx: startScan result:' + device?.name);
+      }
+      if (device?.name?.toLocaleLowerCase() == this.deviceName) {
+        if (this.device != null) {
+          return
+        }
+        this.device = device;
+        this.stopDeviceScan();
+        Alert.alert(
+          '发现外设:' + device.name,
+          '是否连连接？',
+          [
+            {
+              text: '取消',
+              style: 'cancel'
+            },
+            {
+              text: '连接',
+              onPress: () => {
+                this.connectToDevice();
+              },
+              style: 'destructive'
+            }
+          ]
+        )
+      }
+    })
+  }
+
+  stopDeviceScan = () => {
+    this.ble.manager.stopDeviceScan();
+    Toast.show('stopDeviceScan', Toast.SHORT)
+  }
+
+  connectToDevice = () => {
+    if (this.device == null) {
+      console.log('bleplx: 没有找到指定的连接设备');
+      return;
+    }
+
+    console.log('bleplx: 开始连接：' + this.device.id);
+    Toast.show('开始连接外设', Toast.LONG)
+    this.ble.manager.connectToDevice(this.device.id).then((device: any) => {
+      Toast.show('连接成功', Toast.SHORT);
+      console.log('bleplx:连接成功:' + JSON.stringify(device));
+    }).catch((error: any) => {
+      Toast.show('连接失败', Toast.SHORT);
+      console.log('bleplx:连接失败：' + error.message);
+    });
+  }
+
+  render() {
+    return (
+      <View>
+        <Button title='enable' onPress={this.enable}>enable</Button>
+        <Button title='disable' onPress={this.disable}>disable</Button>
+        <Button title='startScan' onPress={this.startScan}>startScan</Button>
+        <Button title='stopDeviceScan' onPress={this.stopDeviceScan}>stopDeviceScan</Button>
+      </View>
+    )
+  }
+}
+
+export default App;
 ```
 
 ## 使用 Codegen

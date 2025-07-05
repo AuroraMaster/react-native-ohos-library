@@ -50,90 +50,99 @@ The following code shows the basic use scenario of the repository:
 ```js
 import React, { Component, useState } from 'react';
 import {
-StyleSheet,
-Text,
-View,
-ActivityIndicator,
-Dimensions,
+  StyleSheet,
+  Text,
+  View,
+  ActivityIndicator,
+  Dimensions,
 } from 'react-native';
 
-import {PullView} from 'react-native-pull';
+import { PullView } from 'react-native-pull';
+
+interface testObjType {
+  pulling: String,
+  pullok: String,
+  pullrelease: String,
+  pushing: String,
+  refresh: String,
+  isPullEnd: String
+}
 
 const PullViewDemo = () => {
 
-const [count, setCount] = useState(0);
-let testObj = {
- pulling:null,
- pullok:null,
- pullrelease:null,
- pushing:null,
- refresh:null,
- isPullEnd:null
-};
-const [data, setData] = useState(testObj);
-const onPulling = () => {
-   testObj.pulling='pulling--------->'
-   setData(testObj)
-};
-const onPullOk = () => {
-   testObj.pullok='pullok--------->'
-   setData(testObj)
-};
-const onPullRelease = (resolve) => {
-     //do something
-     testObj.pullrelease='pullrelease--------->'
-     setData(testObj)
-     setTimeout(() => {
-         resolve();
-     }, 3000);
- };
- const onPushing = (gesturePosition) => {
-     testObj.pushing = 'x:' + gesturePosition.x + '------' + 'y: ' + gesturePosition.y
-     setData(testObj)
- };
-	const topIndicatorRender = (pulling, pullok, pullrelease) => {
-     if (pulling) {
-         setCount('Pull-to-refresh: pulling...')
-     } else if (pullok) {
-         setCount('Release-to-refresh: pullok...')
-     } else if (pullrelease) {
-         setCount('Refreshing: pullrelease...')
-     }
-		return (
-         <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: 60}}>
-             <ActivityIndicator size="small" color="gray" />
-             {pulling ? <Text>{count}</Text> : null}
-             {pullok ? <Text>{count}</Text> : null}
-             {pullrelease ? <Text>{count}</Text> : null}
- 		</View>
-     );
-	};
+  const [count, setCount] = useState<string | number>(0);
+  let testObj: testObjType = {
+    pulling: '',
+    pullok: '',
+    pullrelease: '',
+    pushing: '',
+    refresh: '',
+    isPullEnd: ''
+  };
+  const [data, setData] = useState(testObj);
+  const onPulling = () => {
+    testObj.pulling = 'pulling--------->'
+    setData(testObj)
+  };
+  const onPullOk = () => {
+    testObj.pullok = 'pullok--------->'
+    setData(testObj)
+  };
+  const onPullRelease = (resolve: any) => {
+    //do something
+    testObj.pullrelease = 'pullrelease--------->'
+    setData(testObj)
+    setTimeout(() => {
+      resolve();
+    }, 3000);
+  };
+  const onPushing = (gesturePosition: any) => {
+    testObj.pushing = 'x:' + gesturePosition.x + '------' + 'y：' + gesturePosition.y
+    setData(testObj)
+  };
+  const topIndicatorRender = (pulling: any, pullok: any, pullrelease: any) => {
+    if (pulling) {
+      setCount('Pull-to-refresh: pulling...')
+    } else if (pullok) {
+      setCount('Release-to-refresh: pullok...')
+    } else if (pullrelease) {
+      setCount('Refreshing: pullrelease...')
+    }
+    return (
+      <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: 60 }}>
+        <ActivityIndicator size="small" color="gray" />
+        {pulling ? <Text>{count}</Text> : null}
+        {pullok ? <Text>{count}</Text> : null}
+        {pullrelease ? <Text>{count}</Text> : null}
+      </View>
+    );
+  };
 
- return (
-   <View style={[styles.container]}>
-		<PullView style={{width: Dimensions.get('window').width}}
-           onPulling={onPulling}
-           onPullOk={onPullOk}
-           isPullEnd={true}
-           onPullRelease={onPullRelease}
-           onPushing={onPushing}
-           topIndicatorRender={topIndicatorRender}
-           topIndicatorHeight={60}>
-			<View style={{backgroundColor: '#eeeeee'}}>
-			 <Text>1***************</Text>
-             <Text>onPulling:{testObj.pulling}</Text>
-             <Text>3</Text>
-             <Text>onPullOk:{testObj.pullok}</Text>
-             <Text>5</Text>
-             <Text>onPullRelease:{testObj.pullrelease}</Text>
-             <Text>7</Text>
-             <Text>onPushing:{testObj.pushing}</Text>
-             <Text>9</Text>
-         </View>
-     </PullView>
-   </View>
- );
-           > };
+  return (
+    <View style={[styles.container]}>
+      <PullView style={{ width: Dimensions.get('window').width }}
+        onPulling={onPulling}
+        onPullOk={onPullOk}
+        isPullEnd={true}
+        onPullRelease={onPullRelease}
+        onPushing={onPushing}
+        topIndicatorRender={topIndicatorRender}
+        topIndicatorHeight={60}>
+        <View style={{ backgroundColor: '#eeeeee' }}>
+          <Text>1***************</Text>
+          <Text>onPulling:{testObj.pulling}</Text>
+          <Text>3</Text>
+          <Text>onPullOk:{testObj.pullok}</Text>
+          <Text>5</Text>
+          <Text>onPullRelease:{testObj.pullrelease}</Text>
+          <Text>7</Text>
+          <Text>onPushing:{testObj.pushing}</Text>
+          <Text>9</Text>
+        </View>
+      </PullView>
+    </View>
+  );
+};
 export default PullViewDemo;
 const styles = StyleSheet.create({
   container: {
@@ -150,7 +159,7 @@ const styles = StyleSheet.create({
 > code example
 
 ```jsx
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -161,17 +170,26 @@ import {
 } from 'react-native';
 import {PullList} from 'react-native-pull';
 
+interface testObjType {
+  pulling: String,
+  pullok: String,
+  pullrelease: String,
+  pushing: String,
+  refresh: String,
+  isPullEnd: String
+}
+
 const PullListDemo = () => {
-  let testObj = {
-    pulling:null,
-    pullok:null,
-    pullrelease:null,
-    pushing:null,
-    refresh:null,
-    isPullEnd:null
+  let testObj: testObjType = {
+    pulling:'',
+    pullok:'',
+    pullrelease:'',
+    pushing:'',
+    refresh:'',
+    isPullEnd:''
    };
 
-   const [count, setCount] = useState(0);
+   const [count, setCount] = useState<string | number>(0);
    const [data, setData] = useState(testObj);
     const [stateList, setStateList] = useState(
          [
@@ -236,7 +254,7 @@ const PullListDemo = () => {
       setData(testObj)
    };
 
-   const onPullRelease = (resolve) => {
+   const onPullRelease = (resolve: any) => {
         //do something
         testObj.pullrelease='pullrelease--------->'
         setData(testObj)
@@ -296,12 +314,12 @@ const PullListDemo = () => {
     };
 
 
-    const onPushing = (gesturePosition) => {
+    const onPushing = (gesturePosition: any) => {
         testObj.pushing = 'x:' + gesturePosition.x + '------' + 'y: ' + gesturePosition.y
         setData(testObj)
     };
 
-    const topIndicatorRender = (pulling, pullok, pullrelease) => {
+    const topIndicatorRender = (pulling: any, pullok: any, pullrelease: any) => {
       if (pulling) {
           setCount('Current PullList state: pulling...')
       } else if (pullok) {
@@ -329,7 +347,7 @@ const PullListDemo = () => {
       );
     }
 
-   const renderRow = ({item}) => {
+   const renderRow = ({item}: any) => {
       return (
           <View style={{height: 50, backgroundColor: '#fafafa', alignItems: 'center', justifyContent: 'center'}}>
               <Text>{item.title}</Text>
@@ -346,11 +364,11 @@ const PullListDemo = () => {
     }
 
    const loadMore = () => {
-      const list = []
+      const list: { id: number; title: string }[] = []
       const num = stateList.length
         for(var i = 0; i < 5; i++) {
             list.push({
-                id: (i + 1 + num) + '',
+                id: (i + 1 + num),
                 title: `------>Item${(i+num+1)}`,
             })
         }
