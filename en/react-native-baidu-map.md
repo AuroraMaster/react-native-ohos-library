@@ -452,7 +452,7 @@ Open `entry/src/main/module.json5`, add the following permission:
 | baiduHeatMapEnabled     | Enables Baidu heatmap.                        | Boolean  | no      | All      | no                |
 | zoomGesturesEnabled     | Allows zooming via gestures.                           | Boolean  | no      | All      | yes                |
 | scrollGesturesEnabled   | Allows dragging.                             | Boolean  | no      | All      | yes                |
-| mapType                 | Type of the map.                              | Number   | no      | All      | partially                |
+| mapType                 | Type of the map.                              | Number   | no      | All      | partially(There are three types of maps in React Native, and one type of blank map is not supported.)                |
 | zoom                    | Zoom level of the map.                              | Number   | no      | All      | yes                |
 | showsUserLocation       | Displays the user location.                           | Boolean  | no      | All      | yes                |
 | locationData            | Location data {latitude: 0, longitude: 0} | Object   | no      | All      | yes                |

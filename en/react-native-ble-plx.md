@@ -306,48 +306,48 @@ Check the release version information in the release address of the third-party 
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| createClient(restoreStateIdentifier?: string)  | creat client         | void | yes | iOS/Android      | yes |
-| destroyClient()  | remove client         | Promise<void> | yes | iOS/Android      | yes |
-| cancelTransaction(transactionId: string)  | cancel transcation         | Promise<void> | yes | iOS/Android      | no |
-| setLogLevel(logLevel: string)  | set log level         | Promise<Object> | yes | iOS/Android      | no |
-| logLevel()  | show log level         | Promise<Object> | yes | iOS/Android      | no |
-| enable(transactionId: string)  | can get transaction Id       | Promise<void> | yes | iOS/Android      | yes |
-| disable(transactionId: string)  | cannot get transaction Id        | Promise<void> | yes | iOS/Android      | yes |
-| state()  | bluetooth state         | Promise<Object> | yes | iOS/Android      | yes |
-| startDeviceScan(filteredUUIDs: string[], options: Object)  | start scan device         | Promise<void>| yes | iOS/Android      | yes |
-| stopDeviceScan()  | stop scan device         | Promise<void> | yes | iOS/Android      | yes |
-| requestConnectionPriorityForDevice(deviceId: string, connectionPriority: number,transactionId: string) | request connect priority device         | Promise<Object> | yes | iOS/Android      | no |                                     
-| readRSSIForDevice(deviceId: string, transactionId: string)  | read RSSI device        | Promise<Object> | yes | iOS/Android      | yes |
-| requestMTUForDevice(deviceId: string, mtu: number, transactionId: string)  | request MTU device         | Promise<Object> | yes | iOS/Android      | yes |
-| devices(deviceIdentifiers: string[])  | identify devices         | Promise<Object[]> | yes | iOS/Android      | yes |
-| connectedDevices(serviceUUIDs: string[])  | connect devices         | Promise<Object[]> | yes | iOS/Android      | yes |
-| connectToDevice(deviceId: string, options?: Object)  | option to connect device         | Promise<Object> | yes | iOS/Android      | yes |
-| cancelDeviceConnection(deviceId: string)  | cancel device connection        | Promise<Object> | yes | iOS/Android      | yes |
-| isDeviceConnected(deviceId: string)  | connected device         | Promise<boolean> | yes | iOS/Android      | yes |
-| discoverAllServicesAndCharacteristicsForDevice(deviceId: string, transactionId: string)  | discover all device service and characteristics         | Promise<Object> | yes | iOS/Android      | yes |
-| servicesForDevice(deviceId: string)  | device service         | Promise<Object[]> | yes | iOS/Android      | yes |
-| characteristicsForDevice(deviceId: string, serviceUUID: string)  | device characteristics         | Promise<Object[]> | yes | iOS/Android      | yes |
-| characteristicsForService(serviceIdentifier: number)  | service characteristics         | Promise<Object[]> | yes | iOS/Android      | yes |
-| descriptorsForDevice(deviceId: string, serviceUUID: string, characteristicUUID: string): Promise<Object[]>  | device descriptors         | Promise<Object[]> | yes | iOS/Android      | yes |
-| descriptorsForService(serviceIdentifier: number, characteristicUUID: string)  | service descriptors       | Promise<Object[]> | yes | iOS/Android        | yes |
-| descriptorsForCharacteristic(characteristicIdentifier: number)   |descriptors identifier device characteristic         | Promise<Object[]> | yes | iOS/Android      | yes |
-| readCharacteristicForDevice(deviceId: string, serviceUUID: string, characteristicUUID: string, transactionId: string)  | read device characteristic         | Promise<Object> | yes | iOS/Android      | yes |
-| readCharacteristicForService(serviceIdentifier: number, characteristicUUID: string,transactionId: string)  | read  service charcteristic        | Promise<Object> | yes | iOS/Android      | yes |
-| readCharacteristic(characteristicIdentifier: number, transactionId: string)  | read identifier characteristic      | Promise<Object> | yes | iOS/Android      | yes |
-| writeCharacteristicForDevice(deviceId: string, serviceUUID: string, characteristicUUID: string, valueBase64: string,response: boolean, transactionId: string)  | write device  characteristic      | Promise<Object> | yes | iOS/Android      | yes |
-| writeCharacteristicForService(serviceIdentifier: number, characteristicUUID: string, valueBase64: string,response: boolean, transactionId: string)  | write service characteristic       | Promise<Object> | yes | iOS/Android      | yes |
-| writeCharacteristic(characteristicIdentifier: number, valueBase64: string, response: boolean,transactionId: string)  |  write  identifier characteristic         | Promise<Object> | yes | iOS/Android      | yes |
-| monitorCharacteristicForDevice(deviceId: string, serviceUUID: string, characteristicUUID: string,transactionId: string)  | monitor device  characteristic        | Promise<void> | yes | iOS/Android      | yes |
-| monitorCharacteristicForService(serviceIdentifier: number, characteristicUUID: string,transactionId: string)  | monitor service  characteristic         | Promise<void> | yes | iOS/Android      | yes |
-| monitorCharacteristic(characteristicIdentifier: number, transactionId: string)  | monitor identifier characteristic        | Promise<void> | yes | iOS/Android      | yes |
-| readDescriptorForDevice(deviceId: string, serviceUUID: string, characteristicUUID: string, descriptorUUID: string,transactionId: string)  | read device descriptor      | Promise<Object> | yes | iOS/Android      | yes |
-| readDescriptorForService(serviceIdentifier: number, characteristicUUID: string, descriptorUUID: string,transactionId: string)  | read service descriptor         | Promise<Object> | yes | iOS/Android      | yes |
-| readDescriptorForCharacteristic(characteristicIdentifier: number, descriptorUUID: string,transactionId: string)  | read identifier characteristic descriptor          | Promise<Object> | yes | iOS/Android      | yes |
-| readDescriptor(descriptorIdentifier: number, transactionId: string)  | read identifier descriptor         | Promise<Object> | yes | iOS/Android      | yes |
-| writeDescriptorForDevice(deviceId: string, serviceUUID: string, characteristicUUID: string, descriptorUUID: string,valueBase64: string, transactionId: string)  | write device descriptor        | Promise<Object> | yes | iOS/Android      | yes |
-| writeDescriptorForService(serviceIdentifier: number, characteristicUUID: string, descriptorUUID: string,valueBase64: string, transactionId: string)  | write service descriptor         | Promise<Object> | yes | iOS/Android      | yes |
-| writeDescriptorForCharacteristic(characteristicIdentifier: number, descriptorUUID: string, valueBase64: string,transactionId: string)  | write identifier characteristic descriptor          | Promise<Object> | yes | iOS/Android      | yes |
-| writeDescriptor(descriptorIdentifier: number, valueBase64: string, transactionId: string)  | write identifier descriptor        | Promise<Object> | yes | iOS/Android      | yes |
+| createClient(restoreStateIdentifier?: string)  | creat client         | void | No | iOS/Android      | yes |
+| destroyClient()  | remove client         | Promise<void> | No | iOS/Android      | yes |
+| cancelTransaction(transactionId: string)  | cancel transcation         | Promise<void> | No | iOS/Android      | no |
+| setLogLevel(logLevel: string)  | set log level         | Promise<Object> | No | iOS/Android      | no |
+| logLevel()  | show log level         | Promise<Object> | No | iOS/Android      | no |
+| enable(transactionId: string)  | can get transaction Id       | Promise<void> | No | iOS/Android      | yes |
+| disable(transactionId: string)  | cannot get transaction Id        | Promise<void> | No | iOS/Android      | yes |
+| state()  | bluetooth state         | Promise<Object> | No | iOS/Android      | yes |
+| startDeviceScan(filteredUUIDs: string[], options: Object)  | start scan device         | Promise<void>| No | iOS/Android      | yes |
+| stopDeviceScan()  | stop scan device         | Promise<void> | No | iOS/Android      | yes |
+| requestConnectionPriorityForDevice(deviceId: string, connectionPriority: number,transactionId: string) | request connect priority device         | Promise<Object> | No | iOS/Android      | no |                                     
+| readRSSIForDevice(deviceId: string, transactionId: string)  | read RSSI device        | Promise<Object> | No | iOS/Android      | yes |
+| requestMTUForDevice(deviceId: string, mtu: number, transactionId: string)  | request MTU device         | Promise<Object> | No | iOS/Android      | yes |
+| devices(deviceIdentifiers: string[])  | identify devices         | Promise<Object[]> | No | iOS/Android      | yes |
+| connectedDevices(serviceUUIDs: string[])  | connect devices         | Promise<Object[]> | No | iOS/Android      | yes |
+| connectToDevice(deviceId: string, options?: Object)  | option to connect device         | Promise<Object> | No | iOS/Android      | yes |
+| cancelDeviceConnection(deviceId: string)  | cancel device connection        | Promise<Object> | No | iOS/Android      | yes |
+| isDeviceConnected(deviceId: string)  | connected device         | Promise<boolean> | No | iOS/Android      | yes |
+| discoverAllServicesAndCharacteristicsForDevice(deviceId: string, transactionId: string)  | discover all device service and characteristics         | Promise<Object> | No | iOS/Android      | yes |
+| servicesForDevice(deviceId: string)  | device service         | Promise<Object[]> | No | iOS/Android      | yes |
+| characteristicsForDevice(deviceId: string, serviceUUID: string)  | device characteristics         | Promise<Object[]> | No | iOS/Android      | yes |
+| characteristicsForService(serviceIdentifier: number)  | service characteristics         | Promise<Object[]> | No | iOS/Android      | yes |
+| descriptorsForDevice(deviceId: string, serviceUUID: string, characteristicUUID: string): Promise<Object[]>  | device descriptors         | Promise<Object[]> | No | iOS/Android      | yes |
+| descriptorsForService(serviceIdentifier: number, characteristicUUID: string)  | service descriptors       | Promise<Object[]> | No | iOS/Android        | yes |
+| descriptorsForCharacteristic(characteristicIdentifier: number)   |descriptors identifier device characteristic         | Promise<Object[]> | No | iOS/Android      | yes |
+| readCharacteristicForDevice(deviceId: string, serviceUUID: string, characteristicUUID: string, transactionId: string)  | read device characteristic         | Promise<Object> | No | iOS/Android      | yes |
+| readCharacteristicForService(serviceIdentifier: number, characteristicUUID: string,transactionId: string)  | read  service charcteristic        | Promise<Object> | No | iOS/Android      | yes |
+| readCharacteristic(characteristicIdentifier: number, transactionId: string)  | read identifier characteristic      | Promise<Object> | No | iOS/Android      | yes |
+| writeCharacteristicForDevice(deviceId: string, serviceUUID: string, characteristicUUID: string, valueBase64: string,response: boolean, transactionId: string)  | write device  characteristic      | Promise<Object> | No | iOS/Android      | yes |
+| writeCharacteristicForService(serviceIdentifier: number, characteristicUUID: string, valueBase64: string,response: boolean, transactionId: string)  | write service characteristic       | Promise<Object> | No | iOS/Android      | yes |
+| writeCharacteristic(characteristicIdentifier: number, valueBase64: string, response: boolean,transactionId: string)  |  write  identifier characteristic         | Promise<Object> | No | iOS/Android      | yes |
+| monitorCharacteristicForDevice(deviceId: string, serviceUUID: string, characteristicUUID: string,transactionId: string)  | monitor device  characteristic        | Promise<void> | No | iOS/Android      | yes |
+| monitorCharacteristicForService(serviceIdentifier: number, characteristicUUID: string,transactionId: string)  | monitor service  characteristic         | Promise<void> | No | iOS/Android      | yes |
+| monitorCharacteristic(characteristicIdentifier: number, transactionId: string)  | monitor identifier characteristic        | Promise<void> | No | iOS/Android      | yes |
+| readDescriptorForDevice(deviceId: string, serviceUUID: string, characteristicUUID: string, descriptorUUID: string,transactionId: string)  | read device descriptor      | Promise<Object> | No | iOS/Android      | yes |
+| readDescriptorForService(serviceIdentifier: number, characteristicUUID: string, descriptorUUID: string,transactionId: string)  | read service descriptor         | Promise<Object> | No | iOS/Android      | yes |
+| readDescriptorForCharacteristic(characteristicIdentifier: number, descriptorUUID: string,transactionId: string)  | read identifier characteristic descriptor          | Promise<Object> | No | iOS/Android      | yes |
+| readDescriptor(descriptorIdentifier: number, transactionId: string)  | read identifier descriptor         | Promise<Object> | No | iOS/Android      | yes |
+| writeDescriptorForDevice(deviceId: string, serviceUUID: string, characteristicUUID: string, descriptorUUID: string,valueBase64: string, transactionId: string)  | write device descriptor        | Promise<Object> | No | iOS/Android      | yes |
+| writeDescriptorForService(serviceIdentifier: number, characteristicUUID: string, descriptorUUID: string,valueBase64: string, transactionId: string)  | write service descriptor         | Promise<Object> | No | iOS/Android      | yes |
+| writeDescriptorForCharacteristic(characteristicIdentifier: number, descriptorUUID: string, valueBase64: string,transactionId: string)  | write identifier characteristic descriptor          | Promise<Object> | No | iOS/Android      | yes |
+| writeDescriptor(descriptorIdentifier: number, valueBase64: string, transactionId: string)  | write identifier descriptor        | Promise<Object> | No | iOS/Android      | yes |
 
 ## Known Issues
 
