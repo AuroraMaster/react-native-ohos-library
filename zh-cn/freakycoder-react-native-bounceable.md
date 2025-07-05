@@ -57,13 +57,17 @@ import RNBounceable from "@freakycoder/react-native-bounceable";
 详细使用场景
 
 ```javascript
-import React from 'react';
+import React,{ useState } from 'react';
 import type { PropsWithChildren } from 'react';
 import { StyleSheet, View, Text }from 'react-native';
 import RNBounceable from "@freakycoder/react-native-bounceable";
 
 let flag:boolean = true;
-export function BounceableExample () {
+export default function BounceableExample () {
+  const [value,setValue]=useState('Press Me')
+  function onPress(){
+     setValue('The Button was click')
+  }
     const customStyle = {
         backgroundColor: 'red',
         padding: 10,
@@ -72,7 +76,7 @@ export function BounceableExample () {
         justifyContent: 'center',
       };
     
-    <RNBounceable
+  return  <RNBounceable
     style={[customStyle, styles.bounceStyle]}
     onPress = {onPress}
     bounceEffectIn={0.1}
@@ -82,7 +86,7 @@ export function BounceableExample () {
     bouncinessIn={50}
     bouncinessOut={50}
     >
-    	<Text style={styles.textStyle}>Press Me</Text>
+    	<Text style={styles.textStyle}>{value}</Text>
     </RNBounceable>
 }
 
