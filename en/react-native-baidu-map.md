@@ -447,102 +447,103 @@ Open `entry/src/main/module.json5`, add the following permission:
 
 | Name                    | Description                      | Type     | Required | Platform | HarmonyOS Support |
 |-------------------------|----------------------------------|----------|----------|----------|-------------------|
-| zoomControlsVisible     | 显示或隐藏缩放控件              | Boolean  | no      | Android  | yes               |
-| trafficEnabled          | 是否启用交通图层                         | Boolean  | no      | All      | yes                |
-| baiduHeatMapEnabled     | 是否启用百度热力图                        | Boolean  | no      | All      | no                |
-| zoomGesturesEnabled     | 允许手势缩放                           | Boolean  | no      | All      | yes                |
-| scrollGesturesEnabled   | 允许拖动                             | Boolean  | no      | All      | yes                |
-| mapType                 | 地图类型                             | Number   | no      | All      | partially                |
-| zoom                    | 地图的缩放级别                          | Number   | no      | All      | yes                |
-| showsUserLocation       | 是否显示定位                           | Boolean  | no      | All      | yes                |
-| locationData            | 定位信息 {latitude: 0, longitude: 0} | Object   | no      | All      | yes                |
+| zoomControlsVisible     | Displays or hides zoom controls.              | Boolean  | no      | Android  | yes               |
+| trafficEnabled          | Enables the traffic layer.                         | Boolean  | no      | All      | yes                |
+| baiduHeatMapEnabled     | Enables Baidu heatmap.                        | Boolean  | no      | All      | no                |
+| zoomGesturesEnabled     | Allows zooming via gestures.                           | Boolean  | no      | All      | yes                |
+| scrollGesturesEnabled   | Allows dragging.                             | Boolean  | no      | All      | yes                |
+| mapType                 | Type of the map.                              | Number   | no      | All      | partially                |
+| zoom                    | Zoom level of the map.                              | Number   | no      | All      | yes                |
+| showsUserLocation       | Displays the user location.                           | Boolean  | no      | All      | yes                |
+| locationData            | Location data {latitude: 0, longitude: 0} | Object   | no      | All      | yes                |
 | center                  | {latitude: 0, longitude: 0}      | Object   | no      | All      | yes                |
-| onMapStatusChangeStart  | 地图状态开始变化时的回调函数         | Function | no      | Android  | no                |
-| onMapStatusChange       | 地图状态变化时的回调函数                     | Function | no      | All      | no                |
-| onMapStatusChangeFinish | 地图状态变化完成时的回调函数        | Function | no      | Android  | no                |
-| onMapLoaded             | 地图加载完成时的回调函数                     | Function | no      | All      | yes                |
-| onMapClick              | 地图被点击时的回调函数                      | Function | no      | All      | yes                |
-| onMapDoubleClick        | 地图被双击时的回调函数                      | Function | no      | All      | yes                |
-| onMarkerClick           | 地图上的标记被点击时的回调函数                  | Function | no      | All      | no                |
-| onMapPoiClick           | 地图上的兴趣点（POI）被点击时的回调函数            | Function | no      | All      | no                |
+| onMapStatusChangeStart  | Callback triggered when map status changes start.         | Function | no      | Android  | no                |
+| onMapStatusChange       | Callback triggered during map status changes.                     | Function | no      | All      | no                |
+| onMapStatusChangeFinish | Callback triggered when map status changes finish.        | Function | no      | Android  | no                |
+| onMapLoaded             | Callback triggered when map loading completes.                     | Function | no      | All      | yes                |
+| onMapClick              | Callback triggered when the map is clicked.                      | Function | no      | All      | yes                |
+| onMapDoubleClick        | Callback triggered when the map is double-clicked.                      | Function | no      | All      | yes                |
+| onMarkerClick           | Callback triggered when a marker is clicked.                   | Function | no      | All      | no                |
+| onMapPoiClick           | Callback triggered when a point of interest (POI) on the map is clicked.           | Function | no      | All      | no                |
 
 #### Marker Props
 
 | Name         | Description                              | Type     | Required | Platform | HarmonyOS Support |
 |--------------|------------------------------------------|----------|----------|----------|-------------------|
-| title        | 如果没有 InfoWindow，将会根据 title 生成 InfoWindow | String   | no       | All      | no                |
-| titleOffsetY | title 作为 InfoWindow 展示的 y 轴偏移量 | Number   | no       | Android  | no                |
-| location     | 标记的经纬度坐标位置                               | Object   | yes      | All      | yes               |
-| perspective  | 远大近小的效果                   | Boolean  | no       | Android  | no               |
-| flat         | 是否使标记扁平化                     | Boolean  | no       | Android  | yes               |
-| rotate       | 旋转角度                         | Number   | no       | Android  | yes               |
-| icon         | icon图片，同  的 source 属性                    | Object   | no       | All      | yes               |
-| alpha        | 透明度                         | Number   | no       | Android  | yes               |
-| animateType  | 动画效果：drop/grow/jump       | String   | no       | All      | yes               |
-| pinColor     | red/green/purple，大头针颜色             | String   | no       | IOS      | no                |
-| onClick      | 当标记被点击时触发的回调函数                           | Function | no       | All      | yes               |
+| title        | Generates the **InfoWindow** based on the title if no **InfoWindow** is provided. | String   | no       | All      | no                |
+| titleOffsetY | Y-axis offset for title when displayed as the **InfoWindow**. | Number   | no       | Android  | no                |
+| location     | Longitude and latitude coordinates of a marker.               | Object   | yes      | All      | yes               |
+| perspective  | Perspective effect.                   | Boolean  | no       | Android  | no               |
+| flat         | Flattens a marker.                     | Boolean  | no       | Android  | yes               |
+| rotate       | Rotation angle.                         | Number   | no       | Android  | yes               |
+| icon         | Image, which is the same as the **source** property of the **Image** component.                    | Object   | no       | All      | yes               |
+| alpha        | Opacity.                         | Number   | no       | Android  | yes               |
+| animateType  | Animation effect：drop/grow/jump       | String   | no       | All      | yes               |
+| pinColor     | Pin color: red/green/purple.               | String   | no       | IOS      | no                |
+| onClick      | Callback triggered when a marker is clicked.     | Function | no       | All      | yes               |
 
-#### Cluster 点聚合
+#### Cluster
 
 #### Arc Props 
 
 | Name   | Description    | Type    | Required | Platform | HarmonyOS Support |
 |--------|----------------|---------|----------|----------|-------------------|
-| stroke | 当标记被点击时触发的回调函数 | Object  | yes      | All      | no                |
-| points | 数值长度必须为        | Object  | yes      | All      | no                |
-| dash   | 是否为虚线    | Boolean | yes      | iOS      | no                |
+| stroke | Callback triggered when a marker is clicked.| Object  | yes      | All      | no                |
+| points | The value length must be **3**.       | Object  | yes      | All      | no                |
+| dash   | Determines if a line is dashed.   | Boolean | yes      | iOS      | no                |
 
 #### Circle Props
 
 | Name      | Description       | Type   | Required | Platform | HarmonyOS Support |
 |-----------|-------------------|--------|----------|----------|-------------------|
-| radius    | 圆的半径              | Number | yes      | All      | yes               |
-| fillColor | 圆的填充颜色（十六进制，带透明度） | String | yes       | All      | yes               |
-| stroke    | 圆的描边样式            | Object | yes       | All      | yes               |
-| center    | 圆的中心点坐标           | Object | yes       | All      | yes               |
+| radius    | Radius of a circle.             | Number | yes      | All      | yes               |
+| fillColor | Fill color of a circle (hexadecimal, with opacity).| String | yes       | All      | yes               |
+| stroke    | Stroke style of a circle.           | Object | yes       | All      | yes               |
+| center    | Center point coordinates of a circle.          | Object | yes       | All      | yes               |
 
 #### Polyline Props
 
 | Name   | Description | Type   | Required | Platform | HarmonyOS Support |
 |--------|-------------|--------|----------|----------|-------------------|
-| points | 折线的顶点坐标数组   | Object | yes      | All      | yes               |
-| stroke | 折线的描边样式     | Object | yes      | All      | no               |
+| points | Vertex coordinate array of a polyline.  | Object | yes      | All      | yes               |
+| stroke | Stroke style of a polyline.    | Object | yes      | All      | no               |
+
 
 #### Polygon Props
 
 | Name      | Description          | Type   | Required | Platform | HarmonyOS Support |
 |-----------|----------------------|--------|----------|----------|-------------------|
-| points    | 多边形的顶点坐标数组           | Object | yes      | All      | yes               |
-| fillColor | 多边形的填充颜色（十六进制，带透明度）	 | String | no      | All      | yes               |
-| stroke    | 多边形的描边样式             | Object | no      | All      | yes               |
+| points    | Vertex coordinate array of a polygon.          | Object | yes      | All      | yes               |
+| fillColor | Fill color of a polygon (hexadecimal, with opacity). | String | no      | All      | yes               |
+| stroke    | Polygon stroke type.            | Object | no      | All      | yes               |
 
 #### Text Props
 
 | Name      | Description   | Type   | Required | Platform | HarmonyOS Support |
 |-----------|---------------|--------|----------|----------|-------------------|
-| text      | 要显示的文本        | String | yes      | All      | yes               |
-| fontSize  | 文本的字体大小       | Number | no       | All      | yes               |
-| fontColor | 文本的字体颜色（十六进制） | String | no       | All      | yes               |
-| bgColor   | 文本的背景颜色（十六进制） | String | no       | All      | yes               |
-| rotate    | 文本旋转的角度       | Number | no       | All      | yes               |
-| location  | 文本在地图上的位置坐标	  | Object | yes      | All      | yes               |
+| text      | Text to display.       | String | yes      | All      | yes               |
+| fontSize  | Font size of the text.      | Number | no       | All      | yes               |
+| fontColor | Font color of the text (hexadecimal).| String | no       | All      | yes               |
+| bgColor   | Background color of the text (hexadecimal).| String | no       | All      | yes               |
+| rotate    | Rotation angle of the text.      | Number | no       | All      | yes               |
+| location  | Coordinates of the text on the map.  | Object | yes      | All      | yes               |
 
-#### MarkerIcon 使用 View 作为 marker 的 icon
+#### MarkerIcon：Using View as a Marker Icon
 
 #### InfoWindow Props
 
-#### 必须作为 Marker 的子组件
+#### The **InfoWindow** must be used as a subcomponent of the **Marker.**
 
 | Name    | Description                    | Type   | Required | Platform | HarmonyOS Support |
 |---------|--------------------------------|--------|----------|----------|-------------------|
-| offsetY | 相对于 point 在 y 轴的偏移量	 | Object | yes      | Android  | no                |
+| offsetY | Y-axis offset relative to the point. | Object | yes      | Android  | no                |
 
 #### HeatMap Props
 
 | Name     | Description | Type   | Required | Platform | HarmonyOS Support |
 |----------|-------------|--------|----------|----------|-------------------|
-| points   | 绘制热度图的点     | array  | yes      | All      | no                |
-| gradient | 颜色渐变对象      | object | yes      | All      | no                |
+| points   | Points for drawing the heatmap.    | array  | yes      | All      | no                |
+| gradient | Gradient color object.     | object | yes      | All      | no                |
 
 ## Static Methods
 
@@ -554,45 +555,45 @@ Open `entry/src/main/module.json5`, add the following permission:
 
 | Name                          | Description | Type | Required | Platform | HarmonyOS Support |
 |-------------------------------|-------------|------|----------|----------|-------------------|
-| initSDK                       | iOS 初始化 SDK | void | no      | All      | yes               |
-| Promise hasLocationPermission | 是否有定位权限     | void | no       | All      | yes               |
+| initSDK                       | Initializes the SDK on iOS.| void | no      | All      | yes               |
+| Promise hasLocationPermission | Checks if location permission is granted.    | void | no       | All      | yes               |
 
 #### Geolocation Methods
 
 | Name                                              | Description                          | Type | Required | Platform | HarmonyOS Support |
 |---------------------------------------------------|--------------------------------------|------|----------|----------|-------------------|
-| Promise reverseGeoCode                            | 根据给定的经纬度坐标获取相应的地址信息                  | void | no      | All      | no                |
-| Promise reverseGeoCodeGPS                         | 通过给定的经纬度进行反向地理编码，从而获取与该经纬度对应的地理位置信息。 | void | no       | All      | no                |
-| Promise geocode                                   | 调用一个提供地理编码服务的API                     | void | no       | All      | no                |
-| Promise getCurrentPosition                        | 获取当前定位信息，coorType 可为 bd09ll 或 gcj02，默认 bd09ll | void | no       | All      | no                |
-| startLocating(function listener, String coorType) | 开始持续定位                               | void | no       | All      | no                |
-| stopLocating                                      | 停止持续定位                               | void | no       | All      | no                |
+| Promise reverseGeoCode                            | Retrieves address information based on the given coordinates.                 | void | no      | All      | no                |
+| Promise reverseGeoCodeGPS                         | Performs reverse geocoding for given coordinates.| void | no       | All      | no                |
+| Promise geocode                                   | Calls a geocoding service API.                    | void | no       | All      | no                |
+| Promise getCurrentPosition                        | Retrieves the current position. **coorType** can be **bd09ll** (default) or **gcj02**.| void | no       | All      | no                |
+| startLocating(function listener, String coorType) | Starts continuous location tracking.                              | void | no       | All      | no                |
+| stopLocating                                      | Stops continuous location tracking.                              | void | no       | All      | no                |
 
 #### GetDistance Methods
 
 | Name                        | Description   | Type | Required | Platform | HarmonyOS Support |
 |-----------------------------|---------------|------|----------|----------|-------------------|
-| Promise getLocationDistance | 计算两个地理位置之间的距离 | no   | no      | All      | no                |
+| Promise getLocationDistance | Calculates the distance between two locations.| no   | no      | All      | no                |
 
-#### MapApp Methods 调起百度地图客户端
+#### MapApp Methods: Opening the Baidu Maps Client
 
 | Name             | Description | Type | Required | Platform | HarmonyOS Support |
 |------------------|-------------|------|----------|----------|-------------------|
-| openDrivingRoute | 调起百度地图驾车规划  | void | no       | All      | yes               |
-| openTransitRoute | 调起百度地图公交路线  | void | no       | All      | yes               |
-| openWalkNavi     | 调起百度地图步行路线  | void | no       | All      | yes               |
+| openDrivingRoute | Open Baidu Maps for a driving route. | void | no       | All      | yes               |
+| openTransitRoute | Open Baidu Maps for a transit route. | void | no       | All      | yes               |
+| openWalkNavi     | Open Baidu Maps for a walking route. | void | no       | All      | yes               |
 
 ## Known Issues
-- [ ] Arc覆盖物未实现 [#15](https://github.com/react-native-oh-library/react-native-baidu-map/issues/15)
-- [ ] infoWindow覆盖物未实现 [#16](https://github.com/react-native-oh-library/react-native-baidu-map/issues/16)
-- [ ] HeatMap覆盖物未实现 [#17](https://github.com/react-native-oh-library/react-native-baidu-map/issues/17)
-- [ ] Cluster 覆盖物未实现 [#18](https://github.com/react-native-oh-library/react-native-baidu-map/issues/18)
-- [ ] MarkerIcon 覆盖物未实现 [#19](https://github.com/react-native-oh-library/react-native-baidu-map/issues/19)
-- [ ] MapView部分事件未实现 [#20](https://github.com/react-native-oh-library/react-native-baidu-map/issues/20)
-- [ ] marker的title、pincolor、perspective属性未实现 [#21](https://github.com/react-native-oh-library/react-native-baidu-map/issues/21)
-- [ ] Geolocation 静态类功能未实现  [#22](https://github.com/react-native-oh-library/react-native-baidu-map/issues/22)
-- [ ] GetDistance静态类功能未实现 [#23](https://github.com/react-native-oh-library/react-native-baidu-map/issues/23)
-- [ ] Polyline的stroke属性未实现 [#21](https://github.com/react-native-oh-library/react-native-baidu-map/issues/29)
+- [ ] The Arc overlay is not implemented. [#15](https://github.com/react-native-oh-library/react-native-baidu-map/issues/15)
+- [ ] The infoWindow overlay is not implemented. [#16](https://github.com/react-native-oh-library/react-native-baidu-map/issues/16)
+- [ ] The HeatMap overlay is not implemented. [#17](https://github.com/react-native-oh-library/react-native-baidu-map/issues/17)
+- [ ] The Cluster overlay is not implemented. [#18](https://github.com/react-native-oh-library/react-native-baidu-map/issues/18)
+- [ ] The MarkerIcon overlay is not implemented. [#19](https://github.com/react-native-oh-library/react-native-baidu-map/issues/19)
+- [ ] Some MapView events are not implemented. [#20](https://github.com/react-native-oh-library/react-native-baidu-map/issues/20).
+- [ ] The title, pincolor, and perspective properties of the marker are not implemented. [#21](https://github.com/react-native-oh-library/react-native-baidu-map/issues/21).
+- [ ] The Geolocation static class function is not implemented. [#22](https://github.com/react-native-oh-library/react-native-baidu-map/issues/22).
+- [ ] The GetDistance static class function is not implemented. [#23](https://github.com/react-native-oh-library/react-native-baidu-map/issues/23).
+- [ ] The stroke property of Polyline is not implemented. [#21](https://github.com/react-native-oh-library/react-native-baidu-map/issues/29).
 
 
 ## Others

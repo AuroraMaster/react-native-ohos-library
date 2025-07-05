@@ -43,20 +43,19 @@ The following code shows the basic use scenario of the repository:
 > [!WARNING] The name of the imported repository remains unchanged.
 
 ```js
+import React from 'react';
+import { View, Button, Alert } from 'react-native';
 import {
-  BleError,
   BleErrorCode,
   BleManager,
   Device,
-  State as BluetoothState,
-  LogLevel,
+  Service,
+  Descriptor,
   type DeviceId,
-  type TransactionId,
   type UUID,
   type Characteristic,
-  type Base64,
-  type Subscription
-} from 'react-native-ble-plx'
+} from 'react-native-ble-plx';
+import Toast from 'react-native-simple-toast';
 
 class BLEServiceInstance {
   manager: BleManager
@@ -68,7 +67,7 @@ class BLEServiceInstance {
   }
 
   scanDevices = async (onDeviceFound: (device: Device) => void, UUIDs: UUID[] | null = null) => {
-    this.manager.startDeviceScan(UUIDs, null, (error, device) => {
+    this.manager.startDeviceScan(UUIDs, null, (error: any, device: any) => {
       if (error) {
         console.error(error.message)
         this.manager.stopDeviceScan()
@@ -85,11 +84,11 @@ class BLEServiceInstance {
       this.manager.stopDeviceScan()
       this.manager
         .connectToDevice(deviceId)
-        .then(device => {
+        .then((device: any) => {
           this.device = device
           resolve(device)
         })
-        .catch(error => {
+        .catch((error: any) => {
           if (error.errorCode === BleErrorCode.DeviceAlreadyConnected && this.device) {
             resolve(this.device)
           } else {
@@ -98,51 +97,110 @@ class BLEServiceInstance {
           }
         })
     })
+}
 
-  discoverAllServicesAndCharacteristicsForDevice = async () =>
-    new Promise<Device>((resolve, reject) => {
-      if (!this.device) {
-        reject(new Error(deviceNotConnectedErrorText))
-        return
-      }
-      this.manager
-        .discoverAllServicesAndCharacteristicsForDevice(this.device.id)
-        .then(device => {
-          resolve(device)
-          this.device = device
-        })
-        .catch(error => {
-          reject(error)
-        })
-    })
+class App extends React.Component {
+  deviceName: string = 'time'
+  serviceUuid: string = '00001820-0000-1000-8000-00805F9B34FB'
+  characteristicUuid: string = '00001820-0000-1000-8000-00805F9B34FB'
+  descriptorUuid: string = '00002903-0000-1000-8000-00805F9B34FB'
 
-  readCharacteristicForDevice = async (serviceUUID: UUID, characteristicUUID: UUID) =>
-    new Promise<Characteristic>((resolve, reject) => {
-      if (!this.device) {
-        reject(new Error(deviceNotConnectedErrorText))
-        return
-      }
-      this.manager
-        .readCharacteristicForDevice(this.device.id, serviceUUID, characteristicUUID)
-        .then(characteristic => {
-          resolve(characteristic)
-        })
-        .catch(error => {
-          console.error(error.message)
-        })
-    })
+  device?: Device;
 
-  writeCharacteristicWithResponseForDevice = async (serviceUUID: UUID, characteristicUUID: UUID, time: Base64) => {
-    if (!this.device) {
-      console.error(deviceNotConnectedErrorText)
-      throw new Error(deviceNotConnectedErrorText)
-    }
-    return this.manager
-      .writeCharacteristicWithResponseForDevice(this.device.id, serviceUUID, characteristicUUID, time)
-      .catch(error => {
-        console.error(error.message)
-      })
+  service?: Service;
+
+  characteristic?: Characteristic;
+
+  descriptor?: Descriptor;
+
+  showLog(text: string) {
+    Toast.show(text, Toast.SHORT);
+    console.log('bleplx showLog:' + text);
+  };
+
+  ble = new BLEServiceInstance((text: string) => {
+    this.showLog(text);
+  });
+
+  enable = () => {
+    this.ble.manager.enable();
+    Toast.show('enable', Toast.SHORT)
   }
+
+  disable = () => {
+    this.ble.manager.disable();
+    Toast.show('disable', Toast.SHORT)
+  }
+
+  startScan = () => {
+    console.log('startScan');
+    Toast.show('Begin scanning peripherals', Toast.LONG)
+    this.ble.manager.startDeviceScan(null, null, (error: any, device: any) => {
+      if (device?.name) {
+        console.log('bleplx: startScan result:' + device?.name);
+      }
+      if (device?.name?.toLocaleLowerCase() == this.deviceName) {
+        if (this.device != null) {
+          return
+        }
+        this.device = device;
+        this.stopDeviceScan();
+        Alert.alert(
+          'Detect external device:' + device.name,
+          'Is it connected?',
+          [
+            {
+              text: 'Is it connected?',
+              style: 'cancel'
+            },
+            {
+              text: 'Is it connected?',
+              onPress: () => {
+                this.connectToDevice();
+              },
+              style: 'destructive'
+            }
+          ]
+        )
+      }
+    })
+  }
+
+  stopDeviceScan = () => {
+    this.ble.manager.stopDeviceScan();
+    Toast.show('stopDeviceScan', Toast.SHORT)
+  }
+
+  connectToDevice = () => {
+    if (this.device == null) {
+      console.log('bleplx: The specified connected device was not found.');
+      return;
+    }
+
+    console.log('bleplx: Begin connection：' + this.device.id);
+    Toast.show('Begin connecting external devices', Toast.LONG)
+    this.ble.manager.connectToDevice(this.device.id).then((device: any) => {
+      Toast.show('Connection successful', Toast.SHORT);
+      console.log('bleplx:Connection successful:' + JSON.stringify(device));
+    }).catch((error: any) => {
+      Toast.show('Connection failed', Toast.SHORT);
+      console.log('bleplx:Connection failed:' + error.message);
+    });
+  }
+
+  render() {
+    return (
+      <View>
+        <Button title='enable' onPress={this.enable}>enable</Button>
+        <Button title='disable' onPress={this.disable}>disable</Button>
+        <Button title='startScan' onPress={this.startScan}>startScan</Button>
+        <Button title='stopDeviceScan' onPress={this.stopDeviceScan}>stopDeviceScan</Button>
+      </View>
+    )
+  }
+}
+
+export default App;
 ```
 
 ## Use Codegen
@@ -236,9 +294,9 @@ Check the release version information in the release address of the third-party 
 
 ### Permission Requirements
 
-- 由于此库涉及蓝牙系统控制功能，使用对应接口时则需要配置对应的权限，权限需配置在entry/src/main目录下module.json5文件中。其中部分权限需弹窗向用户申请授权。具体权限配置见文档：[程序访问控制](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/security/AccessToken/Readme-CN.md#/openharmony/docs/blob/master/zh-cn/application-dev/security/AccessToken/app-permission-mgmt-overview.md)。
+- This library involves the Bluetooth system control function. Therefore, you need to configure the corresponding permission in the **module.json5** file in the **entry/src/main** directory when using the corresponding APIs. Some permissions need to be requested from users in a pop-up window. For details about the permission configuration, see [Application Access Control](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/security/AccessToken/Readme-CN.md#/openharmony/docs/blob/master/zh-cn/application-dev/security/AccessToken/app-permission-mgmt-overview.md)。
 
-- 此库部分功能与接口需要normal权限：ohos.permission.ACCESS_BLUETOOTH。
+- Some functions and APIs of this library require the **normal** permission **ohos.permission.ACCESS_BLUETOOTH**.
 
 ## API
 

@@ -13,7 +13,7 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/hoanglam10499/react-native-drop-shadow)
+> [!TIP] [Github 地址](https://github.com/hoanglam10499/react-native-drop-shadow/tree/1.0.0)
 
 ## 安装与使用
 

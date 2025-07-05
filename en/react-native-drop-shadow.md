@@ -13,7 +13,7 @@
     </a>
 </p>
 
-> [!TIP] [Github address](https://github.com/hoanglam10499/react-native-drop-shadow)
+> [!TIP] [Github address](https://github.com/hoanglam10499/react-native-drop-shadow/tree/1.0.0)
 
 ## Installation and Usage
 
@@ -118,8 +118,8 @@ export default function withAnimatedViews() {
 You can then use `AnimatedDropShadow` in place of `Animated.View`.
 
 ## Constraints
-- Android 的位图限制为 2048x2048，但这可能取决于 API 版本。
-- 使用位图渲染来模拟阴影，如果同时渲染多个阴影和动画，则阴影可能会影响性能。
+- The bitmap size in Android is limited to 2048x2048, though this may vary depending on the API version.
+- Using bitmaps to render shadows impacts performance, especially if multiple shadows and animations are rendered simultaneously.
 
 ### Compatibility
 
@@ -135,13 +135,13 @@ react-native-harmony: 0.72.33; SDK: Openharmony 5.0.0.71(API Version 12 Release)
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
-| ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| style  | 设置阴影的样式，可以使用常规的样式属性  | style  | no | Android/IOS  | yes |
-| shadowColor  | 设置阴影的颜色，可以使用CSS颜色值或RGBA值  | string  | no | Android/IOS  | yes |
-| shadowOffset  | 设置阴影的偏移量  | number  | no | Android/IOS  | yes |
-| shadowOpacity  | 设置阴影的不透明度，取值范围为0到1之间，0表示完全透明，1表示完全不透明  | number  | no | Android/IOS  | yes |
-| shadowRadius  | 设置阴影的模糊半径，用于控制阴影的模糊程度  | number  | no | Android/IOS  | yes |
+| Name          | Description                                                  | Type   | Required | Platform    | HarmonyOS Support |
+| ------------- | ------------------------------------------------------------ | ------ | -------- | ----------- | ----------------- |
+| style         | Shadow style. Common style attributes can be used.                      | style  | no       | Android/IOS | yes               |
+| shadowColor   | Shadow color. CSS color values or RGBA values can be used.                   | string | no       | Android/IOS | yes               |
+| shadowOffset  | Shadow offset.                                            | number | no       | Android/IOS | yes               |
+| shadowOpacity | Shadow opacity. The value ranges from **0** to **1**. **0** indicates completely transparent, and **1** indicates completely opaque.| number | no       | Android/IOS | yes               |
+| shadowRadius  | Shadow radius, which controls the level of blur applied to the shadow.                  | number | no       | Android/IOS | yes               |
 
 ## Known Issues
 

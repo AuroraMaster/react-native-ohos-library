@@ -94,20 +94,20 @@ export default function ExampleView() {
 
 Name | Description | Type | Required | Platform | HarmonyOS   Support
 -- | -- | -- | -- | -- | --
-animation | 动画的名称，请参见下面的可用动画 | string/undefined | / | all | yes
-duration | 动画将运行的时间（毫秒） | number/undefined | / | all | yes
-delay | （可选）延迟动画（毫秒） | number/undefined | / | all | yes
-direction | 动画的方向，特别适用于重复动画。有效值：正常、反向、交替、交替反向 | string/undefined | / | all | yes
-easing | 动画的计时功能。有效值：自定义函数或线性、易进、易出、易入 | string/undefined | / | all | yes
-iterationCount | 运行动画的次数，对于循环动画使用无穷大。 | number/undefined | / | all | yes
-iterationDelay | 关于动画迭代之间的暂停时间（毫秒） | number/undefined | / | all | yes
-transition | 要转换的样式属性，例如不透明度、旋转或字体大小。对多个属性使用数组。 | string/array/undefined | / | all | yes
-onAnimationBegin | 启动动画时调用的函数。 | Function/undefined | / | all | yes
-onAnimationEnd | 当动画成功完成或取消时调用的函数。函数是用endState参数调用的，请参阅endState.finished以查看动画是否已完成。 | Function/undefined | / | all | yes
-onTransitionBegin | 在样式转换开始时调用的函数。使用属性参数调用函数以区分样式。 | Function/undefined | / | all | yes
-onTransitionEnd | 当样式转换成功完成或取消时调用的函数。使用属性参数调用函数以区分样式。 | Function/undefined | / | all | yes
-useNativeDriver | 是否使用本机或JavaScript动画驱动程序。本机驱动程序可以帮助提高性能，但不能处理所有类型的样式。 | Function/undefined | / | all | yes
-isInteraction | 此动画是否在交互管理器上创建“交互控制柄”。 | Boolean | / | all | yes
+animation | 动画的名称，请参见下面的可用动画 | string/undefined | No | all | yes
+duration | 动画将运行的时间（毫秒） | number/undefined | No | all | yes
+delay | （可选）延迟动画（毫秒） | number/undefined | No | all | yes
+direction | 动画的方向，特别适用于重复动画。有效值：正常、反向、交替、交替反向 | string/undefined | No | all | yes
+easing | 动画的计时功能。有效值：自定义函数或线性、易进、易出、易入 | string/undefined | No | all | yes
+iterationCount | 运行动画的次数，对于循环动画使用无穷大。 | number/undefined | No | all | yes
+iterationDelay | 关于动画迭代之间的暂停时间（毫秒） | number/undefined | No | all | yes
+transition | 要转换的样式属性，例如不透明度、旋转或字体大小。对多个属性使用数组。 | string/array/undefined | No | all | yes
+onAnimationBegin | 启动动画时调用的函数。 | Function/undefined | No | all | yes
+onAnimationEnd | 当动画成功完成或取消时调用的函数。函数是用endState参数调用的，请参阅endState.finished以查看动画是否已完成。 | Function/undefined | No | all | yes
+onTransitionBegin | 在样式转换开始时调用的函数。使用属性参数调用函数以区分样式。 | Function/undefined | No | all | yes
+onTransitionEnd | 当样式转换成功完成或取消时调用的函数。使用属性参数调用函数以区分样式。 | Function/undefined | No | all | yes
+useNativeDriver | 是否使用本机或JavaScript动画驱动程序。本机驱动程序可以帮助提高性能，但不能处理所有类型的样式。 | Function/undefined | No | all | yes
+isInteraction | 此动画是否在交互管理器上创建“交互控制柄”。 | Boolean | No | all | yes
 
 
 

@@ -123,20 +123,20 @@ This document is verified based on the following versions:
 
 | Name              | Description                                                  | Type                   | Required | Platform | HarmonyOS Support |
 | ----------------- | ------------------------------------------------------------ | ---------------------- | -------- | -------- | ----------------- |
-| animation         | Animation name. For details, see the following available animations.                            | string/undefined       | /        | all      | yes               |
-| duration          | Animation duration, in milliseconds.                                    | number/undefined       | /        | all      | yes               |
-| delay             | (Optional) Animation delay, in milliseconds.                                    | number/undefined       | /        | all      | yes               |
-| direction         | Animation direction, particularly suitable for animation repeating. Valid values are **normal**, **reverse**, **alternate**, and **alternate-reverse**.| string/undefined       | /        | all      | yes               |
-| easing            | Easing function. Valid values are **custom**, **linear**, **ease-in**, **ease-out**, and **ease-in-out**.  | string/undefined       | /        | all      | yes               |
-| iterationCount    | Number of times an animation should be played. Set it to **infinite** for animations to be looped.                    | number/undefined       | /        | all      | yes               |
-| iterationDelay    | Time between animation iterations, in milliseconds.                          | number/undefined       | /        | all      | yes               |
-| transition        | Style property to be converted, such as opacity, rotation, or font size. Use an array if there are multiple properties to be converted.| string/array/undefined | /        | all      | yes               |
-| onAnimationBegin  | Function called when the animation is started.                                      | Function/undefined     | /        | all      | yes               |
-| onAnimationEnd    | Function called when the animation is successfully completed or canceled. The function is called with the **endState** parameter. Check **endState.finished** to see if the animation is complete.| Function/undefined     | /        | all      | yes               |
-| onTransitionBegin | Function called when the style conversion starts. Use property parameters to call functions to distinguish styles.| Function/undefined     | /        | all      | yes               |
-| onTransitionEnd   | Function called when the style conversion is successfully completed or canceled. Use property parameters to call functions to distinguish styles.| Function/undefined     | /        | all      | yes               |
-| useNativeDriver   | Whether to use the native or JavaScript animation driver. The native driver can help improve performance, but cannot handle all types of styles.| Function/undefined     | /        | all      | yes               |
-| isInteraction     | Whether the animation creates an interaction handle on the interaction manager.                  | Boolean                | /        | all      | yes               |
+| animation         | Animation name. For details, see the following available animations.                            | string/undefined       | No        | all      | yes               |
+| duration          | Animation duration, in milliseconds.                                    | number/undefined       | No        | all      | yes               |
+| delay             | (Optional) Animation delay, in milliseconds.                                    | number/undefined       | No        | all      | yes               |
+| direction         | Animation direction, particularly suitable for animation repeating. Valid values are **normal**, **reverse**, **alternate**, and **alternate-reverse**.| string/undefined       | No        | all      | yes               |
+| easing            | Easing function. Valid values are **custom**, **linear**, **ease-in**, **ease-out**, and **ease-in-out**.  | string/undefined       | No        | all      | yes               |
+| iterationCount    | Number of times an animation should be played. Set it to **infinite** for animations to be looped.                    | number/undefined       | No        | all      | yes               |
+| iterationDelay    | Time between animation iterations, in milliseconds.                          | number/undefined       | No        | all      | yes               |
+| transition        | Style property to be converted, such as opacity, rotation, or font size. Use an array if there are multiple properties to be converted.| string/array/undefined | No        | all      | yes               |
+| onAnimationBegin  | Function called when the animation is started.                                      | Function/undefined     | No        | all      | yes               |
+| onAnimationEnd    | Function called when the animation is successfully completed or canceled. The function is called with the **endState** parameter. Check **endState.finished** to see if the animation is complete.| Function/undefined     | No        | all      | yes               |
+| onTransitionBegin | Function called when the style conversion starts. Use property parameters to call functions to distinguish styles.| Function/undefined     | No        | all      | yes               |
+| onTransitionEnd   | Function called when the style conversion is successfully completed or canceled. Use property parameters to call functions to distinguish styles.| Function/undefined     | No        | all      | yes               |
+| useNativeDriver   | Whether to use the native or JavaScript animation driver. The native driver can help improve performance, but cannot handle all types of styles.| Function/undefined     | No        | all      | yes               |
+| isInteraction     | Whether the animation creates an interaction handle on the interaction manager.                  | Boolean                | No        | all      | yes               |
 
 ## Others
 

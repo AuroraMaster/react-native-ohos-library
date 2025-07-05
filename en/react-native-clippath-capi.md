@@ -203,35 +203,35 @@ Check the release version information in the release address of the third-party 
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-| Name                 | Description                                                                                                    | Type              | Required | Platform    | HarmonyOS Support |
-| -------------------- | -------------------------------------------------------------------------------------------------------------- | ----------------- | -------- | ----------- | ----------------- |
-| svgKey               | 唯一 key                                                                                                       | string            | No       | Web | No               |
-| d                    | 形状由一系列命令定义（svg path data）                                                                          | string            | No       | iOS/Android | Yes               |
-| viewBox              | 定义用户空间中的位置和维度                                                                                     | Array<Number>(4)  | No       | iOS/Android | Yes               |
-| align                | preserveAspectRatio 属性的 align                                                                               | string            | No       | iOS/Android | Yes                |
-| aspect               | preserveAspectRatio 属性的 meetOrSlice                                                                         | meet/slice/none   | No       | iOS/Android | Yes                |
-| fillRule             | 路径内部填充规则                                                                                               | nonzero/evenodd   | No       | iOS/Android | Yes                |
-| strokeWidth          | 路径描边宽度                                                                                                   | number            | No       | iOS/Android | Yes               |
-| strokeCap            | 开放路径两端的形状                                                                                             | butt/round/square | No       | iOS/Android | Yes               |
-| strokeJoin           | 路径转角处使用的形状                                                                                           | bevel/miter/round | No       | iOS/Android | Yes               |
-| strokeMiter          | strokeJoin 值是 miter，设置夹角延伸                                                                            | number            | No       | iOS/Android | Yes               |
-| strokeStart          | iOS CAShapeLayer 描线开始的地方占总路径的百分比。默认值是 0。                                                  | number            | No       | iOS/Android | Yes                |
-| strokeEnd            | iOS CAShapeLayer 表示绘制结束的地方站总路径的百分比。默认值是 1，如果小于等于 strokeStart 则绘制不出任何内容。 | number            | No       | iOS/Android | Yes                |
-| translateZ           | 设置定位层级，相当于 index                                                                                     | number            | No       | iOS/Android | Yes               |
-| transX               | 在二维平面上水平方向移动元素                                                                                   | number            | No       | iOS/Android | Yes               |
-| transY               | 在二维平面上垂直方向移动元素                                                                                   | number            | No       | iOS/Android | Yes               |
-| transPercentageValue | transX、transY 使用百分比                                                                                      | boolean           | No       | iOS/Android | Yes               |
-| rot                  | 元素围绕一个定点旋转                                                                                           | number            | No       | iOS/Android | Yes               |
-| rotOx                | 旋转中心点水平位置                                                                                             | number            | No       | iOS/Android | Yes               |
-| rotOy                | 旋转中心点垂直位置                                                                                             | number            | No       | iOS/Android | Yes               |
-| rotPercentageValue   | rotOx、rotOy 使用百分比                                                                                        | boolean           | No       | iOS/Android | Yes               |
-| sc                   | 放大或缩小元素                                                                                                 | number            | No       | iOS/Android | Yes               |
-| scX                  | 水平缩放                                                                                                       | number            | No       | iOS/Android | Yes               |
-| scY                  | 垂直缩放                                                                                                       | number            | No       | iOS/Android | Yes               |
-| scO                  | 缩放中心点位置                                                                                                 | number            | No       | iOS/Android | Yes               |
-| scOx                 | 缩放中心点水平位置                                                                                             | number            | No       | iOS/Android | Yes               |
-| scOy                 | 缩放中心点垂直位置                                                                                             | number            | No       | iOS/Android | Yes               |
-| scPercentageValue    | scO、scOx、scOy 使用百分比                                                                                     | boolean           | No       | iOS/Android | Yes               |
+| Name                 | Description                                                  | Type              | Required | Platform    | HarmonyOS Support |
+| -------------------- | ------------------------------------------------------------ | ----------------- | -------- | ----------- | ----------------- |
+| svgKey               | Unique key.                                                    | string            | No       | Web         | No                |
+| d                    | Path shape defined by a series of commands (SVG path data).                       | string            | No       | iOS/Android | Yes               |
+| viewBox              | Defines the position and dimensions in user space.                                  | Array<Number>(4)  | No       | iOS/Android | Yes               |
+| align                | **align** of the **preserveAspectRatio** property.                            | string            | No       | iOS/Android | Yes               |
+| aspect               | **meetOrSlice** of the **preserveAspectRatio** property.                      | meet/slice/none   | No       | iOS/Android | Yes               |
+| fillRule             | Path fill rule.                                            | nonzero/evenodd   | No       | iOS/Android | Yes               |
+| strokeWidth          | Path stroke width.                                                | number            | No       | iOS/Android | Yes               |
+| strokeCap            | Shape of the ends of open paths.                                          | butt/round/square | No       | iOS/Android | Yes               |
+| strokeJoin           | Shape used at corners of paths.                                        | bevel/miter/round | No       | iOS/Android | Yes               |
+| strokeMiter          | Miter length when **strokeJoin** is **miter**.                         | number            | No       | iOS/Android | Yes               |
+| strokeStart          | Percentage of the starting point of the **CAShapeLayer** stroke to the total path on iOS. The default value is **0**.| number            | No       | iOS/Android | Yes               |
+| strokeEnd            | Percentage of the ending point of the **CAShapeLayer** stroke to the total path on iOS. The default value is **1**. If the value is less than or equal to that of **strokeStart**, no content is drawn.| number            | No       | iOS/Android | Yes               |
+| translateZ           | Sets the positioning layer depth (similar to index).                                  | number            | No       | iOS/Android | Yes               |
+| transX               | Horizontal translation in a 2D plane.                                | number            | No       | iOS/Android | Yes               |
+| transY               | Vertical translation in a 2D plane.                                | number            | No       | iOS/Android | Yes               |
+| transPercentageValue | Whether **transX** and **transY** use percentage values.                                   | boolean           | No       | iOS/Android | Yes               |
+| rot                  | Rotation of an element around a specific point.                                        | number            | No       | iOS/Android | Yes               |
+| rotOx                | Horizontal position of the rotation origin.                                          | number            | No       | iOS/Android | Yes               |
+| rotOy                | Vertical position of the rotation origin.                                          | number            | No       | iOS/Android | Yes               |
+| rotPercentageValue   | Whether **rotOx** and **rotOy** use percentage values.                                     | boolean           | No       | iOS/Android | Yes               |
+| sc                   | Uniform scaling of an element.                                              | number            | No       | iOS/Android | Yes               |
+| scX                  | X-axis scaling.                                                    | number            | No       | iOS/Android | Yes               |
+| scY                  | Y-axis scaling.                                                    | number            | No       | iOS/Android | Yes               |
+| scO                  | Scaling origin point.                                              | number            | No       | iOS/Android | Yes               |
+| scOx                 | Horizontal position of the scaling origin.                                          | number            | No       | iOS/Android | Yes               |
+| scOy                 | Vertical position of the scaling origin.                                          | number            | No       | iOS/Android | Yes               |
+| scPercentageValue    | Whether **scO**, **scOx**, and **scOy** use percentage values.                                  | boolean           | No       | iOS/Android | Yes               |
 
 ## Known Issues
 
@@ -239,4 +239,4 @@ Check the release version information in the release address of the third-party 
 
 ## License
 
-This project is licensed under [The MIT License (MIT)](https://github.com/react-native-oh-library/react-native-clippath/blob/capi/LICENSE).
+This project is licensed under [The MIT License (MIT)](https://github.com/Only-IceSoul/react-native-clippath/blob/main/LICENSE).
