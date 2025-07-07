@@ -11,7 +11,7 @@ This third-party library has been migrated to Gitee and is now available for dir
 | Version                        | Package Name                             | Repository                                                   | Release                                                      |
 | ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | <= 0.9.1@deprecated | @react-native-oh-library/react-native-image-sequence  | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-image-sequence) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-sequence/releases) |
-| > 0.9.1                        | @react-native-ohos/react-native-image-sequence | [Gitee](https://gitee.com/openharmony-sig/rntpc_react-native-image-sequence) | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_react-native-image-sequence/releases) |
+| > 0.9.1                        | @react-native-ohos/react-native-image-sequence | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-image-sequence) | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-sequence/releases) |
 
 
 ## Installation and Usage
@@ -445,4 +445,4 @@ Check the release version information in the release address of the third-party 
 
 ## 7. License
 
-This project is licensed under [The MIT License (MIT)](https://gitee.com/openharmony-sig/rntpc_react-native-image-sequence/blob/master/LICENSE), Please enjoy and participate freely in open source.
+This project is licensed under [The MIT License (MIT)](https://gitcode.com/openharmony-sig/rntpc_react-native-image-sequence/blob/master/LICENSE), Please enjoy and participate freely in open source.

@@ -5,14 +5,14 @@
 </p>
 
 
-本项目基于 [react-native-document-picker@9.2.0](https://github.com/react-native-documents/document-picker) 开发。
+本项目基于 [react-native-document-picker@9.2.0](https://github.com/react-native-documents/document-picker/tree/v9.2.0) 开发。
 
 该第三方库的仓库已迁移至 Gitee，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-document-picker`，具体版本所属关系如下：
 
 | Version                        | Package Name                             | Repository                                                   | Release                                                      |
 | ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | <= 9.2.0@deprecated | @react-native-oh-tpl/react-native-document-picker  | [Github(deprecated)](https://github.com/react-native-oh-library/document-picker) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/document-picker/releases) |
-| > 9.2.0                        | @react-native-ohos/react-native-document-picker | [Gitee](https://gitee.com/openharmony-sig/rntpc_react-native-document-picker) | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_react-native-document-picker/releases) |
+| > 9.2.0                        | @react-native-ohos/react-native-document-picker | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-document-picker) | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-document-picker/releases) |
 
 
 ## 1. 安装与使用
@@ -104,7 +104,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({ onSelectValue }) => {
         <Text style={{ fontSize: 20, fontWeight: '600', margin: 6 }}>picker 的文件类型</Text>
       </View>
       {
-        typeUi.map(s =>
+        typeUi.map((s:any) =>
           <TouchableOpacity key={s.label} onPress={() => {
             onClickSelLabel(s);
           }} >
@@ -420,4 +420,4 @@ ohpm install
 
 ## 8. 开源协议
 
-本项目基于 [The MIT License (MIT)](https://gitee.com/openharmony-sig/rntpc_react-native-document-picker/blob/master/LICENSE.md) ，请自由地享受和参与开源。
+本项目基于 [The MIT License (MIT)](https://gitcode.com/openharmony-sig/rntpc_react-native-document-picker/blob/master/LICENSE.md) ，请自由地享受和参与开源。

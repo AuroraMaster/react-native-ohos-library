@@ -432,7 +432,7 @@ class PieChartWithLabelExample extends React.PureComponent {
                 key: `pie-${index}`,
             }))
 
-        const Labels = ({ slices }) => {
+        const Labels = ({ slices }:any) => {
             return slices.map((slice, index) => {
                 const { labelCentroid, pieCentroid, data } = slice;
                 return (
@@ -500,40 +500,40 @@ export default PieChartWithLabelExample
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | data  | An array of arbitrary data - use prop xAccessor/yAccessorto tell the chart about the data structure         | array  | YES | ALL      | YES |
-yAccessor | A function that takes each entry of data (named "item") as well as the index and returns the y-value of that entry |  function | YES | ALL | YES |
-xAccessor | Same as yAccessor but returns the x-value of that entry | function | YES | ALL | YES |
-yScale | A function that determines the scale of said axis (only tested with scaleLinear, scaleTime & scaleBand ) | d3Scale.scaleLinear | YES | ALL | YES |
-xScale | Same as yScale but for the x axis | d3Scale.scaleLinear | YES | ALL | YES |
-svg | an object containing all the props that should be passed down to the underlying react-native-svg component. See available props | object | YES | ALL | YES |
-animate | PropTypes.bool | boolean |   YES | ALL | YES |
-animationDuration | PropTypes.number | number |   YES | ALL | YES |
-style | Supports all ViewStyleProps | ViewStyleProps |   YES | ALL | YES |
-curve | A function like this | d3.curveLinear  |   YES | ALL | YES |
-contentInset | An object that specifies how much fake "margin" to use inside of the SVG canvas. This is particularly helpful on Android where overflow: "visible" isn't supported and might cause clipping. Note: important to have same contentInset on axis's and chart | object |   YES | ALL | YES |
-numberOfTicks | We use d3-array to evenly distribute the grid and dataPoints on the yAxis. This prop specifies how many "ticks" we should try to render. Note: important that this prop is the same on both the chart and on the yAxis | number/undefined |   YES | ALL | YES |
-showGrid | Whether or not to show the grid lines  | boolean |   YES | ALL | YES |
-yMin | Alter how the chart bounds are calculated  | number/undefined |   YES | ALL | YES |
-yMax | Alter how the chart bounds are calculated  |  number/undefined |   YES | ALL | YES |
-xMin | Alter how the chart bounds are calculated  |  number/undefined |   YES | ALL | YES |
-xMax | Alter how the chart bounds are calculated  |  number/undefined |   YES | ALL | YES |
-children | One or many react-native-svg components that will be used to enhance your chart |  ReactNode |   YES | ALL | YES |
+yAccessor | A function that takes each entry of data (named "item") as well as the index and returns the y-value of that entry |  function | NO | ALL | YES |
+xAccessor | Same as yAccessor but returns the x-value of that entry | function | NO | ALL | YES |
+yScale | A function that determines the scale of said axis (only tested with scaleLinear, scaleTime & scaleBand ) | d3Scale.scaleLinear | NO | ALL | YES |
+xScale | Same as yScale but for the x axis | d3Scale.scaleLinear | NO | ALL | YES |
+svg | an object containing all the props that should be passed down to the underlying react-native-svg component. See available props | object | NO | ALL | YES |
+animate | PropTypes.bool | boolean |   NO | ALL | YES |
+animationDuration | PropTypes.number | number |   NO | ALL | YES |
+style | Supports all ViewStyleProps | ViewStyleProps |   NO | ALL | YES |
+curve | A function like this | d3.curveLinear  |   NO | ALL | YES |
+contentInset | An object that specifies how much fake "margin" to use inside of the SVG canvas. This is particularly helpful on Android where overflow: "visible" isn't supported and might cause clipping. Note: important to have same contentInset on axis's and chart | object |   NO | ALL | YES |
+numberOfTicks | We use d3-array to evenly distribute the grid and dataPoints on the yAxis. This prop specifies how many "ticks" we should try to render. Note: important that this prop is the same on both the chart and on the yAxis | number/undefined |   NO | ALL | YES |
+showGrid | Whether or not to show the grid lines  | boolean |   NO | ALL | YES |
+yMin | Alter how the chart bounds are calculated  | number/undefined |   NO | ALL | YES |
+yMax | Alter how the chart bounds are calculated  |  number/undefined |   NO | ALL | YES |
+xMin | Alter how the chart bounds are calculated  |  number/undefined |   NO | ALL | YES |
+xMax | Alter how the chart bounds are calculated  |  number/undefined |   NO | ALL | YES |
+children | One or many react-native-svg components that will be used to enhance your chart |  ReactNode |   NO | ALL | YES |
 
 ### 属性children
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| x  | a function that normally accepts the index of a data point an returns its 'x' location on the canvas         |  nunmber/string  | YES | ALL      | YES |
-| y  | a function that normally accepts the value of a data point an returns its 'y' location on the canvas        |  nunmber/string  | YES | ALL      | YES |
-| width  | the width of the canvas in pixels        |  number/srting  | YES | ALL      | YES |
-| height  | the height of the canvas in pixels        |   number/srting  | YES | ALL      | YES |
+| x  | a function that normally accepts the index of a data point an returns its 'x' location on the canvas         |  nunmber/string  | NO | ALL      | YES |
+| y  | a function that normally accepts the value of a data point an returns its 'y' location on the canvas        |  nunmber/string  | NO | ALL      | YES |
+| width  | the width of the canvas in pixels        |  number/srting  | NO | ALL      | YES |
+| height  | the height of the canvas in pixels        |   number/srting  | NO | ALL      | YES |
 | data  | the same data array provided to the chart, use this to map over your data points if you want decorators on each point        |  array  | YES | ALL      | YES |
-| ticks  | if numberOfTicks has been provided to the chart this array will include the calculated tick values (useful for grids)       |  array  | YES | ALL      | YES |
+| ticks  | if numberOfTicks has been provided to the chart this array will include the calculated tick values (useful for grids)       |  array  | NO | ALL      | YES |
 
 ### 组件特有属性
 
 #### Area
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| start  | The value of which the area should start (will always end on the data point)    |  number/undefined  | YES | ALL      | YES |
+| start  | The value of which the area should start (will always end on the data point)    |  number/undefined  | NO | ALL      | YES |
 
 #### StackedAreaChart
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
@@ -541,19 +541,19 @@ children | One or many react-native-svg components that will be used to enhance 
 | data  | An array of the data entries    |  array  | YES | ALL      | YES |
 | keys  | This array should contain the object keys of interest (see above example)    |  array  | YES | ALL      | YES |
 | colors  | An array of equal size as keys with the color for each key    |  array  | YES | ALL      | YES |
-| order  | The order in which to sort the areas    |  d3.stackOrderNone  | YES | ALL      | YES |
-| offset  | A function to determine the offset of the areas    |  d3.stackOffsetNone  | YES | ALL  | YES |
+| order  | The order in which to sort the areas    |  d3.stackOrderNone  | NO | ALL      | YES |
+| offset  | A function to determine the offset of the areas    |  d3.stackOffsetNone  | NO | ALL  | YES |
 
 #### BarChart
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | data  | The data prop in a barChart can look exactly like in a Line- or AreaChart, i.e an array of just numbers or complex objects. It can however also be an array with several data sets. A data object can contain a svg property which allows you two override styles on that specific object.     |  array  | YES | ALL      | YES |
-| horizontal  | Boolean whether or not the bars should be horizontal   |  boolean  | YES | ALL      | YES |
-| svg  | Default svg props for all bars. Supports all svg props an svg path normally supports. This styles will be overriden if there are specific styles for a given data object   |  object  | YES | ALL      | YES |
-| spacingInner  | Spacing between the bars (or groups of bars)    |  number/undefined   | YES | ALL      | YES |
-| spacingOuter  | Spacing outside of the bars (or groups of bars). Percentage of one bars width    |  number/undefined   | YES | ALL      | YES |
-| contentInset  | PropTypes.shape    |  object  | YES | ALL      | YES |
-| children.bandwidth  | the width of a band (a.k.a bar)    |  number  | YES | ALL      | YES |
+| horizontal  | Boolean whether or not the bars should be horizontal   |  boolean  | NO | ALL      | YES |
+| svg  | Default svg props for all bars. Supports all svg props an svg path normally supports. This styles will be overriden if there are specific styles for a given data object   |  object  | NO | ALL      | YES |
+| spacingInner  | Spacing between the bars (or groups of bars)    |  number/undefined   | NO | ALL      | YES |
+| spacingOuter  | Spacing outside of the bars (or groups of bars). Percentage of one bars width    |  number/undefined   | NO | ALL      | YES |
+| contentInset  | PropTypes.shape    |  object  | NO | ALL      | YES |
+| children.bandwidth  | the width of a band (a.k.a bar)    |  number  | NO | ALL      | YES |
 
 #### StackedBarChart
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
@@ -561,66 +561,66 @@ children | One or many react-native-svg components that will be used to enhance 
 | data  | An array of the data entries: each value can be a number or a complex object with custom svg props for example    |  array  | YES | ALL      | YES |
 | keys  | This array should contain the object keys of interest (see above example)    |  array  | YES | ALL      | YES |
 | colors  | An array of equal size as keys with the color for each key    |  array  | YES | ALL      | YES |
-| valueAccessor  | Very similar to the yAccessor of the other charts, usually needed when using complex objects as values    |  function  | YES | ALL      | YES |
-| horizontal  | Boolean whether or not the bars should be horizontal   |  boolean  | YES | ALL      | YES |
-| order  | The order in which to sort the areas    |  d3.stackOrderNone  | YES | ALL      | YES |
-| offset  | A function to determine the offset of the areas    |  d3.stackOffsetNone | YES | ALL  | YES |
+| valueAccessor  | Very similar to the yAccessor of the other charts, usually needed when using complex objects as values    |  function  | NO | ALL      | YES |
+| horizontal  | Boolean whether or not the bars should be horizontal   |  boolean  | NO | ALL      | YES |
+| order  | The order in which to sort the areas    |  d3.stackOrderNone  | NO | ALL      | YES |
+| offset  | A function to determine the offset of the areas    |  d3.stackOffsetNone | NO | ALL  | YES |
 
 #### PieChart
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | data  | Very similar to the data prop of our other charts, the only exception is that the PieChart only accepts complex objects (not just numbers). An item can also contain the arc property which allows you two override settings on that specific arc    |  array  | YES | ALL      | YES |
-| valueAccessor  | Very similar to the yAccessor of the other charts    |  function  | YES | ALL      | YES |
-| outerRadius  | The outer radius, use this to tweak how close your pie is to the edge of it's container. Takes either percentages or absolute numbers (pixels)    |  number/string/undefined  | YES | ALL      | YES |
-| innerRadius  | The inner radius, use this to create a donut. Takes either percentages or absolute numbers (pixels)    |  number/string/undefined  | YES | ALL      | YES |
-| labelRadius  | The radius of the circle that will help you layout your labels. Takes either percentages or absolute numbers (pixels)    |  number/string/undefined  | YES | ALL      | YES |
-| padAngle  | The angle between the slices    |  number/undefined  | YES | ALL      | YES |
-| startAngle  | The start angle in radians of the entire pie    |  number/undefined  | YES | ALL      | YES |
-| endAngle  | The end angle in radians of the entire pie    |  number/undefined  | YES | ALL      | YES |
-| sort  | Like any normal sort function it expects either 0, a positive or negative return value. The arguments are each an object from the dataPoints array   |  function  | YES | ALL      | YES |
-| children.slices  | an array of the pie chart slices. See source code and examples for what it includes    |  array  | YES | ALL      | YES |
+| valueAccessor  | Very similar to the yAccessor of the other charts    |  function  | NO | ALL      | YES |
+| outerRadius  | The outer radius, use this to tweak how close your pie is to the edge of it's container. Takes either percentages or absolute numbers (pixels)    |  number/string/undefined  | NO | ALL      | YES |
+| innerRadius  | The inner radius, use this to create a donut. Takes either percentages or absolute numbers (pixels)    |  number/string/undefined  | NO | ALL      | YES |
+| labelRadius  | The radius of the circle that will help you layout your labels. Takes either percentages or absolute numbers (pixels)    |  number/string/undefined  | NO | ALL      | YES |
+| padAngle  | The angle between the slices    |  number/undefined  | NO | ALL      | YES |
+| startAngle  | The start angle in radians of the entire pie    |  number/undefined  | NO | ALL      | YES |
+| endAngle  | The end angle in radians of the entire pie    |  number/undefined  | NO | ALL      | YES |
+| sort  | Like any normal sort function it expects either 0, a positive or negative return value. The arguments are each an object from the dataPoints array   |  function  | NO | ALL      | YES |
+| children.slices  | an array of the pie chart slices. See source code and examples for what it includes    |  array  | NO | ALL      | YES |
 
 #### ProgressCircle
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | progress  | PropTypes.number.isRequired    |  number  | YES | ALL  | YES |
-| progressColor  | PPropTypes.any    |  string/undefined  | YES | ALL  | YES |
-| backgroundColor  | PropTypes.any    |  string/undefined  | YES | ALL  | YES |
-| startAngle  | PropTypes.number    |  number/undefined  | YES | ALL  | YES |
-| endAngle  | PropTypes.number    |  number/undefined  | YES | ALL  | YES |
-| strokeWidth  | PropTypes.number    |  number/undefined  | YES | ALL  | YES |
-| cornerRadius  | PropTypes.number    |  number/undefined | YES | ALL  | YES |
+| progressColor  | PPropTypes.any    |  string/undefined  | NO | ALL  | YES |
+| backgroundColor  | PropTypes.any    |  string/undefined  | NO | ALL  | YES |
+| startAngle  | PropTypes.number    |  number/undefined  | NO | ALL  | YES |
+| endAngle  | PropTypes.number    |  number/undefined  | NO | ALL  | YES |
+| strokeWidth  | PropTypes.number    |  number/undefined  | NO | ALL  | YES |
+| cornerRadius  | PropTypes.number    |  number/undefined | NO | ALL  | YES |
 
 #### YAxis
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| scale  | Should be the same as passed into the charts yScale, or d3Scale.scaleBand if used in conjunction with a horizontal BarChart   |  d3Scale.scaleLinear  | YES | ALL  | YES |
-| svg  | supports all svg props an svg text normally supports   |  object  | YES | ALL      | YES |
-| spacingInner  | Spacing between the labels. Only applicable if scale=d3Scale.scaleBand and should then be equal to spacingInner prop on the actual BarChart   |  number/undefined   | YES | ALL      | YES |
-| spacingOuter  | 	Spacing outside of the labels. Only applicable if scale=d3Scale.scaleBand and should then be equal to spacingOuter prop on the actual BarChart   |  number/undefined  | YES | ALL      | YES |
-| formatLabel  | A utility function to format the text before it is displayed, e.g `value => "$" + value   |  function|undefined  | YES | ALL      | YES |
-| contentInset  | Used to sync layout with chart (if same prop used there)   |  object  | YES | ALL      | YES |
-| min  | Used to sync layout with chart (if gridMin is used there)  | number/undefined | YES | ALL      | YES |
-| max  | Used to sync layout with chart (if gridMax is used there)  | number/undefined | YES | ALL      | YES |
+| scale  | Should be the same as passed into the charts yScale, or d3Scale.scaleBand if used in conjunction with a horizontal BarChart   |  d3Scale.scaleLinear  | NO | ALL  | YES |
+| svg  | supports all svg props an svg text normally supports   |  object  | NO | ALL      | YES |
+| spacingInner  | Spacing between the labels. Only applicable if scale=d3Scale.scaleBand and should then be equal to spacingInner prop on the actual BarChart   |  number/undefined   | NO | ALL      | YES |
+| spacingOuter  | 	Spacing outside of the labels. Only applicable if scale=d3Scale.scaleBand and should then be equal to spacingOuter prop on the actual BarChart   |  number/undefined  | NO | ALL      | YES |
+| formatLabel  | A utility function to format the text before it is displayed, e.g `value => "$" + value   |  function|NO  | YES | ALL      | YES |
+| contentInset  | Used to sync layout with chart (if same prop used there)   |  object  | NO | ALL      | YES |
+| min  | Used to sync layout with chart (if gridMin is used there)  | number/undefined | NO | ALL      | YES |
+| max  | Used to sync layout with chart (if gridMax is used there)  | number/undefined | NO | ALL      | YES |
 
 #### XAxis
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | data  | An array of values or objects to render on the xAxis. Should preferably have the same length as the chart's dataPoints. If a complex object is used instead of a simple value, a xAccessor prop is required to calculate the axis' extent. A data object can contain a svg property which allows you to override styles on that specific object  |  array  | YES | ALL      | YES |
-| scale  | Should be the same as passed into the charts xScale   |  d3Scale.scaleLinear  | YES | ALL  | YES |
-| spacingInner  | Spacing between the labels. Only applicable if scale=d3Scale.scaleBand and should then be equal to spacingInner prop on the actual BarChart   |  number/undefined   | YES | ALL      | YES |
-| spacingOuter  | 	Spacing between the labels. Only applicable if scale=d3Scale.scaleBand and should then be equal to spacingOuter prop on the actual BarChart   |  number/undefined  | YES | ALL      | YES |
-| svg  | Default svg props for all labels. Supports all svg props an svg text normally supports. This styles will be overriden if there are specific styles for a given data object   |  object  | YES | ALL      | YES |
-| formatLabel  | A utility function to format the text before it is displayed, e.g value => "day" + value. Passes back the value provided by the xAccessor   |  function  | YES | ALL      | YES |
-| contentInset  | Used to sync layout with chart (if same prop used there)  |  object  | YES | ALL      | YES |
+| scale  | Should be the same as passed into the charts xScale   |  d3Scale.scaleLinear  | NO | ALL  | YES |
+| spacingInner  | Spacing between the labels. Only applicable if scale=d3Scale.scaleBand and should then be equal to spacingInner prop on the actual BarChart   |  number/undefined   | NO | ALL      | YES |
+| spacingOuter  | 	Spacing between the labels. Only applicable if scale=d3Scale.scaleBand and should then be equal to spacingOuter prop on the actual BarChart   |  number/undefined  | NO | ALL      | YES |
+| svg  | Default svg props for all labels. Supports all svg props an svg text normally supports. This styles will be overriden if there are specific styles for a given data object   |  object  | NO | ALL      | YES |
+| formatLabel  | A utility function to format the text before it is displayed, e.g value => "day" + value. Passes back the value provided by the xAccessor   |  function  | NO | ALL      | YES |
+| contentInset  | Used to sync layout with chart (if same prop used there)  |  object  | NO | ALL      | YES |
 
 
 #### Grid
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| svg  | an object containing all the props that should be passed down to the underlying react-native-svg component.   |  object  | YES | ALL      | YES |
-| direction  | The direction of the grid lines.  |  Grid.Direction  | YES | ALL      | YES |
-| belowChart  | whether or not to render below the chart.  |  boolean  | YES | ALL      | YES |
+| svg  | an object containing all the props that should be passed down to the underlying react-native-svg component.   |  object  | NO | ALL      | YES |
+| direction  | The direction of the grid lines.  |  Grid.Direction  | NO | ALL      | YES |
+| belowChart  | whether or not to render below the chart.  |  boolean  | NO | ALL      | YES |
 
 ## 遗留问题
 

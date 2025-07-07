@@ -12,7 +12,7 @@
 | Version                        | Package Name                             | Repository                                                   | Release                                                      |
 | ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | <= 0.9.1@deprecated | @react-native-oh-library/react-native-image-sequence  | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-image-sequence) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-sequence/releases) |
-| > 0.9.1                        | @react-native-ohos/react-native-image-sequence | [Gitee](https://gitee.com/openharmony-sig/rntpc_react-native-image-sequence) | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_react-native-image-sequence/releases) |
+| > 0.9.1                        | @react-native-ohos/react-native-image-sequence | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-image-sequence) | [Gitee Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-sequence/releases) |
 
 ## 安装与使用
 
@@ -444,4 +444,4 @@ ohpm install
 
 ## 7. 开源协议
 
-本项目基于 [The MIT License (MIT)](https://gitee.com/openharmony-sig/rntpc_react-native-image-sequence/blob/master/LICENSE) ，请自由地享受和参与开源。
+本项目基于 [The MIT License (MIT)](https://gitcode.com/openharmony-sig/rntpc_react-native-image-sequence/blob/master/LICENSE) ，请自由地享受和参与开源。
