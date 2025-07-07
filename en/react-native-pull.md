@@ -474,13 +474,15 @@ Check the release version information in the release address of the third-party 
 | `onPushing`          | Called when the component is in the **pushing** state. This function contains the **gesturePosition** parameter, which is a **{x, y}** object in JSON format. When the component is pulled from top to bottom, the value of **gesturePosition.y** is greater than 0. When the object is pushed from bottom to top, the value of **gesturePosition.y** is less than 0. | function | no       | android,ios | yes               |
 | `topIndicatorRender` | Renders the top indicator component. This function contains four parameters: **ispulling**, **ispullok**, **ispullrelease** and **gesturePosition**. You can use **gesturePosition** to define the animation header. | function | no       | android,ios | yes               |
 | `topIndicatorHeight` | Specifies the height of the top indicator component. This property is necessary when **topIndicatorRender** is defined. | number   | no       | android,ios | yes               |
-| `isPullEnd`          | Indicates whether the pull-down ends. If the value is **true**, the top indicator component is hidden. This parameter is optional. | boolean  | no       | android,ios | yes               |
+| `isPullEnd`          | Indicates whether the pull-down ends. If the value is **true**, the top indicator component is hidden. This parameter is optional. | boolean  | no       | android,ios | no               |
 | `onRefresh`          | Called when the refresh starts.                              | function | no       | android,ios | yes               |
 | `refreshing`         | Indicates whether the component is being refreshed.          | function | no       | android,ios | yes               |
 
 ## Known Issues
 
 ## Others
+
+- The isPullEnd property does not take effect; [issue#28](https://github.com/greatbsky/react-native-pull/issues/28)
 
 ## License
 
