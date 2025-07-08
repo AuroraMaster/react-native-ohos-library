@@ -255,7 +255,7 @@ export default Avatars;
 
 The HarmonyOS implementation of this library relies on the native code of @react-native-oh-tpl/react-native-safe-area-context and @react-native-oh-tpl/react-native-linear-gradient. If the library has already been introduced in the HarmonyOS project, there is no need to introduce it again.You can skip the steps in this chapter and use it directly.
 
-If not introduced, please refer to Link section of @react-native-oh-tpl/react-native-safe-area-context documentation, Link section of @react-native-oh-tpl/react-native-linear-gradient documentation for introduction.
+If not introduced, please refer to Link section of [@react-native-oh-tpl/react-native-safe-area-context](https://gitee.com/react-native-oh-library/usage-docs/blob/master/en/react-native-safe-area-context.md#link) documentation, Link section of [@react-native-oh-tpl/react-native-linear-gradient](https://gitee.com/react-native-oh-library/usage-docs/blob/master/en/react-native-linear-gradient.md#link) documentation for introduction.
 
 ### Introduce and register font on the ArkTs side
 
@@ -600,7 +600,7 @@ The following component attributes are currently supported:
 |      Name      |                                                    Description                                                     |             Type             | Required | Platform | HarmonyOS Support |
 | :------------: | :----------------------------------------------------------------------------------------------------------------: | :--------------------------: | :------: | :------: | :---------------: |
 |   Component    |                                           Update React Native Component.                                           |       React Component        |    No    |   All    |        Yes        |
-|     brand      |                                     Uses the brands font (FontAwesome5 only).                                      |           boolean            |    No    |   All    |        Yes        |
+|     brand      |                                     Uses the brands font (FontAwesome5 only).                                      |           boolean            |    No    |   No    |        No        |
 | containerStyle |                                       Add styling to container holding icon.                                       |          View Style          |    No    |   All    |        Yes        |
 |    disabled    |                         Disables onPress events. Only works when `onPress` has a handler.                          |           boolean            |    No    |   All    |        Yes        |
 | disabledStyle  |                    Style for the button when disabled. Only works when `onPress` has a handler.                    |          View Style          |    No    |   All    |        Yes        |
@@ -729,7 +729,7 @@ The following component attributes are currently supported:
 
 | Name  |          Description          |  Type   | Required | Platform | HarmonyOS Support |
 | :---: | :---------------------------: | :-----: | :------: | :------: | :---------------: |
-| right | Start content from the right. | boolean |    No    |   All    |        Yes        |
+| right | Start content from the right. | boolean |    No    |   No    |        No        |
 
 **ListItem.Swipeable**: List rendering slider component, receiving all props of [ListItem](https://reactnativeelements.com/docs/components/listitem#props)
 
@@ -755,16 +755,16 @@ The following component attributes are currently supported:
 
 |      Name       |                                Description                                 |             Type             | Required | Platform | HarmonyOS Support |
 | :-------------: | :------------------------------------------------------------------------: | :--------------------------: | :------: | :------: | :---------------: |
-| ModalComponent  |     Override React Native `Modal` component (usable for web-platform).     |       typeof Component       |    No    |   All    |        Yes        |
-|  backdropStyle  |                      Style of the backdrop container.                      |          iew Style           |    No    |   All    |        Yes        |
-|   fullScreen    | If set to true, the modal will take up the entire screen width and height. |           boolean            |    No    |   All    |        Yes        |
-|    isVisible    |                      If true, the overlay is visible.                      |           boolean            |    No    |   All    |        Yes        |
-| onBackdropPress |    Handler for backdrop press (only works when `fullscreen` is false).     |           Function           |    No    |   All    |        Yes        |
-|   onLongPress   |                Called when a long-tap gesture is detected.                 | GestureResponderEventHandler |    No    |   All    |        Yes        |
-|    onPressIn    |              Called when a touch is engaged before `onPress`.              | GestureResponderEventHandler |    No    |   All    |        Yes        |
-|   onPressOut    |             Called when a touch is released before `onPress`.              | GestureResponderEventHandler |    No    |   All    |        Yes        |
-|  overlayStyle   |                        Style of the actual overlay.                        |          View Style          |    No    |   All    |        Yes        |
-| pressableProps  |                    PressableProps except click handlers                    |        PressableProps        |    No    |   All    |        Yes        |
+| ModalComponent  |     Override React Native `Modal` component (usable for web-platform).     |       typeof Component       |    No    |   No     |        No         |
+|  backdropStyle  |                      Style of the backdrop container.                      |          iew Style           |    No    |   No     |        No         |
+|   fullScreen    | If set to true, the modal will take up the entire screen width and height. |           boolean            |    No    |   No     |        No         |
+|    isVisible    |                      If true, the overlay is visible.                      |           boolean            |    No    |   No    |        No        |
+| onBackdropPress |    Handler for backdrop press (only works when `fullscreen` is false).     |           Function           |    No    |   No    |        No        |
+|   onLongPress   |                Called when a long-tap gesture is detected.                 | GestureResponderEventHandler |    No    |   No     |        No         |
+|    onPressIn    |              Called when a touch is engaged before `onPress`.              | GestureResponderEventHandler |    No    |   No     |        No         |
+|   onPressOut    |             Called when a touch is released before `onPress`.              | GestureResponderEventHandler |    No    |   No     |        No         |
+|  overlayStyle   |                        Style of the actual overlay.                        |          View Style          |    No    |   No     |        No         |
+| pressableProps  |                    PressableProps except click handlers                    |        PressableProps        |    No    |   No     |        No         |
 
 **PricingCard**: Price Card component
 
@@ -1022,7 +1022,7 @@ The following component attributes are currently supported:
 |       pointerColor       |                                              Color of tooltip pointer, it defaults to the [`backgroundColor`](https://reactnativeelements.com/docs/components/tooltip#backgroundcolor) if none is passed.                                               |                        ColorValue                        |    No    |   All    |        Yes        |
 |       pointerStyle       |                                                                                                           Style to be applied on the pointer.                                                                                                           |                        View Style                        |    No    |   All    |        Yes        |
 |         popover          |                                                                                                   Component to be rendered as the display container.                                                                                                    | `ReactElement<{}, string`, `JSXElementConstructor<any>>`|    No    |   All    |        Yes        |
-|   skipAndroidStatusBar   |                                                             Force skip StatusBar height when calculating element position. Pass `true` if Tooltip used inside react-native Modal component.                                                             |                         boolean                          |    No    |   All    |        Yes        |
+|   skipAndroidStatusBar   |                                                             Force skip StatusBar height when calculating element position. Pass `true` if Tooltip used inside react-native Modal component.                                                             |                         boolean                          |    No    |   No    |        No        |
 |       toggleAction       |                                                                              Define type of action that should trigger tooltip. Available options _onPress_, _onLongPress_                                                                              |                          string                          |    No    |   All    |        Yes        |
 |      toggleOnPress       |                                                                                                Flag to determine to toggle or not the tooltip on press.                                                                                                 |                         boolean                          |    No    |   All    |        Yes        |
 |         visible          |                                                                                                                  To show the tooltip.                                                                                                                   |                         boolean                          |    No    |   All    |        Yes        |
