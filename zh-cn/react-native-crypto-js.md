@@ -12,7 +12,7 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/imchintan/react-native-crypto-js/releases/tag/1.0.0)
+> [!TIP] [Github 地址](https://github.com/imchintan/react-native-crypto-js/tree/1.0.0)
 
 ## 安装与使用
 

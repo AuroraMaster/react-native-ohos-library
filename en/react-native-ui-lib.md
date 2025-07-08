@@ -336,6 +336,7 @@ For details, see [react-native-ui-lib docs](https://wix.github.io/react-native-u
 | throttleOptions       | Throttle options                                                                             | ThrottleOptions                                                                | no       | iOS/Android | yes               |
 | throttleTime          | Throttle time in MS for onPress callback                                                     | number                                                                         | no       | iOS/Android | yes               |
 | useNative             | Should use an enhanced native implementation with extra features                             | boolean                                                                        | no       | iOS/Android | yes               |
+| activeScale           | Will apply scale press feedback. This will enforce the useNative prop                        | number                                                                         | no       | iOS/Android | yes               |
 
 **View**: container component, which extends the [View](https://reactnative.dev/docs/view) properties.
 

@@ -142,6 +142,8 @@ const CustomFontIcoMoon = createIconSetFromIcoMoon(
 
 ### 以下展示了本库的基本用法
 
+> [!WARNING] 使用时 import 的库名不变。
+
 ```js
 import React from "react";
 import { ScrollView } from "react-native";
