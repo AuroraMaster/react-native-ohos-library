@@ -4,7 +4,7 @@
   <h1 align="center"> <code>react-native-image-sequence</code> </h1>
 </p>
 
-This project is based on [react-native-image-sequence@0.9.1](https://github.com/bwindsor/react-native-image-sequence).
+This project is based on [react-native-image-sequence@0.9.1](https://github.com/bwindsor/react-native-image-sequence/tree/aee3d372d7960234721e32d2b02432fb5d0fa98b).
 
 This third-party library has been migrated to Gitee and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-image-sequence`, The version correspondence details are as follows:
 
@@ -445,4 +445,4 @@ Check the release version information in the release address of the third-party 
 
 ## 7. License
 
-This project is licensed under [The MIT License (MIT)](https://gitcode.com/openharmony-sig/rntpc_react-native-image-sequence/blob/master/LICENSE), Please enjoy and participate freely in open source.
+This project is licensed under [The MIT License (MIT)](https://github.com/bwindsor/react-native-image-sequence/blob/aee3d372d7960234721e32d2b02432fb5d0fa98b/LICENSE), Please enjoy and participate freely in open source.
