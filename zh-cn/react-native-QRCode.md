@@ -47,7 +47,7 @@ import QRCode from "react-native-qrcode";
 import { StyleSheet, View, TextInput, Button } from "react-native";
 export const QrCodeExamle = () => {
   const [text, setText] = useState("");
-  const [QRCodeValue, setQRCodeValue] = useState < any > null;
+  const [QRCodeValue, setQRCodeValue] = useState<any>(null);
   const showQRCode = () => {
     setQRCodeValue(text);
   };
@@ -114,11 +114,11 @@ const styles = StyleSheet.create({
 
 ## 属性
 
-### QRCode
-
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
  
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
+
+### QRCode
 
 该库为 UI 组件库，通过配置属性标签，实现对应的功能。
 
@@ -135,4 +135,4 @@ const styles = StyleSheet.create({
 
 ## 开源协议
 
-本项目基于 [The MIT License (MIT)](https://github.com/react-native-oh-library/react-native-qrcode/blob/master/LICENSE) ，请自由地享受和参与开源。
+本项目基于 [The MIT License (MIT)](https://github.com/cssivision/react-native-qrcode/blob/master/LICENSE) ，请自由地享受和参与开源。

@@ -12,7 +12,7 @@
     </a>
 </p>
 
-> [!TIP] [GitHub address](https://github.com/eranbo/react-native-base64/releases/tag/0.2.1)
+> [!TIP] [GitHub address](https://github.com/eranbo/react-native-base64/tree/0.2.1)
 
 ## Installation and Usage
 

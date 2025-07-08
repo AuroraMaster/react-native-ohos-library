@@ -223,66 +223,66 @@ Check the release version information in the release address of the third-party 
 ### TourGuideProvider
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| tooltipComponent  |  tooltip component       | React.ComponentType<TooltipProps>  | YES | ALL      | YES |
-| tooltipStyle  |   tooltip style      | StyleProp<ViewStyle>  | YES | ALL      | YES |
-| labels  |   Button text display in tooltip(skip、previous、next、finish)      | Labels | YES | ALL      | YES |
-| startAtMount  |         | boolean/string | YES | ALL      | YES |
-| androidStatusBarVisible  | android status bar visible        | boolean | YES | Android      | NO |
-| backdropColor  |   background color | string | YES | ALL      | YES |
-| verticalOffset |  vertical offset | number | YES | ALL      | YES |
-| wrapperStyle  |   wrap style    | StyleProp<ViewStyle> | YES | ALL      | YES |
-| maskOffset  |  offset around zone | number | YES | ALL      | YES |
-| borderRadius  |    round corner when rectangle | number | YES | ALL      | YES |
-| animationDuration  |  Animation duration | number | YES | ALL      | YES |
+| tooltipComponent  |  tooltip component       | React.ComponentType<TooltipProps>  | NO | ALL      | YES |
+| tooltipStyle  |   tooltip style      | StyleProp<ViewStyle>  | NO | ALL      | YES |
+| labels  |   Button text display in tooltip(skip、previous、next、finish)      | Labels | NO | ALL      | YES |
+| startAtMount  |         | boolean/string | NO | ALL      | YES |
+| androidStatusBarVisible  | android status bar visible        | boolean | NO | Android      | NO |
+| backdropColor  |   background color | string | NO | ALL      | YES |
+| verticalOffset |  vertical offset | number | NO | ALL      | YES |
+| wrapperStyle  |   wrap style    | StyleProp<ViewStyle> | NO | ALL      | YES |
+| maskOffset  |  offset around zone | number | NO | ALL      | YES |
+| borderRadius  |    round corner when rectangle | number | NO | ALL      | YES |
+| animationDuration  |  Animation duration | number | NO | ALL      | YES |
 | children  |  React.ReactNode components      | React.ReactNode | YES | ALL      | YES |
-| dismissOnPress  |  whether to display touchable | boolean | YES | ALL      | YES |
-| preventOutsideInteraction  |    Block default events | boolean | YES | ALL      | YES |
+| dismissOnPress  |  whether to display touchable | boolean | NO | ALL      | YES |
+| preventOutsideInteraction  |    Block default events | boolean | NO | ALL      | YES |
 
 ### TourGuideZone
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | zone  | A positive number indicating the order of the step in the entire walkthrough.        | number  | YES | ALL      | YES |
-| tourKey  |        | string  | YES | ALL      | YES |
-| isTourGuide  |  return children without wrapping id false        | boolean  | YES | ALL      | YES |
-| text  |     text in tooltip     | string  | YES | ALL      | YES |
-| shape  |     which shape     | Shape  | YES | ALL      | YES |
-| maskOffset  |   offset around zone    | number  | YES | ALL      | YES |
-| borderRadius  |   round corner when rectangle      | number  | YES | ALL      | YES |
-| children  |   React.ReactNode components       | React.ReactNode  | YES | ALL      | YES |
-| style  |         | StyleProp<ViewStyle>  | YES | ALL      | YES |
-| keepTooltipPosition  |  tooltip positioning    | boolean  | YES | ALL      | YES |
-| tooltipBottomOffset  |   The distance between the tooltip and the bottom of the container      | number  | YES | ALL      | YES |
-| borderRadiusObject  |   Mask layer highlight area rounded corner settings      | BorderRadiusObject  | YES | ALL      | YES |
+| tourKey  |        | string  | NO | ALL      | YES |
+| isTourGuide  |  return children without wrapping id false        | boolean  | NO | ALL      | YES |
+| text  |     text in tooltip     | string  | NO | ALL      | YES |
+| shape  |     which shape     | Shape  | NO | ALL      | YES |
+| maskOffset  |   offset around zone    | number  | NO | ALL      | YES |
+| borderRadius  |   round corner when rectangle      | number  | NO | ALL      | YES |
+| children  |   React.ReactNode components       | React.ReactNode  | NO | ALL      | YES |
+| style  |         | StyleProp<ViewStyle>  | NO | ALL      | YES |
+| keepTooltipPosition  |  tooltip positioning    | boolean  | NO | ALL      | YES |
+| tooltipBottomOffset  |   The distance between the tooltip and the bottom of the container      | number  | NO | ALL      | YES |
+| borderRadiusObject  |   Mask layer highlight area rounded corner settings      | BorderRadiusObject  | NO | ALL      | YES |
 
 ### Tooltip
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| isFirstStep  | Is it the first step | boolean  | YES | ALL      | YES |
-| isLastStep  |  Is it the last step   | boolean  | YES | ALL      | YES |
+| isFirstStep  | Is it the first step | boolean  | NO | ALL      | YES |
+| isLastStep  |  Is it the last step   | boolean  | NO | ALL      | YES |
 | currentStep  |  current step | IStep  | YES | ALL      | YES |
-| labels  |     Button text display in tooltip(skip、previous、next、finish)     | Labels  | YES | ALL      | YES |
-| handleNext  |  A function that handle next step  | Function  | YES | ALL      | YES
-| handlePrev  |  A function that handle prev step     | Function  | YES | ALL      | YES
-| handleStop  |  A function that handle stop       | Function  | YES | ALL      | YES
+| labels  |     Button text display in tooltip(skip、previous、next、finish)     | Labels  | NO | ALL      | YES |
+| handleNext  |  A function that handle next step  | Function  | NO | ALL      | YES
+| handlePrev  |  A function that handle prev step     | Function  | NO | ALL      | YES
+| handleStop  |  A function that handle stop       | Function  | NO | ALL      | YES
 
 ### TourGuideZoneByPosition
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | zone  |         | number  | YES | ALL      | YES |
-| tourKey  |         | string  | YES | ALL      | YES |
-| isTourGuide  |  return children without wrapping id false        | boolean  | YES | ALL      | YES |
-| top  |   tour guide zone distance from top    | number/string  | YES | ALL      | YES |
-| left  | tour guide zone distance from left        | number/string  | YES | ALL      | YES |
-| right  |   tour guide zone distance from right      | number/string  | YES | ALL      | YES |
-| bottom  |  tour guide zone distance from bottom       | number/string  | YES | ALL      | YES |
-| width  |   The width of the highlight area of ​​the mask layer  | number/string  | YES | ALL      | YES |
-| height  |     The height of the highlight area of ​​the mask layer    | number/string  | YES | ALL      | YES |
-| shape  |   which shape      | Shape  | YES | ALL      | YES |
-| borderRadiusObject  |   Mask layer highlight area rounded corner settings      | BorderRadiusObject  | YES | ALL      | YES |
-| containerStyle  |   Mask layer wrapping layer style      | StyleProp<ViewStyle>  | YES | ALL      | YES |
-| keepTooltipPosition  |   tooltip positioning       | boolean  | YES | ALL      | YES |
-| tooltipBottomOffset  |   The distance between the tooltip and the bottom of the container      | number  | YES | ALL      | YES |
-| text  |    text in tooltip     | string  | YES | ALL      | YES |
+| tourKey  |         | string  | NO | ALL      | YES |
+| isTourGuide  |  return children without wrapping id false        | boolean  | NO | ALL      | YES |
+| top  |   tour guide zone distance from top    | number/string  | NO | ALL      | YES |
+| left  | tour guide zone distance from left        | number/string  | NO | ALL      | YES |
+| right  |   tour guide zone distance from right      | number/string  | NO | ALL      | YES |
+| bottom  |  tour guide zone distance from bottom       | number/string  | NO | ALL      | YES |
+| width  |   The width of the highlight area of ​​the mask layer  | number/string  | NO | ALL      | YES |
+| height  |     The height of the highlight area of ​​the mask layer    | number/string  | NO | ALL      | YES |
+| shape  |   which shape      | Shape  | NO | ALL      | YES |
+| borderRadiusObject  |   Mask layer highlight area rounded corner settings      | BorderRadiusObject  | NO | ALL      | YES |
+| containerStyle  |   Mask layer wrapping layer style      | StyleProp<ViewStyle>  | NO | ALL      | YES |
+| keepTooltipPosition  |   tooltip positioning       | boolean  | NO | ALL      | YES |
+| tooltipBottomOffset  |   The distance between the tooltip and the bottom of the container      | number  | NO | ALL      | YES |
+| text  |    text in tooltip     | string  | NO | ALL      | YES |
 
 ### useTourGuideController
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |

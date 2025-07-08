@@ -49,7 +49,7 @@ import QRCode from "react-native-qrcode";
 import { StyleSheet, View, TextInput, Button } from "react-native";
 export const QrCodeExamle = () => {
   const [text, setText] = useState("");
-  const [QRCodeValue, setQRCodeValue] = useState < any > null;
+  const [QRCodeValue, setQRCodeValue] = useState<any>(null);
   const showQRCode = () => {
     setQRCodeValue(text);
   };
@@ -122,7 +122,7 @@ Check the release version information in the release address of the third-party 
 
 ### QRCode
 
-该库为 UI 组件库，通过配置属性标签，实现对应的功能。
+This library is a UI component library that implements corresponding functions by configuring attribute tags.
 
 | Name    | Type   | Description                 | Required | Platform    | HarmonyOS Support |
 | ------- | ------ | --------------------------- | -------- | ----------- | ----------------- |
@@ -137,4 +137,4 @@ Check the release version information in the release address of the third-party 
 
 ## License
 
-This project is licensed under [The MIT License (MIT)](https://github.com/react-native-oh-library/react-native-qrcode/blob/master/LICENSE).
+This project is licensed under [The MIT License (MIT)](https://github.com/cssivision/react-native-qrcode/blob/master/LICENSE).

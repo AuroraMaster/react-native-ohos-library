@@ -12,7 +12,7 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/tradle/react-native-crypto)
+> [!TIP] [Github 地址](https://github.com/tradle/react-native-crypto/tree/639d8e29ac1feae20f95f2e285851d5ed4898a9a)
 
 
 ## 安装与使用

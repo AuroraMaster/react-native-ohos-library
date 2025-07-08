@@ -40,22 +40,23 @@ yarn add react-native-easy-toast@2.3.0
 
 ```js
 import React, { Component } from "react";
-import { Text, View, Button } from "react-native";
-import {
-  Toast
-} from "react-native-easy-toast";
+import { View, Button } from "react-native";
+import Toast from "react-native-easy-toast";
 
 export default class App extends Component {
-    constructor(props) {
-        super(props);
+    constructor(props: any) {
+      super(props);
     }
+
+    toast: any = null;
+
     render() {
       return (
         <View>
             <Button title={'Press me'} onPress={()=>{
                 this.toast.show('hello world!',2000);
             }}/>
-            <Toast ref={(toast) => this.toast = toast}/>
+            <Toast ref={(toast: any) => this.toast = toast}/>
         </View>
       )
     }

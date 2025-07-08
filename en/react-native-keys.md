@@ -93,7 +93,7 @@ Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
 Currently, two methods are available:
 
-Method 1 (recommended): Use the HAR file. (推荐)
+Method 1 (recommended): Use the HAR file. (Recommended)
 
 > [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
 
@@ -194,14 +194,14 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 5.在 DevEco 创建 Running 前 script（生成加解密代码和编译配置文件）
+### 5. Creating a Pre-running Script in DevEco (Generating the Encryption/Decryption Code and Compiling Configuration Files)
 
-> [!TIP] 如下步骤中添加配置完成时记得点击 Apply 按钮让配置生效
+> [!TIP] After the configuration is complete, click **Apply** for the configuration to take effect.
 
-1. 点击右上角 entry -> Edit Configurations... 打开配置面板
-2. 点击面板左上角 + , 选择 Shell Script, 打开新建 script 的配置面板, 按如下图片提示进行配置  
+1. Click **Entry** in the upper right corner and choose **Edit Configurations** to open the configuration panel.
+2. Click **+** in the upper left corner of the panel, select **Shell Script**, open the configuration panel of the new script, and configure the script as prompted. 
    ![shell script config](../img/rnkeys/RNKeys_Script_Config.PNG)
-3. 配置 entry -> Before Lunch，点击加号选择 Run Another Configuration， 选择上一步配置的 Shell Script, 并将配置拖动到 Hvigor-Build Make 上方  
+3. Choose **Entry** > **Before Lunch**, click **+**, select **Run Another Configuration**, select the **Shell Script** configured in the previous step, and drag the configuration to the upper part of **Hvigor-Build Make**. 
    ![entry config](../img/rnkeys/entry_config.PNG)
 
 ### 6. Running

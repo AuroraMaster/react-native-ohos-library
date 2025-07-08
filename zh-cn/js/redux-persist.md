@@ -9,7 +9,7 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/rt2zz/redux-persist/releases/tag/v6.0.0)
+> [!TIP] [Github 地址](https://github.com/rt2zz/redux-persist/tree/v6.0.0)
 
 ## 安装与使用
 
