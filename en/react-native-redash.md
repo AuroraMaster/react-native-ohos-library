@@ -379,12 +379,15 @@ Animation Demonstration
 1. Demonstration of movements. Use **snapPoint** to run a specified position.
 
 ```js
+import { View, Button } from 'react-native';
 import { snapPoint } from "react-native-redash/src/Physics";
 import {
   useSharedValue,
   withSequence,
   withTiming,
   withRepeat,
+  useAnimatedStyle,
+  cancelAnimation,
 } from "@react-native-oh-tpl/react-native-reanimated";
 
 export default function RadashDemo() {
@@ -420,7 +423,7 @@ export default function RadashDemo() {
         </View>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <View style={{ marginRight: 10 }}>
-                <Button color='#841584' onPress={() => handlePress()} title="snapPoint start" />
+                <Button color='#841584' onPress={() => translate()} title="snapPoint start" />
             </View>
             <View>
                 <Button color='#841584' onPress={() => cancelAnimation(offset)} title="back" />
@@ -430,6 +433,34 @@ export default function RadashDemo() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+    flexDirection: 'column',
+    alignItems: 'center',
+    backgroundColor: '#F1F3F5',
+  },
+  baseArea: {
+    width: '100%',
+    height: 60,
+    borderRadius: 4,
+    borderColor: '#000000',
+    marginTop: 8,
+    backgroundColor: '#FFFFFF',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingLeft: 8,
+    paddingRight: 8
+  },
+  box: {
+    height: 40,
+    width: 40,
+    marginBottom: 20,
+    backgroundColor: '#b58df1',
+    borderRadius: 5,
+  }
+});
 ```
 
 2. Demonstration of color gradient animation. Use **mixColor** to perform color gradient.

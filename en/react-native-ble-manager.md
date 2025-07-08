@@ -310,7 +310,6 @@ const styles = StyleSheet.create({
         color: '#000000',
         textAlign: "center",
         fontSize: 30,
-        border:5,
     },
     scrollView: {
         width: '90%',
@@ -463,7 +462,7 @@ the first mobile phone: `ble_managerGatt.har`
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-     "@react-native-oh-tpl/react-native-ble-manager": "file:../../node_modules/@react-native-oh-tpl/react-native-ble-manager/harmony/ble_managerGatt.har"，
+     "@react-native-oh-tpl/react-native-ble-manager": "file:../../node_modules/@react-native-oh-tpl/react-native-ble-manager/harmony/ble_managerGatt.har",
   }
 ```
 
@@ -472,7 +471,7 @@ the second mobile phone: `ble_managerServers.har`
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-     "@react-native-oh-tpl/react-native-ble-manager": "file:../../node_modules/@react-native-oh-tpl/react-native-ble-manager/harmony/ble_managerServers.har"，
+     "@react-native-oh-tpl/react-native-ble-manager": "file:../../node_modules/@react-native-oh-tpl/react-native-ble-manager/harmony/ble_managerServers.har",
   }
 ```
 

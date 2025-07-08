@@ -592,7 +592,7 @@ export default Avatars;
 |      Name      |                         Description                          |             Type             | Required | Platform | HarmonyOS Support |
 | :------------: | :----------------------------------------------------------: | :--------------------------: | :------: | :------: | :---------------: |
 |   Component    |                Update React Native Component.                |       React Component        |    No    |   All    |        Yes        |
-|     brand      |          Uses the brands font (FontAwesome5 only).           |           boolean            |    No    |   All    |        Yes        |
+|     brand      |          Uses the brands font (FontAwesome5 only).           |           boolean            |    No    |   No    |        No        |
 | containerStyle |            Add styling to container holding icon.            |          View Style          |    No    |   All    |        Yes        |
 |    disabled    | Disables onPress events. Only works when `onPress` has a handler. |           boolean            |    No    |   All    |        Yes        |
 | disabledStyle  | Style for the button when disabled. Only works when `onPress` has a handler. |          View Style          |    No    |   All    |        Yes        |
@@ -717,7 +717,7 @@ export default Avatars;
 
 | Name  |          Description          |  Type   | Required | Platform | HarmonyOS Support |
 | :---: | :---------------------------: | :-----: | :------: | :------: | :---------------: |
-| right | Start content from the right. | boolean |    No    |   All    |        Yes        |
+| right | Start content from the right. | boolean |    No    |   No    |        No        |
 
 **ListItem.Swipeable**：列表渲染滑动框组件，接收所有 [ListItem](https://reactnativeelements.com/docs/components/listitem#props) 的props.
 
@@ -743,15 +743,15 @@ export default Avatars;
 
 |      Name       |                         Description                          |             Type             | Required | Platform | HarmonyOS Support |
 | :-------------: | :----------------------------------------------------------: | :--------------------------: | :------: | :------: | :---------------: |
-| ModalComponent  | Override React Native `Modal` component (usable for web-platform). |       typeof Component       |    No    |   All    |        Yes        |
-|  backdropStyle  |               Style of the backdrop container.               |          iew Style           |    No    |   All    |        Yes        |
-|   fullScreen    | If set to true, the modal will take up the entire screen width and height. |           boolean            |    No    |   All    |        Yes        |
-|    isVisible    |               If true, the overlay is visible.               |           boolean            |    No    |   All    |        Yes        |
-| onBackdropPress | Handler for backdrop press (only works when `fullscreen` is false). |           Function           |    No    |   All    |        Yes        |
-|   onLongPress   |         Called when a long-tap gesture is detected.          | GestureResponderEventHandler |    No    |   All    |        Yes        |
-|    onPressIn    |       Called when a touch is engaged before `onPress`.       | GestureResponderEventHandler |    No    |   All    |        Yes        |
-|   onPressOut    |      Called when a touch is released before `onPress`.       | GestureResponderEventHandler |    No    |   All    |        Yes        |
-|  overlayStyle   |                 Style of the actual overlay.                 |          View Style          |    No    |   All    |        Yes        |
+| ModalComponent  | Override React Native `Modal` component (usable for web-platform). |       typeof Component       |    No    |   No    |        No        |
+|  backdropStyle  |               Style of the backdrop container.               |          iew Style           |    No    |   No    |        No        |
+|   fullScreen    | If set to true, the modal will take up the entire screen width and height. |           boolean            |    No    |   No    |        No        |
+|    isVisible    |               If true, the overlay is visible.               |           boolean            |    No    |   No    |        No        |
+| onBackdropPress | Handler for backdrop press (only works when `fullscreen` is false). |           Function           |    No    |   No    |        No        |
+|   onLongPress   |         Called when a long-tap gesture is detected.          | GestureResponderEventHandler |    No    |   No    |        No        |
+|    onPressIn    |       Called when a touch is engaged before `onPress`.       | GestureResponderEventHandler |    No    |   No    |        No        |
+|   onPressOut    |      Called when a touch is released before `onPress`.       | GestureResponderEventHandler |    No    |   No    |        No        |
+|  overlayStyle   |                 Style of the actual overlay.                 |          View Style          |    No    |   No    |        No        |
 
 **PricingCard**：价格卡组件
 
@@ -1009,7 +1009,7 @@ export default Avatars;
 |       pointerColor       | Color of tooltip pointer, it defaults to the [`backgroundColor`](https://reactnativeelements.com/docs/components/tooltip#backgroundcolor) if none is passed. |                        ColorValue                        |    No    |   All    |        Yes        |
 |       pointerStyle       |             Style to be applied on the pointer.              |                        View Style                        |    No    |   All    |        Yes        |
 |         popover          |      Component to be rendered as the display container.      | `ReactElement<{}, string`，`JSXElementConstructor<any>>` |    No    |   All    |        Yes        |
-|   skipAndroidStatusBar   | Force skip StatusBar height when calculating element position. Pass `true` if Tooltip used inside react-native Modal component. |                         boolean                          |    No    |   All    |        Yes        |
+|   skipAndroidStatusBar   | Force skip StatusBar height when calculating element position. Pass `true` if Tooltip used inside react-native Modal component. |                         boolean                          |    No    |   No    |        No        |
 |       toggleAction       | Define type of action that should trigger tooltip. Available options *onPress*, *onLongPress* |                          string                          |    No    |   All    |        Yes        |
 |      toggleOnPress       |   Flag to determine to toggle or not the tooltip on press.   |                         boolean                          |    No    |   All    |        Yes        |
 |         visible          |                     To show the tooltip.                     |                         boolean                          |    No    |   All    |        Yes        |
