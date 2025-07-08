@@ -476,4 +476,4 @@ Parameters of the option pick Method
 
 ## 8. License
 
-This project is licensed under [The MIT License (MIT)](https://gitcode.com/openharmony-sig/rntpc_react-native-document-picker/blob/master/LICENSE.md).
+This project is licensed under [The MIT License (MIT)](https://github.com/react-native-documents/document-picker/blob/v9.2.0/LICENSE.md).

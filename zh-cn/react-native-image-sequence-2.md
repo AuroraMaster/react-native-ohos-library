@@ -5,7 +5,7 @@
 </p>
 
 
-本项目基于 [react-native-image-sequence@0.9.1](https://github.com/bwindsor/react-native-image-sequence) 开发。
+本项目基于 [react-native-image-sequence@0.9.1](https://github.com/bwindsor/react-native-image-sequence/tree/aee3d372d7960234721e32d2b02432fb5d0fa98b) 开发。
 
 该第三方库的仓库已迁移至 Gitee，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-image-sequence`，具体版本所属关系如下：
 
@@ -444,4 +444,4 @@ ohpm install
 
 ## 7. 开源协议
 
-本项目基于 [The MIT License (MIT)](https://gitcode.com/openharmony-sig/rntpc_react-native-image-sequence/blob/master/LICENSE) ，请自由地享受和参与开源。
+本项目基于 [The MIT License (MIT)](https://github.com/bwindsor/react-native-image-sequence/blob/aee3d372d7960234721e32d2b02432fb5d0fa98b/LICENSE) ，请自由地享受和参与开源。
