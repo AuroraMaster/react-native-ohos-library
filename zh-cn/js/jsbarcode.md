@@ -9,7 +9,7 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/redux-utilities/redux-actions/tree/v2.6.5)
+> [!TIP] [Github 地址](https://github.com/lindell/JsBarcode/tree/v3.11.6)
 
 ## 安装与使用
 

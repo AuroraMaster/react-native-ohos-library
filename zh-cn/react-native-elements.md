@@ -16,7 +16,7 @@
 
 
 
-> [!TIP] [Github 地址](https://github.com/react-native-elements/react-native-elements)
+> [!TIP] [Github 地址](https://github.com/react-native-elements/react-native-elements/tree/v4.0.0-rc.8)
 
 ## 安装与使用
 

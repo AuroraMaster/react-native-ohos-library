@@ -13,7 +13,7 @@
     </a>
 </p>
 
-> [!TIP] [GitHub address](https://github.com/react-native-elements/react-native-elements)
+> [!TIP] [GitHub address](https://github.com/react-native-elements/react-native-elements/tree/v4.0.0-rc.8)
 
 ## Installation and Usage
 
