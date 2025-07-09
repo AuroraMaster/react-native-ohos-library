@@ -12,7 +12,7 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/wcandillon/react-native-redash/releases/tag/v18.1.3)
+> [!TIP] [Github 地址](https://github.com/wcandillon/react-native-redash/tree/v18.1.3)
 
 ## 安装与使用
 
