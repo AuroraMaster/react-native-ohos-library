@@ -12,7 +12,7 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/software-mansion/react-native-screens/releases/tag/3.29.0)
+> [!TIP] [Github 地址](https://github.com/software-mansion/react-native-screens/tree/3.29.0)
 
 ## 安装与使用
 
@@ -146,6 +146,47 @@ enableScreens(false);
 | userReanimatedTransitionProgress ReanimatedScreenProvider | 屏幕切换期间调用的帧回调，用于 react-native-reanimated 2.0 及其以上的版本，并使用 ReanimatedScreenProvider 进行封装 | function | No       | iOS Android | NO                |
 | userHeaderHeight                                          | 计算静态标题栏的高度，当屏幕方向发生更改，此值会发生更改                                                          | function | No       | iOS Android | NO                |
 | userAnimatedHeaderHeight                                  | 动态计算标题栏的高度，此值会随着每个视图布局变化而变化                                                           | function | No       | iOS Android | NO                |
+| onAppear                                 | 页面显示         | function | No       | iOS Android |   Yes |
+| onDisappear                              | 页面消失         | function | No       | iOS Android |   Yes |
+| onWillAppear                             | 页面将显示       | function | No       | iOS Android |   Yes |
+| onWillDisappear                          | 页面将消失       | function | No       | iOS Android |   Yes |
+| fullScreenSwipeEnabled                   | 全屏滑动         | property | No       | iOS Android |   Yes |
+| gestureEnabled                           | 是否开启手势滑动 | property | No       | iOS Android |   Yes |
+| statusBarColor                           | 状态栏颜色       | property | No       | iOS Android |   No  |
+| screenOrientation                        | 屏幕显示方向     | property | No       | iOS Android |   Yes |
+| statusBarStyle                           | 状态栏样式       | property | No       | iOS Android |   Yes |
+| statusBarTranslucent                     | 状态栏是否透明化       | property | No       | iOS Android | Yes |
+| statusBarHidden			   | 隐藏状态栏       | property | No       | iOS Android |   Yes |
+| gestureResponseDistance                  | 手势滑动的有效区域       | property | No       | iOS Android |   Yes |
+| stackPresentation                        | 页面类型       | property | No       | iOS Android |   Yes |
+| stackAnimation                           | 转场动画类型       | property | No       | iOS Android |   Yes |
+| replaceAnimation                         | 进出栈类型       | property | No       | iOS Android |   Yes |
+| backgroundColor                          | 标题栏背景色       | property | No       | iOS Android |   Yes |
+| hidden                           | 隐藏标题栏       | property | No       | iOS Android |   Yes |
+| translucent                      | 标题栏是否透明化       | property | No       | iOS Android |   Yes |
+| hideBackButton                   | 隐藏标题栏返回按钮      | property | No       | iOS Android |   Yes |
+| backTitle                        | 返回按钮文本内容       | property | No       | iOS Android |   Yes |
+| backTitleFontSize                | 返回按钮文本字号大小    | property | No       | iOS Android |   Yes |
+| backTitleVisible                 | 返回按钮文本是否显示    | property | No       | iOS Android |   Yes |
+| title                            | 标题栏标题       | property | No       | iOS Android |   Yes |
+| titleFontSize                    | 标题字号大小        | property | No       | iOS Android |   Yes |
+| titleFontWeight                  | 标题字号比重       | property | No       | iOS Android |   Yes |
+| titleColor                       | 标题颜色 | property | No       | iOS Android |   Yes |
+| type                             | 子标题类型      | property | No       | iOS Android |   Yes |
+| onSearchFocus                    | 搜索栏聚焦       | function | No       | iOS Android |   Yes |
+| onSearchBlur                     | 搜索栏失去焦点       | function | No       | iOS Android |   Yes |
+| onSearchButtonPress              | 搜索       | function | No       | iOS Android |   Yes |
+| onCancelButtonPress              | 取消搜索       | function | No       | iOS Android |   Yes |
+| onChangeText                     | 搜索栏文本变更       | function | No       | iOS Android |   Yes |
+| cancelButtonText                 | 取消按钮文本内容       | property | No       | iOS Android |   Yes |
+| barTintColor                     | 搜索背景色       | property | No       | iOS Android |   Yes |
+| tintColor                        | 搜索提示文字颜色       | property | No       | iOS Android |   Yes |
+| textColor                        | 文字颜色       | property | No       | iOS Android |   Yes |
+| inputType                        | 文本输入类型       | property | No       | iOS Android |   Yes |
+| onClose                          | 关闭搜索       | function | No       | iOS Android |   Yes |
+| onOpen                           | 展示搜索       | function | No       | iOS Android |   Yes |
+| headerIconColor                  | 图标颜色       | property | No       | iOS Android |   Yes |
+| shouldShowHintSearchIcon         | 是否隐藏搜索图标       | property | No       | iOS Android |   Yes |
 
 ## 遗留问题
 

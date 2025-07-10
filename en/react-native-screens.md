@@ -12,7 +12,7 @@
     </a>
 </p>
 
-> [!TIP] [GitHub address](https://github.com/software-mansion/react-native-screens/releases/tag/3.29.0)
+> [!TIP] [GitHub address](https://github.com/software-mansion/react-native-screens/tree/3.29.0)
 
 ## Installation and Usage
 
@@ -147,6 +147,47 @@ This document is verified based on the following versions:
 | userReanimatedTransitionProgress ReanimatedScreenProvider | Frame callback called during screen transitions, used for react-native-reanimated 2.0 and above, encapsulated with **ReanimatedScreenProvider**.| function | No       | iOS Android | NO                |
 | userHeaderHeight                                          | Calculates the height of the static header bar. This value changes when the screen orientation changes.    | function | No       | iOS Android | NO                |
 | userAnimatedHeaderHeight                                  | Dynamically calculates the height of the header bar. This value changes with each view layout change.      | function | No       | iOS Android | NO                |
+| onAppear                                 | A callback that gets called when the current screen appears        | function | No       | iOS Android |   Yes |
+| onDisappear                              | A callback that gets called when the current screen disappears.    | function | No       | iOS Android |   Yes |
+| onWillAppear                             | A callback that gets called when the current screen will appear       | function | No       | iOS Android |   Yes |
+| onWillDisappear                          | A callback that gets called when the current screen will disappear       | function | No       | iOS Android |   Yes |
+| fullScreenSwipeEnabled                   | Boolean indicating whether the swipe gesture should work on whole screen         | property | No       | iOS Android |   Yes |
+| gestureEnabled                           |  Whether you can use gestures to dismiss this screen | property | No       | iOS Android |   Yes |
+| statusBarColor                           | Sets the status bar color       | property | No       | iOS Android |   No  |
+| screenOrientation                        | In which orientation should the screen appear     | property | No       | iOS Android |   Yes |
+| statusBarStyle                           | Sets the status bar color       | property | No       | iOS Android |   Yes |
+| statusBarTranslucent                     | Sets the translucency of the status bar       | property | No       | iOS Android | Yes |
+| statusBarHidden			   | Whether the status bar should be hidden on this screen       | property | No       | iOS Android |   Yes |
+| gestureResponseDistance                  |  Use it to restrict the distance from the edges of screen in which the gesture should be recognized      | property | No       | iOS Android |   Yes |
+| stackPresentation                        | how should the screen be presented       | property | No       | iOS Android |   Yes |
+| stackAnimation                           | ow the screen should appear/disappear when pushed or popped at the top of the stack       | property | No       | iOS Android |   Yes |
+| replaceAnimation                         | How should the screen replacing another screen animate       | property | No       | iOS Android |   Yes |
+| backgroundColor                          | Controls the color of the navigation header       | property | No       | iOS Android |   Yes |
+| hidden                           | When set to true the header will be hidden while the parent Screen is on the top of the stack       | property | No       | iOS Android |   Yes |
+| translucent                      | Boolean indicating whether the navigation bar is translucent       | property | No       | iOS Android |   Yes |
+| hideBackButton                   | Boolean indicating whether to hide the back button in header      | property | No       | iOS Android |   Yes |
+| backTitle                        | Title to display in the back button.       | property | No       | iOS Android |   Yes |
+| backTitleFontSize                | Allows for customizing font size to be used for back button title    | property | No       | iOS Android |   Yes |
+| backTitleVisible                 |  Whether the back button title should be visible or nots    | property | No       | iOS Android |   Yes |
+| title                            | String that can be displayed in the header as a fallback for `headerTitle`       | property | No       | iOS Android |   Yes |
+| titleFontSize                    | Customize the size of the font to be used for the title.        | property | No       | iOS Android |   Yes |
+| titleFontWeight                  | Customize the weight of the font to be used for the title.       | property | No       | iOS Android |   Yes |
+| titleColor                       | Allows for setting text color of the title | property | No       | iOS Android |   Yes |
+| type                             | Subtitle type      | property | No       | iOS Android |   Yes |
+| onSearchFocus                    | Search bar focus       | function | No       | iOS Android |   Yes |
+| onSearchBlur                     | Search bar loses focus       | function | No       | iOS Android |   Yes |
+| onSearchButtonPress              | A callback that gets called when the search button is pressed       | function | No       | iOS Android |   Yes |
+| onCancelButtonPress              | A callback that gets called when the cancel button is pressed       | function | No       | iOS Android |   Yes |
+| onChangeText                     | A callback that gets called when the text changes       | function | No       | iOS Android |   Yes |
+| cancelButtonText                 | The text to be used instead of default `Cancel` button text       | property | No       | iOS Android |   Yes |
+| barTintColor                     | The search field background color       | property | No       | iOS Android |   Yes |
+| tintColor                        | The color for the cursor caret and cancel button text       | property | No       | iOS Android |   Yes |
+| textColor                        | text color       | property | No       | iOS Android |   Yes |
+| inputType                        | Sets type of the input. Defaults to `text`.       | property | No       | iOS Android |   Yes |
+| onClose                          | A callback that gets called when search bar is closed       | function | No       | iOS Android |   Yes |
+| onOpen                           | A callback that gets called when search bar is opened       | function | No       | iOS Android |   Yes |
+| headerIconColor                  | The search and close icon color shown in the header       | property | No       | iOS Android |   Yes |
+| shouldShowHintSearchIcon         | Show the search hint icon when search bar is focused       | property | No       | iOS Android |   Yes |
 
 ## Known Issues
 

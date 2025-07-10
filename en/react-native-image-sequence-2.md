@@ -328,7 +328,7 @@ ohpm install
 
 Method 2: Directly link to the source code.
 
-> [!TIP]For details, see [Directly Linking Source Code](/zh-cn/link-source-code.md).
+> [!TIP]For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
 ### 2.3 Configuring CMakeLists and Introducing ImageSequence2Package Package
 
