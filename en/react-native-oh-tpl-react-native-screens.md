@@ -320,6 +320,16 @@ Check the release version information in the release address of the third-party 
 | --------------------------------------------------------- | ------------------------------------------------------------ | -------- | -------- | ----------- | ----------------- |
 | enableScreens                                             | Support native and its React Native View                               | function | No       | iOS Android | Yes               |
 | enableFreeze                                              | Support for react-freeze, using ReactSuspende mechanism to prevent partial rendering of React component tree  | function | No       | iOS Android | Yes               |
+| createNativeStackNavigator                                | Provides screen switching capabilities.                                          | function | No       | iOS Android | NO                |
+| NativeStackNavigationProp                                 | Encapsulates the property of page switching.                                          | object   | No       | iOS Android | Yes               |
+| NativeStackNavigationOptions                              | Encapsulates the property settings of the navigation bar.                                          | object   | No       | iOS Android | NO                |
+| FullWindowOverlay                                         | A component that allows placing its child components above other components.                    | object   | No       | iOS Android | NO                |
+| SearchBarProps                                            | Encapsulates the property settings of the search bar.                                        | object   | No       | iOS Android | NO                |
+| SearchBarCommands                                         | Encapsulates the operations of the search bar.                                            | object   | No       | iOS Android | NO                |
+| useTransitionProgress                                     | Provides an animation interpolator for screen transitions.                                    | function | No       | iOS Android | NO                |
+| userReanimatedTransitionProgress ReanimatedScreenProvider | Frame callback called during screen transitions, used for react-native-reanimated 2.0 and above, encapsulated with **ReanimatedScreenProvider**.| function | No       | iOS Android | NO                |
+| userHeaderHeight                                          | Calculates the height of the static header bar. This value changes when the screen orientation changes.    | function | No       | iOS Android | NO                |
+| userAnimatedHeaderHeight                                  | Dynamically calculates the height of the header bar. This value changes with each view layout change.      | function | No       | iOS Android | NO                |
 | onAppear                                 | A callback that gets called when the current screen appears        | function | No       | iOS Android |   Yes |
 | onDisappear                              | A callback that gets called when the current screen disappears.    | function | No       | iOS Android |   Yes |
 | onWillAppear                             | A callback that gets called when the current screen will appear       | function | No       | iOS Android |   Yes |
