@@ -319,7 +319,7 @@ Properties
 | drawerType | A gesture object                                     | 'front'\|'back'\|'slide' | All | yes |
 | edgewidth | allows for defining how far from the edge of the content view the gesture should activate. | number | All   | yes   |
 | hideStatusBar | when set to `true` Drawer component will use [StatusBar](https://reactnative.dev/docs/statusbar.html) API to hide the OS status bar whenever the drawer is pulled or when its in an "open" state. | boolean | All   | yes   |
-| statusbaranimation | Can be used when `hideStatusBar` is set to `true` and will select the animation used for hiding/showing the status bar. | 'fade'\|'slide'\|'none' | All   | yes   |
+| statusbaranimation | Can be used when `hideStatusBar` is set to `true` and will select the animation used for hiding/showing the status bar. | 'fade'\|'slide'\|'none' | All   | no   |
 | overlaycolor | of a semi-transparent overlay to be displayed on top of the content view when drawer gets open. | color | All   | yes   |
 | rendernavigationview | his attribute is present in the standard implementation already and is one of the required params. | function | All   | yes   |
 | ondrawerclose | This function is called when the drawer is closed. | function | All   | yes   |
@@ -461,6 +461,8 @@ Y coordinate, expressed in points, of the current position of the pointer (finge
 ## Known Issues
 
 ## Others
+
+- [ ] statusbaranimation property is not supported due to the fact that Arkts bar only supports fade-in and fade-out animations, and the RN framework status bar animation is not supported. Issue: [issue#55](https://github.com/react-native-oh-library/react-native-harmony-gesture-handler/issues/55)
 
 ## License
 
