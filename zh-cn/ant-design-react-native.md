@@ -522,7 +522,7 @@ export default class BasicTagExample extends React.Component {
 | :----------------: | :------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------: | :------: | :------: | :---------------: |
 |        data        |                                                              数据源                                                              |                        `PickerColumn` / `PickerColumn[]`                         |    No    |   All    |        Yes        |
 |       value        |                                                              选中项                                                              |                                 `PickerValue[]`                                  |    No    |   All    |        Yes        |
-|    defaultValue    |                                                            默认选中项                                                            |                                 `PickerValue[]`                                  |    No    |   All    |        Yes        |
+|    defaultValue    |                                                            默认选中项                                                            |                                 `PickerValue[]`                                  |    No    |   No    |        No        |
 |      cascade       |                                            是否级联。子级来自`data`参数内的`children`                                            |                                     Boolean                                      |    No    |   All    |        Yes        |
 |        cols        |                                                               列数                                                               |                                      Number                                      |    No    |   All    |        Yes        |
 |      onChange      |                                                           选中后的回调                                                           |           `(value: PickerValue[], extend: PickerValueExtend) => void`            |    No    |   All    |        Yes        |
@@ -631,7 +631,7 @@ export default class BasicTagExample extends React.Component {
 
 |      Name      |          Description          |                     Type                      | Required | Platform | HarmonyOS Support |
 | :------------: | :---------------------------: | :-------------------------------------------: | :------: | :------: | :---------------: |
-| defaultChecked |         初始是否选中          |                    Boolean                    |    No    |   All    |        Yes        |
+| defaultChecked |         初始是否选中          |                    Boolean                    |    No    |   No    |        No        |
 |    checked     |       指定当前是否选中        |                    Boolean                    |    No    |   All    |        Yes        |
 |    disabled    |             禁用              |                    Boolean                    |    No    |   All    |        Yes        |
 |    onChange    |   change 事件触发的回调函数   | (e: { target: { checked: boolean } }) => void |    No    |   All    |        Yes        |
