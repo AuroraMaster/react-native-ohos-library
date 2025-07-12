@@ -375,7 +375,7 @@ import { mix,
 1.位置移动演示动画，通过snapPoint运行指定的位置地点
 
 ```js
-import { View, Button } from 'react-native';
+import { View, Button, StyleSheet } from 'react-native';
 import { snapPoint } from "react-native-redash/src/Physics";
 import {
   useSharedValue,

@@ -379,7 +379,7 @@ Animation Demonstration
 1. Demonstration of movements. Use **snapPoint** to run a specified position.
 
 ```js
-import { View, Button } from 'react-native';
+import { View, Button, StyleSheet } from 'react-native';
 import { snapPoint } from "react-native-redash/src/Physics";
 import {
   useSharedValue,
