@@ -128,7 +128,7 @@ Open `entry/oh-package.json5` and add the following dependency:
 
 ```json
 "dependencies": {
-    "@react-native-oh-tpl/react-native-nested-scroll": "file:../../node_modules/@react-native-oh-tpl/react-native-nested-scroll/harmony/nested-scroll.har"
+    "@react-native-oh-tpl/react-native-nested-scroll": "file:../../node_modules/@react-native-oh-tpl/react-native-nested-scroll/harmony/nested_scroll.har"
   }
 ```
 
