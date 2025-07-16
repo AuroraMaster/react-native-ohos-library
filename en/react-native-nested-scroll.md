@@ -146,7 +146,7 @@ Method 2: Directly linking the source code
 > [!TIP]
 > To link the source code directly, please refer to the [instructions for linking source code directly](/zh-cn/link-source-code.md).
 
-### 2.3 Configure CMakeLists and Import LinearGradientPackage
+### 2.3 Configure CMakeLists and Import NestedScrollViewPackage
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following:
 
