@@ -2,7 +2,7 @@
 
 # Introduction
 
-> If you are looking for documentation on setting up the environment, please refer to the "Setting Up the Development Environment" section in the development documentation [here](https://gitee.com/openharmony-sig/ohos_react_native/blob/0.72.5-ohos-5.0-release/README.md).
+> If you are looking for documentation on setting up the environment, please refer to the "Setting Up the Development Environment" section in the development documentation [here](https://gitee.com/openharmony-sig/ohos_react_native/blob/7284558e030998b113b1437ab8cad597e2e0213a/docs/en/environment-setup.md).
 
 ## Overview
 
