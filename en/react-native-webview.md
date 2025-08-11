@@ -324,6 +324,7 @@ For details, see [webview official document](https://github.com/react-native-web
 | `onContentProcessDidTerminate: (event) => void`  | Function that is invoked when the `WebView` content process is terminated. | function | No       | iOS and macOS WKWebView | No                |
 | `renderLoading?`                                 | Function that returns a loading indicator. The `startInLoadingState` prop must be set to `true` in order to use this prop. | function | No       | iOS, Android, macOS     | No                |
 | `onCustomMenuSelection?`                         | Function called when a custom menu item is selected. It receives a Native event, which includes three custom keys: `label`, `key` and `selectedText`. | function | NO       | iOS, Android            | No                |
+| `onNavigationStateChange?: (event) => void`      | Function that is invoked when the WebView loading starts or ends. | function | NO       | iOS, Android            | yes                |
 
 ## Static Methods
 
