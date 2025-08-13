@@ -159,7 +159,9 @@ const styles = StyleSheet.create({
 
 
 ```
+## Use Codegen
 
+If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
