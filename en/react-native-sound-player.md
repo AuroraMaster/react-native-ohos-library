@@ -4,9 +4,9 @@
   <h1 align="center"> <code>react-native-sound-player</code> </h1>
 </p>
 
-This project is based on [react-native-sound-player@0.14.5](https://github.com/johnsonsu/react-native-sound-player).
+This project is based on [react-native-sound-player@0.14.5](https://github.com/johnsonsu/react-native-sound-player/tree/0.14.5).
 
-Please go to the Releases release address of the third-party library to view the supporting version information: [@react-native-oh-tpl/react-native-sound-player Releases](https://github.com/react-native-oh-library/react-native-sound-player/releases). For older versions that are not published to npm, install the tgz package by referring to the [Installation Guide](/en-us/tgz-usage.md).
+Please go to the Releases release address of the third-party library to view the supporting version information: [@react-native-oh-tpl/react-native-sound-player Releases](https://github.com/react-native-oh-library/react-native-sound-player/releases). For older versions that are not published to npm, install the tgz package by referring to the [Installation Guide](/en/tgz-usage-en.md).
 
 | Version                   | Releases info                                      |  Support RN version                    |
 | ------------------------- | ------------------------------------------------- |  -------------------------- |

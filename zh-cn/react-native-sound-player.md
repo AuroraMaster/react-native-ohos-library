@@ -5,7 +5,7 @@
 </p>
 
 
-本项目基于 [react-native-sound-player@0.14.5](https://github.com/johnsonsu/react-native-sound-player) 开发。
+本项目基于 [react-native-sound-player@0.14.5](https://github.com/johnsonsu/react-native-sound-player/tree/0.14.5) 开发。
 
 请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-sound-player Releases](https://github.com/react-native-oh-library/react-native-sound-player/releases)。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
