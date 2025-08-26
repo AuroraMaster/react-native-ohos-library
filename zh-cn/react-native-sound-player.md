@@ -260,9 +260,9 @@ ohpm install
 | loadUrlAsync | Asynchronous Load the audio from the given `url` without playing it | function | no     |  | yes        |
 | playAssetAsync | Asynchronous Play the audio from an asset, to get the asset number use `require('./assets/tone.mp3')`. | function | no     |  | yes        |
 | loadAssetAsync | Asynchronous Load the audio from an asset like above but without playing it. | function | no     |  | yes        |
-| playAsync | Asynchronous Play the loaded sound file. This function is the same as `resume`. | function | no     |  | yes        |
+| playAsync | Asynchronous Play the loaded sound file. This function is the same as `resumeAsync`. | function | no     |  | yes        |
 | pauseAsync | Asynchronous Pause the currently playing file. | function | no     |  | yes        |
-| resumeAsync | Asynchronous Resume from pause and continue playing the same file. This function is the same as `play`. | function | no     |  | yes        |
+| resumeAsync | Asynchronous Resume from pause and continue playing the same file. This function is the same as `playAsync`. | function | no     |  | yes        |
 | stopAsync | Asynchronous Stop playing. | function | no     |  | yes        |
 | playSoundFile | Play the sound file named `fileName` with file type `fileType`. | function | no      | Android/iOS | no             |
 | loadSoundFile | Load the sound file named `fileName` with file type `fileType`, without playing it. | function | no     | Android/iOS | no           |
@@ -285,8 +285,8 @@ ohpm install
 | playSoundFileWithDelay | Only available on iOS. Play the sound file named `fileName` with file type `fileType` after a a delay of `delay` in *_seconds_* from the current device time. | function | no     | iOS   | no           |
 | setSpeaker | Overwrite default audio output to speaker. | function | no     | iOS   | no           |
 | setMixAudio | If you set this option, your audio will be mixed with audio playing in background apps, such as the Music app. | function | no     | iOS   | no           |
-| setMixAudioAsync | Asynchronous method.If you set this option, your audio will be mixed with audio playing in background apps, such as the Music app. | function | no     | iOS   | yes        |
-| setSpeakerAsync | Asynchronous method. Overwrite default audio output to speaker.                                    | function | no     | iOS   | yes        |
+| setMixAudioAsync | Asynchronous method.If you set this option, your audio will be mixed with audio playing in background apps, such as the Music app. | function | no     |    | yes        |
+| setSpeakerAsync | Asynchronous method. Overwrite default audio output to speaker.                                    | function | no     |    | yes        |
 
 ## 5. 遗留问题
 - [X] 因系统侧暂未提供AVPlayer播放器生成和控制的同步方法，库依赖AVPlayer实现的同步功能暂未实现。需系统侧提供后补充。 问题：[issue#6](https://github.com/react-native-oh-library/react-native-sound-player/issues/6)。
