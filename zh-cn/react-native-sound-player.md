@@ -290,6 +290,8 @@ ohpm install
 
 ## 5. 遗留问题
 - [X] 因系统侧暂未提供AVPlayer播放器生成和控制的同步方法，库依赖AVPlayer实现的同步功能暂未实现。需系统侧提供后补充。 问题：[issue#6](https://github.com/react-native-oh-library/react-native-sound-player/issues/6)。
+- [X] 系统媒体播放器AVPlayer在使用playUrlAsync和loadUrlAsync接口方法播放m4a、aac、wav、flac、amr和ape等网络音频格式时异常。 问题：[issue#12](https://github.com/react-native-oh-library/react-native-sound-player/issues/12)。
+- [X] rn的js侧不支持ogg、flac、amr、ape格式，导致无法通过import或require方式导入文件，因而无法通过playAssetAsync、loadAssetAsync方式进行播放。 问题：[issue#11](https://github.com/react-native-oh-library/react-native-sound-player/issues/11)。
 
 ## 6. 开源协议
 
