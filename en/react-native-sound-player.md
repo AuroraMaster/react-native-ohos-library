@@ -292,6 +292,8 @@ Check the release version information in the release address of the third-party 
 ## 5. Known Issues
 
 - [X] Since the system side has not yet provided synchronization methods for generating and controlling the AVPlayer, the synchronization function implemented by the library, which relies on AVPlayer, remains unimplemented. This will be supplemented once the system side provides the necessary methods.  issue: [issue#6](https://github.com/react-native-oh-library/react-native-sound-player/issues/6)
+- [X] The system media player AVPlayer encounters exceptions when playing network audio formats such as m4a, aac, wav, flac, amr, and ape using the playUrlAsync and loadUrlAsync interface methods. issue: [issue#12](https://github.com/react-native-oh-library/react-native-sound-player/issues/12)。
+- [X] The JS side of rn does not support ogg, flac, amr, and ape formats, which makes it impossible to import files through import or require, and therefore cannot be played through playAssetAsync or loadAssetAsync. issue: [issue#11](https://github.com/react-native-oh-library/react-native-sound-player/issues/11)。
 
 ## 6. License
 
