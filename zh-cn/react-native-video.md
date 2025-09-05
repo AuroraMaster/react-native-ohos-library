@@ -621,7 +621,7 @@ ohpm install
 | `preferredForwardBufferDuration` |The duration the player should buffer media from the network ahead of the playhead to guard against playback disruption. Sets the preferredForwardBufferDuration instance property on AVPlayerItem.| number | No  | iOS | No |
 | `preventsDisplaySleepDuringVideoPlayback` |Controls whether or not the display should be allowed to sleep while playing the video. Default is not to allow display to sleep.| boolean | No  | All | No |
 | `progressUpdateInterval` |Delay in milliseconds between onProgress events in milliseconds.| number | No  | iOS | No |
-| `rate` |Speed at which the media should play.| number | No  | All | No |
+| `rate` |Speed at which the media should play.| number | No  | All | Partially(0.125/0.25/0.50/0.75/1/1.25/1.5/1.75/2/3) |
 | `reportBandwidth` |Determine whether to generate onBandwidthUpdate events. This is needed due to the high frequency of these events on ExoPlayer.| boolean | No  | Android | No |
 | `selectedAudioTrack` |Configure which audio track, if any, is played.| object | No  | All | No |
 | `selectedTextTrack` |Configure which text track (caption or subtitle), if any, is shown.| object | No  | All | No |
