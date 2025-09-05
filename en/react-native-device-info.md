@@ -69,7 +69,7 @@ function App() {
     Brand: '',
     Model: '',
     DeviceType: '',
-    DeviceNameSync: '',
+    DeviceName: '',
   });
 
   useEffect(() => {
@@ -83,7 +83,7 @@ function App() {
       const Brand = await DeviceInfo.getBrand();
       const Model = await DeviceInfo.getModel();
       const DeviceType = await DeviceInfo.getDeviceType();
-      const DeviceNameSync = await DeviceInfo.getDeviceNameSync();
+      const DeviceName = await DeviceInfo.getDeviceName();
 
       setDeviceInfo({
         BundleId,
@@ -95,7 +95,7 @@ function App() {
         Brand,
         Model,
         DeviceType,
-        DeviceNameSync,
+        DeviceName,
       });
     };
 
@@ -130,7 +130,7 @@ function App() {
           <Text style={styles.infoText}>Brand: {deviceInfo.Brand}</Text>
           <Text style={styles.infoText}>Model: {deviceInfo.Model}</Text>
           <Text style={styles.infoText}>DeviceType: {deviceInfo.DeviceType}</Text>
-          <Text style={styles.infoText}>DeviceNameSync: {deviceInfo.DeviceNameSync}</Text>
+          <Text style={styles.infoText}>DeviceName: {deviceInfo.DeviceName}</Text>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -288,7 +288,7 @@ Open `entry/src/main/module.json5`, add the following permission：
 | getDeviceType  | TReturns the device's type as a string     | string  | No | IOS/Android/visionOS      | yes |
 | getDisplay  | A build ID string meant for displaying to the user.     | Promise<string>  | No | Android      | yes |
 | getDeviceName  | Gets the device name.        | Promise<string>  | No | IOS/Android/Windows/visionOS      | yes |
-| getDeviceNameSync  | Gets the device name.      | string  | No | IOS/Android/Windows/visionOS      | yes |
+| getDeviceNameSync  | Gets the device name.      | string  | No | No      | No |
 | getDeviceToken  | Gets the device token (see DeviceCheck). Only available for iOS 11.0+ on real devices. This will reject the promise when getDeviceToken is not supported, be careful with exception handling.       | Promise<string>  | No | IOS/visionOS      | no |
 | getFirstInstallTime  | Gets the time at which the app was first installed, in milliseconds.         | Promise<number>  | No | IOS/Android/Windows/visionOS      | yes |
 | getFingerprint  | A string that uniquely identifies this build.         | Promise<string>  | No | Windows      | no |
@@ -336,7 +336,7 @@ Open `entry/src/main/module.json5`, add the following permission：
 | isAirplaneMode  | Tells if the device is in Airplane Mode.       | Promise<boolean>  | No | Android/ Web     | yes |
 | isBatteryCharging  | Tells if the battery is currently charging.         | Promise<boolean>  | No | IOS/Android/Windows/Web/visionOS      | yes |
 | isEmulator  | Tells if the application is running in an emulator.        | Promise<boolean>  | No | IOS/Android/Windows/visionOS      | no |
-| isKeyboardConnected  | Tells if the device has a keyboard connected.        | Promise<boolean>  | No | Windows      | yes |
+| isKeyboardConnected  | Tells if the device has a keyboard connected.        | Promise<boolean>  | No | Windows      | partially(Only supports asynchronous retrieval) |
 | isLandscape  | Tells if the device is currently in landscape mode.        | Promise<boolean>  | No | IOS/Android/Windows/visionOs      | yes |
 | isLocationEnabled  | Allow access to user's location information        | Promise<boolean>  | No | IOS/Android/Web/visionOS      | yes |
 | isMouseConnected  | Tells if the device has a mouse connected.         | Promise<boolean>  | No | Windows   | yes |
