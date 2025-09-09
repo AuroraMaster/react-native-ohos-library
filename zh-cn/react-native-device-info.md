@@ -256,6 +256,16 @@ ohpm install
   },
   {
     "name": "ohos.permission.GET_WIFI_INFO"
+  },
+  {
+    "name": "ohos.permission.DISTRIBUTED_DATASYNC",
+    "reason": "$string:DATA_SYNC",
+    "usedScene": {
+      "abilities": [
+        "EntryAbility"
+      ],
+      "when": "always"
+    }
   }
 ]
 ```
