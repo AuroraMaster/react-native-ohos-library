@@ -272,6 +272,22 @@ render() {
 export default AmapGeoLocationDemo;
 ```
 
+## 使用注意事项
+
+该库使用需要注意以下几点：
+
+1. 传入正确的高德地图apikey
+
+   具体获取方式：
+
+   - 进入高德地图官方链接：[我的应用 | 高德控制台](https://console.amap.com/dev/key/app)
+   - 参考链接[入门指南-HarmonyOS NEXT 地图SDK | 高德地图API](https://lbs.amap.com/api/harmonyosnext-map3d-sdk/gettingstarted#t2)获取appid
+   - 在控制台创建新应用，点击添加key。生成key之后将key传进自己的业务中
+
+2. 开启设备网络服务
+
+3. 开启设备位置服务
+
 ## 使用 Codegen
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。

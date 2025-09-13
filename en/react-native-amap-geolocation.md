@@ -272,6 +272,22 @@ render() {
 export default AmapGeoLocationDemo;
 ```
 
+##  Usage Notes
+
+There are several important points to note when using this library:
+
+1. **Provide a valid AMap API key**
+
+   **How to obtain the API key:**
+
+   - Go to the official AMap link: [My Applications | AMap Console](https://console.amap.com/dev/key/app)
+   - Refer to the guide [Getting Started - HarmonyOS NEXT Map SDK | AMap API](https://lbs.amap.com/api/harmonyosnext-map3d-sdk/gettingstarted#t2) to obtain the appid.
+   - Create a new application in the console and click "Add Key." After generating the key, integrate it into your project.
+
+2. **Enable device network services**
+
+3. **Enable device location services**
+
 ## Use Codegen
 
 This repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
