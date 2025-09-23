@@ -212,16 +212,12 @@ Check the release version information in the release address of the third-party 
 | animationType          | Animation modal presented with: default                                                     | none, fade, slide                                           | All      | No       | Yes               |
 | presentationStyle      | Modal presentation style: default: fullScreen Android: Use overFullScreen to hide StatusBar | fullScreen, pageSheet, formSheet, overFullScreen            | All      | No       | Partially (Support "fullScreen", "overFullScreen")               |
 | backgroundColor        | Background color of the modal in HEX                                                        | string                                                      | All      | No       | Yes               |
-| swipeToCloseEnabled    | Close modal with swipe up or down: default                                                  | boolean                                                     | All      | No       | No                |
-| doubleTapToZoomEnabled | Zoom image by double tap on it: default                                                     | boolean                                                     | All      | No       | No                |
+| swipeToCloseEnabled    | Close modal with swipe up or down: default                                                  | boolean                                                     | All      | No       | Yes               |
+| doubleTapToZoomEnabled | Zoom image by double tap on it: default                                                     | boolean                                                     | All      | No       | Yes               |
 | HeaderComponent        | Header component, gets current imageIndex as a prop                                         | component, function                                         | All      | No       | Yes               |
 | FooterComponent        | Footer component, gets current imageIndex as a prop                                         | component, function                                         | All      | No       | Yes               |
 
 ## Known Issues
-
-- [x] The swipe-to-close property is not implemented because the **naticeEvent.velocity** property of **scrollView** is not supported by HarmonyOS: [issue#6](https://github.com/react-native-oh-library/react-native-image-viewing/issues/6).
-- [x] The **doubleTapToZoomEnabled** property is not supported by HarmonyOS: [issue#7](https://github.com/react-native-oh-library/react-native-image-viewing/issues/7).
-- [x] The fade-in/fade-out effect of the **animationType** property is not implemented because the adaptation of the **modal** component is not completed: [issue#8](https://github.com/react-native-oh-library/react-native-image-viewing/issues/8).
 
 ## Others
 
