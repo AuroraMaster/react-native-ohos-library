@@ -211,16 +211,12 @@ const styles = StyleSheet.create({
 | animationType          | Animation modal presented with: default                      | none, fade, slide                                           | All      | No       | Yes               |
 | presentationStyle      | Modal presentation style: default: fullScreen Android: Use overFullScreen to hide StatusBar | fullScreen, pageSheet, formSheet, overFullScreen            | All      | No       | Partially (Support "fullScreen", "overFullScreen") |
 | backgroundColor        | Background color of the modal in HEX                         | string                                                      | All      | No       | Yes               |
-| swipeToCloseEnabled    | Close modal with swipe up or down: default                   | boolean                                                     | All      | No       | No                |
-| doubleTapToZoomEnabled | Zoom image by double tap on it: default                      | boolean                                                     | All      | No       | No                |
+| swipeToCloseEnabled    | Close modal with swipe up or down: default                   | boolean                                                     | All      | No       | Yes               |
+| doubleTapToZoomEnabled | Zoom image by double tap on it: default                      | boolean                                                     | All      | No       | Yes               |
 | HeaderComponent        | Header component, gets current imageIndex as a prop          | component, function                                         | All      | No       | Yes               |
 | FooterComponent        | Footer component, gets current imageIndex as a prop          | component, function                                         | All      | No       | Yes               |
 
 ## 遗留问题
-
-- [x] 组件上下滑动关闭暂未实现，由于 scrollView的naticeEvent.velocity属性HarmonyOS暂不支持 [issue#6](https://github.com/react-native-oh-library/react-native-image-viewing/issues/6)
-- [x] 组件双击放大方法暂未实现，由于doubleTapToZoomEnabled属性HarmonyOS暂不支持 [issue#7](https://github.com/react-native-oh-library/react-native-image-viewing/issues/7)
-- [x] 组件animationType淡入淡出效果暂未实现，由于modal组件未适配 [issue#8](https://github.com/react-native-oh-library/react-native-image-viewing/issues/8)
 
 ## 其他
 
