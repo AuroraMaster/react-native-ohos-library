@@ -194,7 +194,7 @@ export default MyChart;
 |      |                                        |        |          |          |                   |
 | ---- | -------------------------------------- | ------ | -------- | -------- | ----------------- |
 | Name | Description                            | Type   | Required | Platform | HarmonyOS Support |
-| data | Data for the chart - see example above | Object | No       | All      | Yes               |
+| bezier | Data for the chart - see example above | Object | No       | All      | Yes               |
 
 ### Progress Ring
 
