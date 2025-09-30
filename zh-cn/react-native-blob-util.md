@@ -539,7 +539,7 @@ ohpm install
 | Name            | Description      | Type                      | Required | Platform | HarmonyOS Support |
 | --------------- | ----------------------| ---------------- | -------- | -------- | ----------------- |
 | previewDocument | 文档查看器--需要系统权限  | Function             | No       | iOS      | yes                |
-| openDocument    | 显示与文件交互的选项菜单--需要系统权限| Function | No       | iOS      | yes                |
+| openDocument    | 显示用于与文件进行交互的选项菜单，需要系统权限(仅限于ios)，在HarmonyOS中，会根据指定的默认应用直接打开文件| Function | No       | iOS      | yes                |
 
 #### Network Utils
 
