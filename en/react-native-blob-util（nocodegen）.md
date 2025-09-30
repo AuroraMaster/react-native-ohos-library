@@ -599,7 +599,7 @@ Find the matching version information in the release address of the third-party 
 | Name            | Description      | Type                      | Required | Platform | HarmonyOS Support |
 | --------------- | ----------------------| ---------------- | -------- | -------- | ----------------- |
 | previewDocument | Views documents. This operation requires system permissions.  | Function             | No       | iOS      | yes                |
-| openDocument    | Displays the option menu for interacting with files. This operation requires system permissions.| Function | No       | iOS      | yes                |
+| openDocument    | Display the option menu for interacting with files, which requires system permissions (only for iOS). In HarmonyOS, the file will be directly opened based on the specified default application.| Function | No       | iOS      | yes                |
 
 #### Network Utils
 
