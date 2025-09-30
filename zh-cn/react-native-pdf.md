@@ -314,7 +314,7 @@ ohpm install
 
 | Name    | Description                                                                                                                              | Type                 | Required | Platform      | HarmonyOS Support |
 | ------- | ---------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | -------- | ------------- | ----------------- |
-| setPage | Set the current page of the PDF component. pageNumber is a positive integer. If pageNumber > numberOfPages, current page is not changed. | function(pageNumber) | NO       | iOS / Android | no                |
+| setPage | Set the current page of the PDF component. pageNumber is a positive integer. If pageNumber > numberOfPages, current page is not changed. | function(pageNumber) | NO       | iOS / Android | yes                |
 
 ## 遗留问题
 
