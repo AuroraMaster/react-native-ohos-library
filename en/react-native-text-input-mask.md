@@ -286,7 +286,7 @@ Check the release version information in the release address of the third-party 
 | ------------- | ------------------------------------------------------------------------------------------------------------------------- | --------- | ----------- | ----------------- |
 | mask          | Format a string,Return the formatted string                                                                               | function  | Android/iOS | yes               |
 | unmask        | Restore the formatted string,Return the restored string                                                                   | function  | Android/iOS | yes               |
-| setMask       | Set a listener for a component,Format the input content of a text box,Use in conjunction with the TextInputMask component | function  | Android/iOS | yes               |
+| setMask       | Set a listener for a component,Format the input content of a text box,Use in conjunction with the TextInput component | function  | Android/iOS | yes               |
 | TextInputMask | Text input component                                                                                                      | component | Android/iOS | yes               |
 
 #### mask
