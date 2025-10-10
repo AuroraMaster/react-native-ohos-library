@@ -387,66 +387,66 @@ Check the release version information in the release address of the third-party 
 ### MapView
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| mapType  | Map type         | int  | yes | iOS      | yes |
-| initialCameraPosition  | Initial state         | CameraPosition  | yes | iOS      | yes |
-| myLocationEnabled  | Whether to display the current positioning         | boolean  | yes | iOS      | no |
-| indoorViewEnabled  | Whether to display an indoor map         | boolean  | yes | iOS      | no |
-| buildingsEnabled  | Whether or not to display 3D buildings         | boolean  | yes | iOS      | no |
-| labelsEnabled  | Whether to display the label         | boolean  | yes | iOS      | yes |
-| compassEnabled  | Whether or not to display a compass         | boolean  | yes | iOS       | yes               |
-| zoomControlsEnabled  | Whether to display a zoomed-in button         | boolean  | yes | iOS      | yes |
-| scaleControlsEnabled  | Whether to display the scale bar         | boolean  | yes | iOS      | yes |
-| trafficEnabled  | Whether or not to display traffic conditions         | boolean  | yes | iOS      | yes |
-| maxZoom  | Maximum zoom level         | float  | yes | iOS      | yes |
-| minZoom  | Minimum zoom level         | float  | yes | iOS      | yes |
-| zoomGesturesEnabled  | Whether to enable the zoom gesture to zoom in and out         | boolean  | yes | iOS      | yes |
-| scrollGesturesEnabled  | Whether to enable the swipe gesture for panning         | boolean  | yes | iOS      | yes |
-| rotateGesturesEnabled  | Whether to enable the rotate gesture to adjust the orientation         | boolean  | yes | iOS      | yes |
-| tiltGesturesEnabled  | Whether or not to enable the tilt gesture to change the viewing angle         | boolean  | yes | iOS      | yes |
-| distanceFilter  | Sets the minimum update distance for positioning         | float  | yes | iOS      | no|
-| headingFilter  | Sets the minimum update angle, which defaults to 1 degree         | float  | yes | iOS      | no |
+| mapType  | Map type         | int  | no | iOS/Android | yes |
+| initialCameraPosition  | Initial state         | CameraPosition  | no | iOS/Android | yes |
+| myLocationEnabled  | Whether to display the current positioning         | boolean  | no | iOS/Android | no |
+| indoorViewEnabled  | Whether to display an indoor map         | boolean  | no | iOS/Android | no |
+| buildingsEnabled  | Whether or not to display 3D buildings         | boolean  | no | iOS/Android | no |
+| labelsEnabled  | Whether to display the label         | boolean  | no | iOS/Android | yes |
+| compassEnabled  | Whether or not to display a compass         | boolean  | no | iOS/Android | yes               |
+| zoomControlsEnabled  | Whether to display a zoomed-in button         | boolean  | no | Android | yes |
+| scaleControlsEnabled  | Whether to display the scale bar         | boolean  | no | iOS/Android | yes |
+| trafficEnabled  | Whether or not to display traffic conditions         | boolean  | no | iOS/Android | yes |
+| maxZoom  | Maximum zoom level         | float  | no | iOS/Android | yes |
+| minZoom  | Minimum zoom level         | float  | no | iOS/Android | yes |
+| zoomGesturesEnabled  | Whether to enable the zoom gesture to zoom in and out         | boolean  | no | iOS/Android | yes |
+| scrollGesturesEnabled  | Whether to enable the swipe gesture for panning         | boolean  | no | iOS/Android | yes |
+| rotateGesturesEnabled  | Whether to enable the rotate gesture to adjust the orientation         | boolean  | no | iOS/Android | yes |
+| tiltGesturesEnabled  | Whether or not to enable the tilt gesture to change the viewing angle         | boolean  | no | iOS/Android | yes |
+| distanceFilter  | Sets the minimum update distance for positioning         | float  | no | iOS      | no|
+| headingFilter  | Sets the minimum update angle, which defaults to 1 degree         | float  | no | iOS      | no |
 
 ### Circle
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| center  | Dotted coordinates         | LatLng  | yes | iOS      | yes |
-| radius  | Radius (m)         | Float  | yes | iOS      | yes |
-| strokeWidth  | Edge width         | Float  | yes | iOS      | yes |
-| strokeColor  | Edge color         | string  | yes | iOS      | yes |
-| fillColor  | Fill color         | string  | yes | iOS      | yes |
-| zIndex  | Level         | Float  | yes | iOS      | yes |
+| center  | Dotted coordinates         | LatLng  | yes | iOS/Android | yes |
+| radius  | Radius (m)         | Float  | yes | iOS/Android | yes |
+| strokeWidth  | Edge width         | Float  | no | iOS/Android | yes |
+| strokeColor  | Edge color         | string  | no | iOS/Android | yes |
+| fillColor  | Fill color         | string  | no | iOS/Android | yes |
+| zIndex  | Level         | Float  | no | iOS/Android | yes |
 
 ### Marker
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| position  | coordinates         | LatLng  | yes | iOS      | yes |
-| icon  | icon         | ImageSourcePropType  | yes | iOS      | yes |
-| draggable  | Whether it can be dragged or not         | boolean  | yes | iOS      | yes |
-| flat  | Whether the map is flattened or not         | boolean  | yes | iOS      | yes |
-| zIndex  | Level         | Float  | yes | iOS      | yes |
-| anchor  | Mulch anchor point ratio         | Point  | yes | iOS      | no |
-| centerOffset  | Cover offset position         | Float  | yes | iOS      | no |
+| position  | coordinates         | LatLng  | yes | iOS/Android | yes |
+| icon  | icon         | ImageSourcePropType  | no | iOS/Android | yes |
+| draggable  | Whether it can be dragged or not         | boolean  | no | iOS/Android | yes |
+| flat  | Whether the map is flattened or not         | boolean  | no | Android | yes |
+| zIndex  | Level         | Float  | no | iOS/Android | yes |
+| anchor  | Mulch anchor point ratio         | Point  | no | Android | no |
+| centerOffset  | Cover offset position         | Float  | no | iOS      | no |
 
 ### Polygon
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| points  | Node coordinates         | LatLng[]  | yes | iOS      | yes |
-| strokeWidth  | Edge width         | Float  | yes | iOS      | yes |
-| strokeColor  | Edge color         | string  | yes | iOS      | yes |
-| fillColor  | Fill color         | string  | yes | iOS      | yes |
-| zIndex  | Level         | Float  | yes | iOS      | yes |
+| points  | Node coordinates         | LatLng[]  | yes | iOS/Android | yes |
+| strokeWidth  | Edge width         | Float  | no | iOS/Android | yes |
+| strokeColor  | Edge color         | string  | no | iOS/Android | yes |
+| fillColor  | Fill color         | string  | no | iOS/Android | yes |
+| zIndex  | Level         | Float  | no | iOS/Android | yes |
 
 ### Polyline
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| points  | Node coordinates         | LatLng[]  | yes | iOS      | yes |
-| width  | Edge width         | Float  | yes | iOS      | yes |
-| color  | Segment color         | ColorValue  | yes | iOS      | yes |
-| zIndex  | Level         | Float  | yes | iOS      | yes |
-| colors  | Multi-segment color        | ColorValue[]  | yes | iOS      | yes |
-| gradient  | Whether to use a color gradient        | boolean  | yes | iOS      | yes |
-| geodesic  | Whether or not to draw geodetic lines        | boolean  | yes | iOS      | no |
-| dotted  | Whether or not to draw a dashed line        | boolean  | yes | iOS      | yes |
+| points  | Node coordinates         | LatLng[]  | yes | iOS/Android | yes |
+| width  | Edge width         | Float  | no | iOS/Android | yes |
+| color  | Segment color         | ColorValue  | no | iOS/Android | yes |
+| zIndex  | Level         | Float  | no | iOS/Android | yes |
+| colors  | Multi-segment color        | ColorValue[]  | no | iOS/Android | yes |
+| gradient  | Whether to use a color gradient        | boolean  | no | iOS/Android | yes |
+| geodesic  | Whether or not to draw geodetic lines        | boolean  | no | iOS/Android | no |
+| dotted  | Whether or not to draw a dashed line        | boolean  | no | iOS/Android | yes |
 
 ## Static Methods
 
@@ -456,31 +456,31 @@ Check the release version information in the release address of the third-party 
 ### MapView
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| onPress  | Click Events        | LatLng | yes | iOS      | yes |
-| onPressPoi  | Label click events        | Poi | yes | iOS      | yes |
-| onLongPress  | Long press on the event        | LatLng | yes | iOS      | yes |
-| onCameraMove  | Map state change events, which are triggered continuously as the map state changes        | CameraEvent | yes | iOS      | yes               |
-| onCameraIdle  | Map state change events, which are triggered when the change stops        | CameraEvent | yes | iOS      | no |
-| onLoad  | Map Initialization Completion Event        | void | yes | iOS      | yes |
-| onLocation  | Map location update events        | GeolocationPosition | no | iOS      | no |
-| onCallback  | Callback events        | void | yes | iOS      | no |
-| moveCamera  | Moving perspective        | void | yes | iOS      | yes                |
-| call  | invoke        | void | yes | iOS      | no |
+| onPress  | Click Events        | LatLng | no | iOS/Android | yes |
+| onPressPoi  | Label click events        | Poi | no | iOS/Android | yes |
+| onLongPress  | Long press on the event        | LatLng | no | iOS/Android | yes |
+| onCameraMove  | Map state change events, which are triggered continuously as the map state changes        | CameraEvent | no | iOS/Android | yes               |
+| onCameraIdle  | Map state change events, which are triggered when the change stops        | CameraEvent | no | iOS/Android | no |
+| onLoad  | Map Initialization Completion Event        | void | no | iOS/Android | yes |
+| onLocation  | Map location update events        | GeolocationPosition | no | iOS/Android | no |
+| onCallback  | Callback events        | void | yes | iOS/Android | no |
+| moveCamera  | Moving perspective        | void | yes | iOS/Android | yes                |
+| call  | invoke        | void | yes | iOS/Android | no |
 
 
 ### Marker
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| onPress  | Click Events        | void | yes | iOS      | yes |
-| onDragStart  | Drag and drop the start event        | void | yes | iOS      | yes |
-| onDrag  | Drag-and-drop events, similar to mousemove, are called continuously until they end        | void | yes | iOS      | yes |
-| onDragEnd  | Drag and drop the end event        | LatLng | yes | iOS      | yes |
-| update  | Trigger a custom view update        | void | yes | iOS      | yes               | 
+| onPress  | Click Events        | void | no | iOS/Android | yes |
+| onDragStart  | Drag and drop the start event        | void | no | iOS/Android | yes |
+| onDrag  | Drag-and-drop events, similar to mousemove, are called continuously until they end        | void | no | iOS/Android | yes |
+| onDragEnd  | Drag and drop the end event        | LatLng | no | iOS/Android | yes |
+| update  | Trigger a custom view update        | void | yes | iOS/Android | no              |
 
 ### Polyline
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| onPress  | Click Events        | void | yes | iOS      | yes |
+| onPress  | Click Events        | void | no | iOS/Android | yes |
 
 ## API
 

@@ -389,66 +389,66 @@ ohpm install
 ### MapView
 | Name | Description | Type | Required | Platform  | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- |-----------|-------------------|
-| mapType  | 地图类型         | int  | yes | iOS       | yes               |
-| initialCameraPosition  | 初始状态         | CameraPosition  | yes | iOS       | yes               |
-| myLocationEnabled  | 是否显示当前定位         | boolean  | yes | iOS       | no                |
-| indoorViewEnabled  | 是否显示室内地图         | boolean  | yes | iOS       | no                |
-| buildingsEnabled  | 是否显示3D建筑         | boolean  | yes | iOS       | no                |
-| labelsEnabled  | 是否显示标注         | boolean  | yes | iOS       | yes               |
-| compassEnabled  | 是否显示指南针         | boolean  | yes | iOS       | yes               |
-| zoomControlsEnabled  | 是否显示放大缩小按钮         | boolean  | yes | iOS       | yes               |
-| scaleControlsEnabled  | 是否显示比例尺         | boolean  | yes | iOS       | yes               |
-| trafficEnabled  | 是否显示路况         | boolean  | yes | iOS       | yes               |
-| maxZoom  | 最大缩放级别         | float  | yes | iOS       | yes               |
-| minZoom  | 最小缩放级别         | float  | yes | iOS       | yes               |
-| zoomGesturesEnabled  | 是否启用缩放手势，用于放大缩小         | boolean  | yes | iOS       | yes               |
-| scrollGesturesEnabled  | 是否启用滑动手势，用于平移         | boolean  | yes | iOS       | yes               |
-| rotateGesturesEnabled  | 是否启用旋转手势，用于调整方向         | boolean  | yes | iOS       | yes               |
-| tiltGesturesEnabled  | 是否启用倾斜手势，用于改变视角         | boolean  | yes | iOS       | yes               |
-| distanceFilter  | 设定定位的最小更新距离         | float  | yes | iOS       | no                |
-| headingFilter  | 设定最小更新角度，默认为 1 度         | float  | yes | iOS       | no                |
+| mapType  | 地图类型         | int  | no | iOS/Android | yes               |
+| initialCameraPosition  | 初始状态         | CameraPosition  | no | iOS/Android | yes               |
+| myLocationEnabled  | 是否显示当前定位         | boolean  | no | iOS/Android | no                |
+| indoorViewEnabled  | 是否显示室内地图         | boolean  | no | iOS/Android | no                |
+| buildingsEnabled  | 是否显示3D建筑         | boolean  | no | iOS/Android | no                |
+| labelsEnabled  | 是否显示标注         | boolean  | no | iOS/Android | yes               |
+| compassEnabled  | 是否显示指南针         | boolean  | no | iOS/Android | yes               |
+| zoomControlsEnabled  | 是否显示放大缩小按钮         | boolean  | no | Android | yes               |
+| scaleControlsEnabled  | 是否显示比例尺         | boolean  | no | iOS/Android | yes               |
+| trafficEnabled  | 是否显示路况         | boolean  | no | iOS/Android | yes               |
+| maxZoom  | 最大缩放级别         | float  | no | iOS/Android | yes               |
+| minZoom  | 最小缩放级别         | float  | no | iOS/Android | yes               |
+| zoomGesturesEnabled  | 是否启用缩放手势，用于放大缩小         | boolean  | no | iOS/Android | yes               |
+| scrollGesturesEnabled  | 是否启用滑动手势，用于平移         | boolean  | no | iOS/Android | yes               |
+| rotateGesturesEnabled  | 是否启用旋转手势，用于调整方向         | boolean  | no | iOS/Android | yes               |
+| tiltGesturesEnabled  | 是否启用倾斜手势，用于改变视角         | boolean  | no | iOS/Android | yes               |
+| distanceFilter  | 设定定位的最小更新距离         | float  | no | iOS | no                |
+| headingFilter  | 设定最小更新角度，默认为 1 度         | float  | no | iOS | no                |
 
 ### Circle
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| center  | 圆点坐标         | LatLng  | yes | iOS      | yes |
-| radius  | 半径（米）         | Float  | yes | iOS      | yes |
-| strokeWidth  | 边线宽度         | Float  | yes | iOS      | yes |
-| strokeColor  | 边线颜色         | string  | yes | iOS      | yes |
-| fillColor  | 填充颜色         | string  | yes | iOS      | yes |
-| zIndex  | 层级         | Float  | yes | iOS      | yes |
+| center  | 圆点坐标         | LatLng  | yes | iOS/Android | yes |
+| radius  | 半径（米）         | Float  | yes | iOS/Android | yes |
+| strokeWidth  | 边线宽度         | Float  | no | iOS/Android | yes |
+| strokeColor  | 边线颜色         | string  | no | iOS/Android | yes |
+| fillColor  | 填充颜色         | string  | no | iOS/Android | yes |
+| zIndex  | 层级         | Float  | no | iOS/Android | yes |
 
 ### Marker
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| position  | 坐标         | LatLng  | yes | iOS      | yes |
-| icon  | 图标         | ImageSourcePropType  | yes | iOS      | yes |
-| draggable  | 是否可拖拽         | boolean  | yes | iOS      | yes |
-| flat  | 是否平贴地图         | boolean  | yes | iOS      | yes |
-| zIndex  | 层级         | Float  | yes | iOS      | yes |
-| anchor  | 覆盖物锚点比例         | Point  | yes | iOS      | no |
-| centerOffset  | 覆盖物偏移位置         | Float  | yes | iOS      | no |
+| position  | 坐标         | LatLng  | yes | iOS/Android | yes |
+| icon  | 图标         | ImageSourcePropType  | no | iOS/Android | yes |
+| draggable  | 是否可拖拽         | boolean  | no | iOS/Android | yes |
+| flat  | 是否平贴地图         | boolean  | no | Android | yes |
+| zIndex  | 层级         | Float  | no | iOS/Android | yes |
+| anchor  | 覆盖物锚点比例         | Point  | no | Android | no |
+| centerOffset  | 覆盖物偏移位置         | Float  | no | iOS | no |
 
 ### Polygon
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| points  | 节点坐标         | LatLng[]  | yes | iOS      | yes |
-| strokeWidth  | 边线宽度         | Float  | yes | iOS      | yes |
-| strokeColor  | 边线颜色         | string  | yes | iOS      | yes |
-| fillColor  | 填充颜色         | string  | yes | iOS      | yes |
-| zIndex  | 层级         | Float  | yes | iOS      | yes |
+| points  | 节点坐标         | LatLng[]  | yes | iOS/Android | yes |
+| strokeWidth  | 边线宽度         | Float  | no | iOS/Android | yes |
+| strokeColor  | 边线颜色         | string  | no | iOS/Android | yes |
+| fillColor  | 填充颜色         | string  | no | iOS/Android | yes |
+| zIndex  | 层级         | Float  | no | iOS/Android | yes |
 
 ### Polyline
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| points  | 节点坐标         | LatLng[]  | yes | iOS      | yes |
-| width  | 边线宽度         | Float  | yes | iOS      | yes |
-| color  | 线段颜色         | ColorValue  | yes | iOS      | yes |
-| zIndex  | 层级         | Float  | yes | iOS      | yes |
-| colors  | 多段颜色        | ColorValue[]  | yes | iOS      | yes |
-| gradient  | 是否使用颜色渐变        | boolean  | yes | iOS      | yes |
-| geodesic  | 是否绘制大地线        | boolean  | yes | iOS      | no |
-| dotted  | 是否绘制虚线        | boolean  | yes | iOS      | yes |
+| points  | 节点坐标         | LatLng[]  | yes | iOS/Android | yes |
+| width  | 边线宽度         | Float  | no | iOS/Android | yes |
+| color  | 线段颜色         | ColorValue  | no | iOS/Android | yes |
+| zIndex  | 层级         | Float  | no | iOS/Android | yes |
+| colors  | 多段颜色        | ColorValue[]  | no | iOS/Android | yes |
+| gradient  | 是否使用颜色渐变        | boolean  | no | iOS/Android | yes |
+| geodesic  | 是否绘制大地线        | boolean  | no | iOS/Android | no |
+| dotted  | 是否绘制虚线        | boolean  | no | iOS/Android | yes |
 
 ## 静态方法
 
@@ -458,31 +458,31 @@ ohpm install
 ### MapView
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- |-------------------|
-| onPress  | 点击事件        | LatLng | yes | iOS      | yes               |
-| onPressPoi  | 标注点击事件        | Poi | yes | iOS      | yes               |
-| onLongPress  | 长按事件        | LatLng | yes | iOS      | yes               |
-| onCameraMove  | 地图状态改变事件，随地图状态变化不停地触发        | CameraEvent | yes | iOS      | yes               |
-| onCameraIdle  | 地图状态改变事件，在停止变化后触发        | CameraEvent | yes | iOS      | no                |
-| onLoad  | 地图初始化完成事件        | void | yes | iOS      | yes               |
-| onLocation  | 地图定位更新事件        | GeolocationPosition | no | iOS      | no                |
-| onCallback  | 回调事件        | void | yes | iOS      | no                |
-| moveCamera  | 移动视角        | void | yes | iOS      | yes                |
-| call  | 调用        | void | yes | iOS      | no                |
+| onPress  | 点击事件        | LatLng | no | iOS/Android | yes               |
+| onPressPoi  | 标注点击事件        | Poi | no | iOS/Android | yes               |
+| onLongPress  | 长按事件        | LatLng | no | iOS/Android | yes               |
+| onCameraMove  | 地图状态改变事件，随地图状态变化不停地触发        | CameraEvent | no | iOS/Android | yes               |
+| onCameraIdle  | 地图状态改变事件，在停止变化后触发        | CameraEvent | no | iOS/Android | no                |
+| onLoad  | 地图初始化完成事件        | void | no | iOS/Android | yes               |
+| onLocation  | 地图定位更新事件        | GeolocationPosition | no | iOS/Android | no                |
+| onCallback  | 回调事件        | void | yes | iOS/Android | no                |
+| moveCamera  | 移动视角        | void | yes | iOS/Android | yes                |
+| call  | 调用        | void | yes | iOS/Android | no                |
 
 
 ### Marker
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- |-------------------|
-| onPress  | 点击事件        | void | yes | iOS      | yes               |
-| onDragStart  | 拖放开始事件        | void | yes | iOS      | yes               |
-| onDrag  | 拖放进行事件，类似于mousemove，在结束之前会不断调用        | void | yes | iOS      | yes               |
-| onDragEnd  | 拖放结束事件        | LatLng | yes | iOS      | yes               |
-| update  | 触发自定义view更新        | void | yes | iOS      | yes               | 
+| onPress  | 点击事件        | void | no | iOS/Android | yes               |
+| onDragStart  | 拖放开始事件        | void | no | iOS/Android | yes               |
+| onDrag  | 拖放进行事件，类似于mousemove，在结束之前会不断调用        | void | no | iOS/Android | yes               |
+| onDragEnd  | 拖放结束事件        | LatLng | no | iOS/Android | yes               |
+| update  | 触发自定义view更新        | void | yes | iOS/Android | no             |
 
 ### Polyline
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| onPress  | 点击事件        | void | yes | iOS      | yes |
+| onPress  | 点击事件        | void | no | iOS/Android | yes |
 
 ## API
 
@@ -492,8 +492,8 @@ ohpm install
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| initSDK  | 初始化高德SDK         | void  | yes | iOS      | no |
-| getVersion  | 获取版本信息         | Promise<string>  | yes | iOS      | no |
+| initSDK  | 初始化高德SDK         | void  | yes | iOS/Android | no |
+| getVersion  | 获取版本信息         | Promise<string>  | yes | iOS/Android | no |
 
 ## 遗留问题
 - [ ] initSDK：hramony暂不支持: [issue#16](https://github.com/react-native-oh-library/react-native-amap3d/issues/16)
