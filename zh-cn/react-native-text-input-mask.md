@@ -287,7 +287,7 @@ ohpm install
 | ------- | ---------------------- | -------- | ----------- | ----------------- |
 | mask   | 字符串格式化，返回格式化后的字符串 | function | Android/iOS | yes               |
 | unmask | 将格式化后的字符串还原，返回还原后的字符串 | function | Android/iOS | yes               |
-| setMask | 给组件设置监听，对输入框内容进行格式化，配合TextInputMask组件使用 | function | Android/iOS | yes |
+| setMask | 给组件设置监听，对输入框内容进行格式化，配合TextInput组件使用 | function | Android/iOS | yes |
 | TextInputMask | 输入框组件 | component | Android/iOS | yes |
 
 #### mask参数说明
