@@ -699,7 +699,7 @@ export default function App() {
 |  compact    | Sets smaller horizontal paddings 12dp around label, when there is only label.  |   boolean | NO      | All      | Yes               |
 |  elevated     | Whether chip should have the elevation.  |   boolean | NO      | All      | Yes               |
 |  textStyle     | Style of chip's text  |   StyleProp<TextStyle> | NO      | All      | Yes               |
-|  style     | style  |   Animated.WithAnimatedValue<StyleProp<ViewStyle>> | NO      | All      |
+|  style     | style  |   Animated.WithAnimatedValue<StyleProp<ViewStyle>> | NO      | All      | Yes |
 |  theme     | theme  |   ThemeProp | NO      | All      | Yes               |
 |  testID     | Pass down testID from chip props to touchable for Detox tests.  |   string | NO      | All      | Yes               |
 |  ellipsizeMode     | Ellipsize Mode for the children text  |   EllipsizeProp | NO      | All      | Yes               |
@@ -711,7 +711,7 @@ export default function App() {
 |  Name   | Description |      Type       | Required | Platform | HarmonyOS Support |
 | :-----: | :---------: | :-------------: | -------- | -------- | ----------------- |
 |  children (required)  | Content of the DataTable  |  React.ReactNode  | Yes      | All      | Yes               |
-|  style     | style  |    StyleProp<ViewStyle> | NO      | All      |
+|  style     | style  |    StyleProp<ViewStyle> | NO      | All      | Yes |
 
 **DataTable.Cell**：A component to show a single cell inside of a table.
 
@@ -720,18 +720,18 @@ export default function App() {
 |  children (required)  | Content of the DataTableCell.  |  React.ReactNode  | Yes      | All      | Yes               |
 |  numeric  | Align the text to the right. Generally monetary or number fields are aligned to right.  |  boolean  | NO      | All      | Yes               |
 |  onPress  | Function to execute on press.  |  (e: GestureResponderEvent) => void  | NO      | All      | Yes               |
-|  style     | Text content style of the DataTableCell.  |    StyleProp<ViewStyle> | NO      | All      |
+|  style     | Text content style of the DataTableCell.  |    StyleProp<ViewStyle> | NO      | All      | Yes |
 |  textStyle  | Text content style of the DataTableCell.  |   StyleProp<TextStyle>  | NO      | All      | Yes               |
 |  maxFontSizeMultiplier  | Specifies the largest possible scale a text font can reach. |   number  | NO      | All      | Yes               |
-|  testID     | testID to be used on tests.  | string | NO      | All      |
+|  testID     | testID to be used on tests.  | string | NO      | All      | Yes |
 
 **DataTable.Header**：A component to display title in table header.
 
 |  Name   | Description |      Type       | Required | Platform | HarmonyOS Support |
 | :-----: | :---------: | :-------------: | -------- | -------- | ----------------- |
 |  children (required)  | Content of the DataTableHeader.  |  React.ReactNode  | Yes      | All      | Yes               |
-|  style     | Text content style of the DataTable.Header.  |    StyleProp<ViewStyle> | NO      | All      |
-|  theme     | theme  | ThemeProp | NO      | All      |
+|  style     | Text content style of the DataTable.Header.  |    StyleProp<ViewStyle> | NO      | All      | Yes |
+|  theme     | theme  | ThemeProp | NO      | All      | Yes |
 
 **DataTable.Pagination**：A component to show pagination for data table.
 
@@ -742,7 +742,7 @@ export default function App() {
 |  onPageChange (required)  | Function to execute on page change. | (page: number) => void  | Yes      | All      | Yes               |
 |  showFastPaginationControls  | Whether to show fast forward and fast rewind buttons in pagination. False by default. | boolean  | NO      | All      | Yes               |
 |  paginationControlRippleColor  | Color of the pagination control ripple effect. | ColorValue  | NO      | All      | Yes               |
-|  theme     | theme  | ThemeProp | NO      | All      |
+|  theme     | theme  | ThemeProp | NO      | All      | Yes |
 |  numberOfItemsPerPage  | The current number of rows per page. | number  | NO      | All      | Yes               |
 |  numberOfItemsPerPageList  | Options for a number of rows per page to choose from. | Array<number>  | NO      | All      | Yes               |
 |  onItemsPerPageChange  | The function to set the number of rows per page. | (numberOfItemsPerPage: number) => void  | NO      | All      | Yes               |
@@ -752,7 +752,7 @@ export default function App() {
 |  selectPageDropdownAccessibilityLabel  | AccessibilityLabel for selectPageDropdownLabel | string  | NO      | All      | Yes               |
 |  label  | Label text to display which indicates current pagination. | React.ReactNode  | NO      | All      | Yes               |
 |  accessibilityLabel  | AccessibilityLabel for label. | string  | NO      | All      | Yes               |
-|  style     | Text content style of the DataTable.Pagination.  |    StyleProp<ViewStyle> | NO      | All      |
+|  style     | Text content style of the DataTable.Pagination.  |    StyleProp<ViewStyle> | NO      | All      | Yes |
 
 **DataTable.Row**：A component to show a single row inside of a table.
 
@@ -761,9 +761,9 @@ export default function App() {
 |  TouchableRipple | Extends: ...TouchableRipple props  | props  | NO      | All      | Yes               |
 |  children (required)  | Content of the DataTableRow.  | React.ReactNode  | Yes      | All      | Yes               |
 |  onPress  | Function to execute on press.  | (e: GestureResponderEvent) => void  | NO      | All      | Yes               |
-|  style     | Text content style of the DataTable.Pagination.  |    StyleProp<ViewStyle> | NO      | All      |
-|  theme     | theme  |  ThemeProp | NO      | All      |
-|  pointerEvents     | pointerEvents passed to the View container, which is wrapping children within TouchableRipple.  |  ViewProps['pointerEvents'] | NO      | All      |
+|  style     | Text content style of the DataTable.Pagination.  |    StyleProp<ViewStyle> | NO      | All      | Yes |
+|  theme     | theme  |  ThemeProp | NO      | All      | Yes |
+|  pointerEvents     | pointerEvents passed to the View container, which is wrapping children within TouchableRipple.  |  ViewProps['pointerEvents'] | NO      | All      | No |
 
 **DataTable.Title**：A component to display title in table header.
 
@@ -1076,7 +1076,7 @@ export default function App() {
 |  visible (required)    | Whether the Menu is currently visible. |  boolean | Yes      | All      | Yes               |
 |  anchor (required)    | The anchor to open the menu from. In most cases, it will be a button that opens the menu. |  React.ReactNode \| { x: number; y: number } | Yes      | All      | Yes               |
 |  anchorPosition    | Whether the menu should open at the top of the anchor or at its bottom. | top \| bottom | NO      | All      | Yes               |
-|  statusBarHeight    | Extra margin to add at the top of the menu to account for translucent status bar on Android. If you are using Expo, we assume translucent status bar and set a height for status bar automatically. | number | NO      | Android      | false               |
+|  statusBarHeight    | Extra margin to add at the top of the menu to account for translucent status bar on Android. If you are using Expo, we assume translucent status bar and set a height for status bar automatically. | number | NO      | Android      | Yes               |
 |  onDismiss    | Callback called when Menu is dismissed.  |  fuction | NO      | All      | Yes               |
 |  overlayAccessibilityLabel    | Accessibility label for the overlay. This is read by the screen reader when the user taps outside the menu.  |  string | NO      | All      | Yes               |
 |  children (required)    | Content of the Menu  |  React.ReactNode | Yes      | All      | Yes               |
@@ -1117,7 +1117,7 @@ export default function App() {
 |  children (required)    | Content of the Modal. |  React.ReactNode | Yes      | All      | Yes               |
 |  contentContainerStyle    | Style for the content of the modal |  Animated.WithAnimatedValue<StyleProp<ViewStyle>> | NO      | All      | Yes               |
 |  theme  | theme  | ThemeProp  | NO      | All      | Yes               |
-|  style    | Style for the wrapper of the modal. Use this prop to change the default wrapper style or to override safe area insets with marginTop and marginBottom. |  StyleProp<TextStyle> | NO      | All      |
+|  style    | Style for the wrapper of the modal. Use this prop to change the default wrapper style or to override safe area insets with marginTop and marginBottom. |  StyleProp<TextStyle> | NO      | All      | Yes |
 |  testID    | testID to be used on tests. |  string | NO      | All      | Yes               |
 
 **Portal**：Portal allows rendering a component at a different place in the parent tree.
@@ -1389,6 +1389,7 @@ export default function App() {
 - Menu组件中的mode属性为[5.12.4版本新增](https://github.com/callstack/react-native-paper/releases/tag/v5.12.4)，当前版本为5.12.3 
 - Menu statusBarHeight 无效果，此属性为Android平台独有 [源码位置](https://github.com/callstack/react-native-paper/blob/v5.12.3/src/components/Menu/Menu.tsx#L447)
 - DataTableRow 组件使用 TouchableRipple 产生的涟漪效果，在Android上生效，iOS无效果 
+- DataTableRow 组件目前使用 pointerEvents 在鸿蒙RN上无效果
 - BottomNavigation safeAreaInset top属性无效果，因为在源码中未使用 [源码位置](https://github.com/callstack/react-native-paper/blob/v5.12.3/src/components/BottomNavigation/BottomNavigationBar.tsx#L580) 
 - BottomNavigation.Bar组件 keyboardHidesNavigationBar属性为父组件BottomNavigation传入，请勿单独使用
 - accessibilityState属性鸿蒙RN（5.0.0.700）不支持该属性
