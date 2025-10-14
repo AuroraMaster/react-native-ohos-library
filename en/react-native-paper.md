@@ -1287,7 +1287,7 @@ View details[Paper](https://callstack.github.io/react-native-paper/docs/componen
 |  selectionColor    | Selection color of the input. On iOS, it sets both the selection color and cursor color. On Android, it sets only the selection color. |  string | NO      | All      |  Yes      |
 |  underlineColor    | Inactive underline color of the input. |  string | NO      | All      |  Yes      |
 |  activeUnderlineColor    | Active underline color of the input. |  string | NO      | All      |  Yes      |
-|  outlineColor    | Active outline color of the input. |  string | NO      | All      ||
+|  outlineColor    | Active outline color of the input. |  string | NO      | All      | Yes |
 |  activeOutlineColor    | Active outline color of the input. |  string | NO      | All      |  Yes      |
 |  textColor    | Color of the text in the input. |  string | NO      | All      |  Yes      |
 |  dense    | Sets min height with densed layout.  |  boolean | NO      | All      |  Yes      |
