@@ -238,7 +238,7 @@ This document is verified based on the following versions:
 | withHorizontalLabels | boolean | Show horizontal labels - default: True                       | No       | ALL      | YES               |
 | chartConfig          | Object  | Configuration object for the chart, see example config in the beginning of this file | No       | ALL      | YES               |
 | barPercentage        | Number  | Defines the percent (0-1) of the available width each bar width in a chart | No       | ALL      | YES               |
-| showLegend           | boolean | Show legend - default: True                                  | No       | ALL      | YES               |
+| hideLegend           | boolean | Show legend - default: True                                  | No       | ALL      | YES               |
 
 ### Pie chart
 
