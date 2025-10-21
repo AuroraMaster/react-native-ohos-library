@@ -463,9 +463,9 @@ Check the release version information in the release address of the third-party 
 | onCameraIdle  | Map state change events, which are triggered when the change stops        | CameraEvent | no | iOS/Android | no |
 | onLoad  | Map Initialization Completion Event        | void | no | iOS/Android | yes |
 | onLocation  | Map location update events        | GeolocationPosition | no | iOS/Android | no |
-| onCallback  | Callback events        | void | yes | iOS/Android | no |
+| onCallback  | Callback events        | void | no | iOS/Android | no |
 | moveCamera  | Moving perspective        | void | yes | iOS/Android | yes                |
-| call  | invoke        | void | yes | iOS/Android | no |
+| call  | invoke        | void | no | iOS/Android | no |
 
 
 ### Marker
@@ -475,7 +475,7 @@ Check the release version information in the release address of the third-party 
 | onDragStart  | Drag and drop the start event        | void | no | iOS/Android | yes |
 | onDrag  | Drag-and-drop events, similar to mousemove, are called continuously until they end        | void | no | iOS/Android | yes |
 | onDragEnd  | Drag and drop the end event        | LatLng | no | iOS/Android | yes |
-| update  | Trigger a custom view update        | void | yes | iOS/Android | no              |
+| update  | Trigger a custom view update        | void | no | iOS/Android | no              |
 
 ### Polyline
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
@@ -490,8 +490,8 @@ Check the release version information in the release address of the third-party 
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| initSDK  | Initialize AutoNavi SDK         | void  | yes | iOS      | no |
-| getVersion  | Get version information         | Promise<string>  | yes | iOS      | no |
+| initSDK  | Initialize AutoNavi SDK         | void  | no | iOS      | no |
+| getVersion  | Get version information         | Promise<string>  | no | iOS      | no |
 
 ## Known Issues
 - [ ] initSDK: Does not support in hramony: [issue#16](https://github.com/react-native-oh-library/react-native-amap3d/issues/16)

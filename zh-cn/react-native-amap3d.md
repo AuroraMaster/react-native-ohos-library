@@ -465,9 +465,9 @@ ohpm install
 | onCameraIdle  | 地图状态改变事件，在停止变化后触发        | CameraEvent | no | iOS/Android | no                |
 | onLoad  | 地图初始化完成事件        | void | no | iOS/Android | yes               |
 | onLocation  | 地图定位更新事件        | GeolocationPosition | no | iOS/Android | no                |
-| onCallback  | 回调事件        | void | yes | iOS/Android | no                |
+| onCallback  | 回调事件        | void | no | iOS/Android | no                |
 | moveCamera  | 移动视角        | void | yes | iOS/Android | yes                |
-| call  | 调用        | void | yes | iOS/Android | no                |
+| call  | 调用        | void | no | iOS/Android | no                |
 
 
 ### Marker
@@ -477,7 +477,7 @@ ohpm install
 | onDragStart  | 拖放开始事件        | void | no | iOS/Android | yes               |
 | onDrag  | 拖放进行事件，类似于mousemove，在结束之前会不断调用        | void | no | iOS/Android | yes               |
 | onDragEnd  | 拖放结束事件        | LatLng | no | iOS/Android | yes               |
-| update  | 触发自定义view更新        | void | yes | iOS/Android | no             |
+| update  | 触发自定义view更新        | void | no | iOS/Android | no             |
 
 ### Polyline
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
@@ -492,8 +492,8 @@ ohpm install
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| initSDK  | 初始化高德SDK         | void  | yes | iOS/Android | no |
-| getVersion  | 获取版本信息         | Promise<string>  | yes | iOS/Android | no |
+| initSDK  | 初始化高德SDK         | void  | no | iOS/Android | no |
+| getVersion  | 获取版本信息         | Promise<string>  | no | iOS/Android | no |
 
 ## 遗留问题
 - [ ] initSDK：hramony暂不支持: [issue#16](https://github.com/react-native-oh-library/react-native-amap3d/issues/16)
