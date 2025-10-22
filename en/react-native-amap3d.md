@@ -501,15 +501,11 @@ Check the release version information in the release address of the third-party 
 - [ ] buildingsEnabled: Amap SDK is not supported: [issue#33](https://github.com/react-native-oh-library/react-native-amap3d/issues/33)
 - [ ] myLocationEnabled: Amap SDK is not supported: [issue#29](https://github.com/react-native-oh-library/react-native-amap3d/issues/29)
 - [ ] distanceFilter: Amap SDK is not supported: [issue#11](https://github.com/react-native-oh-library/react-native-amap3d/issues/11)
-- [ ] anchor: Amap SDK is not supported: [issue#34](https://github.com/react-native-oh-library/react-native-amap3d/issues/34)
-- [ ] centerOffset: Amap SDK is not supported: [issue#35](https://github.com/react-native-oh-library/react-native-amap3d/issues/35)
 - [ ] headingFilter: Amap SDK is not supported: [issue#12](https://github.com/react-native-oh-library/react-native-amap3d/issues/12)
 - [ ] geodesic: Amap SDK is not supported: [issue#36](https://github.com/react-native-oh-library/react-native-amap3d/issues/36)
 - [ ] onCameraIdle: Amap SDK is not supported: [issue#15](https://github.com/react-native-oh-library/react-native-amap3d/issues/15)
 - [ ] onLocation: Amap SDK is not supported: [issue#10](https://github.com/react-native-oh-library/react-native-amap3d/issues/10)
 - [ ] onCallback: Amap SDK has partial support: [issue#21](https://github.com/react-native-oh-library/react-native-amap3d/issues/21)
-- [ ] call: Does not support in hramony: [issue#5](https://github.com/react-native-oh-library/react-native-amap3d/issues/5)
-
 ### Marker
 - [ ] The marker custom width is adaptive: [issue#64](https://github.com/react-native-oh-library/react-native-amap3d/issues/64)
 ### Cluster
