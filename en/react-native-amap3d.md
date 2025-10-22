@@ -389,7 +389,7 @@ Check the release version information in the release address of the third-party 
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | mapType  | Map type         | int  | no | iOS/Android | yes |
 | initialCameraPosition  | Initial state         | CameraPosition  | no | iOS/Android | yes |
-| myLocationEnabled  | Whether to display the current positioning         | boolean  | no | iOS/Android | no |
+| myLocationEnabled  | Whether to display the current positioning         | boolean  | no | iOS/Android | yes |
 | indoorViewEnabled  | Whether to display an indoor map         | boolean  | no | iOS/Android | no |
 | buildingsEnabled  | Whether or not to display 3D buildings         | boolean  | no | iOS/Android | no |
 | labelsEnabled  | Whether to display the label         | boolean  | no | iOS/Android | yes |
@@ -424,8 +424,8 @@ Check the release version information in the release address of the third-party 
 | draggable  | Whether it can be dragged or not         | boolean  | no | iOS/Android | yes |
 | flat  | Whether the map is flattened or not         | boolean  | no | Android | yes |
 | zIndex  | Level         | Float  | no | iOS/Android | yes |
-| anchor  | Mulch anchor point ratio         | Point  | no | Android | no |
-| centerOffset  | Cover offset position         | Float  | no | iOS      | no |
+| anchor  | Mulch anchor point ratio         | Point  | no | Android | yes |
+| centerOffset  | Cover offset position         | Float  | no | iOS      | yes |
 
 ### Polygon
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
@@ -499,13 +499,16 @@ Check the release version information in the release address of the third-party 
 ### MapView
 - [ ] indoorViewEnabled: Amap SDK is not supported: [issue#6](https://github.com/react-native-oh-library/react-native-amap3d/issues/6)
 - [ ] buildingsEnabled: Amap SDK is not supported: [issue#33](https://github.com/react-native-oh-library/react-native-amap3d/issues/33)
-- [ ] myLocationEnabled: Amap SDK is not supported: [issue#29](https://github.com/react-native-oh-library/react-native-amap3d/issues/29)
+- [X] myLocationEnabled: Amap SDK is not supported: [issue#29](https://github.com/react-native-oh-library/react-native-amap3d/issues/29)
 - [ ] distanceFilter: Amap SDK is not supported: [issue#11](https://github.com/react-native-oh-library/react-native-amap3d/issues/11)
+- [X] anchor: Amap SDK is not supported: [issue#34](https://github.com/react-native-oh-library/react-native-amap3d/issues/34)
+- [X] centerOffset: Amap SDK is not supported: [issue#35](https://github.com/react-native-oh-library/react-native-amap3d/issues/35)
 - [ ] headingFilter: Amap SDK is not supported: [issue#12](https://github.com/react-native-oh-library/react-native-amap3d/issues/12)
 - [ ] geodesic: Amap SDK is not supported: [issue#36](https://github.com/react-native-oh-library/react-native-amap3d/issues/36)
 - [ ] onCameraIdle: Amap SDK is not supported: [issue#15](https://github.com/react-native-oh-library/react-native-amap3d/issues/15)
 - [ ] onLocation: Amap SDK is not supported: [issue#10](https://github.com/react-native-oh-library/react-native-amap3d/issues/10)
 - [ ] onCallback: Amap SDK has partial support: [issue#21](https://github.com/react-native-oh-library/react-native-amap3d/issues/21)
+- [ ] call: Does not support in harmony: [issue#5](https://github.com/react-native-oh-library/react-native-amap3d/issues/5)
 ### Marker
 - [ ] The marker custom width is adaptive: [issue#64](https://github.com/react-native-oh-library/react-native-amap3d/issues/64)
 ### Cluster
