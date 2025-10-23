@@ -391,7 +391,7 @@ ohpm install
 | ---- | ----------- | ---- | -------- |-----------|-------------------|
 | mapType  | 地图类型         | int  | no | iOS/Android | yes               |
 | initialCameraPosition  | 初始状态         | CameraPosition  | no | iOS/Android | yes               |
-| myLocationEnabled  | 是否显示当前定位         | boolean  | no | iOS/Android | no                |
+| myLocationEnabled  | 是否显示当前定位         | boolean  | no | iOS/Android | yes                |
 | indoorViewEnabled  | 是否显示室内地图         | boolean  | no | iOS/Android | no                |
 | buildingsEnabled  | 是否显示3D建筑         | boolean  | no | iOS/Android | no                |
 | labelsEnabled  | 是否显示标注         | boolean  | no | iOS/Android | yes               |
@@ -426,8 +426,8 @@ ohpm install
 | draggable  | 是否可拖拽         | boolean  | no | iOS/Android | yes |
 | flat  | 是否平贴地图         | boolean  | no | Android | yes |
 | zIndex  | 层级         | Float  | no | iOS/Android | yes |
-| anchor  | 覆盖物锚点比例         | Point  | no | Android | no |
-| centerOffset  | 覆盖物偏移位置         | Float  | no | iOS | no |
+| anchor  | 覆盖物锚点比例         | Point  | no | Android | yes |
+| centerOffset  | 覆盖物偏移位置         | Float  | no | iOS | yes |
 
 ### Polygon
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
@@ -502,13 +502,16 @@ ohpm install
 ### MapView
 - [ ] indoorViewEnabled：高德SDK暂不支持: [issue#6](https://github.com/react-native-oh-library/react-native-amap3d/issues/6)
 - [ ] buildingsEnabled：高德SDK暂不支持: [issue#33](https://github.com/react-native-oh-library/react-native-amap3d/issues/33)
-- [ ] myLocationEnabled：高德SDK暂不支持: [issue#29](https://github.com/react-native-oh-library/react-native-amap3d/issues/29)
+- [X] myLocationEnabled：高德SDK暂不支持: [issue#29](https://github.com/react-native-oh-library/react-native-amap3d/issues/29)
 - [ ] distanceFilter：高德SDK暂不支持: [issue#11](https://github.com/react-native-oh-library/react-native-amap3d/issues/11)
+- [X] anchor: 高德SDK暂不支持:[issue#34](https://github.com/react-native-oh-library/react-native-amap3d/issues/34)
+- [X] centerOffset: 高德SDK暂不支持:[issue#35](https://github.com/react-native-oh-library/react-native-amap3d/issues/35)
 - [ ] headingFilter：高德SDK暂不支持: [issue#12](https://github.com/react-native-oh-library/react-native-amap3d/issues/12)
 - [ ] geodesic：高德SDK暂不支持: [issue#36](https://github.com/react-native-oh-library/react-native-amap3d/issues/36)
 - [ ] onCameraIdle: 高德SDK暂不支持: [issue#15](https://github.com/react-native-oh-library/react-native-amap3d/issues/15)
 - [ ] onLocation：高德SDK暂不支持: [issue#10](https://github.com/react-native-oh-library/react-native-amap3d/issues/10)
 - [ ] onCallback：高德SDK部分支持: [issue#21](https://github.com/react-native-oh-library/react-native-amap3d/issues/21)
+- [ ] call：高德SDK部分支持: [issue#5](https://github.com/react-native-oh-library/react-native-amap3d/issues/5)
 
 ### Marker
 - [ ] marker自定义宽度自适应: [issue#64](https://github.com/react-native-oh-library/react-native-amap3d/issues/64)
