@@ -14,10 +14,16 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-localize)
 
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-localize`，具体版本所属关系如下：
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <= 3.1.0-0.0.1@deprecated | @react-native-oh-tpl/react-native-localize | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-localize) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-localize/releases) |
+| > 3.1.0                        | @react-native-ohos/react-native-localize       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-localize) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localize/releases) |
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-localize Releases](https://github.com/react-native-oh-library/react-native-localize/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-ohos/react-native-localize Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localize/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -27,13 +33,13 @@
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-localize
+npm install @react-native-ohos/react-native-localize
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-localize
+yarn add @react-native-ohos/react-native-localize
 ```
 
 <!-- tabs:end -->
@@ -114,12 +120,16 @@ export default LocalizeDemo;
 ```
 
 ## 使用 Codegen
+Version > @react-native-ohos/react-native-localize@3.1.0，已适配codegen-lib生成桥接代码。
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version > @react-native-ohos/react-native-localize@3.1.0，已支持 Autolink，无需手动配置。
+Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+Version <= @react-native-oh-tpl/react-native-localize@3.1.0-0.0.1@deprecated 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -150,7 +160,7 @@ export default LocalizeDemo;
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-localize": "file:../../node_modules/@react-native-oh-tpl/react-native-localize/harmony/rn_localize.har"
+    "@react-native-ohos/react-native-localize": "file:../../node_modules/@react-native-ohos/react-native-localize/harmony/rn_localize.har"
   }
 ```
 
@@ -174,7 +184,7 @@ ohpm install
 ```diff
   ...
   
-+ import { RNLocalizePackage } from '@react-native-oh-tpl/react-native-localize/ts';
++ import { RNLocalizePackage } from '@react-native-ohos/react-native-localize/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -203,7 +213,7 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-localize Releases](https://github.com/react-native-oh-library/react-native-localize/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/react-native-localize Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localize/releases)
 
 ## API
 

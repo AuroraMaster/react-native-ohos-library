@@ -14,6 +14,13 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-orientation-locker)
 
+This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-orientation-locker`, After introducing the new version of the third-party library, The version correspondence details are as follows:
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <= 1.7.0-0.0.7@deprecated | @react-native-oh-tpl/react-native-orientation-locker | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-orientation-locker) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-orientation-locker/releases) |
+| > 1.7.0                        | @react-native-ohos/react-native-orientation-locker       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-orientation-locker) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-orientation-locker/releases) |
+
 ## Installation and Usage
 
 Find the matching version information in the release address of a third-party library: [@react-native-oh-library/react-native-orientation-locker Releases](https://github.com/react-native-oh-library/react-native-orientation-locker/releases). For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
@@ -27,13 +34,13 @@ Go to the project directory and execute the following instruction:
 #### npm
 
 ```bash
-npm install @react-native-oh-tpl/react-native-orientation-locker
+npm install @react-native-ohos/react-native-orientation-locker
 ```
 
 #### yarn
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-orientation-locker
+yarn add @react-native-ohos/react-native-orientation-locker
 ```
 
 <!-- tabs:end -->
@@ -211,7 +218,10 @@ const styles = StyleSheet.create({
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version > @react-native-ohos/react-native-orientation-locker@1.7.0 now supports Autolink without requiring manual configuration.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+Currently, Version <= @react-native-oh-tpl/react-native-orientation-locker@1.7.0-0.0.7@deprecated does not support AutoLink. Therefore, you need to manually configure the linking.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -239,7 +249,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-orientation-locker":"file:../../node_modules/@react-native-oh-tpl/react-native-orientation-locker/harmony/orientation_locker.har"
+    "@react-native-ohos/react-native-orientation-locker":"file:../../node_modules/@react-native-ohos/react-native-orientation-locker/harmony/orientation_locker.har"
   }
 ```
 
@@ -261,7 +271,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-orientation-locker":"file:../../node_modules/@react-native-oh-tpl/react-native-orientation-locker/harmony/orientation_locker"
+    "@react-native-ohos/react-native-orientation-locker":"file:../../node_modules/@react-native-ohos/react-native-orientation-locker/harmony/orientation_locker"
   }
 ```
 
@@ -278,7 +288,7 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
-+ import { RNOrientationLockerPackage } from '@react-native-oh-tpl/react-native-orientation-locker/ts';
++ import { RNOrientationLockerPackage } from '@react-native-ohos/react-native-orientation-locker/ts';
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
     new SamplePackage(ctx),

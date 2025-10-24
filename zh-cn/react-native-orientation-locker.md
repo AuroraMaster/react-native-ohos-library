@@ -14,6 +14,13 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-orientation-locker)
 
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-orientation-locker`，具体版本所属关系如下：
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <= 1.7.0-0.0.7@deprecated | @react-native-oh-tpl/react-native-orientation-locker | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-orientation-locker) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-orientation-locker/releases) |
+| > 1.7.0                        | @react-native-ohos/react-native-orientation-locker       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-orientation-locker) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-orientation-locker/releases) |
+
 ## 安装与使用
 
 请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-library/react-native-orientation-locker Releases](https://github.com/react-native-oh-library/react-native-orientation-locker/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
@@ -26,13 +33,13 @@
 ####  npm
 
 ```bash
-npm install @react-native-oh-tpl/react-native-orientation-locker
+npm install @react-native-ohos/react-native-orientation-locker
 ```
 
 #### yarn
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-orientation-locker
+yarn add @react-native-ohos/react-native-orientation-locker
 ```
 
 <!-- tabs:end -->
@@ -213,7 +220,10 @@ const styles = StyleSheet.create({
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version > @react-native-ohos/react-native-orientation-locker@1.7.0，已支持 Autolink，无需手动配置。
+Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+Version <= @react-native-oh-tpl/react-native-orientation-locker@1.7.0-0.0.7@deprecated 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -244,7 +254,7 @@ const styles = StyleSheet.create({
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-orientation-locker":"file:../../node_modules/@react-native-oh-tpl/react-native-orientation-locker/harmony/orientation_locker.har"
+    "@react-native-ohos/react-native-orientation-locker":"file:../../node_modules/@react-native-ohos/react-native-orientation-locker/harmony/orientation_locker.har"
   }
 ```
 
@@ -266,7 +276,7 @@ ohpm install
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-orientation-locker":"file:../../node_modules/@react-native-oh-tpl/react-native-orientation-locker/harmony/orientation_locker"
+    "@react-native-ohos/react-native-orientation-locker":"file:../../node_modules/@react-native-ohos/react-native-orientation-locker/harmony/orientation_locker"
   }
 ```
 
@@ -283,7 +293,7 @@ ohpm install --no-link
 
 ```diff
   ...
-+ import { RNOrientationLockerPackage } from '@react-native-oh-tpl/react-native-orientation-locker/ts';
++ import { RNOrientationLockerPackage } from '@react-native-ohos/react-native-orientation-locker/ts';
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
     new SamplePackage(ctx),

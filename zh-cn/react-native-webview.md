@@ -14,9 +14,16 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-webview)
 
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-webview`，具体版本所属关系如下：
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <= 13.10.4@deprecated | @react-native-oh-tpl/react-native-webview | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-webview) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-webview/releases) |
+| > 13.10.4                        | @react-native-ohos/react-native-webview       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-webview) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases) |
+
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-webview Releases](https://github.com/react-native-oh-library/react-native-webview/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-ohos/react-native-webview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -26,13 +33,13 @@
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-webview
+npm install @react-native-ohos/react-native-webview
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-webview
+yarn add @react-native-ohos/react-native-webview
 ```
 
 <!-- tabs:end -->
@@ -53,7 +60,11 @@ export default function WebViewDemo() {
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version > @react-native-ohos/react-native-webview@13.10.4，已支持 Autolink，无需手动配置。
+Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+0.72分支从RNOH 0.72.94版本（对应 @react-native-oh/react-native-harmony-cli 版本是0.0.40）开始可使用完整的 Autolinking 功能。
+
+Version <= @react-native-oh-tpl/react-native-webview@13.10.4@deprecated 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -85,7 +96,7 @@ export default function WebViewDemo() {
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
-    "@react-native-oh-tpl/react-native-webview": "file:../../node_modules/@react-native-oh-tpl/react-native-webview/harmony/rn_webview.har"  
+    "@react-native-ohos/react-native-webview": "file:../../node_modules/@react-native-ohos/react-native-webview/harmony/rn_webview.har"  
 }
 ```
 
@@ -125,7 +136,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULE_DIR}/@react-native-oh-tpl/react-native-webview/src/main/cpp" ./webview)
++ add_subdirectory("${OH_MODULE_DIR}/@react-native-ohos/react-native-webview/src/main/cpp" ./webview)
 
 # RNOH_END: manual_package_linking_1
 
@@ -166,7 +177,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 找到 **function buildCustomComponent()**，一般位于 `entry/src/main/ets/pages/index.ets` 或 `entry/src/main/ets/rn/LoadBundle.ets`，添加：
 
 ```diff
-+ import { WebView, WEB_VIEW } from "@react-native-oh-tpl/react-native-webview"
++ import { WebView, WEB_VIEW } from "@react-native-ohos/react-native-webview"
 
 @Builder
 function buildCustomComponent(ctx: ComponentBuilderContext) {
@@ -201,7 +212,7 @@ const arkTsComponentNames: Array<string> = [
 ```diff
 import type {RNPackageContext, RNPackage} from 'rnoh/ts';
 import {SamplePackage} from 'rnoh-sample-package/ts';
-+ import { WebViewPackage } from '@react-native-oh-tpl/react-native-webview/ts';
++ import { WebViewPackage } from '@react-native-ohos/react-native-webview/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -230,7 +241,7 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[ @react-native-oh-tpl/react-native-webview Releases](https://github.com/react-native-oh-library/react-native-webview/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[ @react-native-ohos/react-native-webview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases)
 
 ## 属性
 > [!WARNING]ignoreSilentHardwareSwitch需要设置true网页播放才有声音

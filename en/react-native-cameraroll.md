@@ -14,9 +14,16 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-cameraroll)
 
+This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/camera-roll`, After introducing the new version of the third-party library, The version correspondence details are as follows:
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <= 7.8.3-0.1.5@deprecated | @react-native-oh-tpl/camera-roll | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-cameraroll) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-cameraroll/releases) |
+| >= 7.8.4                        | @react-native-ohos/camera-roll       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-cameraroll) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-cameraroll/releases) |
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-cameraroll Releases](https://github.com/react-native-oh-library/react-native-cameraroll/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Find the matching version information in the release address of a third-party library: [@react-native-ohos/react-native-cameraroll Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-cameraroll/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -27,13 +34,13 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/camera-roll
+npm install @react-native-ohos/camera-roll
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/camera-roll
+yarn add @react-native-ohos/camera-roll
 ```
 
 <!-- tabs:end -->
@@ -66,11 +73,16 @@ export default function App() {
 
 ## Use Codegen
 
+Version >= @react-native-ohos/camera-roll@7.8.4, compatible with codegen-lib for generating bridge code.
+
 If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/camera-roll@7.8.4 now supports Autolink without requiring manual configuration.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+Currently, Version <= @react-native-oh-tpl/camera-roll@7.8.3-0.1.5@deprecated does not support AutoLink. Therefore, you need to manually configure the linking.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -98,7 +110,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/camera-roll": "file:../../node_modules/@react-native-oh-tpl/camera-roll/harmony/camera_roll.har"
+    "@react-native-ohos/camera-roll": "file:../../node_modules/@react-native-ohos/camera-roll/harmony/camera_roll.har"
   }
 ```
 
@@ -121,7 +133,7 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
-+ import { CameraRollPackage } from '@react-native-oh-tpl/camera-roll/ts';
++ import { CameraRollPackage } from '@react-native-ohos/camera-roll/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -150,7 +162,7 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/camera-roll Releases](https://github.com/react-native-oh-library/react-native-cameraroll/releases)
+Check the release version information in the release address of the third-party library: [@react-native-ohos/camera-roll Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-cameraroll/releases)
 
 ## Static Methods
 

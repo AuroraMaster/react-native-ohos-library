@@ -9,7 +9,7 @@
 | Version                     | Package Name                         | Repository                                                                       | Release                                                                                            |
 | --------------------------- | ------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | <= 2.20.0-0.1.14@deprecated | @react-native-oh-tpl/react-native-fs | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-fs) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-fs/releases) |
-| >= 2.20.1                   | @react-native-ohos/react-native-fs   | [Gitee](https://gitee.com/openharmony-sig/rntpc_react-native-fs)                 | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_react-native-fs/releases)                 |
+| >= 2.20.1                   | @react-native-ohos/react-native-fs   | [Gitee](https://gitcode.com/openharmony-sig/rntpc_react-native-fs)                 | [Gitee Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fs/releases)                 |
 
 ## 1. 安装与使用
 
@@ -117,6 +117,10 @@ export default App;
 ```
 
 ## 2. Manual Link
+Version >= @react-native-ohos/react-native-fs@2.20.2，已支持 Autolink，无需手动配置。
+Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+Version < @react-native-ohos/react-native-fs@2.20.2，Version <= @react-native-oh-tpl/react-native-fs@2.20.0-0.1.14@deprecated 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
 
 此步骤为手动配置原生依赖项的指导。
 

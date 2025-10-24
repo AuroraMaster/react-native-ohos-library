@@ -14,6 +14,13 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-sound)
 
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-sound`，具体版本所属关系如下：
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <= 0.11.2-0.0.13@deprecated | @react-native-oh-tpl/react-native-sound | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-sound) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-sound/releases) |
+| >= 0.11.3                        | @react-native-ohos/react-native-sound       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-sound) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-sound/releases) |
+
 ## 安装与使用
 
 请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-library/react-native-sound Releases](https://github.com/react-native-oh-library/react-native-sound/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
@@ -25,13 +32,13 @@
 #### npm
 
 ```bash
-npm install @react-native-oh-tpl/react-native-sound
+npm install @react-native-ohos/react-native-sound
 ```
 
 #### yarn
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-sound
+yarn add @react-native-ohos/react-native-sound
 ```
 
 <!-- tabs:end -->
@@ -155,7 +162,10 @@ export default SoundDemo;
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-sound@0.11.3，已支持 Autolink，无需手动配置。
+Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+Version <= @react-native-oh-tpl/react-native-sound@0.11.2-0.0.13@deprecated 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -186,7 +196,7 @@ export default SoundDemo;
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-sound": "file:../../node_modules/@react-native-oh-tpl/react-native-sound/harmony/sound.har"
+    "@react-native-ohos/react-native-sound": "file:../../node_modules/@react-native-ohos/react-native-sound/harmony/sound.har"
   }
 ```
 
@@ -225,7 +235,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-sound/src/main/cpp" ./sound)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-sound/src/main/cpp" ./sound)
 # RNOH_BEGIN: manual_package_linking_1
 
 add_library(rnoh_app SHARED
@@ -264,7 +274,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-+ import { SoundPackage } from '@react-native-oh-tpl/react-native-sound/ts';
++ import { SoundPackage } from '@react-native-ohos/react-native-sound/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [

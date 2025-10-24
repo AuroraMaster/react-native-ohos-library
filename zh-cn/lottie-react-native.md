@@ -14,9 +14,16 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/lottie-react-native)
 
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/lottie-react-native`，具体版本所属关系如下：
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <= 6.4.1-0.1.17@deprecated | @react-native-oh-tpl/lottie-react-native | [Github(deprecated)](https://github.com/react-native-oh-library/lottie-react-native) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/lottie-react-native/releases) |
+| >= 6.4.2                        | @react-native-ohos/lottie-react-native       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_lottie-react-native) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_lottie-react-native/releases) |
+
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/lottie-react-native Releases](https://github.com/react-native-oh-library/lottie-react-native/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-ohos/lottie-react-native Releases](https://gitcode.com/openharmony-sig/rntpc_lottie-react-native/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +32,13 @@
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/lottie-react-native
+npm install @react-native-ohos/lottie-react-native
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/lottie-react-native
+yarn add @react-native-ohos/lottie-react-native
 ```
 
 <!-- tabs:end -->
@@ -64,7 +71,11 @@ export default App;
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/lottie-react-native@6.4.2，已支持 Autolink，无需手动配置。
+Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+0.72分支从RNOH 0.72.94版本（对应 @react-native-oh/react-native-harmony-cli 版本是0.0.40）开始可使用完整的 Autolinking 功能。
+
+Version <= @react-native-oh-tpl/lottie-react-native@6.4.1-0.1.17@deprecated 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -95,7 +106,7 @@ export default App;
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/lottie-react-native": "file:../../node_modules/@react-native-oh-tpl/lottie-react-native/harmony/lottie.har"
+    "@react-native-ohos/lottie-react-native": "file:../../node_modules/@react-native-ohos/lottie-react-native/harmony/lottie.har"
   }
 ```
 
@@ -134,7 +145,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/lottie-react-native/src/main/cpp" ./lottie)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/lottie-react-native/src/main/cpp" ./lottie)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -174,7 +185,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-+ import {LottieAnimationViewPackage} from '@react-native-oh-tpl/lottie-react-native/ts';
++ import {LottieAnimationViewPackage} from '@react-native-ohos/lottie-react-native/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -189,7 +200,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 ```diff
   ...
-+ import { LottieAnimationView, LOTTIE_TYPE } from "@react-native-oh-tpl/lottie-react-native"
++ import { LottieAnimationView, LOTTIE_TYPE } from "@react-native-ohos/lottie-react-native"
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -237,7 +248,7 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/lottie-react-native Releases](https://github.com/react-native-oh-library/lottie-react-native/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/lottie-react-native Releases](https://gitcode.com/openharmony-sig/rntpc_lottie-react-native/releases)
 
 ### 权限要求
 
