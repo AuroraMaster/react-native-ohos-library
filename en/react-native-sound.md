@@ -14,6 +14,13 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-sound)
 
+This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-sound`, After introducing the new version of the third-party library, The version correspondence details are as follows:
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <= 0.11.2-0.0.13@deprecated | @react-native-oh-tpl/react-native-sound | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-sound) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-sound/releases) |
+| >= 0.11.3                        | @react-native-ohos/react-native-sound       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-sound) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-sound/releases) |
+
 ## Installation and Usage
 
 Find the matching version information in the release address of a third-party library: [@react-native-oh-library/react-native-sound Releases](https://github.com/react-native-oh-library/react-native-sound/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
@@ -27,13 +34,13 @@ Go to the project directory and execute the following instruction:
 #### npm
 
 ```bash
-npm install @react-native-oh-tpl/react-native-sound
+npm install @react-native-ohos/react-native-sound
 ```
 
 #### yarn
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-sound
+yarn add @react-native-ohos/react-native-sound
 ```
 
 <!-- tabs:end -->
@@ -157,7 +164,10 @@ export default SoundDemo;
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-sound@0.11.3 now supports Autolink without requiring manual configuration.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+Currently, Version <= @react-native-oh-tpl/react-native-sound@0.11.2-0.0.13@deprecated does not support AutoLink. Therefore, you need to manually configure the linking.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -185,7 +195,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-sound": "file:../../node_modules/@react-native-oh-tpl/react-native-sound/harmony/sound.har"
+    "@react-native-ohos/react-native-sound": "file:../../node_modules/@react-native-ohos/react-native-sound/harmony/sound.har"
   }
 ```
 
@@ -224,7 +234,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-sound/src/main/cpp" ./sound)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-sound/src/main/cpp" ./sound)
 # RNOH_BEGIN: manual_package_linking_1
 
 add_library(rnoh_app SHARED
@@ -263,7 +273,7 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
-+ import { SoundPackage } from '@react-native-oh-tpl/react-native-sound/ts';
++ import { SoundPackage } from '@react-native-ohos/react-native-sound/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [

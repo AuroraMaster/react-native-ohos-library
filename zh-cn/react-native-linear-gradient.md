@@ -90,6 +90,11 @@ var styles = StyleSheet.create({
 
 ## 2. Manual Link
 
+Version >= @react-native-ohos/react-native-linear-gradient@3.0.2，已支持 Autolink，无需手动配置。
+Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+Version < @react-native-ohos/react-native-linear-gradient@3.0.2，Version <= @react-native-oh-tpl/react-native-linear-gradient@3.0.0-0.5.0@deprecated 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+
 此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。

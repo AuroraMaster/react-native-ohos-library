@@ -14,9 +14,16 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/lottie-react-native)
 
+This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/lottie-react-native`, After introducing the new version of the third-party library, The version correspondence details are as follows:
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <= 6.4.1-0.1.17@deprecated | @react-native-oh-tpl/lottie-react-native | [Github(deprecated)](https://github.com/react-native-oh-library/lottie-react-native) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/lottie-react-native/releases) |
+| >= 6.4.2                        | @react-native-ohos/lottie-react-native       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_lottie-react-native) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_lottie-react-native/releases) |
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/lottie-react-native Releases](https://github.com/react-native-oh-library/lottie-react-native/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Find the matching version information in the release address of a third-party library: [@react-native-ohos/lottie-react-native Releases](https://gitcode.com/openharmony-sig/rntpc_lottie-react-native/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -27,13 +34,13 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/lottie-react-native
+npm install @react-native-ohos/lottie-react-native
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/lottie-react-native
+yarn add @react-native-ohos/lottie-react-native
 ```
 
 <!-- tabs:end -->
@@ -66,7 +73,11 @@ export default App;
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/lottie-react-native@6.4.2 now supports Autolink without requiring manual configuration.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+The 0.72 branch supports full Autolinking functionality starting from the RNOH 0.72.94 version (corresponding to the @react-native-oh/react-native-harmony-cli version 0.0.40).
+
+Currently, Version <= @react-native-oh-tpl/lottie-react-native@6.4.1-0.1.17@deprecated does not support AutoLink. Therefore, you need to manually configure the linking.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -94,7 +105,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/lottie-react-native": "file:../../node_modules/@react-native-oh-tpl/lottie-react-native/harmony/lottie.har"
+    "@react-native-ohos/lottie-react-native": "file:../../node_modules/@react-native-ohos/lottie-react-native/harmony/lottie.har"
   }
 ```
 
@@ -133,7 +144,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/lottie-react-native/src/main/cpp" ./lottie)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/lottie-react-native/src/main/cpp" ./lottie)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -173,7 +184,7 @@ Open `entry/src/main/ets/RNPackagesFactory.ts` and add:
 
 ```diff
   ...
-+ import {LottieAnimationViewPackage} from '@react-native-oh-tpl/lottie-react-native/ts';
++ import {LottieAnimationViewPackage} from '@react-native-ohos/lottie-react-native/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -188,7 +199,7 @@ Find `function buildCustomRNComponent()`, which is usually located in `entry/src
 
 ```diff
   ...
-+ import { LottieAnimationView, LOTTIE_TYPE } from "@react-native-oh-tpl/lottie-react-native"
++ import { LottieAnimationView, LOTTIE_TYPE } from "@react-native-ohos/lottie-react-native"
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -236,7 +247,7 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/lottie-react-native Releases](https://github.com/react-native-oh-library/lottie-react-native/releases)
+Check the release version information in the release address of the third-party library: [@react-native-ohos/lottie-react-native Releases](https://gitcode.com/openharmony-sig/rntpc_lottie-react-native/releases)
 
 ### Permission Requirements
 

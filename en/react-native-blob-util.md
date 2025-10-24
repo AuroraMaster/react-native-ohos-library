@@ -15,9 +15,16 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-blob-util)
 
+This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-blob-util`, After introducing the new version of the third-party library, The version correspondence details are as follows:
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <= 0.19.7@deprecated | @react-native-oh-tpl/react-native-blob-util | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-blob-util) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-blob-util/releases) |
+| >= 0.19.8                        | @react-native-ohos/react-native-blob-util       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-blob-util) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-blob-util/releases) |
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-blob-util Releases](https://github.com/react-native-oh-library/react-native-blob-util/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Find the matching version information in the release address of a third-party library: [@react-native-ohos/react-native-blob-util Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-blob-util/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -28,13 +35,13 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-blob-util
+npm install @react-native-ohos/react-native-blob-util
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-blob-util
+yarn add @react-native-ohos/react-native-blob-util
 ```
 
 <!-- tabs:end -->
@@ -393,11 +400,16 @@ const styles = StyleSheet.create({
 
 ## Use Codegen
 
+Version >= @react-native-ohos/react-native-blob-util@0.19.8, compatible with codegen-lib for generating bridge code.
+
 If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-blob-util@0.19.8 now supports Autolink without requiring manual configuration.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+Currently, Version <= @react-native-oh-tpl/react-native-blob-util@0.19.7@deprecated does not support AutoLink. Therefore, you need to manually configure the linking.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -428,7 +440,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
      "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-     "@react-native-oh-tpl/react-native-blob-util": "file:../../node_modules/@react-native-oh-tpl/react-native-blob-util/harmony/blobUtil.har"
+     "@react-native-ohos/react-native-blob-util": "file:../../node_modules/@react-native-ohos/react-native-blob-util/harmony/blobUtil.har"
   }
 ```
 
@@ -450,7 +462,7 @@ Method 2: Directly link to the source code.
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
 ```diff
-+ import {BlobUtilPackage} from '@react-native-oh-tpl/react-native-blob-util/ts';
++ import {BlobUtilPackage} from '@react-native-ohos/react-native-blob-util/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -478,7 +490,7 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-blob-util Releases](https://github.com/react-native-oh-library/react-native-blob-util/releases)
+Check the release version information in the release address of the third-party library: [@react-native-ohos/react-native-blob-util Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-blob-util/releases)
 
 ## APIs
 
