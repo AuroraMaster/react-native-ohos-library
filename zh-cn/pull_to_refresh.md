@@ -1,38 +1,38 @@
 > 模板版本：v0.3.0
 
 <p align="center">
-  <h1 align="center"> <code>@react-native-ohos/pull_to_refresh</code> </h1>
+  <h1 align="center"> <code>@react-native-ohos/pull-to-refresh</code> </h1>
 </p>
 
 本项目基于 [@sdcx/pull-to-refresh@0.27.0](https://github.com/sdcxtech/react-native-troika/tree/master/packages/pull-to-refresh) 开发。
 
 ## 1. 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-ohos/pull_to_refresh Releases](https://github.com/react-native-oh-library/react-native-pull-to-refresh/releases) 。
+请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-ohos/pull-to-refresh Releases](https://github.com/react-native-oh-library/react-native-pull-to-refresh/releases) 。
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 0.27.1     | [@react-native-ohos/pull_to_refresh Releases](https://github.com/react-native-oh-library/react-native-pull-to-refresh/releases) | 0.72       |
-| 0.28.1     | [@react-native-ohos/pull_to_refresh Releases](https://github.com/react-native-oh-library/react-native-pull-to-refresh/releases) | 0.77  
+| 0.27.1     | [@react-native-ohos/pull-to-refresh Releases](https://github.com/react-native-oh-library/react-native-pull-to-refresh/releases) | 0.72       |
+| 0.28.1     | [@react-native-ohos/pull-to-refresh Releases](https://github.com/react-native-oh-library/react-native-pull-to-refresh/releases) | 0.77  
 
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 
 进入到工程目录并输入以下命令：
-
+> [!TIP] 补充说明。0.72的RN框架版本使用0.27.xx版本，0.77的RN框架版本使用0.28.xx版本
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
-npm install @react-native-ohos/pull_to_refresh
+npm install @react-native-ohos/pull-to-refresh@xxx
 ```
 
 #### **yarn**
 
 ```bash
-yarn install @react-native-ohos/pull_to_refresh
+yarn install @react-native-ohos/pull-to-refresh@xxx
 ```
 
 <!-- tabs:end -->
@@ -142,7 +142,7 @@ export default PullRefreshFlatList;
 
 ```json
 "dependencies": {
-    "@react-native-ohos/pull_to_refresh": "file:../../node_modules/@react-native-ohos/pull_to_refresh/harmony/pull_to_refresh.har"
+    "@react-native-ohos/pull_to_refresh": "file:../../node_modules/@react-native-ohos/pull-to-refresh/harmony/pull_to_refresh.har"
   }
 ```
 
@@ -209,26 +209,56 @@ ohpm install
 
 ### 3.1 兼容性
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/pull_to_refresh Releases](https://github.com/react-native-oh-library/react-native-pull-to-refresh/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/pull-to-refresh Releases](https://github.com/react-native-oh-library/react-native-pull-to-refresh/releases)
 
 ## 4. 属性
 
 > [!TIP] "Platform" 列表示这些属性在原始第三方库中支持的平台。
 
 > [!TIP] "如果“HarmonyOS 支持”列的值为“yes”，则表示 HarmonyOS 平台支持该属性；“no”则表示不支持；“partially”表示部分支持该属性的功能。该属性在不同平台上的使用方法相同，效果与 iOS 或 Android 平台一致。
-
+### PullToRefresh属性
 | Name        | Description         | Type    | Required | Platform | HarmonyOS Support |
 | ----------- |---------------------|---------|----------| -------- | ----------------- |
 | refreshing| Control the display and hide of the refresh head or bottom     | boolean | YES      | All      | yes               |
 | noMoreData | Control whether there is more data           | boolean  | NO       | All      | yes               |
-| manual | Control the automatic pull-up loading function          | boolean  | NO       | All      | yes               |
+| loadingMore | Control loading more         | boolean  | NO       | All      | yes               |
+| header | Set the refresh head        | object  | NO       | All      | yes               |
+| footer | Set the refresh footer          | object  | NO       | All      | yes               |
+
+### PullToRefreshHeader属性
+| Name        | Description         | Type    | Required | Platform | HarmonyOS Support |
+| ----------- |---------------------|---------|----------| -------- | ----------------- |
+| refreshing| Control the display and hide of the refresh head or bottom     | boolean | YES      | All      | yes               |
+
+### PullToRefreshFooter属性
+| Name        | Description         | Type    | Required | Platform | HarmonyOS Support |
+| ----------- |---------------------|---------|----------| -------- | ----------------- |
+| refreshing| Control the display and hide of the refresh head or bottom     | boolean | YES      | All      | yes               |
+| noMoreData | Control whether there is more data           | boolean  | NO       | All      | yes               |
+| manual | Control the automatic pull-up loading function         | boolean  | NO       | All      | yes               |yes               |
+
 
 ## 5.方法
+### PullToRefresh方法 
 | Name              | Description           | Type     | Platform | HarmonyOS Support |
 | ----------- |---------------------|---------| -------- | ----------------- |
 | onRefresh         | Refresh callback               |   function       | All      | yes               |
-| onStateChanged    | Refresh status callback           |   function       | All      | yes               |
-| onOffsetChanged   | Refresh the offset callback          |    function      | All      | yes               |
+| onLoadMore    | Load more callback         |   function       | All      | yes               |
+
+### PullToRefreshHeader方法 
+| Name              | Description           | Type     | Platform | HarmonyOS Support |
+| ----------- |---------------------|---------| -------- | ----------------- |
+| onRefresh         | Refresh callback               |   function       | All      | yes               |
+| onStateChanged    | Refresh status callback        |   function       | All      | yes               |
+| onOffsetChanged    | Refresh the offset callback        |   function       | All      | yes               |
+
+### PullToRefreshFooter方法 
+| Name              | Description           | Type     | Platform | HarmonyOS Support |
+| ----------- |---------------------|---------| -------- | ----------------- |
+| onRefresh         | Refresh callback               |   function       | All      | yes               |
+| onStateChanged    | Refresh status callback        |   function       | All      | yes               |
+| onOffsetChanged    | Refresh the offset callback        |   function       | All      | yes               |
+
 ## 6. 遗留问题
 无
 

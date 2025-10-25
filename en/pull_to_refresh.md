@@ -1,36 +1,37 @@
 > Template Version: v0.3.0
 
 <p align="center">
-  <h1 align="center"> <code>@react-native-ohos/pull_to_refresh</code> </h1>
+  <h1 align="center"> <code>@react-native-ohos/pull-to-refresh</code> </h1>
 </p>
 
 This project is developed based on [@sdcx/pull-to-refresh@0.27.0](https://github.com/sdcxtech/react-native-troika/tree/master/packages/pull-to-refresh).
 
 ## 1. Installation and Usage
 
-Please go to the Releases release address of the third-party library to view the supporting version information: [@react-native-ohos/pull_to_refresh Releases](https://github.com/react-native-oh-library/react-native-pull-to-refresh/releases). 
+Please go to the Releases release address of the third-party library to view the supporting version information: [@react-native-ohos/pull-to-refresh Releases](https://github.com/react-native-oh-library/react-native-pull-to-refresh/releases). 
 
 | Version | Releases info                   | Support RN version |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 0.27.1      | [@react-native-ohos/pull_to_refresh Releases](https://github.com/react-native-oh-library/react-native-pull-to-refresh/releases) | 0.72       |
-| 0.28.1     | [@react-native-ohos/pull_to_refresh Releases](https://github.com/react-native-oh-library/react-native-pull-to-refresh/releases) | 0.77  
+| 0.27.1      | [@react-native-ohos/pull-to-refresh Releases](https://github.com/react-native-oh-library/react-native-pull-to-refresh/releases) | 0.72       |
+| 0.28.1     | [@react-native-ohos/pull-to-refresh Releases](https://github.com/react-native-oh-library/react-native-pull-to-refresh/releases) | 0.77  
 
 For older versions that are not published to npm, install the tgz package by referring to the [Installation Guide](/en-us/tgz-usage.md).
 
 Navigate to your project directory and enter the following command:
 
+> [!TIP] Supplementary note. The RN framework version 0.72 uses version 0.27.xx, and the RN framework version 0.77 uses version 0.28.xx
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
-npm install @react-native-ohos/pull_to_refresh
+npm install @react-native-ohos/pull-to-refresh@xxx
 ```
 
 #### **yarn**
 
 ```bash
-yarn install @react-native-ohos/pull_to_refresh
+yarn install @react-native-ohos/pull-to-refresh@xxx
 ```
 
 <!-- tabs:end -->
@@ -143,7 +144,7 @@ Open `entry/oh-package.json5` and add the following dependency:
 
 ```json
 "dependencies": {
-  "@react-native-ohos/pull_to_refresh": "file:../../node_modules/@react-native-ohos/pull_to_refresh/harmony/pull_to_refresh.har"
+  "@react-native-ohos/pull_to_refresh": "file:../../node_modules/@react-native-ohos/pull-to-refresh/harmony/pull_to_refresh.har"
 }
 ```
 
@@ -211,7 +212,7 @@ Then, build and run the project.
 
 ### 3.1 Compatibility
 
-Please go to the Releases page of the third-party library to check the version information for compatibility: [@react-native-ohos/pull_to_refresh Releases](https://github.com/react-native-oh-library/react-native-pull-to-refresh/releases)
+Please go to the Releases page of the third-party library to check the version information for compatibility: [@react-native-ohos/pull-to-refresh Releases](https://github.com/react-native-oh-library/react-native-pull-to-refresh/releases)
 
 ## 4. Props
 
@@ -221,18 +222,48 @@ Please go to the Releases page of the third-party library to check the version i
 > [!TIP]
 > If the value in the "HarmonyOS Support" column is "yes," it means the prop is supported on the HarmonyOS platform; "no" means it is not supported; "partially" means that some of its features are supported. The usage of this prop is the same on different platforms, and its effect is consistent with that on iOS or Android.
 
+### PullToRefresh Props
 | Name        | Description         | Type    | Required | Platform | HarmonyOS Support |
 | ----------- |---------------------|---------|----------| -------- | ----------------- |
 | refreshing| Control the display and hide of the refresh head or bottom     | boolean | YES      | All      | yes               |
 | noMoreData | Control whether there is more data           | boolean  | NO       | All      | yes               |
-| manual | Control the automatic pull-up loading function          | boolean  | NO       | All      | yes               |
+| loadingMore | Control loading more         | boolean  | NO       | All      | yes               |
+| header | Set the refresh head        | object  | NO       | All      | yes               |
+| footer | Set the refresh footer          | object  | NO       | All      | yes               |
 
-## 5.方法
+### PullToRefreshHeader Props
+| Name        | Description         | Type    | Required | Platform | HarmonyOS Support |
+| ----------- |---------------------|---------|----------| -------- | ----------------- |
+| refreshing| Control the display and hide of the refresh head or bottom     | boolean | YES      | All      | yes               |
+
+### PullToRefreshFooter Props
+| Name        | Description         | Type    | Required | Platform | HarmonyOS Support |
+| ----------- |---------------------|---------|----------| -------- | ----------------- |
+| refreshing| Control the display and hide of the refresh head or bottom     | boolean | YES      | All      | yes               |
+| noMoreData | Control whether there is more data           | boolean  | NO       | All      | yes               |
+| manual | Control the automatic pull-up loading function         | boolean  | NO       | All      | yes               |yes               |
+
+
+## 5.Method
+### PullToRefresh Method 
 | Name              | Description           | Type     | Platform | HarmonyOS Support |
 | ----------- |---------------------|---------| -------- | ----------------- |
 | onRefresh         | Refresh callback               |   function       | All      | yes               |
-| onStateChanged    | Refresh status callback           |   function       | All      | yes               |
-| onOffsetChanged   | Refresh the offset callback          |    function      | All      | yes               |
+| onLoadMore    | Load more callback         |   function       | All      | yes               |
+
+### PullToRefreshHeader Method
+| Name              | Description           | Type     | Platform | HarmonyOS Support |
+| ----------- |---------------------|---------| -------- | ----------------- |
+| onRefresh         | Refresh callback               |   function       | All      | yes               |
+| onStateChanged    | Refresh status callback        |   function       | All      | yes               |
+| onOffsetChanged    | Refresh the offset callback        |   function       | All      | yes               |
+
+### PullToRefreshFooter Method
+| Name              | Description           | Type     | Platform | HarmonyOS Support |
+| ----------- |---------------------|---------| -------- | ----------------- |
+| onRefresh         | Refresh callback               |   function       | All      | yes               |
+| onStateChanged    | Refresh status callback        |   function       | All      | yes               |
+| onOffsetChanged    | Refresh the offset callback        |   function       | All      | yes               |
 
 ## 6. Known Issues
 
