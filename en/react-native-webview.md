@@ -14,10 +14,17 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-webview)
 
+This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-webview`, After introducing the new version of the third-party library, The version correspondence details are as follows:
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <= 13.10.4@deprecated | @react-native-oh-tpl/react-native-webview | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-webview) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-webview/releases) |
+| > 13.10.4                        | @react-native-ohos/react-native-webview       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-webview) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases) |
+
 ## Installation and Usage
 
 
-Find the matching version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-webview Releases](https://github.com/react-native-oh-library/react-native-webview /releases). For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Find the matching version information in the release address of the third-party library: [@react-native-ohos/react-native-webview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases). For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -27,13 +34,13 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-webview
+npm install @react-native-ohos/react-native-webview
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-webview
+yarn add @react-native-ohos/react-native-webview
 ```
 
 <!-- tabs:end -->
@@ -54,7 +61,11 @@ export default function WebViewDemo() {
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version > @react-native-ohos/react-native-webview@13.10.4 now supports Autolink without requiring manual configuration.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+The 0.72 branch supports full Autolinking functionality starting from the RNOH 0.72.94 version (corresponding to the @react-native-oh/react-native-harmony-cli version 0.0.40).
+
+Currently, Version <= @react-native-oh-tpl/react-native-webview@13.10.4@deprecated does not support AutoLink. Therefore, you need to manually configure the linking.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -83,7 +94,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
-    "@react-native-oh-tpl/react-native-webview": "file:../../node_modules/@react-native-oh-tpl/react-native-webview/harmony/rn_webview.har"  
+    "@react-native-ohos/react-native-webview": "file:../../node_modules/@react-native-ohos/react-native-webview/harmony/rn_webview.har"  
 }
 ```
 
@@ -123,7 +134,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULE_DIR}/@react-native-oh-tpl/react-native-webview/src/main/cpp" ./webview)
++ add_subdirectory("${OH_MODULE_DIR}/@react-native-ohos/react-native-webview/src/main/cpp" ./webview)
 
 # RNOH_END: manual_package_linking_1
 
@@ -164,7 +175,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 Find `function buildCustomRNComponent()`, which is usually located in `entry/src/main/ets/pages/index.ets` or `entry/src/main/ets/rn/LoadBundle.ets`, and add the following code:
 
 ```diff
-+ import { WebView, WEB_VIEW } from "@react-native-oh-tpl/react-native-webview"
++ import { WebView, WEB_VIEW } from "@react-native-ohos/react-native-webview"
 
 @Builder
 function buildCustomComponent(ctx: ComponentBuilderContext) {
@@ -199,7 +210,7 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 ```diff
 import type {RNPackageContext, RNPackage} from 'rnoh/ts';
 import {SamplePackage} from 'rnoh-sample-package/ts';
-+ import { WebViewPackage } from '@react-native-oh-tpl/react-native-webview/ts';
++ import { WebViewPackage } from '@react-native-ohos/react-native-webview/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -228,7 +239,7 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [ @react-native-oh-tpl/react-native-webview Releases](https://github.com/react-native-oh-library/react-native-webview/releases)
+Check the release version information in the release address of the third-party library: [ @react-native-ohos/react-native-webview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases)
 
 ## Properties
 > [!WARNING] The "ignoreSilentHardwareSwitch" needs to be set to "true" for the web page to have sound when playing.
