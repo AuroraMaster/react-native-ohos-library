@@ -12,7 +12,7 @@
     </a>
 </p>
 
-> [!Tip] [Github 地址](https://github.com/expo/react-native-appearance)
+> [!Tip] [Github 地址](https://github.com/react-native-oh-library/react-native-appearance)
 
 ## 安装与使用
 
@@ -23,13 +23,13 @@
 #### **npm**
 
 ```bash
-npm install react-native-appearance@0.3.5
+npm install @react-native-oh-tpl/react-native-appearance
 ```
 
 #### **yarn**
 
 ```bash
-yarn add react-native-appearance@0.3.5
+yarn add @react-native-oh-tpl/react-native-appearance
 ```
 
 <!-- tabs:end -->
@@ -43,10 +43,10 @@ yarn add react-native-appearance@0.3.5
 ```tsx
 import React, { useState } from "react";
 import { Button, View, Text, StyleSheet, useColorScheme } from 'react-native';
+import { Tester, TestSuite, TestCase } from '@rnoh/testerino';
 import { AppearanceHarmony } from 'react-native-appearance';
 
-export default class App extends React.Component {
-
+const AppearanceExample = () => {
   // 当前显示模式
   const scheme = useColorScheme();
   const currentScheme = scheme ?? scheme!.toString();
@@ -86,19 +86,23 @@ export default class App extends React.Component {
     }
   });
 
-  render() {
-    return (
-      <View style={styles.container}>
-          <Text style={styles.row}>当前显示模式：{currentScheme}</Text>
-          <Text style={styles.row}>监听的显示模式：{listenedScheme}</Text>
-          <Text style={styles.row}>获取的显示模式：{gotScheme}</Text>
-          <View style={styles.row}><Button title="获取显示模式" onPress={()=>getAppearance()} /></View>
-          <View style={styles.row}><Button title="修改显示模式" onPress={()=>changeAppearance()} /></View>
-      </View>
-    )
-  }
-
+  return (
+    <Tester style={{ paddingBottom: 80 }}>
+      <TestSuite name='Appearance'>
+        <TestCase itShould='显示模式'>
+          <View style={styles.container}>
+            <Text style={styles.row}>当前显示模式：{currentScheme}</Text>
+            <Text style={styles.row}>监听的显示模式：{listenedScheme}</Text>
+            <Text style={styles.row}>获取的显示模式：{gotScheme}</Text>
+            <View style={styles.row}><Button title="获取显示模式" onPress={()=>getAppearance()} /></View>
+            <View style={styles.row}><Button title="修改显示模式" onPress={()=>changeAppearance()} /></View>
+          </View>
+        </TestCase>
+      </TestSuite>
+    </Tester>
+  );
 }
+
 ```
 
 ## 约束与限制

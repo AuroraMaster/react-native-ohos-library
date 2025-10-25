@@ -12,7 +12,7 @@
     </a>
 </p>
 
-> [!Tip] [Github Address](https://github.com/expo/react-native-appearance)
+> [!Tip] [Github Address](https://github.com/react-native-oh-library/react-native-appearance)
 
 ## Installation and Usage
 
@@ -23,13 +23,13 @@ Navigate to your project directory and enter the following command:
 #### **npm**
 
 ```bash
-npm install react-native-appearance@0.3.5
+npm install @react-native-oh-tpl/react-native-appearance
 ```
 
 #### **yarn**
 
 ```bash
-yarn add react-native-appearance@0.3.5
+yarn add @react-native-oh-tpl/react-native-appearance
 ```
 
 <!-- tabs:end -->
@@ -43,28 +43,24 @@ The following code demonstrates how to use this color picker component in a page
 ```tsx
 import React, { useState } from "react";
 import { Button, View, Text, StyleSheet, useColorScheme } from 'react-native';
+import { Tester, TestSuite, TestCase } from '@rnoh/testerino';
 import { AppearanceHarmony } from 'react-native-appearance';
 
-export default class App extends React.Component {
-
-  // The user's preferred color scheme (e.g. Dark Mode).
+const AppearanceExample = () => {
   const scheme = useColorScheme();
   const currentScheme = scheme ?? scheme!.toString();
 
-  // Add an event handler that is fired when appearance preferences change.
   const [listenedScheme, setListenedScheme] = useState('');
   AppearanceHarmony.addChangeListener(({ colorScheme }) => {
     setListenedScheme(colorScheme ?? colorScheme!.toString());
   });
 
-  // Get the color scheme.
   const [gotScheme, setGotScheme] = useState('');
   const getAppearance = ()=> {
     const result = AppearanceHarmony.getColorScheme();
     setGotScheme(result ?? result!.toString());
   }
 
-  // Set the color scheme preference.
   const changeAppearance = ()=> {
     const result = AppearanceHarmony.getColorScheme();
     if (result == 'dark') {
@@ -86,18 +82,21 @@ export default class App extends React.Component {
     }
   });
 
-  render() {
-    return (
-      <View style={styles.container}>
-          <Text style={styles.row}>Current color scheme：{currentScheme}</Text>
-          <Text style={styles.row}>Listening color scheme：{listenedScheme}</Text>
-          <Text style={styles.row}>Get color scheme result：{gotScheme}</Text>
-          <View style={styles.row}><Button title="Get color scheme" onPress={()=>getAppearance()} /></View>
-          <View style={styles.row}><Button title="Set color scheme" onPress={()=>changeAppearance()} /></View>
-      </View>
-    )
-  }
-
+  return (
+    <Tester style={{ paddingBottom: 80 }}>
+      <TestSuite name='Appearance'>
+        <TestCase itShould='Display Mode'>
+          <View style={styles.container}>
+            <Text style={styles.row}>Current display mode:{currentScheme}</Text>
+            <Text style={styles.row}>Listening display mode:{listenedScheme}</Text>
+            <Text style={styles.row}>Acquired display mode:{gotScheme}</Text>
+            <View style={styles.row}><Button title="Get display mode" onPress={()=>getAppearance()} /></View>
+            <View style={styles.row}><Button title="Change display mode" onPress={()=>changeAppearance()} /></View>
+          </View>
+        </TestCase>
+      </TestSuite>
+    </Tester>
+  );
 }
 ```
 
@@ -121,12 +120,12 @@ react-native-harmony: 0.77.18; SDK: HarmonyOS 5.1.0.125; IDE: DevEco Studio 5.1.
 
 ### Functions
 
-| Name | Description | Type | Required | Platform | HarmonyOS Support |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| `useColorScheme` | 获取当前显示模式。返回 ColorSchemeName 对象。 | `function` | No | All | yes |
-| `getColorScheme` | 获取当前显示模式。返回 ColorSchemeName 对象。 | `function` | No | All | yes |
-| `setColorScheme` | 设置显示模式。 | `function` | No | All | yes |
-| `addChangeListener`| 监听系统显示模式变化。返回 ColorSchemeName 对象。 | `function` | No | All | yes |
+| Name | Description                                                                                             | Type | Required | Platform | HarmonyOS Support |
+| :--- |:--------------------------------------------------------------------------------------------------------| :--- | :--- | :--- | :--- |
+| `useColorScheme` | Gets the current display mode. Returns a ColorSchemeName object.                                        | `function` | No | All | yes |
+| `getColorScheme` | Gets the current display mode. Returns a ColorSchemeName object.                                        | `function` | No | All | yes |
+| `setColorScheme` | Set display mode.                                                                                       | `function` | No | All | yes |
+| `addChangeListener`| Listen for system display mode changes. Returns a ColorSchemeName object.                               | `function` | No | All | yes |
 
 ## Known Issues
 
