@@ -94,7 +94,7 @@ react-native-harmony：0.77.18; SDK：HarmonyOS 5.1.0.125; IDE：DevEco Studio 5
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-### 核心属性
+### ColorPicker组件属性
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -102,9 +102,18 @@ react-native-harmony：0.77.18; SDK：HarmonyOS 5.1.0.125; IDE：DevEco Studio 5
 | `defaultColor` | 非受控属性，用于设置选择器的初始颜色。 | `String` \| `HSV` | No | All | yes |
 | `oldColor` | 用于视觉比较的旧颜色。如果提供，选择器中心会分块显示新旧颜色。 | `String` | No | All | yes |
 | `style` | 应用于选择器根容器的样式。 | `Style` | No | All | yes |
-| `hideSliders` | **(仅限 HoloPicker)** 是否隐藏饱和度和明度滑块。默认值：false | `boolean` | No | All | yes |
+| `hideSliders` | **(仅限 ColorPicker)** 是否隐藏饱和度和明度滑块。默认值：false | `boolean` | No | All | yes |
+| `sliderComponent`| **(仅限 ColorPicker)** 传入一个自定义的滑块组件。 | `React.Component` | No | All | yes |
+
+### TriangleColorPicker组件属性
+
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `color` | 受控属性，用于设置选择器的当前颜色。 | `String` \| `HSV` | No | All | yes |
+| `defaultColor` | 非受控属性，用于设置选择器的初始颜色。 | `String` \| `HSV` | No | All | yes |
+| `oldColor` | 用于视觉比较的旧颜色。如果提供，选择器中心会分块显示新旧颜色。 | `String` | No | All | yes |
+| `style` | 应用于选择器根容器的样式。 | `Style` | No | All | yes |
 | `hideControls` | **(仅限 TrianglePicker)** 是否隐藏底部的颜色预览和确认按钮。默认值：false | `boolean` | No | All | yes |
-| `sliderComponent`| **(仅限 HoloPicker)** 传入一个自定义的滑块组件。 | `React.Component` | No | All | yes |
 
 ### 回调函数
 

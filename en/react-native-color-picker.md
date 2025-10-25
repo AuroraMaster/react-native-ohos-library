@@ -94,7 +94,7 @@ react-native-harmony: 0.77.18; SDK: HarmonyOS 5.1.0.125; IDE: DevEco Studio 5.1.
 
 > [!TIP] In the "HarmonyOS Support" column, "yes" means the property is supported on the HarmonyOS platform; "no" means it is not supported; "partially" means it is partially supported. The usage is consistent across platforms, and the effect is aligned with that on iOS or Android.
 
-### Core Properties
+### ColorPicker Properties
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -102,9 +102,18 @@ react-native-harmony: 0.77.18; SDK: HarmonyOS 5.1.0.125; IDE: DevEco Studio 5.1.
 | `defaultColor` | An uncontrolled property used to set the initial color of the picker. | `String` \| `HSV` | No | All | yes |
 | `oldColor` | An old color for visual comparison. If provided, the center of the picker will be split to show both the new and old colors. | `String` | No | All | yes |
 | `style` | Styles applied to the root container of the picker. | `Style` | No | All | yes |
-| `hideSliders` | **(HoloPicker only)** Whether to hide the saturation and value sliders. Default: false | `boolean` | No | All | yes |
+| `hideSliders` | **(ColorPicker only)** Whether to hide the saturation and value sliders. Default: false | `boolean` | No | All | yes |
+| `sliderComponent`| **(ColorPicker only)** Pass in a custom slider component. | `React.Component` | No | All | yes |
+
+### TriangleColorPicker Properties
+
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `color` | A controlled property used to set the current color of the picker. | `String` \| `HSV` | No | All | yes |
+| `defaultColor` | An uncontrolled property used to set the initial color of the picker. | `String` \| `HSV` | No | All | yes |
+| `oldColor` | An old color for visual comparison. If provided, the center of the picker will be split to show both the new and old colors. | `String` | No | All | yes |
+| `style` | Styles applied to the root container of the picker. | `Style` | No | All | yes |
 | `hideControls` | **(TrianglePicker only)** Whether to hide the color preview and confirmation button at the bottom. Default: false | `boolean` | No | All | yes |
-| `sliderComponent`| **(HoloPicker only)** Pass in a custom slider component. | `React.Component` | No | All | yes |
 
 ### Callback Functions
 
