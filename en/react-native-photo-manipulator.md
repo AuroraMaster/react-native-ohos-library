@@ -233,6 +233,8 @@ Check the release version information in the release address of the third-party 
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
+> [!TIP] Supports image formats: jpg.
+
 | Name        | Description                                       | Type   | Required | Platform | HarmonyOS Support |
 | ----------- | ------------------------------------------------- | ------ | -------- | -------- | ----------------- |
 | batch | Crop, resize and do operations (overlay and printText) on image. | function | no      |  | yes          |
