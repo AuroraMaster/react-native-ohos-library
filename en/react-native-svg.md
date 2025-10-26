@@ -326,6 +326,15 @@ ohpm install
 | height |     元素高度      | number\| string | No       | All      | Yes               |
 |  href  |   图像资源引用    | source\| string | Yes      | All      | Yes               |
 
+**ForeignObject**：该元素可以嵌套非SVG内容到SVG中
+
+|  Name  |    Description    |      Type       | Required | Platform | HarmonyOS Support |
+| :----: | :---------------: | :-------------: | -------- | -------- | ----------------- |
+|   x    | 在 x 轴上平移距离 | number\| string | No       | All      | Yes               |
+|   y    | 在 y 轴上平移距离 | number\| string | No       | All      | Yes               |
+| width  |     元素宽度      | number\| string | No       | All      | Yes               |
+| height |     元素高度      | number\| string | No       | All      | Yes               |
+
 **公共属性**：Common props 组件属性 HarmonyOS 侧支持情况
 
 |    Name     |             Description              |  Type  | Default | Required | Platform | G   | Path | Rect | Circle | Polygon |

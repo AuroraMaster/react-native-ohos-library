@@ -65,7 +65,7 @@ const App = () => (
   </View>
 );
 
-const { width } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
     container: { backgroundColor: 'white', height: height * 0.7 },
     child: { width, justifyContent: 'center', height: height * 0.5 },
@@ -122,8 +122,34 @@ react-native-harmony：0.77.18；SDK：HarmonyOS 5.1.0.125；IDE：DevEco Studio
 | `useReactNativeGestureHandler` | 使用 react-native-gesture-handler 的 FlatList 代替原生 FlatList | 布尔值 | 否 | 全平台 | 是 |
 | `paginationAccessibilityLabels` | 分页项目的无障碍标签。此为可选，用于屏幕阅读器。 | 字符串数组 | 否 | 全平台 | 否 |
 
-### Pagination 属性
+### SwiperFlatListWithGestureHandler 属性
 
+| 名称 | 描述 | 类型 | 必填 | 平台 | HarmonyOS 支持 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `data` | 用于 renderItem 的数据 | 数组 | 否 | 全平台 | 是 |
+| `children` | 子元素 | 节点 | 否 | 全平台 | 是 |
+| `renderItem` | 从 data 中取出一个项目并将其渲染到列表中 | FlatListProps<T>[renderItem] | 否 | 全平台 | 是 |
+| `onMomentumScrollEnd` | 滚动结束后调用，第一个参数是当前索引 | (item: { index: number }, event: any) => void | 否 | 全平台 | 是 |
+| `vertical` | 显示垂直轮播 | 布尔值 | 否 | 全平台 | 是 |
+| `index` | 起始索引 | 数字 | 否 | 全平台 | 是 |
+| `renderAll` | 渲染所有项目 | 布尔值 | 否 | 全平台 | 是 |
+| `showPagination` | 显示分页指示器 | 布尔值 | 否 | 全平台 | 是 |
+| `onChangeIndex` | 每次索引改变时执行，当用户到达下一个屏幕的 60% 时索引改变 | ({ index: number, prevIndex: number}) => void | 否 | 全平台 | 是 |
+| `PaginationComponent` | 覆写分页组件 | 节点 | 否 | 全平台 | 是 |
+| `onViewableItemsChanged` | RN 中原生可见项发生变化 | FlatListProps<T>['onViewableItemsChanged'] | 否 | 全平台 | 是 |
+| `autoplay` | 自动改变索引 | 布尔值 | 否 | 全平台 | 是 |
+| `autoplayDelay` | 每页之间的延迟（秒） | 数字 | 否 | 全平台 | 是 |
+| `autoplayLoop` | 到达末尾后继续播放 | 布尔值 | 否 | 全平台 | 是 |
+| `autoplayLoopKeepAnimation` | 到达列表末尾时显示动画 | 布尔值 | 否 | 全平台 | 是 |
+| `autoplayInvertDirection` | 反转自动播放方向 | 布尔值 | 否 | 全平台 | 是 |
+| `disableGesture` | 禁用滑动手势 | 布尔值 | 否 | 全平台 | 是 |
+| `e2eID` | 用于自动化测试的 TestID | 字符串 | 否 | 全平台 | 是 |
+| `viewabilityConfig` | 可见性配置 | ViewabilityConfig | 否 | 全平台 | 是 |
+| `useReactNativeGestureHandler` | 使用 react-native-gesture-handler 的 FlatList 代替原生 FlatList | 布尔值 | 否 | 全平台 | 是 |
+| `paginationAccessibilityLabels` | 分页项目的无障碍标签。此为可选，用于屏幕阅读器。 | 字符串数组 | 否 | 全平台 | 否 |
+
+### Pagination 属性
+> [!提示] Pagination的属性除'paginationIndex'与'size'外，SwiperFlatListWithGestureHandler与SwiperFlatList组件也可以使用。
 | 名称 | 描述 | 类型 | 必填 | 平台 | HarmonyOS 支持 |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | `paginationDefaultColor` | 分页默认颜色 | 字符串 | 否 | 全平台 | 是 |
@@ -140,6 +166,16 @@ react-native-harmony：0.77.18；SDK：HarmonyOS 5.1.0.125；IDE：DevEco Studio
 | `paginationTapDisabled` | 防止点击分页点 | 布尔值 | 否 | 全平台 | 是 |
 
 ### SwiperFlatList 函数
+
+| 名称 | 描述 | 类型 | 必填 | 平台 | HarmonyOS 支持 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `scrollToIndex` | 滚动到指定索引 | ({ item: ScrollToIndex}) => void | 否 | 全平台 | 是 |
+| `getCurrentIndex` | 返回当前索引 | () => number | 否 | 全平台 | 是 |
+| `getPrevIndex` | 返回上一个索引 | () => number | 否 | 全平台 | 是 |
+| `goToFirstIndex` | 跳转到第一个索引 | () => void | 否 | 全平台 | 是 |
+| `goToLastIndex` | 跳转到最后一个索引 | () => void | 否 | 全平台 | 是 |
+
+### SwiperFlatListWithGestureHandler 函数
 
 | 名称 | 描述 | 类型 | 必填 | 平台 | HarmonyOS 支持 |
 | :--- | :--- | :--- | :--- | :--- | :--- |

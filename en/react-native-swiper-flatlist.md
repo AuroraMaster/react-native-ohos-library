@@ -65,7 +65,7 @@ const App = () => (
   </View>
 );
 
-const { width } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
     container: { backgroundColor: 'white', height: height * 0.7 },
     child: { width, justifyContent: 'center', height: height * 0.5 },
@@ -123,7 +123,35 @@ react-native-harmony：0.77.18; SDK：HarmonyOS 5.1.0.125; IDE：DevEco Studio 5
 | `viewabilityConfig` | TestID for automation testing | ViewabilityConfig | No | All | Yes |
 | `useReactNativeGestureHandler` | Use react-native-gesture-handler FlatList instead of the native FlatList | boolean | No | All | Yes |
 | `paginationAccessibilityLabels` | Accessibility labels for the pagination items.This is optional and used for screen readers. | string[] | No | All | No |
+
+### SwiperFlatListWithGestureHandler Props
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `data` | Data to use in renderItem | array | No | All | Yes |
+| `children` | Children elements | node | No | All | Yes |
+| `renderItem` | Takes an item from data and renders it into the list | FlatListProps<T>[renderItem] | No | All | Yes |
+| `onMomentumScrollEnd` | Called after scroll end and the first parameter is the current index| (item: { index: number }, event: any) | No | All | Yes |
+| `vertical` | Show vertical swiper | boolean | No | All | Yes |
+| `index` | Index to start | number | No | All | Yes |
+| `renderAll` | Edge/Corner's height. Default: 20 | boolean | No | All | Yes |
+| `showPagination` | Showpagination | boolean | No | All | Yes |
+| `onChangeIndex` | Executed every time the index change, the index change when the user reaches 60% of the next screen | ({ index: number, prevIndex: number}) => void | No | All | Yes |
+| `PaginationComponent` | Overwrite Pagination component | node | No | All | Yes |
+| `onViewableItemsChanged` | Native visible term changes in RN | FlatListProps<T>['onViewableItemsChanged'] | No | All | Yes |
+| `autoplay` | Change index automatically | boolean | No | All | Yes |
+| `autoplayDelay` | Delay between every page in seconds  | number | No | All | Yes |
+| `autoplayLoop` | Continue playing after reach end | boolean | No | All | Yes |
+| `autoplayLoopKeepAnimation` | Show animation when reach the end of the list | boolean | No | All | Yes |
+| `autoplayInvertDirection` | Invert auto play direction | boolean | No | All | Yes |
+| `disableGesture` | Disable swipe gesture | boolean | No | All | Yes |
+| `e2eID` | TestID for automation testing | string | No | All | Yes |
+| `viewabilityConfig` | TestID for automation testing | ViewabilityConfig | No | All | Yes |
+| `useReactNativeGestureHandler` | Use react-native-gesture-handler FlatList instead of the native FlatList | boolean | No | All | Yes |
+| `paginationAccessibilityLabels` | Accessibility labels for the pagination items.This is optional and used for screen readers. | string[] | No | All | No |
+
 ### Pagination Props
+> [!TIP] Pagination properties except 'paginationIndex' and 'size' SwiperFlatListWithGestureHandler and SwiperFlatList components can also be used.
+
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | `paginationDefaultColor` | Pagination Default color | string | No | All | Yes |
@@ -138,6 +166,16 @@ react-native-harmony：0.77.18; SDK：HarmonyOS 5.1.0.125; IDE：DevEco Studio 5
 | `e2eID` | TestID for automation testing | string | No | All | Yes |
 | `paginationAccessibilityLabels` | Accessibility labels for the pagination items.This is optional and used for screen readers. | string[] | No | All | No |
 | `paginationTapDisabled` | Prevents tapping pagination dots | boolean | No | All | Yes |
+
+### SwiperFlatListWithGestureHandler Functions
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `scrollToIndex` | Scroll to the index | ({ item: ScrollToIndex}) => void | No | All | Yes |
+| `getCurrentIndex` | Returns the current index | () => number | No | All | Yes |
+| `getPrevIndex` | Returns the previous index | () => number | No | All | Yes |
+| `goToFirstIndex` | Go to the first index | () => void | No | All | Yes |
+| `goToLastIndex` | Go to the last index | () => void | No | All | Yes |
+
 ### SwiperFlatList Functions
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -146,10 +184,12 @@ react-native-harmony：0.77.18; SDK：HarmonyOS 5.1.0.125; IDE：DevEco Studio 5
 | `getPrevIndex` | Returns the previous index | () => number | No | All | Yes |
 | `goToFirstIndex` | Go to the first index | () => void | No | All | Yes |
 | `goToLastIndex` | Go to the last index | () => void | No | All | Yes |
+
 ### Pagination Functions
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | `scrollToIndex` | Scroll to the index | ({ index: number}) => void | Yes | All | Yes |
+
 ## Known Issues
 
 ## Others
