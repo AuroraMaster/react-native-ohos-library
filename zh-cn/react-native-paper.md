@@ -736,13 +736,13 @@ export default function App() {
 **DataTable.Pagination**：A component to show pagination for data table.
 
 |  Name   | Description |      Type       | Required | Platform | HarmonyOS Support |
-| :-----: | :---------: | :-------------: | -------- | -------- | ----------------- |
+| :-----: | :---------: | :-------------: | -------- |----------|-------------------|
 |  page (required)  | The currently visible page (starting with 0).  | number  | Yes      | All      | Yes               |
 |  numberOfPages (required)  | The total number of pages.  | number  | Yes      | All      | Yes               |
 |  onPageChange (required)  | Function to execute on page change. | (page: number) => void  | Yes      | All      | Yes               |
 |  showFastPaginationControls  | Whether to show fast forward and fast rewind buttons in pagination. False by default. | boolean  | NO      | All      | Yes               |
-|  paginationControlRippleColor  | Color of the pagination control ripple effect. | ColorValue  | NO      | All      | Yes               |
-|  theme     | theme  | ThemeProp | NO      | All      | Yes |
+|  paginationControlRippleColor  | Color of the pagination control ripple effect. | ColorValue  | NO      | Android  | NO                |
+|  theme     | theme  | ThemeProp | NO      | All      | Yes               |
 |  numberOfItemsPerPage  | The current number of rows per page. | number  | NO      | All      | Yes               |
 |  numberOfItemsPerPageList  | Options for a number of rows per page to choose from. | Array<number>  | NO      | All      | Yes               |
 |  onItemsPerPageChange  | The function to set the number of rows per page. | (numberOfItemsPerPage: number) => void  | NO      | All      | Yes               |
@@ -752,18 +752,18 @@ export default function App() {
 |  selectPageDropdownAccessibilityLabel  | AccessibilityLabel for selectPageDropdownLabel | string  | NO      | All      | Yes               |
 |  label  | Label text to display which indicates current pagination. | React.ReactNode  | NO      | All      | Yes               |
 |  accessibilityLabel  | AccessibilityLabel for label. | string  | NO      | All      | Yes               |
-|  style     | Text content style of the DataTable.Pagination.  |    StyleProp<ViewStyle> | NO      | All      | Yes |
+|  style     | Text content style of the DataTable.Pagination.  |    StyleProp<ViewStyle> | NO      | All      | Yes               |
 
 **DataTable.Row**：A component to show a single row inside of a table.
 
 |  Name   | Description |      Type       | Required | Platform | HarmonyOS Support |
-| :-----: | :---------: | :-------------: | -------- | -------- | ----------------- |
+| :-----: | :---------: | :-------------: | -------- |----------| ----------------- |
 |  TouchableRipple | Extends: ...TouchableRipple props  | props  | NO      | All      | Yes               |
 |  children (required)  | Content of the DataTableRow.  | React.ReactNode  | Yes      | All      | Yes               |
 |  onPress  | Function to execute on press.  | (e: GestureResponderEvent) => void  | NO      | All      | Yes               |
 |  style     | Text content style of the DataTable.Pagination.  |    StyleProp<ViewStyle> | NO      | All      | Yes |
 |  theme     | theme  |  ThemeProp | NO      | All      | Yes |
-|  pointerEvents     | pointerEvents passed to the View container, which is wrapping children within TouchableRipple.  |  ViewProps['pointerEvents'] | NO      | All      | No |
+|  pointerEvents     | pointerEvents passed to the View container, which is wrapping children within TouchableRipple.  |  ViewProps['pointerEvents'] | NO      | Android  | No |
 
 **DataTable.Title**：A component to display title in table header.
 
@@ -1016,7 +1016,7 @@ export default function App() {
 |  id    | Id is used for distinguishing specific accordion when using List. | string \| number | NO      | All      | Yes               |
 |  testID    | TestID used for testing purposes | string | NO      | All      | Yes               |
 |  accessibilityLabel    | Accessibility label for the TouchableRipple. This is read by the screen reader when the user taps the touchable. | string | NO      | All      | Yes               |
-|  pointerEvents    | pointerEvents passed to the View container | ViewProps['pointerEvents'] | NO      | All      | Yes               |
+|  pointerEvents    | pointerEvents passed to the View container | ViewProps['pointerEvents'] | NO      | Android      | NO               |
 
 **List.AccordionGroup**：List.AccordionGroup allows to control a group of List Accordions.
 |  Name   | Description |      Type       | Required | Platform | HarmonyOS Support |
