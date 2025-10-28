@@ -552,6 +552,16 @@ For details, see [react-native-svg](https://github.com/software-mansion/react-na
 |  onLoad  |    加载成功后触发     | function |    No    |   All    |        Yes        |
 | fallback |      加载中元素       | function |    No    |   All    |        Yes        |
 
+**ForeignObject**：该元素可以嵌套非SVG内容到SVG中
+
+|  Name  |    Description    |      Type       | Required | Platform | HarmonyOS Support |
+| :----: | :---------------: | :-------------: | -------- | -------- | ----------------- |
+|   x    | 在 x 轴上平移距离 | number\| string | No       | All      | Yes               |
+|   y    | 在 y 轴上平移距离 | number\| string | No       | All      | Yes               |
+| width  |     元素宽度      | number\| string | No       | All      | Yes               |
+| height |     元素高度      | number\| string | No       | All      | Yes               |
+
+
 **函数**
 
 |   Name    |        Description         |   Type   | Required | Platform | HarmonyOS Support |
@@ -636,7 +646,7 @@ FontProps 组件 Properties HarmonyOS 侧支持情况
 - [ ] getCTM 获取相对于父组件的 matrix 矩阵信息 未实现
 - [ ] getScreenCTM 获取组件的 matrix 矩阵信息 未实现
 - [ ] getRawResource 获取 android 中的资源文件 未实现
-- [ ] foreignObject 该组件允许 svg 使用外部组件 未实现
+- [X] foreignObject 该组件允许 svg 使用外部组件 已实现
 - [ ] filter 该组件可以为 SVG 图形添加各种视觉效果 未实现
 - [ ] TextPath 功能未完全实现
 - [ ] Text,TSpan 组件的 rotate,fontFamily,wordSpacingProperties 未实现
