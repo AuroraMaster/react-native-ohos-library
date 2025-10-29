@@ -102,7 +102,7 @@ react-native-harmony：0.77.18; SDK：HarmonyOS 5.1.0.125; IDE：DevEco Studio 5
 | `defaultColor` | 非受控属性，用于设置选择器的初始颜色。 | `String` \| `HSV` | No | All | yes |
 | `oldColor` | 用于视觉比较的旧颜色。如果提供，选择器中心会分块显示新旧颜色。 | `String` | No | All | yes |
 | `style` | 应用于选择器根容器的样式。 | `Style` | No | All | yes |
-| `hideSliders` | **(仅限 ColorPicker)** 是否隐藏饱和度和明度滑块。默认值：false | `boolean` | No | All | yes |
+| `hideSliders` | **(仅限 ColorPicker)** 是否隐藏饱和度和亮度滑块。默认值：false | `boolean` | No | All | yes |
 | `sliderComponent`| **(仅限 ColorPicker)** 传入一个自定义的滑块组件。 | `React.Component` | No | All | yes |
 
 ### TriangleColorPicker组件属性
@@ -115,7 +115,7 @@ react-native-harmony：0.77.18; SDK：HarmonyOS 5.1.0.125; IDE：DevEco Studio 5
 | `style` | 应用于选择器根容器的样式。 | `Style` | No | All | yes |
 | `hideControls` | **(仅限 TrianglePicker)** 是否隐藏底部的颜色预览和确认按钮。默认值：false | `boolean` | No | All | yes |
 
-### 回调函数
+### ColorPicker和TriangleColorPicker回调函数
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -139,7 +139,7 @@ react-native-harmony：0.77.18; SDK：HarmonyOS 5.1.0.125; IDE：DevEco Studio 5
 {
   h: number, // 色相: 0-360
   s: number, // 饱和度: 0-1
-  v: number, // 透明度: 0-1
+  v: number, // 亮度: 0-1
 }
 ```
 

@@ -115,7 +115,7 @@ react-native-harmony: 0.77.18; SDK: HarmonyOS 5.1.0.125; IDE: DevEco Studio 5.1.
 | `style` | Styles applied to the root container of the picker. | `Style` | No | All | yes |
 | `hideControls` | **(TrianglePicker only)** Whether to hide the color preview and confirmation button at the bottom. Default: false | `boolean` | No | All | yes |
 
-### Callback Functions
+### ColorPicker and TriangleColorPicker Callbacks
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | :--- | :--- | :--- | :--- | :--- | :--- |
