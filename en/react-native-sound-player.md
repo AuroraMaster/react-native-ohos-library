@@ -253,48 +253,68 @@ Check the release version information in the release address of the third-party 
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-| Name        | Description                                       | Type   | Required | Platform | HarmonyOS Support |
-| ----------- | ------------------------------------------------- | ------ | -------- | -------- | ----------------- |
-| playSoundFileAsync | Asynchronous Play the sound file named `fileName` async with file type `fileType`. | function | no      |  | yes          |
-| loadSoundFileAsync | Asynchronous Load the sound file named `fileName` with file type `fileType`, without playing it. | function | no     |  | yes        |
-| playUrlAsync | Asynchronous Play the audio from url. | function | no     |  | yes        |
-| loadUrlAsync | Asynchronous Load the audio from the given `url` without playing it | function | no     |  | yes        |
-| playAssetAsync | Asynchronous Play the audio from an asset, to get the asset number use `require('./assets/tone.mp3')`. | function | no     |  | yes        |
-| loadAssetAsync | Asynchronous Load the audio from an asset like above but without playing it. | function | no     |  | yes        |
-| playAsync | Asynchronous Play the loaded sound file. This function is the same as `resumeAsync`. | function | no     |  | yes        |
-| pauseAsync | Asynchronous Pause the currently playing file. | function | no     |  | yes        |
-| resumeAsync | Asynchronous Resume from pause and continue playing the same file. This function is the same as `playAsync`. | function | no     |  | yes        |
-| stopAsync | Asynchronous Stop playing. | function | no     |  | yes        |
+| Name        | Description                                       | Type   | Required | Platform    | HarmonyOS Support |
+| ----------- | ------------------------------------------------- | ------ | -------- |-------------| ----------------- |
+| playSoundFileAsync | Asynchronous Play the sound file named `fileName` async with file type `fileType`. | function | no      | /           | yes          |
+| loadSoundFileAsync | Asynchronous Load the sound file named `fileName` with file type `fileType`, without playing it. | function | no     | /           | yes        |
+| playUrlAsync | Asynchronous Play the audio from url. | function | no     | /           | yes        |
+| loadUrlAsync | Asynchronous Load the audio from the given `url` without playing it | function | no     | /           | yes        |
+| playAssetAsync | Asynchronous Play the audio from an asset, to get the asset number use `require('./assets/tone.mp3')`. | function | no     | /           | yes        |
+| loadAssetAsync | Asynchronous Load the audio from an asset like above but without playing it. | function | no     | /           | yes        |
+| playAsync | Asynchronous Play the loaded sound file. This function is the same as `resumeAsync`. | function | no     | /           | yes        |
+| pauseAsync | Asynchronous Pause the currently playing file. | function | no     | /           | yes        |
+| resumeAsync | Asynchronous Resume from pause and continue playing the same file. This function is the same as `playAsync`. | function | no     | /           | yes        |
+| stopAsync | Asynchronous Stop playing. | function | no     | /           | yes        |
 | playSoundFile | Play the sound file named `fileName` with file type `fileType`. | function | no      | Android/iOS | no             |
 | loadSoundFile | Load the sound file named `fileName` with file type `fileType`, without playing it. | function | no     | Android/iOS | no           |
 | playUrl | Play the audio from url. | function | no     | Android/iOS | no           |
 | loadUrl | Load the audio from the given `url` without playing it | function | no     | Android/iOS | no           |
 | playAsset | Play the audio from an asset, to get the asset number use `require('./assets/tone.mp3')`. | function | no     | Android/iOS | no           |
 | loadAsset | Load the audio from an asset like above but without playing it. | function | no     | Android/iOS | no           |
-| onFinishedPlaying | Subscribe to the "finished playing" event. The `callback` function is called whenever a file is finished playing. ***\*This function will be deprecated soon, please use** **`addEventListener`** \**. | function | no     | All      | yes               |
-| onFinishedLoading | Subscribe to the "finished loading" event. The `callback` function is called whenever a file is finished loading, i.e. the file is ready to be `play()`, `resume()`, `getInfo()`, etc. ***\*This function will be deprecated soon, please use** **`addEventListener`** \**. | function | no     | All      | yes               |
-| addEventListener | Subscribe to any event. Returns a subscription object. Subscriptions created by this function cannot be removed by calling unmount(). You NEED to call yourSubscriptionObject.remove() when you no longer need this event listener or whenever your component unmounts. | function | no     | All      | yes               |
+| onFinishedPlaying | Subscribe to the "finished playing" event. The `callback` function is called whenever a file is finished playing. ***\*This function will be deprecated soon, please use** **`addEventListener`** \**. | function | no     | All         | yes               |
+| onFinishedLoading | Subscribe to the "finished loading" event. The `callback` function is called whenever a file is finished loading, i.e. the file is ready to be `play()`, `resume()`, `getInfo()`, etc. ***\*This function will be deprecated soon, please use** **`addEventListener`** \**. | function | no     | All         | yes               |
+| addEventListener | Subscribe to any event. Returns a subscription object. Subscriptions created by this function cannot be removed by calling unmount(). You NEED to call yourSubscriptionObject.remove() when you no longer need this event listener or whenever your component unmounts. | function | no     | All         | yes               |
 | play | Play the loaded sound file. This function is the same as `resume`. | function | no     | Android/iOS | no           |
 | pause | Pause the currently playing file. | function | no     | Android/iOS | no           |
 | resume | Resume from pause and continue playing the same file. This function is the same as `play`. | function | no     | Android/iOS | no           |
 | stop | Stop playing. | function | no     | Android/iOS | no           |
-| seek | Seek to seconds of the currently playing file. | function | no     | All      | yes               |
-| setVolume | Set the volume of the current player. This does not change the volume of the device. | function | no     | All      | yes               |
-| setNumberOfLoops | 0 means to play the sound once, other numbers indicate an indefinite loop. | function | no     | All      | yes               |
-| getInfo | Get the currentTime and duration of the currently mounted audio media. This function returns a promise which resolves to an Object containing currentTime and duration properties. | function | no     | All      | yes               |
-| unmount | Unsubscribe the "finished playing" and "finished loading" event. ***\*This function will be deprecated soon, please use** **`addEventListener`** **and remove your own listener by calling** **`yourSubscriptionObject.remove()`*****\***. | function | no     | All      | yes               |
-| playSoundFileWithDelay | Only available on iOS. Play the sound file named `fileName` with file type `fileType` after a a delay of `delay` in *_seconds_* from the current device time. | function | no     | iOS   | no           |
-| setSpeaker | Overwrite default audio output to speaker. | function | no     | iOS   | no           |
-| setMixAudio | If you set this option, your audio will be mixed with audio playing in background apps, such as the Music app. | function | no     | iOS   | no           |
-| setMixAudioAsync | Asynchronous method.If you set this option, your audio will be mixed with audio playing in background apps, such as the Music app. | function | no     |    | yes        |
-| setSpeakerAsync | Asynchronous method. Overwrite default audio output to speaker.                                    | function | no     |    | yes        |
+| seek | Seek to seconds of the currently playing file. | function | no     | All         | yes               |
+| setVolume | Set the volume of the current player. This does not change the volume of the device. | function | no     | All         | yes               |
+| setNumberOfLoops | 0 means to play the sound once, other numbers indicate an indefinite loop. | function | no     | All         | yes               |
+| getInfo | Get the currentTime and duration of the currently mounted audio media. This function returns a promise which resolves to an Object containing currentTime and duration properties. | function | no     | All         | yes               |
+| unmount | Unsubscribe the "finished playing" and "finished loading" event. ***\*This function will be deprecated soon, please use** **`addEventListener`** **and remove your own listener by calling** **`yourSubscriptionObject.remove()`*****\***. | function | no     | All         | yes               |
+| playSoundFileWithDelay | Only available on iOS. Play the sound file named `fileName` with file type `fileType` after a a delay of `delay` in *_seconds_* from the current device time. | function | no     | iOS         | no           |
+| setSpeaker | Overwrite default audio output to speaker. | function | no     | iOS         | no           |
+| setMixAudio | If you set this option, your audio will be mixed with audio playing in background apps, such as the Music app. | function | no     | iOS         | no           |
+| setMixAudioAsync | Asynchronous method.If you set this option, your audio will be mixed with audio playing in background apps, such as the Music app. | function | no     | /           | yes        |
+| setSpeakerAsync | Asynchronous method. Overwrite default audio output to speaker.                                    | function | no     | /           | yes        |
 
 ## 5. Known Issues
 
-- [X] Since the system side has not yet provided synchronization methods for generating and controlling the AVPlayer, the synchronization function implemented by the library, which relies on AVPlayer, remains unimplemented. This will be supplemented once the system side provides the necessary methods.  issue: [issue#6](https://github.com/react-native-oh-library/react-native-sound-player/issues/6)
-- [X] The system media player AVPlayer encounters exceptions when playing network audio formats such as m4a, aac, wav, flac, amr, and ape using the playUrlAsync and loadUrlAsync interface methods. issue: [issue#12](https://github.com/react-native-oh-library/react-native-sound-player/issues/12)。
-- [X] The JS side of rn does not support ogg, flac, amr, and ape formats, which makes it impossible to import files through import or require, and therefore cannot be played through playAssetAsync or loadAssetAsync. issue: [issue#11](https://github.com/react-native-oh-library/react-native-sound-player/issues/11)。
+- [ ] Since the system side has not yet provided synchronization methods for generating and controlling the AVPlayer, the synchronization function implemented by the library, which relies on AVPlayer, remains unimplemented. This will be supplemented once the system side provides the necessary methods.  issue: [issue#6](https://github.com/react-native-oh-library/react-native-sound-player/issues/6)
+- [ ] The system media player AVPlayer encounters exceptions when playing network audio formats such as m4a, aac, wav, flac, amr, and ape using the playUrlAsync and loadUrlAsync interface methods. issue: [issue#12](https://github.com/react-native-oh-library/react-native-sound-player/issues/12)。
+- [ ] The JS side of rn does not support ogg, flac, amr, and ape formats, which makes it impossible to import files through import or require, and therefore cannot be played through playAssetAsync or loadAssetAsync. issue: [issue#11](https://github.com/react-native-oh-library/react-native-sound-player/issues/11)。
 
-## 6. License
+## 6. Other
+Since the system's avplayer does not provide a synchronization method, the library's synchronization interface capabilities cannot be implemented. Therefore, it has been replaced with an asynchronous method with the same name appended to `Async`. The specific method is as follows:
+- playSoundFile
+- loadSoundFile
+- playUrl
+- loadUrl
+- playAsset
+- loadAsset
+- play
+- pause
+- resume
+- stop
+- setSpeaker
+- setMixAudio
+
+The following interface systems do not have corresponding capabilities and are not supported:
+- playSoundFileWithDelay
+
+At present, the system fully supports the following audio formats for playback and control: mp3
+
+## 7. License
 
 This project is licensed under [MIT License](https://github.com/johnsonsu/react-native-sound-player/blob/master/LICENSE).
