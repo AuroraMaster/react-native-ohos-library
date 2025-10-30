@@ -44,7 +44,7 @@ The following code shows the basic use scenario of the repository:
 
 ```js
 import React, { useState, useRef } from "react";
-import { View, ScrollView, StyleSheet, Text, TextInput } from "react-native";
+import { Button, View, ScrollView, StyleSheet, Switch, Text, TextInput } from "react-native";
 import RNCVideo from "react-native-video";
 
 function RNCVideoDemo() {
@@ -69,6 +69,8 @@ function RNCVideoDemo() {
   const [onVideoBuffer, setOnVideoBuffer] = useState("onVideoBuffer");
   const [onPlaybackStalled, setOnPlaybackStalled] = useState("onPlaybackStalled");
   const [onPlaybackResume, setOnPlaybackResume] = useState("onPlaybackResume");
+  const [pictureInPicture, setPictureInPicture] = useState(false);
+  const [enterPictureInPictureOnLeave, setEnterPictureInPictureOnLeave] = useState(false);
 
   const videoRef = React.useRef<typeof RNCVideo>();
 
@@ -121,6 +123,36 @@ function RNCVideoDemo() {
         <Text style={styles.label}>{onPlaybackStalled}</Text>
         <Text style={styles.label}>{onPlaybackResume}</Text>
         <Text style={styles.title}>update source </Text>
+        <View
+          style={{
+            flexDirection: "row",
+            width: '100%',
+            height: 40,
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          <Text>whether to automatically enable Picture-in-Picture when the app returns to the home screen：</Text>
+          <Switch
+            trackColor={{ false: "#767577", true: "#81b0ff" }}
+            thumbColor={enterPictureInPictureOnLeave ? "#f5dd4b" : "#f4f3f4"}
+            ios_backgroundColor="#3e3e3e"
+            onValueChange={setEnterPictureInPictureOnLeave}
+            value={enterPictureInPictureOnLeave}
+          />
+        </View>
+        <Button
+          title="open Picture-in-Picture"
+          onPress={()=>{
+            !pictureInPicture && setPictureInPicture(true);
+          }}
+        />
+        <Button
+          title="close Picture-in-Picture"
+          onPress={()=>{
+            pictureInPicture && setPictureInPicture(false);
+          }}
+        />
         <View
           style={{
             flexDirection: "row",
@@ -270,6 +302,12 @@ function RNCVideoDemo() {
           paused={paused}
           controls={controls}
           muted={muted}
+          pictureInPicture={pictureInPicture}
+          enterPictureInPictureOnLeave={enterPictureInPictureOnLeave}
+          onPictureInPictureStatusChanged={(e)=>{
+            console.log('onPictureInPictureStatusChanged:',e);
+            pictureInPicture !== e.isActive && setPictureInPicture(e.isActive || false)
+          }}
           resizeMode={resizeMode}
           repeat={repeat}
           volume={1}
@@ -604,6 +642,7 @@ For details, see [React-Native-Video Official Document](https://github.com/react
 | `bufferConfig`                            | Adjust the buffer settings. This prop takes an object with one or more of the properties listed below. | object  | No       | Android                                                  | No                |
 | `controls`                                | Determines whether to show player controls.                  | boolean | No       | All                                                      | Yes               |
 | `currentPlaybackTime`                     | When playing an HLS live stream with a EXT-X-PROGRAM-DATE-TIME tag configured, then this property will contain the epoch value in msec. | string  | No       | All                                                      | No                |
+| `enterPictureInPictureOnLeave` |Determines whether to enter Picture-in-Picture (PiP) mode when the user leaves the app.| boolean | No | Harmony | Yes |
 | `filter`                                  | Add video filter                                             | string  | No       | iOS                                                      | No                |
 | `filterEnabled`                           | Enable video filter.                                         | string  | No       | iOS                                                      | No                |
 | `fullscreen`                              | Controls whether the player enters fullscreen on play.       | boolean | No       | iOS                                                      | No                |
@@ -616,7 +655,8 @@ For details, see [React-Native-Video Official Document](https://github.com/react
 | `maxBitRate`                              | Sets the desired limit, in bits per second, of network bandwidth consumption when multiple video streams are available for a playlist. | number  | No       | All                                                      | No                |
 | `minLoadRetryCount`                       | Sets the minimum number of times to retry loading data before failing and reporting an error to the application. Useful to recover from transient internet failures. | number  | No       | Android                                                  | No                |
 | `mixWithOthers`                           | Controls how Audio mix with other apps.                      | string  | No       | iOS                                                      | No                |
-| `pictureInPicture`                        | Determine whether the media should be played as picture in picture. | boolean | No       | iOS                                                      | No                |
+| `navigationId` |When using Navigation to manage pages in the HarmonyOS UIAbility . You need to set the id property of the Navigation control and set the id to the picture-in-picture controller to ensure that you can restore to the original page from the picture-in-picture window in the restore scene.| string | No | HarmonyOS | Yes |
+| `pictureInPicture` |Determine whether the media should played as picture in picture.| boolean | No  | iOS | Yes |
 | `playInBackground`                        | Determine whether the media should continue playing while the app is in the background. This allows customers to continue listening to the audio. | boolean | No       | All                                                      | No                |
 | `playWhenInactive`                        | Determine whether the media should continue playing when notifications or the Control Center are in front of the video. | boolean | No       | iOS                                                      | No                |
 | `preferredForwardBufferDuration`          | The duration the player should buffer media from the network ahead of the playhead to guard against playback disruption. Sets the preferredForwardBufferDuration instance property on AVPlayerItem. | number  | No       | iOS                                                      | No                |
@@ -658,7 +698,7 @@ For details, see [React-Native-Video Official Document](https://github.com/react
 | `onFullscreenPlayerDidDismiss`                  | Callback function that is called when the player has exited fullscreen mode. | function | No       | All                                              | No                |
 | `onLoadStart`                                   | Callback function that is called when the media starts loading. | function | No       | All                                              | No                |
 | `onReadyForDisplay`                             | Callback function that is called when the first video frame is ready for display. This is when the poster is removed. | function | No       | All                                              | No                |
-| `onPictureInPictureStatusChanged`               | Callback function that is called when picture in picture becomes active or inactive. | function | No       | IOS                                              | No                |
+| `onPictureInPictureStatusChanged`               | Callback function that is called when picture in picture becomes active or inactive. | function | No       | IOS                                              | Yes                |
 | `onPlaybackRateChange`                          | Callback function that is called when the rate of playback changes - either paused or starts/resumes. | function | No       | All                                              | No                |
 | `onSeek`                                        | Callback function that is called when a seek completes.      | function | No       | All                                              | No                |
 | `onRestoreUserInterfaceForPictureInPictureStop` | Callback function that corresponds to Apple's restoreUserInterfaceForPictureInPictureStopWithCompletionHandler. Call restoreUserInterfaceForPictureInPictureStopCompleted inside of this function when done restoring the user | function | No       | iOS                                              | No                |
