@@ -784,7 +784,7 @@ export default function App() {
 |  Name   | Description |      Type       | Required | Platform | HarmonyOS Support |
 | :-----: | :---------: | :-------------: | -------- | -------- | ----------------- |
 |  dismissable  | Determines whether clicking outside the dialog dismiss it.  | boolean  | NO      | All      | Yes               |
-|  dismissableBackButton  | Determines whether clicking Android hardware back button dismiss dialog.  | boolean  | NO      | All      | Yes               |
+|  dismissableBackButton  | Determines whether clicking Android hardware back button dismiss dialog.  | boolean  | NO      | All      | NO               |
 |  onDismiss  | Callback that is called when the user dismisses the dialog.  | () => void  | NO      | All      | Yes               |
 |  visible  | Determines Whether the dialog is visible.  | boolean  | NO      | All      | Yes               |
 |  children (required)  | Content of the Dialog  | React.ReactNode  | Yes      | All      | Yes               |
