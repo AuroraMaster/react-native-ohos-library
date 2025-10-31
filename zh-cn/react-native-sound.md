@@ -162,7 +162,7 @@ export default SoundDemo;
 
 ## Link
 
-Version >= @react-native-ohos/react-native-sound@0.11.3，已支持 Autolink，无需手动配置。
+Version >= @react-native-ohos/react-native-sound@0.11.3，已支持 Autolink，无需手动配置，目前只支持72框架。
 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 Version <= @react-native-oh-tpl/react-native-sound@0.11.2-0.0.13@deprecated 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
