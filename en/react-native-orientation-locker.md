@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
 
 ## Link
 
-Version > @react-native-ohos/react-native-orientation-locker@1.7.0 now supports Autolink without requiring manual configuration.
+Version > @react-native-ohos/react-native-orientation-locker@1.7.0 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
 Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 Currently, Version <= @react-native-oh-tpl/react-native-orientation-locker@1.7.0-0.0.7@deprecated does not support AutoLink. Therefore, you need to manually configure the linking.

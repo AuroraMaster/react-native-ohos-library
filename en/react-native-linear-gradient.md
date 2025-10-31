@@ -4,14 +4,14 @@
   <h1 align="center"> <code>react-native-linear-gradient</code> </h1>
 </p>
 
-This project is based on [react-native-linear-gradient@3.0.0-alpha.1](https://github.com/react-native-linear-gradient/react-native-linear-gradient)。
+> [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-linear-gradient)
 
-This third-party library has been migrated to Gitee and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-linear-gradient`, The version correspondence details are as follows:
+This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-linear-gradient`, After introducing the new version of the third-party library, The version correspondence details are as follows:
 
 | Version                   | Package Name                                      | Repository         | Release                    |
 | ------------------------- | ------------------------------------------------- | ------------------ | -------------------------- |
 | <= 3.0.0-0.5.0@deprecated | @react-native-oh-tpl/react-native-linear-gradient | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-linear-gradient) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-linear-gradient/releases) |
-| > 3.0.0                   | @react-native-ohos/react-native-linear-gradient   | [Gitee](https://gitee.com/openharmony-sig/rntpc_react-native-linear-gradient) | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) |
+| > 3.0.0                   | @react-native-ohos/react-native-linear-gradient   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) |
 
 ## 1. Installation and Usage
 
@@ -90,7 +90,7 @@ var styles = StyleSheet.create({
 
 ## 2. Manual Link
 
-Version >= @react-native-ohos/react-native-linear-gradient@3.0.2 now supports Autolink without requiring manual configuration.
+Version >= @react-native-ohos/react-native-linear-gradient@3.0.2 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
 Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 Currently, Version < @react-native-ohos/react-native-linear-gradient@3.0.2，Version <= @react-native-oh-tpl/react-native-linear-gradient@3.0.0-0.5.0@deprecated does not support AutoLink. Therefore, you need to manually configure the linking.
@@ -197,7 +197,7 @@ Then build and run the code.
 
 ## 3.1 Compatibility
 
-Check the release version information in the release address of the third-party library: [@react-native-ohos/react-native-linear-gradient Releases](https://gitee.com/openharmony-sig/rntpc_react-native-linear-gradient/releases)
+Check the release version information in the release address of the third-party library: [@react-native-ohos/react-native-linear-gradient Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases)
 
 ## Properties
 
@@ -221,4 +221,4 @@ Check the release version information in the release address of the third-party 
 
 ## 6. License
 
-This project is licensed under [The MIT License (MIT)](https://gitee.com/openharmony-sig/rntpc_react-native-linear-gradient/blob/master/LICENSE).
+This project is licensed under [The MIT License (MIT)](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/blob/master/LICENSE).

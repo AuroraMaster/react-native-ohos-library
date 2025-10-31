@@ -79,7 +79,7 @@ If this repository has been adapted to `Codegen`, generate the bridge code of th
 
 ## Link
 
-Version >= @react-native-ohos/camera-roll@7.8.4 now supports Autolink without requiring manual configuration.
+Version >= @react-native-ohos/camera-roll@7.8.4 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
 Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 Currently, Version <= @react-native-oh-tpl/camera-roll@7.8.3-0.1.5@deprecated does not support AutoLink. Therefore, you need to manually configure the linking.

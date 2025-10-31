@@ -4,12 +4,14 @@
   <h1 align="center"> <code>react-native-fs</code> </h1>
 </p>
 
-本项目基于 [react-native-fs@2.20.0](https://github.com/itinance/react-native-fs/tree/v2.20.0) 开发。
+> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-fs)
+
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-fs`，具体版本所属关系如下：
 
 | Version                     | Package Name                         | Repository                                                                       | Release                                                                                            |
 | --------------------------- | ------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | <= 2.20.0-0.1.14@deprecated | @react-native-oh-tpl/react-native-fs | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-fs) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-fs/releases) |
-| >= 2.20.1                   | @react-native-ohos/react-native-fs   | [Gitee](https://gitcode.com/openharmony-sig/rntpc_react-native-fs)                 | [Gitee Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fs/releases)                 |
+| >= 2.20.1                   | @react-native-ohos/react-native-fs   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-fs)                 | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fs/releases)                 |
 
 ## 1. 安装与使用
 
@@ -117,7 +119,7 @@ export default App;
 ```
 
 ## 2. Manual Link
-Version >= @react-native-ohos/react-native-fs@2.20.2，已支持 Autolink，无需手动配置。
+Version >= @react-native-ohos/react-native-fs@2.20.2，已支持 Autolink，无需手动配置，目前只支持72框架。
 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 Version < @react-native-ohos/react-native-fs@2.20.2，Version <= @react-native-oh-tpl/react-native-fs@2.20.0-0.1.14@deprecated 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
@@ -261,7 +263,7 @@ ohpm install
 ### 3.1. 兼容性
 
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/react-native-fs Releases](https://gitee.com/openharmony-sig/rntpc_react-native-fs/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/react-native-fs Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fs/releases)
 
 ## 4. 静态方法
 

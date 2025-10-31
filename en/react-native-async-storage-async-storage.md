@@ -118,7 +118,7 @@ export default function App() {
 
 ## Link
 
-Version >= @react-native-ohos/async-storage@1.21.1 now supports Autolink without requiring manual configuration.
+Version >= @react-native-ohos/async-storage@1.21.1 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
 Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 Currently, Version <= @react-native-oh-tpl/async-storage@1.21.0-0.2.2@deprecated does not support AutoLink. Therefore, you need to manually configure the linking.
@@ -259,7 +259,7 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-ohos/async-storage Releases](https://gitcode.com/openharmony-sig/rntpc_async-storage/release)
+Check the release version information in the release address of the third-party library: [@react-native-ohos/async-storage Releases](https://gitcode.com/openharmony-sig/rntpc_async-storage/releases)
 
 ## APIs
 

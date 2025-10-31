@@ -406,7 +406,7 @@ If this repository has been adapted to `Codegen`, generate the bridge code of th
 
 ## Link
 
-Version >= @react-native-ohos/react-native-blob-util@0.19.8 now supports Autolink without requiring manual configuration.
+Version >= @react-native-ohos/react-native-blob-util@0.19.8 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
 Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 Currently, Version <= @react-native-oh-tpl/react-native-blob-util@0.19.7@deprecated does not support AutoLink. Therefore, you need to manually configure the linking.

@@ -164,7 +164,7 @@ export default SoundDemo;
 
 ## Link
 
-Version >= @react-native-ohos/react-native-sound@0.11.3 now supports Autolink without requiring manual configuration.
+Version >= @react-native-ohos/react-native-sound@0.11.3 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
 Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 Currently, Version <= @react-native-oh-tpl/react-native-sound@0.11.2-0.0.13@deprecated does not support AutoLink. Therefore, you need to manually configure the linking.

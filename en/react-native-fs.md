@@ -4,12 +4,14 @@
   <h1 align="center"> <code>react-native-fs</code> </h1>
 </p>
 
-This project is based on [react-native-fs@2.20.0](https://github.com/itinance/react-native-fs/tree/v2.20.0)。
+> [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-fs)
+
+This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-fs`, After introducing the new version of the third-party library, The version correspondence details are as follows:
 
 | Version                     | Package Name                         | Repository                                                                       | Release                                                                                            |
 | --------------------------- | ------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | <= 2.20.0-0.1.14@deprecated | @react-native-oh-tpl/react-native-fs | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-fs) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-fs/releases) |
-| >= 2.20.1                   | @react-native-ohos/react-native-fs   | [Gitee](https://gitcode.com/openharmony-sig/rntpc_react-native-fs)                 | [Gitee Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fs/releases)                 |
+| >= 2.20.1                   | @react-native-ohos/react-native-fs   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-fs)                 | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fs/releases)                 |
 
 ## 1. Installation and Usage
 
@@ -117,7 +119,7 @@ export default App;
 ```
 
 ## 2. Manual Link
-Version >= @react-native-ohos/react-native-fs@2.20.2 now supports Autolink without requiring manual configuration.
+Version >= @react-native-ohos/react-native-fs@2.20.2 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
 Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 Currently, Version < @react-native-ohos/react-native-fs@2.20.2，Version <= @react-native-oh-tpl/react-native-fs@2.20.0-0.1.14@deprecated does not support AutoLink. Therefore, you need to manually configure the linking.
@@ -260,7 +262,7 @@ Then build and run the code.
 
 ### 3.1 Compatibility
 
-Check the release version information in the release address of the third-party library:[@react-native-ohos/react-native-fs Releases](https://gitee.com/openharmony-sig/rntpc_react-native-fs/releases)
+Check the release version information in the release address of the third-party library:[@react-native-ohos/react-native-fs Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fs/releases)
 
 ## 4. Static Methods
 

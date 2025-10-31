@@ -14,9 +14,16 @@
 
 > [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-harmony-gesture-handler)
 
+This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-gesture-handler`, After introducing the new version of the third-party library, The version correspondence details are as follows:
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <= 2.14.17@deprecated | @react-native-oh-tpl/react-native-gesture-handler | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-gesture-handler) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-gesture-handler/releases) |
+| >= 2.14.18                        | @react-native-ohos/react-native-gesture-handler       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-gesture-handler) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-gesture-handler/releases) |
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-gesture-handler Releases](https://github.com/react-native-oh-library/react-native-harmony-gesture-handler/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Find the matching version information in the release address of a third-party library: [@react-native-ohos/react-native-gesture-handler Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-gesture-handler/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -26,13 +33,13 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-gesture-handler
+npm install @react-native-ohos/react-native-gesture-handler
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-gesture-handler
+yarn add @react-native-ohos/react-native-gesture-handler
 ```
 
 <!-- tabs:end -->
@@ -103,11 +110,16 @@ export default function App() {
 
 ## Use Codegen
 
+Version >= @react-native-ohos/react-native-gesture-handler@2.14.18, compatible with codegen-lib for generating bridge code.
+
 this repository  release package that end with rc.x has been adapted to `Codegen` , generate the bridge code of the third-party library by using the `Codegen`. For details, see[ Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-gesture-handler@2.14.18 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+Currently, Version <= @react-native-oh-tpl/react-native-gesture-handler@2.14.17@deprecated does not support AutoLink. Therefore, you need to manually configure the linking.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -141,7 +153,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
-    "@react-native-oh-tpl/react-native-gesture-handler": "file:../../node_modules/@react-native-oh-tpl/react-native-gesture-handler/harmony/gesture_handler.har"
+    "@react-native-ohos/react-native-gesture-handler": "file:../../node_modules/@react-native-ohos/react-native-gesture-handler/harmony/gesture_handler.har"
   }
 ```
 
@@ -180,7 +192,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-gesture-handler/src/main/cpp" ./gesture-handler)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-gesture-handler/src/main/cpp" ./gesture-handler)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -220,7 +232,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 Open the`entry/src/main/ets/RNPackagesFactory.ts ` file and add the following code:
 
 ```diff
-+ import GestureHandlerPackage from '@react-native-oh-tpl/react-native-gesture-handler';
++ import GestureHandlerPackage from '@react-native-ohos/react-native-gesture-handler';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -249,7 +261,7 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-gesture-handler Releases](https://github.com/react-native-oh-library/react-native-harmony-gesture-handler/releases)
+Check the release version information in the release address of the third-party library: [@react-native-ohos/react-native-gesture-handler Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-gesture-handler/releases)
 
 > [!TIP] [Official Documentation](https://docs.swmansion.com/react-native-gesture-handler/docs/)
 
