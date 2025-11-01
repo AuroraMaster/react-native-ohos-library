@@ -61,7 +61,7 @@ export default function WebViewDemo() {
 
 ## Link
 
-Version > @react-native-ohos/react-native-webview@13.10.4 now supports Autolink without requiring manual configuration.
+Version > @react-native-ohos/react-native-webview@13.10.4 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
 Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 The 0.72 branch supports full Autolinking functionality starting from the RNOH 0.72.94 version (corresponding to the @react-native-oh/react-native-harmony-cli version 0.0.40).
 

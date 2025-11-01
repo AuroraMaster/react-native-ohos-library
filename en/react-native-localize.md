@@ -127,7 +127,7 @@ this repository has been adapted to `Codegen`, generate the bridge code of the t
 
 ## Link
 
-Version > @react-native-ohos/react-native-localize@3.1.0 now supports Autolink without requiring manual configuration.
+Version > @react-native-ohos/react-native-localize@3.1.0 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
 Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 Currently, Version <= @react-native-oh-tpl/react-native-localize@3.1.0-0.0.1@deprecated does not support AutoLink. Therefore, you need to manually configure the linking.

@@ -14,9 +14,16 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-harmony-gesture-handler)
 
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-gesture-handler`，具体版本所属关系如下：
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <= 2.14.17@deprecated | @react-native-oh-tpl/react-native-gesture-handler | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-gesture-handler) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-gesture-handler/releases) |
+| >= 2.14.18                        | @react-native-ohos/react-native-gesture-handler       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-gesture-handler) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-gesture-handler/releases) |
+
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-gesture-handler Releases](https://github.com/react-native-oh-library/react-native-harmony-gesture-handler/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-ohos/react-native-gesture-handler Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-gesture-handler/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +32,13 @@
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-gesture-handler
+npm install @react-native-ohos/react-native-gesture-handler
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-gesture-handler
+yarn add @react-native-ohos/react-native-gesture-handler
 ```
 
 <!-- tabs:end -->
@@ -102,11 +109,16 @@ export default function App() {
 
 ## 使用Codegen
 
+Version > @react-native-ohos/react-native-gesture-handler@2.14.18，已适配codegen-lib生成桥接代码。
+
 本库未带rc.x的版本号是已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-gesture-handler@2.14.18，已支持 Autolink，无需手动配置，目前只支持72框架。
+Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+Version <= @react-native-oh-tpl/react-native-gesture-handler@2.14.17@deprecated 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -143,7 +155,7 @@ export default function App() {
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
-    "@react-native-oh-tpl/react-native-gesture-handler": "file:../../node_modules/@react-native-oh-tpl/react-native-gesture-handler/harmony/gesture_handler.har"
+    "@react-native-ohos/react-native-gesture-handler": "file:../../node_modules/@react-native-ohos/react-native-gesture-handler/harmony/gesture_handler.har"
   }
 ```
 
@@ -182,7 +194,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-gesture-handler/src/main/cpp" ./gesture-handler)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-gesture-handler/src/main/cpp" ./gesture-handler)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -222,7 +234,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
-+ import GestureHandlerPackage from '@react-native-oh-tpl/react-native-gesture-handler';
++ import GestureHandlerPackage from '@react-native-ohos/react-native-gesture-handler';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -251,7 +263,7 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-gesture-handler Releases](https://github.com/react-native-oh-library/react-native-harmony-gesture-handler/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/react-native-gesture-handler Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-gesture-handler/releases)
 
 > [!TIP] [官方文档](https://docs.swmansion.com/react-native-gesture-handler/docs/)
 

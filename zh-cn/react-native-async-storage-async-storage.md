@@ -24,7 +24,7 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-ohos/async-storage Releases](https://gitcode.com/openharmony-sig/rntpc_async-storage/release) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-ohos/async-storage Releases](https://gitcode.com/openharmony-sig/rntpc_async-storage/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -116,7 +116,7 @@ export default function App() {
 
 ## Link
 
-Version >= @react-native-ohos/async-storage@1.21.1，已支持 Autolink，无需手动配置。
+Version >= @react-native-ohos/async-storage@1.21.1，已支持 Autolink，无需手动配置，目前只支持72框架。
 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 Version <= @react-native-oh-tpl/async-storage@1.21.0-0.2.2@deprecated 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
@@ -259,7 +259,7 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/async-storage Releases](https://gitcode.com/openharmony-sig/rntpc_async-storage/release)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/async-storage Releases](https://gitcode.com/openharmony-sig/rntpc_async-storage/releases)
 
 ## API
 

@@ -60,7 +60,7 @@ export default function WebViewDemo() {
 
 ## Link
 
-Version > @react-native-ohos/react-native-webview@13.10.4，已支持 Autolink，无需手动配置。
+Version > @react-native-ohos/react-native-webview@13.10.4，已支持 Autolink，无需手动配置，目前只支持72框架。
 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 0.72分支从RNOH 0.72.94版本（对应 @react-native-oh/react-native-harmony-cli 版本是0.0.40）开始可使用完整的 Autolinking 功能。
 

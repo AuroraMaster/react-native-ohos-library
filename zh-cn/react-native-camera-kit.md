@@ -394,7 +394,7 @@ ohpm install
 | onOrientationChange  | Callback when physical device orientation changes. Returned event contains orientation. Ex: onOrientationChange={(event) => console.log(event.nativeEvent.orientation)}. Use import { Orientation } from 'react-native-camera-kit'; if (event.nativeEvent.orientation === Orientation.PORTRAIT) { ... } to understand the new value     | Function | no       | iOS | no             |
 | onError  | Android only. Callback when camera fails to initialize. Ex: onError={(e) => console.log(e.nativeEvent.errorMessage)}.     | Function | no       | Android | yes               |
 | resetFocusTimeout  | Dismiss tap to focus after this many milliseconds. Default 0 (disabled). Example: 5000 is 5 seconds.     | Number | no       | All | yes               |
-| scanThrottleDelay  | Duration between scan detection in milliseconds. Default 2000 (2s)     | Number | no       | All | yes              |
+| scanThrottleDelay  | Duration between scan detection in milliseconds. Default 2000 (2s) if you need to dynamically set this value, you need to add the key parameter to force refresh this component     | Number | no       | All | yes              |
 | scanBarcode  | Enable barcode scanner. Default: `false`     | boolean | no       | All | yes               |
 | showFrame  | Show frame in barcode scanner. Default: `false`     | boolean | no       | All | yes               |
 | laserColor  | Color of barcode scanner laser visualization. Default: `red`     | string | no       | All | yes               |

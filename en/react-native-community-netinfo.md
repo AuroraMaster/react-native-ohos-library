@@ -82,7 +82,7 @@ export default App;
 
 ## Link
 
-Version >= @react-native-ohos/netinfo@11.1.1 now supports Autolink without requiring manual configuration.
+Version >= @react-native-ohos/netinfo@11.1.1 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
 Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 Currently, Version <= @react-native-oh-tpl/netinfo@11.1.0-0.0.8@deprecated does not support AutoLink. Therefore, you need to manually configure the linking.

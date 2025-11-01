@@ -4,14 +4,14 @@
   <h1 align="center"> <code>react-native-linear-gradient</code> </h1>
 </p>
 
-本项目基于 [react-native-linear-gradient@3.0.0-alpha.1](https://github.com/react-native-linear-gradient/react-native-linear-gradient) 开发。
+> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-linear-gradient)
 
-该第三方库的仓库已迁移至 Gitee，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-linear-gradient`，具体版本所属关系如下：
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-linear-gradient`，具体版本所属关系如下：
 
 | Version                   | Package Name                                      | Repository         | Release                    |
 | ------------------------- | ------------------------------------------------- | ------------------ | -------------------------- |
 | <= 3.0.0-0.5.0@deprecated | @react-native-oh-tpl/react-native-linear-gradient | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-linear-gradient) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-linear-gradient/releases) |
-| > 3.0.0                   | @react-native-ohos/react-native-linear-gradient   | [Gitee](https://gitee.com/openharmony-sig/rntpc_react-native-linear-gradient) | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) |
+| > 3.0.0                   | @react-native-ohos/react-native-linear-gradient   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) |
 
 ## 1. 安装与使用
 
@@ -90,7 +90,7 @@ var styles = StyleSheet.create({
 
 ## 2. Manual Link
 
-Version >= @react-native-ohos/react-native-linear-gradient@3.0.2，已支持 Autolink，无需手动配置。
+Version >= @react-native-ohos/react-native-linear-gradient@3.0.2，已支持 Autolink，无需手动配置，目前只支持72框架。
 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 Version < @react-native-ohos/react-native-linear-gradient@3.0.2，Version <= @react-native-oh-tpl/react-native-linear-gradient@3.0.0-0.5.0@deprecated 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
@@ -197,7 +197,7 @@ ohpm install
 
 ### 3.1 兼容性
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/react-native-linear-gradient Releases](https://gitee.com/openharmony-sig/rntpc_react-native-linear-gradient/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/react-native-linear-gradient Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases)
 
 ## 4. 属性
 
@@ -221,4 +221,4 @@ ohpm install
 
 ## 6. 开源协议
 
-本项目基于 [The MIT License (MIT)](https://gitee.com/openharmony-sig/rntpc_react-native-linear-gradient/blob/master/LICENSE)，请自由地享受和参与开源。
+本项目基于 [The MIT License (MIT)](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/blob/master/LICENSE)，请自由地享受和参与开源。
