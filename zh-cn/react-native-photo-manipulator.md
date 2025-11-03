@@ -232,7 +232,7 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-> [!TIP] 支持图片格式: jpg。
+> [!TIP] 支持输入图片格式: jpg、jpeg、png。 支持输出图片格式:jpeg、png。
 
 | Name        | Description                                       | Type   | Required | Platform | HarmonyOS Support |
 | ----------- | ------------------------------------------------- | ------ | -------- | -------- | ----------------- |
