@@ -42,8 +42,21 @@ import DraggableFlatList, {
 } from "react-native-draggable-flatlist";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { runOnJS } from "react-native-reanimated";
-import { mapIndexToData, Item } from "../utils";
 
+export function getColor(i: number, numItems: number) {
+    const multiplier = 255 / (numItems - 1);
+    const colorVal = i * multiplier;
+    return `rgb(${colorVal}, ${Math.abs(128 - colorVal)}, ${255 - colorVal})`;
+}
+const mapIndexToData = (d: any, index: number, arr: any[]) => {
+    const backgroundColor = getColor(index, arr.length);
+    return {
+        text: `${index}`,
+        key: `key-${backgroundColor}`,
+        backgroundColor,
+    };
+}
+export type Item = ReturnType<typeof mapIndexToData>;
 const NUM_ITEMS = 10;
 const initialData: Item[] = [...Array(NUM_ITEMS)].map(mapIndexToData);
 
@@ -173,7 +186,7 @@ const styles = StyleSheet.create({
 | onScrollOffsetChange | Called with scroll offset. Stand-in for onScroll. | function | no     | all       | yes               |
 | onPlaceholderIndexChange | Called when the index of the placeholder changes. | function | no     | all       | yes               |
 | dragItemOverflow | If true, dragged item follows finger beyond list boundary. | boolean | no     | all       | yes               |
-| dragHitSlop | Enables control over what part of the connected view area can be used to begin recognizing the gesture. Numbers need to be non-positive (only possible to reduce responsive area). | Object | no     | no        | no                |
+| dragHitSlop | Enables control over what part of the connected view area can be used to begin recognizing the gesture. Numbers need to be non-positive (only possible to reduce responsive area). | Object | no     | no        | yes                |
 | debug | Enables debug logging and animation debugger. | boolean | no     | all       | yes               |
 | containerStyle | Style of the main component. | Object | no     | all       | yes               |
 | simultaneousHandlers | References to other gesture handlers, mainly useful when using this component within a ScrollView. | Object | no     | no        | no                |
@@ -187,9 +200,8 @@ const styles = StyleSheet.create({
 
 - [X] itemEnteringAnimation、itemExitingAnimation、itemLayoutAnimation、enableLayoutAnimationExperimental四个属性依赖react-native-remanited动画库，因动画库暂未实现该功能，所以相关属性目前无效果。 问题：[issue#2](https://github.com/react-native-oh-library/react-native-draggable-flatlist/issues/2)。
 
-## 6. 其他
-- [X] simultaneousHandlers、dragHitSlop源库没有效果。 问题：[issue#1](https://github.com/react-native-oh-library/react-native-draggable-flatlist/issues/1)。
-  
-## 7. 开源协议
+- [X] simultaneousHandlers属性依赖react-native-gesture-handler手势库，因手势库暂未实现该功能，所以该属性目前无效果。 问题：[issue#1](https://github.com/react-native-oh-library/react-native-draggable-flatlist/issues/1)。
+
+## 6. 开源协议
 
 本项目基于 [The MIT License (MIT)](https://github.com/computerjazz/react-native-draggable-flatlist/blob/main/LICENSE.txt)，请自由地享受和参与开源。
