@@ -309,7 +309,20 @@ ohpm install
 +      ],
 +      "when":"inuse"
 +    }
-+  }
++  },
++  {
++    "name" : "ohos.permission.ACCELEROMETER",
++  },
++  {
++    "name" : "ohos.permission.GYROSCOPE",
++    "reason": "$string:sensor_reason",
++    "usedScene": {
++       "abilities": [
++           "EntryAbility"
++        ],
++        "when":"inuse"
++    }
++ }
 ]
 ```
 
@@ -333,6 +346,10 @@ ohpm install
 +      "name": "microphone_reason",
 +      "value": "使用麦克风"
 +    },
++    {
++      "name": "sensor_reason",
++      "value": "使用传感器"
++    }
   ]
 }
 ```
@@ -375,6 +392,9 @@ ohpm install
 | onStopped                          | Called when the camera stopped the session (`isActive={false}`) | function | no       | All               | yes                |
 | onShutter                          | Called just before a photo or snapshot is captured.          | function | no       | All               | yes                |
 | codeScanner                        | A CodeScanner that can detect QR-Codes or Barcodes using platform-native  APIs | object   | no       | All               | yes                |
+| videoAspectRatio                        | Set the aspect ratio of recorded videos to adapt to various device scenarios(16/9、1:1) | number   | no       | no               | yes                |
+| photoAspectRatio                        | Set aspect ratio for taking photos to adapt to various device scenarios(4/3、1:1) | number   | no       | no               | yes                |
+| isMirrored                        | Set camera mirroring | boolean   | no       | Android/iOS       | yes                |
 
 ## 静态方法
 
