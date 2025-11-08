@@ -307,7 +307,20 @@ Open `entry/src/main/module.json5` and add the following code:
 +      ],
 +      "when":"inuse"
 +    }
-+  }
++  },
++  {
++     "name" : "ohos.permission.ACCELEROMETER",
++  },
++  {
++     "name" : "ohos.permission.GYROSCOPE",
++     "reason": "$string:sensor_reason",
++     "usedScene": {
++     "abilities": [
++         "EntryAbility"
++       ],
++       "when":"inuse"
++     }
++ }
 ]
 ```
 
@@ -330,6 +343,10 @@ Open `entry/src/main/resources/base/element/string.json` and add the following c
 +    {
 +      "name": "microphone_reason",
 +      "value": "Use microphone"
++    },
++    {
++      "name": "sensor_reason",
++      "value": "Use sensor"
 +    },
   ]
 }
@@ -373,6 +390,9 @@ Open `entry/src/main/resources/base/element/string.json` and add the following c
 | onStopped                          | Called when the camera stopped the session (`isActive={false}`) | function | no       | All               | yes                |
 | onShutter                          | Called just before a photo or snapshot is captured.          | function | no       | All               | yes                |
 | codeScanner                        | A CodeScanner that can detect QR-Codes or Barcodes using platform-native  APIs | object   | no       | All               | yes                |
+| videoAspectRatio                        | Set the aspect ratio of recorded videos to adapt to various device scenarios(16/9、1:1) | number   | no       | no               | yes                |
+| photoAspectRatio                        | Set aspect ratio for taking photos to adapt to various device scenarios(4/3、1:1) | number   | no       | no               | yes                |
+| isMirrored                        | Set camera mirroring | boolean   | no       | Android/iOS       | yes                |
 
 ## Static Methods
 
