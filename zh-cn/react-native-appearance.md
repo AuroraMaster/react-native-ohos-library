@@ -14,7 +14,17 @@
 
 > [!Tip] [Github 地址](https://github.com/react-native-oh-library/react-native-appearance)
 
+本项目基于 [react-native-appearance@0.3.4](https://github.com/expo/react-native-appearance) 开发。
+
+请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-appearance Releases](https://github.com/react-native-oh-library/react-native-appearance/releases)。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+| 三方库版本                 | 发布信息                                      |  支持RN版本                 |
+| ------------------------- | ------------------------------------------------- |  -------------------------- |
+| 0.3.5                 | [@react-native-oh-tpl/react-native-appearance Releases](https://github.com/react-native-oh-library/react-native-appearance/releases)  | 0.72/0.77 |
+
 ## 安装与使用
+
+请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-appearance Releases](https://github.com/react-native-oh-library/react-native-appearance/releases)。
 
 进入到工程目录并输入以下命令：
 
