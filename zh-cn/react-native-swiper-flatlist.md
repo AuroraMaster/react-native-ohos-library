@@ -16,20 +16,21 @@
 
 ## 安装与使用
 
-进入项目目录并执行以下指令：
+请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-swiper-flatlist Releases](https://github.com/react-native-oh-library/swiper-flatlist/releases/) 。
+进入到工程目录并输入以下命令：
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
-npm install react-native-swiper-flatlist@3.2.5
+npm install --save @react-native-oh-tpl/react-native-swiper-flatlist
 ```
 
 #### **yarn**
 
 ```bash
-yarn add react-native-swiper-flatlist@3.2.5
+yarn add @react-native-oh-tpl/react-native-swiper-flatlist
 ```
 
 <!-- tabs:end -->
@@ -150,6 +151,7 @@ react-native-harmony：0.77.18；SDK：HarmonyOS 5.1.0.125；IDE：DevEco Studio
 
 ### Pagination 属性
 > [!提示] Pagination的属性除'paginationIndex'与'size'外，SwiperFlatListWithGestureHandler与SwiperFlatList组件也可以使用。
+
 | 名称 | 描述 | 类型 | 必填 | 平台 | HarmonyOS 支持 |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | `paginationDefaultColor` | 分页默认颜色 | 字符串 | 否 | 全平台 | 是 |
