@@ -14,9 +14,19 @@
 
 > [!Tip] [Github Address](https://github.com/react-native-oh-library/react-native-appearance)
 
+This project is based on [react-native-appearance@0.3.4](https://github.com/expo/react-native-appearance) 。
+
+Please go to the Releases release address of the third-party library to view the supporting version information: [@react-native-oh-tpl/react-native-appearance Releases](https://github.com/react-native-oh-library/react-native-appearance/releases). For older versions that are not published to npm, install the tgz package by referring to the [Installation Guide](/en/tgz-usage-en.md).
+
+| Version                   | Releases info                                      |  Support RN version                    |
+| ------------------------- | ------------------------------------------------- |  -------------------------- |
+| 0.3.5                 | [@react-native-oh-tpl/react-native-appearance Releases](https://github.com/react-native-oh-library/react-native-appearance/releases)  | 0.72/0.77 |
+
 ## Installation and Usage
 
-Navigate to your project directory and enter the following command:
+Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-appearance Releases](https://github.com/react-native-oh-library/react-native-appearance/releases).
+
+Go to the project directory and execute the following instruction:
 
 <!-- tabs:start -->
 
