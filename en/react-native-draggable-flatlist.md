@@ -168,6 +168,37 @@ Check the release version information in the release address of the third-party 
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
+DraggableFlatList Supported Properties
+> **DraggableFlatList**：DraggableFlatList Supported Properties.
+
+| Name        | Description                                       | Type   | Required | Platform  | HarmonyOS Support |
+| ----------- | ------------------------------------------------- | ------ | -------- |-----------|-------------------|
+| data | Items to be rendered. | Object | yes      | all       | yes               |
+| ref | FlatList ref to be forwarded to the underlying FlatList. | Object | no     | all       | yes               |
+| renderItem | Call drag when the row should become active (i.e. in an onLongPress or onPressIn). | function | yes     | all       | yes               |
+| renderPlaceholder | Component to be rendered underneath the hovering component. | function | no     | all       | yes               |
+| keyExtractor | nique key for each item (required). | function | yes     | all       | yes               |
+| onDragBegin | Called when row becomes active. | function | no     | all       | yes               |
+| onRelease | Called when active row touch ends. | function | no     | all       | yes               |
+| onDragEnd | Called after animation has completed. Returns updated ordering of data. | function | no     | all       | yes               |
+| autoscrollThreshold | Distance from edge of container where list begins to autoscroll when dragging. | number | no     | all       | yes               |
+| autoscrollSpeed | Determines how fast the list autoscrolls. | number | no     | all       | yes               |
+| animationConfig | Configure list animations. | Object | no     | all       | yes               |
+| activationDistance | Distance a finger must travel before the gesture handler activates. Useful when using a draggable list within a TabNavigator so that the list does not capture navigator gestures. | number | no     | all       | yes               |
+| onScrollOffsetChange | Called with scroll offset. Stand-in for onScroll. | function | no     | all       | yes               |
+| onPlaceholderIndexChange | Called when the index of the placeholder changes. | function | no     | all       | yes               |
+| dragItemOverflow | If true, dragged item follows finger beyond list boundary. | boolean | no     | all       | yes               |
+| dragHitSlop | Enables control over what part of the connected view area can be used to begin recognizing the gesture. Numbers need to be non-positive (only possible to reduce responsive area). | Object | no     | no        | yes                |
+| debug | Enables debug logging and animation debugger. | boolean | no     | all       | yes               |
+| containerStyle | Style of the main component. | Object | no     | all       | yes               |
+| simultaneousHandlers | References to other gesture handlers, mainly useful when using this component within a ScrollView. | Object | no     | no        | no                |
+| itemEnteringAnimation | Animation when item is added to list. | function | no     | partially | no                |
+| itemExitingAnimation | Animation when item is removed from list. | function | no     | partially | no                |
+| itemLayoutAnimation | Animation when list items change position (enableLayoutAnimationExperimental prop must be true). | function | no     | partially | no                |
+| enableLayoutAnimationExperimental | Flag to turn on experimental support for itemLayoutAnimation. | boolean | no     | partially | no                |
+
+> **NestableDraggableFlatList**：NestableDraggableFlatList extends DraggableFlatList, so all available props may be passed into both of them.
+
 | Name        | Description                                       | Type   | Required | Platform  | HarmonyOS Support |
 | ----------- | ------------------------------------------------- | ------ | -------- |-----------|-------------------|
 | data | Items to be rendered. | Object | yes      | all       | yes               |
