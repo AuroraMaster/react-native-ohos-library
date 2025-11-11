@@ -16,6 +16,7 @@
 
 ## Installation and Usage
 
+Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-swiper-flatlist Releases](https://github.com/react-native-oh-library/react-native-swiper-flatlist/releases/).
 Go to the project directory and execute the following instruction:
 
 <!-- tabs:start -->
@@ -23,13 +24,13 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm install react-native-swiper-flatlist@3.2.5
+npm install --save @react-native-oh-tpl/react-native-swiper-flatlist
 ```
 
 #### **yarn**
 
 ```bash
-yarn add react-native-swiper-flatlist@3.2.5
+yarn add @react-native-oh-tpl/react-native-swiper-flatlist
 ```
 
 <!-- tabs:end -->
