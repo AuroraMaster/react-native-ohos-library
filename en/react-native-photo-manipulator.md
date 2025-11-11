@@ -237,13 +237,13 @@ Check the release version information in the release address of the third-party 
 
 | Name        | Description                                       | Type   | Required | Platform | HarmonyOS Support |
 | ----------- | ------------------------------------------------- | ------ | -------- | -------- | ----------------- |
-| batch | Crop, resize and do operations (overlay and printText) on image. | function | no      |  | yes          |
-| crop | Crop image with cropRegion and resize to targetSize if specified. | function | no     |  | yes        |
-| flipImage | Flip Image horizontally or vertically. | function | no     |  | yes        |
-| rotateImage | rotate Image. | function | no     |  | yes        |
-| overlayImage | Overlay image on top of background image. | function | no     |  | yes        |
-| printText | Print texts into image. | function | no     |  | yes        |
-| optimize | Save result image with specified quality between `0 - 100` in jpeg format. | function | no     |  | yes        |
+| batch | Crop, resize and do operations (overlay and printText) on image. | function | no      | All | yes          |
+| crop | Crop image with cropRegion and resize to targetSize if specified. | function | no     | All | yes        |
+| flipImage | Flip Image horizontally or vertically. | function | no     | All | yes        |
+| rotateImage | rotate Image. | function | no     | All | yes        |
+| overlayImage | Overlay image on top of background image. | function | no     | All | yes        |
+| printText | Print texts into image. | function | no     | All | yes        |
+| optimize | Save result image with specified quality between `0 - 100` in jpeg format. | function | no     | All | yes        |
  
 
 ## 5. Known Issues
