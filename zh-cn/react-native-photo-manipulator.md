@@ -236,13 +236,13 @@ ohpm install
 
 | Name        | Description                                       | Type   | Required | Platform | HarmonyOS Support |
 | ----------- | ------------------------------------------------- | ------ | -------- | -------- | ----------------- |
-| batch | Crop, resize and do operations (overlay and printText) on image. | function | no      |  | yes          |
-| crop | Crop image with cropRegion and resize to targetSize if specified. | function | no     |  | yes        |
-| flipImage | Flip Image horizontally or vertically. | function | no     |  | yes        |
-| rotateImage | rotate Image. | function | no     |  | yes        |
-| overlayImage | Overlay image on top of background image. | function | no     |  | yes        |
-| printText | Print texts into image. | function | no     |  | yes        |
-| optimize | Save result image with specified quality between `0 - 100` in jpeg format. | function | no     |  | yes        |
+| batch | 对图像进行裁剪、调整大小以及操作（覆盖和打印文本）。 | function | no      | All | yes          |
+| crop | 使用 cropRegion 裁剪图像，并在指定时调整到 targetSize。 | function | no     | All | yes        |
+| flipImage | 水平或垂直翻转图像。 | function | no     | All | yes        |
+| rotateImage | 旋转图像。 | function | no     | All | yes        |
+| overlayImage | 将图像叠加在背景图像上。 | function | no     | All | yes        |
+| printText | 将文本打印到图像中。 | function | no     | All | yes        |
+| optimize | 以指定的质量（0-100）将结果图像保存为 JPEG 格式。 | function | no     | All | yes        |
       
 ## 5. 遗留问题
 - [X] printText接口因drawing无法设置阿拉伯字符串的读取方向，导致绘制的阿拉伯字符串错误。 问题：[issue#6](https://github.com/react-native-oh-library/react-native-photo-manipulator/issues/1)。
