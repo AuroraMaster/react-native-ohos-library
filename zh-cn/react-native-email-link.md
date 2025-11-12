@@ -16,7 +16,16 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-email-link Releases](https://github.com/react-native-oh-library/react-native-email-link/releases)。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.15.0     | [@react-native-oh-tpl/react-native-email-link Releases](https://github.com/react-native-oh-library/react-native-email-link/releases) | 0.72       |
+| 1.16.1     | [@react-native-ohos/react-native-email-link Releases]()      | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +34,21 @@
 #### **npm**
 
 ```bash
+# V1.15.0
 npm install @react-native-oh-tpl/react-native-email-link
+
+# V1.16.1
+npm install @react-native-ohos/react-native-email-link
 ```
 
 #### **yarn**
 
 ```bash
+# V1.15.0
 yarn add @react-native-oh-tpl/react-native-email-link
+
+# V1.16.1
+yarn add @react-native-ohos/react-native-email-link
 ```
 
 <!-- tabs:end -->
@@ -144,10 +161,66 @@ const styles = StyleSheet.create({
   },
 });
 ```
-
 ## 使用 Codegen
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/codegen.md)。
+
+**注意：** V1.16.1 不需要执行 Codegen。
+
+## 配置 CMakeLists和引入 RNOHGeneratedPackage
+
+> V1.16.1 需要配置 CMakeLists和引入 RNOHGeneratedPackage。
+
+本库将codegen生成的代码内置在库文件中。
+
+打开 entry/src/main/cpp/CMakeLists.txt，添加：
+```diff
+{
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(OH_MODULE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+
+set(RNOH_CPP_DIR "${OH_MODULE_DIR}/@rnoh/react-native-openharmony/src/main/cpp")
+set(RNOH_GENERATED_DIR "${CMAKE_CURRENT_SOURCE_DIR}/generated")
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-email-link/src/main/cpp" ./email_link)
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
++ target_link_libraries(rnoh_app PUBLIC rnoh_email_link)
+}
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "SamplePackage.h"
++ #include "EmailLinkGeneratedPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
++     std::make_shared<EmailLinkRNOHGeneratedPackage>(ctx)
+    };
+}
+```
 
 ## Link
 
@@ -179,10 +252,21 @@ const styles = StyleSheet.create({
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- V1.15.0
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-email-link": "file:../../node_modules/@react-native-oh-tpl/react-native-email-link/harmony/email_link.har"
+  }
+```
+
+- V1.16.1
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-email-link": "file:../../node_modules/@react-native-ohos/react-native-email-link/harmony/email_link.har"
   }
 ```
 
@@ -205,7 +289,11 @@ ohpm install
 
 ```diff
   ...
+// V1.15.0
 + import {RNEmailLinkPackage} from '@react-native-oh-tpl/react-native-email-link/ts';
+
+// V1.16.1
++ import {RNEmailLinkPackage} from '@react-native-ohos/react-native-email-link/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -234,7 +322,12 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-email-link Releases](https://github.com/react-native-oh-library/react-native-email-link/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.15.0     | [@react-native-oh-tpl/react-native-email-link Releases](https://github.com/react-native-oh-library/react-native-email-link/releases) | 0.72       |
+| 1.16.1     | [@react-native-ohos/react-native-email-link Releases]()      | 0.77       |
 
 ## API
 

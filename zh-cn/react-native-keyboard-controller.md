@@ -19,24 +19,36 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-keyboard-controller Releases](https://github.com/react-native-oh-library/react-native-keyboard-controller/releases)。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.12.7     | [@react-native-oh-tpl/react-native-keyboard-controller Releases](https://github.com/react-native-oh-library/react-native-keyboard-controller/releases) | 0.72       |
+| 1.16.6      | [@react-native-ohos/react-native-keyboard-controller Releases]()     | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
-
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# 1.12.7
 npm install @react-native-oh-tpl/react-native-keyboard-controller
+
+# 1.16.6
+npm install @react-native-ohos/react-native-keyboard-controller
 ```
 
 #### **yarn**
 
 ```bash
+# 1.12.7
 yarn add @react-native-oh-tpl/react-native-keyboard-controller
+
+# 1.16.6
+yarn add @react-native-ohos/react-native-keyboard-controller
 ```
 <!-- tabs:end -->
 
@@ -143,12 +155,23 @@ export default App;
 > [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
 
 打开 `entry/oh-package.json5`，添加以下依赖
-
++ V1.12.7
 ```json
 
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-keyboard-controller": "file:../../node_modules/@react-native-oh-tpl/react-native-keyboard-controller/harmony/keyboard_controller.har"
+}
+
+```
+
++ V1.16.6
+
+```json
+
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-keyboard-controller": "file:../../node_modules/@react-native-ohos/react-native-keyboard-controller/harmony/keyboard_controller.har"
 }
 
 ```
@@ -188,7 +211,13 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+# V1.12.7
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-keyboard-controller/src/main/cpp" ./keyboard-controller)
+
+# V1.16.6
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-keyboard-controller/src/main/cpp" ./keyboard-controller)
+
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -230,7 +259,11 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
+// V1.12.7
 + import {RNKeyboardControllerPackage,RNStatusBarManagerCompatPackage} from  "@react-native-oh-tpl/react-native-keyboard-controller/ts";
+
+// V1.16.6
++ import {RNKeyboardControllerPackage,RNStatusBarManagerCompatPackage} from  "@react-native-ohos/react-native-keyboard-controller/ts";
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -261,7 +294,12 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-keyboard-controller Releases](https://github.com/react-native-oh-library/react-native-keyboard-controller/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.12.7     | [@react-native-oh-tpl/react-native-keyboard-controller Releases](https://github.com/react-native-oh-library/react-native-keyboard-controller/releases) | 0.72       |
+| 1.16.6      | [@react-native-ohos/react-native-keyboard-controller Releases]()     | 0.77       |
+
 
 ## API
 
@@ -279,17 +317,18 @@ ohpm install
 |  useFocusedInputHandler  | 设置监听输入框回调事件的钩子函数(HarmonyOS暂支持文本变化的监听)   | function   | no | iOS,Android      |partially |
 |  useReanimatedFocusedInput  | 当前聚焦的输入控件文本变化事件回调的钩子函数  | function  | no | iOS,Android      |no |
 
-
 **KeyboardController**：键盘控制器
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 |  setInputMode(mode: number): void  | 设置键盘显示默认模式   | function   | no | Android      | no |
 |  setDefaultMode(): void  | 设置键盘显示默认模式   | function   | no | Android      | no |
-|   dismiss(): void | 设置键盘隐藏   | function   | no | iOS,Android      | yes |
+| dismiss | 设置键盘隐藏<br />> 1.12.7: dismiss(): void<br />1.16.6: dismiss(options?: DismissOptions): Promise<void> 新增参数options用于设置隐藏键盘时是否聚焦输入框，而harmonyOS缺少聚焦输入框的相关能力。 | function   | no | iOS,Android      | partially |
 | setFocusTo(direction: string): void | 设置聚焦的方式   | function   | no | iOS,Android      | no |
 | addListener: (eventName: string) => void  | 添加键盘的监听事件   |  function  | no | iOS,Android      | yes |
 |   removeListeners: (count: number) => void | 删除键盘的监听事件   |  function  | no | iOS,Android      | yes |
+| isVisible(): boolean<sup>1.16.6+</sup> | 返回键盘是否可见   |  function  | no | iOS,Android      | yes |
+| state(): KeyboardEventData<sup>1.16.6+</sup> | 返回键盘最后的状态，如果键盘还没有显示过返回null | function | no       | iOS,Android | yes               |
 
 **StatusBarManagerCompat**：状态栏控制器
 
@@ -333,6 +372,7 @@ ohpm install
 |  enabled  | 是否开启键盘监听事件    | boolean   | no | iOS,Android      | yes |
 |  statusBarTranslucent  | 状态栏是否透明    | boolean   | no | Android      | no |
 |  navigationBarTranslucent  | 导航栏是否透明    | boolean   | no | Android      | no |
+|  preserveEdgeToEdge<sup>1.16.6+</sup>  | 是否edge-to-edge模式    | boolean   | no | Android      | yes |
 |  onKeyboardMoveStart?: DirectEventHandler < KeyboardMoveEvent >  | 键盘开始移动的监听事件   | function   | no | iOS,Android       | no |
 |  onKeyboardMove?: DirectEventHandler< KeyboardMoveEvent >  | 键盘移动中的监听事件   | function   | no | iOS,Android      | no |
 |   onKeyboardMoveEnd?: DirectEventHandler< KeyboardMoveEvent > | 键盘移动结束的监听事件   | function   | no | iOS,Android      | yes |
@@ -343,7 +383,6 @@ ohpm install
 |  style  | `KeyboardControllerView`的CSS属性    | [ ViewStyle ](https://reactnative.dev/docs/view#props)   | no | iOS,Android      | yes |
 |  children  |  JSX element 子组件   | JSX.Element   | no | iOS,Android      | yes |
 
-
 **KeyboardGestureArea**：手势控制键盘组件
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
@@ -351,13 +390,14 @@ ohpm install
 |  showOnSwipeUp  | 键盘随手势向上滑动显示    | boolean   | no | Android      | no |
 |  enableSwipeToDismiss  | 键盘随手势向下滑动隐藏   | boolean   | no | Android      | no |
 |  interpolator  | 设置键盘随手势滑动的动画模式    | linear / ios/ linear | no | Android      | no |
-
+|  offset<sup>1.16.6+</sup>  | 到键盘的额外距离    | number | no | iOS、Android      | no |
+|  textInputNativeID<sup>1.16.6+</sup>  | TextInput对应的nativeID    | string | no | iOS      | no |
 
 **KeyboardAvoidingView**：键盘控制器的容器组件
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-|  behavior  | 键盘弹起时视图样式变化的模式(HarmonyOS暂支持position)   | "height" / "position" / "padding"   | no | iOS,Android      | partially |
+|  behavior  | 键盘弹起时视图样式变化的模式(HarmonyOS暂支持position)   | > 1.12.7:"height" / "position" / "padding"<br />1.16.6:"height" / "position" / "padding"/"translate-with-padding"<sup>1.16.6+</sup> | no | iOS,Android      | partially |
 |  contentContainerStyle  | 当`behavior`为position时，内容容器的样式   | [ ViewStyle ](https://reactnative.dev/docs/view#props)   | no | iOS,Android       | yes |
 |  enabled  | 控制这个`KeyboardAvodingView`实例是否应该生效,默认为true  | boolean   | no | iOS,Android       | yes |
 |  keyboardVerticalOffset  | 键盘与React Native视图之间的距离,默认为`0`   | number  | no | iOS,Android      | yes |
@@ -376,11 +416,13 @@ ohpm install
 |  onLayout  |  在安装和布局更改时的回调函数(event: LayoutChangeEvent) => void   | function/undefined   | no | iOS,Android      | yes |
 |  style  | `KeyboardAwareScrollView`的CSS属性    | [ ViewStyle ](https://reactnative.dev/docs/view#props)   | no | iOS,Android      | yes |
 |  children  |  JSX element 子组件   | JSX.Element  | no | iOS,Android      | yes |
+|  ScrollViewComponent<sup>1.16.6+</sup>  |  ScrollView的自定义组件   | React.ComponentType<ScrollViewProps>  | no | iOS,Android      | yes |
 
 **KeyboardStickyView**：滚动键盘控制器的容器组件
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
+|  enabled<sup>1.16.6+</sup>  | 是否激活组件   | boolean   | no | iOS,Android      | yes |
 |  offset  | 为给定的键盘状态指定视图的附加偏移   | {closed?: number;opened?: number;}   | no | iOS,Android      | yes |
 |  style  | `KeyboardStickyView`的CSS属性    | [ ViewStyle ](https://reactnative.dev/docs/view#props)   | no | iOS,Android      | yes |
 |  children  |  JSX element 子组件   | JSX.Element   | no | iOS,Android      | yes |
@@ -390,6 +432,8 @@ ohpm install
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
+|  enabled<sup>1.16.6+</sup>  | 是否激活组件   | boolean   | no | iOS,Android      | yes |
+|  offset<sup>1.16.6+</sup>  | 为给定的键盘状态指定视图的附加偏移   | {closed?: number;opened?: number;}   | no | iOS,Android      | yes |
 |  theme  | 工具栏组件使用的一组深色/浅色主题   | {light: Theme; dark: Theme;}   | no | iOS,Android      | yes |
 |  content  |显示在工具栏中间的元素  | JSX.Element   | no | iOS,Android      | yes |
 |  doneText  |  完成按钮的自定义文本   | React.ReactNode   | no | iOS,Android      | yes |
@@ -402,6 +446,11 @@ ohpm install
 |  onPrevCallback?: () => void | 用户按下“上一步”按钮时调用的回调以及默认操作。  | function   | no | iOS,Android      | no |
 | onDoneCallback?: () => void | 当用户按下“完成”按钮时调用的回调以及默认操作。  | function   | no | iOS,Android      | yes |
 
+**OverKeyboardView**<sup>1.16.6+</sup>：覆盖在键盘上的容器组件
+
+| Name | Description | Type | Required | Platform | HarmonyOS Support  |
+| ---- | ----------- | ---- | -------- | -------- | ------------------ |
+|  visible  | 是否显示组件   | boolean   | no | iOS,Android      | No |
 
 ## 遗留问题
 
@@ -410,6 +459,7 @@ ohpm install
 - [ ] 暂不支持hook方法useReanimatedFocusedInput，KeyboardController中setFocusTo，KeyboardControllerView中onFocusedInputLayoutChanged、onFocusedInputSelectionChanged，FocusedInputEvents中focusDidSet，KeyboardToolbar中onNextCallback、onPrevCallback关于输入框聚焦的监听方法回调：[issue#3 ](https://github.com/react-native-oh-library/react-native-keyboard-controller/issues/3)
 - [ ] 暂不支持KeyboardAwareScrollView组件属性bottomOffset、enabled、disableScrollOnKeyboardHide、extraKeyboardSpace的设置[#issue#16](https://github.com/react-native-oh-library/react-native-keyboard-controller/issues/16)
 - [ ] KeyboardAvoidingView属性behavior支持position， 不支持高度height、padding的样式[#issue#13](https://github.com/react-native-oh-library/react-native-harmony-reanimated/issues/13)
+- [ ] 暂不支持OverKeyboardView接口：[issue#27](https://github.com/react-native-oh-library/react-native-keyboard-controller/issues/27)
 ## 其他
 
 

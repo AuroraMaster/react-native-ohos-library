@@ -19,7 +19,14 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-ui-lib Releases](https://github.com/react-native-oh-library/react-native-ui-lib/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 7.29.1     | [@react-native-oh-tpl/react-native-ui-lib Releases](https://github.com/react-native-oh-library/react-native-ui-lib/releases) | 0.72       |
+| 7.43.1     | [@react-native-ohos/react-native-ui-lib Releases](https://github.com/react-native-oh-library/react-native-ui-lib/releases) | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 本库 HarmonyOS 侧实现依赖@react-native-oh-tpl/react-native-reanimated和 @react-native-oh-tpl/react-native-gesture-handler的原生端代码，如已在 HarmonyOS 工程中引入过这些库，则无需再次引入，可跳过本章节步骤，直接使用。
 
@@ -39,13 +46,21 @@
 #### **npm**
 
 ```bash
+# V7.29.1
 npm install @react-native-oh-tpl/react-native-ui-lib
+
+# V7.43.1
+npm install @react-native-ohos/react-native-ui-lib
 ```
 
 #### **yarn**
 
 ```bash
+# V7.29.1
 yarn add @react-native-oh-tpl/react-native-ui-lib
+
+# V7.43.1
+yarn add @react-native-ohos/react-native-ui-lib
 ```
 
 <!-- tabs:end -->
@@ -115,6 +130,8 @@ class MyScreen extends Component {
 
 ## 使用 Codegen
 
+> [!TIP] V7.43.1 不需要执行 Codegen。
+
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
@@ -147,10 +164,21 @@ class MyScreen extends Component {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- V7.29.1
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-ui-lib": "file:../../node_modules/@react-native-oh-tpl/react-native-ui-lib/harmony/ui_lib.har"
+  }
+```
+
+- V7.43.1
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-ui-lib": "file:../../node_modules/@react-native-ohos/react-native-ui-lib/harmony/ui_lib.har"
   }
 ```
 
@@ -190,7 +218,13 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+# V7.29.1
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-ui-lib/src/main/cpp" ./ui-lib)
+
+# V7.43.1
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-ui-lib/src/main/cpp" ./ui-lib)
+
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -233,7 +267,11 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
+// V7.29.1
 + import { HighlighterView } from "@react-native-oh-tpl/react-native-ui-lib";
+
+// V7.43.1
++ import { HighlighterView } from "@react-native-ohos/react-native-ui-lib";
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -268,7 +306,11 @@ const arkTsComponentNames: Array<string> = [
 
 ```diff
   ...
+// V7.29.1
 + import { UiLibPackage } from '@react-native-oh-tpl/react-native-ui-lib/ts';
+
+// V7.43.1
++ import { UiLibPackage } from '@react-native-ohos/react-native-ui-lib/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -297,9 +339,12 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-ui-lib Releases](https://github.com/react-native-oh-library/react-native-ui-lib/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
 
-
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 7.29.1     | [@react-native-oh-tpl/react-native-ui-lib Releases](https://github.com/react-native-oh-library/react-native-ui-lib/releases) | 0.72       |
+| 7.43.1     | [@react-native-ohos/react-native-ui-lib Releases]()          | 0.77       |
 
 ## 组件
 
@@ -579,24 +624,26 @@ ohpm install
 
 **DateTimePicker**：时间选择组件，该组件扩展了[TextField](https://wix.github.io/react-native-ui-lib/docs/components/form/TextField)属性，依赖[@react-native-community/datetimepicker](/zh-cn/react-native-community-datetimepicker)库。
 
-| Name                    | Description                                                  | Type                                              | Required | Platform    | HarmonyOS Support |
-| ----------------------- | ------------------------------------------------------------ | ------------------------------------------------- | -------- | ----------- | ----------------- |
-| dateTimeFormatter       | A callback function to format the time or date               | (value: Date, mode: DateTimePickerMode) => string | no       | iOS/Android | yes               |
-| dialogProps             | Props to pass the Dialog component                           | DialogProps                                       | no       | iOS/Android | yes               |
-| display                 | Defines the visual display of the picker. The default value is 'spinner' on iOS and 'default' on Android. The list of all possible values are default, spinner, calendar or clock on Android and default, spinner, compact or inline for iOS. Full list can be found here:[react-native-datetimepicker](https://github.com/react-native-datetimepicker/datetimepicker#display-optional) | string                                            | no       | iOS/Android | yes               |
-| editable                | Should this input be editable or disabled                    | boolean                                           | no       | iOS/Android | yes               |
-| headerStyle             | Style to apply to the iOS dialog header                      | ViewStyle                                         | no       | iOS/Android | yes               |
-| is24Hour                | Android only, Allows changing of the time picker to a 24 hour format | boolean                                           | no       | Android     | no                |
-| locale                  | iOS only, Allows changing of the locale of the component     | string                                            | no       | iOS         | yes               |
-| maximumDate             | The maximum date or time value to use                        | Date                                              | no       | iOS/Android | yes               |
-| minimumDate             | The minimum date or time value to use                        | Date                                              | no       | iOS/Android | yes               |
-| minuteInterval          | iOS only, The interval at which minutes can be selected. Possible values are: 1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30 | number                                            | no       | iOS         | yes               |
-| mode                    | The type of picker to display ('date' or 'time')             | DATE \|TIME                                       | no       | iOS/Android | yes               |
-| onChange                | Called when the date/time change                             | () => Date                                        | no       | iOS/Android | yes               |
-| renderInput             | Render custom input                                          | JSX.Element                                       | no       | iOS/Android | yes               |
-| themeVariant            | Override system theme variant (dark or light mode) used by the date picker | LIGHT \|DARK                                      | no       | iOS/Android | yes               |
-| timeZoneOffsetInMinutes | iOS only, Allows changing of the timeZone of the date picker. By default it uses the device's time zone | number                                            | no       | iOS         | yes               |
-| value                   | Defaults to device's date and time, The initial value to set the picker to | Date                                              | no       | iOS/Android | yes               |
+| Name                              | Description                                                  | Type                                              | Required | Platform    | HarmonyOS Support |
+| --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------- | -------- | ----------- | ----------------- |
+| dateTimeFormatter                 | A callback function to format the time or date               | (value: Date, mode: DateTimePickerMode) => string | no       | iOS/Android | yes               |
+| dialogProps                       | Props to pass the Dialog component                           | DialogProps                                       | no       | iOS/Android | yes               |
+| display                           | Defines the visual display of the picker. The default value is 'spinner' on iOS and 'default' on Android. The list of all possible values are default, spinner, calendar or clock on Android and default, spinner, compact or inline for iOS. Full list can be found here:[react-native-datetimepicker](https://github.com/react-native-datetimepicker/datetimepicker#display-optional) | string                                            | no       | iOS/Android | yes               |
+| editable                          | Should this input be editable or disabled                    | boolean                                           | no       | iOS/Android | yes               |
+| headerStyle                       | Style to apply to the iOS dialog header                      | ViewStyle                                         | no       | iOS/Android | yes               |
+| is24Hour                          | Android only, Allows changing of the time picker to a 24 hour format | boolean                                           | no       | Android     | no                |
+| locale                            | iOS only, Allows changing of the locale of the component     | string                                            | no       | iOS         | yes               |
+| maximumDate                       | The maximum date or time value to use                        | Date                                              | no       | iOS/Android | yes               |
+| minimumDate                       | The minimum date or time value to use                        | Date                                              | no       | iOS/Android | yes               |
+| minuteInterval                    | iOS only, The interval at which minutes can be selected. Possible values are: 1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30 | number                                            | no       | iOS         | yes               |
+| mode                              | The type of picker to display ('date' or 'time')             | DATE \|TIME                                       | no       | iOS/Android | yes               |
+| onChange                          | Called when the date/time change                             | () => Date                                        | no       | iOS/Android | yes               |
+| renderInput                       | Render custom input                                          | JSX.Element                                       | no       | iOS/Android | yes               |
+| themeVariant                      | Override system theme variant (dark or light mode) used by the date picker | LIGHT \|DARK                                      | no       | iOS/Android | yes               |
+| timeZoneOffsetInMinutes           | iOS only, Allows changing of the timeZone of the date picker. By default it uses the device's time zone | number                                            | no       | iOS         | yes               |
+| value                             | Defaults to device's date and time, The initial value to set the picker to | Date                                              | no       | iOS/Android | yes               |
+| backgroundColor<sup>7.43.1+</sup> | Background color of the  wheel picker                        | string                                            | no       | iOS/Android | yes               |
+| textColor<sup>7.43.1+</sup>       | Text color of the wheel  picker items                        | string                                            | no       | iOS/Android | no                |
 
 **MaskedInput**：掩码输入组件，该组件扩展了[TextInput](https://reactnative.dev/docs/textinput)属性。
 
@@ -622,32 +669,35 @@ ohpm install
 
 **Picker**：弹窗选择组件。
 
-| Name               | Description                                                  | Type                                                         | Required | Platform    | HarmonyOS Support |
-| ------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | ----------- | ----------------- |
-| customPickerProps  | Custom picker props (when using renderPicker, will apply on the button wrapper) | object                                                       | no       | iOS/Android | yes               |
-| enableModalBlur    | iOS only，Adds blur effect to picker modal                   | boolean                                                      | no       | iOS         | yes               |
-| fieldType          | Pass for different field type UI (form, filter or settings)  | PickerFieldTypes                                             | no       | iOS/Android | yes               |
-| getLabel           | A function that returns the label to show for the selected Picker value | (value: string \| number) => void                            | no       | iOS/Android | yes               |
-| items              | Data source for Picker                                       | {label: string, value: string \| number}[]                   | no       | iOS/Android | yes               |
-| listProps          | Pass props to the list component that wraps the picker options (allows to control FlatList behavior) | FlatListProps                                                | no       | iOS/Android | yes               |
-| migrate            | Temporary prop required for migration to Picker's new API    | boolean                                                      | no       | iOS/Android | yes               |
-| mode               | SINGLE mode or MULTI mode                                    | SINGLE \| MULTI                                              | no       | iOS/Android | yes               |
-| onChange           | Callback for when picker value change                        | (value: string \| number) => void                            | no       | iOS/Android | yes               |
-| onPress            | Add onPress callback for when pressing the picker            | () => void                                                   | no       | iOS/Android | yes               |
-| onSearchChange     | Callback for picker modal search input text change (only when passing showSearch) | (searchValue: string) => void                                | no       | iOS/Android | yes               |
-| pickerModalProps   | Pass props to the picker modal                               | ModalProps                                                   | no       | iOS/Android | yes               |
-| renderCustomModal  | Render custom picker modal                                   | ({visible, children, toggleModal}) => void)                  | no       | iOS/Android | yes               |
-| renderCustomSearch | Render custom search input (only when passing showSearch)    | (props) => void                                              | no       | iOS/Android | yes               |
-| renderItem         | Render custom picker item                                    | (value, {{...props, isSelected}}, itemLabel) => void         | no       | iOS/Android | yes               |
-| renderPicker       | Render custom picker - input will be value (see above)\Example:\renderPicker = (selectedItem) => {...} | (selectedItem, itemLabel) => void                            | no       | iOS/Android | yes               |
-| searchPlaceholder  | Placeholder text for the search input (only when passing showSearch) | string                                                       | no       | iOS/Android | yes               |
-| searchStyle        | Style object for the search input (only when passing showSearch) | {color: string, placeholderTextColor: string, selectionColor: string} | no       | iOS/Android | yes               |
-| selectionLimit     | Limit the number of selected items                           | number                                                       | no       | iOS/Android | yes               |
-| showSearch         | Show search input to filter picker items by label            | boolean                                                      | no       | iOS/Android | yes               |
-| topBarProps        | The picker modal top bar props                               | Modal's TopBarProps                                          | no       | iOS/Android | yes               |
-| useSafeArea        | Add safe area in the Picker modal view                       | boolean                                                      | no       | iOS/Android | yes               |
-| useWheelPicker     | Use wheel picker instead of a list picker                    | boolean                                                      | no       | iOS/Android | yes               |
-| value              | Picker current value                                         | string \| number                                             | no       | iOS/Android | yes               |
+| Name                                     | Description                                                  | Type                                                         | Required | Platform    | HarmonyOS Support |
+| ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | ----------- | ----------------- |
+| customPickerProps                        | Custom picker props (when using renderPicker, will apply on the button wrapper) | object                                                       | no       | iOS/Android | yes               |
+| enableModalBlur                          | iOS only，Adds blur effect to picker modal                   | boolean                                                      | no       | iOS         | yes               |
+| fieldType                                | Pass for different field type UI (form, filter or settings)  | PickerFieldTypes                                             | no       | iOS/Android | yes               |
+| getLabel                                 | A function that returns the label to show for the selected Picker value | (value: string \| number) => void                            | no       | iOS/Android | yes               |
+| items                                    | Data source for Picker                                       | {label: string, value: string \| number}[]                   | no       | iOS/Android | yes               |
+| listProps                                | Pass props to the list component that wraps the picker options (allows to control FlatList behavior) | FlatListProps                                                | no       | iOS/Android | yes               |
+| migrate                                  | Temporary prop required for migration to Picker's new API    | boolean                                                      | no       | iOS/Android | yes               |
+| mode                                     | SINGLE mode or MULTI mode                                    | SINGLE \| MULTI                                              | no       | iOS/Android | yes               |
+| onChange                                 | Callback for when picker value change                        | (value: string \| number) => void                            | no       | iOS/Android | yes               |
+| onPress                                  | Add onPress callback for when pressing the picker            | () => void                                                   | no       | iOS/Android | yes               |
+| onSearchChange                           | Callback for picker modal search input text change (only when passing showSearch) | V7.29.1:<br/>(searchValue: string) => void<br/>V7.43.1:<br/>(searchValue: string, filteredItems?: PickerFilteredItems) => void | no       | iOS/Android | yes               |
+| pickerModalProps                         | Pass props to the picker modal                               | ModalProps                                                   | no       | iOS/Android | yes               |
+| renderCustomModal                        | Render custom picker modal                                   | ({visible, children, toggleModal}) => void)                  | no       | iOS/Android | yes               |
+| renderCustomSearch                       | Render custom search input (only when passing showSearch)    | (props) => void                                              | no       | iOS/Android | yes               |
+| renderItem                               | Render custom picker item                                    | (value, {{...props, isSelected}}, itemLabel) => void         | no       | iOS/Android | yes               |
+| renderPicker                             | Render custom picker - input will be value (see above)\Example:\renderPicker = (selectedItem) => {...} | (selectedItem, itemLabel) => void                            | no       | iOS/Android | yes               |
+| searchPlaceholder                        | Placeholder text for the search input (only when passing showSearch) | string                                                       | no       | iOS/Android | yes               |
+| searchStyle                              | Style object for the search input (only when passing showSearch) | {color: string, placeholderTextColor: string, selectionColor: string} | no       | iOS/Android | yes               |
+| selectionLimit                           | Limit the number of selected items                           | number                                                       | no       | iOS/Android | yes               |
+| showSearch                               | Show search input to filter picker items by label            | boolean                                                      | no       | iOS/Android | yes               |
+| topBarProps                              | The picker modal top bar props                               | Modal's TopBarProps                                          | no       | iOS/Android | yes               |
+| useSafeArea                              | Add safe area in the Picker modal view                       | boolean                                                      | no       | iOS/Android | yes               |
+| useWheelPicker                           | Use wheel picker instead of a list picker                    | boolean                                                      | no       | iOS/Android | yes               |
+| value                                    | Picker current value                                         | string \| number                                             | no       | iOS/Android | yes               |
+| renderCustomTopElement<sup>7.43.1+</sup> | Render custom top element                                    | (value?: PickerValue) =>  React.ReactElement                 | no       | iOS/Android | yes               |
+| showLoader<sup>7.43.1+</sup>             | Show a loader (while items  are loading/fetching)            | boolean                                                      | no       | iOS/Android | yes               |
+| customLoaderElement<sup>7.43.1+</sup>    | Custom loader element                                        | ReactNode                                                    | no       | iOS/Android | yes               |
 
 **Picker.Item**：弹窗选择Item组件，配合Picker组件使用。
 
@@ -679,80 +729,85 @@ ohpm install
 
 **SegmentedControl**：切换值组件。
 
-| Name                  | Description                                     | Type                      | Required | Platform    | HarmonyOS Support |
-| --------------------- | ----------------------------------------------- | ------------------------- | -------- | ----------- | ----------------- |
-| activeBackgroundColor | The background color of the active segment      | string                    | no       | iOS/Android | yes               |
-| activeColor           | The color of the active segment label           | string                    | no       | iOS/Android | yes               |
-| backgroundColor       | The background color of the inactive segments   | string                    | no       | iOS/Android | yes               |
-| borderRadius          | The segmentedControl borderRadius               | number                    | no       | iOS/Android | yes               |
-| containerStyle        | Additional spacing styles for the container     | ViewStyle                 | no       | iOS/Android | yes               |
-| iconOnRight           | Should the icon be on right of the label        | boolean                   | no       | iOS/Android | yes               |
-| initialIndex          | Initial index to be active                      | number                    | no       | iOS/Android | yes               |
-| onChangeIndex         | Callback for when index has change.             | (index: number) => void   | no       | iOS/Android | yes               |
-| outlineColor          | The color of the active segment outline         | string                    | no       | iOS/Android | yes               |
-| outlineWidth          | The width of the active segment outline         | number                    | no       | iOS/Android | yes               |
-| segmentLabelStyle     | Segment label style                             | TextStyle                 | no       | iOS/Android | yes               |
-| segments              | Array on segments                               | SegmentedControlItemProps | no       | iOS/Android | yes               |
-| segmentsStyle         | Additional style for the segments               | ViewStyle                 | no       | iOS/Android | yes               |
-| style                 | Custom style to inner container                 | ViewStyle                 | no       | iOS/Android | yes               |
-| testID                | Component test id                               | string                    | no       | iOS/Android | yes               |
-| throttleTime          | Trailing throttle time of changing index in ms. | number                    | no       | iOS/Android | yes               |
+| Name                         | Description                                     | Type                      | Required | Platform    | HarmonyOS Support |
+| ---------------------------- | ----------------------------------------------- | ------------------------- | -------- | ----------- | ----------------- |
+| activeBackgroundColor        | The background color of the active segment      | string                    | no       | iOS/Android | yes               |
+| activeColor                  | The color of the active segment label           | string                    | no       | iOS/Android | yes               |
+| backgroundColor              | The background color of the inactive segments   | string                    | no       | iOS/Android | yes               |
+| borderRadius                 | The segmentedControl borderRadius               | number                    | no       | iOS/Android | yes               |
+| containerStyle               | Additional spacing styles for the container     | ViewStyle                 | no       | iOS/Android | yes               |
+| iconOnRight                  | Should the icon be on right of the label        | boolean                   | no       | iOS/Android | yes               |
+| initialIndex                 | Initial index to be active                      | number                    | no       | iOS/Android | yes               |
+| onChangeIndex                | Callback for when index has change.             | (index: number) => void   | no       | iOS/Android | yes               |
+| outlineColor                 | The color of the active segment outline         | string                    | no       | iOS/Android | yes               |
+| outlineWidth                 | The width of the active segment outline         | number                    | no       | iOS/Android | yes               |
+| segmentLabelStyle            | Segment label style                             | TextStyle                 | no       | iOS/Android | yes               |
+| segments                     | Array on segments                               | SegmentedControlItemProps | no       | iOS/Android | yes               |
+| segmentsStyle                | Additional style for the segments               | ViewStyle                 | no       | iOS/Android | yes               |
+| style                        | Custom style to inner container                 | ViewStyle                 | no       | iOS/Android | yes               |
+| testID                       | Component test id                               | string                    | no       | iOS/Android | yes               |
+| throttleTime                 | Trailing throttle time of changing index in ms. | number                    | no       | iOS/Android | yes               |
+| label<sup>7.43.1+</sup>      | SegmentedControl label                          | string                    | no       | iOS/Android | yes               |
+| labelProps<sup>7.43.1+</sup> | Pass props for  the SegmentedControl label      | TextProps                 | no       | iOS/Android | yes               |
 
 **Stepper**：步进器组件。
 
-| Name               | Description                                         | Type                                     | Required | Platform    | HarmonyOS Support |
-| ------------------ | --------------------------------------------------- | ---------------------------------------- | -------- | ----------- | ----------------- |
-| accessibilityLabel | Component accessibility label                       | string                                   | no       | iOS/Android | yes               |
-| disabled           | Disables interaction with the stepper               | boolean                                  | no       | iOS/Android | yes               |
-| maxValue           | Maximum value                                       | number                                   | no       | iOS/Android | yes               |
-| minValue           | Minimum value                                       | number                                   | no       | iOS/Android | yes               |
-| onValueChange      | Value change callback function                      | (value: number, testID?: string) => void | no       | iOS/Android | yes               |
-| small              | Renders a small sized Stepper                       | boolean                                  | no       | iOS/Android | yes               |
-| step               | The step to increase and decrease by (default is 1) | number                                   | no       | iOS/Android | yes               |
-| testID             | Test id for component                               | string                                   | no       | iOS/Android | yes               |
-| value              | Stepper value                                       | number                                   | no       | iOS/Android | yes               |
+| Name                   | Description                                         | Type                                     | Required | Platform    | HarmonyOS Support |
+| ---------------------- | --------------------------------------------------- | ---------------------------------------- | -------- | ----------- | ----------------- |
+| accessibilityLabel     | Component accessibility label                       | string                                   | no       | iOS/Android | yes               |
+| disabled               | Disables interaction with the stepper               | boolean                                  | no       | iOS/Android | yes               |
+| maxValue               | Maximum value                                       | number                                   | no       | iOS/Android | yes               |
+| minValue               | Minimum value                                       | number                                   | no       | iOS/Android | yes               |
+| onValueChange          | Value change callback function                      | (value: number, testID?: string) => void | no       | iOS/Android | yes               |
+| small                  | Renders a small sized Stepper                       | boolean                                  | no       | iOS/Android | yes               |
+| step                   | The step to increase and decrease by (default is 1) | number                                   | no       | iOS/Android | yes               |
+| testID                 | Test id for component                               | string                                   | no       | iOS/Android | yes               |
+| value                  | Stepper value                                       | number                                   | no       | iOS/Android | yes               |
+| type<sup>7.43.1+</sup> | Stepper style type                                  | StepperType                              | no       | iOS/Android | yes               |
 
 **TextField**：文本域组件，扩展了[TextInput](https://reactnative.dev/docs/textinput)属性。
 
-| Name                      | Description                                                  | Type                                                         | Required | Platform    | HarmonyOS Support |
-| ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | ----------- | ----------------- |
-| centered                  | Whether to center the TextField - container and label        | boolean                                                      | no       | iOS/Android | yes               |
-| charCounterStyle          | Pass custom style to character counter text                  | TextStyle                                                    | no       | iOS/Android | yes               |
-| color                     | Input color                                                  | ColorType                                                    | no       | iOS/Android | yes               |
-| containerProps            | Container props of the whole component                       | Omit<ViewProps, 'style'>                                     | no       | iOS/Android | yes               |
-| containerStyle            | Container style of the whole component                       | ViewStyle                                                    | no       | iOS/Android | yes               |
-| enableErrors              | Should support showing validation error message              | boolean                                                      | no       | iOS/Android | yes               |
-| fieldStyle                | Internal style for the field container to style the field underline, outline and fill color | ViewStyle \| (context: FieldContextType, props) => ViewStyle | no       | iOS/Android | yes               |
-| floatOnFocus              | Should placeholder float on focus or when start typing       | boolean                                                      | no       | iOS/Android | yes               |
-| floatingPlaceholder       | Pass to add floating placeholder support                     | boolean                                                      | no       | iOS/Android | yes               |
-| floatingPlaceholderColor  | The floating placeholder color                               | ColorType                                                    | no       | iOS/Android | yes               |
-| floatingPlaceholderStyle  | Custom style for the floating placeholder                    | TextStyle                                                    | no       | iOS/Android | yes               |
-| formatter                 | Custom formatter for the input value (used only when input if not focused) | (value) => string \| undefined                               | no       | iOS/Android | yes               |
-| hint                      | A hint text to display when focusing the field               | string                                                       | no       | iOS/Android | yes               |
-| label                     | Field label                                                  | string                                                       | no       | iOS/Android | yes               |
-| labelColor                | Field label color. Either a string or color by state map ({default, focus, error, disabled, readonly}) | ColorType                                                    | no       | iOS/Android | yes               |
-| labelProps                | Pass extra props to the label Text element                   | TextProps                                                    | no       | iOS/Android | yes               |
-| labelStyle                | Custom style for the field label                             | TextStyle                                                    | no       | iOS/Android | yes               |
-| leadingAccessory          | Pass to render a leading element                             | ReactElement                                                 | no       | iOS/Android | yes               |
-| onChangeValidity          | Callback for when field validity has changed                 | (isValid: boolean) => void                                   | no       | iOS/Android | yes               |
-| onValidationFailed        | Callback for when field validated and failed                 | (failedValidatorIndex: number) => void                       | no       | iOS/Android | yes               |
-| placeholder               | The placeholder for the field                                | string                                                       | no       | iOS/Android | yes               |
-| placeholderTextColor      | Placeholder text color                                       | ColorType                                                    | no       | iOS/Android | yes               |
-| preset                    | Predefined preset to use for styling the field               | 'default' \| null \|string                                   | no       | iOS/Android | yes               |
-| readonly                  | A UI preset for read only state                              | boolean                                                      | no       | iOS/Android | yes               |
-| recorderTag               | Recorder Tag                                                 | 'mask' \| 'unmask'                                           | no       | iOS/Android | yes               |
-| retainValidationSpace     | Keep the validation space even if there is no validation message | boolean                                                      | no       | iOS/Android | yes               |
-| showCharCounter           | Should show a character counter (works only with maxLength)  | boolean                                                      | no       | iOS/Android | yes               |
-| showMandatoryIndication   | Whether to show a mandatory field indication                 | boolean                                                      | no       | iOS/Android | yes               |
-| trailingAccessory         | Pass to render a trailing element                            | ReactElement                                                 | no       | iOS/Android | yes               |
-| useGestureHandlerInput    | Use react-native-gesture-handler instead of react-native for the base TextInput | boolean                                                      | no       | iOS/Android | yes               |
-| validate                  | A single or multiple validator. Can be a string (required, email) or custom function. | Validator \| Validator []                                    | no       | iOS/Android | yes               |
-| validateOnBlur            | Should validate when losing focus of TextField               | boolean                                                      | no       | iOS/Android | yes               |
-| validateOnChange          | Should validate when the TextField value changes             | boolean                                                      | no       | iOS/Android | yes               |
-| validateOnStart           | Should validate when the TextField mounts                    | boolean                                                      | no       | iOS/Android | yes               |
-| validationMessage         | The validation message to display when field is invalid (depends on validate) | string \| string[]                                           | no       | iOS/Android | yes               |
-| validationMessagePosition | The position of the validation message (top/bottom)          | ValidationMessagePosition                                    | no       | iOS/Android | yes               |
-| validationMessageStyle    | Custom style for the validation message                      | TextStyle                                                    | no       | iOS/Android | yes               |
+| Name                                     | Description                                                  | Type                                                         | Required | Platform    | HarmonyOS Support |
+| ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | ----------- | ----------------- |
+| centered                                 | Whether to center the TextField - container and label        | boolean                                                      | no       | iOS/Android | yes               |
+| charCounterStyle                         | Pass custom style to character counter text                  | TextStyle                                                    | no       | iOS/Android | yes               |
+| color                                    | Input color                                                  | ColorType                                                    | no       | iOS/Android | yes               |
+| containerProps                           | Container props of the whole component                       | Omit<ViewProps, 'style'>                                     | no       | iOS/Android | yes               |
+| containerStyle                           | Container style of the whole component                       | ViewStyle                                                    | no       | iOS/Android | yes               |
+| enableErrors                             | Should support showing validation error message              | boolean                                                      | no       | iOS/Android | yes               |
+| fieldStyle                               | Internal style for the field container to style the field underline, outline and fill color | ViewStyle \| (context: FieldContextType, props) => ViewStyle | no       | iOS/Android | yes               |
+| floatOnFocus                             | Should placeholder float on focus or when start typing       | boolean                                                      | no       | iOS/Android | yes               |
+| floatingPlaceholder                      | Pass to add floating placeholder support                     | boolean                                                      | no       | iOS/Android | yes               |
+| floatingPlaceholderColor                 | The floating placeholder color                               | ColorType                                                    | no       | iOS/Android | yes               |
+| floatingPlaceholderStyle                 | Custom style for the floating placeholder                    | TextStyle                                                    | no       | iOS/Android | yes               |
+| formatter                                | Custom formatter for the input value (used only when input if not focused) | (value) => string \| undefined                               | no       | iOS/Android | yes               |
+| hint                                     | A hint text to display when focusing the field               | string                                                       | no       | iOS/Android | yes               |
+| label                                    | Field label                                                  | string                                                       | no       | iOS/Android | yes               |
+| labelColor                               | Field label color. Either a string or color by state map ({default, focus, error, disabled, readonly}) | ColorType                                                    | no       | iOS/Android | yes               |
+| labelProps                               | Pass extra props to the label Text element                   | TextProps                                                    | no       | iOS/Android | yes               |
+| labelStyle                               | Custom style for the field label                             | TextStyle                                                    | no       | iOS/Android | yes               |
+| leadingAccessory                         | Pass to render a leading element                             | ReactElement                                                 | no       | iOS/Android | yes               |
+| onChangeValidity                         | Callback for when field validity has changed                 | (isValid: boolean) => void                                   | no       | iOS/Android | yes               |
+| onValidationFailed                       | Callback for when field validated and failed                 | (failedValidatorIndex: number) => void                       | no       | iOS/Android | yes               |
+| placeholder                              | The placeholder for the field                                | string                                                       | no       | iOS/Android | yes               |
+| placeholderTextColor                     | Placeholder text color                                       | ColorType                                                    | no       | iOS/Android | yes               |
+| preset                                   | Predefined preset to use for styling the field               | 'default' \| null \|string                                   | no       | iOS/Android | yes               |
+| readonly                                 | A UI preset for read only state                              | boolean                                                      | no       | iOS/Android | yes               |
+| recorderTag                              | Recorder Tag                                                 | 'mask' \| 'unmask'                                           | no       | iOS/Android | yes               |
+| retainValidationSpace                    | Keep the validation space even if there is no validation message | boolean                                                      | no       | iOS/Android | yes               |
+| showCharCounter                          | Should show a character counter (works only with maxLength)  | boolean                                                      | no       | iOS/Android | yes               |
+| showMandatoryIndication                  | Whether to show a mandatory field indication                 | boolean                                                      | no       | iOS/Android | yes               |
+| trailingAccessory                        | Pass to render a trailing element                            | ReactElement                                                 | no       | iOS/Android | yes               |
+| useGestureHandlerInput                   | Use react-native-gesture-handler instead of react-native for the base TextInput | boolean                                                      | no       | iOS/Android | yes               |
+| validate                                 | A single or multiple validator. Can be a string (required, email) or custom function. | Validator \| Validator []                                    | no       | iOS/Android | yes               |
+| validateOnBlur                           | Should validate when losing focus of TextField               | boolean                                                      | no       | iOS/Android | yes               |
+| validateOnChange                         | Should validate when the TextField value changes             | boolean                                                      | no       | iOS/Android | yes               |
+| validateOnStart                          | Should validate when the TextField mounts                    | boolean                                                      | no       | iOS/Android | yes               |
+| validationMessage                        | The validation message to display when field is invalid (depends on validate) | string \| string[]                                           | no       | iOS/Android | yes               |
+| validationMessagePosition                | The position of the validation message (top/bottom)          | ValidationMessagePosition                                    | no       | iOS/Android | yes               |
+| validationMessageStyle                   | Custom style for the validation message                      | TextStyle                                                    | no       | iOS/Android | yes               |
+| validationDebounceTime<sup>7.43.1+</sup> | Add a debounce timeout when sending validateOnChange         | number                                                       | no       | iOS/Android | yes               |
+| innerFlexBehavior<sup>7.43.1+</sup>      | Set the inner container to  use flex behavior to resolve text overflow issues when using leading or  trailing accessories(This may cause flex issues when the field is inside a  row container) | boolean                                                      | no       | iOS/Android | yes               |
 
 **WheelPicker**：轮式拾取器组件。
 
@@ -1213,11 +1268,12 @@ ohpm install
 
 **AnimatedImage**：图像加载后以动画淡入的图像组件，该组件扩展了[Image](https://wix.github.io/react-native-ui-lib/docs/components/media/Image)组件属性。
 
-| Name              | Description                                              | Type        | Required | Platform    | HarmonyOS Support |
-| ----------------- | -------------------------------------------------------- | ----------- | -------- | ----------- | ----------------- |
-| animationDuration | Duration for the fade animation when the image is loaded | number      | no       | iOS/Android | yes               |
-| containerStyle    | Additional spacing styles for the container              | ViewStyle   | no       | iOS/Android | yes               |
-| loader            | A component to render while the image is loading         | JSX.element | no       | iOS/Android | yes               |
+| Name                          | Description                                              | Type        | Required | Platform    | HarmonyOS Support |
+| ----------------------------- | -------------------------------------------------------- | ----------- | -------- | ----------- | ----------------- |
+| animationDuration             | Duration for the fade animation when the image is loaded | number      | no       | iOS/Android | yes               |
+| containerStyle                | Additional spacing styles for the container              | ViewStyle   | no       | iOS/Android | yes               |
+| loader                        | A component to render while the image is loading         | JSX.element | no       | iOS/Android | yes               |
+| onLoadStart<sup>7.43.1+</sup> | On load start callback                                   | () => void  | no       | iOS/Android | yes               |
 
 **AnimatedScanner**：该组件扩展了[Animated.View](https://reactnative.dev/docs/animated)组件属性。
 
@@ -1234,33 +1290,34 @@ ohpm install
 
 **Avatar**：头像组件，该组件扩展了[TouchableOpacity](https://wix.github.io/react-native-ui-lib/docs/components/basic/TouchableOpacity)，[Image](https://wix.github.io/react-native-ui-lib/docs/components/media/Image)组件属性。
 
-| Name             | Description                                                  | Type                                              | Required | Platform    | HarmonyOS Support |
-| ---------------- | ------------------------------------------------------------ | ------------------------------------------------- | -------- | ----------- | ----------------- |
-| animate          | Adds fade in animation when Avatar image loads               | boolean                                           | no       | iOS/Android | yes               |
-| autoColorsConfig | Send this to use the name to infer a backgroundColor         | AutoColorsProps                                   | no       | iOS/Android | yes               |
-| backgroundColor  | Background color for Avatar                                  | string                                            | no       | iOS/Android | yes               |
-| badgePosition    | Badge location on Avatar                                     | TOP_RIGHT \|TOP_LEFT \|BOTTOM_RIGHT \|BOTTOM_LEFT | no       | iOS/Android | yes               |
-| badgeProps       | Badge props passed down to Badge component                   | BadgeProps                                        | no       | iOS/Android | yes               |
-| containerStyle   | Additional spacing styles for the container                  | ViewStyle                                         | no       | iOS/Android | yes               |
-| customRibbon     | Custom ribbon                                                | JSX.Element                                       | no       | iOS/Android | yes               |
-| imageProps       | Image props object                                           | ImageProps                                        | no       | iOS/Android | yes               |
-| imageStyle       | Image style object used to pass additional style props by components which render image | ImageStyle                                        | no       | iOS/Android | yes               |
-| isOnline         | Determine if to show online badge                            | boolean                                           | no       | iOS/Android | yes               |
-| label            | Label that can represent initials                            | string                                            | no       | iOS/Android | yes               |
-| labelColor       | The label color                                              | string                                            | no       | iOS/Android | yes               |
-| name             | The name of the avatar user. If no label is provided, the initials will be generated from the name. autoColorsConfig will use the name to create the background color of the Avatar. | string                                            | no       | iOS/Android | yes               |
-| onImageLoadEnd   | Listener-callback for when an image's (uri) loading either succeeds or fails (equiv. to Image.onLoadEnd()). | ImagePropsBase ['onLoadEnd']                      | no       | iOS/Android | yes               |
-| onImageLoadError | Listener-callback for when an image's (uri) loading fails (equiv. to Image.onError()). | ImagePropsBase ['onError']                        | no       | iOS/Android | yes               |
-| onImageLoadStart | Listener-callback for when an image's (uri) loading starts (equiv. to Image.onLoadStart()). | ImagePropsBase ['onLoadStart']                    | no       | iOS/Android | yes               |
-| onPress          | Press handler                                                | (props: any) => void                              | no       | iOS/Android | yes               |
-| ribbonLabel      | Ribbon label to display on the avatar                        | string                                            | no       | iOS/Android | yes               |
-| ribbonLabelStyle | Ribbon label custom style                                    | TextStyle                                         | no       | iOS/Android | yes               |
-| ribbonStyle      | Ribbon custom style                                          | ViewStyle                                         | no       | iOS/Android | yes               |
-| size             | Custom size for the Avatar                                   | number                                            | no       | iOS/Android | yes               |
-| source           | The image source (external or from assets)                   | ImageSourcePropType                               | no       | iOS/Android | yes               |
-| status           | AWAY, ONLINE, OFFLINE or NONE mode (if set to a value other then 'NONE' will override isOnline prop) | StatusModes                                       | no       | iOS/Android | yes               |
-| testID           | Test identifier                                              | string                                            | no       | iOS/Android | yes               |
-| useAutoColors    | Hash the name (or label) to get a color, so each name will have a specific color. Default is false. | boolean                                           | no       | iOS/Android | yes               |
+| Name                                 | Description                                                  | Type                                              | Required | Platform    | HarmonyOS Support |
+| ------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------- | -------- | ----------- | ----------------- |
+| animate                              | Adds fade in animation when Avatar image loads               | boolean                                           | no       | iOS/Android | yes               |
+| autoColorsConfig                     | Send this to use the name to infer a backgroundColor         | AutoColorsProps                                   | no       | iOS/Android | yes               |
+| backgroundColor                      | Background color for Avatar                                  | string                                            | no       | iOS/Android | yes               |
+| badgePosition                        | Badge location on Avatar                                     | TOP_RIGHT \|TOP_LEFT \|BOTTOM_RIGHT \|BOTTOM_LEFT | no       | iOS/Android | yes               |
+| badgeProps                           | Badge props passed down to Badge component                   | BadgeProps                                        | no       | iOS/Android | yes               |
+| containerStyle                       | Additional spacing styles for the container                  | ViewStyle                                         | no       | iOS/Android | yes               |
+| customRibbon                         | Custom ribbon                                                | JSX.Element                                       | no       | iOS/Android | yes               |
+| imageProps                           | Image props object                                           | ImageProps                                        | no       | iOS/Android | yes               |
+| imageStyle                           | Image style object used to pass additional style props by components which render image | ImageStyle                                        | no       | iOS/Android | yes               |
+| isOnline                             | Determine if to show online badge                            | boolean                                           | no       | iOS/Android | yes               |
+| label                                | Label that can represent initials                            | string                                            | no       | iOS/Android | yes               |
+| labelColor                           | The label color                                              | string                                            | no       | iOS/Android | yes               |
+| name                                 | The name of the avatar user. If no label is provided, the initials will be generated from the name. autoColorsConfig will use the name to create the background color of the Avatar. | string                                            | no       | iOS/Android | yes               |
+| onImageLoadEnd                       | Listener-callback for when an image's (uri) loading either succeeds or fails (equiv. to Image.onLoadEnd()). | ImagePropsBase ['onLoadEnd']                      | no       | iOS/Android | yes               |
+| onImageLoadError                     | Listener-callback for when an image's (uri) loading fails (equiv. to Image.onError()). | ImagePropsBase ['onError']                        | no       | iOS/Android | yes               |
+| onImageLoadStart                     | Listener-callback for when an image's (uri) loading starts (equiv. to Image.onLoadStart()). | ImagePropsBase ['onLoadStart']                    | no       | iOS/Android | yes               |
+| onPress                              | Press handler                                                | (props: any) => void                              | no       | iOS/Android | yes               |
+| ribbonLabel                          | Ribbon label to display on the avatar                        | string                                            | no       | iOS/Android | yes               |
+| ribbonLabelStyle                     | Ribbon label custom style                                    | TextStyle                                         | no       | iOS/Android | yes               |
+| ribbonStyle                          | Ribbon custom style                                          | ViewStyle                                         | no       | iOS/Android | yes               |
+| size                                 | Custom size for the Avatar                                   | number                                            | no       | iOS/Android | yes               |
+| source                               | The image source (external or from assets)                   | ImageSourcePropType                               | no       | iOS/Android | yes               |
+| status                               | AWAY, ONLINE, OFFLINE or NONE mode (if set to a value other then 'NONE' will override isOnline prop) | StatusModes                                       | no       | iOS/Android | yes               |
+| testID                               | Test identifier                                              | string                                            | no       | iOS/Android | yes               |
+| useAutoColors                        | Hash the name (or label) to get a color, so each name will have a specific color. Default is false. | boolean                                           | no       | iOS/Android | yes               |
+| labelEllipsizeMode<sup>7.43.1+</sup> | The ellipsize mode for the label, default is clip            | TextProps['ellipsizeMode']                        | no       | iOS/Android | yes               |
 
 **Icon**：图标组件，该组件扩展了[Image](https://reactnative.dev/docs/image)组件属性。
 
@@ -1328,13 +1385,14 @@ ohpm install
 
 **TabController**：具有延迟加载机制的选项卡控制器组件，该组件基于react-native-gesture-handler，使用react-native-navigation时，请确保使用gestureHandlerRootHOC包裹屏幕。
 
-| Name              | Description                                                  | Type                                               | Required | Platform    | HarmonyOS Support |
-| ----------------- | ------------------------------------------------------------ | -------------------------------------------------- | -------- | ----------- | ----------------- |
-| asCarousel        | When using TabController.PageCarousel this should be turned on | boolean                                            | no       | iOS/Android | yes               |
-| carouselPageWidth | Pass for custom carousel page width                          | number                                             | no       | iOS/Android | yes               |
-| initialIndex      | Initial selected index                                       | number                                             | no       | iOS/Android | yes               |
-| items             | The list of tab bar items                                    | TabControllerItemProps []                          | no       | iOS/Android | yes               |
-| onChangeIndex     | Callback for when index has change (will not be called on ignored items) | (index: number, prevIndex: number \| null) => void | no       | iOS/Android | yes               |
+| Name                                 | Description                                                  | Type                                               | Required | Platform    | HarmonyOS Support |
+| ------------------------------------ | ------------------------------------------------------------ | -------------------------------------------------- | -------- | ----------- | ----------------- |
+| asCarousel                           | When using TabController.PageCarousel this should be turned on | boolean                                            | no       | iOS/Android | yes               |
+| carouselPageWidth                    | Pass for custom carousel page width                          | number                                             | no       | iOS/Android | yes               |
+| initialIndex                         | Initial selected index                                       | number                                             | no       | iOS/Android | yes               |
+| items                                | The list of tab bar items                                    | TabControllerItemProps []                          | no       | iOS/Android | yes               |
+| onChangeIndex                        | Callback for when index has change (will not be called on ignored items) | (index: number, prevIndex: number \| null) => void | no       | iOS/Android | yes               |
+| nestedInScrollView<sup>7.43.1+</sup> | Pass when TabController is  render inside a ScrollView (with a header) | boolean                                            | no       | iOS/Android | yes               |
 
 **TabController.PageCarousel**：TabController 的 PageCarousel 组件，该组件扩展了[ScrollView](https://reactnative.dev/docs/scrollview)组件属性。
 
@@ -1606,6 +1664,30 @@ ohpm install
 | times         | Generates duplicate skeletons                                | number                                 | no       | iOS/Android | yes               |
 | timesKey      | A key prefix for the duplicated SkeletonViews                | string                                 | no       | iOS/Android | yes               |
 | width         | The width of the skeleton view                               | number                                 | no       | iOS/Android | yes               |
+
+**searchInput**：<sup>7.43.1+</sup>用于过滤目的的搜索输入组件。
+
+| Name               | Description                                                  | Type               | Required | Platform    | HarmonyOS Support |
+| ------------------ | ------------------------------------------------------------ | ------------------ | -------- | ----------- | ----------------- |
+| onDismiss          | callback for dismiss action                                  | () => void         | no       | iOS/Android | yes               |
+| onClear            | On clear button callback                                     | () => void         | no       | iOS/Android | yes               |
+| showLoader         | Whether to show a loader instead of the left search icon.    | boolean            | no       | iOS/Android | yes               |
+| customLoader       | Custom loader element to render instead of the default loader | React.ReactElement | no       | iOS/Android | yes               |
+| customRightElement | Custom right element                                         | React.ReactElement | no       | iOS/Android | yes               |
+| cancelButtonProps  | Props for the cancel button                                  | ButtonProps        | no       | iOS/Android | yes               |
+| inaccessible       | Turn off accessibility for this view and its nested children | boolean            | no       | iOS/Android | yes               |
+| useSafeArea        | In case the SearchInput is rendered in a safe area (top of the screen) | boolean            | no       | iOS/Android | yes               |
+| containerStyle     | Override styles for the input                                | ViewStyle          | no       | iOS/Android | yes               |
+| style              | Override styles for container                                | ViewStyle          | no       | iOS/Android | yes               |
+
+**PieChart**：<sup>7.43.1+</sup>圆形统计图组件。
+
+| Name         | Description                                   | Type                   | Required | Platform    | HarmonyOS Support |
+| ------------ | --------------------------------------------- | ---------------------- | -------- | ----------- | ----------------- |
+| segments     | Pie chart segments array                      | PieChartSegmentProps[] | no       | iOS/Android | yes               |
+| diameter     | Pie chart diameter                            | number                 | no       | iOS/Android | yes               |
+| dividerWidth | The width of the divider between the segments | number                 | no       | iOS/Android | yes               |
+| dividerColor | The color of the divider between the segments | ColorValue             | no       | iOS/Android | yes               |
 
 ## API
 
