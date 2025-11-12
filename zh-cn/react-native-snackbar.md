@@ -16,7 +16,14 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-snackbar Releases](https://github.com/react-native-oh-library/react-native-snackbar/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 2.7.1      | [@react-native-oh-tpl/react-native-snackbar Releases](https://github.com/react-native-oh-library/react-native-snackbar/releases) | 0.72       |
+| 2.9.0      | [@react-native-ohos/react-native-snackbar Releases]()        | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +32,21 @@
 #### **npm**
 
 ```bash
+# V2.7.1
 npm install @react-native-oh-tpl/react-native-snackbar
+
+# V2.9.0
+npm install @react-native-ohos/react-native-snackbar
 ```
 
 #### **yarn**
 
 ```bash
+# V2.7.1
 yarn add @react-native-oh-tpl/react-native-snackbar
+
+# V2.9.0
+yarn add @react-native-ohos/react-native-snackbar
 ```
 
 <!-- tabs:end -->
@@ -56,15 +71,17 @@ export const SnackbarTest = () => {
       }}
     >
       <ScrollView style={styles.container}>
-        <Button
-          title="点击显示组件"
-          onPress={() => {
-            Snackbar.show({
-              text: "Hello harmony",
-              marginBottom: 300,
-            });
-          }}
-        />
+        <View style={styles.buttonContainer}>
+          <Button
+            title="点击显示组件"
+            onPress={() => {
+              Snackbar.show({
+                text: "Hello harmony",
+                marginBottom: 300,
+              });
+            }}
+          />
+        </View>
       </ScrollView>
     </View>
   );
@@ -80,10 +97,18 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: "white",
   },
+  buttonContainer: {
+    margin: 20,
+    padding: 20,
+    backgroundColor: "#f5f5f5",
+    borderRadius: 8,
+  },
 });
 ```
 
 ## 使用 Codegen
+
+> [!TIP] V2.9.0 不需要执行 Codegen。
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
@@ -117,10 +142,21 @@ const styles = StyleSheet.create({
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- V2.7.1
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-snackbar": "file:../../node_modules/@react-native-oh-tpl/react-native-snackbar/harmony/snackbar.har"
+  }
+```
+
+- V2.9.0
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-snackbar": "file:../../node_modules/@react-native-ohos/react-native-snackbar/harmony/snackbar.har"
   }
 ```
 
@@ -143,7 +179,11 @@ ohpm install
 
 ```diff
 ...
+// V2.7.1
 + import {RNSnackbarPackage} from '@react-native-oh-tpl/react-native-snackbar/ts';
+
+// V2.9.0
++ import {RNSnackbarPackage} from '@react-native-ohos/react-native-snackbar/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -153,7 +193,56 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.运行
+### 4.配置 CMakeLists 和引入 SnackbarPackge
+
+> [!TIP] V2.9.0 需要配置 CMakeLists 和引入 SnackbarPackge。
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: add_package_subdirectories
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-snackbar/src/main/cpp" ./react-native-snackbar)
+# RNOH_END: add_package_subdirectories
+
+add_library(rnoh_app SHARED
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: link_packages
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_snackbar)
+# RNOH_END: link_packages
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "SamplePackage.h"
++ #include "SnackbarPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+      std::make_shared<SamplePackage>(ctx),
++     std::make_shared<SnackbarPackage>(ctx)
+    };
+}
+```
+
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -172,7 +261,12 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-snackbar Releases](https://github.com/react-native-oh-library/react-native-snackbar/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 2.7.1      | [@react-native-oh-tpl/react-native-snackbar Releases](https://github.com/react-native-oh-library/react-native-snackbar/releases) | 0.72       |
+| 2.9.0      | [@react-native-ohos/react-native-snackbar Releases]()        | 0.77       |
 
 ## 属性
 
@@ -182,17 +276,18 @@ ohpm install
 
 ### Snackbar.show(options)
 
-| Name              | Description                                                                                                     | Type                       | Required | Platform    | HarmonyOS Support |
-| ----------------- | --------------------------------------------------------------------------------------------------------------- | -------------------------- | -------- | ----------- | ----------------- |
-| `text`            | The message to show.                                                                                            | `string`                   | yes      | Android iOS | yes               |
-| `duration`        | How long to display the Snackbar                                                                                | See below                  | no       | Android iOS | no                |
-| `numberOfLines`   | The max number of text lines to allow before ellipsizing                                                        | `number`                   | no       | Android iOS | no                |
-| `marginBottom`    | Margin from bottom                                                                                              | `number`                   | no       | Android iOS | yes               |
-| `textColor`       | The color of the message text.                                                                                  | `string` or `style`        | no       | Android iOS | no                |
-| `backgroundColor` | The background color for the whole Snackbar                                                                     | `string` or `style`        | no       | Android iOS | no                |
-| `fontFamily`      | [Android only] The basename of a .ttf font from assets/fonts/                                                   | `string`                   | no       | Android     | no                |
-| `rtl`             | [Android only, API 17+] Whether the Snackbar should render right-to-left (requires android:supportsRtl="true"). | `boolean`                  | no       | Android     | no                |
-| `action`          | Optional config for the action button (described below)                                                         | `object` (described below) | no       | Android iOS | no                |
+| Name                               | Description                                                  | Type                       | Required | Platform    | HarmonyOS Support |
+| ---------------------------------- | ------------------------------------------------------------ | -------------------------- | -------- | ----------- | ----------------- |
+| `text`                             | The message to show.                                         | `string`                   | yes      | Android iOS | yes               |
+| `textAlignCenter`<sup>2.9.0+</sup> | If true, text aligns center.                                 | `boolean`                  | no       | Android iOS | yes               |
+| `duration`                         | How long to display the Snackbar                             | See below                  | no       | Android iOS | no                |
+| `numberOfLines`                    | The max number of text lines to allow before ellipsizing     | `number`                   | no       | Android iOS | no                |
+| `marginBottom`                     | Margin from bottom                                           | `number`                   | no       | Android iOS | yes               |
+| `textColor`                        | The color of the message text.                               | `string` or `style`        | no       | Android iOS | no                |
+| `backgroundColor`                  | The background color for the whole Snackbar                  | `string` or `style`        | no       | Android iOS | no                |
+| `fontFamily`                       | [Android only] The basename of a .ttf font from assets/fonts/ | `string`                   | no       | Android     | no                |
+| `rtl`                              | [Android only, API 17+] Whether the Snackbar should render right-to-left (requires android:supportsRtl="true"). | `boolean`                  | no       | Android     | no                |
+| `action`                           | Optional config for the action button (described below)      | `object` (described below) | no       | Android iOS | no                |
 
 Where `duration` can be one of the following (timing may vary based on device):
 

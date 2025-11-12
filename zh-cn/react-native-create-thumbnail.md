@@ -18,24 +18,37 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-create-thumbnail Releases](https://github.com/react-native-oh-library/react-native-create-thumbnail/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 2.0.0      | [@react-native-oh-tpl/react-native-create-thumbnail Releases](https://github.com/react-native-oh-library/react-native-create-thumbnail/releases) | 0.72       |
+| 2.0.2      | [@react-native-ohos/react-native-create-thumbnail Releases]() | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
-
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# V2.0.0
 npm install @react-native-oh-tpl/react-native-create-thumbnail
+
+# V2.0.2
+npm install @react-native-ohos/react-native-create-thumbnail
 ```
 
 #### **yarn**
 
 ```bash
+# V2.0.0
 yarn add @react-native-oh-tpl/react-native-create-thumbnail
+
+# V2.0.2
+yarn add @react-native-ohos/react-native-create-thumbnail
 ```
 
 <!-- tabs:end -->
@@ -172,10 +185,21 @@ const styles = StyleSheet.create({
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- V2.0.0
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-create-thumbnail": "file:../../node_modules/@react-native-oh-tpl/react-native-create-thumbnail/harmony/createThumbnail.har"
+  }
+```
+
+- V2.0.2
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-create-thumbnail": "file:../../node_modules/@react-native-ohos/react-native-create-thumbnail/harmony/createThumbnail.har"
   }
 ```
 
@@ -194,10 +218,21 @@ ohpm install
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- V2.0.0
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-create-thumbnail": "file:../../node_modules/@react-native-oh-tpl/react-native-create-thumbnail/harmony/createThumbnail"
+  }
+```
+
+- V2.0.2
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-create-thumbnail": "file:../../node_modules/@react-native-ohos/react-native-create-thumbnail/harmony/createThumbnail"
   }
 ```
 
@@ -208,13 +243,78 @@ cd entry
 ohpm install --no-link
 ```
 
-### 3.在 ArkTs 侧引入 BlobUtilPackage
+### 3.配置 CMakeLists 和引入 CreateThumbnailPackage
+
+> [!TIP] 若使用的是 2.0.0 版本，请跳过本章。
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-create-thumbnail/src/main/cpp" ./create-thumbnail)
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_create_thumbnail)
+# RNOH_END: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "CreateThumbnailPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++       std::make_shared<CreateThumbnailPackage>(ctx),
+    };
+}
+```
+
+### 4.在 ArkTs 侧引入 CreateThumbnailPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
   ...
+// V2.0.0
 + import { CreateThumbnailPackage } from '@react-native-oh-tpl/react-native-create-thumbnail/ts';
+
+// V2.0.2
++ import { CreateThumbnailPackage } from '@react-native-ohos/react-native-create-thumbnail/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -224,7 +324,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.运行
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -243,7 +343,12 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-create-thumbnail Releases](https://github.com/react-native-oh-library/react-native-create-thumbnail/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 2.0.0      | [@react-native-oh-tpl/react-native-create-thumbnail Releases](https://github.com/react-native-oh-library/react-native-create-thumbnail/releases) | 0.72       |
+| 2.0.2      | [@react-native-ohos/react-native-create-thumbnail Releases]() | 0.77       |
 
 ## API
 
@@ -270,6 +375,10 @@ ohpm install
 |  dirSize | Maximum size of the cache directory (in megabytes). When this directory is full, the previously generated thumbnails will be deleted to clear about half of it's size.   |    Number       | NO  |   Android/ios    |    yes    |
 |  headers | Headers to load the video with. e.g. { Authorization: 'someAuthToken' }   |    Object      | NO  |   Android/ios    |    yes    |
 |  cacheName | Cache name for this thumbnail to avoid duplicate generation. If specified, and a thumbnail already exists with the same cache name, it will be returned instead of generating a new one.   |    String     | NO  |   Android/ios    |    yes    |
+| maxWidth<sup>2.0.2+</sup> | Max thumbnail width in px. | Number | NO | Android/ios | yes |
+| maxHeight<sup>2.0.2+</sup> | Max thumbnail height in px. | Number | NO | Android/ios | yes |
+| timeToleranceMs<sup>2.0.2+</sup> | Time tolerance in ms for the system to pick the best matching video frame. | Number | NO | ios | NO |
+| onlySyncedFrames<sup>2.0.2+</sup> | Specify how Android target frames. Use true to retrieve a sync frame that has a timestamp closest to the specified one. Use false to retrieve a frame that may or may not be a sync frame but is closest to the specified timestamp. | Boolean | NO | Android | yes |
 ## 返回值
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
@@ -284,9 +393,9 @@ ohpm install
 |  width | Thumbnail width   |    Number     | NO  |   Android/ios    |    yes    |
 |  height | Thumbnail height   |    Number     | NO  |   Android/ios    |    yes    |
 
-
-
 ## 遗留问题
+
+- [ ] timeToleranceMs 属性不支持，因为在 HarmonyOS 中没有提供对应的属性 [issues#1](https://gitcode.com/openharmony-sig/rntpc_react-native-create-thumbnail/issues/1)
 
 ## 其他
 
