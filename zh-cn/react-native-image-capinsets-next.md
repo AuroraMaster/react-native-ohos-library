@@ -16,7 +16,12 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-image-capinsets-next Releases](https://github.com/react-native-oh-library/react-native-image-capinsets-next/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息，并下载适用版本的 tgz 包：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.6.1      | [@react-native-oh-tpl/react-native-image-capinsets-next Releases](https://github.com/react-native-oh-library/react-native-image-capinsets-next/releases) | 0.72       |
+| 0.6.2      | [@react-native-ohos/react-native-image-capinsets-next Releases Releases]() | 0.77       |
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +30,21 @@
 #### **npm**
 
 ```bash
+# V0.6.1
 npm install @react-native-oh-tpl/react-native-image-capinsets-next
+
+# V0.6.2
+npm install @react-native-ohos/react-native-image-capinsets-next
 ```
 
 #### **yarn**
 
 ```bash
+# V0.6.1
 yarn add @react-native-oh-tpl/react-native-image-capinsets-next
+
+# V0.6.2
+yarn add @react-native-ohos/react-native-image-capinsets-next
 ```
 
 <!-- tabs:end -->
@@ -153,10 +166,21 @@ export default YourImage;
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- V0.6.1
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-image-capinsets-next": "file:../../node_modules/@react-native-oh-tpl/react-native-image-capinsets-next/harmony/rn_image_capinsets.har"
+  }
+```
+
+- V0.6.2
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-image-capinsets-next": "file:../../node_modules/@react-native-ohos/react-native-image-capinsets-next/harmony/rn_image_capinsets.har"
   }
 ```
 
@@ -179,7 +203,11 @@ ohpm install
 
 ```diff
   ...
+  // V0.6.1
 + import { IMAGE_CAP_INSETS, RNCImageCapInsets } from "@react-native-oh-tpl/react-native-image-capinsets-next"
+
+  // V0.6.2
++ import { IMAGE_CAP_INSETS, RNCImageCapInsets } from "@react-native-ohos/react-native-image-capinsets-next"
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -214,7 +242,11 @@ const arkTsComponentNames: Array<string> = [
 
 ```diff
   ...
+ // V0.6.1
 + import { RNCImageCapInsetsPackage } from '@react-native-oh-tpl/react-native-image-capinsets-next/ts';
+
+ // V0.6.2
++ import { RNCImageCapInsetsPackage } from '@react-native-ohos/react-native-image-capinsets-next/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -243,7 +275,12 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-image-capinsets-next Releases](https://github.com/react-native-oh-library/react-native-image-capinsets-next/releases)
+请到三方库的 Releases 发布地址查看配套的版本信息，并下载适用版本的 tgz 包：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.6.1      | [@react-native-oh-tpl/react-native-image-capinsets-next Releases](https://github.com/react-native-oh-library/react-native-image-capinsets-next/releases) | 0.72       |
+| 0.6.2      | [@react-native-ohos/react-native-image-capinsets-next Releases Releases]() | 0.77       |
 
 
 ## 属性
