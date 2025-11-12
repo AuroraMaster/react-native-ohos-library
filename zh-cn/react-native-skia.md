@@ -17,7 +17,14 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-skia Releases](https://github.com/react-native-oh-library/react-native-skia/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.3.8      | [@react-native-oh-tpl/react-native-skia Releases](https://github.com/react-native-oh-library/react-native-skia/releases) | 0.72       |
+| 1.3.8      | [@react-native-ohos/react-native-skia Releases]()            | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -26,13 +33,21 @@
 #### **npm**
 
 ```bash
+# V1.3.8 for RN0.72
 npm install @react-native-oh-tpl/react-native-skia
+
+# V1.3.8 for RN0.77
+npm install @react-native-ohos/react-native-skia
 ```
 
 #### **yarn**
 
 ```bash
+# V1.3.8 for RN0.72
 yarn add @react-native-oh-tpl/react-native-skia
+
+# V1.3.8 for RN0.77
+yarn add @react-native-ohos/react-native-skia
 ```
 
 <!-- tabs:end -->
@@ -93,10 +108,21 @@ export default App;
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- V1.3.8 for RN0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-skia": "file:../../node_modules/@react-native-oh-tpl/react-native-skia/harmony/skia.har"
+  }
+```
+
+- V1.3.8 for RN0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-skia": "file:../../node_modules/@react-native-ohos/react-native-skia/harmony/skia.har"
   }
 ```
 
@@ -135,7 +161,13 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+# V1.3.8 for RN0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-skia/src/main/cpp" ./skia)
+
+# V1.3.8 for RN0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-skia/src/main/cpp" ./skia)
+
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -178,7 +210,11 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
+// V1.3.8 for RN0.72
 + import { RNCSkiaDomView, SKIA_DOM_VIEW_TYPE } from '@react-native-oh-tpl/react-native-skia';
+
+// V1.3.8 for RN0.77
++ import { RNCSkiaDomView, SKIA_DOM_VIEW_TYPE } from '@react-native-ohos/react-native-skia';
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -213,7 +249,11 @@ const arkTsComponentNames: Array<string> = [
 
 ```diff
   ...
+// V1.3.8 for RN0.72
 + import {RNSkiaPackage} from '@react-native-oh-tpl/react-native-skia/ts';
+
+// V1.3.8 for RN0.77
++ import {RNSkiaPackage} from '@react-native-ohos/react-native-skia/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
