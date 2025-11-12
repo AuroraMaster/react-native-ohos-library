@@ -18,7 +18,14 @@
 ## 安装与使用
 
 请到三方库的 Releases
-发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-material-ui Releases](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-material-ui%2Freleases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.30.1     | [@react-native-oh-tpl/react-native-material-ui Releases](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-material-ui%2Freleases) | 0.72       |
+| 1.30.1     | [@react-native-ohos/react-native-material-ui Releases]()     | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -27,13 +34,21 @@
 #### **npm**
 
 ```bash
+# V1.30.1 for RN0.72
 npm install  @react-native-oh-tpl/react-native-material-ui
+
+# V1.30.1 for RN0.77
+npm install  @react-native-ohos/react-native-material-ui
 ```
 
 #### **yarn**
 
 ```bash
+# V1.30.1 for RN0.72
 yarn add  @react-native-oh-tpl/react-native-material-ui
+
+# V1.30.1 for RN0.77
+yarn add  @react-native-ohos/react-native-material-ui
 ```
 
 <!-- tabs:end -->
@@ -85,7 +100,7 @@ const ActionButtonDemo = () => {
                 <ActionButton
                   actions={[{ icon: 'email', label: 'email', name: 'email' },
                   { icon: 'phone', label: 'Phone', name: 'phone' },
-                  { icon: 'sms', label: 'text', name: 'text' },
+                  { icon: 'sms', label: 'sms', name: 'sms' },
                   { icon: 'chat', label: 'chat', name: 'chat' }]}
                   icon="share"
                   transition="toolbar"
@@ -112,7 +127,7 @@ const ActionButtonDemo = () => {
                 style={{toolbarContainer:{backgroundColor:'blue'}}}
                   actions={[{ icon: 'email', label: 'email', name: 'email' },
                   { icon: 'phone', label: 'Phone', name: 'phone' },
-                  { icon: 'sms', label: 'text', name: 'text' },
+                  { icon: 'sms', label: 'sms', name: 'sms' },
                   { icon: 'chat', label: 'chat', name: 'chat' }]}
                   icon="share"
                   transition="toolbar"
@@ -132,7 +147,6 @@ const styles = StyleSheet.create({
     marginBottom:70
   }
 });
-
 
 export default ActionButtonDemo
 ```
@@ -194,7 +208,12 @@ struct Index {
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-material-ui Releases](https://github.com/react-native-oh-library/react-native-material-ui/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.30.1     | [@react-native-oh-tpl/react-native-material-ui Releases](https://github.com/react-native-oh-library/react-native-material-ui/releases) | 0.72       |
+| 1.30.1     | [@react-native-ohos/react-native-material-ui Releases]()     | 0.77       |
 
 ## 组件
 

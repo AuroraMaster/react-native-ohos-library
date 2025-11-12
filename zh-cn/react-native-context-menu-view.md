@@ -18,7 +18,14 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-context-menu-view Releases](https://github.com/react-native-oh-library/react-native-context-menu-view/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.16.0     | [@react-native-oh-tpl/react-native-context-menu-view Releases](https://github.com/react-native-oh-library/react-native-context-menu-view/releases) | 0.72       |
+| 1.19.1     | [@react-native-ohos/react-native-context-menu-view Releases]() | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -27,13 +34,21 @@
 #### **npm**
 
 ```bash
+# V1.16.0
 npm install @react-native-oh-tpl/react-native-context-menu-view
+
+# V1.19.1
+npm install @react-native-ohos/react-native-context-menu-view
 ```
 
 #### **yarn**
 
 ```bash
+# V1.16.0
 yarn add @react-native-oh-tpl/react-native-context-menu-view
+
+# V1.19.1
+yarn add @react-native-ohos/react-native-context-menu-view
 ```
 
 <!-- tabs:end -->
@@ -91,10 +106,21 @@ const Example = () => {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- V1.16.0
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-context-menu-view": "file:../../node_modules/@react-native-oh-tpl/react-native-context-menu-view/harmony/context_menu.har"
+  }
+```
+
+- V1.19.1
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-context-menu-view": "file:../../node_modules/@react-native-ohos/react-native-context-menu-view/harmony/context_menu.har"
   }
 ```
 
@@ -133,7 +159,13 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+# V1.16.0
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-context-menu-view/src/main/cpp" ./context_menu)
+
+# V1.19.1
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-context-menu-view/src/main/cpp" ./context_menu)
+
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -176,7 +208,11 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
+// V1.16.0
 + import {ContextMenuPackage} from '@react-native-oh-tpl/react-native-context-menu-view/ts';
+
+// V1.19.1
++ import {ContextMenuPackage} from '@react-native-ohos/react-native-context-menu-view/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -205,7 +241,12 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-context-menu-view Releases](https://github.com/react-native-oh-library/react-native-context-menu-view/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.16.0     | [@react-native-oh-tpl/react-native-context-menu-view Releases](https://github.com/react-native-oh-library/react-native-context-menu-view/releases) | 0.72       |
+| 1.19.1     | [@react-native-ohos/react-native-context-menu-view Releases]() | 0.77       |
 
 ## 属性
 
@@ -213,16 +254,23 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name                   | Description                                                  | Type     | Required | Platform               | HarmonyOS Support |
-| ---------------------- | ------------------------------------------------------------ | -------- | -------- | ---------------------- | ----------------- |
-| title                  | The title above the popup menu.                              | string   | no       | Android/iOS            | yes               |
-| actions                | Menu props.                                                  | array    | no       | Android(partially)/iOS | partially         |
-| previewBackgroundColor | The background color of the preview.                         | string   | no       | NA                     | no                |
-| dropdownMenuMode       | When set to true, the context menu is triggered with a single tap instead of a long press. | boolean  | no       | Android/iOS            | yes               |
-| disabled               | Disable menu interaction.                                    | boolean  | no       | Android/iOS            | yes               |
-| onPress                | When the popup is opened and the user picks an option.       | callback | no       | Android/iOS            | yes               |
-| onPreviewPress         | When the context menu preview is tapped.                     | callback | no       | iOS                    | yes               |
-| onCancel               | When the popup is opened and the user cancels.               | callback | no       | Android/iOS            | yes               |
+| Name                                      | Description                                                  | Type     | Required | Platform               | HarmonyOS Support |
+| ----------------------------------------- | ------------------------------------------------------------ | -------- | -------- | ---------------------- | ----------------- |
+| title                                     | The title above the popup menu.                              | string   | no       | Android/iOS            | yes               |
+| actions                                   | Menu props.                                                  | array    | no       | Android(partially)/iOS | partially         |
+| previewBackgroundColor                    | The background color of the preview.                         | string   | no       | NA                     | no                |
+| dropdownMenuMode                          | When set to true, the context menu is triggered with a single tap instead of a long press. | boolean  | no       | Android/iOS            | yes               |
+| disabled                                  | Disable menu interaction.                                    | boolean  | no       | Android/iOS            | yes               |
+| onPress                                   | When the popup is opened and the user picks an option.       | callback | no       | Android/iOS            | yes               |
+| onPreviewPress                            | When the context menu preview is tapped.                     | callback | no       | iOS                    | yes               |
+| onCancel                                  | When the popup is opened and the user cancels.               | callback | no       | Android/iOS            | yes               |
+| fontName<sup>1.19.1+</sup>                | Custom font name to use for menu items.  The font must be available in your app's font resources. | string   | no       | Android                | yes               |
+| borderRadius<sup>1.19.1+</sup>            | Sets the border radius for all corners of  the preview. Can be overridden by individual corner settings. | number   | no       | iOS                    | no                |
+| borderTopLeftRadius<sup>1.19.1+</sup>     | Sets the border radius specifically for  the top left corner of the preview. | number   | no       | iOS                    | no                |
+| borderTopRightRadius<sup>1.19.1+</sup>    | Sets the border radius specifically for  the top right corner of the preview. | number   | no       | iOS                    | no                |
+| borderBottomRightRadius<sup>1.19.1+</sup> | Sets the border radius specifically for  the bottom right corner of the preview. | number   | no       | iOS                    | no                |
+| borderBottomLeftRadius<sup>1.19.1+</sup>  | Sets the border radius specifically for  the bottom left corner of the preview. | number   | no       | iOS                    | no                |
+| disableShadow<sup>1.19.1+</sup>           | When set to true, removes the shadow from  the preview. Default is false. | boolean  | no       | iOS                    | no                |
 
 ## actions
 
@@ -230,20 +278,23 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name           | Description                                                  | Type    | Required | Platform    | HarmonyOS Support |
-| -------------- | ------------------------------------------------------------ | ------- | -------- | ----------- | ----------------- |
-| title          | the title of the action                                      | string  | no       | Android/iOS | yes               |
-| subtitle       | the subtitle of the action                                   | string  | no       | iOS 15+     | yes               |
-| systemIcon     | refers to an icon name within [SF Symbols](https://developer.apple.com/design/human-interface-guidelines/sf-symbols/overview/) | string  | no       | iOS         | yes               |
-| icon           | Custom Icons.                                                | string  | no       | Android/iOS | yes               |
-| iconColor      | will change the color of the icon provided to the `icon` prop and has no effect on `systemIcon` (default: black) | string  | no       | Android/iOS | yes               |
-| destructive    | items are rendered in red                                    | boolean | no       | iOS         | yes               |
-| selected       | items have a checkmark next to them                          | boolean | no       | iOS         | yes               |
-| disabled       | marks whether the action is disabled or not                  | boolean | no       | Android/iOS | yes               |
-| inlineChildren | marks whether its children (if any) should be rendered inline instead of in their own child menu | boolean | no       | iOS         | partially         |
-| actions        | will provide a one level deep nested menu                    | array   | no       | Android/iOS | partially         |
+| Name                         | Description                                                  | Type    | Required | Platform    | HarmonyOS Support |
+| ---------------------------- | ------------------------------------------------------------ | ------- | -------- | ----------- | ----------------- |
+| title                        | the title of the action                                      | string  | no       | Android/iOS | yes               |
+| titleColor<sup>1.19.1+</sup> | Color of the title.                                          | string  | no       | All         | yes               |
+| subtitle                     | the subtitle of the action                                   | string  | no       | iOS 15+     | yes               |
+| systemIcon                   | refers to an icon name within [SF Symbols](https://developer.apple.com/design/human-interface-guidelines/sf-symbols/overview/) | string  | no       | iOS         | yes               |
+| icon                         | Custom Icons.                                                | string  | no       | Android/iOS | yes               |
+| iconColor                    | will change the color of the icon provided to the `icon` prop and has no effect on `systemIcon` (default: black) | string  | no       | Android/iOS | yes               |
+| destructive                  | items are rendered in red                                    | boolean | no       | iOS         | yes               |
+| selected                     | items have a checkmark next to them                          | boolean | no       | iOS         | yes               |
+| disabled                     | marks whether the action is disabled or not                  | boolean | no       | Android/iOS | yes               |
+| inlineChildren               | marks whether its children (if any) should be rendered inline instead of in their own child menu | boolean | no       | iOS         | partially         |
+| actions                      | will provide a one level deep nested menu                    | array   | no       | Android/iOS | partially         |
 
 ## 遗留问题
+
+- [ ] 部分接口在 HarmonyOS 不支持: [issue#27](https://github.com/react-native-oh-library/react-native-context-menu-view/issues/27)
 
 ## 其他
 

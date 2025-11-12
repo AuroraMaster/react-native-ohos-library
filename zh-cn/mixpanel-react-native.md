@@ -16,7 +16,13 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/mixpanel-react-native Releases](https://github.com/react-native-oh-library/mixpanel-react-native/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 3.0.5     | [@react-native-oh-tpl/mixpanel-react-native Releases](https://github.com/react-native-oh-library/mixpanel-react-native/releases) | 0.72       |
+| 3.1.3      | [@react-native-ohos/mixpanel-react-native Releases]()     | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -25,14 +31,22 @@
 #### **npm**
 
 ```bash
+# V3.0.5
 npm install @react-native-oh-tpl/mixpanel-react-native
+
+# V3.1.3
+npm install @react-native-ohos/mixpanel-react-native
 ```
 
 
 #### **yarn**
 
 ```bash
+# V3.0.5
 yarn add @react-native-oh-tpl/mixpanel-react-native
+
+# V3.1.3
+yarn add @react-native-ohos/mixpanel-react-native
 ```
 
 <!-- tabs:end -->
@@ -66,6 +80,8 @@ export default function MixpanelDemo() {
 
 ## 使用 Codegen
 
+> [!TIP] V3.1.3 不需要执行 Codegen。
+
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
@@ -98,10 +114,19 @@ export default function MixpanelDemo() {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
++ V3.0.5
 ```json
 "dependencies": {
 "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 "@react-native-oh-tpl/mixpanel-react-native": "file:../../node_modules/@react-native-oh-tpl/mixpanel-react-native/harmony/mixpanel.har"
+}
+```
+
++ V3.1.3
+```json
+"dependencies": {
+"@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+"@react-native-ohos/mixpanel-react-native": "file:../../node_modules/@react-native-ohos/mixpanel-react-native/harmony/mixpanel.har"
 }
 ```
 
@@ -118,14 +143,64 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 3.在 ArkTs 侧引入 MixpanelPackage
+### 3.配置 CMakeLists 和引入 MixpanelPackage
+
+> V3.1.3 需要配置 CMakeLists 和引入 MixpanelPackage。
+
+```diff
+...
+
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_END: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/mixpanel-react-native/src/main/cpp" ./mixpanel)
+# RNOH_END: manual_package_linking_1
+
+add_library(rnoh_app SHARED
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_mixpanel)
+# RNOH_BEGIN: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
++ #include "MixpanelPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
++        std::make_shared<MixpanelPackage>(ctx)
+}
+```
+
+### 4.在 ArkTs 侧引入 MixpanelPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
   ...
+// V3.0.5
 + import { MixpanelPackage } from '@react-native-oh-tpl/mixpanel-react-native/ts';
 
+// V3.1.3
++ import { MixpanelPackage } from '@react-native-ohos/mixpanel-react-native/ts';
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
     new SamplePackage(ctx),
@@ -134,7 +209,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.运行
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -153,7 +228,11 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/mixpanel-react-native Releases](https://github.com/react-native-oh-library/mixpanel-react-native/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 3.0.5     | [@react-native-oh-tpl/mixpanel-react-native Releases](https://github.com/react-native-oh-library/mixpanel-react-native/releases) | 0.72       |
+| 3.1.3      | [@react-native-ohos/mixpanel-react-native Releases]()     | 0.77       |
 
 ## API
 
@@ -165,7 +244,7 @@ ohpm install
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- |----------| -------- |-------------------|
-| init(): void; | 初始化Mixpanel实例 | function | yes      | iOS,Android | yes               |
+| init(): void; | 初始化Mixpanel实例<br /><br />3.0.5：参数为(<br/>    optOutTrackingDefault = DEFAULT_OPT_OUT,<br/>    superProperties = {},<br/>    serverURL = "https://api.mixpanel.com"<br/>  )<br />3.1.3：参数为(<br/>    optOutTrackingDefault = DEFAULT_OPT_OUT,<br/>    superProperties = {},<br/>    serverURL = "https://api.mixpanel.com",<br/>    useGzipCompression = false<br/>  )<br />新增参数useGzipCompression，HarmonyOS 暂未支持该参数 | function | yes      | iOS,Android | yes            |
 | setServerURL(serverURL: string): void; | 设置Mixpanel API请求使用的基本URL | function | no       | iOS,Android | yes               |
 | setLoggingEnabled(loggingEnabled: boolean): void; | 是否开启日志记录 | function | no       | iOS,Android | yes               |
 | setFlushOnBackground(flushOnBackground: boolean): void; | 当应用程序在iOS上进入后台时,允许启用或禁用Mixpanel是否刷新事件 | function | no       | iOS | no                |
@@ -229,6 +308,7 @@ ohpm install
 
 ## 遗留问题
 - [ ] 部分接口暂未开发：[issue#5](https://github.com/react-native-oh-library/mixpanel-react-native/issues/5)
+- [ ] init接口中useGzipCompression参数暂未支持：[issue#14](https://github.com/react-native-oh-library/mixpanel-react-native/issues/14)
 
 ## 其他
 

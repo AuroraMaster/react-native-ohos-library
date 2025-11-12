@@ -19,7 +19,14 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-idle-timer Releases](https://github.com/react-native-oh-library/react-native-idle-timer/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 2.2.3      | [@react-native-oh-tpl/react-native-idle-timer Releases](https://github.com/react-native-oh-library/react-native-idle-timer/releases) | 0.72       |
+| 2.2.3      | [@react-native-ohos/react-native-idle-timer Releases]()      | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -28,13 +35,21 @@
 #### **npm**
 
 ```bash
+# V2.2.3 for RN0.72
 npm install @react-native-oh-tpl/react-native-idle-timer
+
+# V2.2.3 for RN0.77
+npm install @react-native-ohos/react-native-idle-timer
 ```
 
 #### **yarn**
 
 ```bash
+# V2.2.3 for RN0.72
 yarn add @react-native-oh-tpl/react-native-idle-timer
+
+# V2.2.3 for RN0.77
+yarn add @react-native-ohos/react-native-idle-timer
 ```
 
 <!-- tabs:end -->
@@ -70,6 +85,8 @@ export default IdleTimerExample;
 
 ## 使用 Codegen
 
+> [!TIP] V2.2.3 for RN0.77 不需要执行 Codegen。
+
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
@@ -102,10 +119,21 @@ export default IdleTimerExample;
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- V2.2.3 for RN0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony" : "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-idle-timer": "file:../../node_modules/@react-native-oh-tpl/react-native-idle-timer/harmony/idle_timer.har"
+  }
+```
+
+- V2.2.3 for RN0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony" : "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-idle-timer": "file:../../node_modules/@react-native-ohos/react-native-idle-timer/harmony/idle_timer.har"
   }
 ```
 
@@ -130,7 +158,12 @@ ohpm install
 ```diff
   ...
 import type {RNPackageContext, RNPackage} from '@rnoh/react-native-openharmony/ts';
+
+// V2.2.3 for RN0.72
 +import {RNIdleTimerPackage}  from '@react-native-oh-tpl/react-native-idle-timer/ts';
+
+// V2.2.3 for RN0.77
++import {RNIdleTimerPackage}  from '@react-native-ohos/react-native-idle-timer/ts';
 
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -159,7 +192,12 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-idle-timer Releases](https://github.com/react-native-oh-library/react-native-idle-timer/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 2.2.3      | [@react-native-oh-tpl/react-native-idle-timer Releases](https://github.com/react-native-oh-library/react-native-idle-timer/releases) | 0.72       |
+| 2.2.3      | [@react-native-ohos/react-native-idle-timer Releases]()      | 0.77       |
 
 ## API
 

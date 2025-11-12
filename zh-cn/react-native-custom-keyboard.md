@@ -17,20 +17,33 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-custom-keyboard Releases](https://github.com/react-native-oh-library/react-native-custom-keyboard/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.0.3      | [@react-native-oh-tpl/picker Releases](https://github.com/react-native-oh-library/picker/releases) | 0.72       |
+| 1.0.3      | [@react-native-ohos/picker Releases]()                     | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
 #### **npm**
 
 ```bash
+# V1.0.3 for RN0.72
 npm install @react-native-oh-tpl/react-native-custom-keyboard
+
+# V1.0.3 for RN0.77
+npm install @react-native-ohos/react-native-custom-keyboard
 ```
 
 #### **yarn**
 
 ```bash
+# V1.0.3 for RN0.72
 yarn add @react-native-oh-tpl/react-native-custom-keyboard
+
+# V1.0.3 for RN0.77
+yarn add @react-native-ohos/react-native-custom-keyboard
 ```
 
 下面的代码展示了这个库的基本使用场景：
@@ -151,6 +164,8 @@ const styles = StyleSheet.create({
 
 ## 使用 Codegen
 
+> [!TIP]  V1.0.3 for RN0.77 不需要执行 Codegen。
+
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
@@ -183,10 +198,19 @@ const styles = StyleSheet.create({
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
++ V1.0.3 for RN0.72
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony" : "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-custom-keyboard": "file:../../node_modules/@react-native-oh-tpl/react-native-custom-keyboard/harmony/custom_keyboard.har"
+  }
+```
+
++ V1.0.3 for RN0.77
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony" : "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-custom-keyboard": "file:../../node_modules/@react-native-ohos/react-native-custom-keyboard/harmony/custom_keyboard.har"
   }
 ```
 
@@ -225,7 +249,13 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+# V1.0.3 for RN0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-custom-keyboard/src/main/cpp" ./custom-keyboard)
+
+# V1.0.3 for RN0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-custom-keyboard/src/main/cpp" ./custom-keyboard)
+
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -269,8 +299,11 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 ```diff
   ...
 import type {RNPackageContext, RNPackage} from '@rnoh/react-native-openharmony/ts';
+// V1.0.3 for RN0.72
 +import {RNCustomKeyboardPackage}  from '@react-native-oh-tpl/react-native-custom-keyboard/ts';
 
+// V1.0.3 for RN0.77
++import {RNCustomKeyboardPackage}  from '@react-native-ohos/react-native-custom-keyboard/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -298,7 +331,10 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-custom-keyboard Releases](https://github.com/react-native-oh-library/react-native-custom-keyboard/releases)
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.0.3      | [react-native-oh-tpl/react-native-custom-keyboard Releases](https://github.com/react-native-oh-library/react-native-custom-keyboard/releases) | 0.72       |
+| 1.0.3     | [react-native-ohos/react-native-custom-keyboard Releases]()                       | 0.77       |
 
 ## 属性
 

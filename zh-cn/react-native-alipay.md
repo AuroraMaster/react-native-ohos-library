@@ -16,20 +16,35 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-alipay Releases](https://github.com/react-native-oh-library/react-native-alipay/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 5.0.2     | [@react-native-oh-tpl/react-native-alipay Releases](https://github.com/react-native-oh-library/react-native-alipay/releases) | 0.72       |
+| 5.0.3    | [@react-native-ohos/react-native-alipay Releases]()                     | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
 #### **npm**
 
 ```bash
+# V5.0.2 for RN0.72
 npm install @react-native-oh-tpl/react-native-alipay
+
+# V5.0.3 for RN0.77
+npm install @react-native-ohos/react-native-alipay
 ```
 
 #### **yarn**
 
 ```bash
+# V5.0.2 for RN0.72
 yarn add @react-native-oh-tpl/react-native-alipay
+
+# V5.0.3 for RN0.77
+yarn add @react-native-ohos/react-native-alipay
 ```
 
 下面的代码展示了这个库的基本使用场景：
@@ -61,6 +76,8 @@ function App(): React.JSX.Element {
                 accessibilityLabel="Learn more about this purple button"
                 onPress={ 
                     async () => {
+                        //需保证在支付宝开放平台签约APP支付功能。自行实现签名并拼接字符串的，需将最终的完整字符串发送请求至
+                        //支付宝网关地址（https://openapi.alipay.com/gateway.do），确认字符串是否有效。
                         let orderInfo: string = 'app_id=2014100900013222&biz_content=%7B%22timeout_express%22%3A%2230m%22%2C%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22total_amount%22%3A%220.01%22%2C%22subject%22%3A%221%22%2C%22body%22%3A%22xxx%22%2C%22out_trade_no%22%3A%22723175011179269%22%7D&charset=utf-8&method=alipay.trade.app.pay&sign_type=RSA2&timestamp=2016-07-29%2016%3A55%3A53&version=1.0&sign=ClyziyfaiJtGd01HE1XmLbr%2BGy1JzBiH7QF69Qb66GvB%2BH6ULI5BeqEHeJIxVtKKgM%2F0ILEz7XjH2bvP1Fj52VUg5Gc5sg2reVHr8EhHqY7IiSAkEt3lNckWhfeVvdhjbQEKKZWMPgVC%2FVmMvMkkFzsP5S5Zz3aZKZWRp7xLApWtBZTeJj2Hd%2FDNhbEzvpTiQF9UDs1hPMmXmKLrNUmi0k4MQaeBCxXxmY9ITTmHofsju30rxo3q%2FYMYWD79ayxFmSO6adAXP9nLY%2B16VyeBCb53zxb%2BPWjV4CCVmit8YBOIOssAN4B0yLlmBOYWJS76MM46ADu%2FmiCwkdOnJduC6Q%3D%3D';
                         Alipay.alipay(orderInfo).then((result: any) => {
                             console.info('App alipay result: ' + result);
@@ -105,6 +122,8 @@ export default App;
 
 ## 使用 Codegen
 
+> [!TIP] V5.0.3 for RN0.77 不需要执行 Codegen。
+
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
@@ -124,6 +143,24 @@ export default App;
 }
 ```
 
+### 在工程根目录的 `build-profile.json5` 添加 products 字段
+
+```json
+{
+  ...
+  products: [
+      {
+        ...
+        buildOption: {
+          strictMode: {
+            useNormalizedOHMUrl: true,
+          },
+        },
+      },
+  ]
+}
+```
+
 ### 引入原生端代码
 
 目前有两种方法：
@@ -137,10 +174,19 @@ export default App;
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
++ V5.0.2 for RN0.72
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-alipay": "file:../../node_modules/@react-native-oh-tpl/react-native-alipay/harmony/alipay.har"
+  }
+```
+
++ V5.0.3  for RN0.77
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-alipay": "file:../../node_modules/@react-native-ohos/react-native-alipay/harmony/alipay.har"
   }
 ```
 
@@ -157,6 +203,73 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
+### 配置 CMakeLists 和引入 rnoh_alipay
+
+> [!TIP] V5.0.3 for RN0.77 需要配置 CMakeLists 和引入 rnoh_alipay。
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(RNOH_GENERATED_DIR "${CMAKE_CURRENT_SOURCE_DIR}/generated")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+# (VM) Define a variable and assign it to the current module's cpp directory
+set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+
+# Add the Header File directory, including cpp, cpp/include, and tell cmake to find the Header Files introduced by the code here
+include_directories(${NATIVERENDER_ROOT_PATH}
+                    ${NATIVERENDER_ROOT_PATH}/include)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-alipay/src/main/cpp" ./alipay)
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "${CMAKE_CURRENT_SOURCE_DIR}/generated/*.cpp") # this line is needed by codegen v1
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
++ target_link_libraries(rnoh_app PUBLIC rnoh_alipay)
+
+# RNOH_BEGIN: manual_package_linking_2
+
+# RNOH_END: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
++ #include "AlipayPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
++       std::make_shared<AlipayGeneratedPackage>(ctx),
+    };
+}
+```
 
 ### 在 ArkTs 侧引入 RNAlipayPackage
 
@@ -164,7 +277,11 @@ ohpm install
 
 ```diff
   ...
+// V5.0.2 for RN0.72
 + import {RNAlipayPackage} from '@react-native-oh-tpl/react-native-alipay/ts';
+
+// V5.0.3 for RN0.77
++ import {RNAlipayPackage} from '@react-native-ohos/react-native-alipay/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -178,9 +295,19 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- V5.0.2 for RN0.72
+
 ```json
 "dependencies": {
     "@alipay/afservicesdk": "file:../../node_modules/@react-native-oh-tpl/react-native-alipay/harmony/alipay/libs/AFServiceSDK.har",
+  }
+```
+
+- V5.0.3 for RN0.77
+
+```json
+"dependencies": {
+    "@alipay/afservicesdk": "file:../../node_modules/@react-native-ohos/react-native-alipay/harmony/alipay/libs/AFServiceSDK.har",
   }
 ```
 
@@ -227,7 +354,12 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[react-native-alipay Releases](https://github.com/react-native-oh-library/react-native-alipay/releases)
+请到三方库的 Releases 发布地址查看 Release 配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 5.0.2     | [@react-native-oh-tpl/react-native-alipay Releases](https://github.com/react-native-oh-library/react-native-alipay/releases) | 0.72       |
+| 5.0.3    | [@react-native-ohos/react-native-alipay Releases]()                     | 0.77       |
 
 ## 静态方法
 
