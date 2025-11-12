@@ -16,7 +16,14 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-dropdownalert Releases](https://github.com/react-native-oh-library/react-native-dropdownalert/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 5.1.0      | [@react-native-oh-tpl/react-native-dropdownalert Releases](https://github.com/react-native-oh-library/react-native-dropdownalert/releases) | 0.72       |
+| 5.1.1      | [@react-native-ohos/react-native-dropdownalert Releases]()     | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +32,19 @@
 #### **npm**
 
 ```bash
+# 5.1.0
 npm install @react-native-oh-tpl/react-native-dropdownalert
+# 5.1.1
+npm install @react-native-ohos/react-native-dropdownalert
 ```
 
 #### **yarn**
 
 ```bash
+# 5.1.0
 yarn add @react-native-oh-tpl/react-native-dropdownalert
+# 5.1.1
+yarn add @react-native-ohos/react-native-dropdownalert
 ```
 
 <!-- tabs:end -->
@@ -247,7 +260,12 @@ export default App;
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-dropdownalert Releases](https://github.com/react-native-oh-library/react-native-dropdownalert/releases)
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 5.1.0      | [@react-native-oh-tpl/react-native-dropdownalert Releases](https://github.com/react-native-oh-library/react-native-dropdownalert/releases) | 0.72       |
+| 5.1.1      | [@react-native-ohos/react-native-dropdownalert Releases]()     | 0.77       |
 
 ## DropdownAlert
 
