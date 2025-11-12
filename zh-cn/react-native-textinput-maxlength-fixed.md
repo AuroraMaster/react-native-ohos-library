@@ -15,7 +15,13 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-textinput-maxlength-fixed Releases](https://github.com/react-native-oh-library/react-native-textinput-maxlength-fixed/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+| 三方库版本 | 发布信息                                                     | 支持RN版本 | 
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.1.2     | [@react-native-oh-tpl/react-native-textinput-maxlength-fixed Releases](https://github.com/react-native-oh-library/react-native-textinput-maxlength-fixed/releases) | 0.72       |
+| 0.1.3     | [@react-native-ohos/react-native-textinput-maxlength-fixed Releases]()     | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -24,13 +30,19 @@
 #### **npm**
 
 ```bash
+# 0.1.2
 npm install @react-native-oh-tpl/react-native-textinput-maxlength-fixed
+# 0.1.3
+npm install @react-native-ohos/react-native-textinput-maxlength-fixed
 ```
 
 #### **yarn**
 
 ```bash
+# 0.1.2
 yarn add @react-native-oh-tpl/react-native-textinput-maxlength-fixed
+# 0.1.3
+yarn add @react-native-ohos/react-native-textinput-maxlength-fixed
 ```
 
 <!-- tabs:end -->
@@ -82,6 +94,8 @@ const styles = StyleSheet.create({
 
 ## 使用 Codegen
 
+> [!TIP] V0.1.3 for RN0.77 不需要执行 Codegen。
+
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
@@ -117,10 +131,19 @@ const styles = StyleSheet.create({
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- V0.1.2
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-textinput-maxlength-fixed": "file:../../node_modules/@react-native-oh-tpl/react-native-textinput-maxlength-fixed/harmony/textinput_maxlength_fixed.har"
+  }
+```
+
+- V0.1.3
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-textinput-maxlength-fixed": "file:../../node_modules/@react-native-ohos/react-native-textinput-maxlength-fixed/harmony/textinput_maxlength_fixed.har"
   }
 ```
 点击右上角的 `sync` 按钮
@@ -137,7 +160,10 @@ const styles = StyleSheet.create({
 import { RNPackageContext, RNPackage } from '@rnoh/react-native-openharmony';
 import { SampleTurboModulePackage } from '../TurboModule/SampleTurboModulePackage';
 import { ViewPagerPackage } from '@react-native-oh-tpl/react-native-pager-view/ts';
+// V0.1.2
 +import { RNTextinputMaxlengthFixedPackage } from "@react-native-oh-tpl/react-native-textinput-maxlength-fixed/ts";
+// V0.1.3
++import { RNTextinputMaxlengthFixedPackage } from "@react-native-ohos/react-native-textinput-maxlength-fixed/ts";
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -153,7 +179,13 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-textinput-maxlength-fixed Releases](https://github.com/react-native-oh-library/react-native-textinput-maxlength-fixed/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+| 三方库版本 | 发布信息                                                     | 支持RN版本 | 
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.1.2     | [@react-native-oh-tpl/react-native-textinput-maxlength-fixed Releases](https://github.com/react-native-oh-library/react-native-textinput-maxlength-fixed/releases) | 0.72       |
+| 0.1.3     | [@react-native-ohos/react-native-textinput-maxlength-fixed Releases]()     | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 ## API
 
