@@ -422,7 +422,7 @@ ohpm install
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | position  | 坐标         | LatLng  | yes | iOS/Android | yes |
-| icon  | 图标         | ImageSourcePropType  | no | iOS/Android | yes |
+| icon  | 图标（网络图片支持 png、jpg/jpeg、webp、gif（仅显示第一帧）） | ImageSourcePropType  | no | iOS/Android | yes |
 | draggable  | 是否可拖拽         | boolean  | no | iOS/Android | yes |
 | flat  | 是否平贴地图         | boolean  | no | Android | yes |
 | zIndex  | 层级         | Float  | no | iOS/Android | yes |
