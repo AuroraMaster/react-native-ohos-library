@@ -17,7 +17,14 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-restart Releases](https://github.com/react-native-oh-library/react-native-restart/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.0.27     | [@react-native-oh-tpl/react-native-restart Releases](https://github.com/react-native-oh-library/react-native-restart/releases) | 0.72       |
+| 0.0.28     | [@react-native-ohos/react-native-restart Releases]()         | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -26,13 +33,21 @@
 #### **npm**
 
 ```bash
+# V0.0.27
 npm install @react-native-oh-tpl/react-native-restart
+
+# V0.0.28
+npm install @react-native-ohos/react-native-restart
 ```
 
 #### **yarn**
 
 ```bash
+# V0.0.27
 yarn add @react-native-oh-tpl/react-native-restart
+
+# V0.0.28
+yarn add @react-native-ohos/react-native-restart
 ```
 
 <!-- tabs:end -->
@@ -79,6 +94,8 @@ const styles = StyleSheet.create({
 
 ## 使用 Codegen
 
+> [!TIP] V0.0.28 不需要执行Codegen
+
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
@@ -110,10 +127,21 @@ const styles = StyleSheet.create({
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- V0.0.27
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
    	"@react-native-oh-tpl/react-native-restart": "file:../../node_modules/@react-native-oh-tpl/react-native-restart/harmony/rn_restart.har",
+  }
+```
+
+- V0.0.28
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+   	"@react-native-ohos/react-native-restart": "file:../../node_modules/@react-native-ohos/react-native-restart/harmony/rn_restart.har",
   }
 ```
 
@@ -130,14 +158,80 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/link-source-code.md)
 
-### 3.在 ArkTs 侧引入 RNRestartPackage
+
+### 3.配置CMakeLists 和引入 RestartPackage
+
+> [!TIP] 若使用的是 0.0.27 版本，请跳过本章
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```cmake
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-restart/src/main/cpp" ./restart)
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_restart)
+# RNOH_END: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```c++
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "RestartPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++       std::make_shared<RestartPackage>(ctx)
+    };
+}
+```
+
+### 4.在 ArkTs 侧引入 RNRestartPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
 import type { RNPackageContext, RNPackage } from "rnoh/ts";
 import { SamplePackage } from "rnoh-sample-package/ts";
+// V0.0.27
 + import { RNRestartPackage } from '@react-native-oh-tpl/react-native-restart/ts';
+
+// V0.0.28
++ import { RNRestartPackage } from '@react-native-ohos/react-native-restart/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -153,7 +247,12 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-restart Releases](https://github.com/react-native-oh-library/react-native-restart/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.0.27     | [@react-native-oh-tpl/react-native-restart Releases](https://github.com/react-native-oh-library/react-native-restart/releases) | 0.72       |
+| 0.0.28     | [@react-native-ohos/react-native-restart Releases]()         | 0.77       |
 
 ## 静态方法
 
