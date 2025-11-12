@@ -6,12 +6,12 @@
 
 本项目基于 [react-native-marquee@0.5.0](https://github.com/kyo504/react-native-marquee/tree/v0.5.0) 开发。
 
-该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-marquee`，具体版本所属关系如下：
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| Version                   | Package Name                                      | Repository         | Release                    |
-| ------------------------- | ------------------------------------------------- | ------------------ | -------------------------- |
-| <= 0.5.0-0.0.1@deprecated | @react-native-oh-tpl/react-native-marquee | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-marquee) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-marquee/releases) |
-| > 0.5.1                  | @react-native-ohos/react-native-marquee   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-marquee) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-marquee/releases) |
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.5.0      | [@react-native-oh-tpl/react-native-marquee Releases](https://github.com/react-native-oh-library/react-native-marquee/releases) | 0.72       |
+| 0.5.1      | [@react-native-ohos/react-native-marquee Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-marquee/releases)     | 0.77       |
 
 ## 1. 安装与使用
 
@@ -22,12 +22,20 @@
 #### **npm**
 
 ```bash
+# V0.5.0
+npm install @react-native-oh-tpl/react-native-marquee
+
+# V0.5.1
 npm install @react-native-ohos/react-native-marquee
 ```
 
 #### **yarn**
 
 ```bash
+# V0.5.0
+yarn add @react-native-oh-tpl/react-native-marquee
+
+# V0.5.1
 yarn add @react-native-ohos/react-native-marquee
 ```
 
@@ -73,7 +81,12 @@ const styles = StyleSheet.create({
 
 ### 2.1 兼容性
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/react-native-marquee Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-marquee/releases)
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.5.0      | [@react-native-oh-tpl/react-native-marquee Releases](https://github.com/react-native-oh-library/react-native-marquee/releases) | 0.72       |
+| 0.5.1      | [@react-native-ohos/react-native-marquee Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-marquee/releases)     | 0.77       |
 
 
 ## 3. 属性

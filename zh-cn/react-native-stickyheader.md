@@ -18,7 +18,10 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-stickyheader Releases](https://github.com/react-native-oh-library/react-native-stickyheader/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.1.3     | [@react-native-oh-tpl/react-native-stickyheader Releases](https://github.com/react-native-oh-library/react-native-stickyheader/releases) | 0.72       |
+| 1.1.4      | [@react-native-ohos/react-native-stickyheader Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-stickyheader/releases)     | 0.77       |
 
 进入到工程目录并输入以下命令：
 
@@ -27,13 +30,21 @@
 #### **npm**
 
 ```bash
+# V1.1.3
 npm install @react-native-oh-tpl/react-native-stickyheader
+
+# V1.1.4
+npm install @react-native-ohos/react-native-stickyheader
 ```
 
 #### **yarn**
 
 ```bash
+# V1.1.3
 yarn add @react-native-oh-tpl/react-native-stickyheader
+
+# V1.1.4
+yarn add @react-native-ohos/react-native-stickyheader
 ```
 
 <!-- tabs:end -->
