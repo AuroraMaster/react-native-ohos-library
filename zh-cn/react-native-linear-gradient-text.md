@@ -16,20 +16,24 @@
 
 ## 安装与使用
 
-进入到工程目录并输入以下命令：
-
 <!-- tabs:start -->
 
 #### npm
 
 ```bash
+#0.72
 npm install react-native-linear-gradient-text@1.2.8
+#0.77
+npm install react-native-linear-gradient-text@1.2.12
 ```
 
 #### yarn
 
 ```bash
+#0.72
 yarn add react-native-linear-gradient-text@1.2.8
+#0.77
+yarn add react-native-linear-gradient-text@1.2.12
 ```
 
 <!-- tabs:end -->

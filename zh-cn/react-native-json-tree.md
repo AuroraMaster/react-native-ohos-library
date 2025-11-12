@@ -19,13 +19,19 @@
 #### **npm**
 
 ```bash
+#0.72
 npm install react-native-json-tree@^1.3.0
+#0.77
+npm install react-native-json-tree@^1.5.0
 ```
 
 #### **yarn**
 
 ```bash
+#0.72
 yarn add react-native-json-tree@^1.3.0
+#0.77
+yarn add react-native-json-tree@^1.5.0
 ```
 
 <!-- tabs:end -->

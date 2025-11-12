@@ -19,7 +19,14 @@
 ## 安装与使用
 
 请到三方库的 Releases
-发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-toast Releases](https://github.com/react-native-oh-library/react-native-toast/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.0.7      | [@react-native-oh-tpl/react-native-toast Releases](https://github.com/react-native-oh-library/react-native-toast/releases) | 0.72       |
+| 1.0.8      | [@react-native-ohos/react-native-toast Releases]()           | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -28,13 +35,21 @@
 #### **npm**
 
 ```bash
+#1.0.7
 npm install @react-native-oh-tpl/react-native-toast
+
+#1.0.8
+npm install @react-native-ohos/react-native-toast
 ```
 
 #### **yarn**
 
 ```bash
+#1.0.7
 yarn add @react-native-oh-tpl/react-native-toast
+
+#1.0.8
+yarn add @react-native-ohos/react-native-toast
 ```
 
 <!-- tabs:end -->
@@ -104,6 +119,8 @@ export default ToastMasterDemo;
 
 ## 使用 Codegen
 
+> [!TIP] V1.0.8 不需要执行 Codegen。
+
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
@@ -136,10 +153,21 @@ export default ToastMasterDemo;
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- V1.0.7
+
 ```json
 "dependencies": {
 "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 "@react-native-oh-tpl/react-native-toast": "file:../../node_modules/@react-native-oh-tpl/react-native-toast/harmony/rn_toast.har"
+}
+```
+
+- V1.0.8
+
+```json
+"dependencies": {
+"@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+"@react-native-ohos/react-native-toast": "file:../../node_modules/@react-native-ohos/react-native-toast/harmony/rn_toast.har"
 }
 ```
 
@@ -162,8 +190,10 @@ ohpm install
 
 ```diff
   ...
+ //1.0.7
 + import {ToastPackage} from '@react-native-oh-tpl/react-native-toast/ts';
-
+ //1.0.8
++ import {ToastPackage} from '@react-native-ohos/react-native-toast/ts';
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
     new SamplePackage(ctx),
@@ -172,7 +202,69 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.运行
+### 4.配置 CMakeLists 和引入 ToastPackage
+
+> [!TIP] 若使用的是V 1.0.7 版本，请跳过本章
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-toast/src/main/cpp" ./toast)
+
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rn_toast)
+# RNOH_END: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "ToastPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++       std::make_shared<ToastPackage>(ctx),
+    };
+}
+```
+
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -192,7 +284,12 @@ ohpm install
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
 请到三方库相应的 Releases 发布地址查看 Release
-配套的版本信息：[@react-native-oh-tpl/react-native-toast Releases](https://github.com/react-native-oh-library/react-native-toast/releases)
+配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.0.7      | [@react-native-oh-tpl/react-native-toast Releases](https://github.com/react-native-oh-library/react-native-toast/releases) | 0.72       |
+| 1.0.8      | [@react-native-ohos/react-native-toast Releases]()           | 0.77       |
 
 
 ## API

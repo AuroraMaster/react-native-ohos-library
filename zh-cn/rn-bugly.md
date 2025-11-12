@@ -17,7 +17,14 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/rn-bugly Releases](https://github.com/react-native-oh-library/rn-bugly/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本   | 发布信息                                                     | 支持RN版本 |
+| ------------ | ------------------------------------------------------------ | ---------- |
+| 1.3.0-beta.3 | [@react-native-oh-tpl/rn-bugly Releases](https://github.com/react-native-oh-library/rn-bugly/releases) | 0.72       |
+| 1.3.1        | [@react-native-ohos/rn-bugly Releases]()                     | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -26,13 +33,21 @@
 #### **npm**
 
 ```bash
+#1.3.0-beta.3
 npm install @react-native-oh-tpl/rn-bugly
+
+#1.3.1
+npm install @react-native-ohos/rn-bugly
 ```
 
 #### **yarn**
 
 ```bash
+#1.3.0-beta.3
 yarn add @react-native-oh-tpl/rn-bugly
+
+#1.3.1
+yarn add @react-native-ohos/rn-bugly
 ```
 
 <!-- tabs:end -->
@@ -126,10 +141,21 @@ export default class BuglyExample extends React.Component {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- V1.3.0-beta.3
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/rn-bugly": "file:../../node_modules/@react-native-oh-tpl/rn-bugly/harmony/bugly.har"
+  }
+```
+
+- V1.3.1
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/rn-bugly": "file:../../node_modules/@react-native-ohos/rn-bugly/harmony/bugly.har"
   }
 ```
 
@@ -168,7 +194,11 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+# 1.3.0-beta.3
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/rn-bugly/src/main/cpp" ./bugly)
+
+# 1.3.1
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/rn-bugly/src/main/cpp" ./bugly)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -211,7 +241,11 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
+ //1.3.0-beta.3
 + import {RNBuglyPackage} from '@react-native-oh-tpl/rn-bugly/ts';
+
+  //1.3.1
++ import {RNBuglyPackage} from '@react-native-ohos/rn-bugly/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -240,7 +274,12 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/rn-bugly Releases](https://github.com/react-native-oh-library/rn-bugly/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+
+| 三方库版本   | 发布信息                                                     | 支持RN版本 |
+| ------------ | ------------------------------------------------------------ | ---------- |
+| 1.3.0-beta.3 | [@react-native-oh-tpl/rn-bugly Releases](https://github.com/react-native-oh-library/rn-bugly/releases) | 0.72       |
+| 1.3.1        | [@react-native-ohos/rn-bugly Releases]()                     | 0.77       |
 
 ## API
 
