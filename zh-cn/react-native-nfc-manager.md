@@ -16,7 +16,14 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-nfc-manager Releases](https://github.com/react-native-oh-library/react-native-nfc-manager/releases)。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 3.15.0     | [@react-native-oh-tpl/react-native-nfc-manager Releases](https://github.com/react-native-oh-library/react-native-nfc-manager/releases) | 0.72       |
+| 3.16.2     | [@react-native-ohos/react-native-nfc-manager Releases]()     | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -24,21 +31,29 @@
 
 #### **npm**
 
-```
+```bash
+# V3.15.0
 npm install @react-native-oh-tpl/react-native-nfc-manager
+
+# V3.16.2
+npm install @react-native-ohos/react-native-nfc-manager
 ```
 
 #### **yarn**
 
-```
+```bash
+# V3.15.0
 yarn add @react-native-oh-tpl/react-native-nfc-manager
+
+# V3.16.2
+yarn add @react-native-ohos/react-native-nfc-manager
 ```
 
 下面的代码展示了这个库的基本使用场景：
 
 > [!TIP] 使用时 import 的库名不变。
 
-```
+```js
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import NfcManager, {NfcTech} from 'react-native-nfc-manager';
@@ -84,6 +99,8 @@ export default App;
 
 ## 使用 Codegen
 
+> [!TIP] V3.16.2 不需要执行 Codegen。
+
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
@@ -92,7 +109,7 @@ export default App;
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 harmony
 
-```
+```json
 在工程根目录的 oh-package.json 添加 overrides字段
 {
   ...
@@ -108,7 +125,7 @@ export default App;
 
 ### 后台读卡方式的声明
 **1.应用程序需要支持后台读卡时，需要在应用的属性配置文件中，声明与NFC相关的属性值。比如，在entry/src/main/module.json5文件中，声明下面属性值：**
-```
+```json
 {
     "module": {
         // other declared attributes.
@@ -148,11 +165,16 @@ export default App;
 ```
 **2.在对相关Tag类型卡片进行读写之前，必须先获取TagInfo相关属性值，以确认设备读取到的Tag卡片支持哪些技术类型。可以将以下内容添加到EntryAbility**
 
-```
+```js
 import {RNAbility} from 'rnoh';
 import Want from '@ohos.app.ability.Want';
-import { RNNfcManagerModule } from '@react-native-oh-tpl/react-native-nfc-manager';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+
+// V3.15.0
+import { RNNfcManagerModule } from '@react-native-oh-tpl/react-native-nfc-manager';
+
+// V3.16.2
+import { RNNfcManagerModule } from '@react-native-ohos/react-native-nfc-manager';
 
 export default class EntryAbility extends RNAbility {
 
@@ -199,10 +221,21 @@ export default class EntryAbility extends RNAbility {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-```
+- V3.15.0
+
+```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-nfc-manager": "file:../../node_modules/@react-native-oh-tpl/react-native-nfc-manager/harmony/nfc_manager.har"
+  }
+```
+
+- V3.16.2
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-nfc-manager": "file:../../node_modules/@react-native-ohos/react-native-nfc-manager/harmony/nfc_manager.har"
   }
 ```
 
@@ -210,7 +243,7 @@ export default class EntryAbility extends RNAbility {
 
 或者在终端执行：
 
-```
+```bash
 cd entry
 ohpm install
 ```
@@ -219,13 +252,78 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 3.在 ArkTs 侧引入 RNNfcManagerPackage
+### 3.配置 CMakeLists 和引入 NfcManagerPackage
+
+> [!TIP] 若使用的是 3.15.0 版本，请跳过本章。
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-nfc-manager/src/main/cpp" ./nfc-manager)
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_nfc_manager)
+# RNOH_END: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "NfcManagerPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++       std::make_shared<NfcManagerPackage>(ctx),
+    };
+}
+```
+
+### 4.在 ArkTs 侧引入 RNNfcManagerPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
   ...
+// V3.15.0
 + import { RNNfcManagerPackage } from '@react-native-oh-tpl/react-native-nfc-manager/ts';
+
+// V3.16.2
++ import { RNNfcManagerPackage } from '@react-native-ohos/react-native-nfc-manager/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -235,13 +333,13 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.运行
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
 或者在终端执行：
 
-```
+```bash
 cd entry
 ohpm install
 ```
@@ -254,12 +352,19 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-nfc-manager Releases](https://github.com/react-native-oh-library/react-native-nfc-manager/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 3.15.0     | [@react-native-oh-tpl/react-native-nfc-manager Releases](https://github.com/react-native-oh-library/react-native-nfc-manager/releases) | 0.72       |
+| 3.16.2     | [@react-native-ohos/react-native-nfc-manager Releases]()     | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 ### 权限要求
 打开 `entry/src/main/module.json5`，添加以下权限配置
 
-```
+```json
 "requestPermissions": [
     {
         "name": "ohos.permission.NFC_TAG",
@@ -331,6 +436,8 @@ ohpm install
 | invalidateSessionWithErrorIOS | Initializing the tag session may throw an exception        | function  | NO | iOS      | NO |
 | sendCommandAPDUIOS | Send specific APDU commands        | function  | NO | iOS      | NO |
 | restartTechnologyRequestIOS | Restart NFC session        | function  | NO | iOS      | NO |
+| isSessionAvailableIOS<sup>3.16.2+</sup> | Return whether the session is available | function | NO | iOS | NO |
+| isTagSessionAvailableIOS<sup>3.16.2+</sup> | Return whether the tag session is available | function | NO | iOS | NO |
 
 **MifareIOS**
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
@@ -362,8 +469,10 @@ ohpm install
 | extendedReadSingleBlock | Read the content of a specified single data block from an RFID tag  | function  | NO | iOS      | NO |
 | extendedWriteSingleBlock | Write the content of a specified single data block from an RFID tag  | function  | NO | iOS      | NO |
 | extendedLockBlock | Lock one or more data blocks in the RFID tag to prevent them from being further written or modified  | function  | NO | iOS      | NO |
+| extendedReadMultipleBlocks<sup>3.16.2+</sup> | Read the content of a specified Multiple data block from an RFID tag | function | NO | iOS | NO |
 
 **Android only**
+
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | goToNfcSetting | Guide users to the NFC settings interface of the device        | function  | NO | Android      | yes |
@@ -464,8 +573,10 @@ ohpm install
 
 ## 遗留问题
 
+- [ ] V3.16.2原库部分接口在HarmonyOS中没有对应属性或接口支持：[issue#1](https://gitcode.com/openharmony-sig/rntpc_react-native-nfc-manager/issues/1)
 
 ## 其他
+
 本库是一个为 React Native 开发者提供的 NFC（近场通信）管理库，它允许开发者在 React Native 应用中轻松集成 NFC 功能。这个库支持 iOS 、 Android 和HarmonyOS NEXT平台,使得开发者可以跨平台地实现 NFC 相关的功能，如读取和写入 NFC 标签、进行智能卡模拟等。因平台不同，iOS 、Android 和HarmonyOS NEXT在NFC（近场通信）技术中对标签和协议类型存在兼容性。本库的设计考虑到了Android 和HarmonyOS NEXT兼容性较高，核心功能在两个平台上都能实现，并且表现一致。该库提供了多种 NFC 技术的支持，包括但不限于 NDEF、NfcA、IsoDep 和 NfcV 等。
 
 ## 开源协议

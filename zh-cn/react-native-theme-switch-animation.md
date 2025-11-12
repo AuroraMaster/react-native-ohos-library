@@ -14,23 +14,37 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-theme-switch-animation)
 
-
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-library/react-native-theme-switch-animation Releases](https://github.com/react-native-oh-library/react-native-theme-switch-animation/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.6.0      | [@react-native-oh-tpl/react-native-theme-switch-animation Releases](https://github.com/react-native-oh-library/react-native-theme-switch-animation/releases) | 0.72       |
+| 0.8.1      | [@react-native-ohos/react-native-theme-switch-animation Releases]() | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# V0.6.0
 npm install @react-native-oh-tpl/react-native-theme-switch-animation
+
+# V0.8.1
+npm install @react-native-ohos/react-native-theme-switch-animation
 ```
 
 #### **yarn**
 
 ```bash
+# V0.6.0
 yarn add @react-native-oh-tpl/react-native-theme-switch-animation
+
+# V0.8.1
+yarn add @react-native-ohos/react-native-theme-switch-animation
 ```
 
 <!-- tabs:end -->
@@ -108,9 +122,12 @@ const styles = StyleSheet.create({
   },
 });
 
+export default ReactNativeThemeSwitchAnimationDemo;
 ```
 
 ## 使用 Codegen
+
+> [!TIP] V0.8.1 不需要执行 Codegen。
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
@@ -145,11 +162,23 @@ const styles = StyleSheet.create({
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- V0.6.0
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
     "@react-native-oh-tpl/react-native-theme-switch-animation": "file:../../node_modules/@react-native-oh-tpl/react-native-theme-switch-animation/harmony/react_native_theme_switch.har"
+  }
+```
+
+- V0.8.1
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+
+    "@react-native-ohos/react-native-theme-switch-animation": "file:../../node_modules/@react-native-ohos/react-native-theme-switch-animation/harmony/react_native_theme_switch.har"
   }
 ```
 
@@ -165,13 +194,78 @@ ohpm install
 方法二：直接链接源码
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
-### 3.在 ArkTs 侧引入 RNThemeSwitch Package
+### 3.配置 CMakeLists 和引入 ThemeSwitchAnimationPackage
+
+> [!TIP] 若使用的是 0.6.0 版本，请跳过本章。
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-theme-switch-animation/src/main/cpp" ./theme-switch-animation)
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_theme_switch_animation)
+# RNOH_END: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "ThemeSwitchAnimationPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++       std::make_shared<ThemeSwitchAnimationPackage>(ctx),
+    };
+}
+```
+
+### 4.在 ArkTs 侧引入 RNThemeSwitchPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ets`，添加：
 
 ```diff
 ...
+// V0.6.0
 + import { RNThemeSwitchPackage } from "@react-native-oh-tpl/react-native-theme-switch-animation/ts";
+
+// V0.8.1
++ import { RNThemeSwitchPackage } from "@react-native-ohos/react-native-theme-switch-animation/ts";
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -179,9 +273,8 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 +   new RNThemeSwitchPackage(ctx),
   ];
 }
-
 ```
-### 4.运行
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -206,7 +299,12 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-library/react-native-theme-switch-animation Releases](https://github.com/react-native-oh-library/react-native-theme-switch-animation/releases)
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.6.0      | [@react-native-oh-tpl/react-native-theme-switch-animation Releases](https://github.com/react-native-oh-library/react-native-theme-switch-animation/releases) | 0.72       |
+| 0.8.1      | [@react-native-ohos/react-native-theme-switch-animation Releases]() | 0.77       |
 
 ## 属性
 
@@ -228,6 +326,7 @@ ohpm install
 | `type`  | Specifies animation type | fade circular inverted-circular |  no     | All   | yes      |
 | `duration`  | Specifies duration in milliseconds | number |  no     | All   | yes      |
 | `startingPoint`  | Configuration for the circular animation, where does the animation start in the screen | 	StartingPointConfig |  no     | All   | yes      |
+| `captureType`<sup>0.8.1+</sup> | (iOS only) layer is the default and suitable for most cases, hierarchy is more complex and can cause flickering in (inverted-circular) animation, but it solves issue where some elements are not visible while animation is happening | layer or hierarchy | no | iOS | no |
 
 **startingPoint options**
 
@@ -244,5 +343,8 @@ ohpm install
 
 ## 其他
 
+captureType属性 HarmonyOS 未支持，因该属性旨在处理 iOS 端的在 inverted-circular 倒圆动画进行时某些元素不可见问题，而 HarmonyOS 端无该问题。
+
 ## 开源协议
+
 本项目基于 [The MIT License (MIT)](https://github.com/WadhahEssam/react-native-theme-switch-animation/blob/main/LICENSE) ，请自由地享受和参与开源。
