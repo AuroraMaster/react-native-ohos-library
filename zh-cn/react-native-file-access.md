@@ -16,7 +16,14 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-file-access Releases](https://github.com/react-native-oh-library/react-native-file-access/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 3.1.0      | [@react-native-oh-tpl/react-native-file-access Releases](https://github.com/react-native-oh-library/react-native-file-access/releases) | 0.72       |
+| 3.1.2      | [@react-native-ohos/react-native-file-access Releases]()     | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +32,21 @@
 #### **npm**
 
 ```bash
+# V3.1.0
 npm install @react-native-oh-tpl/react-native-file-access
+
+# V3.1.2
+npm install @react-native-ohos/react-native-file-access
 ```
 
 #### **yarn**
 
 ```bash
+# V3.1.0
 yarn add @react-native-oh-tpl/react-native-file-access
+
+# V3.1.2
+yarn add @react-native-ohos/react-native-file-access
 ```
 
 <!-- tabs:end -->
@@ -43,13 +58,11 @@ yarn add @react-native-oh-tpl/react-native-file-access
 > [!TIP] 以下 demo 中使用的是本地文件。
 
 ```js
-import React, { useEffect, useState } from 'react';
-import { Button, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Button, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Dirs, FileSystem } from 'react-native-file-access';
 
-export function FileAccessDemo() {
-  const [info, setInfo] = useState<{ key: string; value: string }[]>([]);
-  const [result, setResult] = useState<string | null>('') || null;
+function FileAccessDemo() {
   const [fileContent, setFileContent] = useState('');
   const [mkdirParam, setMkdirParam] = useState('');
   const [statInfo, setStatInfo] = useState<any>([]);
@@ -65,7 +78,7 @@ export function FileAccessDemo() {
 
   // 将内容写入文件
   const wirteFile = () => {
-    FileSystem.writeFile(Dirs.DocumentDir + '/0801' + '/text1.txt', "DDDD", "utf8")
+    FileSystem.writeFile(Dirs.DocumentDir + '/0801.txt', "DDDD", "utf8")
   };
 
   // 读取文件的内容
@@ -77,7 +90,7 @@ export function FileAccessDemo() {
 
   // 删除文件
   const unlink = () => {
-    FileSystem.unlink(Dirs.DocumentDir + '/0812.txt');
+    FileSystem.unlink(Dirs.DocumentDir + '/0801.txt');
   };
 
   // 创建一个新目录，返回创建目录的路径
@@ -91,7 +104,7 @@ export function FileAccessDemo() {
 
   // 移动文件
   const mv = () => {
-    FileSystem.mv(Dirs.DocumentDir + "/text.txt", Dirs.DocumentDir + "/text1.txt");
+    FileSystem.mv(Dirs.DocumentDir + "/0801.txt", Dirs.DocumentDir + "/text1.txt");
   };
 
   // 解压一个 zip 档案
@@ -165,7 +178,7 @@ export function FileAccessDemo() {
 
   // 读取文件的一大块内容，从位于的字节开始offset，读取length字节
   const readFileChunk = () => {
-    FileSystem.readFileChunk(Dirs.DocumentDir + "/text2.txt", 1, 1, 'utf8').then((res) => {
+    FileSystem.readFileChunk(Dirs.DocumentDir + "/text1.txt", 1, 1, 'utf8').then((res) => {
       setReadFileChunkInfo(res);
     }).catch((error) => {
       console.log(error, 'error')
@@ -313,12 +326,14 @@ const styles = StyleSheet.create({
     paddingRight: 8,
   },
 });
-
+export default FileAccessDemo
 ```
 
-## 使用 Codegen
+## 使用 Codegen 
 
-本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
+> [!] V3.1.2 不需要执行 Codegen。
+
+本库已经适配了 Codegen ，在使用前需要主动执行生成三方库桥接代码，详细请参考 [Codegen 文档](/zh-cn/codegen.md)。
 
 ## Link
 
@@ -350,10 +365,21 @@ const styles = StyleSheet.create({
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- V3.1.0
+
 ```json
 "dependencies": {
      "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
      "@react-native-oh-tpl/react-native-file-access": "file:../../node_modules/@react-native-oh-tpl/react-native-file-access/harmony/file_access.har"
+  }
+```
+
+- V3.1.2
+
+```json
+"dependencies": {
+     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+     "@react-native-ohos/react-native-file-access": "file:../../node_modules/@react-native-ohos/react-native-file-access/harmony/file_access.har"
   }
 ```
 
@@ -370,13 +396,83 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 3.在 ArkTs 侧引入 RNFileAccessPackage
+### 3.配置 CMakeLists 和引入 RNFileAccessPackage
+
+> [!TIP] V3.1.2需要配置 CMakeLists 和引入 RNFileAccessPackage。
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
+set(OH_MODULE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules/@rnoh/react-native-openharmony/src/main/cpp")
+set(RNOH_GENERATED_DIR "${CMAKE_CURRENT_SOURCE_DIR}/generated")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+# (VM) Define a variable and assign it to the current module's cpp directory
+set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+
+# Add the Header File directory, including cpp, cpp/include, and tell cmake to find the Header Files introduced by the code here
+include_directories(${NATIVERENDER_ROOT_PATH}
+                    ${NATIVERENDER_ROOT_PATH}/include)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-file-access/src/main/cpp" ./file_access)
+# RNOH_BEGIN: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "${CMAKE_CURRENT_SOURCE_DIR}/generated/*.cpp") # this line is needed by codegen v1
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
++ target_link_libraries(rnoh_app PUBLIC rnoh_file_access)
+
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
++ #include "RNFileAccessPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx)
+{
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
++ 		std::make_shared<RNFileAccessPackage>(ctx)
+    };
+}
+```
+
+
+
+### 4.在 ArkTs 侧引入 RNFileAccessPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
   ...
+# V3.1.0
 + import { RNFileAccessPackage } from '@react-native-oh-tpl/react-native-file-access/ts';
+
+# V3.1.2
++ import { RNFileAccessPackage } from '@react-native-ohos/react-native-file-access/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -386,7 +482,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.运行
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -405,7 +501,12 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-file-access Releases](https://github.com/react-native-oh-library/react-native-file-access/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 3.1.0      | [@react-native-oh-tpl/react-native-file-access Releases](https://github.com/react-native-oh-library/react-native-file-access/releases) | 0.72       |
+| 3.1.2      | [@react-native-ohos/react-native-file-access Releases]()     | 0.77       |
 
 ## API
 
@@ -415,29 +516,29 @@ ohpm install
 
 #### File System Access API
 
-| Name           | Description                                                                                    | Type     | Platform | Required    | HarmonyOS Support |
-| -------------- | ---------------------------------------------------------------------------------------------- | -------- | -------- | ----------- | ----------------- |
-| appendFile     | Append content to a file.                                                                      | Function | No       | iOS/Android | Yes               |
-| concatFiles    | Append a file to another file. Returns number of bytes written.                                | Function | No       | iOS/Android | Yes               |
-| cp             | Copy a file.                                                                                   | Function | No       | iOS/Android | Yes               |
-| cpAsset        | Copy a bundled asset file.                                                                     | Function | No       | iOS/Android | Yes               |
-| cpExternal     | Copy a file to an externally controlled location.                                              | Function | No       | iOS/Android | Yes               |
-| df             | Check device available space.                                                                  | Function | No       | iOS/Android | Yes               |
-| exists         | Check if a path exists.                                                                        | Function | No       | iOS/Android | Yes               |
-| fetch          | Save a network request to a file.                                                              | Function | No       | iOS/Android | Yes               |
-| getAppGroupDir | Get the directory for your app group (iOS & MacOS only).                                       | Function | No       | iOS         | No                |
-| hash           | Hash the file content.                                                                         | Function | No       | iOS/Android | Yes               |
-| isDir          | Check if a path is a directory.                                                                | Function | No       | iOS/Android | Yes               |
-| ls             | List files in a directory.                                                                     | Function | No       | iOS/Android | Yes               |
-| mkdir          | Make a new directory.                                                                          | Function | No       | iOS/Android | Yes               |
-| mv             | Move a file.                                                                                   | Function | No       | iOS/Android | Yes               |
-| readFile       | Read the content of a file.                                                                    | Function | No       | iOS/Android | Yes               |
+| Name           | Description                                                  | Type     | Platform | Required    | HarmonyOS Support |
+| -------------- | ------------------------------------------------------------ | -------- | -------- | ----------- | ----------------- |
+| appendFile     | Append content to a file.                                    | Function | No       | iOS/Android | Yes               |
+| concatFiles    | Append a file to another file. Returns number of bytes written. | Function | No       | iOS/Android | Yes               |
+| cp             | Copy a file.                                                 | Function | No       | iOS/Android | Yes               |
+| cpAsset        | Copy a bundled asset file.                                   | Function | No       | iOS/Android | Yes               |
+| cpExternal     | Copy a file to an externally controlled location.            | Function | No       | iOS/Android | Yes               |
+| df             | Check device available space.                                | Function | No       | iOS/Android | Yes               |
+| exists         | Check if a path exists.                                      | Function | No       | iOS/Android | Yes               |
+| fetch          | Save a network request to a file.                            | Function | No       | iOS/Android | Yes               |
+| getAppGroupDir | Get the directory for your app group (iOS & MacOS only).     | Function | No       | iOS         | No                |
+| hash           | Hash the file content.                                       | Function | No       | iOS/Android | Yes               |
+| isDir          | Check if a path is a directory.                              | Function | No       | iOS/Android | Yes               |
+| ls             | List files in a directory.                                   | Function | No       | iOS/Android | Yes               |
+| mkdir          | Make a new directory.                                        | Function | No       | iOS/Android | Yes               |
+| mv             | Move a file.                                                 | Function | No       | iOS/Android | Yes               |
+| readFile       | Read the content of a file.                                  | Function | No       | iOS/Android | Yes               |
 | readFileChunk  | Read a chunk of the content of a file, starting from byte at offset, reading for length bytes. | Function | No       | iOS/Android | Yes               |
-| stat           | Read file metadata.                                                                            | Function | No       | iOS/Android | Yes               |
-| statDir        | Read metadata of all files in a directory.                                                     | Function | No       | iOS/Android | Yes               |
-| unlink         | Delete a file.                                                                                 | Function | No       | iOS/Android | Yes               |
-| unzip          | Extract a zip archive.                                                                         | Function | No       | iOS/Android | Yes               |
-| writeFile      | Write content to a file.                                                                       | Function | No       | iOS/Android | Yes               |
+| stat           | Read file metadata.                                          | Function | No       | iOS/Android | Yes               |
+| statDir        | Read metadata of all files in a directory.                   | Function | No       | iOS/Android | Yes               |
+| unlink         | Delete a file.                                               | Function | No       | iOS/Android | Yes               |
+| unzip          | Extract a zip archive.                                       | Function | No       | iOS/Android | Yes               |
+| writeFile      | Write content to a file.                                     | Function | No       | iOS/Android | Yes               |
 
 ## 遗留问题
 

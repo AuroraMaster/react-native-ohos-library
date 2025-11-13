@@ -17,7 +17,13 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/audio-toolkit Releases](https://github.com/react-native-oh-library/react-native-audio-toolkit/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+| 三方库版本 | 发布信息                                                     | 支持RN版本 | 
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 2.0.3     | [@react-native-oh-tpl/audio-toolkit Releases](https://github.com/react-native-oh-library/react-native-audio-toolkit/releases) | 0.72       |
+| 2.0.4     | [@react-native-ohos/audio-toolkit Releases]()     | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -26,13 +32,19 @@
 #### **npm**
 
 ```bash
+# 2.0.3
 npm install @react-native-oh-tpl/audio-toolkit
+# 2.0.4
+npm install @react-native-ohos/audio-toolkit
 ```
 
 #### **yarn**
 
 ```bash
+# 2.0.3
 yarn add @react-native-oh-tpl/audio-toolkit
+# 2.0.4
+yarn add @react-native-ohos/audio-toolkit
 ```
 
 <!-- tabs:end -->
@@ -390,6 +402,8 @@ const styles = StyleSheet.create({
 
 ## 使用 Codegen
 
+> [!TIP] V2.0.4 for RN0.77 不需要执行 Codegen。
+
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
@@ -421,11 +435,18 @@ const styles = StyleSheet.create({
 > [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
 
 打开 `entry/oh-package.json5`，添加以下依赖
-
+- V2.0.3
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/audio-toolkit": "file:../../node_modules/@react-native-oh-tpl/audio-toolkit/harmony/audio_toolkit.har"
+  }
+```
+- V2.0.4
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/audio-toolkit": "file:../../node_modules/@react-native-ohos/audio-toolkit/harmony/audio_toolkit.har"
   }
 ```
 
@@ -435,8 +456,10 @@ const styles = StyleSheet.create({
 
 ```diff
 ...
-
+// V2.0.3
 +   import { AudioModulesPackage } from "@react-native-oh-tpl/audio-toolkit/ts";
+// V2.0.4
++   import { AudioModulesPackage } from "@react-native-ohos/audio-toolkit/ts";
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -459,7 +482,69 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 4.运行
+### 4.配置 CMakeLists 和引入 AudioToolkitPackage
+
+> [!TIP] V2.0.4 需要执行 
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/audio-toolkit/src/main/cpp" ./audio-toolkit)
+
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_audio_toolkit)
+# RNOH_END: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "AudioToolkitPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++       std::make_shared<AudioToolkitPackage>(ctx),
+    };
+}
+```
+
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -478,7 +563,13 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/audio-toolkit Releases](https://github.com/react-native-oh-library/react-native-audio-toolkit/releases/)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+| 三方库版本 | 发布信息                                                     | 支持RN版本 | 
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 2.0.3     | [@react-native-oh-tpl/audio-toolkit Releases](https://github.com/react-native-oh-library/react-native-audio-toolkit/releases) | 0.72       |
+| 2.0.4     | [@react-native-ohos/audio-toolkit Releases]()     | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 ### 权限要求
 

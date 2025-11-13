@@ -17,9 +17,17 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-image-viewing Releases](https://github.com/react-native-oh-library/react-native-image-viewing/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.2.2    |[@react-native-oh-tpl/react-native-image-viewing Releases](https://github.com/react-native-oh-library/react-native-image-viewing/releases)   | 0.72       |
+| 0.2.3    |[@react-native-ohos/react-native-image-viewing Releases]()     | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
+
+
 
 <!-- tabs:start -->
 
@@ -28,13 +36,21 @@
 #### npm
 
 ```bash
+# V0.2.2
 npm install @react-native-oh-tpl/react-native-image-viewing
+
+# V0.2.3
+npm install @react-native-ohos/react-native-image-viewing
 ```
 
 #### yarn
 
 ```bash
+# V0.2.2
 yarn add @react-native-oh-tpl/react-native-image-viewing
+
+# V0.2.3
+yarn add @react-native-ohos/react-native-image-viewing
 ```
 
 快速使用：
@@ -190,7 +206,11 @@ const styles = StyleSheet.create({
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-image-viewing Releases](https://github.com/react-native-oh-library/react-native-image-viewing/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.2.2    |[@react-native-oh-tpl/react-native-image-viewing Releases](https://github.com/react-native-oh-library/react-native-image-viewing/releases)   | 0.72       |
+| 0.2.3    |[@react-native-ohos/react-native-image-viewing Releases]()     | 0.77       |
 
 ## 属性
 

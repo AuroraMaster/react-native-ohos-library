@@ -17,24 +17,37 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-search-bar Releases](https://github.com/react-native-oh-library/react-native-search-bar/releases)。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 3.5.1      | [@react-native-oh-tpl/react-native-search-bar Releases](https://github.com/react-native-oh-library/react-native-search-bar/releases) | 0.72       |
+| 3.5.2      | [@react-native-ohos/react-native-search-bar Releases]()      | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
-
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# V3.5.1 for RN0.72
 npm install @react-native-oh-tpl/react-native-search-bar
+
+# V3.5.2 for RN0.77
+npm install @react-native-ohos/react-native-search-bar
 ```
 
 #### **yarn**
 
 ```bash
+# V3.5.1 for RN0.72
 yarn add @react-native-oh-tpl/react-native-search-bar
+
+# V3.5.2 for RN0.77
+yarn add @react-native-ohos/react-native-search-bar
 ```
 
 <!-- tabs:end -->
@@ -45,7 +58,7 @@ yarn add @react-native-oh-tpl/react-native-search-bar
 
 ```js
 import React, { useState, useRef  } from 'react';
-import { StyleSheet , Text, View } from 'react-native';
+import { StyleSheet , Text, View, ScrollView } from 'react-native';
 import SearchBar from 'react-native-search-bar';
 
 
@@ -62,7 +75,7 @@ const SearchBarDemo = () => {
 		  barStyle="default"
 		  placeholder="占位符"
 		  returnKeyType="Done"
-		  keyboardType="phone-padd"
+		  keyboardType="phone-pad"
 		  onChange={(e)=>{
 			  console.log('search-bar -----------> JS Demo onchange:' + e.nativeEvent.text)
 		  }}
@@ -132,11 +145,23 @@ export default SearchBarDemo;
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- V3.5.1 for RN0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
     "@react-native-oh-tpl/react-native-search-bar": "file:../../node_modules/@react-native-oh-tpl/react-native-search-bar/harmony/search_bar.har",
+  }
+```
+
+- V3.5.2 for RN0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+
+    "@react-native-ohos/react-native-search-bar": "file:../../node_modules/@react-native-ohos/react-native-search-bar/harmony/search_bar.har",
   }
 ```
 
@@ -168,7 +193,13 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+# V3.5.1 for RN0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-search-bar/src/main/cpp" ./search-bar)
+
+# V3.5.2 for RN0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-search-bar/src/main/cpp" ./search-bar)
+
 # RNOH_END: manual_package_linking_1
 
 add_library(rnoh_app SHARED
@@ -208,7 +239,11 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
     ...
+// V3.5.1 for RN0.72
 + import { RNCSearchBar } from "@react-native-oh-tpl/react-native-search-bar"
+
+// V3.5.2 for RN0.77
++ import { RNCSearchBar } from "@react-native-ohos/react-native-search-bar"
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -256,7 +291,12 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-search-bar Releases](https://github.com/react-native-oh-library/react-native-search-bar/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 3.5.1      | [@react-native-oh-tpl/react-native-search-bar Releases](https://github.com/react-native-oh-library/react-native-search-bar/releases) | 0.72       |
+| 3.5.2      | [@react-native-ohos/react-native-search-bar Releases]()      | 0.77       |
 
 ## 属性
 

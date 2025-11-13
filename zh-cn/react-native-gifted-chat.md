@@ -24,13 +24,19 @@
 #### **npm**
 
 ```bash
+#0.72
 npm install react-native-gifted-chat@2.4.0
+#0.77
+npm install react-native-gifted-chat@2.8.1
 ```
 
 #### **yarn**
 
 ```bash
+#0.72
 yarn add react-native-gifted-chat@2.4.0
+#0.77
+yarn add react-native-gifted-chat@2.8.1
 ```
 
 <!-- tabs:end -->
@@ -90,6 +96,12 @@ export function App() {
   )
 }
 ```
+
+Link
+本库 HarmonyOS 侧2.8.1版本实现依赖@react-native-ohos/react-native-keyboard-controller的代码，如已在 HarmonyOS 工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
+
+如未引入请参照@react-native-ohos/react-native-keyboard-controller文档(/zh-cn/react-native-keyboard-controller.md)进行引入。
+
 ## 约束与限制
 
 ### 兼容性
@@ -119,9 +131,11 @@ export function App() {
 |       **alwaysShowSend**        |        Always show send button in input text composer        |     Boolean     |    No    | iOS/Android |        Yes        |
 |           **locale**            | Locale to localize the dates. You need first to import the locale you need (ie. `require('dayjs/locale/de')` or `import 'dayjs/locale/fr'`) |    *String*     |    No    | iOS/Android |        Yes        |
 |         **timeFormat**          | *(String)* - Format to use for rendering times; default is `'LT'` (see [Day.js Format](https://day.js.org/docs/en/display/format)) |    *String*     |    No    | iOS/Android |        Yes        |
+|         **dateFormatCalendar**<sup>2.8.1+</sup>          | Format to use for rendering relative times; Today - for now (see [Day.js Calendar](https://day.js.org/docs/en/plugin/calendar)) |    *String*     |    No    | iOS/Android |        Yes        |
 |         **dateFormat**          | Format to use for rendering dates; default is `'ll'` (see [Day.js Format](https://day.js.org/docs/en/display/format)) |    *String*     |    No    | iOS/Android |        Yes        |
 |         **loadEarlier**         | Enables the "load earlier messages" button, required for `infiniteScroll` |     Boolean     |    No    | iOS/Android |        Yes        |
 | **isKeyboardInternallyHandled** | Determine whether to handle keyboard awareness inside the plugin. If you have your own keyboard handling outside the plugin set this to false; default is `true` |     Boolean     |    No    | iOS/Android |        Yes        |
+| **disableKeyboardController**<sup>2.8.1+</sup> | Completely disable react-native-keyboard-controller. Useful when using react-native-navigation or other conflicting keyboard libraries; default is `false` |     Boolean     |    No    | iOS/Android |        Yes        |
 |        **onLoadEarlier**        |            Callback when loading earlier messages            |   *Function*    |    No    | iOS/Android |        Yes        |
 |      **isLoadingEarlier**       | Display an `ActivityIndicator` when loading earlier messages |     Boolean     |    No    | iOS/Android |        Yes        |
 |        **renderLoading**        |           Render a loading view when initializing            |   *Function*    |    No    | iOS/Android |        Yes        |
@@ -146,6 +160,7 @@ export function App() {
 |     **renderMessageVideo**      |                     Custom message video                     |   *Function*    |    No    | iOS/Android |        Yes        |
 |         **imageProps**          | Extra props to be passed to the [``](https://facebook.github.io/react-native/docs/image.html) component created by the default `renderMessageImage` |    *Object*     |    No    | iOS/Android |        Yes        |
 |         **videoProps**          | Extra props to be passed to the video component created by the required `renderMessageVideo` |    *Object*     |    No    | iOS/Android |        Yes        |
+|         **imageSourceProps**<sup>2.8.1+</sup>          | Extra props to be passed to the `MessageImage`'s |    *Object*     |    No    | iOS/Android |        Yes        |
 |        **lightboxProps**        | Extra props to be passed to the `MessageImage`'s [Lightbox](https://github.com/oblador/react-native-lightbox) |    *Object*     |    No    | iOS/Android |        Yes        |
 |     **isCustomViewBottom**      | Determine whether renderCustomView is displayed before or after the text, image and video views |     Boolean     |    No    | iOS/Android |        Yes        |
 |      **renderCustomView**       |                Custom view inside the bubble                 |   *Function*    |    No    | iOS/Android |        Yes        |
@@ -161,6 +176,7 @@ export function App() {
 |       **renderAccessory**       |   Custom second line of actions below the message composer   |   *Function*    |    No    | iOS/Android |        Yes        |
 |     **onPressActionButton**     | Callback when the Action button is pressed (if set, the default `actionSheet` will not be used) |   *Function*    |    No    | iOS/Android |        Yes        |
 |        **bottomOffset**         | Distance of the chat from the bottom of the screen (e.g. useful if you display a tab bar) |     Number      |    No    | iOS/Android |        No         |
+|        **focusOnInputWhenOpeningKeyboard**<sup>2.8.1+</sup>         | Focus on automatically when opening the keyboard; default true |     Bool      |    No    | iOS/Android |        No         |
 |    **minInputToolbarHeight**    |     Minimum height of the input toolbar; default is `44`     |     Number      |    No    | iOS/Android |        No         |
 |        **listViewProps**        | Extra props to be passed to the messages [``](https://facebook.github.io/react-native/docs/listview.html); some props can't be overridden, see the code in `MessageContainer.render()` for details |    *Object*     |    No    | iOS/Android |        Yes        |
 |       **textInputProps**        | Extra props to be passed to the [``](https://facebook.github.io/react-native/docs/textinput.html) |    *Object*     |    No    | iOS/Android |        Yes        |
@@ -181,9 +197,11 @@ export function App() {
 |        **onQuickReply**         |   Callback when sending a quick reply (to backend server)    |   *Function*    |    No    | iOS/Android |        Yes        |
 |     **renderQuickReplies**      |                 Custom all quick reply view                  |   *Function*    |    No    | iOS/Android |        Yes        |
 |       **quickReplyStyle**       |                Custom quick reply view style                 |    *Object*     |    No    | iOS/Android |        Yes        |
+|       **quickReplyContainerStyle**<sup>2.8.1+</sup>       |                Custom quick reply container view  style                 |    *Object*     |    No    | iOS/Android |        Yes        |
 |    **renderQuickReplySend**     |                 Custom quick reply send view                 |   *Function*    |    No    | iOS/Android |        Yes        |
 |     **shouldUpdateMessage**     | Lets the message component know when to update outside of normal cases. |   *Function*    |    No    | iOS/Android |        Yes        |
 |       **infiniteScroll**        | infinite scroll up when reach the top of messages container, automatically call onLoadEarlier function if exist (not yet supported for the web). You need to add `loadEarlier` prop too. |    *Boolean*    |    No    | iOS/Android |        Yes        |
+|       **isStatusBarTranslucentAndroid**<sup>2.8.1+</sup>        | If you use translucent status bar on Android, set this option to true. Ignored on iOS. |    *Boolean*    |    No    | iOS/Android |        Yes        |
 
 ## 遗留问题
 

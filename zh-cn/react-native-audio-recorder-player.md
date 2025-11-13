@@ -16,20 +16,34 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-audio-recorder-player Releases](https://github.com/react-native-oh-library/react-native-audio-recorder-player/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 3.6.10     | [@react-native-oh-tpl/react-native-audio-recorder-player Releases](https://github.com/react-native-oh-library/react-native-audio-recorder-player/releases) | 0.72       |
+| 3.6.14      | [@react-native-ohos/react-native-audio-recorder-player Releases]()     | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
 #### **npm**
 
 ```bash
+# V3.6.10
 npm install @react-native-oh-tpl/react-native-audio-recorder-player
+
+# V3.6.14
+npm install @react-native-ohos/react-native-audio-recorder-player
 ```
 
 #### **yarn**
 
 ```bash
+# V3.6.10
 yarn add @react-native-oh-tpl/react-native-audio-recorder-player
+
+# V3.6.14
+yarn add @react-native-ohos/react-native-audio-recorder-player
 ```
 
 下面的代码展示了这个库的基本使用场景：
@@ -43,11 +57,14 @@ import AudioRecorderPlayer, {
     AudioEncoderAndroidType,
     AudioSourceAndroidType,
     OutputFormatAndroidType,
+    AudioMimeHarmonyType,
+    AudioFormatHarmonyType,
+    AudioSourceHarmonyType,
+    AudioSet
 } from 'react-native-audio-recorder-player'; import type {
     PlayBackType,
     RecordBackType,
 } from 'react-native-audio-recorder-player';
-import { AudioMimeHarmonyType, AudioFormatHarmonyType, AudioSourceHarmonyType, AudioSet } from "@react-native-oh-tpl/react-native-audio-recorder-player";
 
 import {
     Dimensions,
@@ -471,8 +488,6 @@ class Page extends Component<any, State> {
         console.log('onStartPlay');
 
         try {
-
-
             const msg = await this.audioRecorderPlayer.startPlayer('https://sis-sample-audio.obs.cn-north-1.myhuaweicloud.com/16k16bit.mp3', { 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:12.0) Gecko/20100101 Firefox/21.0' });
             const volume = await this.audioRecorderPlayer.setVolume(1);
             this.audioRecorderPlayer.addPlayBackListener((e: PlayBackType) => {
@@ -536,12 +551,23 @@ export default Page;
 > [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
 
 打开 `entry/oh-package.json5`，添加以下依赖
++ V3.6.10
 
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
     "@react-native-oh-tpl/react-native-audio-recorder-player": "file:../../node_modules/@react-native-oh-tpl/react-native-audio-recorder-player/harmony/audio_recorder_player.har"
+  }
+```
+
++ V3.6.14
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+
+    "@react-native-ohos/react-native-audio-recorder-player": "file:../../node_modules/@react-native-ohos/react-native-audio-recorder-player/harmony/audio_recorder_player.har"
   }
 ```
 点击右上角的 `sync` 按钮
@@ -578,7 +604,13 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+# V3.6.10
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-audio-recorder-player/src/main/cpp" ./audio_recorder_player)
+
+# V3.6.14
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-audio-recorder-player/src/main/cpp" ./audio_recorder_player)
+
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -618,7 +650,11 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
+// V3.6.10
 + import {RNAudioRecorderPlayerPackage} from '@react-native-oh-tpl/react-native-audio-recorder-player/ts';
+
+// V3.6.14
++ import {RNAudioRecorderPlayerPackage} from '@react-native-ohos/react-native-audio-recorder-player/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -645,7 +681,11 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-library/react-native-audio-recorder-player Releases](https://github.com/react-native-oh-library/react-native-audio-recorder-player/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 3.6.10     | [@react-native-oh-tpl/react-native-audio-recorder-player Releases](https://github.com/react-native-oh-library/react-native-audio-recorder-player/releases) | 0.72       |
+| 3.6.14      | [@react-native-ohos/react-native-audio-recorder-player Releases]()     | 0.77       |
 
 ### 权限要求
 
@@ -710,6 +750,8 @@ ohpm install
 | `resumePlayer` | Resume playing.                                       | function() : Promise< string >                                                                                                             | No       |  Android，iOS      | yes               |
 | `seekToPlayer` | Seek audio.                                   | function(milliseconds:number) : Promise< string >                                                                                                             | No       |  Android，iOS      | yes               |
 | `setVolume` | Set volume of audio player (default 1.0, range: 0.0 ~ 1.0).                                      | function(volume:float) : Promise< string >                                                                                                             | No       |  Android，iOS     | yes               |
+| `setPlaybackSpeed`<sup>3.6.14+</sup> | Set playback speed.<br/>鸿蒙化后仅支持0.125、0.25、0.5、0.75、1、1.25、1.5、1.75、2和3倍速设置，其中3倍速仅在API version 13开始支持。 | function(playbackSpeed: number): Promise< string >                                                                                                             | No       |  Android，iOS     | partially |
+
 
 ## 遗留问题
 

@@ -420,7 +420,7 @@ Check the release version information in the release address of the third-party 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | position  | coordinates         | LatLng  | yes | iOS/Android | yes |
-| icon  | icon         | ImageSourcePropType  | no | iOS/Android | yes |
+| icon  | Icon (network images support png, jpg/jpeg, webp, gif (first frame only)) | ImageSourcePropType  | no | iOS/Android | yes |
 | draggable  | Whether it can be dragged or not         | boolean  | no | iOS/Android | yes |
 | flat  | Whether the map is flattened or not         | boolean  | no | Android | yes |
 | zIndex  | Level         | Float  | no | iOS/Android | yes |

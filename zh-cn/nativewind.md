@@ -17,7 +17,14 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/nativewind Releases](https://github.com/react-native-oh-library/nativewind/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 2.0.11     | [@react-native-oh-tpl/nativewind Releases](https://github.com/react-native-oh-library/nativewind/releases) | 0.72       |
+| 4.1.24     | [@react-native-ohos/nativewind Releases]()                   | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -26,13 +33,23 @@
 #### **npm**
 
 ```bash
+# V2.0.11
 npm install @react-native-oh-tpl/nativewind
+
+# V4.1.24
+npm install tailwindcss@^3.4.17
+npm install @react-native-ohos/nativewind
 ```
 
 #### **yarn**
 
 ```bash
+# V2.0.11
 yarn add @react-native-oh-tpl/nativewind
+
+# V4.1.24
+yarn install tailwindcss@^3.4.17
+yarn add @react-native-ohos/nativewind
 ```
 
 #### **tailwind.config.js**
@@ -42,6 +59,8 @@ npx tailwindcss init
 ```
 
 #### **在你的 tailwind.config.js 文件中添加所有组件文件的路径。**
+
+- V2.0.11
 
 ```diff
 module.exports = {
@@ -54,7 +73,23 @@ module.exports = {
 }
 ```
 
+- V4.1.24
+
+```diff
+/** @type {import('tailwindcss').Config} */
+module.exports = {
++ content: ["./src/*.{js,jsx,ts,tsx}"],
++ presets: [require("@react-native-oh-tpl/nativewind/preset")],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
 #### **修改你的 babel.config.js。**
+
+- V2.0.11
 
 ```diff
 module.exports = {
@@ -63,11 +98,46 @@ module.exports = {
 };
 ```
 
+- V4.1.24
+
+```diff
+module.exports = {
+- plugins: [],
++ plugins: ["@react-native-ohos/nativewind/babel"],
+};
+```
+
 <!-- tabs:end -->
+
+#### **修改你的 metro.config.js。**
+
+> [!TIP] V4.1.24 需要修改你的 metro.config.js。
+
+```diff
+const { getDefaultConfig } = require("expo/metro-config");
++ const { withNativeWind } = require('@react-native-ohos/nativewind/metro');
+ 
+const config = getDefaultConfig(__dirname)
+ 
++ module.exports = withNativeWind(config, { input: './global.css' })
+```
+
+#### 创建CSS文件 global.css
+
+> [!TIP] V4.1.24 创建CSS文件 global.css。
+
+```
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
 
 下面的代码展示了这个库的基本使用场景：
 
 > [!WARNING] 使用时 import 的库名不变。
+
+- V2.0.11
+
 
 ```jsx
 import React from 'react';
@@ -89,25 +159,56 @@ const NativewindDemo = () => {
 export default NativewindDemo
 ```
 
+- V4.1.24
+
+```jsx
+import "./global.css"
+import { Text, View } from "react-native";
+ 
+export default function App() {
+  return (
+    <View className="flex-1 items-center justify-center bg-white">
+      <Text className="text-xl font-bold text-blue-500">
+        Welcome to Nativewind!
+      </Text>
+    </View>
+  );
+}
+```
+
 ## 约束与限制
 
 ### 兼容性
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/nativewind Releases](https://github.com/react-native-oh-library/nativewind/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 2.0.11     | [@react-native-oh-tpl/nativewind Releases](https://github.com/react-native-oh-library/nativewind/releases) | 0.72       |
+| 4.1.24     | [@react-native-ohos/nativewind Releases]()                   | 0.77       |
 
 ## API
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name                 | Description                                                  | Type                                                         | Required | Platform | HarmonyOS Support |
-| -------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | -------- | ----------------- |
-| styled()             | can be used similar to Styled Components,and provide base styling. | (ComponentName:JSX.Element,StyleName?:String) => JSX.Element | no       | All      | yes               |
-| StyledComponent      | StyledComponent is the component version of styled accepts your component as prop. | component                                                    | no       | All      | yes               |
-| useColorScheme()     | provides access to the devices color scheme.                 | () =>{colorScheme,setColorScheme}                            | no       | All      | yes               |
-| NativeWindStyleSheet | A StyleSheet is an abstraction similar to CSS StyleSheets and React Native's StyleSheet | component                                                    | no       | All      | yes               |
+| Name                                                  | Description                                                  | Type                                                         | Required | Platform | HarmonyOS Support |
+| ----------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | -------- | ----------------- |
+| styled()<sup>deprecated from 4.1.24</sup>             | can be used similar to Styled Components,and provide base styling. | (ComponentName:JSX.Element,StyleName?:String) => JSX.Element | no       | All      | yes               |
+| StyledComponent<sup>deprecated from 4.1.24</sup>      | StyledComponent is the component version of styled accepts your component as prop. | component                                                    | no       | All      | yes               |
+| useColorScheme()                                      | provides access to the devices color scheme.                 | () =>{colorScheme,setColorScheme}                            | no       | All      | yes               |
+| NativeWindStyleSheet<sup>deprecated from 4.1.24</sup> | A StyleSheet is an abstraction similar to CSS StyleSheets and React Native's StyleSheet | component                                                    | no       | All      | yes               |
+| var<sup>4.1.24+</sup>                                 | vars is a function that takes a dictionary of CSS variables and returns a style object that can be used in React Native components. | function                                                     | no       | All      | yes               |
+
+## 属性
+
+| Name                             | Description                                                  | Type      | Required | Platform | HarmonyOS Support |
+| -------------------------------- | ------------------------------------------------------------ | --------- | -------- | -------- | ----------------- |
+| withNativeWind<sup>4.1.24+</sup> | withNativeWind is a higher order component that updates your Metro configuration to support NativeWind | component | no       | All      | yes               |
+| remapProps<sup>4.1.24+</sup>     | Nativewind  provides the remapProps utility to simplify working with  third-party components with multiple "style" props. | component | no       | All      | yes               |
+| cssInterop<sup>4.1.24+</sup>     | This  function "tags" components so that when its rendered, the runtime  will know to rescomponentclassName strings into styles. | component | no       | All      | yes               |
 
 ## 遗留问题
 

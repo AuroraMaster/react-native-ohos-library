@@ -17,7 +17,14 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-unistyles Releases](https://github.com/react-native-oh-library/react-native-unistyles/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 2.7.2      | [@react-native-oh-tpl/react-native-unistyles Releases](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-unistyles%2Freleases) | 0.72       |
+| 2.43.1     | [@react-native-ohos/react-native-unistyles Releases]()       | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -26,13 +33,21 @@
 #### **npm**
 
 ```bash
+# V2.7.2
 npm install @react-native-oh-tpl/react-native-unistyles
+
+# V2.43.1
+npm install @react-native-ohos/react-native-unistyles
 ```
 
 #### **yarn**
 
 ```bash
+# V2.7.2
 yarn add @react-native-oh-tpl/react-native-unistyles
+
+# V2.43.1
+yarn add @react-native-ohos/react-native-unistyles
 ```
 
 <!-- tabs:end -->
@@ -403,10 +418,21 @@ const autoGuidelinePlugin: UnistylesPlugin = {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- V2.7.2
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-unistyles": "file:../../node_modules/@react-native-oh-tpl/react-native-unistyles/harmony/unistyles.har"
+}
+```
+
+- V2.43.1
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-unistyles": "file:../../node_modules/@react-native-ohos/react-native-unistyles/harmony/unistyles.har"
 }
 ```
 
@@ -445,7 +471,13 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+# V2.7.2
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-unistyles/src/main/cpp" ./unistyles)
+
+# V2.43.1
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-unistyles/src/main/cpp" ./unistyles)
+
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -488,7 +520,11 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
+// V2.7.2
 + import {RNUnistylesPackage} from '@react-native-oh-tpl/react-native-unistyles/ts';
+
+// V2.43.1
++ import {RNUnistylesPackage} from '@react-native-ohos/react-native-unistyles/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -517,9 +553,12 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-unistyles Releases](https://github.com/react-native-oh-library/react-native-unistyles/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
 
-## Runtime
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 2.7.2      | [@react-native-oh-tpl/react-native-unistyles Releases](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-unistyles%2Freleases) | 0.72       |
+| 2.43.1     | [@react-native-ohos/react-native-unistyles Releases]()       | 0.77       |
 
 ### UnistylesRuntime
 
@@ -529,43 +568,24 @@ UnistylesRuntime 是 Unitstyles 库 的一个Host Object。它始终保持最新
 
 | Name                 | Description                                                                  | Type                 | Required | Platform        | HarmonyOS Support |
 | -------------------- | ---------------------------------------------------------------------------- | -------------------- | -------- | --------------- | ----------------- |
-| screenWidth          | Screen dimensions Width                                                      | number               | no       | All             | yes               |
-| screenHeight         | Screen dimensions Height                                                     | number               | no       | All             | yes               |
-| enabledPlugins       | Names of currently enabled plugins                                           | boolean              | no       | All             | yes               |
-| hasAdaptiveThemes    | Indicates if you have enabled adaptive themes                                | boolean              | no       | All             | yes               |
-| themeName            | Name of the selected theme or an empty string if you don’t use themes        | string               | no       | All             | yes               |
-| breakpoint           | Current breakpoint or always undefined if you don’t use breakpoints          | UnistylesBreakpoints | no       | All             | yes               |
-| colorScheme          | Get your device’s color scheme. Available options dark, light or unspecified | string               | no       | All             | yes               |
-| contentSizeCategory  | Your device’s content size category                                          | string               | no       | All             | yes               |
-| insets               | Device insets which are safe to put content into                             | inset                | no       | All             | yes               |
-| statusBar.width      | Status bar dimensions width                                                  | number               | no       | All             | yes               |
-| statusBar.height     | Status bar dimensions height                                                 | number               | no       | All             | yes               |
-| navigationBar.height | Navigation bar dimensions height                                             | number               | no       | Android 		  | yes               |
-| navigationBar.width  | Navigation bar dimensions width                                              | number               | no       | Android 		  | yes               |
-| ScreenOrientation    | Your device’s orientation                                                    | ScreenOrientation    | no       | All             | yes               |
-
-目前 UnistylesRuntime 支持：
-
-* `statusBar.setColor`
-Update statusBar color at runtime
-
-* `navigationBar.setColor`
-Update navigationBar color at runtime
-
-* `setAdaptiveThemes`
-Toggle adaptive themes 
-
-* `setTheme`
-Change the current theme    
-
-* `updateTheme`
-Update the theme at runtime
-
-* `removePlugin`
-Disable a plugin 
-
-* `addPlugin`
-Enable a plugin 
+| `screenWidth`        | Screen dimensions Width                                                      | number               | no       | All             | yes               |
+| `screenHeight`       | Screen dimensions Height                                                     | number               | no       | All             | yes               |
+| `enabledPlugins`     | Names of currently enabled plugins                                           | boolean              | no       | All             | yes               |
+| `hasAdaptiveThemes`  | Indicates if you have enabled adaptive themes                                | boolean              | no       | All             | yes               |
+| `themeName`          | Name of the selected theme or an empty string if you don’t use themes        | string               | no       | All             | yes               |
+| `breakpoint`         | Current breakpoint or always undefined if you don’t use breakpoints          | UnistylesBreakpoints | no       | All             | yes               |
+| `colorScheme`        | Get your device’s color scheme. Available options dark, light or unspecified | string               | no       | All             | yes               |
+| `contentSizeCategory` | Your device’s content size category                                          | string               | no       | All             | yes               |
+| `insets`             | Device insets which are safe to put content into                             | inset                | no       | All             | yes               |
+| `statusBar.width`    | Status bar dimensions width                                                  | number               | no       | All             | yes               |
+| `statusBar.height`   | Status bar dimensions height                                                 | number               | no       | All             | yes               |
+| `navigationBar.height` | Navigation bar dimensions height                                             | number               | no       | Android 		  | yes               |
+| `navigationBar.width` | Navigation bar dimensions width                                              | number               | no       | Android 		  | yes               |
+| `ScreenOrientation`  | Your device’s orientation                                                    | ScreenOrientation    | no       | All             | yes               |
+| `pixelRatio`<sup>2.43.1+</sup> | Pixel density of the device | number | no | All | yes |
+| `fontScale`<sup>2.43.1+</sup> | Font scale of the device | number | no | All | yes |
+| `hairlineWidth`<sup>2.43.1+</sup> | The thinnest width of the platform | number | no | All | yes |
+| `rtl`<sup>2.43.1+</sup> | Indicates if the device is in RTL mode | boolean | no | All | yes |
 
 
 ## 静态方法
@@ -576,20 +596,20 @@ Enable a plugin
 
 #### global
 
-| Name             | Description                                                                  | Type     | Required | Platform | HarmonyOS Support |
-| ---------------- | ---------------------------------------------------------------------------- | -------- | -------- | -------- | ----------------- |
-| useInitialTheme  | using multiple themes and need to determine the initial theme during runtime | function | no       | All      | yes               |
-| useStyles        | set current styles                                                           | function | no       | All      | yes               |
-| createStyleSheet | create unistyles StyleSheet                                                  | function | no       | All      | yes               |
+| Name               | Description                                                  | Type     | Required | Platform | HarmonyOS Support |
+| ------------------ | ------------------------------------------------------------ | -------- | -------- | -------- | ----------------- |
+| `useInitialTheme`  | using multiple themes and need to determine the initial theme during runtime | function | no       | All      | yes               |
+| `useStyles`        | set current styles                                           | function | no       | All      | yes               |
+| `createStyleSheet` | create unistyles StyleSheet                                  | function | no       | All      | yes               |
 
 #### mq
 
-| Name   | Description                   | Type     | Required | Platform | HarmonyOS Support |
-| ------ | ----------------------------- | -------- | -------- | -------- | ----------------- |
-| width  | width from xx onwards         | function | no       | All      | yes               |
-| height | heigh from xx onwards         | function | no       | All      | yes               |
-| and    | and                           | function | no       | All      | yes               |
-| only   | width or height from xx to xx | function | no       | All      | yes               |
+| Name     | Description                   | Type     | Required | Platform | HarmonyOS Support |
+| -------- | ----------------------------- | -------- | -------- | -------- | ----------------- |
+| `width`  | width from xx onwards         | function | no       | All      | yes               |
+| `height` | heigh from xx onwards         | function | no       | All      | yes               |
+| `and`    | and                           | function | no       | All      | yes               |
+| `only`   | width or height from xx to xx | function | no       | All      | yes               |
 
 ## API
 
@@ -597,15 +617,34 @@ Enable a plugin
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
+#### UnistylesRuntime
+
+| Name                                           | Description                                                  | Type     | Required | Platform | HarmonyOS Support |
+| ---------------------------------------------- | ------------------------------------------------------------ | -------- | -------- | -------- | ----------------- |
+| `statusBar.setColor`                           | Update statusBar color at runtime                            | function | no       | All      | yes               |
+| `navigationBar.setColor`                       | Update navigationBar color at runtime                        | function | no       | All      | yes               |
+| `setAdaptiveThemes`                            | Toggle adaptive themes                                       | function | no       | All      | yes               |
+| `setTheme`                                     | Change the current theme                                     | function | no       | All      | yes               |
+| `updateTheme`                                  | Update the theme at runtime                                  | function | no       | All      | yes               |
+| `removePlugin`                                 | Disable a plugin                                             | function | no       | All      | yes               |
+| `addPlugin`                                    | Enable a plugin                                              | function | no       | All      | yes               |
+| `statusBar.setHidden`<sup>2.43.1+</sup>        | Show/hide status bar at runtime                              | function | no       | All      | no                |
+| `navigationBar.setHidden`<sup>2.43.1+</sup>    | Show/hide navigation bar at runtime                          | function | no       | All      | no                |
+| `setImmersiveMode`<sup>2.43.1+</sup>           | Enable/disable immersive mode (hiding both status and navigation bars) | function | no       | All      | no                |
+| `setRootViewBackgroundColor`<sup>2.43.1+</sup> | Set root view background color                               | function | no       | All      | yes               |
+| `getTheme`<sup>2.43.1+</sup>                   | Get theme by name or current theme if not specified          | function | no       | All      | yes               |
+
 #### UnistylesRegistry
 
-| Name           | Description          | Type     | Required | Platform | HarmonyOS Support |
-| -------------- | -------------------- | -------- | -------- | -------- | ----------------- |
-| addThemes      | register themes      | function | no       | All      | yes               |
-| addBreakpoints | register breakpoints | function | no       | All      | yes               |
-| addConfig      | register config      | function | no       | All      | yes               |
+| Name             | Description          | Type     | Required | Platform | HarmonyOS Support |
+| ---------------- | -------------------- | -------- | -------- | -------- | ----------------- |
+| `addThemes`      | register themes      | function | no       | All      | yes               |
+| `addBreakpoints` | register breakpoints | function | no       | All      | yes               |
+| `addConfig`      | register config      | function | no       | All      | yes               |
 
 ## 遗留问题
+
+- [ ]  V2.43.1 部分属性未实现 HarmonyOS 化 [issue#3](https://gitcode.com/openharmony-sig/rntpc_react-native-unistyles/issues/3)
 
 ## 其他
 
