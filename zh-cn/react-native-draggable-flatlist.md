@@ -190,11 +190,11 @@ const styles = StyleSheet.create({
 | dragHitSlop | Enables control over what part of the connected view area can be used to begin recognizing the gesture. Numbers need to be non-positive (only possible to reduce responsive area). | Object | no     | no        | yes                |
 | debug | Enables debug logging and animation debugger. | boolean | no     | all       | yes               |
 | containerStyle | Style of the main component. | Object | no     | all       | yes               |
-| simultaneousHandlers | References to other gesture handlers, mainly useful when using this component within a ScrollView. | Object | no     | no        | no                |
-| itemEnteringAnimation | Animation when item is added to list. | function | no     | partially | no                |
-| itemExitingAnimation | Animation when item is removed from list. | function | no     | partially | no                |
-| itemLayoutAnimation | Animation when list items change position (enableLayoutAnimationExperimental prop must be true). | function | no     | partially | no                |
-| enableLayoutAnimationExperimental | Flag to turn on experimental support for itemLayoutAnimation. | boolean | no     | partially | no                |
+| simultaneousHandlers | References to other gesture handlers, mainly useful when using this component within a ScrollView. | Object | no     | android        | no                |
+| itemEnteringAnimation | Animation when item is added to list. | function | no     | android | no                |
+| itemExitingAnimation | Animation when item is removed from list. | function | no     | android | no                |
+| itemLayoutAnimation | Animation when list items change position (enableLayoutAnimationExperimental prop must be true). | function | no     | android | no                |
+| enableLayoutAnimationExperimental | Flag to turn on experimental support for itemLayoutAnimation. | boolean | no     | android | no                |
 
 **NestableDraggableFlatList**：NestableDraggableFlatList 是从 DraggableFlatList 扩展而来，因此所有可用的属性都可以传入它们两者。
 | Name        | Description                                       | Type   | Required | Platform  | HarmonyOS Support |
@@ -217,11 +217,11 @@ const styles = StyleSheet.create({
 | dragHitSlop | Enables control over what part of the connected view area can be used to begin recognizing the gesture. Numbers need to be non-positive (only possible to reduce responsive area). | Object | no     | no        | yes                |
 | debug | Enables debug logging and animation debugger. | boolean | no     | all       | yes               |
 | containerStyle | Style of the main component. | Object | no     | all       | yes               |
-| simultaneousHandlers | References to other gesture handlers, mainly useful when using this component within a ScrollView. | Object | no     | no        | no                |
-| itemEnteringAnimation | Animation when item is added to list. | function | no     | partially | no                |
-| itemExitingAnimation | Animation when item is removed from list. | function | no     | partially | no                |
-| itemLayoutAnimation | Animation when list items change position (enableLayoutAnimationExperimental prop must be true). | function | no     | partially | no                |
-| enableLayoutAnimationExperimental | Flag to turn on experimental support for itemLayoutAnimation. | boolean | no     | partially | no                |
+| simultaneousHandlers | References to other gesture handlers, mainly useful when using this component within a ScrollView. | Object | no     | android        | no                |
+| itemEnteringAnimation | Animation when item is added to list. | function | no     | android | no                |
+| itemExitingAnimation | Animation when item is removed from list. | function | no     | android | no                |
+| itemLayoutAnimation | Animation when list items change position (enableLayoutAnimationExperimental prop must be true). | function | no     | android | no                |
+| enableLayoutAnimationExperimental | Flag to turn on experimental support for itemLayoutAnimation. | boolean | no     | android | no                |
 
       
 ## 5. 遗留问题
