@@ -664,7 +664,7 @@ The following component attributes are currently supported:
 | source | The image source of the avatar. | Object | No | All | Yes |
 | size | The size of the avatar. | String | No | All | Yes |
 | \_image | For providing props to Image component inside the Avatar. | Object | No | All | Yes |
-| wrapperRef | ref to be attached to the Avatar wrapper. | Any | No | All | Yes |
+| wrapperRef | ref to be attached to the Avatar wrapper. | Any | No | No | No |
 
 **Icon**: Icon
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
