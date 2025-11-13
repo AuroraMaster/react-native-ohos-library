@@ -21,20 +21,29 @@
 
 请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-vision-camera Releases](https://github.com/react-native-oh-library/react-native-vision-camera/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
-进入到工程目录并输入以下命令：
 
+进入到工程目录并输入以下命令：
+> [!TIP] 补充说明，0.72的RN框架版本和0.77的RN框架版本使用的安装命令不同，如下：
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-vision-camera
+
+# 0.77
+npm install @react-native-ohos/react-native-vision-camera
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-vision-camera
+
+# 0.77
+yarn add @react-native-ohos/react-native-vision-camera
 ```
 
 <!-- tabs:end -->
@@ -121,10 +130,16 @@ export default function VisionCameraDemo() {
 打开 `entry/oh-package.json5`，添加以下依赖
 
 ```json
+# 0.72
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-vision-camera": "file:../../node_modules/@react-native-oh-tpl/react-native-vision-camera/harmony/vision_camera.har",
   }
+# 0.77
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-vision-camera": "file:../../node_modules/@react-native-ohos/react-native-vision-camera/harmony/vision_camera.har",
+  }  
 ```
 
 点击右上角的 `sync` 按钮
@@ -162,15 +177,18 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+# 0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-vision-camera/src/main/cpp" ./vision-camera)
+
+# 0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-vision-camera/src/main/cpp" ./vision-camera)
+
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
-+file(GLOB VISION_CAMERA_CPP_FILES "${OH_MODULES}/@react-native-oh-tpl/react-native-vision-camera/src/main/cpp/*.cpp")
 
 add_library(rnoh_app SHARED
     ${GENERATED_CPP_FILES}
-+    ${VISION_CAMERA_CPP_FILES}
     "./PackageProvider.cpp"
     "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
 )
@@ -207,7 +225,10 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
+# 0.72
 + import { VisionCameraView } from "@react-native-oh-tpl/react-native-vision-camera";
+# 0.77
++ import { VisionCameraView } from "@react-native-ohos/react-native-vision-camera";
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -238,7 +259,11 @@ export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
 
 ```diff
   ...
+# 0.72  
 + import { VisionCameraModulePackage } from "@react-native-oh-tpl/react-native-vision-camera/ts";
+
+# 0.77  
++ import { VisionCameraModulePackage } from "@react-native-ohos/react-native-vision-camera/ts";
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [

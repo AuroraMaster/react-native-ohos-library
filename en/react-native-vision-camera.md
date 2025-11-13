@@ -22,20 +22,28 @@
 Find the matching version information in the release address of a third-party library：[@react-native-oh-tpl/react-native-vision-camera Releases](https://github.com/react-native-oh-library/react-native-vision-camera/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
-
+> [!TIP] Additional note: The installation commands differ between the 0.72 and 0.77 React Native framework versions, as follows:
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-vision-camera
+
+# 0.77
+npm install @react-native-ohos/react-native-vision-camera
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-vision-camera
+
+# 0.77
+yarn add @react-native-ohos/react-native-vision-camera
 ```
 
 <!-- tabs:end -->
@@ -121,10 +129,16 @@ Method 1 (recommended): Use the HAR file.
 Open `entry/oh-package.json5` file and add the following dependencies:
 
 ```json
+# 0.72
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-vision-camera": "file:../../node_modules/@react-native-oh-tpl/react-native-vision-camera/harmony/vision_camera.har",
   }
+# 0.77
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-vision-camera": "file:../../node_modules/@react-native-ohos/react-native-vision-camera/harmony/vision_camera.har",
+  }  
 ```
 
 Click the `sync` button in the upper right corner.
@@ -162,15 +176,17 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+# 0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-vision-camera/src/main/cpp" ./vision-camera)
+
+# 0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-vision-camera/src/main/cpp" ./vision-camera)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
-+file(GLOB VISION_CAMERA_CPP_FILES "${OH_MODULES}/@react-native-oh-tpl/react-native-vision-camera/src/main/cpp/*.cpp")
 
 add_library(rnoh_app SHARED
     ${GENERATED_CPP_FILES}
-+    ${VISION_CAMERA_CPP_FILES}
     "./PackageProvider.cpp"
     "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
 )
@@ -207,7 +223,11 @@ Find `function buildCustomRNComponent()`, which is usually located in `entry/src
 
 ```diff
   ...
+# 0.72
 + import { VisionCameraView } from "@react-native-oh-tpl/react-native-vision-camera";
+# 0.77
++ import { VisionCameraView } from "@react-native-ohos/react-native-vision-camera";
+
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -236,7 +256,12 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
+# 0.72  
 + import { VisionCameraModulePackage } from "@react-native-oh-tpl/react-native-vision-camera/ts";
+
+# 0.77  
++ import { VisionCameraModulePackage } from "@react-native-ohos/react-native-vision-camera/ts";
+
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
