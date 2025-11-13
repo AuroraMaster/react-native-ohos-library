@@ -343,7 +343,7 @@ ohpm install
 | hasNotch  | Tells if the device has a notch.         | boolean  | No | IOS/Android/Windows/visionOS      | no |
 | hasDynamicIsland  | Tells if the device has a dynamic island.         | boolean  | No | IOS/Android/Windows/visionOS      | no |
 | hasSystemFeature  | Tells if the device has a specific system feature.         | Promise<boolean>  | No | Android      | no |
-| isAirplaneMode  | Tells if the device is in Airplane Mode.       | Promise<boolean>  | No | Android/ Web     | yes |
+| isAirplaneMode  | Tells if the device is in Airplane Mode.       | Promise<boolean>  | No | Android/ Web     | no |
 | isBatteryCharging  | Tells if the battery is currently charging.         | Promise<boolean>  | No | IOS/Android/Windows/Web/visionOS      | yes |
 | isEmulator  | Tells if the application is running in an emulator.        | Promise<boolean>  | No | IOS/Android/Windows/visionOS      | no |
 | isKeyboardConnected  | Tells if the device has a keyboard connected.        | Promise<boolean>  | No | Windows      | partially(Only supports asynchronous retrieval) |
@@ -390,6 +390,7 @@ ohpm install
 - [ ] isEmulator()接口harmony暂不支持 [issue#28](https://github.com/react-native-oh-library/react-native-device-info/issues/28) 
 - [ ] isDisplayZoomed()接口harmony暂不支持 [issue#29](https://github.com/react-native-oh-library/react-native-device-info/issues/29)
 - [ ] getBrightness()接口harmony暂不支持 [issue#30](https://github.com/react-native-oh-library/react-native-device-info/issues/30)
+- [ ] isAirplaneMode()接口harmony暂不支持 [issue#69](https://github.com/react-native-oh-library/react-native-device-info/issues/69)
 
 ## 其他
 
