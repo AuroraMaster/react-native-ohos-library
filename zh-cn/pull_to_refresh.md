@@ -230,6 +230,11 @@ ohpm install
 | ----------- |---------------------|---------|----------| -------- | ----------------- |
 | refreshing| Control the display and hide of the refresh head or bottom     | boolean | YES      | All      | yes               |
 
+### RefreshControl属性
+| Name        | Description         | Type    | Required | Platform | HarmonyOS Support |
+| ----------- |---------------------|---------|----------| -------- | ----------------- |
+| refreshing| Control the display and hide of the refresh head or bottom     | boolean | YES      | All      | yes               |
+
 ### PullToRefreshFooter属性
 | Name        | Description         | Type    | Required | Platform | HarmonyOS Support |
 | ----------- |---------------------|---------|----------| -------- | ----------------- |
@@ -245,12 +250,18 @@ ohpm install
 | onRefresh         | Refresh callback               |   function       | All      | yes               |
 | onLoadMore    | Load more callback         |   function       | All      | yes               |
 
+
 ### PullToRefreshHeader方法 
 | Name              | Description           | Type     | Platform | HarmonyOS Support |
 | ----------- |---------------------|---------| -------- | ----------------- |
 | onRefresh         | Refresh callback               |   function       | All      | yes               |
 | onStateChanged    | Refresh status callback        |   function       | All      | yes               |
 | onOffsetChanged    | Refresh the offset callback        |   function       | All      | yes               |
+
+### RefreshControl方法 
+| Name              | Description           | Type     | Platform | HarmonyOS Support |
+| ----------- |---------------------|---------| -------- | ----------------- |
+| onRefresh         | Refresh callback               |   function       | All      | yes               |
 
 ### PullToRefreshFooter方法 
 | Name              | Description           | Type     | Platform | HarmonyOS Support |
