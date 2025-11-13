@@ -678,7 +678,7 @@ const styles = StyleSheet.create({
 |        source         |            图片地址参数    |        Object        |    No    |   All    |        Yes        |
 |        size         |           尺寸    |        String        |    No    |   All    |        Yes        |
 |        _image         |           图片参数    |        Object       |    No    |   All    |        Yes        |
-|        wrapperRef         |             获取节点    |        Any        |    No    |   All    |        Yes        |
+|        wrapperRef         |             获取节点    |        Any        |    No    |   No    |        No        |
 
 **Icon**: 展示图标
 |         Name         |                         Description                          |         Type          | Required | Platform | HarmonyOS Support |
