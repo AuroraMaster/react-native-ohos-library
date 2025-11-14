@@ -17,7 +17,14 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [<@react-native-oh-tpl/react-native-popover-view> Releases](https://github.com/react-native-oh-library/react-native-popover-view/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Find the matching version information in the release address of a third-party library: 
+
+| third-party version | publish info                                                     | RN version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 5.1.7      | [<@react-native-oh-tpl/react-native-popover-view> Releases](https://github.com/react-native-oh-library/react-native-popover-view/releases) | 0.72       |
+| 6.1.0      | [<@react-native-ohos/react-native-popover-view> Releases]()  | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -28,13 +35,19 @@ Go to the project directory and execute the following instruction:
 #### npm
 
 ```bash
+# V5.1.7
 npm install @react-native-oh-tpl/react-native-popover-view
+# V6.1.0
+yarn add @react-native-ohos/react-native-popover-view
 ```
 
 #### yarn
 
 ```bash
+# V5.1.7
 yarn add @react-native-oh-tpl/react-native-popover-view
+# V6.1.0
+yarn add @react-native-ohos/react-native-popover-view
 ```
 
 <!-- tabs:end -->
@@ -146,7 +159,7 @@ This document is verified based on the following versions:
 
 1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Preview2; IDE：DevEco Studio 5.0.3.200; ROM：205.0.0.18;
 
-**Properties**
+## Properties
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
