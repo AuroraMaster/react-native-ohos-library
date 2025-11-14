@@ -36,13 +36,16 @@
 # V5.1.7
 npm install @react-native-oh-tpl/react-native-popover-view
 # V6.1.0
-yarn add @react-native-ohos/react-native-popover-view
+npm install @react-native-ohos/react-native-popover-view
 ```
 
 #### yarn
 
 ```bash
+# V5.1.7
 yarn add @react-native-oh-tpl/react-native-popover-view
+# V6.1.0
+yarn add @react-native-ohos/react-native-popover-view
 ```
 
 <!-- tabs:end -->
@@ -154,7 +157,7 @@ export default PopoverDemo;
 
 1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Preview2; IDE：DevEco Studio 5.0.3.200; ROM：205.0.0.18;
 
-#### 属性&方法
+## 属性&方法
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
