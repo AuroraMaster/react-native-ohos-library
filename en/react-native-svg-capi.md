@@ -560,6 +560,9 @@ For details, see [react-native-svg](https://github.com/software-mansion/react-na
 |   y    | 在 y 轴上平移距离 | number\| string | No       | All      | Yes               |
 | width  |     元素宽度      | number\| string | No       | All      | Yes               |
 | height |     元素高度      | number\| string | No       | All      | Yes               |
+| SvgNodeCommonProps |     svg公共属性（见下面Common props）      | object | No       | All      | Yes               |
+| SvgRenderableCommonProps |     svg render属性（见下面Common props）      | object | No       | All      | Yes               |
+| SvgGroupCommonProps |     svg group属性（见下面FontProps props）      | object | No       | All      | Yes               |
 
 
 **函数**
