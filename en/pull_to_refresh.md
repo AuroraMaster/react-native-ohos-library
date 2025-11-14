@@ -236,6 +236,11 @@ Please go to the Releases page of the third-party library to check the version i
 | ----------- |---------------------|---------|----------| -------- | ----------------- |
 | refreshing| Control the display and hide of the refresh head or bottom     | boolean | YES      | All      | yes               |
 
+### RefreshControl Props
+| Name        | Description         | Type    | Required | Platform | HarmonyOS Support |
+| ----------- |---------------------|---------|----------| -------- | ----------------- |
+| refreshing| Control the display and hide of the refresh head or bottom     | boolean | YES      | All      | yes               |
+
 ### PullToRefreshFooter Props
 | Name        | Description         | Type    | Required | Platform | HarmonyOS Support |
 | ----------- |---------------------|---------|----------| -------- | ----------------- |
@@ -257,6 +262,11 @@ Please go to the Releases page of the third-party library to check the version i
 | onRefresh         | Refresh callback               |   function       | All      | yes               |
 | onStateChanged    | Refresh status callback        |   function       | All      | yes               |
 | onOffsetChanged    | Refresh the offset callback        |   function       | All      | yes               |
+
+### RefreshControl Method 
+| Name              | Description           | Type     | Platform | HarmonyOS Support |
+| ----------- |---------------------|---------| -------- | ----------------- |
+| onRefresh         | Refresh callback               |   function       | All      | yes               |
 
 ### PullToRefreshFooter Method
 | Name              | Description           | Type     | Platform | HarmonyOS Support |

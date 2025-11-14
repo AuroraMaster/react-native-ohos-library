@@ -17,7 +17,14 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[<@react-native-oh-tpl/react-native-popover-view> Releases](https://github.com/react-native-oh-library/react-native-popover-view/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 5.1.7      | [<@react-native-oh-tpl/react-native-popover-view> Releases](https://github.com/react-native-oh-library/react-native-popover-view/releases) | 0.72       |
+| 6.1.0      | [<@react-native-ohos/react-native-popover-view> Releases]()  | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -26,7 +33,10 @@
 #### npm
 
 ```bash
+# V5.1.7
 npm install @react-native-oh-tpl/react-native-popover-view
+# V6.1.0
+yarn add @react-native-ohos/react-native-popover-view
 ```
 
 #### yarn
@@ -144,7 +154,7 @@ export default PopoverDemo;
 
 1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Preview2; IDE：DevEco Studio 5.0.3.200; ROM：205.0.0.18;
 
-**属性&方法**
+#### 属性&方法
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
@@ -172,8 +182,8 @@ export default PopoverDemo;
 | displayArea          | Area where the popover is allowed to be displayed. By default, this will be automatically calculated to be the size of the display, or the size of the parent component if mode is not 'rn-modal'.                                                                                                                                                                             | rect                  | no       | All      | yes               |
 | displayAreaInsets    | Insets to apply to the display area. The Popover will not be allowed to go beyond the display area minus the insets.                                                                                                                                                                                                                                                           | object                | no       | All      | yes               |
 | statusBarTranslucent | For 'rn-modal' mode on Android only. Determines whether the background should go under the status bar. Passed through to RN Modal component, see their docs as well.                                                                                                                                                                                                           | bool                  | no       | Android  | no                | 原库仅支持安卓 |
-| verticalOffset       | The amount to vertically shift the popover on the screen, for use in correcting an occasional issue on Android. In certain Android configurations, you may need to apply a verticalOffset of -StatusBar.currentHeight for the popover to originate from the correct place. For shifting the popover in other situations, the offset prop should be used.                       | number                | no       | Android  | no                | 原库仅支持安卓 |
-| debug                | Set this to true to turn on debug logging to the console. This is useful for figuring out why a Popover isn't showing.                                                                                                                                                                                                                                                         | bool                  | no       | All      | yes               |
+| verticalOffset<sup>deprecated from 6.1.0</sup> | The amount to vertically shift the popover on the screen, for use in correcting an occasional issue on Android. In certain Android configurations, you may need to apply a verticalOffset of -StatusBar.currentHeight for the popover to originate from the correct place. For shifting the popover in other situations, the offset prop should be used.                       | number                | no       | Android  | no                | 原库仅支持安卓 |
+| debug                | Set this to true to turn on debug logging to the console. This is useful for figuring out why a Popover isn't showing.                                                                                                                                                                                                                                                         | bool                  | no       | All      | yes               ||
 
 ## 遗留问题
 
