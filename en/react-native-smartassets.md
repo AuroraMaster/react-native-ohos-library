@@ -12,11 +12,11 @@
     </a>
 </p>
 
-> [!TIP] [Github address](https://github.com/smallnew/react-native-smartassets)
+> [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-smartassets)
 
 ## Installation and Usage
 
-Please go to the release address of the third-party library to view the matching version information: [@react-native-oh-tpl/react-native-smartassets Releases](https://github.com/smallnew/react-native-smartassets/releases). For older versions not published to npm, please refer to the [Installation Guide](/en/tgz-usage.md) to install the tgz package.
+Please go to the release address of the third-party library to view the matching version information: [@react-native-oh-tpl/react-native-smartassets Releases](https://github.com/react-native-oh-library/react-native-smartassets/releases). For older versions not published to npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Navigate to the project directory and enter the following command:
 
@@ -172,7 +172,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ### 4. Introduce SmartAssetsPackage on ArkTs Side
 
-Open `entry/src/main/ets/RNPackagesFactory.ts` and add:
+Open `entry/src/main/ets/RNPackagesFactory.ets` add:
 
 ```diff
   ...
@@ -205,17 +205,11 @@ Then compile and run.
 
 To use this library, the correct React-Native and RNOH versions are required. Additionally, you need to use the matching DevEco Studio and phone ROM.
 
-Please go to the corresponding Releases page of the third-party library to view the matching version information: [@react-native-oh-tpl/react-native-smartassets Releases](https://github.com/smallnew/react-native-smartassets/releases)
+Please go to the corresponding Releases page of the third-party library to view the matching version information: [@react-native-oh-tpl/react-native-smartassets Releases](https://github.com/react-native-oh-library/react-native-smartassets/releases)
 
 This document is verified based on the following versions:
 
 1. RNOH: 0.72.32; SDK: HarmonyOS-Next-DB6 5.0.0.61; IDE: DevEco Studio 5.0.3.706; ROM: 3.0.0.61;
-
-<!-- ### Usage Limitations
-
-- Only supports local image assets referenced via `require()`
-- Does not support network images (http/https URLs)
-- Image files must have valid image extensions (.png, .jpg, .jpeg, .gif, .webp, .svg, .bmp, .tiff) -->
 
 ## Static Methods
 
@@ -223,16 +217,18 @@ This document is verified based on the following versions:
 
 > [!TIP] If "HarmonyOS Support" is "yes", it means HarmonyOS platform supports this property; "no" means not supported; "partially" means partially supported. The usage method is cross-platform consistent, and the effect is aligned with iOS or Android.
 
-SmartAssets is a React Native image asset intelligent loading library. It changes the React Native image loading logic by hooking the `AssetSourceResolver.defaultAsset` method, allowing applications to intelligently load image resources from application packages (Android APK, iOS IPA, HarmonyOS HAP) and file system sandbox paths.
-
 **Name** | **Description** | **Type** | **Required** | **Platform** | **HarmonyOS Support**
 -- | -- | -- | -- | -- | --
 initSmartAssets | Initialize SmartAssets and set up image loading hook | function | yes | All | yes
-findAssetInBundles | Find image resource with specified name in application package and sandbox paths | function | no | Harmony | yes
+initSmartAssetsInner | Internal initialization logic, set up resource resolution hook | function | no | All | yes |
+setBundlePath | Search for image resources in a specified path | function | no | Android | yes
+setiOSRelateMainBundlePath | Set iOS path to search for image resources | function | no | iOS | no
 
 ## Known Issues
 
 ## Others
+
+- The `setiOSRelateMainBundlePath` method is only supported on iOS platform in the original third-party library, therefore it is not supported on HarmonyOS platform.
 
 ## License
 

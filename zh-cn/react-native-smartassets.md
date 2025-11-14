@@ -12,11 +12,11 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/smallnew/react-native-smartassets)
+> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-smartassets)
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-smartassets Releases](https://github.com/smallnew/react-native-smartassets/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-smartassets Releases](https://github.com/react-native-oh-library/react-native-smartassets/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -172,7 +172,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ### 4.在 ArkTs 侧引入 SmartAssetsPackage
 
-打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
+打开 `entry/src/main/ets/RNPackagesFactory.ets`，添加：
 
 ```diff
   ...
@@ -205,17 +205,11 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-smartassets Releases](https://github.com/smallnew/react-native-smartassets/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-smartassets Releases](https://github.com/react-native-oh-library/react-native-smartassets/releases)
 
 本文档内容基于以下版本验证通过：
 
 1. RNOH: 0.72.32; SDK: HarmonyOS-Next-DB6 5.0.0.61; IDE: DevEco Studio 5.0.3.706; ROM: 3.0.0.61;
-
-<!-- ### 使用限制
-
-- 仅支持通过 `require()` 方式引用的本地图片资源
-- 不支持网络图片（http/https URL）
-- 图片文件必须具有有效的图片扩展名（.png、.jpg、.jpeg、.gif、.webp、.svg、.bmp、.tiff） -->
 
 ## 静态方法
 
@@ -223,15 +217,18 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-SmartAssets 是一个 React Native 图片资源智能加载库。它通过 hook `AssetSourceResolver.defaultAsset` 方法改变了 React Native 的图片加载逻辑，让应用能够智能地从应用包（Android APK、iOS IPA、HarmonyOS HAP）和文件系统沙箱路径中加载图片资源。
-
 **Name** | **Description** | **Type** | **Required** | **Platform** | **HarmonyOS Support**
 -- | -- | -- | -- | -- | --
 initSmartAssets | 初始化 SmartAssets，设置图片加载 hook | function | yes | All | yes
-findAssetInBundles | 在应用包和沙箱路径中查找指定名称的图片资源 | function | no | 	Harmony | yes
+initSmartAssetsInner | 内部初始化逻辑，设置资源解析 hook | function | no | All | yes |
+setBundlePath | 指定路径查找图片资源 | function | no | Android | yes
+setiOSRelateMainBundlePath | 设置 iOS 路径，查找图片资源 | function | no | iOS | no
+
 ## 遗留问题
 
 ## 其他
+
+- `setiOSRelateMainBundlePath` 方法在原三方库中仅支持 iOS 平台，因此 HarmonyOS 平台不支持此方法。
 
 ## 开源协议
 
