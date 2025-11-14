@@ -17,27 +17,51 @@
 
 ## Installation and Usage
 
-The implementation of this library depends on the native  code from @react-native-oh-tpl/native and @react-navigation/native-stack and @react-native-oh-tpl/react-native-safe-area-context and @react-native-oh-tpl/react-native-gesture-handler. If this library is included into your application, there is no need to include it again; you can skip the steps in this section and use it directly.
+### 3.34.0
+The implementation of this library depends on the native  code from @react-navigation/native and @react-navigation/native-stack and @react-native-oh-tpl/react-native-safe-area-context and @react-native-oh-tpl/react-native-gesture-handler. If this library is included into your application, there is no need to include it again; you can skip the steps in this section and use it directly.
 
 Note: If the `@react-native-oh-tpl/native-stack` library has been introduced, please uninstall it. Otherwise, this library will fail to be referenced and cannot be used.
 
-If it is not included, follow the guide provided in [@react-native-oh-tpl/native](/en/react-navigation-native.md) and [@react-native-oh-tpl/react-native-safe-area-context](/en/react-native-safe-area-context.md) and [@react-native-oh-tpl/react-native-gesture-handler](/en/react-native-gesture-handler.md) to add it to your project.
+If it is not included, follow the guide provided in [@react-navigation/native](/en/react-navigation-native.md) and [@react-native-oh-tpl/react-native-safe-area-context](/en/react-native-safe-area-context.md) and [@react-native-oh-tpl/react-native-gesture-handler](/en/react-native-gesture-handler.md) to add it to your project.
 
-Please visit the Releases page of the third-party library to check the corresponding version information: [@react-native-oh-tpl/react-native-screens Releases](https://github.com/react-native-oh-library/react-native-harmony-screens/releases). For older versions that have not been published to npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+### 4.8.1
+The implementation of this library depends on the native  code from @react-navigation/native and @react-navigation/native-stack and @react-native-ohos/react-native-safe-area-context and @react-native-ohos/react-native-gesture-handler and @react-native-ohos/react-native-reanimated. If this library is included into your application, there is no need to include it again; you can skip the steps in this section and use it directly.
+
+Note: If the `@react-native-oh-tpl/native-stack，@react-native-ohos/native-stack` library has been introduced, please uninstall it. Otherwise, this library will fail to be referenced and cannot be used.
+
+If it is not included, follow the guide provided in [@react-navigation/native](/en/react-navigation-native.md) and [@react-native-ohos/react-native-safe-area-context](/en/react-native-safe-area-context.md) and [@react-native-ohos/react-native-gesture-handler](/en/react-native-gesture-handler.md)  and [@react-native-ohos/react-native-reanimated](/en/react-native-reanimated.md) to add it to your project.
+
+Please visit the Releases page of the third-party library to check the corresponding version information: 
+| Version  | Releases info                                                      | Support RN version |
+| ----------- | ------------------------------------------------------------ | ---------- |
+|3.34.0|[@react-native-oh-tpl/react-native-screens Releases](https://github.com/react-native-oh-library/react-native-harmony-screens/releases) |0.72|
+|4.8.1|[@react-native-ohos/react-native-screens Releases]() |0.77|
+
+For older versions that have not been published to npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-screens
+# 0.72
+npm install @react-native-oh-tpl/react-native-screens@3.34.0-X.X.X
 npm install @react-navigation/native-stack@6.9.13
+
+# 0.77
+npm install @react-native-ohos/react-native-screens@4.8.1-X.X.X
+npm install @react-navigation/native-stack@7.2.0
 ```
 
 #### **yarn**
 
 ```bash
-yarn install @react-native-oh-tpl/react-native-screens
+# 0.72
+yarn install @react-native-oh-tpl/react-native-screens@3.34.0-X.X.X
 yarn install @react-navigation/native-stack@6.9.13
+
+# 0.77
+yarn install @react-native-ohos/react-native-screens@4.8.1-X.X.X
+yarn install @react-navigation/native-stack@7.2.0
 ```
 
 The following code shows the basic use scenario of the repository:
@@ -127,6 +151,8 @@ export default function App() {
 
 ## Use Codegen
 
+>[! TIP] V4.8.1 does not require execution of Codegen.
+
 If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](https://gitee.com/react-native-oh-library/usage-docs/blob/master/en/codegen.md).
 
 ## Link
@@ -155,10 +181,18 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
+- 0.72
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../../node_modules/@rnoh/react-native-harmony/harmony/react_native_openharmony.har",
     "@react-native-oh-tpl/react-native-screens": "file:../../node_modules/@react-native-oh-tpl/react-native-screens/harmony/screens.har"
+  }
+```
+- 0.77
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../../node_modules/@rnoh/react-native-harmony/harmony/react_native_openharmony.har",
+    "@react-native-ohos/react-native-screens": "file:../../node_modules/@react-native-ohos/react-native-screens/harmony/screens.har"
   }
 ```
 
@@ -198,7 +232,11 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+# 72
 + add_subdirectory("${OH_MODULES_DIR}/@react-native-oh-tpl/react-native-screens/src/main/cpp" ./rnoh_screens)
+
+# 77
++ add_subdirectory("${OH_MODULES_DIR}/@react-native-ohos/react-native-screens/src/main/cpp" ./rnoh_screens)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -240,7 +278,11 @@ Find `function buildCustomRNComponent()`, which is usually located in `entry/src
 
 ```diff
   ...
+// 72  
 + import { componentBuilder } from "@react-native-oh-tpl/react-native-screens"
+
+// 77  
++ import { componentBuilder } from "@react-native-ohos/react-native-screens"
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -278,7 +320,11 @@ Open `src/main/ets/RNOHPackagesFactory.ets`, add:
 
 ```diff
 import type { RNPackageContext, RNPackage } from '@rnoh/react-native-openharmony';
+// 72
 + import RnohReactNativeHarmonyScreensPackage from '@react-native-oh-tpl/react-native-screens';
+
+// 77
++ import RnohReactNativeHarmonyScreensPackage from '@react-native-ohos/react-native-screens';
 
 export function createRNOHPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -308,7 +354,11 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-screens Releases](https://github.com/react-native-oh-library/react-native-harmony-screens/releases)
+Check the release version information in the release address of the third-party library:
+| Version  | Releases info                                                      | Support RN version |
+| ----------- | ------------------------------------------------------------ | ---------- |
+|3.34.0|[@react-native-oh-tpl/react-native-screens Releases](https://github.com/react-native-oh-library/react-native-harmony-screens/releases) |0.72|
+|4.8.1|[@react-native-ohos/react-native-screens Releases]() |0.77|
 
 ## Properties
 
@@ -352,6 +402,7 @@ Check the release version information in the release address of the third-party 
 | backTitle                        | Title to display in the back button.       | property | No       | iOS Android |   Yes |
 | backTitleFontSize                | Allows for customizing font size to be used for back button title    | property | No       | iOS Android |   Yes |
 | backTitleVisible                 |  Whether the back button title should be visible or nots    | property | No       | iOS Android |   Yes |
+| backTitleVisible<sup>4.8.1</sup>                 |  Whether the back button title should be visible or nots    | property | No       | iOS Android |   No |
 | title                            | String that can be displayed in the header as a fallback for `headerTitle`       | property | No       | iOS Android |   Yes |
 | titleFontSize                    | Customize the size of the font to be used for the title.        | property | No       | iOS Android |   Yes |
 | titleFontWeight                  | Customize the weight of the font to be used for the title.       | property | No       | iOS Android |   Yes |
@@ -371,9 +422,50 @@ Check the release version information in the release address of the third-party 
 | onOpen                           | A callback that gets called when search bar is opened       | function | No       | iOS Android |   Yes |
 | headerIconColor                  | The search and close icon color shown in the header       | property | No       | iOS Android |   Yes |
 | shouldShowHintSearchIcon         | Show the search hint icon when search bar is focused       | property | No       | iOS Android |   Yes |
+| blurEffect<sup>4.8.1</sup>       | Blur effect to be applied to the header.       | property | No       | iOS  |   Yes |
+| tintColor<sup>4.8.1</sup>         | The color for the cursor caret and cancel button text       | property | No       | iOS  |   Yes |
+| color<sup>4.8.1</sup>         | Controls the color of items rendered on the header. This includes back icon, back text (iOS only) and title text. If you want the title to have different color use titleColor property.       | property | No       | iOS Android |   Yes |
+| hideWhenScrolling<sup>4.8.1</sup>         | Boolean indicating whether to hide the search bar when scrolling. Defaults to `true`.        | property | No       | iOS  |   No |
+| largeTitle<sup>4.8.1</sup>         | When set to `true`, it makes the title display using the large title effect.       | property | No       | iOS  |   No |
+| largeTitleFontFamily<sup>4.8.1</sup>          | Customize font family to be used for the large title.       | property | No       | iOS  |   No |
+| largeTitleFontSize<sup>4.8.1</sup>         | Customize the size of the font to be used for the large title.       | property | No       | iOS  |   No |
+| largeTitleFontWeight<sup>4.8.1</sup>         | Customize the weight of the font to be used for the large title.       | property | No       | iOS  |   No |
+| largeTitleHideShadow<sup>4.8.1</sup>         | Boolean that allows for disabling drop shadow under navigation header when the edge of any scrollable content reaches the matching edge of the navigation bar.       | property | No       | iOS  |   No |
+| largeTitleColor<sup>4.8.1</sup>         | Customize the color to be used for the large title. By default uses the `titleColor` property.       | property | No       | iOS  |   No |
+| autoCapitalize<sup>4.8.1</sup>         |  Controls whether the text is automatically auto-capitalized as it is entered by the user.      | property | No       | iOS Android  |   No |
+| placement<sup>4.8.1</sup>         | Placement of the search bar in the navigation bar.       | property | No       | iOS  |   No |
+| obscureBackground<sup>4.8.1</sup>         |  Boolean indicating whether to obscure the underlying content with semi-transparent overlay. Defaults to `true`.        | property | No       | iOS  |   No |
+| hideNavigationBar<sup>4.8.1</sup>         |  Boolean indicating whether to hide the navigation bar during searching. Defaults to `true`.      | property | No       | iOS  |   No |
+| disableBackButtonOverride<sup>4.8.1</sup>         |  Default behavior is to prevent screen from going back when search bar is open (`disableBackButtonOverride: false`). If you don't want this to happen set `disableBackButtonOverride` to `true`.      | property | No       | Android  |   No |
+| customAnimationOnSwipe<sup>4.8.1</sup>         | Boolean indicating that swipe dismissal should trigger animation provided by `stackAnimation`. Defaults to `false`.       | property | No       | iOS  |   No |
+| fullScreenSwipeShadowEnabled<sup>4.8.1</sup>         | Boolean indicating whether the full screen dismiss gesture has shadow under view during transition. The gesture uses custom transition and thus doesn't have a shadow by default. When enabled, a custom shadow view is added during the transition which tries to mimic the default iOS shadow. Defaults to `true`.       | property | No       | iOS  |   No |
+| homeIndicatorHidden<sup>4.8.1</sup>         |  Whether the home indicator should be hidden on this screen. Defaults to `false`.      | property | No       | iOS  |   No |
+| statusBarAnimation<sup>4.8.1</sup>         | Sets the status bar animation (similar to the `StatusBar` component). Requires enabling (or deleting) `View controller-based status bar appearance` in your Info.plist file.  On Android, this prop considers the transition of changing status bar color . There will be no animation if `none` provided.       | property | No       | iOS Android |   No |
+| transitionDuration<sup>4.8.1</sup>         | Changes the duration (in milliseconds) of `slide_from_bottom`, `fade_from_bottom`, `fade` and `simple_push` transitions on iOS. Defaults to `500`. The duration of `default` and `flip` transitions isn't customizable.       | property | No       | iOS  |   No |
+| hideKeyboardOnSwipe<sup>4.8.1</sup>         | Whether the keyboard should hide when swiping to the previous screen. Defaults to `false`.       | property | No       | iOS  |   No |
+| disableBackButtonMenu<sup>4.8.1</sup>         | Boolean indicating whether to show the menu on longPress of iOS >= 14 back button.        | property | No       | iOS  |   No |
+| backButtonDisplayMode<sup>4.8.1</sup>         | Enum value indicating display mode of **default** back button. It works on iOS >= 14, and is used only when none of: `backTitleFontFamily`, `backTitleFontSize`, `disableBackButtonMenu` or `backTitle` is set. Otherwise, when the button is customized, under the hood we use iOS native `backButtonItem` which overrides `backButtonDisplayMode`.       | property | No       | iOS  |   No |
+| backButtonInCustomView<sup>4.8.1</sup>         |  Whether to show the back button with a custom left side of the header.      | property | No       | iOS  |   No |
+| direction        | Controls whether the stack should be in `rtl` or `ltr` form.       | property | No       | iOS Android  |   No |
+| topInsetEnabled<sup>4.8.1</sup>         | A flag to that lets you opt out of insetting the header. You may want to set this to `false` if you use an opaque status bar. Defaults to `true`.       | property | No       | Android  |   No |
 
 ## Known Issues
 - [ ] The formSheet page is currently using a regular page, and the Context.openBindSheet system method used on this page has a misalignment of the binding position of the JS page, resulting in unresponsive button events. Need to be supplemented after system correction.  [issue#4](https://github.com/react-native-oh-library/react-native-harmony-screens/issues/4)
+
+- [ ] RNSScreenFooter depends on formSheet. This function needs to be added after the formSheet function is implemented.  [issue#28](https://github.com/react-native-oh-library/react-native-harmony-screens/issues/28)
+
+- [ ] GestureDetectorProvider cannot be referenced in the 77 environment according to the original library reference method, and requires system framework positioning processing。  [issue#29](https://github.com/react-native-oh-library/react-native-harmony-screens/issues/29)
+
+- [ ] When different properties are set in Option in Screen and its subcomponents, the properties received by ETS side in 77 environment are lost. System framework positioning processing is required.  [issue#30](https://github.com/react-native-oh-library/react-native-harmony-screens/issues/30)
+
+- [ ] sheetInitialDetent: Index of the detent the sheet should expand to after being opened. Attributes of the formsheet function. Not implemented
+- [ ] sheetElevation: Integer value describing elevation of the sheet, impacting shadow on the top edge of the sheet.Attributes of the formsheet function. Not implemented
+- [ ] sheetAllowedDetents:  Describes heights where a sheet can rest. Attributes of the formsheet function. Not implemented
+- [ ] sheetLargestUndimmedDetent: The largest sheet detent for which a view underneath won't be dimmed. Attributes of the formsheet function. Not implemented
+- [ ] sheetGrabberVisible: Boolean indicating whether the sheet shows a grabber at the top. Attributes of the formsheet function. Not implemented
+- [ ] sheetCornerRadius: The corner radius that the sheet will try to render with. Attributes of the formsheet function. Not implemented
+- [ ] sheetExpandsWhenScrolledToEdge: Whether the sheet should expand to larger detent when scrolling. Attributes of the formsheet function. Not implemented
+- [ ] onSheetDetentChanged: A callback that gets called when the current screen is in `formSheet` presentation and its detent has changed. Callback for formsheet function. Not implemented
 
 ## Others
 
