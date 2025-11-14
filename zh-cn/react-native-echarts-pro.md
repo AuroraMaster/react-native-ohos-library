@@ -13,6 +13,11 @@
 
 ## 安装与使用
 
+| 三方库版本      | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.9.1      | [@react-native-ohos/react-native-echarts-pro Releases](https://github.com/supervons/react-native-echarts-pro) | 0.72       |
+| 1.9.3      | [@react-native-ohos/react-native-echarts-pro Releases](https://github.com/supervons/react-native-echarts-pro) | 0.77       |
+
 进入到工程目录并输入以下命令：
 
 
@@ -22,13 +27,21 @@
 #### npm
 
 ```bash
+# 0.72
 npm install react-native-echarts-pro@^1.9.1
+
+# 0.77
+npm install react-native-echarts-pro@1.9.3
 ```
 
 #### yarn
 
 ```bash
+# 0.72
 yarn add react-native-echarts-pro@^1.9.1
+
+# 0.77
+yarn add react-native-echarts-pro@1.9.3
 ```
 
 <!-- tabs:end -->
@@ -116,6 +129,10 @@ export default function RNEPDemo() {
 | eventActions              | Custom charts events.                                                                                        | Object   | All         | N        | Yes               |
 | fontFamilies              | Custom font families.                                                                                        | Array    | Android/ios | N        | No                |
 | enableParseStringFunction | If enabled, function are parse as strings                                                                    | Boolean  | All         | N        | Yes               |
+| renderMode<sup>1.9.3+</sup> | Used to specify the rendering method for ECharts                                                           | String   | All         | N        | Yes               |
+| getInstance               | Gets the specified instance                                                                                  | Function | All         | N        | Yes               |  
+| setNewOption              | Modify the legend configuration                                                                              | Function | All         | N        | Yes               |  
+| dispatchAction            | Manual triggering of events                                                                                  | Function | All         | N        | Yes               |
 
 ## 遗留问题
 
