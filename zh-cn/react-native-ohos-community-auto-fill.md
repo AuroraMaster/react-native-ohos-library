@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center"> <code>@react-native-ohos-community/auto-fill</code> </h1>
+  <h1 align="center"> <code>@react-native-ohos/auto-fill</code> </h1>
 </p>
 <p align="center">
     <img src="https://img.shields.io/badge/platforms-%20harmony%20-lightgrey.svg" alt="Supported platforms" />
@@ -7,6 +7,7 @@
         <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
     </a>
 </p>
+
 
 auto-fill 基于 HarmonyOS [autoFillManager](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-app-ability-autofillmanager-V5) 模块，提供将表单输入数据保存到历史表单输入中，以供下次自动填充的功能，仅支持 ohos 平台。
 
@@ -22,17 +23,32 @@ auto-fill 基于 HarmonyOS [autoFillManager](https://developer.huawei.com/consum
 
 ## 安装
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-ohos-community/auto-fill Releases](https://github.com/react-native-oh-library/auto-fill/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.0.1      | [@react-native-ohos-community/auto-fill Releases](https://github.com/react-native-oh-library/auto-fill/releases) | 0.72       |
+| 1.0.2      | [@react-native-ohos/auto-fill Releases]()                    | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
 - **npm**
+  
   ```bash
+  #V1.0.1
   npm install @react-native-ohos-community/auto-fill
+  #V1.0.2
+  npm install @react-native-ohos/auto-fill
   ```
 - **yarn**
+  
   ```bash
+  #V1.0.1
   yarn add @react-native-ohos-community/auto-fill
+  #V1.0.2
+  yarn add @react-native-ohos/auto-fill
   ```
 
 ## 使用说明
@@ -171,10 +187,21 @@ React-Native 侧 TextInput 组件接收的 [textContentType](https://reactnative
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- V1.0.1
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-ohos-community/auto-fill": "file:../../node_modules/@react-native-ohos-community/auto-fill/harmony/auto_fill.har"
+  }
+```
+
+- V1.0.2
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/auto-fill": "file:../../node_modules/@react-native-ohos/auto-fill/harmony/auto_fill.har"
   }
 ```
 
@@ -205,7 +232,11 @@ set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-har
 set(LOG_VERBOSITY_LEVEL 1)
 
 # RNOH_BEGIN: manual_package_linking_1
+#V1.0.1
 + add_subdirectory("${OH_MODULES}/@react-native-ohos-community/auto-fill/src/main/cpp" ./auto-fill)
+
+#V1.0.2
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/auto-fill/src/main/cpp" ./auto-fill)
 # RNOH_END: manual_package_linking_1
 
 add_library(rnoh_app SHARED
@@ -241,7 +272,10 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(
 
 ```diff
   ...
+  //V1.0.1
 + import { AutoFillPackage } from '@react-native-ohos-community/auto-fill/ts'
+  //V1.0.2
++ import { AutoFillPackage } from '@react-native-ohos/auto-fill/ts'
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -255,7 +289,12 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos-community/auto-fill Releases](https://github.com/react-native-oh-library/auto-fill/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.0.1      | [@react-native-ohos-community/auto-fill Releases](https://github.com/react-native-oh-library/auto-fill/releases) | 0.72       |
+| 1.0.2      | [@react-native-ohos/auto-fill Releases]()                    | 0.77       |
 
 
 ## API 接口说明
