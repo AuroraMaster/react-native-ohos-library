@@ -28,15 +28,20 @@ Go to the project directory and execute the following instructions:
 
 
 - **npm**
-
+  
   ```bash
+  #V1.0.1
   npm install @react-native-ohos-community/auto-fill
+  #V1.0.2
+  npm install @react-native-ohos/auto-fill
   ```
-
 - **yarn**
-
+  
   ```bash
+  #V1.0.1
   yarn add @react-native-ohos-community/auto-fill
+  #V1.0.2
+  yarn add @react-native-ohos/auto-fill
   ```
 
 ## Description
