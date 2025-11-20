@@ -16,6 +16,11 @@
 
 ## 安装与使用
 
+| 三方库版本      | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 3.5.1      | [@react-native-ohos/react-native-reanimated-carousel Releases]| 0.72       |
+| 4.0.2      | [@react-native-ohos/react-native-reanimated-carousel Releases]| 0.77       |
+
 进入到工程目录并输入以下命令：
 
 <!-- tabs:start -->
@@ -23,13 +28,21 @@
 #### **npm**
 
 ```bash
+# 0.72
 npm install react-native-reanimated-carousel@3.5.1
+
+# 0.77
+npm install react-native-reanimated-carousel@4.0.2
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add react-native-reanimated-carousel@3.5.1
+
+# 0.77
+yarn add react-native-reanimated-carousel@4.0.2
 ```
 
 <!-- tabs:end -->
@@ -216,7 +229,8 @@ const styles = StyleSheet.create({
 | loop                      | Carousel loop playback                                       | no                             | true                                                         | boolean                                                      | All      | yes               |
 | testID                    | Used to locate this view in end-to-end tests                 | no                             |                                                              | string                                                       | All      | yes               |
 | onSnapToItem              | Callback fired when navigating to an item                    | no                             |                                                              | (index: number) => void                                      | All      | yes               |
-| onScrollBegin             | Callback fired when scroll begin                             | no                             |                                                              | () => void                                                   | All      | yes               |
+| onScrollBegin<sup>4.0.2+ deprecated</sup> | Callback fired when scroll begin             | no                             |                                                              | () => void                                                   | All      | yes               |
+| onScrollStart<sup>4.0.2+</sup>  | Callback fired when scroll start                       | no                             |                                                              | () => void                                                   | All      | yes               |
 | onScrollEnd               | Callback fired when scroll end                               | no                             |                                                              | (index: number) => void                                      | All      | yes               |
 | withAnimation             | Specifies the scrolling animation effect                     | no                             |                                                              | {type: 'spring';config: WithSpringConfig;} \| {type: 'timing';config: WithTimingConfig;} | All      | yes               |
 | panGestureHandlerProps    | PanGestureHandler props                                      | no                             | {}                                                           | Omit<Partial\<PanGestureHandlerProps\>,'onHandlerStateChange'> | All      | yes               |
