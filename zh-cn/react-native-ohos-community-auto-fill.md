@@ -134,26 +134,11 @@ React-Native 侧 TextInput 组件接收的 [textContentType](https://reactnative
     "username": USER_NAME, // 用户名
     "password": PASSWORD, // 密码
     "newPassword": NEW_PASSWORD, // 新密码
-    "houseNumber": HOUSE_NUMBER, // 门牌号
-    "districtAddress": DISTRICT_ADDRESS, // 区/县
-    "cityAddress": CITY_ADDRESS,    // 市
-    "provinceAddress": PROVINCE_ADDRESS,   // 省
-    "countryAddress": COUNTRY_ADDRESS, // 国家
-    "personFullName": PERSON_FULL_NAME, // 姓名
-    "personLastName": PERSON_LAST_NAME, // 姓氏
-    "personFirstName": PERSON_FIRST_NAME, // 名字
-    "phoneNumber": PHONE_NUMBER, // 手机号码
-    "phoneCountryCode": PHONE_COUNTRY_CODE, // 国家代码
-    "fullPhoneNumber": FULL_PHONE_NUMBER, // 包含国家代码的手机号码
     "emailAddress": EMAIL_ADDRESS, // 邮箱地址
-    "bankCardNumber": BANK_CARD_NUMBER, // 银行卡号
-    "idCardNumber": ID_CARD_NUMBER, // 身份证号
     "nickName": NICKNAME, // 昵称
     "name": PERSON_FULL_NAME, // 姓名
     "familyName": PERSON_LAST_NAME, // 姓氏
     "givenName": PERSON_FIRST_NAME, // 名字
-    "detailInfoWithoutStreet": DETAIL_INFO_WITHOUT_STREET,// 无街道地址
-    "formatAddress": FORMAT_ADDRESS, // 标准地址
 }
 ```
 
