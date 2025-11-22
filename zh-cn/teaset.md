@@ -1,18 +1,16 @@
-> 模板版本：v0.2.2
+> 模板版本：v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>teaset</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/react-native-oh-library/teaset">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/react-native-oh-library/teaset/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/teaset)
+本项目基于 [teaset@0.7.5](https://github.com/rilyu/teaset) 开发。
+
+请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-ohos/teaset Releases](https://github.com/react-native-oh-library/teaset/releases)。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+| 三方库版本                 | 发布信息                                      |  支持RN版本                 |
+| ------------------------- | ------------------------------------------------- |  -------------------------- |
+| 0.7.6                 | [@react-native-ohos/teaset Releases](https://github.com/react-native-oh-library/teaset/releases)  | 0.72/0.77 |
 
 ## 安装与使用
 
@@ -26,14 +24,14 @@
 npm install @react-native-ohos/teaset
 
 # 0.72
-npm @react-navigation/native-stack@6.9.26
-npm @react-navigation/native@6.1.7
-npm @react-native-oh-tpl/react-native-screens
+npm install @react-navigation/native-stack@6.9.26
+npm install @react-navigation/native@6.1.7
+npm install @react-native-oh-tpl/react-native-screens
 
 # 0.77
-npm @react-navigation/native-stack@7.2.0
-npm @react-navigation/native@7.1.17
-npm @react-native-ohos/react-native-screens
+npm install @react-navigation/native-stack@7.2.0
+npm install @react-navigation/native@7.1.17
+npm install @react-native-ohos/react-native-screens
 
 ```
 
@@ -112,7 +110,7 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | set | 设置主题配色方案，支持完整主题对象或部分属性修改 | function | yes | iOS/Android | yes |
-| themes | 获取所有内置主题配色方案（default、black、violet） | object | - | iOS/Android | yes |
+| themes | 获取所有内置主题配色方案（default、black、violet） | object | yes | iOS/Android | yes |
 
 **主题属性：**
 
@@ -275,11 +273,11 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| Title | 导航条标题组件 | class | - | iOS/Android | yes |
-| Button | 导航条按钮组件 | class | - | iOS/Android | yes |
-| LinkButton| 导航条链接按钮组件 | class | - | iOS/Android | yes |
-| IconButton | 导航条图标按钮组件 | class | - | iOS/Android | yes |
-| BackButton | 导航条返回按钮组件 | class | - | iOS/Android | yes |
+| Title | 导航条标题组件 | class | no | iOS/Android | yes |
+| Button | 导航条按钮组件 | class | no | iOS/Android | yes |
+| LinkButton| 导航条链接按钮组件 | class | no | iOS/Android | yes |
+| IconButton | 导航条图标按钮组件 | class | no | iOS/Android | yes |
+| BackButton | 导航条返回按钮组件 | class | no | iOS/Android | yes |
 
 **NavigationBar.Title**
 
@@ -288,6 +286,35 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 | text | 显示文本 | string/number | no | iOS/Android | yes |
 | numberOfLines | 显示行数 | number | no | iOS/Android | yes |
 | allowFontScaling| 是否允许系统自动缩放字体大小 | bool | no | iOS | yes |
+
+**allowFontScaling** 属性依赖应用配置，具体配置方案参考[如何设置应用内字体是否跟随系统变化](https://developer.huawei.com/consumer/cn/doc/architecture-guides/common-v1_26-ts_20-0000002298448781) 或者以下步骤：
+
+- 1.新建配置文件“AppScope/resources/base/profile/configuration.json”
+```
+{
+  "configuration": {
+    // nonFollowSystem不跟随系统变化；followSystem跟随系统变化
+    "fontSizeScale": "followSystem",
+    "fontSizeMaxScale": "3.2"
+  }
+}
+
+```
+- 2.在“AppScope/app.json5”文件中引用该配置
+```
+{
+  "app": {
+    "bundleName": "com.example.temp_demo",
+    "vendor": "example",
+    "versionCode": 1000000,
+    "versionName": "1.0.0",
+    "icon": "$media:app_icon",
+    "label": "$string:app_name",
+    // 在此处引用
+    "configuration": "$profile:configuration"
+  },
+}
+```
 
 **NavigationBar.Button**
 
@@ -338,7 +365,7 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| SwipeActionButton | 滑动按钮组件 | class | - | iOS/Android | yes |
+| SwipeActionButton | 滑动按钮组件 | class | no | iOS/Android | yes |
 
 **ListRow.SwipeActionButton**
 
@@ -347,7 +374,6 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 | type | 显示样式类型(default, danger) | string | no | iOS/Android | yes |
 | title | 标题 | string/number/element | no | iOS/Android | yes |
 | titleStyle | 标题样式 | style | no | iOS/Android | yes |
-
 
 ### 13. Carousel - 走马灯
 
@@ -371,8 +397,8 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 | automaticallyAdjustContentInsets | 自动调整内容内边距 | bool | no | iOS/Android | yes |
 | scrollEventThrottle | 滚动事件的触发频率| number | no | iOS/Android | yes |
 | onChange | 页面改变事件 | function | no | iOS/Android | yes |
-| scrollToPage | 滚动到指定页面 | function | - | iOS/Android | yes |
-| scrollToNextPage | 滚动到下一页 | function | - | iOS/Android | yes |
+| scrollToPage | 滚动到指定页面 | function | no | iOS/Android | yes |
+| scrollToNextPage | 滚动到下一页 | function | no | iOS/Android | yes |
 
 **Carousel.Control 组件：**
 
@@ -400,7 +426,7 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 | indicatorType | 指示器类型 (none, boxWidth, itemWidth, customWidth) | string | no | iOS/Android | yes |
 | indicatorPosition | 指示器位置 (top, bottom) | string | no | iOS/Android | yes |
 | indicatorLineColor | 指示器线条颜色 | string | no | iOS/Android | yes |
-| indicatorLineWidth | 指示器线条宽度 | number | no | iOS/Android | yes |
+| indicatorLineWidth | 指示器线条高度 | number | no | iOS/Android | yes |
 | indicatorWidth | 自定义指示器宽度 | number | no | iOS/Android | yes |
 | indicatorPositionPadding | 指示器位置内边距 | number | no | iOS/Android | yes |
 | animated | 是否启用动画 | bool | no | iOS/Android | yes |
@@ -412,7 +438,7 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| Item | 分段工具条组件 Item 组件 | class | - | iOS/Android | yes |
+| Item | 分段工具条组件 Item 组件 | class | no | iOS/Android | yes |
 
 **SegmentedBar.Item 属性：**
 
@@ -436,8 +462,8 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 | justifyItem | Item 宽度分配 (fixed, scrollable) | string | no | iOS/Android | yes |
 | indicatorType | 指示器类型 (none, boxWidth, itemWidth) | string | no | iOS/Android | yes |
 | indicatorPosition | 指示器位置 (top, bottom) | string | no | iOS/Android | yes |
-| indicatorLineColor | 指示器颜色 | string | no | iOS/Android | yes |
-| indicatorLineWidth | 指示器宽度 | number | no | iOS/Android | yes |
+| indicatorLineColor | 指示器线条颜色 | string | no | iOS/Android | yes |
+| indicatorLineWidth | 指示器线条高度 | number | no | iOS/Android | yes |
 | indicatorPositionPadding | 指示器位置内边距 | number | no | iOS/Android | yes |
 | animated | 是否启用动画 | bool | no | iOS/Android | yes |
 | autoScroll | 自动滚动 | bool | no | iOS/Android | yes |
@@ -448,8 +474,7 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| Sheet | 分段器 Sheet 组件 | class | - | iOS/Android | yes |
-
+| Sheet | 分段器 Sheet 组件 | class | no | iOS/Android | yes |
 
 **SegmentedView.Sheet 属性：**
 
@@ -475,9 +500,8 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| Sheet | 标签页 Sheet 组件 | class | - | iOS/Android | yes |
-| Button | 标签页按钮组件 | class | - | iOS/Android | yes |
-
+| Sheet | 标签页 Sheet 组件 | class | no | iOS/Android | yes |
+| Button | 标签页按钮组件 | class | no | iOS/Android | yes |
 
 **TabView.Sheet 属性：**
 
@@ -572,10 +596,10 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| View | 浮层组件 | class | - | iOS/Android | yes |
-| PullView | 拖拉效果浮层组件 | class | - | iOS/Android | yes |
-| PopView | 弹出效果浮层组件 | class | - | iOS/Android | yes |
-| PopoverView | 气泡效果浮层组件 | class | - | iOS/Android | yes |
+| View | 浮层组件 | class | yes | iOS/Android | yes |
+| PullView | 拖拉效果浮层组件 | class | no | iOS/Android | yes |
+| PopView | 弹出效果浮层组件 | class | no | iOS/Android | yes |
+| PopoverView | 气泡效果浮层组件 | class | no | iOS/Android | yes |
 
 **Overlay.View - 浮层**
 
@@ -628,7 +652,6 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 | paddingCorner | 圆角内边距 | number | no | iOS/Android | yes |
 | overlayOpacity | 气泡不透明度 | number | no | iOS/Android | yes |
 
-
 ### 22. Toast - 轻提示
 
  提示框
@@ -650,7 +673,7 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-|ToastView| Toast 内容显示组件 | class | - | iOS/Android | yes |
+|ToastView| Toast 内容显示组件 | class | yes | iOS/Android | yes |
 | defaultDuration | 轻提示框显示时长 | string | no | iOS/Android | yes |
 | defaultPosition | 轻提示框显示位置 | string | no | iOS/Android | yes |
 | messageDefaultDuration | message 函数的 duration 参数默认值 | string | no | iOS/Android | yes |
@@ -672,7 +695,7 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| show | 显示操作选单 | function | - | iOS/Android | yes |
+| show | 显示操作选单 | function | yes | iOS/Android | yes |
 
 **静态属性：**
 
@@ -686,7 +709,6 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | items | 操作项数组 | array | yes | iOS/Android | yes |
 | cancelItem | 取消按钮 | object | no | iOS/Android | yes |
-
 
 **ActionSheet.ActionSheetView 静态属性:**
 
@@ -709,11 +731,13 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 气泡式操作菜单
 
 **静态方法：**
+
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | show | 显示操作气泡 | function | yes | iOS/Android | yes |
 
 **静态属性：**
+
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | ActionPopoverView	 | ActionPopover 内容显示组件 | class | yes | iOS/Android | yes |
@@ -731,7 +755,7 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| Item | ActionPopover 操作项显示组件 | class | no | iOS/Android | yes |
+| Item | ActionPopover 操作项显示组件 | class | yes | iOS/Android | yes |
 
 **ActionPopover.ActionPopoverView.Item属性：**
 
@@ -749,13 +773,13 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| show | 显示选择器 | function | - | iOS/Android | yes |
+| show | 显示选择器 | function | yes | iOS/Android | yes |
 
 **静态属性:**
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| PullPickerView | PullPicker 内容显示组件 | class | - | iOS/Android | yes |
+| PullPickerView | PullPicker 内容显示组件 | class | yes | iOS/Android | yes |
 
 **PullPicker.PullPickerView**
 
@@ -771,7 +795,7 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| item | PullPicker 可选项显示组件 | class | - | iOS/Android | yes |
+| item | PullPicker 可选项显示组件 | class | no | iOS/Android | yes |
 
 **PullPicker.PullPickerView.Item属性**
 
@@ -787,13 +811,13 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| show | 显示选择器 | function | - | iOS/Android | yes |
+| show | 显示选择器 | function | yes | iOS/Android | yes |
 
 **静态属性:**
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| PopoverPickerView | PopoverPicker 内容显示组件 | class | - | iOS/Android | yes |
+| PopoverPickerView | PopoverPicker 内容显示组件 | class | yes | iOS/Android | yes |
 
 **PopoverPicker.PopoverPickerView属性**
 
@@ -809,9 +833,10 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 | onSelected | 选中事件 | function | no | iOS/Android | yes |
 
 **PopoverPicker.PopoverPickerView静态属性**
+
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| Item | PopoverPicker 可选项显示组件 | class | - | iOS/Android | yes |
+| Item | PopoverPicker 可选项显示组件 | class | no | iOS/Android | yes |
 
 **PopoverPicker.PopoverPickerView.Item属性**
 
@@ -828,13 +853,13 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| show | 显示菜单 | function | - | iOS/Android | yes |
+| show | 显示菜单 | function | yes | iOS/Android | yes |
 
 **静态属性:**
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| MenuView | Menu 内容显示组件 | class | - | iOS/Android | yes |
+| MenuView | Menu 内容显示组件 | class | no | iOS/Android | yes |
 
 **Menu.MenuView属性：**
 
@@ -850,7 +875,7 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| Item| Menu 菜单项显示组件 | class | - | iOS/Android | yes |
+| Item| Menu 菜单项显示组件 | class | no | iOS/Android | yes |
 
 **Menu.MenuView.Item属性:**
 
@@ -867,13 +892,13 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| open | 打开抽屉 | function | - | iOS/Android | yes |
+| open | 打开抽屉 | function | yes | iOS/Android | yes |
 
 **静态属性:**
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| DrawerView | Drawer 内容显示组件 | class | - | iOS/Android | yes |
+| DrawerView | Drawer 内容显示组件 | class | no | iOS/Android | yes |
 
 **Drawer.DrawerView属性**
 
@@ -887,14 +912,14 @@ Drawer.DrawerView 组件继承 Overlay.PullView 组件的全部属性和事件�
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| show | 显示指示器 | function | - | iOS/Android | yes |
-| hide | 隐藏指示器 | function | - | iOS/Android | yes |
+| show | 显示指示器 | function | yes | iOS/Android | yes |
+| hide | 隐藏指示器 | function | yes | iOS/Android | yes |
 
 **静态属性:**
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| IndicatorView | ModalIndicator 内容显示组件 | class | - | iOS/Android | yes |
+| IndicatorView | ModalIndicator 内容显示组件 | class | no | iOS/Android | yes |
 
 **ModalIndicator.IndicatorView参数：**
 
@@ -913,13 +938,13 @@ Drawer.DrawerView 组件继承 Overlay.PullView 组件的全部属性和事件�
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| rootView | 根组件 | element | - | iOS/Android | yes |
+| rootView | 根组件 | element | yes | iOS/Android | yes |
 
 **上下文：**
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| navigator | 返回 navigator 组件 | function | - | iOS/Android | yes |
+| navigator | 返回 navigator 组件 | function | yes | iOS/Android | yes |
 
 ### 31. BasePage - 基础页面
 
@@ -931,13 +956,28 @@ Drawer.DrawerView 组件继承 Overlay.PullView 组件的全部属性和事件�
 | autoKeyboardInsets | 自动键盘占位 | bool | no | iOS/Android | yes |
 | keyboardTopInsets | 键盘顶部偏移 | number | no | iOS/Android | yes |
 
+对于 **autoKeyboardInsets** 属性，**HarmonyOS的软键盘默认避让输入框**，如果需要关闭系统默认的软键盘避让可以参考[软键盘布局适配](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-keyboard-layout-adapt#section19987195213425)或者以下步骤：
+
+- 在“harmony/entry/src/main/ets/pages/Index.ets”中添加以下配置
+```diff
+...
++ import { KeyboardAvoidMode } from '@kit.ArkUI';
+...
+
+  aboutToAppear() {
+    ...
++   this.getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.NONE);
+    ...
+  }
+```
+
 **变量：**
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| navigator | 导航器对象 | object | - | iOS/Android | yes |
-| didMount | 是否已挂载 | bool | - | iOS/Android | yes |
-| isFocused | 是否已聚焦 | bool | - | iOS/Android | yes |
+| navigator | 导航器对象 | object | yes | iOS/Android | yes |
+| didMount | 是否已挂载 | bool | yes | iOS/Android | yes |
+| isFocused | 是否已聚焦 | bool | yes | iOS/Android | yes |
 
 **生命周期方法：**
 

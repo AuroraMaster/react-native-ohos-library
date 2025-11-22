@@ -1,18 +1,16 @@
-Template Version: v0.2.2
+Template Version: v0.3.0
 
 <p align="center">
 	<h1 align="center"> <code>teaset</code> </h1>
 </p>
-<p align="center">
-		<a href="https://github.com/react-native-oh-library/teaset">
-				<img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-		</a>
-		<a href="https://github.com/react-native-oh-library/teaset/blob/master/LICENSE">
-				<img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-		</a>
-</p>
 
-> [!TIP] [GitHub Repository](https://github.com/react-native-oh-library/teaset)
+This project is based on [teaset@0.7.5](https://github.com/rilyu/teaset).
+
+Please go to the Releases release address of the third-party library to view the supporting version information: [@react-native-ohos/teaset Releases](https://github.com/react-native-oh-library/teaset/releases). For older versions that are not published to npm, install the tgz package by referring to the [Installation Guide](/en/tgz-usage-en.md).
+
+| Version              | Releases info                                     |  Support RN version                |
+| ------------------------- | ------------------------------------------------- |  -------------------------- |
+| 0.7.6                 | [@react-native-ohos/teaset Releases](https://github.com/react-native-oh-library/teaset/releases)  | 0.72/0.77 |
 
 ## Installation and Usage
 
@@ -26,14 +24,14 @@ Run the following command in your project directory:
 npm install @react-native-ohos/teaset
 
 # 0.72
-npm @react-navigation/native-stack@6.9.26
-npm @react-navigation/native@^6.1.7
-npm @react-native-oh-tpl/react-native-screens
+npm install @react-navigation/native-stack@6.9.26
+npm install @react-navigation/native@^6.1.7
+npm install @react-native-oh-tpl/react-native-screens
 
 # 0.77
-npm @react-navigation/native-stack@7.2.0
-npm @react-navigation/native@7.1.17
-npm @react-native-ohos/react-native-screens
+npm install @react-navigation/native-stack@7.2.0
+npm install @react-navigation/native@7.1.17
+npm install @react-native-ohos/react-native-screens
 
 ```
 
@@ -112,7 +110,7 @@ Theme provides global styling configuration to unify the application's visual de
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | set | Configure the theme palette. Accepts a complete theme object or partial overrides. | function | yes | iOS/Android | yes |
-| themes | Retrieve all built-in theme palettes (default, black, violet). | object | - | iOS/Android | yes |
+| themes | Retrieve all built-in theme palettes (default, black, violet). | object | yes | iOS/Android | yes |
 
 **Theme Properties:**
 
@@ -275,11 +273,11 @@ NavigationBar renders a top navigation bar.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| Title | Title component for the navigation bar. | class | - | iOS/Android | yes |
-| Button | Button component for the navigation bar. | class | - | iOS/Android | yes |
-| LinkButton | Link-style button component. | class | - | iOS/Android | yes |
-| IconButton | Icon button component. | class | - | iOS/Android | yes |
-| BackButton | Back button component. | class | - | iOS/Android | yes |
+| Title | Title component for the navigation bar. | class | no | iOS/Android | yes |
+| Button | Button component for the navigation bar. | class | no | iOS/Android | yes |
+| LinkButton | Link-style button component. | class | no | iOS/Android | yes |
+| IconButton | Icon button component. | class | no | iOS/Android | yes |
+| BackButton | Back button component. | class | no | iOS/Android | yes |
 
 **NavigationBar.Title**
 
@@ -288,6 +286,35 @@ NavigationBar renders a top navigation bar.
 | text | Display text. | string/number | no | iOS/Android | yes |
 | numberOfLines | Number of lines. | number | no | iOS/Android | yes |
 | allowFontScaling | Allow system font scaling. | bool | no | iOS | yes |
+
+The **allowFontScaling** property depends on the application’s configuration.For the detailed configuration method, refer to [How to configure whether the in-app font size follows the system setting](https://developer.huawei.com/consumer/cn/doc/architecture-guides/common-v1_26-ts_20-0000002298448781) or follow the steps below:
+
+- 1.Create a new configuration file: AppScope/resources/base/profile/configuration.json
+```
+{
+  "configuration": {
+    // nonFollowSystem: does not follow system changes; followSystem: follows system changes
+    "fontSizeScale": "followSystem",
+    "fontSizeMaxScale": "3.2"
+  }
+}
+
+```
+- 2.Reference this configuration in AppScope/app.json5
+```
+{
+  "app": {
+    "bundleName": "com.example.temp_demo",
+    "vendor": "example",
+    "versionCode": 1000000,
+    "versionName": "1.0.0",
+    "icon": "$media:app_icon",
+    "label": "$string:app_name",
+    // Reference here
+    "configuration": "$profile:configuration"
+  },
+}
+```
 
 **NavigationBar.Button**
 
@@ -338,7 +365,7 @@ ListRow displays list items, commonly used on settings screens.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| SwipeActionButton | Swipe action button component. | class | - | iOS/Android | yes |
+| SwipeActionButton | Swipe action button component. | class | no | iOS/Android | yes |
 
 **ListRow.SwipeActionButton**
 
@@ -370,8 +397,8 @@ Carousel provides an image slideshow.
 | automaticallyAdjustContentInsets | Auto-adjust content insets. | bool | no | iOS/Android | yes |
 | scrollEventThrottle | Scroll event throttle interval. | number | no | iOS/Android | yes |
 | onChange | Page change handler. | function | no | iOS/Android | yes |
-| scrollToPage | Scroll to a specific page. | function | - | iOS/Android | yes |
-| scrollToNextPage | Scroll to the next page. | function | - | iOS/Android | yes |
+| scrollToPage | Scroll to a specific page. | function | no | iOS/Android | yes |
+| scrollToNextPage | Scroll to the next page. | function | no | iOS/Android | yes |
 
 **Carousel.Control Component:**
 
@@ -399,8 +426,8 @@ SegmentedBar renders a segmented toolbar.
 | indicatorType | Indicator type (none, boxWidth, itemWidth, customWidth). | string | no | iOS/Android | yes |
 | indicatorPosition | Indicator position (top, bottom). | string | no | iOS/Android | yes |
 | indicatorLineColor | Indicator line color. | string | no | iOS/Android | yes |
-| indicatorLineWidth | Indicator line width. | number | no | iOS/Android | yes |
-| indicatorWidth | Custom indicator width. | number | no | iOS/Android | yes |
+| indicatorLineWidth | Indicator line height. | number | no | iOS/Android | yes |
+| indicatorWidth | indicator width. | number | no | iOS/Android | yes |
 | indicatorPositionPadding | Indicator position padding. | number | no | iOS/Android | yes |
 | animated | Enable animation. | bool | no | iOS/Android | yes |
 | autoScroll | Auto-scroll to center. | bool | no | iOS/Android | yes |
@@ -411,7 +438,7 @@ SegmentedBar renders a segmented toolbar.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| Item | SegmentedBar item component. | class | - | iOS/Android | yes |
+| Item | SegmentedBar item component. | class | no | iOS/Android | yes |
 
 **SegmentedBar.Item Properties:**
 
@@ -435,8 +462,8 @@ SegmentedView is a segmented container.
 | justifyItem | Item width distribution (fixed, scrollable). | string | no | iOS/Android | yes |
 | indicatorType | Indicator type (none, boxWidth, itemWidth). | string | no | iOS/Android | yes |
 | indicatorPosition | Indicator position (top, bottom). | string | no | iOS/Android | yes |
-| indicatorLineColor | Indicator color. | string | no | iOS/Android | yes |
-| indicatorLineWidth | Indicator width. | number | no | iOS/Android | yes |
+| indicatorLineColor | Indicator line color. | string | no | iOS/Android | yes |
+| indicatorLineWidth | Indicator line height. | number | no | iOS/Android | yes |
 | indicatorPositionPadding | Indicator position padding. | number | no | iOS/Android | yes |
 | animated | Enable animation. | bool | no | iOS/Android | yes |
 | autoScroll | Enable auto-scroll. | bool | no | iOS/Android | yes |
@@ -447,7 +474,7 @@ SegmentedView is a segmented container.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| Sheet | SegmentedView sheet component. | class | - | iOS/Android | yes |
+| Sheet | SegmentedView sheet component. | class | no | iOS/Android | yes |
 
 **SegmentedView.Sheet Properties:**
 
@@ -473,8 +500,8 @@ TabView provides bottom tab navigation.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| Sheet | TabView sheet component. | class | - | iOS/Android | yes |
-| Button | TabView button component. | class | - | iOS/Android | yes |
+| Sheet | TabView sheet component. | class | no | iOS/Android | yes |
+| Button | TabView button component. | class | no | iOS/Android | yes |
 
 **TabView.Sheet Properties:**
 
@@ -569,10 +596,10 @@ Overlay displays floating layers.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| View | Overlay view component. | class | - | iOS/Android | yes |
-| PullView | Overlay with pull effect. | class | - | iOS/Android | yes |
-| PopView | Overlay with pop effect. | class | - | iOS/Android | yes |
-| PopoverView | Overlay with popover effect. | class | - | iOS/Android | yes |
+| View | Overlay view component. | class | yes | iOS/Android | yes |
+| PullView | Overlay with pull effect. | class | no | iOS/Android | yes |
+| PopView | Overlay with pop effect. | class | no | iOS/Android | yes |
+| PopoverView | Overlay with popover effect. | class | no | iOS/Android | yes |
 
 **Overlay.View**
 
@@ -646,7 +673,7 @@ Toast shows lightweight notifications.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-|ToastView| Toast content display component | class | - | iOS/Android | yes |
+|ToastView| Toast content display component | class | yes | iOS/Android | yes |
 | defaultDuration | Default toast duration. | string | no | iOS/Android | yes |
 | defaultPosition | Default toast position. | string | no | iOS/Android | yes |
 | messageDefaultDuration | Default duration for the message function. | string | no | iOS/Android | yes |
@@ -668,7 +695,7 @@ ActionSheet shows a bottom action sheet.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| show | Show the action sheet. | function | - | iOS/Android | yes |
+| show | Show the action sheet. | function | yes | iOS/Android | yes |
 
 **Static Properties:**
 
@@ -728,7 +755,7 @@ ActionPopover displays an action menu in a bubble.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| Item | Action popover item component. | class | no | iOS/Android | yes |
+| Item | Action popover item component. | class | yes | iOS/Android | yes |
 
 **ActionPopover.ActionPopoverView.Item Properties:**
 
@@ -746,13 +773,13 @@ PullPicker shows a bottom pull-up selector.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| show | Show the picker. | function | - | iOS/Android | yes |
+| show | Show the picker. | function | yes | iOS/Android | yes |
 
 **Static Properties:**
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| PullPickerView | Content component for the pull picker. | class | - | iOS/Android | yes |
+| PullPickerView | Content component for the pull picker. | class | yes | iOS/Android | yes |
 
 **PullPicker.PullPickerView**
 
@@ -768,7 +795,7 @@ PullPicker shows a bottom pull-up selector.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| Item | Pull picker item component. | class | - | iOS/Android | yes |
+| Item | Pull picker item component. | class | no | iOS/Android | yes |
 
 **PullPicker.PullPickerView.Item Properties**
 
@@ -784,13 +811,13 @@ PopoverPicker displays a bubble selector.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| show | Show the picker. | function | - | iOS/Android | yes |
+| show | Show the picker. | function | yes | iOS/Android | yes |
 
 **Static Properties:**
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| PopoverPickerView | Content component for the popover picker. | class | - | iOS/Android | yes |
+| PopoverPickerView | Content component for the popover picker. | class | yes | iOS/Android | yes |
 
 **PopoverPicker.PopoverPickerView Properties**
 
@@ -809,7 +836,7 @@ PopoverPicker displays a bubble selector.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| Item | Popover picker item component. | class | - | iOS/Android | yes |
+| Item | Popover picker item component. | class | no | iOS/Android | yes |
 
 **PopoverPicker.PopoverPickerView.Item Properties**
 
@@ -826,13 +853,13 @@ Menu displays a popup menu.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| show | Show the menu. | function | - | iOS/Android | yes |
+| show | Show the menu. | function | yes | iOS/Android | yes |
 
 **Static Properties:**
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| MenuView | Content component for the menu. | class | - | iOS/Android | yes |
+| MenuView | Content component for the menu. | class | no | iOS/Android | yes |
 
 **Menu.MenuView Properties:**
 
@@ -848,7 +875,7 @@ Menu displays a popup menu.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| Item | Menu item component. | class | - | iOS/Android | yes |
+| Item | Menu item component. | class | no | iOS/Android | yes |
 
 **Menu.MenuView.Item Properties:**
 
@@ -865,13 +892,13 @@ Drawer provides a side drawer.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| open | Open the drawer. | function | - | iOS/Android | yes |
+| open | Open the drawer. | function | yes | iOS/Android | yes |
 
 **Static Properties:**
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| DrawerView | Content component for the drawer. | class | - | iOS/Android | yes |
+| DrawerView | Content component for the drawer. | class | no | iOS/Android | yes |
 
 **Drawer.DrawerView Properties**
 
@@ -885,14 +912,14 @@ ModalIndicator displays a modal loading indicator.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| show | Show the indicator. | function | - | iOS/Android | yes |
-| hide | Hide the indicator. | function | - | iOS/Android | yes |
+| show | Show the indicator. | function | yes | iOS/Android | yes |
+| hide | Hide the indicator. | function | yes | iOS/Android | yes |
 
 **Static Properties:**
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| IndicatorView | Content component for the modal indicator. | class | - | iOS/Android | yes |
+| IndicatorView | Content component for the modal indicator. | class | no | iOS/Android | yes |
 
 **ModalIndicator.IndicatorView Parameters:**
 
@@ -911,13 +938,13 @@ TeaNavigator is the root navigator component.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| rootView | Root component. | element | - | iOS/Android | yes |
+| rootView | Root component. | element | yes | iOS/Android | yes |
 
 **Context:**
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| navigator | Return the navigator component. | function | - | iOS/Android | yes |
+| navigator | Return the navigator component. | function | yes | iOS/Android | yes |
 
 ### 31. BasePage
 
@@ -929,13 +956,28 @@ BasePage is the base page component.
 | autoKeyboardInsets | Auto-adjust for keyboard. | bool | no | iOS/Android | yes |
 | keyboardTopInsets | Keyboard top inset. | number | no | iOS/Android | yes |
 
+For the **autoKeyboardInsets** property, **the soft keyboard on HarmonyOS automatically avoids input fields by default**. If you want to disable the system’s default soft keyboard avoidance behavior, refer to [Soft Keyboard Layout Adaptation](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-keyboard-layout-adapt#section15829951124116) or follow the steps below:
+
+- Add the following configuration in harmony/entry/src/main/ets/pages/Index.ets:
+```diff
+...
++ import { KeyboardAvoidMode } from '@kit.ArkUI';
+...
+
+  aboutToAppear() {
+    ...
++   this.getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.NONE);
+    ...
+  }
+```
+
 **Variables:**
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| navigator | Navigator object. | object | - | iOS/Android | yes |
-| didMount | Whether the page mounted. | bool | - | iOS/Android | yes |
-| isFocused | Whether the page is focused. | bool | - | iOS/Android | yes |
+| navigator | Navigator object. | object | yes | iOS/Android | yes |
+| didMount | Whether the page mounted. | bool | yes | iOS/Android | yes |
+| isFocused | Whether the page is focused. | bool | yes | iOS/Android | yes |
 
 **Lifecycle Methods:**
 
