@@ -117,36 +117,21 @@ The following lists the mapping between [textContentType](https://reactnative.cn
 // The key is the value of textContentType in React Native,
 // The value is the value of ContentType in HarmonyOS.
 {
-    "addressCity": CITY_ADDRESS, // City
-    "addressState": PROVINCE_ADDRESS, // Province
-    "countryName": COUNTRY_ADDRESS, // Country
-    "creditCardNumber": BANK_CARD_NUMBER, // Bank card number
-    "fullStreetAddress": FULL_STREET_ADDRESS, // Detailed address
-    "sublocality": DISTRICT_ADDRESS, // District/County
-    "telephoneNumber": PHONE_NUMBER, // Phone number
-    "username": USER_NAME, // Username
-    "password": PASSWORD, // Password
-    "newPassword": NEW_PASSWORD, // New password
-    "houseNumber": HOUSE_NUMBER, // House number
-    "districtAddress": DISTRICT_ADDRESS, // District/County
-    "cityAddress": CITY_ADDRESS, // City
-    "provinceAddress": PROVINCE_ADDRESS, // Province
-    "countryAddress": COUNTRY_ADDRESS, // Country
-    "personFullName": PERSON_FULL_NAME, // Full name
-    "personLastName": PERSON_LAST_NAME, // Last name
-    "personFirstName": PERSON_FIRST_NAME, // First name
-    "phoneNumber": PHONE_NUMBER, // Phone number
-    "phoneCountryCode": PHONE_COUNTRY_CODE, // Country code
-    "fullPhoneNumber": FULL_PHONE_NUMBER, // Full phone number
-    "emailAddress": EMAIL_ADDRESS, // Email address
-    "bankCardNumber": BANK_CARD_NUMBER, // Bank card number
-    "idCardNumber": ID_CARD_NUMBER, // ID card number
-    "nickName": NICKNAME, // Nickname
-    "name": PERSON_FULL_NAME, // Full name
-    "familyName": PERSON_LAST_NAME, // Last name
-    "givenName": PERSON_FIRST_NAME, // First name
-    "detailInfoWithoutStreet": DETAIL_INFO_WITHOUT_STREET,// Detailed address without street information
-    "formatAddress": FORMAT_ADDRESS, // Format address
+    "addressCity": CITY_ADDRESS,  // 市
+    "addressState": PROVINCE_ADDRESS, // 省
+    "countryName": COUNTRY_ADDRESS, // 国家
+    "creditCardNumber": BANK_CARD_NUMBER, // 银行卡号
+    "fullStreetAddress": FULL_STREET_ADDRESS, // 详细地址
+    "sublocality": DISTRICT_ADDRESS, // 区/县
+    "telephoneNumber": PHONE_NUMBER, // 手机号码
+    "username": USER_NAME, // 用户名
+    "password": PASSWORD, // 密码
+    "newPassword": NEW_PASSWORD, // 新密码
+    "emailAddress": EMAIL_ADDRESS, // 邮箱地址
+    "nickName": NICKNAME, // 昵称
+    "name": PERSON_FULL_NAME, // 姓名
+    "familyName": PERSON_LAST_NAME, // 姓氏
+    "givenName": PERSON_FIRST_NAME, // 名字
 }
 ```
 
