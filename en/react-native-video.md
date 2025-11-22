@@ -18,22 +18,34 @@
 
 Find the matching version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases). For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
+| version | Releases info                                        | Support RN version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 5.2.1      | [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases) | 0.72       |
+| 6.13.0      | [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases) | 0.72       |
+| 6.13.0     | [@react-native-ohos/react-native-video Releases]()           | 0.77       |
+
 Go to the project directory and execute the following instruction:
-
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-video
+
+# 0.77
+npm install @react-native-ohos/react-native-video
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-video
+
+# 0.77
+yarn add @react-native-ohos/react-native-video
 ```
 
 <!-- tabs:end -->
@@ -47,10 +59,17 @@ import React, { useState, useRef } from "react";
 import { Button, View, ScrollView, StyleSheet, Switch, Text, TextInput } from "react-native";
 import RNCVideo from "react-native-video";
 
+// V6.13.0
+import {
+  type OnPlaybackStateChangedData,
+  OnSeekData,
+} from 'react-native-video';
+
 function RNCVideoDemo() {
   const [muted, setMuted] = useState(true);
   const [paused, setPaused] = useState(false);
   const [repeat, setRepeat] = useState(true);
+  const [controls, setControls] = useState(false);
   const [disableFocus, setDisableFocus] = useState(false);
   const [uri, setUri] = useState(
     "https://res.vmallres.com//uomcdn/CN/cms/202210/C75C7E20060F3E909F2998E13C3ABC03.mp4"
@@ -59,7 +78,6 @@ function RNCVideoDemo() {
   const [resizeMode, setResizeMode] = useState("none");
   const [posterResizeMode, setPosterResizeMode] = useState("cover");
   const [seekSec, setSeekSec] = useState(5000);
-  const [controls, setControls] = useState(false);
 
   const [onVideoLoad, setOnVideoLoad] = useState("onVideoLoad");
   const [onVideoLoadStart, setOnVideoLoadStart] = useState("onVideoLoadStart");
@@ -67,7 +85,12 @@ function RNCVideoDemo() {
   const [onVideoProgress, setOnVideoProgress] = useState("onVideoProgress");
   const [onVideoEnd, setOnVideoEnd] = useState("onVideoEnd");
   const [onVideoBuffer, setOnVideoBuffer] = useState("onVideoBuffer");
+  // V5.2.1
   const [onPlaybackStalled, setOnPlaybackStalled] = useState("onPlaybackStalled");
+
+  // V6.13.0
+  const [onPlaybackStateChanged, setPlaybackStateChanged] = useState("onPlaybackStateChanged");
+   
   const [onPlaybackResume, setOnPlaybackResume] = useState("onPlaybackResume");
   const [pictureInPicture, setPictureInPicture] = useState(false);
   const [enterPictureInPictureOnLeave, setEnterPictureInPictureOnLeave] = useState(false);
@@ -76,6 +99,10 @@ function RNCVideoDemo() {
 
   const toggleMuted = () => {
     setMuted((prevMuted) => !prevMuted);
+  };
+
+  const toggleControls = () => {
+    setControls((prevControls) => !prevControls);
   };
 
   const togglePaused = () => {
@@ -88,10 +115,6 @@ function RNCVideoDemo() {
 
   const toggleDisableFocus = () => {
     setDisableFocus((prevDisableFocus) => !prevDisableFocus);
-  };
-
-   const toggleControls = () => {
-    setControls((prevControls) => !prevControls);
   };
 
   const firstVideo = () => {
@@ -113,14 +136,20 @@ function RNCVideoDemo() {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.container}>
-        <Text style={styles.title}>Online video demo</Text>;
+        <Text style={styles.title}>Online video demo</Text>
         <Text style={styles.labelB}>{onVideoLoad}</Text>
         <Text style={styles.label}>{onVideoError}</Text>
         <Text style={styles.label}>{onVideoLoadStart}</Text>
         <Text style={styles.labelB}>{onVideoProgress}</Text>
         <Text style={styles.label}>{onVideoEnd}</Text>
         <Text style={styles.label}>{onVideoBuffer}</Text>
-        <Text style={styles.label}>{onPlaybackStalled}</Text>
+
+		// V5.2.1
+		<Text style={styles.label}>{onPlaybackStalled}</Text>
+
+		// V6.13.0
+        <Text style={styles.label}>{onPlaybackStateChanged}</Text>
+
         <Text style={styles.label}>{onPlaybackResume}</Text>
         <Text style={styles.title}>update source </Text>
         <View
@@ -169,7 +198,7 @@ function RNCVideoDemo() {
               setPosterResizeMode("stretch");
             }}
           >
-            Switch to https://res.vmallres.com.
+            Switch net:vmallres
           </Text>
           <Text
             style={{ backgroundColor: "red", flex: 0.25 }}
@@ -178,7 +207,7 @@ function RNCVideoDemo() {
               setPosterResizeMode("contain");
             }}
           >
-            Switch to https://vjs.zencdn.net/v/oceans.mp4.
+            Switch net:oceans
           </Text>
         </View>
         <Text style={styles.title}>set resizeMode </Text>
@@ -229,7 +258,7 @@ function RNCVideoDemo() {
             padding: 0,
           }}
         >
-          <Text style={styles.title}>Operation</Text>;
+          <Text style={styles.title}>Operation </Text>
           <TextInput
             style={styles.prop_input}
             placeholder="input seek sec number:"
@@ -274,7 +303,7 @@ function RNCVideoDemo() {
           >
             muted:{muted.toString()}
           </Text>
-          <Text style={styles.button_b} onPress={() => { toggleControls() }} >controls:{controls.toString()}</Text>
+         <Text style={styles.button_b} onPress={() => { toggleControls() }} >controls:{controls.toString()}</Text>
           <Text
             style={styles.button_b}
             onPress={() => {
@@ -300,7 +329,6 @@ function RNCVideoDemo() {
           ref={videoRef}
           source={{ uri: uri, isNetwork: true }}
           paused={paused}
-          controls={controls}
           muted={muted}
           pictureInPicture={pictureInPicture}
           enterPictureInPictureOnLeave={enterPictureInPictureOnLeave}
@@ -309,6 +337,7 @@ function RNCVideoDemo() {
             pictureInPicture !== e.isActive && setPictureInPicture(e.isActive || false)
           }}
           resizeMode={resizeMode}
+          controls={controls}
           repeat={repeat}
           volume={1}
           disableFocus={disableFocus}
@@ -349,6 +378,12 @@ function RNCVideoDemo() {
                 e.seekableDuration
             );
           }}
+          
+          // V6.13.0
+          onSeek = {(data: OnSeekData) => {
+            console.log('onSeek');
+          }}
+
           onError={(e) => {
             setOnVideoError("onVideoError error =" + e.error);
           }}
@@ -358,14 +393,25 @@ function RNCVideoDemo() {
           onBuffer={(e) => {
             setOnVideoBuffer("onVideoBuffer :" + e.isBuffering);
           }}
+          
+          // V5.2.1
           onPlaybackStalled={() => {
             setOnPlaybackStalled("onPlaybackStalled : true");
             setOnPlaybackResume("onPlaybackResume :false");
           }}
+          
+          // V5.2.1
           onPlaybackResume={() => {
             setOnPlaybackStalled("onPlaybackStalled :false");
             setOnPlaybackResume("onPlaybackResume :true");
           }}
+
+          // V6.13.0
+          onPlaybackStateChanged={(data: OnPlaybackStateChangedData) => {
+            console.log('onPlaybackStateChanged ' + JSON.stringify(data));
+            setPlaybackStateChanged("onPlaybackStateChanged : " + JSON.stringify(data));
+          }}
+
           onReadyForDisplay={() => {
             console.log(`onReadyForDisplay :setShowPoster(false)`);
           }}
@@ -465,11 +511,23 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
+- V0.72
+
 ```json
 "dependencies": {
    ...
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-video": "file:../../node_modules/@react-native-oh-tpl/react-native-video/harmony/rn_video.har"
+  }
+```
+
+- V0.77
+
+```json
+"dependencies": {
+   ...
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-video": "file:../../node_modules/@react-native-ohos/react-native-video/harmony/rn_video.har"
   }
 ```
 
@@ -508,7 +566,11 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+# V0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-video/src/main/cpp" ./video)
+
+# V0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-video/src/main/cpp" ./video)
 # RNOH_BEGIN: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -551,7 +613,11 @@ Find `function buildCustomRNComponent()`, which is usually located in `entry/src
 
 ```diff
   ...
+// V0.72
 + import { RNCVideo, RNC_VIDEO_TYPE } from "@react-native-oh-tpl/react-native-video"
+
+// V0.77
++ import { RNCVideo, RNC_VIDEO_TYPE } from "@react-native-ohos/react-native-video"
 
 @Builder
 function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -584,7 +650,11 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
+// V0.72
 + import { RNCVideoPackage } from '@react-native-oh-tpl/react-native-video/ts';
+
+// V0.77
++ import { RNCVideoPackage } from '@react-native-ohos/react-native-video/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -614,6 +684,12 @@ Then build and run the code.
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
 Check the release version information in the release address of the third-party library: [@react-native-oh-library/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases)
+
+| Version | Releases info                                                | Support RN version |
+| ------- | ------------------------------------------------------------ | ------------------ |
+| 5.2.1   | [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases) | 0.72               |
+| 6.13.0  | [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases) | 0.72               |
+| 6.13.0  | [@react-native-ohos/react-native-video Releases]()           | 0.77               |
 
 ## Properties
 

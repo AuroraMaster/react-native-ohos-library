@@ -17,7 +17,15 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 5.2.1      | [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases) | 0.72       |
+| 6.13.0      | [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases) | 0.72       |
+| 6.13.0     | [@react-native-ohos/react-native-video Releases]()           | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令
 
@@ -26,17 +34,21 @@
 #### **npm**
 
 ```bash
-
+# 0.72
 npm install @react-native-oh-tpl/react-native-video
 
+# 0.77
+npm install @react-native-ohos/react-native-video
 ```
 
 #### **yarn**
 
 ```bash
-
+# 0.72
 yarn add @react-native-oh-tpl/react-native-video
 
+# 0.77
+yarn add @react-native-ohos/react-native-video
 ```
 
 <!-- tabs:end -->
@@ -76,6 +88,8 @@ function RNCVideoDemo() {
   const [onVideoProgress, setOnVideoProgress] = useState("onVideoProgress");
   const [onVideoEnd, setOnVideoEnd] = useState("onVideoEnd");
   const [onVideoBuffer, setOnVideoBuffer] = useState("onVideoBuffer");
+  // V5.2.1
+  const [onPlaybackStalled, setOnPlaybackStalled] = useState("onPlaybackStalled");
 
   // V6.13.0
   const [onPlaybackStateChanged, setPlaybackStateChanged] = useState("onPlaybackStateChanged");
@@ -132,6 +146,9 @@ function RNCVideoDemo() {
         <Text style={styles.labelB}>{onVideoProgress}</Text>
         <Text style={styles.label}>{onVideoEnd}</Text>
         <Text style={styles.label}>{onVideoBuffer}</Text>
+
+		// V5.2.1
+		<Text style={styles.label}>{onPlaybackStalled}</Text>
 
 		// V6.13.0
         <Text style={styles.label}>{onPlaybackStateChanged}</Text>
@@ -379,6 +396,18 @@ function RNCVideoDemo() {
           onBuffer={(e) => {
             setOnVideoBuffer("onVideoBuffer :" + e.isBuffering);
           }}
+          
+          // V5.2.1
+          onPlaybackStalled={() => {
+            setOnPlaybackStalled("onPlaybackStalled : true");
+            setOnPlaybackResume("onPlaybackResume :false");
+          }}
+          
+          // V5.2.1
+          onPlaybackResume={() => {
+            setOnPlaybackStalled("onPlaybackStalled :false");
+            setOnPlaybackResume("onPlaybackResume :true");
+          }}
 
           // V6.13.0
           onPlaybackStateChanged={(data: OnPlaybackStateChangedData) => {
@@ -489,11 +518,23 @@ export default RNCVideoDemo;
 打开 `entry/oh-package.json5`，添加以下依赖
 
 
+- V0.72
+
 ```json
 "dependencies": {
    ...
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-video": "file:../../node_modules/@react-native-oh-tpl/react-native-video/harmony/rn_video.har"
+  }
+```
+
+- V0.77
+
+```json
+"dependencies": {
+   ...
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-video": "file:../../node_modules/@react-native-ohos/react-native-video/harmony/rn_video.har"
   }
 ```
 
@@ -533,7 +574,11 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
 
+# V0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-video/src/main/cpp" ./video)
+
+# V0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-video/src/main/cpp" ./video)
 
 # RNOH_BEGIN: manual_package_linking_1
 
@@ -577,7 +622,11 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
+// V0.72
 + import { RNCVideo, RNC_VIDEO_TYPE } from "@react-native-oh-tpl/react-native-video"
+
+// V0.77
++ import { RNCVideo, RNC_VIDEO_TYPE } from "@react-native-ohos/react-native-video"
 
 
 @Builder
@@ -611,7 +660,11 @@ const arkTsComponentNames: Array<string> = [
 
 ```diff
   ...
+// V0.72
 + import { RNCVideoPackage } from '@react-native-oh-tpl/react-native-video/ts';
+
+// V0.77
++ import { RNCVideoPackage } from '@react-native-ohos/react-native-video/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -638,7 +691,13 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-library/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 5.2.1      | [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases) | 0.72       |
+| 6.13.0     | [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases) | 0.72       |
+| 6.13.0     | [@react-native-ohos/react-native-video Releases]()           | 0.77       |
 
 ## 属性
 
@@ -648,64 +707,64 @@ ohpm install
 
 **VideoNativeProps**属性
 
-| Name                                            | Descriptio                                                   | Type                                                      | Required | Platform                                                 | HarmonyOS Support |
+| Name                                            | Description                                                   | Type                                                      | Required | Platform                                                 | HarmonyOS Support |
 | ----------------------------------------------- | ------------------------------------------------------------ | :-------------------------------------------------------- | -------- | -------------------------------------------------------- | ----------------- |
-| `source`                                        | Sets the media source. You can pass an asset loaded via require or an object with a uri. | object                                                    | Yes      | All                                                      | yes               |
-| `disableFocus`                                  | Determines whether video audio should override background music/audio in Android and HarmonyOS devices.<br/>**false (default)** | boolean                                                   | No       | Android Exoplayer                                        | yes               |
-| `muted`                                         | Controls whether the audio is muted.<br/>**false (default)** - Don't mute audio | boolean                                                   | No       | All                                                      | yes               |
-| `paused`                                        | Controls whether the media is paused.<br/>**false (default)** - Don't pause the media | boolean                                                   | No       | All                                                      | yes               |
-| `repeat`                                        | Determine whether to repeat the video when the end is reached.<br/>**false (default)** - Don't repeat the video | boolean                                                   | No       | All                                                      | yes               |
-| `resizeMode`                                    | Determines how to resize the video when the frame doesn't match the raw video dimensions.<br/>**"none" (default)** - Don't apply resize | string                                                    | No       | Android ExoPlayer, Android MediaPlayer, iOS, Windows UWP | yes               |
-| `volume`                                        | Adjust the volume.<br/>**1.0 (default)** - Play at full volume | number                                                    | No       | All                                                      | yes               |
-| `poster`                                        | An image to display while the video is loading<br/>Value: string with a URL for the poster, e.g. "<https://baconmockup.com/300/200/>" | <br>V5.2.1：string<br>V6.13.0：string \| ReactVideoPoster | No       | All                                                      | yes               |
-| `posterResizeMode`                              | Determines how to resize the poster image when the frame doesn't match the raw video dimensions..<br/>**"contain" (default)**- Scale the image uniformly (maintain the image's aspect ratio) so that both dimensions (width and height) of the image will be equal to or less than the corresponding dimension of the view (minus padding). | string                                                    | No       | All                                                      | yes               |
-| `allowsExternalPlayback`                        | Indicates whether the player allows switching to external playback mode such as AirPlay or HDMI. | boolean                                                   | No       | iOS                                                      | No                |
-| `audioOnly`                                     | Indicates whether the player should only play the audio track and instead of displaying the video track, show the poster instead. | boolean                                                   | No       | All                                                      | No                |
-| `automaticallyWaitsToMinimizeStalling`          | A Boolean value that indicates whether the player should automatically delay playback in order to minimize stalling. For clients linked against iOS 10.0 and later | boolean                                                   | No       | iOS                                                      | No                |
-| `bufferConfig`                                  | Adjust the buffer settings. This prop takes an object with one or more of the properties listed below. | object                                                    | No       | Android                                                  | No                |
-| `controls`                                      | Determines whether to show player controls.                  | boolean                                                   | No       | All                                                      | Yes               |
-| `currentPlaybackTime`                           | When playing an HLS live stream with a EXT-X-PROGRAM-DATE-TIME tag configured, then this property will contain the epoch value in msec. | string                                                    | No       | All                                                      | No                |
-| `filter`                                        | Add video filter                                             | string                                                    | No       | iOS                                                      | No                |
-| `filterEnabled`                                 | Enable video filter.                                         | string                                                    | No       | iOS                                                      | No                |
-| `fullscreen`                                    | Controls whether the player enters fullscreen on play.       | boolean                                                   | No       | iOS                                                      | No                |
-| `fullscreenAutorotate`                          | If a preferred fullscreenOrientation is set, causes the video to rotate to that orientation but permits rotation of the screen to orientation held by user. Defaults to TRUE. | boolean                                                   | No       | iOS                                                      | No                |
-| `fullscreenOrientation`                         | Full screen orientation is set.                              | string                                                    | No       | iOS                                                      | No                |
-| `headers`                                       | Pass headers to the HTTP client. Can be used for authorization. Headers must be a part of the source object. | object                                                    | No       | Android                                                  | No                |
-| `hideShutterView`                               | Controls whether the ExoPlayer shutter view (black screen while loading) is enabled. | boolean                                                   | No       | Android                                                  | No                |
-| `id`                                            | Set the DOM id element so you can use document.getElementById on web platforms. Accepts string values. | string                                                    | No       | All                                                      | No                |
-| `ignoreSilentSwitch`                            | Controls the iOS silent switch behavior                      | string                                                    | No       | iOS                                                      | No                |
-| `maxBitRate`                                    | Sets the desired limit, in bits per second, of network bandwidth consumption when multiple video streams are available for a playlist. | number                                                    | No       | All                                                      | No                |
-| `minLoadRetryCount`                             | Sets the minimum number of times to retry loading data before failing and reporting an error to the application. Useful to recover from transient internet failures. | number                                                    | No       | Android                                                  | No                |
-| `mixWithOthers`                                 | Controls how Audio mix with other apps.                      | string                                                    | No       | iOS                                                      | No                |
-| `pictureInPicture`                              | Determine whether the media should played as picture in picture. | boolean                                                   | No       | iOS                                                      | No                |
-| `playInBackground`                              | Determine whether the media should continue playing while the app is in the background. This allows customers to continue listening to the audio. | boolean                                                   | No       | All                                                      | No                |
-| `playWhenInactive`                              | Determine whether the media should continue playing when notifications or the Control Center are in front of the video. | boolean                                                   | No       | iOS                                                      | No                |
-| `preferredForwardBufferDuration`                | The duration the player should buffer media from the network ahead of the playhead to guard against playback disruption. Sets the preferredForwardBufferDuration instance property on AVPlayerItem. | number                                                    | No       | iOS                                                      | No                |
-| `preventsDisplaySleepDuringVideoPlayback`       | Controls whether or not the display should be allowed to sleep while playing the video. Default is not to allow display to sleep. | boolean                                                   | No       | All                                                      | No                |
-| `progressUpdateInterval`                        | Delay in milliseconds between onProgress events in milliseconds. | number                                                    | No       | iOS                                                      | No                |
-| `rate`                                          | Speed at which the media should play.                        | number                                                    | No       | All                                                      | Yes               |
-| `reportBandwidth`                               | Determine whether to generate onBandwidthUpdate events. This is needed due to the high frequency of these events on ExoPlayer. | boolean                                                   | No       | Android                                                  | No                |
-| `selectedAudioTrack`                            | Configure which audio track, if any, is played.              | object                                                    | No       | All                                                      | Yes               |
-| `selectedTextTrack`                             | Configure which text track (caption or subtitle), if any, is shown. | object                                                    | No       | All                                                      | No                |
-| `selectedVideoTrack`                            | Configure which video track should be played. By default, the player uses Adaptive Bitrate Streaming to automatically select the stream it thinks will perform best based on available bandwidth. | object                                                    | No       | Android                                                  | No                |
-| `stereoPan`                                     | Adjust the balance of the left and right audio channels. Any value between –1.0 and 1.0 is accepted. | number                                                    | No       | Android                                                  | No                |
-| `textTracks`                                    | Load one or more "sidecar" text tracks. This takes an array of objects representing each track. | object                                                    | No       | All                                                      | No                |
-| `trackId`                                       | Configure an identifier for the video stream to link the playback context to the events emitted. | string                                                    | No       | Android                                                  | No                |
-| `useTextureView`                                | Controls whether to output to a TextureView or SurfaceView.  | boolean                                                   | No       | Android                                                  | No                |
-| audioOutput<sup>6.13.0+</sup>                   | Changes the audio output.                                    | type AudioOutput = 'speaker' \| 'earpiece';               | No       | Andorid, iOS                                             | No                |
-| bufferingStrategy<sup>6.13.0+</sup>             | Configures the buffering and data loading strategy.          | enum {DEFAULT, DISABLE_BUFFERING, DEPENDING_ON_MEMORY}    | No       | Android                                                  | No                |
-| chapters<sup>6.13.0+</sup>                      | Provides a custom chapter source for tvOS.                   | Chapters[]                                                | No       | tvOS                                                     | No                |
-| controlsStyles<sup>6.13.0+</sup>                | Adjust the control styles. This prop is needed only if controls={true} and is an object.（hidePlayPause   hideSeekBar  hideDuration     hidePosition） | ControlsStyles                                            | No       | Android                                                  | partially         |
-| disableDisconnectError<sup>6.13.0+</sup>        | Determines if the player should throw an error when the network connection is lost. | boolean                                                   | No       | Android                                                  | Yes               |
-| disableAudioSessionManagement<sup>6.13.0+</sup> | Disable audio session management in library (for all views). | boolean                                                   | No       | iOS                                                      | No                |
-| enterPictureInPictureOnLeave<sup>6.13.0+</sup>  | Determines whether to enter Picture-in-Picture (PiP) mode when the user leaves the app. | boolean                                                   | No       | Android, iOS                                             | Yes               |
-| focusable<sup>6.13.0+</sup>                     | Determines whether this video view should be focusable with a non-touch input device, such as a hardware keyboard. | boolean                                                   | No       | Android                                                  | No                |
-| renderLoader<sup>6.13.0+</sup>                  | Allows you to provide a custom component to display while the video is loading. | ReactNode                                                 | No       | All                                                      | Yes               |
-| resizeMode                                      | Determines how to resize the video when the frame doesn’t match the raw video dimensions. | V5.2.1: ResizeMode<br>V6.13.0: EnumValues\<ResizeMode\>   | No       | Android \| iOS \| Windows UWP                            | Yes               |
-| shutterColor<sup>6.13.0+</sup>                  | Applies color to the shutter view.                           | string                                                    | No       | Android                                                  | No                |
-| subtitleStyle<sup>6.13.0+</sup>                 | Subtitles are managed in a third view.                       | SubtitleStyle                                             | No       | Android \| iOS                                           | No                |
-| showNotificationControls<sup>6.13.0+</sup>      | Controls whether to show media controls in the notification area. | boolean                                                   | No       | Android \| iOS \| web                                    | No                |
-| viewType<sup>6.13.0+</sup>                      | Allows explicitly specifying the view type. （鸿蒙支持TEXTURE, SURFACE） | enum {TEXTURE, SURFACE, SURFACE_SECURE}                   | No       | Android                                                  | partially         |
+| `source`                                        | 设置媒体源，可传入通过 require 加载的资源或带 uri 的对象。 | object                                                    | Yes      | All                                                      | yes               |
+| `disableFocus`                                  | 决定视频音频在 Android 与 HarmonyOS 设备上是否覆盖后台音乐/音频。<br/>**false（默认）** | boolean                                                   | No       | Android Exoplayer                                        | yes               |
+| `muted`                                         | 控制是否静音。<br/>**false（默认）** 表示不静音。 | boolean                                                   | No       | All                                                      | yes               |
+| `paused`                                        | 控制媒体是否暂停。<br/>**false（默认）** 表示不中断播放。 | boolean                                                   | No       | All                                                      | yes               |
+| `repeat`                                        | 决定播放到末尾时是否循环。<br/>**false（默认）** 表示不循环。 | boolean                                                   | No       | All                                                      | yes               |
+| `resizeMode`                                    | 决定容器尺寸与原始视频尺寸不匹配时如何缩放。<br/>**"none"（默认）** 表示不缩放。 | string                                                    | No       | Android ExoPlayer, Android MediaPlayer, iOS, Windows UWP | yes               |
+| `volume`                                        | 调节音量。<br/>**1.0（默认）** 表示全音量播放。 | number                                                    | No       | All                                                      | yes               |
+| `poster`                                        | 视频加载时展示的图片，值为图片 URL，例如 "<https://baconmockup.com/300/200/>"。 | <br>V5.2.1：string<br>V6.13.0：string \| ReactVideoPoster | No       | All                                                      | yes               |
+| `posterResizeMode`                              | 决定海报图在尺寸不匹配时如何缩放。<br/>**"contain"（默认）** 表示等比缩放以保证宽高不超过视图尺寸。 | string                                                    | No       | All                                                      | yes               |
+| `allowsExternalPlayback`                        | 指示播放器是否允许切换到 AirPlay 或 HDMI 等外部播放模式。 | boolean                                                   | No       | iOS                                                      | No                |
+| `audioOnly`                                     | 指示播放器是否只播放音轨并用海报替代视频画面。 | boolean                                                   | No       | All                                                      | No                |
+| `automaticallyWaitsToMinimizeStalling`          | 布尔值，指示播放器是否自动延迟播放以尽量减少卡顿（适用于链接 iOS 10.0 及以上的客户端）。 | boolean                                                   | No       | iOS                                                      | No                |
+| `bufferConfig`                                  | 调整缓冲配置，此属性接受包含下列任意字段的对象。 | object                                                    | No       | Android                                                  | No                |
+| `controls`                                      | 决定是否显示播放控件。                                      | boolean                                                   | No       | All                                                      | Yes               |
+| `currentPlaybackTime`                           | 播放带 EXT-X-PROGRAM-DATE-TIME 标签的 HLS 直播流时，该属性包含毫秒级纪元时间。 | string                                                    | No       | All                                                      | No                |
+| `filter`                                        | 添加视频滤镜。                                               | string                                                    | No       | iOS                                                      | No                |
+| `filterEnabled`                                 | 启用视频滤镜。                                               | string                                                    | No       | iOS                                                      | No                |
+| `fullscreen`                                    | 控制播放时是否进入全屏。                                     | boolean                                                   | No       | iOS                                                      | No                |
+| `fullscreenAutorotate`                          | 当设置了首选全屏方向时，使视频旋转到该方向，同时允许屏幕按用户持握方向旋转，默认为 TRUE。 | boolean                                                   | No       | iOS                                                      | No                |
+| `fullscreenOrientation`                         | 设置全屏显示时的方向。                                       | string                                                    | No       | iOS                                                      | No                |
+| `headers`                                       | 向 HTTP 客户端传递请求头（可用于鉴权），需作为 source 对象的一部分。 | object                                                    | No       | Android                                                  | No                |
+| `hideShutterView`                               | 控制是否启用 ExoPlayer 的快门视图（加载时的黑屏）。         | boolean                                                   | No       | Android                                                  | No                |
+| `id`                                            | 设置 DOM 元素 id，便于在 Web 平台通过 document.getElementById 获取。 | string                                                    | No       | All                                                      | No                |
+| `ignoreSilentSwitch`                            | 控制 iOS 静音开关的行为。                                    | string                                                    | No       | iOS                                                      | No                |
+| `maxBitRate`                                    | 在存在多个视频流的播放列表中设置网络带宽消耗的比特率上限。 | number                                                    | No       | All                                                      | No                |
+| `minLoadRetryCount`                             | 设置在失败并上报错误前加载数据的最少重试次数，有助于恢复临时网络异常。 | number                                                    | No       | Android                                                  | No                |
+| `mixWithOthers`                                 | 控制与其他应用的音频混音方式。                               | string                                                    | No       | iOS                                                      | No                |
+| `pictureInPicture`                              | 决定媒体是否以画中画模式播放。                               | boolean                                                   | No       | iOS                                                      | No                |
+| `playInBackground`                              | 决定应用处于后台时媒体是否继续播放，便于持续收听音频。       | boolean                                                   | No       | All                                                      | No                |
+| `playWhenInactive`                              | 决定通知或控制中心浮于视频前时媒体是否继续播放。             | boolean                                                   | No       | iOS                                                      | No                |
+| `preferredForwardBufferDuration`                | 设置播放器在播放头前从网络预缓冲的时长，对应 AVPlayerItem 的 preferredForwardBufferDuration。 | number                                                    | No       | iOS                                                      | No                |
+| `preventsDisplaySleepDuringVideoPlayback`       | 控制播放视频时是否允许屏幕休眠，默认不允许。                 | boolean                                                   | No       | All                                                      | No                |
+| `progressUpdateInterval`                        | 设置 onProgress 事件之间的间隔，单位为毫秒。                 | number                                                    | No       | iOS                                                      | No                |
+| `rate`                                          | 控制媒体的播放速度。                                         | number                                                    | No       | All                                                      | Yes               |
+| `reportBandwidth`                               | 决定是否生成 onBandwidthUpdate 事件（ExoPlayer 事件频率高需显式开启）。 | boolean                                                   | No       | Android                                                  | No                |
+| `selectedAudioTrack`                            | 配置要播放的音频轨（若存在）。                                | object                                                    | No       | All                                                      | Yes               |
+| `selectedTextTrack`                             | 配置要显示的文本轨（字幕或说明），若存在。                   | object                                                    | No       | All                                                      | No                |
+| `selectedVideoTrack`                            | 配置要播放的视频轨，默认采用自适应码率根据带宽自动选择。     | object                                                    | No       | Android                                                  | No                |
+| `stereoPan`                                     | 调节左右声道的平衡，取值范围为 -1.0 到 1.0。                 | number                                                    | No       | Android                                                  | No                |
+| `textTracks`                                    | 加载一个或多个“外挂”文本轨，该属性接受描述各轨的对象数组。   | object                                                    | No       | All                                                      | No                |
+| `trackId`                                       | 配置视频流的标识符，以便将播放上下文与事件关联。             | string                                                    | No       | Android                                                  | No                |
+| `useTextureView`                                | 控制输出使用 TextureView 还是 SurfaceView。                 | boolean                                                   | No       | Android                                                  | No                |
+| audioOutput<sup>6.13.0+</sup>                   | 切换音频输出设备。                                           | type AudioOutput = 'speaker' \| 'earpiece';               | No       | Andorid, iOS                                             | No                |
+| bufferingStrategy<sup>6.13.0+</sup>             | 配置缓冲与数据加载策略。                                     | enum {DEFAULT, DISABLE_BUFFERING, DEPENDING_ON_MEMORY}    | No       | Android                                                  | No                |
+| chapters<sup>6.13.0+</sup>                      | 为 tvOS 提供自定义章节源。                                   | Chapters[]                                                | No       | tvOS                                                     | No                |
+| controlsStyles<sup>6.13.0+</sup>                | 调整控制栏样式，仅在 controls={true} 且传入对象时生效（hidePlayPause、hideSeekBar、hideDuration、hidePosition）。 | ControlsStyles                                            | No       | Android                                                  | partially         |
+| disableDisconnectError<sup>6.13.0+</sup>        | 决定断网时播放器是否抛出错误。                               | boolean                                                   | No       | Android                                                  | Yes               |
+| disableAudioSessionManagement<sup>6.13.0+</sup> | 禁用库内部的音频会话管理（作用于所有视图）。                 | boolean                                                   | No       | iOS                                                      | No                |
+| enterPictureInPictureOnLeave<sup>6.13.0+</sup>  | 当用户离开应用时是否自动进入画中画模式。                     | boolean                                                   | No       | Android, iOS                                             | Yes               |
+| focusable<sup>6.13.0+</sup>                     | 决定视频视图是否可被非触控输入设备（如硬件键盘）聚焦。       | boolean                                                   | No       | Android                                                  | No                |
+| renderLoader<sup>6.13.0+</sup>                  | 允许自定义组件来展示视频加载状态。                           | ReactNode                                                 | No       | All                                                      | Yes               |
+| resizeMode                                      | 当容器尺寸与原始视频尺寸不一致时决定如何缩放。               | V5.2.1: ResizeMode<br>V6.13.0: EnumValues\<ResizeMode\>   | No       | Android \| iOS \| Windows UWP                            | Yes               |
+| shutterColor<sup>6.13.0+</sup>                  | 为快门视图应用指定颜色。                                     | string                                                    | No       | Android                                                  | No                |
+| subtitleStyle<sup>6.13.0+</sup>                 | 字幕由第三个视图进行管理。                                   | SubtitleStyle                                             | No       | Android \| iOS                                           | No                |
+| showNotificationControls<sup>6.13.0+</sup>      | 控制是否在通知区域显示媒体控件。                             | boolean                                                   | No       | Android \| iOS \| web                                    | No                |
+| viewType<sup>6.13.0+</sup>                      | 允许显式指定视图类型（鸿蒙支持 TEXTURE、SURFACE）。         | enum {TEXTURE, SURFACE, SURFACE_SECURE}                   | No       | Android                                                  | partially         |
 
 
 
@@ -713,15 +772,15 @@ ohpm install
 
 |              **Name**               | **Description**                                              | **Type**      | **Default** | **Required** | **Platform**                        | **HarmonyOS Support** |
 | :---------------------------------: | ------------------------------------------------------------ | ------------- | ----------- | ------------ | ----------------------------------- | --------------------- |
-|   bufferConfig<sup>6.13.0+</sup>    | the 'bufferingStrategy' and 'bufferConfig' properties are closely related, but have different functions | BufferConfig  | -           | no           |                                     | No                    |
-| minLoadRetryCount<sup>6.13.0+</sup> | it just mentions that setting this value controls the retry count. | number        | -           | no           |                                     | No                    |
-| isLocalAssetFile<sup>6.13.0+</sup>  | Mainly solves the path problem when playing local video files on the Android platform | boolean       | -           | no           | android                             | No                    |
-|   startPosition<sup>6.13.0+</sup>   | Provide  an optional startPosition for video playback. The value is in milliseconds. | number        | -           | no           | Android  \| iOS \| web              | Yes                   |
-|     cropStart<sup>6.13.0+</sup>     | Provide  an optional cropStart and/or cropEnd for the video. Values are in  milliseconds. | number        | -           | no           | Android  \| iOS                     | No                    |
-|      cropEnd<sup>6.13.0+</sup>      | Provide  an optional cropStart and/or cropEnd for the video. Values are in  milliseconds. | number        | -           | no           | Android  \| iOS                     | No                    |
-| contentStartTime<sup>6.13.0+</sup>  | The  start time in ms for SSAI content. This determines at what time to load the  video info like resolutions. | number        | -           | no           | Android                             | No                    |
-|     metadata<sup>6.13.0+</sup>      | Provide  optional title, subtitle, artist, imageUri, and/or description properties for  the video. | VideoMetadata | -           | no           | Android  \| iOS \| tvOS             | No                    |
-|        drm<sup>6.13.0+</sup>        | To set  up DRM                                               | Drm           | -           | no           | Android  \| iOS \| visionOS \| tvOS | No                    |
+|   bufferConfig<sup>6.13.0+</sup>    | “bufferingStrategy” 与 “bufferConfig” 属性密切相关但作用不同。 | BufferConfig  | -           | no           | Android                             | No                    |
+| minLoadRetryCount<sup>6.13.0+</sup> | 仅说明设置该值可控制重试次数。                               | number        | -           | no           | Android                             | No                    |
+| isLocalAssetFile<sup>6.13.0+</sup>  | 主要解决 Android 平台播放本地视频文件时的路径问题。          | boolean       | -           | no           | Android                             | No                    |
+|   startPosition<sup>6.13.0+</sup>   | 提供可选的起始播放位置，单位毫秒。                           | number        | -           | no           | Android  \| iOS \| web              | Yes                   |
+|     cropStart<sup>6.13.0+</sup>     | 为视频提供可选的 cropStart 和/或 cropEnd，单位毫秒。         | number        | -           | no           | Android  \| iOS                     | No                    |
+|      cropEnd<sup>6.13.0+</sup>      | 为视频提供可选的 cropStart 和/或 cropEnd，单位毫秒。         | number        | -           | no           | Android  \| iOS                     | No                    |
+| contentStartTime<sup>6.13.0+</sup>  | SSAI 内容的开始时间（毫秒），决定何时加载分辨率等视频信息。  | number        | -           | no           | Android                             | No                    |
+|     metadata<sup>6.13.0+</sup>      | 为视频提供可选的 title、subtitle、artist、imageUri 和/或 description。 | VideoMetadata | -           | no           | Android  \| iOS \| tvOS             | No                    |
+|        drm<sup>6.13.0+</sup>        | 用于配置 DRM。                                               | Drm           | -           | no           | Android  \| iOS \| visionOS \| tvOS | No                    |
 
 
 
@@ -731,39 +790,39 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name                                                 | Description                                                  | Type     | Required | Platform                                         | HarmonyOS Support |
-| ---------------------------------------------------- | ------------------------------------------------------------ | :------- | -------- | ------------------------------------------------ | ----------------- |
-| `onLoad`                                             | Callback function that is called when the media is loaded and ready to play. | function | No       | All                                              | yes               |
-| `onLoadStart`                                        | Callback function that is called when the media starts loading. | function | No       | All                                              | yes               |
-| `onProgress`                                         | Callback function that is called every progressUpdateInterval seconds with info about which position the media is currently playing. | function | No       | All                                              | yes               |
-| `onEnd`                                              | Callback function that is called when the player reaches the end of the media. | function | No       | All                                              | yes               |
-| `onError`                                            | Callback function that is called when the player experiences a playback error. | function | No       | All                                              | yes               |
-| `onBuffer`                                           | Callback function that is called when the player buffers.    | function | No       | Android, iOS                                     | yes               |
-| `onPlaybackStalled`<sup>deprecated from 6.13.0</sup> | Callback function that is MediaPlayer MEDIA_INFO_BUFFERING_START | function | No       | Android MediaPlayer                              | Yes               |
-| `onPlaybackResume`<sup>deprecated from 6.13.0</sup>  | Callback function that is MediaPlayer MEDIA_INFO_BUFFERING_END | function | No       | Android MediaPlayer                              | Yes               |
-| `onAudioBecomingNoisy`                               | Callback function that is called when the audio is about to become 'noisy' due to a change in audio outputs. Typically this is called when audio output is being switched from an external source like headphones back to the internal speaker. It's a good idea to pause the media when this happens so the speaker doesn't start blasting sound. | function | No       | All                                              | No                |
-| `onBandwidthUpdate`                                  | Callback function that is called when the available bandwidth changes. | function | No       | Android                                          | No                |
-| `onExternalPlaybackChange`                           | Callback function that is called when external playback mode for current playing video has changed. Mostly useful when connecting/disconnecting to Apple TV – it's called on connection/disconnection. | function | No       | iOS                                              | No                |
-| `onFullscreenPlayerWillPresent`                      | Callback function that is called when the player is about to enter fullscreen mode. | function | No       | All                                              | Yes               |
-| `onFullscreenPlayerDidPresent`                       | Callback function that is called when the player has entered fullscreen mode. | function | No       | All                                              | Yes               |
-| `onFullscreenPlayerWillDismiss`                      | Callback function that is called when the player is about to exit fullscreen mode. | function | No       | All                                              | Yes               |
-| `onFullscreenPlayerDidDismiss`                       | Callback function that is called when the player has exited fullscreen mode. | function | No       | All                                              | Yes               |
-| `onReadyForDisplay`                                  | Callback function that is called when the first video frame is ready for display. This is when the poster is removed. | function | No       | All                                              | Yes               |
-| `onPictureInPictureStatusChanged`                    | Callback function that is called when picture in picture becomes active or inactive. | function | No       | IOS                                              | Yes               |
-| `onPlaybackRateChange`                               | Callback function that is called when the rate of playback changes - either paused or starts/resumes. | function | No       | All                                              | Yes               |
-| `onSeek`                                             | Callback function that is called when a seek completes.      | function | No       | All                                              | partially         |
-| `onRestoreUserInterfaceForPictureInPictureStop`      | Callback function that corresponds to Apple's restoreUserInterfaceForPictureInPictureStopWithCompletionHandler. Call restoreUserInterfaceForPictureInPictureStopCompleted inside of this function when done restoring the user | function | No       | iOS                                              | No                |
-| `onTimedMetadata`                                    | Callback function that is called when timed metadata becomes available | function | No       | All                                              | No                |
-| onIdle<sup>6.13.0+</sup>                             | -                                                            | function | No       | Android                                          | Yes               |
-| onControlsVisibilityChange<sup>6.13.0+</sup>         | Triggered when the video player controls become visible or hidden | function | No       | Android                                          | Yes               |
-| onVolumeChange<sup>6.13.0+</sup>                     | Triggered when the player volume changes                     | function | No       | Android， iOS, visionOS ,  web                   | Yes               |
-| onReceiveAdEvent<sup>6.13.0+</sup>                   | Triggered when an AdEvent is received from the IMA SDK.      | function | No       | Android, iOS                                     | No                |
-| onPlaybackStateChanged<sup>6.13.0+</sup>             | Triggered when playback state changes.                       | function | No       | Android, iOS , visionOS, web                     | Yes               |
-| onAudioTracks<sup>6.13.0+</sup>                      | Triggered when available audio tracks change.                | function | No       | Android， iOS                                    | Yes               |
-| onTextTracks<sup>6.13.0+</sup>                       | Triggered when available text (subtitle) tracks change.      | function | No       | Android， iOS                                    | No                |
-| onTextTrackDataChanged<sup>6.13.0+</sup>             | Triggered when new subtitle data becomes available.          | function | No       | Android， iOS                                    | No                |
-| onVideoTracks<sup>6.13.0+</sup>                      | Triggered when video tracks change.                          | function | No       | Android                                          | Yes               |
-| onAspectRatio<sup>6.13.0+</sup>                      |                                                              | function | No       |                                                  | Yes               |
+| Name                                                 | Description                                                  | Type     | Required | Platform                       | HarmonyOS Support |
+| ---------------------------------------------------- | ------------------------------------------------------------ | :------- | -------- | ------------------------------ | ----------------- |
+| `onLoad`                                             | 媒体加载完成并可播放时触发的回调。                           | function | No       | All                            | yes               |
+| `onLoadStart`                                        | 媒体开始加载时触发的回调。                                   | function | No       | All                            | yes               |
+| `onProgress`                                         | 每隔 progressUpdateInterval 毫秒触发，提供当前播放进度信息。 | function | No       | All                            | yes               |
+| `onEnd`                                              | 播放到媒体末尾时触发的回调。                                 | function | No       | All                            | yes               |
+| `onError`                                            | 播放过程中发生错误时触发的回调。                             | function | No       | All                            | yes               |
+| `onBuffer`                                           | 播放器进入缓冲状态时触发的回调。                             | function | No       | Android, iOS                   | yes               |
+| `onPlaybackStalled`<sup>deprecated from 6.13.0</sup> | 对应 MediaPlayer 的 MEDIA_INFO_BUFFERING_START 事件。        | function | No       | Android MediaPlayer            | Yes               |
+| `onPlaybackResume`<sup>deprecated from 6.13.0</sup>  | 对应 MediaPlayer 的 MEDIA_INFO_BUFFERING_END 事件。          | function | No       | Android MediaPlayer            | Yes               |
+| `onAudioBecomingNoisy`                               | 音频输出因设备切换即将变得“嘈杂”时触发（如耳机拔出），建议在此暂停播放以避免扬声器突然响起。 | function | No       | All                            | No                |
+| `onBandwidthUpdate`                                  | 可用带宽发生变化时触发。                                     | function | No       | Android                        | No                |
+| `onExternalPlaybackChange`                           | 当前视频的外部播放模式变化时触发，常用于 Apple TV 连接或断开。 | function | No       | iOS                            | No                |
+| `onFullscreenPlayerWillPresent`                      | 播放器即将进入全屏时触发。                                   | function | No       | All                            | Yes               |
+| `onFullscreenPlayerDidPresent`                       | 播放器已进入全屏时触发。                                     | function | No       | All                            | Yes               |
+| `onFullscreenPlayerWillDismiss`                      | 播放器即将退出全屏时触发。                                   | function | No       | All                            | Yes               |
+| `onFullscreenPlayerDidDismiss`                       | 播放器退出全屏后触发。                                       | function | No       | All                            | Yes               |
+| `onReadyForDisplay`                                  | 首帧准备好显示（海报被移除）时触发。                         | function | No       | All                            | Yes               |
+| `onPictureInPictureStatusChanged`                    | 画中画激活或失效时触发。                                     | function | No       | IOS                            | Yes               |
+| `onPlaybackRateChange`                               | 播放速率发生变化（例如暂停或恢复）时触发。                   | function | No       | All                            | Yes               |
+| `onSeek`                                             | 完成一次 Seek 操作时触发。                                   | function | No       | All                            | partially         |
+| `onRestoreUserInterfaceForPictureInPictureStop`      | 对应 Apple 的 restoreUserInterfaceForPictureInPictureStopWithCompletionHandler，恢复界面后需调用 restoreUserInterfaceForPictureInPictureStopCompleted。 | function | No       | iOS                            | No                |
+| `onTimedMetadata`                                    | 定时元数据可用时触发。                                       | function | No       | All                            | No                |
+| onIdle<sup>6.13.0+</sup>                             | 播放器进入空闲状态（无缓冲与播放任务）时触发。               | function | No       | Android                        | Yes               |
+| onControlsVisibilityChange<sup>6.13.0+</sup>         | 播放器控件显示或隐藏时触发。                                 | function | No       | Android                        | Yes               |
+| onVolumeChange<sup>6.13.0+</sup>                     | 播放器音量发生变化时触发。                                   | function | No       | Android， iOS, visionOS ,  web | Yes               |
+| onReceiveAdEvent<sup>6.13.0+</sup>                   | IMA SDK 收到 AdEvent 时触发。                                | function | No       | Android, iOS                   | No                |
+| onPlaybackStateChanged<sup>6.13.0+</sup>             | 播放状态变化时触发。                                         | function | No       | Android, iOS , visionOS, web   | Yes               |
+| onAudioTracks<sup>6.13.0+</sup>                      | 可用音频轨道发生变化时触发。                                 | function | No       | Android， iOS                  | Yes               |
+| onTextTracks<sup>6.13.0+</sup>                       | 可用文本（字幕）轨道发生变化时触发。                         | function | No       | Android， iOS                  | No                |
+| onTextTrackDataChanged<sup>6.13.0+</sup>             | 新的字幕数据可用时触发。                                     | function | No       | Android， iOS                  | No                |
+| onVideoTracks<sup>6.13.0+</sup>                      | 视频轨道发生变化时触发。                                     | function | No       | Android                        | Yes               |
+| onAspectRatio<sup>6.13.0+</sup>                      | 视频宽高比发生变化时触发，便于同步 UI 布局。                 | function | No       | Android                        | Yes               |
 
 
 
@@ -776,24 +835,24 @@ ohpm install
 
 | Name                                                         | Description                                                  | Type     | Required | Platform          | HarmonyOS Support |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | -------- | ----------------- | ----------------- |
-| `seek()`                                                     | Seek to the specified position represented by seconds. seconds is a float value. | function | No       | All               | yes               |
-| `dismissFullscreenPlayer()`                                  | Take the player out of fullscreen mode.                      | function | No       | All               | yes               |
-| `presentFullscreenPlayer()`                                  | Put the player in fullscreen mode.                           | function | No       | All               | yes               |
-| `save()`                                                     | Save video to your Photos with current filter prop. Returns promise. | function | No       | iOS               | No                |
-| `restoreUserInterfaceForPictureInPictureStop()`              | This function corresponds to the completion handler in Apple's recovery user interface ForPictureInPictureStop. IMPORTANT: This function must be called after calling onRestoreUserInterfaceForPictureInPictureStop. | function | No       | iOS               | No                |
-| restoreUserInterfaceForPictureInPictureStopCompleted()<sup>6.13.0+</sup> | Must be called after onRestoreUserInterfaceForPictureInPictureStop | function | No       | iOS               | No                |
-| resume()<sup>6.13.0+</sup>                                   | Resumes video playback.                                      | function | No       | Android, iOS, web | Yes               |
-| pause()<sup>6.13.0+</sup>                                    | Pauses the video.                                            | function | No       | Android, iOS, web | Yes               |
-| setVolume()<sup>6.13.0+</sup>                                | Changes the volume level. Same behavior as the volume prop.  | function | No       | Android, iOS, web | Yes               |
-| getCurrentPosition()<sup>6.13.0+</sup>                       | Returns the current playback position in seconds.            | function | No       | Android, iOS, web | Yes               |
-| setFullScreen()<sup>6.13.0+</sup>                            | Toggles fullscreen mode.                                     | function | No       | Android, iOS, web | Yes               |
-| setSource()<sup>6.13.0+</sup>                                | Updates the media source dynamically.                        | function | No       | Android, iOS      | Yes               |
-| enterPictureInPicture()<sup>6.13.0+</sup>                    | Activates Picture-in-Picture (PiP) mode.                     | function | No       | Android, iOS, web | Yes               |
-| exitPictureInPicture()<sup>6.13.0+</sup>                     | Exits Picture-in-Picture (PiP) mode.                         | function | No       | Android, iOS, web | Yes               |
-| nativeHtmlVideoRef()<sup>6.13.0+</sup>                       | A reference to the native HTML `<video>` element. Useful for integrating third-party video libraries like hls.js, shaka, video.js, etc.. | function | No       | web               | No                |
-| getWidevineLevel()<sup>6.13.0+</sup>                         | Returns the Widevine DRM level.                              | function | No       | Android           | No                |
-| isCodecSupported()<sup>6.13.0+</sup>                         | Checks if the given video codec is supported.                | function | No       | Android, web      | No                |
-| isHEVCSupported()<sup>6.13.0+</sup>                          | Checks if HEVC (H.265) is supported at 1920×1080 resolution. | function | No       | Android           | No                |
+| `seek()`                                                     | 跳转到以秒为单位的指定位置，seconds 为浮点值。               | function | No       | All               | yes               |
+| `dismissFullscreenPlayer()`                                  | 让播放器退出全屏模式。                                       | function | No       | All               | yes               |
+| `presentFullscreenPlayer()`                                  | 让播放器进入全屏模式。                                       | function | No       | All               | yes               |
+| `save()`                                                     | 将携带当前滤镜的视频保存到相册，返回 Promise。               | function | No       | iOS               | No                |
+| `restoreUserInterfaceForPictureInPictureStop()`              | 对应 Apple 的 restoreUserInterfaceForPictureInPictureStop 完成处理器，必须在调用 onRestoreUserInterfaceForPictureInPictureStop 之后执行。 | function | No       | iOS               | No                |
+| restoreUserInterfaceForPictureInPictureStopCompleted()<sup>6.13.0+</sup> | 必须在 onRestoreUserInterfaceForPictureInPictureStop 执行完毕后调用。 | function | No       | iOS               | No                |
+| resume()<sup>6.13.0+</sup>                                   | 恢复视频播放。                                               | function | No       | Android, iOS, web | Yes               |
+| pause()<sup>6.13.0+</sup>                                    | 暂停视频播放。                                               | function | No       | Android, iOS, web | Yes               |
+| setVolume()<sup>6.13.0+</sup>                                | 调整音量，行为与 volume 属性一致。                           | function | No       | Android, iOS, web | Yes               |
+| getCurrentPosition()<sup>6.13.0+</sup>                       | 返回当前播放位置（秒）。                                     | function | No       | Android, iOS, web | Yes               |
+| setFullScreen()<sup>6.13.0+</sup>                            | 切换全屏模式。                                               | function | No       | Android, iOS, web | Yes               |
+| setSource()<sup>6.13.0+</sup>                                | 动态更新媒体源。                                             | function | No       | Android, iOS      | Yes               |
+| enterPictureInPicture()<sup>6.13.0+</sup>                    | 进入画中画（PiP）模式。                                       | function | No       | Android, iOS, web | Yes               |
+| exitPictureInPicture()<sup>6.13.0+</sup>                     | 退出画中画（PiP）模式。                                      | function | No       | Android, iOS, web | Yes               |
+| nativeHtmlVideoRef()<sup>6.13.0+</sup>                       | 返回原生 HTML `<video>` 元素引用，可用于集成 hls.js、shaka、video.js 等三方库。 | function | No       | web               | No                |
+| getWidevineLevel()<sup>6.13.0+</sup>                         | 返回 Widevine DRM 级别。                                     | function | No       | Android           | No                |
+| isCodecSupported()<sup>6.13.0+</sup>                         | 检查指定的视频编码是否受支持。                               | function | No       | Android, web      | No                |
+| isHEVCSupported()<sup>6.13.0+</sup>                          | 检查是否支持 1920×1080 分辨率的 HEVC（H.265）。              | function | No       | Android           | No                |
 
 
 
