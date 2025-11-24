@@ -16,24 +16,30 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library：[@react-native-oh-tpl/react-native-http-bridge Releases](https://github.com/react-native-oh-library/react-native-http-bridge/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+|-------| ------------------------------------------------------------ | ---------- |
+| 0.6.1@deprecated | [@react-native-oh-tpl/react-native-http-bridge Releases(deprecated)](https://github.com/react-native-oh-library/react-native-http-bridge/releases) | 0.72       |
+| 0.6.2 | [@react-native-ohos/react-native-http-bridge Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-http-bridge/releases)                        | 0.72       |
+| 0.7.0 | [@react-native-ohos/react-native-http-bridge Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-http-bridge/releases)                        | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
-
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-http-bridge
+npm install @react-native-ohos/react-native-http-bridge
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-http-bridge
+yarn add @react-native-ohos/react-native-http-bridge
 ```
 
 <!-- tabs:end -->
@@ -141,13 +147,16 @@ export default HttpBridgeDemo;
 
 ## Use Codegen
 
+Version >= @react-native-ohos/react-native-http-bridge@0.6.2, compatible with codegen-lib for generating bridge code.
+
 If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
-The HarmonyOS implementation of this library depends on the native code from @ohos/polka. If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly. 
+Version >= @react-native-ohos/react-native-http-bridge@0.6.2 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -166,7 +175,8 @@ Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
 Currently, two methods are available:
 
- 
+1. Introduced through the har package (this method will be abandoned after the IDE improves the relevant functions, and it is currently the preferred method);
+2. Link the source code directly.
 
 Method 1 (recommended): Use the HAR file.
 
@@ -177,7 +187,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-http-bridge": "file:../../node_modules/@react-native-oh-tpl/react-native-http-bridge/harmony/http_bridge.har"
+    "@react-native-ohos/react-native-http-bridge": "file:../../node_modules/@react-native-ohos/react-native-http-bridge/harmony/http_bridge.har"
   }
 ```
 
@@ -200,7 +210,7 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
-+ import { RNHttpBridgePackage } from "@react-native-oh-tpl/react-native-http-bridge/ts";
++ import { RNHttpBridgePackage } from "@react-native-ohos/react-native-http-bridge/ts";
 
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -230,7 +240,13 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-http-bridge Releases](https://github.com/react-native-oh-library/react-native-http-bridge/releases)
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+|-------| ------------------------------------------------------------ | ---------- |
+| 0.6.1@deprecated | [@react-native-oh-tpl/react-native-http-bridge Releases(deprecated)](https://github.com/react-native-oh-library/react-native-http-bridge/releases) | 0.72       |
+| 0.6.2 | [@react-native-ohos/react-native-http-bridge Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-http-bridge/releases)                        | 0.72       |
+| 0.7.0 | [@react-native-ohos/react-native-http-bridge Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-http-bridge/releases)                        | 0.77       |
 
 ###  Permission Requirements
 

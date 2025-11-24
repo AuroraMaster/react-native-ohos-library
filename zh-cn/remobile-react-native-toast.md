@@ -23,8 +23,9 @@
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 1.0.7      | [@react-native-oh-tpl/react-native-toast Releases](https://github.com/react-native-oh-library/react-native-toast/releases) | 0.72       |
-| 1.0.8      | [@react-native-ohos/react-native-toast Releases]()           | 0.77       |
+| 1.0.7@deprecated      | [@react-native-oh-tpl/react-native-toast Releases(deprecated)](https://github.com/react-native-oh-library/react-native-toast/releases) | 0.72       |
+| 1.0.8      | [@react-native-ohos/react-native-toast Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-toast/releases)    | 0.72       |
+| 1.1.0      | [@react-native-ohos/react-native-toast Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-toast/releases)    | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -35,20 +36,12 @@
 #### **npm**
 
 ```bash
-#1.0.7
-npm install @react-native-oh-tpl/react-native-toast
-
-#1.0.8
 npm install @react-native-ohos/react-native-toast
 ```
 
 #### **yarn**
 
 ```bash
-#1.0.7
-yarn add @react-native-oh-tpl/react-native-toast
-
-#1.0.8
 yarn add @react-native-ohos/react-native-toast
 ```
 
@@ -125,7 +118,10 @@ export default ToastMasterDemo;
 
 ## Link
 
-目前HarmonyOS暂不支持 AutoLink，所以Link步骤需要手动配置。
+Version >= @react-native-ohos/react-native-toast@1.0.8，已支持 Autolink，无需手动配置，目前只支持72框架。
+Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的HarmonyOS工程 `harmony`
 
@@ -153,17 +149,6 @@ export default ToastMasterDemo;
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- V1.0.7
-
-```json
-"dependencies": {
-"@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-"@react-native-oh-tpl/react-native-toast": "file:../../node_modules/@react-native-oh-tpl/react-native-toast/harmony/rn_toast.har"
-}
-```
-
-- V1.0.8
-
 ```json
 "dependencies": {
 "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -190,9 +175,6 @@ ohpm install
 
 ```diff
   ...
- //1.0.7
-+ import {ToastPackage} from '@react-native-oh-tpl/react-native-toast/ts';
- //1.0.8
 + import {ToastPackage} from '@react-native-ohos/react-native-toast/ts';
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -283,13 +265,13 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release
-配套的版本信息：
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 1.0.7      | [@react-native-oh-tpl/react-native-toast Releases](https://github.com/react-native-oh-library/react-native-toast/releases) | 0.72       |
-| 1.0.8      | [@react-native-ohos/react-native-toast Releases]()           | 0.77       |
+| 1.0.7@deprecated      | [@react-native-oh-tpl/react-native-toast Releases(deprecated)](https://github.com/react-native-oh-library/react-native-toast/releases) | 0.72       |
+| 1.0.8      | [@react-native-ohos/react-native-toast Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-toast/releases)    | 0.72       |
+| 1.1.0      | [@react-native-ohos/react-native-toast Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-toast/releases)    | 0.77       |
 
 
 ## API

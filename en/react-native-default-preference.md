@@ -16,24 +16,30 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-default-preference Releases](https://github.com/react-native-oh-library/react-native-default-preference/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+|-------| ------------------------------------------------------------ | ---------- |
+| 1.4.4@deprecated | [@react-native-oh-tpl/react-native-default-preference Releases(deprecated)](https://github.com/react-native-oh-library/react-native-default-preference/releases) | 0.72       |
+| 1.4.5 | [@react-native-ohos/react-native-default-preference Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-default-preference/releases)                        | 0.72       |
+| 1.5.0 | [@react-native-ohos/react-native-default-preference Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-default-preference/releases)                        | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
-
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-default-preference
+npm install @react-native-ohos/react-native-default-preference
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-default-preference
+yarn add @react-native-ohos/react-native-default-preference
 ```
 
 <!-- tabs:end -->
@@ -45,33 +51,23 @@ The following code shows the basic use scenario of the repository:
 ```js
 import React from "react";
 import { Text, View } from "react-native";
-import DefaultPreference from "react-native-default-preference";
+import DefaultPreference from 'react-native-default-preference';
 
 const App = () => {
-  const handleSetItem = useCallback((key: string, value: string) => {
-    RNDefaultPreference.set(key, value);
-  }, []);
+    const handleSetItem = useCallback((key: string, value:  string) => {
+        RNDefaultPreference.set(key, value)
+    }, []);
 
-  const handleGetItem = useCallback((key: string) => {
-    RNDefaultPreference?.get(key).then((res) => {
-      console.log(res);
-    });
-  }, []);
+    const handleGetItem = useCallback((key: string) => {
+        RNDefaultPreference?.get(key).then(res => {
+            console.log(res)
+        });
+    }, []);
   return (
-    <View>
-      <Button
-        onPress={async () => {
-          handleSetItem("key1", "value1");
-        }}
-        title={"Add item using setItem"}
-      ></Button>
-      <Button
-        onPress={async () => {
-          handleGetItem("key1");
-        }}
-        title={"Add item using setItem"}
-      ></Button>
-    </View>
+      <View>
+        <Button onPress={async () => { handleSetItem('key1', 'value1') }} title={'Add item using setItem'}></Button>
+        <Button onPress={async () => { handleGetItem('key1') }} title={'Add item using setItem'}></Button>
+     </View>
   );
 };
 
@@ -80,11 +76,15 @@ export default App;
 
 ## Use Codegen
 
+Version >= @react-native-ohos/react-native-default-preference@1.4.5, compatible with codegen-lib for generating bridge code.
+
 If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-default-preference@1.4.5 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -112,7 +112,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-default-preference": "file:../../node_modules/@react-native-oh-tpl/react-native-default-preference/harmony/react_native_default_preference.har"
+    "@react-native-ohos/react-native-default-preference": "file:../../node_modules/@react-native-ohos/react-native-default-preference/harmony/react_native_default_preference.har"
   }
 ```
 
@@ -136,7 +136,7 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 ```diff
 ...
 
-+ import { RNDefaultPreferencePackage } from '@react-native-oh-tpl/react-native-default-preference/ts';
++ import { RNDefaultPreferencePackage } from '@react-native-ohos/react-native-default-preference/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -165,8 +165,13 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library:
-[@react-native-oh-tpl/react-native-default-preference Releases](https://github.com/react-native-oh-library/react-native-default-preference/releases)
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+|-------| ------------------------------------------------------------ | ---------- |
+| 1.4.4@deprecated | [@react-native-oh-tpl/react-native-default-preference Releases(deprecated)](https://github.com/react-native-oh-library/react-native-default-preference/releases) | 0.72       |
+| 1.4.5 | [@react-native-ohos/react-native-default-preference Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-default-preference/releases)                        | 0.72       |
+| 1.5.0 | [@react-native-ohos/react-native-default-preference Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-default-preference/releases)                        | 0.77       |
 
 ## API
 
