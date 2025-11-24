@@ -4,17 +4,19 @@
   <h1 align="center"> <code>react-native-image-crop-picker</code> </h1>
 </p>
 
-This project is based on [react-native-image-crop-picker@0.40.3](https://github.com/ivpusic/react-native-image-crop-picker/tree/v0.40.3)。
-
-| Version                     | Package Name                         | Repository                                                                       | Release                                                                                            |
-| --------------------------- | ------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| <= 0.40.3-0.0.14@deprecated | @react-native-oh-tpl/react-native-image-crop-picker | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-image-crop-picker) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-crop-picker/releases) |
-| >= 0.40.4                   | @react-native-ohos/react-native-image-crop-picker   | [Gitee](https://gitee.com/openharmony-sig/rntpc_react-native-image-crop-picker)                 | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_react-native-image-crop-picker/releases)                 |
-
-
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-image-crop-picker)
 
 ## 1. Installation and Usage
+
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+|--------| ------------------------------------------------------------ | ---------- |
+| 0.40.4@deprecated | [@react-native-oh-tpl/react-native-image-crop-picker Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-crop-picker/releases) | 0.72       |
+| 0.40.5 | [@react-native-ohos/react-native-image-crop-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker/releases)                        | 0.72       |
+| 0.50.2  | [@react-native-ohos/react-native-image-crop-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker/releases)                        | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -789,6 +791,8 @@ export default ImageCropPickDemo;
 
 ## 2. Manual Link
 
+Version >= @react-native-ohos/react-native-image-crop-picker@0.40.5 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
 This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
@@ -840,7 +844,7 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 2.3 Configuring CMakeLists and Introducing RNFSPackage
+### 2.3 Configuring CMakeLists and Introducing ImageCropPickerPackage
 
 > [!TIP] Required for version `0.40.4` and above
 
@@ -892,7 +896,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 2.4. Introducing FsPackage to ArkTS
+### 2.4. Introducing ImageCropPickerPackage to ArkTS
 
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
@@ -962,17 +966,18 @@ export default class ImageEditAbility extends UIAbility {
 **(2)Register ImageEditAbility in entry/src/main/module.json5.**
 
 ```
-"abilities":[{
-        "name": "ImageEditAbility",
-        "srcEntry": "./ets/entryability/ImageEditAbility.ets",
-        "description": "$string:EntryAbility_desc",
-        "icon": "$media:icon",
-        "startWindowIcon": "$media:startIcon",
-        "startWindowBackground": "$color:start_window_background",
-        "removeMissionAfterTerminate": true,
+"abilities":[
+    ...
++    {
++        "name": "ImageEditAbility",
++        "srcEntry": "./ets/entryability/ImageEditAbility.ets",
++        "description": "$string:EntryAbility_desc",
++        "icon": "$media:icon",
++        "startWindowIcon": "$media:startIcon",
++        "startWindowBackground": "$color:start_window_background",
++        "removeMissionAfterTerminate": true,
++ }
 
-}
-...
 ]
 
 ```
@@ -1028,7 +1033,13 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-ohos/react-native-image-crop-picker Releases ](https://gitee.com/openharmony-sig/rntpc_react-native-image-crop-picker/releases)
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+|--------| ------------------------------------------------------------ | ---------- |
+| 0.40.4@deprecated | [@react-native-oh-tpl/react-native-image-crop-picker Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-crop-picker/releases) | 0.72       |
+| 0.40.5 | [@react-native-ohos/react-native-image-crop-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker/releases)                        | 0.72       |
+| 0.50.2  | [@react-native-ohos/react-native-image-crop-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker/releases)                        | 0.77       |
 
 ## 4. API
 

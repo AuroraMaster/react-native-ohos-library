@@ -17,7 +17,15 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-image-rotate Releases](https://github.com/react-native-oh-library/react-native-image-rotate/releases)。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+|-------| ------------------------------------------------------------ | ---------- |
+| 2.1.0@deprecated | [@react-native-oh-tpl/react-native-image-rotate Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-rotate/releases) | 0.72       |
+| 2.1.1 | [@react-native-ohos/react-native-image-rotate Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-rotate/releases)                        | 0.72       |
+| 2.2.0 | [@react-native-ohos/react-native-image-rotate Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-rotate/releases)                        | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -30,13 +38,13 @@
 #### npm
 
 ```bash
-npm install @react-native-oh-tpl/react-native-image-rotate
+npm install @react-native-ohos/react-native-image-rotate
 ```
 
 #### yarn
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-image-rotate
+yarn add @react-native-ohos/react-native-image-rotate
 ```
 
 快速使用：
@@ -141,7 +149,10 @@ const styles = StyleSheet.create({
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-image-rotate@2.1.1，已支持 Autolink，无需手动配置，目前只支持72框架。
+Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -172,7 +183,7 @@ const styles = StyleSheet.create({
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-image-rotate": "file:../../node_modules/@react-native-oh-tpl/react-native-image-rotate/harmony/imageRotate.har"
+    "@react-native-ohos/react-native-image-rotate": "file:../../node_modules/@react-native-ohos/react-native-image-rotate/harmony/imageRotate.har"
   }
 ```
 
@@ -196,7 +207,7 @@ ohpm install
 ```diff
   ...
   
-+  import { RNImageRotatePackage } from '@react-native-oh-tpl/react-native-image-rotate/ts';
++  import { RNImageRotatePackage } from '@react-native-ohos/react-native-image-rotate/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -225,7 +236,13 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-image-rotate Releases](https://github.com/react-native-oh-library/react-native-image-rotate/releases)
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+|-------| ------------------------------------------------------------ | ---------- |
+| 2.1.0@deprecated | [@react-native-oh-tpl/react-native-image-rotate Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-rotate/releases) | 0.72       |
+| 2.1.1 | [@react-native-ohos/react-native-image-rotate Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-rotate/releases)                        | 0.72       |
+| 2.2.0 | [@react-native-ohos/react-native-image-rotate Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-rotate/releases)                        | 0.77       |
 
 ## 静态方法
 

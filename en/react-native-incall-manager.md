@@ -19,7 +19,15 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library and download an applicable .tgz package: [@react-native-oh-tpl/react-native-incall-manager Releases](https://github.com/react-native-oh-library/react-native-incall-manager/releases).
+Please refer to the Releases page of the third-party library for the corresponding version information:
+
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 4.2.0@deprecated      | [@react-native-oh-tpl/react-native-incall-manager Releases(deprecated)](https://github.com/react-native-oh-library/react-native-incall-manager/releases) | 0.72       |
+| 4.2.1      | [@react-native-ohos/react-native-incall-manager Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-incall-manager/releases)                        | 0.72       |
+| 4.2.2      | [@react-native-ohos/react-native-incall-manager Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-incall-manager/releases)                        | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -30,13 +38,13 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-incall-manager
+npm install @react-native-ohos/react-native-incall-manager
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-incall-manager
+yarn add @react-native-ohos/react-native-incall-manager
 ```
 
 <!-- tabs:end -->
@@ -489,7 +497,10 @@ export default function InCallManagerExample() {
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-incall-manager@4.2.1 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -518,7 +529,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
-    "@react-native-oh-tpl/react-native-incall-manager": "file:../../node_modules/@react-native-oh-tpl/react-native-incall-manager/harmony/in_call_manager.har"
+    "@react-native-ohos/react-native-incall-manager": "file:../../node_modules/@react-native-ohos/react-native-incall-manager/harmony/in_call_manager.har"
   }
 ```
 
@@ -557,7 +568,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-incall-manager/src/main/cpp" ./in_call_manager)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-incall-manager/src/main/cpp" ./in_call_manager)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -597,7 +608,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
 ```diff
-+ import { RNInCallManagerPackage } from '@react-native-oh-tpl/react-native-incall-manager/ts';
++ import { RNInCallManagerPackage } from '@react-native-ohos/react-native-incall-manager/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -626,7 +637,13 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-incall-manager Releases](https://github.com/react-native-oh-library/react-native-incall-manager/releases)
+Please refer to the Releases page of the third-party library for the corresponding version information:
+
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 4.2.0@deprecated      | [@react-native-oh-tpl/react-native-incall-manager Releases(deprecated)](https://github.com/react-native-oh-library/react-native-incall-manager/releases) | 0.72       |
+| 4.2.1      | [@react-native-ohos/react-native-incall-manager Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-incall-manager/releases)                        | 0.72       |
+| 4.2.2      | [@react-native-ohos/react-native-incall-manager Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-incall-manager/releases)                        | 0.77       |
 
 ### Permission Requirements
 

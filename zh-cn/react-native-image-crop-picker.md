@@ -4,14 +4,17 @@
   <h1 align="center"> <code>react-native-image-crop-picker</code> </h1>
 </p>
 
-本项目基于 [react-native-image-crop-picker@0.40.3](https://github.com/ivpusic/react-native-image-crop-picker/tree/v0.40.3) 开发。
-
-| Version                     | Package Name                         | Repository                                                                       | Release                                                                                            |
-| --------------------------- | ------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| <= 0.40.3-0.0.14@deprecated | @react-native-oh-tpl/react-native-image-crop-picker | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-image-crop-picker) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-crop-picker/releases) |
-| >= 0.40.4                   | @react-native-ohos/react-native-image-crop-picker   | [Gitee](https://gitee.com/openharmony-sig/rntpc_react-native-image-crop-picker)                 | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_react-native-image-crop-picker/releases)                 |
-
 ## 1.安装与使用
+
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本  | 发布信息                                                     | 支持RN版本 |
+|--------| ------------------------------------------------------------ | ---------- |
+| 0.40.4@deprecated | [@react-native-oh-tpl/react-native-image-crop-picker Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-crop-picker/releases) | 0.72       |
+| 0.40.5 | [@react-native-ohos/react-native-image-crop-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker/releases)                        | 0.72       |
+| 0.50.2  | [@react-native-ohos/react-native-image-crop-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker/releases)                        | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -787,6 +790,9 @@ export default ImageCropPickDemo;
 
 ## 2. Manual Link
 
+Version >= @react-native-ohos/react-native-image-crop-picker@0.40.5，已支持 Autolink，无需手动配置，目前只支持72框架。
+Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
 此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
@@ -1031,7 +1037,13 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/react-native-image-crop-picker Releases ](https://gitee.com/openharmony-sig/rntpc_react-native-image-crop-picker/releases)
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本  | 发布信息                                                     | 支持RN版本 |
+|--------| ------------------------------------------------------------ | ---------- |
+| 0.40.4@deprecated | [@react-native-oh-tpl/react-native-image-crop-picker Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-crop-picker/releases) | 0.72       |
+| 0.40.5 | [@react-native-ohos/react-native-image-crop-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker/releases)                        | 0.72       |
+| 0.50.2  | [@react-native-ohos/react-native-image-crop-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker/releases)                        | 0.77       |
 
 ## 4. API
 

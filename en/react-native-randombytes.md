@@ -19,7 +19,15 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library：[@react-native-oh-library/react-native-randombytes Releases](https://github.com/react-native-oh-library/react-native-randombytes/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+|-------| ------------------------------------------------------------ | ---------- |
+| 3.6.1@deprecated | [@react-native-oh-tpl/react-native-randombytes Releases(deprecated)](https://github.com/react-native-oh-library/react-native-randombytes/releases) | 0.72       |
+| 3.6.2 | [@react-native-ohos/react-native-randombytes Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-randombytes/releases)                        | 0.72       |
+| 3.6.3 | [@react-native-ohos/react-native-randombytes Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-randombytes/releases)                        | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -30,13 +38,13 @@ Go to the project directory and execute the following instruction:
 ####  npm
 
 ```bash
-npm install @react-native-oh-tpl/react-native-randombytes
+npm install @react-native-ohos/react-native-randombytes
 ```
 
 #### yarn
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-randombytes
+yarn add @react-native-ohos/react-native-randombytes
 ```
 
 <!-- tabs:end -->
@@ -101,11 +109,16 @@ const styles = StyleSheet.create({
 
 ## Use Codegen
 
+Version >= @react-native-ohos/react-native-randombytes@3.6.2, compatible with codegen-lib for generating bridge code.
+
 If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-randombytes@3.6.2 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -133,7 +146,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-randombytes": "file:../../node_modules/@react-native-oh-tpl/react-native-randombytes/harmony/random_bytes.har"
+    "@react-native-ohos/react-native-randombytes": "file:../../node_modules/@react-native-ohos/react-native-randombytes/harmony/random_bytes.har"
   }
 ```
 
@@ -156,7 +169,7 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
-+ import { RandomBytesPackage } from '@react-native-oh-tpl/react-native-randombytes/ts';
++ import { RandomBytesPackage } from '@react-native-ohos/react-native-randombytes/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -185,7 +198,13 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-library/react-native-randombytes Releases](https://github.com/react-native-oh-library/react-native-randombytes/releases)
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+|-------| ------------------------------------------------------------ | ---------- |
+| 3.6.1@deprecated | [@react-native-oh-tpl/react-native-randombytes Releases(deprecated)](https://github.com/react-native-oh-library/react-native-randombytes/releases) | 0.72       |
+| 3.6.2 | [@react-native-ohos/react-native-randombytes Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-randombytes/releases)                        | 0.72       |
+| 3.6.3 | [@react-native-ohos/react-native-randombytes Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-randombytes/releases)                        | 0.77       |
 
 This document is verified based on the following versions:
 1. RNOH: 0.72.20-CAPI; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.200; ROM: 3.0.0.18;
@@ -196,7 +215,7 @@ This document is verified based on the following versions:
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-For details, see [react-native-randombytes](https://github.com/react-native-oh-library/react-native-randombytes)
+For details, see [react-native-randombytes](https://gitcode.com/openharmony-sig/rntpc_react-native-randombytes)
 
 | Name           | Description                   | Type | Required | Platform    | HarmonyOS Support |
 |----------------|-------------------------------| -- | -------- | ----------- | ----------------- |

@@ -18,11 +18,17 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-incall-manager)
 
-
 ## 安装与使用
 
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-incall-manager Releases](https://github.com/react-native-oh-library/react-native-incall-manager/releases)。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 4.2.0@deprecated      | [@react-native-oh-tpl/react-native-incall-manager Releases(deprecated)](https://github.com/react-native-oh-library/react-native-incall-manager/releases) | 0.72       |
+| 4.2.1      | [@react-native-ohos/react-native-incall-manager Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-incall-manager/releases)                        | 0.72       |
+| 4.2.2      | [@react-native-ohos/react-native-incall-manager Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-incall-manager/releases)                        | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -33,13 +39,13 @@
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-incall-manager
+npm install @react-native-ohos/react-native-incall-manager
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-incall-manager
+yarn add @react-native-ohos/react-native-incall-manager
 ```
 
 <!-- tabs:end -->
@@ -491,7 +497,10 @@ export default function InCallManagerExample() {
 ```
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version > @react-native-ohos/react-native-incall-manager@3.1.0，已支持 Autolink，无需手动配置，目前只支持72框架。
+Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -523,7 +532,7 @@ export default function InCallManagerExample() {
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
-    "@react-native-oh-tpl/react-native-incall-manager": "file:../../node_modules/@react-native-oh-tpl/react-native-incall-manager/harmony/in_call_manager.har"
+    "@react-native-ohos/react-native-incall-manager": "file:../../node_modules/@react-native-ohos/react-native-incall-manager/harmony/in_call_manager.har"
   }
 ```
 
@@ -562,7 +571,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-incall-manager/src/main/cpp" ./in_call_manager)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-incall-manager/src/main/cpp" ./in_call_manager)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -602,7 +611,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，或者`entry/src/main/ets/rn/RNPackagesFactory.ts`，添加：
 
 ```diff
-+ import { RNInCallManagerPackage } from '@react-native-oh-tpl/react-native-incall-manager/ts';
++ import { RNInCallManagerPackage } from '@react-native-ohos/react-native-incall-manager/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -631,7 +640,13 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-incall-manager Releases](https://github.com/react-native-oh-library/react-native-incall-manager/releases)
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 4.2.0@deprecated      | [@react-native-oh-tpl/react-native-incall-manager Releases(deprecated)](https://github.com/react-native-oh-library/react-native-incall-manager/releases) | 0.72       |
+| 4.2.1      | [@react-native-ohos/react-native-incall-manager Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-incall-manager/releases)                        | 0.72       |
+| 4.2.2      | [@react-native-ohos/react-native-incall-manager Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-incall-manager/releases)                        | 0.77       |
 
 
 ### 应用权限申请
