@@ -16,6 +16,12 @@
 
 ## Installation and Usage
 
+Please go to the Releases release address of the third-party library to view the supporting version information: [react-native-render-html](https://github.com/meliorence/react-native-render-html/releases). For older versions that are not published to npm, install the tgz package by referring to the [Installation Guide](/en/tgz-usage-en.md).
+
+| Version   | Releases info                                                     | Support RN version |
+| ------------ | ------------------------------------------------------------ | ---------- |
+| 6.3.4        | [react-native-render-html](https://github.com/meliorence/react-native-render-html/releases)   | 0.72/0.77       |
+
 Go to the project directory and execute the following instruction:
 
 <!-- tabs:start -->
@@ -64,6 +70,7 @@ This document is verified based on the following versions:
 
 1. RNOH：0.72.27; SDK：HarmonyOS-Next-DB1 5.0.0.29(SP1); IDE：DevEco Studio 5.0.3.403; ROM：3.0.0.25;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM：NEXT 5.1.0.150; 
 
 ## Properties
 
