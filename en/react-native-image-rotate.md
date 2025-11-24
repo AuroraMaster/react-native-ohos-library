@@ -17,7 +17,15 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library and download an applicable .tgz package: [@react-native-oh-tpl/react-native-image-rotate Releases](https://github.com/react-native-oh-library/react-native-image-rotate/releases).
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+|-------| ------------------------------------------------------------ | ---------- |
+| 2.1.0@deprecated | [@react-native-oh-tpl/react-native-image-rotate Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-rotate/releases) | 0.72       |
+| 2.1.1 | [@react-native-ohos/react-native-image-rotate Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-rotate/releases)                        | 0.72       |
+| 2.2.0 | [@react-native-ohos/react-native-image-rotate Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-rotate/releases)                        | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -30,13 +38,13 @@ Go to the project directory and execute the following instruction:
 #### npm
 
 ```bash
-npm install @react-native-oh-tpl/react-native-image-rotate
+npm install @react-native-ohos/react-native-image-rotate
 ```
 
 #### yarn
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-image-rotate
+yarn add @react-native-ohos/react-native-image-rotate
 ```
 
 The following code shows the basic use scenario of the repository:
@@ -141,7 +149,10 @@ If this repository has been adapted to Codegen, generate the bridge code of the 
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-image-rotate@2.1.1 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the harmony directory of the HarmonyOS project in DevEco Studio.
 
@@ -172,7 +183,7 @@ Open entry/oh-package.json5 file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-image-rotate": "file:../../node_modules/@react-native-oh-tpl/react-native-image-rotate/harmony/imageRotate.har"
+    "@react-native-ohos/react-native-image-rotate": "file:../../node_modules/@react-native-ohos/react-native-image-rotate/harmony/imageRotate.har"
   }
 ```
 
@@ -196,7 +207,7 @@ Open the entry/src/main/ets/RNPackagesFactory.ts file and add the following code
 ```diff
   ...
   
-+  import { RNImageRotatePackage } from '@react-native-oh-tpl/react-native-image-rotate/ts';
++  import { RNImageRotatePackage } from '@react-native-ohos/react-native-image-rotate/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -225,7 +236,13 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-image-rotate Releases](https://github.com/react-native-oh-library/react-native-image-rotate/releases)
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+|-------| ------------------------------------------------------------ | ---------- |
+| 2.1.0@deprecated | [@react-native-oh-tpl/react-native-image-rotate Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-rotate/releases) | 0.72       |
+| 2.1.1 | [@react-native-ohos/react-native-image-rotate Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-rotate/releases)                        | 0.72       |
+| 2.2.0 | [@react-native-ohos/react-native-image-rotate Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-rotate/releases)                        | 0.77       |
 
 ## Static Method
 

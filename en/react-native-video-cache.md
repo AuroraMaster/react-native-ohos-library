@@ -17,7 +17,15 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-library/react-native-video-cache Releases](https://github.com/react-native-oh-library/react-native-video-cache/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please refer to the Releases page of the third-party library for the corresponding version information:
+
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 2.7.4@deprecated      | [@react-native-oh-tpl/react-native-video-cache Releases(deprecated)](https://github.com/react-native-oh-library/react-native-video-cache/releases) | 0.72       |
+| 2.7.5      | [@react-native-ohos/react-native-video-cache Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-video-cache/releases)                        | 0.72       |
+| 2.8.0      | [@react-native-ohos/react-native-video-cache Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-video-cache/releases)                        | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -28,13 +36,13 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-video-cache
+npm install @react-native-ohos/react-native-video-cache
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-video-cache
+yarn add @react-native-ohos/react-native-video-cache
 ```
 
 <!-- tabs:end -->
@@ -88,7 +96,9 @@ const styles = StyleSheet.create({
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-video-cache@2.7.5 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -116,7 +126,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/rnoh-video-cache": "file:../../node_modules/@react-native-oh-tpl/react-native-video-cache/harmony/react_native_video_cache.har"
+    "@react-native-ohos/rnoh-video-cache": "file:../../node_modules/@react-native-ohos/react-native-video-cache/harmony/react_native_video_cache.har"
   }
 ```
 
@@ -138,7 +148,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/rnoh-video-cache": "file:../../node_modules/@react-native-oh-tpl/react-native-video-cache/harmony/react_native_video_cache"
+    "@react-native-ohos/rnoh-video-cache": "file:../../node_modules/@react-native-ohos/react-native-video-cache/harmony/react_native_video_cache"
   }
 ```
 
@@ -157,7 +167,7 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
-+   import { RNVideoCachePackage } from '@react-native-oh-tpl/rnoh-video-cache/ts';
++   import { RNVideoCachePackage } from '@react-native-ohos/rnoh-video-cache/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -186,7 +196,13 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-library/react-native-video-cache Releases](https://github.com/react-native-oh-library/react-native-video-cache/releases)
+Please refer to the Releases page of the third-party library for the corresponding version information:
+
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 2.7.4@deprecated      | [@react-native-oh-tpl/react-native-video-cache Releases(deprecated)](https://github.com/react-native-oh-library/react-native-video-cache/releases) | 0.72       |
+| 2.7.5      | [@react-native-ohos/react-native-video-cache Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-video-cache/releases)                        | 0.72       |
+| 2.8.0      | [@react-native-ohos/react-native-video-cache Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-video-cache/releases)                        | 0.77       |
 
 This document is verified based on the following versions:
 

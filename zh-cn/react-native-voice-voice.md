@@ -20,8 +20,9 @@
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 3.2.4      | [@react-native-oh-tpl/voice Releases](https://github.com/react-native-oh-library/voice/releases) | 0.72       |
-| 3.2.5      | [@react-native-ohos/voice Releases]()                        | 0.77       |
+| 3.2.4@deprecated      | [@react-native-oh-tpl/voice Releases(deprecated)](https://github.com/react-native-oh-library/voice/releases) | 0.72       |
+| 3.2.5      | [@react-native-ohos/voice Releases](https://gitcode.com/openharmony-sig/rntpc_voice/releases)                        | 0.72       |
+| 3.3.0      | [@react-native-ohos/voice Releases](https://gitcode.com/openharmony-sig/rntpc_voice/releases)                        | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -32,20 +33,12 @@
 #### **npm**
 
 ```bash
-# V3.2.4
-npm install @react-native-oh-tpl/voice
-
-# V3.2.5
 npm install @react-native-ohos/voice
 ```
 
 #### **yarn**
 
 ```bash
-# V3.2.4
-yarn add @react-native-oh-tpl/voice
-
-# V3.2.5
 yarn add @react-native-ohos/voice
 ```
 
@@ -374,13 +367,16 @@ export default VoiceTest;
 ```
 ## 使用 Codegen
 
-> [!TIP] V3.2.5 不需要执行Codegen
+> [!TIP] Version >= 3.2.5 不需要执行Codegen
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/voice@3.2.5，已支持 Autolink，无需手动配置，目前只支持72框架。
+Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -407,17 +403,6 @@ export default VoiceTest;
 > [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
 
 打开 `entry/oh-package.json5`，添加以下依赖
-
-- V3.2.4
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/voice": "file:../../node_modules/@react-native-oh-tpl/voice/harmony/voice.har"
-  }
-```
-
-- V3.2.5
 
 ```json
 "dependencies": {
@@ -506,10 +491,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
 ...
-// V3.2.4
-+  import { RNVoicePackage } from '@react-native-oh-tpl/voice/ts'
-
-// V3.2.5
 +  import { RNVoicePackage } from '@react-native-ohos/voice/ts'
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -543,8 +524,9 @@ ohpm install
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 3.2.4      | [@react-native-oh-tpl/voice Releases](https://github.com/react-native-oh-library/voice/releases) | 0.72       |
-| 3.2.5      | [@react-native-ohos/voice Releases]()                        | 0.77       |
+| 3.2.4@deprecated      | [@react-native-oh-tpl/voice Releases(deprecated)](https://github.com/react-native-oh-library/voice/releases) | 0.72       |
+| 3.2.5      | [@react-native-ohos/voice Releases](https://gitcode.com/openharmony-sig/rntpc_voice/releases)                        | 0.72       |
+| 3.3.0      | [@react-native-ohos/voice Releases](https://gitcode.com/openharmony-sig/rntpc_voice/releases)                        | 0.77       |
 
 ### 权限要求
 由于此库涉及语音识别会使用到系统录音功能，使用时需要配置对应的权限，权限需配置在entry/src/main目录下module.json5和entry/src/main/resources/base/element目录下string.json文件
@@ -624,7 +606,7 @@ ohpm install
 - [ ] 原库支持多种区域和语言，HarmonyOS侧暂只支持中文 问题: [issue#3](https://github.com/react-native-oh-library/voice/issues/3)
 
 ## 其他
-- removeAllListeners方法未生效，与iOS效果一致。问题:  [issue#491]((https://github.com/react-native-voice/voice/issues/491)
+- removeAllListeners方法未生效，与iOS效果一致。问题:  [issue#491](https://github.com/react-native-voice/voice/issues/491)
 ## 开源协议
 
 本项目基于 [The MIT License (MIT)](https://github.com/react-native-voice/voice/blob/master/LICENSE) ，请自由地享受和参与开源。

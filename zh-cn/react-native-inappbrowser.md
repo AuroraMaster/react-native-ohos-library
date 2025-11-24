@@ -16,20 +16,28 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-inappbrowser-reborn Releases](https://github.com/react-native-oh-library/react-native-inappbrowser/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+|-------| ------------------------------------------------------------ | ---------- |
+| 3.7.0@deprecated | [@react-native-oh-tpl/react-native-inappbrowser-reborn Releases(deprecated)](https://github.com/react-native-oh-library/react-native-inappbrowser/releases) | 0.72       |
+| 3.7.1 | [@react-native-ohos/react-native-inappbrowser-reborn Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-inappbrowser/releases)                        | 0.72       |
+| 3.8.0 | [@react-native-ohos/react-native-inappbrowser-reborn Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-inappbrowser/releases)                        | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
 #### **npm**
 
 ```
-npm install @react-native-oh-tpl/react-native-inappbrowser-reborn
+npm install @react-native-ohos/react-native-inappbrowser-reborn
 ```
 
 #### **yarn**
 
 ```
-yarn add @react-native-oh-tpl/react-native-inappbrowser-reborn
+yarn add @react-native-ohos/react-native-inappbrowser-reborn
 ```
 
 下面的代码展示了这个库的基本使用场景：
@@ -257,11 +265,15 @@ export const tryDeepLinking = async () => {
 
 ## 使用 Codegen
 
+Version >= @react-native-ohos/react-native-inappbrowser@3.7.1，已适配codegen-lib生成桥接代码。
+
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-localize@3.7.1，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 harmony
 
@@ -344,7 +356,7 @@ export default class BrowserManagerAbility extends UIAbility {
 **3.在 entry/src/main/ets/pages 下创建 BrowserManagerPage.ets**
 
 ```
-import { BrowserPage } from '@react-native-oh-tpl/react-native-inappbrowser-reborn/Index'
+import { BrowserPage } from '@react-native-ohos/react-native-inappbrowser-reborn/Index'
 
 @Entry
 @Component
@@ -376,7 +388,7 @@ struct ChromeTabsManagerPage {
 **5.如果需要预热应用内浏览器客户端，使其启动速度显著加快，可以将以下内容添加到BrowserManagerAbility**
 
 ```
-import { RNInAppBrowserModule } from '@react-native-oh-tpl/react-native-inappbrowser-reborn/ts';
+import { RNInAppBrowserModule } from '@react-native-ohos/react-native-inappbrowser-reborn/ts';
 
 export default class BrowserManagerAbility extends UIAbility {
 
@@ -403,7 +415,7 @@ export default class BrowserManagerAbility extends UIAbility {
 ```
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-inappbrowser-reborn": "file:../../node_modules/@react-native-oh-tpl/react-native-inappbrowser-reborn/harmony/inappbrowser.har"
+    "@react-native-ohos/react-native-inappbrowser-reborn": "file:../../node_modules/@react-native-ohos/react-native-inappbrowser-reborn/harmony/inappbrowser.har"
   }
 ```
 
@@ -426,7 +438,7 @@ ohpm install
 
 ```diff
   ...
-+ import { RNInAppBrowserPackage } from '@react-native-oh-tpl/react-native-inappbrowser-reborn/ts';
++ import { RNInAppBrowserPackage } from '@react-native-ohos/react-native-inappbrowser-reborn/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -455,7 +467,14 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-inappbrowser-reborn Releases](https://github.com/react-native-oh-library/react-native-inappbrowser/releases)
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+|-------| ------------------------------------------------------------ | ---------- |
+| 3.7.0@deprecated | [@react-native-oh-tpl/react-native-inappbrowser-reborn Releases(deprecated)](https://github.com/react-native-oh-library/react-native-inappbrowser/releases) | 0.72       |
+| 3.7.1 | [@react-native-ohos/react-native-inappbrowser-reborn Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-inappbrowser/releases)                        | 0.72       |
+| 3.8.0 | [@react-native-ohos/react-native-inappbrowser-reborn Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-inappbrowser/releases)                        | 0.77       |
+
 
 ## API
 

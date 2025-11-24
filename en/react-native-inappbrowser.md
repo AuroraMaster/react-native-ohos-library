@@ -16,8 +16,15 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-inappbrowser-reborn Releases](https://github.com/react-native-oh-library/react-native-inappbrowser/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please refer to the Releases page of the third-party library for the corresponding version information
 
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+|-------| ------------------------------------------------------------ | ---------- |
+| 3.7.0@deprecated | [@react-native-oh-tpl/react-native-inappbrowser-reborn Releases(deprecated)](https://github.com/react-native-oh-library/react-native-inappbrowser/releases) | 0.72       |
+| 3.7.1 | [@react-native-ohos/react-native-inappbrowser-reborn Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-inappbrowser/releases)                        | 0.72       |
+| 3.8.0 | [@react-native-ohos/react-native-inappbrowser-reborn Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-inappbrowser/releases)                        | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 Go to the project directory and execute the following instruction:
 
 
@@ -25,13 +32,13 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```
-npm install @react-native-oh-tpl/react-native-inappbrowser-reborn
+npm install @react-native-ohos/react-native-inappbrowser-reborn
 ```
 
 #### **yarn**
 
 ```
-yarn add @react-native-oh-tpl/react-native-inappbrowser-reborn
+yarn add @react-native-ohos/react-native-inappbrowser-reborn
 ```
 
 The following code shows the basic use scenario of the repository:
@@ -280,11 +287,15 @@ export const tryDeepLinking = async () => {
 
 ## Use Codegen
 
+Version >= @react-native-ohos/react-native-inappbrowser@3.7.1，Adapted codegen-lib to generate bridge code.
+
 If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-inappbrowser@3.7.1，Autolink is supported, no manual configuration is required, and currently only supports 72 frames. Autolink Framework Guidance Document：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -367,7 +378,7 @@ export default class BrowserManagerAbility extends UIAbility {
 3. Create **BrowserManagerPage.ets** in **entry/src/main/ets/pages**.
 
 ```
-import { BrowserPage } from '@react-native-oh-tpl/react-native-inappbrowser-reborn/Index'
+import { BrowserPage } from '@react-native-ohos/react-native-inappbrowser-reborn/Index'
 
 @Entry
 @Component
@@ -399,7 +410,7 @@ struct ChromeTabsManagerPage {
 5. If you want to warm up the browser client in your application to accelerate its startup, add the following content to **BrowserManagerAbility**:
 
 ```
-import { RNInAppBrowserModule } from '@react-native-oh-tpl/react-native-inappbrowser-reborn/ts';
+import { RNInAppBrowserModule } from '@react-native-ohos/react-native-inappbrowser-reborn/ts';
 
 export default class BrowserManagerAbility extends UIAbility {
 
@@ -423,7 +434,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-inappbrowser-reborn": "file:../../node_modules/@react-native-oh-tpl/react-native-inappbrowser-reborn/harmony/inappbrowser.har"
+    "@react-native-ohos/react-native-inappbrowser-reborn": "file:../../node_modules/@react-native-ohos/react-native-inappbrowser-reborn/harmony/inappbrowser.har"
   }
 ```
 
@@ -446,7 +457,7 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
-+ import { RNInAppBrowserPackage } from '@react-native-oh-tpl/react-native-inappbrowser-reborn/ts';
++ import { RNInAppBrowserPackage } from '@react-native-ohos/react-native-inappbrowser-reborn/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -475,7 +486,13 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-inappbrowser-reborn Releases](https://github.com/react-native-oh-library/react-native-inappbrowser/releases)
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+|-------| ------------------------------------------------------------ | ---------- |
+| 3.7.0@deprecated | [@react-native-oh-tpl/react-native-inappbrowser-reborn Releases(deprecated)](https://github.com/react-native-oh-library/react-native-inappbrowser/releases) | 0.72       |
+| 3.7.1 | [@react-native-ohos/react-native-inappbrowser-reborn Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-inappbrowser/releases)                        | 0.72       |
+| 3.8.0 | [@react-native-ohos/react-native-inappbrowser-reborn Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-inappbrowser/releases)                        | 0.77       |
 
 ## API
 

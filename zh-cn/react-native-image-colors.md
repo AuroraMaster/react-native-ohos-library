@@ -21,8 +21,9 @@
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 2.4.0      | [@react-native-oh-tpl/react-native-image-colors Releases](https://github.com/react-native-oh-library/react-native-image-colors/releases) | 0.72       |
-| 2.5.1      | [@react-native-ohos/react-native-image-colors Releases]()    | 0.77       |
+| 2.4.0@deprecated      | [@react-native-oh-tpl/react-native-image-colors Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-colors/releases) | 0.72       |
+| 2.4.1      | [@react-native-ohos/react-native-image-colors Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-colors/releases)             | 0.72       |
+| 2.5.1      | [@react-native-ohos/react-native-image-colors Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-colors/releases)             | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -33,20 +34,12 @@
 #### **npm**
 
 ```bash
-# V2.4.0
-npm install @react-native-oh-tpl/react-native-image-colors
-
-# V2.5.1
 npm install @react-native-ohos/react-native-image-colors
 ```
 
 #### **yarn**
 
 ```bash
-# V2.4.0
-yarn add @react-native-oh-tpl/react-native-image-colors
-
-# V2.5.1
 yarn add @react-native-ohos/react-native-image-colors
 ```
 
@@ -212,13 +205,16 @@ const styles = StyleSheet.create({
 
 ## 使用 Codegen
 
-> [!TIP] V2.5.1 不需要执行Codegen
+> [!TIP] V2.4.1 不需要执行Codegen
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
-目前鸿蒙暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-image-colors@2.4.1，已支持 Autolink，无需手动配置，目前只支持72框架。
+Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的鸿蒙工程 `harmony`
 
@@ -245,17 +241,6 @@ const styles = StyleSheet.create({
 > [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
 
 打开 `entry/oh-package.json5`，添加以下依赖
-
-- V2.4.0
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-image-colors": "file:../../node_modules/@react-native-oh-tpl/react-native-image-colors/harmony/image_colors.har"
-  }
-```
-
-- V2.5.1
 
 ```json
 "dependencies": {
@@ -346,10 +331,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-// V2.4.0
-+ import { RNImageColorsPackage } from "@react-native-oh-tpl/react-native-image-colors/ts";
-
-// V2.5.1
 + import { RNImageColorsPackage } from "@react-native-ohos/react-native-image-colors/ts";
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -383,8 +364,9 @@ ohpm install
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 2.4.0      | [@react-native-oh-tpl/react-native-image-colors Releases](https://github.com/react-native-oh-library/react-native-image-colors/releases) | 0.72       |
-| 2.5.1      | [@react-native-ohos/react-native-image-colors Releases]()    | 0.77       |
+| 2.4.0@deprecated      | [@react-native-oh-tpl/react-native-image-colors Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-colors/releases) | 0.72       |
+| 2.4.1      | [@react-native-ohos/react-native-image-colors Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-colors/releases)             | 0.72       |
+| 2.5.1      | [@react-native-ohos/react-native-image-colors Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-colors/releases)             | 0.77       |
 
 ## API
 
