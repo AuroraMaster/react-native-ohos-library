@@ -18,6 +18,10 @@
 
 ## 安装与使用
 
+| 三方库版本 | 支持RN版本 |
+|-------|--------|
+| 0.9.2 | 0.72/0.77  |
+
 进入到工程目录并输入以下命令：
 
 <!-- tabs:start -->
@@ -25,13 +29,13 @@
 #### **npm**
 
 ```bash
-npm install react-native-lightbox-v2@0.9.0
+npm install react-native-lightbox-v2@0.9.2
 ```
 
 #### **yarn**
 
 ```bash
-yarn add react-native-lightbox-v2@0.9.0
+yarn add react-native-lightbox-v2@0.9.2
 ```
 
 <!-- tabs:end -->
