@@ -20,8 +20,9 @@
 
 | 三方库版本    | 发布信息                                                     | 支持RN版本 |
 | ------------- | ------------------------------------------------------------ | ---------- |
-| 5.6.2         | [@react-native-oh-tpl/react-native-shake Releases](https://github.com/react-native-oh-library/react-native-shake/releases) | 0.72       |
-| v6.0.0-beta.2 | [@react-native-ohos/react-native-shake Releases]()           | 0.77       |
+| 5.6.2@deprecated  | [@react-native-oh-tpl/react-native-shake Releases(deprecated)](https://github.com/react-native-oh-library/react-native-shake/releases) | 0.72       |
+| 5.6.3             | [@react-native-ohos/react-native-shake Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-shake/releases)           | 0.72       |
+| 6.0.1             | [@react-native-ohos/react-native-shake Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-shake/releases)           | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -33,20 +34,12 @@
 #### **npm**
 
 ```bash
-# V5.6.2
-npm install @react-native-oh-tpl/react-native-shake
-
-# V6.0.0-beta.2
 npm install @react-native-ohos/react-native-shake
 ```
 
 #### **yarn**
 
 ```bash
-# V5.6.2
-yarn add @react-native-oh-tpl/react-native-shake
-
-# V6.0.0-beta.2
 yarn add @react-native-ohos/react-native-shake
 ```
 
@@ -110,7 +103,10 @@ const styles = StyleSheet.create({
 
 ## Link
 
-目前鸿蒙暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-shake@5.6.3，已支持 Autolink，无需手动配置，目前只支持72框架。
+Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的鸿蒙工程 `harmony`
 
@@ -138,22 +134,9 @@ const styles = StyleSheet.create({
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- V5.6.2
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    
-    "@react-native-oh-tpl/react-native-shake": "file:../../node_modules/@react-native-oh-tpl/react-native-shake/harmony/shake_package.har"
-  }
-```
-
-- V6.0.0-beta.2
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    
     "@react-native-ohos/react-native-shake": "file:../../node_modules/@react-native-ohos/react-native-shake/harmony/shake_package.har"
   }
 ```
@@ -178,10 +161,6 @@ ohpm install
 
 ```diff
 ...
-// V5.6.2
-+ import { ShakePackage } from "@react-native-oh-tpl/react-native-shake/ts";
-
-// V6.0.0-beta.2
 + import { ShakePackage } from "@react-native-ohos/react-native-shake/ts";
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -194,7 +173,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 ### 4.配置 CMakeLists 和引入 ShakePackge
 
-> [!TIP] V6.0.0-beta.2 需要配置 CMakeLists 和引入 ShakePackge。
+> [!TIP] V5.6.3 需要配置 CMakeLists 和引入 ShakePackge。
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
 ```diff
 project(rnapp)
@@ -261,12 +242,13 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
 | 三方库版本    | 发布信息                                                     | 支持RN版本 |
 | ------------- | ------------------------------------------------------------ | ---------- |
-| 5.6.2         | [@react-native-oh-tpl/react-native-shake Releases](https://github.com/react-native-oh-library/react-native-shake/releases) | 0.72       |
-| v6.0.0-beta.2 | [@react-native-ohos/react-native-shake Releases]()           | 0.77       |
+| 5.6.2@deprecated  | [@react-native-oh-tpl/react-native-shake Releases(deprecated)](https://github.com/react-native-oh-library/react-native-shake/releases) | 0.72       |
+| 5.6.3             | [@react-native-ohos/react-native-shake Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-shake/releases)           | 0.72       |
+| 6.0.1             | [@react-native-ohos/react-native-shake Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-shake/releases)           | 0.77       |
 
 
 ### 权限要求

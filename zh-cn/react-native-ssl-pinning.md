@@ -16,7 +16,15 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-ssl-pinning Releases](https://github.com/react-native-oh-library/react-native-ssl-pinning/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本  | 发布信息                                                  | 支持RN版本 |
+|--------| ------------------------------------------------------------ | ---------- |
+| 1.5.7@deprecated  | [@react-native-oh-tpl/react-native-ssl-pinning Releases(deprecated)](https://github.com/react-native-oh-library/react-native-ssl-pinning/releases) | 0.72       |
+| 1.5.8             | [@react-native-ohos/react-native-ssl-pinning Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-ssl-pinning/releases)   | 0.72       |
+| 1.6.0             | [@react-native-ohos/react-native-ssl-pinning Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-ssl-pinning/releases)   | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +33,13 @@
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-ssl-pinning
+npm install @react-native-ohos/react-native-ssl-pinning
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-ssl-pinning
+yarn add @react-native-ohos/react-native-ssl-pinning
 ```
 
 <!-- tabs:end -->
@@ -40,7 +48,7 @@ yarn add @react-native-oh-tpl/react-native-ssl-pinning
 
 > [!WARNING] 使用时 import 的库名不变。
 
-> [!TIP] 本示例依赖 react-native-file-selector 库，参照 [@react-native-oh-tpl/react-native-file-selector](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-file-selector.md) 文档进行引入。
+> [!TIP] 本示例依赖 react-native-file-selector 库，参照 [@react-native-ohos/react-native-file-selector](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-file-selector.md) 文档进行引入。
 
 ```js
 
@@ -57,7 +65,7 @@ import {
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {getCookies, fetch, removeCookieByName} from 'react-native-ssl-pinning';
-import FileSelector from '@react-native-oh-tpl/react-native-file-selector';
+import FileSelector from '@react-native-ohos/react-native-file-selector';
 function SslPingDemo() : React.JSX.Element{
     return (
         <>
@@ -234,11 +242,16 @@ export default SslPingDemo;
 
 ## 使用 Codegen
 
-本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/codegen.md)。
+Version >= @react-native-ohos/react-native-ssl-pinning@1.5.8，已适配codegen-lib生成桥接代码。
+
+本库已经适配了 Codegen ，在使用前需要主动执行生成三方库桥接代码，详细请参考 [Codegen 文档](/zh-cn/codegen.md)。
 
 ## Link
 
-目前HarmonyOS暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-ssl-pinning@1.5.8，已支持 Autolink，无需手动配置，目前只支持72框架。
+Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的HarmonyOS工程 `harmony`
 
@@ -253,9 +266,6 @@ export default SslPingDemo;
   }
 }
 ```
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
-
-首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
 ### 2.引入原生端代码
 
@@ -273,7 +283,7 @@ export default SslPingDemo;
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-ssl-pinning": "file:../../node_modules/@react-native-oh-tpl/react-native-ssl-pinning/harmony/ssl_pinning.har"
+    "@react-native-ohos/react-native-ssl-pinning": "file:../../node_modules/@react-native-ohos/react-native-ssl-pinning/harmony/ssl_pinning.har"
   }
 ```
 
@@ -303,7 +313,7 @@ ohpm install --no-link
 
 ```diff
   ...
-+ import { SslPinningPackage } from "@react-native-oh-tpl/react-native-ssl-pinning/ts"
++ import { SslPinningPackage } from "@react-native-ohos/react-native-ssl-pinning/ts"
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -331,7 +341,13 @@ ohpm install
 ### 兼容性
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-ssl-pinning Releases](https://github.com/react-native-oh-library/react-native-ssl-pinning/releases)
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本  | 发布信息                                                  | 支持RN版本 |
+|--------| ------------------------------------------------------------ | ---------- |
+| 1.5.7@deprecated  | [@react-native-oh-tpl/react-native-ssl-pinning Releases(deprecated)](https://github.com/react-native-oh-library/react-native-ssl-pinning/releases) | 0.72       |
+| 1.5.8             | [@react-native-ohos/react-native-ssl-pinning Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-ssl-pinning/releases)   | 0.72       |
+| 1.6.0             | [@react-native-ohos/react-native-ssl-pinning Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-ssl-pinning/releases)   | 0.77       |
 
 ### 权限要求
 

@@ -4,22 +4,21 @@
   <h1 align="center"> <code>react-native-document-picker</code> </h1>
 </p>
 
-
-本项目基于 [react-native-document-picker@9.2.0](https://github.com/react-native-documents/document-picker/tree/v9.2.0) 开发。
-
-该第三方库的仓库已迁移至 Gitee，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-document-picker`，具体版本所属关系如下：
-
-| Version                        | Package Name                             | Repository                                                   | Release                                                      |
-| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <= 9.2.0@deprecated | @react-native-oh-tpl/react-native-document-picker  | [Github(deprecated)](https://github.com/react-native-oh-library/document-picker) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/document-picker/releases) |
-| > 9.2.0                        | @react-native-ohos/react-native-document-picker | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-document-picker) | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-document-picker/releases) |
-
+> [!TIP] [Github 地址](https://github.com/react-native-documents/document-picker)
 
 ## 1. 安装与使用
 
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本  | 发布信息                                                     | 支持RN版本 |
+|--------| ------------------------------------------------------------ | ---------- |
+| 9.2.0@deprecated  | [@react-native-oh-tpl/react-native-document-picker Releases(deprecated)](https://github.com/react-native-oh-library/document-picker/releases) | 0.72       |
+| 9.2.2             | [@react-native-ohos/react-native-document-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-document-picker/releases)   | 0.72       |
+| 9.3.2             | [@react-native-ohos/react-native-document-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-document-picker/releases)   | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
 进入到工程目录并输入以下命令：
-
-
 
 <!-- tabs:start -->
 
@@ -252,6 +251,8 @@ const styles = StyleSheet.create({
 
 ## 2. Manual Link
 
+Version >= @react-native-ohos/react-native-document-picker@9.2.2，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
 此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
@@ -371,7 +372,13 @@ ohpm install
 ## 3. 约束与限制
 ### 3.1 兼容性
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/react-native-document-picker Releases](https://gitee.com/openharmony-sig/rntpc_react-native-document-picker/releases)
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本  | 发布信息                                                     | 支持RN版本 |
+|--------| ------------------------------------------------------------ | ---------- |
+| 9.2.0@deprecated  | [@react-native-oh-tpl/react-native-document-picker Releases(deprecated)](https://github.com/react-native-oh-library/document-picker/releases) | 0.72       |
+| 9.2.2             | [@react-native-ohos/react-native-document-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-document-picker/releases)   | 0.72       |
+| 9.3.2             | [@react-native-ohos/react-native-document-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-document-picker/releases)   | 0.77       |
 
 
 ## 4. 属性

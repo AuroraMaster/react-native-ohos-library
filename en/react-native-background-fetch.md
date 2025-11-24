@@ -17,24 +17,30 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-background-fetch Releases](https://github.com/react-native-oh-library/react-native-background-fetch/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 4.2.5@deprecated      | [@react-native-oh-tpl/react-native-background-fetch Releases(deprecated)](https://github.com/react-native-oh-library/react-native-background-fetch/releases) | 0.72       |
+| 4.2.6      | [@react-native-ohos/react-native-background-fetch Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-background-fetch/releases) | 0.72       |
+| 4.3.0      | [@react-native-ohos/react-native-background-fetch Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-background-fetch/releases) | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
-
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-background-fetch
+npm install @react-native-ohos/react-native-background-fetch
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-background-fetch
+yarn add @react-native-ohos/react-native-background-fetch
 ```
 
 <!-- tabs:end -->
@@ -200,11 +206,16 @@ export default App;
 
 ## Use Codegen
 
+Version >= @react-native-ohos/react-native-background-fetch@4.2.6, compatible with codegen-lib for generating bridge code.
+
 If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-background-fetch@4.2.6 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -232,7 +243,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-background-fetch": "file:../../node_modules/@react-native-oh-tpl/react-native-background-fetch/harmony/background_fetch.har"
+    "@react-native-ohos/react-native-background-fetch": "file:../../node_modules/@react-native-ohos/react-native-background-fetch/harmony/background_fetch.har"
   }
 ```
 
@@ -249,13 +260,71 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
+### Configure CMakeLists and import RNBackgroundFetchPackage
+
+> [!TIP] If using version 4.2.6, please configure CMakeLists and import ShakePackge
+
+open `entry/src/main/cpp/CMakeLists.txt`，add：
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-background-fetch/src/main/cpp" ./background_fetch)
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_background_fetch)
+# RNOH_END: manual_package_linking_2
+```
+
+open `entry/src/main/cpp/PackageProvider.cpp`，add：
+
+```diff
+#include "RNOH/PackageProvider.h"
++ #include "RNBackgroundFetchPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx)
+{
+    return {
++     std::make_shared<RNBackgroundFetchPackage>(ctx)
+    };
+}
+```
+
 ### Introducing RNBackgroundFetchPackage to ArkTS
 
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
 ```diff
   ...
-+ import { RNBackgroundFetchPackage } from "@react-native-oh-tpl/react-native-background-fetch/ts";
++ import { RNBackgroundFetchPackage } from "@react-native-ohos/react-native-background-fetch/ts";
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -267,11 +336,11 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 ### Introducing RNBackgroundFetchExtensionAbility to ArkTS
 
-1. 打开 `entry/src/main/ets`，新建目录及 ArkTS 文件，新建一个目录并命名为 WorkSchedulerExtension。在 WorkSchedulerExtension 目录下，新建一个 ArkTS 文件并命名为 WorkSchedulerExtension.ets，用以实现延迟任务回调接口。
+1. Open'entry/src/main/ets', create a new directory and ArkTS file, and create a new directory and name it WorkSchedulerExtension. In the WorkSchedulerExtension directory, create an ArkTS file and name it WorkSchedulerExtension.ets to implement the delayed task callback interface.
 
 ```js
 import { workScheduler } from "@kit.BackgroundTasksKit";
-import RNBackgroundFetchExtensionAbility from "@react-native-oh-tpl/react-native-background-fetch/src/main/ets/WorkSchedulerExtension/WorkSchedulerExtension";
+import RNBackgroundFetchExtensionAbility from "@react-native-ohos/react-native-background-fetch/src/main/ets/WorkSchedulerExtension/WorkSchedulerExtension";
 
 export default class MyWorkSchedulerExtensionAbility extends RNBackgroundFetchExtensionAbility {
   onWorkStart(workInfo: workScheduler.WorkInfo) {
@@ -284,7 +353,7 @@ export default class MyWorkSchedulerExtensionAbility extends RNBackgroundFetchEx
 }
 ```
 
-2. 在`entry/src/main/module.json5`配置文件中注册 WorkSchedulerExtensionAbility，并设置如下标签：
+2. Register WorkSchedulerExtensionAbility in the `entry/src/main/module.json5` configuration file and set the following tags：
 
 ```json
 {
@@ -319,7 +388,13 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-background-fetch Releases](https://github.com/react-native-oh-library/react-native-background-fetch/releases)
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 4.2.5@deprecated      | [@react-native-oh-tpl/react-native-background-fetch Releases(deprecated)](https://github.com/react-native-oh-library/react-native-background-fetch/releases) | 0.72       |
+| 4.2.6      | [@react-native-ohos/react-native-background-fetch Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-background-fetch/releases) | 0.72       |
+| 4.3.0      | [@react-native-ohos/react-native-background-fetch Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-background-fetch/releases) | 0.77       |
 
 ## API
 

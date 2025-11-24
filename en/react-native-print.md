@@ -16,7 +16,15 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-print Releases](https://github.com/react-native-oh-library/react-native-print/releases). For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.11.0@deprecated  | [@react-native-oh-tpl/react-native-print Releases(deprecated)](https://github.com/react-native-oh-library/react-native-print/releases) | 0.72       |
+| 0.11.1             | [@react-native-ohos/react-native-print Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-print/releases)   | 0.72       |
+| 0.12.0             | [@react-native-ohos/react-native-print Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-print/releases)   | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -27,13 +35,13 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-print
+npm install @react-native-ohos/react-native-print
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-print
+yarn add @react-native-ohos/react-native-print
 ```
 
 <!-- tabs:end -->
@@ -42,7 +50,7 @@ The following code shows the basic use scenario of the repository:
 
 > [!WARNING] The name of the imported repository remains unchanged.
 
-> [!TIP] This example depends on the react-native-document-picker library. For details, see [@react-native-oh-tpl/react-native-document-picker document](/en/react-native-document-picker.md).
+> [!TIP] This example depends on the react-native-document-picker library. For details, see [@react-native-ohos/react-native-document-picker document](/en/react-native-document-picker.md).
 
 ```js
 import React, {useState} from 'react';
@@ -112,11 +120,16 @@ export default function RNPrint(): JSX.Element {
 
 ## Use Codegen
 
+Version >= @react-native-ohos/react-native-print@0.11.1, compatible with codegen-lib for generating bridge code.
+
 If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/zh-cn/codegen.md).
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-print@0.11.1 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -144,7 +157,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-print": "file:../../node_modules/@react-native-oh-tpl/react-native-print/harmony/print.har"
+    "@react-native-ohos/react-native-print": "file:../../node_modules/@react-native-ohos/react-native-print/harmony/print.har"
   }
 ```
 
@@ -167,7 +180,7 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
-+ import {RNPrintPackage} from '@react-native-oh-tpl/react-native-print/ts';
++ import {RNPrintPackage} from '@react-native-ohos/react-native-print/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -196,7 +209,13 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-print Releases](https://github.com/react-native-oh-library/react-native-print/releases)
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.11.0@deprecated  | [@react-native-oh-tpl/react-native-print Releases(deprecated)](https://github.com/react-native-oh-library/react-native-print/releases) | 0.72       |
+| 0.11.1             | [@react-native-ohos/react-native-print Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-print/releases)   | 0.72       |
+| 0.12.0             | [@react-native-ohos/react-native-print Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-print/releases)   | 0.77       |
 
 ### Permission Requirements
 
