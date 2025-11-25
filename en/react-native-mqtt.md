@@ -1,19 +1,14 @@
-> Template version: v0.2.2
+> Template version: v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-mqtt</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/Introvertuous/react-native-mqtt">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/Introvertuous/react-native-mqtt/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
 
+Please go to the Releases release address of the third-party library to view the supporting version information: [react-native-mqtt Releases](https://github.com/Introvertuous/react-native-mqtt/releases). For older versions that are not published to npm, install the tgz package by referring to the [Installation Guide](/en/tgz-usage-en.md).
 
-> [!TIP] [GitHub address](https://github.com/Introvertuous/react-native-mqtt)
+| Version |  Support RN version|
+| ---------- |---------- |
+| 1.3.1 | 0.72/0.77 |
 
 ## Installation and Usage
 
@@ -129,7 +124,7 @@ This document is verified based on the following versions:
 
 1. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.25; IDE: DevEco Studio 5.0.3.400; ROM: 3.0.0.25;
 2. RNOH: 0.72.33; SDK: OpenHarmony 5.0.0.71(API Version 12 Release); IDE: DevEco Studio 5.0.3.900; ROM: NEXT.0.0.71;
-
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0.47 (API Version 20 Release); IDE: DevEco Studio 6.0.0 Release; ROM: 6.0.0.108 SP6;
 ## Properties
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
