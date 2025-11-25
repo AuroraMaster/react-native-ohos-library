@@ -14,26 +14,39 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-modalbox)
 
+Find the matching version information in the release address of a third-party library:
+
+| Version                   | Releases info                                      |  Support RN version                    |
+| ----------- | ------------------------------------------------------------ | ---------- |
+| 2.0.2 | [@react-native-oh-tpl/react-native-modalbox Releases](https://github.com/react-native-oh-library/react-native-modalbox/releases) | 0.72       |
+| 2.1.0   | [@react-native-ohos/react-native-modalbox Releases]()        | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-modalbox Releases](https://github.com/react-native-oh-library/react-native-modalbox/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
-
 Go to the project directory and execute the following instruction:
-
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-modalbox
+
+# 0.77
+npm install @react-native-ohos/react-native-modalbox
 ```
 
 #### **yarn**
 
 ```bash
-yarn add  @react-native-oh-tpl/react-native-modalbox
+# 0.72
+yarn add @react-native-oh-tpl/react-native-modalbox
+
+# 0.77
+yarn add @react-native-ohos/react-native-modalbox
 ```
 
 <!-- tabs:end -->
@@ -479,9 +492,10 @@ const styles = StyleSheet.create({
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+This document is verified based on the following versions:
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-modalbox Releases](https://github.com/react-native-oh-library/react-native-modalbox/releases)
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## Properties
 
@@ -506,7 +520,7 @@ Check the release version information in the release address of the third-party 
 | animationDuration    |                  Duration of the animation                   |    `number`    |    no    | iOS/Android |        yes        |
 | easing               |      Easing function applied to opening modal animation      |   `function`   |    no    | iOS/Android |        yes        |
 | backButtonClose      | (Android only) Close modal when receiving back button event  |     `bool`     |    no    |   Android   |        no         |
-| startOpen            | Allow modal to appear open without animation upon first mount |     `bool`     |    no    | iOS/Android |        yes        |
+| startOpen            | Automatically open Modal when allowing component mounting |     `bool`     |    no    | iOS/Android |        yes        |
 | coverScreen          | Will use RN Modal component to cover the entire screen wherever the modal is mounted in the component hierarchy |     `bool`     |    no    | iOS/Android |        yes        |
 | keyboardTopOffset    | This property prevent the modal to cover the ios status bar when the modal is scrolling up because the keyboard is opening |    `number`    |    no    | iOS/Android |        yes        |
 | useNativeDriver      | Enables the hardware acceleration to animate the modal. Please note that enabling this can cause some flashes in a weird way when animating |     `bool`     |    no    | iOS/Android |        yes        |
