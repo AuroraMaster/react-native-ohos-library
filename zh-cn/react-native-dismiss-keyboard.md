@@ -14,6 +14,11 @@
 
 > [!TIP] [Github 地址](https://github.com/DanielMSchmidt/react-native-dismiss-keyboard)
 
+| 三方库版本                 | 支持RN版本                 |
+| ------------------------- | -------------------------- |
+| 1.0.0                 |  0.72/0.77 |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 ## 安装与使用
 
@@ -137,6 +142,8 @@ const styles = StyleSheet.create({
 
 1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1 B.0.18、IDE：DevEco Studio 5.0.3.200; ROM：2.0.0.18;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+4. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -146,11 +153,11 @@ const styles = StyleSheet.create({
 
 | Prop   | Description   | Type       | Required | Platform | HarmonyOS Support |
 | ----- | ----- | -------- | -------- | -------- | -------- |
-| `addListener`  | Register a JavaScript function that listens to handle native keyboard notification events. | function  | no     | All  | yes      |
-| `dismiss`  | Retract the pop-up keyboard and make the current text box lose focus. | function  |  no     | All   | yes      |
-| `scheduleLayoutAnimation`  |Used to synchronize changes in the size or position of a TextInput (or other keyboard attachment view) with keyboard movements.| function | no     | All | yes      |
-| `isVisible`  | Whether the keyboard is currently displayed.| function      |  no     | All   | yes      |
-| `metrics`  | If a soft keyboard is displayed, return the size of the soft keyboard.| function      |  no     | All   | yes      |
+| `addListener`  | 注册一个用于监听和处理原生键盘通知事件的 JavaScript 函数。 | function  | no     | All  | yes      |
+| `dismiss`  | 收起弹出的键盘，并使当前文本框失去焦点。 | function  |  no     | All   | yes      |
+| `scheduleLayoutAnimation`  |用于同步 TextInput（或其他键盘附着视图）尺寸或位置的变化与键盘移动保持一致。| function | no     | All | yes      |
+| `isVisible`  | 表示键盘当前是否显示。| bool      |  no     | All   | yes      |
+| `metrics`  | 如果软键盘已显示，则返回软键盘的大小。| function      |  no     | All   | yes      |
 
 ## 遗留问题
 
