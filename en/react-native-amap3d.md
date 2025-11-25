@@ -13,14 +13,20 @@
     </a>
 </p>
 
-> [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-amap3d)
+This project is based on [react-native-amap3d](https://github.com/qiuxiang/react-native-amap3d).
+
+Find the matching version information in the release address of a third-party library:
+
+| Version | Package name                             | Repository                                                               | Release                                                                                    | Support RN version  |
+|---------|------------------------------------------|--------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|---------------------|
+| 3.2.4   | @react-native-oh-tpl/react-native-amap3d | [Github](https://github.com/react-native-oh-library/react-native-amap3d) | [Github Releases](https://github.com/react-native-oh-library/react-native-amap3d/releases) | 0.72                |
+| 3.3.0   | @react-native-ohos/react-native-amap3d   | [Github](https://github.com/react-native-oh-library/react-native-amap3d) | [Github Releases](https://github.com/react-native-oh-library/react-native-amap3d/releases) | 0.77                |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-amap3d Releases](https://github.com/react-native-oh-library/react-native-amap3d/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
-
 Go to the project directory and execute the following instruction:
-
 
 
 <!-- tabs:start -->
@@ -28,13 +34,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-amap3d
+
+# 0.77
+npm install @react-native-ohos/react-native-amap3d
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-amap3d
+
+# 0.77
+yarn add @react-native-ohos/react-native-amap3d
 ```
 
 <!-- tabs:end -->
@@ -187,10 +201,21 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
+- V0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-amap3d": "file:../../node_modules/@react-native-oh-tpl/react-native-amap3d/harmony/rn_amap3d.har"
+  }
+```
+
+- V0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-amap3d": "file:../../node_modules/@react-native-ohos/react-native-amap3d/harmony/rn_amap3d.har"
   }
 ```
 
@@ -229,7 +254,13 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+# V0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-amap3d/src/main/cpp" ./rn_amap3d)
+
+# V0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-amap3d/src/main/cpp" ./rn_amap3d)
+
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -273,6 +304,7 @@ Find `function buildCustomRNComponent()`, which is usually located in `entry/src
 
 ```diff
 ...
+// V0.72
 + import {
 +  A_MAP_CIRCLE_VIEW_TYPE,
 +  A_MAP_MARKER_TYPE,
@@ -285,6 +317,20 @@ Find `function buildCustomRNComponent()`, which is usually located in `entry/src
 +  AMapView,
 +  GOADE_MAP_VIEW_TYPE
 +} from '@react-native-oh-tpl/react-native-amap3d';
+
+// V0.77
++ import {
++  A_MAP_CIRCLE_VIEW_TYPE,
++  A_MAP_MARKER_TYPE,
++  A_MAP_POLYGON_TYPE,
++  A_MAP_POLYLINE_TYPE,
++  AMapCircle,
++  AMapMarker,
++  AMapPolygon,
++  AMapPolyline,
++  AMapView,
++  GOADE_MAP_VIEW_TYPE
++} from '@react-native-ohos/react-native-amap3d';
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -348,7 +394,12 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff  
   ... 
+// V0.72
 + import {AMap3DPackage} from '@react-native-oh-tpl/react-native-amap3d/ts';
+
+// V0.77
++ import {AMap3DPackage} from '@react-native-ohos/react-native-amap3d/ts';
+
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
     new SamplePackage(ctx),
@@ -376,7 +427,10 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library:[@react-native-oh-tpl/react-native-amap3d Releases](https://github.com/react-native-oh-library/react-native-amap3d/releases)
+Verified in the following versions.
+
+1. RNOH: 0.72.27; SDK: HarmonyOS 5.1.1 Release SDK; IDE: DevEco Studio 5.1.1 Release; ROM: 5.0.1.120;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 
 ## Properties 
