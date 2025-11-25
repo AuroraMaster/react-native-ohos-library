@@ -14,28 +14,38 @@
     </a>
 </p>
 
-> [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-mail)
+This project is based on [react-native-mail](https://github.com/chirag04/react-native-mail).
+
+This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is:`@react-native-ohos/checkbox`, The version correspondence details are as follows:
+
+| Version                   | Package Name                                      | Repository         | Release                    |Support RN version|
+| ------------------------- | ------------------------------------------------- | ------------------ | -------------------------- |-------------------|
+| 6.1.1-0.0.1  | @react-native-oh-tpl/react-native-mail | [Github](https://github.com/react-native-oh-library/react-native-mail) | [Github Releases](https://github.com/react-native-oh-library/react-native-mail/releases) |0.72       |
+|  6.2.0     | @react-native-ohosreact-native-mail   | [Github](https://github.com/react-native-oh-library/react-native-mail) | [GitCode Releases]() |0.77       |
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library and download an applicable .tgz package: [@react-native-oh-tpl/react-native-mail Releases](https://github.com/react-native-oh-library/react-native-mail/releases).
-
 Go to the project directory and execute the following instruction:
-
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-mail
+
+# 0.77
+npm install @react-native-ohos/react-native-mail
 ```
 
 #### **yarn**
-
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-mail
+
+# 0.77
+yarn add @react-native-ohos/react-native-mail
 ```
 
 <!-- tabs:end -->
@@ -141,7 +151,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-mail": "file:../../node_modules/@react-native-oh-tpl/react-native-mail/harmony/mail.har"
+    "@react-native-ohos/react-native-mail": "file:../../node_modules/@react-native-ohos/react-native-mail/harmony/mail.har"
   }
 ```
 
@@ -193,7 +203,8 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-mail Releases](https://github.com/react-native-oh-library/react-native-mail/releases)
+1. RNOH: 0.72.27; SDK: HarmonyOS 5.1.1 Release SDK; IDE: DevEco Studio 5.1.1 Release; ROM: 5.0.1.120;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## API
 

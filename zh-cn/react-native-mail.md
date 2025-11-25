@@ -14,28 +14,40 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-mail)
+本项目基于 [react-native-mail](https://github.com/chirag04/react-native-mail) 开发。
+
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-mail`，具体版本所属关系如下：
+
+| Version                   | Package Name                           | Repository         | Release                    |Support RN version|
+| ------------------------- |----------------------------------------| ------------------ | -------------------------- |-------------------|
+| 6.1.1-0.0.1  | @react-native-oh-tpl/react-native-mail | [Github](https://github.com/react-native-oh-library/react-native-mail) | [Github Releases](https://github.com/react-native-oh-library/react-native-mail/releases) |0.72       |
+|  6.2.0     | @react-native-ohos/react-native-mail   | [Github](https://github.com/react-native-oh-library/react-native-mail) | [GitCode Releases]() |0.77       |
+
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-mail Releases](https://github.com/react-native-oh-library/react-native-mail/releases)，并下载适用版本的 tgz 包
-
 进入到工程目录并输入以下命令：
-
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-mail
+
+# 0.77
+npm install @react-native-ohos/react-native-mail
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-mail
+
+# 0.77
+yarn add @react-native-ohos/react-native-mail
 ```
 
 <!-- tabs:end -->
@@ -144,7 +156,7 @@ export default class App extends Component {
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-mail": "file:../../node_modules/@react-native-oh-tpl/react-native-mail/harmony/mail.har"
+    "@react-native-ohos/react-native-mail": "file:../../node_modules/@react-native-ohos/react-native-mail/harmony/mail.har"
   }
 ```
 
@@ -196,7 +208,8 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-mail Releases](https://github.com/react-native-oh-library/react-native-mail/releases)
+1. RNOH: 0.72.27; SDK: HarmonyOS 5.1.1 Release SDK; IDE: DevEco Studio 5.1.1 Release; ROM: 5.0.1.120;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## API
 
