@@ -17,25 +17,35 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-text-gradient Releases](https://github.com/react-native-oh-library/react-native-text-gradient/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please go to the corresponding Release release address of the third-party library to view the version information of the Release package:
 
+| version | Releases info                                        | Support RN version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.1.7-0.0.4 | [@react-native-oh-tpl/react-native-text-gradient Releases](https://github.com/react-native-oh-library/react-native-text-gradient/releases) | 0.72       |
+| 0.2.0 | [@react-native-ohos/react-native-text-gradient Releases]()           | 0.77       |
 
 Go to the project directory and execute the following instruction:
-
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-text-gradient
+
+# 0.77
+npm install @react-native-ohos/react-native-text-gradient
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-text-gradient
+# 0.72
+yarn install @react-native-oh-tpl/react-native-text-gradient
+
+# 0.77
+yarn install @react-native-ohos/react-native-text-gradient
 ```
 
 <!-- tabs:end -->
@@ -117,11 +127,20 @@ Method 1 (recommended): Use the HAR file.
 > [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
-
+- V0.72
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-text-gradient": "file:../../node_modules/@react-native-oh-tpl/react-native-text-gradient/harmony/text_gradient.har"
+  }
+```
+- V0.77
+
+```json
+"dependencies": {
+   ...
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-text-gradient": "file:../../node_modules/@react-native-ohos/react-native-text-gradient/harmony/text_gradient.har"
   }
 ```
 
@@ -160,7 +179,11 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+# V0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-text-gradient/src/main/cpp" ./text_gradient)
+
+# V0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-text-gradient/src/main/cpp" ./text_gradient)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -203,8 +226,10 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
+// V0.72
 + import {LinearTextGradientPackage} from '@react-native-oh-tpl/react-native-text-gradient/ts';
-
+// V0.77
++ import {LinearTextGradientPackage} from '@react-native-ohos/react-native-text-gradient/ts';
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
     new SamplePackage(ctx),
@@ -233,7 +258,10 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library:[@react-native-oh-tpl/react-native-text-gradient Releases](https://github.com/react-native-oh-library/react-native-text-gradient/releases)
+Please go to the corresponding Release release address of the third-party library to view the version information of the Release package:
+
+1. RNOH: 0.72.33; SDK: Openharmony 5.0.0.71(API Version 12 Release); IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+2. RNOH: 0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
 
 
 ## Properties
@@ -244,12 +272,12 @@ Check the release version information in the release address of the third-party 
 
 | Name            |                                                                           Description                                                               |  Type  | Required | Platform     | HarmonyOS Support  |
 | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------| ------ | -------- | -------------| ------------------ |
-| start           | Coordinates declare the position that the gradient starts at, as a fraction of the overall size of the gradient, starting from the top left corner. | number |   yes    | iOS/Android  |       yes          |
-| end             | Same as start, but for the end of the gradient.                                                                                                     | number |   yes    | iOS/Android  |       yes          |
-| loactions       | An optional array of numbers defining the location of each gradient color stop, mapping to the color with the same index in prop.                   | number[]  |   yes    | iOS/Android  |       yes          |
+| start           | Coordinates declare the position that the gradient starts at, as a fraction of the overall size of the gradient, starting from the top left corner. | number |   no    | iOS/Android  |       yes          |
+| end             | Same as start, but for the end of the gradient.                                                                                                     | number |   no    | iOS/Android  |       yes          |
+| loactions       | An optional array of numbers defining the location of each gradient color stop, mapping to the color with the same index in prop.                   | number[]  |   no    | iOS/Android  |       yes          |
 | colors          | An array of at least two color values that represent gradient colors.                                                                               | string   |   yes    | iOS/Android  |       yes          |
-| useViewFrame    | Optional. If true gradient will be calculated for text view background frame rather than text frame.                                                | boolean  |   yes    | iOS/Android  |       no          |
-| useGlobalCache  |  accessing or managing a cache that is available globally throughout the application.                                                               | boolean  |   yes    | iOS  |       no         |
+| useViewFrame    | Optional. If true gradient will be calculated for text view background frame rather than text frame.                                                | boolean  |   no    | iOS/Android  |       no          |
+| useGlobalCache  | accessing or managing a cache that is available globally throughout the application.                                                               | boolean  |   no    | iOS  |       no         |
 
 
 ## Known Issues

@@ -17,7 +17,15 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-get-random-values](https://github.com/react-native-oh-library/react-native-get-random-values/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.11.0@deprecated      | [@react-native-oh-tpl/react-native-get-random-values Releases(deprecated)](https://github.com/react-native-oh-library/react-native-get-random-values/releases) | 0.72       |
+| 1.11.1      | [@react-native-ohos/react-native-get-random-values Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-get-random-values/releases)                        | 0.72       |
+| 1.12.0      | [@react-native-ohos/react-native-get-random-values Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-get-random-values/releases)                        | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -26,13 +34,13 @@
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-get-random-values
+npm install @react-native-ohos/react-native-get-random-values
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-get-random-values
+yarn add @react-native-ohos/react-native-get-random-values
 ```
 
 <!-- tabs:end -->
@@ -80,7 +88,10 @@ export const GetRandomValues = () => {
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-get-random-values@1.11.1，已支持 Autolink，无需手动配置，目前只支持72框架。
+Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -111,7 +122,7 @@ export const GetRandomValues = () => {
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-get-random-values": "file:../../node_modules/@react-native-oh-tpl/react-native-get-random-values/harmony/get_random_values.har"
+    "@react-native-ohos/react-native-get-random-values": "file:../../node_modules/@react-native-ohos/react-native-get-random-values/harmony/get_random_values.har"
   }
 ```
 
@@ -134,7 +145,7 @@ ohpm install
 
 ```diff
   ...
-+ import { RNGetRandomValuesPackage } from "@react-native-oh-tpl/react-native-get-random-values/ts";
++ import { RNGetRandomValuesPackage } from "@react-native-ohos/react-native-get-random-values/ts";
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -160,6 +171,14 @@ ohpm install
 ## 约束与限制
 
 ### 兼容性
+
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.11.0@deprecated      | [@react-native-oh-tpl/react-native-get-random-values Releases(deprecated)](https://github.com/react-native-oh-library/react-native-get-random-values/releases) | 0.72       |
+| 1.11.1      | [@react-native-ohos/react-native-get-random-values Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-get-random-values/releases)                        | 0.72       |
+| 1.12.0      | [@react-native-ohos/react-native-get-random-values Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-get-random-values/releases)                        | 0.77       |
 
 本文档内容基于以下版本验证通过：
 

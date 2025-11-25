@@ -16,23 +16,30 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-safe-ssl-pinning Releases](https://github.com/react-native-oh-library/react-native-ssl-pinning/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.5.7@deprecated  | [@react-native-oh-tpl/react-native-ssl-pinning Releases(deprecated)](https://github.com/react-native-oh-library/react-native-ssl-pinning/releases) | 0.72       |
+| 1.5.8             | [@react-native-ohos/react-native-ssl-pinning Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-ssl-pinning/releases)   | 0.72       |
+| 1.6.0             | [@react-native-ohos/react-native-ssl-pinning Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-ssl-pinning/releases)   | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-spring-scrollview
+npm install @react-native-ohos/react-native-ssl-pinning
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-spring-scrollview
+yarn add @react-native-ohos/react-native-ssl-pinning
 ```
 
 <!-- tabs:end -->
@@ -41,7 +48,7 @@ The following code shows the basic use scenario of the repository:
 
 > [!WARNING] The name of the imported repository remains unchanged.
 
-> [!TIP] This example relies on react-native-file-selector and is introduced by referring to document [@react-native-oh-tpl/react-native-file-selector](https://gitee.com/react-native-oh-library/usage-docs/blob/master/en/react-native-file-selector.md).
+> [!TIP] This example relies on react-native-file-selector and is introduced by referring to document [@react-native-ohos/react-native-file-selector](https://gitee.com/react-native-oh-library/usage-docs/blob/master/en/react-native-file-selector.md).
 
 ```js
 
@@ -58,7 +65,7 @@ import {
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {getCookies, fetch, removeCookieByName} from 'react-native-ssl-pinning';
-import FileSelector from '@react-native-oh-tpl/react-native-file-selector';
+import FileSelector from '@react-native-ohos/react-native-file-selector';
 function SslPingDemo() : React.JSX.Element{
     return (
         <>
@@ -235,11 +242,16 @@ export default SslPingDemo;
 
 ## Use Codegen
 
+Version >= @react-native-ohos/react-native-ssl-pinning@1.5.8, compatible with codegen-lib for generating bridge code.
+
 this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-ssl-pinning@1.5.8 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the harmony directory of the HarmonyOS project in DevEco Studio.
 
@@ -267,7 +279,7 @@ Open entry/oh-package.json5 file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-ssl-pinning": "file:../../node_modules/@react-native-oh-tpl/react-native-ssl-pinning/harmony/ssl_pinning.har"
+    "@react-native-ohos/react-native-ssl-pinning": "file:../../node_modules/@react-native-ohos/react-native-ssl-pinning/harmony/ssl_pinning.har"
   }
 ```
 
@@ -290,7 +302,7 @@ Open the entry/src/main/ets/RNPackagesFactory.ts file and add the following code
 
 ```diff
   ...
-+ import { SslPinningPackage } from "@react-native-oh-tpl/react-native-ssl-pinning/ts"
++ import { SslPinningPackage } from "@react-native-ohos/react-native-ssl-pinning/ts"
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -318,7 +330,13 @@ Then build and run the code.
 ### Compatibility
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library:：[@react-native-oh-tpl/react-native-ssl-pinning Releases](https://github.com/react-native-oh-library/react-native-ssl-pinning/releases)
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.5.7@deprecated  | [@react-native-oh-tpl/react-native-ssl-pinning Releases(deprecated)](https://github.com/react-native-oh-library/react-native-ssl-pinning/releases) | 0.72       |
+| 1.5.8             | [@react-native-ohos/react-native-ssl-pinning Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-ssl-pinning/releases)   | 0.72       |
+| 1.6.0             | [@react-native-ohos/react-native-ssl-pinning Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-ssl-pinning/releases)   | 0.77       |
 
 ### Permission Requirements
 

@@ -17,23 +17,30 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library：[@react-native-oh-tpl/react-native-get-random-values](https://github.com/react-native-oh-library/react-native-get-random-values/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please refer to the Releases page of the third-party library for the corresponding version information:
+
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.11.0@deprecated      | [@react-native-oh-tpl/react-native-get-random-values Releases(deprecated)](https://github.com/react-native-oh-library/react-native-get-random-values/releases) | 0.72       |
+| 1.11.1      | [@react-native-ohos/react-native-get-random-values Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-get-random-values/releases)                        | 0.72       |
+| 1.12.0      | [@react-native-ohos/react-native-get-random-values Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-get-random-values/releases)                        | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-get-random-values
+npm install @react-native-ohos/react-native-get-random-values
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-get-random-values
+yarn add @react-native-ohos/react-native-get-random-values
 ```
 
 <!-- tabs:end -->
@@ -81,7 +88,10 @@ export const GetRandomValues = () => {
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-get-random-values@1.11.1 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -111,7 +121,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-get-random-values": "file:../../node_modules/@react-native-oh-tpl/react-native-get-random-values/harmony/get_random_values.har"
+    "@react-native-ohos/react-native-get-random-values": "file:../../node_modules/@react-native-ohos/react-native-get-random-values/harmony/get_random_values.har"
   }
 ```
 
@@ -134,7 +144,7 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
-+ import { RNGetRandomValuesPackage } from "@react-native-oh-tpl/react-native-get-random-values/ts";
++ import { RNGetRandomValuesPackage } from "@react-native-ohos/react-native-get-random-values/ts";
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -160,6 +170,14 @@ Then build and run the code.
 ## Constraints
 
 ### Compatibility
+
+Please refer to the Releases page of the third-party library for the corresponding version information:
+
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.11.0@deprecated      | [@react-native-oh-tpl/react-native-get-random-values Releases(deprecated)](https://github.com/react-native-oh-library/react-native-get-random-values/releases) | 0.72       |
+| 1.11.1      | [@react-native-ohos/react-native-get-random-values Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-get-random-values/releases)                        | 0.72       |
+| 1.12.0      | [@react-native-ohos/react-native-get-random-values Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-get-random-values/releases)                        | 0.77       |
 
 This document is verified based on the following versions:
 

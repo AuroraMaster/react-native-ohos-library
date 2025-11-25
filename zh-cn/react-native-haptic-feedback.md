@@ -21,8 +21,9 @@
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 2.2.0      | [@react-native-oh-tpl/react-native-haptic-feedback Releases](https://github.com/react-native-oh-library/react-native-haptic-feedback/releases) | 0.72       |
-| 2.3.3      | [@react-native-ohos/react-native-haptic-feedback Releases]() | 0.77       |
+| 2.2.1@deprecated      | [@react-native-oh-tpl/react-native-haptic-feedback Releases(deprecated)](https://github.com/react-native-oh-library/react-native-haptic-feedback/releases) | 0.72       |
+| 2.2.2      | [@react-native-ohos/react-native-haptic-feedback Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-haptic-feedback/releases)    | 0.72       |
+| 2.3.4      | [@react-native-ohos/react-native-haptic-feedback Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-haptic-feedback/releases)    | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -31,20 +32,12 @@
 #### **npm**
 
 ```bash
-# V2.2.0
-npm install @react-native-oh-tpl/react-native-haptic-feedback
-
-# V2.3.3
 npm install @react-native-ohos/react-native-haptic-feedback
 ```
 
 #### **yarn**
 
 ```bash
-# V2.2.0
-yarn add @react-native-oh-tpl/react-native-haptic-feedback
-
-# V2.3.3
 yarn add @react-native-ohos/react-native-haptic-feedback
 ```
 
@@ -132,13 +125,16 @@ export default HapticFeedbackExample;
 
 ## 使用 Codegen
 
-> [!TIP] V2.3.3 不需要执行 Codegen。
+> [!TIP] V2.2.2 不需要执行 Codegen。
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
-目前鸿蒙暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-haptic-feedback@2.2.2，已支持 Autolink，无需手动配置，目前只支持72框架。
+Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的鸿蒙工程 `harmony`
 
@@ -166,17 +162,6 @@ export default HapticFeedbackExample;
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- V2.2.0
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-haptic-feedback": "file:../../node_modules/@react-native-oh-tpl/react-native-haptic-feedback/harmony/haptic_feedback.har"
-  }
-```
-
-- V2.3.3
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -199,7 +184,7 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 RNHapticFeedbackPackage
 
-> [!TIP] 若使用的是 2.2.0 版本，请跳过本章。
+> [!TIP] 若使用的是 2.2.1 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -264,10 +249,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
 ...
-// V2.2.0
-+  import { RNHapticFeedbackPackage } from '@react-native-oh-tpl/react-native-haptic-feedback/ts'
-
-// V2.3.3
 +  import { RNHapticFeedbackPackage } from '@react-native-ohos/react-native-haptic-feedback/ts'
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -297,12 +278,13 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 2.2.0      | [@react-native-oh-tpl/react-native-haptic-feedback Releases](https://github.com/react-native-oh-library/react-native-haptic-feedback/releases) | 0.72       |
-| 2.3.3      | [@react-native-ohos/react-native-haptic-feedback Releases]() | 0.77       |
+| 2.2.1@deprecated      | [@react-native-oh-tpl/react-native-haptic-feedback Releases(deprecated)](https://github.com/react-native-oh-library/react-native-haptic-feedback/releases) | 0.72       |
+| 2.2.2      | [@react-native-ohos/react-native-haptic-feedback Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-haptic-feedback/releases)    | 0.72       |
+| 2.3.4      | [@react-native-ohos/react-native-haptic-feedback Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-haptic-feedback/releases)    | 0.77       |
 
 ### 权限要求
 

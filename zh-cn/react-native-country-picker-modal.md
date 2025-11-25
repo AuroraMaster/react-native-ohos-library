@@ -16,7 +16,13 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-library/react-native-country-picker-modal Releases](https://github.com/react-native-oh-library/react-native-country-picker-modal/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本    |
+|-------| ------------------------------------------------------------ |-----------|
+| 2.0.0 | [@react-native-ohos/react-native-country-picker-modal Releases]() | 0.72/0.77 |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -27,13 +33,13 @@
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-country-picker-modal
+npm install @react-native-ohos/react-native-country-picker-modal
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-country-picker-modal
+yarn add @react-native-ohos/react-native-country-picker-modal
 ```
 
 <!-- tabs:end -->

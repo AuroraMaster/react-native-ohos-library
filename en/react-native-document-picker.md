@@ -4,17 +4,19 @@
   <h1 align="center"> <code>react-native-document-picker</code> </h1>
 </p>
 
-
-This project is based on [react-native-document-picker@9.2.0](https://github.com/react-native-documents/document-picker/tree/v9.2.0).
-
-This third-party library has been migrated to Gitee and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-document-picker`, The version correspondence details are as follows:
-| Version                        | Package Name                             | Repository                                                   | Release                                                      |
-| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <= 9.2.0@deprecated | @react-native-oh-tpl/react-native-document-picker  | [Github(deprecated)](https://github.com/react-native-oh-library/document-picker) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/document-picker/releases) |
-| > 9.2.0                        | @react-native-ohos/react-native-document-picker | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-document-picker) | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-document-picker/releases) |
-
+> [!tip] [GitHub address](https://github.com/react-native-documents/document-picker)
 
 ## 1. Installation and Usage
+
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 9.2.0@deprecated  | [@react-native-oh-tpl/react-native-document-picker Releases(deprecated)](https://github.com/react-native-oh-library/document-picker/releases) | 0.72       |
+| 9.2.2             | [@react-native-ohos/react-native-document-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-document-picker/releases)   | 0.72       |
+| 9.3.2             | [@react-native-ohos/react-native-document-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-document-picker/releases)   | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -312,6 +314,9 @@ const styles = StyleSheet.create({
 
 ## 2. Manual Link
 
+Version >= @react-native-ohos/react-native-document-picker@9.2.2 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
 This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
@@ -428,7 +433,13 @@ Then build and run the code.
 ## 3. Constraints
 ### 3.1 Compatibility
 
-Check the release version information in the release address of the third-party library:[@react-native-ohos/react-native-document-picker Releases](https://gitee.com/openharmony-sig/rntpc_react-native-document-picker/releases)
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 9.2.0@deprecated  | [@react-native-oh-tpl/react-native-document-picker Releases(deprecated)](https://github.com/react-native-oh-library/document-picker/releases) | 0.72       |
+| 9.2.2             | [@react-native-ohos/react-native-document-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-document-picker/releases)   | 0.72       |
+| 9.3.2             | [@react-native-ohos/react-native-document-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-document-picker/releases)   | 0.77       |
 
 
 ## 4. Properties

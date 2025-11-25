@@ -19,7 +19,14 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-amap3d Releases](https://github.com/react-native-oh-library/react-native-amap3d/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+|-------| ------------------------------------------------------------ |------|
+| 3.2.4 | [@react-native-oh-tpl/react-native-amap3d Releases](https://github.com/react-native-oh-library/react-native-amap3d/releases) | 0.72 |
+| 3.2.4 | [@react-native-ohos/react-native-amap3d Releases]() | 0.77 |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -28,13 +35,22 @@
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-amap3d
+
+# 0.77
+npm install @react-native-ohos/react-native-amap3d
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-amap3d
+
+
+# 0.77
+yarn add @react-native-ohos/react-native-amap3d
 ```
 
 <!-- tabs:end -->

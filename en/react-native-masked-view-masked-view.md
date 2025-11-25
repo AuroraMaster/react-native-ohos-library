@@ -16,7 +16,15 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/masked-view Releases](https://github.com/react-native-oh-library/masked-view/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please refer to the Releases page of the third-party library for the corresponding version information:
+
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.2.10@deprecated      | [@react-native-oh-tpl/masked-view Releases(deprecated)](https://github.com/react-native-oh-library/masked-view/releases) | 0.72       |
+| 0.2.11      | [@react-native-ohos/masked-view Releases](https://gitcode.com/openharmony-sig/rntpc_masked-view/releases)                        | 0.72       |
+| 0.3.3      | [@react-native-ohos/masked-view Releases](https://gitcode.com/openharmony-sig/rntpc_masked-view/releases)                        | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -27,13 +35,13 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/masked-view
+npm install @react-native-ohos/masked-view
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/masked-view
+yarn add @react-native-ohos/masked-view
 ```
 
 <!-- tabs:end -->
@@ -104,7 +112,10 @@ export default MaskedDemo
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/masked-view@0.2.11 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -134,7 +145,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
-    "@react-native-oh-tpl/masked-view": "file:../../node_modules/@react-native-oh-tpl/masked-view/harmony/masked_view.har"
+    "@react-native-ohos/masked-view": "file:../../node_modules/@react-native-ohos/masked-view/harmony/masked_view.har"
   }
 ```
 
@@ -173,7 +184,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/masked-view/src/main/cpp" ./masked-view)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/masked-view/src/main/cpp" ./masked-view)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -229,7 +240,12 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library:[@react-native-oh-library/masked-view Releases](https://github.com/react-native-oh-library/masked-view/releases)
+Please refer to the Releases page of the third-party library for the corresponding version information
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.2.10@deprecated      | [@react-native-oh-tpl/masked-view Releases(deprecated)](https://github.com/react-native-oh-library/masked-view/releases) | 0.72       |
+| 0.2.11      | [@react-native-ohos/masked-view Releases](https://gitcode.com/openharmony-sig/rntpc_masked-view/releases)                        | 0.72       |
+| 0.3.3      | [@react-native-ohos/masked-view Releases](https://gitcode.com/openharmony-sig/rntpc_masked-view/releases)                        | 0.77       |
 
 ## Properties
 

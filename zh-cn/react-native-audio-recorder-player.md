@@ -19,8 +19,9 @@
 请到三方库的 Releases 发布地址查看配套的版本信息：
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 3.6.10     | [@react-native-oh-tpl/react-native-audio-recorder-player Releases](https://github.com/react-native-oh-library/react-native-audio-recorder-player/releases) | 0.72       |
-| 3.6.14      | [@react-native-ohos/react-native-audio-recorder-player Releases]()     | 0.77       |
+| 3.6.10@deprecated     | [@react-native-oh-tpl/react-native-audio-recorder-player Releases(deprecated)](https://github.com/react-native-oh-library/react-native-audio-recorder-player/releases) | 0.72       |
+| 3.6.11      | [@react-native-ohos/react-native-audio-recorder-player Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-audio-recorder-player/releases)     | 0.72       |
+| 3.6.14      | [@react-native-ohos/react-native-audio-recorder-player Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-audio-recorder-player/releases)     | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -29,20 +30,12 @@
 #### **npm**
 
 ```bash
-# V3.6.10
-npm install @react-native-oh-tpl/react-native-audio-recorder-player
-
-# V3.6.14
 npm install @react-native-ohos/react-native-audio-recorder-player
 ```
 
 #### **yarn**
 
 ```bash
-# V3.6.10
-yarn add @react-native-oh-tpl/react-native-audio-recorder-player
-
-# V3.6.14
 yarn add @react-native-ohos/react-native-audio-recorder-player
 ```
 
@@ -525,7 +518,10 @@ export default Page;
 ```
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version > @react-native-ohos/react-native-audio-recorder-player@3.6.11，已支持 Autolink，无需手动配置，目前只支持72框架。
+Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -551,17 +547,6 @@ export default Page;
 > [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
 
 打开 `entry/oh-package.json5`，添加以下依赖
-+ V3.6.10
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-
-    "@react-native-oh-tpl/react-native-audio-recorder-player": "file:../../node_modules/@react-native-oh-tpl/react-native-audio-recorder-player/harmony/audio_recorder_player.har"
-  }
-```
-
-+ V3.6.14
 
 ```json
 "dependencies": {
@@ -604,11 +589,6 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-
-# V3.6.10
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-audio-recorder-player/src/main/cpp" ./audio_recorder_player)
-
-# V3.6.14
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-audio-recorder-player/src/main/cpp" ./audio_recorder_player)
 
 # RNOH_END: manual_package_linking_1
@@ -650,10 +630,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
-// V3.6.10
-+ import {RNAudioRecorderPlayerPackage} from '@react-native-oh-tpl/react-native-audio-recorder-player/ts';
-
-// V3.6.14
 + import {RNAudioRecorderPlayerPackage} from '@react-native-ohos/react-native-audio-recorder-player/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -684,8 +660,10 @@ ohpm install
 请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 3.6.10     | [@react-native-oh-tpl/react-native-audio-recorder-player Releases](https://github.com/react-native-oh-library/react-native-audio-recorder-player/releases) | 0.72       |
-| 3.6.14      | [@react-native-ohos/react-native-audio-recorder-player Releases]()     | 0.77       |
+| 3.6.10@deprecated     | [@react-native-oh-tpl/react-native-audio-recorder-player Releases(deprecated)](https://github.com/react-native-oh-library/react-native-audio-recorder-player/releases) | 0.72       |
+| 3.6.11      | [@react-native-ohos/react-native-audio-recorder-player Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-audio-recorder-player/releases)     | 0.72       |
+| 3.6.14      | [@react-native-ohos/react-native-audio-recorder-player Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-audio-recorder-player/releases)     | 0.77       |
+
 
 ### 权限要求
 
