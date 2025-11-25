@@ -28,6 +28,12 @@ Parse JS SDK 兼容以下版本的 Parse Server，Parse Server服务端搭建可
 
 > [!TIP] 本库依赖[@react-native-oh-tpl/async-storage文档](/zh-cn/react-native-async-storage-async-storage.md)  和 [@react-native-oh-tpl/react-native-get-random-values 文档](/zh-cn/react-native-get-random-values.md)
 
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 支持RN版本 |
+| ---------- | ---------- |
+| 5.3.0      | 0.72/0.77 |
+
 进入到工程目录并输入以下命令：
 
 <!-- tabs:start -->
@@ -211,7 +217,7 @@ export default ParseExample;
 本文档内容基于以下版本验证通过：
 
 1. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.29(SP1); IDE: DevEco Studio 5.0.3.403; ROM: 3.0.0.25;
-
+2. RNOH: 0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
 
 
 ## API

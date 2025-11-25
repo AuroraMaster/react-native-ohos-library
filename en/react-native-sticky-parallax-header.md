@@ -12,11 +12,17 @@
     </a>
 </p>
 
-> [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-sticky-parallax-header)
+> [!TIP] [GitHub address](https://github.com/netguru/sticky-parallax-header)
+
+| Version | Package Name | Repository  | Release  | Support RN version |
+| ------- | ------------ | ----------- |----------|--------------------|
+| 1.1.1  | @react-native-oh-tpl/react-native-sticky-parallax-header | [Github](https://github.com/react-native-oh-library/react-native-sticky-parallax-header)| [GitHub Releases](https://github.com/react-native-oh-library/react-native-sticky-parallax-header/releases) | 0.72       |
+| 1.2.0    | @react-native-ohos/react-native-sticky-parallax-header | [Github ](https://github.com/react-native-oh-library/react-native-sticky-parallax-header)|[GitHub Releases](https://github.com/react-native-oh-library/react-native-sticky-parallax-header/releases) | 0.77 | 
+
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library and download an applicable .tgz package: [@react-native-oh-tpl/react-native-sticky-parallax-header Releases](https://github.com/react-native-oh-library/react-native-sticky-parallax-header/releases).
+Please go to the Releases address of the third-party library to view the corresponding version information：[@react-native-oh-tpl/react-native-sticky-parallax-header Releases](https://github.com/react-native-oh-library/react-native-sticky-parallax-header/releases).
 
 Go to the project directory and execute the following instruction:
 
@@ -27,13 +33,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-sticky-parallax-header
+
+#0.77
+npm install @react-native-ohos/react-native-sticky-parallax-header
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-sticky-parallax-header
+# 0.72
+yarn install @react-native-oh-tpl/react-native-sticky-parallax-header
+
+#0.77
+yarn install @react-native-ohos/react-native-sticky-parallax-header
 ```
 
 <!-- tabs:end -->
@@ -157,7 +171,10 @@ If it is not included, follow the guide provided in [@react-native-oh-tpl/react-
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Find the matching version information in the release address of a third-party library and download an applicable .tgz package: [@react-native-oh-tpl/react-native-sticky-parallax-header Releases](https://github.com/react-native-oh-library/react-native-sticky-parallax-header/releases).
+Please go to the Releases address of the third-party library to view the corresponding version information：[@react-native-oh-tpl/react-native-sticky-parallax-header Releases](https://github.com/react-native-oh-library/react-native-sticky-parallax-header/releases).
+
+1. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.29(SP1); IDE: DevEco Studio 5.0.3.403; ROM: 3.0.0.25;
+2. RNOH: 0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
 
 ## Headers
 

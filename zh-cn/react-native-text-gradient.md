@@ -14,15 +14,14 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-text-gradient)
 
+| 三方库版本 |   包 名  |   仓库地址  | 发布信息 | 支持RN版本 |
+| -------- | -------- | --------- |---------|----------|
+| 0.1.7 | @react-native-oh-tpl/react-native-text-gradient |[GitHub ](https://github.com/react-native-oh-library/react-native-text-gradient)| [GitHub Release ](https://github.com/react-native-oh-library/react-native-text-gradient/releases)| 0.72       |
+| 0.2.0 | @react-native-ohos/react-native-text-gradient | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-text-gradient) | [GitCode Release](https://gitcode.com/openharmony-sig/rntpc_react-native-text-gradient/releases)| 0.77       |
 
 ## 安装与使用
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 0.1.7-0.0.4 | [@react-native-oh-tpl/react-native-text-gradient Releases](https://github.com/react-native-oh-library/react-native-text-gradient/releases) | 0.72       |
-| 0.2.0 | [@react-native-ohos/react-native-text-gradient Releases]()           | 0.77       |
 
 进入到工程目录并输入以下命令：
 

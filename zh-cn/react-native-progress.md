@@ -4,7 +4,7 @@
   <h1 align="center"> <code>react-native-progress</code> </h1>
 </p>
 <p align="center">
-    <a href="https://github.com/vonovak/react-native-progress">
+    <a href="https://github.com/oblador/react-native-progress">
         <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
     </a>
     <a href="https://github.com/react-native-oh-library/react-native-progress/blob/sig/LICENSE">
@@ -14,9 +14,16 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-progress)
 
+| 三方库版本 |   包 名  |   仓库地址  | 发布信息 | 支持RN版本 |
+| -------- | -------- | --------- |---------|----------|
+| 5.0.1    | @react-native-oh-tpl/react-native-progress |[Github](https://github.com/react-native-oh-library/react-native-progress) | [Github Releases](https://github.com/react-native-oh-library/react-native-progress/releases) | 0.72       |
+| 5.1.0    | @react-native-ohos/react-native-progress |[GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-progress) |[GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-progress/releases) | 0.77   |
+
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-progress Releases](https://github.com/react-native-oh-library/react-native-progress/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-progress Releases](https://github.com/react-native-oh-library/react-native-progress/releases)。
+
+
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +32,21 @@
 #### **npm**
 
 ```bash
+# V0.72
 npm install @react-native-oh-tpl/react-native-progress
+
+# V0.77
+npm install @react-native-ohos/react-native-progress
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-progress
+# V0.72
+yarn install @react-native-oh-tpl/react-native-progress
+
+# V0.77
+yarn install @react-native-ohos/react-native-progress
 ```
 
 <!-- tabs:end -->
@@ -140,6 +155,10 @@ const styles = StyleSheet.create({
 
 请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-progress Releases](https://github.com/react-native-oh-library/react-native-progress/releases)
 
+1. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.29(SP1); IDE: DevEco Studio 5.0.3.403; ROM: 3.0.0.25;
+2. RNOH: 0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
+
+
 ## 属性
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
@@ -148,18 +167,18 @@ const styles = StyleSheet.create({
 
 详情见[react-native-progress](https://github.com/oblador/react-native-progress?tab=readme-ov-file#properties-for-all-progress-components)
 
-### Properties for all progress components:
+### 属性，用于所有进度组件:
 
 | Name                           | Description                                                                  | Type    | Required | Platform | HarmonyOS Support |
 | ------------------------------ | ---------------------------------------------------------------------------- | ------- | -------- | -------- | ----------------- |
-| animated                       | Whether or not to animate changes to `progress`.                             | boolean | No       | All      | Yes               |
-| indeterminate                  | If set to true, the indicator will spin and `progress` prop will be ignored. | boolean | No       | All      | Yes               |
-| indeterminateAnimationDuration | Sets animation duration in milliseconds when indeterminate is set.           | number  | No       | All      | Yes               |
-| progress                       | Progress of whatever the indicator is indicating. A number between 0 and 1.  | number  | No       | All      | Yes               |
-| color                          | Fill color of the indicator.                                                 | string  | No       | All      | Yes               |
-| unfilledColor                  | Color of the remaining progress.                                             | string  | No       | All      | Yes               |
-| borderWidth                    | Width of outer border, set to `0` to remove.                                 | number  | No       | All      | Yes               |
-| borderColor                    | Color of outer border.                                                       | string  | No       | All      | Yes               |
+| animated                       | 是否为“进度”添加动画。                            | boolean | No       | All      | Yes               |
+| indeterminate                  | 如果设置为true，则指示器将旋转并且“progress”将被忽略。 | boolean | No       | All      | Yes               |
+| indeterminateAnimationDuration | 当设置indeterminate时，以毫秒为单位设置动画持续时间。          | number  | No       | All      | Yes               |
+| progress                       | 指标所显示的进度。0和1之间的数字。  | number  | No       | All      | Yes               |
+| color                          | 指示灯的填充颜色。                                                | string  | No       | All      | Yes               |
+| unfilledColor                  | 剩余进度的颜色。                                            | string  | No       | All      | Yes               |
+| borderWidth                    | 外边框的宽度，设置为“0”以移除。                                | number  | No       | All      | Yes               |
+| borderColor                    | 外边框的颜色。                                                     | string  | No       | All      | Yes               |
 
 ### `Progress.Bar`:
 
@@ -167,12 +186,12 @@ All of the props under _Properties_ in addition to the following:
 
 | Name            | Description                                                                    | Type                            | Required | Platform | HarmonyOS Support |
 | --------------- | ------------------------------------------------------------------------------ | ------------------------------- | -------- | -------- | ----------------- |
-| width           | Full width of the progress bar, set to `null` to use automatic flexbox sizing. | number \| null                  | No       | All      | Yes               |
-| height          | Height of the progress bar.                                                    | number                          | No       | All      | Yes               |
-| borderRadius    | Rounding of corners, set to `0` to disable.                                    | number                          | No       | All      | Yes               |
-| useNativeDriver | Use native driver for the animations.                                          | boolean                         | No       | All      | Yes               |
-| animationConfig | Config that is passed into the `Animated` function.                            | function                        | No       | All      | Yes               |
-| animationType   | Animation type to animate the progress, one of: `decay`, `timing`, `spring`.   | 'decay' \| 'timing' \| 'spring' | No       | All      | Yes               |
+| width           | 进度条的全宽度，设置为‘ null ’以使用自动伸缩大小。 | number \| null                  | No       | All      | Yes               |
+| height          | 进度条的高度。                                                 | number                          | No       | All      | Yes               |
+| borderRadius    | 圆角，设置为‘ 0 ’禁用。                                   | number                          | No       | All      | Yes               |
+| useNativeDriver | 动画使用原生驱动。                                       | boolean                         | No       | All      | Yes               |
+| animationConfig | 传入‘ Animated ’函数的配置。                            | function                        | No       | All      | Yes               |
+| animationType   | 动画类型：`decay`， `timing`, `spring`。   | 'decay' \| 'timing' \| 'spring' | No       | All      | Yes               |
 
 ### `Progress.Circle`:
 
@@ -180,16 +199,16 @@ All of the props under _Properties_ in addition to the following:
 
 | Name             | Description                                                                                                                  | Type                               | Required | Platform | HarmonyOS Support |
 | ---------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | -------- | -------- | ----------------- |
-| size             | Diameter of the circle.                                                                                                      | number                             | No       | All      | Yes               |
-| endAngle         | Determines the endAngle of the circle. A number between `0` and `1`. The final endAngle would be the number multiplied by 2π | number                             | No       | All      | Yes               |
-| thickness        | Thickness of the inner circle.                                                                                               | number                             | No       | All      | Yes               |
-| showsText        | Whether or not to show a text representation of current progress.                                                            | boolean                            | No       | All      | Yes               |
-| formatText       | A function returning a string to be displayed for the textual representation.                                                | function                           | No       | All      | Yes               |
-| textStyle        | Styles for progress text, defaults to a same `color` as circle and `fontSize` proportional to `size` prop.                   | TextStyle                          | No       | All      | Yes               |
-| allowFontScaling | Whether or not to respect device font scale setting.                                                                         | boolean                            | No       | All      | Yes               |
-| direction        | Direction of the circle `clockwise` or `counter-clockwise`.                                                                  | 'clockwise' \| 'counter-clockwise' | No       | All      | Yes               |
-| strokeCap        | Stroke Cap style for the circle `butt`, `square` or `round`.                                                                 | 'butt' \| 'square' \| 'round'      | No       | All      | Yes               |
-| fill             | Fill color of the inner circle.                                                                                              | string                             | No       | All      | Yes               |
+| size             | 圆的直径。                                                                                                  | number                             | No       | All      | Yes               |
+| endAngle         | 确定圆的endAngle。一个介于0和1之间的数字。最终的角度将是数字乘以2π| number                             | No       | All      | Yes               |
+| thickness        | 内圆的厚度。                                                                                            | number                             | No       | All      | Yes               |
+| showsText        | 是否显示当前进度的文本表示。                                                           | boolean                            | No       | All      | Yes               |
+| formatText       | 返回要显示文本表示的字符串的一个函数。                                               | function                           | No       | All      | Yes               |
+| textStyle        | 进度文本的样式，默认与circle相同的`color`， `fontSize`与`size` prop成比例。                   | TextStyle                          | No       | All      | Yes               |
+| allowFontScaling | 是否遵守设备字体比例设置                                                                      | boolean                            | No       | All      | Yes               |
+| direction        | 圆的方向顺时针或逆时针。                                                                | 'clockwise' \| 'counter-clockwise' | No       | All      | Yes               |
+| strokeCap        | 圆形的笔画样式为‘ butt ’， ‘ square ’或‘ round ’。                                                               | 'butt' \| 'square' \| 'round'      | No       | All      | Yes               |
+| fill             | 填充内圆的颜色。                                                                                            | string                             | No       | All      | Yes               |
 
 ### `Progress.Pie`:
 
@@ -197,21 +216,21 @@ All of the props under _Properties_ in addition to the following:
 
 | Name | Description          | Type   | Required | Platform | HarmonyOS Support |
 | ---- | -------------------- | ------ | -------- | -------- | ----------------- |
-| size | Diameter of the pie. | number | No       | All      | Yes               |
+| size | 饼图的直径。 | number | No       | All      | Yes               |
 
 ### `Progress.CircleSnail`:
 
 | Name             | Description                                                                               | Type                               | Required | Platform | HarmonyOS Support |
 | ---------------- | ----------------------------------------------------------------------------------------- | ---------------------------------- | -------- | -------- | ----------------- |
-| animating        | If the circle should animate.                                                             | boolean                            | No       | All      | Yes               |
-| hidesWhenStopped | If the circle should be removed when not animating.                                       | boolean                            | No       | All      | Yes               |
-| size             | Diameter of the circle.                                                                   | number                             | No       | All      | Yes               |
-| color            | Color of the circle, use an array of colors for rainbow effect.                           | string \| string[]                 | No       | All      | Yes               |
-| thickness        | Thickness of the circle.                                                                  | number                             | No       | All      | Yes               |
-| duration         | Duration of animation.                                                                    | number                             | No       | All      | Yes               |
-| spinDuration     | Duration of spin (orbit) animation.                                                       | number                             | No       | All      | Yes               |
-| strokeCap        | Stroke Cap style for the circle `butt`, `square` or `round`.                              | 'butt' \| 'square' \| 'round'      | No       | All      | Yes               |
-| direction        | Direction in which the circle spins, either "clockwise" or "counter-clockwise" (default). | 'clockwise' \| 'counter-clockwise' | No       | All      | Yes               |
+| animating        | 是否有圆形动画                                                           | boolean                            | No       | All      | Yes               |
+| hidesWhenStopped | 是否需要在动画结束时移除圆。                                     | boolean                            | No       | All      | Yes               |
+| size             | 圆的直径。                                                                 | number                             | No       | All      | Yes               |
+| color            | 圆圈的颜色,使用一组颜色的彩虹效果。                           | string \| string[]                 | No       | All      | Yes               |
+| thickness        | 圆的厚度。                                                                 | number                             | No       | All      | Yes               |
+| duration         | 动画持续时间。                                                                   | number                             | No       | All      | Yes               |
+| spinDuration     | 自旋(轨道)动画的持续时间。                                                    | number                             | No       | All      | Yes               |
+| strokeCap        | 圆形的笔画样式为‘ butt ’， ‘ square ’或‘ round ’。                            | 'butt' \| 'square' \| 'round'      | No       | All      | Yes               |
+| direction        | 圆旋转的方向，“顺时针”或“逆时针”（默认）。 | 'clockwise' \| 'counter-clockwise' | No       | All      | Yes               |
 
 ## 遗留问题
 
