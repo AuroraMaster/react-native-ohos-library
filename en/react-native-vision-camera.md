@@ -19,7 +19,14 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library：[@react-native-oh-tpl/react-native-vision-camera Releases](https://github.com/react-native-oh-library/react-native-vision-camera/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please go to the corresponding Release release address of the third-party library to view the version information of the Release package:
+
+| version | Releases info                                        | Support RN version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 4.0.2 | [@react-native-oh-tpl/react-native-vision-camera Releases](https://github.com/react-native-oh-library/react-native-vision-camera/releases) | 0.72       |
+| 4.7.1 | [@react-native-ohos/react-native-vision-camera Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-vision-camera/blob/br_rnoh0.77/CHANGELOG.md)           | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 > [!TIP] Additional note: The installation commands differ between the 0.72 and 0.77 React Native framework versions, as follows:
@@ -288,9 +295,10 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+This document is verified based on the following versions:
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-vision-camera Releases](https://github.com/react-native-oh-library/react-native-vision-camera/releases)
+1. RNOH: 0.72.75; SDK:HarmonyOS 5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
+2. RNOH:0.77.18;SDK:HarmonyOS 5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
 
 ### Permission Requirements
 
