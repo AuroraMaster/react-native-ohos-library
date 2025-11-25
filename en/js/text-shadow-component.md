@@ -1,20 +1,16 @@
-> Template version: v0.2.2
+> Template version: v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>text-shadow-component</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/bswnth48/text-shadow-react-native">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/bswnth48/text-shadow-react-native/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
 
-> [!TIP] [ GitHub address](https://github.com/bswnth48/text-shadow-react-native)
+Please go to the Releases release address of the third-party library to view the supporting version information: [text-shadow-component Releases](https://github.com/bswnth48/text-shadow-react-native/releases). For older versions that are not published to npm, install the tgz package by referring to the [Installation Guide](/en/tgz-usage-en.md).
 
-> [!TIP] Renders text shadow only on RNOH 0.77+; RNOH 0.72 is not supported.
+| Version |  Support RN version|
+| ---------- |---------- |
+| 1.0.7 | 0.72/0.77 |
+
+> [!TIP] Starting from RNOH 0.72.97, RNOH 0.72 supports shadow rendering.
 
 ## Installation and Usage
 
@@ -88,17 +84,14 @@ export default function App() {
 
 This document is verified with the following environment:
 
-1. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0 Release (API Version 12 Release); IDE: DevEco Studio 5.1.1.830; ROM: 5.0.0.150 SP8
-
-> Note: On RNOH 0.77+, native text shadow drawing is implemented. Earlier versions (e.g., RNOH 0.72) will not render text shadow.
+1. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0 Release (API Version 12 Release); IDE: DevEco Studio 5.1.1.830; ROM: 5.0.0.150 SP8;
+2. RNOH: 0.72.97; SDK: HarmonyOS 6.0.0.47 (API Version 20 Release); IDE: DevEco Studio 6.0.0 Release; ROM: 6.0.0.108 SP6;
 
 ## Properties
 
 > [!TIP] The Platform column indicates the platform where the properties are supported in the original third-party library.
->
+
 > [!TIP] If the value of HarmonyOS Support is yes, it means the HarmonyOS platform supports this property; no means the opposite; partially means some capabilities of this property are supported. The usage is the same across platforms and the effect targets iOS/Android parity.
->
-> [!TIP] This document provides support conclusions for HarmonyOS (RNOH 0.77+) only.
 
 | Name        | Description                                             | Type   | Required | Platform    | HarmonyOS Support |
 | ----------- | ------------------------------------------------------- | ------ | -------- | ----------- | ----------------- |
@@ -108,9 +101,9 @@ This document is verified with the following environment:
 
 ## Known Issues
 
-Text shadow is not displayed on RNOH 0.72. [issue#ID0FUU](https://gitee.com/react-native-oh-library/usage-docs/issues/ID0FUU)
-
 ## Others
+
+Starting from RNOH 0.72.97, RNOH 0.72 supports shadow rendering.
 
 ## License
 
