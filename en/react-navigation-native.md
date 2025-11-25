@@ -13,21 +13,36 @@
 
 > [!TIP] [GitHub address](https://github.com/react-navigation/react-navigation/tree/6.x/packages/native)
 
+Go to the project directory and execute the following instruction:
+
+| Version | Support RN version |
+| ------- | ------------------ |
+| 6.1.17  | 0.72               |
+| 7.1.6   | 0.77               |
+
+Go to the project directory and execute the following instruction:
 
 ## Installation and Usage
 
-Go to the project directory and execute the following instruction:
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# For RN0.72
 npm install @react-navigation/native@6.1.17
+
+# For RN0.77
+npm install @react-navigation/native@7.1.6
 ```
 #### **yarn**
 
 ```bash
+# For RN0.72
 yarn add @react-navigation/native@6.1.17
+
+# For RN0.77
+yarn add @react-navigation/native@7.1.6
 ```
 
 
@@ -83,6 +98,7 @@ This document is verified based on the following versions:
 2. RNOH: 0.72.13; SDK: HarmonyOS NEXT Developer Preview1; IDE: DevEco Studio 4.1.3.500; ROM: 2.0.0.58;
 3. RNOH: 0.72.20-CAPI; SDK: HarmonyOS NEXT Developer Beta1 B.0.18; IDE: DevEco Studio 5.0.3.200; ROM: 3.0.0.18;
 4. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.25; IDE: DevEco Studio 5.0.3.400SP7; ROM: 3.0.0.25;
+5. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## Properties
 

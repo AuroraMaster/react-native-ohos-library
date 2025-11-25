@@ -15,9 +15,14 @@
 
 > [!TIP] [Github 地址](https://github.com/Flair-Dev/react-native-awesome-gallery)
 
+请到三方库的 Releases 发布地址查看配套的版本信息：
+| 三方库版本 | 支持RN版本 |
+| ---------- | ---------- |
+| 0.4.2      | 0.72/0.77  |
+
 ## 安装与使用
 
-进入到工程目录并输入以下命令：
+进入到工程目录并输入以下命令
 
 <!-- tabs:start -->
 
@@ -80,6 +85,10 @@ export default function App() {
 
 2. RNOH: 0.72.29; SDK: HarmonyOS-NEXT-DB6 5.0.0.61; IDE: DevEco Studio  5.0.3.706; ROM: 5.0.0.60;
 
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
+
+   
+
 ## 属性
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
@@ -88,28 +97,27 @@ export default function App() {
 
 | Name              | Description                     | Type           | Required | Platform    | HarmonyOS Support |
 | ----------------- | ------------------------------- | -------------- | -------- | ----------- | ----------------- |
-| data        | Array of items to render       | T[] | Yes       | iOS/Android | Yes               |
-| renderItem       | Callback func which can be used to render custom image component, e.g FastImage. NOTE: You have to call setImageDimensions({width, height}) parameter after image is loaded         | (renderItemInfo: {item: T, index: number, setImageDimensions: Function}) => React.ReactElement | No       | iOS/Android | Yes               |
-| keyExtractor | Callback func which provides unique keys for items  | (item: T, index: number) => string or number | No       | iOS/Android | Yes               |
-| initialIndex     | The initial image index | number        | No       | iOS/Android | Yes               |
-| onIndexChange     | Is called when index of active item is changed | boolean        | No       | iOS/Android | Yes               |
-| numToRender     | Amount of items rendered in gallery simultaneously | number        | No       | iOS/Android | Yes               |
-| emptySpaceWidth     | Width of empty space between items | number        | No       | iOS/Android | Yes               |
-| doubleTapScale     | Image scale when double tap is fired | number        | No       | iOS/Android | No               |
-| doubleTapInterval     | Time in milliseconds between single and double tap events | number        | No       | iOS/Android | No               |
-| maxScale     | Maximum scale user can set with gesture | number        | No       | iOS/Android | Yes               |
-| pinchEnabled     | Is pinch gesture enabled | boolean        | No       | iOS/Android | Yes               |
-| swipeEnabled     | Is pan gesture enabled | boolean        | No       | iOS/Android | Yes               |
-| doubleTapEnabled     | Is double tap enabled | boolean        | No       | iOS/Android | No               |
-| disableTransitionOnScaledImage     | Disables transition to next/previous image when scale > 1 | boolean        | No       | iOS/Android | Yes               |
-| hideAdjacentImagesOnScaledImage     | Hides next and previous images when scale > 1 | boolean        | No       | iOS/Android | Yes               |
-| disableVerticalSwipe     | Disables vertical swipe when scale == 1 | boolean        | No       | iOS/Android | Yes               |
-| disableSwipeUp     | Disables swipe up when scale == 1 | boolean        | No       | iOS/Android | Yes               |
-| loop     | Allows user to swipe infinitely. Works when data.length > 1 | boolean        | No       | iOS/Android | Yes               |
-| onScaleChange     | Is called when scale is changed | (scale: number) => void        | No       | iOS/Android | Yes               |
-| onScaleChangeRange     | Shows range of scale in which onScaleChange is called | {start: number, end: number}        | No       | iOS/Android | Yes               |
-| containerDimensions     | Dimensions object for the View that wraps gallery. | {width: number, height: number}        | No       | iOS/Android | Yes               |
-| style     | Is double tap enabled | Style of container        | No       | iOS/Android | Yes               |
+| data        | 要渲染的条目数组       | T[] | Yes       | iOS/Android | Yes               |
+| renderItem       | 用于渲染自定义图片组件（如 FastImage）的回调函数。注意：图片加载完成后必须调用 setImageDimensions({width, height}) 参数         | (renderItemInfo: {item: T, index: number, setImageDimensions: Function}) => React.ReactElement | No       | iOS/Android | Yes               |
+| keyExtractor | 为条目提供唯一 key 的回调函数  | (item: T, index: number) => string or number | No       | iOS/Android | Yes               |
+| initialIndex     | 初始显示的图片索引 | number        | No       | iOS/Android | Yes               |               |
+| numToRender     | 画廊中同时渲染的条目数量 | number        | No       | iOS/Android | Yes               |
+| emptySpaceWidth     | 条目之间的留白宽度 | number        | No       | iOS/Android | Yes               |
+| doubleTapScale     | 双击时应用的图片缩放比例 | number        | No       | iOS/Android | No               |
+| doubleTapInterval     | 单击与双击之间的毫秒间隔 | number        | No       | iOS/Android | No               |
+| maxScale     | 用户通过手势可设置的最大缩放值 | number        | No       | iOS/Android | Yes               |
+| pinchEnabled     | 是否启用捏合手势 | boolean        | No       | iOS/Android | Yes               |
+| swipeEnabled     | 是否启用平移手势 | boolean        | No       | iOS/Android | Yes               |
+| doubleTapEnabled     | 是否启用双击 | boolean        | No       | iOS/Android | No               |
+| disableTransitionOnScaledImage     | 当缩放比例大于 1 时禁用前后图片的切换 | boolean        | No       | iOS/Android | Yes               |
+| hideAdjacentImagesOnScaledImage     | 当缩放比例大于 1 时隐藏前后相邻图片 | boolean        | No       | iOS/Android | Yes               |
+| disableVerticalSwipe     | 当缩放比例等于 1 时禁用垂直滑动 | boolean        | No       | iOS/Android | Yes               |
+| disableSwipeUp     | 当缩放比例等于 1 时禁用上滑手势 | boolean        | No       | iOS/Android | Yes               |
+| loop     | 允许用户循环滑动，data.length 大于 1 时生效 | boolean        | No       | iOS/Android | Yes               |
+| onScaleChange     | 当缩放值变化时触发 | (scale: number) => void        | No       | iOS/Android | Yes               |
+| onScaleChangeRange     | 指定触发 onScaleChange 的缩放区间 | {start: number, end: number}        | No       | iOS/Android | Yes               |
+| containerDimensions     | 包裹画廊的容器 View 尺寸对象 | {width: number, height: number}        | No       | iOS/Android | Yes               |
+| style     | 是否启用双击 | Style of container        | No       | iOS/Android | Yes               |
 
 ## 事件
 
@@ -119,14 +127,15 @@ export default function App() {
 
 | Name               | Description                                        | Type             | Required | Platform    | HarmonyOS Support |
 | ------------------ | -------------------------------------------------- | ---------------- | -------- | ----------- | ----------------- |
-| onSwipeToClose()         | Fired when user swiped to top/bottom                                  | function         | No       | iOS/Android | Yes               |
-| onTranslationYChange(translationY: number, shouldClose: boolean) | 'worklet'; Fired when user is swiping vertically to close the gallery                         | function         | No       | iOS/Android | No               |
-| onTap()          | Fired when user tap on image                                | string or number | No       | iOS/Android | Yes               |
-| onDoubleTap(toScale: number)        | Fired when user double tap on image                                 | function         | No       | iOS/Android | No               |
-| onLongPress()              | Fired when long press is detected                                         | function           | No       | iOS/Android | Yes               |
-| onScaleStart(scale: number)         | Fired when pinch gesture starts                             | function            | No       | iOS/Android | Yes               |
-| onScaleEnd(scale: number) | Fired when pinch gesture ends. Use case: add haptic feedback when user finished gesture with scale > maxScale or scale < 1                    | function            | No       | iOS/Android | Yes               |
-| onPanStart()           | Fired when pan gesture starts                                    | function            | No       | iOS/Android | Yes               |
+| onSwipeToClose()         | 当用户向上/向下滑动至顶部或底部时触发                                  | function         | No       | iOS/Android | Yes               |
+| onTranslationYChange(translationY: number, shouldClose: boolean) | "worklet"; 当用户垂直滑动以关闭画廊时触发                         | function         | No       | iOS/Android | No               |
+| onTap()          | 当用户点击图片时触发                                | function | No       | iOS/Android | Yes               |
+| onIndexChange     | 当当前激活项的索引变化时触发 | function        | No       | iOS/Android | Yes
+| onDoubleTap(toScale: number)        | 当用户双击图片时触发                                 | function         | No       | iOS/Android | No               |
+| onLongPress()              | 检测到长按时触发                                         | function           | No       | iOS/Android | Yes               |
+| onScaleStart(scale: number)         | 捏合手势开始时触发                             | function            | No       | iOS/Android | Yes               |
+| onScaleEnd(scale: number) | 捏合手势结束时触发，可用于在缩放 > maxScale 或 < 1 时添加触感反馈                    | function            | No       | iOS/Android | Yes               |
+| onPanStart()           | 平移手势开始时触发                                    | function            | No       | iOS/Android | Yes               |
 
 ## 静态方法
 
@@ -136,8 +145,8 @@ export default function App() {
 
 | Name               | Description                                        | Type             | Required | Platform    | HarmonyOS Support |
 | ------------------ | -------------------------------------------------- | ---------------- | -------- | ----------- | ----------------- |
-| setIndex        | Sets active index                                  | (newIndex: number, animated?: boolean) => void         | No       | iOS/Android | Yes               |
-| reset | Resets scale, translation                         | (animated?: boolean) => void         | No       | iOS/Android | Yes               |
+| setIndex        | 设置当前激活的索引                                  | (newIndex: number, animated?: boolean) => void         | No       | iOS/Android | Yes               |
+| reset | 重置缩放与位移                         | (animated?: boolean) => void         | No       | iOS/Android | Yes               |
 
 ## 遗留问题
 - [ ] onTranslationYChange事件设置后，拖动图片会发生异常，iOS 和 Android平台均有该问题: [issue#84](https://github.com/pavelbabenko/react-native-awesome-gallery/issues/84)
