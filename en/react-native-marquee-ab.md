@@ -14,6 +14,12 @@
 
 > [!TIP] [GitHub address](https://github.com/ZhangTaoK/react-native-marquee-ab)
 
+| Version                 | Support RN version                 |
+| ------------------------- | -------------------------- |
+| 1.2.6                |  0.72/0.77 |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+
 ## Installation and Usage
 
 Go to the project directory and execute the following instruction:
@@ -89,6 +95,7 @@ This document is verified based on the following versions:
 
 1. RNOH: 0.72.29; SDK: HarmonyOS NEXT Developer Beta6; IDE: DevEco Studio 5.0.3.706; ROM: NEXT.0.0.65;
 2. RNOH: 0.72.33; SDK: OpenHarmony 5.0.0.71 (API Version 12 Release); IDE: DevEco Studio 5.0.3.900; ROM: NEXT.0.0.71;
+3. RNOH: 0.77.17; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## Properties
 
@@ -139,7 +146,7 @@ This document is verified based on the following versions:
 
 ## Known Issues
 
-- [ ] The reverse property of MarqueeHorizontal takes effect only when it is modified for the first time in HarmonyOS. However, this property in the original third-party library is invalid in iOS and not compatible. [issue#58](https://github.com/ZhangTaoK/react-native-marquee-ab/issues/58).
+- [ ] The reverse property of MarqueeHorizontal has no effect in HarmonyOS. However, this property in the original third-party library is invalid in iOS and not compatible. [issue#58](https://github.com/ZhangTaoK/react-native-marquee-ab/issues/58).
 
 ## Others
 
