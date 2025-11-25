@@ -4,20 +4,24 @@
   <h1 align="center"> <code>@react-navigation/elements</code> </h1>
 </p>
 <p align="center">
-    <a href="https://github.com/react-navigation/react-navigation/tree/6.x/packages/elements">
+    <a href="https://github.com/react-navigation/react-navigation/tree/main/packages/elements">
         <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20web%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
     </a>
-    <a href="https://github.com/react-navigation/react-navigation/blob/6.x/packages/elements/LICENSE">
+    <a href="https://github.com/react-navigation/react-navigation/blob/main/packages/elements/LICENSE">
         <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-navigation/tree/sig/packages/elements)
+本项目基于 [@react-navigation/bottom-tabs](https://github.com/react-navigation/react-navigation/tree/6.x/packages/bottom-tabs) 开发。
 
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/elements`，具体版本所属关系如下：
+
+| Version                   | Package Name                           | Repository         | Release                    |Support RN version|
+| ------------------------- |----------------------------------------| ------------------ | -------------------------- |-------------------|
+| 1.3.21 | @react-native-oh-tpl/elements | [Github](https://github.com/react-native-oh-library/react-navigation/tree/sig/packages/elements) | [Github Releases](https://github.com/react-native-oh-library/react-navigation/tree/sig/packages/elements/releases) |0.72       |
+| 2.3.9    |@react-native-ohos/elements  | [Github](https://gitcode.com/openharmony-sig/rntpc_react-navigation/tree/br_rnoh0.77/packages/elements) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-navigation/releases) |0.77       |
 
 ## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/elements Releases](https://github.com/react-native-oh-library/react-navigation/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -26,13 +30,21 @@
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/elements
+
+# 0.77
+npm install @react-native-ohos/elements
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/elements
+
+# 0.77
+yarn add @react-native-ohos/elements
 ```
 
 <!-- tabs:end -->
@@ -82,7 +94,8 @@ export default NavigationElements;
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-navigation Releases](https://github.com/react-native-oh-library/react-navigation/releases?q=elements&expanded=true)
+1. RNOH: 0.72.27; SDK: HarmonyOS 5.1.1 Release SDK; IDE: DevEco Studio 5.1.1 Release; ROM: 5.0.1.120;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -93,49 +106,55 @@ export default NavigationElements;
 以下属性已验证，更多使用详情请查看 [react-navigation/elements 的文档介绍](https://reactnavigation.org/docs/elements)
 
 **Header Props**
-| Name                           | Description                                                                                                                | Type                | Required | Platform | HarmonyOS Support |
-|--------------------------------|----------------------------------------------------------------------------------------------------------------------------|---------------------|----------|----------|-------------------|
-| headerTitle                    | String or a function that returns a React Element to be used by the header.                                                |              string       | no       | all      | yes               |
-| headerTitleAlign               | How to align the header title                                                                                              | 'left'&#124;'center' | no       | all      | yes               |
-| headerTitleAllowFontScaling    | Whether header title font should scale to respect Text Size accessibility settings.                                        | boolean             | no       | all      | yes               |
-| headerLeft                     | Function which returns a React Element to display on the left side of the header.                                          | function            | no       | all      | yes               |
-| headerRight                    | Function which returns a React Element to display on the right side of the header.                                         | function            | no       | all      | yes               |
-| headerShadowVisible            | Whether to hide the elevation shadow (Android) or the bottom border (iOS) on the header.                                   | boolean             | no       | all      | yes               |
-| headerStyle                    | Style object for the header. You can specify a custom background color here                                                | object              | no       | all      | yes               |
-| headerTitleStyle               | Style object for the title component                                                                                       | object              | no       | all      | yes               |
-| headerLeftContainerStyle       | Customize the style for the container of the headerLeft component, for example to add padding.                             | object              | no       | all      | yes               |
-| headerRightContainerStyle      | Customize the style for the container of the headerRight component, for example to add padding.                            | object              | no       | all      | yes               |
-| headerTitleContainerStyle      | Customize the style for the container of the headerTitle component, for example to add padding.                            | object              | no       | all      | yes               |
-| headerBackgroundContainerStyle | Style object for the container of the headerBackground element.                                                            | object              | no       | all      | yes               |
-| headerTintColor                | Tint color for the header                                                                                                  | string              | no       | all      | yes               |
-| headerPressColor               | Color for material ripple (Android >= 5.0 only)                                                                            | string              | no       | Android  | no                |
-| headerPressOpacity             | Press opacity for the buttons in header (Android < 5.0, and iOS)                                                           | number              | no       | all      | yes               |
-| headerTransparent              | Defaults to false. If true, the header will not have a background unless you explicitly provide it with headerBackground.  | boolean             | no       | all      | yes               |
-| headerBackground               | Function which returns a React Element to render as the background of the header.                                          | function            | no       | all      | yes               |
-| headerStatusBarHeight          | Extra padding to add at the top of header to account for translucent status bar.                                           | number              | no       | all      | yes               |
+
+| Name                                    | Description                                          | Type                | Required | Platform | HarmonyOS Support |
+|-----------------------------------------|------------------------------------------------------|---------------------|----------|----------|-------------------|
+| headerTitle                             | 字符串或返回要用作标题的 React 元素的函数                             |              string       | no       | all      | yes               |
+| headerTitleAlign                        | 如何对齐标题                                               | 'left'&#124;'center' | no       | all      | yes               |
+| headerTitleAllowFontScaling             | 标题字体是否应缩放以遵循文本大小的无障碍设置                               | boolean             | no       | all      | yes               |
+| headerLeft                              | 返回要在标题左侧显示的 React 元素的函数                              | function            | no       | all      | yes               |
+| headerRight                             | 返回要在标题右侧显示的 React 元素的函数                              | function            | no       | all      | yes               |
+| headerShadowVisible                     | 是否隐藏标题的高度阴影（安卓）或底部边框（iOS）                            | boolean             | no       | all      | yes               |
+| headerStyle                             | 标题的样式对象，可在此指定自定义背景颜色                                 | object              | no       | all      | yes               |
+| headerTitleStyle                        | 标题组件的样式对象                                            | object              | no       | all      | yes               |
+| headerLeftContainerStyle                | 自定义标题左侧组件容器的样式，例如添加内边距                               | object              | no       | all      | yes               |
+| headerRightContainerStyle               | 自定义标题右侧组件容器的样式，例如添加内边距                               | object              | no       | all      | yes               |
+| headerTitleContainerStyle               | 自定义标题标题组件容器的样式，例如添加内边距                               | object              | no       | all      | yes               |
+| headerBackgroundContainerStyle          | 标题背景元素容器的样式对象                                        | object              | no       | all      | yes               |
+| headerTintColor                         | 标题的着色颜色                                              | string              | no       | all      | yes               |
+| headerPressColor                        | 材质涟漪效果的颜色（仅限安卓 5.0 及以上）                              | string              | no       | Android  | no                |
+| headerPressOpacity                      | 标题按钮的按下透明度（安卓 5.0 以下和 iOS）                           | number              | no       | all      | yes               |
+| headerTransparent                       | 默认为 false，若为 true，标题将没有背景，除非通过 headerBackground 显式提供 | boolean             | no       | all      | yes               |
+| headerBackground                        | 返回用作标题背景的 React 元素的函数                                | function            | no       | all      | yes               |
+| headerStatusBarHeight                   | 为适配半透明状态栏在标题顶部添加的额外内边距                               | number              | no       | all      | yes               |
+| headerSearchBarOptions<sup>2.3.8+</sup> | 标题搜索栏的选项                                             | object | no | all | yes |
+| HeaderButton<sup>2.3.8+</sup>           | 用于在标题中显示按钮的组件                                        | function | no | all | yes |
+| Button<sup>2.3.8+</sup>                 | 渲染按钮的组件                                              | function | no | all | yes |
+| Label<sup>2.3.8+</sup>                  | 标签组件用于渲染小段文本                                         | function | no | all | yes |
 
 
 **Header Components Props**
 
-| Name               | Description                                                                                                                  | Type     | Required | Platform | HarmonyOS Support |
-|--------------------|------------------------------------------------------------------------------------------------------------------------------|----------|----------|----------|-------------------|
-| HeaderBackground   | A component containing the styles used in the background of the header, such as the background color and shadow.             | function | no       | all      | yes               |
-| HeaderTitle        | A component used to show the title text in header. It's the default for headerTitle. It accepts the same props as a Text.    | function | no       | all      | yes               |
-| HeaderBackButton   | A component used to show the back button header. It's the default for headerLeft in the stack navigator.                     | function | no       | all      | yes               |
-| MissingIcon        | A component that renders a missing icon symbol. It can be used as a fallback for icons to show that there's a missing icon.  | function | no       | all      | yes               |
-| PlatformPressable  | A component which provides an abstraction on top of Pressable to handle platform differences.                                | function | no       | all      | yes               |
-| ResourceSavingView | A component which aids in improving performance for inactive screens by utilizing removeClippedSubviews.                     | function | no       | all      | yes               |
+| Name               | Description                                        | Type     | Required | Platform | HarmonyOS Support |
+|--------------------|----------------------------------------------------|----------|----------|----------|-------------------|
+| HeaderBackground   | 用于包含标题背景样式（如背景色和阴影）的组件                             | function | no       | all      | yes               |
+| HeaderTitle        | 用于显示标题栏标题文本的组件，它是 headerTitle 的默认组件，接受与 Text 相同的属性 | function | no       | all      | yes               |
+| HeaderBackButton   | 用于显示标题栏返回按钮的组件，它是栈导航器中 headerLeft 的默认组件            | function | no       | all      | yes               |
+| MissingIcon        | 渲染缺失图标符号的组件，可作为图标缺失时的备用显示                          | function | no       | all      | yes               |
+| PlatformPressable  | 在 Pressable 基础上提供平台差异处理抽象的组件                       | function | no       | all      | yes               |
+| ResourceSavingView | 通过利用 removeClippedSubviews 提升非活动屏幕性能的组件            | function | no       | all      | yes               |
 
 **Utilities**
+
 | Name                   | Description                                                                                                       | Type     | Required | Platform | HarmonyOS Support |
 |------------------------|-------------------------------------------------------------------------------------------------------------------|----------|----------|----------|-------------------|
-| SafeAreaProviderCompat | A wrapper over the SafeAreaProvider component from `react-native-safe-area-context which includes initial values. | function | no       | all      | yes               |
-| HeaderBackContext      | React context that can be used to get the back title of the parent screen.                                        | function | no       | all      | yes               |
-| HeaderShownContext     | React context that can be used to check if a header is visible in a parent screen.                                | function | no       | all      | yes               |
-| HeaderHeightContext    | React context that can be used to get the height of the nearest visible header in a parent screen.                | function | no       | all      | yes               |
-| useHeaderHeight        | Hook that returns the height of the nearest visible header in the parent screen.                                  | function | no       | all      | yes               |
-| getDefaultHeaderHeight | Helper that returns the default header height.                                                                    | function | no       | all      | yes               |
-| getHeaderTitle         | Helper that returns the title text to use in header.                                                              | function | no       | all      | yes               |    
+| SafeAreaProviderCompat | 对 react-native-safe-area-context 中 SafeAreaProvider 组件的封装，包含初始值 | function | no       | all      | yes               |
+| HeaderBackContext      | React 上下文，可用于获取父屏幕的返回标题  | function | no       | all      | yes               |
+| HeaderShownContext     | React 上下文，可用于检查父屏幕中标题栏是否可见 | function | no       | all      | yes               |
+| HeaderHeightContext    | React 上下文，可用于获取父屏幕中最邻近可见标题栏的高度 | function | no       | all      | yes               |
+| useHeaderHeight        | 钩子函数，返回父屏幕中最邻近可见标题栏的高度 | function | no       | all      | yes               |
+| getDefaultHeaderHeight | 返回默认标题栏高度的辅助工具 | function | no       | all      | yes               |
+| getHeaderTitle         | 返回标题栏中使用的标题文本的辅助工具 | function | no       | all      | yes               |
 
 
 ## 遗留问题
@@ -150,4 +169,4 @@ export default NavigationElements;
   
 ## 开源协议
 
-本项目基于 [The MIT License (MIT)](https://github.com/react-navigation/react-navigation/blob/6.x/packages/elements/LICENSE) ，请自由地享受和参与开源。
+本项目基于 [The MIT License (MIT)](https://github.com/react-navigation/react-navigation/blob/main/packages/elements/LICENSE) ，请自由地享受和参与开源。

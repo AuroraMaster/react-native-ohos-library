@@ -4,36 +4,46 @@
   <h1 align="center"> <code>@react-navigation/elements</code> </h1>
 </p>
 <p align="center">
-    <a href="https://github.com/react-navigation/react-navigation/tree/6.x/packages/elements">
+    <a href="https://github.com/react-navigation/react-navigation/tree/main/packages/elements">
         <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20web%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
     </a>
-    <a href="https://github.com/react-navigation/react-navigation/blob/6.x/packages/elements/LICENSE">
+    <a href="https://github.com/react-navigation/react-navigation/blob/main/packages/elements/LICENSE">
         <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-navigation/tree/sig/packages/elements)
+This project is based on [@react-navigation/bottom-tabs](https://github.com/react-navigation/react-navigation/tree/6.x/packages/bottom-tabs).
 
+This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is:`@react-native-ohos/elements`, The version correspondence details are as follows:
+
+| Version                   | Package Name                           | Repository         | Release                    |Support RN version|
+| ------------------------- |----------------------------------------| ------------------ | -------------------------- |-------------------|
+| 1.3.21 | @react-native-oh-tpl/elements | [Github](https://github.com/react-native-oh-library/react-navigation/tree/sig/packages/elements) | [Github Releases](https://github.com/react-native-oh-library/react-navigation/tree/sig/packages/elements/releases) |0.72       |
+| 2.3.9   |@react-native-ohos/elements  | [Github](https://gitcode.com/openharmony-sig/rntpc_react-navigation/tree/br_rnoh0.77/packages/elements) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-navigation/releases) |0.77       |
 
 ## 安装与使用
 
-Find the matching version information in the release address of a third-party library：[@react-native-oh-tpl/elements Releases](https://github.com/react-native-oh-library/react-navigation/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
-
 进入到工程目录并输入以下命令：
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/elements
+
+# 0.77
+npm install @react-native-ohos/elements
 ```
 
 #### **yarn**
-
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/elements
+
+# 0.77
+yarn add @react-native-ohos/elements
 ```
 
 <!-- tabs:end -->
@@ -81,9 +91,10 @@ export default NavigationElements;
 
 ## 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-navigation Releases](https://github.com/react-native-oh-library/react-navigation/releases?q=elements&expanded=true)
+1. RNOH: 0.72.27; SDK: HarmonyOS 5.1.1 Release SDK; IDE: DevEco Studio 5.1.1 Release; ROM: 5.0.1.120;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -114,7 +125,10 @@ export default NavigationElements;
 | headerTransparent              | Defaults to false. If true, the header will not have a background unless you explicitly provide it with headerBackground.  | boolean             | no       | all      | yes               |
 | headerBackground               | Function which returns a React Element to render as the background of the header.                                          | function            | no       | all      | yes               |
 | headerStatusBarHeight          | Extra padding to add at the top of header to account for translucent status bar.                                           | number              | no       | all      | yes               |
-
+| headerSearchBarOptions<sup>2.3.8+</sup> | Options for the search bar in the header. | object | no | all | yes |
+| HeaderButton<sup>2.3.8+</sup> | A component used to show a button in header. | function | no | all | yes |
+| Button<sup>2.3.8+</sup> | A component that renders a button. | function | no | all | yes |
+| Label<sup>2.3.8+</sup> | The Label component is used to render small text | function | no | all | yes |
 
 **Header Components Props**
 
