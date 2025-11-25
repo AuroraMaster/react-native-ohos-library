@@ -13,11 +13,16 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-localization-settings)
+本项目基于 [react-native-localization-settings](https://github.com/jakex7/react-native-localization-settings) 开发。
+
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-localization-settings`，具体版本所属关系如下：
+
+| Version     | Package Name                                      | Repository         | Release                    |Support RN version|
+|-------------| ------------------------------------------------- | ------------------ | -------------------------- |-------------------|
+| 1.0.2-0.0.1 | @react-native-oh-tpl/react-native-localization-settings | [Github](https://github.com/react-native-oh-library/react-native-localization-settings) | [Github Releases](https://github.com/react-native-oh-library/react-native-localization-settings/releases) |0.72       |
+| 1.2.1       | @react-native-ohos/react-native-localization-settings   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-localization-settings) | [GitCode Releases]() |0.77       |
 
 ## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-localization-settings Releases](https://github.com/react-native-oh-library/react-native-localization-settings/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -26,13 +31,22 @@
 #### **npm**
 
 ```bash
+
+# 0.72
 npm install @react-native-oh-tpl/react-native-localization-settings
+
+# 0.77
+npm install @react-native-ohos/react-native-localization-settings
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-localization-settings
+
+# 0.77
+yarn add @react-native-ohos/react-native-localization-settings
 ```
 
 <!-- tabs:end -->
@@ -149,11 +163,22 @@ const styles = StyleSheet.create({
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- 0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-localization-settings": "file:../../node_modules/@react-native-oh-tpl/react-native-localization-settings/harmony/localization_settings.har"
   }
+```
+
+- 0.77
+
+```json
+"dependencies": {
+"@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+"@react-native-ohos/react-native-localization-settings": "file:../../node_modules/@react-native-ohos/react-native-localization-settings/harmony/localization_settings.har"
+}
 ```
 
 点击右上角的 `sync` 按钮
@@ -204,7 +229,8 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-localization-settings Releases](https://github.com/react-native-oh-tpl/react-native-localization-settings/releases)
+1. RNOH: 0.72.27; SDK: HarmonyOS 5.1.1 Release SDK; IDE: DevEco Studio 5.1.1 Release; ROM: 5.0.1.120;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 静态方法
 
@@ -214,11 +240,11 @@ ohpm install
 
 > [!TIP] 在设置改变语言之前，确保手机系统添加相应语言
 
-| Name                       | Description                           | Type     | Required | Platform    | HarmonyOS Support |
-| -------------------------- | ------------------------------------- | -------- | -------- | ----------- | ----------------- |
-| I18nLanguageDetectorModule | i18next language detector             | function | no       | iOS/Android | yes               |
-| getLanguage()              | Function to get current language.     | function | no       | iOS/Android | yes               |
-| setLanguage()              | Function to set the current language. | function | no       | iOS/Android | yes               |
+| Name                       | Description | Type     | Required | Platform    | HarmonyOS Support |
+| -------------------------- |-------------| -------- | -------- | ----------- | ----------------- |
+| I18nLanguageDetectorModule | i18next语言检测器 | function | no       | iOS/Android | yes               |
+| getLanguage()              | 获取当前语言      | function | no       | iOS/Android | yes               |
+| setLanguage()              | 设置当前语言      | function | no       | iOS/Android | yes               |
 
 ## 遗留问题
 
