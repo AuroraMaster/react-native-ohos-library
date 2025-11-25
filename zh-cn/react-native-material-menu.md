@@ -18,6 +18,11 @@
 
 > [!TIP] [Github 地址](https://github.com/mxck/react-native-material-menu)
 
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本                 | 支持RN版本 |
+| ------------------------- | -------------------------- |
+| 0.2.2 | 0.72/0.77 |
 
 ## 安装与使用
 
@@ -83,6 +88,7 @@ export default function App() {
 
 1. RNOH：0.72.27; SDK：HarmonyOS-Next-DB1 5.0.0.29(SP1); IDE：DevEco Studio 5.0.3.400SP7; ROM：3.0.0.25;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 
 ## 属性
@@ -95,32 +101,32 @@ export default function App() {
 
 | Name  | Description | Type | Required | Platform | HarmonyOS Support  |
 | ----  | ----------- | ---- | -------- | ---- | ------------ |
-| children | Components rendered in menu (required)   | ReactNode  | yes |     all  |       yes|
-| anchor | Button component (required)   |  ReactNode  | yes |     all  |       yes|
-| visible | Whether the Menu is currently visible   | Boolean  | no |     all  |       yes|
-| style | Menu style.   | [ViewStyle](https://reactnative.dev/docs/view-style-props)  | no |     all  |       yes|
-| onRequestClose | Callback when menu has become hidden	   | () => void  | no |     all  |       yes|
-| animationDuration | Changes show/hide animation duration. default is 300   | Number  | no |     all  |       yes|
+| children | 菜单中渲染的组件（必填）   | ReactNode  | yes |     all  |       yes|
+| anchor | 触发菜单的按钮组件（必填）   |  ReactNode  | yes |     all  |       yes|
+| visible |  当前菜单是否显示   | Boolean  | no |     all  |       yes|
+| style | 菜单容器样式   | [ViewStyle](https://reactnative.dev/docs/view-style-props)  | no |     all  |       yes|
+| onRequestClose | 菜单隐藏时的回调函数	   | () => void  | no |     all  |       yes|
+| animationDuration | 显示/隐藏动画时长，默认300毫秒   | Number  | no |     all  |       yes|
 
 
 ### MenuItem
 
 | Name  | Description | Type | Required | Platform | HarmonyOS Support  |
 | ----  | ----------- | ---- | -------- | ---- | ------------ |
-| children | Rendered children (required)   | ReactNode  | yes |     all  |       yes|
-| disabled | Disabled flag. default is false.   | Boolean  | no |     all  |       yes|
-| disabledTextColor | Disabled text color. default is #bdbdbd.   | String  | no |     all  |       yes|
-| onPress | Called function on press | ()=>void  | no |     all  |       yes|
-| style | Container style | [ViewStyle](https://reactnative.dev/docs/view-style-props)  | no |     all  |       yes|
-| textStyle | Text style | [TextStyle](https://reactnative.dev/docs/text-style-props)  | no |     all  |       yes|
-| pressColor | Pressed color. default is #e0e0e0.   | String  | no |     all  |       yes|
+| children | 菜单项内渲染的内容（必填）   | ReactNode  | yes |     all  |       yes|
+| disabled | 是否禁用，默认false   | Boolean  | no |     all  |       yes|
+| disabledTextColor | 禁用状态下的文字颜色，默认#bdbdbd   | String  | no |     all  |       yes|
+| onPress | 点击菜单项时触发的回调函数 | ()=>void  | no |     all  |       yes|
+| style | 菜单项容器样式  | [ViewStyle](https://reactnative.dev/docs/view-style-props)  | no |     all  |       yes|
+| textStyle | 文字样式  | [TextStyle](https://reactnative.dev/docs/text-style-props)  | no |     all  |       yes|
+| pressColor | 按压状态的颜色，默认#e0e0e0   | String  | no |     all  |       yes|
 
 
 ### MenuDivider
 
 | Name  | Description | Type | Required | Platform | HarmonyOS Support  |
 | ----  | ----------- | ---- | -------- | ---- | ------------ |
-| color | Line color. default is 'rgba(0,0,0,0.12)'   | String  | no |     all  |       yes|
+| color | 分隔线颜色，默认'rgba(0,0,0,0.12)'（半透明黑色）   | String  | no |     all  |       yes|
 
 
 ## 遗留问题

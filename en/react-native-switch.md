@@ -14,6 +14,12 @@
 
 > [!TIP] [ GitHub address](https://github.com/shahen94/react-native-switch)
 
+Please visit the Release release address of the third-party library to view the corresponding version information: 
+
+| Version                   | Support RN version |
+| ------------------------- | -------------------------- |
+| 1.5.1 | 0.72/0.77 |
+
 ## Installation and Usage
 
 <!-- tabs:start -->
@@ -111,6 +117,7 @@ This document is verified based on the following versions:
 
 1. RNOH: 0.72.27; SDK: HarmonyOS-NEXT-DB1; IDE: DevEco Studio 5.0.3.400SP7; ROM: 3.0.0.29;
 2. RNOH: 0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## Properties
 
