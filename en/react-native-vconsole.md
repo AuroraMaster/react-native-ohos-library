@@ -14,6 +14,12 @@
 
 > [!TIP] [GitHub address](https://github.com/kafudev/react-native-vconsole)
 
+| Version                 | Support RN version                 |
+| ------------------------- | -------------------------- |
+| 0.1.11                |  0.72/0.77 |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+
 ## Installation and Usage
 
 Go to the project directory and execute the following instruction:
@@ -99,6 +105,7 @@ This document is verified based on the following versions:
 
 1. RNOH: 0.72.29; SDK: HarmonyOS-Next-DB6 5.0.0.61; IDE: DevEco Studio 5.0.3.706; ROM: 3.0.0.65;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH: 0.77.17; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## Properties
 

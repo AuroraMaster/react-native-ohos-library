@@ -12,9 +12,13 @@
     </a>
 </p>
 
-
-
 > [!TIP] [Github 地址](https://github.com/kafudev/react-native-vconsole)
+
+| 三方库版本                 | 支持RN版本                 |
+| ------------------------- | -------------------------- |
+| 0.1.11               |  0.72/0.77 |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 ## 安装与使用
 
@@ -99,8 +103,9 @@ const styles = StyleSheet.create({
 
 本文档内容基于以下版本验证通过：
 
-1. RNOH: 0.72.29; SDK：HarmonyOS-Next-DB6 5.0.0.61; IDE：DevEco Studio 5.0.3.706; ROM：3.0.0.65;
+1. RNOH： 0.72.29; SDK：HarmonyOS-Next-DB6 5.0.0.61; IDE：DevEco Studio 5.0.3.706; ROM：3.0.0.65;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH： 0.77.17; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -110,10 +115,10 @@ const styles = StyleSheet.create({
 
 | Name    | Description                              | Type    | Required | Platform | HarmonyOS Support |
 | ------- | ---------------------------------------- | ------- | -------- | -------- | ----------------- |
-| appInfo | Customized Version Info you want to show | json    | no       | All      | yes               |
-| console | Whether to show console                  | boolean | no       | All      | yes               |
-| showBtn | Whether to show buttons                  | boolean | no       | All      | yes               |
-| panels  | Custom panels                            | json    | no       | All      | yes               |
+| appInfo | 想要显示的自定义版本信息 | json    | no       | All      | yes               |
+| console | 是否显示控制台                  | boolean | no       | All      | yes               |
+| showBtn | 是否显示按钮                  | boolean | no       | All      | yes               |
+| panels  | 自定义面板                            | json    | no       | All      | yes               |
 
 ## 遗留问题
 
