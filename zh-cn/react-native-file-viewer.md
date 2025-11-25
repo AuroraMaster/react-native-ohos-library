@@ -15,9 +15,7 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-file-viewer)
 
-## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：@react-native-ohos/react-native-file-viewer，具体版本所属关系如下：
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 |-------| ------------------------------------------------------------ | ---------- |
@@ -25,7 +23,8 @@
 | 2.1.7 | [@react-native-ohos/react-native-file-viewer Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-file-viewer/releases)                        | 0.72       |
 | 2.2.0 | [@react-native-ohos/react-native-file-viewer Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-file-viewer/releases)                        | 0.77       |
 
-对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -196,7 +195,70 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 3.在 ArkTs 侧引入 RNFileViewerTurboModule Package
+
+### 3.配置CMakeLists 和引入 FileViewerPackage
+
+> [!TIP] 若使用的是 RN0.72工程，请跳过本章
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```cmake
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-file-viewer/src/main/cpp" ./file-viewer)
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_file_viewer)
+# RNOH_END: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```c++
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "FileViewerPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++       std::make_shared<FileViewerPackage>(ctx)
+    };
+}
+```
+
+
+### 4.在 ArkTs 侧引入 RNFileViewerTurboModule Package
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
@@ -212,7 +274,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.运行
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -229,15 +291,10 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下版本验证通过：
 
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-|-------| ------------------------------------------------------------ | ---------- |
-| 2.1.6@deprecated | [@react-native-oh-tpl/react-native-file-viewer Releases(deprecated)](https://github.com/react-native-oh-library/react-native-file-viewer/releases) | 0.72       |
-| 2.1.7 | [@react-native-ohos/react-native-file-viewer Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-file-viewer/releases)                        | 0.72       |
-| 2.2.0 | [@react-native-ohos/react-native-file-viewer Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-file-viewer/releases)                        | 0.77       |
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release SDK; IDE： DevEco Studio  6.0.0.868; ROM：6.0.0.112;
 
 ## API
 
@@ -247,19 +304,19 @@ ohpm install
 
 ### `open(filepath: string, options?: Object): Promise<void>`
 
+| Name | Description | Type | Required  | Platform | HarmonyOS Support |
+| --- | --- | --- | --- | --- | --- |
+| **filepath** | 文件存储的绝对路径。文件需要有有效的扩展名才能被成功检测。使用 [react-native-fs constants](https://github.com/itinance/react-native-fs#constants) 来正确确定绝对路径。 | string | yes | All | yes |
+| **options** (optional) | 用于自定义行为的一些选项。详见下文。 | Object | no | All | yes |
+
+#### 属性
+
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | --- | --- | --- | --- | --- | --- |
-| **filepath** | The absolute path where the file is stored. The file needs to have a valid extension to be successfully detected. Use [react-native-fs constants](https://github.com/itinance/react-native-fs#constants) to determine the absolute path correctly. | string | yes | All | yes |
-| **options** (optional) | Some options to customize the behaviour. See below. | Object | no | All | yes |
-
-#### Options
-
-| Name | Description | Type | Required | Platform | HarmonyOS Support |
-| --- | --- | --- | --- | --- | --- |
-| **displayName** (optional) | Customize the QuickLook title. | string | no | iOS | yes |
-| **onDismiss** (optional) | Callback invoked when the viewer is being dismissed. | function | no | All | partially |
-| **showOpenWithDialog** (optional) | If there is more than one app that can open the file, show an _Open With_ dialogue box. | boolean | no | Android | yes |
-| **showAppsSuggestions** (optional) | If there is not an installed app that can open the file, open the Play Store with suggested apps. | boolean | no | Android | partially |
+| **displayName** (optional) | 自定义QuickLook标题。 | string | no | iOS | yes |
+| **onDismiss** (optional) | 当查看器被关闭时调用的回调函数。 | function | no | All | partially |
+| **showOpenWithDialog** (optional) | 如果有多个应用可以打开文件，显示“打开方式”对话框。 | boolean | no | Android | yes |
+| **showAppsSuggestions** (optional) | 如果没有安装可以打开文件的应用，打开应用商店并显示推荐应用。 | boolean | no | Android | partially |
 
 ## 遗留问题
 
