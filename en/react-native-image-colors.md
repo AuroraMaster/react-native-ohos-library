@@ -15,8 +15,6 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-image-colors)
 
-## Installation and Usage
-
 Please refer to the Releases page of the third-party library for the corresponding version information
 
 | Third-party Library Version | Release Information       | Supported RN Version |
@@ -26,6 +24,8 @@ Please refer to the Releases page of the third-party library for the correspondi
 | 2.5.1      | [@react-native-ohos/react-native-image-colors Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-colors/releases)             | 0.77       |
 
 For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+
+## Installation and Usage
 
 Go to the project directory and execute the following instruction:
 
@@ -353,15 +353,10 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+This document is verified based on the following versions:
 
-Please refer to the Releases page of the third-party library for the corresponding version information
-
-| Third-party Library Version | Release Information       | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 2.4.0@deprecated      | [@react-native-oh-tpl/react-native-image-colors Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-colors/releases) | 0.72       |
-| 2.4.1      | [@react-native-ohos/react-native-image-colors Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-colors/releases)             | 0.72       |
-| 2.5.1      | [@react-native-ohos/react-native-image-colors Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-colors/releases)             | 0.77       |
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH: 0.77.17; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## API
 

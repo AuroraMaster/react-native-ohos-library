@@ -12,8 +12,13 @@
     </a>
 </p>
 
-
 > [!TIP] [Github address](https://github.com/itsnubix/react-native-video-controls)
+
+| Version                 | Support RN version                 |
+| ------------------------- | -------------------------- |
+| 2.8.1               |  0.72/0.77 |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 ## Installation and Usage
 
@@ -26,7 +31,7 @@ react-native-video-controls depends on the follow third-party library:
 | react-native-video | >=2.0.0 |
 | lodash             | ^4.16.4 |
 
-The library depends on [@react-native-oh-tpl/react-native-video](https://gitee.com/react-native-oh-library/usage-docs/blob/master/en/react-native-video.md#link) and simplify development JS tool [lodash](https://gitee.com/react-native-oh-library/usage-docs/blob/master/en/lodash.md)
+The library depends on [@react-native-oh-tpl/react-native-video](https://gitee.com/react-native-oh-library/usage-docs/blob/master/en/react-native-video.md#link) and simplify development JS tool [lodash](https://gitee.com/react-native-oh-library/usage-docs/blob/master/en/js/lodash.md)
 
 Go to the project directory and execute the following instruction:
 
@@ -96,7 +101,7 @@ export default App;
 
 The HarmonyOS implementation of this library depends on the native code from @react-native-oh-tpl/react-native-video. If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly. If it is not included, follow the guide provided in @react-native-oh-tpl/react-native-video to add it to your project.
 
-If the library has not been included, please refer to [@react-native-oh-tpl/react-native-video](https://gitee.com/react-native-oh-library/usage-docs/blob/master/en/react-native-video.md#link) and [lodash](https://gitee.com/react-native-oh-library/usage-docs/blob/master/en/lodash.md) for introducing.After finished installation, please use command `npm list react-native-video` and `npm list lodash` in terminal, and check if the component video version and lodash tool version are correct.
+If the library has not been included, please refer to [@react-native-oh-tpl/react-native-video](https://gitee.com/react-native-oh-library/usage-docs/blob/master/en/react-native-video.md#link) and [lodash](https://gitee.com/react-native-oh-library/usage-docs/blob/master/en/js/lodash.md) for introducing.After finished installation, please use command `npm list react-native-video` and `npm list lodash` in terminal, and check if the component video version and lodash tool version are correct.
 
 ## Constraints
 
@@ -105,6 +110,7 @@ If the library has not been included, please refer to [@react-native-oh-tpl/reac
 This document is verified based on the following versions:
 
 1. RNOH: 0.72.28; SDK: HarmonyOS NEXT Developer Beta3 5.0.0.36(12 Beta3); IDE: DevEco Studio 5.0.3.535; ROM: 5.0.0.31;
+2. RNOH: 0.77.17; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## Properties
 
