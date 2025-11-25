@@ -15,8 +15,6 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-image-colors)
 
-## 安装与使用
-
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
@@ -26,6 +24,8 @@
 | 2.5.1      | [@react-native-ohos/react-native-image-colors Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-colors/releases)             | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -358,15 +358,10 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+在以下版本验证通过
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 2.4.0@deprecated      | [@react-native-oh-tpl/react-native-image-colors Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-colors/releases) | 0.72       |
-| 2.4.1      | [@react-native-ohos/react-native-image-colors Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-colors/releases)             | 0.72       |
-| 2.5.1      | [@react-native-ohos/react-native-image-colors Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-colors/releases)             | 0.77       |
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH：0.77.17; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## API
 
@@ -379,7 +374,7 @@ ohpm install
 
 | Name      | Description                           | Type     | Required | Platform | HarmonyOS Support |
 | --------- | ------------------------------------- | -------- | -------- | -------- | ----------------- |
-| getColors | Fetch prominent colors from an image. | Function | yes      | all      | yes               |
+| getColors | 从图像中获取主要颜色 | Function | yes      | all      | yes               |
 
 
 ### Uri
@@ -388,7 +383,7 @@ A string which can be:
 
 | Name      | Description                           | Type     | Required | Platform | HarmonyOS Support |
 | --------- | ------------------------------------- | -------- | -------- | -------- | ----------------- |
-| uri |  1. URL: [`https://i.imgur.com/O3XSdU7.jpg`](https://i.imgur.com/O3XSdU7.jpg);<br>2. Local file: const catImg = require('./images/cat.jpg');<br>3. Base64: const catImgBase64 = 'data:image/jpeg;base64,/9j/4Ri...' | string | yes      | all | yes               |
+| uri |  1. URL: `https://i.imgur.com/O3XSdU7.jpg`<br>2. 本地文件: const catImg = require('./images/cat.jpg')<br>3. Base64: const catImgBase64 = 'data:image/jpeg;base64,/9j/4Ri...' | string | yes      | all | yes               |
 
   > The mime type prefix for base64 is required (e.g. data:image/png;base64).
 
@@ -398,12 +393,12 @@ The config object is optional.
 
 | Name       | Description                                                                                                                                                                                    | Type                                                   | Required                                           | Default     | Supported | HarmonyOS Support |
 | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ | ----------- | ------------------- | ----------------- | ----------------- |
-| `fallback`     | If a color property couldn't be retrieved, it will default to this hex color string                                                         | `string`                                               | no                                             | `"#000000"` | all              | yes |
-| `cache`        | Enables in-memory caching of the result - skip downloading the same image next time.                                                                                                           | `boolean`                                              | no                                            | `false`     | all              | yes |
-| `key`          | Unique key to use for the cache entry. The image URI is used as the unique key by default. You should explicitly pass a key if you enable caching and you're using a base64 string as the URI. | `string`                                               | no                                             | `undefined` | all              | yes |
-| `headers`      | HTTP headers to be sent along with the GET request to download the image                                                                                                                       | `Record<string, string>`                               | no                             | `undefined` | iOS, Android        | yes |
-| `pixelSpacing` | How many pixels to skip when iterating over image pixels. Higher means better performance (**note**: value cannot be lower than 1).                                                            | `number`                                               | no                                             | `5`         | Android             | no |
-| `quality`      | Highest implies no downscaling and very good colors.                                                                                                                                           | `'lowest'` <br> `'low'` <br> `'high'` <br> `'highest'` | no | `'low'`     | iOS, Web          | no |
+| `fallback`     | 如果无法检索到颜色属性，将默认使用此十六进制颜色字符串                                                         | `string`                                               | no                                             | `"#000000"` | all              | yes |
+| `cache`        | 启用结果的内存缓存 - 下次跳过下载相同图像 time.                                                                                                           | `boolean`                                              | no                                            | `false`     | all              | yes |
+| `key`          | 用于缓存条目的唯一键。默认使用图像URI作为唯一键。如果启用缓存并使用base64字符串作为URI，应显式传递键 | `string`                                               | no                                             | `undefined` | all              | yes |
+| `headers`      | 与下载图像的GET请求一起发送的HTTP头                                                                                                                       | `Record<string, string>`                               | no                             | `undefined` | iOS, Android        | yes |
+| `pixelSpacing` | 迭代图像像素时要跳过的像素数。值越高性能越好（注意：值不能低于1）                                                            | `number`                                               | no                                             | `5`         | Android             | no |
+| `quality`      | 最高意味着不降尺度且颜色非常好                                                                                                                                           | `'lowest'` <br> `'low'` <br> `'high'` <br> `'highest'` | no | `'low'`     | iOS, Web          | no |
 
 ### ImageColorsResult
 
@@ -413,20 +408,20 @@ HarmonyImageColors
 
 | Name                     | Description                                         | Type        | Required | Platform  | HarmonyOS Support |
 | ------------------------ | --------------------------------------------------- | ----------- | -------- | --------- | ----------------- |
-| `mainColor`              | The main colors of the image.                       | `string`    | no       | harmonyOS | yes               |
-| `largestProportionColor` | The color with the highest proportion in the image. | `string`    | no       | harmonyOS | yes               |
-| `highestSaturationColor` | The color with the highest saturation in the image. | `string`    | no       | harmonyOS | yes               |
-| `averageColor`           | The average color of the image.                     | `string`    | no       | harmonyOS | yes               |
-| `platform`               | The platform is HarmonyOS.                | `string` | no       | all | yes               |
+| `mainColor`              | 图像的主要颜色                       | `string`    | no       | harmonyOS | yes               |
+| `largestProportionColor` | 图像中比例最高的颜色 | `string`    | no       | harmonyOS | yes               |
+| `highestSaturationColor` | 图像中饱和度最高的颜色 | `string`    | no       | harmonyOS | yes               |
+| `averageColor`           | 图像的平均颜色                     | `string`    | no       | harmonyOS | yes               |
+| `platform`               | 平台是HarmonyOS                | `string` | no       | all | yes               |
 
 ### ImageColors.cache
 
 | Name      | Description                           | Type     | Required | Params | Platform | HarmonyOS Support |
 | --------- | ------------------------------------- | -------- | -------- | -------- | -------- | ----------------- |
-| getItem | Read cache result. | Function | no      | key: string      | all      | yes               |
-| setItem | Set a cached result. | Function | no      | key: string, value: ImageColorsResult      | all      | yes               |
-| removeItem | Delete a cached result. | Function | no      | key: string      | all      | yes               |
-| clear | Clearing the cache. | Function | no      |                  | all      | yes               |
+| getItem | 读取缓存结果 | Function | no      | key: string      | all      | yes               |
+| setItem | 设置缓存结果 | Function | no      | key: string, value: ImageColorsResult      | all      | yes               |
+| removeItem | 删除缓存结果 | Function | no      | key: string      | all      | yes               |
+| clear | 清除缓存 | Function | no      |                  | all      | yes               |
 
 
 ### Notes
