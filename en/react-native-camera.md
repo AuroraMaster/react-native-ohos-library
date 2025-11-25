@@ -363,7 +363,7 @@ Open `entry/src/main/module.json5` and add:
 ### camera
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- |-------------------|
-| onBarCodeRead        | Receive barcode scan data     | BarCodeReadEvent    | no       | iOS/Android | yes               |
+| onBarCodeRead        | Receive barcode scan data     | [BarCodeReadEvent](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/scan-scancore#section113371139123212)     | no       | iOS/Android | yes               |
 | onFacesDetected      | Receive face detection data   | Face | no | iOS/Android | no             |
 | takePictureAsync     | Take a photo                  | TakePictureResponse | no       | iOS/Android | yes               |
 | recordAsync          | Start recording video         | RecordResponse      | no       | iOS/Android | yes               |
