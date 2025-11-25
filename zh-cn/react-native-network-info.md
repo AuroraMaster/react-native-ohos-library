@@ -16,9 +16,16 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-network-info)
 
-## 安装与使用
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-network-info Releases](https://github.com/react-native-oh-library/react-native-network-info/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 5.2.1      | [@react-native-oh-tpl/react-native-network-info  Releases](https://github.com/react-native-oh-library/react-native-network-info/releases) | 0.72       |
+| 5.3.0      | @react-native-ohos/react-native-network-info  Releases       | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -27,13 +34,19 @@
 #### **npm**
 
 ```bash
+# 0.72 
 npm install @react-native-oh-tpl/react-native-network-info
+# 0.77
+npm install @react-native-ohos/react-native-network-info
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-network-info
+# 0.77
+yarn add @react-native-ohos/react-native-network-info
 ```
 
 <!-- tabs:end -->
@@ -185,10 +198,21 @@ const styles = StyleSheet.create({
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+* 0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-network-info": "file:../../node_modules/@react-native-oh-tpl/react-native-network-info/harmony/rn_network_info.har"
+  }
+```
+
+* 0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-network-info": "file:../../node_modules/@react-native-ohos/react-native-network-info/harmony/rn_network_info.har"
   }
 ```
 
@@ -203,17 +227,69 @@ ohpm install
 
 方法二：直接链接源码
 
-> [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
+> 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 3.在 ArkTs 侧引入 RNNetworkInfoPackage
+### 3.配置 CMakeLists 和引入 RNOrientationPackage
+
+> [!TIP] 版本 `5.3.0` 及以上需要
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-network-info/src/main/cpp" ./rn_network_info)
+# RNOH_END: manual_package_linking_1
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_network_info)
+# RNOH_END: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "SamplePackage.h"
++ #include "NetworkInfoPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+      std::make_shared<SamplePackage>(ctx),
++     std::make_shared<NetworkInfoPackage>(ctx),
+    };
+}
+```
+
+### 4.在 ArkTs 侧引入 RNNetworkInfoPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
   ...
-  
+  # 0.72
 +  import { RNNetworkInfoPackage } from '@react-native-oh-tpl/react-native-network-info/ts';
-
+  # 0.77
++  import { RNNetworkInfoPackage } from '@react-native-ohos/react-native-network-info/ts';
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
     new SamplePackage(ctx),
@@ -222,7 +298,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.运行
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -239,9 +315,10 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-network-info Releases](https://github.com/react-native-oh-library/react-native-network-info/releases)
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release SDK; IDE：DevEco Studio  6.0.0.868; ROM：6.0.0.112;
 
 ### 权限要求
 
@@ -263,20 +340,21 @@ ohpm install
 
 ## 静态方法
 
-> [!TIP]"Platform"列表示该属性在原三方库上支持的平台。
+> [!TIP]"平台"列表示该属性在原三方库上支持的平台。
 
 > [!TIP]"HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-Name | Description | Type | Required | Platform | HarmonyOS   Support
--- | -- | -- | -- | -- | --
-getSSID | Get   SSID | Function | no | All | yes
-getBSSID | Get   BSSID | Function | no | All | yes
-getBroadcast | Get   Broadcast | Function | no | All | yes
-getIPAddress | Get   Local IP | Function | no | All | yes
-getIPV4Address | Get   IPv4 IP (priority: WiFi first, cellular second) | Function | no | All | yes
-getSubnet | Get   Subnet | Function | no | All | yes
-getGatewayIPAddress | Get   Default Gateway IP | Function | no | All | yes
-getFrequency | Get   frequency | Function | no | Android | yes
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| -- | -- | -- | -- | -- | -- |
+getSSID | 获取 SSID | function | no | All | yes |
+getBSSID | 获取 BSSID | function | no | All | yes |
+getBroadcast | 获取广播地址 | function | no | All | yes |
+getIPAddress | 获取本地 IP 地址 | function | no | All | yes |
+getIPV4Address | 获取 IPv4 IP 地址（优先 WiFi，其次蜂窝网络） | function | no | All | yes |
+getSubnet | 获取子网掩码 | function | no | All | yes |
+getGatewayIPAddress | 获取默认网关 IP 地址 | function | no | All | yes |
+getFrequency | 获取频率 | function | no | Android | yes | 
+getSignalStrength | 获取信号强度 | function | no | Android | yes |  
 
 ## 遗留问题
 
