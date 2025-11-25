@@ -14,15 +14,15 @@
 
 > [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-text-gradient)
 
+| Version | Package Name | Repository  | Release  | Support RN version |
+| ------- | ------------ | ----------- |----------|--------------------|
+| 0.1.7 | @react-native-oh-tpl/react-native-text-gradient |[GitHub ](https://github.com/react-native-oh-library/react-native-text-gradient)| [GitHub Release ](https://github.com/react-native-oh-library/react-native-text-gradient/releases)| 0.72       |
+| 0.2.0 | @react-native-ohos/react-native-text-gradient | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-text-gradient) | [GitCode Release](https://gitcode.com/openharmony-sig/rntpc_react-native-text-gradient/releases)| 0.77       |
+
 
 ## Installation and Usage
 
 Please go to the corresponding Release release address of the third-party library to view the version information of the Release package:
-
-| version | Releases info                                        | Support RN version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 0.1.7-0.0.4 | [@react-native-oh-tpl/react-native-text-gradient Releases](https://github.com/react-native-oh-library/react-native-text-gradient/releases) | 0.72       |
-| 0.2.0 | [@react-native-ohos/react-native-text-gradient Releases]()           | 0.77       |
 
 Go to the project directory and execute the following instruction:
 

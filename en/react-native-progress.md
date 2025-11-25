@@ -4,7 +4,7 @@
   <h1 align="center"> <code>react-native-progress</code> </h1>
 </p>
 <p align="center">
-    <a href="https://github.com/vonovak/react-native-progress">
+    <a href="https://github.com/oblador/react-native-progress">
         <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
     </a>
     <a href="https://github.com/react-native-oh-library/react-native-progress/blob/sig/LICENSE">
@@ -14,9 +14,15 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-progress)
 
+| Version | Package Name | Repository  | Release  | Support RN version |
+| ------- | ------------ | ----------- |----------|--------------------|
+| 5.0.1    | @react-native-oh-tpl/react-native-progress |[Github](https://github.com/react-native-oh-library/react-native-progress) | [Github Releases](https://github.com/react-native-oh-library/react-native-progress) | 0.72       |
+| 5.1.0    | @react-native-ohos/react-native-progress |[GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-progress) |[GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-audio/releases) | 0.77   |
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-progress Releases](https://github.com/react-native-oh-library/react-native-progress/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please go to the Releases release address of the third-party library to view the supporting version information: [@react-native-ohos/react-native-progress Releases](https://github.com/react-native-oh-library/react-native-progress/releases). 
+
 
 Go to the project directory and execute the following instruction:
 
@@ -27,13 +33,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# V0.72
 npm install @react-native-oh-tpl/react-native-progress
+
+# V0.77
+npm install @react-native-ohos/react-native-progress
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-progress
+# V0.72
+yarn install @react-native-oh-tpl/react-native-progress
+
+#V0.77
+yarn install @react-native-ohos/react-native-progress
 ```
 
 <!-- tabs:end -->
@@ -140,7 +154,10 @@ The HarmonyOS implementation of this library depends on the native code from @re
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-progress Releases](https://github.com/react-native-oh-library/react-native-progress/releases)
+Please go to the Releases release address of the third-party library to view the supporting version information: [@react-native-ohos/react-native-progress Releases](https://github.com/react-native-oh-library/react-native-progress/releases). 
+
+1. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.29(SP1); IDE: DevEco Studio 5.0.3.403; ROM: 3.0.0.25;
+2. RNOH: 0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
 
 ## Properties
 
