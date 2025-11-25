@@ -14,26 +14,37 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/progress-bar-android)
 
+Please check the corresponding version information at the third-party library's Releases page:
+
+| Library Version	 | Release Info                                                     | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.0.4      | [@react-native-oh-tpl/progress-bar-android Releases](https://github.com/react-native-oh-library/progress-bar-android/releases) | 0.72       |
+| 1.1.0      | @react-native-ohos/progress-bar-android Releases             | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/progress-bar-android Releases](https://github.com/react-native-oh-library/progress-bar-android/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
-
-Go to the project directory and execute the following instruction:
-
-
+Enter the project directory and execute the following command:
 
 <!-- tabs:start -->
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/progress-bar-android
+# 0.77
+yarn add @react-native-ohos/progress-bar-android
 ```
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/progress-bar-android
+# 0.77
+npm install @react-native-ohos/progress-bar-android
 ```
 
 <!-- tabs:end -->
@@ -83,11 +94,21 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
+* 0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-oh-tpl/progress-bar-android": "file:../../node_modules/@react-native-oh-tpl/progress-bar-android/harmony/progress_bar_android.har"
+  }
+```
 
-  "@react-native-oh-tpl/progress-bar-android": "file:../../node_modules/@react-native-oh-tpl/progress-bar-android/harmony/progress_bar_android.har"
+* 0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/progress-bar-android": "file:../../node_modules/@react-native-ohos/progress-bar-android/harmony/progress_bar_android.har"
   }
 ```
 
@@ -102,7 +123,7 @@ ohpm install
 
 Method 2: Directly link to the source code.
 
-> [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
+> For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
 ### 3. Configuring CMakeLists and Introducing ProgressBarAndroidPackage
 
@@ -127,7 +148,10 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+# 0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/progress-bar-android/src/main/cpp" ./progress-bar-android)
+# 0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/progress-bar-android/src/main/cpp" ./progress-bar-android)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -170,7 +194,10 @@ Find `function buildCustomRNComponent()`, which is usually located in `entry/src
 
 ```diff
   ...
+# 0.72
 + import { ProgressBarAndroid, PROGRESS_BAR_TYPE } from "@react-native-oh-tpl/progress-bar-android"
+# 0.77
++ import { ProgressBarAndroid, PROGRESS_BAR_TYPE } from "@react-native-ohos/progress-bar-android"
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -216,9 +243,12 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+This document is verified based on the following versions:
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/progress-bar-android Releases](https://github.com/react-native-oh-library/progress-bar-android/releases)
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release SDK; IDE：DevEco Studio  6.0.0.868; ROM： 6.0.0.112;
+
 
 ## Properties
 
@@ -236,7 +266,7 @@ Check the release version information in the release address of the third-party 
 
 ## Known Issues
 
-- [x] styleAttr 为 Horizontal 时无法铺满全屏 [issues#4](https://github.com/react-native-oh-library/progress-bar-android/issues/4)。
+- [x] When styleAttr is set to Horizontal, the component cannot fill the entire screen.[issues#4](https://github.com/react-native-oh-library/progress-bar-android/issues/4)。
 
 ## Others
 

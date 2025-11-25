@@ -14,9 +14,16 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/progress-bar-android)
 
-## 安装与使用
+请到三方库的 Releases 发布地址查看配套的版本信息:
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/progress-bar-android Releases](https://github.com/react-native-oh-library/progress-bar-android/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.0.4      | [@react-native-oh-tpl/progress-bar-android Releases](https://github.com/react-native-oh-library/progress-bar-android/releases) | 0.72       |
+| 1.1.0      | @react-native-ohos/progress-bar-android Releases             | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +32,19 @@
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/progress-bar-android
+# 0.77
+yarn add @react-native-ohos/progress-bar-android
 ```
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/progress-bar-android
+# 0.77
+npm install @react-native-ohos/progress-bar-android
 ```
 
 <!-- tabs:end -->
@@ -84,11 +97,21 @@ export default function ProgressBarExample() {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+* 0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-oh-tpl/progress-bar-android": "file:../../node_modules/@react-native-oh-tpl/progress-bar-android/harmony/progress_bar_android.har"
+  }
+```
 
-  "@react-native-oh-tpl/progress-bar-android": "file:../../node_modules/@react-native-oh-tpl/progress-bar-android/harmony/progress_bar_android.har"
+* 0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/progress-bar-android": "file:../../node_modules/@react-native-ohos/progress-bar-android/harmony/progress_bar_android.har"
   }
 ```
 
@@ -103,7 +126,7 @@ ohpm install
 
 方法二：直接链接源码
 
-> [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
+> 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
 ### 3.配置 CMakeLists 和引入 ProgressBarAndroidPackage
 
@@ -128,7 +151,10 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+# 0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/progress-bar-android/src/main/cpp" ./progress-bar-android)
+# 0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/progress-bar-android/src/main/cpp" ./progress-bar-android)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -171,8 +197,10 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
+# 0.72
 + import { ProgressBarAndroid, PROGRESS_BAR_TYPE } from "@react-native-oh-tpl/progress-bar-android"
-
+# 0.77
++ import { ProgressBarAndroid, PROGRESS_BAR_TYPE } from "@react-native-ohos/progress-bar-android"
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
   ...
@@ -218,23 +246,25 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/progress-bar-android Releases](https://github.com/react-native-oh-library/progress-bar-android/releases)
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release SDK; IDE：DevEco Studio  6.0.0.868; ROM： 6.0.0.112;
 
 ## 属性
 
-> [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
+> [!TIP] "平台"列表示该属性在原三方库上支持的平台。
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
 | Name            | Description                                                                                                                                         | Type                                                                                                                       | Required | Platform | HarmonyOS Support |
 | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | ----------------- |
-| `animating`     | Whether to show the ProgressBar (true, the default) or hide it (false).                                                                             | bool                                                                                                                       | No       | Android  | yes               |
-| `color`         | Color of the progress bar.                                                                                                                          | [color](https://reactnative.dev/docs/colors)                                                                               | No       | Android  | yes               |
-| `indeterminate` | If the progress bar will show indeterminate progress. Note that this can only be false if styleAttr is Horizontal, and requires a `progress` value. | indeterminateType                                                                                                          | No       | Android  | yes               |
-| `progress`      | The progress value (between 0 and 1).                                                                                                               | number                                                                                                                     | No       | Android  | yes               |
-| `styleAttr`     | Style of the ProgressBar.                                                                                                                           | One of:<br />Horizontal <br />Normal (default) <br />Small <br />Large <br />Inverse <br />SmallInverse <br />LargeInverse | No       | Android  | yes               |
+| `animating`     | 是否显示进度条（true，默认）或隐藏（false）。                                                                             | bool                                                                                                                       | no       | Android  | yes               |
+| `color`         | 进度条的颜色。                                                                                                                          | [color](https://reactnative.dev/docs/colors)                                                                               | no       | Android  | yes               |
+| `indeterminate` | 如果进度条将显示不确定进度。请注意，这只能在 styleAttr 为 Horizontal 时为 false，并且需要 `progress` 值。 | indeterminateType                                                                                                          | no       | Android  | yes               |  
+| `progress`      | 进度条的进度值（介于 0 和 1 之间）。                                                                                                               | number                                                                                                                     | no       | Android  | yes               |
+| `styleAttr`     | 进度条的样式。                                                                                                                           | One of:<br />Horizontal <br />Normal (default) <br />Small <br />Large <br />Inverse <br />SmallInverse <br />LargeInverse | no       | Android  | yes               |
 
 ## 遗留问题
 
