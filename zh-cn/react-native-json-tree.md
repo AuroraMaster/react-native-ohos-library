@@ -14,24 +14,33 @@
 
 > [!TIP] [Github 地址](https://github.com/Dean177/react-native-json-tree)
 
+| 三方库版本                 | 支持RN版本                 |
+| ------------------------- | -------------------------- |
+| 1.3.0               |  0.72 |
+| 1.5.0               |  0.77 |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
 ## 安装与使用
+
+进入到工程目录并输入以下命令：
 
 #### **npm**
 
 ```bash
 #0.72
-npm install react-native-json-tree@^1.3.0
+npm install react-native-json-tree@1.3.0
 #0.77
-npm install react-native-json-tree@^1.5.0
+npm install react-native-json-tree@1.5.0
 ```
 
 #### **yarn**
 
 ```bash
 #0.72
-yarn add react-native-json-tree@^1.3.0
+yarn add react-native-json-tree@1.3.0
 #0.77
-yarn add react-native-json-tree@^1.5.0
+yarn add react-native-json-tree@1.5.0
 ```
 
 <!-- tabs:end -->
@@ -271,6 +280,7 @@ export default () => {
 
 1. RNOH：0.72.29; SDK：HarmonyOS NEXT Developer Beta6; IDE：DevEco Studio 5.0.3.706; ROM：NEXT.0.0.36;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.17; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -282,19 +292,19 @@ export default () => {
 
 | Name               | Description                                                                               | Type         | Required | Platform | HarmonyOS Support |
 | ------------------ | ----------------------------------------------------------------------------------------- | ------------ | -------- | -------- | ----------------- |
-| `data`             | `JSON data object to be displayed`.                                                       | `Object`     | Yes      | All      | Yes               |
-| `theme`            | `Theme style of the tree view.`                                                           | `Object`     | No       | All      | Yes               |
-| `shouldExpandNode` | `Function that controls whether a node is expanded`.                                      | `() => bool` | No       | All      | Yes               |
-| `hideRoot`         | `Whether to hide the root node of the tree`.                                              | `bool`       | No       | All      | Yes               |
-| `invertTheme`      | `Indicates whether to reverse the theme color.`                                           | `bool`       | No       | All      | Yes               |
-| `getItemString`    | `Customize the display of arrays, objects, and iterable nodes.`                           | `()=>void`   | No       | All      | Yes               |
-| `labelRenderer`    | `Rendering function for custom node labels`.                                              | `()=>void`   | No       | All      | Yes               |
-| `valueRenderer`    | `Rendering function for custom node values`.                                              | `()=>void`   | No       | All      | Yes               |
-| `sortObjectKeys`   | `Sort the keys of JSON objects`.                                                          | `()=>void`   | No       | All      | Yes               |
-| `keyPath`          | `A data node used to identify and customize a specific path in a JSON tree`.              | `['']`       | No       | All      | Yes               |
-| `collectionLimit`  | `Use to control the maximum number of elements of a collection displayed in a JSON tree`. | `number`     | No       | All      | No                |
-| `postprocessValue` | `For customizing values before they are rendered`.                                        | `()=>void`   | No       | All      | Yes               |
-| `isCustomNode`     | `Specify which nodes should use custom rendered properties.`                              | `()=>bool`   | No       | All      | Yes               |
+| `data`             | `要展示的 JSON 数据对象`.                                                       | `Object`     | Yes      | All      | Yes               |
+| `theme`            | `树状视图的主题样式`                                                           | `Object`     | No       | All      | Yes               |
+| `shouldExpandNode` | `控制节点是否展开的函数`.                                      | `() => bool` | No       | All      | Yes               |
+| `hideRoot`         | `是否隐藏树的根节点`.                                              | `bool`       | No       | All      | Yes               |
+| `invertTheme`      | `是否反转主题颜色`                                           | `bool`       | No       | All      | Yes               |
+| `getItemString`    | `自定义数组、对象和可迭代节点的显示`                           | `()=>void`   | No       | All      | Yes               |
+| `labelRenderer`    | `自定义节点标签的渲染函数`                                              | `()=>void`   | No       | All      | Yes               |
+| `valueRenderer`    | `自定义节点值的渲染函数`                                              | `()=>void`   | No       | All      | Yes               |
+| `sortObjectKeys`   | `对 JSON 对象的键进行排序`                                                          | `()=>void`   | No       | All      | Yes               |
+| `keyPath`          | `用于在 JSON 树中标识和定制特定路径的数据节点`              | `['']`       | No       | All      | Yes               |
+| `collectionLimit`  | `用于控制在 JSON 树中显示的集合的元素最大数量` | `number`     | No       | All      | No                |
+| `postprocessValue` | `用于在值渲染之前对其进行自定义处理`                                        | `()=>void`   | No       | All      | Yes               |
+| `isCustomNode`     | `指定哪些节点应使用自定义渲染的属性`                              | `()=>bool`   | No       | All      | Yes               |
 
 ## 遗留问题
 
