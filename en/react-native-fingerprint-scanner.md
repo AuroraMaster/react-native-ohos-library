@@ -12,19 +12,19 @@
     </a>
 </p>
 
-> [!tip] [GitHub address](https://github.com/react-native-oh-library/react-native-fingerprint-scanner)
-
-## Installation and Usage
+This project is based on [jreact-native-fingerprint-scanner](https://github.com/react-native-oh-library/react-native-fingerprint-scanner).
 
 Please refer to the Releases page of the third-party library for the corresponding version information
 
-| Third-party Library Version | Release Information       | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 6.0.0@deprecated      | [@react-native-oh-tpl/react-native-fingerprint-scanner Releases(deprecated)](https://github.com/react-native-oh-library/react-native-fingerprint-scanner/releases) | 0.72       |
-| 6.0.1      | [@react-native-ohos/react-native-fingerprint-scanner Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fingerprint-scanner/releases)    | 0.72       |
-| 6.1.0      | [@react-native-ohos/react-native-fingerprint-scanner Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fingerprint-scanner/releases)    | 0.77       |
+| Version          | Package Name                                                 | Repository | Release | RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- | ---------- | ---------- |
+| 6.0.0@deprecated      | @react-native-oh-tpl/react-native-fingerprint-scanner Releases | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-fingerprint-scanner/releases) |[Github(Releases)](https://github.com/react-native-oh-library/react-native-fingerprint-scanner/releases)  | 0.72 |
+| 6.0.1      | @react-native-ohos/react-native-fingerprint-scanner Releases  | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-fingerprint-scanner)       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-fingerprint-scanner/releases) | 0.72 |
+| 6.1.0      | [@react-native-ohos/react-native-fingerprint-scanner Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fingerprint-scanner/releases)    |   [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-fingerprint-scanner)     | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-fingerprint-scanner/releases) | 0.77 |
 
 For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+
+## Installation and Usage
 
 Go to the project directory and execute the following instruction:
 
@@ -246,11 +246,9 @@ To use this repository, you need to use the correct React-Native and RNOH versio
 
 Please refer to the Releases page of the third-party library for the corresponding version information
 
-| Third-party Library Version | Release Information       | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 6.0.0@deprecated      | [@react-native-oh-tpl/react-native-fingerprint-scanner Releases(deprecated)](https://github.com/react-native-oh-library/react-native-fingerprint-scanner/releases) | 0.72       |
-| 6.0.1      | [@react-native-ohos/react-native-fingerprint-scanner Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fingerprint-scanner/releases)    | 0.72       |
-| 6.1.0      | [@react-native-ohos/react-native-fingerprint-scanner Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fingerprint-scanner/releases)    | 0.77       |
+1. RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1 B.0.18; IDE: DevEco Studio: 5.0.3.200; ROM: 3.0.0.18;
+2. RNOH: 0.72.33; SDK: Openharmony 5.0.0.71(API Version 12 Release); IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM：NEXT 5.1.0.150; 
 
 ### Permission Requirements
 

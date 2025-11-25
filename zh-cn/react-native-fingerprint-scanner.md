@@ -12,19 +12,18 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-fingerprint-scanner)
-
-## 安装与使用
+本项目基于 [jreact-native-fingerprint-scanner](https://github.com/react-native-oh-library/react-native-fingerprint-scanner) 开发。
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 6.0.0@deprecated      | [@react-native-oh-tpl/react-native-fingerprint-scanner Releases(deprecated)](https://github.com/react-native-oh-library/react-native-fingerprint-scanner/releases) | 0.72       |
-| 6.0.1      | [@react-native-ohos/react-native-fingerprint-scanner Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fingerprint-scanner/releases)    | 0.72       |
-| 6.1.0      | [@react-native-ohos/react-native-fingerprint-scanner Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fingerprint-scanner/releases)    | 0.77       |
+| Version          | Package Name                                                 | Repository | Release | RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- | ---------- | ---------- |
+| 6.0.0@deprecated      | @react-native-oh-tpl/react-native-fingerprint-scanner Releases | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-fingerprint-scanner/releases) |[Github(Releases)](https://github.com/react-native-oh-library/react-native-fingerprint-scanner/releases)  | 0.72 |
+| 6.0.1      | @react-native-ohos/react-native-fingerprint-scanner Releases  | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-fingerprint-scanner)       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-fingerprint-scanner/releases) | 0.72 |
+| 6.1.0      | [@react-native-ohos/react-native-fingerprint-scanner Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fingerprint-scanner/releases)    |   [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-fingerprint-scanner)     | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-fingerprint-scanner/releases) | 0.77 |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -248,11 +247,9 @@ ohpm install
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 6.0.0@deprecated      | [@react-native-oh-tpl/react-native-fingerprint-scanner Releases(deprecated)](https://github.com/react-native-oh-library/react-native-fingerprint-scanner/releases) | 0.72       |
-| 6.0.1      | [@react-native-ohos/react-native-fingerprint-scanner Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fingerprint-scanner/releases)    | 0.72       |
-| 6.1.0      | [@react-native-ohos/react-native-fingerprint-scanner Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fingerprint-scanner/releases)    | 0.77       |
+1. RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1 B.0.18; IDE: DevEco Studio: 5.0.3.200; ROM: 3.0.0.18;
+2. RNOH: 0.72.33; SDK: Openharmony 5.0.0.71(API Version 12 Release); IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM：NEXT 5.1.0.150; 
 
 
 ### 权限要求
