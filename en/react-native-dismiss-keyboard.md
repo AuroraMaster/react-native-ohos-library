@@ -14,6 +14,12 @@
 
 > [!TIP] [GitHub address](https://github.com/DanielMSchmidt/react-native-dismiss-keyboard)
 
+| Version                 | Support RN version                 |
+| ------------------------- | -------------------------- |
+| 1.0.0                 |  0.72/0.77 |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+
 ## Installation and Usage
 
 Go to the project directory and execute the following instruction:
@@ -128,11 +134,11 @@ const styles = StyleSheet.create({
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
-
 This document is verified based on the following versions:
 
 1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1 B.0.18、IDE：DevEco Studio 5.0.3.200; ROM：2.0.0.18;
+2. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## Properties
 
@@ -145,7 +151,7 @@ This document is verified based on the following versions:
 | `addListener`             | Register a JavaScript function that listens to handle native keyboard notification events.                                      | function | no       | All      | yes               |
 | `dismiss`                 | Retract the pop-up keyboard and make the current text box lose focus.                                                           | function | no       | All      | yes               |
 | `scheduleLayoutAnimation` | Used to synchronize changes in the size or position of a TextInput (or other keyboard attachment view) with keyboard movements. | function | no       | All      | yes               |
-| `isVisible`               | Whether the keyboard is currently displayed.                                                                                    | function | no       | All      | yes               |
+| `isVisible`               | Whether the keyboard is currently displayed.                                                                                    | bool | no       | All      | yes               |
 | `metrics`                 | If a soft keyboard is displayed, return the size of the soft keyboard.                                                          | function | no       | All      | yes               |
 
 ## Known Issues
