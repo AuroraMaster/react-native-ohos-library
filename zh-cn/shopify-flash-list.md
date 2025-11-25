@@ -14,22 +14,36 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/flash-list)
 
-## 安装与使用
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/flash-list Releases](https://github.com/react-native-oh-library/flash-list/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.6.3      | [@react-native-oh-tpl/flash-list Releases](https://github.com/react-native-oh-library/flash-list/releases) | 0.72       |
+| 1.8.3      | [@react-native-ohos/flash-list Releases]()                   | 0.77       |
+
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/flash-list
+
+# 0.77
+npm install @react-native-ohos/flash-list
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/flash-list
+
+# 0.77
+yarn add @react-native-ohos/flash-list
 ```
 
 下面的代码展示了这个库的基本使用场景：
@@ -69,11 +83,28 @@ const MyList = () => {
 
 ### 1.在工程根目录的 `oh-package.json5` 添加 overrides 字段
 
+- 0.72
+
 ```json
 {
   ...
   "overrides": {
-    "@rnoh/react-native-openharmony" : "./react_native_openharmony"
+    "@rnoh/react-native-openharmony": "^0.72.38" // ohpm 在线版本
+    // "@rnoh/react-native-openharmony" : "./react_native_openharmony.har" // 指向本地 har 包的路径
+    // "@rnoh/react-native-openharmony" : "./react_native_openharmony" // 指向源码路径
+  }
+}
+```
+
+- 0.77
+
+```json
+{
+  ...
+  "overrides": {
+    "@rnoh/react-native-openharmony": "^0.77.86" // ohpm 在线版本
+    // "@rnoh/react-native-openharmony" : "./react_native_openharmony.har" // 指向本地 har 包的路径
+    // "@rnoh/react-native-openharmony" : "./react_native_openharmony" // 指向源码路径
   }
 }
 ```
@@ -91,10 +122,19 @@ const MyList = () => {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- 0.72
+
 ```json
 "dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/flash-list": "file:../../node_modules/@react-native-oh-tpl/flash-list/harmony/flash_list.har"
+  }
+```
+
+- 0.77
+
+```json
+"dependencies": {
+    "@react-native-ohos/flash-list": "file:../../node_modules/@react-native-ohos/flash-list/harmony/flash_list.har"
   }
 ```
 
@@ -133,7 +173,11 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+# 0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/flash-list/src/main/cpp" ./flash-list)
+
+# 0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/flash-list/src/main/cpp" ./flash-list)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -187,9 +231,11 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/flash-list Releases](https://github.com/react-native-oh-library/flash-list/releases)
+1. RNOH: 0.72.27; SDK: HarmonyOS-NEXT-DB1; IDE: DevEco Studio 5.0.3.400SP7; ROM: 3.0.0.29;
+2. RNOH: 0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -199,44 +245,44 @@ ohpm install
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| contentContainerStyle                  | You can use contentContainerStyle to apply padding that will be applied to the whole content itself.                                                                                                                                                           | ContentStyle        | No       | All      | Yes                |
-| estimatedListSize                      | Estimated visible height and width of the list. It is not the scroll content size. Defining this prop will enable the list to be rendered immediately. Without it, the list first needs to measure its size, leading to a small delay during the first render. | object              | No       | All      | Yes                |
-| horizontal                             | If true, renders items next to each other horizontally instead of stacked vertically. Default is false.                                                                                                                                                        | boolean             | No       | All      | Yes |
-| keyExtractor                           | Used to extract a unique key for a given item at the specified index. Key is used for optimizing performance.                                                                                                                                                  | function            | No       | All      | Yes                |
+| contentContainerStyle                  | 可通过 contentContainerStyle 为整个内容区域设置内边距。                                                                                                                    | ContentStyle        | No       | All      | Yes                |
+| estimatedListSize                      | 列表的预估可见高度和宽度（非滚动内容尺寸）。定义该属性可让列表立即渲染，否则列表需先测量自身尺寸，导致首次渲染稍有延迟。 | object              | No       | All      | Yes                |
+| horizontal                             | 设置为 true 时，项目将水平并列排列而非垂直堆叠。默认为 false。                                                                                                                   | boolean             | No       | All      | Yes |
+| keyExtractor                           | 用于为指定索引位置的项生成唯一键值。键值用于优化性能。                                                                                                                       | function            | No       | All      | Yes                |
 | numColumns                             | Multiple columns can only be rendered with horizontal={false} and will zig-zag like a flexWrap layout. Items should all be the same height - masonry layouts are not supported.                                                                                | number              | No       | All      | Yes                |
-| extraData                              | A marker property for telling the list to re-render (since it implements PureComponent)                                                                                                                                                                        | any                 | No       | All      | Yes                |
-| drawDistance                           | Draw distance for advanced rendering (in dp/px).                                                                                                                                                                                                               | number              | No       | All      | Yes                |
-| estimatedItemSize                      | estimatedItemSize is a single numeric value that hints FlashList about the approximate size of the items before they're rendered.                                                                                                                              | number              | No       | All      | Yes                |
-| viewabilityConfig                      | viewabilityConfig is a default configuration for determining whether items are viewable.                                                                                                                                                                       | object              | No       | All      | Yes                |
-| renderItem                             | Takes an item from data and renders it into the list.                                                                                                                                                                                                          | function            | Yes      | All      | Yes                |
-| data                                   | For simplicity, data is a plain array of items of a given type.                                                                                                                                                                                                | ItemT[]             | Yes      | All      | Yes                |
-| CellRendererComponent                  | Each cell is rendered using this element. Can be a React Component Class, or a render function                                                                                                                                                                 | JXS Element         | No       | All      | Yes                |
-| ListFooterComponent                    | Rendered at the bottom of all the items                                                                                                                                                                                                                        | JXS Element         | No       | All      | Yes                |
-| ListHeaderComponent                    | Rendered at the top of all the items                                                                                                                                                                                                                           | JXS Element         | No       | All      | Yes                |
-| refreshControl                         | A custom refresh control element.                                                                                                                                                                                                                              | JXS Element         | No       | All      | Yes                |
-| renderScrollComponent                  | Rendered as the main scrollview.                                                                                                                                                                                                                               | JXS Element         | No       | All      | Yes                |
-| onEndReached                           | Called once when the scroll position gets within onEndReachedThreshold of the rendered content.                                                                                                                                                                | callback            | No       | All      | Yes                |
-| onEndReachedThreshold                  | How far from the end (in units of visible length of the list) the bottom edge of the list must be from the end of the content to trigger the onEndReached callback                                                                                             | number              | No       | All      | Yes                |
-| onViewableItemsChanged                 | Called when the viewability of rows changes, as defined by the viewabilityConfig prop.                                                                                                                                                                         | callback            | No       | All      | Yes                |
-| getItemType                            | Allows developers to specify item types.                                                                                                                                                                                                                       | function            | No       | All      | Yes                |
-| overrideItemLayout                     | This method can be used to provide explicit size estimates or change column span of an item.                                                                                                                                                                   | function            | No       | All      | Yes                |
-| ItemSeparatorComponent                 | Rendered in between each item, but not at the top or bottom.                                                                                                                                                                                                   | JXS Element         | No       | All      | Yes                |
-| ListEmptyComponent                     | Rendered when the list is empty                                                                                                                                                                                                                                | JXS Element         | No       | All      |Yes               |
-| ListFooterComponentStyle               | Styling for internal View for ListFooterComponent.                                                                                                                                                                                                             | React.ComponentType | No       | All      | Yes                |
-| ListHeaderComponentStyle               | Styling for internal View for ListHeaderComponent.                                                                                                                                                                                                             | StyleProp           | No       | All      | Yes                |
-| disableAutoLayout                      | FlashList applies some fixes to layouts of its children which can conflict with custom CellRendererComponent implementations. You can disable this behavior by setting this to true.                                                                           | boolean             | No       | All      | Yes                |
-| disableHorizontalListHeightMeasurement | When set to true the list's rendered size needs to be deterministic (i.e., height and width greater than 0) as FlashList will skip rendering the extra item for measurement. Default value is false.                                                           | boolean             | No       | All      | Yes                |
-| estimatedFirstItemOffset               | estimatedFirstItemOffset specifies how far the first item is drawn from start of the list window or offset of the first item of the list (not the header).                                                                                                     | number              | No       | All      | Yes               |
-| initialScrollIndex                     | Instead of starting at the top with the first item, start at initialScrollIndex                                                                                                                                                                                | number              | No       | All      | Yes               |
-| inverted                               | Reverses the direction of scroll. Uses scale transforms of -1.                                                                                                                                                                                                 | boolean             | No       | All      | Yes                |
-| onBlankArea                            | FlashList computes blank space that is visible to the user during scrolling or the initial loading of the list.                                                                                                                                                | callback            | No       | All      | Yes                 |
-| onLoad                                 | This event is raised once the list has drawn items on the screen.                                                                                                                                                                                              | callback            | No       | All      | Yes               |
-| onRefresh                              | If provided, a standard RefreshControl will be added for "Pull to Refresh" functionality. Make sure to also set the refreshing prop correctly.                                                                                                                 | callback            | No       | All      | Yes                |
-| onScroll                               | Fires at most once per frame during scrolling. Inherited from ScrollView.           | callback            | No       | All      | Yes                |
-| overrideProps                          | We do not recommend using this prop for anything else than debugging. Internal props of the list will be overriden with the provided values.                                                                                                                   | object              | No       | All      | Yes               |
-| progressViewOffset                     | Set this when offset is needed for the loading indicator to show correctly.                                                                                                                                                                                    | number              | No       | All      | Yes                |
-| refreshing                             | Set this true while waiting for new data from a refresh.                                                                                                                                                                                                       | boolean             | No       | All      | Yes                 |
-| viewabilityConfigCallbackPairs         | List of ViewabilityConfig/onViewableItemsChanged pairs. A specific onViewableItemsChanged will be called when its corresponding ViewabilityConfig's conditions are met.                                                                                        | object              | No       | All      | Yes                 |
+| extraData                              | 用于指示列表重新渲染的标记属性（因列表实现为 PureComponent）。                                                                                                                                  | any                 | No       | All      | Yes                |
+| drawDistance                           | 预渲染的绘制距离。                                                                                                                                                                                                   | number              | No       | All      | Yes                |
+| estimatedItemSize                      | 用于在项目渲染前向 FlashList 提示项目近似尺寸的单个数值。                                                                                            | number              | No       | All      | Yes                |
+| viewabilityConfig                      | 用于判定项目可见性的默认配置。                                                                                                                                                       | object              | No       | All      | Yes                |
+| renderItem                             | 从 data 中获取项目并渲染至列表                                                                                                                                                                                        | function            | Yes      | All      | Yes                |
+| data                                   | 数据源，为指定类型的简单项目数组。                                                                                                                                                                               | ItemT[]             | Yes      | All      | Yes                |
+| CellRendererComponent                  | 每个单元格的渲染元素。可以是 React 类组件或渲染函数。                                                                                                                                   | JXS Element         | No       | All      | Yes                |
+| ListFooterComponent                    | 在列表底部渲染的组件。                                                                                                                                                                                                           | JXS Element         | No       | All      | Yes                |
+| ListHeaderComponent                    | 在列表顶部渲染的组件。                                                                                                                                                                                                | JXS Element         | No       | All      | Yes                |
+| refreshControl                         | 自定义下拉刷新控件元素。                                                                                                                                                                                                                  | JXS Element         | No       | All      | Yes                |
+| renderScrollComponent                  | 作为主滚动视图渲染的组件。                                                                                                                                                                                                                  | JXS Element         | No       | All      | Yes                |
+| onEndReached                           | 当滚动位置接近渲染内容末尾（距离阈值为 onEndReachedThreshold）时触发一次 。                                                                                                              | callback            | No       | All      | Yes                |
+| onEndReachedThreshold                  | 触发 onEndReached 回调时，列表底部边缘与内容末尾的距离阈值（以列表可见长度为单位。                                            | number              | No       | All      | Yes                |
+| onViewableItemsChanged                 | 当项目的可见性发生变化时触发（可见性由 viewabilityConfig 属性定义）。                                                                                                                             | callback            | No       | All      | Yes                |
+| getItemType                            | 允许开发者指定项目类型。                                                                                                                                                                                                           | function            | No       | All      | Yes                |
+| overrideItemLayout                     | 用于显式指定项目尺寸估算值或更改项目列跨度。                                                                                                                                             | function            | No       | All      | Yes                |
+| ItemSeparatorComponent                 | 在每项之间（不包括顶部和底部）渲染的分隔组件。                                                                                                                                                                            | JXS Element         | No       | All      | Yes                |
+| ListEmptyComponent                     | 列表为空时渲染的组件。                                                                                                                                                                                                                     | JXS Element         | No       | All      |Yes               |
+| ListFooterComponentStyle               | 列表底部组件内部容器的样式。                                                                                                                                                                                               | React.ComponentType | No       | All      | Yes                |
+| ListHeaderComponentStyle               | 列表顶部组件内部容器的样式。                                                                                                                                                                                             | StyleProp           | No       | All      | Yes                |
+| disableAutoLayout                      | FlashList 会对子项布局应用某些修复，这可能与自定义 CellRendererComponent 实现冲突。设置为 true 可禁用此行为。 | boolean             | No       | All      | Yes                |
+| disableHorizontalListHeightMeasurement | 设置为 true 时，列表的渲染尺寸需确定（即高度和宽度大于0），FlashList 将跳过用于测量的额外项目渲染。默认值为 false。 | boolean             | No       | All      | Yes                |
+| estimatedFirstItemOffset               | 指定列表窗口中首个项目的绘制偏移量（非列表头部偏移量）。      | number              | No       | All      | Yes               |
+| initialScrollIndex                     | 不从首项开始显示，而是从 initialScrollIndex 指定位置开始。                                                                                                                                         | number              | No       | All      | Yes               |
+| inverted                               | 反转滚动方向（使用 -1 缩放变换实现）。                                                                                                                                                                           | boolean             | No       | All      | Yes                |
+| onBlankArea                            | 滚动或列表初始加载时，FlashList 会计算用户可见的空白区域。                                                                                                              | callback            | No       | All      | Yes                 |
+| onLoad                                 | 当列表在屏幕上完成项目绘制后触发。                                                                                                                                                                             | callback            | No       | All      | Yes               |
+| onRefresh                              | 提供此回调可添加标准 RefreshControl 实现"下拉刷新"功能。需确保同时正确设置 refreshing 属性。                                                    | callback            | No       | All      | Yes                |
+| onScroll                               | 滚动期间每帧最多触发一次（继承自 ScrollView）。 | callback            | No       | All      | Yes                |
+| overrideProps                          | 除调试外不建议使用此属性。列表的内部属性将被提供值覆盖。                                                                                       | object              | No       | All      | Yes               |
+| progressViewOffset                     | 当加载指示器需要偏移量时才需设置此属性。                                                                                                                                                                | number              | No       | All      | Yes                |
+| refreshing                             | 在等待刷新数据时设置为 true。                                                                                                                                                                                      | boolean             | No       | All      | Yes                 |
+| viewabilityConfigCallbackPairs         | ViewabilityConfig/onViewableItemsChanged 配置对集合。当对应 ViewabilityConfig 的条件满足时，会触发特定的 onViewableItemsChanged 回调 。 | object              | No       | All      | Yes                 |
 
 ## 静态方法
 
@@ -246,12 +292,13 @@ ohpm install
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| prepareForLayoutAnimationRender | Run this method before running layout animations, such as when animating an element when deleting it.                                                         | function | No       | All      | Yes               |
-| recordInteraction               | Tells the list an interaction has occurred, which should trigger viewability calculations, e.g. if waitForInteractions is true and the user has not scrolled. | function | No       | All      | Yes              |
-| scrollToEnd                     | Scrolls to the end of the content.                                                                                                                            | function | No       | All      | Yes               |
-| scrollToIndex                   | Scroll to a given index.                                                                                                                                      | function | No       | All      | Yes               |
-| scrollToItem                    | Scroll to a given item.                                                                                                                                       | function | No       | All      | Yes              |
-| scrollToOffset                  | Scroll to a specific content pixel offset in the list.                                                                                                        | function | No       | All      | Yes              |
+| prepareForLayoutAnimationRender | 在执行布局动画前调用此方法，例如删除元素时为其添加动画效果。                           | function | No       | All      | Yes               |
+| recordInteraction               | 通知列表已发生交互行为，这将触发可见性计算（例如当waitForInteractions为true且用户未滚动时）。 | function | No       | All      | Yes              |
+| scrollToEnd                     | 滚动至内容末尾。                                                                                                                    | function | No       | All      | Yes               |
+| scrollToIndex                   | 滚动至指定索引位置。                                                                                                                            | function | No       | All      | Yes               |
+| scrollToItem                    | 滚动至指定项目。                                                                                                                               | function | No       | All      | Yes              |
+| scrollToOffset                  | 滚动至列表内特定的内容像素偏移量。                                                                                       | function | No       | All      | Yes              |
+| recomputeViewableItems<sup>1.8.3</sup> | 重新触发可见性计算。适用于需要强制触发可见性计算的场景。 | function | No | All | Yes |
 
 ## 遗留问题
 
