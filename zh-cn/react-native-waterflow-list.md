@@ -16,6 +16,16 @@
 
 ## 安装与使用
 
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 支持RN版本 |
+| ---------- | ---------- |
+| 1.2.3      | 0.72/0.77 |
+
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+
 进入到工程目录并输入以下命令:
 
 <!-- tabs:start -->
@@ -137,7 +147,8 @@ export default () => {
 在以下版本验证通过：
 
 1. RNOH:0.72.29; SDK:HarmonyOS NEXT Developer Beta6 SDK; IDE:DevEco Studio 5.0.3.706; ROM:NEXT.0.0.60;
-1. RNOH: 0.72.33; SDK: Openharmony 5.0.0.71(API Version 12 Release); IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+2. RNOH: 0.72.33; SDK: Openharmony 5.0.0.71(API Version 12 Release); IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
 
 ## 属性
 
