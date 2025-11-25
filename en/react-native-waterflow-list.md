@@ -16,6 +16,12 @@
 
 ## Installation and Usage
 
+Please go to the Releases release address of the third-party library to view the supporting version information: [react-native-waterflow-list](https://github.com/ZakZheng/react-native-waterflow-list/releases). For older versions that are not published to npm, install the tgz package by referring to the [Installation Guide](/en/tgz-usage-en.md).
+
+| Version |  Support RN version                                                   |
+| ---------- | -------------- |
+| 1.2.3      | 0.72/0.77 |
+
 Go to the project directory and execute the following instruction:
 
 <!-- tabs:start -->
@@ -137,7 +143,8 @@ export default () => {
 This document is verified based on the following versions:
 
 1. RNOH:0.72.29; SDK:HarmonyOS NEXT Developer Beta6 SDK; IDE:DevEco Studio 5.0.3.706; ROM:NEXT.0.0.60;
-1. RNOH: 0.72.33; SDK: Openharmony 5.0.0.71(API Version 12 Release); IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+2. RNOH: 0.72.33; SDK: Openharmony 5.0.0.71(API Version 12 Release); IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH:0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
 
 ## Properties
 
@@ -145,24 +152,24 @@ This document is verified based on the following versions:
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-> 详情见 [react-native-waterflow-list 源库地址](https://github.com/ZakZheng/react-native-waterflow-list)
+> For details, see [react-native-waterflow-list Source library address](https://github.com/ZakZheng/react-native-waterflow-list)
 
 | Name                      | Description                                                                                              | Type                                                         | Required | Platform                  | HarmonyOS Support |
 | :-------------------------- | :------------------------------------------------------------------------------------------------ | :------------------------------------------------------------: | :--------: | :---------------------: |:--------------:|
-| **data**           | 列表数据, 数据类型必须为 `Object`              | Object[]                                              | Yes | All                   | Yes          |
-| **numColumns**           | 列数                    | number                                              | No | All                   | Yes          |
-| **keyForItem**                   | 用以检测是否以渲染该数据                                                                      | string                                        | Yes    | All                   | Yes          |
-| **heightForItem**                  | 如 renderItem 高度已知,则传入以提高性能和加载速度 | number                                                  | No       | All                   | Yes          |
-| **asyncHeightForItem**                 | 如item的高度为异步获取的,则通过该函数返回item的真实高度 | Promise(number)                                      | No       | All | Yes           |
-| **renderItem**                    | 渲染列表条目 | JSX.Element                        | Yes    | All  | Yes           |
-| **onEndReached**       | 上拉加载, 若传入 Promise 对象, 则须等待 Promise 事件回调后方能再次触发此事件. 若其他则不作处理 | function                                            | No       | All  | Yes           |
-| **columnsFlatListProps** | 外层 FlatList 参数           | FlatListProps                                      | No       | All  | Yes           |
-| **columnFlatListProps**                 | 列 FlatList 参数 | FlatListProps                                          | No       | All  | Yes           |
+| **data**           | List data, and the data type must be 'Object'             | Object[]                                              | Yes | All                   | Yes          |
+| **numColumns**           | Number of columns                    | number                                              | No | All                   | Yes          |
+| **keyForItem**                   | Used to check if the data is rendered                                                                      | string                                        | Yes    | All                   | Yes          |
+| **heightForItem**                  | If the height of the renderItem is known, it is passed in to improve performance and loading speed | number                                                  | No       | All                   | Yes          |
+| **asyncHeightForItem**                 | If the height of item is obtained asynchronously, this function returns the true height of item | Promise(number)                                      | No       | All | Yes           |
+| **renderItem**                    | Render list entry | JSX.Element                        | Yes    | All  | Yes           |
+| **onEndReached**       | Pull-up loading: If a Promise object is passed in, you must wait for the Promise event callback before triggering this event again. If otherwise, no action will be taken | function                                            | No       | All  | Yes           |
+| **columnsFlatListProps** | The outer FlatList parameter           | FlatListProps                                      | No       | All  | Yes           |
+| **columnFlatListProps**                 | Column the FlatList parameter | FlatListProps                                          | No       | All  | Yes           |
 
 ## Static Methods
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ----- | :-----------| :--: |:--------:| :------: |:-----------------:|
-| **clear** | 清空渲染列表, 一般用于下拉刷新获取到数据化,清空之前的数据 | function |    No    | All |        Yes        |
+| **clear** | Clearing the render list is generally used to pull down and refresh to obtain the data and clear the previous data | function |    No    | All |        Yes        |
 
 
 ## Known Issues
