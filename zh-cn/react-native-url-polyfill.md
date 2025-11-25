@@ -1,19 +1,14 @@
-> 模板版本：v0.2.2
+> 模板版本：v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-url-polyfill</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/charpeni/react-native-url-polyfill">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/charpeni/react-native-url-polyfill/blob/main/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
 
+| 三方库版本                 | 支持RN版本                 |
+| ------------------------- | -------------------------- |
+| 2.0.0               |  0.72/0.77 |
 
-> [!TIP] [Github 地址](https://github.com/charpeni/react-native-url-polyfill)
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 ## 安装与使用
 
@@ -137,7 +132,8 @@ export default URLPolyfillDemo;
 本文档内容基于以下版本验证通过：
 
 1. RNOH: 0.72.27; SDK: HarmonyOS-NEXT-DB1 5.0.0.25; IDE: DevEco Studio 5.0.3.400SP7; ROM: 3.0.0.25;
-2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH: 0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -147,19 +143,19 @@ export default URLPolyfillDemo;
 
 | Name         | Description                                                  | Type            | Required | Platform    | HarmonyOS Support |
 | ------------ | ------------------------------------------------------------ | --------------- | -------- | ----------- | :---------------- |
-| hash         | Gets and sets the fragment portion of the URL.               | string          | no       | Android/iOS | yes               |
-| host         | Gets and sets the host portion of the URL.                   | string          | no       | Android/iOS | yes               |
-| hostname     | Gets and sets the host name portion of the URL.              | string          | no       | Android/iOS | yes               |
-| href         | Gets and sets the serialized URL.                            | string          | no       | Android/iOS | yes               |
-| origin       | Gets the read-only serialization of the URL's origin.        | string          | no       | Android/iOS | yes               |
-| password     | Gets and sets the password portion of the URL.               | string          | no       | Android/iOS | yes               |
-| pathname     | Gets and sets the path portion of the URL.                   | string          | no       | Android/iOS | yes               |
-| port         | Gets and sets the port portion of the URL.                   | string          | no       | Android/iOS | yes               |
-| protocol     | Gets and sets the protocol portion of the URL.               | string          | no       | Android/iOS | yes               |
-| search       | Gets and sets the serialized query portion of the URL.       | string          | no       | Android/iOS | yes               |
-| searchParams | Gets the `URLSearchParams` object representing the query parameters of the URL. | URLSearchParams | no       | Android/iOS | yes               |
-| username     | Gets and sets the username portion of the URL.               | string          | no       | Android/iOS | yes               |
-| size         | The total number of parameter entries on the `URLSearchParams` object. | number          | no       | Android/iOS | yes               |
+| hash         | 获取或设置 URL 的片段标识部分               | string          | no       | Android/iOS | yes               |
+| host         | 获取或设置 URL 的主机部分                   | string          | no       | Android/iOS | yes               |
+| hostname     | 获取或设置 URL 的主机名部分              | string          | no       | Android/iOS | yes               |
+| href         | 获取或设置序列化的 URL                            | string          | no       | Android/iOS | yes               |
+| origin       | 获取 URL 源的只读序列化        | string          | no       | Android/iOS | yes               |
+| password     | 获取或设置 URL 的密码部分               | string          | no       | Android/iOS | yes               |
+| pathname     | 获取或设置 URL 的路径部分                   | string          | no       | Android/iOS | yes               |
+| port         | 获取或设置 URL 的端口部分                   | string          | no       | Android/iOS | yes               |
+| protocol     | 获取或设置 URL 的协议部分               | string          | no       | Android/iOS | yes               |
+| search       | 获取或设置序列化的查询部分       | string          | no       | Android/iOS | yes               |
+| searchParams | 获取表示 URL 查询参数的 `URLSearchParams` 对象 | URLSearchParams | no       | Android/iOS | yes               |
+| username     | 获取或设置 URL 的用户名部分               | string          | no       | Android/iOS | yes               |
+| size         | `URLSearchParams` 对象上的参数条目总数 | number          | no       | Android/iOS | yes               |
 
 ## 静态方法
 
@@ -169,20 +165,20 @@ export default URLPolyfillDemo;
 
 | Name     | Description                                                  | Type                               | Required | Platform    | HarmonyOS Support |
 | -------- | ------------------------------------------------------------ | ---------------------------------- | -------- | ----------- | ----------------- |
-| toString | The `toString()` method on the `URL` object returns the serialized URL. | string                             | no       | Android/iOS | yes               |
-| toJSON   | The `toJSON()` method on the `URL` object returns the serialized URL. | string                             | no       | Android/iOS | yes               |
-| append   | Append a new name-value pair to the query string.            | void                               | no       | Android/iOS | yes               |
-| delete   | where name is `name` and value is `value`,removes all name-value pairs. | void                               | no       | Android/iOS | yes               |
-| entries  | Returns an ES6 `Iterator` over each of the name-value pairs in the query. | IterableIterator<[string, string]> | no       | Android/iOS | yes               |
-| forEach  | Iterates over each name-value pair in the query and invokes the given function. | void                               | no       | Android/iOS | yes               |
-| get      | Returns the value of the first name-value pair whose name is `name`. If there are no such pairs, `null` is returned. | string \| null                     | no       | Android/iOS | yes               |
-| getAll   | Returns the values of all name-value pairs whose name is `name`. If there are no such pairs, an empty array is returned. | string[]                           | no       | Android/iOS | yes               |
-| has      | Checks if the `URLSearchParams` object contains key-value pair(s) based on `name` and an optional `value` argument. | boolean                            | no       | Android/iOS | yes               |
-| keys     | Returns an ES6 `Iterator` over the names of each name-value pair. | IterableIterator<string>           | no       | Android/iOS | yes               |
-| set      | Sets the value in the `URLSearchParams` object associated with `name` to `value`. | void                               | no       | Android/iOS | yes               |
-| sort     | Sort all existing name-value pairs in-place by their names.  | void                               | no       | Android/iOS | yes               |
-| toString | Returns the search parameters serialized as a string on the `URLSearchParams` object, with characters percent-encoded where necessary . | string                             | no       | Android/iOS | yes               |
-| values   | Returns an ES6 `Iterator` over the values of each name-value pair. | IterableIterator<string>           | no       | Android/iOS | yes               |
+| toString | 返回 URL 的序列化字符串 | string                             | no       | Android/iOS | yes               |
+| toJSON   | 返回 URL 的序列化字符串 | string                             | no       | Android/iOS | yes               |
+| append   | 向查询字符串添加新的参数键值对            | void                               | no       | Android/iOS | yes               |
+| delete   | 删除指定参数名的所有键值对 | void                               | no       | Android/iOS | yes               |
+| entries  | 返回包含所有参数键值对的 ES6 `Iterator` | IterableIterator<[string, string]> | no       | Android/iOS | yes               |
+| forEach  | 遍历所有参数键值对并执行回调函数 | void                               | no       | Android/iOS | yes               |
+| get      | 获取指定参数名的第一个值，不存在时返回 null	 | string \| null                     | no       | Android/iOS | yes               |
+| getAll   | 获取指定参数名的所有值，不存在时返回空数组 | string[]                           | no       | Android/iOS | yes               |
+| has      | 检查是否存在指定参数名的键值对 | boolean                            | no       | Android/iOS | yes               |
+| keys     | 返回所有参数名的 ES6 `Iterator` | IterableIterator<string>           | no       | Android/iOS | yes               |
+| set      | 设置指定参数名的值 | void                               | no       | Android/iOS | yes               |
+| sort     | 按参数名对所有键值对进行排序  | void                               | no       | Android/iOS | yes               |
+| toString | 返回经过百分比编码的查询参数字符串 | string                             | no       | Android/iOS | yes               |
+| values   | 返回所有参数值的 ES6 `Iterator` | IterableIterator<string>           | no       | Android/iOS | yes               |
 
 ## 遗留问题
 
