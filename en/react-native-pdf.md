@@ -14,11 +14,16 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-pdf)
 
+Check the release notes of the third-party library to pick the matching version. For older builds that are not published to npm, follow the [installation guide](/en/tgz-usage-en.md) to install the TGZ package.
+
+| Version | Package Name | Repository | Release | RN Version |
+| ------- | ------------- | ---------- | ------- | ---------- |
+| 6.7.4 | @react-native-oh-tpl/react-native-pdf | [GitHub](https://github.com/react-native-oh-library/react-native-pdf) | [GitHub Releases](https://github.com/react-native-oh-library/react-native-pdf/releases) | 0.72 |
+| 6.8.0 | @react-native-ohos/react-native-pdf | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-pdf) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-pdf/releases) | 0.77 |
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-pdf Releases](https://github.com/react-native-oh-library/react-native-pdf/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
-
-Go to the project directory and execute the following instruction:
+Go to the project directory and run:
 
 
 
@@ -27,13 +32,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# V0.72
 npm install @react-native-oh-tpl/react-native-pdf
+
+# V0.77
+npm install @react-native-ohos/react-native-pdf
 ```
 
 #### **yarn**
 
 ```bash
+# V0.72
 yarn add @react-native-oh-tpl/react-native-pdf
+
+# V0.77
+yarn add @react-native-ohos/react-native-pdf
 ```
 
 <!-- tabs:end -->
@@ -114,10 +127,21 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
+- V0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-pdf": "file:../../node_modules/@react-native-oh-tpl/react-native-pdf/harmony/pdfview.har"
+  }
+```
+
+- V0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-pdf": "file:../../node_modules/@react-native-ohos/react-native-pdf/harmony/pdfview.har"
   }
 ```
 
@@ -156,7 +180,13 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+# V0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-pdf/src/main/cpp" ./pdfview)
+
+# V0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-pdf/src/main/cpp" ./pdfview)
+
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -197,7 +227,11 @@ Find `function buildCustomRNComponent()`, which is usually located in `entry/src
 
 ```diff
   ...
++ // V0.72
 + import { RTNPdfView, PDF_VIEW_TYPE } from '@react-native-oh-tpl/react-native-pdf';
+
++ // V0.77
++ import { RTNPdfView, PDF_VIEW_TYPE } from '@react-native-ohos/react-native-pdf';
 
   @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -244,9 +278,10 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+Use the correct React Native, RNOH, DevEco Studio, and ROM versions when integrating this library. The following combinations have been verified:
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-pdf Releases](https://github.com/react-native-oh-library/react-native-pdf/releases)
+1. RNOH: 0.72.38; SDK: HarmonyOS 5.0.0 (API12); DevEco Studio  6.0.0.868; ROM: 5.0.0.107
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.868; ROM: 6.0.0.112
 
 ## Properties
 
@@ -284,6 +319,8 @@ Check the release version information in the release address of the third-party 
 | onPageSingleTap                | callback when page was single tapped                                                                                                                                                            | function(page)                                                | NO       | iOS / Android | no                |
 | onScaleChanged                 | callback when scale page                                                                                                                                                                        | function(scale)                                               | NO       | iOS / Android | yes               |
 | onPressLink                    | callback when link tapped                                                                                                                                                                       | function(uri)                                                 | NO       | iOS / Android | yes               |
+| scrollEnabled (6.7.7+) | enable or disable scrolling                                                                                                                                                                    | bool                                                          | NO       | iOS           | yes               |
+| progressContainerStyle (6.7.7+) | support normal view style, you can use this to set border/spacing color                                                                                                                     | object                                                        | NO       | iOS / Android | no                |
 
 #### Source
 
@@ -323,6 +360,7 @@ Check the release version information in the release address of the third-party 
 
 - [ ] onLoadComplete 回调函数参数返回目前仅支持 numberOfPages, path参数：[issue#47](https://github.com/react-native-oh-library/react-native-pdf/issues/47)
 - [ ] 原库部分接口在 HarmonyOS 中没有对应属性及接口处理相关逻辑: [issue#48](https://github.com/react-native-oh-library/react-native-pdf/issues/48)
+- [ ] Several properties in the V0.77 package are not yet HarmonyOS-ready: [issue #1](https://gitcode.com/openharmony-sig/rntpc_react-native-pdf/issues/1)
 
 ## Others
 

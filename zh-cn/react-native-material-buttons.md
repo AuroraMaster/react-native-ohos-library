@@ -15,14 +15,16 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-material-buttons)
 
-## 安装与使用
-
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 0.6.0      | [@react-native-oh-tpl/react-native-material-buttons Releases](https://github.com/react-native-oh-library/react-native-material-buttons/releases) | 0.72       |
-| 0.6.1      | [@react-native-ohos/react-native-material-buttons Releases]() | 0.77       |
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+| 0.6.0 | @react-native-oh-tpl/react-native-material-buttons | [Github](https://github.com/react-native-oh-library/react-native-material-buttons) | [Github Releases](https://github.com/react-native-oh-library/react-native-material-buttons/releases) | 0.72 |
+| 0.7.0                        | @react-native-ohos/react-native-material-buttons       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-material-buttons) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-material-buttons/releases) | 0.77 |
+
+
+## 安装与使用
+
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -32,32 +34,22 @@
 
 #### **npm**
 
-v0.6.0
-
 ```bash
+#v0.72
 npm install @react-native-oh-tpl/react-native-material-buttons
 npm install deprecated-react-native-prop-types
-```
-
-v0.6.1
-
-```
+#v0.77
 npm install @react-native-ohos/react-native-material-buttons
 npm install deprecated-react-native-prop-types
 ```
 
 #### **yarn**
 
-v0.6.0
-
 ```bash
+#v0.72
 yarn add @react-native-oh-tpl/react-native-material-buttons
 yarn add deprecated-react-native-prop-types
-```
-
-v0.6.1
-
-```
+#v0.77
 yarn add @react-native-ohos/react-native-material-buttons
 yarn add deprecated-react-native-prop-types
 ```
@@ -232,12 +224,10 @@ export default MaterialButtons;
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+在以下版本验证通过：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 0.6.0      | [@react-native-oh-tpl/react-native-material-buttons Releases](https://github.com/react-native-oh-library/react-native-material-buttons/releases) | 0.72       |
-| 0.6.1      | [@react-native-ohos/react-native-material-buttons Releases]() | 0.77       |
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); DevEco Studio  6.0.0.868; ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -247,42 +237,42 @@ export default MaterialButtons;
 
 >[!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-|          Name           |                    Description                    |                           Type                           | Required |  Platform   | HarmonyOS Support |
+|          属性名           |                    描述                    |                           类型                           | 是否必填 |  支持平台   | HarmonyOS 支持 |
 |:-----------------------:| :-----------------------------------------------: | :------------------------------------------------------: | :------: | :---------: | :---------------: |
-|     **titleStyle**      |       Style object for the button's title         |                         Object                           |    No    | iOS/Android |        Yes        |
-|        **title**        |                   Button title                    |                         String                           |    YES   | iOS/Android |        Yes        |
-|     **titleColor**      |                  Button title color               |                         String                           |    No    | iOS/Android |        Yes        |
-| **disabledTitleColor**  |       Button title color for disabled state       |                         String                           |    No    | iOS/Android |        Yes        |
+|     **titleStyle**      |               按钮标题的样式对象                  |                         Object                           |    否    | iOS/Android |        是        |
+|        **title**        |                      按钮标题                     |                         String                           |    是    | iOS/Android |        是        |
+|     **titleColor**      |                    按钮标题颜色                   |                         String                           |    否    | iOS/Android |        是        |
+| **disabledTitleColor**  |                按钮禁用状态的标题颜色              |                         String                           |    否    | iOS/Android |        是        |
 
 ## **API（RaisedTextButton）**
 >[!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
 >[!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-|          Name           |                    Description                    |                           Type                           | Required |  Platform   | HarmonyOS Support |
+|          属性名           |                    描述                    |                           类型                           | 是否必填 |  支持平台   | HarmonyOS 支持 |
 |:-----------------------:| :-----------------------------------------------: | :------------------------------------------------------: | :------: | :---------: | :---------------: |
-|    **rippleOpacity**    |           Opacity of the ripple effect            |                         Number                           |    No    | iOS/Android |        Yes        |
-|   **rippleDuration**    |   Duration of the ripple effect in milliseconds   |                         Number                           |    No    | iOS/Android |        Yes        |
+|    **rippleOpacity**    |               水波纹效果的不透明度                |                         Number                           |    否    | iOS/Android |        是        |
+|   **rippleDuration**    |              水波纹效果持续时间（毫秒）            |                         Number                           |    否    | iOS/Android |        是        |
 
 ## **API（Common）**
 >[!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
 >[!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-|          Name           |                    Description                    |                           Type                           | Required |  Platform   | HarmonyOS Support |
+|          属性名           |                    描述                    |                           类型                           | 是否必填 |  支持平台   | HarmonyOS 支持 |
 |:-----------------------:| :-----------------------------------------------: | :------------------------------------------------------: | :------: | :---------: | :---------------: |
-|    **color**    |           Button color            |                         String                           |    No    | iOS/Android |        Yes        |
-|   **disabledColor**    |   Button color for disabled state   |                         String                           |    No    | iOS/Android |        Yes        |
-|   **shadeColor**    |   Button shade color for focused state   |                         String                           |    No    | iOS/Android |        Yes        |
-|   **shadeOpacity**    |   Button shade opacity for focused state   |                         Number                           |    No    | iOS/Android |        Yes        |
-|   **shadeBorderRadius**    |   Button shade border radius   |                         Number                           |    No    | iOS/Android |        Yes        |
-|   **focusAnimation**    |   Focus animation state   |                         Animated.Value                           |    No    | iOS/Android |        Yes        |
-|   **disableAnimation**    |   Disable animation state   |                         Animated.Value                           |    No    | iOS/Android |        Yes        |
-|   **focusAnimationDuration**    |   Focus animation duration in ms   |                         Number                           |    No    | iOS/Android |        Yes        |
-|   **disableAnimationDuration**    |   Disable animation duration in ms   |                         Number                           |    No    | iOS/Android |        Yes        |
-|   **disabled**    |   	Button availability   |                         Boolean                           |    No    | iOS/Android |        Yes        |
-|   **onPress**    |   Touch up callback   |                         Function                           |    No    | iOS/Android |        Yes        |
-|   **payload**    |   Payload object for onPress callback   |                         Any                           |    No    | iOS/Android |        Yes        |
+|    **color**    |                 按钮颜色                 |                         String                           |    否    | iOS/Android |        是        |
+|   **disabledColor**    |             按钮禁用状态的颜色             |                         String                           |    否    | iOS/Android |        是        |
+|   **shadeColor**    |             按钮聚焦状态的阴影颜色           |                         String                           |    否    | iOS/Android |        是        |
+|   **shadeOpacity**    |           按钮聚焦状态阴影透明度            |                         Number                           |    否    | iOS/Android |        是        |
+|   **shadeBorderRadius**    |               按钮阴影圆角                |                         Number                           |    否    | iOS/Android |        是        |
+|   **focusAnimation**    |                 聚焦动画状态               |                         Animated.Value                           |    否    | iOS/Android |        是        |
+|   **disableAnimation**    |               禁用状态动画状态               |                         Animated.Value                           |    否    | iOS/Android |        是        |
+|   **focusAnimationDuration**    |         聚焦状态动画持续时间（毫秒）         |                         Number                           |    否    | iOS/Android |        是        |
+|   **disableAnimationDuration**    |        禁用状态动画持续时间（毫秒）         |                         Number                           |    否    | iOS/Android |        是        |
+|   **disabled**    |                  按钮可用性               |                         Boolean                           |    否    | iOS/Android |        是        |
+|   **onPress**    |                  抬起回调                 |                         Function                           |    否    | iOS/Android |        是        |
+|   **payload**    |            onPress 回调的负载对象           |                         Any                           |    否    | iOS/Android |        是        |
 
 ## 遗留问题
 

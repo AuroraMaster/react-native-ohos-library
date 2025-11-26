@@ -14,6 +14,13 @@
 
 > [!TIP] [GitHub address](https://github.com/tradle/react-native-crypto/tree/639d8e29ac1feae20f95f2e285851d5ed4898a9a)
 
+Check the release notes of the third-party library to pick the matching version:
+
+| Version | RN Version |
+| ---------- | ---------- |
+| 2.2.0     | 0.72 |
+| 2.2.1     | 0.77 |
+
 ## Installation and Usage
 
 [!TIP]This repository depends on [@react-native-oh-tpl/react-native-randombytes](./react-native-randombytes.md)
@@ -23,13 +30,19 @@
 #### **npm**
 
 ```bash
+# V0.72
 npm install react-native-crypto@2.2.0
+# V0.77
+npm install react-native-crypto@2.2.1
 ```
 
 #### **yarn**
 
 ```bash
+# V0.72
 yarn add react-native-crypto@2.2.0
+# V0.77
+yarn add react-native-crypto@2.2.1
 ```
 
 <!-- tabs:end -->
@@ -138,6 +151,8 @@ If it is not included, follow the guide provided in @react-native-oh-tpl/react-n
 This document is verified based on the following versions:
 
 1. RNOH: 0.72.27; SDK：HarmonyOS NEXT Developer Beta1 5.0.0.25; IDE：DevEco Studio 5.0.3.400SP7; ROM：3.0.0.25;
+2. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio  6.0.0.868; ROM: 5.0.0.107;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## API
 

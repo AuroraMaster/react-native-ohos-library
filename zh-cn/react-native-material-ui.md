@@ -15,15 +15,15 @@
 
 > [!TIP] [Github 地址](https://github.com/xotahal/react-native-material-ui)
 
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      | 支持RN版本 |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+| 1.30.1 | @react-native-oh-tpl/react-native-material-ui | [Github](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-material-ui%2F) | [Github Releases](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-material-ui%2Freleases) | 0.72 |
+| 1.31.0                        | @react-native-ohos/react-native-material-ui       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-material-ui) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-material-ui/releases) | 0.77 |
+
+
 ## 安装与使用
-
-请到三方库的 Releases
-发布地址查看配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 1.30.1     | [@react-native-oh-tpl/react-native-material-ui Releases](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-material-ui%2Freleases) | 0.72       |
-| 1.30.1     | [@react-native-ohos/react-native-material-ui Releases]()     | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -37,7 +37,7 @@
 # V1.30.1 for RN0.72
 npm install  @react-native-oh-tpl/react-native-material-ui
 
-# V1.30.1 for RN0.77
+# V1.31.0 for RN0.77
 npm install  @react-native-ohos/react-native-material-ui
 ```
 
@@ -47,7 +47,7 @@ npm install  @react-native-ohos/react-native-material-ui
 # V1.30.1 for RN0.72
 yarn add  @react-native-oh-tpl/react-native-material-ui
 
-# V1.30.1 for RN0.77
+# V1.31.0 for RN0.77
 yarn add  @react-native-ohos/react-native-material-ui
 ```
 
@@ -208,12 +208,10 @@ struct Index {
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+在以下版本验证通过：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 1.30.1     | [@react-native-oh-tpl/react-native-material-ui Releases](https://github.com/react-native-oh-library/react-native-material-ui/releases) | 0.72       |
-| 1.30.1     | [@react-native-ohos/react-native-material-ui Releases]()     | 0.77       |
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio  6.0.0.868; ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 组件
 

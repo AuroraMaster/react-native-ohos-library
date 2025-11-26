@@ -15,14 +15,14 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-sortable-list)
 
-## 安装与使用
-
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 0.0.25     | [@react-native-oh-tpl/react-native-sortabel-list Releases](https://github.com/react-native-oh-library/react-native-sortable-list/releases) | 0.72       |
-| 0.0.26     | [@react-native-ohos/react-native-sortabel-list Releases]()   | 0.77       |
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+| 0.0.25 | @react-native-oh-tpl/react-native-sortable-list | [Github](https://github.com/react-native-oh-library/react-native-sortable-list) | [Github Releases](https://github.com/react-native-oh-library/react-native-sortable-list/releases) | 0.72 |
+| 0.1.0                        | @react-native-ohos/react-native-sortable-list       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-sortable-list) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-sortable-list/releases) | 0.77 |
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -30,29 +30,19 @@
 
 #### **npm**
 
-v0.0.25
-
 ```bash
+#v0.72
 npm install @react-native-oh-tpl/react-native-sortable-list
-```
-
-v0.0.26
-
-```
+#v0.77
 npm install @react-native-ohos/react-native-sortable-list
 ```
 
 #### **yarn**
 
-v0.0.25
-
 ```bash
+#v0.72
 yarn add @react-native-oh-tpl/react-native-sortable-list
-```
-
-v0.0.26
-
-```
+#v0.77
 yarn add @react-native-ohos/react-native-sortable-list
 ```
 
@@ -254,41 +244,39 @@ const styles = StyleSheet.create({
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+在以下版本验证通过：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 0.0.25     | [@react-native-oh-tpl/react-native-sortabel-list Releases](https://github.com/react-native-oh-library/react-native-sortable-list/releases) | 0.72       |
-| 0.0.26     | [@react-native-ohos/react-native-sortabel-list Releases]()   | 0.77       |
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); DevEco Studio  6.0.0.868; ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name                           | Description                                                                                                                                                                    | **Type**      | Required | Platform | HarmonyOS Support |
+| 属性名 | 描述 | **类型** | 是否必填 | 支持平台 | HarmonyOS 支持 |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------- | -------- | -------- | ----------------- |
-| data                           | data source                                                                                                                                                                    | Object        | yes      | All      | Yes               |
-| order                          | an array of keys from data, the order of keys from the array will be used to initial rows order                                                                                | Array         | no       | All      | Yes               |
-| style                          | View style                                                                                                                                                                     | Object, Array | no       | All      | Yes               |
-| contentContainerStyle          | these styles will be applied to the inner scroll view content container                                                                                                        | Object, Array | no       | All      | Yes               |
-| innerContainerStyle            | these styles will be applied to the inner scroll view content container, excluding the header and footer                                                                       | Object, Array | no       | All      | Yes               |
-| horizontal                     | when true, the SortableList's children are arranged horizontally in a row instead of vertically in a column. The default value is false.                                       | boolean       | no       | All      | Yes               |
-| showsVerticalScrollIndicator   | when false, the vertical scroll indicator will not be visible. The default value is true.                                                                                      | boolean       | no       | All      | Yes               |
-| showsHorizontalScrollIndicator | when false, the horizontal scroll indicator will not be visible. The default value is true.                                                                                    | boolean       | no       | All      | Yes               |
-| sortingEnabled                 | when false, rows are not sortable. The default value is true.                                                                                                                  | boolean       | no       | All      | Yes               |
-| scrollEnabled                  | when false, the content does not scrollable. The default value is true.                                                                                                        | boolean       | no       | All      | Yes               |
-| keyboardShouldPersistTaps      | Determines when the keyboard should stay visible after a tap. Default 'never'.                                                                                                 | string        | no       | All      | Yes               |
-| manuallyActivateRows           | whether you intend to use the toggleRowActive method to activate a row or use the out of box solution.                                                                         | bool          | no       | All      | Yes               |
-| autoscrollAreaSize             | determines the height for vertical list and the width for horizontal list of the area at the begining and the end of the list that will trigger autoscrolling. Defaults to 60. | number        | no       | All      | Yes               |
-| rowActivationTime              | determines time delay in ms before pressed row becomes active. Defaults to 200 ms.                                                                                             | number        | no       | All      | Yes               |
-| refreshControl                 | A RefreshControl that works the same way as a ScrollView's refreshControl.                                                                                                     | element       | no       | All      | Yes               |
-| renderRow                      | Takes a row key, row index, data entry from the data source and its statuses disabled, active and should return a renderable component to be rendered as the row.              | function      | yes      | All      | Yes               |
-| renderHeader                   | Renders returned component at the top of the list.                                                                                                                             | function      | no       | All      | Yes               |
-| renderFooter                   | Renders returned component at the bottom of the list.                                                                                                                          | function      | no       | All      | Yes               |
-| onChangeOrder                  | Called when rows were reordered, takes an array of rows keys of the next rows order.                                                                                           | bool          | no       | All      | Yes               |
-| onActivateRow                  | Called when a row was activated (user long tapped).                                                                                                                            | function      | no       | All      | Yes               |
-| onReleaseRow                   | Called when the active row was released. Returns the key and the new list order.                                                                                               | function      | no       | All      | Yes               |
-| onPressRow                     | Called when a row was pressed.                                                                                                                                                 | function      | no       | All      | Yes               |
+| data                           | 数据源对象                                                                                                                                                                    | Object        | 是       | 全平台      | 是               |
+| order                          | data 中键值数组，该数组顺序将用于初始化行顺序                                                                                                                                | Array         | 否       | 全平台      | 是               |
+| style                          | 外层 View 的样式                                                                                                                                                              | Object, Array | 否       | 全平台      | 是               |
+| contentContainerStyle          | 应用于内部 ScrollView 内容容器的样式                                                                                                                                          | Object, Array | 否       | 全平台      | 是               |
+| innerContainerStyle            | 应用于内部 ScrollView 内容容器（不含头尾组件）的样式                                                                                                                         | Object, Array | 否       | 全平台      | 是               |
+| horizontal                     | 为 true 时按行横向排列子组件，默认为 false 纵向排列                                                                                                                          | boolean       | 否       | 全平台      | 是               |
+| showsVerticalScrollIndicator   | 为 false 时隐藏纵向滚动条，默认 true                                                                                                                                        | boolean       | 否       | 全平台      | 是               |
+| showsHorizontalScrollIndicator | 为 false 时隐藏横向滚动条，默认 true                                                                                                                                          | boolean       | 否       | 全平台      | 是               |
+| sortingEnabled                 | 为 false 时禁用排序功能，默认 true                                                                                                                                            | boolean       | 否       | 全平台      | 是               |
+| scrollEnabled                  | 为 false 时禁用滚动，默认 true                                                                                                                                               | boolean       | 否       | 全平台      | 是               |
+| keyboardShouldPersistTaps      | 控制点击后键盘是否保持可见，默认值为 'never'                                                                                                                                  | string        | 否       | 全平台      | 是               |
+| manuallyActivateRows           | 是否通过 toggleRowActive 手动激活行而非内置方案                                                                                                                              | bool          | 否       | 全平台      | 是               |
+| autoscrollAreaSize             | 触发自动滚动的顶部/底部（或左右）区域尺寸，垂直列表为高度，水平列表为宽度，默认 60                                                                                           | number        | 否       | 全平台      | 是               |
+| rowActivationTime              | 行被长按后变为激活状态的延迟时间（毫秒），默认 200                                                                                                                            | number        | 否       | 全平台      | 是               |
+| refreshControl                 | 与 ScrollView refreshControl 相同用法的下拉刷新组件                                                                                                                          | element       | 否       | 全平台      | 是               |
+| renderRow                      | 接收行 key、索引、数据和状态（禁用/激活），返回一行要渲染的组件                                                                                                              | function      | 是       | 全平台      | 是               |
+| renderHeader                   | 渲染列表顶部头部组件                                                                                                                                                          | function      | 否       | 全平台      | 是               |
+| renderFooter                   | 渲染列表底部尾部组件                                                                                                                                                          | function      | 否       | 全平台      | 是               |
+| onChangeOrder                  | 行重新排序后回调，返回新的行 key 顺序数组                                                                                                                                     | bool          | 否       | 全平台      | 是               |
+| onActivateRow                  | 某一行被激活（长按）时触发                                                                                                                                                   | function      | 否       | 全平台      | 是               |
+| onReleaseRow                   | 激活行释放时触发，返回该行 key 以及新的顺序                                                                                                                                    | function      | 否       | 全平台      | 是               |
+| onPressRow                     | 某一行被点击时触发                                                                                                                                                           | function      | 否       | 全平台      | 是               |
 
 ## 静态方法
 
@@ -296,11 +284,11 @@ const styles = StyleSheet.create({
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name           | Description                                                                 | **Type**       | Required | Platform | HarmonyOS Support |
+| 属性名 | 描述 | **类型** | 是否必填 | 支持平台 | HarmonyOS 支持 |
 | -------------- | --------------------------------------------------------------------------- | -------------- | -------- | -------- | ----------------- |
-| scrollBy       | scrolls by a given y offset, either immediately or with a smooth animation. | dy?, animated? | no       | All      | Yes               |
-| scrollTo       | scrolls to a given y offset, either immediately or with a smooth animation. | y?, animated?  | no       | All      | Yes               |
-| scrollToRowKey | scrolls to a given row key, either immediately or with a smooth animation.  | key, animated? | no       | All      | Yes               |
+| scrollBy       | 按给定纵向偏移滚动，可立即执行或平滑动画执行 | dy?, animated? | 否       | 全平台      | 是               |
+| scrollTo       | 滚动到指定纵向偏移，可立即执行或平滑动画执行 | y?, animated?  | 否       | 全平台      | 是               |
+| scrollToRowKey | 滚动到指定行 key，可立即执行或平滑动画执行 | key, animated? | 否       | 全平台      | 是               |
 
 ## 遗留问题
 

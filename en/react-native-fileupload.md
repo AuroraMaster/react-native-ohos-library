@@ -15,26 +15,41 @@
 
 > [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-fileupload)
 
+Check the release notes of the third-party library to pick the matching version:
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+| 1.1.0 | @react-native-oh-tpl/react-native-fileupload | [Github](https://github.com/react-native-oh-library/react-native-fileupload) | [Github Releases](https://github.com/react-native-oh-library/react-native-fileupload/releases) | 0.72 |
+| 1.2.0                        | @react-native-ohos/react-native-fileupload       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-fileupload) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fileupload/releases) | 0.77 |
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-fileupload Releases](https://github.com/react-native-oh-library/react-native-fileupload/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+For legacy versions that are not published to npm, follow the [installation guide](/en/tgz-usage-en.md) to install the TGZ package.
 
-Go to the project directory and execute the following instruction:
+Go to the project directory and run:
 
-
+### Package Managers
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# V0.72
 npm install @react-native-oh-tpl/react-native-fileupload
+
+# V0.77
+npm install @react-native-ohos/react-native-fileupload
 ```
 
 #### **yarn**
 
 ```bash
+# V0.72
 yarn add @react-native-oh-tpl/react-native-fileupload
+
+# V0.77
+yarn add @react-native-ohos/react-native-fileupload
 ```
 
 <!-- tabs:end -->
@@ -121,7 +136,9 @@ let styles = StyleSheet.create({
 
 ## Use Codegen
 
-this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
+> [!TIP] V0.77 does not require running Codegen.
+
+This repository has been adapted to `Codegen`. Generate the third-party bridge code before usage. For details, see the [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
@@ -139,6 +156,7 @@ Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
   }
 }
 ```
+
 ### 2. Introducing Native Code
 
 Currently, two methods are available:
@@ -150,10 +168,21 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
+- V0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-fileupload": "file:../../node_modules/@react-native-oh-tpl/react-native-fileupload/harmony/fileupload.har"
+  }
+```
+
+- V0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-fileupload": "file:../../node_modules/@react-native-ohos/react-native-fileupload/harmony/fileupload.har"
   }
 ```
 
@@ -170,13 +199,16 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 3. Configuring CMakeLists and Introducing FileUpLoadPackage
+### 3. Importing FileUpLoadPackage on the ArkTS Side
 
 Open `entry/src/main/ets/RNPackagesFactory.ts` and add the following code:
 
 ```diff
   ...
++ // V0.72
 + import {FileUpLoadPackage} from '@react-native-oh-tpl/react-native-fileupload/ts';
++ // V0.77
++ import {FileUpLoadPackage} from '@react-native-ohos/react-native-fileupload/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -186,7 +218,69 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4. Running
+### 4. Configuring CMakeLists and Adding FileuploadPackage
+
+> [!TIP] This step is required for V0.77.
+
+Open `entry/src/main/cpp/CMakeLists.txt` and add:
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-fileupload/src/main/cpp" ./fileupload)
+
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++target_link_libraries(rnoh_app PUBLIC rnoh_fileupload)
+# RNOH_END: manual_package_linking_2
+```
+
+Open `entry/src/main/cpp/PackageProvider.cpp` and add:
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++#include "FileuploadPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++        std::make_shared<FileuploadPackage>(ctx),
+    };
+}
+```
+
+### 5. Running
 
 Click the `sync` button in the upper right corner.
 
@@ -205,7 +299,10 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library:[@react-native-oh-tpl/react-native-fileupload Releases](https://github.com/react-native-oh-library/react-native-fileupload/releases)
+This repository has been verified with the following configurations:
+
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0 (API12); DevEco Studio  6.0.0.868; ROM: 5.0.0.107
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.868; ROM: 6.0.0.112
 
 ## API
 

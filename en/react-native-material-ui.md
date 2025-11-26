@@ -15,24 +15,39 @@
 
 > [!tip] [GitHub address](https://github.com/xotahal/react-native-material-ui)
 
+Check the release page of the third-party library to find the matching version information:
+
+| Version | Package Name | Repository | Release | Supported RN Version |
+| ------- | ------------- | ---------- | ------- | -------------------- |
+| 1.30.1 | @react-native-oh-tpl/react-native-material-ui | [GitHub](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-material-ui%2F) | [GitHub Releases](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-material-ui%2Freleases) | 0.72 |
+| 1.31.0 | @react-native-ohos/react-native-material-ui | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-material-ui) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-material-ui/releases) | 0.77 |
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library：[@react-native-oh-tpl/react-native-material-ui Releases](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-material-ui%2Freleases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+For older versions that are not published to npm, refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
-Go to the project directory and execute the following instruction:
+Go to the project directory and run the following commands:
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# V1.30.1 for RN0.72
 npm install @react-native-oh-tpl/react-native-material-ui
+
+# V1.31.0 for RN0.77
+npm install @react-native-ohos/react-native-material-ui
 ```
 
 #### **yarn**
 
 ```bash
+# V1.30.1 for RN0.72
 yarn add @react-native-oh-tpl/react-native-material-ui
+
+# V1.31.0 for RN0.77
+yarn add @react-native-ohos/react-native-material-ui
 ```
 
 <!-- tabs:end -->
@@ -189,9 +204,12 @@ struct Index {
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+To use this repository, make sure you are using the proper combination of React Native, RNOH, DevEco Studio, SDK, and device ROM.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-material-ui Releases](https://github.com/react-native-oh-library/react-native-material-ui/releases)
+Validated environments:
+
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0 (API 12); IDE: DevEco Studio 6.0.0.868; ROM: 5.0.0.107
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.868; ROM: 6.0.0.112
 
 ## Components
 
