@@ -25,12 +25,6 @@ Please refer to the Releases page of the third-party library for the correspondi
 | 5.1.3      | [@react-native-ohos/react-native-performance Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-performance/releases)     | 0.72       |
 | 5.2.0      | [@react-native-ohos/react-native-performance Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-performance/releases)     | 0.77       |
 
-For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
-
-Go to the project directory and execute the following instruction:
-
-
-
 <!-- tabs:start -->
 
 #### **npm**
@@ -357,16 +351,10 @@ Then build and run the code.
 ## Constraints
 
 ### Compatibility
+The content of this document has been validated based on the following version:
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
-
-Please refer to the Releases page of the third-party library for the corresponding version information:
-
-| Third-party Library Version | Release Information                                                     | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 5.1.2@deprecated      | [@react-native-oh-tpl/react-native-performance Releases(deprecated)](https://github.com/react-native-oh-library/react-native-performance/releases) | 0.72       |
-| 5.1.3      | [@react-native-ohos/react-native-performance Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-performance/releases)     | 0.72       |
-| 5.2.0      | [@react-native-ohos/react-native-performance Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-performance/releases)     | 0.77       |
+1. RNOH：0.72.33; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## Performance
 

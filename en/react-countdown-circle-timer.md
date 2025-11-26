@@ -14,6 +14,11 @@
 
 ## Installation and Usage
 
+| Version| Version for RN |
+| ---------- | ---------- |
+| 3.2.1      | 0.72       |
+| 3.2.1      | 0.77       |
+
 <!-- tabs:start -->
 
 #### **npm**

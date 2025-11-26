@@ -17,18 +17,31 @@
 
 ## Installation and Usage
 
+| Version | Post Information                                                      | Supports RN version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 4.7.2      | [https://github.com/YanYuanFE/react-native-signature-canvas Releases](https://github.com/react-native-oh-library/react-native-svg-charts/releases) | 0.72       |
+| 5.0.1      | [https://github.com/YanYuanFE/react-native-signature-canvas Releases](https://github.com/react-native-oh-library/react-native-svg-charts/releases) | 0.77       |
+
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+#0.72
 npm install --save react-native-signature-canvas@4.7.2
+
+#0.77
+npm install --save react-native-signature-canvas@5.0.1
 ```
 
 #### **yarn**
 
 ```bash
+#0.72
 yarn add react-native-signature-canvas@4.7.2
+
+#0.77
+yarn add react-native-signature-canvas@5.0.1
 ```
 
 <!-- tabs:end -->
@@ -119,6 +132,7 @@ If it is not included, follow the guide provided in [@react-native-oh-tpl/react-
 This document is verified based on the following versions:
 
 1. RNOH：0.72.27; SDK：HarmonyOS NEXT Developer Beta1 5.0.0.25; IDE：DevEco Studio 5.0.3.400SP7; ROM:3.0.0.25;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## Properties
 

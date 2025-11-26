@@ -14,6 +14,12 @@ Template version: v0.2.2
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-ui-lib)
 
+| Version | Post Information                                                     | Supports RN version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 7.29.1     | [@react-native-oh-tpl/react-native-ui-lib Releases](https://github.com/react-native-oh-library/react-native-ui-lib/releases) | 0.72       |
+| 7.43.1     | [@react-native-ohos/react-native-ui-lib Releases](https://github.com/react-native-oh-library/react-native-ui-lib/releases) | 0.77       |
+
+
 ## Installation and Usage
 
 Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-ui-lib Releases](https://github.com/react-native-oh-library/react-native-ui-lib/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
@@ -36,13 +42,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-ui-lib
+
+# 0.77
+npm install @react-native-ohos/react-native-ui-lib
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-ui-lib
+
+# 0.77
+yarn add @react-native-ohos/react-native-ui-lib
 ```
 
 <!-- tabs:end -->
@@ -150,10 +164,21 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
+- 0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-ui-lib": "file:../../node_modules/@react-native-oh-tpl/react-native-ui-lib/harmony/ui_lib.har"
+  }
+```
+
+- 0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-ui-lib": "file:../../node_modules/@react-native-ohos/react-native-ui-lib/harmony/ui_lib.har"
   }
 ```
 
@@ -193,7 +218,11 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+# 0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-ui-lib/src/main/cpp" ./ui-lib)
+
+# 0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-ui-lib/src/main/cpp" ./ui-lib)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -236,7 +265,11 @@ Find `function buildCustomRNComponent()`, which is usually located in `entry/src
 
 ```diff
   ...
+// 0.72
 + import { HighlighterView } from "@react-native-oh-tpl/react-native-ui-lib";
+
+// 0.77
++ import { HighlighterView } from "@react-native-ohos/react-native-ui-lib";
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -271,7 +304,11 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
+// 0.72
 + import { UiLibPackage } from '@react-native-oh-tpl/react-native-ui-lib/ts';
+
+// 0.77
++ import { UiLibPackage } from '@react-native-ohos/react-native-ui-lib/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -298,9 +335,10 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+The content of this document has been validated based on the following version:
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-ui-lib Releases](https://github.com/react-native-oh-library/react-native-ui-lib/releases)
+1. RNOH：0.72.33; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## Components
 

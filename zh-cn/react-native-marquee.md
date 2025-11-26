@@ -6,12 +6,13 @@
 
 本项目基于 [react-native-marquee@0.5.0](https://github.com/kyo504/react-native-marquee/tree/v0.5.0) 开发。
 
-请到三方库的 Releases 发布地址查看配套的版本信息：
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-marquee`，具体版本所属关系如下：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 0.5.0      | [@react-native-oh-tpl/react-native-marquee Releases](https://github.com/react-native-oh-library/react-native-marquee/releases) | 0.72       |
-| 0.5.1      | [@react-native-ohos/react-native-marquee Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-marquee/releases)     | 0.77       |
+| Version                   | Package Name                                      | Repository         | Release                    | Version for RN      |
+| ------------------------- | ------------------------------------------------- | ------------------ | -------------------------- | ------------------------- |
+| <= 0.5.0-0.0.1@deprecated | @react-native-oh-tpl/react-native-marquee | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-marquee) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-marquee/releases) | 0.72 |
+| > 0.5.1                  | @react-native-ohos/react-native-marquee   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-marquee) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-marquee/releases) | 0.72 |
+|    0.6.0 | @react-native-ohos/react-native-marquee | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-marquee) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-marquee/releases) | 0.77 |
 
 ## 1. 安装与使用
 
@@ -22,20 +23,12 @@
 #### **npm**
 
 ```bash
-# V0.5.0
-npm install @react-native-oh-tpl/react-native-marquee
-
-# V0.5.1
 npm install @react-native-ohos/react-native-marquee
 ```
 
 #### **yarn**
 
 ```bash
-# V0.5.0
-yarn add @react-native-oh-tpl/react-native-marquee
-
-# V0.5.1
 yarn add @react-native-ohos/react-native-marquee
 ```
 
@@ -81,15 +74,12 @@ const styles = StyleSheet.create({
 
 ### 2.1 兼容性
 
-请到三方库的 Releases 发布地址查看配套的版本信息：
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 0.5.0      | [@react-native-oh-tpl/react-native-marquee Releases](https://github.com/react-native-oh-library/react-native-marquee/releases) | 0.72       |
-| 0.5.1      | [@react-native-ohos/react-native-marquee Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-marquee/releases)     | 0.77       |
+本文档内容基于以下版本验证通过：
 
-
-## 3. 属性
+1. RNOH：0.72.33; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
@@ -110,8 +100,8 @@ const styles = StyleSheet.create({
 
 | Name     | Description     | Type   | Required | Platform | HarmonyOS Support |
 | ---------| --------------- | -------- | -------- | -------- | ----------------- |
-| start    | Start animation | Function | no       | All      | yes               |
-| stop     | Stop animation  | Function | no       | All      | yes               |
+| start    | 动画开始           | Function | no       | All      | yes               |
+| stop     | 动画结束          | Function | no       | All      | yes               |
 
 ## 5. 遗留问题
 
@@ -120,4 +110,3 @@ const styles = StyleSheet.create({
 ## 7. 开源协议
 
 本项目基于 [The MIT License (MIT)](https://github.com/kyo504/react-native-marquee/blob/master/LICENSE) ，请自由地享受和参与开源。
-

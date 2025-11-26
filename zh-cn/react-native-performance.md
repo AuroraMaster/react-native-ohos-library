@@ -354,16 +354,10 @@ ohpm install
 ## 约束与限制
 
 ### 兼容性
+本文档内容基于以下版本验证通过：
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
-
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 5.1.2@deprecated      | [@react-native-oh-tpl/react-native-performance Releases(deprecated)](https://github.com/react-native-oh-library/react-native-performance/releases) | 0.72       |
-| 5.1.3      | [@react-native-ohos/react-native-performance Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-performance/releases)     | 0.72       |
-| 5.2.0      | [@react-native-ohos/react-native-performance Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-performance/releases)     | 0.77       |
+1. RNOH：0.72.33; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## Performance
 
@@ -373,7 +367,7 @@ ohpm install
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 #### Performance 属性
 
-| Name              | Description                                                                                                                                                                   | Type            | Required | Platform        | HarmonyOS Support  |
+| 名称        | 描述                                                                                                                                                                   | 类型            | 是否必需 | 支持的平台        | 是否支持HarmonyOS  |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | -------- | ----------------| ------------------ |
 |timeOrigin             | 返回Performance用作性能相关时间戳基线的高分辨率时间戳         | number          | yes      | IOS/Android     |      yes           |
 #### Performance 方法

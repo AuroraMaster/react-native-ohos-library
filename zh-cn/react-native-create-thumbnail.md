@@ -26,6 +26,7 @@
 | 2.0.1 | [@react-native-ohos/react-native-create-thumbnail Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-create-thumbnail/releases)                        | 0.72       |
 | 2.1.0 | [@react-native-ohos/react-native-create-thumbnail Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-create-thumbnail/releases)                        | 0.77       |
 
+
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
@@ -181,16 +182,6 @@ Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_nati
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- V2.0.0
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-ohos/react-native-create-thumbnail": "file:../../node_modules/@react-native-ohos/react-native-create-thumbnail/harmony/createThumbnail.har"
-  }
-```
-
-- V2.0.2
 
 ```json
 "dependencies": {
@@ -214,8 +205,6 @@ ohpm install
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- V2.0.0
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -223,14 +212,6 @@ ohpm install
   }
 ```
 
-- V2.0.2
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-ohos/react-native-create-thumbnail": "file:../../node_modules/@react-native-ohos/react-native-create-thumbnail/harmony/createThumbnail"
-  }
-```
 
 打开终端，执行：
 
@@ -333,15 +314,10 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下版本验证通过：
 
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-|-------| ------------------------------------------------------------ | ---------- |
-| 2.0.0@deprecated | [@react-native-oh-tpl/react-native-create-thumbnail Releases(deprecated)](https://github.com/react-native-oh-library/react-native-create-thumbnail/releases) | 0.72       |
-| 2.0.1 | [@react-native-ohos/react-native-create-thumbnail Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-create-thumbnail/releases)                        | 0.72       |
-| 2.1.0 | [@react-native-ohos/react-native-create-thumbnail Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-create-thumbnail/releases)                        | 0.77       |
+1. RNOH：0.72.33; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## API
 
@@ -352,7 +328,7 @@ ohpm install
 #### **createThumbnail**
 | Name | Description | Type | Required | HarmonyOS Support |
 | ---- | ---- | ---- | -------- | -------- |
-|  createThumbnail    | thumbnail generator with storage/cache management and support for both local and remote videos  | function | NO | yes |
+|  createThumbnail    | 带存储/缓存管理的缩略图生成器，支持本地和远程视频  | function | NO | yes |
 
 ## 属性
 
@@ -362,16 +338,16 @@ ohpm install
 
 |        Name         | Description  |   type   | Required | Platform | HarmonyOS Support |
 | :-----------------: | :----------: | :------: | :------: | :---------------: | :---------------: |
-|  url | Path to video file (local or remote)   |    String    | yes  |   Android/ios    |    yes    |
-|  timeStamp | Thumbnail timestamp (in milliseconds)   |    Number     | NO  |   Android/ios    |    yes    |
-|  format | Thumbnail format, can be one of: jpeg, or png   |    String      | NO  |   Android/ios    |    yes    |
-|  dirSize | Maximum size of the cache directory (in megabytes). When this directory is full, the previously generated thumbnails will be deleted to clear about half of it's size.   |    Number       | NO  |   Android/ios    |    yes    |
-|  headers | Headers to load the video with. e.g. { Authorization: 'someAuthToken' }   |    Object      | NO  |   Android/ios    |    yes    |
-|  cacheName | Cache name for this thumbnail to avoid duplicate generation. If specified, and a thumbnail already exists with the same cache name, it will be returned instead of generating a new one.   |    String     | NO  |   Android/ios    |    yes    |
-| maxWidth<sup>2.0.2+</sup> | Max thumbnail width in px. | Number | NO | Android/ios | yes |
-| maxHeight<sup>2.0.2+</sup> | Max thumbnail height in px. | Number | NO | Android/ios | yes |
-| timeToleranceMs<sup>2.0.2+</sup> | Time tolerance in ms for the system to pick the best matching video frame. | Number | NO | ios | NO |
-| onlySyncedFrames<sup>2.0.2+</sup> | Specify how Android target frames. Use true to retrieve a sync frame that has a timestamp closest to the specified one. Use false to retrieve a frame that may or may not be a sync frame but is closest to the specified timestamp. | Boolean | NO | Android | yes |
+|  url | 视频文件路径（本地或远程）   |    String    | yes  |   Android/ios    |    yes    |
+|  timeStamp | 缩略图时间戳（毫秒）  |    Number     | NO  |   Android/ios    |    yes    |
+|  format | 缩略图格式，可以是：jpeg 或 png   |    String      | NO  |   Android/ios    |    yes    |
+|  dirSize | 缓存目录的最大大小（以兆字节为单位）。当该目录满时，之前生成的缩略图将被删除，以清理大约一半的空间。   |    Number       | NO  |   Android/ios    |    yes    |
+|  headers | 用于加载视频的请求头。例如：{ Authorization: 'someAuthToken' }  |    Object      | NO  |   Android/ios    |    yes    |
+|  cacheName | 此缩略图的缓存名称，用于避免重复生成。如果指定了该名称，并且已经存在具有相同缓存名称的缩略图，将返回该缩略图，而不是生成新的。   |    String     | NO  |   Android/ios    |    yes    |
+| maxWidth<sup>2.0.2+</sup> | 最大缩略图宽度（像素） | Number | NO | Android/ios | yes |
+| maxHeight<sup>2.0.2+</sup> | 最大缩略图高度（像素） | Number | NO | Android/ios | yes |
+| timeToleranceMs<sup>2.0.2+</sup> | 系统选择最佳匹配视频帧的时间容差（毫秒）。 | Number | NO | ios | NO |
+| onlySyncedFrames<sup>2.0.2+</sup> | 指定 Android 的目标帧。使用 true 可检索时间戳最接近指定时间的同步帧。使用 false 可检索最接近指定时间戳的帧，该帧可能是同步帧，也可能不是同步帧。 | Boolean | NO | Android | yes |
 ## 返回值
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
@@ -380,11 +356,11 @@ ohpm install
 
 |        Name         | Description  |   type   | Required | Platform | HarmonyOS Support |
 | :-----------------: | :----------: | :------: | :------: | :---------------: | :---------------: |
-|  path | Path to generated thumbnail   |    String    | NO  |   Android/ios    |    yes    |
-|  size | Size (in bytes) of thumbnail   |    Number     | NO  |   Android/ios    |    yes    |
-|  mime | Mimetype of thumbnail   |    String    | NO  |   Android/ios    |    yes    |
-|  width | Thumbnail width   |    Number     | NO  |   Android/ios    |    yes    |
-|  height | Thumbnail height   |    Number     | NO  |   Android/ios    |    yes    |
+|  path | 生成的Thumbnail路径   |    String    | NO  |   Android/ios    |    yes    |
+|  size | Thumbnail大小（字节）   |    Number     | NO  |   Android/ios    |    yes    |
+|  mime | Thumbnail的MIME类型   |    String    | NO  |   Android/ios    |    yes    |
+|  width | Thumbnail宽度   |    Number     | NO  |   Android/ios    |    yes    |
+|  height | Thumbnail高度   |    Number     | NO  |   Android/ios    |    yes    |
 
 ## 遗留问题
 

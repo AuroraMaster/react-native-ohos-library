@@ -15,20 +15,34 @@
 
 > [!TIP] [Github 地址](https://github.com/YanYuanFE/react-native-signature-canvas)
 
+
 ## 安装与使用
+
+| Version | Post Information                                                      | Supports RN version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 4.7.2      | [https://github.com/YanYuanFE/react-native-signature-canvas Releases](https://github.com/react-native-oh-library/react-native-svg-charts/releases) | 0.72       |
+| 5.0.1      | [https://github.com/YanYuanFE/react-native-signature-canvas Releases](https://github.com/react-native-oh-library/react-native-svg-charts/releases) | 0.77   
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+#0.72
 npm install --save react-native-signature-canvas@4.7.2
+
+#0.77
+npm install --save react-native-signature-canvas@5.0.1
 ```
 
 #### **yarn**
 
 ```bash
+#0.72
 yarn add react-native-signature-canvas@4.7.2
+
+#0.77
+yarn add react-native-signature-canvas@5.0.1
 ```
 
 <!-- tabs:end -->
@@ -118,6 +132,7 @@ const styles = StyleSheet.create({
 本文档内容基于以下版本验证通过：
 
 1. RNOH：0.72.27; SDK：HarmonyOS NEXT Developer Beta1 5.0.0.25; IDE：DevEco Studio 5.0.3.400SP7; ROM:3.0.0.25;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## 属性
 
@@ -129,47 +144,51 @@ const styles = StyleSheet.create({
 
 
 
-| Name            | Description     | Type                                                                                                                     | Required | Platform | HarmonyOS Support    | 
-| --------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------- | ------- | -------- | ----------- | 
-| autoClear  | should auto clear the signature after clicking the Confirm button  |boolean| no   | iOS/Android       | yes | 
-| backgroundColor            | default is "rgba(255,255,255,0)" (transparent), background color of the canvas |string| no   | iOS/Android       | yes | 
-| bgHeight            | 	height of the background image  |number| no   | iOS/Android       | yes | 
-| bgWidth            |width of the background image |number| no   | iOS/Android       | yes | 
-| bgSrc            |	background image source uri (url) |string| no   | iOS/Android       | yes | 
-| clearText            |clear button text|string| no   | iOS/Android       | yes | 
-| confirmText            |save button text |string| no   | iOS/Android       | yes | 
-| customHtml            |html string that lets you modify things like the layout or elements |(injectedJavaScript: string) => string| no   | iOS/Android       | yes | 
-| dataURL            |default is "", Base64 string, draws saved signature from dataURL. |string| no   | iOS/Android       | yes | 
-| descriptionText            |description text for signature |string| no   | iOS/Android       | yes | 
-| dotSize            |radius of a single dot (not stroke width) |number| no   | iOS/Android       | yes | 
-| imageType            |"image/png" (default), "image/jpeg"、"image/svg+xml", imageType of exported signature|string| no   | iOS/Android       | yes | 
-| minWidth            |minimum width of a line. Defaults to 0.5 |number| no   | iOS/Android       | yes | 
-| maxWidth            |maximum width of a line. Defaults to 2.5 |number| no   | iOS/Android       | yes | 
-| onOK            |callback function after saving non-empty signature|function| no   | iOS/Android       | yes | 
-| onEmpty            |callback function after trying to save an empty signature|function| no   | iOS/Android       | yes | 
-| onClear            |callback function after clearing the signature|function| no   | iOS/Android       | yes | 
-| onGetData            |callback function when getData() is called |function| no   | iOS/Android       | yes | 
-| onBegin            |callback function when a new stroke is started |function| no   | iOS/Android       | yes | 
-| onEnd            |callback function when the stroke has ended |function| no   | iOS/Android       | yes | 
-| onLoadEnd            |callback function when the webview canvas load ended |function| no   | iOS/Android       | yes | 
-| onUndo            |callback function when undo() is called |function| no   | iOS/Android       | yes | 
-| onRedo	            |callback function when redo() is called |function| no   | iOS/Android       | yes | 
-| onDraw            |callback function when drawing is enabled |function| no   | iOS/Android       | yes | 
-| onErase            |callback function when erasing is enabled |function| no   | iOS/Android       | yes | 
-| onChangePenColor            |callback function after changing the pen color|function| no   | iOS/Android       | yes | 
-| onChangePenSize            |callback function after changing the pen size |function| no   | iOS/Android       | yes | 
-| overlayHeight            |height of the overlay image |number| no   | iOS/Android       | yes | 
-| overlayWidth            |width of the overlay image |number| no   | iOS/Android       | yes | 
-| overlaySrc            |overlay image source uri (url) must be .png with a transparent background |string| no   | iOS/Android       | yes | 
-| penColor            |default is "black", color of pen|string| no   | iOS/Android       | yes | 
-| rotated            |rotate signature pad 90 degrees |boolean| no   | iOS/Android       | yes | 
-| style            |style of wrapper view|object| no   | iOS/Android       | yes | 
-| trimWhitespace           |trim image whitespace|boolean| no   | iOS/Android       | yes | 
-| webStyle            |webview style for overwrite default style, all style: https://github.com/YanYuanFE/react-native-signature-canvas/blob/master/h5/css/signature-pad.css |string| no   | iOS/Android       | yes | 
-| androidLayerType            |Sets the android webview layerType |none、software、hardware| no   | Android       | no | 
-| androidHardwareAccelerationDisabled           |androidHardwareAccelerationDisabled for react-native-webview. Default is false |boolean| no   | Android       | no | 
-| showsVerticalScrollIndicator            |Boolean value that determines whether a vertical scroll indicator is shown in the WebView, The default value is true.|boolean| no   | iOS/Android       | no | 
-| nestedScrollEnabled            |enable nested scrolling for use inside of a scrollview|boolean| no   | no      | no | 
+| Name            | Description     | Type                                                                                                                     | Required | Platform | HarmonyOS Support    |
+| --------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------- | ------- | -------- | ----------- |
+| autoClear  | 点击确认按钮后应自动清除签名  |boolean| no   | iOS/Android       | yes |
+| backgroundColor            | 默认值是 "rgba(255,255,255,0)"（透明），画布的背景颜色 |string| no   | iOS/Android       | yes |
+| bgHeight            | 	背景图片的高度  |number| no   | iOS/Android       | yes |
+| bgWidth            |背景图像的宽度 |number| no   | iOS/Android       | yes |
+| bgSrc            |	背景图像来源 URI（网址） |string| no   | iOS/Android       | yes |
+| clearText            |清除按钮文字|string| no   | iOS/Android       | yes |
+| confirmText            |保存按钮文字 |string| no   | iOS/Android       | yes |
+| customHtml            |允许你修改布局或元素的 HTML 字符串 |(injectedJavaScript: string) => string| no   | iOS/Android       | yes |
+| dataURL            |默认值为 ""，Base64 字符串，从 dataURL 中加载已保存的签名。 |string| no   | iOS/Android       | yes |
+| descriptionText            |签名的描述文字 |string| no   | iOS/Android       | yes |
+| dotSize            |单个点的半径（不是笔触宽度） |number| no   | iOS/Android       | yes |
+| imageType            |导出签名的 imageType：“image/png”（默认）、“image/jpeg”、“image/svg+xml”|string| no   | iOS/Android       | yes |
+| minWidth            |线条最小宽度。默认值为 0.5 |number| no   | iOS/Android       | yes |
+| maxWidth            |行的最大宽度。默认值为2.5 |number| no   | iOS/Android       | yes |
+| minDistance<sup>5.0.1+</sup> |只有在前一点距离大于 x 像素时才添加下一点。默认值为 5 |number| no | iOS/Android | yes |
+| onError<sup>5.0.1+</sup> |发生错误时的回调函数 |function| no | iOS/Android | no |
+| onOK            |保存非空签名后的回调函数|function| no   | iOS/Android       | yes |
+| onEmpty            |尝试保存空签名后的回调函数|function| no   | iOS/Android       | yes |
+| onClear            |清除签名后的回调函数|function| no   | iOS/Android       | yes |
+| onGetData            |当调用 getData() 时的回调函数 |function| no   | iOS/Android       | yes |
+| onBegin            |开始新笔画时的回调函数 |function| no   | iOS/Android       | yes |
+| onEnd            |当笔画结束时的回调函数 |function| no   | iOS/Android       | yes |
+| onLoadEnd            |当 WebView 画布加载完成时的回调函数 |function| no   | iOS/Android       | yes |
+| onUndo            |当调用 undo() 时的回调函数 |function| no   | iOS/Android       | yes |
+| onRedo	            |当调用 redo() 时的回调函数 |function| no   | iOS/Android       | yes |
+| onDraw            |启用绘图时的回调函数 |function| no   | iOS/Android       | yes |
+| onErase            |启用擦除时的回调函数 |function| no   | iOS/Android       | yes |
+| onChangePenColor            |更改画笔颜色后的回调函数|function| no   | iOS/Android       | yes |
+| onChangePenSize            |更改画笔大小后的回调函数 |function| no   | iOS/Android       | yes |
+| overlayHeight            |覆盖图像的高度 |number| no   | iOS/Android       | yes |
+| overlayWidth            |覆盖图像的宽度 |number| no   | iOS/Android       | yes |
+| overlaySrc            |覆盖图像源 URI (url) 必须为带有透明背景的 .png |string| no   | iOS/Android       | yes |
+| penColor            |默认是“黑色”，笔的颜色|string| no   | iOS/Android       | yes |
+| rotated            |将签名板旋转90度 |boolean| no   | iOS/Android       | yes |
+| style            |包装视图样式|object| no   | iOS/Android       | yes |
+| scrollable<sup>5.0.1+</sup> |在签名板中启用滚动。默认值为 false|boolean| no | iOS/Android | yes |
+| trimWhitespace           |裁剪图片空白|boolean| no   | iOS/Android       | yes |
+| webStyle            |用于覆盖默认样式的 webview 样式，所有样式： https://github.com/YanYuanFE/react-native-signature-canvas/blob/master/h5/css/signature-pad.css |string| no   | iOS/Android       | yes |
+| androidLayerType            |设置 Android WebView 的 layerType |none、software、hardware| no   | Android       | no |
+| androidHardwareAccelerationDisabled           |react-native-webview 的 androidHardwareAccelerationDisabled。默认值为 false |boolean| no   | Android       | no |
+| showsVerticalScrollIndicator            |布尔值，用于决定是否在 WebView 中显示垂直滚动条，默认值为 true.|boolean| no   | iOS/Android       | no |
+| nestedScrollEnabled            |启用嵌套滚动以便在滚动视图中使用|boolean| no   | no      | no |
+| webviewProps<sup>5.0.1+</sup> |要传递给底层 WebView 的额外属性|object| no | iOS/Android | partially |
 
 
 
@@ -183,17 +202,18 @@ const styles = StyleSheet.create({
 
 
 
-| Name            | Description     | Type                                                                                                                     | Required | Platform | HarmonyOS Support    | 
-| --------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------- | ------- | -------- | ----------- | 
-| clearSignature  |Clear the current signature  |function| no   | iOS/Android       | yes | 
-| changePenColor  |Change pen color |function| no   | iOS/Android       | yes | 
-| changePenSize |Change pen size  |function| no   | iOS/Android       | yes | 
-| draw  |Enable drawing signature  |function| no   | iOS/Android       | yes | 
-| erase  |Enable erasing signature  |function| no   | iOS/Android       | yes | 
-| getData  |riggers the onGetData callback with a single data JSON string  |function| no   | iOS/Android       | yes | 
-| readSignature  |Reads the current signature on the canvas and triggers either the onOK or onEmpty callbacks  |function| no   | iOS/Android       | yes | 
-| undo  |Undo last stroke  |function| no   | iOS/Android       | yes | 
-| redo  |Redo last stroke |function| no   | iOS/Android       | yes | 
+| Name            | Description     | Type                                                                                                                     | Required | Platform | HarmonyOS Support    |
+| --------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------- | ------- | -------- | ----------- |
+| clearSignature  |清除当前签名  |function| no   | iOS/Android       | yes |
+| changePenColor  |更改笔的颜色 |function| no   | iOS/Android       | yes |
+| changePenSize |更改笔的大小  |function| no   | iOS/Android       | yes |
+| draw  |启用手写签名  |function| no   | iOS/Android       | yes |
+| erase  |启用擦除签名  |function| no   | iOS/Android       | yes |
+| getData  |用一个数据 JSON 字符串触发 onGetData 回调  |function| no   | iOS/Android       | yes |
+| readSignature  |读取画布上的当前签名，并触发 onOK 或 onEmpty 回调  |function| no   | iOS/Android       | yes |
+| undo  |撤销上一步  |function| no   | iOS/Android       | yes |
+| redo  |重做上一次笔划 |function| no   | iOS/Android       | yes |
+| fromData<sup>5.0.1+</sup> |加载签名数据 |function| no | no | no |
 
 
 
@@ -202,9 +222,9 @@ const styles = StyleSheet.create({
 
 ## 其他
 
- 1、minDistance属性版本问题: 此属性在4.7.3版本生效，npm包最新版本为4.7.2，如需使用，请从[Github](https://github.com/YanYuanFE/react-native-signature-canvas)下载最新代码使用；
+ 1、nestedScrollEnabled属性在 iOS,Android 不生效，harmonyOS与其表现一致；[issue#363](https://github.com/YanYuanFE/react-native-signature-canvas/issues/363)
 
- 2、nestedScrollEnabled属性在 iOS,Android 不生效，harmonyOS与其表现一致；[issue#363](https://github.com/YanYuanFE/react-native-signature-canvas/issues/363)
+ 2、fromData方法在 iOS,Android 不生效，harmonyOS与其表现一致；[issue#386](https://github.com/YanYuanFE/react-native-signature-canvas/issues/386)
 
 
 ## 开源协议
