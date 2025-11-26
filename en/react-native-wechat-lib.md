@@ -15,9 +15,14 @@
 
 > [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-wechat-lib)
 
-## Installation and Usage
+Please check the corresponding version information at the third-party library's Releases page:
 
-Find the matching version information in the release address of a third-party library：[@react-native-ohos/react-native-wechat-lib Releases](https://github.com/react-native-oh-library/react-native-wechat-lib/releases)。
+| Library Version | Release Information                                                     |  Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 3.0.6     | [@react-native-ohos/react-native-wechat-lib Releases](https://github.com/react-native-oh-library/react-native-wechat-lib/releases) | 0.72       |
+| 3.1.0    | [@react-native-ohos/react-native-wechat-lib Releases]() | 0.77       |
+
+## Installation and Usage
 
 Go to the project directory and execute the following instruction:：
 
@@ -327,9 +332,10 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+This document is verified based on the following versions:
 
-Check the release version information in the release address of the third-party library：[@react-native-ohos/react-native-wechat-lib](https://github.com/react-native-oh-library/react-native-wechat-lib/releases)
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## API
 
