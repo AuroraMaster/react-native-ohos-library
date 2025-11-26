@@ -14,8 +14,6 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-track-player)
 
-## Installation and Usage
-
 Please refer to the Releases page of the third-party library for the corresponding version information:
 
 | Third-party Library Version | Release Information                                                     | Supported RN Version |
@@ -26,9 +24,9 @@ Please refer to the Releases page of the third-party library for the correspondi
 
 For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
+## Installation and Usage
+
 Go to the project directory and execute the following instruction:
-
-
 
 <!-- tabs:start -->
 
@@ -167,7 +165,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-ohos/react-native-track-player": "file:../../node_modules/@react-native-ohos/react-native-track-player/harmony/track_player.har",
+    "@react-native-ohos/react-native-track-player": "file:../../node_modules/@react-native-ohos/react-native-track-player/harmony/track_player.har"
   }
 ```
 
@@ -184,7 +182,68 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/zh-cn/link-source-code.md).
 
-### 3. Introducing RNTrackPlayerPackage to ArkTS
+### 3.Configure CMakeLists and Introduce TrackPlayerPackage
+
+> [!TIP] If you are using version 4.1.2, please skip this chapter.
+
+Open `entry/src/main/cpp/CMakeLists.txt` and add:
+
+```cmake
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-track-player/src/main/cpp" ./track-player)
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_track_player)
+# RNOH_END: manual_package_linking_2
+```
+
+Open `entry/src/main/cpp/PackageProvider.cpp` and add：
+
+```c++
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "TrackPlayerPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++       std::make_shared<TrackPlayerPackage>(ctx)
+    };
+}
+```
+
+### 4. Introducing RNTrackPlayerPackage to ArkTS
 
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
@@ -200,7 +259,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4. Running
+### 5. Running
 
 Click the `sync` button in the upper right corner.
 
@@ -217,15 +276,10 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+This document is verified based on the following versions:
 
-Please refer to the Releases page of the third-party library for the corresponding version information:
-
-| Third-party Library Version | Release Information                                                     | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 4.1.2@deprecated      | [@react-native-oh-tpl/react-native-track-player Releases(deprecated)](https://github.com/react-native-oh-library/react-native-track-player/releases) | 0.72       |
-| 4.1.3       | [@react-native-ohos/react-native-track-player Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-track-player/releases)                        | 0.72       |
-| 4.2.0      | [@react-native-ohos/react-native-track-player Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-track-player/releases)                        | 0.77       |
+1. RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.200; ROM: 3.0.0.18;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.868; ROM: 6.0.0.112;
 
 ### Permission Requirements
 
@@ -296,12 +350,14 @@ Open the `entry/src/main/module.json5` file and add the following code:
 | getTrack                 | Gets a track object from the queue.                                                                                                                                       | promise | no       | Android/iOS | yes               |
 | getQueue                 | Gets the whole queue.                                                                                                                                                     | promise | no       | Android/iOS | yes               |
 | getActiveTrackIndex      | Gets the index of the active track in the queue or undefined if there is no current track.                                                                                | promise | no       | Android/iOS | yes               |
+| getCurrentTrack      | Gets the index of the active track in the queue or undefined if there is no current track.(Recommend using getActiveTrackIndex() to obtain.) | promise | no       | Android/iOS | yes               |
 | getActiveTrack           | Gets the active track or undefined if there is no current track.                                                                                                          | promise | no       | Android/iOS | yes               |
 | getDuration              | Gets the duration of the current track in seconds.                                                                                                                        | promise | no       | Android/iOS | yes               |
 | getBufferedPosition      | Gets the buffered position of the current track in seconds.                                                                                                               | promise | no       | Android/iOS | no               |
 | getPosition              | Gets the playback position of the current track in seconds.                                                                                                               | promise | no       | Android/iOS | yes               |
 | getProgress              | Gets information on the progress of the currently active track, including its current playback position in seconds, buffered position in seconds and duration in seconds. | promise | no       | Android/iOS | yes               |
 | getPlaybackState         | Gets the playback state of the player.                                                                                                                                    | promise | no       | Android/iOS | partially         |
+| getState         | Gets the playback state of the player. (Recommend using getPlaybackState() to obtain playback status.)                       | promise | no       | Android/iOS | partially         |
 | getRepeatMode            | Gets the queue repeat mode.                                                                                                                                               | promise | no       | Android/iOS | yes               |
 | retry                    | Retries the current item when the playback state is `State.Error`.                                                                                                        | promise | no       | Android/iOS | yes               |
 
