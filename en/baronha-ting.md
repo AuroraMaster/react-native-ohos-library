@@ -4,7 +4,7 @@
   <h1 align="center"> <code>@baronha/ting</code> </h1>
 </p>
 <p align="center">
-    <a href="https://github.com/<原库源码仓地址>">
+    <a href="https://github.com/<Original library source repository address>">
         <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
     </a>
     <a href="https://github.com/baronha/ting/blob/main/LICENSE">
@@ -12,38 +12,51 @@
     </a>
 </p>
 
-> [!TIP] [GitHub address](https://github.com/react-native-oh-library/ting)
+> [!TIP] [Github Address](https://github.com/react-native-oh-library/ting)
+
+The repository for this third-party library has been migrated to Gitcode, and it now supports direct download from npm. The new package name is: `@react-native-ohos/ting`. The specific version relationships are as follows:
+
+| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
+| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
+| 1.2.2 | @react-native-oh-tpl/ting | [Github](https://github.com/react-native-oh-library/ting) | [Github Releases](https://github.com/react-native-oh-library/async-storage/releases) | 0.72 |
+| 1.3.0 | @react-native-ohos/ting   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_ting) | [GitCode Releases]() | 0.77 |
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/ting Releases](https://github.com/react-native-oh-library/ting/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+For older versions not published to npm, please refer to the [Installation Guide](/en/tgz-usage.md) to install the tgz package.
 
-Go to the project directory and execute the following instruction:
-
-
+Navigate to your project directory and enter the following commands:
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# V1.2.2
 npm install @react-native-oh-tpl/ting
+
+# V1.3.0
+npm install @react-native-ohos/ting
 ```
 
 #### **yarn**
 
 ```bash
+# V1.2.2
 yarn add @react-native-oh-tpl/ting
+
+# V1.3.0
+yarn add @react-native-ohos/ting
 ```
 
 <!-- tabs:end -->
 
-The following code shows the basic use scenario of the repository:
+The following code demonstrates basic usage scenarios of this library:
 
-> [!WARNING] The name of the imported repository remains unchanged.
+> [!WARNING] The library name in the import statement remains unchanged.
 
 ```js
-import { View } from "react-native";
+import { View, Button } from "react-native";
 import {
     ToastOptions,
     toast
@@ -55,34 +68,35 @@ function handleToast(options: ToastOptions) {
 
 const App = () => {
   return (
-    <View>
-        <Button
-            title="defalut"
-            onPress={() => {
-                const options: ToastOptions = {
-                    title: 'title-Toast',
-                    message: 'message-Toast',
-                };
-                handleToast(options);
-            }}
-        />
+    <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+      <Button
+        title="defalut"
+        onPress={() => {
+          const options: ToastOptions = {
+            title: 'title-Toast',
+            message: 'message-Toast',
+          };
+          handleToast(options);
+        }}
+      />
     </View>
+  );
 };
 
 export default App;
 ```
 
-## Use Codegen
+## Using Codegen
 
-If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
+This library has been adapted for `Codegen`. Before use, you need to actively generate the third-party library bridging code. Please refer to the [Codegen Usage Documentation](/en/codegen.md) for details.
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Currently, HarmonyOS does not support AutoLink, so the Link step requires manual configuration.
 
-Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+First, use DevEco Studio to open the HarmonyOS project `harmony` within your project.
 
-### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
+### 1. Add the overrides field to the root `oh-package.json5`
 
 ```json
 {
@@ -93,15 +107,20 @@ Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 }
 ```
 
-### 2. Introducing Native Code
+### 2. Import Native Code
 
-Currently, two methods are available:
+There are currently two methods:
 
-Method 1 (recommended): Use the HAR file.
+1. Import via har package (This method will be deprecated after IDE features are improved; currently the preferred method);
+2. Link source code directly.
 
-> [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
+Method 1: Import via har package (Recommended)
 
-Open `entry/oh-package.json5` file and add the following dependencies:
+> [!TIP] The har package is located in the `harmony` folder of the third-party library installation path.
+
+Open `entry/oh-package.json5` and add the following dependencies:
+
+- V1.2.2
 
 ```json
 "dependencies": {
@@ -110,26 +129,86 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 }
 ```
 
-Click the `sync` button in the upper right corner.
+- V1.3.0 
 
-Alternatively, run the following instruction on the terminal:
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/ting": "file:../../node_modules/@react-native-ohos/ting/harmony/ting.har"
+}
+```
+
+Click the `sync` button in the top right corner.
+
+Or execute in the terminal:
 
 ```bash
 cd entry
 ohpm install
 ```
 
-Method 2: Directly link to the source code.
+Method 2: Link Source Code Directly
 
-> [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
+> [!TIP] If you need to link source code directly, please refer to the [Direct Link Source Code Instructions](/en/link-source-code.md).
 
-### 3. Introducing RNTingPackage to ArkTS
+### 3. Configure CMakeLists and Import RNTingPackage
 
-Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
+> V1.3.0 requires configuring CMakeLists and importing RNTingPackage.
+
+```diff
+...
+
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_END: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/Ting/src/main/cpp" ./ting)
+# RNOH_END: manual_package_linking_1
+
+add_library(rnoh_app SHARED
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_ting)
+# RNOH_BEGIN: manual_package_linking_2
+```
+
+Open `entry/src/main/cpp/PackageProvider.cpp` and add:
+
+```diff
+#include "RNOH/PackageProvider.h"
++ #include "TingPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
++        std::make_shared<TingPackage>(ctx)
+}
+```
+
+### 4. Import RNTingPackage on the ArkTs Side
+
+Open `entry/src/main/ets/RNPackagesFactory.ets` and add:
 
 ```diff
   ...
+// V1.2.2
 + import {RNTingPackage} from '@react-native-oh-tpl/ting';
+
+// V1.3.0
++ import {RNTingPackage} from '@react-native-ohos/ting';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -139,26 +218,28 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4. Running
+### 5. Run
 
-Click the `sync` button in the upper right corner.
+Click the `sync` button in the top right corner.
 
-Alternatively, run the following instruction on the terminal:
+Or execute in the terminal:
 
 ```bash
 cd entry
 ohpm install
 ```
 
-Then build and run the code.
+Then compile and run.
 
-## Constraints
+## Constraints and Limitations
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+To use this library, you need to use the correct React-Native and RNOH versions. Additionally, you need to use the matching DevEco Studio and phone ROM.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/ting Releases](https://github.com/react-native-oh-library/ting/releases)
+Verified successfully in the following versions:
+1. RNOH:0.72.96; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
+2. RNOH:0.77.18; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
 
 ## Properties
 
@@ -217,11 +298,11 @@ Check the release version information in the release address of the third-party 
 
 ## Known Issues
 
-- [ ] AlertOptions 和 ToastOptions 中的 preset：done，动画效果未实现。[issue#3](https://github.com/react-native-oh-library/ting/issues/3)
+- [ ] preset in AlertOptions and ToastOptions: The animation effect for 'done' is not implemented. [issue#3](https://github.com/react-native-oh-library/ting/issues/3)
 
 ## Others
 
-- AlertOptions 中的 blurBackdrop 参数配置后，iOS 不支持，Android 无效果。
+- After configuring the blurBackdrop parameter in AlertOptions, it is not supported on iOS and has no effect on Android.
 
 ## License
 

@@ -14,9 +14,16 @@
 
 > [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-simple-toast)
 
+The repository for this third-party library has been migrated to Gitcode, and it now supports direct download from npm. The new package name is: `@react-native-ohos/react-native-simple-toast`. The specific version relationships are as follows:
+
+| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
+| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
+| 3.3.1  | @react-native-oh-tpl/react-native-simple-toast | [Github](https://github.com/react-native-oh-library/react-native-simple-toast) | [Github Releases](https://github.com/react-native-oh-library/react-native-simple-toast/releases) | 0.72 |
+| 3.4.0 | @react-native-ohos/react-native-simple-toast   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-simple-toast) | [GitCode Releases]() | 0.77 |
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-simple-toast Releases](https://github.com/react-native-oh-library/react-native-simple-toast/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -25,13 +32,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# V3.3.1
 npm install @react-native-oh-tpl/react-native-simple-toast
+
+# V3.4.0
+npm install @react-native-ohos/react-native-simple-toast
 ```
 
 #### **yarn**
 
 ```bash
+# V3.3.1
 yarn add @react-native-oh-tpl/react-native-simple-toast
+
+# V3.4.0
+yarn add @react-native-ohos/react-native-simple-toast
 ```
 
 <!-- tabs:end -->
@@ -175,8 +190,9 @@ export default ToastTest;
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
 This document is verified based on the following versions:
-
-1. RNOH：0.72.23; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.19
+1. RNOH:0.72.23; SDK:HarmonyOS NEXT Developer Beta1; IDE:DevEco Studio 5.0.3.200; ROM:3.0.0.19
+2. RNOH:0.77.18; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
+3. RNOH:0.72.96; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
 
 ## API
 

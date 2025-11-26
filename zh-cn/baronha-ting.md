@@ -14,10 +14,16 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/ting)
 
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：@react-native-ohos/ting，具体版本所属关系如下：
+
+| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
+| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
+| 1.2.2 | @react-native-oh-tpl/ting | [Github](https://github.com/react-native-oh-library/ting) | [Github Releases](https://github.com/react-native-oh-library/async-storage/releases) | 0.72 |
+| 1.3.0 | @react-native-ohos/ting   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_ting) | [GitCode Releases]() | 0.77 |
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/ting Releases](https://github.com/react-native-oh-library/ting/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -26,13 +32,21 @@
 #### **npm**
 
 ```bash
+# V1.2.2
 npm install @react-native-oh-tpl/ting
+
+# V1.3.0
+npm install @react-native-ohos/ting
 ```
 
 #### **yarn**
 
 ```bash
+# V1.2.2
 yarn add @react-native-oh-tpl/ting
+
+# V1.3.0
+yarn add @react-native-ohos/ting
 ```
 
 <!-- tabs:end -->
@@ -41,8 +55,9 @@ yarn add @react-native-oh-tpl/ting
 
 > [!WARNING] 使用时 import 的库名不变。
 
+
 ```js
-import { View } from "react-native";
+import { View, Button } from "react-native";
 import {
     ToastOptions,
     toast
@@ -54,18 +69,19 @@ function handleToast(options: ToastOptions) {
 
 const App = () => {
   return (
-    <View>
-        <Button
-            title="defalut"
-            onPress={() => {
-                const options: ToastOptions = {
-                    title: 'title-Toast',
-                    message: 'message-Toast',
-                };
-                handleToast(options);
-            }}
-        />
+    <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+      <Button
+        title="defalut"
+        onPress={() => {
+          const options: ToastOptions = {
+            title: 'title-Toast',
+            message: 'message-Toast',
+          };
+          handleToast(options);
+        }}
+      />
     </View>
+  );
 };
 
 export default App;
@@ -105,10 +121,21 @@ export default App;
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- V1.2.2
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/ting": "file:../../node_modules/@react-native-oh-tpl/ting/harmony/ting.har"
+}
+```
+
+- V1.3.0
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/ting": "file:../../node_modules/@react-native-ohos/ting/harmony/ting.har"
 }
 ```
 
@@ -125,13 +152,64 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 3.在 ArkTs 侧引入 RNTingPackage
+### 3. 配置 CMakeLists 和引入 RNTingPackage
+
+> V1.3.0 需要配置 CMakeLists 和引入 RNTingPackage。
+
+```diff
+...
+
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_END: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/Ting/src/main/cpp" ./ting)
+# RNOH_END: manual_package_linking_1
+
+add_library(rnoh_app SHARED
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_ting)
+# RNOH_BEGIN: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
++ #include "TingPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
++        std::make_shared<TingPackage>(ctx)
+}
+```
+
+### 4.在 ArkTs 侧引入 RNTingPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ets`，添加：
 
 ```diff
   ...
+// V1.2.2
 + import {RNTingPackage} from '@react-native-oh-tpl/ting';
+
+// V1.3.0
++ import {RNTingPackage} from '@react-native-ohos/ting';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -141,7 +219,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.运行
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -160,7 +238,10 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/ting Releases](https://github.com/react-native-oh-library/ting/releases)
+在以下版本验证通过：
+
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.1 Release SDK; IDE：DevEco Studio 5.1.1.840; ROM：6.0.0;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release SDK; IDE：DevEco Studio 5.1.1.840; ROM：6.0.0;
 
 ## 属性
 
@@ -172,37 +253,37 @@ ohpm install
 
 | Name                 | Description                                             | Type | Required | Platform | HarmonyOS Support   |
 |----------------------|---------------------------------------------------------|------|----------|----------|---------------------|
-| title                | The text for the toast’s title                                       | string   | no        | All      | yes  |
-| message              | The text for the toast’s message                                     | string   | no        | All      | yes  |
-| titleColor           | The color of the title text in hexadecimal format      | string   | no        | All      | yes  |
-| messageColor         | The color of the message text in hexadecimal format    | string   | no        | All      | yes  |
-| preset               |  The preset style of the toast. Options include done (success), error (error), none (no style), or spinner (loading spinner)                                                    | string  | no        | All      | partially |
-| duration             | The lifetime of the toast (seconds)                    | number  | no         | All      | yes  |
-| haptic               | The type of haptic feedback. Options include success (success), warning (warning), error (error), or none (no haptic feedback)                                                     | string  | no         | iOS      | yes                 |
-| shouldDismissByDrag  | Whether the toast can be dismissed by dragging                                                     | boolean  | no        | All      | yes  |
-| position             | Toast is displayed from top or bottom                  | string   | no         | All      |yes                 |
-| backgroundColor      | The background color of the toast in hexadecimal format| string   | no         | All      |yes       |
-| icon                 | A custom icon for the toast                                                     | object  | no        | All      | yes  |
-| progressColor        | The color of the progress spinner for the spinner preset style                                                     | string  | no        | Android   | yes  |
+| title                | Toast 标题文本                                       | string   | no        | All      | yes  |
+| message              | Toast 消息文本                                     | string   | no        | All      | yes  |
+| titleColor           | 标题文本颜色（十六进制格式）      | string   | no        | All      | yes  |
+| messageColor         | 消息文本颜色（十六进制格式）    | string   | no        | All      | yes  |
+| preset               |  Toast 预设样式。选项包括：done（成功）、error（错误）、none（无样式）、spinner（加载指示器）  | string  | no        | All      | partially |
+| duration             | Toast 显示时长（秒）                    | number  | no         | All      | yes  |
+| haptic               | 触觉反馈类型。选项包括：success（成功）、warning（警告）、error（错误）、none（无触觉反馈） | string  | no         | iOS      | yes                 |
+| shouldDismissByDrag  | 是否可以通过拖拽关闭 Toast  | boolean  | no        | All      | yes  |
+| position             | Toast 显示位置（顶部或底部）                  | string   | no         | All      |yes                 |
+| backgroundColor      | Toast 背景颜色（十六进制格式）| string   | no         | All      |yes       |
+| icon                 | 自定义图标  | object  | no        | All      | yes  |
+| progressColor        | spinner 预设样式的进度指示器颜色 | string  | no        | Android   | yes  |
 
 ### AlertOptions
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| title                | The text for the toast’s title                                       | string   | no        | All      | yes  |
-| message              | The text for the toast’s message                                     | string   | no        | All      | yes  |
-| titleColor           | The color of the title text in hexadecimal format      | string   | no        | All      | yes  |
-| messageColor         | The color of the message text in hexadecimal format    | string   | no        | All      | yes  |
-| preset               |  The preset style of the toast. Options include done (success), error (error), none (no style), or spinner (loading spinner)                                                    | string  | no        | All      | partially |
-| duration             | The lifetime of the toast (seconds)                    | number  | no         | All      | yes  |
-| haptic               | The type of haptic feedback. Options include success (success), warning (warning), error (error), or none (no haptic feedback)                                                     | string  | no         | iOS      | yes                 |
-| shouldDismissByTap  | Whether the toast can be dismissed by tapping                                                     | boolean  | no        | All      | yes  |
-| backgroundColor      | The background color of the toast in hexadecimal format| string   | no         | All      |yes       |
-| borderRadius  | The border radius of the toast box, which determines how rounded the corners are         | number  | no | All      | yes |
-| blurBackdrop  | The intensity of the background blur effect on Android platforms         | number  | no | Android      | no |
-| backdropOpacity  | The opacity of the background blur effect on Android platforms, with a range from 0 (fully transparent) to 1 (fully opaque)         | number  | no | All      | yes |
-| icon                 | A custom icon for the toast                                                     | object  | no        | All      | yes  |
-| progressColor        | The color of the progress spinner for the spinner preset style                                                     | string  | no        | Android   | yes  |
+| title                | Alert 标题文本                                       | string   | no        | All      | yes  |
+| message              | Alert 消息文本                                     | string   | no        | All      | yes  |
+| titleColor           | 标题文本颜色（十六进制格式）      | string   | no        | All      | yes  |
+| messageColor         | 消息文本颜色（十六进制格式）    | string   | no        | All      | yes  |
+| preset               |  Alert 预设样式。选项包括：done（成功）、error（错误）、none（无样式）、spinner（加载指示器）| string  | no        | All      | partially |
+| duration             | Alert 显示时长（秒）     | number  | no         | All      | yes  |
+| haptic               | 触觉反馈类型。选项包括：success（成功）、warning（警告）、error（错误）、none（无触觉反馈） | string  | no         | iOS      | yes                 |
+| shouldDismissByTap  | 是否可以通过点击关闭 Alert      | boolean  | no        | All      | yes  |
+| backgroundColor      | Alert 背景颜色（十六进制格式）| string   | no         | All      |yes       |
+| borderRadius  | Alert 边框圆角半径，决定圆角程度   | number  | no | All      | yes |
+| blurBackdrop  | Android 平台上背景模糊效果的强度    | number  | no | Android      | no |
+| backdropOpacity  | 背景模糊效果的不透明度，范围从 0（完全透明）到 1（完全不透明）  | number  | no | All      | yes |
+| icon                 | 自定义图标                                                     | object  | no        | All      | yes  |
+| progressColor        | spinner 预设样式的进度指示器颜色                                                 | string  | no        | Android   | yes  |
 
 ## API
 
@@ -212,10 +293,10 @@ ohpm install
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| toast  | Displays a Toast notification         | function  | yes | All      | yes |
-| alert  | Displays an Alert dialog         | function  | yes | All      | yes |
-| dismissAlert  | Closes the currently displayed Alert dialog         | function  | yes | All      | yes |
-| setup  | Configures global settings for Toast and Alert         | function  | yes | All      | yes |
+| toast  | 显示 Toast 通知       | function  | yes | All      | yes |
+| alert  | 显示 Alert 对话框         | function  | yes | All      | yes |
+| dismissAlert  | 关闭当前显示的 Alert 对话框        | function  | yes | All      | yes |
+| setup  | 配置 Toast 和 Alert 的全局设置         | function  | yes | All      | yes |
 
 ## 遗留问题
 

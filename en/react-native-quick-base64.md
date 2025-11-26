@@ -14,9 +14,16 @@
 
 > [!TIP] [ GitHub address](https://github.com/react-native-oh-library/react-native-quick-base64)
 
+The repository for this third-party library has been migrated to Gitcode, and it now supports direct download from npm. The new package name is: `@react-native-ohos/react-native-quick-base64`. The specific version relationships are as follows:
+
+| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
+| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
+| 2.1.2  | @react-native-oh-tpl/react-native-quick-base64 | [Github](https://github.com/react-native-oh-library/react-native-quick-base64) | [Github Releases](https://github.com/react-native-oh-library/react-native-quick-base64/releases) | 0.72 |
+| 2.2.0 | @react-native-ohos/react-native-quick-base64   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-quick-base64) | [GitCode Releases]() | 0.77 |
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-quick-base64 Releases](https://github.com/react-native-oh-library/react-native-quick-base64/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -25,13 +32,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# 2.1.2
 npm install @react-native-oh-tpl/react-native-quick-base64
+
+# 2.2.0
+npm install @react-native-ohos/react-native-quick-base64
 ```
 
 #### **yarn**
 
 ```bash
+# 2.1.2
 yarn add @react-native-oh-tpl/react-native-quick-base64
+
+# 2.2.0
+yarn add @react-native-ohos/react-native-quick-base64
 ```
 
 <!-- tabs:end -->
@@ -43,7 +58,12 @@ The following code shows the basic use scenario of the repository:
 ```js
 import React, { useState } from 'react';
 import { Text, View, TextInput, ScrollView, StyleSheet, Button } from 'react-native';
+
+// 2.1.2
 import { byteLength, btoa, atob, toByteArray, fromByteArray, getNative, trimBase64Padding, shim } from '@react-native-oh-tpl/react-native-quick-base64';
+
+// 2.2.0
+import { byteLength, btoa, atob, toByteArray, fromByteArray, getNative, trimBase64Padding, shim } from '@react-native-ohos/react-native-quick-base64';
 
 type FuncBase64ToArrayBuffer = (
   data: string,
@@ -402,12 +422,21 @@ Method 1 (recommended): Use the HAR file.
 > [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
-
+- 2.1.2
 ```json
  "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
     "@react-native-oh-tpl/react-native-quick-base64": "file:../../node_modules/@react-native-oh-tpl/react-native-quick-base64/harmony/rn_quick_base64.har"
+ }
+```
+
+- 2.2.0
+```json
+ "dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+
+    "@react-native-ohos/react-native-quick-base64": "file:../../node_modules/@react-native-ohos/react-native-quick-base64/harmony/rn_quick_base64.har"
  }
 ```
 
@@ -424,7 +453,7 @@ Method 2: Directly link to the source code.
 
 > [!TIP] or details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 3. Configuring CMakeLists and Introducing GestureHandlerPackage
+### 3. Configuring CMakeLists and Introducing RNQuickBase64Package
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
@@ -446,7 +475,12 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+# 2.1.2
 + add_subdirectory("${OH_MODULE_DIR}/@react-native-oh-tpl/react-native-quick-base64/src/main/cpp" ./rn_quick_base64)
+
+# 2.2.0
++ add_subdirectory("${OH_MODULE_DIR}/@react-native-ohos/react-native-quick-base64/src/main/cpp" ./rn_quick_base64)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -481,12 +515,16 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 4. Introducing Gesture Handler Package to ArkTS
+### 4. Introducing RNQuickBase64Package to ArkTS
 
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
 ```diff
+  // 2.1.2
 + import { RNQuickBase64Package } from '@react-native-oh-tpl/react-native-quick-base64/ts';
+
+  // 2.2.0
++ import { RNQuickBase64Package } from '@react-native-ohos/react-native-quick-base64/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -515,7 +553,10 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-quick-base64 Releases](https://github.com/react-native-oh-library/react-native-quick-base64/releases)
+This document is verified based on the following versions:
+1. RNOH:0.72.96; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
+2. RNOH:0.77.18; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
+
 
 > [!TIP] [Official Documenttation](https://github.com/craftzdog/react-native-quick-base64)
 

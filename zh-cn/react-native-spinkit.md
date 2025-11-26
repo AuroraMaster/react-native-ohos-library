@@ -17,10 +17,14 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-spinkit)
 
+| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
+| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
+| 1.5.1  | @react-native-oh-tpl/react-native-spinkit | [Github](https://github.com/react-native-oh-library/react-native-spinkit) | [Github Releases](https://github.com/react-native-oh-library/react-native-spinkit/releases) | 0.72 |
+| 1.6.0 | @react-native-ohos/react-native-spinkit   | [Github](https://github.com/react-native-oh-library/react-native-spinkit) | [Github Releases](https://github.com/react-native-oh-library/react-native-spinkit/releases) | 0.77 |
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-spinkit Releases](https://github.com/react-native-oh-library/react-native-spinkit/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -29,13 +33,21 @@
 #### **npm**
 
 ```bash
+# 1.5.1
 npm install @react-native-oh-tpl/react-native-spinkit
+
+# 1.6.0
+npm install @react-native-ohos/react-native-spinkit
 ```
 
 #### **yarn**
 
 ```bash
+# 1.5.1
 yarn add @react-native-oh-tpl/react-native-spinkit
+
+# 1.6.0
+yarn add @react-native-ohos/react-native-spinkit
 ```
 
 <!-- tabs:end -->
@@ -96,14 +108,20 @@ export default SpinKit;
 > [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
 
 打开 `entry/oh-package.json5`，添加以下依赖
-
+- 1.5.1
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-spinkit": "file:../../node_modules/@react-native-oh-tpl/react-native-spinkit/harmony/spinKit.har"
   }
 ```
-
+- 1.6.0
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-spinkit": "file:../../node_modules/@react-native-ohos/react-native-spinkit/harmony/spinKit.har"
+  }
+```
 点击右上角的 `sync` 按钮
 
 或者在终端执行：
@@ -124,7 +142,11 @@ ohpm install
 
 ```diff
   ...
+  // 1.5.1
 + import { SpinKitView } from "@react-native-oh-tpl/react-native-spinkit"
+
+  // 1.6.0
++ import { SpinKitView } from "@react-native-ohos/react-native-spinkit"
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -157,7 +179,11 @@ const arkTsComponentNames: Array<string> = [
 
 ```diff
   ...
+  // 1.5.1
 + import { RNSpinKitPackage } from '@react-native-oh-tpl/react-native-spinkit/ts';
+
+  // 1.6.0
++ import { RNSpinKitPackage } from '@react-native-ohos/react-native-spinkit/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -185,8 +211,11 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
+在以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-spinkit Releases](https://github.com/react-native-oh-library/react-native-spinkit/releases)
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.1 Release SDK; IDE：DevEco Studio 5.1.1.840; ROM：6.0.0;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release SDK; IDE：DevEco Studio 5.1.1.840; ROM：6.0.0;
+
 
 ## 属性
 
@@ -198,26 +227,25 @@ ohpm install
 
 | props  | Description | Type | Required | Platform | HarmonyOS Support  |
 | ----  | ----------- | ---- | -------- | ---- | ------------ |
-| type                  | Types of Load Animations                                    | string  | No       | All      | Yes               |
-| type: Plane           | One Direction Flip Loading Animation                        | string  | No       | All      | Yes               |
-| type: CircleFlip      | A circle flips to load animation                            | string  | No       | All      | Yes               |
-| type: Bounce          | A circular nested loading animation | string | No | All | Yes |
-| type: Wave | Five-bar group loading animation | string | No | All | Yes |
-| type: WanderingCubes | Two squares skip loading animation | string | No | All | Yes |
-| type: Pulse | A circular diffusion loading animation | string | No | All | Yes |
-| type: ChansingDots | Two Circles Bounce Loading Animation | string | No | All | Yes |
-| type: ThreeBounce | Three circles display the loading animation in sequence. | string | No | All | Yes |
-| type: Circle | Multiple circular circular motion loading animation | string | No | All | Yes |
-| type: 9CubeGrid | The nine squares display the loading animation in sequence | string | No | All | Yes |
-| type: WordPress | Round wheel inline hollow circle rotating Loading animation | string | No | IOS | Yes |
-| type: FadingCircle | Multiple square circular motion loading animation | string | No | All | Yes |
-| type: FadingCircleAlt | Multiple circular circular motion loading animation | string | No | All | Yes |
-| type: Arc | Rotating ring with notch loading animation | string | No | IOS | Yes |
-| type: ArcAlt | Circular progress bar style loading animation | string | No | IOS | Yes |
-| isVisible | Visibility of the spinner | boolean | No | All | Yes |
-| color | Color of the spinner | string | No | All | Yes |
-| size | Visibility of the spinner | number | No | All | Yes |
-
+| type                  | 加载动画类型                                    | string  | No       | All      | Yes               |
+| type: Plane           | 单向翻转加载动画                        | string  | No       | All      | Yes               |
+| type: CircleFlip      | 圆形翻转加载动画                            | string  | No       | All      | Yes               |
+| type: Bounce          | 圆形嵌套弹跳加载动画 | string | No | All | Yes |
+| type: Wave | 五条柱状组合加载动画 | string | No | All | Yes |
+| type: WanderingCubes | 两个方块跳跃加载动画 | string | No | All | Yes |
+| type: Pulse | 圆形扩散加载动画 | string | No | All | Yes |
+| type: ChasingDots | 双圆弹跳加载动画 | string | No | All | Yes |
+| type: ThreeBounce | 三个圆点依次显示的加载动画 | string | No | All | Yes |
+| type: Circle | 多个圆点循环运动加载动画 | string | No | All | Yes |
+| type: 9CubeGrid | 九个方块依次显示的加载动画 | string | No | All | Yes |
+| type: WordPress | 圆形轮辐内嵌空心圆旋转加载动画 | string | No | IOS | Yes |
+| type: FadingCircle | 多个方块环形运动加载动画 | string | No | All | Yes |
+| type: FadingCircleAlt | 多个圆点环形运动加载动画 | string | No | All | Yes |
+| type: Arc | 带缺口旋转环状加载动画 | string | No | IOS | Yes |
+| type: ArcAlt | 圆形进度条样式加载动画 | string | No | IOS | Yes |
+| isVisible | 加载动画显示状态 | boolean | No | All | Yes |
+| color | 加载动画颜色 | string | No | All | Yes |
+| size | 加载动画尺寸 | number | No | All | Yes |
 
 ## 遗留问题
 

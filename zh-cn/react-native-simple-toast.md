@@ -14,10 +14,16 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-simple-toast)
 
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-simple-toast`，具体版本所属关系如下：
+
+| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
+| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
+| 3.3.1  | @react-native-oh-tpl/react-native-simple-toast | [Github](https://github.com/react-native-oh-library/react-native-simple-toast) | [Github Releases](https://github.com/react-native-oh-library/react-native-simple-toast/releases) | 0.72 |
+| 3.4.0 | @react-native-ohos/react-native-simple-toast   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-simple-toast) | [GitCode Releases]() | 0.77 |
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-simple-toast Releases](https://github.com/react-native-oh-library/react-native-simple-toast/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -26,13 +32,21 @@
 #### **npm**
 
 ```bash
+# V3.3.1
 npm install @react-native-oh-tpl/react-native-simple-toast
+
+# V3.4.0
+npm install @react-native-ohos/react-native-simple-toast
 ```
 
 #### **yarn**
 
 ```bash
+# V3.3.1
 yarn add @react-native-oh-tpl/react-native-simple-toast
+
+# V3.4.0
+yarn add @react-native-ohos/react-native-simple-toast
 ```
 
 <!-- tabs:end -->
@@ -174,9 +188,10 @@ export default ToastTest;
 ### 兼容性
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机ROM。
 
-本文档内容基于以下版本验证通过：
+1. RNOH：0.72.23; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.19
+2. RNOH：0.72.96; SDK：HarmonyOS 5.1.1 Release SDK; IDE：DevEco Studio 5.1.1.840; ROM：6.0.0;
+3. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release SDK; IDE：DevEco Studio 5.1.1.840; ROM：6.0.0;
 
-RNOH：0.72.23; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.19
 
 ## API
 
@@ -198,15 +213,16 @@ RNOH：0.72.23; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name | Description      | Type             | Required |   HarmonyOS Support  |
-| ---- |------------------|------------------| -------- |  ------------------ |
-LONG  | toast显示时间:LONG   | number           | / | yes
-SHORT | toast显示时间：SHORT       | number | / | yes
-TOP | toast显示位置:TOP    | number | / | no
-BOTTOM | toast显示位置:BOTTOM | number | / | no
-CENTER | toast显示位置:CENTER | number | / | no
+| Name   | Description          | Type   | Required | HarmonyOS Support |
+| ------ | -------------------- | ------ | -------- | ----------------- |
+| LONG   | toast显示时间:LONG   | number | /        | yes               |
+| SHORT  | toast显示时间：SHORT | number | /        | yes               |
+| TOP    | toast显示位置:TOP    | number | /        | no                |
+| BOTTOM | toast显示位置:BOTTOM | number | /        | no                |
+| CENTER | toast显示位置:CENTER | number | /        | no                |
 
 ## 遗留问题
+
 - [ ]  HarmonyOS toast不支持修改字体，背景色等样式[issue#3](https://github.com/react-native-oh-library/react-native-simple-toast/issues/3)
 - [ ]  HarmonyOS rn框架toast组件不支持设置位置及偏移[issue#2](https://github.com/react-native-oh-library/react-native-simple-toast/issues/2)
 

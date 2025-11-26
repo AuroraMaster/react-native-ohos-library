@@ -13,7 +13,11 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/magicismight/react-native-root-toast/tree/v3.5.1)
+> [!TIP] [Github 地址](https://github.com/magicismight/react-native-root-toast)
+
+| Version   |Supported RN Version  |
+| --------  | -------------------- |
+| 4.0.1  |  0.72 / 0.77|
 
 ## 安装与使用
 
@@ -24,13 +28,13 @@
 #### **npm**
 
 ```bash
-npm install react-native-root-toast@3.5.1
+npm install react-native-root-toast@4.0.1
 ```
 
 #### **yarn**
 
 ```bash
-yarn add react-native-root-toast@3.5.1
+yarn add react-native-root-toast@4.0.1
 ```
 
 <!-- tabs:end -->
@@ -78,10 +82,15 @@ export function ReactNativeRootToastExample() {
 
 ### 兼容性
 
-本文档内容基于以下版本验证通过：
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+
+在下述版本验证通过：
 
 1. RNOH: 0.72.20-CAPI; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.72.96; SDK：HarmonyOS 5.1.1 Release SDK; IDE：DevEco Studio 5.1.1.840; ROM：6.0.0;
+4. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release SDK; IDE：DevEco Studio 5.1.1.840; ROM：6.0.0;
+
 
 ## 属性
 
@@ -91,21 +100,21 @@ export function ReactNativeRootToastExample() {
 
 | Name            | Description                                                                           | Type     | Required | Platform | HarmonyOS Support |
 | --------------- | ------------------------------------------------------------------------------------- | -------- | -------- | -------- | ----------------- |
-| duration        | Toast.durations.SHORT Number The duration of the toast. (Only for api calling method) | Number   | no       | All      | yes               |
-| visible         | The visibility of toast. (Only for Toast Component)                                   | Bool     | no       | All      | yes               |
-| position        | The position of toast showing on screen (A negative number represents the distance from the bottom of screen. A positive number represents the distance form the top of screen.)| Number   | no       | All      | yes               |
-| animation       | Should preform an animation on toast appearing or disappearing.                       | Bool     | no       | All      | yes               |
-| shadow          | Should drop shadow around Toast element.                                              | Bool     | no       | All      | yes               |
-| backgroundColor | The background color of the toast.                                                    | string   | no       | All      | yes               |
-| shadowColor     | The shadow color of the toast.                                                        | string   | no       | All      | yes               |
-| textColor       | The text color of the toast.                                                          | string   | no       | All      | yes               |
-| delay           | The delay duration before toast start appearing on screen.                            | Number   | no       | All      | yes               |
-| hideOnPress     | Should hide toast that appears by pressing on the toast.                              | Bool     | no       | All      | yes               |
-| opacity         | The Toast opacity.                                                                    | Number   | no       | All      | yes               |
-| onShow          | Callback for toast`s appear animation start                                           | function | no       | All      | yes               |
-| onShown         | Callback for toast`s appear animation end                                             | function | no       | All      | yes               |
-| onHide          | Callback for toast`s hide animation start                                             | function | no       | All      | yes               |
-| onHidden        | Callback for toast`s hide animation end                                               | function | no       | All      | yes               |
+| duration        | Toast 的显示时长（仅适用于 API 调用方式） | Number   | no       | All      | yes               |
+| visible         | Toast 组件的可见性（仅适用于 Toast 组件）                          | Bool     | no       | All      | yes               |
+| position        | Toast 在屏幕上的显示位置（负值表示距屏幕底部的距离，正值表示距屏幕顶部的距离）| Number   | no       | All      | yes               |
+| animation       | Toast 显示或隐藏时是否执行动画效果                       | Bool     | no       | All      | yes               |
+| shadow          | 是否在 Toast 元素周围显示阴影                                             | Bool     | no       | All      | yes               |
+| backgroundColor | Toast 的背景颜色                                               | string   | no       | All      | yes               |
+| shadowColor     | Toast 的阴影颜色                                            | string   | no       | All      | yes               |
+| textColor       | Toast 的文本颜色                                                        | string   | no       | All      | yes               |
+| delay           | Toast 开始显示前的延迟时间                            | Number   | no       | All      | yes               |
+| hideOnPress     | 是否允许通过点击 Toast 来隐藏它                              | Bool     | no       | All      | yes               |
+| opacity         | Toast 的透明度                                                                  | Number   | no       | All      | yes               |
+| onShow          | Toast 显示动画开始时的回调函数                                       | function | no       | All      | yes               |
+| onShown         | Toast 显示动画结束时的回调函数                                           | function | no       | All      | yes               |
+| onHide          | Toast 隐藏动画开始时的回调函数                                            | function | no       | All      | yes               |
+| onHidden        | Toast 隐藏动画结束时的回调函数                                              | function | no       | All      | yes               |
 
 ## 遗留问题
 

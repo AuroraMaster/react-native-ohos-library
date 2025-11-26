@@ -14,6 +14,11 @@
 
 > [!TIP] [GitHub address](https://github.com/awesomejerry/react-native-qrcode-svg)
 
+| Version  | Supported RN Version  |
+| -----    | -------------------- |
+| 6.2.0  |  0.72 |
+| 6.3.20 |  0.77 |
+
 ## Installation and Usage
 
 Go to the project directory and execute the following instruction:
@@ -23,13 +28,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# V6.2.0
 npm install react-native-qrcode-svg@6.2.0
+
+# V6.3.20
+npm install react-native-qrcode-svg@6.3.20
 ```
 
 #### **yarn**
 
 ```bash
+# V6.2.0
 yarn add react-native-qrcode-svg@6.2.0
+
+# V6.3.20
+yarn add react-native-qrcode-svg@6.3.20
 ```
 
 <!-- tabs:end -->
@@ -50,8 +63,7 @@ export const SvgDemo = () => {
         <View style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
             <QRCode
                 size={300}
-              
-                value="http://awesome.link.qr"
+                value="HelloWorld"
             />
         </View>
     )
@@ -70,7 +82,10 @@ If it is not included, follow the guide provided in [@react-native-oh-tpl/react-
 
 This document is verified based on the following versions:
 
-1. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.29(SP1); IDE: DevEco Studio 5.0.3.400; ROM: 3.0.0.25;
+1. RNOH:0.72.27; SDK:HarmonyOS-Next-DB1 5.0.0.29(SP1); IDE:DevEco Studio 5.0.3.400; ROM:3.0.0.25;
+2. RNOH:0.72.96; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
+3. RNOH:0.77.18; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
+
 
 ## Properties
 
@@ -87,7 +102,7 @@ This document is verified based on the following versions:
 | `enableLinearGradient` | enables or disables linear gradient                                                                                       | boolean  | No       | iOS,Android      | yes                |
 | `linearGradient`       | array of 2 rgb colors used to create the linear gradient                                                                  | string[] | No       | iOS,Android      | yes                |
 | `gradientDirection`    | the direction of the linear gradient                                                                                      | string   | No       | iOS,Android      | yes                |
-| `logo`                 | Image source object. Ex. {uri: 'base64string'} or {require('pathToImage')}                                                | object   | No       | iOS,Android      | yes               |
+| `logo`                 | Image source object. Ex. {uri: 'base64string'} or {require('pathToImage')}                                                | V6.2.0 : `ImageSourcePropType` <br/> v6.3.20 :  `ImageSourcePropType  \| string`  | No       | iOS,Android      | yes               |
 | `logoSize`             | Size of the imprinted logo. Bigger logo = less error correction in QR code                                                | number   | No       | iOS,Android      | yes               |
 | `logoBackgroundColor`  | The logo gets a filled quadratic background with this color. Use 'transparent' if your logo already has its own backdrop. | string   | No       | iOS,Android      | yes               |
 | `logoMargin`           | logo's distance to its wrapper                                                                                            | number   | No       | iOS,Android      | yes               |
@@ -96,6 +111,9 @@ This document is verified based on the following versions:
 | `getRef`               | Get SVG ref for further usage                                                                                             | callback | No       | iOS,Android      | yes            |
 | `ecl`                  | Error correction level                                                                                                    | string   | No       | iOS,Android      | yes               |
 | `onError(error)`       | Callback fired when exception happened during the code generating process                                                 | callback | No       | iOS,Android      | yes            |
+| `logoSVG`<sup>6.3.20+</sup> | SVG to  render as logo. Can be either a svg string or a React component if you're  using ex: '@svgr/webpack' or similar. In case both this prop and `logo` are  provided, then this prop takes precedence and `logo` will be ignored. | React.FC<SvgProps> \| string | No | All | yes |
+| `logoColor`<sup>6.3.20+</sup> | If the  logo is provided via `logoSVG` prop, this color will be set as it's `fill`  property, otherwise it does nothing | string | No | All | yes |
+| `testID`<sup>6.3.20+</sup> | testID  for testing | string | No | All | yes |
 
 ## Known Issues
 

@@ -1,4 +1,4 @@
-> Template version: v0.2.2
+> Template Version: v0.2.2
 
 <p align="center">
   <h1 align="center"> <code>react-native-safe-area-context</code> </h1>
@@ -12,35 +12,48 @@
     </a>
 </p>
 
-> [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-safe-area-context)
+> [!TIP] [Github Address](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-area-context)
+
+The repository for this third-party library has been migrated to Gitcode, and it now supports direct download from npm. The new package name is: `@react-native-ohos/react-native-safe-area-context`. The specific version relationships are as follows:
+
+| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
+| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
+| 4.7.4  | @react-native-oh-tpl/react-native-safe-area-context | [Github](https://github.com/react-native-oh-library/react-native-safe-area-context) | [Github Releases](https://github.com/react-native-oh-library/react-native-safe-area-context/releases) | 0.72 |
+| 5.1.1 | @react-native-ohos/react-native-safe-area-context   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-area-context) | [GitCode Releases]() | 0.77 |
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-safe-area-context Releases](https://github.com/react-native-oh-library/react-native-safe-area-context/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+For older versions not published to npm, please refer to the [Installation Guide](/en/tgz-usage.md) to install the tgz package.
 
-Go to the project directory and execute the following instruction:
-
-
+Navigate to your project directory and enter the following commands:
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# V4.7.4
 npm install @react-native-oh-tpl/react-native-safe-area-context
+
+# V5.1.1
+npm install @react-native-ohos/react-native-safe-area-context
 ```
 
 #### **yarn**
 
 ```bash
+# V4.7.4
 yarn add @react-native-oh-tpl/react-native-safe-area-context
+
+# V5.1.1
+yarn add @react-native-ohos/react-native-safe-area-context
 ```
 
 <!-- tabs:end -->
 
-The following code shows the basic use scenario of the repository:
+The following code demonstrates a basic usage scenario of this library:
 
-> [!WARNING] The name of the imported repository remains unchanged.
+> [!WARNING] The import library name remains unchanged during use.
 
 ```js
 import React from "react";
@@ -55,7 +68,7 @@ const App = () => {
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       <SafeAreaView style={{ flex: 1, backgroundColor: "red" }}>
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           <Text>hello</Text>
         </View>
       </SafeAreaView>
@@ -68,11 +81,11 @@ export default App;
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Currently, HarmonyOS does not support AutoLink, so the Link step requires manual configuration.
 
-Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+First, you need to open the HarmonyOS project `harmony` within your project using DevEco Studio.
 
-### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
+### 1. Add the overrides field to the root `oh-package.json5` of the project
 
 ```json
 {
@@ -83,15 +96,20 @@ Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 }
 ```
 
-### 2. Introducing Native Code
+### 2. Import Native Side Code
 
-Currently, two methods are available:
+There are currently two methods:
 
-Method 1 (recommended): Use the HAR file.
+1.  Import via har package (This method will be deprecated after IDE features are improved; currently the preferred method).
+2.  Link source code directly.
 
-> [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
+Method 1: Import via har package
 
-Open `entry/oh-package.json5` file and add the following dependencies:
+> [!TIP] The har package is located in the `harmony` folder of the third-party library's installation path.
+
+Open `entry/oh-package.json5` and add the following dependencies:
+
+- V4.7.4
 
 ```json
 "dependencies": {
@@ -101,24 +119,33 @@ Open `entry/oh-package.json5` file and add the following dependencies:
   }
 ```
 
-Click the `sync` button in the upper right corner.
+- V5.1.1
 
-Alternatively, run the following instruction on the terminal:
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+
+    "@react-native-ohos/react-native-safe-area-context": "file:../../node_modules/@react-native-ohos/react-native-safe-area-context/harmony/safe_area.har"
+  }
+```
+
+Click the `sync` button in the top right corner.
+
+Or execute in the terminal:
 
 ```bash
 cd entry
 ohpm install
 ```
 
-Method 2: Directly link to the source code.
+Method 2: Link Source Code Directly
 
-> [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
+> [!TIP] If you need to link source code directly, please refer to the [Direct Link Source Code Instructions](/en/link-source-code.md)
 
-### 3. Configuring CMakeLists and Introducing SafeAreaViewPackage
+### 3. Configure CMakeLists and Import SafeAreaViewPackage
 
-Open `entry/src/main/cpp/CMakeLists.txt ` and add the following code:
+Open `entry/src/main/cpp/CMakeLists.txt` and add:
 
-```diff
 ```diff
 project(rnapp)
 cmake_minimum_required(VERSION 3.4.1)
@@ -137,7 +164,13 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+# V4.7.4
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-safe-area-context/src/main/cpp" ./safe-area)
+
+# V5.1.1
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-safe-area-context/src/main/cpp" ./safe-area)
+
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -155,7 +188,7 @@ target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
 # RNOH_END: manual_package_linking_2
 ```
 
-Open `entry/src/main/cpp/PackageProvider.cpp` and add the following code:
+Open `entry/src/main/cpp/PackageProvider.cpp` and add:
 
 ```diff
 #include "RNOH/PackageProvider.h"
@@ -174,14 +207,17 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 4. Introducing SafeAreaViewPackage to ArkTS 
+### 4. Import SafeAreaViewPackage on the ArkTs Side
 
-Open the`entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
+Open `entry/src/main/ets/RNPackagesFactory.ts` and add:
 
 ```diff
 ...
-
+// V4.7.4
 + import {SafeAreaViewPackage} from '@react-native-oh-tpl/react-native-safe-area-context/ts';
+
+// V5.1.1
++ import {SafeAreaViewPackage} from '@react-native-ohos/react-native-safe-area-context/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -191,66 +227,69 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 5. Running
+### 5. Run
 
-Click the `sync` button in the upper right corner.
+Click the `sync` button in the top right corner.
 
-Alternatively, run the following instruction on the terminal:
+Or execute in the terminal:
 
 ```bash
 cd entry
 ohpm install
 ```
 
-Then build and run the code.
+Then compile and run.
 
 ## Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+To use this library, you need to use the correct React-Native and RNOH versions. Additionally, you need to use the matching DevEco Studio and phone ROM.
 
-Check the release version information in the release address of the third-party library:[@react-native-oh-tpl/react-native-safe-area-context Releases](https://github.com/react-native-oh-library/react-native-safe-area-context/releases)
+This document is verified based on the following versions:
+1. RNOH:0.72.96; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
+2. RNOH:0.77.18; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
 
-## Properties
 
-> [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
+## Props
 
-> [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
+> [!TIP] The "Platform" column indicates the platforms supported by the original third-party library for that prop.
 
-**SafeAreaProvider**
+> [!TIP] A value of "yes" in the "HarmonyOS Support" column indicates the prop is supported on the HarmonyOS platform; "no" indicates it is not supported; "partially" indicates partial support. The usage method is consistent across platforms, and the effect aligns with that on iOS or Android.
 
-You should add `SafeAreaProvider` in your app root component. You may need to add it in other places like the root of modals and routes when using react-native-screens.
+**Component SafeAreaProvider**
 
-Note that providers should not be inside a View that is animated with Animated or inside a ScrollView since it can cause very frequent updates.
+You should add `SafeAreaProvider` in your app root component. You may need to add it in other places like the root of modals and routes when using `react-native-screens`.
 
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
-| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | -------- | -------- | -------- |
-| `Props`          | Accepts all View props. Has a default style of {flex: 1}.                                                                                                       | object | no       | All      | yes      |
-| `initialMetrics` | Can be used to provide the initial value for frame and insets, this allows rendering immediatly. See optimization for more information on how to use this prop. | object | no       | All      | yes      |
+Note that providers should not be inside a View that is animated with `Animated` or inside a `ScrollView` since it can cause very frequent updates.
 
-**SafeAreaView**
+| Name               | Description                                                                                                                                                            | Type   | Required | Platform | HarmonyOS Support |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | -------- | -------- | ----------------- |
+| `Props`            | Accepts all View props. Has a default style of `{flex: 1}`.                                                                                                            | object | no       | All      | yes               |
+| `initialMetrics`   | Can be used to provide the initial value for frame and insets, this allows rendering immediately. See optimization for more information on how to use this prop.       | object | no       | All      | yes               |
+
+**Component SafeAreaView**
 
 `SafeAreaView` is a regular View component with the safe area insets applied as padding or margin.
 
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
-| ------- | ----------------------------------------------------------------------------------------------- | ------ | -------- | -------- | -------- |
-| `Props` | Accepts all View props. Has a default style of {flex: 1}.                                       | object | no       | All      | yes      |
-| `edges` | Sets the edges to apply the safe area insets to. Defaults to all.                               | array  | no       | All      | yes      |
-| `mode`  | Optional, padding (default) or margin. Apply the safe area to either the padding or the margin. | string | no       | All      | yes      |
+| Name     | Description                                                                          | Type   | Required | Platform | HarmonyOS Support |
+| -------- | ------------------------------------------------------------------------------------ | ------ | -------- | -------- | ----------------- |
+| `Props`  | Accepts all View props. Has a default style of `{flex: 1}`.                          | object | no       | All      | yes               |
+| `edges`  | Sets the edges to apply the safe area insets to. Defaults to all.                    | array  | no       | All      | yes               |
+| `mode`   | Optional, `padding` (default) or `margin`. Apply the safe area to either the padding or the margin. | string | no       | All      | yes               |
 
-# API
+## API
 
-> [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
+> [!TIP] The "Platform" column indicates the platforms supported by the original third-party library for that API.
 
-> [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
+> [!TIP] A value of "yes" in the "HarmonyOS Support" column indicates the API is supported on the HarmonyOS platform; "no" indicates it is not supported; "partially" indicates partial support. The usage method is consistent across platforms, and the effect aligns with that on iOS or Android.
 
-| Name | Description | Type     | Required | Platform | HarmonyOS Support  |
-| ---- | ----------- |----------|----------| -------- | ------------------ |
-| useSafeAreaInsets  | Returns the safe area insets of the nearest provider.         | object   | no       | All      | yes   |
-| useSafeAreaFrame  | Returns the frame of the nearest provider. This can be used as an alternative to the Dimensions module.       | object | no       | All      | yes   |
-| SafeAreaInsetsContext  | React Context with the value of the safe area insets.         | object | no       | All      | yes  |
-| withSafeAreaInsets  | Higher order component that provides safe area insets as the insets prop.         | function | no       | All      | yes   |
-| SafeAreaFrameContext  | React Context with the value of the safe area frame.         | object | no       | All      | yes  |
-| initialWindowMetrics  | Insets and frame of the window on initial render. This can be used with the initialMetrics from SafeAreaProvider  | object | no       | All      | yes   |
+| Name                      | Description                                                                          | Type     | Required | Platform | HarmonyOS Support |
+| ------------------------- | ------------------------------------------------------------------------------------ | -------- | -------- | -------- | ----------------- |
+| `useSafeAreaInsets`       | Returns the safe area insets of the nearest provider.                                | object   | no       | All      | yes               |
+| `useSafeAreaFrame`        | Returns the frame of the nearest provider. This can be used as an alternative to the Dimensions module. | object   | no       | All      | yes               |
+| `SafeAreaInsetsContext`   | React Context with the value of the safe area insets.                                | object   | no       | All      | yes               |
+| `withSafeAreaInsets`<sup>5.1.1+</sup> | Higher order component that provides safe area insets as the `insets` prop.          | function | no       | All      | yes               |
+| `SafeAreaFrameContext`    | React Context with the value of the safe area frame.                                 | object   | no       | All      | yes               |
+| `initialWindowMetrics`    | Insets and frame of the window on initial render. This can be used with the `initialMetrics` from `SafeAreaProvider`. | object   | no       | All      | yes               |
 
 ## Known Issues
 
@@ -258,4 +297,4 @@ Note that providers should not be inside a View that is animated with Animated o
 
 ## License
 
-This project is licensed under [The MIT License (MIT)](https://github.com/th3rdwave/react-native-safe-area-context/blob/main/LICENSE).
+This project is based on [The MIT License (MIT)](https://github.com/th3rdwave/react-native-safe-area-context/blob/main/LICENSE). Feel free to enjoy and participate in open source.
