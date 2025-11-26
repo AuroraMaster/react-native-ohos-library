@@ -15,16 +15,15 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-skia)
 
-## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 1.3.8      | [@react-native-oh-tpl/react-native-skia Releases](https://github.com/react-native-oh-library/react-native-skia/releases) | 0.72       |
-| 1.3.8      | [@react-native-ohos/react-native-skia Releases]()            | 0.77       |
+| Version                        | Package Name                             | Repository                                                   | Release                                                      | Version for RN |
+| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+| 1.3.8 | @react-native-oh-tpl/react-native-skia  | [Github](https://github.com/react-native-oh-library/react-native-skia) | [Github Releases](https://github.com/react-native-oh-library/react-native-skia/releases) | 0.72       |
+| 1.4.0                        | @react-native-ohos/react-native-skia | [Github](https://github.com/react-native-oh-library/react-native-skia) | [Github Releases](https://github.com/react-native-oh-library/react-native-skia/releases) | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -33,20 +32,20 @@
 #### **npm**
 
 ```bash
-# V1.3.8 for RN0.72
+# RN0.72
 npm install @react-native-oh-tpl/react-native-skia
 
-# V1.3.8 for RN0.77
+# RN0.77
 npm install @react-native-ohos/react-native-skia
 ```
 
 #### **yarn**
 
 ```bash
-# V1.3.8 for RN0.72
+# RN0.72
 yarn add @react-native-oh-tpl/react-native-skia
 
-# V1.3.8 for RN0.77
+# RN0.77
 yarn add @react-native-ohos/react-native-skia
 ```
 
@@ -108,7 +107,7 @@ export default App;
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- V1.3.8 for RN0.72
+- RN0.72
 
 ```json
 "dependencies": {
@@ -117,7 +116,7 @@ export default App;
   }
 ```
 
-- V1.3.8 for RN0.77
+- RN0.77
 
 ```json
 "dependencies": {
@@ -162,10 +161,10 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
 
-# V1.3.8 for RN0.72
+# RN0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-skia/src/main/cpp" ./skia)
 
-# V1.3.8 for RN0.77
+# RN0.77
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-skia/src/main/cpp" ./skia)
 
 # RNOH_END: manual_package_linking_1
@@ -210,10 +209,10 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-// V1.3.8 for RN0.72
+// RN0.72
 + import { RNCSkiaDomView, SKIA_DOM_VIEW_TYPE } from '@react-native-oh-tpl/react-native-skia';
 
-// V1.3.8 for RN0.77
+// RN0.77
 + import { RNCSkiaDomView, SKIA_DOM_VIEW_TYPE } from '@react-native-ohos/react-native-skia';
 
 @Builder
@@ -249,10 +248,10 @@ const arkTsComponentNames: Array<string> = [
 
 ```diff
   ...
-// V1.3.8 for RN0.72
+// RN0.72
 + import {RNSkiaPackage} from '@react-native-oh-tpl/react-native-skia/ts';
 
-// V1.3.8 for RN0.77
+// RN0.77
 + import {RNSkiaPackage} from '@react-native-ohos/react-native-skia/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -282,7 +281,10 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-skia Releases](https://github.com/react-native-oh-library/react-native-skia/releases)
+在下述版本验证通过：
+
+1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
+2. RNOH：0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 > [!TIP] [skia 官方文档](https://shopify.github.io/react-native-skia/docs/getting-started/installation)
 
@@ -300,11 +302,11 @@ ohpm install
 
 | Name     | Description                                                                                                                                            | Type                     | Required | Platform    | HarmonyOS Support |
 | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------ | -------- | ----------- | ----------------- |
-| style    | View style                                                                                                                                             | ViewStyle                | no       | android/ios | yes               |
-| ref      | Reference to the SkiaView object                                                                                                                       | Ref<SkiaView>            | no       | android/ios | yes               |
-| mode     | By default, the canvas is only updated when the drawing tree or animation values change. With mode="continuous", the canvas will redraw on every frame | default \| continuous    | no       | android/ios | yes               |
-| onSize   | Reanimated value to which the canvas size will be assigned                                                                                             | SharedValue<Size>        | no       | android/ios | yes               |
-| onLayout | Invoked on mount and on layout changes                                                                                                                 | NativeEvent<LayoutEvent> | no       | android/ios | yes               |
+| style    | 视图样式                                                                                                                                             | ViewStyle                | no       | android/ios | yes               |
+| ref      | 指向 SkiaView 对象的引用                                                                                                                       | Ref<SkiaView>            | no       | android/ios | yes               |
+| mode     | 控制重绘频率。默认情况下，仅当绘图树或动画值发生变化时，Canvas 才会更新。当 mode="continuous" 时，Canvas 会在每一帧都重新绘制 | default \| continuous    | no       | android/ios | yes               |
+| onSize   | 与 Canvas 尺寸绑定的 Reanimated 值                                                                                             | SharedValue<Size>        | no       | android/ios | yes               |
+| onLayout | 在挂载时和布局变化时触发的回调函数                                                                                                                 | NativeEvent<LayoutEvent> | no       | android/ios | yes               |
 
 ### Group
 
@@ -316,11 +318,11 @@ ohpm install
 
 | Name       | Description                                                                                                                                                                                                            | Type              | Required | Platform    | HarmonyOS Support |
 | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- | -------- | ----------- | ----------------- |
-| transform  | [ Same API that's in React Native](https://reactnative.dev/docs/transforms). The default origin of the transformation is, however, different. It is the center object in React Native and the top-left corner in Skia. | Transform2d       | no       | android/ios | yes               |
-| origin     | Sets the origin of the transformation. This property is not inherited by its children.                                                                                                                                 | Point             | no       | android/ios | yes               |
-| clip       | Rectangle, rounded rectangle, or Path to use to clip the children.                                                                                                                                                     | RectOrRRectOrPath | no       | android/ios | yes               |
-| invertClip | Invert the clipping region: parts outside the clipping region will be shown and, inside will be hidden.                                                                                                                | boolean           | no       | android/ios | yes               |
-| layer      | Draws the children as a bitmap and applies the effects provided by the paint.                                                                                                                                          | RefObject<Paint>  | no       | android/ios | yes               |
+| transform  | 变换属性，API 与 React Native 相同，但默认变换原点不同：在 React Native 中是对象中心，在 Skia 中是左上角. | Transform2d       | no       | android/ios | yes               |
+| origin     | 设置变换的原点，此属性不会被子组件继承                                                                                                                                 | Point             | no       | android/ios | yes               |
+| clip       | 用于裁剪子组件的矩形、圆角矩形或路径.                                                                                                                                                     | RectOrRRectOrPath | no       | android/ios | yes               |
+| invertClip | 反转裁剪区域：裁剪区域外的部分将显示，内部部分将被隐藏                                                                                                                | boolean           | no       | android/ios | yes               |
+| layer      | 将子组件绘制为位图，并应用 Paint 提供的效果                                                                                                                                          | RefObject<Paint>  | no       | android/ios | yes               |
 
 ### Path
 
@@ -332,10 +334,10 @@ ohpm install
 
 | Name   | Description                                                                                                                                                                                                                                      | Type             | Required | Platform    | HarmonyOS Support |
 | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------- | -------- | ----------- | ----------------- |
-| path   | Path to draw. Can be a string using the [SVG Path notation](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths#line_commands) or an object created with `Skia.Path.Make()`.                                                         | SkPath`or`string | no       | android/ios | yes               |
-| start  | Trims the start of the path. Value is in the range `[0, 1]` (default is 0).                                                                                                                                                                      | number           | no       | android/ios | yes               |
-| end    | Trims the end of the path. Value is in the range `[0, 1]` (default is 1).                                                                                                                                                                        | number           | no       | android/ios | yes               |
-| stroke | Turns this path into the filled equivalent of the stroked path. This will fail if the path is a hairline. `StrokeOptions` describes how the stroked path should look. It contains three properties: `width`, `strokeMiterLimit` and, `precision` | StrokeOptions    | no       | android/ios | yes               |
+| path   | 要绘制的路径。可以是使用[SVG路径表示法的字符串](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths#line_commands)或者使用 Skia.Path.Make() 创建的对象.                                                         | SkPath`or`string | no       | android/ios | yes               |
+| start  | 裁剪路径的起始位置，取值范围为 [0, 1]，默认值为 0.                                                                                                                                                                      | number           | no       | android/ios | yes               |
+| end    | 裁剪路径的结束位置，取值范围为 [0, 1]，默认值为 1.                                                                                                                                                                        | number           | no       | android/ios | yes               |
+| stroke | 将路径转换为描边效果。如果路径是发丝线（hairline），此操作将失败。StrokeOptions 描述了描边路径的外观，包含三个属性：width（宽度）、strokeMiterLimit（斜接限制）和 precision（精度） | StrokeOptions    | no       | android/ios | yes               |
 
 ### Rect
 
@@ -347,10 +349,10 @@ ohpm install
 
 | Name   | Description              | Type   | Required | Platform    | HarmonyOS Support |
 | ------ | ------------------------ | ------ | -------- | ----------- | ----------------- |
-| x      | X coordinate.            | number | yes      | android/ios | yes               |
-| y      | Y coordinate.            | number | yes      | android/ios | yes               |
-| width  | Width of the rectangle.  | number | yes      | android/ios | yes               |
-| height | Height of the rectangle. | number | yes      | android/ios | yes               |
+| x      | X 坐标.            | number | yes      | android/ios | yes               |
+| y      | Y 坐标.            | number | yes      | android/ios | yes               |
+| width  | 矩形的宽度.  | number | yes      | android/ios | yes               |
+| height | 矩形的高度. | number | yes      | android/ios | yes               |
 
 ### RoundedRect
 
@@ -362,11 +364,11 @@ ohpm install
 
 | Name   | Description                                        | Type             | Required | Platform    | HarmonyOS Support |
 | ------ | -------------------------------------------------- | ---------------- | -------- | ----------- | ----------------- |
-| x      | X coordinate.                                      | SkPath`or`string | yes      | android/ios | yes               |
-| y      | Y coordinate.                                      | number           | yes      | android/ios | yes               |
-| width  | Width of the rectangle.                            | number           | yes      | android/ios | yes               |
-| height | Height of the rectangle.                           | StrokeOptions    | yes      | android/ios | yes               |
-| r      | Corner radius. Defaults to `ry` if specified or 0. | number`or`Vector | no       | android/ios | yes               |
+| x      | X 坐标.                                      | SkPath`or`string | yes      | android/ios | yes               |
+| y      | Y 坐标.                                      | number           | yes      | android/ios | yes               |
+| width  | 矩形的宽度.                            | number           | yes      | android/ios | yes               |
+| height | 矩形的高度.                           | StrokeOptions    | yes      | android/ios | yes               |
+| r      | 拐角半径。如果指定，则默认为“ry”或0. | number`or`Vector | no       | android/ios | yes               |
 
 ### DiffRect
 
@@ -378,8 +380,8 @@ ohpm install
 
 | Name  | Description      | Type          | Required | Platform    | HarmonyOS Support |
 | ----- | ---------------- | ------------- | -------- | ----------- | ----------------- |
-| outer | Outer rectangle. | Rect \| RRect | yes      | android/ios | yes               |
-| inner | Inner rectangle. | Rect \| RRect | yes      | android/ios | yes               |
+| outer | 外矩形. | Rect \| RRect | yes      | android/ios | yes               |
+| inner | 内部矩形. | Rect \| RRect | yes      | android/ios | yes               |
 
 ### Line
 
@@ -391,8 +393,8 @@ ohpm install
 
 | Name | Description  | Type  | Required | Platform    | HarmonyOS Support |
 | ---- | ------------ | ----- | -------- | ----------- | ----------------- |
-| p1   | Start point. | Point | yes      | android/ios | yes               |
-| p2   | End point.   | Point | yes      | android/ios | yes               |
+| p1   | 起点. | Point | yes      | android/ios | yes               |
+| p2   | 终点.   | Point | yes      | android/ios | yes               |
 
 ### Points
 
@@ -404,8 +406,8 @@ ohpm install
 
 | Name   | Description                                                                                                                                                | Type      | Required | Platform    | HarmonyOS Support |
 | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | -------- | ----------- | ----------------- |
-| points | Points to draw.                                                                                                                                            | Point     | yes      | android/ios | yes               |
-| mode   | How should the points be connected. Can be `points` (no connection), `lines` (connect pairs of points), or `polygon` (connect lines). Default is `points`. | PointMode | yes      | android/ios | yes               |
+| points | 要抽取的点数.                                                                                                                                            | Point     | yes      | android/ios | yes               |
+| mode   | 这些点应该如何连接。可以是“点”（无连接）、“线”（连接成对的点）或“多边形”（连接线）。默认值为`点`. | PointMode | yes      | android/ios | yes               |
 
 ### Circle
 
@@ -417,9 +419,9 @@ ohpm install
 
 | Name | Description  | Type   | Required | Platfor     | HarmonyOS Support |
 | ---- | ------------ | ------ | -------- | ----------- | ----------------- |
-| cx   | Start point. | number | yes      | android/ios | yes               |
-| cy   | End point.   | number | yes      | android/ios | yes               |
-| r    | Radius.      | number | yes      | android/ios | yes               |
+| cx   | 起点. | number | yes      | android/ios | yes               |
+| cy   | 终点   | number | yes      | android/ios | yes               |
+| r    | 半径.      | number | yes      | android/ios | yes               |
 
 ### Oval
 
@@ -431,10 +433,10 @@ ohpm install
 
 | Name   | Description                             | Type   | Required | Platfor     | HarmonyOS Support |
 | ------ | --------------------------------------- | ------ | -------- | ----------- | ----------------- |
-| x      | X coordinate of the bounding rectangle. | number | yes      | android/ios | yes               |
-| y      | Y coordinate of the bounding rectangle. | number | yes      | android/ios | yes               |
-| width  | Width of the bounding rectangle.        | number | yes      | android/ios | yes               |
-| height | Height of the bounding rectangle.       | number | yes      | android/ios | yes               |
+| x      | 边界矩形的X坐标. | number | yes      | android/ios | yes               |
+| y      | 边界矩形的Y坐标. | number | yes      | android/ios | yes               |
+| width  | 包围矩形的宽度。.        | number | yes      | android/ios | yes               |
+| height | 包围矩形的宽度.       | number | yes      | android/ios | yes               |
 
 ### Atlas
 
@@ -446,11 +448,11 @@ ohpm install
 
 | Name       | Type              | Description                                                       | Required | android/ios | HarmonyOS Support |
 | ---------- | ----------------- | ----------------------------------------------------------------- | -------- | ----------- | ----------------- |
-| image      | `SkImage or null` | Altas: image containing the sprites.                              | yes      | android/ios | yes               |
-| sprites    | `SkRect[]`        | locations of sprites in atlas.                                    | yes      | android/ios | yes               |
-| transforms | `RSXform[]`       | Rotation/scale transforms to be applied for each sprite.          | yes      | android/ios | yes               |
-| colors     | `SkColor[]`       | Optional. Color to blend the sprites with.                        | no       | android/ios | yes               |
-| blendMode  | `BlendMode`       | Optional. Blend mode used to combine sprites and colors together. | no       | android/ios | yes               |
+| image      | `SkImage or null` | 图集图像，包含所有精灵(sprite)的源图片                              | yes      | android/ios | yes               |
+| sprites    | `SkRect[]`        | 定义图集中每个精灵的位置和大小，使用矩形区域坐标.                                    | yes      | android/ios | yes               |
+| transforms | `RSXform[]`       | 应用于每个精灵的旋转和缩放变换矩阵.          | yes      | android/ios | yes               |
+| colors     | `SkColor[]`       | 可选属性，用于与精灵混合的颜色数组                        | no       | android/ios | yes               |
+| blendMode  | `BlendMode`       | 可选属性，定义精灵和颜色混合时使用的混合模式. | no       | android/ios | yes               |
 
 ### Vertices
 
@@ -462,12 +464,12 @@ ohpm install
 
 | Name      | Type         | Description                                                                                                                                                           | Required | android/ios | HarmonyOS Support |
 | --------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- | ----------------- |
-| vertices  | `Point[]`    | Vertices to draw                                                                                                                                                      | yes      | android/ios | yes               |
-| mode      | `VertexMode` | Can be `triangles`, `trianglesStrip` or `triangleFan`. Default is `triangles`                                                                                         | no       | android/ios | yes               |
-| indices   | `number[]`   | Indices of the vertices that form the triangles. If not provided, the order of the vertices will be taken. Using this property enables you not to duplicate vertices. | no       | android/ios | yes               |
-| textures  | `Point[]`.   | [Texture mapping](https://en.wikipedia.org/wiki/Texture_mapping). The texture is the shader provided by the paint.                                                    | yes      | android/ios | yes               |
-| colors    | `string[]`   | Optional colors to be associated to each vertex                                                                                                                       | no       | android/ios | yes               |
-| blendMode | `BlendMode`  | If `colors` is provided, colors are blended with the paint using the blend mode. Default is `dstOver` if colors are provided, `srcOver` if not.                       | no       | android/ios | yes               |
+| vertices  | `Point[]`    | 要绘制的顶点坐标数组，定义图形的几何形状                                                                                                                                                      | yes      | android/ios | yes               |
+| mode      | `VertexMode` | 定义顶点如何连接形成三角形，可以是 triangles(三角形)、trianglesStrip(三角形带) 或 triangleFan(三角形扇)，默认为 triangles 模式                                                                                         | no       | android/ios | yes               |
+| indices   | `number[]`   | 形成三角形的顶点索引数组。如果不提供，将按照顶点顺序连接。使用此属性可以避免重复顶点定义，优化性能. | no       | android/ios | yes               |
+| textures  | `Point[]`.   | [纹理贴图](https://en.wikipedia.org/wiki/Texture_mapping). 纹理映射坐标，纹理由 paint 属性提供的着色器定义.                                                    | yes      | android/ios | yes               |
+| colors    | `string[]`   | 可选属性，与每个顶点关联的颜色数组                                                                                                                       | no       | android/ios | yes               |
+| blendMode | `BlendMode`  | 如果提供了 colors 属性，颜色将使用此混合模式与 paint 进行混合。如果提供了 colors 则默认为 dstOver，否则为 srcOver.                       | no       | android/ios | yes               |
 
 ### Patch
 
@@ -479,10 +481,10 @@ ohpm install
 
 | Name      | Type             | Description                                                  | Required | android/ios | HarmonyOS Support |
 | --------- | ---------------- | ------------------------------------------------------------ | -------- | ----------- | ----------------- |
-| patch     | `CubicBezier[4]` | Specifies four cubic Bezier starting at the top-left corner, in clockwise order, sharing every fourth point. The last cubic Bezier ends at the first point. | yes      | android/ios | yes               |
-| textures  | `Point[]`.       | [Texture mapping](https://en.wikipedia.org/wiki/Texture_mapping). The texture is the shader provided by the paint | yes      | android/ios | yes               |
-| colors    | `string[]`       | Optional colors to be associated to each corner              | no       | android/ios | yes               |
-| blendMode | `BlendMode`      | If `colors` is provided, colors are blended with the paint using the blend mode. Default is `dstOver` if colors are provided, `srcOver` if not | no       | android/ios | yes               |
+| patch     | `CubicBezier[4]` | 指定四条立方贝塞尔曲线，从左上角开始按顺时针方向排列，每条曲线共享第四个控制点。最后一条贝塞尔曲线结束于第一条曲线的起点，形成一个闭合的曲面. | yes      | android/ios | yes               |
+| textures  | `Point[]`.       | [纹理贴图](https://en.wikipedia.org/wiki/Texture_mapping). 纹理映射坐标，纹理由 paint 属性提供的着色器定义，用于在曲面上的贴图 | yes      | android/ios | yes               |
+| colors    | `string[]`       | 可选属性，与曲面每个角点关联的颜色数组，用于顶点着色              | no       | android/ios | yes               |
+| blendMode | `BlendMode`      | 如果提供了 colors 属性，颜色将使用此混合模式与 paint 进行混合。如果提供了 colors 则默认为 dstOver，否则为 srcOver | no       | android/ios | yes               |
 
 ### Picture
 
@@ -494,7 +496,7 @@ ohpm install
 
 | Name    | Type      | Description       | Required | android/ios | HarmonyOS Support |
 | ------- | --------- | ----------------- | -------- | ----------- | ----------------- |
-| picture | SkPicture | Picture to render | yes      | android/ios | yes               |
+| picture | SkPicture | 指定要渲染的图片对象 | yes      | android/ios | yes               |
 
 ### Box
 
@@ -506,7 +508,7 @@ ohpm install
 
 | Name | Type              | Description               | Required | android/ios | HarmonyOS Support |
 | ---- | ----------------- | ------------------------- | -------- | ----------- | ----------------- |
-| box  | SkRRect \| SkRect | The destination rectangle | yes      | android/ios | yes               |
+| box  | SkRRect \| SkRect | 定义 Box 组件在画布上的目标绘制区域和形状 | yes      | android/ios | yes               |
 
 ### BoxShadow
 
@@ -518,12 +520,12 @@ ohpm install
 
 | Name   | Type    | Description                                     | Required | android/ios | HarmonyOS Support |
 | ------ | ------- | ----------------------------------------------- | -------- | ----------- | ----------------- |
-| dx     | number  | The X offset of the shadow.                     | no       | android/ios | yes               |
-| dy     | number  | The Y offset of the shadow.                     | no       | android/ios | yes               |
-| spread | number  | Optional colors to be associated to each corner | no       | android/ios | yes               |
-| blur   | number  | The blur radius for the shadow                  | yes      | android/ios | yes               |
-| color  | Color   | The color of the drop shadow                    | no       | android/ios | yes               |
-| inner  | boolean | Shadows are drawn within the input content      | no       | android/ios | yes               |
+| dx     | number  | 阴影在 X 轴方向的偏移量.                     | no       | android/ios | yes               |
+| dy     | number  | 阴影在 Y 轴方向的偏移量.                     | no       | android/ios | yes               |
+| spread | number  | 阴影的扩展距离，正值会使阴影变大，负值会使阴影变小 | no       | android/ios | yes               |
+| blur   | number  | 阴影的模糊半径，值越大阴影越模糊                  | yes      | android/ios | yes               |
+| color  | Color   | 阴影的颜色，支持多种颜色表示格式                    | no       | android/ios | yes               |
+| inner  | boolean | 是否为内阴影，内阴影会出现在元素边框盒内部      | no       | android/ios | yes               |
 
 ### Shader
 
@@ -535,9 +537,9 @@ ohpm install
 
 | Name     | Type                                                                       | Description                   | Required | android/ios | HarmonyOS Support |
 | -------- | -------------------------------------------------------------------------- | ----------------------------- | -------- | ----------- | ----------------- |
-| source   | RuntimeEffect                                                              | Compiled shaders              | yes      | android/ios | yes               |
-| uniforms | { [name: string]: number \| Vector \| Vector[] \| number[] \| number[][] } | uniform values                | yes      | android/ios | yes               |
-| children | Shader                                                                     | Shaders to be used as uniform | yes      | android/ios | yes               |
+| source   | RuntimeEffect                                                              | 编译后的着色器对象              | yes      | android/ios | yes               |
+| uniforms | { [name: string]: number \| Vector \| Vector[] \| number[] \| number[][] } | 传递给着色器的统一变量值，用于动态控制着色器的外观和行为                | yes      | android/ios | yes               |
+| children | Shader                                                                     | 用作统一值的其他着色器，支持着色器嵌套组合 | yes      | android/ios | yes               |
 
 ### ImageShader
 
@@ -549,14 +551,14 @@ ohpm install
 
 | Name      | Description                                                                                                              | Type              | Required | android/ios | HarmonyOS Support |
 | --------- | ------------------------------------------------------------------------------------------------------------------------ | ----------------- | -------- | ----------- | ----------------- |
-| image     | Image instance.                                                                                                          | SkImage           | yes      | android/ios | yes               |
-| tx        | Can be `clamp`, `repeat`, `mirror`, or `decal`.                                                                          | TileMode shaders  | no       | android/ios | yes               |
-| ty        | Can be `clamp`, `repeat`, `mirror`, or `decal`.                                                                          | TileMode values   | no       | android/ios | yes               |
-| fm        | Can be `linear` or `nearest`.                                                                                            | FilterMode values | no       | android/ios | yes               |
-| mm        | Can be `none` or `last`.                                                                                                 | MipmapMode        | no       | android/ios | yes               |
-| fit       | Calculate the transformation matrix to fit the rectangle defined by `fitRect`.                                           | Fit               | no       | android/ios | yes               |
-| rect      | The destination rectangle to calculate the transformation matrix via the `fit` property.                                 | SkRect            | no       | android/ios | yes               |
-| transform | The origin property is a helper to set the origin of the transformation. This property is not inherited by its children. | Transforms2d      | no       | android/ios | yes               |
+| image     | 图像实例，作为着色器的纹理源.                                                                                                          | SkImage           | yes      | android/ios | yes               |
+| tx        | X轴方向的平铺模式，支持 clamp(钳制)、repeat(重复)、mirror(镜像)、decal(贴花)四种模式.                                                                          | TileMode shaders  | no       | android/ios | yes               |
+| ty        | Y轴方向的平铺模式，支持与 tx 相同的四种模式.                                                                          | TileMode values   | no       | android/ios | yes               |
+| fm        | 过滤模式，控制图像缩放时的采样方式，支持 linear(线性) 或 nearest(最近邻).                                                                                            | FilterMode values | no       | android/ios | yes               |
+| mm        | Mipmap模式，支持 none(无) 或 last(最后).                                                                                                 | MipmapMode        | no       | android/ios | yes               |
+| fit       | 计算变换矩阵以适应由 fitRect 定义的矩形区域.                                           | Fit               | no       | android/ios | yes               |
+| rect      | 目标矩形，通过 fit 属性计算变换矩阵.                                 | SkRect            | no       | android/ios | yes               |
+| transform | 变换属性，用于设置变换的起点，此属性不会被子组件继承. | Transforms2d      | no       | android/ios | yes               |
 
 ### Gradients 公共属性
 
@@ -568,11 +570,11 @@ ohpm install
 
 | Name      | Description                                                                                                                                                                                                                                                                                            | Type         | Required | Platform    | HarmonyOS Support |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------ | -------- | ----------- | ----------------- |
-| colors    | Colors to be distributed between start and end.                                                                                                                                                                                                                                                        | string[]     | yes      | android/ios | yes               |
-| positions | The relative positions of colors. If supplied, it must be of the same length as colors.                                                                                                                                                                                                                | number[]     | no       | android/ios | yes               |
-| mode      | Can be `clamp`, `repeat`, `mirror`, or `decal`.                                                                                                                                                                                                                                                        | TileMode     | no       | android/ios | yes               |
-| flags     | By default, gradients will interpolate their colors in unpremultiplied space and then premultiply each of the results. By setting this to 1, the gradients will premultiply their colors first and then interpolate between them.                                                                      | number       | no       | android/ios | yes               |
-| transform | The transform property is identical to its [homonymous property in React Native](https://reactnative.dev/docs/transforms) except for one significant difference: in React Native, the origin of transformation is the center of the object, whereas it is the top-left position of the object in Skia. | Transforms2d | no       | android/ios | yes               |
+| colors    | 渐变的颜色数组，定义从起点到终点分布的颜色序列.                                                                                                                                                                                                                                                        | string[]     | yes      | android/ios | yes               |
+| positions | 颜色的相对位置数组，取值范围为0-1。如果提供，其长度必须与 colors 数组相同.                                                                                                                                                                                                                | number[]     | no       | android/ios | yes               |
+| mode      | 平铺模式，支持 clamp(钳制)、repeat(重复)、mirror(镜像)、decal(贴花)四种类型.                                                                                                                                                                                                                                                        | TileMode     | no       | android/ios | yes               |
+| flags     | 颜色插值标志位。默认情况下，渐变会在非预乘颜色空间进行插值，然后对结果进行预乘。将此值设为1时，渐变会先预乘颜色再进行插值.                                                                      | number       | no       | android/ios | yes               |
+| transform | 变换属性，与 React Native 中的同名属性基本相同，但有一个重要区别：在 React Native 中变换原点是对象中心，而在 Skia 中是对象的左上角位置. | Transforms2d | no       | android/ios | yes               |
 
 ### LinearGradient
 
@@ -584,8 +586,8 @@ ohpm install
 
 | Name  | Description                     | Type  | Required | Platform    | HarmonyOS Support |
 | ----- | ------------------------------- | ----- | -------- | ----------- | ----------------- |
-| start | Start position of the gradient. | Point | yes      | android/ios | yes               |
-| end   | End position of the gradient.   | Point | yes      | android/ios | yes               |
+| start | 渐变的起始位置. | Point | yes      | android/ios | yes               |
+| end   | 渐变的结束位置.   | Point | yes      | android/ios | yes               |
 
 ### RadialGradient
 
@@ -597,8 +599,8 @@ ohpm install
 
 | Name | Description             | Type   | Required | Platform    | HarmonyOS Support |
 | ---- | ----------------------- | ------ | -------- | ----------- | ----------------- |
-| c    | Center of the gradient. | Point  | yes      | android/ios | yes               |
-| r    | Radius of the gradient. | number | yes      | android/ios | yes               |
+| c    | 渐变的中心点坐标. | Point  | yes      | android/ios | yes               |
+| r    | 渐变的半径大小，控制色彩从中心向外扩散的范围. | number | yes      | android/ios | yes               |
 
 ### TwoPointConicalGradient
 
@@ -610,10 +612,10 @@ ohpm install
 
 | Name   | Description                 | Type   | Required | Platform    | HarmonyOS Support |
 | ------ | --------------------------- | ------ | -------- | ----------- | ----------------- |
-| start  | Center of the start circle. | Point  | yes      | android/ios | yes               |
-| startR | Radius of the start circle. | number | yes      | android/ios | yes               |
-| end    | Center of the end circle.   | number | yes      | android/ios | yes               |
-| endR   | Radius of the end circle.   | number | yes      | android/ios | yes               |
+| start  | 起始圆的圆心坐标. | Point  | yes      | android/ios | yes               |
+| startR | 起始圆的半径大小. | number | yes      | android/ios | yes               |
+| end    | 结束圆的圆心坐标.   | number | yes      | android/ios | yes               |
+| endR   | 结束圆的半径大小.   | number | yes      | android/ios | yes               |
 
 ### SweepGradient
 
@@ -625,9 +627,9 @@ ohpm install
 
 | Name  | Description                            | Type   | Required | Platform    | HarmonyOS Support |
 | ----- | -------------------------------------- | ------ | -------- | ----------- | ----------------- |
-| c     | Center of the gradient.                | Point  | yes      | android/ios | yes               |
-| start | Start angle in degrees (default is 0). | number | no       | android/ios | yes               |
-| end   | End angle in degrees (default is 360). | number | no       | android/ios | yes               |
+| c     | 渐变的中心点坐标.                | Point  | yes      | android/ios | yes               |
+| start | 渐变起始角度（单位为度），默认值为 0. | number | no       | android/ios | yes               |
+| end   | 渐变结束角度（单位为度），默认值为 360. | number | no       | android/ios | yes               |
 
 ### FractalNoise
 
@@ -639,12 +641,12 @@ ohpm install
 
 | Name       | Description                                                                                                                    | Type   | Required | Platform    | HarmonyOS Support |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------ | ------ | -------- | ----------- | ----------------- |
-| freqX      | base frequency in the X direction; range [0.0, 1.0]                                                                            | number | yes      | android/ios | yes               |
-| freqY      | base frequency in the Y direction; range [0.0, 1.0]                                                                            | number | yes      | android/ios | yes               |
-| octaves    | octaves                                                                                                                        | number | no       | android/ios | yes               |
-| seed       | seed                                                                                                                           | number | no       | android/ios | yes               |
-| tileWidth  | if this and `tileHeight` are non-zero, the frequencies will be modified so that the noise will be tileable for the given size. | number | no       | android/ios | yes               |
-| tileHeight | if this and `tileWidth` are non-zero, the frequencies will be modified so that the noise will be tileable for the given size.  | number | no       | android/ios | yes               |
+| freqX      | X方向的基础频率，取值范围为[0.0, 1.0]                                                                            | number | yes      | android/ios | yes               |
+| freqY      | Y方向的基础频率，取值范围为[0.0, 1.0]                                                                            | number | yes      | android/ios | yes               |
+| octaves    | 噪波的八度数量，控制细节层次                                                                                                                        | number | no       | android/ios | yes               |
+| seed       | 随机种子值，用于生成可重复的噪波图案                                                                                                                           | number | no       | android/ios | yes               |
+| tileWidth  | 如果此值和tileHeight都非零，将调整频率使噪波在指定宽度下可平铺. | number | no       | android/ios | yes               |
+| tileHeight | 如果此值和tileWidth都非零，将调整频率使噪波在指定高度下可平铺.  | number | no       | android/ios | yes               |
 
 ### Turbulence
 
@@ -656,12 +658,12 @@ ohpm install
 
 | Name       | Description                                                                                                                    | Type   | Required | Platform    | HarmonyOS Support |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------ | ------ | -------- | ----------- | ----------------- |
-| freqX      | base frequency in the X direction; range [0.0, 1.0]                                                                            | number | yes      | android/ios | yes               |
-| freqY      | base frequency in the Y direction; range [0.0, 1.0]                                                                            | number | yes      | android/ios | yes               |
-| octaves    | octaves                                                                                                                        | number | no       | android/ios | yes               |
-| seed       | seed                                                                                                                           | number | no       | android/ios | yes               |
-| tileWidth  | if this and `tileHeight` are non-zero, the frequencies will be modified so that the noise will be tileable for the given size. | number | no       | android/ios | yes               |
-| tileHeight | if this and `tileWidth` are non-zero, the frequencies will be modified so that the noise will be tileable for the given size.  | number | no       | android/ios | yes               |
+| freqX      | X方向的基础频率，取值范围为[0.0, 1.0]                                                                            | number | yes      | android/ios | yes               |
+| freqY      | Y方向的基础频率，取值范围为[0.0, 1.0]                                                                            | number | yes      | android/ios | yes               |
+| octaves    | 噪波的八度数量，控制细节层次                                                                                                                        | number | no       | android/ios | yes               |
+| seed       | 随机种子值，用于生成可重复的噪波图案                                                                                                                           | number | no       | android/ios | yes               |
+| tileWidth  | 如果此值和tileHeight都非零，将调整频率使噪波在指定宽度下可平铺. | number | no       | android/ios | yes               |
+| tileHeight | 如果此值和tileWidth都非零，将调整频率使噪波在指定高度下可平铺.  | number | no       | android/ios | yes               |
 
 ### Blend
 
@@ -673,8 +675,8 @@ ohpm install
 
 | Name     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                          | Type      | Required | Platform    | HarmonyOS Support |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | -------- | ----------- | ----------------- |
-| mode     | Sets the blend mode that is, the mode used to combine source color with destination color. The following values are available: `clear`, `src`, `dst`, `srcOver`, `dstOver`, `srcIn`, `dstIn`, `srcOut`, `dstOut`, `srcATop`, `dstATop`, `xor`, `plus`, `modulate`, `screen`, `overlay`, `darken`, `lighten`, `colorDodge`, `colorBurn`, `hardLight`, `softLight`, `difference`, `exclusion`, `multiply`, `hue`, `saturation`, `color`, `luminosity`. | BlendMode | yes      | android/ios | yes               |
-| children | Shaders to blend                                                                                                                                                                                                                                                                                                                                                                                                                                     | ReactNode | yes      | android/ios | yes               |
+| mode     | 设置混合模式，即源颜色与目标颜色的组合方式，支持以下丰富的模式选项：clear、src、dst、srcOver、dstOver、srcIn、dstIn、srcOut、dstOut、srcATop、dstATop、xor、plus、modulate、screen、overlay、darken、lighten、colorDodge、colorBurn、hardLight、softLight、difference、exclusion、multiply、hue、saturation、color、luminosity. | BlendMode | yes      | android/ios | yes               |
+| children | 要混合的着色器内容                                                                                                                                                                                                                                                                                                                                                                                                                                     | ReactNode | yes      | android/ios | yes               |
 
 ### ColorShader
 
@@ -686,7 +688,7 @@ ohpm install
 
 | Name  | Description | Type   | Required | Platform    | HarmonyOS Support |
 | ----- | ----------- | ------ | -------- | ----------- | ----------------- |
-| color | Color       | string | yes      | android/ios | yes               |
+| color | 颜色       | string | yes      | android/ios | yes               |
 
 ### DiscretePathEffect
 
@@ -698,10 +700,10 @@ ohpm install
 
 | Name      | Description                                                   | Type       | Required | Platform    | HarmonyOS Support |
 | --------- | ------------------------------------------------------------- | ---------- | -------- | ----------- | ----------------- |
-| length    | length of the subsegments.                                    | number     | yes      | android/ios | yes               |
-| deviation | limit of the movement of the endpoints.                       | number     | yes      | android/ios | yes               |
-| seed      | modifies the randomness. See SkDiscretePathEffect.h for more. | number     | no       | android/ios | yes               |
-| children  | Optional path effect to apply.                                | PathEffect | no       | android/ios | yes               |
+| length    | 定义路径子分段的长度.                                    | number     | yes      | android/ios | yes               |
+| deviation | 限制端点移动的最大偏移量.                       | number     | yes      | android/ios | yes               |
+| seed      | 修改随机性，具体可参考 SkDiscretePathEffect.h 文件. | number     | no       | android/ios | yes               |
+| children  | 可选的其他路径效果，可以叠加应用.                                | PathEffect | no       | android/ios | yes               |
 
 ### DashPathEffect
 
@@ -713,9 +715,9 @@ ohpm install
 
 | Name      | Description                                                                                                                             | Type       | Required | Platform    | HarmonyOS Support |
 | --------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------- | -------- | ----------- | ----------------- |
-| intervals | even number of entries with even indices specifying the length of the "on" intervals, and the odd index specifying the length of "off". | number[]   | yes      | android/ios | yes               |
-| phase     | offset into the intervals array. Defaults to 0.                                                                                         | number     | no       | android/ios | yes               |
-| children  | Optional path effect to apply.                                                                                                          | PathEffect | no       | android/ios | yes               |
+| intervals | 定义虚线样式的间隔数组，数组元素个数必须为偶数。其中‌偶数索引‌（0、2、4...）指定"开启"（实线）段的长度，‌奇数索引‌（1、3、5...）指定"关闭"（间隔）段的长度. | number[]   | yes      | android/ios | yes               |
+| phase     | 在间隔数组中的偏移量，默认为 0.                                                                                         | number     | no       | android/ios | yes               |
+| children  | 可选的其他路径效果，可以叠加应用.                                                                                                          | PathEffect | no       | android/ios | yes               |
 
 ### CornerPathEffect
 
@@ -727,8 +729,8 @@ ohpm install
 
 | Name     | Description                    | Type       | Required | Platform    | HarmonyOS Support |
 | -------- | ------------------------------ | ---------- | -------- | ----------- | ----------------- |
-| r        | Radius.                        | number     | yes      | android/ios | yes               |
-| children | Optional path effect to apply. | PathEffect | no       | android/ios | yes               |
+| r        | 圆角半径.                        | number     | yes      | android/ios | yes               |
+| children | 可选的其他路径效果，可以叠加应用. | PathEffect | no       | android/ios | yes               |
 
 ### Path1DPathEffect
 
@@ -740,11 +742,11 @@ ohpm install
 
 | Name     | Description                                                                     | Type              | Required | Platform    | HarmonyOS Support |
 | -------- | ------------------------------------------------------------------------------- | ----------------- | -------- | ----------- | ----------------- |
-| path     | The path to replicate (dash)                                                    | PathDef           | yes      | android/ios | yes               |
-| advance  | The space between instances of path                                             | number            | yes      | android/ios | yes               |
-| phase    | distance (mod advance) along the path for its initial position                  | number            | yes      | android/ios | yes               |
-| style    | how to transform path at each point (based on the current position and tangent) | Path1DEffectStyle | yes      | android/ios | yes               |
-| children | Optional path effect to apply.                                                  | PathEffect        | no       | android/ios | yes               |
+| path     | 要复制的路径图形，作为重复绘制的基本单元                                                    | PathDef           | yes      | android/ios | yes               |
+| advance  | 各个路径实例之间的间距                                             | number            | yes      | android/ios | yes               |
+| phase    | 沿着路径的初始位置距离（按 advance 取模）                  | number            | yes      | android/ios | yes               |
+| style    | 在每个点如何变换路径（基于当前位置和切线方向） | Path1DEffectStyle | yes      | android/ios | yes               |
+| children | 可选的其他路径效果，可以叠加应用.                                                  | PathEffect        | no       | android/ios | yes               |
 
 ### Path2DPathEffect
 
@@ -756,9 +758,9 @@ ohpm install
 
 | Name     | Description                   | Type       | Required | Platform    | HarmonyOS Support |
 | -------- | ----------------------------- | ---------- | -------- | ----------- | ----------------- |
-| path     | The path to use               | PathDef    | yes      | android/ios | yes               |
-| matrix   | Matrix to be applied          | SkMatrix   | yes      | android/ios | yes               |
-| children | Optional path effect to apply | PathEffect | no       | android/ios | yes               |
+| path     | 用作效果的基本路径图形，将在目标路径上重复绘制               | PathDef    | yes      | android/ios | yes               |
+| matrix   | 应用于路径图形的变换矩阵，控制每个实例的缩放、旋转和平移效果          | SkMatrix   | yes      | android/ios | yes               |
+| children | 可选的其他路径效果，可以叠加应用 | PathEffect | no       | android/ios | yes               |
 
 ### Line2DPathEffect
 
@@ -770,9 +772,9 @@ ohpm install
 
 | Name     | Description                   | Type       | Required | Platform    | HarmonyOS Support |
 | -------- | ----------------------------- | ---------- | -------- | ----------- | ----------------- |
-| width    | The path to use               | PathDef    | yes      | android/ios | yes               |
-| matrix   | Matrix to be applied          | IMatrix    | yes      | android/ios | yes               |
-| children | Optional path effect to apply | PathEffect | no       | android/ios | yes               |
+| width    | 用作效果的路径图形               | PathDef    | yes      | android/ios | yes               |
+| matrix   | 应用于路径图形的变换矩阵          | IMatrix    | yes      | android/ios | yes               |
+| children | 可选的其他路径效果，可以叠加应用 | PathEffect | no       | android/ios | yes               |
 
 ### Shadow
 
@@ -784,13 +786,13 @@ ohpm install
 
 | Name       | Description                                            | Type        | Required | Platform    | HarmonyOS Support |
 | ---------- | ------------------------------------------------------ | ----------- | -------- | ----------- | ----------------- |
-| dx         | The X offset of the shadow.                            | number      | yes      | android/ios | yes               |
-| dy         | The Y offset of the shadow.                            | number      | no       | android/ios | yes               |
-| blur       | The blur radius for the shadow                         | number      | no       | android/ios | yes               |
-| color      | The color of the drop shadow                           | Color       | no       | android/ios | yes               |
-| inner      | Shadows are drawn within the input content             | boolean     | no       | android/ios | yes               |
-| shadowOnly | If true, the result does not include the input content | boolean     | no       | android/ios | yes               |
-| children   | Optional image filter to be applied first              | ImageFilter | no       | android/ios | yes               |
+| dx         | 阴影在 X 轴方向的偏移量.                            | number      | yes      | android/ios | yes               |
+| dy         | 阴影在 Y 轴方向的偏移量.                            | number      | no       | android/ios | yes               |
+| blur       | 阴影的模糊半径，值越大阴影越模糊                         | number      | no       | android/ios | yes               |
+| color      | 阴影的颜色                           | Color       | no       | android/ios | yes               |
+| inner      | 是否为内阴影，内阴影会出现在图形内容内部             | boolean     | no       | android/ios | yes               |
+| shadowOnly | 如果设置为 true，结果将只包含阴影效果，不包括原始输入内容 | boolean     | no       | android/ios | yes               |
+| children   | 可选的其他图像滤镜，将在阴影效果之前应用              | ImageFilter | no       | android/ios | yes               |
 
 ### Blur
 
@@ -802,9 +804,9 @@ ohpm install
 
 | Name     | Description                                                   | Type             | Required | Platform    | HarmonyOS Support |
 | -------- | ------------------------------------------------------------- | ---------------- | -------- | ----------- | ----------------- |
-| blur     | The Gaussian sigma blur value                                 | number`or`Vector | yes      | android/ios | yes               |
-| mode     | `mirror`, `repeat`, `clamp`, or `decal` (default is `decal`). | TileMode         | no       | android/ios | yes               |
-| children | Optional image filter to be applied first.                    | ImageFilter      | no       | android/ios | yes               |
+| blur     | 高斯模糊的 sigma 值，控制模糊程度                                 | number`or`Vector | yes      | android/ios | yes               |
+| mode     | 边缘处理模式，支持 mirror（镜像）、repeat（重复）、clamp（裁剪）或 decal（默认） | TileMode         | no       | android/ios | yes               |
+| children | 可选的图像滤镜，将在模糊效果之前应用.                    | ImageFilter      | no       | android/ios | yes               |
 
 ### DisplacementMap
 
@@ -816,10 +818,10 @@ ohpm install
 
 | Name     | Description                                                                          | Type         | Required | Platform    | HarmonyOS Support |
 | -------- | ------------------------------------------------------------------------------------ | ------------ | -------- | ----------- | ----------------- |
-| channelX | Color channel to be used along the X axis. Possible values are `r`, `g`, `b`, or `a` | ColorChannel | yes      | android/ios | yes               |
-| channelY | Color channel to be used along the Y axis. Possible values are `r`, `g`, `b`, or `a` | ColorChannel | no       | android/ios | yes               |
-| scale    | Displacement scale factor to be used                                                 | number       | no       | android/ios | yes               |
-| children | Optional image filter to be applied first                                            | ImageFilter  | no       | android/ios | yes               |
+| channelX | 用于 X 轴方向位移的颜色通道，可选值为 r(红色)、g(绿色)、b(蓝色)、a(透明度) | ColorChannel | yes      | android/ios | yes               |
+| channelY | 用于 Y 轴方向位移的颜色通道，可选值为 r(红色)、g(绿色)、b(蓝色)、a(透明度) | ColorChannel | no       | android/ios | yes               |
+| scale    | 位移缩放因子，控制位移效果的强度                                                 | number       | no       | android/ios | yes               |
+| children | 可选的图像滤镜，将在位移效果之前应用                                            | ImageFilter  | no       | android/ios | yes               |
 
 ### Offset
 
@@ -831,9 +833,9 @@ ohpm install
 
 | Name     | Description                                | Type        | Required | Platform    | HarmonyOS Support |
 | -------- | ------------------------------------------ | ----------- | -------- | ----------- | ----------------- |
-| x        | Offset along the X axis.                   | number      | yes      | android/ios | yes               |
-| y        | Offset along the Y axis.                   | number      | yes      | android/ios | yes               |
-| children | Optional image filter to be applied first. | ImageFilter | no       | android/ios | yes               |
+| x        | 沿 X 轴的偏移量，控制内容的水平移动.                   | number      | yes      | android/ios | yes               |
+| y        | 沿 Y 轴的偏移量，控制内容的垂直移动.                   | number      | yes      | android/ios | yes               |
+| children | 可选的图像滤镜，将在位移效果之前应用. | ImageFilter | no       | android/ios | yes               |
 
 ### Morphology
 
@@ -845,9 +847,9 @@ ohpm install
 
 | Name     | Description                                                         | Type             | Required | Platform    | HarmonyOS Support |
 | -------- | ------------------------------------------------------------------- | ---------------- | -------- | ----------- | ----------------- |
-| operator | whether to erode (i.e., thin) or dilate (fatten). Default is dilate | erode`or`dilate  | yes      | android/ios | yes               |
-| radius   | Radius of the effect.                                               | number`or`Vector | yes      | android/ios | yes               |
-| children | Optional image filter to be applied first.                          | ImageFilter      | no       | android/ios | yes               |
+| operator | 沿 X 轴的偏移量，控制内容的水平移动 | erode`or`dilate  | yes      | android/ios | yes               |
+| radius   | 沿 Y 轴的偏移量，控制内容的垂直移动.                                               | number`or`Vector | yes      | android/ios | yes               |
+| children | 首先应用可选的图像过滤器.                          | ImageFilter      | no       | android/ios | yes               |
 
 ### RuntimeShader
 
@@ -859,8 +861,8 @@ ohpm install
 
 | Name     | Description                                | Type            | Required | Platform    | HarmonyOS Support |
 | -------- | ------------------------------------------ | --------------- | -------- | ----------- | ----------------- |
-| source   | Shader to use as an image filter           | SkRuntimeEffect | yes      | android/ios | yes               |
-| children | Optional image filter to be applied first. | ImageFilter     | no       | android/ios | yes               |
+| source   | 用作图像过滤器的着色器           | SkRuntimeEffect | yes      | android/ios | yes               |
+| children | 首先应用可选的图像过滤器. | ImageFilter     | no       | android/ios | yes               |
 
 ### BlurMask
 
@@ -872,9 +874,9 @@ ohpm install
 
 | Name       | Description                                                           | Type      | Required | Platform    | HarmonyOS Support |
 | ---------- | --------------------------------------------------------------------- | --------- | -------- | ----------- | ----------------- |
-| blur       | Standard deviation of the Gaussian blur. Must be > 0.                 | number    | yes      | android/ios | yes               |
-| style      | Can be `normal`, `solid`, `outer`, or `inner` (default is `normal`).  | BlurStyle | no       | android/ios | yes               |
-| respectCTM | if true the blur's sigma is modified by the CTM (default is `false`). | bool      | no       | android/ios | yes               |
+| blur       | 高斯模糊的标准差，控制模糊强度，‌必须大于 0‌.                 | number    | yes      | android/ios | yes               |
+| style      | 模糊样式，支持 normal(普通)、solid(实心)、outer(外部) 或 inner(内部)，默认为 normal.  | BlurStyle | no       | android/ios | yes               |
+| respectCTM | 如果设置为 true，模糊的 sigma 值会根据当前变换矩阵(CTM)进行调整，默认为 false. | bool      | no       | android/ios | yes               |
 
 ### ColorMatrix
 
@@ -886,8 +888,8 @@ ohpm install
 
 | Name     | Description                                | Type        | Required | Platform    | HarmonyOS Support |
 | -------- | ------------------------------------------ | ----------- | -------- | ----------- | ----------------- |
-| matrix   | Color Matrix (5x4)                         | number[]    | yes      | android/ios | yes               |
-| children | Optional color filter to be applied first. | ColorFilter | no       | android/ios | yes               |
+| matrix   | 5x4的颜色转换矩阵。该矩阵通过矩阵乘法改变图像中每个像素的RGB值和透明度(alpha)                         | number[]    | yes      | android/ios | yes               |
+| children | 可选的颜色滤镜，将在颜色矩阵效果之前应用. | ColorFilter | no       | android/ios | yes               |
 
 ### BlendColor
 
@@ -899,9 +901,9 @@ ohpm install
 
 | Name     | Description                                                                               | Type        | Required | Platform    | HarmonyOS Support |
 | -------- | ----------------------------------------------------------------------------------------- | ----------- | -------- | ----------- | ----------------- |
-| color    | Color                                                                                     | Color       | yes      | android/ios | yes               |
-| mode     | Sets the blend mode that is, the mode used to combine source color with destination color | BlendMode   | yes      | android/ios | yes               |
-| children | Optional color filter to be applied first.                                                | ColorFilter | no       | android/ios | yes               |
+| color    | 用于混合的颜色值                                                                                     | Color       | yes      | android/ios | yes               |
+| mode     | 设置混合模式，即源颜色与目标颜色的组合方式 | BlendMode   | yes      | android/ios | yes               |
+| children | 可选的颜色滤镜，将在颜色混合效果之前应用.                                                | ColorFilter | no       | android/ios | yes               |
 
 ### Lerp
 
@@ -913,8 +915,8 @@ ohpm install
 
 | Name     | Description                                | Type        | Required | Platform    | HarmonyOS Support |
 | -------- | ------------------------------------------ | ----------- | -------- | ----------- | ----------------- |
-| t        | Value between 0 and 1.                     | number      | yes      | android/ios | yes               |
-| children | Optional color filter to be applied first. | ColorFilter | yes      | android/ios | yes               |
+| t        | 插值因子，取值范围为 0 到 1 之间。                    | number      | yes      | android/ios | yes               |
+| children | 可选的颜色滤镜，将在插值效果之前应用 | ColorFilter | yes      | android/ios | yes               |
 
 ### LinearToSRGBGamma
 
@@ -926,7 +928,7 @@ ohpm install
 
 | Name     | Description                                | Type        | Required | Platform    | HarmonyOS Support |
 | -------- | ------------------------------------------ | ----------- | -------- | ----------- | ----------------- |
-| children | Optional color filter to be applied first. | ColorFilter | no       | android/ios | yes               |
+| children | 首先应用可选的滤色器. | ColorFilter | no       | android/ios | yes               |
 
 ### SRGBToLinearGamma
 
@@ -938,7 +940,7 @@ ohpm install
 
 | Name     | Description                                | Type        | Required | Platform    | HarmonyOS Support |
 | -------- | ------------------------------------------ | ----------- | -------- | ----------- | ----------------- |
-| children | Optional color filter to be applied first. | ColorFilter | no       | android/ios | yes               |
+| children | 首先应用可选的滤色器. | ColorFilter | no       | android/ios | yes               |
 
 ### Mask
 
@@ -950,10 +952,10 @@ ohpm install
 
 | Name     | Description                                          | Type               | Required | Platform    | HarmonyOS Support |
 | -------- | ---------------------------------------------------- | ------------------ | -------- | ----------- | ----------------- |
-| mode     | Is it a luminance or alpha mask (default is `alpha`) | alpha \| luminance | no       | android/ios | yes               |
-| clip     | clip the mask so it doesn't exceed the content       | boolean            | no       | android/ios | yes               |
-| mask     | ReactNode                                            | ReactNode[]        | yes      | android/ios | yes               |
-| children | ReactNode                                            | ReactNode[]        | yes      | android/ios | yes               |
+| mode     | 遮罩类型，可以是基于 alpha 通道的遮罩或基于亮度的遮罩，默认为 alpha | alpha \| luminance | no       | android/ios | yes               |
+| clip     | 是否裁剪遮罩，使其不超出内容边界       | boolean            | no       | android/ios | yes               |
+| mask     | 定义遮罩形状的 React 节点数组，必需属性                                            | ReactNode[]        | yes      | android/ios | yes               |
+| children | 需要应用遮罩效果的内容，必需属性                                            | ReactNode[]        | yes      | android/ios | yes               |
 
 ### Image
 
@@ -965,12 +967,12 @@ ohpm install
 
 | Name   | Description                                                                                                                                                                | Type    | Required | Platform    | HarmonyOS Support |
 | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | -------- | ----------- | ----------------- |
-| image  | An instance of the image.                                                                                                                                                  | SkImage | yes      | android/ios | yes               |
-| x      | The left position of the destination image.                                                                                                                                | number  | yes      | android/ios | yes               |
-| y      | The top position of the destination image.                                                                                                                                 | number  | yes      | android/ios | yes               |
-| width  | The width of the destination image.                                                                                                                                        | number  | yes      | android/ios | yes               |
-| height | The height of the destination image.                                                                                                                                       | number  | yes      | android/ios | yes               |
-| fit    | The method used to fit the image into the rectangle. Values can be `contain`, `fill`, `cover`, `fitHeight`, `fitWidth`, `scaleDown`, or `none` (the default is `contain`). | Fit     | no       | android/ios | yes               |
+| image  | 要绘制的图像实例.                                                                                                                                                  | SkImage | yes      | android/ios | yes               |
+| x      | 目标图像左侧的位置坐标.                                                                                                                                | number  | yes      | android/ios | yes               |
+| y      | 目标图像顶部的位置坐标.                                                                                                                                 | number  | yes      | android/ios | yes               |
+| width  | 目标图像的宽度.                                                                                                                                        | number  | yes      | android/ios | yes               |
+| height | 目标图像的高度.                                                                                                                                       | number  | yes      | android/ios | yes               |
+| fit    | 图像适应矩形区域的方法，可选值包括：contain、fill、cover、fitHeight、fitWidth、scaleDown 或 none，默认为 contain. | Fit     | no       | android/ios | yes               |
 
 ### ImageSVG
 
@@ -982,11 +984,11 @@ ohpm install
 
 | Name   | Description                                 | Type   | Required | Platform    | HarmonyOS Support |
 | ------ | ------------------------------------------- | ------ | -------- | ----------- | ----------------- |
-| svg    | SVG Image.                                  | SVG    | yes      | android/ios | yes               |
-| x      | The left position of the destination image. | number | no       | android/ios | yes               |
-| y      | The top position of the destination image.  | number | no       | android/ios | yes               |
-| width  | The width of the destination image.         | number | no       | android/ios | yes               |
-| height | The height of the destination image.        | number | no       | android/ios | yes               |
+| svg    | 要绘制的SVG图像内容.                                  | SVG    | yes      | android/ios | yes               |
+| x      | 目标图像左侧的位置坐标. | number | no       | android/ios | yes               |
+| y      | 目标图像顶部的位置坐标.  | number | no       | android/ios | yes               |
+| width  | 目标图像的宽度.         | number | no       | android/ios | yes               |
+| height | 目标图像的高度.        | number | no       | android/ios | yes               |
 
 ### Paragraph
 
@@ -998,10 +1000,10 @@ ohpm install
 
 | Name      | Description                                   | Type        | Required | Platform    | HarmonyOS Support |
 | --------- | --------------------------------------------- | ----------- | -------- | ----------- | ----------------- |
-| paragraph | text paragraph                                | skParagraph | yes      | android/ios | yes               |
-| x         | Left position of the text (default is 0)      | number      | yes      | android/ios | yes               |
-| y         | Bottom position the text (default is 0, the ) | number      | yes      | android/ios | yes               |
-| width     | The width of the paragraph.                   | number      | yes      | android/ios | yes               |
+| paragraph | 文本段落对象，包含要显示的文本内容                                | skParagraph | yes      | android/ios | yes               |
+| x         | 文本的左侧位置，默认值为 0      | number      | yes      | android/ios | yes               |
+| y         | 文本的底部位置，默认值为 0 | number      | yes      | android/ios | yes               |
+| width     | 段落的宽度.                   | number      | yes      | android/ios | yes               |
 
 ### Text
 
@@ -1013,10 +1015,10 @@ ohpm install
 
 | Name | Description                                   | Type   | Required | Platform    | HarmonyOS Support |
 | ---- | --------------------------------------------- | ------ | -------- | ----------- | ----------------- |
-| text | Text to draw                                  | string | yes      | android/ios | yes               |
-| x    | Left position of the text (default is 0)      | number | yes      | android/ios | yes               |
-| y    | Bottom position the text (default is 0, the ) | number | yes      | android/ios | yes               |
-| font | Font to use                                   | SkFont | yes      | android/ios | yes               |
+| text | 要绘制的文本内容                                  | string | yes      | android/ios | yes               |
+| x    | 文本的左侧位置，默认值为 0      | number | yes      | android/ios | yes               |
+| y    | 文本的底部位置，默认值为 0 | number | yes      | android/ios | yes               |
+| font | 要使用的字体对象                                   | SkFont | yes      | android/ios | yes               |
 
 ### Glyphs
 
@@ -1028,10 +1030,10 @@ ohpm install
 
 | Name   | Description                                                | Type    | Required | Platform    | HarmonyOS Support |
 | ------ | ---------------------------------------------------------- | ------- | -------- | ----------- | ----------------- |
-| glyphs | Glyphs to draw                                             | Glyph[] | yes      | android/ios | yes               |
-| x      | x coordinate of the origin of the entire run. Default is 0 | number  | no       | android/ios | yes               |
-| y      | y coordinate of the origin of the entire run. Default is 0 | number  | no       | android/ios | yes               |
-| font   | Font to use                                                | SkFont  | yes      | android/ios | yes               |
+| glyphs | 要绘制的字形数组                                             | Glyph[] | yes      | android/ios | yes               |
+| x      | 整个字形序列的起始原点 x 坐标，默认值为 0 | number  | no       | android/ios | yes               |
+| y      | 整个字形序列的起始原点 y 坐标，默认值为 0 | number  | no       | android/ios | yes               |
+| font   | 要使用的字体对象                                                | SkFont  | yes      | android/ios | yes               |
 
 ### TextPath
 
@@ -1043,9 +1045,9 @@ ohpm install
 
 | Name | Description                                                                                                                                                                             | Type           | Required | Platform    | HarmonyOS Support |
 | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | -------- | ----------- | ----------------- |
-| path | Path to draw. Can be a string using the [SVG Path notation](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths#line_commands) or an object created with `Skia.Path.Make()` | Path \| string | yes      | android/ios | yes               |
-| text | Text to draw                                                                                                                                                                            | string         | yes      | android/ios | yes               |
-| font | Font to use                                                                                                                                                                             | SkFont         | yes      | android/ios | yes               |
+| path | 绘制的路径，可以是使用[SVG路径](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths#line_commands)表示法的字符串，也可以是使用 Skia.Path.Make() 创建的对象 | Path \| string | yes      | android/ios | yes               |
+| text | 要绘制的文本内容                                                                                                                                                                            | string         | yes      | android/ios | yes               |
+| font | 要使用的字体对象                                                                                                                                                                             | SkFont         | yes      | android/ios | yes               |
 
 ### TextBlob
 
@@ -1057,9 +1059,9 @@ ohpm install
 
 | Name | Description                                                | Type     | Required | Platform    | HarmonyOS Support |
 | ---- | ---------------------------------------------------------- | -------- | -------- | ----------- | ----------------- |
-| blob | Text blob                                                  | TextBlob | yes      | android/ios | yes               |
-| x    | x coordinate of the origin of the entire run. Default is 0 | number   | no       | android/ios | yes               |
-| y    | y coordinate of the origin of the entire run. Default is 0 | number   | no       | android/ios | yes               |
+| blob | 文本块对象，包含要绘制的文本内容                                                  | TextBlob | yes      | android/ios | yes               |
+| x    | 整个文本序列的起始原点 x 坐标，默认值为 0 | number   | no       | android/ios | yes               |
+| y    | 整个文本序列的起始原点 y 坐标，默认值为 0 | number   | no       | android/ios | yes               |
 
 ### BackdropFilter
 
@@ -1071,7 +1073,7 @@ ohpm install
 
 | Name   | Description                                                                             | Type                     | Required | Platform    | HarmonyOS Support |
 | ------ | --------------------------------------------------------------------------------------- | ------------------------ | -------- | ----------- | ----------------- |
-| filter | Applies an image filter to the area behind the canvas or behind a defined clipping mask | ReactNode \| ReactNode[] | yes      | android/ios | yes               |
+| filter | 对画布后方区域或定义的裁剪蒙版后方区域应用图像滤镜 | ReactNode \| ReactNode[] | yes      | android/ios | yes               |
 
 ### BackdropBlur
 
@@ -1083,7 +1085,7 @@ ohpm install
 
 | Name | Description | Type   | Required | Platform    | HarmonyOS Support |
 | ---- | ----------- | ------ | -------- | ----------- | ----------------- |
-| blur | Blur radius | number | yes      | android/ios | yes               |
+| blur | 模糊半径，控制背景内容的模糊程度 | number | yes      | android/ios | yes               |
 
 ## RNSkiaModule API
 
@@ -1093,7 +1095,7 @@ ohpm install
 
 | Name    | Description      | Type     | Required | Platform    | HarmonyOS Support |
 | ------- | ---------------- | -------- | -------- | ----------- | ----------------- |
-| install | initialized skia | function | yes      | android/ios | yes               |
+| install | 用于初始化 Skia 图形库 | function | yes      | android/ios | yes               |
 
 ## 遗留问题
 

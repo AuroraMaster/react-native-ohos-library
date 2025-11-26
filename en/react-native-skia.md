@@ -15,9 +15,14 @@ Template version: v0.2.2
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-skia)
 
-## Installation and Usage
+| Version                        | Package Name                             | Repository                                                   | Release                                                      | Version for RN |
+| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+| 1.3.8 | @react-native-oh-tpl/react-native-skia  | [Github](https://github.com/react-native-oh-library/react-native-skia) | [Github Releases](https://github.com/react-native-oh-library/react-native-skia/releases) | 0.72       |
+| 1.4.0                        | @react-native-ohos/react-native-skia | [Github](https://github.com/react-native-oh-library/react-native-skia) | [Github Releases](https://github.com/react-native-oh-library/react-native-skia/releases) | 0.77       |
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-skia Releases](https://github.com/react-native-oh-library/react-native-skia/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+For older versions that have not been released to npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package
+
+## Installation and Usage
 
 Go to the project directory and execute the following instruction:
 
@@ -28,13 +33,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# RN0.72
 npm install @react-native-oh-tpl/react-native-skia
+
+# RN0.77
+npm install @react-native-ohos/react-native-skia
 ```
 
 #### **yarn**
 
 ```bash
+# RN0.72
 yarn add @react-native-oh-tpl/react-native-skia
+
+# RN0.77
+yarn add @react-native-ohos/react-native-skia
 ```
 
 <!-- tabs:end -->
@@ -92,10 +105,21 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
+- RN0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-skia": "file:../../node_modules/@react-native-oh-tpl/react-native-skia/harmony/skia.har"
+  }
+```
+
+- RN0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-skia": "file:../../node_modules/@react-native-ohos/react-native-skia/harmony/skia.har"
   }
 ```
 
@@ -134,7 +158,13 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+# RN0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-skia/src/main/cpp" ./skia)
+
+# RN0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-skia/src/main/cpp" ./skia)
+
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -177,7 +207,11 @@ Find `function buildCustomRNComponent()`, which is usually located in `entry/src
 
 ```diff
   ...
+// RN0.72
 + import { RNCSkiaDomView, SKIA_DOM_VIEW_TYPE } from '@react-native-oh-tpl/react-native-skia';
+
+// RN0.77
++ import { RNCSkiaDomView, SKIA_DOM_VIEW_TYPE } from '@react-native-ohos/react-native-skia';
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -212,7 +246,11 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
+// RN0.72
 + import {RNSkiaPackage} from '@react-native-oh-tpl/react-native-skia/ts';
+
+// RN0.77
++ import {RNSkiaPackage} from '@react-native-ohos/react-native-skia/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -241,7 +279,10 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-skia Releases](https://github.com/react-native-oh-library/react-native-skia/releases)
+Verified in the following version:
+
+1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
+2. RNOH：0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 [!TIP] [skia Official ducoments](https://shopify.github.io/react-native-skia/docs/getting-started/installation)
 
