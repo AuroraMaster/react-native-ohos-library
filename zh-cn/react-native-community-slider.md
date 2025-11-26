@@ -14,9 +14,16 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-slider)
 
-## 安装与使用
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/slider Releases](https://github.com/react-native-oh-library/react-native-slider/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 4.4.3      | [@react-native-oh-tpl/slider  Releases](https://github.com/react-native-oh-library/react-native-slider/releases) | 0.72       |
+| 5.0.1      | [@react-native-ohos/slider  Releases]()       | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +32,19 @@
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/slider
+# 0.77
+npm install @react-native-ohos/slider
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/slider
+# 0.77
+yarn add @react-native-ohos/slider
 ```
 
 <!-- tabs:end -->
@@ -93,11 +106,23 @@ export default function SliderExample() {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+* 0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
     "@react-native-oh-tpl/slider": "file:../../node_modules/@react-native-oh-tpl/slider/harmony/slider.har"
+  }
+```
+
+* 0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+
+    "@react-native-ohos/slider": "file:../../node_modules/@react-native-ohos/slider/harmony/slider.har"
   }
 ```
 
@@ -129,7 +154,10 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: add_package_subdirectories
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+# 0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/slider/src/main/cpp" ./slider)
+# 0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/slider/src/main/cpp" ./slider)
 # RNOH_END: add_package_subdirectories
 
 add_library(rnoh_app SHARED
@@ -168,7 +196,10 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
+  # 0.72
 + import { RNCSlider, SLIDER_TYPE } from "@react-native-oh-tpl/slider"
+  # 0.77
++ import { RNCSlider, SLIDER_TYPE } from "@react-native-ohos/slider"
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -211,9 +242,10 @@ ohpm install
 
 ## 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-library/slider Releases](https://github.com/react-native-oh-library/react-native-slider/releases)
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release SDK; IDE：DevEco Studio  6.0.0.868; ROM：6.0.0.112;
 
 ## 属性
 
@@ -221,31 +253,31 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name   | Description       | Type     | Required | Platform     | HarmonyOS Support |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ----------------------- | ------------------------ | -------------------------------------------- | ---- | ------------ | ----------------- |
-| `style`         | Used to style and layout the `Slider`. See `StyleSheet.js` and `ViewStylePropTypes.js` for more info.    | View.style  | No   | All      | yes       |
-| `disabled`      | If true the user won't be able to move the slider.<br/>Default value is false. | bool    | No   | All      | yes       |
-| `maximumValue`      | Initial maximum value of the slider.<br/>Default value is 1.                      | number      | No   | All      | yes       |
-| `minimumTrackTintColor` | The color used for the track to the left of the button.<br/>Overrides the default blue gradient image on iOS.  | [color](https://reactnative.dev/docs/colors) | No   | All      | yes       |
-| `minimumValue`      | Initial minimum value of the slider.<br/>Default value is 0.       | number      | No   | All      | yes       |
-| `lowerLimit`        | Slide lower limit. The user won't be able to slide below this limit.              | number      | No   | Android, iOS | yes      |
-| `upperLimit`        | Slide upper limit. The user won't be able to slide above this limit.              | number      | No   | Android, iOS | yes        |
-| `onSlidingStart`    | Callback that is called when the user picks up the slider.<br/>The initial value is passed as an argument to the callback handler.       | function    | No   | All      | yes       |
-| `onSlidingComplete`     | Callback that is called when the user releases the slider, regardless if the value has changed.<br/>The current value is passed as an argument to the callback handler.    | function    | No   | All      | yes       |
-| `onValueChange`     | Callback continuously called while the user is dragging the slider.| function    | No   | All      | yes       |
-| `step`          | Step value of the slider. The value should be between 0 and (maximumValue - minimumValue). Default value is 0.<br/>On Windows OS the default value is 1% of slider's range (from `minimumValue` to `maximumValue`).       | number      | No   | All      | yes       |
-| `maximumTrackTintColor` | The color used for the track to the right of the button.<br/>Overrides the default gray gradient image on iOS.        | [color](https://reactnative.dev/docs/colors) | No   | All      | yes       |
-| `value`         | Write-only property representing the value of the slider. Can be used to programmatically control the position of the thumb. Entered once at the beginning still acts as an initial value. Changing the value programmatically does not trigger any event.<br/>The value should be between minimumValue and maximumValue, which default to 0 and 1 respectively. Default value is 0.<br/>_This is not a controlled component_, you don't need to update the value during dragging. | number      | No   | All      | yes       |
-| `tapToSeek`         | Permits tapping on the slider track to set the thumb position.<br/>Defaults to false on iOS. No effect on Android or Windows.       | bool    | No   | iOS      | no        |
-| `inverted`      | Reverses the direction of the slider.<br/>Default value is false.  | bool    | No   | All      | yes       |
-| `vertical`      | Changes the orientation of the slider to vertical, if set to `true`.<br/>Default value is false.   | bool    | No   | Windows      | yes       |
-| `thumbTintColor`    | Color of the foreground switch grip.<br/>**NOTE:** This prop will override the `thumbImage` prop set, meaning that if both `thumbImage` and `thumbTintColor` will be set, image used for the thumb may not be displayed correctly!| [color](https://reactnative.dev/docs/colors) | No   | Android      | yes       |
-| `maximumTrackImage`     | Assigns a maximum track image. Only static images are supported. The leftmost pixel of the image will be stretched to fill the track.              | Image<br/>.propTypes<br/>.source         | No   | iOS      | no        |
-| `minimumTrackImage`     | Assigns a minimum track image. Only static images are supported. The rightmost pixel of the image will be stretched to fill the track.             | Image<br/>.propTypes<br/>.source         | No   | iOS      | no        |
-| `thumbImage`        | Sets an image for the thumb. Only static images are supported. Needs to be a URI of a local or network image; base64-encoded SVG is not supported.     | Image<br/>.propTypes<br/>.source         | No   | All      | yes       |
-| `trackImage`        | Assigns a single image for the track. Only static images are supported. The center pixel of the image will be stretched to fill the track.         | Image<br/>.propTypes<br/>.source         | No   | iOS      | no        |
-| `ref`           | Reference object. | MutableRefObject                     | No   | web      | no        |
-| `View`          | [Inherited `View` props...](https://github.com/facebook/react-native-website/blob/master/docs/view.md#props)      |         |      |      |  |
+| `style`         | 用于设置 `Slider` 的样式和布局。详见 `StyleSheet.js` 和 `ViewStylePropTypes.js`。    | View.style  | 否   | 所有平台 | 是       |
+| `disabled`      | 如果为 true，用户将无法移动滑块。<br/>默认值为 false。 | bool    | 否   | 所有平台 | 是       |
+| `maximumValue`      | 滑块的初始最大值。<br/>默认值为 1。                      | number      | 否   | 所有平台 | 是       |
+| `minimumTrackTintColor` | 滑块按钮左侧轨道的颜色。<br/>在 iOS 上覆盖默认的蓝色渐变图像。  | [color](https://reactnative.dev/docs/colors) | 否   | 所有平台 | 是       |
+| `minimumValue`      | 滑块的初始最小值。<br/>默认值为 0。       | number      | 否   | 所有平台 | 是       |
+| `lowerLimit`        | 滑动下限。用户将无法滑到该限制以下。              | number      | 否   | Android, iOS | 是      |
+| `upperLimit`        | 滑动上限。用户将无法滑到该限制以上。              | number      | 否   | Android, iOS | 是        |
+| `onSlidingStart`    | 用户开始拖动滑块时调用的回调函数。<br/>初始值作为参数传递给回调处理函数。       | function    | 否   | 所有平台 | 是       |
+| `onSlidingComplete`     | 用户释放滑块时调用的回调函数，无论值是否已更改。<br/>当前值作为参数传递给回调处理函数。    | function    | 否   | 所有平台 | 是       |
+| `onValueChange`     | 用户拖动滑块时持续调用的回调函数。| function    | 否   | 所有平台 | 是       |
+| `step`          | 滑块的步长值。该值应在 0 到 (maximumValue - minimumValue) 之间。默认值为 0。<br/>在 Windows 操作系统上，默认值为滑块范围（从 `minimumValue` 到 `maximumValue`）的 1%。       | number      | 否   | 所有平台 | 是       |
+| `maximumTrackTintColor` | 滑块按钮右侧轨道的颜色。<br/>在 iOS 上覆盖默认的灰色渐变图像。        | [color](https://reactnative.dev/docs/colors) | 否   | 所有平台 | 是       |
+| `value`         | 表示滑块值的只写属性。可用于以编程方式控制滑块拇指的位置。在开始时输入一次仍作为初始值。以编程方式更改值不会触发任何事件。<br/>该值应在 minimumValue 和 maximumValue 之间，默认值分别为 0 和 1。默认值为 0。<br/>_这不是受控组件_，您不需要在拖动过程中更新值。 | number      | 否   | 所有平台 | 是       |
+| `tapToSeek`         | 允许点击滑块轨道来设置拇指位置。<br/>在 iOS 上默认为 false。在 Android 或 Windows 上无效。       | bool    | 否   | iOS      | 否        |
+| `inverted`      | 反转滑块的方向。<br/>默认值为 false。  | bool    | 否   | 所有平台 | 是       |
+| `vertical`      | 如果设置为 `true`，则将滑块方向更改为垂直。<br/>默认值为 false。   | bool    | 否   | Windows      | 是       |
+| `thumbTintColor`    | 前景滑块手柄的颜色。<br/>**注意：** 此属性将覆盖设置的 `thumbImage` 属性，这意味着如果同时设置了 `thumbImage` 和 `thumbTintColor`，用于拇指的图像可能无法正确显示！| [color](https://reactnative.dev/docs/colors) | 否   | Android      | 是       |
+| `maximumTrackImage`     | 分配最大轨道图像。仅支持静态图像。图像的最左侧像素将被拉伸以填充轨道。              | Image<br/>.propTypes<br/>.source         | 否   | iOS      | 否        |
+| `minimumTrackImage`     | 分配最小轨道图像。仅支持静态图像。图像的最右侧像素将被拉伸以填充轨道。             | Image<br/>.propTypes<br/>.source         | 否   | iOS      | 否        |
+| `thumbImage`        | 为拇指设置图像。仅支持静态图像。需要是本地或网络图像的 URI；不支持 base64 编码的 SVG。     | Image<br/>.propTypes<br/>.source         | 否   | 所有平台 | 是       |
+| `trackImage`        | 为轨道分配单个图像。仅支持静态图像。图像的中心像素将被拉伸以填充轨道。         | Image<br/>.propTypes<br/>.source         | 否   | iOS      | 否        |
+| `ref`           | 引用对象。 | MutableRefObject                     | 否   | web      | 否        |
+| `View`          | [继承的 `View` 属性...](https://github.com/facebook/react-native-website/blob/master/docs/view.md#props)      |         |      |      |  |
 
 ## 遗留问题
 
