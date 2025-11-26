@@ -1,24 +1,21 @@
-> 模板版本：v0.2.2
+> 模板版本：v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-intersection-observer</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/zhbhun/react-native-intersection-observer">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/zhbhun/react-native-intersection-observer/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-        <!-- <img src="https://img.shields.io/badge/license-Apache-blue.svg" alt="License" /> -->
-    </a>
-</p>
 
+本项目基于 [react-native-intersection-observer@0.2.0](https://github.com/zhbhun/react-native-intersection-observer/tree/0.2.0) 开发。
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-intersection-observer/tree/sig)
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 | 
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.2.0  | [@react-native-oh-tpl/react-native-intersection-observer Releases](https://github.com/react-native-oh-library/react-native-intersection-observer/releases) | 0.72       |
+| 0.3.0   | [@react-native-ohos/react-native-intersection-observer Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-intersection-observer/releases)     | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 ## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-intersection-observer Releases](https://github.com/react-native-oh-library/react-native-intersection-observer/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -27,13 +24,21 @@
 #### **npm**
 
 ```bash
+# 0.72 
 npm install @react-native-oh-tpl/react-native-intersection-observer
+
+# 0.77 
+npm install @react-native-ohos/react-native-intersection-observer
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72 
 yarn add @react-native-oh-tpl/react-native-intersection-observer
+
+# 0.77 
+yarn add @react-native-ohos/react-native-intersection-observer
 ```
 
 <!-- tabs:end -->
@@ -78,10 +83,11 @@ export default App;
 
 #### 兼容性
 
-在下述版本验证通过：
+本文档内容基于以下环境验证通过：
 
-1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Preview2; IDE：DevEco Studio 5.0.3.200; ROM：205.0.0.18;
-2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+1. RNOH: 0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
+
 
 ## 属性
 
@@ -93,32 +99,32 @@ export default App;
 
 #### **IOScrollView** **组件**
 
-Props: Inherits [ScrollView Props](https://reactnative.dev/docs/scrollview#props)
+属性: 继承自 [ScrollView Props](https://reactnative.dev/docs/scrollview#props)
 
 | Name       | Description   | Type                                                         | Required | HarmonyOS Support |
 | ---------- | ------------- | ------------------------------------------------------------ | -------- | ----------------- |
-| rootMargin | `root margin` | { top: number; left: number; right: number; bottom: number } | false    | yes               |
+| rootMargin | 根元素边距 | { top: number; left: number; right: number; bottom: number } | false    | yes               |
 
-Methods: Inherits [ScrollView Methods](https://reactnative.dev/docs/scrollview#methods)
+方法：继承自 [ScrollView Methods](https://reactnative.dev/docs/scrollview#methods)
 
 #### **IOFlatList** **组件**
 
-Props: Inherits [FlatList Props](https://reactnative.dev/docs/flatlist#props)
+属性: 继承自 [FlatList Props](https://reactnative.dev/docs/flatlist#props)
 
 | Name       | Description   | Type                                                         | Required | HarmonyOS Support |
 | ---------- | ------------- | ------------------------------------------------------------ | -------- | ----------------- |
-| rootMargin | `root margin` | { top: number; left: number; right: number; bottom: number } | false    | yes               |
+| rootMargin | 根元素边距 | { top: number; left: number; right: number; bottom: number } | false    | yes               |
 
-Methods: Inherits [FlatList Methods](https://reactnative.dev/docs/flatlist#methods)
+方法：继承自 [FlatList Methods](https://reactnative.dev/docs/flatlist#methods)
 
 #### **InView** **组件**
 
 | Name        | Description                                                  | Type                        | Required | HarmonyOS Support |
 | ----------- | ------------------------------------------------------------ | --------------------------- | -------- | ----------------- |
-| as          | `Render the wrapping element as this element. Defaults to `View`.` | `ComponentType`             | false    | yes               |
-| children    | Children expects a plain child, to have the `<InView />` deal with the wrapping element. | ReactNode                   | true     | yes               |
-| triggerOnce | Only trigger this method once.                               | boolean                     | false    | yes               |
-| onChange    | Call this function whenever the in view state changes. It will receive the `inView` boolean, alongside the current `IntersectionObserverEntry`. | `(inView: boolean) => void` | false    | yes               |
+| as          | 指定组件渲染的包装元素类型。默认为 `View` | `ComponentType`             | false    | yes               |
+| children    | 子元素期望一个普通子元素，由 `<InView />` 处理包装元素 | ReactNode                   | true     | yes               |
+| triggerOnce | 仅触发此方法一次                               | boolean                     | false    | yes               |
+| onChange    | 每当可视状态发生变化时调用此函数。它将接收 `inView` 布尔值，以及当前的`IntersectionObserverEntry` | `(inView: boolean) => void` | false    | yes               |
 
 ## 遗留问题
 
