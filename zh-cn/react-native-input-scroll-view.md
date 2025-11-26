@@ -16,22 +16,37 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-input-scroll-view)
 
-## 安装与使用
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-input-scroll-view Releases](https://github.com/react-native-oh-library/react-native-input-scroll-view/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+| 三方库版本   | 发布信息                                                     | 支持RN版本 |
+| ------------ | ------------------------------------------------------------ | ---------- |
+| 1.11.0 | [@react-native-oh-tpl/react-native-input-scroll-view Releases](https://github.com/react-native-oh-library/react-native-input-scroll-view/releases) | 0.72       |
+| 1.12.0   | [@react-native-ohos/react-native-input-scroll-view Releases]() | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-input-scroll-view
+
+# 0.77
+npm install @react-native-ohos/react-native-input-scroll-view
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-input-scroll-view
+
+# 0.77
+yarn add @react-native-ohos/react-native-input-scroll-view
 ```
 
 下面的代码展示了这个库的基本使用场景：
@@ -87,9 +102,10 @@ export default keyboardOffsetInput;
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-input-scroll-view Releases](https://github.com/react-native-oh-library/react-native-input-scroll-view/releases)
+1. RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.200; ROM: 3.0.0.18;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 
