@@ -15,17 +15,17 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-video)
 
-## 安装与使用
-
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 5.2.1      | [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases) | 0.72       |
-| 6.13.0      | [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases) | 0.72       |
-| 6.13.0     | [@react-native-ohos/react-native-video Releases]()           | 0.77       |
+| version | Package name                            | Releases info                                                | Support RN version |
+| ------- | --------------------------------------- | ------------------------------------------------------------ | ------------------ |
+| 5.2.1   | @react-native-oh-tpl/react-native-video | [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases) | 0.72               |
+| 6.13.1  | @react-native-oh-tpl/react-native-video | [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases) | 0.72               |
+| 6.14.0  | @react-native-ohos/react-native-video   | [@react-native-ohos/react-native-video Releases]()           | 0.77               |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+## 安装与使用
 
 进入到工程目录并输入以下命令
 
@@ -62,7 +62,7 @@ import React, { useState, useRef } from "react";
 import { Button, View, ScrollView, StyleSheet, Switch, Text, TextInput } from "react-native";
 import RNCVideo from "react-native-video";
 
-// V6.13.0
+// V6.13.1
 import {
   type OnPlaybackStateChangedData,
   OnSeekData,
@@ -91,7 +91,7 @@ function RNCVideoDemo() {
   // V5.2.1
   const [onPlaybackStalled, setOnPlaybackStalled] = useState("onPlaybackStalled");
 
-  // V6.13.0
+  // V6.13.1
   const [onPlaybackStateChanged, setPlaybackStateChanged] = useState("onPlaybackStateChanged");
    
   const [onPlaybackResume, setOnPlaybackResume] = useState("onPlaybackResume");
@@ -382,7 +382,7 @@ function RNCVideoDemo() {
             );
           }}
           
-          // V6.13.0
+          // V6.13.1
           onSeek = {(data: OnSeekData) => {
             console.log('onSeek');
           }}
@@ -409,7 +409,7 @@ function RNCVideoDemo() {
             setOnPlaybackResume("onPlaybackResume :true");
           }}
 
-          // V6.13.0
+          // V6.13.1
           onPlaybackStateChanged={(data: OnPlaybackStateChangedData) => {
             console.log('onPlaybackStateChanged ' + JSON.stringify(data));
             setPlaybackStateChanged("onPlaybackStateChanged : " + JSON.stringify(data));
@@ -687,17 +687,16 @@ ohpm install
 
 然后编译、运行即可。
 
-## 兼容性
+## 约束与限制
+
+兼容性
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+在以下版本验证通过。
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 5.2.1      | [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases) | 0.72       |
-| 6.13.0     | [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases) | 0.72       |
-| 6.13.0     | [@react-native-ohos/react-native-video Releases]()           | 0.77       |
+1. RNOH: 0.72.27; SDK: HarmonyOS 5.1.1 Release SDK; IDE: DevEco Studio 5.1.1 Release; ROM: 5.0.1.120;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 属性
 
