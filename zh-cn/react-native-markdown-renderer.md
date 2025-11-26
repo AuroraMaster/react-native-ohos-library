@@ -14,14 +14,16 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-markdown-renderer)
 
-## 安装与使用
-
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
 | 3.2.8      | [@react-native-oh-tpl/react-native-markdown-renderer Releases](https://github.com/react-native-oh-library/react-native-markdown-renderer/releases) | 0.72       |
-| 3.2.9      | [@react-native-ohos/react-native-markdown-renderer Releases]() | 0.77       |
+| 3.3.0      | [@react-native-ohos/react-native-markdown-renderer Releases]() | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -30,18 +32,18 @@
 #### **npm**
 
 ```bash
-#V3.2.8
+# 0.72
 npm install @react-native-oh-tpl/react-native-markdown-renderer
-#V3.2.9
+# 0.77
 npm install @react-native-ohos/react-native-markdown-renderer
 ```
 
 #### **yarn**
 
 ```bash
-#V3.2.8
+# 0.72
 yarn add @react-native-oh-tpl/react-native-markdown-renderer
-#V3.2.9
+# 0.77
 yarn add @react-native-ohos/react-native-markdown-renderer
 ```
 
@@ -79,14 +81,10 @@ export default class Page extends PureComponent {
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下版本验证通过：
 
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 3.2.8      | [@react-native-oh-tpl/react-native-markdown-renderer Releases](https://github.com/react-native-oh-library/react-native-markdown-renderer/releases) | 0.72       |
-| 3.2.9      | [@react-native-ohos/react-native-markdown-renderer Releases]() | 0.77       |
+1. RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.200; ROM: 3.0.0.18;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.868; ROM: 6.0.0.112;
 
 ## Markdown 组件
 
@@ -105,8 +103,8 @@ Markdown 组件的 Props
 
 | Name       | Description                                                                                      | Type     | Required | Platform    | HarmonyOS Support |
 | ---------- | ------------------------------------------------------------------------------------------------ | -------- | -------- | ----------- | ----------------- |
-| style      | Overrides the built-in style of the original Markdown component                                  | object   | no       | iOS/Android | yes               |
-| rules      | Rendering rule of the markdowm syntax tag in the Markdown component.                             | function | yes      | iOS/Android | yes               |
+| style      | 覆盖原始 Markdown 组件内置样式的属性                                  | object   | no       | iOS/Android | yes               |
+| rules      | Markdown 组件中标记语法标签的渲染规则                             | function | yes      | iOS/Android | yes               |
 | markdownit | MarkdownIt 类的 md 实例，用于覆盖默认的 MarkdownIt 实例（默认：MarkdownIt({typographer: true})） | object   | yes      | iOS/Android | yes               |
 
 ## 库相关变量、封装类及工具函数
