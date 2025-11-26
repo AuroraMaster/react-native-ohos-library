@@ -15,26 +15,37 @@
 
 > [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-amap-geolocation) 
 
+please check the release version information in the release address of the third-party library:
+
+| Library Version	 | Release Information	                                                     | Supported RN Versions |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.2.3      | [@react-native-oh-tpl/react-native-amap-geolocation Releases](https://github.com/react-native-oh-library/react-native-amap-geolocation/releases) | 0.72       |
+| 1.3.0     | [@react-native-ohos/react-native-amap-geolocation Releases]() | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-amap-geolocation Releases](https://github.com/react-native-oh-library/react-native-amap-geolocation/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
-
 Go to the project directory and execute the following instruction:
-
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-amap-geolocation
+# 0.77
+npm install @react-native-ohos/react-native-amap-geolocation
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-amap-geolocation
+# 0.77
+yarn add @react-native-ohos/react-native-amap-geolocation
 ```
 
 <!-- tabs:end -->
@@ -321,10 +332,21 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
+- 0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-amap-geolocation": "file:../../node_modules/@react-native-oh-tpl/react-native-amap-geolocation/harmony/amap_geolocation.har"
+  }
+```
+
+- 0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-amap-geolocation": "file:../../node_modules/@react-native-ohos/react-native-amap-geolocation/harmony/amap_geolocation.har"
   }
 ```
 
@@ -347,7 +369,10 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
 ...
+# 0.72
 +  import {AMapGeolocationPackage} from '@react-native-oh-tpl/react-native-amap-geolocation/ts';
+# 0.77
++  import {AMapGeolocationPackage} from '@react-native-ohos/react-native-amap-geolocation/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -374,9 +399,8 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
-
-Check the release version information in the release address of the third-party library:[@react-native-oh-tpl/react-native-amap-geolocation Releases](https://github.com/react-native-oh-library/react-native-amap-geolocation/releases)
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release SDK; IDE： DevEco Studio 6.0.0.868; ROM：6.0.0.112;
 
 ### Permission Requirements
 
@@ -436,56 +460,56 @@ open `entry/src/main/resources/base/element/string.json`, add the following cont
 
 | Name | Description | Type          | Required | Platform | HarmonyOS Support |
 | ---- | ----------- |---------------|----------| -------- |-------------------|
-| init  | 初始化 SDK | Promise<void> | yes      | iOS/Android      | yes               |
-| addLocationListener  | 添加定位监听函数 | void          | yes      | iOS/Android      | yes               |
-| isStarted  | 获取当前是否正在定位的状态 | boolean       | no       | Android      | no                |
-| setAllowsBackgroundLocationUpdates  | 是否允许后台定位 | void          | no       | iOS      | no                |
-| setDesiredAccuracy  | 设定期望的定位精度（米） | void          | no       | iOS     | no                |
-| setDistanceFilter  | 设定定位的最小更新距离（米） | void          | no       | iOS     | yes               |
-| setGeoLanguage  | 设置逆地理信息的语言，目前支持中文和英文 | void          | no       | iOS/Android      | yes               |
-| setGpsFirst  | 设置首次定位是否等待卫星定位结果 | void          | no       | Android      | no                |
-| setGpsFirstTimeout  | 设置优先返回卫星定位信息时等待卫星定位结果的超时时间（毫秒） | void          | no       | Android      | no                |
-| setHttpTimeout  | 设置联网超时时间（毫秒） | void          | no       | Android      | no                |
-| setInterval  | 设置发起定位请求的时间间隔（毫秒），默认 2000，最小值为 1000 | void          | no       | Android      | yes               |
-| setLocatingWithReGeocode  | 连续定位是否返回逆地理编码 | void          | no       | iOS      | no                |
-| setLocationCacheEnable  | 设置是否使用缓存策略 | void          | no      | Android     | no                |
-| setLocationMode  | 设置定位模式 | void          | no      | Android     | no                |
-| setLocationPurpose  | 设置定位场景 | void          | no      | Android      | no                |
-| setLocationTimeout  | 指定单次定位超时时间（秒） | no          | yes      | iOS      | yes               |
-| setMockEnable  | 设置是否允许模拟位置 | void          | no      | Android      | no                |
-| setNeedAddress  | 设置是否返回地址信息，默认返回地址信息 | no          | yes      | Android      | yes               |
-| setOnceLocation  | 设置是否单次定位 | void          | no      | Android      | yes               |
-| setOnceLocationLatest  | 设置定位是否等待 WiFi 列表刷新 | void          | no      | Android      | no                |
-| setOpenAlwaysScanWifi  | 设置是否开启wifi始终扫描 | void          | no      | Android     | no                |
-| setPausesLocationUpdatesAutomatically  | 指定定位是否会被系统自动暂停 | void          | no      | iOS      | no                |
-| setReGeocodeTimeout  | 指定单次定位逆地理超时时间（秒）最小值是 2s。注意在单次定位请求前设置。 | void          | no      | iOS     | no                |
-| setSensorEnable  | 设置是否使用设备传感器 | void          | no      | Android      | no                |
-| setWifiScan  | 设置是否允许调用 WiFi 刷新 | void          | no      | Android      | no                |
-| start  | 开始持续定位 | void          | no      | iOS/Android      | yes               |
-| stop  | 停止持续定位 | void          | no      | iOS/Android      | yes               |
-| Geolocation.getCurrentPosition  | 获取当前位置信息 | void          | no      | iOS/Android        | yes               |
-| Geolocation.watchPosition  | 注册监听器进行持续定位 | void          | no      | iOS/Android      | yes               |
-| Geolocation.clearWatch  | 移除位置监听 | void          | no      | iOS/Android      | yes               |
+| init  | Initialize SDK | Promise<void> | yes      | iOS/Android      | yes               |
+| addLocationListener  | Add location listener function | void          | yes      | iOS/Android      | yes               |
+| isStarted  | Get current location status | boolean       | no       | Android      | no                |
+| setAllowsBackgroundLocationUpdates  | Whether to allow background location | void          | no       | iOS      | no                |
+| setDesiredAccuracy  | Set desired location accuracy (meters) | void          | no       | iOS     | no                |
+| setDistanceFilter  | Set minimum update distance for location (meters) | void          | no       | iOS     | yes               |
+| setGeoLanguage  | Set language for reverse geocoding, currently supports Chinese and English | void          | no       | iOS/Android      | yes               |
+| setGpsFirst  | Set whether to wait for satellite positioning results for first location | void          | no       | Android      | no                |
+| setGpsFirstTimeout  | Set timeout for waiting satellite positioning results when prioritizing satellite location information (milliseconds) | void          | no       | Android      | no                |
+| setHttpTimeout  | Set network timeout (milliseconds) | void          | no       | Android      | no                |
+| setInterval  | Set time interval for location requests (milliseconds), default 2000, minimum 1000 | void          | no       | Android      | yes               |
+| setLocatingWithReGeocode  | Whether continuous positioning returns reverse geocoding | void          | no       | iOS      | no                |
+| setLocationCacheEnable  | Set whether to use cache strategy | void          | no      | Android     | no                |
+| setLocationMode  | Set positioning mode | void          | no      | Android     | no                |
+| setLocationPurpose  | Set positioning scenario | void          | no      | Android      | no                |
+| setLocationTimeout  | Specify timeout for single location (seconds) | no          | yes      | iOS      | yes               |
+| setMockEnable  | Set whether to allow mock location | void          | no      | Android      | no                |
+| setNeedAddress  | Set whether to return address information, returns address information by default | no          | yes      | Android      | yes               |
+| setOnceLocation  | Set whether to perform single location | void          | no      | Android      | yes               |
+| setOnceLocationLatest  | Set whether location waits for WiFi list refresh | void          | no      | Android      | no                |
+| setOpenAlwaysScanWifi  | Set whether to enable continuous WiFi scanning | void          | no      | Android     | no                |
+| setPausesLocationUpdatesAutomatically  | Specify whether location will be automatically paused by the system | void          | no      | iOS      | no                |
+| setReGeocodeTimeout  | Specify reverse geocoding timeout for single location (seconds), minimum 2s. Note: Set before single location request. | void          | no      | iOS     | no                |
+| setSensorEnable  | Set whether to use device sensors | void          | no      | Android      | no                |
+| setWifiScan  | Set whether to allow WiFi refresh calls | void          | no      | Android      | no                |
+| start  | Start continuous location | void          | no      | iOS/Android      | yes               |
+| stop  | Stop continuous location | void          | no      | iOS/Android      | yes               |
+| Geolocation.getCurrentPosition  | Get current location information | void          | no      | iOS/Android        | yes               |
+| Geolocation.watchPosition  | Register listener for continuous location | void          | no      | iOS/Android      | yes               |
+| Geolocation.clearWatch  | Remove location listener | void          | no      | iOS/Android      | yes               |
 
 ## Known Issues
 
-- [ ] isStarted()接口获取当前是否正在定位的状态,harmony暂不支持[issue#2](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/2)
-- [ ] setGpsFirst()接口获取当前是否正在定位的状态,harmony暂不支持[issue#3](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/3)
-- [ ] setGpsFirstTimeout()接口获取当前是否正在定位的状态,harmony暂不支持[issue#4](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/4)
-- [ ] setHttpTimeout()接口获取当前是否正在定位的状态,harmony暂不支持[issue#5](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/5)
-- [ ] setMockEnable()接口获取当前是否正在定位的状态,harmony暂不支持[issue#6](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/6)
-- [ ] setOnceLocationLatest()接口获取当前是否正在定位的状态,harmony暂不支持[issue#7](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/7)
-- [ ] setOpenAlwaysScanWifi()接口获取当前是否正在定位的状态,harmony暂不支持[issue#8](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/8)
-- [ ] setPausesLocationUpdatesAutomatically()接口获取当前是否正在定位的状态,harmony暂不支持[issue#9](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/9)
-- [ ] setReGeocodeTimeout()接口获取当前是否正在定位的状态,harmony暂不支持[issue#10](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/10)
-- [ ] setSensorEnable()接口获取当前是否正在定位的状态,harmony暂不支持[issue#11](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/11)
-- [ ] setWifiScan()接口获取当前是否正在定位的状态,harmony暂不支持[issue#12](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/12)
-- [ ] setLocationCacheEnable()接口获取当前是否正在定位的状态,harmony暂不支持[issue#13](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/13)
-- [ ] setLocationMode()接口获取当前是否正在定位的状态,harmony暂不支持[issue#14](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/14)
-- [ ] setLocationPurpose()接口获取当前是否正在定位的状态,harmony暂不支持[issue#15](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/15)
-- [ ] setLocatingWithReGeocode()接口获取当前是否正在定位的状态设置连续定位是否返回逆地理编码,harmony暂不支持[issue#19](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/19)
-- [ ] setDesiredAccuracy()接口设定期望的定位精度,harmony暂不支持[issue#22](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/22)
-- [ ] setAllowsBackgroundLocationUpdates()接口是否允许后台定位,harmony暂不支持[issue#23](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/23)
+- [ ] isStarted() interface: Getting current location status is not supported on HarmonyOS [issue#2](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/2)
+- [ ] setGpsFirst() interface: Not supported on HarmonyOS [issue#3](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/3)
+- [ ] setGpsFirstTimeout() interface: Not supported on HarmonyOS [issue#4](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/4)
+- [ ] setHttpTimeout() interface: Not supported on HarmonyOS [issue#5](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/5)
+- [ ] setMockEnable() interface: Not supported on HarmonyOS [issue#6](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/6)
+- [ ] setOnceLocationLatest() interface: Not supported on HarmonyOS [issue#7](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/7)
+- [ ] setOpenAlwaysScanWifi() interface: Not supported on HarmonyOS [issue#8](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/8)
+- [ ] setPausesLocationUpdatesAutomatically() interface: Not supported on HarmonyOS [issue#9](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/9)
+- [ ] setReGeocodeTimeout() interface: Not supported on HarmonyOS [issue#10](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/10)
+- [ ] setSensorEnable() interface: Not supported on HarmonyOS [issue#11](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/11)
+- [ ] setWifiScan() interface: Not supported on HarmonyOS [issue#12](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/12)
+- [ ] setLocationCacheEnable() interface: Not supported on HarmonyOS [issue#13](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/13)
+- [ ] setLocationMode() interface: Not supported on HarmonyOS [issue#14](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/14)
+- [ ] setLocationPurpose() interface: Not supported on HarmonyOS [issue#15](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/15)
+- [ ] setLocatingWithReGeocode() interface: Setting whether continuous positioning returns reverse geocoding is not supported on HarmonyOS [issue#19](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/19)
+- [ ] setDesiredAccuracy() interface: Setting desired positioning accuracy is not supported on HarmonyOS [issue#22](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/22)
+- [ ] setAllowsBackgroundLocationUpdates() interface: Setting whether to allow background location is not supported on HarmonyOS [issue#23](https://github.com/react-native-oh-library/react-native-amap-geolocation/issues/23)
 
 
 ## Others
