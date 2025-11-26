@@ -10,8 +10,9 @@ This third-party library has been migrated to Gitee and is now available for dir
 
 | Version                        | Package Name                             | Repository                                                   | Release                                                      |
 | ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <= 0.9.1@deprecated | @react-native-oh-library/react-native-image-sequence  | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-image-sequence) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-sequence/releases) |
-| > 0.9.1                        | @react-native-ohos/react-native-image-sequence | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-image-sequence) | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-sequence/releases) |
+| <= 0.9.1@deprecated | @react-native-oh-library/react-native-image-sequence  | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-image-sequence) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-sequence/releases) | 0.72 |
+| 0.9.2                        | @react-native-ohos/react-native-image-sequence | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-image-sequence) | [Gitee Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-sequence/releases) | 0.77 |
+| 0.10.0 | @react-native-ohos/react-native-image-sequence | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-image-sequence) | [Gitee Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-sequence/releases) | 0.77 |
 
 
 ## Installation and Usage
@@ -332,7 +333,7 @@ Method 2: Directly link to the source code.
 
 ### 2.3 Configuring CMakeLists and Introducing ImageSequence2Package Package
 
-> **[!TIP] Version 4.2.3 and above requires.**
+> **[!TIP] Version 0.10.0 and above requires.**
 
 Open entry/src/main/cpp/CMakeLists.txt and add the following code:
 
@@ -422,7 +423,11 @@ Then build and run the code.
 
 ### 3.1 Compatibility
 
-Check the release version information in the release address of the third-party library:[@react-native-ohos/react-native-image-sequence Releases](https://gitee.com/openharmony-sig/rntpc_react-native-image-sequence/releases)
+This document is verified based on the following versions:
+
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 4. Properties
 
