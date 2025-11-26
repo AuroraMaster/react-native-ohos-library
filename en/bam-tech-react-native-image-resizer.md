@@ -15,31 +15,44 @@
 
 > [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-image-resizer)
 
+Please go to the Releases page of the third-party library to check the compatible version information:
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+| 3.0.9 | @react-native-oh-tpl/react-native-image-resizer | [Github](https://github.com/react-native-oh-library/react-native-image-resizer) | [Github Releases](https://github.com/react-native-oh-library/react-native-image-resizer/releases) | 0.72 |
+| 3.1.0                        | @react-native-ohos/react-native-image-resizer       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-image-resizer) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-resizer/releases) | 0.77 |
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-image-resizer Releases](https://github.com/react-native-oh-library/react-native-image-resizer/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
-
-Go to the project directory and execute the following instruction:
+Go to the project directory and enter the following command:
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-image-resizer
+
+# 0.77
+npm install @react-native-ohos/react-native-image-resizer
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-image-resizer
+
+# 0.77
+yarn add @react-native-ohos/react-native-image-resizer
 ```
 
 <!-- tabs:end -->
 
 The following code shows the basic use scenario of the repository:
 
-> [!WARNING] The name of the imported repository remains unchanged.
+> [!WARNING] The name of the imported library remains unchanged.
 
 ```tsx
 import React, { useRef, useState } from 'react';
@@ -270,13 +283,15 @@ export default ImageResizerDemo;
 
 ## Use Codegen
 
-this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
+> [!TIP] 0.77 does not require Codegen
+
+This library has been adapted for `Codegen`. Before using it, you need to proactively generate the bridge code for the third-party library. For details, please refer to the [Codegen Usage Documentation](/en/codegen.md).
 
 ## Link
 
 Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
 
-Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
 ### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
 
@@ -293,12 +308,16 @@ Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
 Currently, two methods are available:
 
+1. Import via har package (this method will be deprecated after the IDE improves related functions; currently the preferred method);
+2. Directly link to the source code.
 
-Method 1 (recommended): Use the HAR file.
+Method 1 (recommended): Import via har package
 
-> [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
+> [!TIP] The har package is located in the `harmony` folder under the third-party library installation path.
 
-Open `entry/oh-package.json5` file and add the following dependencies:
+Open `entry/oh-package.json5` and add the following dependencies:
+
+0.72
 
 ```json
 "dependencies": {
@@ -307,26 +326,38 @@ Open `entry/oh-package.json5` file and add the following dependencies:
   }
 ```
 
+0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-image-resizer": "file:../../node_modules/@react-native-ohos/react-native-image-resizer/harmony/image_resizer.har"
+  }
+```
+
 Click the `sync` button in the upper right corner.
 
-Alternatively, run the following instruction on the terminal:
+Alternatively, run the following command in the terminal:
 
 ```bash
 cd entry
 ohpm install
 ```
 
-Method 2: Directly link to the source code.
+Method 2: Directly link to the source code
 
-> [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
+> [!TIP] If you need to directly link to the source code, please refer to [Direct Source Code Linking Instructions](/en/link-source-code.md).
 
-### 3. Configuring CMakeLists and Introducing ImageResizerPackage
+### 3. Introducing ImageResizerPackage in ArkTs
 
-Open `entry/src/main/ets/RNPackagesFactory.ts` and add the following code:
+Open `entry/src/main/ets/RNPackagesFactory.ts` and add:
 
 ```diff
   ...
+  //0.72
 + import {ImageResizerPackage} from '@react-native-oh-tpl/react-native-image-resizer/ts';
+  //0.77
++ import {ImageResizerPackage} from '@react-native-ohos/react-native-image-resizer/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -336,27 +367,85 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4. Running
+### 4. Configuring CMakeLists and Introducing ImageResizerPackage
+
+> 0.77 requires configuring CMakeLists and introducing ImageResizerPackage.
+
+Open `entry/src/main/cpp/CMakeLists.txt` and add:
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++ set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_END: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-image-resizer/src/main/cpp" ./image-resizer)
+
+# RNOH_END: manual_package_linking_1
+
+add_library(rnoh_app SHARED
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_ImageResizer)
+# RNOH_BEGIN: manual_package_linking_2
+```
+
+> [!Tip] Note: The NODE_MODULES definition above is the installation path of the source library. Users can define NODE_MODULES according to the path where the source library is installed.
+
+Open `entry/src/main/cpp/PackageProvider.cpp` and add:
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "SamplePackage.h"
++ #include "ImageResizerPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+      std::make_shared<SamplePackage>(ctx),
++     std::make_shared<ImageResizerPackage>(ctx)
+    };
+}
+```
+
+### 5. Running
 
 Click the `sync` button in the upper right corner.
 
-Alternatively, run the following instruction on the terminal:
+Alternatively, run the following command in the terminal:
 
 ```bash
 cd entry
 ohpm install
 ```
 
-Then build and run the code.
+Then compile and run.
+
+> [!TIP] This library also depends on [[@react-native-oh-tpl/react-native-image-picker](https://github.com/react-native-oh-library/usage-docs/blob/master/en/react-native-image-picker.md)]. If this library has already been introduced in the HarmonyOS project, you can skip the steps in this chapter and use it directly.
+
+If not introduced, please refer to the Link section of [[@react-native-oh-tpl/react-native-image-picker](https://github.com/react-native-oh-library/usage-docs/blob/master/en/react-native-image-picker.md)](https://github.com/react-native-oh-library/usage-docs/blob/master/en/react-native-image-picker.md#link) for introduction.
 
 ## Constraints
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
-
-Check the release version information in the release address of the third-party library:[@react-native-oh-tpl/react-native-image-resizer Releases](https://github.com/react-native-oh-library/react-native-image-resizer/releases)
-
+This document is verified based on the following versions:
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;              |
 
 ## API
 
@@ -372,7 +461,7 @@ Check the release version information in the release address of the third-party 
 
 | Name                 | Description         | Type    | Platform    | HarmonyOS Support |
 |----------------------|---------------------|---------|-------------|-------------------|
-| path                 | Path of image file, or a base64 encoded image string prefixed with 'data:image/imagetype' where imagetype is jpeg or png. | string  | Android/iOS | Yes               |
+| imageUri             | Path of image file, or a base64 encoded image string prefixed with 'data:image/imagetype' where imagetype is jpeg or png. | string  | Android/iOS | Yes               |
 | width                | Width to resize to (see mode for more details) | number  | Android/iOS | Yes               |
 | height               | Height to resize to (see mode for more details) | number  | Android/iOS | Yes               |
 | compressFormat       | Can be either JPEG, PNG or WEBP. | string  | Android/iOS | Yes               |

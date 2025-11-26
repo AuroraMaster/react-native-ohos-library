@@ -15,6 +15,13 @@
 
 
 >[!TIP] [Github 地址](https://github.com/jasongaare/react-native-walkthrough-tooltip)
+
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 支持RN版本 |
+| ---------- | ---------- |
+| 1.6.0      | 0.72/0.77 |
+
 ## 安装与使用
 
 进入到工程目录并输入以下命令：

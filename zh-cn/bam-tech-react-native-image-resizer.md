@@ -15,9 +15,14 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-image-resizer)
 
-## 安装与使用
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-image-resizer Releases](https://github.com/react-native-oh-library/react-native-image-resizer/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+| 3.0.9 | @react-native-oh-tpl/react-native-image-resizer | [Github](https://github.com/react-native-oh-library/react-native-image-resizer) | [Github Releases](https://github.com/react-native-oh-library/react-native-image-resizer/releases) | 0.72 |
+| 3.1.0                        | @react-native-ohos/react-native-image-resizer       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-image-resizer) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-resizer/releases) | 0.77 |
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -26,13 +31,21 @@
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-image-resizer
+
+# 0.77
+npm install @react-native-ohos/react-native-image-resizer
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-image-resizer
+
+# 0.77
+yarn add @react-native-ohos/react-native-image-resizer
 ```
 
 <!-- tabs:end -->
@@ -270,6 +283,8 @@ export default ImageResizerDemo;
 
 ## 使用 Codegen
 
+> [!TIP] 0.77 不需要执行Codegen
+
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
@@ -302,10 +317,21 @@ export default ImageResizerDemo;
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-image-resizer": "file:../../node_modules/@react-native-oh-tpl/react-native-image-resizer/harmony/image_resizer.har"
+  }
+```
+
+0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-image-resizer": "file:../../node_modules/@react-native-ohos/react-native-image-resizer/harmony/image_resizer.har"
   }
 ```
 
@@ -328,7 +354,10 @@ ohpm install
 
 ```diff
   ...
+  //0.72
 + import {ImageResizerPackage} from '@react-native-oh-tpl/react-native-image-resizer/ts';
+  //0.77
++ import {ImageResizerPackage} from '@react-native-ohos/react-native-image-resizer/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -338,7 +367,62 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.运行
+### 4.配置 CMakeLists 和引入 ImageResizerPackage
+
+> 0.77 需要配置 CMakeLists 和引入 ImageResizerPackage。
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++ set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_END: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-image-resizer/src/main/cpp" ./image-resizer)
+
+# RNOH_END: manual_package_linking_1
+
+add_library(rnoh_app SHARED
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_ImageResizer)
+# RNOH_BEGIN: manual_package_linking_2
+```
+
+> [!Tip] 注意：上面NODE_MODULES定义，为源库的安装路径，用户可以根据安装源库的路径定义NODE_MODULES
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "SamplePackage.h"
++ #include "ImageResizerPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+      std::make_shared<SamplePackage>(ctx),
++     std::make_shared<ImageResizerPackage>(ctx)
+    };
+}
+```
+
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -351,16 +435,20 @@ ohpm install
 
 然后编译、运行即可。
 
+[!TIP] 本库还依赖了[[@react-native-oh-tpl/react-native-image-picker](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-image-picker.md)，如已在 HarmonyOS 工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
+
+如未引入请参照[@react-native-oh-tpl/react-native-image-picker](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-image-picker.md) 文档的 Link 章节](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-image-picker.md#link)进行引入
+
 ## 约束与限制
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+在以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-image-resizer Releases](https://github.com/react-native-oh-library/react-native-image-resizer/releases)
+1. RNOH:0.72.28; SDK:HarmonyOS NEXT DB2; IDE:DevEco Studio 5.0.3.500; ROM:3.0.0.28;
+2. RNOH: 0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
 
-
-## API
+## 属性
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
@@ -368,22 +456,22 @@ ohpm install
 
 | Name               | Description         | Type     | Required | Platform    | HarmonyOS Support |
 |--------------------|---------------------|----------|----------|-------------|-------------------|
-| createResizedImage | Resize local images | function | No       | Android/iOS | Yes               |
+| createResizedImage | 调整本地图片大小      | function | No       | Android/iOS | Yes               |
 
 ### createResizedImage参数
 
 | Name                 | Description         | Type    | Platform    | HarmonyOS Support |
 |----------------------|---------------------|---------|-------------|-------------------|
-| path                 | Path of image file, or a base64 encoded image string prefixed with 'data:image/imagetype' where imagetype is jpeg or png. | string  | Android/iOS | Yes               |
-| width                | Width to resize to (see mode for more details) | number  | Android/iOS | Yes               |
-| height               | Height to resize to (see mode for more details) | number  | Android/iOS | Yes               |
-| compressFormat       | Can be either JPEG, PNG or WEBP. | string  | Android/iOS | Yes               |
-| quality              | A number between 0 and 100. Used for the JPEG compression. | number  | Android/iOS | Yes               |
-| rotation             | Rotation to apply to the image, in degrees. | number  | Android/iOS | Yes               |
-| outputPath           | The resized image path. If null, resized image will be stored in cache folder. To set outputPath make sure to add option for rotation too (if no rotation is needed, just set it to 0). | string  | Android/iOS | Yes               |
-| keepMeta             | If true, will attempt to preserve all file metadata/exif info, except the orientation value since the resizing also does rotation correction to the original image. Defaults to false, which means all metadata is lost. Note: This can only be true for JPEG images which are loaded from the file system (not Web). | boolean | Android/iOS | Yes               |
-| options.mode         | Similar to react-native Image's resizeMode: either contain (the default), cover, or stretch. contain will fit the image within width and height, preserving its ratio. cover preserves the aspect ratio, and makes sure the image is at least width wide or height tall. stretch will resize the image to exactly width and height. | string  | Android/iOS | Yes               |
-| options.onlyScaleDown | 	If true, will never enlarge the image, and will only make it smaller. | boolean | Android/iOS | Yes               |
+| imageUri             | 图片文件路径，或以'data:image/imagetype'为前缀的base64编码图片字符串，其中imagetype为jpeg或png。 | string  | Android/iOS | Yes               |
+| width                | 调整后的宽度（详见mode参数说明）。 | number  | Android/iOS | Yes               |
+| height               | 调整后的高度（详见mode参数说明）。 | number  | Android/iOS | Yes               |
+| compressFormat       | 压缩格式，可以是JPEG、PNG或WEBP。 | string  | Android/iOS | Yes               |
+| quality              | 0到100之间的数字，用于JPEG压缩质量。 | number  | Android/iOS | Yes               |
+| rotation             | 应用于图片的旋转角度，单位为度。 | number  | Android/iOS | Yes               |
+| outputPath           | 调整后图片的存储路径。如果为null，调整后的图片将存储在缓存文件夹中。设置outputPath时请确保也设置了rotation参数（如果不需要旋转，只需将其设置为0）。 | string  | Android/iOS | Yes               |
+| keepMeta             | 如果为true，将尝试保留所有文件元数据/exif信息，除了方向值，因为调整大小也会对原始图像进行旋正处理。默认为false，表示所有元数据都会丢失。注意：这只适用于从文件系统（非Web）加载的JPEG图像。 | boolean | Android/iOS | Yes               |
+| options.mode         | 类似于React Native Image的resizeMode：contain（默认）、cover或stretch。contain会在保持宽高比的情况下将图像适应到指定的宽高内。cover会保持宽高比，并确保图像至少与指定宽度一样宽或与指定高度一样高。stretch会将图像精确调整为指定的宽高。 | string  | Android/iOS | Yes               |
+| options.onlyScaleDown | 如果为true，永远不会放大图像，只会缩小图像。 | boolean | Android/iOS | Yes               |
 
 ## 遗留问题
 
@@ -392,3 +480,4 @@ ohpm install
 ## 开源协议
 
 本项目基于 [The MIT License (MIT)](https://github.com/bamlab/react-native-image-resizer/blob/master/LICENSE) ，请自由地享受和参与开源。
+

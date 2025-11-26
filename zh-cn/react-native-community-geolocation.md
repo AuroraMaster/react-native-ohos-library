@@ -14,9 +14,14 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-geolocation/tree/sig)
 
-## 安装与使用
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/geolocation Releases](https://github.com/react-native-oh-library/react-native-geolocation/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+| 3.1.0 | @react-native-oh-tpl/geolocation | [Github](https://github.com/react-native-oh-library/react-native-geolocation) | [Github Releases](https://github.com/react-native-oh-library/react-native-geolocation/releases) | 0.72 |
+| 3.4.1                        | @react-native-ohos/react-native-geolocation       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-geolocation) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-geolocation/releases) | 0.77 |
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +30,21 @@
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/geolocation
+
+# 0.77
+npm install @react-native-ohos/geolocation
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/geolocation
+
+# 0.77
+yarn add @react-native-ohos/geolocation
 ```
 
 <!-- tabs:end -->
@@ -90,10 +103,21 @@ export function GeolocationDemo(): JSX.Element {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- 0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/geolocation": "file:../../node_modules/@react-native-oh-tpl/geolocation/harmony/geolocation.har"
+  }
+```
+
+- 0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/geolocation": "file:../../node_modules/@react-native-ohos/geolocation/harmony/geolocation.har"
   }
 ```
 
@@ -132,7 +156,13 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+# 0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/geolocation/src/main/cpp" ./geolocation)
+
+# 0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/geolocation/src/main/cpp" ./geolocation)
+
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -174,7 +204,11 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
+// 0.72
 + import {GeoLocationPackage} from '@react-native-oh-tpl/geolocation/ts';
+
+// 0.77
++ import {GeoLocationPackage} from '@react-native-ohos/geolocation/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -201,9 +235,10 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+在以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/geolocation Releases](https://github.com/react-native-oh-library/react-native-geolocation/releases)
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ### 权限要求
 
@@ -264,13 +299,13 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name                 | Description                                                                            | Type                                            | Required | Platform    | HarmonyOS Support | Notes                                                                                                                                                          |
-| -------------------- | -------------------------------------------------------------------------------------- | ----------------------------------------------- | -------- | ----------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| setRNConfiguration   | Sets configuration options that will be used in all location requests                  | function(config)                                | NO       | iOS Android | partially         | config only supports skipPermissionRequests                                                                                                                    |
-| requestAuthorization | Request suitable Location permission                                                   | function(success,error)                         | YES      | iOS Android | partially         | error: Only code and message are supported.                                                                                                                    |
-| getCurrentPosition   | Invokes the success callback once with the latest location info                        | function(success(position),error(error),option) | NO       | iOS Android | partially         | In position, only altitudeAccuracy is not supported. In option, only timeout and maximumAge are supported. In error, only code and message are supported.      |
-| watchPosition        | Invokes the success callback whenever the location changes. Returns a watchId (number) | function(success(postion),error(error),option)  | NO       | iOS Android | partially         | In position, only altitudeAccuracy is not supported. In error, only code and message are supported. In option, only interval and distanceFilter are supported. |
-| clearWatch           | Clears watch observer by id returned by watchPosition()                                | function(watchID)                               | NO       | iOS Android | yes               | watchID supports only the default value 0.                                                                                                                     |
+| Name                 | Description                                                        | Type                                            | Required | Platform    | HarmonyOS Support | Notes                                                                                                                                                          |
+| -------------------- | ------------------------------------------------------------------ | ----------------------------------------------- | -------- | ----------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| setRNConfiguration   | 设置将在所有位置请求中使用的配置选项                              | function(config)                                | NO       | iOS Android | partially         | config only supports skipPermissionRequests                                                                                                                    |
+| requestAuthorization | 请求合适的位置权限                                                | function(success,error)                         | YES      | iOS Android | partially         | error: Only code and message are supported.                                                                                                                    |
+| getCurrentPosition   | 使用最新位置信息调用成功回调一次                                  | function(success(position),error(error),option) | NO       | iOS Android | partially         | In position, only altitudeAccuracy is not supported. In option, only timeout and maximumAge are supported. In error, only code and message are supported.      |
+| watchPosition        | 每当位置发生变化时调用成功回调。返回一个 watchId (数字)            | function(success(postion),error(error),option)  | NO       | iOS Android | partially         | In position, only altitudeAccuracy is not supported. In error, only code and message are supported. In option, only interval and distanceFilter are supported. |
+| clearWatch           | 通过 watchPosition() 返回的 ID 清除观察者                         | function(watchID)                               | NO       | iOS Android | yes               | watchID supports only the default value 0.                                                                                                                     |
 
 ## 遗留问题
 

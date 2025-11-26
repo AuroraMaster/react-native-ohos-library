@@ -15,15 +15,14 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-image-viewing)
 
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+| 0.2.2 | @react-native-oh-tpl/react-native-image-viewing | [Github](https://github.com/react-native-oh-library/react-native-image-viewing) | [Github Releases](https://github.com/react-native-oh-library/react-native-image-viewing/releases) | 0.72 |
+| 0.3.0                        | @react-native-ohos/react-native-image-viewing       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-image-viewing) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-viewing/releases) | 0.77 |
+
 ## 安装与使用
-
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 0.2.2    |[@react-native-oh-tpl/react-native-image-viewing Releases](https://github.com/react-native-oh-library/react-native-image-viewing/releases)   | 0.72       |
-| 0.2.3    |[@react-native-ohos/react-native-image-viewing Releases]()     | 0.77       |
-
-对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -36,20 +35,20 @@
 #### npm
 
 ```bash
-# V0.2.2
+# 0.72
 npm install @react-native-oh-tpl/react-native-image-viewing
 
-# V0.2.3
+# 0.77
 npm install @react-native-ohos/react-native-image-viewing
 ```
 
 #### yarn
 
 ```bash
-# V0.2.2
+# 0.72
 yarn add @react-native-oh-tpl/react-native-image-viewing
 
-# V0.2.3
+# 0.77
 yarn add @react-native-ohos/react-native-image-viewing
 ```
 
@@ -204,13 +203,10 @@ const styles = StyleSheet.create({
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+在以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 0.2.2    |[@react-native-oh-tpl/react-native-image-viewing Releases](https://github.com/react-native-oh-library/react-native-image-viewing/releases)   | 0.72       |
-| 0.2.3    |[@react-native-ohos/react-native-image-viewing Releases]()     | 0.77       |
+1. RNOH:0.72.28; SDK:HarmonyOS NEXT DB2; IDE:DevEco Studio 5.0.3.500; ROM:3.0.0.28;
+2. RNOH: 0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
 
 ## 属性
 
@@ -220,21 +216,21 @@ const styles = StyleSheet.create({
 
 | Name                   | Description                                                  | Type                                                        | Platform | Required | HarmonyOS Support |
 | ---------------------- | ------------------------------------------------------------ | ----------------------------------------------------------- | -------- | -------- | ----------------- |
-| images                 | Array of images to display                                   | ImageSource[]                                               | All      | Yes      | Yes               |
-| keyExtractor           | Uniqely identifying each image                               | (imageSrc: ImageSource, index: number) => string            | All      | No       | Yes               |
-| imageIndex             | Current index of image to display                            | number                                                      | All      | Yes      | Yes               |
-| visible                | Is modal shown or not                                        | boolean                                                     | All      | No       | Yes               |
-| onRequestClose         | Function called to close the modal                           | function                                                    | All      | Yes      | Yes               |
-| onImageIndexChange     | Function called when image index has been changed            | function                                                    | All      | No       | Yes               |
-| onLongPress            | Function called when image long pressed                      | function (event: GestureResponderEvent, image: ImageSource) | All      | No       | Yes               |
-| delayLongPress         | Delay in ms, before onLongPress is called: default           | number                                                      | All      | No       | Yes               |
-| animationType          | Animation modal presented with: default                      | none, fade, slide                                           | All      | No       | Yes               |
-| presentationStyle      | Modal presentation style: default: fullScreen Android: Use overFullScreen to hide StatusBar | fullScreen, pageSheet, formSheet, overFullScreen            | All      | No       | Partially (Support "fullScreen", "overFullScreen") |
-| backgroundColor        | Background color of the modal in HEX                         | string                                                      | All      | No       | Yes               |
-| swipeToCloseEnabled    | Close modal with swipe up or down: default                   | boolean                                                     | All      | No       | Yes               |
-| doubleTapToZoomEnabled | Zoom image by double tap on it: default                      | boolean                                                     | All      | No       | Yes               |
-| HeaderComponent        | Header component, gets current imageIndex as a prop          | component, function                                         | All      | No       | Yes               |
-| FooterComponent        | Footer component, gets current imageIndex as a prop          | component, function                                         | All      | No       | Yes               |
+| images                 | 图片数组用于显示                                   | ImageSource[]                                               | All      | Yes      | Yes               |
+| keyExtractor           | 唯一标识每张图片                               | (imageSrc: ImageSource, index: number) => string            | All      | No       | Yes               |
+| imageIndex             | 当前显示图片的索引                            | number                                                      | All      | Yes      | Yes               |
+| visible                | 控制模态框是否显示                                        | boolean                                                     | All      | No       | Yes               |
+| onRequestClose         | 关闭模态框时调用的函数                           | function                                                    | All      | Yes      | Yes               |
+| onImageIndexChange     | 图片索引改变时调用的函数            | function                                                    | All      | No       | Yes               |
+| onLongPress            | 长按图片时调用的函数                      | function (event: GestureResponderEvent, image: ImageSource) | All      | No       | Yes               |
+| delayLongPress         | 长按触发前的延迟时间(毫秒)           | number                                                      | All      | No       | Yes               |
+| animationType          | 模态框显示动画类型                      | none, fade, slide                                           | All      | No       | Yes               |
+| presentationStyle      | 模态框展示样式: 默认为全屏，Android可使用overFullScreen隐藏状态栏 | fullScreen, pageSheet, formSheet, overFullScreen            | All      | No       | Partially (Support "fullScreen", "overFullScreen") |
+| backgroundColor        | 模态框背景颜色(HEX格式)                         | string                                                      | All      | No       | Yes               |
+| swipeToCloseEnabled    | 是否允许上下滑动关闭模态框                   | boolean                                                     | All      | No       | Yes               |
+| doubleTapToZoomEnabled | 是否允许双击放大图片                      | boolean                                                     | All      | No       | Yes               |
+| HeaderComponent        | 头部组件，接收当前图片索引作为参数          | component, function                                         | All      | No       | Yes               |
+| FooterComponent        | 底部组件，接收当前图片索引作为参数          | component, function                                         | All      | No       | Yes               |
 
 ## 遗留问题
 

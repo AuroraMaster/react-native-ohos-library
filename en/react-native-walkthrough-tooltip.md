@@ -15,9 +15,15 @@
 
 > [!TIP] [GitHub address](https://github.com/jasongaare/react-native-walkthrough-tooltip)
 
+Please go to the Releases page of the third-party library to check the compatible version information:
+
+| Library Version | Supported RN Version |
+|-----------------|----------------------|
+| 1.6.0      | 0.72/0.77 |
+
 ## Installation and Usage
 
-Go to the project directory and execute the following instruction:
+Go to the project directory and enter the following command:
 
 #### **npm**
 
@@ -64,7 +70,7 @@ This document is verified based on the following versions:
 1. RNOH: 0.72.5; SDK: HarmonyOS-NEXT-DB1 5.0.0.25; IDE: DevEco Studio 5.0.3.403; ROM: 3.0.0.25;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
 
-### Properties
+### API
 
 [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.。
 

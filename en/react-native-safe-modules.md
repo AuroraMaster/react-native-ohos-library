@@ -15,33 +15,44 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-safe-modules)
 
+Please go to the Releases page of the third-party library to check the compatible version information:
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+| 1.0.3 | @react-native-oh-tpl/react-native-safe-modules | [Github](https://github.com/react-native-oh-library/react-native-safe-modules) | [Github Releases](https://github.com/react-native-oh-library/react-native-safe-modules/releases) | 0.72 |
+| 1.1.0                        | @react-native-ohos/react-native-safe-modules       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-modules) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-modules/releases) | 0.77 |
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-safe-modules Releases](https://github.com/react-native-oh-library/react-native-safe-modules/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
-
-Go to the project directory and execute the following instruction:
-
-
+Go to the project directory and execute the following commands:
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-safe-modules
+
+# 0.77
+npm install @react-native-ohos/react-native-safe-modules
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-safe-modules
+
+# 0.77
+yarn add @react-native-ohos/react-native-safe-modules
 ```
 
 <!-- tabs:end -->
 
-The following code shows the basic use scenario of the repository:
+The following code shows the basic use scenario of the library:
 
-> [!WARNING] The name of the imported repository remains unchanged.
+> [!WARNING] When using, the imported library name remains unchanged.
 
 ```js
 import React from "react";
@@ -74,13 +85,14 @@ const App = () => {
 export default App;
 ```
 
-## Constraints
+## Constraints and Limitations
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+The following versions have been verified:
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-safe-modules Releases](https://github.com/react-native-oh-library/react-native-safe-modules/releases)
+1. RNOH:0.72.28; SDK:HarmonyOS NEXT DB2; IDE:DevEco Studio 5.0.3.500; ROM:3.0.0.28;
+2. RNOH: 0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
 
 ## API
 
@@ -92,7 +104,7 @@ Check the release version information in the release address of the third-party 
 
 | Name                     | Description                                                                                                                                                                                                                                                                                                                                                                                                  | Type            | Required | Platform    | HarmonyOS Support |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------- | -------- | ----------- | ----------------- |
-| options.moduleName       | the name, or array of names, to look for the module at on the NativeModules namespace.                                                                                                                                                                                                                                                                                                                       | string/string[] | yes      | iOS,Android | yes               |
+| options.moduleName       | The name, or array of names, to look for the module at on the NativeModules namespace.                                                                                                                                                                                                                                                                                                                       | string/string[] | yes      | iOS,Android | yes               |
 | options.mock             | The mock implementation of the native module.                                                                                                                                                                                                                                                                                                                                                                | object          | yes      | iOS,Android | yes               |
 | options.getVersion       | A function that returns the version of the native module. Only needed if you are specifying overrides and not exporting a VERSION property on your native module. Defaults to x => x.VERSION.                                                                                                                                                                                                                | Function        | no       | iOS,Android | yes               |
 | options.versionOverrides | A map of version numbers to overridden implementations of the corresponding property/method. If an overridden property or method is a function, it will be called during SafeModule.create(...) with two arguments, the original value of that property on the original module, and the original module itself. The return value of this function will be put on the return value of SafeModule.create(...). | object          | no       | iOS,Android | yes               |
@@ -106,7 +118,7 @@ Check the release version information in the release address of the third-party 
 
 | Name                     | Description                                                                                                                                                                                                                                                                                                                                                                                                  | Type            | Required | Platform    | HarmonyOS Support |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------- | -------- | ----------- | ----------------- |
-| options.moduleName       | the name, or array of names, to look for the module at on the NativeModules namespace.                                                                                                                                                                                                                                                                                                                       | string/string[] | yes      | iOS,Android | yes               |
+| options.moduleName       | The name, or array of names, to look for the module at on the NativeModules namespace.                                                                                                                                                                                                                                                                                                                       | string/string[] | yes      | iOS,Android | yes               |
 | options.mock             | The mock implementation of the native module.                                                                                                                                                                                                                                                                                                                                                                | object          | yes      | iOS,Android | yes               |
 | options.getVersion       | A function that returns the version of the native module. Only needed if you are specifying overrides and not exporting a VERSION property on your native module. Defaults to x => x.VERSION.                                                                                                                                                                                                                | Function        | no       | iOS,Android | yes               |
 | options.versionOverrides | A map of version numbers to overridden implementations of the corresponding property/method. If an overridden property or method is a function, it will be called during SafeModule.create(...) with two arguments, the original value of that property on the original module, and the original module itself. The return value of this function will be put on the return value of SafeModule.create(...). | object          | no       | iOS,Android | yes               |
@@ -118,20 +130,20 @@ Check the release version information in the release address of the third-party 
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-| Name                       | Description                                                                                                                                           | Type                    | Required | Platform    | HarmonyOS Support |
-| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | -------- | ----------- | ----------------- |
-| options.viewName           | 传入的组件名称                                                                                                                                        | string/string[]         | yes      | iOS,Android | yes               |
-| options.mockComponent      | 传入一个模拟的组件，当 viewName 查找不到的时候，component 会返回这个模拟的组件                                                                        | React.ComponentType\<T> | yes      | iOS,Android | yes               |
-| options.componentOverrides | 根据版本获取其中定义的组件，如果和 viewName 相同，覆盖原生组件的 React 组件，需要确保返回的 React 组件是有效的                                        | object                  | no       | no          | no                |
-| options.propOverrides      | 根据版本获取其中定义的组件 Properties，如果是相同组件的相同 Properties，根据版本覆盖原生组件的 Properties，需要确保覆盖的 Properties 在原生组件中存在 | object                  | no       | no          | no                |
-| options.mock               | 原生模块的模拟实现，原生模块中存在什么成员，可使用该 Properties 自己模拟编写                                                                          | object                  | no       | no          | no                |
-| options.getVersion         | 返回本机模块版本的函数。仅在指定替代且不导出本机模块上的版本 Properties 时才需要。默认值为 x => x.VERSION。                                           | Function                | no       | no          | no                |
+| Name                       | Description                                                                                                                                                        | Type                    | Required | Platform    | HarmonyOS Support |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------- | -------- | ----------- | ----------------- |
+| options.viewName           | The component name passed in.                                                                                                                                      | string/string[]         | yes      | iOS,Android | yes               |
+| options.mockComponent      | Pass in a mock component. When viewName cannot be found, the component will return this mock component.                                                            | React.ComponentType\<T> | yes      | iOS,Android | yes               |
+| options.componentOverrides | Get the components defined according to the version. If the same as viewName, override the native component's React component. Need to ensure the returned React component is valid. | object                  | no       | no          | no                |
+| options.propOverrides      | Get the component properties defined according to the version. If it is the same property of the same component, override the native component's properties according to the version. Need to ensure the overridden properties exist in the native component. | object                  | no       | no          | no                |
+| options.mock               | The mock implementation of the native module. Whatever members exist in the native module, you can use this property to simulate and write them yourself.        | object                  | no       | no          | no                |
+| options.getVersion         | A function that returns the version of the native module. Only needed if you are specifying overrides and not exporting a VERSION property on your native module. Defaults to x => x.VERSION. | Function                | no       | no          | no                |
 
 ## Known Issues
 
 ## Others
 
-- component 接口问题： 该接口在 iOS 和 Android 上均无法正常使用，不管输入的 viewName 是什么，都只会返回用户传递的 mockComponent，无法获得封装后的组件，HarmonyOS 与其表现一致:[issue#19](https://github.com/emilioicai/react-native-safe-modules/issues/19)。
+- Component interface issue: This interface cannot be used normally on both iOS and Android. No matter what viewName is input, it will only return the mockComponent passed by the user and cannot obtain the encapsulated component. HarmonyOS behaves consistently with it: [issue#19](https://github.com/emilioicai/react-native-safe-modules/issues/19).
 
 ## License
 

@@ -14,9 +14,14 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-file-access)
 
-## Installation and Usage
+Please check the matching version information at the release address of the third-party library:
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-file-access Releases](https://github.com/react-native-oh-library/react-native-file-access/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+| 3.1.0 | @react-native-oh-tpl/react-native-file-access | [Github](https://github.com/react-native-oh-library/react-native-file-access) | [Github Releases](https://github.com/react-native-oh-library/react-native-file-access/releases) | 0.72 |
+| 3.2.0                       | @react-native-ohos/react-native-file-access       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-file-access) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-file-access/releases) | 0.77 |
+
+## Installation and Usage
 
 Go to the project directory and execute the following instruction:
 
@@ -25,13 +30,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-file-access
+
+# 0.77
+npm install @react-native-ohos/react-native-file-access
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-file-access
+
+# 0.77
+yarn add @react-native-ohos/react-native-file-access
 ```
 
 <!-- tabs:end -->
@@ -40,7 +53,7 @@ The following code shows the basic use scenario of the repository:
 
 > [!WARNING] The name of the imported repository remains unchanged.
 
-> [!TIP] 以下 demo 中使用的是本地文件。
+> [!TIP] The following demo uses local files.
 
 ```js
 import React, { useEffect, useState } from 'react';
@@ -63,20 +76,24 @@ export function FileAccessDemo() {
   const [concatBeyts, setConcatBeyts] = useState<number>();
   const [dirOrNot, setDirOrNot] = useState<any>('');
 
+  // Write content to a file
   const wirteFile = () => {
-    FileSystem.writeFile(Dirs.DocumentDir + '/0801' + '/text1.txt', "DDDD", "utf8")
+    FileSystem.writeFile(Dirs.DocumentDir + '/0801.txt', "DDDD", "utf8")
   };
 
+  // Read the content of a file
   const readFile = () => {
     FileSystem.readFile(Dirs.DocumentDir + "/0801.txt").then((res) => {
       setFileContent(res);
     })
   };
 
+  // Delete a file
   const unlink = () => {
-    FileSystem.unlink(Dirs.DocumentDir + '/0812.txt');
+    FileSystem.unlink(Dirs.DocumentDir + '/0801.txt');
   };
 
+  // Create a new directory, returning the path of the created directory
   const mkdir = () => {
     FileSystem.mkdir(Dirs.DocumentDir + "/wxwx").then((res) => {
       setMkdirParam(res);
@@ -85,14 +102,17 @@ export function FileAccessDemo() {
     });
   };
 
+  // Move a file
   const mv = () => {
-    FileSystem.mv(Dirs.DocumentDir + "/text.txt", Dirs.DocumentDir + "/text1.txt");
+    FileSystem.mv(Dirs.DocumentDir + "/0801.txt", Dirs.DocumentDir + "/text1.txt");
   };
 
+  // Extract a zip archive
   const unzip = () => {
     FileSystem.unzip(Dirs.DocumentDir + "/wxwx.zip", Dirs.DocumentDir);
   };
 
+  // Read file metadata
   const stat = () => {
     FileSystem.stat(Dirs.DocumentDir + "/text1.txt").then((res) => {
       setStatInfo(JSON.stringify(res));
@@ -101,6 +121,7 @@ export function FileAccessDemo() {
     })
   };
 
+  // Check if a path exists
   const exists = () => {
     FileSystem.exists(Dirs.DocumentDir + "/text1.txt").then((res) => {
       setExists(res);
@@ -109,10 +130,12 @@ export function FileAccessDemo() {
     });
   };
 
+  // Copy a file
   const cp = async () => {
     await FileSystem.cp(Dirs.DocumentDir + "/text1.txt", Dirs.DocumentDir + "/text4.txt")
   };
 
+  // Hash the file content
   const hash = () => {
     FileSystem.hash(Dirs.DocumentDir + "/text1.txt", 'SHA-256').then((res) => {
       setHashValue(res);
@@ -121,11 +144,13 @@ export function FileAccessDemo() {
     });
   };
 
+  // Check if a path is a directory
   const isDir = async () => {
     let res = await FileSystem.isDir(Dirs.DocumentDir + '/text1.txt');
     setDirOrNot(res);
   };
 
+  // List files in a directory
   const ls = async () => {
     await FileSystem.ls(Dirs.DocumentDir).then((res) => {
       setLsList(res.join('、'));
@@ -134,6 +159,7 @@ export function FileAccessDemo() {
     });
   };
 
+  // Check device available space
   const df = async () => {
     await FileSystem.df().then(res => {
       setFreeSize(res?.internal_free);
@@ -141,6 +167,7 @@ export function FileAccessDemo() {
     })
   };
 
+  // Read metadata of all files in a directory
   const statDir = () => {
     FileSystem.statDir(Dirs.DocumentDir).then(res => {
       setStatDirInfo(res);
@@ -149,18 +176,21 @@ export function FileAccessDemo() {
     });
   };
 
+  // Read a chunk of the content of a file, starting from byte at offset, reading for length bytes
   const readFileChunk = () => {
-    FileSystem.readFileChunk(Dirs.DocumentDir + "/text2.txt", 1, 1, 'utf8').then((res) => {
+    FileSystem.readFileChunk(Dirs.DocumentDir + "/text1.txt", 1, 1, 'utf8').then((res) => {
       setReadFileChunkInfo(res);
     }).catch((error) => {
       console.log(error, 'error')
     });
   };
 
+  // Append content to a file
   const appendFile = async () => {
     await FileSystem.appendFile(Dirs.DocumentDir + "/text3.txt", "AAAAAA", 'utf8');
   }
 
+  // Append a file to another file. Returns number of bytes written
   const concatFiles = async () => {
     await FileSystem.concatFiles(Dirs.DocumentDir + "/text3.txt", Dirs.DocumentDir + "/text4.txt").then((res) => {
       setConcatBeyts(res)
@@ -234,8 +264,8 @@ export function FileAccessDemo() {
           <Text style={{ flex: 1 }}>FileAccess.df()</Text>
           <Button title=" Running" color="#841584" onPress={df}></Button>
         </View>
-        <Text>available space: {freeSize ? (freeSize / (1024 * 1024 * 1024)).toFixed(2) : ''}GB</Text>
-        <Text>total space: {totalSize ? (totalSize / (1024 * 1024 * 1024)).toFixed(2) : ''}GB</Text>
+        <Text>available space: {freeSize ? (freeSize / (1000 * 1000 * 1000)).toFixed(2) : ''}GB</Text>
+        <Text>total space: {totalSize ? (totalSize / (1000 * 1000 * 1000)).toFixed(2) : ''}GB</Text>
       </View>
       <View style={{ height: 'auto', backgroundColor: "#FFF", marginTop: 6 }}>
         <View style={styles.baseArea}>
@@ -301,6 +331,8 @@ const styles = StyleSheet.create({
 
 ## Use Codegen
 
+> [!] Codegen is not required for V0.77.
+
 If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
@@ -330,10 +362,21 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
+- 0.72
+
 ```json
 "dependencies": {
      "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
      "@react-native-oh-tpl/react-native-file-access": "file:../../node_modules/@react-native-oh-tpl/react-native-file-access/harmony/file_access.har"
+  }
+```
+
+- 0.77
+
+```json
+"dependencies": {
+     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+     "@react-native-ohos/react-native-file-access": "file:../../node_modules/@react-native-ohos/react-native-file-access/harmony/file_access.har"
   }
 ```
 
@@ -350,7 +393,71 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 3. Introducing RNFileAccessPackage to ArkTS
+### 3. Configuring CMakeLists and Introducing RNFileAccessPackage
+
+> [!TIP] CMakeLists configuration and RNFileAccessPackage introduction are required for V3.1.2.
+
+Open `entry/src/main/cpp/CMakeLists.txt` and add:
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
+set(OH_MODULE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules/@rnoh/react-native-openharmony/src/main/cpp")
+set(RNOH_GENERATED_DIR "${CMAKE_CURRENT_SOURCE_DIR}/generated")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+# (VM) Define a variable and assign it to the current module's cpp directory
+set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+
+# Add the Header File directory, including cpp, cpp/include, and tell cmake to find the Header Files introduced by the code here
+include_directories(${NATIVERENDER_ROOT_PATH}
+                    ${NATIVERENDER_ROOT_PATH}/include)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-file-access/src/main/cpp" ./file_access)
+# RNOH_BEGIN: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "${CMAKE_CURRENT_SOURCE_DIR}/generated/*.cpp") # this line is needed by codegen v1
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
++ target_link_libraries(rnoh_app PUBLIC rnoh_file_access)
+
+```
+
+Open `entry/src/main/cpp/PackageProvider.cpp` and add:
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
++ #include "RNFileAccessPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx)
+{
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
++       std::make_shared<RNFileAccessPackage>(ctx)
+    };
+}
+```
+
+### 4. Introducing RNFileAccessPackage to ArkTS
 
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
@@ -383,9 +490,10 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+Verified on the following versions:
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-file-access Releases](https://github.com/react-native-oh-library/react-native-file-access/releases)
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.868; ROM: 6.0.0.112;
 
 ## API
 

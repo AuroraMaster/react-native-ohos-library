@@ -14,16 +14,14 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-theme-control)
 
-## 安装与使用
-
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 6.0.1      | [@react-native-oh-tpl/react-native-theme-control/Releases](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-theme-control%2Freleases) | 0.72       |
-| 6.1.0      | [@react-native-ohos/react-native-theme-control/Releases]()   | 0.77       |
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+| 6.0.1 | @react-native-oh-tpl/react-native-theme-control | [Github](https://github.com/react-native-oh-library/react-native-theme-control) | [Github Releases](https://github.com/react-native-oh-library/react-native-theme-control/releases) | 0.72 |
+| 6.1.1                        | @react-native-ohos/react-native-theme-control       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-theme-control) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-theme-control/releases) | 0.77 |
 
-对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -32,20 +30,20 @@
 #### **npm**
 
 ```bash
-# V6.0.1
+# 0.72
 npm install @react-native-oh-tpl/react-native-theme-control
 
-# V6.1.0
+# 0.77
 npm install @react-native-ohos/react-native-theme-control
 ```
 
 #### **yarn**
 
 ```bash
-# V6.0.1
+# 0.72
 yarn add @react-native-oh-tpl/react-native-theme-control
 
-# V6.1.0
+# 0.77
 yarn add @react-native-ohos/react-native-theme-control
 ```
 
@@ -112,7 +110,7 @@ export function SimpleScreen() {
 
 ## 使用 Codegen
 
-> [!TIP] V6.1.0 不需要执行 Codegen。
+> [!TIP] 0.77 不需要执行 Codegen。
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
@@ -146,7 +144,7 @@ export function SimpleScreen() {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- V6.0.1
+- 0.72
 
 ```json
 "dependencies": {
@@ -155,7 +153,7 @@ export function SimpleScreen() {
   }
 ```
 
-- V6.1.0
+- 0.77
 
 ```json
 "dependencies": {
@@ -179,7 +177,7 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 RNThemeControlPackage
 
-> [!TIP] V6.1.0 需要配置 CMakeLists 和引入 RNThemeControlPackage。
+> [!TIP] 0.77 需要配置 CMakeLists 和引入 RNThemeControlPackage。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -236,10 +234,10 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-// V6.0.1
+// 0.72
 + import { RNThemeControlPackage } from '@react-native-oh-tpl/react-native-theme-control/ts'
 
-// V6.1.0
+// 0.77
 + import { RNThemeControlPackage } from '@react-native-ohos/react-native-theme-control/ts'
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -284,10 +282,10 @@ export default class MyAbilityStage extends AbilityStage {
 ```diff
 + import {RNAbility} from '@rnoh/react-native-openharmony';
 + import Want from '@ohos.app.ability.Want';
-// V6.0.1
+// 0.72
 + import { RNThemeControlModule } from '@react-native-oh-tpl/react-native-theme-control';
 
-// V6.1.0
+// 0.77
 + import { RNThemeControlModule } from '@react-native-ohos/react-native-theme-control';
 
 +  export default class EntryAbility extends RNAbility {
@@ -336,14 +334,11 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+在以下版本验证通过：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 6.0.1      | [@react-native-oh-tpl/react-native-theme-control/Releases](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-theme-control%2Freleases) | 0.72       |
-| 6.1.0      | [@react-native-ohos/react-native-theme-control/Releases]()   | 0.77       |
+1. RNOH:0.72.28; SDK:HarmonyOS NEXT DB2; IDE:DevEco Studio 5.0.3.500; ROM:3.0.0.28;
+2. RNOH: 0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
 
 ## API
 
@@ -353,14 +348,14 @@ ohpm install
 
 | Name                  | Description                                                  | Type       | Required | Platform    | HarmonyOS Support |
 | --------------------- | ------------------------------------------------------------ | ---------- | -------- | ----------- | ----------------- |
-| `SystemBars`          | Setting the System Status Bar                                | Components | No       | IOS/Android | Yes               |
-| `NavigationBar`       | Setting the Navigation Bar                                   | Components | No       | Android     | No                |
-| `AppBackground`       | Sets the background color of the UIApplication window (iOS) or the current Activity (Android). | Components | No       | IOS/Android | Yes               |
-| `setNavbarAppearance` | Set the appearance of the navigation bar imperatively        | Function   | No       | Android     | No                |
-| `setAppBackground`    | Set background color                                         | Function   | No       | IOS/Android | Yes               |
-| `setThemePreference`  | Set the theme                                                | Function   | No       | IOS/Android | Yes               |
-| `getThemePreference`  | Get Subject                                                  | Function   | No       | IOS/Android | Yes               |
-| `useThemePreference`  | A React hook that returns the current theme preference, which might be dark, light (if you have set the theme before by calling setAppearance) or system. | Function   | No       | IOS/Android | Yes               |
+| `SystemBars`          | 设置系统状态栏                                               | Components | No       | IOS/Android | Yes               |
+| `NavigationBar`       | 设置导航栏                                                   | Components | No       | Android     | No                |
+| `AppBackground`       | 设置 UIApplication 窗口（iOS）或当前 Activity（Android）的背景色 | Components | No       | IOS/Android | Yes               |
+| `setNavbarAppearance` | 主动设置导航栏的外观                                         | Function   | No       | Android     | No                |
+| `setAppBackground`    | 设置背景颜色                                                 | Function   | No       | IOS/Android | Yes               |
+| `setThemePreference`  | 设置主题                                                     | Function   | No       | IOS/Android | Yes               |
+| `getThemePreference`  | 获取主题                                                     | Function   | No       | IOS/Android | Yes               |
+| `useThemePreference`  | 一个 React 钩子，返回当前的主题偏好，可能是暗色、亮色（如果您之前调用 setAppearance 设置过主题）或系统默认 | Function   | No       | IOS/Android | Yes               |
 
 ## 遗留问题
 

@@ -14,26 +14,37 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-geolocation/tree/sig)
 
+Please check the matching version information at the Releases page of the third-party library:
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+| 3.1.0 | @react-native-oh-tpl/geolocation | [Github](https://github.com/react-native-oh-library/react-native-geolocation) | [Github Releases](https://github.com/react-native-oh-library/react-native-geolocation/releases) | 0.72 |
+| 3.4.1                        | @react-native-ohos/react-native-geolocation       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-geolocation) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-geolocation/releases) | 0.77 |
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/geolocation Releases](https://github.com/react-native-oh-library/react-native-geolocation/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
-
 Go to the project directory and execute the following instruction:
-
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/geolocation
+
+# 0.77
+npm install @react-native-ohos/geolocation
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/geolocation
+
+# 0.77
+yarn add @react-native-ohos/geolocation
 ```
 
 <!-- tabs:end -->
@@ -83,16 +94,30 @@ Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
 Currently, two methods are available:
 
-Method 1 (recommended): Use the HAR file.
+1. Introducing via har package (this method will be deprecated after IDE improves related functions, currently the preferred method);
+2. Directly linking source code.
 
-> [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
+Method 1: Introducing via har package (recommended)
+
+> [!TIP] The har package is located in the `harmony` folder under the third-party library installation path.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
+
+- 0.72
 
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/geolocation": "file:../../node_modules/@react-native-oh-tpl/geolocation/harmony/geolocation.har"
+  }
+```
+
+- 0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/geolocation": "file:../../node_modules/@react-native-ohos/geolocation/harmony/geolocation.har"
   }
 ```
 
@@ -131,7 +156,13 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+# 0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/geolocation/src/main/cpp" ./geolocation)
+
+# 0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/geolocation/src/main/cpp" ./geolocation)
+
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -173,7 +204,11 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
+// 0.72
 + import {GeoLocationPackage} from '@react-native-oh-tpl/geolocation/ts';
+
+// 0.77
++ import {GeoLocationPackage} from '@react-native-ohos/geolocation/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -200,9 +235,10 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+Verified on the following versions:
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/geolocation Releases](https://github.com/react-native-oh-library/react-native-geolocation/releases)
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ### Permission Requirements
 
@@ -257,19 +293,19 @@ Open the `entry/src/main/resources/base/element/string.json` file and add the fo
 }
 ```
 
-## Properties
+## API
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-| Name                 | Description                                                                            | Type                                            | Required | Platform    | HarmonyOS Support | Notes                                                                                                                                                          |
-| -------------------- | -------------------------------------------------------------------------------------- | ----------------------------------------------- | -------- | ----------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| setRNConfiguration   | Sets configuration options that will be used in all location requests                  | function(config)                                | NO       | iOS Android | partially         | config only supports skipPermissionRequests                                                                                                                    |
-| requestAuthorization | Request suitable Location permission                                                   | function(success,error)                         | YES      | iOS Android | partially         | error: Only code and message are supported.                                                                                                                    |
-| getCurrentPosition   | Invokes the success callback once with the latest location info                        | function(success(position),error(error),option) | NO       | iOS Android | partially         | In position, only altitudeAccuracy is not supported. In option, only timeout and maximumAge are supported. In error, only code and message are supported.      |
+| Name                 | Description                                                                            | Type                                            | Required | Platform    | HarmonyOS Support | Notes                                                                                                                                             |
+| -------------------- | -------------------------------------------------------------------------------------- | ----------------------------------------------- | -------- | ----------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| setRNConfiguration   | Sets configuration options that will be used in all location requests                  | function(config)                                | NO       | iOS Android | partially         | config only supports skipPermissionRequests                                                                                                       |
+| requestAuthorization | Request suitable Location permission                                                   | function(success,error)                         | YES      | iOS Android | partially         | error: Only code and message are supported.                                                                                                       |
+| getCurrentPosition   | Invokes the success callback once with the latest location info                        | function(success(position),error(error),option) | NO       | iOS Android | partially         | In position, only altitudeAccuracy is not supported. In option, only timeout and maximumAge are supported. In error, only code and message are supported. |
 | watchPosition        | Invokes the success callback whenever the location changes. Returns a watchId (number) | function(success(postion),error(error),option)  | NO       | iOS Android | partially         | In position, only altitudeAccuracy is not supported. In error, only code and message are supported. In option, only interval and distanceFilter are supported. |
-| clearWatch           | Clears watch observer by id returned by watchPosition()                                | function(watchID)                               | NO       | iOS Android | yes               | watchID supports only the default value 0.                                                                                                                     |
+| clearWatch           | Clears watch observer by id returned by watchPosition()                                | function(watchID)                               | NO       | iOS Android | yes               | watchID supports only the default value 0.                                                                                                        |
 
 ## Known Issues
 
