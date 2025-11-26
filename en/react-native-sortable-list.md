@@ -15,25 +15,35 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-sortable-list)
 
+Check the release notes of the third-party library to pick the matching version:
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+| 0.0.25 | @react-native-oh-tpl/react-native-sortable-list | [Github](https://github.com/react-native-oh-library/react-native-sortable-list) | [Github Releases](https://github.com/react-native-oh-library/react-native-sortable-list/releases) | 0.72 |
+| 0.1.0                        | @react-native-ohos/react-native-sortable-list       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-sortable-list) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-sortable-list/releases) | 0.77 |
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library：[@react-native-oh-tpl/react-native-sortabel-list Releases](https://github.com/react-native-oh-library/react-native-sortable-list/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
-
-Go to the project directory and execute the following instruction:
-
+Go to the project directory and run:
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+#v0.72
 npm install @react-native-oh-tpl/react-native-sortable-list
+#v0.77
+npm install @react-native-ohos/react-native-sortable-list
 ```
 
 #### **yarn**
 
 ```bash
+#v0.72
 yarn add @react-native-oh-tpl/react-native-sortable-list
+#v0.77
+yarn add @react-native-ohos/react-native-sortable-list
 ```
 
 <!-- tabs:end -->
@@ -234,9 +244,10 @@ const styles = StyleSheet.create({
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-sortabel-list Releases](https://github.com/react-native-oh-library/react-native-sortable-list/releases)
+This repository has been verified with the following configurations:
 
-## Properties
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); DevEco Studio  6.0.0.868; ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 

@@ -14,6 +14,13 @@
 
 > [!TIP] [Github 地址](https://github.com/akinncar/react-native-mask-text)
 
+
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| Version | RN Version |
+| ---------- | ---------- |
+| 0.15.0      | 0.72/0.77 |
+
 ## 安装与使用
 
 进入到工程目录并输入以下命令：
@@ -23,13 +30,13 @@
 #### **npm**
 
 ```bash
-npm install react-native-mask-text@0.14.2
+npm install react-native-mask-text@0.15.0
 ```
 
 #### **yarn**
 
 ```bash
-yarn add react-native-mask-text@0.14.2
+yarn add react-native-mask-text@0.15.0
 ```
 
 <!-- tabs:end -->
@@ -126,6 +133,8 @@ const styles = StyleSheet.create({
 
 1. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.25; IDE: DevEco Studio 5.0.3.400SP7; ROM: 3.0.0.25;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); DevEco Studio  6.0.0.868; ROM: 5.0.0.107;
+4. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -133,42 +142,42 @@ const styles = StyleSheet.create({
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name | Description | Type | Default | Required | Platform | HarmonyOS Support |
+| 属性名 | 描述 | 类型 | 默认值 | 是否必填 | 支持平台 | HarmonyOS 支持 |
 | --- | --- | --- | --- | --- | --- | --- |
-| type | Show type | String (enum) `custom`, `date`, `time`,`currency` | custom | no | All | yes |
-| mask | Custom Mask. Pattern used in masked components | `9` - accept digit. `A` - accept alpha. `S` - accept alphanumeric. | null | no | All | yes |
+| type | 显示类型 | String (enum) `custom`, `date`, `time`,`currency` | custom | 否 | 全平台 | 是 |
+| mask | 自定义掩码，控制组件的输入匹配模式 | `9` - 接受数字；`A` - 接受字母；`S` - 接受字母或数字 | null | 否 | 全平台 | 是 |
 
 ### Date Mask
 
 These options only are used if you use prop `type="date"` in your component:
 
-| Name       | Description | Type   | Default    | Required | Platform | HarmonyOS Support |
+| 属性名       | 描述 | 类型   | 默认值    | 是否必填 | 支持平台 | HarmonyOS 支持 |
 | ---------- | ----------- | ------ | ---------- | -------- | -------- | ----------------- |
-| dateFormat | Date Format | string | yyyy/mm/dd | no       | All      | yes               |
+| dateFormat | 日期格式 | string | yyyy/mm/dd | 否       | 全平台      | 是               |
 
 ### Time Mask
 
 These options only are used if you use prop `type="time"` in your component:
 
-| Name       | Description | Type   | Default  | Required | Platform | HarmonyOS Support |
+| 属性名       | 描述 | 类型   | 默认值  | 是否必填 | 支持平台 | HarmonyOS 支持 |
 | ---------- | ----------- | ------ | -------- | -------- | -------- | ----------------- |
-| timeFormat | Time Format | string | HH:mm:ss | no       | All      | yes               |
+| timeFormat | 时间格式 | string | HH:mm:ss | 否       | 全平台      | 是               |
 
 ### Currency Mask
 
-These options only are used if you use prop `type="currency"` in your component:
+这些选项仅在您的组件中使用了 `type="currency"` 属性时才会被使用:
 
-| Name                   | Description                                 | Type   | Default | Required | Platform | HarmonyOS Support |
+| 属性名                   | 描述                                 | 类型   | 默认值 | 是否必填 | 支持平台 | HarmonyOS 支持 |
 | ---------------------- | ------------------------------------------- | ------ | ------- | -------- | -------- | ----------------- |
-| prefix                 | String to prepend                           | string | null    | No       | All      | yes               |
-| decimalSeparator       | Separation for decimals                     | string | null    | No       | All      | yes               |
-| groupSeparator         | Grouping separator of the integer part      | string | null    | No       | All      | yes               |
-| precision              | Precision for fraction part (cents)         | number | 0       | No       | All      | yes               |
-| groupSize              | Primary grouping size of the integer part   | number | 3       | No       | All      | yes               |
-| secondaryGroupSize     | Secondary grouping size of the integer part | number | null    | No       | All      | yes               |
-| fractionGroupSeparator | Grouping separator of the fraction part     | string | null    | No       | All      | yes               |
-| fractionGroupSize      | Grouping size of the fraction part          | number | null    | No       | All      | yes               |
-| suffix                 | String to append                            | string | null    | No       | All      | yes               |
+| prefix                 | 需要追加在数值前的前缀字符串                           | string | null    | 否       | 全平台      | 是               |
+| decimalSeparator       | 小数部分的分隔符                     | string | null    | 否       | 全平台      | 是               |
+| groupSeparator         | 整数部分的分组分隔符      | string | null    | 否       | 全平台      | 是               |
+| precision              | 小数部分的精度（小数位数）         | number | 0       | 否       | 全平台      | 是               |
+| groupSize              | 整数部分的主分组尺寸   | number | 3       | 否       | 全平台      | 是               |
+| secondaryGroupSize     | 整数部分的次级分组尺寸 | number | null    | 否       | 全平台      | 是               |
+| fractionGroupSeparator | 小数部分的分组分隔符     | string | null    | 否       | 全平台      | 是               |
+| fractionGroupSize      | 小数部分的分组大小          | number | null    | 否       | 全平台      | 是               |
+| suffix                 | 需要追加在数值后的后缀字符串                            | string | null    | 否       | 全平台      | 是               |
 
 ## 遗留问题
 
