@@ -14,15 +14,14 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/jeanregisser-react-native-slider/tree/sig)
 
-## 安装与使用
+该第三方库的仓库已迁移至 Gitee，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-slider`，具体版本所属关系如下：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 0.11.0    |[@react-native-oh-tpl/jeanregisser-react-native-slider Releases](https://github.com/react-native-oh-library/jeanregisser-react-native-slider/releases)| 0.72       |
-| 0.11.1    |[@react-native-ohos/jeanregisser-react-native-slider Releases]()     | 0.77       |
+| 0.11.0     | [@react-native-oh-tpl/react-native-slider Releases](https://github.com/react-native-oh-library/jeanregisser-react-native-slider/releases) | 0.72       |
+| 0.12.0     | [@react-native-ohos/react-native-slider Releases]()          | 0.77       |
 
-对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -31,20 +30,20 @@
 #### **npm**
 
 ```bash
-#v0.11.0
+#0.72
 npm i @react-native-oh-tpl/react-native-slider
 
-#v0.11.1
+#0.77
 npm i @react-native-ohos/react-native-slider
 ```
 
 #### **yarn**
 
 ```bash
-#v0.11.0
+#0.72
 yarn add @react-native-oh-tpl/react-native-slider
 
-#v0.11.1
+#0.77
 yarn add @react-native-ohos/react-native-slider
 ```
 
@@ -163,15 +162,11 @@ const styles = StyleSheet.create({
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+在下述版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 0.11.0    |[@react-native-oh-tpl/jeanregisser-react-native-slider Releases](https://github.com/react-native-oh-library/jeanregisser-react-native-slider/releases)| 0.72       |
-| 0.11.1    |[@react-native-ohos/jeanregisser-react-native-slider Releases]()     | 0.77       |
+RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
 
-对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release SDK；IDE：DevEco Studio  6.0.0.868; ROM：6.0.0.112; 
 
 ## 属性
 
@@ -179,28 +174,28 @@ const styles = StyleSheet.create({
 >
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name                  | Description                                                                                                                                                                                                   | Type                                                                    | Required | Platform    | HarmonyOS Support |
-|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|----------|-------------|-------------------|
-| value                 | Initial value of the slider.                                                                                                                                                                                  | number                                                                  | No       | iOS Android | yes               |
-| disabled              | If true the user won't be able to move the slider.                                                                                                                                                            | bool                                                                    | No       | iOS Android | yes               |
-| minimumValue          | Initial minimum value of the slider.                                                                                                                                                                          | number                                                                  | No       | iOS Android | yes               |
-| maximumValue          | Initial maximum value of the slider.                                                                                                                                                                          | number                                                                  | No       | iOS Android | yes               |
-| step                  | Step value of the slider. The value should be between 0 and maximumValue - minimumValue).                                                                                                                     | number                                                                  | No       | iOS Android | yes               |
-| minimumTrackTintColor | The color used for the track to the left of the button.                                                                                                                                                       | string                                                                  | No       | iOS Android | yes               |
-| maximumTrackTintColor | The color used for the track to the right of the button.                                                                                                                                                      | string                                                                  | No       | iOS Android | yes               |
-| thumbTintColor        | The color used for the thumb.                                                                                                                                                                                 | string                                                                  | No       | iOS Android | yes               |
-| thumbTouchSize        | The size of the touch area that allows moving the thumb. The touch area has the same center as the visible thumb. This allows to have a visually small thumb while still allowing the user to move it easily. | object                                                                  | No       | iOS Android | yes               |
-| onValueChange         | Callback continuously called while the user is dragging the slider.                                                                                                                                           | function                                                                | No       | iOS Android | yes               |
-| onSlidingStart        | Callback called when the user starts changing the value (e.g. when the slider is pressed).                                                                                                                    | function                                                                | No       | iOS Android | yes               |
-| onSlidingComplete     | Callback called when the user finishes changing the value (e.g. when the slider is released).                                                                                                                 | function                                                                | No       | iOS Android | yes               |
-| style                 | The style applied to the slider container.                                                                                                                                                                    | [style](http://facebook.github.io/react-native/docs/view.html#style)    | No       | iOS Android | yes               |
-| trackStyle            | The style applied to the track.                                                                                                                                                                               | [style](http://facebook.github.io/react-native/docs/view.html#style)    | No       | iOS Android | yes               |
-| thumbStyle            | The style applied to the thumb.                                                                                                                                                                               | [style](http://facebook.github.io/react-native/docs/view.html#style)    | No       | iOS Android | yes               |
-| thumbImage            | Sets an image for the thumb.                                                                                                                                                                                  | [source](http://facebook.github.io/react-native/docs/image.html#source) | No       | iOS Android | yes               |
-| debugTouchArea        | Set this to true to visually see the thumb touch rect in green.                                                                                                                                               | bool                                                                    | No       | iOS Android | yes               |
-| animateTransitions    | Set to true if you want to use the default 'spring' animation.                                                                                                                                                | bool                                                                    | No       | iOS Android | yes               |
-| animationType         | Set to 'spring' or 'timing' to use one of those two types of animations with the default [animation properties](https://facebook.github.io/react-native/docs/animations.html).                                | string                                                                  | No       | iOS Android | yes               |
-| animationConfig       | Used to configure the animation parameters. These are the same parameters in the [Animated library](https://facebook.github.io/react-native/docs/animations.html).                                            | object                                                                  | No       | iOS Android | yes               |
+| Name                  | Description                                                  | Type                                                         | Required | Platform    | HarmonyOS Support |
+| --------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | ----------- | ----------------- |
+| value                 | 滑块的初始值。                                               | number                                                       | No       | iOS Android | yes               |
+| disabled              | 如果为 true，用户将无法移动滑块。                            | bool                                                         | No       | iOS Android | yes               |
+| minimumValue          | 滑块的初始最小值。                                           | number                                                       | No       | iOS Android | yes               |
+| maximumValue          | 滑块的初始最大值。                                           | number                                                       | No       | iOS Android | yes               |
+| step                  | 滑块的步长值。该值应在 0 到 (maximumValue - minimumValue) 之间。 | number                                                       | No       | iOS Android | yes               |
+| minimumTrackTintColor | 滑块按钮左侧轨道的颜色。                                     | string                                                       | No       | iOS Android | yes               |
+| maximumTrackTintColor | 滑块按钮右侧轨道的颜色。                                     | string                                                       | No       | iOS Android | yes               |
+| thumbTintColor        | 滑块按钮（thumb）的颜色。                                    | string                                                       | No       | iOS Android | yes               |
+| thumbTouchSize        | 允许移动滑块按钮的触摸区域大小。触摸区域的中心与可见的滑块按钮相同。这使得滑块按钮在视觉上可以很小，同时仍允许用户轻松移动它。 | object                                                       | No       | iOS Android | yes               |
+| onValueChange         | 当用户拖动滑块时持续调用的回调函数。                         | function                                                     | No       | iOS Android | yes               |
+| onSlidingStart        | 当用户开始更改值时调用的回调函数（例如，当滑块被按下时）。   | function                                                     | No       | iOS Android | yes               |
+| onSlidingComplete     | 当用户完成更改值时调用的回调函数（例如，当滑块被释放时）。   | function                                                     | No       | iOS Android | yes               |
+| style                 | 应用于滑块容器的样式。                                       | [style](http://facebook.github.io/react-native/docs/view.html#style) | No       | iOS Android | yes               |
+| trackStyle            | 应用于轨道的样式。                                           | [style](http://facebook.github.io/react-native/docs/view.html#style) | No       | iOS Android | yes               |
+| thumbStyle            | 应用于滑块按钮的样式。                                       | [style](http://facebook.github.io/react-native/docs/view.html#style) | No       | iOS Android | yes               |
+| thumbImage            | 为滑块按钮设置一张图片。                                     | [source](http://facebook.github.io/react-native/docs/image.html#source) | No       | iOS Android | yes               |
+| debugTouchArea        | 设置为 true 可以在视觉上看到绿色的滑块按钮触摸矩形区域。     | bool                                                         | No       | iOS Android | yes               |
+| animateTransitions    | 如果希望使用默认的'spring' 动画，请设置为 true。             | bool                                                         | No       | iOS Android | yes               |
+| animationType         | 设置为'spring' 或 'timing'，以使用这两种动画类型之一，并使用默认的 [动画属性](https://facebook.github.io/react-native/docs/animations.html)。 | string                                                       | No       | iOS Android | yes               |
+| animationConfig       | 用于配置动画参数。这些参数与 [Animated 库](https://facebook.github.io/react-native/docs/animations.html) 中的参数相同。 | object                                                       | No       | iOS Android | yes               |
 
 ## 遗留问题
 
