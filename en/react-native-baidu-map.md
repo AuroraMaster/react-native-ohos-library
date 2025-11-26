@@ -474,11 +474,10 @@ Open `entry/src/main/module.json5`, add the following permission:
 | titleOffsetY | Y-axis offset for title when displayed as the **InfoWindow**. | Number   | no       | Android  | no                |
 | location     | Longitude and latitude coordinates of a marker.               | Object   | yes      | All      | yes               |
 | perspective  | Perspective effect.                   | Boolean  | no       | Android  | no               |
-| flat         | Flattens a marker.                     | Boolean  | no       | Android  | yes               |
 | rotate       | Rotation angle.                         | Number   | no       | Android  | yes               |
 | icon         | Image, which is the same as the **source** property of the **Image** component.                    | Object   | no       | All      | yes               |
 | alpha        | Opacity.                         | Number   | no       | Android  | yes               |
-| animateType  | Animation effect：drop/grow/jump       | String   | no       | All      | yes               |
+| animateType  | Animation effect：drop       | String   | no       | All      | yes               |
 | pinColor     | Pin color: red/green/purple.               | String   | no       | IOS      | no                |
 | onClick      | Callback triggered when a marker is clicked.     | Function | no       | All      | yes               |
 
@@ -497,7 +496,7 @@ Open `entry/src/main/module.json5`, add the following permission:
 | Name      | Description       | Type   | Required | Platform | HarmonyOS Support |
 |-----------|-------------------|--------|----------|----------|-------------------|
 | radius    | Radius of a circle.             | Number | yes      | All      | yes               |
-| fillColor | Fill color of a circle (hexadecimal, with opacity).| String | yes       | All      | yes               |
+| fillColor | Fill color of a circle, 6 digits(RRGGBB) or 8 digits(AARRGGBB).| String | yes       | All      | yes               |
 | stroke    | Stroke style of a circle.           | Object | yes       | All      | yes               |
 | center    | Center point coordinates of a circle.          | Object | yes       | All      | yes               |
 
@@ -514,7 +513,7 @@ Open `entry/src/main/module.json5`, add the following permission:
 | Name      | Description          | Type   | Required | Platform | HarmonyOS Support |
 |-----------|----------------------|--------|----------|----------|-------------------|
 | points    | Vertex coordinate array of a polygon.          | Object | yes      | All      | yes               |
-| fillColor | Fill color of a polygon (hexadecimal, with opacity). | String | no      | All      | yes               |
+| fillColor | Fill color of a polygon, 6 digits(RRGGBB) or 8 digits(AARRGGBB). | String | no      | All      | yes               |
 | stroke    | Polygon stroke type.            | Object | no      | All      | yes               |
 
 #### Text Props
@@ -523,8 +522,8 @@ Open `entry/src/main/module.json5`, add the following permission:
 |-----------|---------------|--------|----------|----------|-------------------|
 | text      | Text to display.       | String | yes      | All      | yes               |
 | fontSize  | Font size of the text.      | Number | no       | All      | yes               |
-| fontColor | Font color of the text (hexadecimal).| String | no       | All      | yes               |
-| bgColor   | Background color of the text (hexadecimal).| String | no       | All      | yes               |
+| fontColor | Font color of the text, 6 digits(RRGGBB) or 8 digits(AARRGGBB).| String | no       | All      | yes               |
+| bgColor | Background color of the text, 6 digits(RRGGBB) or 8 digits(AARRGGBB).| String | no       | All      | yes               |
 | rotate    | Rotation angle of the text.      | Number | no       | All      | yes               |
 | location  | Coordinates of the text on the map.  | Object | yes      | All      | yes               |
 

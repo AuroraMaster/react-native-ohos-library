@@ -475,11 +475,10 @@ ohpm install
 | titleOffsetY | title 作为 InfoWindow 展示的 y 轴偏移量 | Number   | no       | Android  | no                |
 | location     | 标记的经纬度坐标位置                               | Object   | yes      | All      | yes               |
 | perspective  | 远大近小的效果                   | Boolean  | no       | Android  | no               |
-| flat         | 是否使标记扁平化                     | Boolean  | no       | Android  | yes               |
 | rotate       | 旋转角度                         | Number   | no       | Android  | yes               |
 | icon         | 图片，同Image组件的 source 属性             | Object   | no       | All      | yes               |
 | alpha        | 透明度                         | Number   | no       | Android  | yes               |
-| animateType  | 动画效果：drop/grow/jump       | String   | no       | All      | yes               |
+| animateType  | 动画效果：drop       | String   | no       | All      | yes               |
 | pinColor     | red/green/purple，大头针颜色             | String   | no       | IOS      | no                |
 | onClick      | 当标记被点击时触发的回调函数                           | Function | no       | All      | yes               |
 
@@ -498,7 +497,7 @@ ohpm install
 | Name      | Description       | Type   | Required | Platform | HarmonyOS Support |
 |-----------|-------------------|--------|----------|----------|-------------------|
 | radius    | 圆的半径              | Number | yes      | All      | yes               |
-| fillColor | 圆的填充颜色（十六进制，带透明度） | String | yes       | All      | yes               |
+| fillColor | 圆的填充颜色，6 位(RRGGBB)或 8 位(AARRGGBB) | String | yes       | All      | yes               |
 | stroke    | 圆的描边样式            | Object | yes       | All      | yes               |
 | center    | 圆的中心点坐标           | Object | yes       | All      | yes               |
 
@@ -514,7 +513,7 @@ ohpm install
 | Name      | Description          | Type   | Required | Platform | HarmonyOS Support |
 |-----------|----------------------|--------|----------|----------|-------------------|
 | points    | 多边形的顶点坐标数组           | Object | yes      | All      | yes               |
-| fillColor | 多边形的填充颜色（十六进制，带透明度）	 | String | no      | All      | yes               |
+| fillColor | 多边形的填充颜色，6 位(RRGGBB)或 8 位(AARRGGBB) | String | no      | All      | yes               |
 | stroke    | 多边形的描边样式             | Object | no      | All      | yes               |
 
 #### Text Props 属性
@@ -523,8 +522,8 @@ ohpm install
 |-----------|---------------|--------|----------|----------|-------------------|
 | text      | 要显示的文本        | String | yes      | All      | yes               |
 | fontSize  | 文本的字体大小       | Number | no       | All      | yes               |
-| fontColor | 文本的字体颜色（十六进制） | String | no       | All      | yes               |
-| bgColor   | 文本的背景颜色（十六进制） | String | no       | All      | yes               |
+| fontColor | 文本的字体颜色，6 位(RRGGBB)或 8 位(AARRGGBB) | String | no       | All      | yes               |
+| bgColor | 文本的背景颜色，6 位(RRGGBB)或 8 位(AARRGGBB) | String | no       | All      | yes               |
 | rotate    | 文本旋转的角度       | Number | no       | All      | yes               |
 | location  | 文本在地图上的位置坐标	  | Object | yes      | All      | yes               |
 
