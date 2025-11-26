@@ -14,28 +14,37 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-image-viewing)
 
+Find the matching version information in the release address of a third-party library:
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      | Supported RN Version |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------- |
+| 0.2.2 | @react-native-oh-tpl/react-native-image-viewing | [Github](https://github.com/react-native-oh-library/react-native-image-viewing) | [Github Releases](https://github.com/react-native-oh-library/react-native-image-viewing/releases) | 0.72 |
+| 0.3.0                        | @react-native-ohos/react-native-image-viewing       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-image-viewing) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-viewing/releases) | 0.77 |
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-image-viewing Releases](https://github.com/react-native-oh-library/react-native-image-viewing/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
-
 Go to the project directory and execute the following instruction:
-
-
 
 <!-- tabs:start -->
-
-Go to the project directory and execute the following instruction:
 
 #### npm
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-image-viewing
+
+# 0.77
+npm install @react-native-ohos/react-native-image-viewing
 ```
 
 #### yarn
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-image-viewing
+
+# 0.77
+yarn add @react-native-ohos/react-native-image-viewing
 ```
 
 quick use:
@@ -189,15 +198,16 @@ const styles = StyleSheet.create({
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+The following versions have been verified:
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-image-viewing Releases](https://github.com/react-native-oh-library/react-native-image-viewing/releases)
+1. RNOH:0.72.28; SDK:HarmonyOS NEXT DB2; IDE:DevEco Studio 5.0.3.500; ROM:3.0.0.28;
+2. RNOH: 0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
 
-## Properties
+## API
 
-> [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
+> [!TIP] The "Platform" column indicates the platform where the properties are supported in the original third-party library.
 
-> [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
+> [!TIP] If the value of "HarmonyOS Support" is yes, it means that the HarmonyOS platform supports this property; no means the opposite; partially means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
 | Name                   | Description                                                                                 | Type                                                        | Platform | Required | HarmonyOS Support |
 | ---------------------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------- | -------- | ----------------- |

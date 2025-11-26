@@ -12,16 +12,16 @@
     </a>
 </p>
 
-
-
-
-
 > [!TIP] [Github 地址](https://github.com/bamlab/react-native-image-header-scroll-view)
 
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+| 0.10.3 | @react-native-oh-tpl/react-native-image-header-scroll-view | [Github](https://github.com/react-native-oh-library/react-native-image-header-scroll-view) | [Github Releases](https://github.com/react-native-oh-library/react-native-image-header-scroll-view/releases) | 0.72 |
+| 1.1.0                        | @react-native-ohos/react-native-image-header-scroll-view     | [Github](https://github.com/bamlab/react-native-image-header-scroll-view) | [Github Releases](https://github.com/bamlab/react-native-image-header-scroll-view/releases) | 0.77 |
+
 ## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-image-header-scroll-view Releases](https://github.com/react-native-oh-library/react-native-image-header-scroll-view/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
-
 
 进入到工程目录并输入以下命令：
 
@@ -30,13 +30,21 @@
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-image-header-scroll-view
+
+# 0.77
+npm install @react-native-ohos/react-native-image-header-scroll-view
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-image-header-scroll-view
+
+# 0.77
+yarn add @react-native-ohos/react-native-image-header-scroll-view
 ```
 
 <!-- tabs:end -->
@@ -229,11 +237,12 @@ export default HeaderImageExample;
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+在以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-image-header-scroll-view Releases](https://github.com/react-native-oh-library/react-native-image-header-scroll-view/releases)
+1. RNOH:0.72.28; SDK:HarmonyOS NEXT DB2; IDE:DevEco Studio 5.0.3.500; ROM:3.0.0.28;
+2. RNOH: 0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
 
-## API
+## 属性
 
 > [!Tip] "Platform"列表示该属性在原三方库上支持的平台。
 
@@ -243,37 +252,37 @@ export default HeaderImageExample;
 
 | Name                          | Description                                                  | Type   | Required | Platform | HarmonyOS Support |
 | ----------------------------- | ------------------------------------------------------------ | ------ | -------- | -------- | ----------------- |
-| `renderHeader` | Function which return the component to use as header. It can return background image for example.           | function | No       | All      | Yes               |
-| `headerImage`               | Shortcut for renderHeader={() => <Image source={this.props.headerImage} style={{ height: this.props.maxHeight, width: Dimensions.get('window').width }}                         | Image source Props (object or number) | No       | All      | Yes               |
-| `maxHeight`                | Max height for the header     | number | No       | All      | Yes               |
-| `minHeight`                | Min height for the header (in navbar mode)                           | number | No       | All      | Yes               |
-| `minOverlayOpacity`           | Opacity of a black overlay on the header before any scroll | number | No       | All      | Yes               |
-| `maxOverlayOpacity`           | Opacity of a black overlay on the header when in navbar mode | number | No       | All      | Yes               |
-| `overlayColor`           | Color of the overlay on the header | string | No       | All      | Yes               |
-| `useNativeDriver`           | Use native driver for the animation for performance improvement. A few props are unsupported at the moment if useNativeDriver=true (onScroll, ScrollComponent, renderTouchableFixedForeground) | boolean | No       | All      | Yes               |
-| `headerContainerStyle`           | Optional styles to be passed to the container of the header component | Object | No       | All      | Yes               |
-| `disableHeaderGrow`           | Disable to grow effect on the header | boolean | No       | All      | Yes              |
+| `renderHeader` | 返回用作头部的组件的函数。例如，它可以返回背景图片。           | function | No       | All      | Yes               |
+| `headerImage`               | renderHeader={() => <Image source={this.props.headerImage} style={{ height: this.props.maxHeight, width: Dimensions.get('window').width }} 的快捷方式                         | Image source Props (object or number) | No       | All      | Yes               |
+| `maxHeight`                | 头部的最大高度     | number | No       | All      | Yes               |
+| `minHeight`                | 头部的最小高度（导航栏模式下）                           | number | No       | All      | Yes               |
+| `minOverlayOpacity`           | 滚动前头部黑色覆盖层的不透明度 | number | No       | All      | Yes               |
+| `maxOverlayOpacity`           | 导航栏模式下头部黑色覆盖层的不透明度 | number | No       | All      | Yes               |
+| `overlayColor`           | 头部覆盖层的颜色 | string | No       | All      | Yes               |
+| `useNativeDriver`           | 使用原生驱动程序来提高动画性能。如果 useNativeDriver=true，目前有几个属性不受支持（onScroll、ScrollComponent、renderTouchableFixedForeground） | boolean | No       | All      | Yes               |
+| `headerContainerStyle`           | 可选样式，传递给头部组件容器 | Object | No       | All      | Yes               |
+| `disableHeaderGrow`           | 禁用头部增长效果 | boolean | No       | All      | Yes              |
 
 
 #### **Foreground**
 
 | Name                          | Description                                                  | Type   | Required | Platform | HarmonyOS Support |
 | ----------------------------- | ------------------------------------------------------------ | ------ | -------- | -------- | ----------------- |
-| `renderForeground` | Function which return the component to use at foreground. The component is render in front of the header and scroll with the ScrollView. It can return a title for example.           | function | No       | All      | Yes               |
-| `renderFixedForeground`               | Function which return the component to use as fixed foreground. The component is displayed with the header but not affected by the overlay.                           | Image source Props (object or number) | No       | All      | Yes               |
-| `foregroundExtrapolate`                | Optional prop that allows override extrapolate mode for foreground. Use null to allow extrapolation, which is usefull for using foreground as bottom title   | string | No       | All      | Yes               |
-| `foregroundParallaxRatio`                | Ration for parallax effect of foreground when scrolling. If 2, the header goes up two times faster than the scroll                          | number | No       | All      | Yes               |
-| `fadeOutForeground`           | If set, add a fade out effect on the foreground when scroll up | boolean | No       | All      | Yes               |
-| `renderTouchableFixedForeground`           | Same as renderFixedForeground but allow to use touchable in it. [Can cause performances issues on Android](https://github.com/bamlab/react-native-image-header-scroll-view/issues/6)   | function | No       | All      | Yes               |
-| `fixedForegroundContainerStyles`           | 	Optional styles to be passed to the container of the fixed foreground component | Object | No       | All      | Yes               |
+| `renderForeground` | 返回用作前景的组件的函数。该组件在头部前面渲染，并随ScrollView一起滚动。例如，它可以返回一个标题。           | function | No       | All      | Yes               |
+| `renderFixedForeground`               | 返回用作固定前景的组件的函数。该组件与头部一起显示，但不受覆盖层影响。                           | Image source Props (object or number) | No       | All      | Yes               |
+| `foregroundExtrapolate`                | 可选属性，允许覆盖前景的外推模式。使用null允许外推，这对于将前景用作底部标题很有用   | string | No       | All      | Yes               |
+| `foregroundParallaxRatio`                | 滚动时前景视差效果的比例。如果为2，头部上升的速度是滚动速度的两倍                          | number | No       | All      | Yes               |
+| `fadeOutForeground`           | 如果设置，则在向上滚动时对前景添加淡出效果 | boolean | No       | All      | Yes               |
+| `renderTouchableFixedForeground`           | 与renderFixedForeground相同，但允许在其中使用可触摸组件。[在Android上可能会导致性能问题](https://github.com/bamlab/react-native-image-header-scroll-view/issues/6)   | function | No       | All      | Yes               |
+| `fixedForegroundContainerStyles`           | 	可选样式，传递给固定前景组件的容器 | Object | No       | All      | Yes               |
 
 
 #### **Mixed**
 
 | Name                          | Description                                                  | Type   | Required | Platform | HarmonyOS Support |
 | ----------------------------- | ------------------------------------------------------------ | ------ | -------- | -------- | ----------------- |
-| `ScrollViewComponent` | The component to be used for scrolling. Can be any component with an onScroll props (ie. ListView, FlatList, SectionList or ScrollView)         | Component | No       | All      | Yes               |
-| `scrollViewBackgroundColor`               | Background color of the scrollView content                        | string | No       | All      | Yes               |
+| `ScrollViewComponent` | 用于滚动的组件。可以是任何具有onScroll属性的组件（即ListView、FlatList、SectionList或ScrollView）         | Component | No       | All      | Yes               |
+| `scrollViewBackgroundColor`               | scrollView内容的背景颜色                        | string | No       | All      | Yes               |
 
 
 
@@ -281,12 +290,13 @@ export default HeaderImageExample;
 
 | Name                          | Description                                                  | Type   | Required | Platform | HarmonyOS Support |
 | ----------------------------- | ------------------------------------------------------------ | ------ | -------- | -------- | ----------------- |
-| `onBeginHidden` | Called when the component start to be hidden at the top of the scroll view.          | function | No       | All      | Yes               |
-| `onHide`               | Called when the component is not displayed any more after scroll up             | function | No       | All      | Yes               |
-| `onBeginDisplayed`                | Called when the component begin to be displayed again after scroll down | function | No       | All      | Yes               |
-| `onDisplay`                | Called when the component finished to be displayed again.            | function | No       | All      | Yes               |
-| `onTouchTop`           | 	Called when the component finished to be displayed again.   (onDisplay + onBeginHidden) | function | No       | All      | Yes               |
-| `onTouchBottom`           | Called when the component is not displayed any more after scroll up   (onHide + onBeginDisplayed)  | function | No       | All      | Yes               |
+| `onBeginHidden` | 当组件开始在滚动视图顶部隐藏时调用。          | function | No       | All      | Yes               |
+| `onHide`               | 当组件在向上滚动后不再显示时调用             | function | No       | All      | Yes               |
+| `onBeginDisplayed`                | 当组件在向下滚动后开始再次显示时调用 | function | No       | All      | Yes               |
+| `onDisplay`                | 当组件完成再次显示时调用。            | function | No       | All      | Yes               |
+| `onTouchTop`           | 	当组件完成再次显示时调用。(onDisplay + onBeginHidden) | function | No       | All      | Yes               |
+| `onTouchBottom`           | 当组件在向上滚动后不再显示时调用(onHide + onBeginDisplayed)  | function | No       | All      | Yes               |
+| `style`<sup>1.0.1+</sup> | TriggeringView的样式 | ViewStyle | No | All | Yes |
 
 ## 遗留问题
 
