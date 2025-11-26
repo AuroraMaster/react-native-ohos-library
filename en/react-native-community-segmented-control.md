@@ -14,26 +14,39 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/segmented-control)
 
+please check the release version information in the release address of the third-party library:
+
+| Library Version | Release Information                                                     | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 2.5.2      | [@react-native-oh-tpl/segmented-control Releases](https://github.com/react-native-oh-library/segmented-control/releases) | 0.72       |
+| 2.6.0     | [@react-native-ohos/segmented-control Releases]()            | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/segmented-control Releases](https://github.com/react-native-oh-library/segmented-control/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
-
 Go to the project directory and execute the following instruction:
-
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/segmented-control
+
+# 0.77
+npm install @react-native-ohos/segmented-control
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/segmented-control
+
+# 0.77
+yarn add @react-native-ohos/segmented-control
 ```
 
 <!-- tabs:end -->
@@ -41,6 +54,8 @@ yarn add @react-native-oh-tpl/segmented-control
 The following code shows the basic use scenario of the repository:
 
 > [!WARNING] The name of the imported repository remains unchanged.
+
+- 0.72 Example
 
 ```js
 import React, { useState, useEffect } from "react";
@@ -61,6 +76,47 @@ export const MSegmentedControl: React.FC = (): JSX.Element => {
     />;
 }
 ```
+- 0.77 Example
+
+```js
+import React, { useState } from "react";
+import { View, StyleSheet, Text } from "react-native";
+import SegmentedControl from "@react-native-segmented-control/segmented-control";
+
+export const MSegmentedControl: React.FC = (): JSX.Element => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const testIDS = ['btn-1', 'btn-2'];
+
+  return (
+    <View style={styles.container}>
+      <SegmentedControl
+        values={["One", "Two"]}
+        selectedIndex={selectedIndex}
+        onChange={(event) => {
+          setSelectedIndex(event.nativeEvent.selectedSegmentIndex);
+        }}
+        testIDS={testIDS}
+        style={styles.segmentedControl}
+      />
+      <Text style={{marginTop: 20}}>
+        当前选中 testID: {testIDS[selectedIndex]}
+      </Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  segmentedControl: {
+    width: "60%", 
+    height: 40,
+  },
+});
+```
 
 ## Constraints
 
@@ -68,10 +124,8 @@ export const MSegmentedControl: React.FC = (): JSX.Element => {
 
 This document is verified based on the following versions:
 
-1. RNOH：0.72.11; SDK：OpenHarmony(api11) 4.1.0.53; IDE：DevEco Studio 4.1.3.412; ROM：2.0.0.52;
-2. RNOH：0.72.13; SDK：HarmonyOS NEXT Developer Preview1; IDE：DevEco Studio 4.1.3.500; ROM：2.0.0.58;
-3. RNOH：0.72.27; SDK：HarmonyOS-Next-DB1 5.0.0.29(SP1) ; IDE：DevEco Studio 5.0.3.400; ROM：3.0.0.25;
-4. RNOH：0.72.29; SDK：HarmonyOS NEXT Developer Beta6 5.0.0.61; IDE：DevEco Studio 5.0.3.706; ROM：3.0.0.61;
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## Properties
 
