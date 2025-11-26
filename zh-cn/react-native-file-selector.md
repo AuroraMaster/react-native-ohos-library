@@ -15,9 +15,16 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-file-selector)
 
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-file-selector`，具体版本所属关系如下：
+
+| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
+| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
+| 1.0.2  | @react-native-oh-tpl/react-native-file-selector | [Github](https://github.com/react-native-oh-library/react-native-file-selector) | [Github Releases](https://github.com/react-native-oh-library/react-native-file-selector/releases) | 0.72 |
+|1.1.0 | @react-native-ohos/react-native-file-selector   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-file-selector) | [GitCode Releases]() | 0.77 |
+
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-file-selector Releases](https://github.com/react-native-oh-library/react-native-file-selector/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +32,19 @@
 #### **npm**
 
 ```bash
+# 1.0.2
 npm install @react-native-oh-tpl/react-native-file-selector
+# 1.1.0
+npm install @react-native-ohos/react-native-file-selector
 ```
 
 #### **yarn**
 
 ```bash
+# 1.0.2
 yarn add @react-native-oh-tpl/react-native-file-selector
+# 1.1.0
+yarn add @react-native-ohos/react-native-file-selector
 ```
 
 
@@ -54,6 +67,8 @@ export default App;
 ```
 
 ## 使用 Codegen
+
+> [!TIP] V1.1.0 不需要执行 Codegen。
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
@@ -86,11 +101,19 @@ export default App;
 > [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
 
 打开 `entry/oh-package.json5`，添加以下依赖
-
+- V1.0.2
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony" : "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-file-selector": "file:../../node_modules/@react-native-oh-tpl/react-native-file-selector/harmony/file_selector.har"
+  }
+```
+
+- V1.1.0
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony" : "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-file-selector": "file:../../node_modules/@react-native-ohos/react-native-file-selector/harmony/file_selector.har"
   }
 ```
 
@@ -115,7 +138,10 @@ ohpm install
 ```diff
   ...
 import type {RNPackageContext, RNPackage} from '@rnoh/react-native-openharmony/ts';
+// V1.0.2
 +import {RNFileSelectorPackage}  from '@react-native-oh-tpl/react-native-file-selector/ts';
+// V1.1.0
++import {RNFileSelectorPackage}  from '@react-native-ohos/react-native-file-selector/ts';
 
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -125,7 +151,70 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.运行
+### 4.配置 CMakeLists 和引入 SqliteStoragePackage
+
+> [!TIP] V1.1.0 需要执行 
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-file-selector/src/main/cpp" ./file-selector)
+
+
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_file_selector)
+# RNOH_END: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "FileSelectorPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++       std::make_shared<FileSelectorPackage>(ctx),
+    };
+}
+```
+
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -144,7 +233,10 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-file-selector Releases](https://github.com/react-native-oh-library/react-native-file-selector/releases)
+在以下版本验证通过：
+
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.1 Release SDK; IDE：DevEco Studio 5.1.1.840; ROM：6.0.0;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release SDK; IDE：DevEco Studio 5.1.1.840; ROM：6.0.0;
 
 ## 属性
 

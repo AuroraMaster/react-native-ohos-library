@@ -14,9 +14,16 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-charts-wrapper)
 
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-charts-wrapper`，具体版本所属关系如下：
+
+| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
+| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
+| 0.6.0  | @react-native-oh-tpl/react-native-charts-wrapper | [Github](https://github.com/react-native-oh-library/react-native-charts-wrapper) | [Github Releases](https://github.com/react-native-oh-library/react-native-charts-wrapper/releases) | 0.72 |
+| 0.7.0 | @react-native-ohos/react-native-charts-wrapper   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-charts-wrapper) | [GitCode Releases]() | 0.77 |
+
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-charts-wrapper/Releases](https://github.com/react-native-oh-library/react-native-charts-wrapper/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +32,21 @@
 #### **npm**
 
 ```bash
+# 0.6.0
 npm install @react-native-oh-tpl/react-native-charts-wrapper
+
+# 0.7.0
+npm install @react-native-ohos/react-native-charts-wrapper
 ```
 
 #### **yarn**
 
 ```bash
+# 0.6.0
 yarn add @react-native-oh-tpl/react-native-charts-wrapper
+
+# 0.7.0
+yarn add @react-native-ohos/react-native-charts-wrapper
 ```
 
 <!-- tabs:end -->
@@ -104,7 +119,7 @@ export default BarChartDemo;
 > [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
 
 打开 `entry/oh-package.json5`，添加以下依赖
-
+- 0.6.0
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -112,6 +127,13 @@ export default BarChartDemo;
   }
 ```
 
+- 0.7.0
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-charts-wrapper": "file:../../node_modules/@react-native-ohos/react-native-charts-wrapper/harmony/charts_wrapper.har"
+  }
+```
 点击右上角的 `sync` 按钮
 
 或者在终端执行：
@@ -131,6 +153,7 @@ ohpm install
 
 ```diff
   ...
+  // 0.6.0
 + import {
 +  BarCharts,
 +  LineCharts,
@@ -142,6 +165,19 @@ ohpm install
 +  CandleStickCharts,
 +  CombinedCharts
 + } from "@react-native-oh-tpl/react-native-charts-wrapper"
+
+  // 0.7.0
++ import {
++  BarCharts,
++  LineCharts,
++  HorizontalBarCharts,
++  BubbleCharts,
++  PieCharts,
++  RadarCharts,
++  ScatterCharts,
++  CandleStickCharts,
++  CombinedCharts
++ } from "@react-native-ohos/react-native-charts-wrapper"
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -231,7 +267,11 @@ const arkTsComponentNames: Array<string> = [
 
 ```diff
   ...
+  // 0.6.0
 + import {ChartsWrapperPackage} from '@react-native-oh-tpl/react-native-charts-wrapper/ts';
+
+  // 0.7.0
++ import {ChartsWrapperPackage} from '@react-native-ohos/react-native-charts-wrapper/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -259,7 +299,10 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-charts-wrapper/Releases](https://github.com/react-native-oh-library/react-native-charts-wrapper/releases)
+在以下版本验证通过：
+
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.1 Release SDK; IDE：DevEco Studio 5.1.1.840; ROM：6.0.0;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release SDK; IDE：DevEco Studio 5.1.1.840; ROM：6.0.0;
 
 ## 属性
 

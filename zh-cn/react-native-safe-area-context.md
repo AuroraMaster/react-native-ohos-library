@@ -12,11 +12,18 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-safe-area-context)
+> [!TIP] [Github 地址](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-area-context)
+
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-safe-area-context`，具体版本所属关系如下：
+
+| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
+| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
+| 4.7.4  | @react-native-oh-tpl/react-native-safe-area-context | [Github](https://github.com/react-native-oh-library/react-native-safe-area-context) | [Github Releases](https://github.com/react-native-oh-library/react-native-safe-area-context/releases) | 0.72 |
+| 5.1.1 | @react-native-ohos/react-native-safe-area-context   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-area-context) | [GitCode Releases]() | 0.77 |
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-safe-area-context Releases](https://github.com/react-native-oh-library/react-native-safe-area-context/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +32,21 @@
 #### **npm**
 
 ```bash
+# V4.7.4
 npm install @react-native-oh-tpl/react-native-safe-area-context
+
+# V5.1.1
+npm install @react-native-ohos/react-native-safe-area-context
 ```
 
 #### **yarn**
 
 ```bash
+# V4.7.4
 yarn add @react-native-oh-tpl/react-native-safe-area-context
+
+# V5.1.1
+yarn add @react-native-ohos/react-native-safe-area-context
 ```
 
 <!-- tabs:end -->
@@ -53,7 +68,7 @@ const App = () => {
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       <SafeAreaView style={{ flex: 1, backgroundColor: "red" }}>
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           <Text>hello</Text>
         </View>
       </SafeAreaView>
@@ -94,11 +109,23 @@ export default App;
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- V4.7.4
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
     "@react-native-oh-tpl/react-native-safe-area-context": "file:../../node_modules/@react-native-oh-tpl/react-native-safe-area-context/harmony/safe_area.har"
+  }
+```
+
+- V5.1.1
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+
+    "@react-native-ohos/react-native-safe-area-context": "file:../../node_modules/@react-native-ohos/react-native-safe-area-context/harmony/safe_area.har"
   }
 ```
 
@@ -120,7 +147,6 @@ ohpm install
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
 ```diff
-```diff
 project(rnapp)
 cmake_minimum_required(VERSION 3.4.1)
 set(CMAKE_SKIP_BUILD_RPATH TRUE)
@@ -138,7 +164,13 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+# V4.7.4
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-safe-area-context/src/main/cpp" ./safe-area)
+
+# V5.1.1
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-safe-area-context/src/main/cpp" ./safe-area)
+
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -181,8 +213,11 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
 ...
-
+// V4.7.4
 + import {SafeAreaViewPackage} from '@react-native-oh-tpl/react-native-safe-area-context/ts';
+
+// V5.1.1
++ import {SafeAreaViewPackage} from '@react-native-ohos/react-native-safe-area-context/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -209,7 +244,11 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-safe-area-context Releases](https://github.com/react-native-oh-library/react-native-safe-area-context/releases)
+在以下版本验证通过：
+
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.1 Release SDK; IDE：DevEco Studio 5.1.1.840; ROM：6.0.0;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release SDK; IDE：DevEco Studio 5.1.1.840; ROM：6.0.0;
+
 
 ## 属性
 
@@ -219,24 +258,24 @@ ohpm install
 
 **组件 SafeAreaProvider**
 
-You should add `SafeAreaProvider` in your app root component. You may need to add it in other places like the root of modals and routes when using react-native-screens.
+您应该在应用的根组件中添加 `SafeAreaProvider`。在使用 react-native-screens 时，您可能还需要在其他地方添加它，例如模态框和路由的根部。
 
-Note that providers should not be inside a View that is animated with Animated or inside a ScrollView since it can cause very frequent updates.
+请注意，Provider 不应放在使用 Animated 动画的 View 内或 ScrollView 内，因为这可能导致非常频繁的更新。
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
-| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | -------- | -------- | -------- |
-| `Props`          | Accepts all View props. Has a default style of {flex: 1}.                                                                                                       | object | no       | All      | yes      |
-| `initialMetrics` | Can be used to provide the initial value for frame and insets, this allows rendering immediatly. See optimization for more information on how to use this prop. | object | no       | All      | yes      |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | -------- | -------- | -------- |
+| `Props` | 接受所有 View 属性。默认样式为 {flex: 1}。 | object | no | All | yes |
+| `initialMetrics` | 可用于提供 frame 和 insets 的初始值，这允许立即渲染。有关如何使用此属性的更多信息，请参阅优化部分。 | object | no | All | yes |
 
 **组件 SafeAreaView**
 
-`SafeAreaView` is a regular View component with the safe area insets applied as padding or margin.
+`SafeAreaView` 是一个常规的 View 组件，并将安全区域插入（insets）应用为 padding 或 margin。
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
-| ------- | ----------------------------------------------------------------------------------------------- | ------ | -------- | -------- | -------- |
-| `Props` | Accepts all View props. Has a default style of {flex: 1}.                                       | object | no       | All      | yes      |
-| `edges` | Sets the edges to apply the safe area insets to. Defaults to all.                               | array  | no       | All      | yes      |
-| `mode`  | Optional, padding (default) or margin. Apply the safe area to either the padding or the margin. | string | no       | All      | yes      |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | -------- | -------- | -------- |
+| `Props` | 接受所有 View 属性。默认样式为 {flex: 1}。 | object | no | All | yes |
+| `edges` | 设置要应用安全区域插入的边。默认为全部。 | array | no | All | yes |
+| `mode` | 可选，padding（默认）或 margin。将安全区域应用到 padding 或 margin。 | string | no | All | yes |
 
 # API
 
@@ -244,14 +283,14 @@ Note that providers should not be inside a View that is animated with Animated o
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name | Description | Type     | Required | Platform | HarmonyOS Support  |
-| ---- | ----------- |----------|----------| -------- | ------------------ |
-| useSafeAreaInsets  | Returns the safe area insets of the nearest provider.         | object   | no       | All      | yes   |
-| useSafeAreaFrame  | Returns the frame of the nearest provider. This can be used as an alternative to the Dimensions module.       | object | no       | All      | yes   |
-| SafeAreaInsetsContext  | React Context with the value of the safe area insets.         | object | no       | All      | yes  |
-| withSafeAreaInsets  | Higher order component that provides safe area insets as the insets prop.         | function | no       | All      | yes   |
-| SafeAreaFrameContext  | React Context with the value of the safe area frame.         | object | no       | All      | yes  |
-| initialWindowMetrics  | Insets and frame of the window on initial render. This can be used with the initialMetrics from SafeAreaProvider  | object | no       | All      | yes   |
+| Name | Description | Type | Required | Platform | HarmonyOS Support  |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | -------- | ------------------ |
+| useSafeAreaInsets | 返回最近 Provider 的安全区域插入（insets）。 | object | no | All | yes |
+| useSafeAreaFrame | 返回最近 Provider 的 frame。这可以替代 Dimensions 模块使用。 | object | no | All | yes |
+| SafeAreaInsetsContext | 提供安全区域插入（insets）值的 React Context。 | object | no | All | yes |
+| withSafeAreaInsets<sup>5.1.1+</sup> | 高阶组件，将安全区域插入（insets）作为 insets 属性提供。 | function | no | All | yes |
+| SafeAreaFrameContext | 提供安全区域 frame 值的 React Context。 | object | no | All | yes |
+| initialWindowMetrics | 初始渲染时窗口的插入（insets）和 frame。这可以与 SafeAreaProvider 的 initialMetrics 一起使用。 | object | no | All | yes |
 
 ## 遗留问题
 

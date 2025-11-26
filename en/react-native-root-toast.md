@@ -13,7 +13,11 @@
     </a>
 </p>
 
-> [!TIP] [GitHub address](https://github.com/magicismight/react-native-root-toast/tree/v3.5.1)
+> [!TIP] [GitHub address](https://github.com/magicismight/react-native-root-toast)
+
+| Version   |Supported RN Version  |
+| --------  | -------------------- |
+| 4.0.1  |  0.72 / 0.77|
 
 ## Installation and Usage
 
@@ -24,13 +28,13 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm install react-native-root-toast@3.5.1
+npm install react-native-root-toast@4.0.1
 ```
 
 #### **yarn**
 
 ```bash
-yarn add react-native-root-toast@3.5.1
+yarn add react-native-root-toast@4.0.1
 ```
 
 <!-- tabs:end -->
@@ -77,10 +81,13 @@ export function ReactNativeRootToastExample() {
 
 ### Compatibility
 
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+
 This document is verified based on the following versions:
 
-1. RNOH: 0.72.20-CAPI; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
-2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+1. RNOH: 0.72.20-CAPI; SDK:HarmonyOS NEXT Developer Beta1; IDE:DevEco Studio 5.0.3.200; ROM:3.0.0.18;
+2. RNOH:0.72.33; SDK:OpenHarmony 5.0.0.71(API Version 12 Release); IDE:DevEco Studio 5.0.3.900; ROM:NEXT.0.0.71;
+3. RNOH:0.77.18; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
 
 ## Properties
 

@@ -14,25 +14,35 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-file-selector)
 
+The repository for this third-party library has been migrated to Gitcode, and it now supports direct download from npm. The new package name is: `@react-native-ohos/react-native-file-selector`. The specific version relationships are as follows:
+
+| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
+| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
+| 1.0.2  | @react-native-oh-tpl/react-native-file-selector | [Github](https://github.com/react-native-oh-library/react-native-file-selector) | [Github Releases](https://github.com/react-native-oh-library/react-native-file-selector/releases) | 0.72 |
+|1.1.0 | @react-native-ohos/react-native-file-selector   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-file-selector) | [GitCode Releases]() | 0.77 |
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library and download an applicable .tgz package: [@react-native-oh-tpl/react-native-file-selector Releases](https://github.com/react-native-oh-library/react-native-file-selector/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
-
-
-
 
 #### **npm**
 
 ```bash
+# 1.0.2
 npm install @react-native-oh-tpl/react-native-file-selector
+# 1.1.0
+npm install @react-native-ohos/react-native-file-selector
 ```
 
 #### **yarn**
 
 ```bash
+# 1.0.2
 yarn add @react-native-oh-tpl/react-native-file-selector
+# 1.1.0
+yarn add @react-native-ohos/react-native-file-selector
 ```
 
 
@@ -88,6 +98,7 @@ Method 1 (recommended): Use the HAR file.
 
 Open entry/oh-package.json5 file and add the following dependencies:
 
+- V1.0.2
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony" : "file:../react_native_openharmony",
@@ -95,6 +106,13 @@ Open entry/oh-package.json5 file and add the following dependencies:
   }
 ```
 
+- V1.1.0
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony" : "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-file-selector": "file:../../node_modules/@react-native-ohos/react-native-file-selector/harmony/file_selector.har"
+  }
+```
 Click the sync button in the upper right corner.
 
 Alternatively, run the following instruction on the terminal:
@@ -116,7 +134,10 @@ Open the entry/src/main/ets/RNPackagesFactory.ts file and add the following code
 ```diff
   ...
 import type {RNPackageContext, RNPackage} from '@rnoh/react-native-openharmony/ts';
+// V1.0.2
 +import {RNFileSelectorPackage}  from '@react-native-oh-tpl/react-native-file-selector/ts';
+// V1.1.0
++import {RNFileSelectorPackage}  from '@react-native-ohos/react-native-file-selector/ts';
 
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -145,7 +166,9 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-file-selector Releases](https://github.com/react-native-oh-library/react-native-file-selector/releases)
+This document is verified based on the following versions:
+1. RNOH:0.72.96; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
+2. RNOH:0.77.18; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
 
 ## Properties
 

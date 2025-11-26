@@ -14,12 +14,18 @@ Template version: v0.2.2
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-charts-wrapper)
 
+The repository for this third-party library has been migrated to Gitcode, and it now supports direct download from npm. The new package name is: `@react-native-ohos/react-native-charts-wrapper`. The specific version relationships are as follows:
+
+| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
+| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
+| 0.6.0  | @react-native-oh-tpl/react-native-charts-wrapper | [Github](https://github.com/react-native-oh-library/react-native-charts-wrapper) | [Github Releases](https://github.com/react-native-oh-library/react-native-charts-wrapper/releases) | 0.72 |
+| 0.7.0 | @react-native-ohos/react-native-charts-wrapper   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-charts-wrapper) | [GitCode Releases]() | 0.77 |
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-charts-wrapper/Releases](https://github.com/react-native-oh-library/react-native-charts-wrapper/releases). For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
-
 
 
 <!-- tabs:start -->
@@ -27,13 +33,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# 0.6.0
 npm install @react-native-oh-tpl/react-native-charts-wrapper
+
+# 0.7.0
+npm install @react-native-ohos/react-native-charts-wrapper
 ```
 
 #### **yarn**
 
 ```bash
+# 0.6.0
 yarn add @react-native-oh-tpl/react-native-charts-wrapper
+
+# 0.7.0
+yarn add @react-native-ohos/react-native-charts-wrapper
 ```
 
 <!-- tabs:end -->
@@ -104,10 +118,19 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
+- 0.6.0
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-charts-wrapper": "file:../../node_modules/@react-native-oh-tpl/react-native-charts-wrapper/harmony/charts_wrapper.har"
+  }
+```
+
+- 0.7.0
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-charts-wrapper": "file:../../node_modules/@react-native-ohos/react-native-charts-wrapper/harmony/charts_wrapper.har"
   }
 ```
 
@@ -130,6 +153,7 @@ Find `function buildCustomRNComponent()`, which is usually located in `entry/src
 
 ```diff
   ...
+  // 0.6.0
 + import {
 +  BarCharts,
 +  LineCharts,
@@ -141,6 +165,19 @@ Find `function buildCustomRNComponent()`, which is usually located in `entry/src
 +  CandleStickCharts,
 +  CombinedCharts
 + } from "@react-native-oh-tpl/react-native-charts-wrapper"
+
+  // 0.7.0
++ import {
++  BarCharts,
++  LineCharts,
++  HorizontalBarCharts,
++  BubbleCharts,
++  PieCharts,
++  RadarCharts,
++  ScatterCharts,
++  CandleStickCharts,
++  CombinedCharts
++ } from "@react-native-ohos/react-native-charts-wrapper"
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -230,7 +267,11 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
+  // 0.6.0
 + import {ChartsWrapperPackage} from '@react-native-oh-tpl/react-native-charts-wrapper/ts';
+
+  // 0.7.0
++ import {ChartsWrapperPackage} from '@react-native-ohos/react-native-charts-wrapper/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -259,7 +300,9 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-charts-wrapper/Releases](https://github.com/react-native-oh-library/react-native-charts-wrapper/releases)
+This document is verified based on the following versions:
+1. RNOH:0.72.96; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
+2. RNOH:0.77.18; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
 
 ## Properties
 
