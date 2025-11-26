@@ -14,17 +14,17 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-video)
 
-## Installation and Usage
-
 Find the matching version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases). For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
-| version | Releases info                                        | Support RN version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 5.2.1      | [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases) | 0.72       |
-| 6.13.0      | [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases) | 0.72       |
-| 6.13.0     | [@react-native-ohos/react-native-video Releases]()           | 0.77       |
+| version | Package name |Releases info                                                | Support RN version |
+| ------- | ------- | ------------------------------------------------------------ | ------------------ |
+| 5.2.1   | @react-native-oh-tpl/react-native-video | [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases) |0.72|
+| 6.13.1  | @react-native-oh-tpl/react-native-video | [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases) |0.72|
+| 6.14.0  | @react-native-ohos/react-native-video | [@react-native-ohos/react-native-video Releases]() |0.77|
 
 Go to the project directory and execute the following instruction:
+
+## Installation and Usage
 
 <!-- tabs:start -->
 
@@ -59,7 +59,7 @@ import React, { useState, useRef } from "react";
 import { Button, View, ScrollView, StyleSheet, Switch, Text, TextInput } from "react-native";
 import RNCVideo from "react-native-video";
 
-// V6.13.0
+// V6.13.1
 import {
   type OnPlaybackStateChangedData,
   OnSeekData,
@@ -88,7 +88,7 @@ function RNCVideoDemo() {
   // V5.2.1
   const [onPlaybackStalled, setOnPlaybackStalled] = useState("onPlaybackStalled");
 
-  // V6.13.0
+  // V6.13.1
   const [onPlaybackStateChanged, setPlaybackStateChanged] = useState("onPlaybackStateChanged");
    
   const [onPlaybackResume, setOnPlaybackResume] = useState("onPlaybackResume");
@@ -147,7 +147,7 @@ function RNCVideoDemo() {
 		// V5.2.1
 		<Text style={styles.label}>{onPlaybackStalled}</Text>
 
-		// V6.13.0
+		// V6.13.1
         <Text style={styles.label}>{onPlaybackStateChanged}</Text>
 
         <Text style={styles.label}>{onPlaybackResume}</Text>
@@ -379,7 +379,7 @@ function RNCVideoDemo() {
             );
           }}
           
-          // V6.13.0
+          // V6.13.1
           onSeek = {(data: OnSeekData) => {
             console.log('onSeek');
           }}
@@ -406,7 +406,7 @@ function RNCVideoDemo() {
             setOnPlaybackResume("onPlaybackResume :true");
           }}
 
-          // V6.13.0
+          // V6.13.1
           onPlaybackStateChanged={(data: OnPlaybackStateChangedData) => {
             console.log('onPlaybackStateChanged ' + JSON.stringify(data));
             setPlaybackStateChanged("onPlaybackStateChanged : " + JSON.stringify(data));
@@ -677,19 +677,16 @@ ohpm install
 
 Then build and run the code.
 
-## Constraints
+##  Constraints
 
 ### Compatibility
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-library/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases)
+Verified in the following versions.
 
-| Version | Releases info                                                | Support RN version |
-| ------- | ------------------------------------------------------------ | ------------------ |
-| 5.2.1   | [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases) | 0.72               |
-| 6.13.0  | [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases) | 0.72               |
-| 6.13.0  | [@react-native-ohos/react-native-video Releases]()           | 0.77               |
+1. RNOH: 0.72.27; SDK: HarmonyOS 5.1.1 Release SDK; IDE: DevEco Studio 5.1.1 Release; ROM: 5.0.1.120;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## Properties
 
