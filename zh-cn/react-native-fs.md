@@ -8,10 +8,11 @@
 
 该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-fs`，具体版本所属关系如下：
 
-| Version                     | Package Name                         | Repository                                                                       | Release                                                                                            |
-| --------------------------- | ------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| <= 2.20.0-0.1.14@deprecated | @react-native-oh-tpl/react-native-fs | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-fs) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-fs/releases) |
-| >= 2.20.1                   | @react-native-ohos/react-native-fs   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-fs)                 | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fs/releases)                 |
+| Version                     | Package Name                         | Repository                                                                        | Release                                                                                            | Support RN version |
+|-----------------------------|--------------------------------------|-----------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|--------------------|
+| <= 2.20.0-0.1.14@deprecated | @react-native-oh-tpl/react-native-fs | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-fs)  | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-fs/releases) | 0.72               |
+| 2.20.1                      | @react-native-ohos/react-native-fs   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-fs)              | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fs/releases)             | 0.72               |
+| 2.21.0                      | @react-native-ohos/react-native-fs   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-fs)              | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fs/releases)             | 0.77               |
 
 ## 1. 安装与使用
 
@@ -262,8 +263,11 @@ ohpm install
 
 ### 3.1. 兼容性
 
+在以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/react-native-fs Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fs/releases)
+1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
+
+2. RNOH:  0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 4. 静态方法
 
@@ -272,18 +276,18 @@ ohpm install
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
 | Name                         | Description | Type   | Required | Platform        | HarmonyOS Support | Remark                   |
-| :--------------------------- | ----------- | ------ | -------- | --------------- | ----------------- | ------------------------ |
-| DocumentDirectoryPath        | System Path | string | No       | iOS/Android     | yes               |                          |
-| CachesDirectoryPath          | System Path | string | No       | iOS/Android     | yes               |                          |
-| MainBundlePath               | System Path | string | No       | iOS             | yes               |                          |
-| ExternalCachesDirectoryPath  | System Path | string | No       | Android         | No                | Android only             |
-| DownloadDirectoryPath        | System Path | string | No       | Android/Windows | No                | not available on Harmony |
-| TemporaryDirectoryPath       | System Path | string | No       | iOS/Android     | yes               |                          |
-| LibraryDirectoryPath         | System Path | string | No       | iOS             | yes               |                          |
-| ExternalDirectoryPath        | System Path | string | No       | Android         | No                | Android only             |
-| ExternalStorageDirectoryPath | System Path | string | No       | Android         | No                | Android only             |
-| PicturesDirectoryPath        | System Path | string | No       | Windows         | No                | Windows only             |
-| RoamingDirectoryPath         | System Path | string | No       | Windows         | No                | Windows only             |
+| :--------------------------- |-----------| ------ | -------- | --------------- | ----------------- | ------------------------ |
+| DocumentDirectoryPath        | 文档目录      | string | No       | iOS/Android     | yes               |                          |
+| CachesDirectoryPath          | 缓存目录      | string | No       | iOS/Android     | yes               |                          |
+| MainBundlePath               | 主包目录      | string | No       | iOS             | yes               |                          |
+| ExternalCachesDirectoryPath  | 外部缓存目录 | string | No       | Android         | No                | Android only             |
+| DownloadDirectoryPath        | 下载目录 | string | No       | Android/Windows | No                | not available on Harmony |
+| TemporaryDirectoryPath       | 临时目录 | string | No       | iOS/Android     | yes               |                          |
+| LibraryDirectoryPath         | 库目录 | string | No       | iOS             | yes               |                          |
+| ExternalDirectoryPath        | 外部存储中的应用私有目录 | string | No       | Android         | No                | Android only             |
+| ExternalStorageDirectoryPath | 外部存储根目录 | string | No       | Android         | No                | Android only             |
+| PicturesDirectoryPath        | 图片目录 | string | No       | Windows         | No                | Windows only             |
+| RoamingDirectoryPath         | 漫游目录 | string | No       | Windows         | No                | Windows only             |
 
 ## 5. API
 
@@ -291,44 +295,44 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name                    | Description                                                                                                                                                                   | Type     | Platform    | Required | HarmonyOS Support | Remark            |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- | -------- | ----------------- | ----------------- |
-| mkdir                   | Create a directory at `filepath`.                                                                                                                                             | function | Android     | No       | yes               |                   |
-| exists                  | Check if the item exists at `filepath`.                                                                                                                                       | function | iOS/Android | No       | yes               |                   |
-| readFile                | Reads the file at `path` and return contents.                                                                                                                                 | function | iOS/Android | No       | yes               |                   |
-| readFileAssets          | Reads the file at `path` in the harmony app's assets folder and return contents.                                                                                              | function | Android     | No       | yes               |                   |
-| writeFile               | Write the `contents` to `filepath`.                                                                                                                                           | function | iOS/Android | No       | yes               |                   |
-| appendFile              | Append the `contents` to `filepath`.                                                                                                                                          | function | iOS/Android | No       | yes               |                   |
-| copyFile                | Copies the file located at `filepath` to `destPath`.                                                                                                                          | function | iOS         | No       | yes               |                   |
-| unlink                  | Unlinks the item at `filepath`.                                                                                                                                               | function | iOS/Android | No       | yes               |                   |
-| hash                    | Reads the file at `path` and returns its checksum as determined by `algorithm`, which can be one of `md5`, `sha1`, `sha256`.                                                  | function | iOS/Android | No       | partially         |                   |
-| moveFile                | Moves the file located at `filepath` to `destPath`.                                                                                                                           | function | iOS/Android | No       | yes               |                   |
-| read                    | Reads `length` bytes from the given `position` of the file at `path` and returns contents.                                                                                    | function | iOS/Android | No       | yes               |                   |
-| write                   | Write the `contents` to `filepath` at the given random access position.                                                                                                       | function | iOS/Android | No       | yes               |                   |
-| touch                   | Sets the modification timestamp `mtime`of the file at `filepath`.                                                                                                             | function | iOS/Android | No       | yes         |                   |
-| stat                    | Stats an item at `filepath`.                                                                                                                                                  | function | iOS/Android | No       | yes               |                   |
-| readDir                 | Reads the contents of `path`.                                                                                                                                                 | function | iOS/Android | No       | yes               |                   |
-| readDirAssets           | Reads the contents of `dirpath ` in the Android app's assets folder.                                                                                                          | function | Android     | No       | No                | Android only      |
-| readdir                 | Node.js style version of `readDir` that returns only the names.                                                                                                               | function | iOS/Android | No       | No                | No API on Harmony |
-| readFileRes             | Reads the file named `filename` in the Android app's `res` folder and return contents.                                                                                        | function | Android     | No       | No                | Android only      |
-| copyFolder              | Copies the contents located at `srcFolderPath` to `destFolderPath`.                                                                                                           | function | Windows     | No       | No                | Windows only      |
-| copyFileAssets          | Copies the file at `filepath` in the Android app's assets folder and copies it to the given `destPath ` path.                                                                 | function | Android     | No       | No                | Android only      |
-| copyFileRes             | Copies the file named `filename` in the Android app's res folder and copies it to the given `destPath ` path.                                                                 | function | Android     | No       | No                | Android only      |
-| copyAssetsFileIOS       | Reads an image file from Camera Roll and writes to `destPath`.                                                                                                                | function | iOS         | No       | No                | iOS only          |
-| copyAssetsVideoIOS      | Copies a video from assets-library, that is prefixed with 'assets-library://asset/asset.MOV?...' to a specific destination.                                                   | function | iOS         | No       | No                | iOS only          |
-| existsAssets            | Check in the Android assets folder if the item exists.                                                                                                                        | function | Android     | No       | yes               |                   |
-| existsRes               | Check in the Android res folder if the item named `filename` exists.                                                                                                          | function | Android     | No       | No                | Android only      |
-| downloadFile            | Abort the current download job with this ID.                                                                                                                                  | function | iOS/Android | No       | yes               |                   |
-| stopDownload            | Abort the current download job with this ID.                                                                                                                                  | function | iOS/Android | No       | No                | No API on Harmony |
-| resumeDownload          | Resume the current download job with this ID.                                                                                                                                 | function | iOS         | No       | No                | iOS only          |
-| isResumable             | Check if the the download job with this ID is resumable with `resumeDownload()`.                                                                                              | function | iOS         | No       | No                | iOS only          |
-| completeHandlerIOS      | For use when using background downloads, tell iOS you are done handling a completed download.                                                                                 | function | iOS         | No       | No                | iOS only          |
-| uploadFiles             | Percentage can be computed easily by dividing `totalBytesSent` by `totalBytesExpectedToSend`.                                                                                 | function | iOS/Android | No       | No                | No API on Harmony |
-| stopUpload              | Abort the current upload job with this ID.                                                                                                                                    | function | iOS         | No       | No                | iOS only          |
-| getFSInfo               | Returns an object with the following properties.                                                                                                                              | function | iOS/Android | No       | No                | No API on Harmony |
-| scanFile                | Scan the file using [Media Scanner](https://developer.android.com/reference/android/media/MediaScannerConnection).                                                            | function | Android     | No       | No                | Android only      |
-| getAllExternalFilesDirs | Returns an array with the absolute paths to application-specific directories on all shared/external storage devices where the application can place persistent files it owns. | function | Android     | No       | No                | Android only      |
-| pathForGroup            | Returns the absolute path to the directory shared for all applications with the same security group identifier.                                                               | function | iOS         | No       | No                | iOS only          |
+| Name                    | Description                                                                                                               | Type     | Platform    | Required | HarmonyOS Support    | Remark            |
+| ----------------------- |---------------------------------------------------------------------------------------------------------------------------| -------- | ----------- | -------- |----------------------| ----------------- |
+| mkdir                   | 在`filepath`路径创建目录                                                                                                         | function | Android     | No       | yes                  |                   |
+| exists                  | 在`filepath`路径检查是否存在该条目                                                                                                    | function | iOS/Android | No       | yes                  |                   |
+| readFile                | 读取`path`处的文件并返回内容                                                                                                         | function | iOS/Android | No       | yes                  |                   |
+| readFileAssets          | 读取应用资源文件夹中`path`处的文件并返回内容                                                                                                 | function | Android     | No       | yes                  |                   |
+| writeFile               | 将内容写入`filepath`路径文件中                                                                                                      | function | iOS/Android | No       | yes                  |                   |
+| appendFile              | 将内容追加到`filepath`路径文件中                                                                                                     | function | iOS/Android | No       | yes                  |                   |
+| copyFile                | 将`filepath`处文件复制到`destPath`                                                                                               | function | iOS         | No       | yes                  |                   |
+| unlink                  | 删除`filepath`处的条目                                                                                                          | function | iOS/Android | No       | yes                  |                   |
+| hash                    | 读取`path`处的文件，并根据指定的`algorithm`算法返回其校验，算法可以是 md5、sha1、sha256 中的一种 | function | iOS/Android | No       | partially(md5,sha1,sha256) |                   |
+| moveFile                | 将`filepath`处文件移动到`destPath`处                                                                                              | function | iOS/Android | No       | yes                  |                   |
+| read                    | 读取`path`处文件中从指定`position`开始的`length`个字节，并返回内容                                                                             | function | iOS/Android | No       | yes                  |                   |
+| write                   | 将`contents`写入`filepath`中指定的随机访问位置                                                                                         | function | iOS/Android | No       | yes                  |                   |
+| touch                   | 设置`filepath`处文件的修改时间戳`mtime`                                                                                              | function | iOS/Android | No       | yes                  |                   |
+| stat                    | 获取`filepath`处条目的状态信息                                                                                                      | function | iOS/Android | No       | yes                  |                   |
+| readDir                 | 读取`path`路径内容                                                                                                              | function | iOS/Android | No       | yes                  |                   |
+| readDirAssets           | 读取 Android 应用资源文件夹中`dirpath`路径的内容                                                                                         | function | Android     | No       | No                   | Android only      |
+| readdir                 | 以 Node.js 风格读取目录内容，仅返回名称                                                                                                  | function | iOS/Android | No       | No                   | No API on Harmony |
+| readFileRes             | 读取 Android 应用`res`文件夹中名为`filename`的文件并返回内容                                                                                | function | Android     | No       | No                   | Android only      |
+| copyFolder              | 将`srcFolderPath`路径下的内容复制到`destFolderPath`                                                                                 | function | Windows     | No       | No                   | Windows only      |
+| copyFileAssets          | 将 Android 应用资源文件夹中`filepath`处的文件复制到指定的`destPath `路径                                                                       | function | Android     | No       | No                   | Android only      |
+| copyFileRes             | 将 Android 应用`res`文件夹中名为`filename`的文件复制到指定的`destPath`路径                                                                    | function | Android     | No       | No                   | Android only      |
+| copyAssetsFileIOS       | 从相机相册读取图片文件并写入`destPath`                                                                                                  | function | iOS         | No       | No                   | iOS only          |
+| copyAssetsVideoIOS      | 将前缀为 'assets-library://asset/asset.MOV?...' 的资源库视频复制到指定目标路径                                                               | function | iOS         | No       | No                   | iOS only          |
+| existsAssets            | 检查 Android 资源文件夹中是否存在该条目                                                                                                  | function | Android     | No       | yes                  |                   |
+| existsRes               | 检查 Android 资源文件夹中是否存在名为`filename`的条目                                                                                      | function | Android     | No       | No                   | Android only      |
+| downloadFile            | 下载文件                                                                                                                      | function | iOS/Android | No       | yes                  |                   |
+| stopDownload            | 中止当前具有此 ID 的下载任务                                                                                                          | function | iOS/Android | No       | No                   | No API on Harmony |
+| resumeDownload          | 恢复当前具有此 ID 的下载任务                                                                                                          | function | iOS         | No       | No                   | iOS only          |
+| isResumable             | 检查具有此 ID 的下载任务是否可通过`resumeDownload()`恢复                                                                                   | function | iOS         | No       | No                   | iOS only          |
+| completeHandlerIOS      | 在使用后台下载时，通知 iOS 系统已完成对已下载内容的处理                                                                                            | function | iOS         | No       | No                   | iOS only          |
+| uploadFiles             | 上传文件，百分比可以通过`totalBytesSent`除以`totalBytesExpectedToSend`计算得出                                                              | function | iOS/Android | No       | No                   | No API on Harmony |
+| stopUpload              | 中止当前具有此 ID 的上传任务                                                                                                          | function | iOS         | No       | No                   | iOS only          |
+| getFSInfo               | 返回文件系统的存储空间信息                                                                                                             | function | iOS/Android | No       | No                   | No API on Harmony |
+| scanFile                | 使用 [Media Scanner](https://developer.android.com/reference/android/media/MediaScannerConnection)扫描文件                      | function | Android     | No       | No                   | Android only      |
+| getAllExternalFilesDirs | 返回一个数组，包含应用程序可以存放其拥有的持久性文件的所有共享/外部存储设备上，应用专属目录的绝对路径                                                                       | function | Android     | No       | No                   | Android only      |
+| pathForGroup            | 返回所有具有相同安全组标识符的应用程序所共享的目录的绝对路径                                                                                            | function | iOS         | No       | No                   | iOS only          |
 
 ## 6. 遗留问题
 
