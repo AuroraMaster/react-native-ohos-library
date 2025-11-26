@@ -14,26 +14,35 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-slider)
 
+| Library Version | Release Information                                                     | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 4.4.3      | [@react-native-oh-tpl/slider  Releases](https://github.com/react-native-oh-library/react-native-slider/releases) | 0.72       |
+| 5.0.1      | [@react-native-ohos/slider  Releases]()       | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/slider Releases](https://github.com/react-native-oh-library/react-native-slider/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
-
 Go to the project directory and execute the following instruction:
-
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/slider
+# 0.77
+npm install @react-native-ohos/slider
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/slider
+# 0.77
+yarn add @react-native-ohos/slider
 ```
 
 <!-- tabs:end -->
@@ -91,11 +100,23 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
+* 0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
     "@react-native-oh-tpl/slider": "file:../../node_modules/@react-native-oh-tpl/slider/harmony/slider.har"
+  }
+```
+
+* 0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+
+    "@react-native-ohos/slider": "file:../../node_modules/@react-native-ohos/slider/harmony/slider.har"
   }
 ```
 
@@ -127,7 +148,10 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: add_package_subdirectories
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+# 0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/slider/src/main/cpp" ./slider)
+# 0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/slider/src/main/cpp" ./slider)
 # RNOH_END: add_package_subdirectories
 
 add_library(rnoh_app SHARED
@@ -166,7 +190,10 @@ Find `function buildCustomRNComponent()`, which is usually located in `entry/src
 
 ```diff
   ...
+  # 0.72
 + import { RNCSlider, SLIDER_TYPE } from "@react-native-oh-tpl/slider"
+  # 0.77
++ import { RNCSlider, SLIDER_TYPE } from "@react-native-ohos/slider"
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -212,9 +239,10 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+This document is verified based on the following versions:
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-library/slider Releases](https://github.com/react-native-oh-library/react-native-slider/releases)
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release SDK; IDE：DevEco Studio  6.0.0.868; ROM：6.0.0.112;
 
 ## Properties
 
