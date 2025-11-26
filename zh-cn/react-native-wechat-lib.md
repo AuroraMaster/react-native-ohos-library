@@ -15,9 +15,16 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-wechat-lib)
 
-## 安装与使用
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-ohos/react-native-wechat-lib Releases](https://github.com/react-native-oh-library/react-native-wechat-lib/releases)。
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 3.0.6     | [@react-native-ohos/react-native-wechat-lib Releases](https://github.com/react-native-oh-library/react-native-wechat-lib/releases) | 0.72       |
+| 3.1.0    | [@react-native-ohos/react-native-wechat-lib Releases]() | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -330,9 +337,10 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/react-native-wechat-lib](https://github.com/react-native-oh-library/react-native-wechat-lib/releases)
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release SDK; IDE： DevEco Studio 6.0.0.868; ROM：6.0.0.112;
 
 ## API
 
