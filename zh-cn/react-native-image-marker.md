@@ -15,9 +15,16 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-image-marker)
 
-## 安装与使用
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-image-marker Releases](https://github.com/react-native-oh-library/react-native-image-marker/releases)。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.2.6      | [@react-native-oh-tpl/react-native-image-marker Releases](https://github.com/react-native-oh-library/react-native-image-marker/releases) | 0.72       |
+| 1.3.0      | [@react-native-ohos/react-native-image-marker Releases]()    | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -28,13 +35,21 @@
 #### **npm**
 
 ```bash
+# V0.72
 npm install @react-native-oh-tpl/react-native-image-marker
+
+# 0.77
+npm install @react-native-ohos/react-native-image-marker
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-image-marker
+
+# 0.77 
+yarn add @react-native-ohos/react-native-image-marker
 ```
 
 <!-- tabs:end -->
@@ -220,10 +235,21 @@ export const ImageMarkerText = () => {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- 0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-image-marker": "file:../../node_modules/@react-native-oh-tpl/react-native-image-marker/harmony/image_marker.har"
+  }
+```
+
+- 0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-image-marker": "file:../../node_modules/@react-native-ohos/react-native-image-marker/harmony/image_marker.har"
   }
 ```
 
@@ -246,8 +272,11 @@ ohpm install
 
 ```diff
   ...
+// 0.72
 + import {RNImageMarkerPackage} from '@react-native-oh-tpl/react-native-image-marker/ts';
 
+// 0.77  
++ import {RNImageMarkerPackage} from '@react-native-ohos/react-native-image-marker/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -274,9 +303,10 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-image-marker Releases](https://github.com/react-native-oh-library/react-native-image-marker/releases)
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ### 权限要求
 
@@ -305,71 +335,71 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name    | Description            | Type     | Required | Platform    | HarmonyOS Support |
-| ------- | ---------------------- | -------- | -------- | ----------- | ----------------- |
-| markImage   | mark icons on background image  | string | no  | Android/iOS | yes               |
-| markText | mark texts on background image | string | no   | Android/iOS | yes               |
+| Name    | 描述            | Type     | Required | Platform    | HarmonyOS Support |
+| ------- | --------------- | -------- | -------- | ----------- | ----------------- |
+| markImage   | 在背景图片上标记图标  | string | no  | Android/iOS | yes               |
+| markText | 在背景图片上标记文字 | string | no   | Android/iOS | yes               |
 
 ##### ImageOptions
 
-| Name        | Description             | Type   | Required | Platform    | HarmonyOS Support |
-| ----------- | ----------------------- | ------ | -------- | ----------- | ----------------- |
-| src  | image src, local image | string | yes      | iOS/Android | yes               |
-| scale | image scale `>0`.defaultValue 1 | number | no      | iOS/Android | yes               |
-| rotate | rotate image rotate `0-360`.defaultValue 0 | number | no      | iOS/Android | yes               |
-| alpha | transparent of image `0 - 1`.defaultValue 1 | number | no      | iOS/Android | yes |
+| Name        | 描述             | Type   | Required | Platform    | HarmonyOS Support |
+| ----------- | ---------------- | ------ | -------- | ----------- | ----------------- |
+| src  | 图片路径，本地图片 | string | yes      | iOS/Android | yes               |
+| scale | 图片缩放比例 `>0`，默认值为1 | number | no      | iOS/Android | yes               |
+| rotate | 图片旋转角度 `0-360`，默认值为0 | number | no      | iOS/Android | yes               |
+| alpha | 图片透明度 `0-1`，默认值为1 | number | no      | iOS/Android | yes |
 
 ##### ImageFormat
 
-| Name        | Description             | Type   | Required | Platform    | HarmonyOS Support |
-| ----------- | ----------------------- | ------ | -------- | ----------- | ----------------- |
-| png  | image type png | string | no      | iOS/Android | yes               |
-| jpg | image type jpg | string | no      | iOS/Android | yes               |
-| base64 | image type base64 | string | no      | iOS/Android | yes               |
+| Name        | 描述             | Type   | Required | Platform    | HarmonyOS Support |
+| ----------- | ---------------- | ------ | -------- | ----------- | ----------------- |
+| png  | PNG格式图片 | string | no      | iOS/Android | yes               |
+| jpg | JPG格式图片 | string | no      | iOS/Android | yes               |
+| base64 | Base64格式图片 | string | no      | iOS/Android | yes               |
 ##### PositionOptions 
 
-| Name        | Description             | Type   | Required | Platform    | HarmonyOS Support |
-| ----------- | ----------------------- | ------ | -------- | ----------- | ----------------- |
-| X  | horizontal coordinate on background image | number / string | no      | iOS/Android | yes |
-| Y  | vertical coordinate on background image | number / string | no      | iOS/Android | yes |
-| position  | position enum | [Position](#position) | no | iOS/Android | yes |
+| Name        | 描述             | Type   | Required | Platform    | HarmonyOS Support |
+| ----------- | ---------------- | ------ | -------- | ----------- | ----------------- |
+| X  | 背景图片上的水平坐标 | number / string | no      | iOS/Android | yes |
+| Y  | 背景图片上的垂直坐标 | number / string | no      | iOS/Android | yes |
+| position  | 位置枚举 | [Position](#position) | no | iOS/Android | yes |
 
 ##### Position 
 
-| Name        | Description             | Type   | Required | Platform    | HarmonyOS Support |
-| ----------- | ----------------------- | ------ | -------- | ----------- | ----------------- |
-| topLeft  | top left on background image |  string | no      | iOS/Android | yes |
-| topCenter  | top center on background image | string | no      | iOS/Android | yes |
-| topRight  |top right on background image | string | no | iOS/Android | yes |
-| bottomLeft  | bottom left on background image | string | no | iOS/Android | yes |
-| bottomCenter  | bottom center on background image | string | no | iOS/Android | yes |
-| bottomRight  | bottom right on background image| string | no | iOS/Android | yes |
-| center  | center on background image | string | no | iOS/Android | yes |
+| Name        | 描述             | Type   | Required | Platform    | HarmonyOS Support |
+| ----------- | ---------------- | ------ | -------- | ----------- | ----------------- |
+| topLeft  | 背景图片左上角 |  string | no      | iOS/Android | yes |
+| topCenter  | 背景图片顶部居中 | string | no      | iOS/Android | yes |
+| topRight  | 背景图片右上角 | string | no | iOS/Android | yes |
+| bottomLeft  | 背景图片左下角 | string | no | iOS/Android | yes |
+| bottomCenter  | 背景图片底部居中 | string | no | iOS/Android | yes |
+| bottomRight  | 背景图片右下角 | string | no | iOS/Android | yes |
+| center  | 背景图片中心 | string | no | iOS/Android | yes |
 #### markImage
 ```js
 markImage(options: ImageMarkOptions): Promise<string>;
 ```
 ##### ImageMarkOptions
 
-| Name        | Description             | Type   | Required | Platform    | HarmonyOS Support |
-| ----------- | ----------------------- | ------ | -------- | ----------- | ----------------- |
-| backgroundImage  | background image options | [ImageOptions](#imageoptions) | yes      | iOS/Android | partially               |
-| quality | image quality `0-100`, `100` is best quality. defaultValue 100 | number | no      | iOS/Android | yes               |
-| filename | save image name | string | no      | iOS/Android | yes               |
-| saveFormat | save image format 'png','jpg','base64',default 'png' | [ImageFormat](#imageformat) | no      | iOS/Android | yes               |
-| watermarkImages | watermark images | Array\<[WatermarkImageOptions](#watermarkimageoptions)> | yes      | iOS/Android | yes  |
+| Name        | 描述             | Type   | Required | Platform    | HarmonyOS Support |
+| ----------- | ---------------- | ------ | -------- | ----------- | ----------------- |
+| backgroundImage  | 背景图片选项 | [ImageOptions](#imageoptions) | yes      | iOS/Android | partially               |
+| quality | 图片质量 `0-100`，`100` 为最佳质量，默认值为100 | number | no      | iOS/Android | yes               |
+| filename | 保存的图片名称 | string | no      | iOS/Android | yes               |
+| saveFormat | 保存的图片格式 'png','jpg','base64'，默认为'png' | [ImageFormat](#imageformat) | no      | iOS/Android | yes               |
+| watermarkImages | 水印图片数组 | Array\<[WatermarkImageOptions](#watermarkimageoptions)> | yes      | iOS/Android | yes  |
 
 
 
 ##### WatermarkImageOptions 
 
-| Name        | Description             | Type   | Required | Platform    | HarmonyOS Support |
-| ----------- | ----------------------- | ------ | -------- | ----------- | ----------------- |
-| src  | image src, local image | string | yes      | iOS/Android | yes               |
-| scale | image scale `>0`.defaultValue 1 | number | no      | iOS/Android | yes               |
-| rotate | rotate image rotate `0-360`.defaultValue 0 | number | no      | iOS/Android | yes               |
-| alpha | transparent of image `0 - 1`.defaultValue 1 | number | no      | iOS/Android | yes |
-| position  | the position of icon on background image | [PositionOptions](#positionoptions) | no      | iOS/Android | yes               |
+| Name        | 描述             | Type   | Required | Platform    | HarmonyOS Support |
+| ----------- | ---------------- | ------ | -------- | ----------- | ----------------- |
+| src  | 图片路径，本地图片 | string | yes      | iOS/Android | yes               |
+| scale | 图片缩放比例 `>0`，默认值为1 | number | no      | iOS/Android | yes               |
+| rotate | 图片旋转角度 `0-360`，默认值为0 | number | no      | iOS/Android | yes               |
+| alpha | 图片透明度 `0-1`，默认值为1 | number | no      | iOS/Android | yes |
+| position  | 图标在背景图片上的位置 | [PositionOptions](#positionoptions) | no      | iOS/Android | yes               |
 
 
 
@@ -379,89 +409,89 @@ markImage(options: ImageMarkOptions): Promise<string>;
 markText(options: TextMarkOptions): Promise<string>;
 ```
 ##### TextMarkOptions
-| Name      | Description                                    | Type   | Required | Platform    | HarmonyOS Support |
-| --------- | ---------------------------------------------- | ------ | -------- | ----------- | ----------------- |
-| backgroundImage | background image options | [ImageOptions](#imageoptions) | yes      | iOS/Android | partially                |
-| watermarkTexts      | text options      | Array\<[TextOptions](#textoptions)> | yes      | iOS/Android | yes               |
-| quality      | image quality 0-100, 100 is best quality. defaultValue 100 | number | no      | iOS/Android | yes               |
-| filename      | save image name          | string | no      | iOS/Android | yes               |
-| saveFormat      | save image format 'png','jpg','base64',default 'png'           | [ImageFormat](#imageformat) | no      | iOS/Android | yes               |
+| Name      | 描述                                    | Type   | Required | Platform    | HarmonyOS Support |
+| --------- | --------------------------------------- | ------ | -------- | ----------- | ----------------- |
+| backgroundImage | 背景图片选项 | [ImageOptions](#imageoptions) | yes      | iOS/Android | partially                |
+| watermarkTexts      | 文字选项      | Array\<[TextOptions](#textoptions)> | yes      | iOS/Android | yes               |
+| quality      | 图片质量 0-100，100 为最佳质量，默认值为100 | number | no      | iOS/Android | yes               |
+| filename      | 保存的图片名称          | string | no      | iOS/Android | yes               |
+| saveFormat      | 保存的图片格式 'png','jpg','base64'，默认为'png'           | [ImageFormat](#imageformat) | no      | iOS/Android | yes               |
 
 ##### TextOptions
-| Name      | Description                                    | Type   | Required | Platform    | HarmonyOS Support |
-| --------- | ---------------------------------------------- | ------ | -------- | ----------- | ----------------- |
-| text | text content | string | yes      | iOS/Android | yes               |
-| position      | text position options | [PositionOptions](#positionoptions) | no      | iOS/Android | yes               |
-| style      | text style         | [TextStyle](#textstyle) | no      | iOS/Android | yes               |
+| Name      | 描述                                    | Type   | Required | Platform    | HarmonyOS Support |
+| --------- | --------------------------------------- | ------ | -------- | ----------- | ----------------- |
+| text | 文本内容 | string | yes      | iOS/Android | yes               |
+| position      | 文字位置选项 | [PositionOptions](#positionoptions) | no      | iOS/Android | yes               |
+| style      | 文字样式         | [TextStyle](#textstyle) | no      | iOS/Android | yes               |
 
 ##### TextStyle
 
-| Name      | Description                                    | Type   | Required | Platform    | HarmonyOS Support |
-| --------- | ---------------------------------------------- | ------ | -------- | ----------- | ----------------- |
-| color | font color | string | yes      | iOS/Android | yes               |
-| fontName      | font name | string | no      | iOS/Android | yes            |
-| fontSize      | font size        | number | no      | iOS/Android | yes               |
-| shadowStyle | text shadow style | [ShadowLayerStyle](#shadowlayerstyle) | no      | iOS/Android | yes               |
-| textBackgroundStyle      | text background style | [TextBackgroundStyle](#textbackgroundstyle)  | no      | iOS/Android | yes               |
-| underline      | text underline style        | boolean | no      | iOS/Android | yes               |
-| skewX | css italic with degree, you can use italic instead | number | no      | iOS/Android | yes         |
-| strikeThrough      | text stroke | boolean | no      | iOS/Android | yes               |
-| textAlign      | text align . 'left' / 'center' / 'right'       | string | no      | iOS/Android | yes               |
-| italic | text italic | boolean | no      | iOS/Android | yes            |
-| bold      | text bold | boolean | no      | iOS/Android | yes               |
-| rotate      | rotate text       | number | no      | iOS/Android | yes               |
+| Name      | 描述                                    | Type   | Required | Platform    | HarmonyOS Support |
+| --------- | --------------------------------------- | ------ | -------- | ----------- | ----------------- |
+| color | 字体颜色 | string | yes      | iOS/Android | yes               |
+| fontName      | 字体名称 | string | no      | iOS/Android | yes            |
+| fontSize      | 字体大小        | number | no      | iOS/Android | yes               |
+| shadowStyle | 文字阴影样式 | [ShadowLayerStyle](#shadowlayerstyle) | no      | iOS/Android | yes               |
+| textBackgroundStyle      | 文字背景样式 | [TextBackgroundStyle](#textbackgroundstyle)  | no      | iOS/Android | yes               |
+| underline      | 文字下划线样式        | boolean | no      | iOS/Android | yes               |
+| skewX | CSS斜体角度，可以用italic替代 | number | no      | iOS/Android | yes         |
+| strikeThrough      | 文字删除线 | boolean | no      | iOS/Android | yes               |
+| textAlign      | 文字对齐方式 'left' / 'center' / 'right'       | string | no      | iOS/Android | yes               |
+| italic | 文字斜体 | boolean | no      | iOS/Android | yes            |
+| bold      | 文字粗体 | boolean | no      | iOS/Android | yes               |
+| rotate      | 文字旋转角度       | number | no      | iOS/Android | yes               |
 
 ##### ShadowLayerStyle
 
-| Name      | Description                                    | Type   | Required | Platform    | HarmonyOS Support |
-| --------- | ---------------------------------------------- | ------ | -------- | ----------- | ----------------- |
-| dx      | shadow offset x       | number | yes      | iOS/Android | yes               |
-| dy      | shadow offset y     | number | yes      | iOS/Android | yes               |
-| radius      |shadow radius      | number | yes      | iOS/Android | yes               |
-| color      | shadow color       | string | yes      | iOS/Android | yes               |
+| Name      | 描述                                    | Type   | Required | Platform    | HarmonyOS Support |
+| --------- | --------------------------------------- | ------ | -------- | ----------- | ----------------- |
+| dx      | 阴影X轴偏移量       | number | yes      | iOS/Android | yes               |
+| dy      | 阴影Y轴偏移量     | number | yes      | iOS/Android | yes               |
+| radius      | 阴影半径      | number | yes      | iOS/Android | yes               |
+| color      | 阴影颜色       | string | yes      | iOS/Android | yes               |
 
 ##### TextBackgroundStyle
 extends Padding
-| Name      | Description                                    | Type   | Required | Platform    | HarmonyOS Support |
-| --------- | ---------------------------------------------- | ------ | -------- | ----------- | ----------------- |
-| type      | background type .TextBackgroundType enum      | [TextBackgroundType](#textbackgroundtype) | no      | iOS/Android | yes               |
-| color      | background color    | string | yes      | iOS/Android | yes               |
-| cornerRadius      |background corner radius     | [CornerRadius](#cornerradius) | no      | iOS/Android | yes               |
-| padding      | padding for text background，Up to four values, separated by spaces   | number / string | no      | iOS/Android | yes               |
-| paddingLeft      |  padding left for text background  | number / string | no      | iOS/Android | yes               |
-| paddingRight      | padding right for text background    | number / string | no      | iOS/Android | yes               |
-| paddingTop      | padding top for text background    | number / string | no      | iOS/Android | yes               |
-| paddingBottom      | padding bottom for text background   | number / string  | no      | iOS/Android | yes               |
-| paddingHorizontal      | padding left and right (horizontal) for text background    | number / string | no      | iOS/Android | yes               |
-| paddingVertical      | padding top and bottom (vertical) for text background    | number / string | no      | iOS/Android | yes               |
-| paddingX      |padding x, alias of paddingHorizontal    | number / string | no      | iOS/Android | yes               |
-| paddingY      | padding y, alias of paddingVertical  | number / string | no      | iOS/Android | yes               |
+| Name      | 描述                                    | Type   | Required | Platform    | HarmonyOS Support |
+| --------- | --------------------------------------- | ------ | -------- | ----------- | ----------------- |
+| type      | 背景类型，TextBackgroundType枚举      | [TextBackgroundType](#textbackgroundtype) | no      | iOS/Android | yes               |
+| color      | 背景颜色    | string | yes      | iOS/Android | yes               |
+| cornerRadius      | 背景圆角半径     | [CornerRadius](#cornerradius) | no      | iOS/Android | yes               |
+| padding      | 文字背景内边距，最多四个值，空格分隔   | number / string | no      | iOS/Android | yes               |
+| paddingLeft      | 文字背景左内边距  | number / string | no      | iOS/Android | yes               |
+| paddingRight      | 文字背景右内边距    | number / string | no      | iOS/Android | yes               |
+| paddingTop      | 文字背景上内边距    | number / string | no      | iOS/Android | yes               |
+| paddingBottom      | 文字背景下内边距   | number / string  | no      | iOS/Android | yes               |
+| paddingHorizontal      | 文字背景水平内边距（左右）    | number / string | no      | iOS/Android | yes               |
+| paddingVertical      | 文字背景垂直内边距（上下）    | number / string | no      | iOS/Android | yes               |
+| paddingX      | 文字背景X轴内边距，paddingHorizontal的别名    | number / string | no      | iOS/Android | yes               |
+| paddingY      | 文字背景Y轴内边距，paddingVertical的别名  | number / string | no      | iOS/Android | yes               |
 
 ##### TextBackgroundType
 
-| Name      | Description                                    | Type   | Required | Platform    | HarmonyOS Support |
-| --------- | ---------------------------------------------- | ------ | -------- | ----------- | ----------------- |
-| stretchX      | background type stretchX     | string | no      | iOS/Android | yes               |
-| stretchY      |  background type  stretchY   | string | no      | iOS/Android | yes               |
-| none      | background type fit    | string | no      | iOS/Android | yes               |
+| Name      | 描述                                    | Type   | Required | Platform    | HarmonyOS Support |
+| --------- | --------------------------------------- | ------ | -------- | ----------- | ----------------- |
+| stretchX      | X轴拉伸背景类型     | string | no      | iOS/Android | yes               |
+| stretchY      | Y轴拉伸背景类型   | string | no      | iOS/Android | yes               |
+| none      | 自适应背景类型    | string | no      | iOS/Android | yes               |
 
 
 ##### CornerRadius
 
-| Name      | Description                                    | Type   | Required | Platform    | HarmonyOS Support |
-| --------- | ---------------------------------------------- | ------ | -------- | ----------- | ----------------- |
-| topLeft      | topLeft Radius     | [RadiusValue](#radiusvalue) | no      | iOS/Android | yes               |
-| topRight      | topRight Radius   | [RadiusValue](#radiusvalue) | no      | iOS/Android | yes               |
-| bottomLeft      |bottomLeft Radius  | [RadiusValue](#radiusvalue) | no      | iOS/Android | yes               |
-| bottomRight      |bottomRight Radius   | [RadiusValue](#radiusvalue) | no      | iOS/Android | yes               |
-| all      | all Radius    | [RadiusValue](#radiusvalue) | no      | iOS/Android | yes               |
+| Name      | 描述                                    | Type   | Required | Platform    | HarmonyOS Support |
+| --------- | --------------------------------------- | ------ | -------- | ----------- | ----------------- |
+| topLeft      | 左上角圆角半径     | [RadiusValue](#radiusvalue) | no      | iOS/Android | yes               |
+| topRight      | 右上角圆角半径   | [RadiusValue](#radiusvalue) | no      | iOS/Android | yes               |
+| bottomLeft      | 左下角圆角半径  | [RadiusValue](#radiusvalue) | no      | iOS/Android | yes               |
+| bottomRight      | 右下角圆角半径   | [RadiusValue](#radiusvalue) | no      | iOS/Android | yes               |
+| all      | 所有角圆角半径    | [RadiusValue](#radiusvalue) | no      | iOS/Android | yes               |
 
 ##### RadiusValue
 
-| Name      | Description                                    | Type   | Required | Platform    | HarmonyOS Support |
-| --------- | ---------------------------------------------- | ------ | -------- | ----------- | ----------------- |
-| x      | radius value for x     | number / string | no      | iOS/Android | yes               |
-| y      | radius value for y  | number / string  | no      | iOS/Android | yes               |
+| Name      | 描述                                    | Type   | Required | Platform    | HarmonyOS Support |
+| --------- | --------------------------------------- | ------ | -------- | ----------- | ----------------- |
+| x      | X轴圆角值     | number / string | no      | iOS/Android | yes               |
+| y      | Y轴圆角值  | number / string  | no      | iOS/Android | yes               |
 
 ## 遗留问题
 - [ ] Harmony OS is not support backgroundImage-ImageOptions-alpha feature now: [issue#30](https://github.com/react-native-oh-library/react-native-image-marker/issues/30)
