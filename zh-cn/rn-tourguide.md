@@ -14,11 +14,18 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/rn-tourguide)
+
+本项目基于[rn-tourguide](https://github.com/react-native-oh-library/rn-tourguide).
+
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/rn-tourguide`。具体版本所属关系如下：
+
+| Version                   | Package Name                                      | Repository         | Release                    |Support RN version|
+| ------------------------- | ------------------------------------------------- | ------------------ | -------------------------- |-------------------|
+| 3.3.0  | @react-native-oh-tpl/rn-tourguide | [Github](https://github.com/react-native-oh-library/rn-tourguide) | [Github Releases](https://github.com/react-native-oh-library/rn-tourguide/releases) |0.72       |
+| 3.4.0     | @react-native-ohos/rn-tourguide   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_rn-tourguide) | [GitCode Releases]() |0.77       |
+
 
 ## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：[https://github.com/react-native-oh-library/rn-tourguide Releases](https://github.com/react-native-oh-library/rn-tourguide/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -27,13 +34,22 @@
 #### **npm**
 
 ```bash
+
+# 0.72
 npm install @react-native-oh-tpl/rn-tourguide
+
+# 0.77
+npm install @react-native-ohos/rn-tourguide
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/rn-tourguide
+
+# 0.77
+yarn add @react-native-ohos/rn-tourguide
 ```
 
 <!-- tabs:end -->
@@ -208,7 +224,8 @@ const styles = StyleSheet.create({
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/rn-tourguide Releases](https://github.com/react-native-oh-library/rn-tourguide/releases)
+1. RNOH: 0.72.27; SDK: HarmonyOS 5.1.1 Release SDK; IDE: DevEco Studio 5.1.1 Release; ROM: 5.0.1.120;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -221,77 +238,77 @@ const styles = StyleSheet.create({
 ### TourGuideProvider
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| tooltipComponent  |  tooltip component       | React.ComponentType<TooltipProps>  | NO | ALL      | YES |
-| tooltipStyle  |   tooltip style      | StyleProp<ViewStyle>  | NO | ALL      | YES |
-| labels  |   Button text display in tooltip(skip、previous、next、finish)      | Labels | NO | ALL      | YES |
+| tooltipComponent  |  提示框组件  | React.ComponentType<TooltipProps>  | NO | ALL      | YES |
+| tooltipStyle  |   提示框样式 | StyleProp<ViewStyle>  | NO | ALL      | YES |
+| labels  | 提示框中显示的按钮文本（跳过、上一步、下一步、完成） | Labels | NO | ALL      | YES |
 | startAtMount  |         | boolean/string | NO | ALL      | YES |
-| androidStatusBarVisible  | android status bar visible        | boolean | NO | Android      | NO |
-| backdropColor  |   background color | string | NO | ALL      | YES |
-| verticalOffset |  vertical offset | number | NO | ALL      | YES |
-| wrapperStyle  |   wrap style    | StyleProp<ViewStyle> | NO | ALL      | YES |
-| maskOffset  |  offset around zone | number | NO | ALL      | YES |
-| borderRadius  |    round corner when rectangle | number | NO | ALL      | YES |
-| animationDuration  |  Animation duration | number | NO | ALL      | YES |
-| children  |  React.ReactNode components      | React.ReactNode | YES | ALL      | YES |
-| dismissOnPress  |  whether to display touchable | boolean | NO | ALL      | YES |
-| preventOutsideInteraction  |    Block default events | boolean | NO | ALL      | YES |
+| androidStatusBarVisible  | 安卓状态栏是否显示安卓状态栏 | boolean | NO | Android      | NO |
+| backdropColor  | 背景颜色 | string | NO | ALL      | YES |
+| verticalOffset | 垂直偏移量 | number | NO | ALL      | YES |
+| wrapperStyle  | 包裹器样式 | StyleProp<ViewStyle> | NO | ALL      | YES |
+| maskOffset  | 区域周围的偏移量 | number | NO | ALL      | YES |
+| borderRadius  | 矩形时的圆角 | number | NO | ALL      | YES |
+| animationDuration  | 动画持续时间 | number | NO | ALL      | YES |
+| children  | React.ReactNode 组件 | React.ReactNode | YES | ALL      | YES |
+| dismissOnPress  | 是否显示可点击区域 | boolean | NO | ALL      | YES |
+| preventOutsideInteraction  | 阻止默认事件 | boolean | NO | ALL      | YES |
 
 ### TourGuideZone
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| zone  | A positive number indicating the order of the step in the entire walkthrough.        | number  | YES | ALL      | YES |
+| zone  | 一个正数，表示整个引导流程中步骤的顺序 | number  | YES | ALL      | YES |
 | tourKey  |        | string  | NO | ALL      | YES |
-| isTourGuide  |  return children without wrapping id false        | boolean  | NO | ALL      | YES |
-| text  |     text in tooltip     | string  | NO | ALL      | YES |
-| shape  |     which shape     | Shape  | NO | ALL      | YES |
-| maskOffset  |   offset around zone    | number  | NO | ALL      | YES |
-| borderRadius  |   round corner when rectangle      | number  | NO | ALL      | YES |
-| children  |   React.ReactNode components       | React.ReactNode  | NO | ALL      | YES |
+| isTourGuide  | 如果为 false，则返回子组件而不进行包裹 | boolean  | NO | ALL      | YES |
+| text  |     提示框中的文本     | string  | NO | ALL      | YES |
+| shape  |     形状     | Shape  | NO | ALL      | YES |
+| maskOffset  | 区域周围的偏移量 | number  | NO | ALL      | YES |
+| borderRadius  |  矩形时的圆角 | number  | NO | ALL      | YES |
+| children  | React.ReactNode 组件 | React.ReactNode  | NO | ALL      | YES |
 | style  |         | StyleProp<ViewStyle>  | NO | ALL      | YES |
-| keepTooltipPosition  |  tooltip positioning    | boolean  | NO | ALL      | YES |
-| tooltipBottomOffset  |   The distance between the tooltip and the bottom of the container      | number  | NO | ALL      | YES |
-| borderRadiusObject  |   Mask layer highlight area rounded corner settings      | BorderRadiusObject  | NO | ALL      | YES |
+| keepTooltipPosition  | 提示框定位 | boolean  | NO | ALL      | YES |
+| tooltipBottomOffset  | 提示框与容器底部的距离 | number  | NO | ALL      | YES |
+| borderRadiusObject  | 遮罩层高亮区域的圆角设置 | BorderRadiusObject  | NO | ALL      | YES |
 
 ### Tooltip
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| isFirstStep  | Is it the first step | boolean  | NO | ALL      | YES |
-| isLastStep  |  Is it the last step   | boolean  | NO | ALL      | YES |
-| currentStep  |  current step | IStep  | YES | ALL      | YES |
-| labels  |     Button text display in tooltip(skip、previous、next、finish)     | Labels  | NO | ALL      | YES |
-| handleNext  |  A function that handle next step  | Function  | NO | ALL      | YES
-| handlePrev  |  A function that handle prev step     | Function  | NO | ALL      | YES
-| handleStop  |  A function that handle stop       | Function  | NO | ALL      | YES
+| isFirstStep  | 是否为第一步 | boolean  | NO | ALL      | YES |
+| isLastStep  | 是否为最后一步 | boolean  | NO | ALL      | YES |
+| currentStep  | 当前步骤 | IStep  | YES | ALL      | YES |
+| labels  |     提示框中显示的按钮文本（跳过、上一步、下一步、完成）     | Labels  | NO | ALL      | YES |
+| handleNext  |  处理下一步的函数  | Function  | NO | ALL      | YES|
+| handlePrev  | 处理上一步的函数 | Function  | NO | ALL      | YES|
+| handleStop  | 处理停止的函数 | Function  | NO | ALL      | YES|
 
 ### TourGuideZoneByPosition
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | zone  |         | number  | YES | ALL      | YES |
 | tourKey  |         | string  | NO | ALL      | YES |
-| isTourGuide  |  return children without wrapping id false        | boolean  | NO | ALL      | YES |
-| top  |   tour guide zone distance from top    | number/string  | NO | ALL      | YES |
-| left  | tour guide zone distance from left        | number/string  | NO | ALL      | YES |
-| right  |   tour guide zone distance from right      | number/string  | NO | ALL      | YES |
-| bottom  |  tour guide zone distance from bottom       | number/string  | NO | ALL      | YES |
-| width  |   The width of the highlight area of ​​the mask layer  | number/string  | NO | ALL      | YES |
-| height  |     The height of the highlight area of ​​the mask layer    | number/string  | NO | ALL      | YES |
-| shape  |   which shape      | Shape  | NO | ALL      | YES |
-| borderRadiusObject  |   Mask layer highlight area rounded corner settings      | BorderRadiusObject  | NO | ALL      | YES |
-| containerStyle  |   Mask layer wrapping layer style      | StyleProp<ViewStyle>  | NO | ALL      | YES |
-| keepTooltipPosition  |   tooltip positioning       | boolean  | NO | ALL      | YES |
-| tooltipBottomOffset  |   The distance between the tooltip and the bottom of the container      | number  | NO | ALL      | YES |
-| text  |    text in tooltip     | string  | NO | ALL      | YES |
+| isTourGuide  | 如果为 false，则返回子组件而不进行包裹 | boolean  | NO | ALL      | YES |
+| top  | 引导区域距离顶部的距离 | number/string  | NO | ALL      | YES |
+| left  | 引导区域距离左侧的距离 | number/string  | NO | ALL      | YES |
+| right  | 引导区域距离右侧的距离 | number/string  | NO | ALL      | YES |
+| bottom  | 引导区域距离底部的距离 | number/string  | NO | ALL      | YES |
+| width  | 遮罩层高亮区域的宽度  | number/string  | NO | ALL      | YES |
+| height  | 遮罩层高亮区域的高度    | number/string  | NO | ALL      | YES |
+| shape  |   形状    | Shape  | NO | ALL      | YES |
+| borderRadiusObject  | 遮罩层高亮区域的圆角设置 | BorderRadiusObject  | NO | ALL      | YES |
+| containerStyle  | 遮罩层包裹层样式 | StyleProp<ViewStyle>  | NO | ALL      | YES |
+| keepTooltipPosition  |   提示框定位  | boolean  | NO | ALL      | YES |
+| tooltipBottomOffset  | 提示框与容器底部的距离 | number  | NO | ALL      | YES |
+| text  | 提示框中的文本 | string  | NO | ALL      | YES |
 
 ### useTourGuideController
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| start  | start tour guide         | Funtion  | YES | ALL      | YES |
-| eventEmitter  | event emitter           | Funtion/undefined  | YES | ALL      | YES |
-| getCurrentStep  | Get the mask layer pop-up component         | Funtion/undefined  | YES | ALL      | YES |
-| canStart  | whether to support  tour guide         | boolean/undefined  | YES | ALL      | YES |
-| tourKey  | tour guide key         | string  | YES | ALL      | YES |
-| TourGuideZone  | boot area         | Funtion  | YES | ALL      | YES |
-| TourGuideZoneByPosition  | tourGuide area location | Funtion  | YES | ALL      | YES |
+| start  | 开始引导     | Funtion  | YES | ALL      | YES |
+| eventEmitter  | 事件发射器      | Funtion/undefined  | YES | ALL      | YES |
+| getCurrentStep  | 获取遮罩层弹出组件 | Funtion/undefined  | YES | ALL      | YES |
+| canStart  | 是否支持引导   | boolean/undefined  | YES | ALL      | YES |
+| tourKey  | 引导键      | string  | YES | ALL      | YES |
+| TourGuideZone  | 引导区域     | Funtion  | YES | ALL      | YES |
+| TourGuideZoneByPosition  | 引导区域位置 | Funtion  | YES | ALL      | YES |
 
 ## 遗留问题
 
