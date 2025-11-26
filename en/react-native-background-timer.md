@@ -6,12 +6,16 @@
 
 This project is based on [react-native-background-timer@2.4.1](https://github.com/ocetnik/react-native-background-timer)。
 
-This third-party library has been migrated to Gitee and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-linear-gradient`, The version correspondence details are as follows:
+Please visit the Release release address of the third-party library to view the corresponding version information:
 
-| Version                   | Package Name                                       | Repository                                                                                     | Release                                                                                                          |
-| ------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| <= 2.4.1-0.0.2@deprecated | @react-native-oh-tpl/react-native-background-timer | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-background-timer) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-background-timer/releases) |
-| > 2.4.2                   | @react-native-ohos/react-native-background-timer   | [Gitee](https://gitee.com/openharmony-sig/rntpc_react-native-background-timer)                 | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_react-native-background-timer/releases)                 |
+| Version | Releases info                                                     | Support RN version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| <= 2.4.1-0.0.2@deprecated | [@react-native-oh-tpl/react-native-background-timer Releases(deprecated)](https://github.com/react-native-oh-library/react-native-background-timer/releases) | 0.72       |
+| 2.4.2 | [@react-native-ohos/react-native-background-timer Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-background-timer/releases) | 0.72       |
+| 2.5.0 | [@react-native-ohos/react-native-background-timer Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-background-timer/releases) | 0.77       |
+
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 ## 1. Installation and Usage
 
@@ -212,7 +216,7 @@ For more information about the purpose of this field, please refer to the [offic
 ```json
 {
   "overrides": {
-    "@rnoh/react-native-openharmony": "^0.72.38" // ohpm version
+    "@rnoh/react-native-openharmony": "^0.77.17" // ohpm version
     // "@rnoh/react-native-openharmony" : "./react_native_openharmony.har" // a locally available HAR package
     // "@rnoh/react-native-openharmony" : "./react_native_openharmony" // source code directory
   }
@@ -249,7 +253,7 @@ ohpm install
 
 Method 2: Directly link to the source code.
 
-> [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
+**For details, see [Directly Linking Source Code](/en/link-source-code.md).**
 
 ### 2.3 Configuring CMakeLists and Introducing BackgroundTimerPackage
 
@@ -301,7 +305,50 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 2.5 Running
+### 2.5 Configure TurboModule to run on worker thread
+
+Open the `entry/src/main/ets/entryability/EntryAbility.ets`file and add the following code:
+
+```diff
+import {RNAbility} from '@rnoh/react-native-openharmony';
+
+export default class EntryAbility extends RNAbility {
++  override getRNOHWorkerScriptUrl() {
++    return "entry/ets/workers/RNOHWorker.ets"
++  }
+...
+}
+```
+
+Right click on the ETS path and select the `New` option. Expand the menu on the right and choose the `Woker` option:
+
+  ![create_worker](../img/react-native-background-timer/create-worker.png)  
+  After selection, name `RNOHWorker. ets` in the pop-up window:
+
+  ![christen_RNOHWorker](../img/react-native-background-timer/christen-RNOHWorker.png)   
+  At this point, the directory structure is:
+   ```
+   └── ets
+       ├── entryability
+       ├── page
+       └── workers
+           └── RNOHWorker.ets         
+   ```
+
+   Modify `RNOHWorker. ets` to the following code:
+   ```typescript
+   // entry/src/main/ets/worker/RNOHWorker.ets
+   import { setupRNOHWorker } from "@rnoh/react-native-openharmony/src/main/ets/setupRNOHWorker";
+   import { createRNPackages } from '../RNPackagesFactory';
+
+   setupRNOHWorker({
+     createWorkerRNInstanceConfig: (_rnInstanceName) => {
+       return { thirdPartyPackagesFactory: createRNPackages }
+     }
+   })
+   ```
+
+### 2.6 Running
 
 Click the `sync` button in the upper right corner.
 
@@ -317,14 +364,9 @@ Then build and run the code.
 ## 3. Constraints
 
 ### 3.1 Compatibility
-
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
-
-Check the release version information in the release address of the third-party library: [@react-native-ohos/react-native-background-timer Releases](https://gitee.com/openharmony-sig/rntpc_react-native-background-timer/releases)
-
-This document is verified based on the following versions:
-
-RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+The content in this document has been verified under the following environment:
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 4. APIs
 
@@ -345,10 +387,10 @@ RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
 
 ## 5. Known Issues
 
-- [ ] The underlying OS does not support RNOHContext serialized transfer in the new thread created by Worker. As a result, events cannot be sent in the new thread. The underlying OS framework needs to implement related service functionality. If no thread is started, the timer is not affected because **setTimeout** is an asynchronous method. The **start** and **stop** APIs of the Worker thread are not supported in HarmonyOS RN: [issue](https://github.com/react-native-oh-library/react-native-background-timer/issues/3).
+- [ ] The underlying OS does not support RNOHContext serialized transfer in the new thread created by Worker. As a result, events cannot be sent in the new thread. The underlying OS framework needs to implement related service functionality. If no thread is started, the timer is not affected because **setTimeout** is an asynchronous method. The **start** and **stop** APIs of the Worker thread are not supported in HarmonyOS RN: [issue](https://gitcode.com/openharmony-sig/rntpc_react-native-background-timer/issues/2).
 
 ## 6. Others
 
 ## 7. License
 
-This project is licensed under (https://gitee.com/openharmony-sig/rntpc_react-native-background-timer/blob/master/LICENSE).
+This project is licensed under (https://GitCode.com/openharmony-sig/rntpc_react-native-background-timer/blob/master/LICENSE).

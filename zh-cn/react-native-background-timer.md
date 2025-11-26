@@ -6,12 +6,16 @@
 
 本项目基于 [react-native-background-timer@2.4.1](https://github.com/ocetnik/react-native-background-timer) 开发。
 
-该第三方库的仓库已迁移至 Gitee，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-background-timer`，具体版本所属关系如下：
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| Version                   | Package Name                                      | Repository         | Release                    |
-| ------------------------- | ------------------------------------------------- | ------------------ | -------------------------- |
-| <= 2.4.1-0.0.2@deprecated | @react-native-oh-tpl/react-native-background-timer | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-background-timer) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-background-timer/releases) |
-| > 2.4.2                   | @react-native-ohos/react-native-background-timer   | [Gitee](https://gitee.com/openharmony-sig/rntpc_react-native-background-timer) | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_react-native-background-timer/releases) |
+| 三方库版本 | 发布信息                                                     | 支持RN版本 | 
+| ---------- | ------------------------------------------------------------ | ---------- |
+| <= 2.4.1-0.0.2@deprecated | [@react-native-oh-tpl/react-native-background-timer Releases(deprecated)](https://github.com/react-native-oh-library/react-native-background-timer/releases) | 0.72       |
+| 2.4.2 | [@react-native-ohos/react-native-background-timer Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-background-timer/releases) | 0.72       |
+| 2.5.0 | [@react-native-ohos/react-native-background-timer Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-background-timer/releases) | 0.77       |
+
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 ## 1. 安装与使用
 
@@ -215,7 +219,7 @@ const styles = StyleSheet.create({
 ```json
 {
   "overrides": {
-    "@rnoh/react-native-openharmony": "^0.72.38" // ohpm 在线版本
+    "@rnoh/react-native-openharmony": "^0.77.17" // ohpm 在线版本
     // "@rnoh/react-native-openharmony" : "./react_native_openharmony.har" // 指向本地 har 包的路径
     // "@rnoh/react-native-openharmony" : "./react_native_openharmony" // 指向源码路径
   }
@@ -252,7 +256,7 @@ ohpm install
 
 方法二：直接链接源码
 
-> [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
+如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
 ### 2.3 配置 CMakeLists 和引入 BackgroundTimerPackage
 
@@ -304,7 +308,49 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 2.5 运行
+### 2.5 配置TurboModule运行在worker线程
+
+打开 `entry/src/main/ets/entryability/EntryAbility.ets`，添加：
+
+```diff
+import {RNAbility} from '@rnoh/react-native-openharmony';
+
+export default class EntryAbility extends RNAbility {
++  override getRNOHWorkerScriptUrl() {
++    return "entry/ets/workers/RNOHWorker.ets"
++  }
+...
+}
+```
+
+在ets路径下右击，选择 `New` 选项，右侧展开菜单选择 `Woker` 选项：
+
+  ![create_worker](../img/react-native-background-timer/create-worker.png)  
+  选择后在弹出的窗口中取名 `RNOHWorker.ets`：
+
+  ![christen_RNOHWorker](../img/react-native-background-timer/christen-RNOHWorker.png)   
+  此时目录结构为:
+   ```
+   └── ets
+       ├── entryability
+       ├── page
+       └── workers
+           └── RNOHWorker.ets         
+   ```
+   修改 `RNOHWorker.ets` 为下列代码：
+   ```typescript
+   // entry/src/main/ets/worker/RNOHWorker.ets
+   import { setupRNOHWorker } from "@rnoh/react-native-openharmony/src/main/ets/setupRNOHWorker";
+   import { createRNPackages } from '../RNPackagesFactory';
+
+   setupRNOHWorker({
+     createWorkerRNInstanceConfig: (_rnInstanceName) => {
+       return { thirdPartyPackagesFactory: createRNPackages }
+     }
+   })
+   ```
+
+### 2.6 运行
 
 点击右上角的 `sync` 按钮
 
@@ -322,16 +368,10 @@ ohpm install
 ### 3.1 兼容性
 
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下环境验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/react-native-background-timer Releases](https://gitee.com/openharmony-sig/rntpc_react-native-background-timer/releases)
-
-
-本文档内容基于以下版本验证通过：
-
-
-RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
-
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 4. API
 
@@ -352,12 +392,12 @@ RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
 
 ## 5. 遗留问题
 
-- [ ] 使用worker开的新线程中不支持RNOHContext序列化传参，底层OS暂不支持，导致无法在新线程中发送事件，需要底层OS框架实现相关业务功能。不开线程的情况下，因setTimeout属于异步方法，定时器效果不受影响。[worker线程遗留问题:start和stop接口， HarmonyOS RN框架暂不支持](https://gitee.com/openharmony-sig/rntpc_react-native-background-timer/issues/IB8QGJ)
+- [ ] 使用worker开的新线程中不支持RNOHContext序列化传参，底层OS暂不支持，导致无法在新线程中发送事件，需要底层OS框架实现相关业务功能。不开线程的情况下，因setTimeout属于异步方法，定时器效果不受影响。[worker线程遗留问题:start和stop接口， HarmonyOS RN框架暂不支持](https://gitcode.com/openharmony-sig/rntpc_react-native-background-timer/issues/2)
 
 ## 6. 其他
 
 
 ## 7. 开源协议
 
-本项目基于 [The MIT License (MIT)](https://gitee.com/openharmony-sig/rntpc_react-native-background-timer/blob/master/LICENSE) ，请自由地享受和参与开源。
+本项目基于 [The MIT License (MIT)](https://GitCode.com/openharmony-sig/rntpc_react-native-background-timer/blob/master/LICENSE) ，请自由地享受和参与开源。
 
