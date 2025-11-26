@@ -1,31 +1,23 @@
-> 模板版本：v0.2.2
+> 模板版本：v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-material-dropdown</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/n4kz/react-native-material-dropdown/">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/n4kz/react-native-material-dropdown/blob/master/license.txt">
-        <img src="https://img.shields.io/npm/l/react-native-material-ripple.svg?colorB=448aff" alt="License" />
-    </a>
-</p>
 
+本项目基于 [react-native-material-dropdown@0.11.1](https://github.com/n4kz/react-native-material-dropdown) 开发。
 
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.11.1   |[@react-native-oh-tpl/react-native-material-dropdown Releases](https://github.com/react-native-oh-library/react-native-material-dropdown/releases)| 0.72       |
+| 0.12.0   |[@react-native-ohos/react-native-material-dropdown Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-material-dropdown/releases)     | 0.77       |
 
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-material-dropdown)
+本库依赖[@react-native-ohos/react-native-material-textfield 文档](/zh-cn/react-native-material-textfield.md) 和 [@react-native-ohos/react-native-material-buttons 文档](/zh-cn/react-native-material-buttons.md)
 
 ## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-material-dropdown Releases](https://github.com/react-native-oh-library/react-native-material-dropdown/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
-
-> [!TIP] 本库依赖[@react-native-oh-tpl/react-native-material-textfield 文档](/zh-cn/react-native-material-textfield.md) 
-
-和 [@react-native-oh-tpl/react-native-material-buttons 文档](/zh-cn/react-native-material-buttons.md)
-
 
 进入到工程目录并输入以下命令：
 
@@ -34,13 +26,21 @@
 #### **npm**
 
 ```bash
+# 0.72 
 npm install @react-native-oh-tpl/react-native-material-dropdown
+
+# 0.77 
+npm install @react-native-ohos/react-native-material-dropdown
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72 
 yarn add @react-native-oh-tpl/react-native-material-dropdown
+
+# 0.77 
+yarn add @react-native-ohos/react-native-material-dropdown
 ```
 
 <!-- tabs:end -->
@@ -89,10 +89,10 @@ class Example extends Component {
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下环境验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-material-dropdown Releases](https://github.com/react-native-oh-library/react-native-material-dropdown/releases)
-
+1. RNOH: 0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -104,37 +104,37 @@ class Example extends Component {
 
 |         Name          |                 Description                 |   Type   | Required |  Platform   | HarmonyOS Support |
 | :-------------------: | :-----------------------------------------: | :------: | :------: | :---------: | :---------------: |
-|       **label**       |            Text field label text            |  String  |    No    | iOS/Android |        Yes        |
-|       **error**       |            Text field error text            |  String  |    No    | iOS/Android |        Yes        |
-| **animationDuration** |     Text field animation duration in ms     |  Number  |    No    | iOS/Android |        Yes        |
-|     **fontSize**      |            Text field font size             |  Number  |    No    | iOS/Android |        Yes        |
-|   **labelFontSize**   |         Text field label font size          |  Number  |    No    | iOS/Android |        Yes        |
-|     **baseColor**     |            Text field base color            |  String  |    No    | iOS/Android |        Yes        |
-|     **textColor**     |            Text field text color            |  String  |    No    | iOS/Android |        Yes        |
-|     **itemColor**     |  Dropdown item text color (inactive item)   |  String  |    No    | iOS/Android |        Yes        |
-| **selectedItemColor** |   Dropdown item text color (active item)    |  String  |    No    | iOS/Android |        Yes        |
-| **disabledItemColor** |  Dropdown item text color (disabled item)   |  String  |    No    | iOS/Android |        Yes        |
-| **dropdownPosition**  |  Dropdown position (dynamic if undefined)   |  Number  |    No    | iOS/Android |        Yes        |
-|     **itemCount**     |         Dropdown visible item count         |  Number  |    No    | iOS/Android |        Yes        |
-|    **itemPadding**    |       Dropdown item vertical padding        |  Number  |    No    | iOS/Android |        Yes        |
-|   **itemTextStyle**   |          Dropdown item text styles          |  Object  |    No    | iOS/Android |        Yes        |
-|  **dropdownOffset**   |               Dropdown offset               |  Object  |    No    | iOS/Android |        Yes        |
-|  **dropdownMargins**  |              Dropdown margins               |  Object  |    No    | iOS/Android |        Yes        |
-|       **data**        |             Dropdown item data              | Array[]  |    No    | iOS/Android |        Yes        |
-|       **value**       |               Selected value                |  String  |    No    | iOS/Android |        Yes        |
-|  **containerStyle**   |          Styles for container view          |  Object  |    No    | iOS/Android |        Yes        |
-|   **overlayStyle**    |           Styles for overlay view           |  Object  |    No    | iOS/Android |        Yes        |
-|    **pickerStyle**    |         Styles for item picker view         |  Object  |    No    | iOS/Android |        Yes        |
-|   **shadeOpacity**    |      Shade opacity for dropdown items       |  Number  |    No    | iOS/Android |        Yes        |
-|   **rippleOpacity**   |          Opacity for ripple effect          |  Number  |    No    | iOS/Android |        Yes        |
-|   **rippleInsets**    |     Insets for ripple on base component     |  Object  |    No    | iOS/Android |        Yes        |
-|  **rippleCentered**   | Ripple on base component should be centered | Boolean  |    No    | iOS/Android |        Yes        |
-|    **renderBase**     |            Render base component            | Function |    No    | iOS/Android |        Yes        |
-|  **renderAccessory**  |         Render text field accessory         | Function |    No    | iOS/Android |        Yes        |
-|  **valueExtractor**   | Extract value from item (args: item, index) | Function |    No    | iOS/Android |        Yes        |
-|  **labelExtractor**   | Extract label from item (args: item, index) | Function |    No    | iOS/Android |        Yes        |
-|  **propsExtractor**   | Extract props from item (args: item, index) | Function |    No    | iOS/Android |        Yes        |
-|   **onChangeText**    |            Change text callback             | Function |    No    | iOS/Android |        Yes        |
+|       **label**       |            标签文本            |  String  |    No    | iOS/Android |        Yes        |
+|       **error**       |            错误提示文本            |  String  |    No    | iOS/Android |        Yes        |
+| **animationDuration** |     动画持续时间（毫秒）     |  Number  |    No    | iOS/Android |        Yes        |
+|     **fontSize**      |            字体大小             |  Number  |    No    | iOS/Android |        Yes        |
+|   **labelFontSize**   |         标签字体大小          |  Number  |    No    | iOS/Android |        Yes        |
+|     **baseColor**     |            基础颜色            |  String  |    No    | iOS/Android |        Yes        |
+|     **textColor**     |            文本颜色            |  String  |    No    | iOS/Android |        Yes        |
+|     **itemColor**     |  下拉项文本颜色（未激活项）   |  String  |    No    | iOS/Android |        Yes        |
+| **selectedItemColor** |   下拉项文本颜色（激活项）    |  String  |    No    | iOS/Android |        Yes        |
+| **disabledItemColor** |  下拉项文本颜色（禁用项）   |  String  |    No    | iOS/Android |        Yes        |
+| **dropdownPosition**  |  下拉菜单位置（未定义时为动态）   |  Number  |    No    | iOS/Android |        Yes        |
+|     **itemCount**     |         可见下拉项数量         |  Number  |    No    | iOS/Android |        Yes        |
+|    **itemPadding**    |       下拉项垂直内边距        |  Number  |    No    | iOS/Android |        Yes        |
+|   **itemTextStyle**   |          下拉项文本样式          |  Object  |    No    | iOS/Android |        Yes        |
+|  **dropdownOffset**   |               下拉菜单偏移量               |  Object  |    No    | iOS/Android |        Yes        |
+|  **dropdownMargins**  |              下拉菜单外边距               |  Object  |    No    | iOS/Android |        Yes        |
+|       **data**        |             下拉项数据              | Array[]  |    No    | iOS/Android |        Yes        |
+|       **value**       |               选中值                |  String  |    No    | iOS/Android |        Yes        |
+|  **containerStyle**   |          容器样式          |  Object  |    No    | iOS/Android |        Yes        |
+|   **overlayStyle**    |           覆盖层样式           |  Object  |    No    | iOS/Android |        Yes        |
+|    **pickerStyle**    |         选择器样式         |  Object  |    No    | iOS/Android |        Yes        |
+|   **shadeOpacity**    |      下拉项阴影透明度       |  Number  |    No    | iOS/Android |        Yes        |
+|   **rippleOpacity**   |          涟漪效果透明度          |  Number  |    No    | iOS/Android |        Yes        |
+|   **rippleInsets**    |     涟漪效果内边距     |  Object  |    No    | iOS/Android |        Yes        |
+|  **rippleCentered**   | 涟漪效果是否居中 | Boolean  |    No    | iOS/Android |        Yes        |
+|    **renderBase**     |            渲染基础组件            | Function |    No    | iOS/Android |        Yes        |
+|  **renderAccessory**  |         渲染文本字段附件         | Function |    No    | iOS/Android |        Yes        |
+|  **valueExtractor**   | 值提取函数（参数：item, index） | Function |    No    | iOS/Android |        Yes        |
+|  **labelExtractor**   | 从项中提取标签 (参数: item, index) | Function |    No    | iOS/Android |        Yes        |
+|  **propsExtractor**   | 属性提取函数（参数：item, index） | Function |    No    | iOS/Android |        Yes        |
+|   **onChangeText**    |            值变更回调函数             | Function |    No    | iOS/Android |        Yes        |
 
 ## **API**
 
@@ -144,12 +144,12 @@ class Example extends Component {
 
 |        Name         |       Description       |  Type   | Required |  Platform   | HarmonyOS Support |
 | :-----------------: | :---------------------: | :-----: | :------: | :---------: | :---------------: |
-|     **focus()**     |      Acquire focus      |         |    No    | iOS/Android |        Yes        |
-|     **blur()**      |      Release focus      |         |    No    | iOS/Android |        Yes        |
-| **selectedIndex()** |   Get selected index    | Number  |    No    | iOS/Android |        Yes        |
-|     **value()**     |    Get current value    | String  |    No    | iOS/Android |        Yes        |
-| **selectedItem()**  |    Get selected item    | Object  |    No    | iOS/Android |        Yes        |
-|   **isFocused()**   | Get current focus state | Boolean |    No    | iOS/Android |        Yes        |
+|     **focus()**     |      获取焦点      |         |    No    | iOS/Android |        Yes        |
+|     **blur()**      |      释放焦点      |         |    No    | iOS/Android |        Yes        |
+| **selectedIndex()** |   获取选中项索引    | Number  |    No    | iOS/Android |        Yes        |
+|     **value()**     |    获取当前值    | String  |    No    | iOS/Android |        Yes        |
+| **selectedItem()**  |    获取选中项    | Object  |    No    | iOS/Android |        Yes        |
+|   **isFocused()**   | 获取当前焦点状态 |    No    | iOS/Android |        Yes        |
 
 ## 遗留问题
 
