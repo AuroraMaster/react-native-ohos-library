@@ -8,10 +8,11 @@
 
 This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-fs`, After introducing the new version of the third-party library, The version correspondence details are as follows:
 
-| Version                     | Package Name                         | Repository                                                                       | Release                                                                                            |
-| --------------------------- | ------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| <= 2.20.0-0.1.14@deprecated | @react-native-oh-tpl/react-native-fs | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-fs) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-fs/releases) |
-| >= 2.20.1                   | @react-native-ohos/react-native-fs   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-fs)                 | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fs/releases)                 |
+| Version                     | Package Name                         | Repository                                                                        | Release                                                                                            | Support RN version |
+|-----------------------------|--------------------------------------|-----------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|--------------------|
+| <= 2.20.0-0.1.14@deprecated | @react-native-oh-tpl/react-native-fs | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-fs)  | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-fs/releases) | 0.72               |
+| 2.20.1                      | @react-native-ohos/react-native-fs   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-fs)              | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fs/releases)             | 0.72               |
+| 2.21.0                      | @react-native-ohos/react-native-fs   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-fs)              | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fs/releases)             | 0.77               |
 
 ## 1. Installation and Usage
 
@@ -262,7 +263,10 @@ Then build and run the code.
 
 ### 3.1 Compatibility
 
-Check the release version information in the release address of the third-party library:[@react-native-ohos/react-native-fs Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fs/releases)
+Verified in the following versions.
+
+1. RNOH: 0.72.27; SDK: HarmonyOS 5.1.1 Release SDK; IDE: DevEco Studio 5.1.1 Release; ROM: 5.0.1.120;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 4. Static Methods
 
@@ -300,7 +304,7 @@ Check the release version information in the release address of the third-party 
 | appendFile              | Append the `contents` to `filepath`.                                                                                                                                          | function | iOS/Android | No       | yes               |                   |
 | copyFile                | Copies the file located at `filepath` to `destPath`.                                                                                                                          | function | iOS         | No       | yes               |                   |
 | unlink                  | Unlinks the item at `filepath`.                                                                                                                                               | function | iOS/Android | No       | yes               |                   |
-| hash                    | Reads the file at `path` and returns its checksum as determined by `algorithm`, which can be one of `md5`, `sha1`, `sha256`.                                                  | function | iOS/Android | No       | partially         |                   |
+| hash                    | Reads the file at `path` and returns its checksum as determined by `algorithm`, which can be one of `md5`, `sha1`, `sha256`.                                                  | function | iOS/Android | No       | partially(md5,sha1,sha256)         |                   |
 | moveFile                | Moves the file located at `filepath` to `destPath`.                                                                                                                           | function | iOS/Android | No       | yes               |                   |
 | read                    | Reads `length` bytes from the given `position` of the file at `path` and returns contents.                                                                                    | function | iOS/Android | No       | yes               |                   |
 | write                   | Write the `contents` to `filepath` at the given random access position.                                                                                                       | function | iOS/Android | No       | yes               |                   |
