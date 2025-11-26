@@ -14,17 +14,17 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-webview)
 
-This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-webview`, After introducing the new version of the third-party library, The version correspondence details are as follows:
-
-| Version                        | Package Name                                  | Repository                                                   | Release                                                      |
-| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <= 13.10.4@deprecated | @react-native-oh-tpl/react-native-webview | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-webview) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-webview/releases) |
-| > 13.10.4                        | @react-native-ohos/react-native-webview       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-webview) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases) |
-
 ## Installation and Usage
 
+Please refer to the Releases page of the third-party library for the corresponding version information:
 
-Find the matching version information in the release address of the third-party library: [@react-native-ohos/react-native-webview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases). For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 13.10.4@deprecated      | [@react-native-oh-tpl/react-native-webview Releases(deprecated)](https://github.com/react-native-oh-library/react-native-webview/releases) | 0.72       |
+| 13.10.5      | [@react-native-ohos/react-native-webview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases)                        | 0.72       |
+| 13.15.1      | [@react-native-ohos/react-native-webview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases)                        | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -61,11 +61,11 @@ export default function WebViewDemo() {
 
 ## Link
 
-Version > @react-native-ohos/react-native-webview@13.10.4 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Version >= @react-native-ohos/react-native-webview@13.10.5 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
 Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 The 0.72 branch supports full Autolinking functionality starting from the RNOH 0.72.94 version (corresponding to the @react-native-oh/react-native-harmony-cli version 0.0.40).
 
-Currently, Version <= @react-native-oh-tpl/react-native-webview@13.10.4@deprecated does not support AutoLink. Therefore, you need to manually configure the linking.
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -239,7 +239,13 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [ @react-native-ohos/react-native-webview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases)
+Please refer to the Releases page of the third-party library for the corresponding version information:
+
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 13.10.4@deprecated      | [@react-native-oh-tpl/react-native-webview Releases(deprecated)](https://github.com/react-native-oh-library/react-native-webview/releases) | 0.72       |
+| 13.10.5      | [@react-native-ohos/react-native-webview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases)                        | 0.72       |
+| 13.15.1      | [@react-native-ohos/react-native-webview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases)                        | 0.77       |
 
 ## Properties
 > [!WARNING] The "ignoreSilentHardwareSwitch" needs to be set to "true" for the web page to have sound when playing.
