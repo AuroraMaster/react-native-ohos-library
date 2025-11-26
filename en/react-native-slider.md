@@ -14,26 +14,37 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/jeanregisser-react-native-slider/tree/sig)
 
+This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-slider`, After introducing the new version of the third-party library, The version correspondence details are as follows:
+
+| Third-party Library Version | Release Information                                          | Supported RN Version |
+| --------------------------- | ------------------------------------------------------------ | -------------------- |
+| 0.11.0                      | [@react-native-oh-tpl/react-native-slider Releases](https://github.com/react-native-oh-library/jeanregisser-react-native-slider/releases) | 0.72                 |
+| 0.12.0                      | [@react-native-ohos/react-native-slider Releases]()          | 0.77                 |
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/jeanregisser-react-native-slider Releases](https://github.com/react-native-oh-library/jeanregisser-react-native-slider/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
-
 Go to the project directory and execute the following instruction:
-
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+#0.72
 npm i @react-native-oh-tpl/react-native-slider
+
+#0.77
+npm i @react-native-ohos/react-native-slider
 ```
 
 #### **yarn**
 
 ```bash
+#0.72
 yarn add @react-native-oh-tpl/react-native-slider
+
+#0.77
+yarn add @react-native-ohos/react-native-slider
 ```
 
 <!-- tabs:end -->
@@ -151,9 +162,11 @@ const styles = StyleSheet.create({
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+Verified in the following version:
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-library/jeanregisser-react-native-slider Releases](https://github.com/react-native-oh-library/jeanregisser-react-native-slider/releases)
+RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.200;ROM: 3.0.0.18;
+
+RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK;IDE: DevEco Studio  6.0.0.868;ROM:6.0.0.112;
 
 ## Properties
 
