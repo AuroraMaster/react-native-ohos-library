@@ -12,7 +12,11 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/wcandillon/react-native-redash/tree/v18.1.3)
+> [!TIP] [GitHub address](https://github.com/wcandillon/react-native-redash/tree/v18.1.3)
+
+| Version   | Support RN version |
+| ------------ | ---------- |
+| 18.1.3       | 0.72/0.77   |
 
 ## 安装与使用
 
@@ -576,6 +580,7 @@ export default function RadashDemo() {
 本文档内容基于以下版本验证通过:
 
 1. RNOH：0.72.28; SDK：HarmonyOS NEXT Developer Beta6 SDK 5.0.0.61; IDE：DevEco Studio 5.0.3.706; ROM：3.0.0.61;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM：NEXT 5.1.0.150; 
 
 ## 静态方法
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
@@ -587,60 +592,60 @@ export default function RadashDemo() {
 ### **Animations**
 |          Name           |                    Description                    |                           Type                           | Required |  Platform   | HarmonyOS Support |
 |:-----------------------:| :-----------------------------------------------: | :------------------------------------------------------: | :------: | :---------: | :---------------: |
-| withPause()                   | Make an animation pausable. The state of the animation (paused or not) is controlled by a boolean shared value.                                               | function | No       | iOS/Android               | yes               |
-| withBouncing()                | Add a bouncing behavior to a physics-based animation. An animation is defined as being physics-based if it contains a velocity in its state.                  | function | No       | iOS/Android               | yes               |
+| withPause()                   | 使动画可暂停。动画的状态（暂停或未暂停）由布尔共享值控制。                  | function | No       | iOS/Android               | yes               |
+| withBouncing()                | 为基于物理的动画添加弹跳行为。如果动画在其状态中包含速度，则该动画被定义为基于物理的动画。 | function | No       | iOS/Android               | yes               |
 ### **Coordinates**
 |          Name           |                    Description                    |                           Type                           | Required |  Platform   | HarmonyOS Support |
 |:-----------------------:| :-----------------------------------------------: | :------------------------------------------------------: | :------: | :---------: | :---------------: |
-| canvas2Cartesian() | Convert plane coordinate system to Cadir coordinate system         | function | No       | iOS/Android               | yes               |
-| cartesian2Canvas() | Convert Cadir coordinate system to plane coordinate system         | function | No       | iOS/Android               | yes               |
-| cartesian2Polar()  | Conversion from Cadir coordinate system to polar coordinate system | function | No       | iOS/Android               | yes               |
-| polar2Cartesian()  | Convert polar coordinate system to Cadir coordinate system         | function | No       | iOS/Android               | yes               |
-| polar2Canvas()     | Convert polar coordinate system to plane coordinate system         | function | No       | iOS/Android               | yes               |
-| canvas2Polar()     | Convert plane coordinate system to polar coordinate system         | function | No       | iOS/Android               | yes               |
+| canvas2Cartesian() | 将平面坐标系转换为笛卡尔坐标系 | function | No       | iOS/Android               | yes               |
+| cartesian2Canvas() | 将笛卡尔坐标系转换为平面坐标系 | function | No       | iOS/Android               | yes               |
+| cartesian2Polar()  | 笛卡尔坐标系转换为极坐标系 | function | No       | iOS/Android               | yes               |
+| polar2Cartesian()  | 将极坐标系转换为笛卡尔坐标系 | function | No       | iOS/Android               | yes               |
+| polar2Canvas()     | 将极坐标系转换为平面坐标系 | function | No       | iOS/Android               | yes               |
+| canvas2Polar()     | 将平面坐标系转换为极坐标系 | function | No       | iOS/Android               | yes               |
 ### **Strings**
 |          Name           |                    Description                    |                           Type                           | Required |  Platform   | HarmonyOS Support |
 |:-----------------------:| :-----------------------------------------------: | :------------------------------------------------------: | :------: | :---------: | :---------------: |
-| ReText | This component is like <Text> but accepts a string animation node as property. Behind the scene, <ReText> is using <TextInput> with some default styling. Therefore there might be some slight inconsistencies with <Text>. | function | No       | iOS/Android               | yes               |
+| ReText | 该组件类似于 `<Text>`，但接受字符串动画节点作为属性。在幕后，`<ReText>` 使用带有一些默认样式的 `<TextInput>`。因此，与 `<Text>` 可能存在一些细微的不一致。 | function | No       | iOS/Android               | yes               |
 ### **Math**
 |          Name           |                    Description                    |                           Type                           | Required |  Platform   | HarmonyOS Support |
 |:-----------------------:| :-----------------------------------------------: | :------------------------------------------------------: | :------: | :---------: | :---------------: |
-| mix()              | mix performs a linear interpolation between x and y using a to weight between them. The return value is computed as x _ (1 - value) + y _ value   | function       | No       | iOS/Android               | yes               |
-| bin()              | Convert a boolean value into a number. This can be useful in reanimated since 0 and 1 are used for conditional statements.  | function | No       | iOS/Android               | yes               |
-| toRad()            | Transforms an angle from degrees to radians| function | No       | iOS/Android               | yes               |
-| toDeg()            | Transforms an angle from radians to degrees| function | No       | iOS/Android               | yes               |
-| clamp()            | Clamps a node with a lower and upper bound  | function | No       | iOS/Android               | yes               |
-| avg()              | Returns the average value of an array        | function | No       | iOS/Android               | yes               |
-| between()          | Returns true if node is within lowerBound and upperBound| function | No       | iOS/Android               | yes               |
-| round()            | Computes animation node rounded to precision  | function | No       | iOS/Android               | yes               |
-| cubicBezier()      | Returns the coordinate of a cubic bezier curve. t is the length of the curve from 0 to 1. cubicBezier(0, p0, p1, p2, p3) equals p0 and cubicBezier(1, p0, p1, p2, p3) equals p3. p0 and p3 are respectively the starting and ending point of the curve. p1 and p2 are the control points. | function | No       | iOS/Android               | yes               |
-| cubicBezierYForX() | Given a cubic Bèzier curve, return the y value for x  | function | No       | iOS/Android               | yes               |
+| mix()              | mix 使用权重在 x 和 y 之间执行线性插值。返回值计算为 x * (1 - value) + y * value | function       | No       | iOS/Android               | yes               |
+| bin()              | 将布尔值转换为数字。这在 reanimated 中可能很有用，因为 0 和 1 用于条件语句。 | function | No       | iOS/Android               | yes               |
+| toRad()            | 将角度从度转换为弧度 | function | No       | iOS/Android               | yes               |
+| toDeg()            | 将角度从弧度转换为度 | function | No       | iOS/Android               | yes               |
+| clamp()            | 将节点限制在上下边界内 | function | No       | iOS/Android               | yes               |
+| avg()              | 返回数组的平均值 | function | No       | iOS/Android               | yes               |
+| between()          | 如果节点在 lowerBound 和 upperBound 范围内，则返回 true | function | No       | iOS/Android               | yes               |
+| round()            | 计算动画节点四舍五入到指定精度 | function | No       | iOS/Android               | yes               |
+| cubicBezier()      | 返回三次贝塞尔曲线的坐标。t 是从 0 到 1 的曲线长度。cubicBezier (0, p0, p1, p2, p3) 等于 p0，cubicBezier (1, p0, p1, p2, p3) 等于 p3。p0 和 p3 分别是曲线的起点和终点。p1 和 p2 是控制点。 | function | No       | iOS/Android               | yes               |
+| cubicBezierYForX() | 给定一条三次贝塞尔曲线，返回 x 对应的 y 值 | function | No       | iOS/Android               | yes               |
 ### **Transitions**
 |          Name           |                    Description                    |                           Type                           | Required |  Platform   | HarmonyOS Support |
 |:-----------------------:| :-----------------------------------------------: | :------------------------------------------------------: | :------: | :---------: | :---------------: |
-| useTiming() | Transitions can attach an animation value to a change of React state. | function | No       | iOS/Android               | yes               |
-| useSpring() | Transitions can attach an animation value to a change of React state. | function | No       | iOS/Android               | yes               |
+| useTiming() | 过渡可以将动画值附加到 React 状态的变化上。 | function | No       | iOS/Android               | yes               |
+| useSpring() | 过渡可以将动画值附加到 React 状态的变化上。 | function | No       | iOS/Android               | yes               |
 ### **Vectors**
 |          Name           |                    Description                    |                           Type                           | Required |  Platform   | HarmonyOS Support |
 |:-----------------------:| :-----------------------------------------------: | :------------------------------------------------------: | :------: | :---------: | :---------------: |
-| useVector() | Returns a vector of shared values. | function | No       | iOS/Android               | yes               |
+| useVector() | 返回共享值的向量。 | function | No       | iOS/Android               | yes               |
 ### **Paths**
 |          Name           |                    Description                    |                           Type                           | Required |  Platform   | HarmonyOS Support |
 |:-----------------------:| :-----------------------------------------------: | :------------------------------------------------------: | :------: | :---------: | :---------------: |
-| createPath(path, {x, y})                             | Create a new path  | function | No       | iOS/Android               | yes               |
-| addCurve(path, {c1: {x, y}, c2: {x, y}, to: {x, y}}) | Add a Bèzier curve command to a path | function | No       | iOS/Android               | yes               |
-| close(path)                                          | Add a close command to a path | function | No       | iOS/Android               | yes               |
-| parse(path)                                          | Parse an SVG path into a sequence of Bèzier curves. The SVG is normalized to have absolute values and to be approximated to a sequence of Bèzier curves. | function | No       | iOS/Android               | yes               |
-| serialize(path)                                      | Serialize a path into an SVG path string | function | No       | iOS/Android               | yes               |
-| interpolatePath()                                    | Interpolate between paths | function | No       | iOS/Android               | yes               |
+| createPath(path, {x, y})                             | 创建一个新路径 | function | No       | iOS/Android               | yes               |
+| addCurve(path, {c1: {x, y}, c2: {x, y}, to: {x, y}}) | 向路径添加贝塞尔曲线命令 | function | No       | iOS/Android               | yes               |
+| close(path)                                          | 向路径添加闭合命令 | function | No       | iOS/Android               | yes               |
+| parse(path)                                          | 将 SVG 路径解析为一系列贝塞尔曲线。SVG 被规范化为具有绝对值，并近似为一系列贝塞尔曲线。 | function | No       | iOS/Android               | yes               |
+| serialize(path)                                      | 将路径序列化为 SVG 路径字符串 | function | No       | iOS/Android               | yes               |
+| interpolatePath()                                    | 在路径之间进行插值 | function | No       | iOS/Android               | yes               |
 ### **Physics**
 |          Name           |                    Description                    |                           Type                           | Required |  Platform   | HarmonyOS Support |
 |:-----------------------:| :-----------------------------------------------: | :------------------------------------------------------: | :------: | :---------: | :---------------: |
-| snapPoint() | Select a point where the animation should snap to given the value of the gesture and it's velocity. | function | No       | iOS/Android               | yes               |
+| snapPoint() | 给定手势的值及其速度，选择动画应该吸附到的点。 | function | No       | iOS/Android               | yes               |
 ### **Colors**
 |          Name           |                    Description                    |                           Type                           | Required |  Platform   | HarmonyOS Support |
 |:-----------------------:| :-----------------------------------------------: | :------------------------------------------------------: | :------: | :---------: | :---------------: |
-| mixColor() | Identical to interpolateColor() but with an animation value that goes from 0 to 1. | function | No       | iOS/Android               | yes               |
+| mixColor() | 与 interpolateColor () 相同，但动画值从 0 到 1。 | function | No       | iOS/Android               | yes               |
 
 
 ## 遗留问题

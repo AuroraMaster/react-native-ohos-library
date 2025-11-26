@@ -14,6 +14,10 @@
 
 > [!Tip] [Github 地址](https://github.com/easyui/react-native-ezswiper)
 
+| Version   | Support RN version |
+| ------------ | ---------- |
+| 1.3.0       | 0.72/0.77   |
+
 ## 安装与使用
 
 进入到工程目录并输入以下命令：
@@ -325,8 +329,9 @@ const styles = StyleSheet.create({
 
 本文档内容基于以下版本验证通过：
 
- 1.RNOH: 0.72.29; SDK：OpenHarmony-5.0.0.65; IDE：DevEco Studio 5.0.3.706; ROM：NEXT.0.0.65;
- 2.RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+ 1. RNOH: 0.72.29; SDK：OpenHarmony-5.0.0.65; IDE：DevEco Studio 5.0.3.706; ROM：NEXT.0.0.65;
+ 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+ 3. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM：NEXT 5.1.0.150; 
 
 ## 属性
 
@@ -336,20 +341,20 @@ const styles = StyleSheet.create({
 
 | Name                  | Description                                                                                            | Type     | default | Required | Platform | HarmonyOS Support |
 | --------------------- | ------------------------------------------------------------------------------------------------------ | -------- | -------- | -------- | ----------------- | ----------------- |
-| `width`       | swiper width                 | number |  | Yes       | All      | yes               |
-| `height`         | swiper height                             | number |  | Yes       | All      | yes               |
-| `index`        | initial index bar.                                   | number | 0 | No       | All      | yes               |
-| `offset`      | initial left and right or up and down offsets view.                                                               | number | 0 | No       | All      | yes               |
-| `horizontal` | swiper derection is horizontal                   | boolean | true | No       | All      | yes               |
-| `loop`        | swiper is loop | boolean  | true | No       | All      | yes               |
-| `autoplayTimeout`               | auto play mode (in second)                       | number | 5 | No       | All      | yes               |
-| `autoplayDirection`            | cycle direction control                                            | boolean  | true | No       | All      | yes               |
-| `ratio`      | scaling ratio                                                         | number | 1 | No       | All      | yes               |
-| `cardParams`          | swiper card advanced object                                                      | object | {} | No       | All      | yes               |
-| `renderRow`               | render card view                                    | function |   | Yes    | All      | yes               |
-| `onPress`         | card is clicked action                                   | function |    | No       | All      | yes               |
-| `onWillChange`       | next card will show                              | function |    | No       | All      | yes               |
-| `onDidChange`       | next card showed                               | function  |   | No       | All      | yes               |
+| `width`       | 轮播组件宽度           | number |  | Yes       | All      | yes               |
+| `height`         | 轮播组件高度                       | number |  | Yes       | All      | yes               |
+| `index`        | 初始索引。                              | number | 0 | No       | All      | yes               |
+| `offset`      | 初始的左右或上下偏移视图。                                                  | number | 0 | No       | All      | yes               |
+| `horizontal` | 轮播方向是否为水平方向        | boolean | true | No       | All      | yes               |
+| `loop`        | 轮播是否循环 | boolean  | true | No       | All      | yes               |
+| `autoplayTimeout`               | 自动播放模式（以秒为单位）          | number | 5 | No       | All      | yes               |
+| `autoplayDirection`            | 循环方向控制                                      | boolean  | true | No       | All      | yes               |
+| `ratio`      | 缩放比例                                                     | number | 1 | No       | All      | yes               |
+| `cardParams`          | 轮播卡片高级配置对象                                            | object | {} | No       | All      | yes               |
+| `renderRow`               | 渲染卡片视图                              | function |   | Yes    | All      | yes               |
+| `onPress`         | 卡片被点击时的动作                          | function |    | No       | All      | yes               |
+| `onWillChange`       | 下一张卡片即将显示时                    | function |    | No       | All      | yes               |
+| `onDidChange`       | 下一张卡片已显示时                      | function  |   | No       | All      | yes               |
 
 cardParams is object：{cardSide,cardSmallSide,cardSpace}
 <img src="../img/cardParams.png" />
@@ -360,9 +365,9 @@ cardParams is object：{cardSide,cardSmallSide,cardSpace}
 
 > [!Tip] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name                  | Description                                                                                            | Type     | Required | Platform | HarmonyOS Support |
-| --------------------- | ------------------------------------------------------------------------------------------------------ | -------- | -------- | -------- | ----------------- |
-| `scrollTo(index, animated = true)`       | scroll to position                | function | No       | All      | yes               |
+| Name                               | Description    | Type     | Required | Platform | HarmonyOS Support |
+| ---------------------------------- | -------------- | -------- | -------- | -------- | ----------------- |
+| `scrollTo(index, animated = true)` | 滚动到指定位置 | function | No       | All      | yes               |
 
 ## 遗留问题
 
