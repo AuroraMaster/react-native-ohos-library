@@ -16,17 +16,15 @@ Template version: v0.2.2
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/ReactNativeLocalization)
 
-## Installation and Usage
-
-Please refer to the Releases page of the third-party library for the corresponding version information
+This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-localization`, After introducing the new version of the third-party library, The version correspondence details are as follows:
 
 | Third-party Library Version | Release Information                                                     | Supported RN Version |
 |-------| ------------------------------------------------------------ | ---------- |
 | 2.3.2@deprecated | [@react-native-oh-tpl/react-native-localization Releases(deprecated)](https://github.com/react-native-oh-library/react-native-localization/releases) | 0.72       |
-| 2.3.3 | [@react-native-ohos/react-native-localization Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localization/releases)                        | 0.72       |
-| 2.4.0 | [@react-native-ohos/react-native-localization Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localization/releases)                        | 0.77       |
+| 2.3.2 | [@react-native-oh-tpl/react-native-localization Releases](https://github.com/react-native-oh-library/ReactNativeLocalization/releases)                       | 0.72       |
+| 2.4.0 | [@react-native-ohos/react-native-localization Releases]()                        | 0.77       |
 
-For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+## Installation and Usage
 
 Go to the project directory and execute the following instruction:
 
@@ -203,8 +201,6 @@ Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
 Currently, two methods are available:
 
- 
-
 Method 1 (recommended): Use the HAR file.
 
 > [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
@@ -237,7 +233,7 @@ Method 2: Directly link to the source code.
 
 ```diff
   ...
-+ import { RNReactLocalizationPackage } from '@react-native-ohos/react-native-localization';
++ import { RNReactLocalizationPackage } from '@react-native-ohos/react-native-localization/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -247,7 +243,68 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.Running
+### 4.Configure CMakeLists and introduce LocalizationPackage
+
+> [!TIP] 0.77 need to execute
+
+Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-localization/src/main/cpp" ./localization)
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_localization)
+# RNOH_END: manual_package_linking_2
+```
+
+Open `entry/src/main/cpp/PackageProvider.cpp` and add the following code:
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "LocalizationPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++       std::make_shared<LocalizationPackage>(ctx),
+    };
+}
+```
+
+### 5.Running
 
 Click the `sync` button in the upper right corner.
 
@@ -264,15 +321,11 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+Verified in the following version:
 
-Please refer to the Releases page of the third-party library for the corresponding version information
+RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.200;ROM: 3.0.0.18;
 
-| Third-party Library Version | Release Information                                                     | Supported RN Version |
-|-------| ------------------------------------------------------------ | ---------- |
-| 2.3.2@deprecated | [@react-native-oh-tpl/react-native-localization Releases(deprecated)](https://github.com/react-native-oh-library/react-native-localization/releases) | 0.72       |
-| 2.3.3 | [@react-native-ohos/react-native-localization Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localization/releases)                        | 0.72       |
-| 2.4.0 | [@react-native-ohos/react-native-localization Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localization/releases)                        | 0.77       |
+RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK;IDE: DevEco Studio  6.0.0.868;ROM:6.0.0.112;
 
 ## Static Methods
 

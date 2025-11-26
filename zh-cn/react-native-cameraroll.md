@@ -16,14 +16,13 @@
 
 该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/camera-roll`，具体版本所属关系如下：
 
-| Version                        | Package Name                                  | Repository                                                   | Release                                                      |
-| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <= 7.8.3-0.1.5@deprecated | @react-native-oh-tpl/camera-roll | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-cameraroll) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-cameraroll/releases) |
-| >= 7.8.4                        | @react-native-ohos/camera-roll       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-cameraroll) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-cameraroll/releases) |
+| Version                   | Package Name                     | Repository                                                   | Release                                                      | Supported RN Version |
+| ------------------------- | -------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------- |
+| <= 7.8.3-0.1.5@deprecated | @react-native-oh-tpl/camera-roll | [Github(deprecated)](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-cameraroll) | [Github Releases(deprecated)](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-cameraroll%2Freleases) | 0.72                 |
+| 7.8.4                    | @react-native-oh-tpl/camera-roll | [Github](https://github.com/react-native-oh-library/react-native-cameraroll) | [GitHub Releases](https://github.com/react-native-oh-library/react-native-cameraroll/releases) | 0.72                 |
+| 7.10.1                   | @react-native-ohos/camera-roll   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-cameraroll) | [GitCode Releases]()                                         | 0.77                 |
 
 ## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-ohos/react-native-cameraroll Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-cameraroll/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -77,10 +76,8 @@ Version >= @react-native-ohos/camera-roll@7.8.4，已适配codegen-lib生成桥�
 
 ## Link
 
-Version >= @react-native-ohos/camera-roll@7.8.4，已支持 Autolink，无需手动配置，目前只支持72框架。
+Version >= @react-native-ohos/camera-roll@7.8.4，已支持 Autolink，无需手动配置。
 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
-
-Version <= @react-native-oh-tpl/camera-roll@7.8.3-0.1.5@deprecated 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -128,7 +125,68 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 3.在 ArkTs 侧引入 CameraRollPackage
+### 3.配置 CMakeLists 和引入 CameraRollPackage
+
+> [!TIP] 仅0.77需要配置 CMakeLists 和引入 CameraRollPackage。
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/camera-roll/src/main/cpp" ./camera-roll)
+
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_camera_roll)
+# RNOH_END: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "SamplePackage.h"
++ #include "CameraRollPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+      std::make_shared<SamplePackage>(ctx),
++     std::make_shared<CameraRollPackage>(ctx)
+    };
+}
+```
+
+### 4.在 ArkTs 侧引入 CameraRollPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
@@ -144,7 +202,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.运行
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -161,9 +219,11 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+在下述版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/camera-roll Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-cameraroll/releases)
+RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
+
+RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release SDK；IDE：DevEco Studio  6.0.0.868; ROM：6.0.0.112; 
 
 ## 静态方法
 

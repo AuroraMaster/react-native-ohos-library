@@ -16,14 +16,13 @@
 
 该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/netinfo`，具体版本所属关系如下：
 
-| Version                        | Package Name                                  | Repository                                                   | Release                                                      |
-| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <= 11.1.0-0.0.8@deprecated | @react-native-oh-tpl/netinfo | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-netinfo) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-netinfo/releases) |
-| >= 11.1.1                        | @react-native-ohos/netinfo       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-netinfo) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-netinfo/releases) |
+| Version                    | Package Name                 | Repository                                                   | Release                                                      | Supported RN Version |
+| -------------------------- | ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------- |
+| <= 11.1.0-0.0.8@deprecated | @react-native-oh-tpl/netinfo | [Github(deprecated)](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-netinfo) | [Github Releases(deprecated)](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-netinfo%2Freleases) | 0.72                 |
+| 11.1.0                     | @react-native-ohos/netinfo   | [Github](https://github.com/react-native-oh-library/react-native-netinfo) | [Github Releases](https://github.com/react-native-oh-library/react-native-netinfo/releases) | 0.72                 |
+| 11.4.2                     | @react-native-ohos/netinfo   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-netinfo) | [GitCode Releases]()                                         | 0.77                 |
 
 ## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-ohos/netinfo Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-netinfo/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -80,10 +79,8 @@ export default App;
 
 ## Link
 
-Version >= @react-native-ohos/netinfo@11.1.1，已支持 Autolink，无需手动配置，目前只支持72框架。
+Version >= @react-native-ohos/netinfo@11.1.1，已支持 Autolink，无需手动配置。
 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
-
-Version <= @react-native-oh-tpl/netinfo@11.1.0-0.0.8@deprecated 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -129,7 +126,7 @@ ohpm install
 
 方法二：直接链接源码
 
-> [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
+> [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明]( https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/link-source-code.md )
 
 ### 3.配置 CMakeLists 和引入 RNCNetInfoPackage
 
@@ -153,7 +150,9 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/netinfo/src/main/cpp" ./netinfo)
+
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -195,7 +194,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
-  ...
+...
 + import {NetInfoPackage} from '@react-native-ohos/netinfo/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -223,10 +222,11 @@ ohpm install
 
 ## 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+在下述版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/netinfo Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-netinfo/releases)
+RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
 
+RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release SDK；IDE：DevEco Studio  6.0.0.868; ROM：6.0.0.112; 
 
 ## 属性
 
@@ -236,68 +236,68 @@ ohpm install
 
 #### NetInfoStateType
 
-| Name        | Description                                                | Type   | Required | Platform    | HarmonyOS Support |
-|-------------|------------------------------------------------------------|--------|----------|-------------|-------------------|
-| `none`      | No network connection is active                            | String | no       | iOS Android | yes               |
-| `unknown`   | The network state could not or has yet to be be determined | String | no       | iOS Android | yes               |
-| `cellular`  | Active network over cellular                               | String | no       | iOS Android | yes               |
-| `wifi`      | Active network over Wifi                                   | String | no       | iOS Android | yes               |
-| `bluetooth` | Active network over Bluetooth                              | String | no       | Android     | no                |
-| `ethernet`  | Active network over wired ethernet                         | String | no       | iOS Android | yes               |
-| `wimax`     | Active network over WiMax                                  | String | no       | Android     | no                |
-| `vpn`       | Active network over VPN                                    | String | no       | Android     | yes               |
-| `other`     | Active network over another type of network                | String | no       | iOS Android | yes               |
+| Name        | Description                | Type   | Required | Platform    | HarmonyOS Support |
+| ----------- | -------------------------- | ------ | -------- | ----------- | ----------------- |
+| `none`      | 无有效网络连接             | String | no       | iOS Android | yes               |
+| `unknown`   | 网络状态无法确定或尚未确定 | String | no       | iOS Android | yes               |
+| `cellular`  | 蜂窝数据网络               | String | no       | iOS Android | yes               |
+| `wifi`      | 无线网络Wi-Fi              | String | no       | iOS Android | yes               |
+| `bluetooth` | 通过蓝牙的活动网络         | String | no       | Android     | no                |
+| `ethernet`  | 有线以太网                 | String | no       | iOS Android | yes               |
+| `wimax`     | 全球微波互联接入（WiMax）  | String | no       | Android     | no                |
+| `vpn`       | 虚拟专用网络（VPN）        | String | no       | Android     | yes               |
+| `other`     | 其他网络                   | String | no       | iOS Android | yes               |
 
 #### NetInfoCellularGeneration
 
-| Name   | Description                                                                                                       | Type   | Required | Platform    | HarmonyOS Support |
-|--------|-------------------------------------------------------------------------------------------------------------------|--------|----------|-------------|-------------------|
-| `null` | Either we are not currently connected to a cellular network or type could not be determined                       | String | no       | iOS Android | yes               |
-| `2g`   | Currently connected to a 2G cellular network. Includes CDMA, EDGE, GPRS, and IDEN type connections                | String | no       | iOS Android | yes               |
-| `3g`   | Currently connected to a 3G cellular network. Includes EHRPD, EVDO, HSPA, HSUPA, HSDPA, and UTMS type connections | String | no       | iOS Android | yes               |
-| `4g`   | Currently connected to a 4G cellular network. Includes HSPAP and LTE type connections                             | String | no       | iOS Android | yes               |
-| `5g`   | Currently connected to a 5G cellular network. Includes NRNSA (iOS only) and NR type connections                   | String | no       | iOS Android | yes               |
+| Name   | Description                                                  | Type   | Required | Platform    | HarmonyOS Support |
+| ------ | ------------------------------------------------------------ | ------ | -------- | ----------- | ----------------- |
+| `null` | 未连接至蜂窝网络或无法确定类型                               | String | no       | iOS Android | yes               |
+| `2g`   | 连接到2G蜂窝网络。支持CDMA、EDGE、GPRS及IDEN类型的连接       | String | no       | iOS Android | yes               |
+| `3g`   | 连接到3G蜂窝网络。包括EHRPD、EVDO、HSPA、HSUPA、HSDPA和UTMS类型的连接 | String | no       | iOS Android | yes               |
+| `4g`   | 连接到4G蜂窝网络。包括HSPAP和LTE类型的连接                   | String | no       | iOS Android | yes               |
+| `5g`   | 连接到5G蜂窝网络。包括NRNSA（仅限iOS）和NR类型的连接         | String | no       | iOS Android | yes               |
 
 #### NetInfoState
 
-| Name                  | Description                                                                                                                                                                                                                                                                                                                                                | Type             | Required | Platform    | HarmonyOS Support |
-|-----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|----------|-------------|-------------------|
-| `type`                | The type of the current connection.                                                                                                                                                                                                                                                                                                                        | NetInfoStateType | yes      | iOS Android | yes               |
-| `isConnected`         | If there is an active network connection.<br/>Defaults to null on most platforms for unknown networks.<br/>Note: Web browsers report network type unknown for many otherwise valid networks (https://caniuse.com/netinfo),<br/>so isConnected may be true or false and represent a real connection status even for unknown network types in certain cases. | boolean, null    | yes      | iOS Android | yes               |
-| `isInternetReachable` | If the internet is reachable with the currently active network connection.<br/>If unknown defaults to null                                                                                                                                                                                                                                                 | boolean, null    | yes      | iOS Android | yes               |
-| `isWifiEnabled`       | (Android only) Whether the device's WiFi is ON or OFF.                                                                                                                                                                                                                                                                                                     | boolean          | yes      | iOS Android | yes               |
-| `details`             | The value depends on the type value. See below.                                                                                                                                                                                                                                                                                                            | object           | yes      | iOS Android | yes               |
+| Name                                    | Description                                                  | Type             | Required | Platform    | HarmonyOS Support |
+| --------------------------------------- | ------------------------------------------------------------ | ---------------- | -------- | ----------- | ----------------- |
+| `type`                                  | 当前连接的类型                                               | NetInfoStateType | yes      | iOS Android | yes               |
+| `isConnected`<sup>11.4.2+</sup>         | 如果存在活动的网络连接。<br/>对于未知网络，在大多数平台上默认为null。<br/>注意：Web浏览器报告许多其他有效网络的网络类型未知 (https://caniuse.com/netinfo),<br/>因此，isConnected可能为真或假，在某些情况下，即使对于未知的网络类型，也表示真实的连接状态。  <br/>> 11.1.0 :连接时:isConnected:true;断开时:isConnected:false                                             <br/>11.4.2 : 不论连接还是断开：isConnected:boolean | boolean, null    | yes      | iOS Android | yes               |
+| `isInternetReachable`<sup>11.4.2+</sup> | 如果当前活动的网络连接可以访问互联网。<br/>如果未知默认为null<br/>> 11.1.0 :连接时:isConnected:true;断开时:isInternetReachable:false                                             <br/>11.4.2 : 不论连接还是断开：isInternetReachable:boolean | boolean, null    | yes      | iOS Android | yes               |
+| `isWifiEnabled`                         | (仅限Android) 设备的WiFi是打开还是关闭。                     | boolean          | yes      | iOS Android | yes               |
+| `details`                               | 该值取决于类型值。见下文。                                   | object           | yes      | iOS Android | yes               |
 
 ### Details
 
 #### Type is wifi
 
-| Name                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                    | Type    | Required | Platform    | HarmonyOS Support |
-|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|----------|-------------|-------------------|
-| `isConnectionExpensive` | If the network connection is considered "expensive".<br/>This could be in either energy or monetary terms.                                                                                                                                                                                                                                                                                                                     | boolean | yes      | iOS Android | yes               |
-| `ssid`                  | The SSID of the network. <br/>May not be present, null, or an empty string if it cannot be determined. <br/>On iOS, your app must meet at least one of the following requirements and you must set the shouldFetchWiFiSSID configuration option or no attempt will be made to fetch the SSID. <br/>On Android, you need to have the ACCESS_FINE_LOCATION permission in your AndroidManifest.<br/>xml and accepted by the user. | string  | yes      | iOS Android | yes               |
-| `bssid`                 | The BSSID of the network. <br/>May not be present, null, or an empty string if it cannot be determined. <br/>On iOS, make sure your app meets at least one of the following requirements. <br/>On Android, you need to have the ACCESS_FINE_LOCATION permission in your AndroidManifest.<br/>xml and accepted by the user.                                                                                                     | string  | yes      | iOS Android | yes               |
-| `strength`              | An integer number from 0 to 100 for the signal strength. <br/>May not be present if the signal strength cannot be determined.                                                                                                                                                                                                                                                                                                  | number  | yes      | Android     | yes               |
-| `ipAddress`             | The external IP address. Can be in IPv4 or IPv6 format. <br/>May not be present if it cannot be determined.                                                                                                                                                                                                                                                                                                                    | string  | yes      | iOS Android | yes               |
-| `subnet`                | The subnet mask in IPv4 format. <br/>May not be present if it cannot be determined.                                                                                                                                                                                                                                                                                                                                            | string  | yes      | iOS Android | yes               |
-| `frequency`             | Network frequency. Example: For 2.4 GHz networks, the method will return 2457. <br/>May not be present if it cannot be determined.                                                                                                                                                                                                                                                                                             | number  | yes      | Android     | yes               |
-| `linkSpeed`             | The link speed in Mbps.                                                                                                                                                                                                                                                                                                                                                                                                        | number  | yes      | Android     | yes               |
-| `rxLinkSpeed`           | The current receive link speed in Mbps.                                                                                                                                                                                                                                                                                                                                                                                        | number  | yes      | Android     | yes               |
-| `txLinkSpeed`           | The current transmit link speed in Mbps.                                                                                                                                                                                                                                                                                                                                                                                       | number  | yes      | Android     | yes               |
+| Name                    | Description                                                  | Type    | Required | Platform    | HarmonyOS Support |
+| ----------------------- | ------------------------------------------------------------ | ------- | -------- | ----------- | ----------------- |
+| `isConnectionExpensive` | 网络连接是否被视为 “高成本”。<br/>这可能涉及能耗或费用层面。 | boolean | yes      | iOS Android | yes               |
+| `ssid`                  | 网络的服务集标识（SSID）。<br/>若无法确定，该参数可能不存在、为 null 或为空字符串。<br/>在 iOS 上，应用需至少满足以下要求之一，且必须设置 shouldFetchWiFiSSID 配置选项，否则不会尝试获取 SSID。<br/>在 Android 上，需在 AndroidManifest.xml 中配置 ACCESS_FINE_LOCATION 权限，<br/>并获得用户同意。 | string  | yes      | iOS Android | yes               |
+| `bssid`                 | 网络的基本服务集标识（BSSID）。 <br/>若无法确定，该参数可能不存在、为 null 或为空字符串。 <br/>在 iOS 上，需确保应用至少满足以下要求之一。 <br/>在 Android 上，需在 AndroidManifest.xml 中配置 ACCESS_FINE_LOCATION 权限。<br/>并获得用户同意。 | string  | yes      | iOS Android | yes               |
+| `strength`              | 信号强度的整数值，范围为 0 至 100。 <br/>若无法确定信号强度，该参数可能不存在。 | number  | yes      | Android     | yes               |
+| `ipAddress`             | 外部 IP 地址，支持 IPv4 或 IPv6 格式。 <br/>若无法确定，该参数可能不存在。 | string  | yes      | iOS Android | yes               |
+| `subnet`                | IPv4 格式的子网掩码。 <br/>若无法确定，该参数可能不存在。    | string  | yes      | iOS Android | yes               |
+| `frequency`             | 网络频率。例如：2.4GHz 网络会返回 2457。<br/>若无法确定，该参数可能不存在。 | number  | yes      | Android     | yes               |
+| `linkSpeed`             | 链路速度，单位为兆比特每秒（Mbps）。                         | number  | yes      | Android     | yes               |
+| `rxLinkSpeed`           | 当前接收链路速度，单位为兆比特每秒（Mbps）。                 | number  | yes      | Android     | yes               |
+| `txLinkSpeed`           | 当前发送链路速度，单位为兆比特每秒（Mbps）。                 | number  | yes      | Android     | yes               |
 
 #### Type is cellular
 
-| Name                    | Description                                                                                                           |           Type            | Required |  Platform   | HarmonyOS Support |
-|-------------------------|-----------------------------------------------------------------------------------------------------------------------|:-------------------------:|:--------:|:-----------:|:-----------------:|
-| `isConnectionExpensive` | If the network connection is considered "expensive". This could be in either energy or monetary terms.                |          boolean          |   yes    | iOS Android |        yes        |
-| `cellularGeneration`    | The generation of the cell network the user is connected to. This can give an indication of speed, but no guarantees. | NetInfoCellularGeneration |   yes    | iOS Android |        yes        |
-| `carrier`               | The network carrier name. May not be present or may be empty if none can be determined.                               |          string           |   yes    | iOS Android |        yes        |
+| Name                    | Description                                                  |           Type            | Required |  Platform   | HarmonyOS Support |
+| ----------------------- | ------------------------------------------------------------ | :-----------------------: | :------: | :---------: | :---------------: |
+| `isConnectionExpensive` | 网络连接是否被视为 “高成本”。这可能涉及能耗或费用层面。      |          boolean          |   yes    | iOS Android |        yes        |
+| `cellularGeneration`    | 用户所连接的蜂窝网络代际。这可用于指示网络速度，但不提供任何保证 | NetInfoCellularGeneration |   yes    | iOS Android |        yes        |
+| `carrier`               | 网络运营商名称。若无法确定，该参数可能不存在或为空字符串。   |          string           |   yes    | iOS Android |        yes        |
 
 #### Type is bluetooth, ethernet, wimax, vpn, or other
 
-| Name                    | Description                                                                                                 |  Type   | Required |  Platform   | HarmonyOS Support |
-|-------------------------|-------------------------------------------------------------------------------------------------------------|:-------:|:--------:|:-----------:|:-----------------:|
-| `isConnectionExpensive` | If the network connection is considered "expensive". <br/>This could be in either energy or monetary terms. | boolean |   yes    | iOS Android |        yes        |
+| Name                    | Description                                                  |  Type   | Required |  Platform   | HarmonyOS Support |
+| ----------------------- | ------------------------------------------------------------ | :-----: | :------: | :---------: | :---------------: |
+| `isConnectionExpensive` | 网络连接是否被视为 “高成本”。<br/>这可能涉及能耗或费用层面。 | boolean |   yes    | iOS Android |        yes        |
 
 ## 静态方法
 
@@ -305,13 +305,13 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name                   | Description                                                                                                                                                                                                                                                                                                                                                                               |   Type   | Required |  Platform   | HarmonyOS Support |
-|------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------:|:--------:|:-----------:|:-----------------:|
-| `fetch()`              | Returns a Promise that resolves to a NetInfoState object.                                                                                                                                                                                                                                                                                                                                 | function |   yes    | iOS Android |        yes        |
-| `refresh()`            | Updates NetInfo's internal state, then returns a Promise that resolves to a NetInfoState object. <br/>This is similar to fetch(), but really only useful on platforms that do not supply internet reachability natively. <br/>For example, you can use it to immediately re-run an internet reachability test if a network request fails unexpectedly.                                    | function |   yes    | iOS Android |        yes        |
-| `addEventListener()`   | Subscribe to connection information. <br/>The callback is called with a parameter of type NetInfoState whenever the connection state changes. <br/>Your listener will be called with the latest information soon after you subscribe and then with any subsequent changes afterwards. <br/>You should not assume that the listener is called in the same way across devices or platforms. | function |   yes    | iOS Android |        yes        |
-| `useNetInfo()`         | A React Hook which can be used to get access to the latest state from the global instance. <br/>It returns a hook with the NetInfoState type.                                                                                                                                                                                                                                             | function |   yes    | iOS Android |        yes        |
-| `useNetInfoInstance()` | A React Hook which can be used to create and manage an isolated instance of a network manager class. <br/>It returns a refresh function and the current NetInfoState.                                                                                                                                                                                                                     | function |   yes    | iOS Android |        yes        |
+| Name                   | Description                                                  |   Type   | Required |  Platform   | HarmonyOS Support |
+| ---------------------- | ------------------------------------------------------------ | :------: | :------: | :---------: | :---------------: |
+| `fetch()`              | 返回一个 Promise，该 Promise 会解析为 NetInfoState 对象。    | function |   yes    | iOS Android |        yes        |
+| `refresh()`            | 更新 NetInfo 的内部状态，然后返回一个 Promise，该 Promise 会解析为 NetInfoState 对象。 <br/>此方法与 fetch () 类似，但仅在不原生提供网络可达性检测的平台上有用。 <br/>例如，若网络请求意外失败，你可使用此方法立即重新执行网络可达性测试。 | function |   yes    | iOS Android |        yes        |
+| `addEventListener()`   | 订阅网络连接信息。 <br/>每当连接状态发生变化时，回调函数会接收一个 NetInfoState 类型的参数。 <br/>订阅后不久，监听器会收到最新信息，后续状态变化时也会收到通知。<br/>请勿假设监听器在不同设备或平台上的调用方式一致。 | function |   yes    | iOS Android |        yes        |
+| `useNetInfo()`         | 一个 React Hook，可用于从全局实例获取最新状态。<br/>它会返回一个 NetInfoState 类型的 Hook。 | function |   yes    | iOS Android |        yes        |
+| `useNetInfoInstance()` | 一个 React Hook，可用于创建和管理网络管理器类的独立实例。 <br/>它会返回一个刷新函数和当前的 NetInfoState 对象。 | function |   yes    | iOS Android |        yes        |
 
 ## 遗留问题
 

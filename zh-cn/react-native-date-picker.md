@@ -16,10 +16,14 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-date-picker)
 
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-date-picker`，具体版本所属关系如下：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 5.0.5      | [@react-native-oh-tpl/react-native-date-picker Releases](https://github.com/react-native-oh-library/react-native-date-picker/releases) | 0.72       |
+| 5.1.0      | [@react-native-ohos/react-native-date-picker Releases]()     | 0.77       |
 
 ## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-date-picker Releases](https://github.com/react-native-oh-library/react-native-date-picker/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -28,13 +32,21 @@
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-date-picker
+
+# 0.77
+npm install @react-native-ohos/react-native-date-picker
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-date-picker
+
+# 0.77
+yarn add @react-native-ohos/react-native-date-picker
 ```
 
 <!-- tabs:end -->
@@ -77,6 +89,8 @@ export default () => {
 
 ## 使用 Codegen
 
+> [!TIP] 0.77 不需要使用Codegen。
+
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
@@ -109,10 +123,21 @@ export default () => {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+-  0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-date-picker": "file:../../node_modules/@react-native-oh-tpl/react-native-date-picker/harmony/date_picker.har"
+  }
+```
+
+-  0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-date-picker": "file:../../node_modules/@react-native-ohos/react-native-date-picker/harmony/date_picker.har"
   }
 ```
 
@@ -130,12 +155,69 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 3.在 ArkTs 侧引入 RNDatePicker 组件
+### 3.配置 CMakeLists 和引入 RNDatePickerPackage
+
+> [!TIP] 仅 0.77需要配置CMakeLists 和引入 RNDatePickerPackage。
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+txtproject(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++ set(OH_MODULE "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: add_package_subdirectories
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
++ add_subdirectory("${OH_MODULE}/@react-native-ohos/react-native-date-picker/src/main/cpp" ./date_picker)
+
+# RNOH_END: add_package_subdirectories
+
+add_library(rnoh_app SHARED
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: link_packages
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_date_picker)
+# RNOH_END: link_packages
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "SamplePackage.h"
++ #include "DatePickerPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+      std::make_shared<SamplePackage>(ctx),
++     std::make_shared<DatePickerPackage>(ctx), 
+    };
+}
+```
+
+### 4.在 ArkTs 侧引入 RNDatePicker 组件
+
 找到 **function buildCustomRNComponent()**，一般位于 `entry/src/main/ets/pages/index.ets` 或 `entry/src/main/ets/rn/LoadBundle.ets`，添加：
 
 ```diff
   ...
+//  0.72
 + import { RNDatePicker } from "@react-native-oh-tpl/react-native-date-picker"
+
+//  0.77
++ import { RNDatePicker } from "@react-native-ohos/react-native-date-picker"
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -164,13 +246,17 @@ const arkTsComponentNames: Array<string> = [
   ];
 ```
 
-### 4. 在 ArkTs 侧引入 RNDatePickerPackage
+### 5. 在 ArkTs 侧引入 RNDatePickerPackage
 
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
 ```diff
   ...
+//  0.72
 + import {RNDatePickerPackage} from '@react-native-oh-tpl/react-native-date-picker/ts';
+
+//  0.77
++ import {RNDatePickerPackage} from '@react-native-ohos/react-native-date-picker/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -179,7 +265,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
-### 5.运行
+### 6.运行
 
 点击右上角的 `sync` 按钮
 
@@ -194,12 +280,11 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+在下述版本验证通过：
 
+RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-date-picker Releases](https://github.com/react-native-oh-library/react-native-date-picker/releases)
-
-
+RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release SDK；IDE：DevEco Studio  6.0.0.868; ROM：6.0.0.112; 
 
 ## 属性
 
@@ -207,28 +292,28 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| props  | Description | Type | Required | Platform | HarmonyOS Support  |
-| ----  | ----------- | ---- | -------- | ---- | ------------ |
-| date | The currently selected date.   | Date  | no |     all  |       yes|
-| onDateChange | Date change handler ( Inline only )   |  (date: Date) => void  | no |     all  |       yes|
-| maximumDate | Maximum selectable date.Example: new Date("2021-12-31")   | Date  | no |     all  |       yes|
-| minimumDate | Minimum selectable date.Example: new Date("2021-01-01")   | Date  | no |     all  |       yes|
-| mode | The date picker mode. "datetime", "date", "time"   | “'date' \|'time' \| 'datetime'”  | yes |     all  |       yes|
-| onConfirm | Modal only: Date callback when user presses confirm button   | (date: Date) => void  | no |     all  |       yes|
-| onCancel | Modal only: Callback for when user presses cancel button or closing the modal by pressing outside it.   | () => void  | no |     all  |       yes|
-| is24hourSource | Change how the 24h mode (am/pm) should be determined, by device settings or by locale. {'locale', 'device'} (android only, default: 'device')   | “'locale' \| 'device'”  | no |     all  |       no|
-| modal | Boolean indicating if modal should be used. Default: "false". When enabled, the other modal props needs to be used.   | boolean  | no |     all  |       yes|
-| open | Modal only: Boolean indicating if modal should be open.   | boolean  | no |     all  |       yes|
-| minuteInterval | The interval at which minutes can be selected.   | 1 \| 2 \| 3 \| 4 \| 5 \| 6 \|  10 \|  12 \| 15 \|  20 \| 30  | no |     all  |       no|
-| title | Modal only: Title text. Can be set to null to remove text.   | string  | no |     all  |       no|
-| confirmText | Modal only: Confirm button text   | string  | no |     all  |       no|
-| cancelText | Modal only: Cancel button text.   | string  | no |     all  |       no|
-| theme | Modal only: The theme of the modal. "light", "dark", "auto". Defaults to "auto".   | 'light' \| 'dark' \| 'auto'  | no |     all  |       no|
-| buttonColor | Color of the confirm and cancel buttons. (android modal only)   | string  | no |     Android  |       no|
-| dividerColor | Color of the divider / separator. (android only)   | string  | no |     Android  |       no|
-| onStateChange | Spinner state change handler. Triggered on changes between "idle" and "spinning" state (Android inline only)   | (state: 'spinning' \| 'idle') => void  | no |     Android  |       no|
-| locale | The locale for the date picker. Changes language, date order and am/pm preferences. Value needs to be a Locale ID.   | string  | no |     all  |       no|
-| timeZoneOffsetInMinutes | imezone offset in minutes (default: device's timezone)   | number  | no |     all  |       no|
+| props                   | Description                                                  | Type                                                        | Required | Platform | HarmonyOS Support |
+| ----------------------- | ------------------------------------------------------------ | ----------------------------------------------------------- | -------- | -------- | ----------------- |
+| date                    | 当前选中的日期                                               | Date                                                        | no       | all      | yes               |
+| onDateChange            | 日期变化处理器（仅内联模式有效）                             | (date: Date) => void                                        | no       | all      | yes               |
+| maximumDate             | 最大可选日期。示例：new Date ("2021-12-31")                  | Date                                                        | no       | all      | yes               |
+| minimumDate             | 最小可选日期。示例：new Date ("2021-01-01")                  | Date                                                        | no       | all      | yes               |
+| mode                    | 日期选择器模式。可选值："datetime"（日期时间）、"date"（仅日期）、"time"（仅时间） | “'date' \|'time' \| 'datetime'”                             | yes      | all      | yes               |
+| onConfirm               | 仅模态框模式有效：用户点击确认按钮时的日期回调函数           | (date: Date) => void                                        | no       | all      | yes               |
+| onCancel                | 仅模态框模式有效：用户点击取消按钮或点击模态框外部关闭时的回调函数 | () => void                                                  | no       | all      | yes               |
+| is24hourSource          | 24 小时制（上午 / 下午）模式的判定来源，可选设备设置或区域设置。取值：{'locale'（区域设置）, 'device'（设备设置）}（仅 Android 支持，默认值：'device'） | “'locale' \| 'device'”                                      | no       | all      | no                |
+| modal                   | 是否启用模态框模式的布尔值。默认值："false"。启用后，需配合其他模态框相关属性使用 | boolean                                                     | no       | all      | yes               |
+| open                    | 仅模态框模式有效：控制模态框是否打开的布尔值                 | boolean                                                     | no       | all      | yes               |
+| minuteInterval          | 分钟选择的间隔。可选值：1、2、3、4、5、6、10、12、15、20、30 | 1 \| 2 \| 3 \| 4 \| 5 \| 6 \|  10 \|  12 \| 15 \|  20 \| 30 | no       | all      | no                |
+| title                   | 仅模态框模式有效：标题文本。设为 null 可隐藏文本             | string                                                      | no       | all      | no                |
+| confirmText             | 仅模态框模式有效：确认按钮文本                               | string                                                      | no       | all      | no                |
+| cancelText              | 仅模态框模式有效：取消按钮文本                               | string                                                      | no       | all      | no                |
+| theme                   | 仅模态框模式有效：模态框主题。可选值："light"（浅色）、"dark"（深色）、"auto"（自动）。默认值："auto" | 'light' \| 'dark' \| 'auto'                                 | no       | all      | no                |
+| buttonColor             | 确认和取消按钮的颜色（仅 Android 模态框支持）                | string                                                      | no       | Android  | no                |
+| dividerColor            | 分隔线颜色（仅 Android 支持）                                | string                                                      | no       | Android  | no                |
+| onStateChange           | 加载状态变化处理器。在 "idle"（空闲）和 "spinning"（加载中）状态切换时触发（仅 Android 内联模式支持） | (state: 'spinning' \| 'idle') => void                       | no       | Android  | no                |
+| locale                  | 日期选择器的区域设置。影响语言、日期顺序和上午 / 下午偏好。值需为区域 ID（如 "zh-CN"、"en-US"） | string                                                      | no       | all      | no                |
+| timeZoneOffsetInMinutes | 时区偏移量（单位：分钟，默认值：设备当前时区）               | number                                                      | no       | all      | no                |
 
 
 ## 遗留问题

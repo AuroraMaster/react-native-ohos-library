@@ -14,26 +14,37 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-exception-handler)
 
+This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-exception-handler`, After introducing the new version of the third-party library, The version correspondence details are as follows:
+
+| Third-party Library Version | Release Information                                          | Supported RN Version |
+| --------------------------- | ------------------------------------------------------------ | -------------------- |
+| 2.10.10                     | [@react-native-oh-tpl/react-native-exception-handler Releases](https://github.com/react-native-oh-library/react-native-exception-handler/releases) | 0.72                 |
+| 2.11.0                      | [@react-native-ohos/react-native-exception-handler Releases]() | 0.77                 |
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-exception-handler Releases](https://github.com/react-native-oh-library/react-native-exception-handler/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
-
 Go to the project directory and execute the following instruction:
-
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-exception-handler
+
+# 0.77
+npm install @react-native-ohos/react-native-exception-handler
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-exception-handler
+
+# 0.77
+yarn add @react-native-ohos/react-native-exception-handler
 ```
 
 <!-- tabs:end -->
@@ -117,6 +128,12 @@ export const ReactNativeExceptionHandler = () => {
 };
 ```
 
+##  使用 Codegen
+
+> [!TIP] V2.10.11 does not require execution of Codegen.
+
+If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
+
 ## Link
 
 Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
@@ -138,11 +155,16 @@ Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
 Currently, two methods are available:
 
+- Use the HAR file.
+- Directly link to the source code。
+
 Method 1 (recommended): Use the HAR file.
 
 > [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
+
+-  0.72
 
 ```json
 "dependencies": {
@@ -151,6 +173,17 @@ Open `entry/oh-package.json5` file and add the following dependencies:
     "@react-native-oh-tpl/react-native-exception-handler": "file:../../node_modules/@react-native-oh-tpl/react-native-exception-handler/harmony/exception_handler.har",
   }
 ```
+
+-  0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+
+    "@react-native-ohos/react-native-exception-handler": "file:../../node_modules/@react-native-ohos/react-native-exception-handler/harmony/exception_handler.har",
+  }
+```
+
 
 Click the `sync` button in the upper right corner.
 
@@ -187,7 +220,14 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+#  0.72
+
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-exception-handler/src/main/cpp" ./exception-handler)
+
+#  0.77
+
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-exception-handler/src/main/cpp" ./exception-handler)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -225,10 +265,22 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 ### 4.Introducing ExceptionHandlerPackage to ArkTS
 
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
-
+-  0.72
 ```diff
     ...
 +   import {ExceptionHandlerPackage} from '@react-native-oh-tpl/react-native-exception-handler/ts';
+
+export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
+  return [
+    new SamplePackage(ctx),
++   new ExceptionHandlerPackage(ctx)
+  ];
+}
+```
+-  0.77
+```diff
+    ...
++   import {ExceptionHandlerPackage} from '@react-native-ohos/react-native-exception-handler/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -255,9 +307,11 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+Verified in the following version:
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/reace-native-exception-handler Releases](https://github.com/react-native-oh-library/react-native-exception-handler/releases)
+RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.200;ROM: 3.0.0.18;
+
+RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK;IDE: DevEco Studio  6.0.0.868;ROM:6.0.0.112;
 
 ## Static Methods
 
