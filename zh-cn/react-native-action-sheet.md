@@ -1,19 +1,15 @@
-> 模板版本：v0.2.0
+> 模板版本：v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-action-sheet</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/expo/react-native-action-sheet">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/expo/react-native-action-sheet/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
 
-> [!TIP] [Github 地址](https://github.com/expo/react-native-action-sheet)
+| Version |  Support RN version|
+| ---------- |---------- |
+| 4.0.1  | 0.72 |
+| 4.1.1  | 0.77 |
 
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 ## 安装与使用
 
@@ -25,13 +21,21 @@
 #### **npm**
 
 ```bash
+# 0.72 
 npm install @expo/react-native-action-sheet@4.0.1
+
+# 0.77 
+npm install @expo/react-native-action-sheet@4.1.1
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72 
 yarn add @expo/react-native-action-sheet@4.0.1
+
+# 0.77 
+yarn add @expo/react-native-action-sheet@4.1.1
 ```
 
 <!-- tabs:end -->
@@ -191,12 +195,10 @@ const styles = StyleSheet.create({
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机ROM。
-
 本文档内容基于以下版本验证通过：
 
-1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
-2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+1. RNOH: 0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -208,32 +210,32 @@ const styles = StyleSheet.create({
 
 | Name   | Description   | Type       | Required | Platform | HarmonyOS Support |
 | ----- | ----- | -------- | -------- | -------- | -------- |
-| `icons`  | Show icons to go along with each option. If image source paths are provided via `require`, images will be rendered for you. Alternatively, you can provide an array of elements such as vector icons, pre-rendered Images, etc.  | array of required images or icons  | no     | Android/Web  | yes      |
-| `tintIcons`  | Icons by default will be tinted to match the text color. When set to false, the icons will be the color of the source image. This is useful if you want to use multicolor icons. If you provide your own nodes/pre-rendered icons rather than required images in the `icons` array, you will need to tint them appropriately before providing them in the array of `icons`; `tintColor` will not be applied to icons unless they are images from a required source.  | boolean            |  no     | Android/Web  | yes      |
-| `textStyle`  | Apply any text style props to the options. If the tintColor option is provided, it takes precedence over a color text style prop. | TextStyle    | no     | Android/Web    | yes      |
-| `titleTextStyle`  | Apply any text style props to the title if present. | TextStyle      |  no     | Android/Web   | yes      |
-| `messageTextStyle`  | Apply any text style props to the message if present.    | TextStyle      |  no     | Android/Web   | yes      |
-| `autoFocus`  | If `true`, this will give the first option screen reader focus automatically when the action sheet becomes visible. On iOS, this is the default behavior of the native action sheet.       | boolean    |  no     | Android/Web   | yes      |
-| `showSeparators`              | Show separators between items. On iOS, separators always show so this prop has no effect.    | boolean    |no     | Android/Web/ios   | yes      |
-| `containerStyle`   | Apply any view style props to the container rather than use the default look (e.g. dark mode) | ViewStyle | no     | Android/Web | yes      |
-| `separatorStyle`   | Modify the look of the separators rather than use the default look.  |ViewStyle  |no     | Android/Web | yes      |
-| `useModal`         |  Defaults to `false` (`true` if autoFocus is also `true`) Wraps the ActionSheet with a Modal, in order to show in front of other Modals that were already opened ([issue reference](https://github.com/expo/react-native-action-sheet/issues/164)). |boolean   | no     | Android/Web | yes      |
-| `destructiveColor` |  Modify color for text of destructive option. Defaults to `#d32f2f`. |string    | no     | Android/Web  | yes      |
-| `options` | A list of button titles (required)|array of strings   | no     | All  | yes      |
-| `cancelButtonIndex` |	Index of cancel button in options|number | no     | All  | yes      |
-| `cancelButtonTintColor` |		Color used for the change the text color of the cancel button |string | no     | All  | yes      |
-| `destructiveButtonIndex` |			Indices of destructive buttons in options|	number or array of numbers | no     | All  | yes      |
-| `title` |		Title to show above the action sheet|		string| no     | All  | yes      |
-| `message` |	Message to show below the title|		string| no     | All  | yes      |
-| `tintColor` |	Color used for non-destructive button titles|		string| no     | All  | yes      |
-| `disabledButtonIndices` |Indices of disabled buttons in options|			array of numbers| no     | All  | yes      |
+| `icons`  | 为每个选项显示对应的图标。如通过 `require`提供图片源路径，系统将自动渲染图片。也可提供矢量图标、预渲染图片等元素组成的数组 | array of required images or icons  | no     | Android/Web  | yes      |
+| `tintIcons`  | 图标着色配置。默认启用图标着色以匹配文本颜色，设为 false 时保留图标原始色彩，适用于多色图标场景。自定义图标元素需预先处理着色， `tintIcons` 仅对 `tintColor` 图片资源生效  | boolean            |  no     | Android/Web  | yes      |
+| `textStyle`  | 选项文本样式配置。如同时设置 tintColor，其优先级高于文本样式中的颜色属性 | TextStyle    | no     | Android/Web    | yes      |
+| `titleTextStyle`  | 标题文本样式配置 | TextStyle      |  no     | Android/Web   | yes      |
+| `messageTextStyle`  | 消息文本样式配置    | TextStyle      |  no     | Android/Web   | yes      |
+| `autoFocus`  | 自动聚焦配置。设为 `true`时，ActionSheet 显示时自动为首选项启用屏幕阅读器聚焦。iOS 平台此为原生默认行为。   | boolean    |  no     | Android/Web   | yes      |
+| `showSeparators`              | 在选项间显示分隔符。iOS 平台分隔符始终显示，此属性无效    | boolean    |no     | Android/Web/ios   | yes      |
+| `containerStyle`   | 应用于容器的视图样式属性，用于替代默认外观 (如深色模式) | ViewStyle | no     | Android/Web | yes      |
+| `separatorStyle`   | 修改分隔符外观，用于替代默认样式  |ViewStyle  |no     | Android/Web | yes      |
+| `useModal`         |  默认值为 `false` (当autoFocus 也为`true` 时的默认值为 `true`)。使用 Modal 包装 ActionSheet，以确保在其他已打开的 Modal 组件前方显示 ([issue reference](https://github.com/expo/react-native-action-sheet/issues/164)) |boolean   | no     | Android/Web | yes      |
+| `destructiveColor` |  危险操作选项文本颜色。 默认 `#d32f2f` |string    | no     | Android/Web  | yes      |
+| `options` | 操作选项列表（必填） |array of strings   | no     | All  | yes      |
+| `cancelButtonIndex` |	取消按钮位置索引 |number | no     | All  | yes      |
+| `cancelButtonTintColor` | 取消按钮文本颜色 |string | no     | All  | yes      |
+| `destructiveButtonIndex` | 危险操作按钮位置索引 | number or array of numbers | no     | All  | yes      |
+| `title` | Action Sheet 顶部标题 |  string| no     | All  | yes      |
+| `message` | Action Sheet 描述信息 | string | no     | All  | yes      |
+| `tintColor` | 标准操作按钮选项文本颜色 | string | no     | All  | yes      |
+| `disabledButtonIndices` | 禁用选项索引列表 | array of numbers | no     | All  | yes      |
 
 **ActionSheetProvider**
 
 | Name               | Description                                     | Type            | Required | Platform | HarmonyOS Support |
 | ------------------ | ----------------------------------------------- | --------------- | -------- | -------- | ----------------- |
-| `useCustomActionSheet` | iOS only prop that uses the custom pure JS action sheet (Android/Web version) instead of the native ActionSheetIOS component. Defaults to false. |boolean   | no     | ios  | yes      |
-| `useNativeDriver` | Windows only option that provides the option to disable the native animation driver for React Native Windows projects targeting Windows 10 Version-1809 ; Build-10.0.17763.0 and earlier. useNativeDriver is supported in Version-1903 and later so if your project is targeting that, you don't need to set this prop. |boolean   | no     | Web  | yes      |
+| `useCustomActionSheet` | iOS 平台专用属性，使用自定义纯 JavaScript ActionSheet (Android/Web version) 替代原生ActionSheetIOS 组件。默认值为 false | boolean   | no     | ios  | yes      |
+| `useNativeDriver` | Windows 平台专用选项，为面向 Windows 10 版本 1809（Build 10.0.17763.0）及更早版本的 React Native Windows 项目提供禁用原生动画驱动的选项。版本 1903 及更高版本支持 useNativeDriver，如项目面向这些版本则无需设置此属性 | boolean   | no     | Web  | yes      |
 ## 遗留问题
 
 ## 其他

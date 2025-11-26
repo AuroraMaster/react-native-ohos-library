@@ -14,9 +14,16 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-modalbox)
 
-## 安装与使用
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-modalbox Releases](https://github.com/react-native-oh-library/react-native-modalbox/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+| 三方库版本  | 发布信息                                                     | 支持RN版本 |
+| ----------- | ------------------------------------------------------------ | ---------- |
+| 2.0.2 | [@react-native-oh-tpl/react-native-modalbox Releases](https://github.com/react-native-oh-library/react-native-modalbox/releases) | 0.72       |
+| 2.1.0   | [@react-native-ohos/react-native-modalbox Releases]()        | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +32,21 @@
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-modalbox
+
+# 0.77
+npm install @react-native-ohos/react-native-modalbox
 ```
 
 #### **yarn**
 
 ```bash
-yarn add  @react-native-oh-tpl/react-native-modalbox
+# 0.72
+yarn add @react-native-oh-tpl/react-native-modalbox
+
+# 0.77
+yarn add @react-native-ohos/react-native-modalbox
 ```
 
 <!-- tabs:end -->
@@ -477,9 +492,10 @@ const styles = StyleSheet.create({
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-modalbox Releases](https://github.com/react-native-oh-library/react-native-modalbox/releases)
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -489,28 +505,28 @@ const styles = StyleSheet.create({
 
 | Name                 |                         Description                          |      Type      | Required |  Platform   | HarmonyOS Support |
 | :------------------- | :----------------------------------------------------------: | :------------: | :------: | :---------: | :---------------: |
-| isOpen               | Open/close the modal, optional, you can use the open/close methods instead |     `bool`     |    no    | iOS/Android |        yes        |
-| isDisabled           |     Disable any action on the modal (open, close, swipe)     |     `bool`     |    no    | iOS/Android |        yes        |
-| backdropPressToClose |       Close the the modal by pressing on the backdrop        |     `bool`     |    no    | iOS/Android |        yes        |
-| swipeToClose         |    Set to true to enable the swipe down to close feature     |     `bool`     |    no    | iOS/Android |        yes        |
-| swipeThreshold       |     The threshold to reach in pixels to close the modal      |    `number`    |    no    | iOS/Android |        yes        |
-| swipeArea            | The height in pixels of the swipeable area, window height by default |    `number`    |    no    | iOS/Android |        yes        |
-| position             |   Control the modal position using top or center or bottom   |    `string`    |    no    | iOS/Android |        yes        |
-| entry                |        Control the modal entry position top or bottom        |    `string`    |    no    | iOS/Android |        yes        |
-| backdrop             |             Display a backdrop behind the modal              |     `bool`     |    no    | iOS/Android |        yes        |
-| backdropOpacity      |                   Opacity of the backdrop                    |    `number`    |    no    | iOS/Android |        yes        |
-| backdropColor        |               backgroundColor of the backdrop                |    `string`    |    no    | iOS/Android |        yes        |
-| backdropContent      | Add an element in the backdrop (a close button for example)  | `ReactElement` |    no    | iOS/Android |        yes        |
-| animationDuration    |                  Duration of the animation                   |    `number`    |    no    | iOS/Android |        yes        |
-| easing               |      Easing function applied to opening modal animation      |   `function`   |    no    | iOS/Android |        yes        |
-| backButtonClose      | (Android only) Close modal when receiving back button event  |     `bool`     |    no    |   Android   |        no         |
-| startOpen            | Allow modal to appear open without animation upon first mount |     `bool`     |    no    | iOS/Android |        yes        |
-| coverScreen          | Will use RN Modal component to cover the entire screen wherever the modal is mounted in the component hierarchy |     `bool`     |    no    | iOS/Android |        yes        |
-| keyboardTopOffset    | This property prevent the modal to cover the ios status bar when the modal is scrolling up because the keyboard is opening |    `number`    |    no    | iOS/Android |        yes        |
-| useNativeDriver      | Enables the hardware acceleration to animate the modal. Please note that enabling this can cause some flashes in a weird way when animating |     `bool`     |    no    | iOS/Android |        yes        |
-| onClosed       |                                          When the modal is close and the animation is done                                           | `function` |    no    | iOS/Android |        yes        |
-| onOpened       |                                           When the modal is open and the animation is done                                           | `function` |    no    | iOS/Android |        yes        |
-| onClosingState | When the state of the swipe to close feature has changed (usefull to change the content of the modal, display a message for example) | `function` |    no    | iOS/Android |        yes        |
+| isOpen               | 打开/关闭模态框，可选，您可以使用 open/close 方法代替 |     `bool`     |    no    | iOS/Android |        yes        |
+| isDisabled           |     禁用模态框的所有操作（打开、关闭、滑动）     |     `bool`     |    no    | iOS/Android |        yes        |
+| backdropPressToClose |       点击背景关闭模态框       |     `bool`     |    no    | iOS/Android |        yes        |
+| swipeToClose         |    设置为 true 时启用向下滑动关闭功能    |     `bool`     |    no    | iOS/Android |        yes        |
+| swipeThreshold       |     关闭模态框需要达到的像素阈值      |    `number`    |    no    | iOS/Android |        yes        |
+| swipeArea            | 可滑动区域的高度，默认为窗口高度 |    `number`    |    no    | iOS/Android |        yes        |
+| position             |   控制模态框位置：top、center 或 bottom   |    `string`    |    no    | iOS/Android |        yes        |
+| entry                |       	控制模态框进入位置：top 或 bottom       |    `string`    |    no    | iOS/Android |        yes        |
+| backdrop             |             在模态框后显示背景              |     `bool`     |    no    | iOS/Android |        yes        |
+| backdropOpacity      |                   设置模态框背景的透明度                    |    `number`    |    no    | iOS/Android |        yes        |
+| backdropColor        |               设置模态框背景的颜色                |    `string`    |    no    | iOS/Android |        yes        |
+| backdropContent      | 在背景中添加元素（例如关闭按钮）  | `ReactElement` |    no    | iOS/Android |        yes        |
+| animationDuration    |                  动画持续时间                   |    `number`    |    no    | iOS/Android |        yes        |
+| easing               |      应用于打开模态框动画的缓动函数      |   `function`   |    no    | iOS/Android |        yes        |
+| backButtonClose      | （仅 Android）接收返回按钮事件时关闭模态框  |     `bool`     |    no    |   Android   |        no         |
+| startOpen            | 	组件挂载时自动打开模态框 |     `bool`     |    no    | iOS/Android |        yes        |
+| coverScreen          | 使用 RN Modal 组件覆盖整个屏幕 |     `bool`     |    no    | iOS/Android |        yes        |
+| keyboardTopOffset    | 	防止键盘打开时模态框覆盖 iOS 状态栏 |    `number`    |    no    | iOS/Android |        yes        |
+| useNativeDriver      | 	启用硬件加速来驱动模态框动画，注意启用可能导致动画闪烁 |     `bool`     |    no    | iOS/Android |        yes        |
+| onClosed       |                                          模态框关闭且动画完成时触发                                           | `function` |    no    | iOS/Android |        yes        |
+| onOpened       |                                          模态框打开且动画完成时触发                                           | `function` |    no    | iOS/Android |        yes        |
+| onClosingState | 滑动关闭功能状态改变时触发（可用于更改模态框内容或显示消息） | `function` |    no    | iOS/Android |        yes        |
 
 ## 静态方法
 
@@ -520,8 +536,8 @@ const styles = StyleSheet.create({
 
 | Name  |   Description   |    Type    | Required |  Platform   | HarmonyOS Support |
 | :---- | :-------------: | :--------: | :------: | :---------: | :---------------: |
-| open  | Open the modal  | `function` |    no    | iOS/Android |        yes        |
-| close | Close the modal | `function` |    no    | iOS/Android |        yes        |
+| open  | 打开模态框  | `function` |    no    | iOS/Android |        yes        |
+| close | 关闭模态框 | `function` |    no    | iOS/Android |        yes        |
 
 ## 遗留问题
 

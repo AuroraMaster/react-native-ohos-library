@@ -12,17 +12,18 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-country-picker-modal)
-
-## 安装与使用
+本项目基于 [react-native-country-picker-modal](https://github.com/xcarpentier/react-native-country-picker-modal) 开发。
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本    |
-|-------| ------------------------------------------------------------ |-----------|
-| 2.0.0 | [@react-native-ohos/react-native-country-picker-modal Releases]() | 0.72/0.77 |
+| Version | Package name                                           | Repository                                                                              | Release                                                                                                  | Support RN version |
+|---------|--------------------------------------------------------|-----------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|--------------------|
+| 2.0.0   | @react-native-oh-tpl/react-native-country-picker-modal | [Github](https://github.com/react-native-oh-library/react-native-country-picker-modal/) | [Github Releases](https://github.com/react-native-oh-library/react-native-country-picker-modal/releases) | 0.72               |
+| 2.1.0   | @react-native-ohos/react-native-country-picker-modal   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-country-picker-modal)  | [GitCode Releases]()                                                                                     | 0.77               |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -33,12 +34,20 @@
 #### **npm**
 
 ```bash
+# 0.72
+npm install @react-native-oh-tpl/react-native-country-picker-modal
+
+# 0.77
 npm install @react-native-ohos/react-native-country-picker-modal
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
+yarn add @react-native-oh-tpl/react-native-country-picker-modal
+
+# 0.77
 yarn add @react-native-ohos/react-native-country-picker-modal
 ```
 
@@ -266,6 +275,7 @@ export function CountryPickerTest() {
 本文档内容基于以下版本验证通过：
 
 1. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.29(SP1); IDE: DevEco Studio 5.0.3.403; ROM: 3.0.0.25;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 
 ## 属性
@@ -275,41 +285,41 @@ export function CountryPickerTest() {
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name          | Description                           | Type                                      | Required | Platform                                | HarmonyOS Support                                        |
-| ------------------ | ----------------------------------------------- | --------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| countryCode    | Country or area code. | [CountryCode](https://github.com/xcarpentier/react-native-country-picker-modal/blob/master/src/types.ts#L252)       | Yes     | All | Yes |
-| region         | region code                                                  | [Region](https://github.com/xcarpentier/react-native-country-picker-modal/blob/master/src/types.ts#L272)                                           | No       | All                                         | Yes                                            |
-| subregion         | subregion code | [Subregion](https://github.com/xcarpentier/react-native-country-picker-modal/blob/master/src/types.ts#L282) | No     | All                          | Yes                             |
-| countryCodes         | Country Code | [CountryCode](https://github.com/xcarpentier/react-native-country-picker-modal/blob/master/src/types.ts#L252) | No     | All | Yes |
-| theme        | theme | [Theme](https://github.com/xcarpentier/react-native-country-picker-modal/blob/7611d34fa35744dbec3fbcdd9b4401494b1ba8c4/src/CountryTheme.ts#L5) | No       | All | Yes |
-| translation           | Translation Language Code                                    | [TranslationLanguageCode](https://github.com/xcarpentier/react-native-country-picker-modal/blob/master/src/types.ts#L309) | No     | All | Yes |
-| modalProps       | ModalProps | [ModalProps](https://facebook.github.io/react-native/docs/modal#props) | No       | All | Yes |
-| filterProps              | CountryFilterProps | [CountryFilterProps](https://facebook.github.io/react-native/docs/textinput#props) | No        | All | Yes |
-| flatListProps        | extends flatListProps | [FlatListProps<Country>](https://facebook.github.io/react-native/docs/flatlist#props) | No        | All | Yes |
-| withAlphaFilter   | Use AlphaFilter                        | boolean                                       | No        | All | Yes |
-| withCallingCode  | Using the CallingCode                  | boolean                                       | No        | All | Yes |
-| withCurrency  | Use Currency                                          | boolean                                                      | No        | All | Yes |
-| withEmoji              | Use Emoji                       | boolean                                | No        | All | Yes |
-| withCountryNameButton     | Use the button with the country name                  | boolean                                                      | No        | All | Yes |
-| withCurrencyButton          | Using the With Currency Button     | boolean                                   | No        | All | Yes |
-| withCallingCodeButton          | Using the With Call Code Button    | boolean                                   | No        | All | Yes |
-| withFlagButton         | Using Flagged Buttons              | boolean                                   | No        | All | Yes |
-| withCloseButton          | Using the Close Button         | boolean                               | No        | All | Yes |
-| withFilter          | withFilter                         | boolean                                   | No        | All | Yes |
-| withFlag | withFlag                     | boolean                                | No        | All | Yes |
-| withModal      | withModal                              | boolean                                | No        | All | Yes |
-| visible        | visible                                               | boolean                                                      | No        | All | Yes |
-| containerButtonStyle             | containerButtonStyle | StyleProp<ViewStyle>                     | No        | All | Yes |
-| renderFlagButton        | renderFlagButton | (props: (FlagButton['props'])): ReactNode ([FlagButton props](https://github.com/xcarpentier/react-native-country-picker-modal/blob/master/src/FlagButton.tsx#L73)) | No        | All | Yes |
-| renderCountryFilter   | renderCountryFilter | (props: CountryFilter['props']): ReactNode ([CountryFilter props is TextInputProps](https://facebook.github.io/react-native/docs/textinput#props)) | No        | All | Yes |
-| onSelect  | onSelect | (country: Country): void ([Country](https://github.com/xcarpentier/react-native-country-picker-modal/blob/master/src/types.ts#L263)) | Yes     | All | Yes |
-| onOpen  | onOpen | (): void | Yes  | All | Yes |
-| onClose            | onClose                          | (): void                                 | Yes     | All | Yes |
-| closeButtonImage   | Source of the close button | [ImageSourcePropType](https://facebook.github.io/react-native/docs/image#props) | No        | All | Yes |
-| closeButtonStyle         | closeButtonStyle    | StyleProp<ViewStyle>                    | No        | All | Yes |
-| closeButtonImageStyle | closeButtonImageStyle | StyleProp<ViewStyle>          | No        | All | Yes |
-| disableNativeModal     | you have to wrap your all app with CountryModalProvider | boolean | No        | All | Yes |
-| preferredCountries    | preferredCountries | [CountryCode](https://github.com/xcarpentier/react-native-country-picker-modal/blob/master/src/types.ts#L254) preferred countries they appear first (`withAlphaFilter` must be false) | No        | All | Yes |
+| Name                  | Description               | Type                                      | Required | Platform                                | HarmonyOS Support                                        |
+|-----------------------|---------------------------| --------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| countryCode           | 国家或地区代码                   | [CountryCode](https://github.com/xcarpentier/react-native-country-picker-modal/blob/master/src/types.ts#L252)       | Yes     | All | Yes |
+| region                | 区域代码                      | [Region](https://github.com/xcarpentier/react-native-country-picker-modal/blob/master/src/types.ts#L272)                                           | No       | All                                         | Yes                                            |
+| subregion             | 子区域代码                     | [Subregion](https://github.com/xcarpentier/react-native-country-picker-modal/blob/master/src/types.ts#L282) | No     | All                          | Yes                             |
+| countryCodes          | 国家代码                      | [CountryCode](https://github.com/xcarpentier/react-native-country-picker-modal/blob/master/src/types.ts#L252) | No     | All | Yes |
+| theme                 | 主题                        | [Theme](https://github.com/xcarpentier/react-native-country-picker-modal/blob/7611d34fa35744dbec3fbcdd9b4401494b1ba8c4/src/CountryTheme.ts#L5) | No       | All | Yes |
+| translation           | 语言代码                      | [TranslationLanguageCode](https://github.com/xcarpentier/react-native-country-picker-modal/blob/master/src/types.ts#L309) | No     | All | Yes |
+| modalProps            | 模态框属性                  | [ModalProps](https://facebook.github.io/react-native/docs/modal#props) | No       | All | Yes |
+| filterProps           | 国家过滤器属性          | [CountryFilterProps](https://facebook.github.io/react-native/docs/textinput#props) | No        | All | Yes |
+| flatListProps         | 继承FlatList组件的属性        | [FlatListProps<Country>](https://facebook.github.io/react-native/docs/flatlist#props) | No        | All | Yes |
+| withAlphaFilter       | 启用字母索引过滤器              | boolean                                       | No        | All | Yes |
+| withCallingCode       | 显示电话区号         | boolean                                       | No        | All | Yes |
+| withCurrency          | 显示货币信息                    | boolean                                                      | No        | All | Yes |
+| withEmoji             | 显示国旗                      | boolean                                | No        | All | Yes |
+| withCountryNameButton | 使用带国家名称的按钮                | boolean                                                      | No        | All | Yes |
+| withCurrencyButton    | 使用带货币信息的按钮                | boolean                                   | No        | All | Yes |
+| withCallingCodeButton | 使用带电话区号的按钮                | boolean                                   | No        | All | Yes |
+| withFlagButton        | 使用带国旗的按钮                  | boolean                                   | No        | All | Yes |
+| withCloseButton       | 显示关闭按钮                    | boolean                               | No        | All | Yes |
+| withFilter            | 启用筛选功能                    | boolean                                   | No        | All | Yes |
+| withFlag              | 显示国旗                      | boolean                                | No        | All | Yes |
+| withModal             | 使用模态框模式                   | boolean                                | No        | All | Yes |
+| visible               | 组件显示/隐藏                   | boolean                                                      | No        | All | Yes |
+| containerButtonStyle  | 按钮容器样式                    | StyleProp<ViewStyle>                     | No        | All | Yes |
+| renderFlagButton      | 自定义渲染国旗按钮                 | (props: (FlagButton['props'])): ReactNode ([FlagButton props](https://github.com/xcarpentier/react-native-country-picker-modal/blob/master/src/FlagButton.tsx#L73)) | No        | All | Yes |
+| renderCountryFilter   | 自定义渲染国家过滤器                | (props: CountryFilter['props']): ReactNode ([CountryFilter props is TextInputProps](https://facebook.github.io/react-native/docs/textinput#props)) | No        | All | Yes |
+| onSelect              | 选择国家后的回调函数                | (country: Country): void ([Country](https://github.com/xcarpentier/react-native-country-picker-modal/blob/master/src/types.ts#L263)) | Yes     | All | Yes |
+| onOpen                | 组件打开时的回调函数                | (): void | Yes  | All | Yes |
+| onClose               | 组件关闭时的回调函数                | (): void                                 | Yes     | All | Yes |
+| closeButtonImage      | 关闭按钮的图片源                  | [ImageSourcePropType](https://facebook.github.io/react-native/docs/image#props) | No        | All | Yes |
+| closeButtonStyle      | 关闭按钮容器样式                  | StyleProp<ViewStyle>                    | No        | All | Yes |
+| closeButtonImageStyle | 关闭按钮图片样式                  | StyleProp<ViewStyle>          | No        | All | Yes |
+| disableNativeModal    | 需使用CountryModalProvider包裹整个应用 | boolean | No        | All | Yes |
+| preferredCountries    | 首选国家列表                    | [CountryCode](https://github.com/xcarpentier/react-native-country-picker-modal/blob/master/src/types.ts#L254) preferred countries they appear first (`withAlphaFilter` must be false) | No        | All | Yes |
 
 
 ## 遗留问题

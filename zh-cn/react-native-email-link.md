@@ -12,20 +12,17 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-email-link)
+本项目基于 [react-native-email-link](https://github.com/tschoffelen/react-native-email-link) 开发。
+
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-email-link`，具体版本所属关系如下：
+
+| Version                   | Package Name                                 | Repository                                                              | Release                    |Support RN version|
+| ------------------------- |----------------------------------------------|-------------------------------------------------------------------------| -------------------------- |-------------------|
+| 1.15.0   | @react-native-oh-tpl/react-native-email-link | [Github](https://github.com/react-native-oh-library/react-native-email-link)  | [Github Releases](https://github.com/react-native-oh-library/react-native-email-link/releases) |0.72       |
+| 1.16.1      | @react-native-ohos/react-native-email-link   | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-email-link) | [GitCode Releases]() |0.77       |
+
 
 ## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 1.15.0     | [@react-native-oh-tpl/react-native-email-link Releases](https://github.com/react-native-oh-library/react-native-email-link/releases) | 0.72       |
-| 1.16.1     | [@react-native-ohos/react-native-email-link Releases]()      | 0.77       |
-
-对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -34,20 +31,20 @@
 #### **npm**
 
 ```bash
-# V1.15.0
+# 0.72
 npm install @react-native-oh-tpl/react-native-email-link
 
-# V1.16.1
+# 0.77
 npm install @react-native-ohos/react-native-email-link
 ```
 
 #### **yarn**
 
 ```bash
-# V1.15.0
+# 0.72
 yarn add @react-native-oh-tpl/react-native-email-link
 
-# V1.16.1
+# 0.77
 yarn add @react-native-ohos/react-native-email-link
 ```
 
@@ -257,7 +254,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-email-link": "file:../../node_modules/@react-native-oh-tpl/react-native-email-link/harmony/email_link.har"
+    "@react-native-ohos/react-native-email-link": "file:../../node_modules/@react-native-ohos/react-native-email-link/harmony/email_link.har"
   }
 ```
 
@@ -322,12 +319,8 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 1.15.0     | [@react-native-oh-tpl/react-native-email-link Releases](https://github.com/react-native-oh-library/react-native-email-link/releases) | 0.72       |
-| 1.16.1     | [@react-native-ohos/react-native-email-link Releases]()      | 0.77       |
+1. RNOH: 0.72.27; SDK: HarmonyOS 5.1.1 Release SDK; IDE: DevEco Studio 5.1.1 Release; ROM: 5.0.1.120;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## API
 
@@ -335,37 +328,38 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
+
 | Name              | Description                                                                                            | Type     | Required | Platform | HarmonyOS Support |
 | ----------------- | ------------------------------------------------------------------------------------------------------ | -------- | -------- | -------- | ----------------- |
-| `openInbox`       | Directly open the inbox of the default mail client on your device.                                     | function | No       | All      | yes               |
-| `openComposer`    | Used to open a new email authoring interface that allows users to create emails directly from the app. | function | No       | All      | yes               |
-| `getEmailClients` | Get a list of all supported mail client applications installed on the device.                          | function | No       | All      | yes               |
+| `openInbox`       | 直接打开设备上默认邮件客户端的收件箱                                     | function | No       | All      | yes               |
+| `openComposer`    | 用于打开一个新的电子邮件创作界面，允许用户直接从应用程序创建电子邮件 | function | No       | All      | yes               |
+| `getEmailClients` | 获取设备上安装的所有受支持的邮件客户端应用程序的列表。                          | function | No       | All      | yes               |
 
 **openInbox 方法参数**
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ------------------------------ | ----------------------------------------------------------------------------------------- | ---------------- | -------- | -------- | ----------------- |
-| `title` | Text for the top of the ActionSheet or Intent | string | no | All | no |
-| `message` | Subtext under the title on the ActionSheet | string | no | iOS | no |
-| `cancelLabel` | Text for last button of the ActionSheet | string | no | iOS | no |
-| `removeText` | If true, not text will be show above the ActionSheet or Intent. Default value is false | boolean | no | All | no |
-| `defaultEmailLabel` | Text for first button of the ActionSheet | function | no | iOS | no |
-| `newTask` | If true, the email Intent will be started in a new Android task. Else, the Intent will be launched in the current task | boolean | no | Android | no |
+| `title` | 操作表或意图顶部的文本 | string | no | All | no |
+| `message` | 行动表标题下的子文本 | string | no | iOS | no |
+| `cancelLabel` | 操作表最后一个按钮的文本| string | no | iOS | no |
+| `removeText` | 如果为真，则不会在操作表或意图上方显示文本。默认值为false | boolean | no | All | no |
+| `defaultEmailLabel` | 操作表第一个按钮的文本 | function | no | iOS | no |
+| `newTask` | 如果为真，电子邮件Intent将在新的Android任务中启动。否则，Intent将在当前任务中启动 | boolean | no | Android | no |
 
 **openComposer 方法参数**
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ------------------------------ | ----------------------------------------------------------------------------------------- | ---------------- | -------- | -------- | ----------------- |
-| `app` | App to open the composer with| string | no | All | yes |
-| `title` | Text for the top of the ActionSheet or Intent | string | no | All | no |
-| `message` | Subtext under the title on the ActionSheet | string | no | iOS | no |
-| `cancelLabel` | Text for last button of the ActionSheet | string | no | iOS | no |
-| `removeText` | If true, not text will be show above the ActionSheet or Intent. Default value is false | boolean | no | All | no |
-| `defaultEmailLabel` | Text for first button of the ActionSheet | function | no | iOS | no |
-| `to` | Recipient's email address | string | no | All | yes |
-| `cc` | Email's cc | string | no | All | yes |
-| `bcc` | Email's bcc | string | no | All | yes |
-| `subject` | Email's subject | string | no | All | yes |
-| `body` | Email's body | string | no | All | yes |
-| `encodeBody` | Apply encodeURIComponent to the email's body | boolean | no | All | yes |
+| `app` | 打开的应用程序| string | no | All | yes |
+| `title` | 操作表或意图顶部的文本 | string | no | All | no |
+| `message` | 行动表标题下的子文本 | string | no | iOS | no |
+| `cancelLabel` | 操作表最后一个按钮的文本 | string | no | iOS | no |
+| `removeText` | 如果为真，则不会在操作表或意图上方显示文本。默认值为false | boolean | no | All | no |
+| `defaultEmailLabel` | 操作表第一个按钮的文本 | function | no | iOS | no |
+| `to` | 收件人的电子邮件地址 | string | no | All | yes |
+| `cc` | 电子邮件抄送 | string | no | All | yes |
+| `bcc` | 电子邮件密送 | string | no | All | yes |
+| `subject` | 电子邮件主题| string | no | All | yes |
+| `body` | 电子邮件正文 | string | no | All | yes |
+| `encodeBody` | 将encodeURIComponent应用于电子邮件正文 | boolean | no | All | yes |
 
 ## 遗留问题
 

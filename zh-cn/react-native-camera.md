@@ -347,7 +347,7 @@ ohpm install
 ### camera
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- |-------------------|
-| onBarCodeRead        | 接收barcode扫描数据  | BarCodeReadEvent    | no       | iOS/Android | yes               |
+| onBarCodeRead        | 接收barcode扫描数据  | [BarCodeReadEvent](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/scan-scancore#section113371139123212)    | no       | iOS/Android | yes               |
 | onFacesDetected      | 接收人脸识别数据 | Face | no | iOS/Android | no             |
 | takePictureAsync     | 照相                 | TakePictureResponse | no       | iOS/Android | yes               |
 | recordAsync          | 开始录像             | RecordResponse      | no       | iOS/Android | yes               |

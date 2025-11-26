@@ -12,8 +12,13 @@
     </a>
 </p>
 
-
 > [!TIP] [GitHub address](https://github.com/ide/react-native-button)
+
+| Version                 | Support RN version                 |
+| ------------------------- | -------------------------- |
+| 3.1.0               |  0.72/0.77 |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 ## Installation and Usage
 
@@ -90,7 +95,8 @@ export default class ExampleComponent extends Component {
 
 This document is verified based on the following versions:
 
-react-native-harmony：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
+1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
+2. RNOH: 0.77.17; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## Properties (If Any)
 
@@ -111,8 +117,9 @@ react-native-harmony：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevE
 | `androidBackground` | The background for android devices.                      | Background Prop Type |  | No       | Android | no             |
 | `onPress`   | Handler to be called when the user taps the button.   | Function |         | No       | All      | yes              |
 
-
 ## Known Issues
+
+-[ ] The allowFontScaling property is invalid, and the text font does not change with the modification of the system font.[issue#99](https://github.com/ide/react-native-button/issues/99)
 
 ## Others
 

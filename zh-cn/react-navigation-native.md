@@ -13,6 +13,14 @@
 
 > [!TIP] [Github 地址](https://github.com/react-navigation/react-navigation/tree/6.x/packages/native)
 
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 支持RN版本 |
+| ---------- | ---------- |
+| 6.1.17     | 0.72       |
+| 7.1.6      | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 ## 安装与使用
 
@@ -22,12 +30,20 @@
 #### **npm**
 
 ```bash
+# For RN0.72
 npm install @react-navigation/native@6.1.17
+
+# For RN0.77
+npm install @react-navigation/native@7.1.6
 ```
 #### **yarn**
 
 ```bash
+# For RN0.72
 yarn add @react-navigation/native@6.1.17
+
+# For RN0.77
+yarn add @react-navigation/native@7.1.6
 ```
 
 
@@ -83,6 +99,7 @@ export {App}
 2. RNOH: 0.72.13; SDK: HarmonyOS NEXT Developer Preview1; IDE: DevEco Studio 4.1.3.500; ROM: 2.0.0.58;
 3. RNOH: 0.72.20-CAPI; SDK: HarmonyOS NEXT Developer Beta1 B.0.18; IDE: DevEco Studio 5.0.3.200; ROM: 3.0.0.18;
 4. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.25; IDE: DevEco Studio 5.0.3.400SP7; ROM: 3.0.0.25;
+5. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -92,16 +109,16 @@ export {App}
 
 **NavigationContainer**：
 
-| Name                      | Description                                                                                                          | Type     | Required | Platform | HarmonyOS Support |
-| ------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------- | -------- | -------- | ----------------- |
-| useNavigationContainerRef | A ref link to navigation                                                                                             | function | no       | all      | yes               |
-| onStateChange             | Function that gets called every time navigation state changes. It receives the new navigation state as the argument. | function | no       | all      | yes               |
-| onReady                   | Function which is called after the navigation container and all its children finish mounting for the first time.     | function | no       | all      | yes               |
+| Name                      | Description                                                | Type     | Required | Platform | HarmonyOS Support |
+| ------------------------- | ---------------------------------------------------------- | -------- | -------- | -------- | ----------------- |
+| useNavigationContainerRef | 指向导航的链接                                             | function | no       | all      | yes               |
+| onStateChange             | 每次导航状态改变时调用的函数。它接收新的导航状态作为参数。 | function | no       | all      | yes               |
+| onReady                   | 该函数在导航容器及其所有子容器第一次挂载完成后调用。       | function | no       | all      | yes               |
 
 **Hooks**
-| Name           | Description                                                                                                                                                                                    | Type     | Required | Platform | HarmonyOS Support |
-| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | -------- | ----------------- |
-| useScrollToTop | The expected native behavior of scrollable components is to respond to events from navigation that will scroll to top when tapping on the active tab as you would expect from native tab bars. | function | no       | all      | yes               |
+| Name           | Description                                                  | Type     | Required | Platform | HarmonyOS Support |
+| -------------- | ------------------------------------------------------------ | -------- | -------- | -------- | ----------------- |
+| useScrollToTop | 可滚动组件的预期本机行为是响应来自导航的事件，当点击活动选项卡时，将滚动到顶部，就像您期望的本机选项卡栏一样。 | function | no       | all      | yes               |
 
 ## 遗留问题
 

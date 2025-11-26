@@ -14,9 +14,13 @@
     </a>
 </p>
 
-
-
 > [!TIP] [GitHub address](https://github.com/WrathChaos/react-native-bounceable/tree/1.0.3)
+
+| Version                 | Support RN version                 |
+| ------------------------- | -------------------------- |
+| 1.0.3               |  0.72/0.77 |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 ## Installation and Usage
 
@@ -114,6 +118,7 @@ const styles = StyleSheet.create({
 This document is verified based on the following versions:
 
 1. RNOH: 0.72.28; SDK：HarmonyOS-Next-DB1 5.0.0.25; IDE：DevEco Studio 5.0.3.500; ROM：5.0.0.31;
+2. RNOH: 0.77.17; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## Properties And Static Methods (If Any)
 

@@ -12,9 +12,14 @@
     </a>
 </p>
 
-
-
 > [!TIP] [GitHub address](https://github.com/instea/react-native-popup-menu/tree/58b78642808ab28012f429d59a2c302dc41b5924)
+
+| Version                 | Support RN version                 |
+| ------------------------- | -------------------------- |
+| 0.16.1               |  0.72 |
+| 0.18.0               |  0.77 |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 ## Installation and Usage
 
@@ -25,13 +30,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# 0.72
 npm install react-native-popup-menu@0.16.1 --save
+
+# 0.77
+npm install react-native-popup-menu@0.18.0 --save
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add react-native-popup-menu@0.16.1
+
+# 0.77
+yarn add react-native-popup-menu@0.18.0
 ```
 
 <!-- tabs:end -->
@@ -89,6 +102,7 @@ This document is verified based on the following versions:
 
 1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Preview2; IDE：DevEco Studio 5.0.3.200; ROM：205.0.0.18;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH: 0.77.17; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## Properties
 

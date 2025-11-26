@@ -1,20 +1,16 @@
-> 模板版本：v0.2.2
+> 模板版本：v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>text-shadow-component</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/bswnth48/text-shadow-react-native">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/bswnth48/text-shadow-react-native/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
 
-> [!TIP] [Github 地址](https://github.com/bswnth48/text-shadow-react-native)
+请到三方库的 Releases 发布地址查看配套的版本信息：[text-shadow-component Releases](https://github.com/bswnth48/text-shadow-react-native/releases)。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
-> [!TIP] 仅在 RNOH 0.77+ 呈现阴影效果，不支持 RNOH 0.72。
+| 三方库版本 |  支持RN版本 | 
+| ---------- |---------- |
+| 1.0.7 | 0.72/0.77 |
+
+> [!TIP] 从 RNOH 0.72.97 版本开始，RNOH 0.72 支持阴影效果渲染。
 
 ## 安装与使用
 <!-- tabs:start -->
@@ -86,16 +82,14 @@ export default function App() {
 
 本文档内容基于以下环境验证通过：
 
-1. RNOH: 0.77.18; SDK：HarmonyOS 5.0.0 Release(API Version 12 Release); IDE：DevEco Studio 5.1.1.830; ROM：5.0.0.150 SP8
-
-> 说明：在 RNOH 0.77+ 上，原生已实现文本阴影绘制。早期版本（如：RNHO 0.72版本）不会呈现阴影效果。
+1. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0 Release(API Version 12 Release); IDE: DevEco Studio 5.1.1.830; ROM: 5.0.0.150 SP8;
+2. RNOH: 0.72.97; SDK: HarmonyOS 6.0.0.47 (API Version 20 Release); IDE: DevEco Studio 6.0.0 Release; ROM: 6.0.0.108 SP6;
 
 ## 属性
 > [!TIP] "Platform" 列表示源库标注的平台；
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-> [!TIP] 本文档仅就 HarmonyOS（RNOH 0.77）给出支持结论。
 
 | Name         | Description                                   | Type   | Required | Platform    | HarmonyOS Support |
 |--------------|-----------------------------------------------|--------|----------|-------------|-------------------|
@@ -105,9 +99,10 @@ export default function App() {
 
 
 ## 遗留问题
-在 RNOH 0.72 上不显示阴影效果。[issue#ID0FUU](https://gitee.com/react-native-oh-library/usage-docs/issues/ID0FUU)
+
 ## 其他
 
+从 RNOH 0.72.97 版本开始，RNOH 0.72 支持阴影效果渲染。
 
 ## 开源协议
 

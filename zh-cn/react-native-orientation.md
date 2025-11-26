@@ -14,25 +14,37 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-orientation)
 
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 3.1.3      | [@react-native-oh-tpl/react-native-orientation Releases](https://github.com/react-native-oh-library/react-native-orientation/releases) | 0.72       |
+| 3.2.0      | @react-native-ohos/react-native-orientation Releases         | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-library/react-native-orientation Releases](https://github.com/react-native-oh-library/react-native-orientation/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
-
 进入到工程目录并输入以下命令：
-
 
 <!-- tabs:start -->
 
 ####  npm
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-orientation
+# 0.77
+npm install @react-native-ohos/react-native-orientation
 ```
 
 #### yarn
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-orientation
+# 0.77
+yarn add @react-native-ohos/react-native-orientation
 ```
 
 <!-- tabs:end -->
@@ -183,7 +195,7 @@ const styles = StyleSheet.create({
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
-### 在工程根目录的 `oh-package.json5` 添加 overrides字段
+### 1.在工程根目录的 `oh-package.json5` 添加 overrides字段
 
 ```json
 {
@@ -206,12 +218,25 @@ const styles = StyleSheet.create({
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+* 0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-orientation": "file:../../node_modules/@react-native-oh-tpl/react-native-orientation/harmony/rn_orientation.har"
   }
 ```
+
+* 0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-orientation": "file:../../node_modules/@react-native-ohos/react-native-orientation/harmony/rn_orientation.har",
+  }
+```
+
+
 
 点击右上角的 `sync` 按钮
 
@@ -224,7 +249,7 @@ ohpm install
 
 方法二：直接链接源码
 
-> [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
+> 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
 打开终端，执行：
 
@@ -233,13 +258,67 @@ cd entry
 ohpm install --no-link
 ```
 
-### 3.在 ArkTs 侧引入 RNOrientationPackage
+### 3.配置 CMakeLists 和引入 RNOrientationPackage
+
+> [!TIP] 版本 `3.2.0` 及以上需要
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-orientation/src/main/cpp" ./rn_orientation)
+# RNOH_END: manual_package_linking_1
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_orientation)
+# RNOH_END: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "SamplePackage.h"
++ #include "RNOritentionPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+      std::make_shared<SamplePackage>(ctx),
++     std::make_shared<RNOritentionPackage>(ctx),
+    };
+}
+```
+
+### 4.在 ArkTs 侧引入 RNOrientationPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
   ...
+  # 0.72
 + import { RNOrientationPackage } from '@react-native-oh-tpl/react-native-orientation/ts';
+  # 0.77
++ import { RNOrientationPackage } from '@react-native-ohos/react-native-orientation/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -249,7 +328,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.运行
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -266,9 +345,10 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-library/react-native-orientation Releases](https://github.com/react-native-oh-library/react-native-orientation/releases)
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## API
 
@@ -280,13 +360,13 @@ ohpm install
 
 | Name           | Description                              | Type   | Required | Platform    | HarmonyOS Support |
 | -------------- | ---------------------------------------- | ------ | -------- | ----------- | ----------------- |
-| lockToPortrait  | Lock the orientation of the application to portrait (portrait)         | function | No       | IOS/Android | yes               |
-| lockToLandscape  | Lock the orientation of the application to landscape (landscape)         | function | No       | IOS/Android | yes               |
-| lockToLandscapeLeft  | Lock the orientation of the app to landscape and rotated to the left         | function | No       | IOS/Android | yes               |
-| lockToLandscapeRight  | Lock the orientation of the app to landscape and rotated to the right         | function | No       | IOS/Android | yes               |
-| unlockAllOrientations  | Unlocks the orientation of the app, allowing the device to rotate freely          | function | No       | IOS/Android | yes               |
-| getOrientation  | Get the direction of the current device        | callback | No       | IOS/Android | yes               |
-| getSpecificOrientation  | Obtains the direction of the current device        | callback | No       | IOS/Android | yes               |
+| lockToPortrait  | 锁定应用程序的方向为纵向（portrait）         | function | no       | IOS/Android | yes               |
+| lockToLandscape  | 锁定应用程序的方向为横向（landscape）         | function | no       | IOS/Android | yes               |
+| lockToLandscapeLeft  | 锁定应用程序的方向为横向并向左旋转         | function | no       | IOS/Android | yes               |
+| lockToLandscapeRight  | 锁定应用程序的方向为横向并向右旋转         | function | no       | IOS/Android | yes               |
+| unlockAllOrientations  | 解锁应用程序的方向，允许设备自由旋转         | function | no       | IOS/Android | yes               |
+| getOrientation  | 获取当前设备的方向        | callback | no       | IOS/Android | yes               |
+| getSpecificOrientation  | 获取当前设备的具体方向        | callback | no       | IOS/Android | yes               | 
 
 ## Events
 
@@ -298,10 +378,10 @@ ohpm install
 
 | Name           | Description                              | Type   | Required | Platform    | HarmonyOS Support |
 | -------------- | ---------------------------------------- | ------ | -------- | ----------- | ----------------- |
-| addOrientationListener  | Enable monitoring of screen orientation changes         | callback | No       | IOS/Android | yes               |
-| addSpecificOrientationListener  | Start to monitor the change of screen orientation | callback | No       | IOS/Android | yes               |
-| removeOrientationListener  | Remove Listen Screen Orientation Change    | callback | No       | IOS/Android | yes               |
-| removeSpecificOrientationListener  | Remove Monitor Screen Specific Orientation Change        | callback | No       | IOS/Android | yes               |
+| addOrientationListener  | 启用监听屏幕方向变化事件         | callback | no       | IOS/Android | yes               |
+| addSpecificOrientationListener  | 开始监听屏幕具体方向变化事件 | callback | no       | IOS/Android | yes               |
+| removeOrientationListener  | 移除监听屏幕方向变化事件    | callback | no       | IOS/Android | yes               |
+| removeSpecificOrientationListener  | 移除监听屏幕具体方向变化事件        | callback | no       | IOS/Android | yes               |
 ## 其他
 
 ## 开源协议

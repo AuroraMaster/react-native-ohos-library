@@ -14,9 +14,13 @@
     </a>
 </p>
 
-
-
 > [!TIP] [Github 地址](https://github.com/WrathChaos/react-native-bounceable/tree/1.0.3)
+
+| 三方库版本                 | 支持RN版本                 |
+| ------------------------- | -------------------------- |
+| 1.0.3               |  0.72/0.77 |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 ## 安装与使用
 
@@ -113,7 +117,8 @@ const styles = StyleSheet.create({
 
 本文档内容基于以下版本验证：
 
-1. RNOH: 0.72.28; SDK：HarmonyOS-Next-DB1 5.0.0.25; IDE：DevEco Studio 5.0.3.500; ROM：5.0.0.31;
+1. RNOH：0.72.28; SDK：HarmonyOS-Next-DB1 5.0.0.25; IDE：DevEco Studio 5.0.3.500; ROM：5.0.0.31;
+2. RNOH：0.77.17; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性和方法
 
@@ -123,14 +128,14 @@ const styles = StyleSheet.create({
 
 | Property          | Description                                                  |   Type   | Required | Platform    | HarmonyOS Support |
 | ----------------- | ------------------------------------------------------------ | :------: | :------: | ----------- | ----------------- |
-| bounceEffectIn    | change the bounce effect's value（reduce）                   |  number  |    no    | iOS/Android | yes               |
-| bounceEffectOut   | change the bounce effect's value（amplification）            |  number  |    no    | iOS/Android | yes               |
-| bounceVelocityIn  | The speed of the press                                       |  number  |    no    | iOS/Android | yes               |
-| bounceVelocityOut | The speed at which it is released                            |  number  |    no    | iOS/Android | yes               |
-| bouncinessIn      | Elastic coefficient when pressed (set value 0-50 has obvious effect display) |  number  |    no    | iOS/Android | yes               |
-| bouncinessOut     | Elastic coefficient when released (set value 0-50 has obvious effect display) |  number  |    no    | iOS/Android | yes               |
-| onPress           | set your own logic for the onPress functionality             | function |    no    | iOS/Android | yes               |
-| style             | set the style like any other View container                  |  style   |    no    | iOS/Android | yes               |
+| bounceEffectIn    | 改变反弹效果的值（缩小）                   |  number  |    no    | iOS/Android | yes               |
+| bounceEffectOut   | 改变反弹效果的值（放大）            |  number  |    no    | iOS/Android | yes               |
+| bounceVelocityIn  | 按压时的速度                                       |  number  |    no    | iOS/Android | yes               |
+| bounceVelocityOut | 释放时的速度                            |  number  |    no    | iOS/Android | yes               |
+| bouncinessIn      | 按压时的弹性系数（设置值0-50有明显效果显示） |  number  |    no    | iOS/Android | yes               |
+| bouncinessOut     | 释放时的弹性系数（设置值0-50有明显效果显示） |  number  |    no    | iOS/Android | yes               |
+| onPress           | 为onPress功能设置自己的逻辑             | function |    no    | iOS/Android | yes               |
+| style             | 像任何其他View容器一样设置样式                  |  style   |    no    | iOS/Android | yes               |
 
 ## 遗留问题
 

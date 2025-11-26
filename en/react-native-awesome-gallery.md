@@ -15,9 +15,14 @@
 
 > [!TIP] [GitHub address](https://github.com/Flair-Dev/react-native-awesome-gallery)
 
+Go to the project directory and execute the following instruction:
+
+| Version | Support RN version |
+| ------- | ------------------ |
+| 0.4.2   | 0.72/0.77          |
+
 ## Installation and Usage
 
-Go to the project directory and execute the following instruction:
 
 <!-- tabs:start -->
 
@@ -80,6 +85,8 @@ This document is verified based on the following versions:
 
 2. RNOH: 0.72.29; SDK: HarmonyOS-NEXT-DB6 5.0.0.61; IDE: DevEco Studio  5.0.3.706; ROM: 5.0.0.60;
 
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
+
 ## Properties
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
@@ -92,7 +99,6 @@ This document is verified based on the following versions:
 | renderItem       | Callback func which can be used to render custom image component, e.g FastImage. NOTE: You have to call setImageDimensions({width, height}) parameter after image is loaded         | (renderItemInfo: {item: T, index: number, setImageDimensions: Function}) => React.ReactElement | No       | iOS/Android | Yes               |
 | keyExtractor | Callback func which provides unique keys for items  | (item: T, index: number) => string or number | No       | iOS/Android | Yes               |
 | initialIndex     | The initial image index | number        | No       | iOS/Android | Yes               |
-| onIndexChange     | Is called when index of active item is changed | boolean        | No       | iOS/Android | Yes               |
 | numToRender     | Amount of items rendered in gallery simultaneously | number        | No       | iOS/Android | Yes               |
 | emptySpaceWidth     | Width of empty space between items | number        | No       | iOS/Android | Yes               |
 | doubleTapScale     | Image scale when double tap is fired | number        | No       | iOS/Android | No               |
@@ -121,7 +127,8 @@ This document is verified based on the following versions:
 | ------------------ | -------------------------------------------------- | ---------------- | -------- | ----------- | ----------------- |
 | onSwipeToClose()         | Fired when user swiped to top/bottom                                  | function         | No       | iOS/Android | Yes               |
 | onTranslationYChange(translationY: number, shouldClose: boolean) | 'worklet'; Fired when user is swiping vertically to close the gallery                         | function         | No       | iOS/Android | No               |
-| onTap()          | Fired when user tap on image                                | string or number | No       | iOS/Android | Yes               |
+| onTap()          | Fired when user tap on image                                | function | No       | iOS/Android | Yes               |
+| onIndexChange     | Is called when index of active item is changed | function        | No       | iOS/Android | Yes               |
 | onDoubleTap(toScale: number)        | Fired when user double tap on image                                 | function         | No       | iOS/Android | No               |
 | onLongPress()              | Fired when long press is detected                                         | function           | No       | iOS/Android | Yes               |
 | onScaleStart(scale: number)         | Fired when pinch gesture starts                             | function            | No       | iOS/Android | Yes               |
