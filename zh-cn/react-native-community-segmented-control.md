@@ -14,9 +14,16 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/segmented-control)
 
-## 安装与使用
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/segmented-control Releases](https://github.com/react-native-oh-library/segmented-control/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 2.5.2      | [@react-native-oh-tpl/segmented-control Releases](https://github.com/react-native-oh-library/segmented-control/releases) | 0.72       |
+| 2.6.0     | [@react-native-ohos/segmented-control Releases]()            | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +32,21 @@
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/segmented-control
+
+# 0.77
+npm install @react-native-ohos/segmented-control
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/segmented-control
+
+# 0.77
+yarn add @react-native-ohos/segmented-control
 ```
 
 <!-- tabs:end -->
@@ -39,6 +54,8 @@ yarn add @react-native-oh-tpl/segmented-control
 下面的代码展示了这个库的基本使用场景：
 
 > [!WARNING] 使用时 import 的库名不变。
+
+- 0.72 示例
 
 ```js
 import React, { useState, useEffect } from "react";
@@ -59,17 +76,59 @@ export const MSegmentedControl: React.FC = (): JSX.Element => {
     />;
 }
 ```
- 
+
+- 0.77 示例
+
+```js
+import React, { useState } from "react";
+import { View, StyleSheet, Text } from "react-native";
+import SegmentedControl from "@react-native-segmented-control/segmented-control";
+
+export const MSegmentedControl: React.FC = (): JSX.Element => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const testIDS = ['btn-1', 'btn-2'];
+
+  return (
+    <View style={styles.container}>
+      <SegmentedControl
+        values={["One", "Two"]}
+        selectedIndex={selectedIndex}
+        onChange={(event) => {
+          setSelectedIndex(event.nativeEvent.selectedSegmentIndex);
+        }}
+        testIDS={testIDS}
+        style={styles.segmentedControl}
+      />
+      <Text style={{marginTop: 20}}>
+        当前选中 testID: {testIDS[selectedIndex]}
+      </Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  segmentedControl: {
+    width: "60%", 
+    height: 40,
+  },
+});
+```
+
+
+
 ## 约束与限制
 
 ### 兼容性
 
 本文档内容基于以下版本验证通过：
 
-1. RNOH：0.72.11; SDK：OpenHarmony(api11) 4.1.0.53; IDE：DevEco Studio 4.1.3.412; ROM：2.0.0.52;
-2. RNOH：0.72.13; SDK：HarmonyOS NEXT Developer Preview1; IDE：DevEco Studio 4.1.3.500; ROM：2.0.0.58;
-3. RNOH：0.72.27; SDK：HarmonyOS-Next-DB1 5.0.0.29(SP1) ; IDE：DevEco Studio 5.0.3.400; ROM：3.0.0.25;
-4. RNOH：0.72.29; SDK：HarmonyOS NEXT Developer Beta6 5.0.0.61; IDE：DevEco Studio 5.0.3.706; ROM：3.0.0.61;
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -81,18 +140,20 @@ export const MSegmentedControl: React.FC = (): JSX.Element => {
 
 | Name                      | Description                                                                                    | Type                                                                                                                                                             | Required | Platform | HarmonyOS Support |
 | ------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | ----------------- |
-| enabled         | If false the user won't be able to interact with the control. Default value is true.                                                                                                                                                             | boolean         | No       | All          | Yes               |
-| momentary       | If true, then selecting a segment won't persist visually. The onValueChange callback will still work as expected.                                                                                                                                | boolean         | No       | iOS          | Yes               | 
-| onChange        | Callback that is called when the user taps a segment; passes the event as an argument                                                                                                                                                            | function        | No       | All          | Yes               |
-| onValueChange   | Callback that is called when the user taps a segment; passes the segment's value as an argument                                                                                                                                                  | function        | No       | All          | Yes               |
-| selectedIndex   | The index in props.values of the segment to be (pre)selected.                                                                                                                                                                                    | number          | No       | All          | Yes               |
-| tintColor       | Accent color of the control.                                                                                                                                                                                                                     | string          | No       | All          | Yes               |
-| backgroundColor | Background color color of the control.                                                                                                                                                                                                           | string          | No       | All          | Yes               |
-| values          | The labels for the control's segment buttons, in order.                                                                                                                                                                                          | string          | Yes      | All          | Yes               |
-| appearance      | Overrides the control's appearance irrespective of the OS theme                                                                                                                                                                                  | 'dark', 'light' | No       | All          | Yes               |
-| fontStyle       | An object container,color: color of segment;fontSize: font-size of segment text;fontFamily: font-family of segment text;fontWeight: font-weight of segment text                                                                                  | object          | No       | All          | Yes               | 
-| activeFontStyle | An object container,color: overrides color of selected segment text;fontSize: overrides font-size of selected segment text;fontFamily: overrides font-family of selected segment text;fontWeight: overrides font-weight of selected segment text | object          | No       | All          | Yes               | 
-| tabStyle        | Styles the clickable surface which is responsible to change tabs                                                                                                                                                                                 | object          | No       | Android, Web | Yes               |
+| enabled         | 如果为false，用户将无法与控件交互。默认值为true。                                                                                                                                                             | boolean         | No       | All          | Yes               |
+| momentary       | 如果为true，则选择一个Tab页不会在视觉上保持选中状态。onValueChange回调仍会正常工作。                                                                                                                                | boolean         | No       | iOS          | Yes               |
+| onChange        | 当用户点击Tab时调用的回调函数；将事件作为参数传递                                                                                                                                                            | function        | No       | All          | Yes               |
+| onValueChange   | 当用户点击Tab时调用的回调函数；将Tab的值作为参数传递                                                                                                                                                  | function        | No       | All          | Yes               |
+| selectedIndex   | 要（预先）选择的Tab在props.values中的索引。                                                                                                                                                                                    | number          | No       | All          | Yes               |
+| tintColor       | 控件的强调色。                                                                                                                                                                                                                     | string          | No       | All          | Yes               |
+| backgroundColor | 控件的背景颜色。                                                                                                                                                                                                           | string          | No       | All          | Yes               |
+| values          | 控件Tab按钮的标签，按顺序排列。                                                                                                                                                                                          | string          | Yes      | All          | Yes               |
+| appearance      | 覆盖控件外观，不受操作系统主题影响                                                                                                                                                                                  | 'dark', 'light' | No       | All          | Yes               |
+| fontStyle       | 对象容器，包含：color: Tab文本颜色；fontSize: Tab文本字体大小；fontFamily: Tab文本字体系列；fontWeight: Tab文本字重                                                                                  | object          | No       | All          | Yes               |
+| activeFontStyle | 对象容器，包含：color: 覆盖选中Tab文本颜色；fontSize: 覆盖选中Tab文本字体大小；fontFamily: 覆盖选中Tab文本字体系列；fontWeight: 覆盖选中Tab文本字重 | object          | No       | All          | Yes               |   
+| tabStyle        | 设置负责切换选项卡的可点击表面样式                                                                                                                                                                                 | object          | No       | Android, Web | Yes               |
+| testIDS<sup>0.77+</sup> | 每个Tab按钮的testID数组 | $ReadOnlyArray<string> | Yes | All | Yes |
+| sliderStyle<sup>0.77+</sup> | 滑块组件(Animated.View)的样式属性 | object | No | Android, Web | Yes |
 
 ## 遗留问题
 - [X] @react-native-segmented-control/segmented-control 的fontFamily属性未实现 HarmonyOS 化: [issue#858](https://github.com/react-native-segmented-control/segmented-control/issues/858)
