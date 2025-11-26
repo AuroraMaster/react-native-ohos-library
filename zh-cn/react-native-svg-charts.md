@@ -18,7 +18,14 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[https://github.com/react-native-oh-library/react-native-svg-charts Releases](https://github.com/react-native-oh-library/react-native-svg-charts/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：[https://github.com/react-native-oh-library/react-native-svg-charts Releases](https://github.com/react-native-oh-library/react-native-svg-charts/releases) 。
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 5.3.0      | [https://github.com/react-native-oh-library/react-native-svg-charts Releases](https://github.com/react-native-oh-library/react-native-svg-charts/releases) | 0.72       |
+| 5.4.0      | [https://github.com/react-native-ohos/react-native-svg-charts Releases]() | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -27,13 +34,19 @@
 #### **npm**
 
 ```bash
+#0.72
 npm install @react-native-oh-tpl/react-native-svg-charts
+#0.77
+npm install @react-native-ohos/react-native-svg-charts
 ```
 
 #### **yarn**
 
 ```bash
+#0.72
 yarn add  @react-native-oh-tpl/react-native-svg-charts
+#0.77
+yarn add  @react-native-ohos/react-native-svg-charts
 ```
 
 <!-- tabs:end -->
@@ -486,6 +499,7 @@ export default PieChartWithLabelExample
 在下述版本验证通过:
 
 1. react-native-harmony: 0.72.26-CAPI; SDK：HarmonyOS NEXT Developer Cannary3 SP2; IDE：DevEco Studio 5.0.3.300; ROM：3.0.0.22(Canary3);
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## 属性
 
@@ -497,130 +511,130 @@ export default PieChartWithLabelExample
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
+| 名称 | 描述 | 类型 | 是否必需 | 支持的平台 | 是否支持HarmonyOS  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| data  | An array of arbitrary data - use prop xAccessor/yAccessorto tell the chart about the data structure         | array  | YES | ALL      | YES |
-yAccessor | A function that takes each entry of data (named "item") as well as the index and returns the y-value of that entry |  function | NO | ALL | YES |
-xAccessor | Same as yAccessor but returns the x-value of that entry | function | NO | ALL | YES |
-yScale | A function that determines the scale of said axis (only tested with scaleLinear, scaleTime & scaleBand ) | d3Scale.scaleLinear | NO | ALL | YES |
-xScale | Same as yScale but for the x axis | d3Scale.scaleLinear | NO | ALL | YES |
-svg | an object containing all the props that should be passed down to the underlying react-native-svg component. See available props | object | NO | ALL | YES |
+| data  | 一组任意数据 - 使用属性 xAccessor/yAccessor 告诉图表数据的结构         | array  | YES | ALL      | YES |
+yAccessor | 一个函数，它接收每条数据（称为“item”）以及索引，并返回该条目的 y 值 |  function | NO | ALL | YES |
+xAccessor | 与 yAccessor 相同，但返回该条目的 x 值 | function | NO | ALL | YES |
+yScale | 一个确定所述坐标轴比例的函数（仅在 scaleLinear、scaleTime 和 scaleBand 下测试过） | d3Scale.scaleLinear | NO | ALL | YES |
+xScale | 与 y 轴的 yScale 相同，但用于 x 轴 | d3Scale.scaleLinear | NO | ALL | YES |
+svg | 一个包含所有应传递到底层 react-native-svg 组件的属性的对象。请参阅可用属性 | object | NO | ALL | YES |
 animate | PropTypes.bool | boolean |   NO | ALL | YES |
 animationDuration | PropTypes.number | number |   NO | ALL | YES |
-style | Supports all ViewStyleProps | ViewStyleProps |   NO | ALL | YES |
-curve | A function like this | d3.curveLinear  |   NO | ALL | YES |
-contentInset | An object that specifies how much fake "margin" to use inside of the SVG canvas. This is particularly helpful on Android where overflow: "visible" isn't supported and might cause clipping. Note: important to have same contentInset on axis's and chart | object |   NO | ALL | YES |
-numberOfTicks | We use d3-array to evenly distribute the grid and dataPoints on the yAxis. This prop specifies how many "ticks" we should try to render. Note: important that this prop is the same on both the chart and on the yAxis | number/undefined |   NO | ALL | YES |
-showGrid | Whether or not to show the grid lines  | boolean |   NO | ALL | YES |
-yMin | Alter how the chart bounds are calculated  | number/undefined |   NO | ALL | YES |
-yMax | Alter how the chart bounds are calculated  |  number/undefined |   NO | ALL | YES |
-xMin | Alter how the chart bounds are calculated  |  number/undefined |   NO | ALL | YES |
-xMax | Alter how the chart bounds are calculated  |  number/undefined |   NO | ALL | YES |
-children | One or many react-native-svg components that will be used to enhance your chart |  ReactNode |   NO | ALL | YES |
+style | 支持所有视图样式属性 | ViewStyleProps |   NO | ALL | YES |
+curve | 设置curve曲线 | d3.curveLinear  |   NO | ALL | YES |
+contentInset | 一个对象，用于指定在 SVG 画布内部使用多少假“边距”。这在 Android 上特别有用，因为 overflow: "visible" 不被支持，可能会导致裁剪。注意：在轴和图表上保持相同的 contentInset 很重要 | object |   NO | ALL | YES |
+numberOfTicks | 我们使用 d3-array 在 y 轴上均匀分布网格和数据点。这个属性指定了我们应尝试渲染的“刻度”数量。注意：重要的是这个属性在图表和 y 轴上必须相同 | 数字/未定义 |   NO | ALL | YES |
+showGrid | 是否显示网格线  | boolean |   NO | ALL | YES |
+yMin | 更改图表边界的计算方式  | number/undefined |   NO | ALL | YES |
+yMax | 更改图表边界的计算方式  |  number/undefined |   NO | ALL | YES |
+xMin | 更改图表边界的计算方式  |  number/undefined |   NO | ALL | YES |
+xMax | 更改图表边界的计算方式  |  number/undefined |   NO | ALL | YES |
+children | 一个或多个 react-native-svg 组件，将用于增强您的图表 |  ReactNode |   NO | ALL | YES |
 
 ### 属性children
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
+| 名称 | 描述 | 类型 | 是否必需 | 支持的平台 | 是否支持HarmonyOS  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| x  | a function that normally accepts the index of a data point an returns its 'x' location on the canvas         |  nunmber/string  | NO | ALL      | YES |
-| y  | a function that normally accepts the value of a data point an returns its 'y' location on the canvas        |  nunmber/string  | NO | ALL      | YES |
-| width  | the width of the canvas in pixels        |  number/srting  | NO | ALL      | YES |
-| height  | the height of the canvas in pixels        |   number/srting  | NO | ALL      | YES |
-| data  | the same data array provided to the chart, use this to map over your data points if you want decorators on each point        |  array  | YES | ALL      | YES |
-| ticks  | if numberOfTicks has been provided to the chart this array will include the calculated tick values (useful for grids)       |  array  | NO | ALL      | YES |
+| x  | 一个通常接受数据点索引并返回其在画布上的 'x' 位置的函数         |  nunmber/string  | NO | ALL      | YES |
+| y  | 一个函数，通常接受数据点的值并返回其在画布上的“y”位置        |  nunmber/string  | NO | ALL      | YES |
+| width  | 画布的像素宽度        |  number/srting  | NO | ALL      | YES |
+| height  | 画布的像素高度        |   number/srting  | NO | ALL      | YES |
+| data  | 将提供给图表的相同数据数组，如果你想在每个点上添加装饰器，可以使用它来映射你的数据点       |  array  | YES | ALL      | YES |
+| ticks  | 如果图表提供了 numberOfTicks，则此数组将包含计算出的刻度值（对于网格很有用）       |  array  | NO | ALL      | YES |
 
 ### 组件特有属性
 
 #### Area
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
+| 名称 | 描述 | 类型 | 是否必需 | 支持的平台 | 是否支持HarmonyOS  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| start  | The value of which the area should start (will always end on the data point)    |  number/undefined  | NO | ALL      | YES |
+| start  | 面积应开始的值（将始终在数据点结束）   |  number/undefined  | NO | ALL      | YES |
 
 #### StackedAreaChart
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
+| 名称 | 描述 | 类型 | 是否必需 | 支持的平台 | 是否支持HarmonyOS  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| data  | An array of the data entries    |  array  | YES | ALL      | YES |
-| keys  | This array should contain the object keys of interest (see above example)    |  array  | YES | ALL      | YES |
-| colors  | An array of equal size as keys with the color for each key    |  array  | YES | ALL      | YES |
-| order  | The order in which to sort the areas    |  d3.stackOrderNone  | NO | ALL      | YES |
-| offset  | A function to determine the offset of the areas    |  d3.stackOffsetNone  | NO | ALL  | YES |
+| data  | 数据条目的数组    |  array  | YES | ALL      | YES |
+| keys  | 该数组应包含感兴趣的对象键（参见上面的示例）   |  array  | YES | ALL      | YES |
+| colors  | 一个与键大小相同的数组，用于存放每个键的颜色    |  array  | YES | ALL      | YES |
+| order  | 排序区域的顺序    |  d3.stackOrderNone  | NO | ALL      | YES |
+| offset  | 一个用于确定区域偏移的函数    |  d3.stackOffsetNone  | NO | ALL  | YES |
 
 #### BarChart
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
+| 名称 | 描述 | 类型 | 是否必需 | 支持的平台 | 是否支持HarmonyOS  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| data  | The data prop in a barChart can look exactly like in a Line- or AreaChart, i.e an array of just numbers or complex objects. It can however also be an array with several data sets. A data object can contain a svg property which allows you two override styles on that specific object.     |  array  | YES | ALL      | YES |
-| horizontal  | Boolean whether or not the bars should be horizontal   |  boolean  | NO | ALL      | YES |
-| svg  | Default svg props for all bars. Supports all svg props an svg path normally supports. This styles will be overriden if there are specific styles for a given data object   |  object  | NO | ALL      | YES |
-| spacingInner  | Spacing between the bars (or groups of bars)    |  number/undefined   | NO | ALL      | YES |
-| spacingOuter  | Spacing outside of the bars (or groups of bars). Percentage of one bars width    |  number/undefined   | NO | ALL      | YES |
+| data  | barChart 中的 data 属性看起来可以完全像 LineChart 或 AreaChart 中的那样，即一个仅包含数字的数组或复杂对象的数组。然而，它也可以是包含多个数据集的数组。一个数据对象可以包含一个 svg 属性，这允许你覆盖该特定对象的样式。     |  array  | YES | ALL      | YES |
+| horizontal  | 布尔值，表示条形图是否应为水平   |  boolean  | NO | ALL      | YES |
+| svg  | 所有柱状图的默认 SVG 属性。支持 SVG 路径通常支持的所有 SVG 属性。如果某个数据对象有特定样式，这些样式将被覆盖。  |  object  | NO | ALL      | YES |
+| spacingInner  | 条形（或条形组）之间的间距    |  number/undefined   | NO | ALL      | YES |
+| spacingOuter  | 条形（或条形组）外的间距。相当于一个条形宽度的百分比    |  number/undefined   | NO | ALL      | YES |
 | contentInset  | PropTypes.shape    |  object  | NO | ALL      | YES |
-| children.bandwidth  | the width of a band (a.k.a bar)    |  number  | NO | ALL      | YES |
+| children.bandwidth  | 带（即条形）的宽度    |  number  | NO | ALL      | YES |
 
 #### StackedBarChart
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
+| 名称 | 描述 | 类型 | 是否必需 | 支持的平台 | 是否支持HarmonyOS  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| data  | An array of the data entries: each value can be a number or a complex object with custom svg props for example    |  array  | YES | ALL      | YES |
-| keys  | This array should contain the object keys of interest (see above example)    |  array  | YES | ALL      | YES |
-| colors  | An array of equal size as keys with the color for each key    |  array  | YES | ALL      | YES |
-| valueAccessor  | Very similar to the yAccessor of the other charts, usually needed when using complex objects as values    |  function  | NO | ALL      | YES |
-| horizontal  | Boolean whether or not the bars should be horizontal   |  boolean  | NO | ALL      | YES |
-| order  | The order in which to sort the areas    |  d3.stackOrderNone  | NO | ALL      | YES |
-| offset  | A function to determine the offset of the areas    |  d3.stackOffsetNone | NO | ALL  | YES |
+| data  | 数据条目的数组：每个值可以是一个数字，也可以是带有自定义 SVG 属性的复杂对象，例如    |  array  | YES | ALL      | YES |
+| keys  | 该数组应包含感兴趣的对象键（参见上面的示例）   |  array  | YES | ALL      | YES |
+| colors  | 一个与键大小相同的数组，用于存放每个键的颜色    |  array  | YES | ALL      | YES |
+| valueAccessor  | 与其他图表的 yAccessor 非常相似，通常在使用复杂对象作为值时需要   |  function  | NO | ALL      | YES |
+| horizontal  | 布尔值，表示条形图是否应为水平   |  boolean  | NO | ALL      | YES |
+| order  | 排序区域的顺序    |  d3.stackOrderNone  | NO | ALL      | YES |
+| offset  | 一个用于确定区域偏移的函数    |  d3.stackOffsetNone | NO | ALL  | YES |
 
 #### PieChart
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
+| 名称 | 描述 | 类型 | 是否必需 | 支持的平台 | 是否支持HarmonyOS  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| data  | Very similar to the data prop of our other charts, the only exception is that the PieChart only accepts complex objects (not just numbers). An item can also contain the arc property which allows you two override settings on that specific arc    |  array  | YES | ALL      | YES |
-| valueAccessor  | Very similar to the yAccessor of the other charts    |  function  | NO | ALL      | YES |
-| outerRadius  | The outer radius, use this to tweak how close your pie is to the edge of it's container. Takes either percentages or absolute numbers (pixels)    |  number/string/undefined  | NO | ALL      | YES |
-| innerRadius  | The inner radius, use this to create a donut. Takes either percentages or absolute numbers (pixels)    |  number/string/undefined  | NO | ALL      | YES |
-| labelRadius  | The radius of the circle that will help you layout your labels. Takes either percentages or absolute numbers (pixels)    |  number/string/undefined  | NO | ALL      | YES |
-| padAngle  | The angle between the slices    |  number/undefined  | NO | ALL      | YES |
-| startAngle  | The start angle in radians of the entire pie    |  number/undefined  | NO | ALL      | YES |
-| endAngle  | The end angle in radians of the entire pie    |  number/undefined  | NO | ALL      | YES |
-| sort  | Like any normal sort function it expects either 0, a positive or negative return value. The arguments are each an object from the dataPoints array   |  function  | NO | ALL      | YES |
-| children.slices  | an array of the pie chart slices. See source code and examples for what it includes    |  array  | NO | ALL      | YES |
+| data  | 与我们其他图表的数据属性非常相似，唯一的区别是饼图只接受复杂对象（不仅仅是数字）。一个项目还可以包含 arc 属性，这允许你覆盖该特定弧的设置    |  array  | YES | ALL      | YES |
+| valueAccessor  | 与其他图表的 yAccessor 非常相似    |  function  | NO | ALL      | YES |
+| outerRadius  | 外半径，用来调整你的饼图与容器边缘的距离。可以使用百分比或绝对数值（像素）    |  number/string/undefined  | NO | ALL      | YES |
+| innerRadius  | 内半径，用于创建甜甜圈图。可以使用百分比或绝对数值（像素）    |  number/string/undefined  | NO | ALL      | YES |
+| labelRadius  | 用于帮助你布置标签的圆的半径。可以使用百分比或绝对数值（像素）   |  number/string/undefined  | NO | ALL      | YES |
+| padAngle  | 切片之间的角度    |  number/undefined  | NO | ALL      | YES |
+| startAngle  | 整个饼图的起始角度（弧度）    |  number/undefined  | NO | ALL      | YES |
+| endAngle  | 整个饼图的结束角度（弧度）    |  number/undefined  | NO | ALL      | YES |
+| sort  | 像任何普通的排序函数一样，它期望返回值为 0、正数或负数。参数是来自 dataPoints 数组的每个对象   |  function  | NO | ALL      | YES |
+| children.slices  | 饼图切片的数组。请参阅源代码和示例以了解其包含内容    |  array  | NO | ALL      | YES |
 
 #### ProgressCircle
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
+| 名称 | 描述 | 类型 | 是否必需 | 支持的平台 | 是否支持HarmonyOS  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| progress  | PropTypes.number.isRequired    |  number  | YES | ALL  | YES |
-| progressColor  | PPropTypes.any    |  string/undefined  | NO | ALL  | YES |
-| backgroundColor  | PropTypes.any    |  string/undefined  | NO | ALL  | YES |
-| startAngle  | PropTypes.number    |  number/undefined  | NO | ALL  | YES |
-| endAngle  | PropTypes.number    |  number/undefined  | NO | ALL  | YES |
-| strokeWidth  | PropTypes.number    |  number/undefined  | NO | ALL  | YES |
-| cornerRadius  | PropTypes.number    |  number/undefined | NO | ALL  | YES |
+| progress  | 进度值    |  number  | YES | ALL  | YES |
+| progressColor  | 进度条颜色    |  string/undefined  | NO | ALL  | YES |
+| backgroundColor  | 进度条背景颜色    |  string/undefined  | NO | ALL  | YES |
+| startAngle  | 开始的角度    |  number/undefined  | NO | ALL  | YES |
+| endAngle  | 结束的角度    |  number/undefined  | NO | ALL  | YES |
+| strokeWidth  | 进度条的宽度    |  number/undefined  | NO | ALL  | YES |
+| cornerRadius  | 圆角的大小    |  number/undefined | NO | ALL  | YES |
 
 #### YAxis
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
+| 名称 | 描述 | 类型 | 是否必需 | 支持的平台 | 是否支持HarmonyOS  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| scale  | Should be the same as passed into the charts yScale, or d3Scale.scaleBand if used in conjunction with a horizontal BarChart   |  d3Scale.scaleLinear  | NO | ALL  | YES |
-| svg  | supports all svg props an svg text normally supports   |  object  | NO | ALL      | YES |
-| spacingInner  | Spacing between the labels. Only applicable if scale=d3Scale.scaleBand and should then be equal to spacingInner prop on the actual BarChart   |  number/undefined   | NO | ALL      | YES |
-| spacingOuter  | 	Spacing outside of the labels. Only applicable if scale=d3Scale.scaleBand and should then be equal to spacingOuter prop on the actual BarChart   |  number/undefined  | NO | ALL      | YES |
-| formatLabel  | A utility function to format the text before it is displayed, e.g `value => "$" + value   |  function|NO  | YES | ALL      | YES |
-| contentInset  | Used to sync layout with chart (if same prop used there)   |  object  | NO | ALL      | YES |
-| min  | Used to sync layout with chart (if gridMin is used there)  | number/undefined | NO | ALL      | YES |
-| max  | Used to sync layout with chart (if gridMax is used there)  | number/undefined | NO | ALL      | YES |
+| scale  | 应该与传入图表的 yScale 相同，或者在与水平条形图一起使用时，与 d3Scale.scaleBand 相同   |  d3Scale.scaleLinear  | NO | ALL  | YES |
+| svg  | 支持所有 SVG 属性以及 SVG 文本通常支持的属性   |  object  | NO | ALL      | YES |
+| spacingInner  | 标签之间的间距。仅在 scale=d3Scale.scaleBand 时适用，此时应等于实际 BarChart 上的 spacingInner 属性  |  number/undefined   | NO | ALL      | YES |
+| spacingOuter  | 	标签外的间距。仅在 scale=d3Scale.scaleBand 时适用，并且应等于实际条形图上的 spacingOuter 属性   |  number/undefined  | NO | ALL      | YES |
+| formatLabel  | 一个用于在文本显示之前进行格式化的实用函数，例如 `value => "$" + value`   |  function|NO  | YES | ALL      | YES |
+| contentInset  | 用于与图表同步布局（如果在那里使用了相同的属性）   |  object  | NO | ALL      | YES |
+| min  | 用于与图表同步布局（如果使用了 gridMin）  | number/undefined | NO | ALL      | YES |
+| max  | 用于与图表同步布局（如果使用了 gridMax）  | number/undefined | NO | ALL      | YES |
 
 #### XAxis
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
+| 名称 | 描述 | 类型 | 是否必需 | 支持的平台 | 是否支持HarmonyOS  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| data  | An array of values or objects to render on the xAxis. Should preferably have the same length as the chart's dataPoints. If a complex object is used instead of a simple value, a xAccessor prop is required to calculate the axis' extent. A data object can contain a svg property which allows you to override styles on that specific object  |  array  | YES | ALL      | YES |
-| scale  | Should be the same as passed into the charts xScale   |  d3Scale.scaleLinear  | NO | ALL  | YES |
-| spacingInner  | Spacing between the labels. Only applicable if scale=d3Scale.scaleBand and should then be equal to spacingInner prop on the actual BarChart   |  number/undefined   | NO | ALL      | YES |
-| spacingOuter  | 	Spacing between the labels. Only applicable if scale=d3Scale.scaleBand and should then be equal to spacingOuter prop on the actual BarChart   |  number/undefined  | NO | ALL      | YES |
-| svg  | Default svg props for all labels. Supports all svg props an svg text normally supports. This styles will be overriden if there are specific styles for a given data object   |  object  | NO | ALL      | YES |
-| formatLabel  | A utility function to format the text before it is displayed, e.g value => "day" + value. Passes back the value provided by the xAccessor   |  function  | NO | ALL      | YES |
-| contentInset  | Used to sync layout with chart (if same prop used there)  |  object  | NO | ALL      | YES |
+| data  | 要在 x 轴上渲染的一组值或对象。最好与图表的数据点长度相同。如果使用的是复杂对象而不是简单值，则需要 xAccessor 属性来计算轴的范围。数据对象可以包含一个 svg 属性，该属性允许你覆盖该特定对象的样式  |  array  | YES | ALL      | YES |
+| scale  | 应该与传入图表的 xScale 相同   |  d3Scale.scaleLinear  | NO | ALL  | YES |
+| spacingInner  | 标签之间的间距。仅在 scale=d3Scale.scaleBand 时适用，此时应等于实际 BarChart 上的 spacingInner 属性   |  number/undefined   | NO | ALL      | YES |
+| spacingOuter  | 	标签之间的间距。仅在 scale=d3Scale.scaleBand 时适用，此时应等于实际 BarChart 上的 spacingOuter 属性   |  number/undefined  | NO | ALL      | YES |
+| svg  | 所有标签的默认 SVG 属性。支持 SVG 文本通常支持的所有 SVG 属性。如果针对特定数据对象有特定样式，这些样式将被覆盖。   |  object  | NO | ALL      | YES |
+| formatLabel  | 一个实用函数，用于在显示文本之前进行格式化，例如 value => "day" value。返回 xAccessor 提供的值   |  function  | NO | ALL      | YES |
+| contentInset  | 用于与图表同步布局（如果在那里使用了相同的属性）  |  object  | NO | ALL      | YES |
 
 
 #### Grid
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
+| 名称 | 描述 | 类型 | 是否必需 | 支持的平台 | 是否支持HarmonyOS  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| svg  | an object containing all the props that should be passed down to the underlying react-native-svg component.   |  object  | NO | ALL      | YES |
-| direction  | The direction of the grid lines.  |  Grid.Direction  | NO | ALL      | YES |
-| belowChart  | whether or not to render below the chart.  |  boolean  | NO | ALL      | YES |
+| svg  | 一个包含所有应传递给底层 react-native-svg 组件的属性的对象。   |  object  | NO | ALL      | YES |
+| direction  | 网格线的方向。  |  Grid.Direction  | NO | ALL      | YES |
+| belowChart  | 是否在图表下方呈现。  |  boolean  | NO | ALL      | YES |
 
 ## 遗留问题
 

@@ -16,20 +16,35 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-cardview Releases](https://github.com/react-native-oh-library/react-native-cardview/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 2.0.3      | [@react-native-oh-tpl/react-native-cardview Releases](https://github.com/react-native-oh-library/react-native-cardview/releases) | 0.72       |
+| 2.1.0     | [@react-native-ohos/react-native-cardviewReleases]()         | 0.77       |
+
+ 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
 #### **npm**
 
 ```bash
+#0.72
 npm install @react-native-oh-tpl/react-native-cardview
+
+#0.77
+npm install @react-native-ohos/react-native-cardview
 ```
 
 #### **yarn**
 
 ```bash
+#0.72
 yarn add @react-native-oh-tpl/react-native-cardview
+
+#0.77
+yarn add @react-native-ohos/react-native-cardview
 ```
 
 <!-- tabs:end -->
@@ -137,10 +152,21 @@ const styles = StyleSheet.create({
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- 0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-cardview": "file:../../node_modules/@react-native-oh-tpl/react-native-cardview/harmony/card_view.har"
+  }
+```
+
+- 0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-cardview": "file:../../node_modules/@react-native-ohos/react-native-cardview/harmony/card_view.har"
   }
 ```
 
@@ -179,7 +205,12 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+# 0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-cardview/src/main/cpp" ./card-view)
+
+# 0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-cardview/src/main/cpp" ./card-view)
+
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -232,10 +263,10 @@ ohpm install
 ## 约束与限制
 
 ### 兼容性
+本文档内容基于以下版本验证通过：
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
-
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[react-native-oh-tpl/react-native-cardview Releases](https://github.com/react-native-oh-library/react-native-cardview/releases)
+1. RNOH：0.72.33; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## 属性
 
@@ -245,13 +276,13 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
+| 名称 | 描述 | 类型 | 是否必需 | 支持的平台 | 是否支持HarmonyOS  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| cornerRadius       | An attribute to set the elevation of the card.                                          | number | No       | iOS/Android      | yes               |
-| cardElevation       | An attribute to support shadow on pre-lollipop device in android.                 | number | No       | iOS/Android      | yes               |
-| cardMaxElevation    | An attribute to set the radius of the card.                                               | number | No       | Android      | yes               |
-| useCompatPadding     | CardView adds additional padding to draw shadows on platforms before Lollipop.         | boolean | No       | Android       | no                |
-| cornerOverlap        | On pre-Lollipop platforms, CardView does not clip the bounds of the Card for the rounded corners. | boolean | No   | Android   | no               |
+| cornerRadius       | 用于设置卡片高度的属性。                                          | number | No       | iOS/Android      | yes               |
+| cardElevation       | 用于在 Android 预 Lollipop 设备上支持阴影的属性                 | number | No       | iOS/Android      | yes               |
+| cardMaxElevation    | 用于设置卡片半径的属性。                                           | number | No       | Android      | yes               |
+| useCompatPadding     | CardView 在 Lollipop 之前的平台上会增加额外的内边距以绘制阴影。         | boolean | No       | Android       | no                |
+| cornerOverlap        | 在 Lollipop 之前的平台上，CardView 不会裁剪卡片圆角的边界。 | boolean | No   | Android   | no               |
 
 ## 遗留问题
 

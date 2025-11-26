@@ -22,20 +22,29 @@ Find the matching version information in the release address of a third-party li
 
 Go to the project directory and execute the following instruction:
 
-
+| Version | Post Information                                                      | Supports RN version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 5.3.0      | [https://github.com/react-native-oh-library/react-native-svg-charts Releases](https://github.com/react-native-oh-library/react-native-svg-charts/releases) | 0.72       |
+| 5.4.0      | [https://github.com/react-native-ohos/react-native-svg-charts Releases]() | 0.77       |
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+#0.72
 npm install @react-native-oh-tpl/react-native-svg-charts
+#0.77
+npm install @react-native-ohos/react-native-svg-charts
 ```
 
 #### **yarn**
 
 ```bash
+#0.72
 yarn add  @react-native-oh-tpl/react-native-svg-charts
+#0.77
+yarn add  @react-native-ohos/react-native-svg-charts
 ```
 
 <!-- tabs:end -->
@@ -497,6 +506,7 @@ If it is not included, follow the guide provided in [@react-native-oh-tpl/react-
 This document is verified based on the following versions:
 
 1. react-native-harmony: 0.72.26-CAPI; SDK：HarmonyOS NEXT Developer Cannary3 SP2; IDE：DevEco Studio 5.0.3.300; ROM：3.0.0.22(Canary3);
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## Properties
 

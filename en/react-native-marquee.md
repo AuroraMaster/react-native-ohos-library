@@ -8,10 +8,11 @@ This project is based on [react-native-marquee@0.5.0](https://github.com/kyo504/
 
 This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-marquee`, The version correspondence details are as follows:
 
-| Version                   | Package Name                                      | Repository         | Release                    |
-| ------------------------- | ------------------------------------------------- | ------------------ | -------------------------- |
-| <= 0.5.0-0.0.1@deprecated | @react-native-oh-tpl/react-native-marquee | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-marquee) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-marquee/releases) |
-| > 0.5.1                  | @react-native-ohos/react-native-marquee   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-marquee) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-marquee/releases) |
+| Version                   | Package Name                                      | Repository         | Release                    | Version for RN      |
+| ------------------------- | ------------------------------------------------- | ------------------ | -------------------------- | ------------------------- |
+| <= 0.5.0-0.0.1@deprecated | @react-native-oh-tpl/react-native-marquee | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-marquee) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-marquee/releases) | 0.72 |
+| > 0.5.1                  | @react-native-ohos/react-native-marquee   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-marquee) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-marquee/releases) | 0.72 |
+|    0.6.0 | @react-native-ohos/react-native-marquee | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-marquee) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-marquee/releases) | 0.77 |
 
 
 ## 1. Installation and Usage
@@ -74,7 +75,10 @@ const styles = StyleSheet.create({
 
 ### 2.1 Compatibility
 
-Check the release version information in the release address of the third-party library: [@react-native-ohos/react-native-marquee Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-marquee/releases)
+The content of this document has been validated based on the following version:
+
+1. RNOH：0.72.33; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## 3. Properties
 
