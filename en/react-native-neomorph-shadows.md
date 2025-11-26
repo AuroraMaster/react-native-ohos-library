@@ -17,7 +17,11 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library：[@react-native-oh-tpl/react-native-neomorph-shadows Releases](https://github.com/react-native-oh-library/react-native-neomorph-shadows/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please refer to the Releases page of the third-party library for the corresponding version information
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.1.2      | [@react-native-oh-tpl/react-native-neomorph-shadows Releases](https://github.com/react-native-oh-library/react-native-neomorph-shadows) | 0.72       |
+| 1.2.0     | [@react-native-ohos/react-native-neomorph-shadows Releases](https://gitcode.com/openharmony-sig/react-native-neomorph-shadows/tree/br_rnoh0.77)                    | 0.77       |
 
 Go to the project directory and execute the following instruction:
 
@@ -27,12 +31,14 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+#v1.1.2
 npm install @react-native-oh-tpl/react-native-neomorph-shadows
 ```
 
 #### **yarn**
 
 ```bash
+#v1.2.0
 yarn add @react-native-oh-tpl/react-native-neomorph-shadows
 ```
 
@@ -115,7 +121,10 @@ If it is not included, follow the guide provided in @react-native-oh-tpl/react-n
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-neomorph-shadows Releases](https://github.com/react-native-oh-library/react-native-neomorph-shadows/releases)
+This document is verified based on the following versions:
+
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM：NEXT 5.1.0.150;
 
 ## Properties
 
