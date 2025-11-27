@@ -18,6 +18,11 @@
 
 Find the matching version information in the release address of a third-party library：[@react-native-oh-tpl/mixpanel-react-native Releases](https://github.com/react-native-oh-library/mixpanel-react-native/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
+| Version | Post Information                                                     | Support RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 3.0.5     | [@react-native-oh-tpl/mixpanel-react-native Releases](https://github.com/react-native-oh-library/mixpanel-react-native/releases) | 0.72       |
+| 3.1.3      | [@react-native-ohos/mixpanel-react-native Releases]()     | 0.77       |
+
 Go to the project directory and execute the following instruction:
 
 <!-- tabs:start -->
@@ -25,14 +30,22 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/mixpanel-react-native
+
+# 0.77
+npm install @react-native-ohos/mixpanel-react-native
 ```
 
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/mixpanel-react-native
+
+# 0.77
+yarn add @react-native-ohos/mixpanel-react-native
 ```
 
 <!-- tabs:end -->
@@ -95,10 +108,19 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
++ 0.72
 ```json
 "dependencies": {
 "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 "@react-native-oh-tpl/mixpanel-react-native": "file:../../node_modules/@react-native-oh-tpl/mixpanel-react-native/harmony/mixpanel.har"
+}
+```
+
++ 0.77
+```json
+"dependencies": {
+"@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+"@react-native-ohos/mixpanel-react-native": "file:../../node_modules/@react-native-ohos/mixpanel-react-native/harmony/mixpanel.har"
 }
 ```
 
@@ -115,14 +137,64 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 3. Introducing MixpanelPackage to ArkTS
+### 3.Configuring CMakeLists and Introducing UnistylesPackage
 
- Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
+> V3.1.3 Need Configuring CMakeLists and Introducing UnistylesPackage。
+
+```diff
+...
+
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_END: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/mixpanel-react-native/src/main/cpp" ./mixpanel)
+# RNOH_END: manual_package_linking_1
+
+add_library(rnoh_app SHARED
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_mixpanel)
+# RNOH_BEGIN: manual_package_linking_2
+```
+
+Open `entry/src/main/cpp/PackageProvider.cpp`，add：
+
+```diff
+#include "RNOH/PackageProvider.h"
++ #include "MixpanelPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
++        std::make_shared<MixpanelPackage>(ctx)
+}
+```
+
+### 4.Introducing RNUnistylesPackage to ArkTS
+
+Open `entry/src/main/ets/RNPackagesFactory.ts`，add：
 
 ```diff
   ...
+// 0.72
 + import { MixpanelPackage } from '@react-native-oh-tpl/mixpanel-react-native/ts';
 
+// 0.77
++ import { MixpanelPackage } from '@react-native-ohos/mixpanel-react-native/ts';
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
     new SamplePackage(ctx),
@@ -131,7 +203,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.Running
+### 5.Running
 
 Click the `sync` button in the upper right corner.
 
@@ -148,9 +220,11 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+The content of this document has been validated based on the following version:
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/mixpanel-react-native Releases](https://github.com/react-native-oh-library/mixpanel-react-native/releases)
+1. RNOH：0.72.33; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+
 
 ## API
 
