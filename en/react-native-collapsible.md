@@ -17,6 +17,11 @@
 
 ## Installation and Usage
 
+| Library Version | Supported RN Version |
+| :--- | :--- |
+| 1.6.1 | 0.72 |
+| 1.6.2 | 0.77 |
+
 Go to the project directory and execute the following instruction:
 
 <!-- tabs:start -->
@@ -24,13 +29,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# 0.72
 npm install react-native-collapsible@1.6.1
+
+# 0.77
+npm install react-native-collapsible@1.6.2
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add react-native-collapsible@1.6.1
+
+# 0.77
+yarn add react-native-collapsible@1.6.2
 ```
 
 <!-- tabs:end -->
@@ -91,6 +104,7 @@ This document is verified based on the following versions:
 
 1. RNOH: 0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## Properties
 

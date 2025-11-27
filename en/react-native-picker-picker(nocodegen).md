@@ -274,7 +274,7 @@ Check the release version information in the release address of the third-party 
 |----------------------|----------------------------------------------------------------------------------------------------------|---------------|----------|----------|-------------------|
 | `label`              | Displayed value on the Picker Item.                                                                      | string        | Yes      | All      | Yes               |
 | `value`              | Actual value on the Picker Item.                                                                         | number,string | Yes      | All      | Yes               |
-| `color`              | Displayed color on the Picker Item.                                                                      | ColorValue    | Yes      | All      | No                |
+| `color`              | Displayed color on the Picker Item.                                                                      | ColorValue    | No       | All      | No                |
 | `fontFamily`         | Displayed fontFamily on the Picker Item.                                                                 | string        | No       | All      | No                |
 | `style`              | Style to apply to individual item labels.                                                                | ViewStyleProp | No       | Android  | No                |
 | `enabled`            | If set to false, the specific item will be disabled, i.e. the user will not be able to make a selection. | boolean       | No       | Android  | No                |

@@ -16,6 +16,11 @@
 
 ## Installation and Usage
 
+| Library Version | Supported RN Version |
+| --------------- | -------------------- |
+| 3.0.0      | 0.72       |
+| 3.1.0      | 0.77       |
+
 Go to the project directory and execute the following instruction:
 
 <!-- tabs:start -->
@@ -23,13 +28,21 @@ Go to the project directory and execute the following instruction:
 ####  npm
 
 ```bash
+# 0.72
 npm install @react-native-community/hooks@3.0.0
+
+# 0.77
+npm install @react-native-community/hooks@3.1.0
 ```
 
 #### yarn
 
 ```bash
+# 0.72
 yarn add @react-native-community/hooks@3.0.0
+
+# 0.77
+yarn add @react-native-community/hooks@3.1.0
 ```
 
 <!-- tabs:end -->
@@ -130,6 +143,7 @@ This document is verified based on the following versions:
 
 1.RNOH: 0.72.27; SDK：HarmonyOS-Next-DB1 5.0.0.25; IDE：DevEco Studio 5.0.3.400SP7; ROM：3.0.0.25;
 2.RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3.RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## API
 
@@ -150,15 +164,15 @@ This document is verified based on the following versions:
 | useLayout  | Returns the x-axis and y-axis coordinates of an element and the width and height of the element. | Function | False       | Android / iOS | Yes       |
 | useRefresh  | pull down to refresh. | Function | False       | Android / iOS | Yes       |
 
-useAccessibilityInfo 方法返回值
+**Return value of `useAccessibilityInfo`**
 | Name           | Description                   | Platform    | HarmonyOS Support |
 |----------------|-------------------------------| -------- | ----------------- |
 | isBoldTextEnabled  | whether bold text is enabled | iOS | Yes        |
 | isScreenReaderEnabled    | Whether the Screen Reading Function Is Enabled | Android / iOS | Yes   |
-| isGrayscaleEnabled  | Whether grayscale mode is enabled | iOS | Yes        |
-| isInvertColorsEnabled  | Whether color inversion is enabled | iOS | Yes        |
-| isReduceMotionEnabled  | Whether reduction animation is enabled | Android / iOS | Yes        |
-| isReduceTransparencyEnabled  | Whether reduce transparency is enabled | iOS | Yes        |
+| isGrayscaleEnabled  | Whether grayscale mode is enabled | iOS | No        |
+| isInvertColorsEnabled  | Whether color inversion is enabled | iOS | No        |
+| isReduceMotionEnabled  | Whether reduction animation is enabled | Android / iOS | No        |
+| isReduceTransparencyEnabled  | Whether reduce transparency is enabled | iOS | No        |
 
 ## Known Issues
 

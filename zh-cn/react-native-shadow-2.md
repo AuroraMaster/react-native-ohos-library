@@ -17,6 +17,11 @@
 
 ## 安装与使用
 
+| 三方库版本 | 支持RN版本 |
+| ---------- | ---------- |
+| 7.0.8      | 0.72       |
+| 7.1.1      | 0.77       |
+
 进入到工程目录并输入以下命令：
 
 <!-- tabs:start -->
@@ -24,13 +29,21 @@
 #### **npm**
 
 ```bash
+# 0.72
 npm install react-native-shadow-2@7.0.8
+
+# 0.77
+npm install react-native-shadow-2@7.1.1
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add react-native-shadow-2@7.0.8
+
+# 0.77
+yarn add react-native-shadow-2@7.1.1
 ```
 
 <!-- tabs:end -->
@@ -173,9 +186,9 @@ const styles = StyleSheet.create({
 
 ## Link
 
-本库HarmonyOS侧实现依赖@react-native-oh-tpl/react-native-svg 的原生端代码，如已在HarmonyOS工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
+本库HarmonyOS侧实现依赖 react-native-svg 的原生端代码，如已在HarmonyOS工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
 
-如未引入请参照[@react-native-oh-tpl/react-native-svg 文档](/zh-cn/react-native-svg-capi.md#link)进行引入
+如未引入请参照[react-native-svg 文档](/zh-cn/react-native-svg-capi.md#link)进行引入
 
 ## 约束与限制
 
@@ -184,6 +197,7 @@ const styles = StyleSheet.create({
 本文档内容基于以下版本验证通过：
 
 1. RNOH：0.72.27; SDK：HarmonyOS NEXT Developer Beta1 5.0.0.25 (API Version 12 Canary4); IDE：DevEco Studio 5.0.3.400SP7; ROM：3.0.0.25;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## 属性
 
@@ -191,20 +205,20 @@ const styles = StyleSheet.create({
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name           | Description                                                  | Type                                                         | Required | Platform | HarmonyOS Support |
-| -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | -------- | ----------------- |
-| startColor     | The initial gradient color of the shadow.                    | string                                                       | no       | All      | yes               |
-| endColor       | The final gradient color of the shadow.                      | string                                                       | no       | All      | yes               |
-| distance       | How far the shadow goes.                                     | number                                                       | no       | All      | yes               |
-| offset         | Moves the shadow. Negative x moves it left/start, negative y moves it up. Accepts 'x%' values. Defining this will default paintInside to true, as it's the usual desired behaviour. | [x: string \| number, y: string \| number]                   | no       | All      | yes               |
-| paintInside    | Apply the shadow below/inside the content. startColor is used as fill color, without a gradient. Useful when using offset or if your child has some transparency. | boolean                                                      | no       | All      | yes               |
-| sides          | The sides that will have their shadows drawn. Doesn't include corners. Undefined sides fallbacks to true. | Record<'start' \| 'end' \| 'top' \| 'bottom', boolean>       | no       | All      | yes               |
-| corners        | The corners that will have their shadows drawn. Undefined corners fallbacks to true. | Record<'topStart' \| 'topEnd' \| 'bottomStart' \| 'bottomEnd', boolean> | no       | Android  | yes               |
-| style          | The style of the View that wraps your children.              | StyleProp<ViewStyle>                                         | no       | All      | yes               |
-| containerStyle | The style of the View that wraps the Shadow and your children. Useful for margins. | StyleProp<ViewStyle>                                         | no       | All      | yes               |
-| stretch        | Make your children ocuppy all available horizontal space.    | boolean                                                      | no       | All      | yes               |
-| safeRender     | Won't use the relative sizing and positioning on the 1st render but on the following renders with the exact onLayout sizes. Useful if dealing with radii greater than the sides sizes (like a circle) to avoid visual artifacts on the 1st render. | boolean                                                      | no       | All      | yes               |
-| disabled       | Disables the Shadow. Useful for easily reusing components as sometimes shadows are not desired. containerStyle and style are still applied. | boolean                                                      | no       | All      | yes               |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| startColor | 阴影的起始渐变色。 | string | no | All | yes |
+| endColor | 阴影的结束渐变色。 | string | no | All | yes |
+| distance | 阴影的延伸距离。 | number | no | All | yes |
+| offset | 移动阴影。负x值使其向左/起点移动，负y值使其向上移动。接受 'x%' 格式的百分比值。设置此属性会将 `paintInside` 的默认值设为 true，因为这通常是期望的行为。 | [x: string \| number, y: string \| number] | no | All | yes |
+| paintInside | 将阴影应用于内容的下方/内部。`startColor` 将被用作无渐变的填充色。当使用 `offset` 属性或子组件包含透明区域时，此属性很有用。 | boolean | no | All | yes |
+| sides | 指定将要绘制阴影的边。不包括角落。未定义的边将默认设为 true。 | Record<'start' \| 'end' \| 'top' \| 'bottom', boolean> | no | All | yes |
+| corners | 指定将要绘制阴影的角。未定义的角将默认设为 true。 | Record<'topStart' \| 'topEnd' \| 'bottomStart' \| 'bottomEnd', boolean> | no | Android | yes |
+| style | 包裹子组件的视图（View）的样式。 | StyleProp<ViewStyle> | no | All | yes |
+| containerStyle | 包裹阴影和子组件的视图的样式。对于设置外边距（margins）很有用。 | StyleProp<ViewStyle> | no | All | yes |
+| stretch | 使子组件占据所有可用的水平空间。 | boolean | no | All | yes |
+| safeRender | 在首次渲染时不使用相对尺寸和定位，而是在后续渲染中采用 `onLayout` 返回的精确尺寸。当处理半径大于边尺寸（如圆形）的场景时，此属性可用于避免首次渲染时出现视觉瑕疵。 | boolean | no | All | yes |
+| disabled | 禁用阴影效果。当某些场景下不需要阴影时，此属性便于组件的复用。`containerStyle` 和 `style` 属性仍然会生效。 | boolean | no | All | yes |
 
 ## 遗留问题
 

@@ -16,7 +16,14 @@
 
 ## 安装与使用
 
-1、请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-barcode-builder](https://github.com/react-native-oh-library/react-native-barcode-builder/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN0.77 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 2.0.0      | [@react-native-oh-tpl/react-native-barcode-builder](https://github.com/react-native-oh-library/react-native-barcode-builder/releases) | 0.72       |
+| 2.1.0      | [@react-native-ohos/react-native-barcode-builder](https://gitcode.com/openharmony-sig/rntpc_react-native-barcode-builder)          | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +32,21 @@
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-barcode-builder
+
+# 0.77
+npm install @react-native-ohos/react-native-barcode-builder
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-barcode-builder
+
+# 0.77
+yarn add @react-native-ohos/react-native-barcode-builder
 ```
 
 <!-- tabs:end -->
@@ -74,17 +89,18 @@ export const BarcodeBuilderExample = () => {
 
 ## Link
 
-本库鸿蒙侧实现依赖@react-native-oh-tpl/react-native-svg 的原生端代码，如已在鸿蒙工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
+本库鸿蒙侧实现依赖 react-native-svg 的原生端代码，如已在鸿蒙工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
 
-如未引入请参照[@react-native-oh-tpl/react-native-svg 文档](/zh-cn/react-native-svg-capi.md)进行引入
+如未引入请参照[react-native-svg 文档](/zh-cn/react-native-svg-capi.md)进行引入
 
 ## 约束与限制
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-barcode-builder](https://github.com/react-native-oh-library/react-native-barcode-builder)
+1. RNOH：0.72.86; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## 属性
 
@@ -96,17 +112,17 @@ export const BarcodeBuilderExample = () => {
 
 该库为 UI 组件库，通过配置属性标签，实现对应的功能。
 
-| Name       | Type     | Description                                                                                      | Required | Platform    | HarmonyOS Support |
-| ---------- | -------- | ------------------------------------------------------------------------------------------------ | -------- | ----------- | ----------------- |
-| value      | string   | What the barcode stands for.                                                                     | yes      | iOS/Android | yes               |
-| format     | string   | Which barcode type to use. [learn more](https://github.com/lindell/JsBarcode#supported-barcodes) | no       | iOS/Android | yes               |
-| width      | number   | Width of a single bar.                                                                           | no       | iOS/Android | yes               |
-| height     | number   | Height of the barcode.                                                                           | no       | iOS/Android | yes               |
-| text       | string   | Override text that is displayed.                                                                 | no       | iOS/Android | yes               |
-| lineColor  | string   | Color of the bars.                                                                               | no       | iOS/Android | yes               |
-| textColor  | string   | Color of the text.                                                                               | no       | iOS/Android | yes               |
-| background | string   | Background color of the barcode.                                                                 | no       | iOS/Android | yes               |
-| onError    | function | Handler for invalid barcode of selected format.                                                  | no       | iOS/Android | yes               |
+| Name | Type | Description | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| value | string | 条形码所代表的值。 | yes | iOS/Android | yes |
+| format | string | 使用哪种条形码类型。[了解更多](https://github.com/lindell/JsBarcode#supported-barcodes) | no | iOS/Android | yes |
+| width | number | 单个条的宽度。 | no | iOS/Android | yes |
+| height | number | 条形码的高度。 | no | iOS/Android | yes |
+| text | string | 覆盖显示的文本。 | no | iOS/Android | yes |
+| lineColor | string | 条纹的颜色。 | no | iOS/Android | yes |
+| textColor | string | 文本的颜色。 | no | iOS/Android | yes |
+| background | string | 条形码的背景颜色。 | no | iOS/Android | yes |
+| onError | function | 当所选格式的条形码无效时的回调函数。 | no | iOS/Android | yes |
 
 ## 开源协议
 

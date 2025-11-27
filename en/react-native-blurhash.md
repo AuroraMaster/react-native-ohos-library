@@ -19,7 +19,13 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library and download an applicable .tgz package: [@react-native-oh-tpl/react-native-blurhash Releases](https://github.com/react-native-oh-library/react-native-blurhash/releases).
+Find the matching version information in the release address of a third-party library and download an applicable .tgz package:
+| Library Version | Release Information | Supported RN Version |
+| ----------- | ------------------------------------------------------------ | ---------- |
+|2.0.3|[@react-native-oh-tpl/react-native-blurhash Releases](https://github.com/react-native-oh-library/react-native-blurhash/releases)|0.72|
+|2.1.0|[@react-native-ohos/react-native-blurhash Releases]()|0.77|
+
+For older versions not published to npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -30,13 +36,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-blurhash
+
+# 0.77
+npm install @react-native-ohos/react-native-blurhash
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-blurhash
+
+# 0.77
+yarn add @react-native-ohos/react-native-blurhash
 ```
 
 <!-- tabs:end -->
@@ -282,10 +296,19 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
+- 0.72
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-blurhash": "file:../../node_modules/@react-native-oh-tpl/react-native-blurhash/harmony/blurhash.har"
+  }
+```
+
+- 0.77
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-blurhash": "file:../../node_modules/@react-native-ohos/react-native-blurhash/harmony/blurhash.har"
   }
 ```
 
@@ -324,7 +347,12 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+# 0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-blurhash/src/main/cpp" ./blurhash)
+
+# 0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-blurhash/src/main/cpp" ./blurhash)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -367,7 +395,11 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
  Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
 ```diff
+// 0.72
 + import {BlurhashPackage} from '@react-native-oh-tpl/react-native-blurhash/ts';
+
+// 0.77
++ import {BlurhashPackage} from '@react-native-ohos/react-native-blurhash/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -395,9 +427,9 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
-
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-blurhash Releases](https://github.com/react-native-oh-library/react-native-blurhash/releases)
+This document is verified based on the following versions:
+1. RNOH：0.72.86; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## Properties
 
@@ -417,7 +449,6 @@ Check the release version information in the release address of the third-party 
 | `onLoadEnd?: () => void`                   | A callback to call when the Blurhash successfully decoded the given `blurhash` string and rendered the image to the `<Blurhash>` view. | function  | no       | All      | yes               |
 | `onLoadError?: (message?: string) => void` | A callback to call when the Blurhash failed to load. Use the `message` parameter to get the error message. | function  | no       | All      | yes               |
 | All `View` props                           | All properties from the React Native `View`. Use `style.width` and `style.height` for display-sizes. Also, `style.borderRadius` is natively supported on iOS. | ViewProps | no       | All      | yes               |
-
 
 ## API
 

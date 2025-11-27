@@ -17,6 +17,11 @@
 
 ## 安装与使用
 
+| 三方库版本 | 支持RN版本 |
+| ---------- | ---------- |
+| 10.0.3     | 0.72       |
+| 10.2.0     | 0.77       |
+
 进入到工程目录并输入以下命令：
 
 <!-- tabs:start -->
@@ -24,13 +29,21 @@
 #### **npm**
 
 ```bash
+# 0.72
 npm install react-native-vector-icons@10.0.3
+
+# 0.77
+npm install react-native-vector-icons@10.2.0
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add react-native-vector-icons@10.0.3
+
+# 0.77
+yarn add react-native-vector-icons@10.2.0
 ```
 
 <!-- tabs:end -->
@@ -357,6 +370,7 @@ RNApp({
 本文档内容基于以下版本验证通过：
 
 1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## 遗留问题
 
