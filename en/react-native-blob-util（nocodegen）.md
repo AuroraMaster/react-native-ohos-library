@@ -16,7 +16,12 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of the third-party library and download an applicable .tgz package: [@react-native-oh-tpl/react-native-blob-util Releases](https://github.com/react-native-oh-library/react-native-blob-util/releases).
+Please refer to the Release page of the corresponding third-party library for version information:
+
+| Version | Releases                                                     | RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.19.6     | [@react-native-oh-tpl/react-native-blob-util Releases](https://github.com/react-native-oh-library/react-native-blob-util/releases) | 0.72       |
+| 0.22.2     | [@react-native-ohos/react-native-blob-util Releases]()       | 0.77       |
 
 Go to the project directory and execute the following instructions:
 
@@ -27,13 +32,21 @@ Go to the project directory and execute the following instructions:
 #### **npm**
 
 ```bash
+# V0.19.6
 npm install @react-native-oh-tpl/react-native-blob-util@file:#
+
+# V0.22.2
+npm install @react-native-ohos/react-native-blob-util@file:#
 ```
 
 #### **yarn**
 
 ```bash
+# V0.19.6
 yarn add @react-native-oh-tpl/react-native-blob-util@file:#
+
+# V0.22.2
+yarn add @react-native-ohos/react-native-blob-util@file:#
 ```
 
 <!-- tabs:end -->
@@ -428,6 +441,16 @@ Open `entry/oh-package.json5` and add the following dependencies:
   }
 ```
 
+
+- V0.22.2
+
+```json
+"dependencies": {
+     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+     "@react-native-ohos/react-native-blob-util": "file:../../node_modules/@react-native-ohos/react-native-blob-util/harmony/blobUtil.har"
+  }
+```
+
 Click the `sync` button in the upper right corner.
 
 Alternatively, run the following instruction on the terminal:
@@ -464,7 +487,13 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: rnoh_blob_util
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+# V0.19.6
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-blob-util/src/main/cpp" ./blob-util)
+
+# V0.22.2
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-blob-util/src/main/cpp" ./blob-util)
+
 # RNOH_END: rnoh_blob_util
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -496,6 +525,9 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
     return {
         std::make_shared<RNOHGeneratedPackage>(ctx),
         std::make_shared<SamplePackage>(ctx),
+# V0.19.6
++       std::make_shared<BlobUtilPackage>(ctx),
+# V0.22.2
 +       std::make_shared<BlobUtilPackage>(ctx),
     };
 }
@@ -507,7 +539,11 @@ Open `entry/src/main/ets/RNPackagesFactory.ts` and add the following code:
 
 ```diff
 ...
+// V0.19.6
 + import {BlobUtilPackage} from '@react-native-oh-tpl/react-native-blob-util/ts';
+
+// V0.22.2
++ import {BlobUtilPackage} from '@react-native-ohos/react-native-blob-util/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -536,7 +572,17 @@ Build and run the code.
 
 To use this library, you need to use the correct React Native and RNOH versions. In addition, use the matching DevEco Studio and the ROM on your phone.
 
-Find the matching version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-blob-util Releases](https://github.com/react-native-oh-library/react-native-blob-util/releases).
+Please refer to the Release page of the corresponding third-party library for version information:
+
+| Version | Releases                                                     | RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.19.6     | [@react-native-oh-tpl/react-native-blob-util Releases](https://github.com/react-native-oh-library/react-native-blob-util/releases) | 0.72       |
+| 0.22.2     | [@react-native-ohos/react-native-blob-util Releases]()       | 0.77       |
+
+The content of this document has been verified based on the following versions:
+
+1. RNOH: 0.72.98; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.0.3.906; ROM: NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## API
 

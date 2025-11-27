@@ -17,6 +17,11 @@
 
 ## Installation and Usage
 
+| Version | RN Version |
+| ---------- | ---------- |
+| 3.3.2      | 0.72       |
+| 3.3.3      | 0.77       |
+
 <!-- tabs:start -->
 
 Go to the project directory and execute the following instruction:
@@ -24,13 +29,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# V3.3.2
 npm install --save react-native-copilot@3.3.2
+
+# V3.3.3
+npm install --save react-native-copilot@3.3.3
 ```
 
 #### **yarn**
 
 ```bash
+# V3.3.2
 yarn add react-native-copilot@3.3.2
+
+# V3.3.3
+yarn add react-native-copilot@3.3.3
 ```
 
 <!-- tabs:end -->
@@ -228,6 +241,7 @@ This document is verified based on the following versions:
 
 1. RNOH：0.72.27; SDK：HarmonyOS-Next-DB1 5.0.0.25; IDE：DevEco Studio 5.0.3.400SP7; ROM：3.0.0.25;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## Properties
 

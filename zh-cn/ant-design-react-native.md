@@ -16,6 +16,11 @@
 
 ## 安装与使用
 
+| 三方库版本 | 支持RN版本 |
+| ---------- | ---------- |
+| 5.2.2      | 0.72       |
+| 5.4.2      | 0.77       |
+
 进入到工程目录并输入以下命令：
 
 <!-- tabs:start -->
@@ -23,16 +28,29 @@
 #### **npm**
 
 ```bash
+# V5.2.2
 npm install @ant-design/react-native@5.2.2
+
+# V5.4.2
+npm install @ant-design/react-native@5.4.2
 ```
 
 #### **yarn**
 
 ```bash
+# V5.2.2
 yarn add @ant-design/react-native@5.2.2
+
+# V5.4.2
+yarn add @ant-design/react-native@5.4.2
 ```
 
-> [!TIP] 本库还依赖了[@react-native-oh-tpl/slider](/zh-cn/react-native-community-slider.md)、[@react-native-oh-tpl/react-native-gesture-handler](/zh-cn/react-native-gesture-handler.md)、[@react-native-oh-tpl/react-native-modal-popover](/zh-cn/react-native-modal-popover.md)、[@react-native-oh-tpl/react-native-reanimated](/zh-cn/react-native-reanimated.md)和[react-native-community/segmented-control](/zh-cn/react-native-community-segmented-control.md)
+> [!TIP] 本库还依赖了
+>
+>  V5.2.2：[@react-native-oh-tpl/slider](/zh-cn/react-native-community-slider.md)、[@react-native-oh-tpl/react-native-gesture-handler](/zh-cn/react-native-gesture-handler.md)、[@react-native-oh-tpl/react-native-modal-popover](/zh-cn/react-native-modal-popover.md)、[@react-native-oh-tpl/react-native-reanimated](/zh-cn/react-native-reanimated.md)和[react-native-community/segmented-control](/zh-cn/react-native-community-segmented-control.md)
+>
+> V5.4.2：[@react-native-ohos/react-native-gesture-handler](/zh-cn/react-native-gesture-handler.md)、[@react-native-ohos/react-native-modal-popover](/zh-cn/react-native-modal-popover.md)和[@react-native-ohos/react-native-reanimated](/zh-cn/react-native-reanimated.md)
+>
 
 > [!TIP] 本库指定5.2.2版本,在执行完依赖安装命令后需要去除掉package.json中对应依赖项中的^
 > 
@@ -191,6 +209,8 @@ export default class BasicTagExample extends React.Component {
 
 ## Link
 
+V5.2.2
+
 > [!TIP] @react-native-oh-tpl/react-native-gesture-handler 安装 v2.14.7 版本配套使用
 
 > [!TIP] @react-native-oh-tpl/slider 安装 v4.4.3-0.3.2 版本配套使用
@@ -204,11 +224,24 @@ export default class BasicTagExample extends React.Component {
 如未引入请参照文档进行引入
 
 - [@react-native-oh-tpl/slider 引入方法](/zh-cn/react-native-community-slider.md)
+- [@react-native-oh-tpl/react-native-gesture-handler 引入方法](/zh-cn/react-native-gesture-handler.md)
+- [@react-native-oh-tpl/react-native-modal-popover 引入方法](/zh-cn/react-native-modal-popover.md)
+- [@react-native-oh-tpl/react-native-reanimated](/zh-cn/react-native-reanimated.md)
+
+V5.4.2
+
+> [!TIP] @react-native-oh-tpl/react-native-gesture-handler 安装 v2.14.7 版本配套使用
+
+> [!TIP] @react-native-oh-tpl/react-native-modal-popover 安装 v2.1.3-0.0.1 版本配套使用
+
+> [!TIP] @react-native-oh-tpl/react-native-reanimated 安装 v3.6.2 版本配套使用
+
+本库 HarmonyOS 侧实现依赖 @react-native-oh-tpl/react-native-gesture-handler 、@react-native-oh-tpl/react-native-reanimated 和@react-native-oh-tpl/react-native-modal-popover 的原生端代码，如已在 HarmonyOS 工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
+
+如未引入请参照文档进行引入
 
 - [@react-native-oh-tpl/react-native-gesture-handler 引入方法](/zh-cn/react-native-gesture-handler.md)
-
 - [@react-native-oh-tpl/react-native-modal-popover 引入方法](/zh-cn/react-native-modal-popover.md)
-
 - [@react-native-oh-tpl/react-native-reanimated](/zh-cn/react-native-reanimated.md)
 
 ## 约束与限制
@@ -218,6 +251,7 @@ export default class BasicTagExample extends React.Component {
 本文档内容基于以下版本验证通过：
 
 1. RNOH: 0.72.27; SDK：HarmonyOS-Next-DB1 5.0.0.25; IDE：DevEco Studio 5.0.3.400SP7; ROM：3.0.0.25;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107; 
 
 ## 组件
 
@@ -522,7 +556,7 @@ export default class BasicTagExample extends React.Component {
 | :----------------: | :------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------: | :------: | :------: | :---------------: |
 |        data        |                                                              数据源                                                              |                        `PickerColumn` / `PickerColumn[]`                         |    No    |   All    |        Yes        |
 |       value        |                                                              选中项                                                              |                                 `PickerValue[]`                                  |    No    |   All    |        Yes        |
-|    defaultValue    |                                                            默认选中项                                                            |                                 `PickerValue[]`                                  |    No    |   No    |        No        |
+|    defaultValue    |                                                            默认选中项                                                            |                                 `PickerValue[]`                                  |    No    |   All    |        Yes        |
 |      cascade       |                                            是否级联。子级来自`data`参数内的`children`                                            |                                     Boolean                                      |    No    |   All    |        Yes        |
 |        cols        |                                                               列数                                                               |                                      Number                                      |    No    |   All    |        Yes        |
 |      onChange      |                                                           选中后的回调                                                           |           `(value: PickerValue[], extend: PickerValueExtend) => void`            |    No    |   All    |        Yes        |
@@ -631,7 +665,7 @@ export default class BasicTagExample extends React.Component {
 
 |      Name      |          Description          |                     Type                      | Required | Platform | HarmonyOS Support |
 | :------------: | :---------------------------: | :-------------------------------------------: | :------: | :------: | :---------------: |
-| defaultChecked |         初始是否选中          |                    Boolean                    |    No    |   No    |        No        |
+| defaultChecked |         初始是否选中          |                    Boolean                    |    No    |   All    |        Yes        |
 |    checked     |       指定当前是否选中        |                    Boolean                    |    No    |   All    |        Yes        |
 |    disabled    |             禁用              |                    Boolean                    |    No    |   All    |        Yes        |
 |    onChange    |   change 事件触发的回调函数   | (e: { target: { checked: boolean } }) => void |    No    |   All    |        Yes        |
@@ -1141,17 +1175,11 @@ export default class BasicTagExample extends React.Component {
 
 ## 遗留问题
 
-- [ ] PickerView 组件在 harmony 暂不支持，待ArkUI规格升级之后再重新适配
-- [ ] Input.TextArea 组件在 harmony 暂不支持，待ArkUI规格升级之后再重新适配
+- [ ] Drawer 组件暂时无法支持，与 Android/IOS 一致[issue#1352](https://github.com/ant-design/ant-design-mobile-rn/issues/1352)、[issue#1338](https://github.com/ant-design/ant-design-mobile-rn/issues/1338)。
+- [ ] Tooltip 组件气泡位置异常展示，与 Android/IOS 一致[issue#1376](https://github.com/ant-design/ant-design-mobile-rn/issues/1376)。
 
 ## 其他
-
-- Drawer 组件暂时无法支持，与 Android/IOS 一致[issue#1352](https://github.com/ant-design/ant-design-mobile-rn/issues/1352)、[issue#1338](https://github.com/ant-design/ant-design-mobile-rn/issues/1338)。
-- Tooltip 组件气泡位置异常展示，与 Android/IOS 一致[issue#1376](https://github.com/ant-design/ant-design-mobile-rn/issues/1376)。
-- Radio 组件的 defaultCheck 属性无法正常生效，与 Android/IOS 一致[issue#1380](https://github.com/ant-design/ant-design-mobile-rn/issues/1380)。
-- Picker 组件的 defaultValue 属性无法正常生效，与 Android/IOS 一致[issue#1381](https://github.com/ant-design/ant-design-mobile-rn/issues/1381)。
 
 ## 开源协议
 
 本项目基于 [The MIT License (MIT)](https://github.com/ant-design/ant-design-mobile-rn/blob/master/LICENSE)，请自由地享受和参与开源。
-

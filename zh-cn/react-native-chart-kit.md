@@ -14,14 +14,17 @@
     </a>
 </p> 
 
-
-
-
 > [!TIP] 
 >
 > [Github 地址](https://github.com/indiespirit/react-native-chart-kit)
 
 ## 安装与使用
+
+| 三方库版本 | 支持RN版本 |
+| ---------- | ---------- |
+| 6.12.0      | 0.72/0.77      |
+
+<!-- tabs:start -->
 
 进入到工程目录并输入以下命令：
 
@@ -112,9 +115,9 @@ export default MyChart;
 
 ## Link
 
-本库 HarmonyOS 侧实现依赖@react-native-oh-tpl/react-native-svg 的原生端代码，如已在 HarmonyOS 工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
+本库 HarmonyOS 侧实现依赖@react-native-oh-library/react-native-svg 的原生端代码，如已在 HarmonyOS 工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
 
-如未引入请参照[@react-native-oh-tpl/react-native-svg文档的 Link 章节](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-svg-capi.md#link)进行引入
+如未引入请参照[@react-native-oh-library/react-native-svg文档的 Link 章节](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-svg-capi.md#link)进行引入
 
 ## 约束与限制
 
@@ -123,6 +126,7 @@ export default MyChart;
 本文档内容基于以下版本验证通过：
 
 1. RNOH: 0.72.20; SDK：HarmonyOS NEXT Developer Preview2; IDE：DevEco Studio 5.0.3.300SP1; ROM：3.0.0.18;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## 属性
 
@@ -132,146 +136,144 @@ export default MyChart;
 
 ### Chart style 
 
-| Name                            | Description                                                  | Type               | Required | Platform | HarmonyOS Support |
-| ------------------------------- | ------------------------------------------------------------ | ------------------ | -------- | -------- | ----------------- |
-| `backgroundGradientFrom`        | Defines the first color in the linear gradient of a chart's background | String             | No       | All      | Yes               |
-| `backgroundGradientFromOpacity` | Defines the first color opacity in the linear gradient of a chart's background | Number             | No       | All      | Yes               |
-| `backgroundGradientTo`          | Defines the second color in the linear gradient of a chart's background | String             | No       | All      | Yes               |
-| `backgroundGradientToOpacity`   | Defines the second color opacity in the linear gradient of a chart's background | Number             | No       | All      | Yes               |
-| `fillShadowGradientFrom`        | Defines the first color in the linear gradient of the area under data | String             | No       | All      | Yes               |
-| `fillShadowGradientFromOpacity` | Defines the first color opacity in the linear gradient of the area under data | Number             | No       | All      | Yes               |
-| `fillShadowGradientFromOffset`  | Defines the first color offset (0-1) in the linear gradient of the area under data | Number             | No       | All      | Yes               |
-| `fillShadowGradientTo`          | Defines the second color in the linear gradient of the area under data | String             | No       | All      | Yes               |
-| `fillShadowGradientToOpacity`   | Defines the second color opacity in the linear gradient of the area under data | Number             | No       | All      | Yes               |
-| `fillShadowGradientToOffset`    | Defines the second color offset (0-1) in the linear gradient of the area under data | Number             | No       | All      | Yes               |
-| `useShadowColorFromDataset`     | Defines the option to use color from dataset to each chart data. Default is false | Boolean            | No       | All      | Yes               |
-| `color`                         | Defines the base color function that is used to calculate colors of labels and sectors used in a chart | Function => String | No       | All      | Yes               |
-| `strokeWidth`                   | Defines the base stroke width in a chart                     | Number             | No       | All      | Yes               |
-| `barPercentage`                 | Defines the percent (0-1) of the available width each bar width in a chart | Number             | No       | All      | Yes               |
-| `barRadius`                     | Defines the radius of each bar                               | Number             | No       | All      | Yes               |
-| `propsForBackgroundLines`       | Override styles of the background lines, refer to react-native-svg's Line documentation | Props              | No       | All      | Yes               |
-| `propsForLabels`                | Override styles of the labels, refer to react-native-svg's Text documentation | Props              | No       | All      | Yes               |
-| `propsForVerticalLabels`        | Override styles of vertical labels, refer to react-native-svg's Text documentation | Props              | No       | All      | Yes               |
-| `propsForHorizontalLabels`      | Override styles of horizontal labels, refer to react-native-svg's Text documentation | Props              | No       | All      | Yes               |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `backgroundGradientFrom` | 定义图表背景线性渐变的起始颜色 | String | No | All | Yes |
+| `backgroundGradientFromOpacity` | 定义图表背景线性渐变起始颜色的不透明度 | Number | No | All | Yes |
+| `backgroundGradientTo` | 定义图表背景线性渐变的结束颜色 | String | No | All | Yes |
+| `backgroundGradientToOpacity` | 定义图表背景线性渐变结束颜色的不透明度 | Number | No | All | Yes |
+| `fillShadowGradientFrom` | 定义数据下方区域线性渐变的起始颜色 | String | No | All | Yes |
+| `fillShadowGradientFromOpacity` | 定义数据下方区域线性渐变起始颜色的不透明度 | Number | No | All | Yes |
+| `fillShadowGradientFromOffset` | 定义数据下方区域线性渐变起始颜色的偏移量 (0-1) | Number | No | All | Yes |
+| `fillShadowGradientTo` | 定义数据下方区域线性渐变的结束颜色 | String | No | All | Yes |
+| `fillShadowGradientToOpacity` | 定义数据下方区域线性渐变结束颜色的不透明度 | Number | No | All | Yes |
+| `fillShadowGradientToOffset` | 定义数据下方区域线性渐变结束颜色的偏移量 (0-1) | Number | No | All | Yes |
+| `useShadowColorFromDataset` | 定义是否对每个图表数据使用数据集中的颜色的选项。默认为 false | Boolean | No | All | Yes |
+| `color` | 定义用于计算图表中标签和扇区颜色的基础颜色函数 | Function => String | No | All | Yes |
+| `strokeWidth` | 定义图表中的基础描边宽度 | Number | No | All | Yes |
+| `barPercentage` | 定义图表中每个条形宽度占可用宽度的百分比 (0-1) | Number | No | All | Yes |
+| `barRadius` | 定义每个条形的圆角半径 | Number | No | All | Yes |
+| `propsForBackgroundLines` | 覆盖背景线的样式，参考 react-native-svg 的 Line 文档 | Props | No | All | Yes |
+| `propsForLabels` | 覆盖标签的样式，参考 react-native-svg 的 Text 文档 | Props | No | All | Yes |
+| `propsForVerticalLabels` | 覆盖垂直标签的样式，参考 react-native-svg 的 Text 文档 | Props | No | All | Yes |
+| `propsForHorizontalLabels` | 覆盖水平标签的样式，参考 react-native-svg 的 Text 文档 | Props | No | All | Yes |
 
 ### Line Chart
 
-| Name                    | Description                                                  | Type                    | Required | Platform | HarmonyOS Support |
-| ----------------------- | ------------------------------------------------------------ | ----------------------- | -------- | -------- | ----------------- |
-| data                    | Data for the chart - see example above                       | Object                  | No       | All      | Yes               |
-| width                   | Width of the chart, use 'Dimensions' library to get the width of your screen for responsive | Number                  | No       | All      | Yes               |
-| height                  | Height of the chart                                          | Number                  | No       | All      | Yes               |
-| withDots                | Show dots on the line - default: True                        | boolean                 | No       | All      | Yes               |
-| withShadow              | Show shadow for line - default: True                         | boolean                 | No       | All      | Yes               |
-| withInnerLines          | Show inner dashed lines - default: True                      | boolean                 | No       | All      | Yes               |
-| withOuterLines          | Show outer dashed lines - default: True                      | boolean                 | No       | All      | Yes               |
-| withVerticalLines       | Show vertical lines - default: True                          | boolean                 | No       | All      | Yes               |
-| withHorizontalLines     | Show horizontal lines - default: True                        | boolean                 | No       | All      | Yes               |
-| withVerticalLabels      | Show vertical labels - default: True                         | boolean                 | No       | All      | Yes               |
-| withHorizontalLabels    | Show horizontal labels - default: True                       | boolean                 | No       | All      | Yes               |
-| fromZero                | Render charts from 0 not from the minimum value. - default: False | boolean                 | No       | All      | Yes               |
-| yAxisLabel              | Prepend text to horizontal labels -- default: ''             | string                  | No       | All      | Yes               |
-| yAxisSuffix             | Append text to horizontal labels -- default: ''              | string                  | No       | All      | Yes               |
-| xAxisLabel              | Prepend text to vertical labels -- default: ''               | string                  | No       | All      | Yes               |
-| yAxisInterval           | Display y axis line every {x} input. -- default: 1           | string                  | No       | All      | Yes               |
-| chartConfig             | Configuration object for the chart, see example config object above | Object                  | No       | All      | Yes               |
-| decorator               | This function takes a whole bunch of stuff and can render extra elements, such as data point info or additional markup. | Function                | No       | All      | Yes               |
-| onDataPointClick        | Callback that takes {value, dataset, getColor}               | Function                | No       | All      | Yes               |
-| horizontalLabelRotation | Rotation angle of the horizontal labels - default 0          | number (degree)         | No       | All      | Yes               |
-| verticalLabelRotation   | Rotation angle of the vertical labels - default 0            | number (degree)         | No       | All      | Yes               |
-| getDotColor             | Defines the dot color function that is used to calculate colors of dots in a line chart and takes (dataPoint, dataPointIndex) | function => string      | No       | All      | Yes               |
-| renderDotContent        | Render additional content for the dot. Takes ({x, y, index, indexData}) as arguments. | Function                | No       | All      | Yes               |
-| yLabelsOffset           | Offset for Y axis labels                                     | number                  | No       | All      | Yes               |
-| xLabelsOffset           | Offset for X axis labels                                     | number                  | No       | All      | Yes               |
-| hidePointsAtIndex       | Indices of the data points you don't want to display         | number[]                | No       | All      | Yes               |
-| formatYLabel            | This function change the format of the display value of the Y label. Takes the Y value as argument and should return the desirable string. | Function                | No       | All      | Yes               |
-| formatXLabel            | This function change the format of the display value of the X label. Takes the X value as argument and should return the desirable string. | Function                | No       | All      | Yes               |
-| getDotProps             | This is an alternative to chartConfig's propsForDots         | (value, index) => props | No       | All      | Yes               |
-| segments                | The amount of horizontal lines - default 4                   | number                  | No       | All      | Yes               |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `data` | 图表数据  | Object | No | All | Yes |
+| `width` | 图表的宽度，使用 'Dimensions' 库获取屏幕宽度以实现响应式布局 | Number | No | All | Yes |
+| `height` | 图表的高度 | Number | No | All | Yes |
+| `withDots` | 在折线上显示点 - 默认值：True | boolean | No | All | Yes |
+| `withShadow` | 显示折线阴影 - 默认值：True | boolean | No | All | Yes |
+| `withInnerLines` | 显示内部虚线 - 默认值：True | boolean | No | All | Yes |
+| `withOuterLines` | 显示外部虚线 - 默认值：True | boolean | No | All | Yes |
+| `withVerticalLines` | 显示垂直线 - 默认值：True | boolean | No | All | Yes |
+| `withHorizontalLines` | 显示水平线 - 默认值：True | boolean | No | All | Yes |
+| `withVerticalLabels` | 显示垂直标签 - 默认值：True | boolean | No | All | Yes |
+| `withHorizontalLabels` | 显示水平标签 - 默认值：True | boolean | No | All | Yes |
+| `fromZero` | 从 0 开始渲染图表，而不是从最小值开始 - 默认值：False | boolean | No | All | Yes |
+| `yAxisLabel` | 在水平标签前添加文本 -- 默认值：'' | string | No | All | Yes |
+| `yAxisSuffix` | 在水平标签后添加文本 -- 默认值：'' | string | No | All | Yes |
+| `xAxisLabel` | 在垂直标签前添加文本 -- 默认值：'' | string | No | All | Yes |
+| `yAxisInterval` | 每隔 {x} 个输入显示一条 Y 轴线 -- 默认值：1 | string | No | All | Yes |
+| `chartConfig` | 图表的配置对象 | Object | No | All | Yes |
+| `decorator` | 此函数接收大量参数，可用于渲染额外元素，例如数据点信息或其他标记。 | Function | No | All | Yes |
+| `onDataPointClick` | 接收 {value, dataset, getColor} 的回调函数 | Function | No | All | Yes |
+| `horizontalLabelRotation` | 水平标签的旋转角度 - 默认值 0 | number (degree) | No | All | Yes |
+| `verticalLabelRotation` | 垂直标签的旋转角度 - 默认值 0 | number (degree) | No | All | Yes |
+| `getDotColor` | 定义用于计算折线图中点颜色的函数，接收 (dataPoint, dataPointIndex) | function => string | No | All | Yes |
+| `renderDotContent` | 为点渲染额外内容。接收 ({x, y, index, indexData}) 作为参数。 | Function | No | All | Yes |
+| `yLabelsOffset` | Y 轴标签的偏移量 | number | No | All | Yes |
+| `xLabelsOffset` | X 轴标签的偏移量 | number | No | All | Yes |
+| `hidePointsAtIndex` | 你不想显示的数据点的索引 | number[] | No | All | Yes |
+| `formatYLabel` | 此函数更改 Y 轴标签显示值的格式。接收 Y 值作为参数，并应返回所需的字符串。 | Function | No | All | Yes |
+| `formatXLabel` | 此函数更改 X 轴标签显示值的格式。接收 X 值作为参数，并应返回所需的字符串。 | Function | No | All | Yes |
+| `getDotProps` | 这是 chartConfig 中 propsForDots 的替代方案 | (value, index) => props | No | All | Yes |
+| `segments` | 水平线的数量 - 默认值 4 | number | No | All | Yes |
 
 ### Bezier Line Chart
 
-|      |                                        |        |          |          |                   |
-| ---- | -------------------------------------- | ------ | -------- | -------- | ----------------- |
-| Name | Description                            | Type   | Required | Platform | HarmonyOS Support |
-| bezier | Data for the chart - see example above | Object | No       | All      | Yes               |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `bezier` | 使折线图平滑弯曲 | boolean | No | All | Yes |
 
 ### Progress Ring
 
-| Property    | Type    | Description                                                  | Required | Platform | HarmonyOS Support |
-| ----------- | ------- | ------------------------------------------------------------ | -------- | -------- | ----------------- |
-| data        | Object  | Data for the chart - see example above                       | No       | ALL      | YES               |
-| width       | Number  | Width of the chart, use 'Dimensions' library to get the width of your screen for responsive | No       | ALL      | YES               |
-| height      | Number  | Height of the chart                                          | No       | ALL      | YES               |
-| strokeWidth | Number  | Width of the stroke of the chart - default: 16               | No       | ALL      | YES               |
-| radius      | Number  | Inner radius of the chart - default: 32                      | No       | ALL      | YES               |
-| chartConfig | Object  | Configuration object for the chart, see example config in the beginning of this file | No       | ALL      | YES               |
-| hideLegend  | Boolean | Switch to hide chart legend (defaults to false)              | No       | ALL      | YES               |
+| Property | Type | Description | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `data` | Object | 图表数据  | No | ALL | YES |
+| `width` | Number | 图表的宽度，使用 'Dimensions' 库获取屏幕宽度以实现响应式布局 | No | ALL | YES |
+| `height` | Number | 图表的高度 | No | ALL | YES |
+| `strokeWidth` | Number | 图表的描边宽度 - 默认值：16 | No | ALL | YES |
+| `radius` | Number | 图表的内半径 - 默认值：32 | No | ALL | YES |
+| `chartConfig` | Object | 图表的配置对象 | No | ALL | YES |
+| `hideLegend` | Boolean | 隐藏图表图例的开关（默认为 false） | No | ALL | YES |
 
 ### Bar chart
 
-| Property                | Type    | Description                                                  | Required | Platform | HarmonyOS Support |
-| ----------------------- | ------- | ------------------------------------------------------------ | -------- | -------- | ----------------- |
-| data                    | Object  | Data for the chart - see example above                       | No       | ALL      | YES               |
-| width                   | Number  | Width of the chart, use 'Dimensions' library to get the width of your screen for responsive | No       | ALL      | YES               |
-| height                  | Number  | Height of the chart                                          | No       | ALL      | YES               |
-| withVerticalLabels      | boolean | Show vertical labels - default: True                         | No       | ALL      | YES               |
-| withHorizontalLabels    | boolean | Show horizontal labels - default: True                       | No       | ALL      | YES               |
-| fromZero                | boolean | Render charts from 0 not from the minimum value. - default: False | No       | ALL      | YES               |
-| withInnerLines          | boolean | Show inner dashed lines - default: True                      | No       | ALL      | YES               |
-| yAxisLabel              | string  | Prepend text to horizontal labels -- default: ''             | No       | ALL      | YES               |
-| yAxisSuffix             | string  | Append text to horizontal labels -- default: ''              | No       | ALL      | YES               |
-| chartConfig             | Object  | Configuration object for the chart, see example config in the beginning of this file | No       | ALL      | YES               |
-| horizontalLabelRotation | number  | Rotation angle of the horizontal labels - default 0          | No       | ALL      | YES               |
-| verticalLabelRotation   | number  | Rotation angle of the vertical labels - default 0            | No       | ALL      | YES               |
-| showBarTops             | boolean | Show bar tops                                                | No       | ALL      | YES               |
-| showValuesOnTopOfBars   | boolean | Show value above bars                                        | No       | ALL      | YES               |
+| Property | Type | Description | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `data` | Object | 图表数据  | No | ALL | YES |
+| `width` | Number | 图表的宽度，使用 'Dimensions' 库获取屏幕宽度以实现响应式布局 | No | ALL | YES |
+| `height` | Number | 图表的高度 | No | ALL | YES |
+| `withVerticalLabels` | boolean | 显示垂直标签 - 默认值：True | No | ALL | YES |
+| `withHorizontalLabels` | boolean | 显示水平标签 - 默认值：True | No | ALL | YES |
+| `fromZero` | boolean | 从 0 开始渲染图表，而不是从最小值开始 - 默认值：False | No | ALL | YES |
+| `withInnerLines` | boolean | 显示内部虚线 - 默认值：True | No | ALL | YES |
+| `yAxisLabel` | string | 在水平标签前添加文本 -- 默认值：'' | No | ALL | YES |
+| `yAxisSuffix` | string | 在水平标签后添加文本 -- 默认值：'' | No | ALL | YES |
+| `chartConfig` | Object | 图表的配置对象 | No | ALL | YES |
+| `horizontalLabelRotation` | number | 水平标签的旋转角度 - 默认值 0 | No | ALL | YES |
+| `verticalLabelRotation` | number | 垂直标签的旋转角度 - 默认值 0 | No | ALL | YES |
+| `showBarTops` | boolean | 显示柱顶 | No | ALL | YES |
+| `showValuesOnTopOfBars` | boolean | 在柱子上方显示数值 | No | ALL | YES |
 
 ### StackedBar chart
 
-| Property             | Type    | Description                                                  | Required | Platform | HarmonyOS Support |
-| -------------------- | ------- | ------------------------------------------------------------ | -------- | -------- | ----------------- |
-| data                 | Object  | Data for the chart - see example above                       | No       | ALL      | YES               |
-| width                | Number  | Width of the chart, use 'Dimensions' library to get the width of your screen for responsive | No       | ALL      | YES               |
-| height               | Number  | Height of the chart                                          | No       | ALL      | YES               |
-| withVerticalLabels   | boolean | Show vertical labels - default: True                         | No       | ALL      | YES               |
-| withHorizontalLabels | boolean | Show horizontal labels - default: True                       | No       | ALL      | YES               |
-| chartConfig          | Object  | Configuration object for the chart, see example config in the beginning of this file | No       | ALL      | YES               |
-| barPercentage        | Number  | Defines the percent (0-1) of the available width each bar width in a chart | No       | ALL      | YES               |
-| hideLegend           | boolean | Show legend - default: True                                  | No       | ALL      | YES               |
+| Property | Type | Description | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `data` | Object | 图表数据 | No | ALL | YES |
+| `width` | Number | 图表的宽度，使用 'Dimensions' 库获取屏幕宽度以实现响应式布局 | No | ALL | YES |
+| `height` | Number | 图表的高度 | No | ALL | YES |
+| `withVerticalLabels` | boolean | 显示垂直标签 - 默认值：True | No | ALL | YES |
+| `withHorizontalLabels` | boolean | 显示水平标签 - 默认值：True | No | ALL | YES |
+| `chartConfig` | Object | 图表的配置对象 | No | ALL | YES |
+| `barPercentage` | Number | 定义图表中每个条形宽度占可用宽度的百分比 (0-1) | No | ALL | YES |
+| `hideLegend` | boolean | 显示图例 - 默认值：True | No | ALL | YES |
 
 ### Pie chart
 
-| Property       | Type    | Description                                                  | Required | Platform | HarmonyOS Support |
-| -------------- | ------- | ------------------------------------------------------------ | -------- | -------- | ----------------- |
-| data           | Object  | Data for the chart - see example above                       | No       | ALL      | YES               |
-| width          | Number  | Width of the chart, use 'Dimensions' library to get the width of your screen for responsive | No       | ALL      | YES               |
-| height         | Number  | Height of the chart                                          | No       | ALL      | YES               |
-| chartConfig    | Object  | Configuration object for the chart, see example config in the beginning of this file | No       | ALL      | YES               |
-| accessor       | string  | Property in the data object from which the number values are taken | No       | ALL      | YES               |
-| bgColor        | string  | Background color - if you want to set transparent, input transparent or none. | No       | ALL      | YES               |
-| paddingLeft    | string  | Left padding of the pie chart                                | No       | ALL      | YES               |
-| center         | array   | Offset x and y coordinates to position the chart             | No       | ALL      | YES               |
-| absolute       | boolean | Shows the values as absolute numbers                         | No       | ALL      | YES               |
-| hasLegend      | boolean | Defaults to true, set it to false to remove the legend       | No       | ALL      | YES               |
-| avoidFalseZero | boolean | Defaults to false, set it to true to display a "<1%" instead of a rounded value equal to "0%" | No       | ALL      | YES               |
-
+| Property | Type | Description | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `data` | Object | 图表数据  | No | ALL | YES |
+| `width` | Number | 图表的宽度，使用 'Dimensions' 库获取屏幕宽度以实现响应式布局 | No | ALL | YES |
+| `height` | Number | 图表的高度 | No | ALL | YES |
+| `chartConfig` | Object | 图表的配置对象 | No | ALL | YES |
+| `accessor` | string | 数据对象中用于提取数值的属性 | No | ALL | YES |
+| `bgColor` | string | 背景颜色 - 如果想要设置为透明，请输入 transparent 或 none。 | No | ALL | YES |
+| `paddingLeft` | string | 饼图的左边距 | No | ALL | YES |
+| `center` | array | 用于定位图表的 x 和 y 坐标偏移量 | No | ALL | YES |
+| `absolute` | boolean | 以绝对数值显示值 | No | ALL | YES |
+| `hasLegend` | boolean | 默认为 true，设置为 false 可移除图例 | No | ALL | YES |
+| `avoidFalseZero` | boolean | 默认为 false，设置为 true 可显示 “<1%” 而不是四舍五入等于 “0%” 的值 | No | ALL | YES |
 ### Contribution graph (heatmap)
 
-| Property           | Type     | Description                                                  | Required | Platform | HarmonyOS Support |
-| ------------------ | -------- | ------------------------------------------------------------ | -------- | -------- | ----------------- |
-| data               | Object   | Data for the chart - see example above                       | No       | ALL      | YES               |
-| width              | Number   | Width of the chart, use 'Dimensions' library to get the width of your screen for responsive | No       | ALL      | YES               |
-| height             | Number   | Height of the chart                                          | No       | ALL      | YES               |
-| gutterSize         | Number   | Size of the gutters between the squares in the chart         | No       | ALL      | YES               |
-| squareSize         | Number   | Size of the squares in the chart                             | No       | ALL      | YES               |
-| horizontal         | boolean  | Should graph be laid out horizontally? Defaults to true      | No       | ALL      | YES               |
-| showMonthLabels    | boolean  | Should graph include labels for the months? Defaults to true | No       | ALL      | YES               |
-| showOutOfRangeDays | boolean  | Should graph be filled with squares, including days outside the range? Defaults to false | No       | ALL      | YES               |
-| chartConfig        | Object   | Configuration object for the chart, see example config in the beginning of this file | No       | ALL      | YES               |
-| accessor           | string   | Property in the data object from which the number values are taken; defaults to count | No       | ALL      | YES               |
-| getMonthLabel      | function | Function which returns the label for each month, taking month index (0 - 11) as argument | No       | ALL      | YES               |
-| onDayPress         | function | Callback invoked when the user clicks a day square on the chart; takes a value-item object | No       | ALL      | YES               |
+| Property | Type | Description | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `data` | Object | 图表数据 | No | ALL | YES |
+| `width` | Number | 图表的宽度，使用 'Dimensions' 库获取屏幕宽度以实现响应式布局 | No | ALL | YES |
+| `height` | Number | 图表的高度 | No | ALL | YES |
+| `gutterSize` | Number | 图表中方块之间的间隙大小 | No | ALL | YES |
+| `squareSize` | Number | 图表中方块的大小 | No | ALL | YES |
+| `horizontal` | boolean | 图表是否应水平布局？默认为 true | No | ALL | YES |
+| `showMonthLabels` | boolean | 图表是否应包含月份标签？默认为 true | No | ALL | YES |
+| `showOutOfRangeDays` | boolean | 图表是否应填充方块，包括范围之外的日期？默认为 false | No | ALL | YES |
+| `chartConfig` | Object | 图表的配置对象 | No | ALL | YES |
+| `accessor` | string | 数据对象中用于提取数值的属性；默认为 count | No | ALL | YES |
+| `getMonthLabel` | function | 返回每个月标签的函数，接收月份索引 (0 - 11) 作为参数 | No | ALL | YES |
+| `onDayPress` | function | 当用户点击图表上的日期方块时调用的回调；接收一个 value-item 对象 | No | ALL | YES |
 
 ## 其他
 

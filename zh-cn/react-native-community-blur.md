@@ -18,7 +18,14 @@
 
 本库已经适配`C-API版本`从版本`4.4.0-0.1.0`开始的版本为`C-API版本`，`C-API版本`在性能和速度上都优于`ArkTS版本`。
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-community-blur Releases](https://github.com/react-native-oh-library/react-native-blur/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 4.4.0      | [@react-native-oh-tpl/react-native-community-blur Releases](https://github.com/react-native-oh-library/react-native-blur/releases) | 0.72       |
+| 4.5.0      | [@react-native-ohos/react-native-community-blur Releases]()  | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -27,13 +34,21 @@
 #### **npm**
 
 ```bash
+# V4.4.0
 npm install @react-native-oh-tpl/blur
+
+# V4.5.0
+npm install @react-native-ohos/blur
 ```
 
 #### **yarn**
 
 ```bash
+# V4.4.0
 yarn add @react-native-oh-tpl/blur
+
+# V4.5.0
+yarn add @react-native-ohos/blur
 ```
 
 <!-- tabs:end -->
@@ -229,11 +244,23 @@ const styles = StyleSheet.create({
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- V4.4.0
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
     "@react-native-oh-tpl/blur": "file:../../node_modules/@react-native-oh-tpl/blur/harmony/blur.har"
+  }
+```
+
+- V4.5.0
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+
+    "@react-native-ohos/blur": "file:../../node_modules/@react-native-ohos/blur/harmony/blur.har"
   }
 ```
 
@@ -265,7 +292,13 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: add_package_subdirectories
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+# V4.4.0
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/blur/src/main/cpp" ./blur)
+
+# V4.5.0
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/blur/src/main/cpp" ./blur)
+
 # RNOH_END: add_package_subdirectories
 
 add_library(rnoh_app SHARED
@@ -354,7 +387,19 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-community-blur Releases](https://github.com/react-native-oh-library/react-native-blur/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 4.4.0      | [@react-native-oh-tpl/react-native-community-blur Releases](https://github.com/react-native-oh-library/react-native-blur/releases) | 0.72       |
+| 4.5.0      | [@react-native-ohos/react-native-community-blur Releases]()  | 0.77       |
+
+
+本文档内容基于以下版本验证通过：
+
+1. RNOH: 0.72.98; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.0.3.906; ROM: NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
+
 
 ## 属性
 
@@ -362,42 +407,42 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name                                | Description                                                                               | Type      | Required | Platform | HarmonyOS Support |
-| ----------------------------------- | ----------------------------------------------------------------------------------------- | --------- |----------| ------- | ----------------- |
-| `blurType`                          | blur type                                                                                 | enum      | yes      | iOS,Android     | yes               |
-| `blurAmount?`                       | 0 - 100 (The maximum blurAmount on Android is 32, so higher values will be clamped to 32) | number    | no       | iOS,Android     | yes               |
-| `reducedTransparencyFallbackColor?` | Reduce transparency fallback color                                                        | Any color | no       | iOS     | no                |
-| `blurRadius?`                       | Matches iOS blurAmount                                                                    | number    | no       | Android | no                |
-| `downsampleFactor?`                 | Matches iOS blurAmount                                                                    | number    | no       | Android | no                |
-| `overlayColor?`                     | Default color based on iOS blurType                                                       | Any color | no       | Android | no                |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `blurType` | 模糊类型 | enum | yes | iOS,Android | yes |
+| `blurAmount?` | 0 - 100（Android 上的最大 blurAmount 为 32，因此更高的值将被限制为 32） | number | no | iOS,Android | yes |
+| `reducedTransparencyFallbackColor?` | 降低透明度时的回退颜色 | Any color | no | iOS | no |
+| `blurRadius?` | 匹配 iOS 的 blurAmount | number | no | Android | no |
+| `downsampleFactor?` | 匹配 iOS 的 blurAmount | number | no | Android | no |
+| `overlayColor?` | 基于 iOS blurType 的默认颜色 | Any color | no | Android | no |
 
 #### blurType
 
 > [!TIP] 如果要使用自适应模糊效果需要配置深色模式[配置文档](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ui-dark-light-color-adaptation)如果不配置深色模式则自适应模糊效果将没有深色模式，只有浅色模式。
 
-| Name                     | Description                                                                                            | Platform              | HarmonyOS Support |
-| ------------------------ | ------------------------------------------------------------------------------------------------------ |-----------------------| ----------------- |
-| `xlight`                 | extra light blur type                                                                                  | iOS,Android                   | yes                |
-| `light`                  | light blur type                                                                                        | iOS,Android                   | yes               |
-| `dark`                   | dark blur type                                                                                         | iOS,Android                   | yes               |
-| `extraDark`              | extra dark blur type (tvOS only)                                                                       | iOS                   | yes                |
-| `regular`                | regular blur type (iOS 10+ and tvOS only)                                                              | iOS  | yes               |
-| `prominent`              | prominent blur type (iOS 10+ and tvOS only)                                                            | iOS  | yes                |
-| `chromeMaterial`         | An adaptable blur effect that creates the appearance of a material with normal thickness               | iOS 13 only           | yes                |
-| `material`               | An adaptable blur effect that creates the appearance of a material with normal thickness               | iOS 13 only           | yes                |
-| `thickMaterial`          | An adaptable blur effect that creates the appearance of a material that is thicker than normal         | iOS 13 only           | yes                |
-| `thinMaterial`           | An adaptable blur effect that creates the appearance of an ultra-thin material                         | iOS 13 only           | yes                |
-| `ultraThinMaterial`      | An adaptable blur effect that creates the appearance of an ultra-thin material                         | iOS 13 only           | yes                |
-| `chromeMaterialDark`     | A blur effect that creates the appearance of an ultra-thin material and is always dark                 | iOS 13 only           | yes                |
-| `materialDark`           | A blur effect that creates the appearance of a thin material and is always dark                        | iOS 13 only           | yes                |
-| `thickMaterialDark`      | A blur effect that creates the appearance of a material with normal thickness and is always dark       | iOS 13 only           | yes               |
-| `thinMaterialDark`       | A blur effect that creates the appearance of a material that is thicker than normal and is always dark | iOS 13 only           | yes               |
-| `ultraThinMaterialDark`  | A blur effect that creates the appearance of the system chrome and is always dark                      | iOS 13 only           | yes                |
-| `chromeMaterialLight`    | An adaptable blur effect that creates the appearance of the system chrome                              | iOS 13 only           | yes                |
-| `materialLight`          | An adaptable blur effect that creates the appearance of a material with normal thickness               | iOS 13 only           | yes                |
-| `thickMaterialLight`     | An adaptable blur effect that creates the appearance of a thin material                                | iOS 13 only           | yes               |
-| `thinMaterialLight`      | An adaptable blur effect that creates the appearance of a thin material                                | iOS 13 only           | yes               |
-| `ultraThinMaterialLight` | An adaptable blur effect that creates the appearance of an ultra-thin material                         | iOS 13 only           | yes                |
+| Name | Description | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- |
+| `xlight` | 超亮模糊类型 | iOS,Android | yes |
+| `light` | 亮色模糊类型 | iOS,Android | yes |
+| `dark` | 暗色模糊类型 | iOS,Android | yes |
+| `extraDark` | 超暗模糊类型（仅限 tvOS） | iOS | yes |
+| `regular` | 常规模糊类型（仅限 iOS 10+ 和 tvOS） | iOS | yes |
+| `prominent` | 显著模糊类型（仅限 iOS 10+ 和 tvOS） | iOS | yes |
+| `chromeMaterial` | 一种自适应模糊效果，营造出正常厚度材质的外观 | iOS 13 only | yes |
+| `material` | 一种自适应模糊效果，营造出正常厚度材质的外观 | iOS 13 only | yes |
+| `thickMaterial` | 一种自适应模糊效果，营造出比正常材质更厚的材质外观 | iOS 13 only | yes |
+| `thinMaterial` | 一种自适应模糊效果，营造出超薄材质的外观 | iOS 13 only | yes |
+| `ultraThinMaterial` | 一种自适应模糊效果，营造出超薄材质的外观 | iOS 13 only | yes |
+| `chromeMaterialDark` | 一种模糊效果，营造出超薄材质的外观，且始终为暗色 | iOS 13 only | yes |
+| `materialDark` | 一种模糊效果，营造出薄材质的外观，且始终为暗色 | iOS 13 only | yes |
+| `thickMaterialDark` | 一种模糊效果，营造出正常厚度材质的外观，且始终为暗色 | iOS 13 only | yes |
+| `thinMaterialDark` | 一种模糊效果，营造出比正常材质更厚的材质外观，且始终为暗色 | iOS 13 only | yes |
+| `ultraThinMaterialDark` | 一种模糊效果，营造出系统镶边（System Chrome）的外观，且始终为暗色 | iOS 13 only | yes |
+| `chromeMaterialLight` | 一种自适应模糊效果，营造出系统镶边（System Chrome）的外观 | iOS 13 only | yes |
+| `materialLight` | 一种自适应模糊效果，营造出正常厚度材质的外观 | iOS 13 only | yes |
+| `thickMaterialLight` | 一种自适应模糊效果，营造出薄材质的外观 | iOS 13 only | yes |
+| `thinMaterialLight` | 一种自适应模糊效果，营造出薄材质的外观 | iOS 13 only | yes |
+| `ultraThinMaterialLight` | 一种自适应模糊效果，营造出超薄材质的外观 | iOS 13 only | yes |
 
 ## API
 
@@ -406,10 +451,10 @@ ohpm install
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该组件；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
 
-| Name           | Description                                                                                | Type  | Required    | Platform | HarmonyOS Support |
-| -------------- | ------------------------------------------------------------------------------------------ | ---|------ |----------| ----------------- |
-| `BlurView`     | Preload images to display later. e.g.                                                      | component|no | iOS,Android      | yes               |
-| `VibrancyView` | The vibrancy effect lets the content underneath a blurred view show through more vibrantly | component|no | iOS      | no                |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `BlurView` | 预加载图像以便稍后显示。 | component | no | iOS,Android | yes |
+| `VibrancyView` | Vibrancy 效果让模糊视图下方的内容更加生动地透显出来 | component | no | iOS | no |
 
 ## 遗留问题
 

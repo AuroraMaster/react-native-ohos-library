@@ -17,6 +17,12 @@
 
 ## Installation and Usage
 
+| Version | RN Version |
+| ---------- | ---------- |
+| 12.0.0     | 0.72       |
+| 13.0.0     | 0.77       |
+
+
 Go to the project directory and execute the following instruction:
 
 <!-- tabs:start -->
@@ -24,13 +30,50 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm i react-native-error-boundary@1.2.4
+# V12.0.0
+npm i react-navigation-header-buttons@12.0.0
+
+# V13.0.0
+npm i react-navigation-header-buttons@13.0.0
 ```
 
 #### **yarn**
 
 ```bash
-yarn add react-native-error-boundary@1.2.4
+# V12.0.0
+yarn add react-navigation-header-buttons@12.0.0
+
+# V13.0.0
+yarn add react-navigation-header-buttons@13.0.0
+```
+
+
+Add the following code to the tsconfig. json file:
+```json
+"compilerOptions": {
+  ...
+    "paths": {
+    ...
+      "react-navigation-header-buttons":[
+        "./node_modules/react-navigation-header-buttons/lib/module/index.js"
+      ]
+    },
+  }
+
+```
+Add the following code to the metro.config.js file:
+```js
+const config = {
+...
+  resolver: {
+    unstable_enablePackageExports: true,
+  },
+};
+module.exports = mergeConfig(
+  ...
+  config,
+);
+
 ```
 
 <!-- tabs:end -->
@@ -77,6 +120,16 @@ const styles = StyleSheet.create({
 });
 ```
 
+## Link
+
+This library relies on the following third-party libraries, please refer to the corresponding documentation:
+
+- [@react-navigation/native](/zh-cn/react-navigation-native.md)
+- [@react-navigation/elements](/zh-cn/react-navigation-elements.md)
+- [react-native-safe-area-context](/zh-cn/react-native-safe-area-context.md)
+
+If the library has already been introduced in the HarmonyOS project, there is no need to introduce it again. If it has not been introduced, please refer to the [@ react navigation/native document] (/zh cn/react navigation native. md), [@ react navigation/elements document] (/zh cn/react navigation elements. md), and [react native sea area context document] (/zh cn/react native sea area context. md) for introduction
+
 ## Constraints
 
 ### Compatibility
@@ -85,6 +138,7 @@ This document is verified based on the following versions:
 
 1. RNOH: 0.72.27; SDK: HarmonyOS-NEXT-DB1 5.0.0.25; IDE: DevEco Studio 5.0.3.400; ROM: 3.0.0.25;
 2. RNOH: 0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## Properties
 

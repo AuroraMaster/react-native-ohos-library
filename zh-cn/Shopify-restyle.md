@@ -16,6 +16,11 @@
 
 ## 安装与使用
 
+| 三方库版本 | 支持RN版本 |
+| ---------- | ---------- |
+| 2.4.4      | 0.72       |
+| 2.4.5      | 0.77       |
+
 进入到工程目录并输入以下命令：
 
 <!-- tabs:start -->
@@ -23,13 +28,21 @@
 #### **npm**
 
 ```bash
+# V2.4.4
 npm install @shopify/restyle@2.4.4
+
+# V2.4.5
+npm install @shopify/restyle@2.4.5
 ```
 
 #### **yarn**
 
 ```bash
+# V2.4.4
 yarn add @shopify/restyle@2.4.4
+
+# V2.4.5
+yarn add @shopify/restyle@2.4.5
 ```
 
 <!-- tabs:end -->
@@ -108,6 +121,7 @@ export const App = () => (
 
 1. RNOH：0.72.27; SDK：HarmonyOS NEXT Developer Beta1 5.0.0.25; IDE：DevEco Studio 5.0.3.400; ROM：3.0.0.25
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## Hooks
 
@@ -121,9 +135,9 @@ export const App = () => (
 
 |       Name        |                                           Description                                           |   Type   | Required | Platform | HarmonyOS Support |
 |:-----------------:|:-----------------------------------------------------------------------------------------------:|:--------:|:--------:|:--------:|:-----------------:|
-|     useTheme      |                            Retrieve attribute objects from the theme                            | function |    No    |   All    |        Yes        |
-|    useRestyle     | Dynamically styles reaction components based on a theme and a set of rules for resetting styles | function |    No    |   All    |        Yes        |
-| useResponsiveProp |                  Fetching the value of a responsive prop in a custom component                  | function |    No    |   All    |        Yes        |
+|     `useTheme`      |                            从主题中检索属性对象                            | function |    No    |   All    |        Yes        |
+|    `useRestyle`     | 基于主题和一组样式重置规则动态设置组件样式 | function |    No    |   All    |        Yes        |
+| `useResponsiveProp` |                  获取自定义组件中响应式属性的值                  | function |    No    |   All    |        Yes        |
 
 ## 方法
 
@@ -135,12 +149,12 @@ export const App = () => (
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-|          Name          |                                  Description                                   |   Type   | Required | Platform | HarmonyOS Support |
-|:----------------------:|:------------------------------------------------------------------------------:|:--------:|:--------:|:--------:|:-----------------:|
-|      createTheme       |                                Defining a Theme                                | function |    No    |   All    |        Yes        |
-|     createVariant      |           Provides a flexible way to handle style changes in a theme           | function |    No    |   All    |        Yes        |
-| createRestyleFunction  |                         Creating a Predefined Restyle                          | function |    No    |   All    |        Yes        |
-| createRestyleComponent | To create a custom component, you need to set the predefined Restyle function. | function |    No    |   All    |        Yes        |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| `createTheme` | 定义主题 | function | No | All | Yes |
+| `createVariant` | 提供一种灵活的方式来处理主题中的样式变化 | function | No | All | Yes |
+| `createRestyleFunction` | 创建预定义的 Restyle | function | No | All | Yes |
+| `createRestyleComponent` | 创建自定义组件时，需要设置预定义的 Restyle 函数。 | function | No | All | Yes |
 
 ## 预定义组件
 
@@ -154,9 +168,9 @@ export const App = () => (
 
 |     Name      |                  Description                   |   Type   | Required | Platform | HarmonyOS Support |
 |:-------------:|:----------------------------------------------:|:--------:|:--------:|:--------:|:-----------------:|
-|  createText   |           Predefined Text component            | function |    No    |   All    |        Yes        |
-|   createBox   |            Predefined Box component            | function |    No    |   All    |        Yes        |
-| ThemeProvider | Set the theme to the outermost React component | function |    No    |   All    |        Yes        |
+|  `createText`   |           预定义的 Text 组件            | function |    No    |   All    |        Yes        |
+|   `createBox`   |            预定义的 Box 组件            | function |    No    |   All    |        Yes        |
+| `ThemeProvider` | 将主题设置给最外层的 React 组件 | function |    No    |   All    |        Yes        |
 
 ## 预定义 Restyle 函数
 
