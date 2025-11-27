@@ -8,10 +8,11 @@
 
 This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-linear-gradient`, After introducing the new version of the third-party library, The version correspondence details are as follows:
 
-| Version                   | Package Name                                      | Repository         | Release                    |
-| ------------------------- | ------------------------------------------------- | ------------------ | -------------------------- |
-| <= 3.0.0-0.5.0@deprecated | @react-native-oh-tpl/react-native-linear-gradient | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-linear-gradient) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-linear-gradient/releases) |
-| > 3.0.0                   | @react-native-ohos/react-native-linear-gradient   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) |
+| Version                   | Package Name                                      | Repository         | Release                    | Supported RN Version |
+| ------------------------- | ------------------------------------------------- | ------------------ | -------------------------- | -------------------------- |
+| <= 3.0.0-0.5.0@deprecated | @react-native-oh-tpl/react-native-linear-gradient | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-linear-gradient) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-linear-gradient/releases) | 0.72 |
+| 3.0.0 | @react-native-oh-tpl/react-native-linear-gradient | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/tree/br_rnoh0.72) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) | 0.72 |
+| 3.1.0                   | @react-native-ohos/react-native-linear-gradient   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/tree/br_rnoh0.77) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) | 0.77 |
 
 ## 1. Installation and Usage
 
