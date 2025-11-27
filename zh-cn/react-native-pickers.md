@@ -15,6 +15,9 @@
 > [!TIP] [Github 地址](https://github.com/iberHK/react-native-picker)
 
 ## 安装与使用
+| 三方库版本 | 支持RN版本 |
+| :--- | :--- |
+| 2.0.0 | 0.72/0.77 |
 
 进入到工程目录并输入以下命令：
 
@@ -160,9 +163,9 @@ export default class MainPage extends BaseComponent {
 
 ## Link
 
-本库依赖@react-native-oh-tpl/react-native-svg，如已在鸿蒙工程中引入过该库，则无需再次引入。
+本库依赖@react-native-ohos/react-native-svg，如已在鸿蒙工程中引入过该库，则无需再次引入。
 
-如未引入请参照[@react-native-oh-tpl/react-native-svg 文档的 Link 章节](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-svg-capi.md#link)进行引入
+如未引入请参照[@react-native-ohos/react-native-svg 文档的 Link 章节](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-svg-capi.md#link)进行引入
 
 ## 约束与限制
 
@@ -171,6 +174,7 @@ export default class MainPage extends BaseComponent {
 本文档内容基于以下版本验证通过：
 
 1. RNOH: 0.72.26; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.300; ROM：3.0.0.25;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## 属性
 
