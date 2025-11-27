@@ -12,19 +12,18 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-device-info)
+本项目基于 [react-native-device-info](https://github.com/react-native-device-info/react-native-device-info) 开发。
+
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-device-info`，具体版本所属关系如下：
+
+| Version           | Package Name                                  | Repository                                                                      | Release                    |Support RN version|
+|-------------------|-----------------------------------------------|---------------------------------------------------------------------------------| -------------------------- |-------------------|
+| 11.1.0@deprecated | @react-native-oh-tpl/react-native-device-info | [Github（deprecated）](https://github.com/react-native-oh-library/react-native-device-info) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-device-info/releases) |0.72       |
+| 11.1.1            | @react-native-ohos/react-native-device-info   | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-device-info)   | [Github Releases](https://github.com/react-native-oh-library/react-native-device-info/releases) |0.72       |
+| 14.0.5            | @react-native-ohos/react-native-device-info   | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-device-info)   | [GitCode Releases]() |0.77       |
+
 
 ## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本  | 发布信息                                                     | 支持RN版本 |
-|--------| ------------------------------------------------------------ | ---------- |
-| 11.1.0@deprecated | [@react-native-oh-tpl/react-native-device-info Releases(deprecated)](https://github.com/react-native-oh-library/react-native-device-info/releases) | 0.72       |
-| 11.1.1 | [@react-native-ohos/react-native-device-info Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-device-info/releases)                        | 0.72       |
-| 14.0.5  | [@react-native-ohos/react-native-device-info Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-device-info/releases)                        | 0.77       |
-
-对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -215,8 +214,48 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
+### 3.配置 CMakeLists
 
-### 3.在 ArkTs 侧引入 RNDeviceInfoPackage
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_CXX_STANDARD 17)
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../oh_modules/@rnoh/react-native-openharmony/src/main/cpp")
++ set(REACT_NATIVE_DEVICE_INFO_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules/@react-native-ohos/react-native-device-info/src/main/cpp")
+set(WITH_HITRACE_SYSTRACE 1)
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
++ add_subdirectory("${REACT_NATIVE_DEVICE_INFO_CPP_DIR}" ./device_info)
+
+add_library(rnoh_app SHARED
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
++ target_link_libraries(rnoh_app PUBLIC device_info)
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
++ #include "RNDeviceInfoPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++       std::make_shared<RNDeviceInfoPackage>(ctx),
+    };
+
+```
+
+### 4.在 ArkTs 侧引入 RNDeviceInfoPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
@@ -232,7 +271,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.运行
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -251,13 +290,8 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本  | 发布信息                                                     | 支持RN版本 |
-|--------| ------------------------------------------------------------ | ---------- |
-| 11.1.0@deprecated | [@react-native-oh-tpl/react-native-device-info Releases(deprecated)](https://github.com/react-native-oh-library/react-native-device-info/releases) | 0.72       |
-| 11.1.1 | [@react-native-ohos/react-native-device-info Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-device-info/releases)                        | 0.72       |
-| 14.0.5  | [@react-native-ohos/react-native-device-info Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-device-info/releases)                        | 0.77       |
+1. RNOH: 0.72.27; SDK: HarmonyOS 5.1.1 Release SDK; IDE: DevEco Studio 5.1.1 Release; ROM: 5.0.1.120;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ### 权限要求
 
@@ -293,93 +327,94 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
-| ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| getAndroidId  |Gets the ANDROID_ID. See API documentation for appropriate use.  | Promise<string>| No | Android      | no |
-| getApiLevel  | Gets the API level.  | Promise<number>| No | Android      | yes |
-| getApplicationName  | Gets the application name.  | string | No | IOS/Android/Windows/visionOS      | yes |
-| getAvailableLocationProviders  | Returns an object of platform-specfic location providers/servcies, with value whether or not they are currently available.boolean       | Promise<object>  | No | IOS/Android/visionOS      | yes |
-| getBaseOs  | The base OS build the product is based on.      | Promise<string>  | No | Android/Windows/Web      | yes |
-| getBuildId  | Gets build number of the operating system.      | Promise<string>  | No | IOS/Android/Windows/visionOS      | yes |
-| getBatteryLevel  | Gets the battery level of the device as a float comprised between 0 and 1.        | Promise<number>  | No | IOS/Android /Windows/Web/visionOS     | yes |
-| getBootloader  | The system bootloader version number.        | Promise<string>  | No | Android      | yes |
-| getBrand  | Gets the device brand.        | string  | No | IOS/Android/Windows/visionOS      | yes |
-| getBuildNumber  | Gets the application build number.       | string  | No | IOS/Android/Windows/visionOS      | yes |
-| getBundleId  | Gets the application bundle identifier.        | string  | No | IOS/Android/Windows/visionOS      | yes |
-| isCameraPresent  | Tells if the device has any camera now.        | Promise<boolean>  | No | Android/Windows/Web      | yes |
-| getCarrier  | Gets the carrier name (network operator).        | Promise<string>  | No | IOS/Android      | yes |
-| getCodename  | The current development codename, or the string "REL" if this is a release build.         | Promise<string>  | No | Android      | yes |
-| getDevice  |  The name of the industrial design.        | Promise<string>  | No | Android      | yes |
-| getDeviceId  |Gets the device ID.        | string  | No | IOS/Android/Windows/visionOS     | no |
-| getDeviceType  | TReturns the device's type as a string     | string  | No | IOS/Android/visionOS      | yes |
-| getDisplay  | A build ID string meant for displaying to the user.     | Promise<string>  | No | Android      | yes |
-| getDeviceName  | Gets the device name.        | Promise<string>  | No | IOS/Android/Windows/visionOS      | yes |
-| getDeviceNameSync  | Gets the device name.      | string  | No | No      | No |
-| getDeviceToken  | Gets the device token (see DeviceCheck). Only available for iOS 11.0+ on real devices. This will reject the promise when getDeviceToken is not supported, be careful with exception handling.       | Promise<string>  | No | IOS/visionOS      | no |
-| getFirstInstallTime  | Gets the time at which the app was first installed, in milliseconds.         | Promise<number>  | No | IOS/Android/Windows/visionOS      | yes |
-| getFingerprint  | A string that uniquely identifies this build.         | Promise<string>  | No | Windows      | no |
-| getFontScale  | Gets the device font scale. The font scale is the ratio of the current system font to the "normal" font size, so if normal text is 10pt and the system font is currently 15pt, the font scale would be 1.5 This can be used to determine if accessability settings has been changed for the device; you may want to re-layout certain views if the font scale is significantly larger ( > 2.0 )         | Promise<number>  | No | IOS/Android/Windows      | yes |
-| getFreeDiskStorage  | Method that gets available storage size, in bytes, taking into account both root and data file systems calculation.         | Promise<number>  | No | IOS/Android/Windows/Web/visionOS      | no |
-| getFreeDiskStorageOld  | Old implementation of method that gets available storage size, in bytes.         | Promise<number>  | No | IOS/Android/Windows/Web/visionOS      | no |
-| getHardware  | The name of the hardware (from the kernel command line or /proc).         | Promise<string>  | No | Android      | yes |
-| getHost  |  Hostname        | Promise<string>  | No | Android/Windows      | yes|
-| getHostNames  | Hostnames       | Promise<string[]> | No | Windows      | no |
-| getIpAddress  | Deprecated Gets the device current IP address. (of wifi only) Switch to react-native-netinfo/netinfo or react-native-network-info       | Promise<string>  | No |  IOS/Android/Windows/visionOS      | yes |
-| getIncremental  | The internal value used by the underlying source control to represent this build.        | Promise<string>  | No | Android      | yes |
-| getInstallerPackageName  | The internal value used by the underlying source control to represent this build.         | Promise<string>  | No | IOS/Android/Windows/visoinOS      | yes |
-| getInstallReferrer  | Gets the referrer string upon application installation.         | Promise<string>  | No | Android/Windows/Web      | no |
-| getInstanceId  | Gets the application instance ID.        | Promise<string>  | No | Android      | yes|
-| getLastUpdateTime  | Gets the time at which the app was last updated, in milliseconds.        | Promise<number>  | No | Android      | yes |
-| getMacAddress  | Gets the network adapter MAC address.        | Promise<string>  | No | IOS/Android/visionOS      | no |
-| getManufacturer  | Gets the device manufacturer.        | Promise<string>  | No | IOS/Android/visoinOS      | yes |
-| getManufacturerSync  | Gets the device manufacturer.        | string  | No | IOS/Android/visoinOS      | yes |
-| getMaxMemory  | Returns the maximum amount of memory that the VM will attempt to use, in bytes.        | Promise<number>  | No | Android/Windows/Web      | no |
-| getModel  | Gets the device model.     | string  | No | IOS/Android      | yes |
-| getPowerState  | Gets the power state of the device including the battery level, whether it is plugged in, and if the system is currently operating in low power mode.    | Promise<object>  | No | IOS/Android/Windows/Web/visionOS      | yes |
-| getProduct  | The name of the overall product.        | Promise<string>  | No | Android      | yes |
-| getPreviewSdkInt  | The developer preview revision of a prerelease SDK.        | Promise<number>  | No | Android      | no |
-| getReadableVersion  | Gets the application human readable version (same as getVersion() + '.' + getBuildNumber())         | string  | No | IOS/Android/Windows/visionOS      | yes |
-| getSerialNumber  | Gets the device serial number. Will be 'unknown' in almost all cases unless you have a privileged app and you know what you're doing.       | Promise<string>  | No | Android/Windows      | no |
-| getSecurityPatch  | The user-visible security patch level.        | Promise<string>  | No | Android      | yes |
-| getSystemAvailableFeatures  | Returns a list of available system features on Android.         | Promise<string[]>  | No | Android      | no |
-| getSystemName  | Gets the device OS name.        | string  | No | IOS/Android/Windows/visoinOS      | yes |
-| getSystemVersion  | Gets the device OS version.         | string  | No | IOS/Android/Windows/visoinOS      | yes |
-| getTags  | Comma-separated tags describing the build.        | Promise<string>  | No | Android      | no |
-| getType  | The type of build.        | Promise<string>  | No | Android      | yes |
-| getTotalDiskCapacity  | Method that gets full disk storage size, in bytes, taking into account both root and data file systems calculation.        | Promise<number>  | No | Android      | no |
-| getTotalDiskCapacityOld  | Old implementation of method that gets full disk storage size, in bytes.        | Promise<number>  | No | Android      | no |
-| getTotalMemory  | Gets the device total memory, in bytes.        | Promise<number>  | No | IOS/Android/Web/visionOS      | no |
-| getUniqueId  | Gets the device unique ID. On Android it is currently identical to in this module.          | Promise<string>  | No | IOS/Android/Windows/visionOS      | no |
-| getUsedMemory  | Gets the app memory usage, in bytes.          | Promise<string>  | No | IOS/Android/Windows/Web/visionOs      | yes |
-| getUserAgent  | Gets the device User Agent.          | Promise<string>  | No | IOS/Android/Web/visionOs      | no |
-| getUserAgentSync  | Gets the device User Agent.          | string  | No | Android/Web     | no |
-| getVersion  | Gets the application version. Take into account that a version string is device/OS formatted and can contain any additional data (such as build number etc.). If you want to be sure about version format, you can use a regular expression to get the desired portion of the returned version string.      | string  | No | IOS/Android/Windows/visionOS      | yes |
-| getBrightness  | Gets the current brightness level of the device's main screen. Currently iOS only. Returns a number between 0.0 and 1.0, inclusive.        | Promise<number>  | No | IOS     | no |
-| hasGms  | Tells if the device supports Google Mobile Services.         | Promise<boolean>  | No | Android      | yes |
-| hasHms  | Tells if the device supports Huawei Mobile Services.         | Promise<boolean>  | No | Android      | yes |
-| hasNotch  | Tells if the device has a notch.         | boolean  | No | IOS/Android/Windows/visionOS      | no |
-| hasDynamicIsland  | Tells if the device has a dynamic island.         | boolean  | No | IOS/Android/Windows/visionOS      | no |
-| hasSystemFeature  | Tells if the device has a specific system feature.         | Promise<boolean>  | No | Android      | no |
-| isAirplaneMode  | Tells if the device is in Airplane Mode.       | Promise<boolean>  | No | Android/ Web     | no |
-| isBatteryCharging  | Tells if the battery is currently charging.         | Promise<boolean>  | No | IOS/Android/Windows/Web/visionOS      | yes |
-| isEmulator  | Tells if the application is running in an emulator.        | Promise<boolean>  | No | IOS/Android/Windows/visionOS      | no |
-| isKeyboardConnected  | Tells if the device has a keyboard connected.        | Promise<boolean>  | No | Windows      | partially(Only supports asynchronous retrieval) |
-| isLandscape  | Tells if the device is currently in landscape mode.        | Promise<boolean>  | No | IOS/Android/Windows/visionOs      | yes |
-| isLocationEnabled  | Allow access to user's location information        | Promise<boolean>  | No | IOS/Android/Web/visionOS      | yes |
-| isMouseConnected  | Tells if the device has a mouse connected.         | Promise<boolean>  | No | Windows   | yes |
-| isHeadphonesConnected  | Tells if the device has a Headphones connected.         | Promise<boolean>  | No | IOS/Android/visionOS      | yes |
-| isWiredHeadphonesConnected  | Tells if the device has a WiredHeadphones connected.         | Promise<boolean>  | No | IOS/Android/visionOS      | yes |
-| isBluetoothHeadphonesConnected  | Tells if the device has a BluetoothHeadphones connected.         | Promise<boolean>  | No | IOS/Android/visionOS      | yes |
-| isPinOrFingerprintSet  | Tells if a PIN number or a fingerprint was set for the device.         | Promise<boolean>  | No | IOS/Android/Windows/visoinOs      | yes |
-| isTablet  | Tells if the device is a tablet.         | boolean  | No | IOS/Android/Windows/visoinOs      | yes |
-| isLowRamDevice  |  Tells if the device has low RAM.          | boolean  | No | Android      | yes |
-| isDisplayZoomed  | Tells if the user changed Display Zoom to Zoomed       | boolean  | No | IOS     | no |
-| isTabletMode  | Tells if the device is in tablet mode.       | Promise<boolean>  | No | Windows     | no |
-| supported32BitAbis  | device support 32  Abis       | Promise<string[]>  | No | Windows     | yes |
-| supported64BitAbis  | device support 64 Abis       | Promise<string[]>  | No | Windows     | yes |
-| supportedAbis  | device support Abis      | Promise<string[]>  | No | IOS/Android/Windows/visoinOS     | yes|
-| syncUniqueId  | This method is intended for iOS,This synchronizes uniqueId with IDFV or sets new a random string,On iOS it uses the DeviceUID uid identifier. On other platforms it just call getUniqueId() in this module.       | Promise<string>  | No | IOS/visionOS     | no |
-| getSupportedMediaTypeList  | This method gets the list of supported media codecs.       | Promise<string[]>  | No | IOS/Android      | yes |
+| Name                                 | Description                                                                                                                         | Type | Required | Platform | HarmonyOS Support  |
+|--------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------| ---- | -------- | -------- | ------------------ |
+| getAndroidId                         | 获取 ANDROID_ID。请参阅 API 文档了解正确使用方法。                                                                                                   | Promise<string>| No | Android      | no |
+| getApiLevel                          | 获取 API 级别。                                                                                                                          | Promise<number>| No | Android      | yes |
+| getApplicationName                   | 获取应用程序名称。                                                                                                                           | string | No | IOS/Android/Windows/visionOS      | yes |
+| getAvailableLocationProviders        | 返回特定平台位置提供者/服务的对象，包含当前是否可用的布尔值。                                                                                                     | Promise<object>  | No | IOS/Android/visionOS      | yes |
+| getBaseOs                            | 产品所基于的基础操作系统构建版本。                                                                                                                   | Promise<string>  | No | Android/Windows/Web      | yes |
+| getBuildId                           | 获取操作系统的构建编号。                                                                                                                        | Promise<string>  | No | IOS/Android/Windows/visionOS      | yes |
+| getBatteryLevel                      | 获取设备电池电量，返回 0 到 1 之间的浮点数。                                                                                                           | Promise<number>  | No | IOS/Android /Windows/Web/visionOS     | yes |
+| getBootloader                        | 系统引导程序版本号。                                                                                                                          | Promise<string>  | No | Android      | yes |
+| getBrand                             | 获取设备品牌。                                                                                                                             | string  | No | IOS/Android/Windows/visionOS      | yes |
+| getBuildNumber                       | 获取应用程序构建编号。                                                                                                                         | string  | No | IOS/Android/Windows/visionOS      | yes |
+| getBundleId                          | 获取应用程序包标识符。                                                                                                                         | string  | No | IOS/Android/Windows/visionOS      | yes |
+| isCameraPresent                      | 判断设备当前是否有摄像头。                                                                                                                       | Promise<boolean>  | No | Android/Windows/Web      | yes |
+| getCarrier                           | 获取运营商名称（网络运营商）。                                                                                                                     | Promise<string>  | No | IOS/Android      | yes |
+| getCodename                          | 当前开发代号，如果是发布版本则为字符串"REL"。                                                                                                           | Promise<string>  | No | Android      | yes |
+| getDevice                            | 工业设计名称。                                                                                                                             | Promise<string>  | No | Android      | yes |
+| getDeviceId                          | 获取设备 ID。                                                                                                                            | string  | No | IOS/Android/Windows/visionOS     | no |
+| getDeviceType                        | 返回设备类型的字符串。                                                                                                                         | string  | No | IOS/Android/visionOS      | yes |
+| getDisplay                           | 用于向用户显示的构建 ID 字符串。                                                                                                                  | Promise<string>  | No | Android      | yes |
+| getDeviceName                        | 获取设备名称。                                                                                                                             | Promise<string>  | No | IOS/Android/Windows/visionOS      | yes |
+| getDeviceNameSync                    | 获取设备名称。                                                                                                                             | string  | No | No      | No |
+| getDeviceToken                       | 获取设备令牌（参见 DeviceCheck）。仅适用于 iOS 11.0+ 的真实设备。当不支持 getDeviceToken 时会拒绝 Promise，请注意异常处理。                                               | Promise<string>  | No | IOS/visionOS      | no |
+| getFirstInstallTime                  | 获取应用首次安装的时间（毫秒）。                                                                                                                    | Promise<number>  | No | IOS/Android/Windows/visionOS      | yes |
+| getFingerprint                       | 唯一标识此构建的字符串。                                                                                                                        | Promise<string>  | No | Windows      | no |
+| getFontScale                         | 获取设备字体缩放比例。字体缩放比例是当前系统字体与"正常"字体大小的比率。如果正常文本为 10pt 而系统字体当前为 15pt，则字体缩放比例为 1.5。这可用于确定设备的无障碍设置是否已更改；如果字体缩放比例明显较大（> 2.0），您可能需要重新布局某些视图。 | Promise<number>  | No | IOS/Android/Windows      | yes |
+| getFreeDiskStorage                   | 获取可用存储空间大小的方法（字节），考虑根文件系统和数据文件系统的计算。                                                                                                | Promise<number>  | No | IOS/Android/Windows/Web/visionOS      | no |
+| getFreeDiskStorageOld                | 获取可用存储空间大小的旧实现方法（字节）。                                                                                                               | Promise<number>  | No | IOS/Android/Windows/Web/visionOS      | no |
+| getHardware                          | 硬件名称（来自内核命令行或 /proc）。                                                                                                               | Promise<string>  | No | Android      | yes |
+| getHost                              | 主机名。                                                                                                                                | Promise<string>  | No | Android/Windows      | yes|
+| getHostNames                         | 主机名列表。                                                                                                                              | Promise<string[]> | No | Windows      | no |
+| getIpAddress                         | 已弃用。获取设备当前 IP 地址（仅 WiFi）。请切换到 react-native-netinfo/netinfo 或 react-native-network-info。                                             | Promise<string>  | No |  IOS/Android/Windows/visionOS      | yes |
+| getIncremental                       | 底层源代码控制用于表示此构建的内部值。                                                                                                                 | Promise<string>  | No | Android      | yes |
+| getInstallerPackageName              | 底层源代码控制用于表示此构建的内部值。                                                                                                                 | Promise<string>  | No | IOS/Android/Windows/visoinOS      | yes |
+| getInstallReferrer                   | 获取应用安装时的来源引用字符串。                                                                                                                    | Promise<string>  | No | Android/Windows/Web      | no |
+| getInstanceId                        | 获取应用程序实例 ID。                                                                                                                        | Promise<string>  | No | Android      | yes|
+| getLastUpdateTime                    | 获取应用最后更新时间（毫秒）。                                                                                                                     | Promise<number>  | No | Android      | yes |
+| getMacAddress                        | 获取网络适配器 MAC 地址。                                                                                                                     | Promise<string>  | No | IOS/Android/visionOS      | no |
+| getManufacturer                      | 获取设备制造商。                                                                                                                            | Promise<string>  | No | IOS/Android/visoinOS      | yes |
+| getManufacturerSync                  | 获取设备制造商。                                                                                                                            | string  | No | IOS/Android/visoinOS      | yes |
+| getMaxMemory                         | 返回虚拟机将尝试使用的最大内存量（字节）。                                                                                                               | Promise<number>  | No | Android/Windows/Web      | no |
+| getModel                             | 获取设备型号。                                                                                                                             | string  | No | IOS/Android      | yes |
+| getPowerState                        | 获取设备电源状态，包括电池电量、是否正在充电以及系统是否处于低功耗模式。                                                                                                | Promise<object>  | No | IOS/Android/Windows/Web/visionOS      | yes |
+| getProduct                           | 整体产品名称。                                                                                                                             | Promise<string>  | No | Android      | yes |
+| getPreviewSdkInt                     | 预发布 SDK 的开发人员预览修订版。                                                                                                                 | Promise<number>  | No | Android      | no |
+| getReadableVersion                   | 获取应用程序人类可读版本（等同于 getVersion() + '.' + getBuildNumber()）。                                                                            | string  | No | IOS/Android/Windows/visionOS      | yes |
+| getSerialNumber                      | 获取设备序列号。在绝大多数情况下会是 'unknown'，除非您拥有特权应用并且知道自己在做什么。                                                                                   | Promise<string>  | No | Android/Windows      | no |
+| getSecurityPatch                     | 用户可见的安全补丁级别。                                                                                                                        | Promise<string>  | No | Android      | yes |
+| getSystemAvailableFeatures           | 返回 Android 上可用的系统功能列表。                                                                                                              | Promise<string[]>  | No | Android      | no |
+| getSystemName                        | 获取设备操作系统名称。                                                                                                                         | string  | No | IOS/Android/Windows/visoinOS      | yes |
+| getSystemVersion                     | 获取设备操作系统版本。                                                                                                                         | string  | No | IOS/Android/Windows/visoinOS      | yes |
+| getTags                              | 描述构建的逗号分隔标签。                                                                                                                        | Promise<string>  | No | Android      | no |
+| getType                              | 构建类型。                                                                                                                               | Promise<string>  | No | Android      | yes |
+| getTotalDiskCapacity                 | 获取完整磁盘存储空间大小的方法（字节），考虑根文件系统和数据文件系统的计算。                                                                                              | Promise<number>  | No | Android      | no |
+| getTotalDiskCapacityOld              | 获取完整磁盘存储空间大小的旧实现方法（字节）。                                                                                                             | Promise<number>  | No | Android      | no |
+| getTotalMemory                       | 获取设备总内存（字节）。                                                                                                                        | Promise<number>  | No | IOS/Android/Web/visionOS      | no |
+| getUniqueId                          | 获取设备唯一 ID。在 Android 上，当前与此模块中的相同。                                                                                                   | Promise<string>  | No | IOS/Android/Windows/visionOS      | no |
+| getUsedMemory                        | 获取应用程序内存使用量（字节）。                                                                                                                    | Promise<string>  | No | IOS/Android/Windows/Web/visionOs      | yes |
+| getUserAgent                         | 获取设备用户代理。                                                                                                                           | Promise<string>  | No | IOS/Android/Web/visionOs      | no |
+| getUserAgentSync                     | 获取设备用户代理。                                                                                                                           | string  | No | Android/Web     | no |
+| getVersion                           | 获取应用程序版本。请注意版本字符串是设备/操作系统格式的，可能包含任何额外数据（如构建编号等）。如果您想确定版本格式，可以使用正则表达式从返回的版本字符串中获取所需部分。                                               | string  | No | IOS/Android/Windows/visionOS      | yes |
+| getBrightness                        | 获取设备主屏幕的当前亮度级别。目前仅限 iOS。返回 0.0 到 1.0 之间的数字（包含）。                                                                                     | Promise<number>  | No | IOS     | no |
+| hasGms                               | 判断设备是否支持 Google 移动服务。                                                                                                               | Promise<boolean>  | No | Android      | yes |
+| hasHms                               | 判断设备是否支持华为移动服务。                                                                                                                     | Promise<boolean>  | No | Android      | yes |
+| hasNotch                             | 判断设备是否有刘海屏。                                                                                                                         | boolean  | No | IOS/Android/Windows/visionOS      | no |
+| hasDynamicIsland                     | 判断设备是否有动态岛。                                                                                                                         | boolean  | No | IOS/Android/Windows/visionOS      | no |
+| hasSystemFeature                     | 判断设备是否有特定的系统功能。                                                                                                                     | Promise<boolean>  | No | Android      | no |
+| isAirplaneMode                       | 判断设备是否处于飞行模式。                                                                                                                       | Promise<boolean>  | No | Android/ Web     | no |
+| isBatteryCharging                    | 判断电池是否正在充电。                                                                                                                         | Promise<boolean>  | No | IOS/Android/Windows/Web/visionOS      | yes |
+| isEmulator                           | 判断应用程序是否在模拟器中运行。                                                                                                                    | Promise<boolean>  | No | IOS/Android/Windows/visionOS      | no |
+| isKeyboardConnected                  | 判断设备是否连接了键盘。                                                                                                                        | Promise<boolean>  | No | Windows      | partially(Only supports asynchronous retrieval) |
+| isLandscape                          | 判断设备是否当前处于横屏模式。                                                                                                                     | Promise<boolean>  | No | IOS/Android/Windows/visionOs      | yes |
+| isLocationEnabled                    | 允许访问用户的位置信息。                                                                                                                        | Promise<boolean>  | No | IOS/Android/Web/visionOS      | yes |
+| isMouseConnected                     | 判断设备是否连接了鼠标。                                                                                                                        | Promise<boolean>  | No | Windows   | partially(Only supports asynchronous retrieval) |
+| isHeadphonesConnected                | 判断设备是否连接了耳机。                                                                                                                        | Promise<boolean>  | No | IOS/Android/visionOS      | yes |
+| isWiredHeadphonesConnected           | 判断设备是否连接了有线耳机。                                                                                                                      | Promise<boolean>  | No | IOS/Android/visionOS      | yes |
+| isBluetoothHeadphonesConnected       | 判断设备是否连接了蓝牙耳机。                                                                                                                      | Promise<boolean>  | No | IOS/Android/visionOS      | yes |
+| isPinOrFingerprintSet                | 判断是否为设备设置了 PIN 码或指纹。                                                                                                                | Promise<boolean>  | No | IOS/Android/Windows/visoinOs      | yes |
+| isTablet                             | 判断设备是否为平板电脑。                                                                                                                        | boolean  | No | IOS/Android/Windows/visoinOs      | yes |
+| isLowRamDevice                       | 判断设备是否内存不足。                                                                                                                         | boolean  | No | Android      | yes |
+| isDisplayZoomed                      | 判断用户是否将显示缩放更改为放大模式。                                                                                                                 | boolean  | No | IOS     | no |
+| isTabletMode                         | 判断设备是否处于平板模式。                                                                                                                       | Promise<boolean>  | No | Windows     | no |
+| supported32BitAbis                   | 设备支持 32 位 ABI。                                                                                                                      | Promise<string[]>  | No | Windows     | yes |
+| supported64BitAbis                   | 设备支持 64 位 ABI。                                                                                                                      | Promise<string[]>  | No | Windows     | yes |
+| supportedAbis                        | 设备支持的 ABI。                                                                                                                          | Promise<string[]>  | No | IOS/Android/Windows/visoinOS     | yes|
+| syncUniqueId                         | 此方法专为 iOS 设计，它将 uniqueId 与 IDFV 同步或设置新的随机字符串。在 iOS 上使用 DeviceUID uid 标识符。在其他平台上，仅调用此模块中的 getUniqueId()。                             | Promise<string>  | No | IOS/visionOS     | no |
+| getSupportedMediaTypeList            | 此方法获取支持的媒体编解码器列表。                                                                                                                   | Promise<string[]>  | No | IOS/Android      | yes |
+| getStartupTime<sup>14.0.4+</sup>     | 获取当前应用程序进程启动的时间，单位为毫秒。                                                                                                              | Promise\<number\> | Yes | iOS/Android/visionOS | yes |
 
 
 ## 遗留问题
