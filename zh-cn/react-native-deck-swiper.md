@@ -16,6 +16,10 @@
 
 ## 安装与使用
 
+| Version| Version for RN |
+| ---------- | ---------- |
+| 2.0.17     | 0.72/0.77  |
+
 <!-- tabs:start -->
 
 #### **npm**
@@ -324,6 +328,7 @@ export default App;
 
 1. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.25; IDE: DevEco Studio 5.0.3.400SP7; ROM: 3.0.0.25;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## 属性
 
@@ -335,102 +340,102 @@ export default App;
 
 | Name            | Description                                                  | Type                      | Required | Platform    | HarmonyOS Support |
 | --------------- | ------------------------------------------------------------ | ------------------------- | -------- | ----------- | ----------------- |
-| cards           | array of data for the cards to be rendered                   | array                     | yes      | iOS/Android | yes               |
-| renderCard      | function to render the card based on the data                | func(cardData, cardIndex) | yes      | iOS/Android | yes               |
-| keyExtractor    | function to get the card's react key                         | func(cardData)            | no       | iOS/Android | yes               |
-| cardIndex       | cardIndex to start with                                      | number                    | no       | iOS/Android | yes               |
-| infinite        | keep swiping indefinitely                                    | bool                      | no       | iOS/Android | yes               |
-| horizontalSwipe | enable/disable horizontal swiping                            | bool                      | no       | iOS/Android | yes               |
-| verticalSwipe   | enable/disable vertical swiping                              | bool                      | no       | iOS/Android | yes               |
-| showSecondCard  | enable/disable second card while swiping                     | bool                      | no       | iOS/Android | yes               |
-| stackSize       | number of underlaying cards to show (showSecondCard must be enabled) | number                    | no       | iOS/Android | yes               |
+| cards           | 要渲染的卡片数据数组                   | array                     | yes      | iOS/Android | yes               |
+| renderCard      | 基于数据渲染卡片的函数                | func(cardData, cardIndex) | yes      | iOS/Android | yes               |
+| keyExtractor    | 获取卡片react key的函数                         | func(cardData)            | no       | iOS/Android | yes               |
+| cardIndex       | 起始卡片索引                                      | number                    | no       | iOS/Android | yes               |
+| infinite        | 无限滑动                                    | bool                      | no       | iOS/Android | yes               |
+| horizontalSwipe | 启用/禁用水平滑动                            | bool                      | no       | iOS/Android | yes               |
+| verticalSwipe   | 启用/禁用垂直滑动                              | bool                      | no       | iOS/Android | yes               |
+| showSecondCard  | 滑动时启用/禁用显示第二张卡片                     | bool                      | no       | iOS/Android | yes               |
+| stackSize       | 要显示的底层卡片数量（必须启用showSecondCard） | number                    | no       | iOS/Android | yes               |
 
 ### Swipe animation props
 
 | Name                   | Description                     | Type   | Required | Platform    | HarmonyOS Support |
 | ---------------------- | ------------------------------- | ------ | -------- | ----------- | ----------------- |
-| verticalThreshold      | vertical swipe threshold        | number | no       | iOS/Android | yes               |
-| horizontalThreshold    | horizontal swipe threshold      | number | no       | iOS/Android | yes               |
-| swipeAnimationDuration | duration of the swipe animation | number | no       | iOS/Android | yes               |
-| disableBottomSwipe     | disable bottom swipe            | bool   | no       | iOS/Android | yes               |
-| disableLeftSwipe       | disable left swipe              | bool   | no       | iOS/Android | yes               |
-| disableRightSwipe      | disable right swipe             | bool   | no       | iOS/Android | yes               |
-| disableTopSwipe        | disable top swipe               | bool   | no       | iOS/Android | yes               |
+| verticalThreshold      | 垂直滑动阈值        | number | no       | iOS/Android | yes               |
+| horizontalThreshold    | 水平滑动阈值      | number | no       | iOS/Android | yes               |
+| swipeAnimationDuration | 滑动动画持续时间 | number | no       | iOS/Android | yes               |
+| disableBottomSwipe     | 禁用向下滑动            | bool   | no       | iOS/Android | yes               |
+| disableLeftSwipe       | 禁用向左滑动              | bool   | no       | iOS/Android | yes               |
+| disableRightSwipe      | 禁用向右滑动             | bool   | no       | iOS/Android | yes               |
+| disableTopSwipe        | 禁用向上滑动               | bool   | no       | iOS/Android | yes               |
 
 ### Stack props
 
 | Name                   | Description                                            | Type   | Required | Platform    | HarmonyOS Support |
 | ---------------------- | ------------------------------------------------------ | ------ | -------- | ----------- | ----------------- |
-| stackSeparation        | vertical separation between underlaying cards          | number | no       | iOS/Android | yes               |
-| stackScale             | percentage to reduce the size of each underlaying card | number | no       | iOS/Android | yes               |
-| stackAnimationFriction | spring animation friction (bounciness)                 | number | no       | iOS/Android | yes               |
-| stackAnimationTension  | spring animation tension (speed)                       | number | no       | iOS/Android | yes               |
+| stackSeparation        | 底层卡片之间的垂直间距          | number | no       | iOS/Android | yes               |
+| stackScale             | 每个底层卡片尺寸缩小的百分比 | number | no       | iOS/Android | yes               |
+| stackAnimationFriction | 弹簧动画摩擦系数（弹性）                 | number | no       | iOS/Android | yes               |
+| stackAnimationTension  | 弹簧动画张力（速度）                       | number | no       | iOS/Android | yes               |
 
 ### Rotation animation props
 
 | Name                | Description                                            | Type  | Required | Platform    | HarmonyOS Support |
 | ------------------- | ------------------------------------------------------ | ----- | -------- | ----------- | ----------------- |
-| inputRotationRange  | x values range for the rotation output                 | array | no       | iOS/Android | yes               |
-| outputRotationRange | rotation values for the x values in inputRotationRange | array | no       | iOS/Android | yes               |
+| inputRotationRange  | 旋转输出对应的x值范围                 | array | no       | iOS/Android | yes               |
+| outputRotationRange | inputRotationRange中x值对应的旋转值 | array | no       | iOS/Android | yes               |
 
 ### Opacity animation props
 
 | Name                              | Description                                                  | Type   | Required | Platform    | HarmonyOS Support |
 | --------------------------------- | ------------------------------------------------------------ | ------ | -------- | ----------- | ----------------- |
-| animateCardOpacity                | animate card opacity                                         | bool   | no       | iOS/Android | yes               |
-| inputCardOpacityRangeX            | pan x card opacity input range                               | array  | no       | iOS/Android | yes               |
-| outputCardOpacityRangeX           | opacity values for the values in inputCardOpacityRangeX      | array  | no       | iOS/Android | yes               |
-| inputCardOpacityRangeY            | pan y card opacity input range                               | array  | no       | iOS/Android | yes               |
-| outputCardOpacityRangeY           | opacity values for the values in inputCardOpacityRangeY      | array  | no       | iOS/Android | yes               |
-| animateOverlayLabelsOpacity       | animate card overlay labels opacity                          | bool   | no       | iOS/Android | yes               |
-| inputOverlayLabelsOpacityRangeX   | pan x overlay labels opacity input range                     | array  | no       | iOS/Android | yes               |
-| outputOverlayLabelsOpacityRangeX  | opacity values for the values in inputOverlayLabelsOpacityRangeX | array  | no       | iOS/Android | yes               |
-| inputOverlayLabelsOpacityRangeY   | pan x overlay labels opacity input range                     | array  | no       | iOS/Android | yes               |
-| outputOverlayLabelsOpacityRangeY  | opacity values for the values in inputOverlayLabelsOpacityRangeY | array  | no       | iOS/Android | yes               |
-| overlayOpacityVerticalThreshold   | vertical threshold for overlay label                         | number | no       | iOS/Android | yes               |
-| overlayOpacityHorizontalThreshold | horizontal threshold for overlay label                       | number | no       | iOS/Android | yes               |
+| animateCardOpacity                | 启用卡片透明度动画                                         | bool   | no       | iOS/Android | yes               |
+| inputCardOpacityRangeX            | 平移X轴卡片透明度输入范围                               | array  | no       | iOS/Android | yes               |
+| outputCardOpacityRangeX           | inputCardOpacityRangeX值对应的透明度      | array  | no       | iOS/Android | yes               |
+| inputCardOpacityRangeY            | 平移Y轴卡片透明度输入范围                               | array  | no       | iOS/Android | yes               |
+| outputCardOpacityRangeY           | inputCardOpacityRangeY值对应的透明度      | array  | no       | iOS/Android | yes               |
+| animateOverlayLabelsOpacity       | 启用卡片覆盖标签透明度动画                          | bool   | no       | iOS/Android | yes               |
+| inputOverlayLabelsOpacityRangeX   | 平移X轴覆盖标签透明度输入范围                     | array  | no       | iOS/Android | yes               |
+| outputOverlayLabelsOpacityRangeX  | inputOverlayLabelsOpacityRangeX值对应的透明度 | array  | no       | iOS/Android | yes               |
+| inputOverlayLabelsOpacityRangeY   | 平移X轴覆盖标签透明度输入范围                     | array  | no       | iOS/Android | yes               |
+| outputOverlayLabelsOpacityRangeY  | inputOverlayLabelsOpacityRangeY值对应的透明度 | array  | no       | iOS/Android | yes               |
+| overlayOpacityVerticalThreshold   | 覆盖标签的垂直阈值                         | number | no       | iOS/Android | yes               |
+| overlayOpacityHorizontalThreshold | 覆盖标签的水平阈值                       | number | no       | iOS/Android | yes               |
 
 ### Swipe overlay labels
 
 | Name                     | Description                  | Type   | Required | Platform    | HarmonyOS Support |
 | ------------------------ | ---------------------------- | ------ | -------- | ----------- | ----------------- |
-| overlayLabels            | swipe labels title and style | object | no       | iOS/Android | yes               |
-| overlayLabelStyle        | swipe labels style           | object | no       | iOS/Android | yes               |
-| overlayLabelWrapperStyle | overlay label wrapper style  | object | no       | iOS/Android | yes               |
+| overlayLabels            | 滑动标签的标题和样式 | object | no       | iOS/Android | yes               |
+| overlayLabelStyle        | 滑动标签样式           | object | no       | iOS/Android | yes               |
+| overlayLabelWrapperStyle | 覆盖标签包装器样式  | object | no       | iOS/Android | yes               |
 
 ### Swipe back to previous card props
 
 | Name                              | Description                               | Type | Required | Platform    | HarmonyOS Support |
 | --------------------------------- | ----------------------------------------- | ---- | -------- | ----------- | ----------------- |
-| goBackToPreviousCardOnSwipeLeft   | previous card is rendered on left swipe   | bool | no       | iOS/Android | yes               |
-| goBackToPreviousCardOnSwipeRight  | previous card is rendered on right swipe  | bool | no       | iOS/Android | yes               |
-| goBackToPreviousCardOnSwipeTop    | previous card is rendered on top swipe    | bool | no       | iOS/Android | yes               |
-| goBackToPreviousCardOnSwipeBottom | previous card is rendered on bottom swipe | bool | no       | iOS/Android | yes               |
+| goBackToPreviousCardOnSwipeLeft   | 向左滑动时渲染上一张卡片   | bool | no       | iOS/Android | yes               |
+| goBackToPreviousCardOnSwipeRight  | 向右滑动时渲染上一张卡片  | bool | no       | iOS/Android | yes               |
+| goBackToPreviousCardOnSwipeTop    | 向上滑动时渲染上一张卡片    | bool | no       | iOS/Android | yes               |
+| goBackToPreviousCardOnSwipeBottom | 向下滑动时渲染上一张卡片 | bool | no       | iOS/Android | yes               |
 
 ### Style props
 
 | Name                 | Description                                               | Type   | Required | Platform    | HarmonyOS Support |
 | -------------------- | --------------------------------------------------------- | ------ | -------- | ----------- | ----------------- |
-| backgroundColor      | background color for the view containing the cards        | string | no       | iOS/Android | yes               |
-| marginTop            | marginTop for the swiper container                        | number | no       | iOS/Android | yes               |
-| marginBottom         | marginBottom for the swiper container                     | number | no       | iOS/Android | yes               |
-| cardVerticalMargin   | card vertical margin                                      | number | no       | iOS/Android | yes               |
-| cardHorizontalMargin | card horizontal margin                                    | number | no       | iOS/Android | yes               |
-| childrenOnTop        | render children on top or not                             | bool   | no       | iOS/Android | yes               |
-| cardStyle            | override swipable card style                              | node   | no       | iOS/Android | yes               |
-| containerStyle       | overrides for the containing style                        | node   | no       | iOS/Android | yes               |
-| pointerEvents        | pointerEvents prop for the containing                     | string | no       | iOS/Android | yes               |
-| useViewOverflow      | use ViewOverflow instead of View for the Swiper component | bool   | no       | iOS/Android | yes               |
+| backgroundColor      | 包含卡片的视图的背景颜色        | string | no       | iOS/Android | yes               |
+| marginTop            | 滑动容器上边距                        | number | no       | iOS/Android | yes               |
+| marginBottom         | 滑动容器下边距                     | number | no       | iOS/Android | yes               |
+| cardVerticalMargin   | 卡片垂直边距                                      | number | no       | iOS/Android | yes               |
+| cardHorizontalMargin | 卡片水平边距                                    | number | no       | iOS/Android | yes               |
+| childrenOnTop        | 是否在顶部渲染子组件                             | bool   | no       | iOS/Android | yes               |
+| cardStyle            | 重写可滑动卡片样式                              | node   | no       | iOS/Android | yes               |
+| containerStyle       | 容器样式覆盖                        | node   | no       | iOS/Android | yes               |
+| pointerEvents        | 容器的pointerEvents属性                     | string | no       | iOS/Android | yes               |
+| useViewOverflow      | 对Swiper组件使用ViewOverflow而不是View | bool   | no       | iOS/Android | yes               |
 
 ### Swipe back Props
 
 | Name                         | Description                                                 | Type   | Required | Platform    | HarmonyOS Support |
 | ---------------------------- | ----------------------------------------------------------- | ------ | -------- | ----------- | ----------------- |
-| previousCardDefaultPositionX | Animation start position oX when card swipes back into deck | number | no       | iOS/Android | yes               |
-| previousCardDefaultPositionY | Animation start position oY when card swipes back into deck | number | no       | iOS/Android | yes               |
-| stackAnimationFriction       | spring animation friction (bounciness)                      | number | no       | iOS/Android | yes               |
-| stackAnimationTension        | spring animation tension (speed)                            | number | no       | iOS/Android | yes               |
-| swipeBackCard                | renders swipe back card, in order to animate it             | bool   | no       | iOS/Android | yes               |
+| previousCardDefaultPositionX | 卡片滑回牌堆时的动画起始位置X | number | no       | iOS/Android | yes               |
+| previousCardDefaultPositionY | 卡片滑回牌堆时的动画起始位置Y | number | no       | iOS/Android | yes               |
+| stackAnimationFriction       | 弹簧动画摩擦系数（弹性）                      | number | no       | iOS/Android | yes               |
+| stackAnimationTension        | 弹簧动画张力（速度）                            | number | no       | iOS/Android | yes               |
+| swipeBackCard                | 渲染滑动返回卡片，以便进行动画处理             | bool   | no       | iOS/Android | yes               |
 
 ## 事件回调
 
@@ -440,18 +445,18 @@ export default App;
 
 | Name              | Description                                                  | Type | Required | Platform    | HarmonyOS Support |
 | ----------------- | ------------------------------------------------------------ | ---- | -------- | ----------- | ----------------- |
-| onSwipedAll       | function to be called when all cards have been swiped        | func | no       | iOS/Android | yes               |
-| onSwiped          | function to be called when a card is swiped. it receives the swiped card index | func | no       | iOS/Android | yes               |
-| onSwipedAborted   | function to be called when a card is released before reaching the threshold | func | no       | iOS/Android | yes               |
-| onSwipedLeft      | function to be called when a card is swiped left. it receives the swiped card index | func | no       | iOS/Android | yes               |
-| onSwipedRight     | function to be called when a card is swiped right. it receives the swiped card index | func | no       | iOS/Android | yes               |
-| onSwipedTop       | function to be called when a card is swiped top. it receives the swiped card index | func | no       | iOS/Android | yes               |
-| onSwipedBottom    | function to be called when a card is swiped bottom. it receives the swiped card index | func | no       | iOS/Android | yes               |
-| onSwiping         | function to be called when a card is being moved. it receives X and Y positions | func | no       | iOS/Android | yes               |
-| dragStart         | function to be called when drag start                        | func | no       | iOS/Android | yes               |
-| dragEnd           | function to be called when drag end                          | func | no       | iOS/Android | yes               |
-| onTapCard         | function to be called when tapping a card. it receives the tapped card index | func | no       | iOS/Android | yes               |
-| onTapCardDeadZone | maximum amount of movement before a tap is no longer recognized as a tap | func | no       | iOS/Android | yes               |
+| onSwipedAll       | 所有卡片都被滑动后调用的函数        | func | no       | iOS/Android | yes               |
+| onSwiped          | 卡片被滑动时调用的函数。接收被滑动卡片的索引 | func | no       | iOS/Android | yes               |
+| onSwipedAborted   | 卡片在达到阈值前被释放时调用的函数 | func | no       | iOS/Android | yes               |
+| onSwipedLeft      | 卡片向左滑动时调用的函数。接收被滑动卡片的索引 | func | no       | iOS/Android | yes               |
+| onSwipedRight     | 卡片向右滑动时调用的函数。接收被滑动卡片的索引 | func | no       | iOS/Android | yes               |
+| onSwipedTop       | 卡片向上滑动时调用的函数。接收被滑动卡片的索引 | func | no       | iOS/Android | yes               |
+| onSwipedBottom    | 卡片向下滑动时调用的函数。接收被滑动卡片的索引 | func | no       | iOS/Android | yes               |
+| onSwiping         | 卡片被移动时调用的函数。接收X和Y位置 | func | no       | iOS/Android | yes               |
+| dragStart         | 拖动开始时调用的函数                        | func | no       | iOS/Android | yes               |
+| dragEnd           | 拖动结束时调用的函数                          | func | no       | iOS/Android | yes               |
+| onTapCard         | 点击卡片时调用的函数。接收被点击卡片的索引 | func | no       | iOS/Android | yes               |
+| onTapCardDeadZone | 点击不再被识别为点击前的最大移动量 | func | no       | iOS/Android | yes               |
 
 ## 静态方法
 
@@ -461,12 +466,12 @@ export default App;
 
 | Name            | Description                           | Type     | Required | Platform    | HarmonyOS Support |
 | --------------- | ------------------------------------- | -------- | -------- | ----------- | ----------------- |
-| swipeBack       | swipe back into deck last swiped card | callback | no       | iOS/Android | yes               |
-| swipeLeft       | swipe left to the next card           | callback | no       | iOS/Android | yes               |
-| swipeRight      | swipe right to the next card          | callback | no       | iOS/Android | yes               |
-| swipeTop        | swipe top to the next card            | callback | no       | iOS/Android | yes               |
-| swipeBottom     | swipe bottom to the next card         | callback | no       | iOS/Android | yes               |
-| jumpToCardIndex | set the current card index            | callback | no       | iOS/Android | yes               |
+| swipeBack       | 将最后滑出的卡片滑回牌堆 | callback | no       | iOS/Android | yes               |
+| swipeLeft       | 向左滑动到下一张卡片           | callback | no       | iOS/Android | yes               |
+| swipeRight      | 向右滑动到下一张卡片          | callback | no       | iOS/Android | yes               |
+| swipeTop        | 向上滑动到下一张卡片            | callback | no       | iOS/Android | yes               |
+| swipeBottom     | 向下滑动到下一张卡片         | callback | no       | iOS/Android | yes               |
+| jumpToCardIndex | 设置当前卡片索引            | callback | no       | iOS/Android | yes               |
 
 ## 遗留问题
 

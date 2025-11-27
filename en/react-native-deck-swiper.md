@@ -16,6 +16,10 @@
 
 ## Installation and Usage
 
+| 三方库版本  | 支持RN版本 |
+| ---------- | ---------- |
+| 2.0.17     | 0.72/0.77  |
+
 <!-- tabs:start -->
 
 #### **npm**
@@ -298,6 +302,7 @@ This document is verified based on the following versions:
 
 1. RNOH：0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.25; IDE: DevEco Studio 5.0.3.400SP7; ROM: 3.0.0.25;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## Properties
 

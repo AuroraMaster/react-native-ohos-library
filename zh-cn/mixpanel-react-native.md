@@ -31,10 +31,10 @@
 #### **npm**
 
 ```bash
-# V3.0.5
+# 0.72
 npm install @react-native-oh-tpl/mixpanel-react-native
 
-# V3.1.3
+# 0.77
 npm install @react-native-ohos/mixpanel-react-native
 ```
 
@@ -42,10 +42,10 @@ npm install @react-native-ohos/mixpanel-react-native
 #### **yarn**
 
 ```bash
-# V3.0.5
+# 0.72
 yarn add @react-native-oh-tpl/mixpanel-react-native
 
-# V3.1.3
+# 0.77
 yarn add @react-native-ohos/mixpanel-react-native
 ```
 
@@ -114,7 +114,7 @@ export default function MixpanelDemo() {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-+ V3.0.5
++ 0.72
 ```json
 "dependencies": {
 "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -122,7 +122,7 @@ export default function MixpanelDemo() {
 }
 ```
 
-+ V3.1.3
++ 0.77
 ```json
 "dependencies": {
 "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -196,10 +196,10 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-// V3.0.5
+// 0.72
 + import { MixpanelPackage } from '@react-native-oh-tpl/mixpanel-react-native/ts';
 
-// V3.1.3
+// 0.77
 + import { MixpanelPackage } from '@react-native-ohos/mixpanel-react-native/ts';
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -226,13 +226,10 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 3.0.5     | [@react-native-oh-tpl/mixpanel-react-native Releases](https://github.com/react-native-oh-library/mixpanel-react-native/releases) | 0.72       |
-| 3.1.3      | [@react-native-ohos/mixpanel-react-native Releases]()     | 0.77       |
+1. RNOH：0.72.33; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## API
 
