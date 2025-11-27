@@ -17,10 +17,16 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-spinkit)
 
+The repository for this third-party library has been migrated to Gitcode, and it now supports direct download from npm. The new package name is: `@react-native-ohos/react-native-spinkit`. The specific version relationships are as follows:
+
+| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
+| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
+| 1.5.1  | @react-native-oh-tpl/react-native-spinkit | [Github](https://github.com/react-native-oh-library/react-native-spinkit) | [Github Releases](https://github.com/react-native-oh-library/react-native-spinkit/releases) | 0.72 |
+| 1.6.0 | @react-native-ohos/react-native-spinkit   | [Github](https://github.com/react-native-oh-library/react-native-spinkit) | [Github Releases](https://github.com/react-native-oh-library/react-native-spinkit/releases) | 0.77 |
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library：[@react-native-oh-tpl/react-native-spinkit Releases](https://github.com/react-native-oh-library/react-native-spinkit/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -30,13 +36,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# 1.5.1
 npm install @react-native-oh-tpl/react-native-spinkit
+
+# 1.6.0
+npm install @react-native-ohos/react-native-spinkit
 ```
 
 #### **yarn**
 
 ```bash
+# 1.5.1
 yarn add @react-native-oh-tpl/react-native-spinkit
+
+# 1.6.0
+yarn add @react-native-ohos/react-native-spinkit
 ```
 
 <!-- tabs:end -->
@@ -55,8 +69,8 @@ const SpinKitDemo: React.FC = (): JSX.Element => {
         	type='9CubeGrid' 
         	color='#e74032' 
         	size={60} 
-			style={{ backgroundColor: '#fcc424' }} 
-            isVisible={true} 
+			    style={{ backgroundColor: '#fcc424' }} 
+          isVisible={true} 
 		/>
     )
 };
@@ -97,10 +111,18 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
+- 1.5.1
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-spinkit": "file:../../node_modules/@react-native-oh-tpl/react-native-spinkit/harmony/spinKit.har"
+  }
+```
+- 1.6.0
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-spinkit": "file:../../node_modules/@react-native-ohos/react-native-spinkit/harmony/spinKit.har"
   }
 ```
 
@@ -124,7 +146,11 @@ Find `function buildCustomRNComponent()`, which is usually located in `entry/src
 
 ```diff
   ...
+  // 1.5.1
 + import { SpinKitView } from "@react-native-oh-tpl/react-native-spinkit"
+
+  // 1.6.0
++ import { SpinKitView } from "@react-native-ohos/react-native-spinkit"
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -157,7 +183,11 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
+  // 1.5.1
 + import { RNSpinKitPackage } from '@react-native-oh-tpl/react-native-spinkit/ts';
+
+  // 1.6.0
++ import { RNSpinKitPackage } from '@react-native-ohos/react-native-spinkit/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -185,8 +215,9 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-spinkit Releases](https://github.com/react-native-oh-library/react-native-spinkit/releases)
+This document is verified based on the following versions:
+1. RNOH:0.72.96; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
+2. RNOH:0.77.18; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
 
 ## Properties
 
@@ -194,7 +225,7 @@ Check the release version information in the release address of the third-party 
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-**SpinKit**：Loading Animation Rendering Component, Accepts All Parameters [View](https://reactnative.dev/docs/view#props) 的props。
+**SpinKit**:Loading Animation Rendering Component, Accepts All Parameters [View](https://reactnative.dev/docs/view#props) props�?
 
 | props  | Description | Type | Required | Platform | HarmonyOS Support  |
 | ----  | ----------- | ---- | -------- | ---- | ------------ |
@@ -205,7 +236,7 @@ Check the release version information in the release address of the third-party 
 | type: Wave | Five-bar group loading animation | string | No | All | Yes |
 | type: WanderingCubes | Two squares skip loading animation | string | No | All | Yes |
 | type: Pulse | A circular diffusion loading animation | string | No | All | Yes |
-| type: ChansingDots | Two Circles Bounce Loading Animation | string | No | All | Yes |
+| type: ChasingDots | Two Circles Bounce Loading Animation | string | No | All | Yes |
 | type: ThreeBounce | Three circles display the loading animation in sequence. | string | No | All | Yes |
 | type: Circle | Multiple circular circular motion loading animation | string | No | All | Yes |
 | type: 9CubeGrid | The nine squares display the loading animation in sequence | string | No | All | Yes |

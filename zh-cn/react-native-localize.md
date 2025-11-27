@@ -14,16 +14,16 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-localize)
 
-该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-localize`，具体版本所属关系如下：
 
-| Version                        | Package Name                                  | Repository                                                   | Release                                                      |
-| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <= 3.1.0-0.0.1@deprecated | @react-native-oh-tpl/react-native-localize | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-localize) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-localize/releases) |
-| > 3.1.0                        | @react-native-ohos/react-native-localize       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-localize) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localize/releases) |
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------- |
+| <= 3.1.0-0.0.1@deprecated | @react-native-oh-tpl/react-native-localize | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-localize) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-localize/releases) | 0.72 |
+| 3.1.0 | @react-native-ohos/react-native-localize | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-localize) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localize/releases) | 0.72 |
+| 3.4.2                        | @react-native-ohos/react-native-localize       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-localize) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localize/releases) | 0.77 |
 
 ## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-ohos/react-native-localize Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localize/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -120,14 +120,15 @@ export default LocalizeDemo;
 ```
 
 ## 使用 Codegen
-
 Version > @react-native-ohos/react-native-localize@3.1.0，已适配codegen-lib生成桥接代码。
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
+**注意：** 0.77 不需要执行 Codegen。
+
 ## Link
 
-Version > @react-native-ohos/react-native-localize@3.1.0，已支持 Autolink，无需手动配置，目前只支持72框架。
+Version > @react-native-ohos/react-native-localize@3.1.0，已支持 Autolink，无需手动配置。
 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 Version <= @react-native-oh-tpl/react-native-localize@3.1.0-0.0.1@deprecated 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
@@ -158,6 +159,17 @@ Version <= @react-native-oh-tpl/react-native-localize@3.1.0-0.0.1@deprecated 暂
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- 0.72
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-oh-tpl/react-native-localize": "file:../../node_modules/@react-native-oh-tpl/react-native-localize/harmony/rn_localize.har"
+  }
+```
+
+- 0.77
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -178,13 +190,61 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 3.在 ArkTs 侧引入 RNLocalizePackage
+### 3. 配置 CMakeLists 和引入 RNLocalizePackage（仅0.77 需要）
+
+```diff
+...
+
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_END: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-localize/src/main/cpp" ./rn_localize)
+# RNOH_END: manual_package_linking_1
+
+add_library(rnoh_app SHARED
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_localize)
+# RNOH_BEGIN: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
++ #include "RNLocalizePackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
++        std::make_shared<RNLocalizePackage>(ctx)
+}
+```
+
+### 4.在 ArkTs 侧引入 RNLocalizePackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
   ...
-  
+// 0.72
++ import { RNLocalizePackage } from '@react-native-oh-tpl/react-native-localize/ts';
+
+// 0.77
 + import { RNLocalizePackage } from '@react-native-ohos/react-native-localize/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -195,7 +255,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.运行
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -212,31 +272,32 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+在以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/react-native-localize Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localize/releases)
+1. RNOH:0.72.28; SDK:HarmonyOS NEXT DB2; IDE:DevEco Studio 5.0.3.500; ROM:3.0.0.28;
+2. RNOH: 0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
 
-## API
+## 属性
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
 
-| Name                      | Description                                    | Required | Platform | HarmonyOS Support |
-|---------------------------| ---------------------------------------------- | -------- |----------|-------------------|
-| getLocales()              | Returns the user preferred locales, in order.             | No       | All      | yes               |
-| getNumberFormatSettings() | Returns number formatting settings. | No       | All      | yes               |
-| getCurrencies()           | Returns the user preferred currency codes, in order. | No       | All      | yes               |
-| getCountry()              | Returns the user current country code (based on its device locale, not on its position).                                  | No       | All      | yes               |
-| getCalendar()             | Returns the user preferred calendar format. | No       | All      | yes               |
-| getTemperatureUnit()      | Returns the user preferred temperature unit. | No       | All      | No                |
-| getTimeZone()             | Returns the user preferred timezone (based on its device settings, not on its position).             | No       | All      | yes               |
-| uses24HourClock()         | Returns true if the user prefers 24h clock format, false if they prefer 12h clock format. | No       | All      | yes               |
-| usesMetricSystem()        | Returns true if the user prefers metric measure system, false if they prefer imperial. | No       | All      | No                |
-| usesAutoDateAndTime()     | Tells if the automatic date & time setting is enabled on the phone. Android only                                 | No       | Android  | No                |
-| usesAutoTimeZone()        | Tells if the automatic time zone setting is enabled on the phone. Android only | No       | Android  | No                |
-| findBestLanguageTag()     | Returns the best language tag possible and its reading direction | No       | All      | yes               |
+| Name                                     | Description                                                  | Required | Platform | HarmonyOS Support |
+| ---------------------------------------- | ------------------------------------------------------------ | -------- | -------- | ----------------- |
+| getLocales()                             | 返回用户首选的语言环境，按顺序排列。                | No       | All      | yes               |
+| getNumberFormatSettings()                | 返回数字格式设置。                          | No       | All      | yes               |
+| getCurrencies()                          | 返回用户首选的货币代码，按顺序排列。         | No       | All      | yes               |
+| getCountry()                             | 返回用户当前的国家代码（基于设备语言环境，而不是位置）。 | No       | All      | yes               |
+| getCalendar()                            | 返回用户首选的日历格式。                  | No       | All      | yes               |
+| getTemperatureUnit()                     | 返回用户首选的温度单位。                 | No       | All      | No                |
+| getTimeZone()                            | 返回用户首选的时区（基于设备设置，而不是位置）。 | No       | All      | yes               |
+| uses24HourClock()                        | 如果用户喜欢24小时制则返回true，否则返回false。 | No       | All      | yes               |
+| usesMetricSystem()                       | 如果用户喜欢公制单位则返回true，否则返回false。 | No       | All      | No                |
+| usesAutoDateAndTime()                    | 告诉手机是否启用了自动日期和时间设置。仅限Android | No       | Android  | No                |
+| usesAutoTimeZone()                       | 告诉手机是否启用了自动时区设置。仅限Android | No       | Android  | No                |
+| findBestLanguageTag()                    | 返回最佳的语言标签及其阅读方向 | No       | All      | yes               |
 
 ## 遗留问题
 - [ ]  HarmonyOS 侧无法获取温度及长度单位[issue#2](https://github.com/react-native-oh-library/react-native-localize/issues/2)

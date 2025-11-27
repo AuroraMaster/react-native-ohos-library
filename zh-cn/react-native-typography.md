@@ -14,14 +14,16 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-typography)
 
-## 安装与使用
-
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
 | 1.4.1      | [react-native-oh-tpl/react-native-typography Releases](https://github.com/react-native-oh-library/react-native-typography/releases) | 0.72       |
-| 1.4.2      | [@react-native-ohos/react-native-typography Releases]()      | 0.77       |
+| 1.5.0      | [@react-native-ohos/react-native-typography Releases]()      | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -30,18 +32,18 @@
 #### **npm**
 
 ```bash
-#v1.4.1
+# 0.72
 npm install @react-native-oh-tpl/react-native-typography
-#v1.4.2
+# 0.77
 npm install @react-native-ohos/react-native-typography
 ```
 
 #### **yarn**
 
 ```bash
-#v1.4.1
+# 0.72
 yarn add @react-native-oh-tpl/react-native-typography
-#v1.4.2
+# 0.77
 yarn add @react-native-ohos/react-native-typography
 ```
 
@@ -71,14 +73,10 @@ export function TypographyExample1() {
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 1.4.1      | [react-native-oh-tpl/react-native-typography Releases](https://github.com/react-native-oh-library/react-native-typography/releases) | 0.72       |
-| 1.4.2      | [@react-native-ohos/react-native-typography Releases]()      | 0.77       |
+1. RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.200; ROM: 3.0.0.18;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -88,23 +86,23 @@ export function TypographyExample1() {
 
 | Name                | Description                                                                                                                                                                                                                                                                                                                                                                  | Type   | Required | Platform | HarmonyOS Support |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | -------- | -------- | ----------------- |
-| material            | Includes all the styles defined in the [Material Design Guidelines](https://material.io/guidelines/style/typography.html#typography-styles).Defines size, weight and color.                                                                                                                                                                                                  | object | no       | All      | yes               |
-| materialDense       | material`s Dense scripts                                                                                                                                                                                                                                                                                                                                                     | object | no       | All      | yes               |
-| materialTall        | material`s Tall scripts                                                                                                                                                                                                                                                                                                                                                      | object | no       | All      | yes               |
-| human               | Defined in the [Human Interface Guidelines](https://developer.apple.com/ios/human-interface-guidelines/visual-design/typography/).Defines size, weight and color.                                                                                                                                                                                                            | object | no       | All      | yes               |
-| humanDense          | human`s Dense scripts                                                                                                                                                                                                                                                                                                                                                        | object | no       | All      | yes               |
-| humanTall           | human`s Tall scripts                                                                                                                                                                                                                                                                                                                                                         | object | no       | All      | yes               |
-| iOSUIKit            | Extracted from [the official Apple sketch file](https://developer.apple.com/design/resources/) These are the text styles that fall under the category of iOS UIKit, and are used to build the UI components of iOS Apps. They build on top of the Human Interface styles, customizing some properties such as weight or letter spacing.                                      | object | no       | iOS      | yes               |
-| iOSUIKitDense       | iOSUIKit`s Dense scripts                                                                                                                                                                                                                                                                                                                                                     | object | no       | iOS      | yes               |
-| iOSUIKitTall        | iOSUIKit`s Tall scripts                                                                                                                                                                                                                                                                                                                                                      | object | no       | iOS      | yes               |
-| systemWeights       | A font weight in React Native is sometimes formed by a pair of a fontFamily and a fontWeight, but not always! It depends on the typeface, sometimes it's just. defined by the fontFamily. With these helpers, you don't have to worry about those inconsistencies. To combine them with a collection style (or your own styles) just spread them, as they are plain objects. | object | no       | All      | yes               |
-| systemDenseWeights  | systemWeights`s Dense scripts                                                                                                                                                                                                                                                                                                                                                | object | no       | All      | yes               |
-| systemTallWeights   | systemWeights`s Tall scripts                                                                                                                                                                                                                                                                                                                                                 | object | no       | All      | yes               |
-| sanFranciscoWeights | San Francisco typeface                                                                                                                                                                                                                                                                                                                                                       | object | no       | iOS      | yes               |
-| robotoWeights       | These weights are **only intended for Android**, as they directly reference the native Roboto typeface.                                                                                                                                                                                                                                                                      | object | no       | Android      | yes               |
-| webWeights          | These weights are **only intended for the web**, and render [react-native-web](https://github.com/necolas/react-native-web)'s system font stack.                                                                                                                                                                                                                             | object | no       | Web      | yes               |
-| iOSColors           | Colors iOS                                                                                                                                                                                                                                                                                                                                                                   | object | no       | iOS      | yes               |
-| materialColors      | Colors Material                                                                                                                                                                                                                                                                                                                                                              | object | no       | All      | yes               |
+| material            | 包含[Material Design 指南](https://material.io/guidelines/style/typography.html#typography-styles)中定义的所有样式。定义大小、粗细和颜色。                                                                                                                                                                                                  | object | no       | All      | yes               |
+| materialDense       | 	material 的 Dense 脚本                                                                                                                                                                                                                                                                                                                                                     | object | no       | All      | yes               |
+| materialTall        | material 的 Tall 脚本                                                                                                                                                                                                                                                                                                                                                      | object | no       | All      | yes               |
+| human               | 定义于[Human Interface Guidelines](https://developer.apple.com/ios/human-interface-guidelines/visual-design/typography/)。定义大小、粗细和颜色。                                                                                                                                                                                                            | object | no       | All      | yes               |
+| humanDense          | 	human 的 Dense 脚本                                                                                                                                                                                                                                                                                                                                                       | object | no       | All      | yes               |
+| humanTall           | human 的 Tall 脚本                                                                                                                                                                                                                                                                                                                                                         | object | no       | All      | yes               |
+| iOSUIKit            | 	提取自[官方 Apple Sketch 文件](https://developer.apple.com/design/resources/)这些是属于 iOS UIKit 类别的文本样式，用于构建 iOS 应用的 UI 组件。它们建立在 Human Interface 样式的基础上，自定义了一些属性，如粗细或字母间距。                                      | object | no       | iOS      | yes               |
+| iOSUIKitDense       | iOSUIKit 的 Dense 脚本                                                                                                                                                                                                                                                                                                                                                     | object | no       | iOS      | yes               |
+| iOSUIKitTall        | iOSUIKit 的 Tall 脚本 scripts                                                                                                                                                                                                                                                                                                                                                      | object | no       | iOS      | yes               |
+| systemWeights       | 在 React Native 中，字体粗细有时由 fontFamily 和 fontWeight 成对组成，但并非总是如此！这取决于字体类型，有时仅由 fontFamily 定义。使用这些辅助工具，您无需担心这些不一致性。要将它们与集合样式（或您自己的样式）结合使用，只需展开它们即可，因为它们是普通对象。 | object | no       | All      | yes               |
+| systemDenseWeights  | systemWeights 的 Dense 脚本                                                                                                                                                                                                                                                                                                                                                | object | no       | All      | yes               |
+| systemTallWeights   | systemWeights 的 Tall 脚本                                                                                                                                                                                                                                                                                                                                                | object | no       | All      | yes               |
+| sanFranciscoWeights | San Francisco 字体                                                                                                                                                                                                                                                                                                                                                       | object | no       | iOS      | yes               |
+| robotoWeights       | 这些字重**仅适用于 Android**，因为它们直接引用了原生 Roboto 字体。                                                                                                                                                                                                                                                                      | object | no       | Android      | yes               |
+| webWeights          | 这些字重**仅适用于网页**，并渲染[react-native-web](https://github.com/necolas/react-native-web)的系统字体堆栈。                                                                                                                                                                                                                             | object | no       | Web      | yes               |
+| iOSColors           | iOS颜色                                                                                                                                                                                                                                                                                                                                                                   | object | no       | iOS      | yes               |
+| materialColors      | 	Material 颜色                                                                                                                                                                                                                                                                                                                                                             | object | no       | All      | yes               |
 
 ## 遗留问题
 

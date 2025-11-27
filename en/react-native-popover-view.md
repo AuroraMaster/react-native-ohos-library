@@ -15,20 +15,18 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-popover-view)
 
+The repository for this third-party library has been migrated to Gitcode, and it now supports direct download from npm. The new package name is: `@react-native-ohos/react-native-popover-view`. The specific version relationships are as follows:
+
+| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
+| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
+| 5.1.7  | @react-native-oh-tpl/react-native-popover-view | [Github](https://github.com/react-native-oh-library/react-native-popover-view) | [Github Releases](https://github.com/react-native-oh-library/react-native-popover-view/releases) | 0.72 |
+| 6.1.1 | @react-native-ohos/react-native-popover-view   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-popover-view) | [GitCode Releases]() | 0.77 |
+
 ## Installation and Usage
-
-Find the matching version information in the release address of a third-party library: 
-
-| third-party version | publish info                                                     | RN version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 5.1.7      | [<@react-native-oh-tpl/react-native-popover-view> Releases](https://github.com/react-native-oh-library/react-native-popover-view/releases) | 0.72       |
-| 6.1.0      | [<@react-native-ohos/react-native-popover-view> Releases]()  | 0.77       |
 
 For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
-
-
 
 <!-- tabs:start -->
 
@@ -37,8 +35,9 @@ Go to the project directory and execute the following instruction:
 ```bash
 # V5.1.7
 npm install @react-native-oh-tpl/react-native-popover-view
-# V6.1.0
-yarn add @react-native-ohos/react-native-popover-view
+
+# V6.1.1
+npm install @react-native-ohos/react-native-popover-view
 ```
 
 #### yarn
@@ -46,7 +45,8 @@ yarn add @react-native-ohos/react-native-popover-view
 ```bash
 # V5.1.7
 yarn add @react-native-oh-tpl/react-native-popover-view
-# V6.1.0
+
+# V6.1.1
 yarn add @react-native-ohos/react-native-popover-view
 ```
 
@@ -153,13 +153,17 @@ export default PopoverDemo;
 
 ## Constraints
 
-#### Compatibility     
+### Compatibility     
+
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
 This document is verified based on the following versions:
 
-1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Preview2; IDE：DevEco Studio 5.0.3.200; ROM：205.0.0.18;
+1. RNOH:0.72.20; SDK:HarmonyOS NEXT Developer Preview2; IDE:DevEco Studio 5.0.3.200; ROM:205.0.0.18;
+1. RNOH:0.72.96; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
+2. RNOH:0.77.18; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
 
-## Properties
+### Properties & Methods
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
@@ -186,9 +190,9 @@ This document is verified based on the following versions:
 | animationConfig      | An object containing any configuration options that can be passed to Animated.timing (e.g. { duration: 600, easing: Easing.inOut(Easing.quad) }). The configuration options you pass will override the defaults for all animations.                                                                                                                                            | object                | no       | All      | yes               |
 | displayArea          | Area where the popover is allowed to be displayed. By default, this will be automatically calculated to be the size of the display, or the size of the parent component if mode is not 'rn-modal'.                                                                                                                                                                             | rect                  | no       | All      | yes               |
 | displayAreaInsets    | Insets to apply to the display area. The Popover will not be allowed to go beyond the display area minus the insets.                                                                                                                                                                                                                                                           | object                | no       | All      | yes               |
-| statusBarTranslucent | For 'rn-modal' mode on Android only. Determines whether the background should go under the status bar. Passed through to RN Modal component, see their docs as well.                                                                                                                                                                                                           | bool                  | no       | Android  | no                | Android only |
-| verticalOffset       | The amount to vertically shift the popover on the screen, for use in correcting an occasional issue on Android. In certain Android configurations, you may need to apply a verticalOffset of -StatusBar.currentHeight for the popover to originate from the correct place. For shifting the popover in other situations, the offset prop should be used.                       | number                | no       | Android  | no                | Android only |
-| debug                | Set this to true to turn on debug logging to the console. This is useful for figuring out why a Popover isn't showing.                                                                                                                                                                                                                                                         | bool                  | no       | All      | yes               |
+| statusBarTranslucent | For 'rn-modal' mode on Android only. Determines whether the background should go under the status bar. Passed through to RN Modal component, see their docs as well.                                                                                                                                                                                                           | bool                  | no       | Android  | no                | Android Only |
+| verticalOffset<sup>deprecated from 6.1.1</sup> | The amount to vertically shift the popover on the screen, for use in correcting an occasional issue on Android. In certain Android configurations, you may need to apply a verticalOffset of -StatusBar.currentHeight for the popover to originate from the correct place. For shifting the popover in other situations, the offset prop should be used.                       | number                | no       | Android  | no                | Android Only |
+| debug                | Set this to true to turn on debug logging to the console. This is useful for figuring out why a Popover isn't showing.                                                                                                                                                                                                                                                         | bool                  | no       | All      | yes               ||
 
 ## Known Issues
 

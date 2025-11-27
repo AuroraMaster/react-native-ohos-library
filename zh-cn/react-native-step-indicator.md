@@ -15,6 +15,12 @@
 
 > [!TIP] [Github 地址](https://github.com/24ark/react-native-step-indicator)
 
+| 三方库版本   | 支持RN版本 |
+| ----------- | ---------- |
+| 1.0.3       |  0.72/0.77 |
+	
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
 ## 安装与使用
 
 进入到工程目录并输入以下命令：
@@ -260,6 +266,7 @@ const styles = StyleSheet.create({
 
 1. RNOH: 0.72.27; OH SDK: HarmonyOS-NEXT-DB1 5.0.0.25; IDE: DevEco Studio: 5.0.3.400; ROM: 3.0.0.25;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -269,43 +276,43 @@ const styles = StyleSheet.create({
 
 | Name | Description | Type | Required | Default | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |------------ |
-| currentPosition  | Current position in steps         | number  |    no    | 0 |  iOS,Android  |         yes        |
-| stepCount  | Number of steps         | number  |    no    | 5 |  iOS,Android  |         yes        |
-| direction  | Orientation of the Steps         | 'horizontal' \| 'vertical'  |    no    | 'horizontal' |  iOS,Android  |         yes        |
-| customStyles  | Styles for the component         | object  |    no    | {} |  iOS,Android  |         yes        |
-| labels  | Labels for each step         | Array\<string\>  |    no    | null |  iOS,Android  |         yes        |
-| onPress  | Callback fired when tapping on a step         | Function (position: Number) => void |    no    | null |  iOS,Android  |         yes        |
-| renderStepIndicator  | Used to render custom content inside step at specified position         | Function (position: Number, stepStatus: String) => React.ReactNode |    no    | null |  iOS,Android  |         yes        |
-| renderLabel  | Use this to render custom label for each step         | Function (position: Number, stepStatus: String, label: String, currentPosition: Number) => React.ReactNode |    no    | null |  iOS,Android  |         yes        |
+| currentPosition  | 步骤中的当前位置         | number  |    no    | 0 |  iOS,Android  |         yes        |
+| stepCount  | 步骤数量         | number  |    no    | 5 |  iOS,Android  |         yes        |
+| direction  | 步骤的方向         | 'horizontal' \| 'vertical'  |    no    | 'horizontal' |  iOS,Android  |         yes        |
+| customStyles  | 组件的样式         | object  |    no    | {} |  iOS,Android  |         yes        |
+| labels  | 每个步骤的标签         | Array\<string\>  |    no    | null |  iOS,Android  |         yes        |
+| onPress  | 点击步骤时触发的回调         | Function (position: Number) => void |    no    | null |  iOS,Android  |         yes        |
+| renderStepIndicator  | 用于在指定位置的步骤内渲染自定义内容         | Function (position: Number, stepStatus: String) => React.ReactNode |    no    | null |  iOS,Android  |         yes        |
+| renderLabel  | 使用此属性为每个步骤渲染自定义标签         | Function (position: Number, stepStatus: String, label: String, currentPosition: Number) => React.ReactNode |    no    | null |  iOS,Android  |         yes        |
 
 ### Custom Styles
 | Name | Description | Type | Required | Default | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |------------ |
-| stepIndicatorSize  |    Size of step indicator circle    | number  |    no    | 30 |  iOS,Android  |         yes        |
-| currentStepIndicatorSize  |    Size of the current step indicator circle    | number  |    no    | 40 |  iOS,Android  |         yes        |
-| separatorStrokeWidth  |    Stroke thickness of the separator between steps    | number  |    no    | 2 |  iOS,Android  |         yes        |
-| separatorStrokeUnfinishedWidth  |    Stroke thickness of the separator between unifinished steps    | number  |    no    | 0 |  iOS,Android  |         yes        |
-| separatorStrokeFinishedWidth  |    Stroke thickness of the separator between finished steps    | number  |    no    | 0 |  iOS,Android  |         yes        |
-| stepStrokeWidth  |    Thickness of the stroke around each step    | number  |    no    | 3 |  iOS,Android  |         yes        |
-| currentStepStrokeWidth  |    Thickness of the stroke around the current step    | number  |    no    | 3 |  iOS,Android  |         yes        |
-| stepStrokeCurrentColor  |    Stroke color for the current step    | string  |    no    | '#fe7013' |  iOS,Android  |         yes        |
-| stepStrokeFinishedColor  |    Stroke color for finished steps    | string  |    no    | '#fe7013' |  iOS,Android  |         yes        |
-| stepStrokeUnFinishedColor  |    Stroke color for unfinished steps    | string  |    no    | '#aaaaaa' |  iOS,Android  |         yes        |
-| separatorFinishedColor  |    Color of separator for finished items    | string  |    no    | '#fe7013' |  iOS,Android  |         yes        |
-| separatorUnFinishedColor  |    Color of separator for unfinished items    | string  |    no    | '#aaaaaa' |  iOS,Android  |         yes        |
-| stepIndicatorFinishedColor  |    Color of the circle for finished steps    | string  |    no    | '#fe7013' |  iOS,Android  |         yes        |
-| stepIndicatorUnFinishedColor  |    Color of the circle for unfinished steps    | string  |    no    | '#ffffff' |  iOS,Android  |         yes        |
-| stepIndicatorCurrentColor  |    Color of the circle for the current step    | string  |    no    | '#ffffff' |  iOS,Android  |         yes        |
-| stepIndicatorLabelFontSize  |    Font size of the number inside the circle for each step    | number  |    no    | 15 |  iOS,Android  |         yes        |
-| currentStepIndicatorLabelFontSize  |    Font size of the number inside the circle for the current step    | number  |    no    | 15 |  iOS,Android  |         yes        |
-| stepIndicatorLabelCurrentColor  |    Color of label for the current step    | string  |    no    | '#ffffff' |  iOS,Android  |         yes        |
-| stepIndicatorLabelFinishedColor  |    Color of labels that their steps are finished    | string  |    no    | '#ffffff' |  iOS,Android  |         yes        |
-| stepIndicatorLabelUnFinishedColor  |    Color of labels that their steps are unfinished    | string  |    no    | 'rgba(255,255,255,0.5)' |  iOS,Android  |         yes        |
-| labelColor  |    Color of the label text    | string  |    no    | '#000000' |  iOS,Android  |         yes        |
-| currentStepLabelColor  |    Color of the current step label    | string  |    no    | '#4aae4f' |  iOS,Android  |         yes        |
-| labelSize  |    Font size for the labels    | number  |    no    | 13 |  iOS,Android  |         yes        |
-| labelAlign  |    Label alignment    | 'center' \| 'flex-start' \| 'flex-end' \| 'stretch' \| 'baseline' \| undefined  |    no    | 'center' |  iOS,Android  |         yes        |
-| labelFontFamily  |    Label fontFamily for custom fonts    | string  |    no    |   |  iOS,Android  |         yes        |
+| stepIndicatorSize  |    步骤指示器圆圈的大小    | number  |    no    | 30 |  iOS,Android  |         yes        |
+| currentStepIndicatorSize  |    	当前步骤指示器圆圈的大小    | number  |    no    | 40 |  iOS,Android  |         yes        |
+| separatorStrokeWidth  |    步骤间分隔线的描边粗细    | number  |    no    | 2 |  iOS,Android  |         yes        |
+| separatorStrokeUnfinishedWidth  |    未完成步骤间分隔线的描边粗细    | number  |    no    | 0 |  iOS,Android  |         yes        |
+| separatorStrokeFinishedWidth  |    已完成步骤间分隔线的描边粗细    | number  |    no    | 0 |  iOS,Android  |         yes        |
+| stepStrokeWidth  |    每个步骤周围描边的粗细    | number  |    no    | 3 |  iOS,Android  |         yes        |
+| currentStepStrokeWidth  |    当前步骤周围描边的粗细    | number  |    no    | 3 |  iOS,Android  |         yes        |
+| stepStrokeCurrentColor  |    当前步骤的描边颜色     | string  |    no    | '#fe7013' |  iOS,Android  |         yes        |
+| stepStrokeFinishedColor  |    已完成步骤的描边颜色    | string  |    no    | '#fe7013' |  iOS,Android  |         yes        |
+| stepStrokeUnFinishedColor  |    未完成步骤的描边颜色    | string  |    no    | '#aaaaaa' |  iOS,Android  |         yes        |
+| separatorFinishedColor  |    已完成项目的分隔线颜色    | string  |    no    | '#fe7013' |  iOS,Android  |         yes        |
+| separatorUnFinishedColor  |    未完成项目的分隔线颜色    | string  |    no    | '#aaaaaa' |  iOS,Android  |         yes        |
+| stepIndicatorFinishedColor  |    	已完成步骤圆圈的颜色    | string  |    no    | '#fe7013' |  iOS,Android  |         yes        |
+| stepIndicatorUnFinishedColor  |    	未完成步骤圆圈的颜色    | string  |    no    | '#ffffff' |  iOS,Android  |         yes        |
+| stepIndicatorCurrentColor  |    当前步骤圆圈的颜色    | string  |    no    | '#ffffff' |  iOS,Android  |         yes        |
+| stepIndicatorLabelFontSize  |    每个步骤圆圈内数字的字体大小    | number  |    no    | 15 |  iOS,Android  |         yes        |
+| currentStepIndicatorLabelFontSize  |    当前步骤圆圈内数字的字体大小    | number  |    no    | 15 |  iOS,Android  |         yes        |
+| stepIndicatorLabelCurrentColor  |    当前步骤标签的颜色   | string  |    no    | '#ffffff' |  iOS,Android  |         yes        |
+| stepIndicatorLabelFinishedColor  |    已完成步骤标签的颜色    | string  |    no    | '#ffffff' |  iOS,Android  |         yes        |
+| stepIndicatorLabelUnFinishedColor  |    未完成步骤标签的颜色    | string  |    no    | 'rgba(255,255,255,0.5)' |  iOS,Android  |         yes        |
+| labelColor  |    标签文本的颜色    | string  |    no    | '#000000' |  iOS,Android  |         yes        |
+| currentStepLabelColor  |    当前步骤标签的颜色    | string  |    no    | '#4aae4f' |  iOS,Android  |         yes        |
+| labelSize  |    标签的字体大小    | number  |    no    | 13 |  iOS,Android  |         yes        |
+| labelAlign  |    	标签对齐方式    | 'center' \| 'flex-start' \| 'flex-end' \| 'stretch' \| 'baseline' \| undefined  |    no    | 'center' |  iOS,Android  |         yes        |
+| labelFontFamily  |    自定义字体的标签字体族    | string  |    no    |   |  iOS,Android  |         yes        |
 
 
 ## 遗留问题

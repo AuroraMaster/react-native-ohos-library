@@ -15,6 +15,12 @@
 
 > [!TIP] [GitHub address](https://github.com/iconfont-cli/react-native-iconfont-cli)
 
+Check the release notes of the third-party library to pick the matching version:
+
+| Version | RN Version |
+| ---------- | ---------- |
+| 2.2.4      | 0.72/0.77 |
+
 ## Installation and Usage
 
 Go to the project directory and execute the following instruction:
@@ -193,6 +199,8 @@ If it is not included, follow the guide provided in [@react-native-oh-tpl/react-
 This document is verified based on the following versions:
 
 1. RNOH: 0.72.26; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.300; ROM: 3.0.0.22;
+2. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); DevEco Studio  6.0.0.868; ROM: 5.0.0.107;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 For details, see [react-native-iconfont-cli](https://github.com/iconfont-cli/react-native-iconfont-cli/blob/master/README.md)
 

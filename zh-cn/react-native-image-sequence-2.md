@@ -9,10 +9,11 @@
 
 该第三方库的仓库已迁移至 Gitee，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-image-sequence`，具体版本所属关系如下：
 
-| Version                        | Package Name                             | Repository                                                   | Release                                                      |
-| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <= 0.9.1@deprecated | @react-native-oh-library/react-native-image-sequence  | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-image-sequence) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-sequence/releases) |
-| > 0.9.1                        | @react-native-ohos/react-native-image-sequence | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-image-sequence) | [Gitee Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-sequence/releases) |
+| Version                        | Package Name                             | Repository                                                   | Release                                                      | 支持RN版本                                                |
+| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------ |
+| <= 0.9.1@deprecated | @react-native-oh-library/react-native-image-sequence  | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-image-sequence) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-sequence/releases) | 0.72 |
+| 0.9.2                        | @react-native-ohos/react-native-image-sequence | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-image-sequence) | [Gitee Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-sequence/releases) | 0.77 |
+| 0.10.0 | @react-native-ohos/react-native-image-sequence | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-image-sequence) | [Gitee Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-sequence/releases) | 0.77 |
 
 ## 安装与使用
 
@@ -331,7 +332,7 @@ ohpm install
 
 ### 2.3 配置 CMakeLists 和引入 ImageSequence2Package
 
- > **[!TIP] 版本 0.9.2 及以上需要.**
+ > **[!TIP] 版本 0.10.0 及以上需要.**
 
  打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -394,7 +395,7 @@ export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
 
 ```diff
   ...
-+ import { ImageSequencePackage } from "@react-native-oh-tpl/react-native-image-sequence-2/ts";
++ import { ImageSequencePackage } from "@react-native-ohos/react-native-image-sequence-2/ts";
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -421,7 +422,10 @@ ohpm install
 
 ### 3.1 兼容性
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/react-native-image-sequence Releases](https://gitee.com/openharmony-sig/rntpc_react-native-image-sequence/releases)
+本文档内容基于以下版本验证通过：
+
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release SDK; IDE： DevEco Studio 6.0.0.868; ROM：6.0.0.112;
 
 ## 4. 属性
 
@@ -431,12 +435,12 @@ ohpm install
 
 | Name             | Description                                                  | Type    | Required | Platform | HarmonyOS Support |
 | ---------------- | ------------------------------------------------------------ | ------- | -------- | -------- | ----------------- |
-| images           | An array of source images. Each element of the array should be the result of a call to require(imagePath) | any[]   | Yes      | All      | Yes               |
-| startFrameIndex  | Which index of the images array should the sequence start at. Default: 0 | number  | No       | All      | Yes               |
-| framesPerSecond  | Playback speed of the image sequence. Default: 24            | number  | No       | All      | Yes               |
-| loop             | Should the sequence loop. Default: true                      | boolean | No       | All      | Yes               |
-| downsampleWidth  | The width to use for optional downsampling. Both `downsampleWidth` and `downsampleHeight` must be set to a positive number to enable downsampling. Default: -1 | number  | No       | All      | Yes               |
-| downsampleHeight | The height to use for optional downsampling. Both `downsampleWidth` and `downsampleHeight` must be set to a positive number to enable downsampling. Default: -1 | number  | No       | All      | Yes               |
+| images           | 源图像数组。数组的每个元素应该是调用require(imagePath)的结果  | any[]   | Yes      | All      | Yes               |
+| startFrameIndex  | 序列应从图像数组的哪个索引开始。默认值: 0                     | number  | No       | All      | Yes               |
+| framesPerSecond  | 图像序列的播放速度。默认值: 24                               | number  | No       | All      | Yes               |
+| loop             | 序列是否循环播放。默认值: true                               | boolean | No       | All      | Yes               |
+| downsampleWidth  | 用于可选降采样的宽度。必须将`downsampleWidth`和`downsampleHeight`都设置为正数才能启用降采样。默认值: -1 | number  | No       | All      | Yes               |
+| downsampleHeight | 用于可选降采样的高度。必须将`downsampleWidth`和`downsampleHeight`都设置为正数才能启用降采样。默认值: -1 | number  | No       | All      | Yes               |
 
 ## 5. 遗留问题
 

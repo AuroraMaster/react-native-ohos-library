@@ -147,7 +147,6 @@ export default createBottomTabNavigator(
     backBehavior: 'none',
     order: ['Albums', 'Contacts', 'Article', 'Back'],
     tabBarOptions: {
-      detachInactiveScreens: false,
       backBehavior: 'history',
       inactiveBackgroundColor: '#851753ff', 
       activeBackgroundColor: '#f7eff3ff', 
@@ -185,6 +184,7 @@ export default createBottomTabNavigator(
 + [react-native-gesture-handler](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-gesture-handler.md)
 + [react-native-reanimate](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-reanimated.md)
 + [react-native-safe-area-context](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-safe-area-context.md)
++ [react-native-screens](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-screens.md)
 
 本库HarmonyOS侧实现依赖上述三方库原生端代码，如已在HarmonyOS工程中引入过上述库，则无需再次引入，可跳过本章节步骤，直接使用。
 
@@ -204,9 +204,6 @@ export default createBottomTabNavigator(
     ...
     })
 ```
-
-
-
 
 ## 约束与限制
 
@@ -232,25 +229,43 @@ export default createBottomTabNavigator(
 | Name | Description| Type | Required | Platform | HarmonyOS Support |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------|----------|----------|-------------------|
 | RouteConfigs | The route configs object is a mapping from route name to a route config. | object | yes | all | yes |
-| TabNavigatorConfig | Configure options for the top label navigator | object | yes | all | yes |
+| TabNavigatorConfig | Configure options for the top label navigator | object | no | all | yes |
 
 **TabNavigatorConfig**：顶部标签栏属性配置
 | Name | Description| Type | Required | Platform | HarmonyOS Support |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------|----------|----------|-------------------|
 | initialRouteName | The routeName for the initial tab route when first loading. | string | no | all | yes |
-| navigationOptions| Navigation options for the navigator itself, to configure a parent navigator. | object | no | all | yes |
+| navigationOptions | Navigation options for the navigator itself, to configure a parent navigator. | object | no | all | yes |
 | defaultNavigationOptions | Default navigation options to use for screens. | object | no | all | yes |
 | order | Array of routeNames which defines the order of the tabs. | array | no | all | yes |
-| paths | Provide a mapping of routeName to path config, which overrides the paths set in the routeConfigs. | string | no | all | yes |
-| backBehavior |Pass initialRoute to return to initial tab. | 'order' &#124; 'history' &#124; 'none' | no | all | yes |
+| paths | Provide a mapping of routeName to path config, which overrides the paths set in the routeConfigs. | object | no | all | yes |
+| backBehavior |Pass initialRoute to return to initial tab. | 'none' &#124; 'initialRoute' &#124; 'history' &#124; 'order' &#124;| no | all | yes |
 | tabBarPosition | Position of the tab bar. | 'top' &#124; 'bottom'| no | all | yes |
-| swipeEnabled | Whether to allow swiping between tabs.| boolean | no | all | yes |
+| swipeEnabled | Enable sliding tab switching. | boolean  | no | all | yes |
 | lazy | Defaults to false. If true, tabs are rendered only when they are made active or on peek swipe. When false, all tabs are rendered immediately. | boolean | no | all | yes |
-| lazyPlaceholderComponent | React component to render for routes that haven't been rendered yet. Receives an object containing the route as the argument. The lazy prop also needs to be enabled. | function | no | all | yes               |
-| initialLayout | Optional object containing the initial height and width, can be passed to prevent the one frame delay in react-native-tab-view rendering.| object | no | all | yes |
+| lazyPlaceholderComponent | React component to render for routes that haven't been rendered yet. Receives an object containing the route as the argument. The lazy prop also needs to be enabled. | function | no | all | yes |
+| initialLayout | Objects containing the initial width and height of the page. | object  | no | all | yes |
 | pagerComponent | React component to use as the pager. The pager handles swipe gestures and page switching. By default we use react-native-gesture-handler for handling gestures. | function | no | all | no |
+| swipeDistanceThreshold | Minimum distance threshold for sliding. | number  | no | all | no |
+| swipeVelocityThreshold | Minimum sliding speed threshold. | number  | no | all | no |
+| keyboardDismissMode | The keyboard closing method triggered by the drag gesture. | 'on-drag'&#124; 'none'  | no | all | yes |
+| sceneContainerStyle | Set page container style.| object | no | all | yes|
 | tabBarComponent | Optional, override the component to use as the tab bar.| function | no | all | yes|
-| tabBarOptions | An object with the following properties:. | object | no | all | yes |
+| onSwipeStart | The callback function at the beginning of the sliding gesture. | function | no | all | yes |
+| onSwipeEnd | The callback function at the end of the sliding gesture. | function | no | all | yes |
+| tabBarOptions | An object with the following properties. | object | no | all | yes |
+
+**navitgationOptions**：顶部导航配置项
+| Name | Description| Type | Required | Platform | HarmonyOS Support |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|----------|----------|-------------------|
+| title | General Title. | string | no | all | yes |
+| swipeEnabled | disable tab page sliding switching. | boolean | no | all | yes |
+| tabBarIcon | Component for returning images. | funtion | no | all | yes |
+| tabBarLabel | The name of the tab. | string | no | all | yes |
+| tabBarAccessibilityLabel | Set accessible labels for label buttons.| string | no | all | yes |
+| tabBarTestID | Label button ID.| string | no | all | yes |
+| tabBarOnPress | click event. | funtion | no | all | yes |
+| tabBarOnLongPress | long press event. | funtion | no | all | yes |
 
 **tabBarOptions**：顶部tab栏属性配置
 | Name | Description| Type | Required | Platform | HarmonyOS Support |
@@ -269,17 +284,15 @@ export default createBottomTabNavigator(
 | iconStyle | Style object for the tab icon. | object | no | all | yes |
 | style | Style object for the tab bar. | object | no | all | yes |
 | allowFontScaling | Whether label font should scale to respect Text Size accessibility settings, default is true. | boolean | no | all | yes |
-| scrollEnabled | Boolean indicating whether to make the tab bar scrollable.| boolean | no | all | yes |
 | renderIndicator | Function which takes an object with the current route and returns a custom React Element to be used as a tab indicator.| function | no | all | yes |
 
 **createBottomTabNavigator**：创建底部标签栏
 | Name | Description| Type | Required | Platform | HarmonyOS Support |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------|----------|----------|-------------------|
 | RouteConfigs | The route configs object is a mapping from route name to a route config. | object | yes | all | yes |
-| BottomTabNavigatorConfig | Configure options for the bottom label navigator | object | yes | all | yes |
+| TabNavigatorConfig | Configure options for the bottom label navigator | object | yes | all | yes |
 
-
-**BottomTabNavigatorConfig**：底部标签栏属性配置
+**TabNavigatorConfig**：底部标签栏属性配置
 | Name | Description| Type | Required | Platform | HarmonyOS Support |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------|----------|----------|-------------------|
 | initialRouteName | The routeName for the initial tab route when first loading. | string | no | all | yes|
@@ -287,12 +300,24 @@ export default createBottomTabNavigator(
 | defaultNavigationOptions| Default navigation options to use for screens.| object| no | all | yes |
 | resetOnBlur | Reset the state of any nested navigators when switching away from a screen.| boolean | no | all | yes |
 | order | Array of routeNames which defines the order of the tabs.| array | no | all | yes |
-| paths | Provide a mapping of routeName to path config, which overrides the paths set in the routeConfigs. | string | no | all | yes |
-| backBehavior |Pass initialRoute to return to initial tab. | 'order' &#124; 'history' &#124; 'none' | no | all | yes |
-| detachInactiveScreens | Boolean used to indicate whether inactive screens should be detached from the view hierarchy to save memory. | boolean | no | all | yes |
+| paths | Provide a mapping of routeName to path config, which overrides the paths set in the routeConfigs. | object | no | all | yes |
+| backBehavior |Pass initialRoute to return to initial tab. | 'none' &#124; 'initialRoute' &#124; 'history' &#124; 'order' &#124; | no | all | yes |
 | lazy | Defaults to false. If true, tabs are rendered only when they are made active or on peek swipe. When false, all tabs are rendered immediately. | boolean | no | all | yes |
 | tabBarComponent | Optional, override the component to use as the tab bar.| function | no | all | yes |
 | tabBarOptions | An object with the following properties:. | object | no | all | yes |
+
+**navitgationOptions**：底部导航配置项
+| Name | Description| Type | Required | Platform | HarmonyOS Support |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|----------|----------|-------------------|
+| title | General Title. | string | no | all | yes |
+| tabBarVisible | Show/Hide bar. | boolean | no | all | yes |
+| tabBarIcon | Component for returning images. | funtion | no | all | yes |
+| tabBarLabel | The name of the tab. | string | no | all | yes |
+| tabBarButtonComponent | Set custom label bar. | funtion | no | all | yes |
+| tabBarAccessibilityLabel | Set accessible labels for label buttons.| string | no | all | yes |
+| tabBarTestID | Label button ID.| string | no | all | yes |
+| tabBarOnPress | click event. | funtion | no | all | yes |
+| tabBarOnLongPress | long press event. | funtion | no | all | yes |
 
 **tabBarOptions**：底部tab栏属性配置
 | Name | Description| Type | Required | Platform | HarmonyOS Support |
@@ -301,15 +326,15 @@ export default createBottomTabNavigator(
 | activeBackgroundColor | Background color of the active tab. | string | no | all | yes |
 | inactiveTintColor | Label and icon color of the inactive tab. | string | no | all | yes |
 | inactiveBackgroundColor | Background color of the inactive tab. | string | no | all | yes |
-| showIcon | Whether to show icon for tab, default is true. | boolean | no | all | yes |
 | showLabel | Whether to show label for tab, default is true. | boolean | no | all | yes |
+| showIcon | Whether to show icon for tab, default is true. | boolean | no | all | yes |
 | style | Style object for the tab bar. | object | no | all | yes |
 | labelStyle | Style object for the tab label. | object | no | all | yes|
-| labelPosition | Where to show the tab label in relation to the tab icon. | 'beside-icon' &#124; 'beside-icon' | no | all | yes |
+| labelPosition | Where to show the tab label in relation to the tab icon. | 'beside-icon' &#124; 'below-icon' | no | all | yes |
 | tabStyle | Style object for the tab. | object | no | all | yes |
 | allowFontScaling | Whether label font should scale to respect Text Size accessibility settings, default is true. | boolean | no | all | yes |
-| adaptive  | Should the tab icons and labels alignment change based on screen size. | boolean | no | all  | yes |
-| safeAreaInset | Override the forceInset prop for <SafeAreaView>. | 'top' &#124; 'bottom' &#124; 'left' &#124;  'right'  'always' &#124; 'never' | no | all | yes |
+| adaptive  | Should the tab icons and labels alignment change based on screen size? Defaults to true for iOS 11. If false, tab icons and labels align vertically all the time. When true, tab icons and labels align horizontally on tablet.. | boolean | no | ios | yes |
+| safeAreaInset | Override the forceInset prop for <SafeAreaView>. | object | no | all | yes |
 | keyboardHidesTabBar | Hide the tab bar when keyboard opens. | boolean | no | all  | yes |
 
 ## 遗留问题
@@ -318,6 +343,9 @@ export default createBottomTabNavigator(
 - tabBarOptions中的pressColor属性，不生效，无法实现按下更改颜色。 pressColor属性，是专门为Android平台设计的，这个属性在PlatformPressable中直接传递，在IOS上，pressColor属性没有直接对应的实现，IOS使用不同的机制来处理触摸反馈。
 
 - TabNavigatorConfig中的pagerComponent属性，不生效，无法实现分页功能。具体实现的renderPager属性只在react-native-tab-view 2.11.0-2.16.0版本上存在，其它版本上已废弃。
+
+- swipeDistanceThreshold、swipeVelocityThreshold属性，源库是直接透传给TabView组件的，属性功能是依赖库react-native-tab-view内部自行实现，并未对传递属性进行处理。
+  
 ## 开源协议
 
 本项目基于 [The MIT License (MIT)](https://github.com/react-navigation/tabs/blob/v2.7.0/LICENSE.md) ，请自由地享受和参与开源。

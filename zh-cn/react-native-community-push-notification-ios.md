@@ -4,14 +4,15 @@
   <h1 align="center"> <code>@react-native-community/push-notification-ios</code> </h1>
 </p>
 
-本项目基于 [@react-native-community/push-notification-ios@1.11.0](https://github.com/react-native-push-notification/ios/tree/v1.11.0) 开发。
+> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-push-notification-ios)
 
 该第三方库的仓库已迁移至 Gitee，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/push-notification-ios`，具体版本所属关系如下：
 
-| Version                    | Package Name                                      | Repository         | Release                    |
-|----------------------------| ------------------------------------------------- | ------------------ | -------------------------- |
-| <= 1.11.0-0.1.3@deprecated | @react-native-oh-tpl/push-notification-ios | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-push-notification-ios) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-push-notification-ios/releases) |
-| > 1.11.0                   | @react-native-ohos/push-notification-ios   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_ios) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_ios/releases) |
+| Version      | Package Name                               | Repository                                                   | Release                                                      | Version for RN |
+| ------------ | ------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------- |
+| 1.11.0-0.1.3 | @react-native-oh-tpl/push-notification-ios | [Github(deprecated)](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-push-notification-ios) | [Github Releases(deprecated)](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-push-notification-ios%2Freleases) | 0.72           |
+| 1.11.1       | @react-native-ohos/push-notification-ios   | [GitCode](https://gitee.com/link?target=https%3A%2F%2Fgitcode.com%2Fopenharmony-sig%2Frntpc_ios) | [GitCode Releases](https://gitee.com/link?target=https%3A%2F%2Fgitcode.com%2Fopenharmony-sig%2Frntpc_ios%2Freleases) | 0.72           |
+| 1.12.0       | @react-native-ohos/push-notification-ios   | [GitCode](https://gitee.com/link?target=https%3A%2F%2Fgitcode.com%2Fopenharmony-sig%2Frntpc_ios) | [GitCode Releases]()                                         | 0.77           |
 
 ## 1. 安装与使用
 
@@ -195,7 +196,6 @@ export const App = () => {
 > [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
 
 打开 `entry/oh-package.json5`，添加以下依赖
-
 ```json
 "dependencies": {
     "@react-native-ohos/push-notification-ios": "file:../../node_modules/@react-native-ohos/push-notification-ios/harmony/push_notification.har"
@@ -294,7 +294,11 @@ ohpm install
 
 ### 3.1. 兼容性
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/push-notification-ios Releases](https://gitee.com/openharmony-sig/rntpc_ios/releases)
+在下述版本验证通过：
+
+RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
+
+RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release SDK；IDE：DevEco Studio  6.0.0.868; ROM：6.0.0.112; 
 
 ## 4. API
 
@@ -302,20 +306,20 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name                            | Description                                                                                                       | Type     | Required | Platform      | HarmonyOS Support |
-| ------------------------------- | ----------------------------------------------------------------------------------------------------------------- | -------- | -------- | ------------- | ----------------- |
-| addNotificationRequest          | Sends notificationRequest to notification center at specified firedate. Fires immediately if firedate is not set. | function | no       | iOS | yes               |
-| getDeliveredNotifications       | Provides you with a list of the app’s notifications that are still displayed in Notification Center               | function | no       | iOS           | yes               |
-| removeAllDeliveredNotifications | Remove all delivered notifications from Notification Center                                                       | function | no       | iOS           | yes               |
-| removeDeliveredNotifications    | Removes the specified delivered notifications from Notification Center                                            | function | no       | iOS           | yes               |
-| setApplicationIconBadgeNumber   | Sets the badge number for the app icon on the home screen                                                         | function | no       | iOS           | yes               |
-| getApplicationIconBadgeNumber   | Gets the current badge number for the app icon on the home screen                                                         | function | no       | iOS           | no               |
-| cancelLocalNotifications   | Cancel local notifications                                                         | function | no       | iOS           | no               |
-| requestPermissions   | Requests notification permissions from iOS, prompting the user's dialog box. By default, it will request all notification permissions, but a subset of these can be requested by passing a map of requested permissions. The following permissions are supported                                                         | function | no       | iOS           | no               |
-| abandonPermissions   | Unregister for all remote notifications received via Apple Push Notification service                                                         | function | no       | iOS           | no               |
-| checkPermissions   | See what push permissions are currently enabled                                                         | function | no       | iOS           | no               |
-| getInitialNotification   | This method returns a promise. If the app was launched by a push notification, this promise resolves to an object of type PushNotificationIOS. Otherwise, it resolves to null.                                                         | function | no       | iOS           | no               |
-| getScheduledLocalNotifications   | Gets the local notifications that are currently scheduled                                                         | function | no       | iOS           | no               |
+| Name                            | Description                                                  | Type     | Required | Platform | HarmonyOS Support |
+| ------------------------------- | ------------------------------------------------------------ | -------- | -------- | -------- | ----------------- |
+| addNotificationRequest          | 按指定的触发时间（firedate）向通知中心发送通知请求（notificationRequest）。若未设置触发时间，则立即发送。 | function | no       | iOS      | yes               |
+| getDeliveredNotifications       | 返回仍显示在通知中心的应用通知列表                           | function | no       | iOS      | yes               |
+| removeAllDeliveredNotifications | 从通知中心移除所有已送达的通知                               | function | no       | iOS      | yes               |
+| removeDeliveredNotifications    | 从通知中心移除指定的已送达通知                               | function | no       | iOS      | yes               |
+| setApplicationIconBadgeNumber   | 设置主屏幕上应用图标的角标数字                               | function | no       | iOS      | yes               |
+| getApplicationIconBadgeNumber   | 获取主屏幕上应用图标的当前角标数字                           | function | no       | iOS      | no                |
+| cancelLocalNotifications        | 取消本地通知                                                 | function | no       | iOS      | no                |
+| requestPermissions              | 向 iOS 申请通知权限，触发用户授权弹窗。默认情况下会申请所有通知权限，也可通过传入权限映射对象申请部分权限。 支持的权限如下 | function | no       | iOS      | no                |
+| abandonPermissions              | 取消注册通过 Apple 推送通知服务（Apple Push Notification service）接收的所有远程通知 | function | no       | iOS      | no                |
+| checkPermissions                | 查看当前已启用的推送权限                                     | function | no       | iOS      | no                |
+| getInitialNotification          | 若应用是通过推送通知启动的，该 Promise 会解析为 PushNotificationIOS 类型的对象；否则解析为 null。 | function | no       | iOS      | no                |
+| getScheduledLocalNotifications  | 获取当前已调度（待发送）的本地通知                           | function | no       | iOS      | no                |
 
 ## 5. 属性
 
@@ -328,24 +332,24 @@ ohpm install
 
 _NotificationRequest:_
 
-| Name       | Description                                                       | Type    | Required | Platform | HarmonyOS Support |
-| ---------- | ----------------------------------------------------------------- | ------- | -------- | -------- | ----------------- |
-| `id`       | Identifier of the notification                                    | string  | yes      | All      | yes               |
-| `title`    | A short description of the reason for the notification            | string  | yes      | All      | yes               |
-| `subtitle` | A secondary description of the reason for the notification        | string  | no       | All      | no               |
-| `body`     | The message displayed in the notificatio                          | string  | yes      | All      | yes               |
-| `badge`    | The number to display as the app's icon badge                     | number  | no       | All      | yes               |
-| `fireDate` | The date and time when the system should deliver the notification | object  | no       | All      | no               |
-| `repeats`  | Sets notification to repeat                                       | boolean | no       | All      | no               |
-| `repeatsComponent`  | An object indicating which parts of fireDate should be repeated                                       | object | no       | All      | no               |
-| `sound`  | The sound played when the notification is fired                                       | string | no       | All      | no               |
-| `category`  | The category of this notification, required for actionable notifications                                       | string | no       | All      | no               |
-| `isSilent` | If true, the notification will appear without sound               | boolean | no       | All      | yes               |
-| `isCritical` |  If true, the notification sound be played even when the device is locked, muted, or has Do Not Disturb enabled               | boolean | no       | All      | no               |
-| `criticalSoundVolume` | A number between 0 and 1 for volume of critical notification. Default volume will be used if not specified               | number | no       | All      | no               |
-| `userInfo` | An object containing additional notification data                 | object  | no       | All      | yes               |
-| `isTimeZoneAgnostic` | If true, fireDate adjusted automatically upon time zone changes (e.g. for an alarm clock)                 | boolean  | no       | All      | no               |
-| `interruptionLevel` | A string specifying the interruption level. Valid values are `'active'`, `'passive'`, `'timeSensitive'`, or `'critical'`                 | string  | no       | All      | no               |
+| Name                  | Description                                                  | Type    | Required | Platform | HarmonyOS Support |
+| --------------------- | ------------------------------------------------------------ | ------- | -------- | -------- | ----------------- |
+| `id`                  | 通知的唯一标识                                               | string  | yes      | All      | yes               |
+| `title`               | 通知事由的简要描述                                           | string  | yes      | All      | yes               |
+| `subtitle`            | 通知事由的次要描述                                           | string  | no       | All      | no                |
+| `body`                | 通知中显示的消息内容                                         | string  | yes      | All      | yes               |
+| `badge`               | 应用图标上显示的角标数字                                     | number  | no       | All      | yes               |
+| `fireDate`            | 系统应送达通知的日期和时间                                   | object  | no       | All      | no                |
+| `repeats`             | 设置通知是否重复发送                                         | boolean | no       | All      | no                |
+| `repeatsComponent`    | 定义 fireDate 中需重复的时间部分的对象                       | object  | no       | All      | no                |
+| `sound`               | 通知触发时播放的音效                                         | string  | no       | All      | no                |
+| `category`            | 通知的分类，可交互通知（actionable notifications）必需配置此参数 | string  | no       | All      | no                |
+| `isSilent`            | 若为 true，通知将无音效显示                                  | boolean | no       | All      | yes               |
+| `isCritical`          | 若为 true，即使设备处于锁定、静音或勿扰模式，通知音效仍会播放 | boolean | no       | All      | no                |
+| `criticalSoundVolume` | 重要通知（critical notification）的音量值（取值范围 0-1）。未指定时使用默认音量 | number  | no       | All      | no                |
+| `userInfo`            | 包含额外通知数据的对象                                       | object  | no       | All      | yes               |
+| `isTimeZoneAgnostic`  | 若为 true，时区变更时 fireDate 会自动调整（例如闹钟场景）    | boolean | no       | All      | no                |
+| `interruptionLevel`   | 指定通知干扰级别（interruption level）的字符串。有效值为 `'active'`（主动）、`'passive'`（被动）、`'timeSensitive'`（时间敏感）或 `'critical'`（重要） | string  | no       | All      | no                |
 
 ## 6. 遗留问题
 

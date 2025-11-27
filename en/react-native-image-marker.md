@@ -14,9 +14,16 @@
 
 > [!TIP] [ GitHub address](https://github.com/react-native-oh-library/react-native-image-marker)
 
-## Installation and Usage
+Please check the corresponding version information at the third-party library's Releases page:
 
-Find the matching version information in the release address of a third-party library and download an applicable .tgz package: [@react-native-oh-tpl/react-native-image-marker Releases](https://github.com/react-native-oh-library/react-native-image-marker/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+| Library Version | Release Information                                                     | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.2.6      | [@react-native-oh-tpl/react-native-image-marker Releases](https://github.com/react-native-oh-library/react-native-image-marker/releases) | 0.72       |
+| 1.3.0      | [@react-native-ohos/react-native-image-marker Releases]()    | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+
+## Installation and Usage
 
 Go to the project directory and execute the following instruction:
 
@@ -27,13 +34,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-image-marker
+
+# 0.77
+npm install @react-native-ohos/react-native-image-marker
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-image-marker
+
+# 0.77 
+yarn add @react-native-ohos/react-native-image-marker
 ```
 
 <!-- tabs:end -->
@@ -227,10 +242,21 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
+- 0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-image-marker": "file:../../node_modules/@react-native-oh-tpl/react-native-image-marker/harmony/image_marker.har"
+  }
+```
+
+- 0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-image-marker": "file:../../node_modules/@react-native-ohos/react-native-image-marker/harmony/image_marker.har"
   }
 ```
 
@@ -253,7 +279,11 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
+// 0.72
 + import {RNImageMarkerPackage} from '@react-native-oh-tpl/react-native-image-marker/ts';
+
+// 0.77  
++ import {RNImageMarkerPackage} from '@react-native-ohos/react-native-image-marker/ts';
 
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -281,9 +311,11 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+This document is verified based on the following versions:
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-image-marker Releases](https://github.com/react-native-oh-library/react-native-image-marker/releases)
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ### Permission Requirements
 

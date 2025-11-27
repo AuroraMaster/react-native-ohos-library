@@ -14,9 +14,16 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-quick-base64)
 
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-quick-base64`，具体版本所属关系如下：
+
+| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
+| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
+| 2.1.2  | @react-native-oh-tpl/react-native-quick-base64 | [Github](https://github.com/react-native-oh-library/react-native-quick-base64) | [Github Releases](https://github.com/react-native-oh-library/react-native-quick-base64/releases) | 0.72 |
+| 2.2.0 | @react-native-ohos/react-native-quick-base64   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-quick-base64) | [GitCode Releases]() | 0.77 |
+
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-quick-base64 Releases](https://github.com/react-native-oh-library/react-native-quick-base64/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +32,21 @@
 #### **npm**
 
 ```bash
+# 2.1.2
 npm install @react-native-oh-tpl/react-native-quick-base64
+
+# 2.2.0
+npm install @react-native-ohos/react-native-quick-base64
 ```
 
 #### **yarn**
 
 ```bash
+# 2.1.2
 yarn add @react-native-oh-tpl/react-native-quick-base64
+
+# 2.2.0
+yarn add @react-native-ohos/react-native-quick-base64
 ```
 
 <!-- tabs:end -->
@@ -43,8 +58,12 @@ yarn add @react-native-oh-tpl/react-native-quick-base64
 ```js
 import React, { useState } from 'react';
 import { Text, View, TextInput, ScrollView, StyleSheet, Button } from 'react-native';
+
+// 2.1.2
 import { byteLength, btoa, atob, toByteArray, fromByteArray, getNative, trimBase64Padding, shim } from '@react-native-oh-tpl/react-native-quick-base64';
 
+// 2.2.0
+import { byteLength, btoa, atob, toByteArray, fromByteArray, getNative, trimBase64Padding, shim } from '@react-native-ohos/react-native-quick-base64';
 type FuncBase64ToArrayBuffer = (
   data: string,
   removeLinebreaks?: boolean
@@ -66,7 +85,7 @@ const PALETTE = {
 };
 
 export function QuickBase64Test() {
-  // 测试字符串转base64
+  // Test string to base64 conversion
   const [textTobase64, onChangeTextToBase64] = useState('');
 
   const [base64ToTextLength, onChangeBase64TextLength] = useState(0);
@@ -81,9 +100,9 @@ export function QuickBase64Test() {
 
   const [fbArrayBase64StrUrlSafe, onChangeFbArrayBase64StrUrlSafe] = useState('');
 
-  const [testShimBtoA, onChangeTestShimBtoA] = useState(''); // 字符串转base64
+  const [testShimBtoA, onChangeTestShimBtoA] = useState(''); // String to base64
 
-  const [testShimAtoB, onChangeTestShimAtoB] = useState(''); // base64转字符串
+  const [testShimAtoB, onChangeTestShimAtoB] = useState(''); // Base64 to string
 
   const [nativeModule, onChangeNativeModule] = useState<NativeModule>({
     base64FromArrayBuffer: undefined,
@@ -101,43 +120,43 @@ export function QuickBase64Test() {
   const [trimBase64PaddingText, onChangeTrimBase64PaddingText] = useState('');
 
   const byArray = new Uint8Array([72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100, 33]);
-  // 点击事件 字符串转base64
+  // Click event: string to base64
   const onPressBtoA = (text: string) => {
     let b64 = btoa(text);
-    console.log(`字符串转base64 ${b64}`);
+    console.log(`String to base64 ${b64}`);
     onChangeTextToBase64(b64)
   }
 
   const [testText, onChangeTestText] = React.useState('');
 
-  // 点击事件 base64转字符串
+  // Click event: base64 to string
   const onPressAtoB = (text: string) => {
     let textA = atob(text);
-    console.log(`base64转字符串 ${textA}`);
+    console.log(`Base64 to string ${textA}`);
     onChangeBase64Text(textA)
   }
 
-  // 打印base64转为Unit8Array字节数组的长度
+  // Print the length of base64 converted to Unit8Array byte array
   const onPressBase64Length = (text: string) => {
-    console.log(`打印base64长度1 ${text}`);
+    console.log(`Print base64 length ${text}`);
     onChangeBase64TextLength(byteLength(text))
   }
 
-  /* toByteArray 把base64字符串解码为Uint8Array */
+  /* toByteArray: Decodes base64 string to Uint8Array */
   const onPressToByteArray = (text: string) => {
     let btArray = toByteArray(text);
     console.log(`toByteArray ${btArray}`);
     onChangeByteArray(btArray)
   }
 
-  /* toByteArray 把base64字符串解码为Uint8Array  removeLinebreaks */
+  /* toByteArray: Decodes base64 string to Uint8Array with removeLinebreaks */
   const onPressToByteArrayRemove = (text: string, removeLinebreaks: boolean = false) => {
     let btArray = toByteArray(text, removeLinebreaks);
     console.log(`toByteArray ${btArray}`);
     onChangeByteArrayRemove(btArray)
   }
 
-  /* fromByteArray 把Uint8Array编码为Base64字符串 */
+  /* fromByteArray: Encodes Uint8Array to Base64 string */
   const onPressFromByteArray = (
     uint8: Uint8Array,
     urlSafe: boolean = false) => {
@@ -146,7 +165,7 @@ export function QuickBase64Test() {
     onChangeFbArrayBase64Str(b64)
   }
 
-  /* fromByteArray 把Uint8Array编码为Base64字符串  */
+  /* fromByteArray: Encodes Uint8Array to Base64 string with URL safe option */
   const onPressFromByteArrayUrlSafe = (
     uint8: Uint8Array,
     urlSafe: boolean = false) => {
@@ -155,11 +174,11 @@ export function QuickBase64Test() {
     onChangeFbArrayBase64StrUrlSafe(b64)
   }
 
-  /* shim 给全局对象添加btoa和atob函数的shim实现 */
+  /* shim: Add btoa and atob function shim implementations to global object */
   const handleAddShimToGlobal = () => {
     shim();
-    console.log(typeof global.btoa); // 应该输出 "function"
-    console.log(typeof global.atob); // 同样应该输出 "function"
+    console.log(typeof global.btoa); // Should output "function"
+    console.log(typeof global.atob); // Should also output "function"
   }
 
   const onPressTestShimBtoA = (text: string) => {
@@ -174,14 +193,14 @@ export function QuickBase64Test() {
     onChangeTestShimAtoB(decodeBase64)
   }
 
-  /* trimBase64Padding 清除Base64字符串的填充字符 */
+  /* trimBase64Padding: Remove padding characters from Base64 string */
   const onPressTrimBase64Padding = (text: string) => {
     let trimBase64 = trimBase64Padding(text);
-    console.log(`shim global atob ${trimBase64}`);
+    console.log(`trimBase64Padding ${trimBase64}`);
     onChangeTrimBase64PaddingText(trimBase64)
   }
 
-  /* getNative 返回包含base64FromArrayBuffer和base64ToArrayBuffer函数的对象 */
+  /* getNative: Returns object containing base64FromArrayBuffer and base64ToArrayBuffer functions */
   const onPressGetNative = () => {
     const native = getNative() as NativeModule;
     onChangeNativeModule(native)
@@ -189,9 +208,9 @@ export function QuickBase64Test() {
 
   /**
    * @param text 
-   * base64FromArrayBuffer方法接受一个Base64编码的字符串或ArrayBuffer，
-   * 以及一个可选的布尔值参数，该参数决定是否生成的Base64字符串是URL安全的。
-   * 这个方法将ArrayBuffer对象转换为Base64编码的字符串。
+   * base64FromArrayBuffer method accepts a Base64 encoded string or ArrayBuffer,
+   * and an optional boolean parameter that determines whether the generated Base64 string is URL-safe.
+   * This method converts ArrayBuffer object to Base64 encoded string.
    */
   const onPressNBFAB = (text: string | ArrayBuffer) => {
     if (nativeModule?.base64FromArrayBuffer) {
@@ -201,7 +220,7 @@ export function QuickBase64Test() {
   }
 
   /** 
-  * @description base64转换Unit8Array 去除换行符
+  * @description Convert base64 to Unit8Array, remove line breaks
   * @param text
   * @param removeLinebreaks true
   * 
@@ -214,11 +233,11 @@ export function QuickBase64Test() {
   }
 
   /** 
-   * @description base64转换Unit8Array
-   * base64ToArrayBuffer方法接受一个Base64编码的字符串和一个可选的布尔值参数，
-   * 该参数决定是否在转换过程中删除换行符。这个方法将Base64编码的字符串转换为ArrayBuffer对象。
+   * @description Convert base64 to Unit8Array
+   * base64ToArrayBuffer method accepts a Base64 encoded string and an optional boolean parameter,
+   * which determines whether to remove line breaks during conversion. This method converts Base64 encoded string to ArrayBuffer object.
    * @param text
-   * @param removeLinebreaks 默认值 false
+   * @param removeLinebreaks default value false
    * 
    */
   const onPressNBTAB = (text: string) => {
@@ -229,7 +248,7 @@ export function QuickBase64Test() {
   }
 
   /** 
-   * @description base64转换Unit8Array 去除换行符
+   * @description Convert base64 to Unit8Array, remove line breaks
    * @param text
    * @param removeLinebreaks true
    * 
@@ -284,8 +303,6 @@ export function QuickBase64Test() {
           <Text style={{ color: 'green' }}>{(byteArray.toString())}</Text>
         </View>
 
-
-
         <View>Decodes a base64 string into a Uint8Array. Whether to cancel line breaks.</View>
         <View style={{ display: 'flex', flexDirection: 'column', marginBottom: 10 }}>
           <Text>test base64 transform Unit8Array add removeLinebreaks is true, testing the text: {textTobase64}</Text>
@@ -296,9 +313,7 @@ export function QuickBase64Test() {
           <Text style={{ color: 'green' }}>{(byteArrayRemove.toString())}</Text>
         </View>
 
-
-
-        <View>Takes a base64 string and returns the length of the byte array."</View>
+        <View>Takes a base64 string and returns the length of the byte array.</View>
         <View style={{ display: 'flex', flexDirection: 'column', marginBottom: 10 }}>
           <Text>get Unit8Array length form base64 transform, testing the text: {textTobase64}</Text>
           <Button
@@ -307,8 +322,6 @@ export function QuickBase64Test() {
           />
           <Text style={{ color: 'green' }}>{(base64ToTextLength)}</Text>
         </View>
-
-
 
         <View>Encodes a Uint8Array into a Base64 character string.</View>
         <View style={{ display: 'flex', flexDirection: 'column', marginBottom: 10 }}>
@@ -336,8 +349,7 @@ export function QuickBase64Test() {
           <Button title="shim set global" onPress={() => handleAddShimToGlobal()} />
         </View>
 
-
-        {/* 测试shim 设置 btoa和atob函数 成功与否 */}
+        {/* Test whether shim sets btoa and atob functions successfully */}
         <View>Test whether the shim sets the btoa function successfully.</View>
 
         <View style={{ marginTop: 20, display: 'flex', flexDirection: 'column', marginBottom: 10 }}>
@@ -346,8 +358,7 @@ export function QuickBase64Test() {
           <Text style={{ color: 'green' }}>{testShimBtoA}</Text>
         </View>
 
-
-        {/* 测试shim 设置 btoa和atob函数 成功与否 */}
+        {/* Test whether shim sets btoa and atob functions successfully */}
         <View>Test whether the shim sets the atob function successfully.</View>
 
         <View style={{ display: 'flex', flexDirection: 'column', marginBottom: 10 }}>
@@ -356,8 +367,7 @@ export function QuickBase64Test() {
           <Text style={{ color: 'green' }}>{testShimAtoB}</Text>
         </View>
 
-
-        {/* trimBase64Padding 清除Base64字符串的填充字符 */}
+        {/* trimBase64Padding: Remove padding characters from Base64 string */}
         <View>trimBase64Padding.</View>
 
         <View style={{ display: 'flex', flexDirection: 'column', marginBottom: 10 }}>
@@ -371,7 +381,6 @@ export function QuickBase64Test() {
           <Button title="Get getNative function" onPress={() => { onPressGetNative() }} />
         </View>
 
-
         <View>Click the button below to get base64FromArrayBuffer transform text.</View>
         <View style={{ display: 'flex', flexDirection: 'column', marginBottom: 10 }}>
           <Text>base64 transform string text: {testText}</Text>
@@ -379,7 +388,7 @@ export function QuickBase64Test() {
           <Text style={{ color: 'green' }}>{nativeBFABText}</Text>
         </View>
 
-        <View>Click the button below to get base64FromArrayBuffer transform text, The urlSafe parameter determines whether Base64 encoding uses the URL-safe variant."</View>
+        <View>Click the button below to get base64FromArrayBuffer transform text, The urlSafe parameter determines whether Base64 encoding uses the URL-safe variant.</View>
         <View style={{ display: 'flex', flexDirection: 'column', marginBottom: 10 }}>
           <Text>ArrayBuffer transform string text: {[72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100]}</Text>
           <Button title="onPressNBFABUrlSafe" onPress={() => { onPressNBFABUrlSafe(new Uint8Array([72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100]).buffer) }} />
@@ -404,7 +413,6 @@ export function QuickBase64Test() {
     </ScrollView>
   );
 }
-
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -449,11 +457,21 @@ const styles = StyleSheet.create({
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- 2.1.2
 ```json
  "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
     "@react-native-oh-tpl/react-native-quick-base64": "file:../../node_modules/@react-native-oh-tpl/react-native-quick-base64/harmony/rn_quick_base64.har"
+ }
+```
+
+- 2.2.0
+```json
+ "dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+
+    "@react-native-ohos/react-native-quick-base64": "file:../../node_modules/@react-native-ohos/react-native-quick-base64/harmony/rn_quick_base64.har"
  }
 ```
 
@@ -470,7 +488,7 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 3.配置 CMakeLists 和引入 GestureHandlerPackage
+### 3.配置 CMakeLists 和引入 RNQuickBase64Package
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -527,12 +545,16 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 4.在 ArkTs 侧引入 Gesture Handler Package
+### 4.在 ArkTs 侧引入 RNQuickBase64Package Package
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
+  // 2.1.2
 + import { RNQuickBase64Package } from '@react-native-oh-tpl/react-native-quick-base64/ts';
+
+  // 2.2.0
++ import { RNQuickBase64Package } from '@react-native-ohos/react-native-quick-base64/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -561,7 +583,10 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-quick-base64 Releases](https://github.com/react-native-oh-library/react-native-quick-base64/releases)
+在以下版本验证通过：
+
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.1 Release SDK; IDE：DevEco Studio 5.1.1.840; ROM：6.0.0;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release SDK; IDE：DevEco Studio 5.1.1.840; ROM：6.0.0;
 
 > [!TIP] [官方文档](https://github.com/craftzdog/react-native-quick-base64)
 
@@ -574,14 +599,14 @@ ohpm install
 
 | NAME         | Description                                                             | TYPE | Required | Platform | HarmonyOS Support |
 | ---------------- | --------------------------------------------------------------------------- | ------ | ------ | -------- | -------- |
-| btoa            | Encodes a string in base64.                                               | Function | no | All      | yes      |
-| atob | Decodes a base64 encoded string. | Function | no | All      | yes      |
-| toByteArray | Takes a base64 string and returns a byte array. Optional `removeLinebreaks` removes all `\n` characters. | Function | no | All      | yes      |
-| byteLength | Takes a base64 string and returns length of byte array. | Function | no | All      | yes      |
-| fromByteArray | Takes a byte array and returns a base64 string. Optional `urlSafe` flag `true` will use [the URL-safe dictionary](https://github.com/craftzdog/react-native-quick-base64/blob/9d02dfd02599ca104d2ed6c1e2d938ddd9d6cd15/cpp/base64.h#L75). | Function | no | All      | yes      |
-| shim | Adds `btoa` and `atob` functions to `global`. | Function | no | All      | yes      |
-| trimBase64Padding | Trims the `=` padding character(s) off of the end of a base64 encoded string. Also, for base64url encoded strings, it will trim off the trailing `.` character(s). | Function | no | All      | yes      |
-| getNative | Obtain the native base64ToArrayBuffer and base64FromArrayBuffer functions. | Function | no | All      | yes      |
+| btoa | 将字符串编码为 base64 格式。 | Function | no | All | yes |
+| atob | 解码一个 base64 编码的字符串。 | Function | no | All | yes |
+| toByteArray | 接收一个 base64 字符串并返回一个字节数组。可选参数 `removeLinebreaks` 用于移除所有 `\n` 字符。 | Function | no | All | yes |
+| byteLength | 接收一个 base64 字符串并返回其字节数组的长度。 | Function | no | All | yes |
+| fromByteArray | 接收一个字节数组并返回一个 base64 字符串。可选参数 `urlSafe` 设为 `true` 时，将使用 [URL 安全的字符集](https://github.com/craftzdog/react-native-quick-base64/blob/9d02dfd02599ca104d2ed6c1e2d938ddd9d6cd15/cpp/base64.h#L75)。 | Function | no | All | yes |
+| shim | 将 `btoa` 和 `atob` 函数添加到 `global` 全局对象中。 | Function | no | All | yes |
+| trimBase64Padding | 去除 base64 编码字符串末尾的 `=` 填充字符。同时，对于 base64url 编码的字符串，它也会去除末尾的 `.` 字符。 | Function | no | All | yes |
+| getNative | 获取原生的 base64ToArrayBuffer 和 base64FromArrayBuffer 函数。 | Function | no | All | yes |
 
 ## 遗留问题
 

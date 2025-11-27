@@ -16,18 +16,15 @@
 
 This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/netinfo`, After introducing the new version of the third-party library, The version correspondence details are as follows:
 
-| Version                        | Package Name                                  | Repository                                                   | Release                                                      |
-| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <= 11.1.0-0.0.8@deprecated | @react-native-oh-tpl/netinfo | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-netinfo) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-netinfo/releases) |
-| >= 11.1.1                        | @react-native-ohos/netinfo       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-netinfo) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-netinfo/releases) |
+| Version                    | Package Name                 | Repository                                                   | Release                                                      | Supported RN Version |
+| -------------------------- | ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------- |
+| <= 11.1.0-0.0.8@deprecated | @react-native-oh-tpl/netinfo | [Github(deprecated)](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-netinfo) | [Github Releases(deprecated)](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-netinfo%2Freleases) | 0.72                 |
+| 11.1.0                     | @react-native-ohos/netinfo   | [Github](https://github.com/react-native-oh-library/react-native-netinfo) | [Github Releases](https://github.com/react-native-oh-library/react-native-netinfo/releases) | 0.72                 |
+| 11.4.2                     | @react-native-ohos/netinfo   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-netinfo) | [GitCode Releases]()                                         | 0.77                 |
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-ohos/netinfo Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-netinfo/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
-
 Go to the project directory and execute the following instruction:
-
-
 
 <!-- tabs:start -->
 
@@ -85,8 +82,6 @@ export default App;
 Version >= @react-native-ohos/netinfo@11.1.1 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
 Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-Currently, Version <= @react-native-oh-tpl/netinfo@11.1.0-0.0.8@deprecated does not support AutoLink. Therefore, you need to manually configure the linking.
-
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
 ### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
@@ -103,6 +98,9 @@ Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 ### 2. Introducing Native Code
 
 Currently, two methods are available:
+
+- Use the HAR file.
+- Directly link to the source code。
 
 Method 1 (recommended): Use the HAR file.
 
@@ -152,7 +150,9 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/netinfo/src/main/cpp" ./netinfo)
+
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -194,7 +194,8 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
 ```diff
-  ...
+...
+
 + import {NetInfoPackage} from '@react-native-ohos/netinfo/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -222,9 +223,11 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+Verified in the following version:
 
-Check the release version information in the release address of the third-party library: [@react-native-ohos/netinfo Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-netinfo/releases)
+RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.200;ROM: 3.0.0.18;
+
+RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK;IDE: DevEco Studio  6.0.0.868;ROM:6.0.0.112;
 
 ## Properties
 

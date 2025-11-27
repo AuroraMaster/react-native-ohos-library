@@ -14,9 +14,14 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-PDFView)
 
-## 安装与使用
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-view-pdf`，具体版本所属关系如下：
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-view-pdf Releases](https://github.com/react-native-oh-library/react-native-PDFView/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.14.0     | [@react-native-oh-tpl/react-native-view-pdf Releases](https://github.com/react-native-oh-library/react-native-PDFView/releases) | 0.72       |
+| 0.15.0     | [@react-native-ohos/react-native-view-pdf Releases]()        | 0.77       |
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +30,21 @@
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-view-pdf
+
+# 0.77
+npm install @react-native-ohos/react-native-view-pdf
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-view-pdf
+
+# 0.77
+yarn add @react-native-ohos/react-native-view-pdf
 ```
 
 <!-- tabs:end -->
@@ -92,10 +105,21 @@ export function PdfViewExample() {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- 0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-view-pdf": "file:../../node_modules/@react-native-oh-tpl/react-native-view-pdf/harmony/pdf_view.har"
+  }
+```
+
+- 0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-view-pdf": "file:../../node_modules/@react-native-ohos/react-native-view-pdf/harmony/pdf_view.har"
   }
 ```
 
@@ -118,7 +142,11 @@ ohpm install
 
 ```diff
   ...
+// 0.72
 + import { RNPDFView } from '@react-native-oh-tpl/react-native-view-pdf'
+
+// 0.77
++ import { RNPDFView } from '@react-native-ohos/react-native-view-pdf'
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -147,13 +175,78 @@ const arkTsComponentNames: Array<string> = [
   ];
 ```
 
-### 4.在 ArkTs 侧引入 PDFViewPackage
+### 4.配置 CMakeLists 和引入 ViewPdfPackage
+
+> [!TIP] 若使用的是 0.72版本，请跳过本章。
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-view-pdf/src/main/cpp" ./pdf_view)
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_pdf_view)
+# RNOH_END: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "ViewPdfPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++       std::make_shared<ViewPdfPackage>(ctx),
+    };
+}
+```
+
+### 5.在 ArkTs 侧引入 PDFViewPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
   ...
+// 0.72
 + import { PDFViewPackage } from '@react-native-oh-tpl/react-native-view-pdf/ts'
+
+// 0.77
++ import { PDFViewPackage } from '@react-native-ohos/react-native-view-pdf/ts'
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -163,7 +256,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 5.运行
+### 6.运行
 
 点击右上角的 `sync` 按钮
 
@@ -178,9 +271,11 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+在下述版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-view-pdf Releases](https://github.com/react-native-oh-library/react-native-PDFView/releases)
+RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
+
+RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release SDK；IDE：DevEco Studio  6.0.0.868; ROM：6.0.0.112; 
 
 ## 属性
 
@@ -188,19 +283,19 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name              | Description                                                                                                                                                                                                                                        | Type     | Required | Platform | HarmonyOS Support |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | -------- | ----------------- |
-| resource          | A resource to render. It's possible to render PDF from file, url (should be encoded) or base64                                                                                                                                                     | string   | yes      | all      | yes               |
-| resourceType      | Should correspond to resource and can be: file, url or base64                                                                                                                                                                                      | string   | no       | all      | yes               |
-| fileFrom          | iOS: In case if resourceType is set to file, there are different way to search for it on iOS file system. Currently documentsDirectory, libraryDirectory, cachesDirectory, tempDirectory and bundle are supported. <br>harmony: files, cache, temp | string   | no       | iOS      | yes               |
-| onLoad            | Callback that is triggered when loading is completed                                                                                                                                                                                               | function | no       | all      | yes               |
-| onError           | Callback that is triggered when loading has failed. And error is provided as a function parameter                                                                                                                                                  | style    | no       | all      | yes               |
-| style             | css style                                                                                                                                                                                                                                          | string   | no       | all      | yes               |
-| fadeInDuration    | Fade in duration (in ms, defaults to 0.0) to smoothly fade the webview into view when pdf loading is completed                                                                                                                                     | number   | no       | all      | yes               |
-| enableAnnotations | Android ONLY: Boolean to enable Android view annotations (default is false).                                                                                                                                                                       | boolean  | no       | Android  | no                |
-| urlProps          | Extended properties for url type that allows to specify HTTP Method, HTTP headers and HTTP body                                                                                                                                                    | map      | no       | all      | no                |
-| onPageChanged     | Callback that is invoked when page is changed. Provides active page and total pages information                                                                                                                                                    | function | no       | Android  | no                |
-| onScrolled        | Callback that is invoked when PDF is scrolled. Provides offset value in a range between 0 and 1. Currently only 0 and 1 are supported.                                                                                                             | function | no       | all      | no                |
+| Name              | Description                                                  | Type     | Required | Platform | HarmonyOS Support |
+| ----------------- | ------------------------------------------------------------ | -------- | -------- | -------- | ----------------- |
+| resource          | 待渲染的资源。支持从文件、URL（需编码）或 Base64 格式渲染 PDF | string   | yes      | all      | yes               |
+| resourceType      | 需与 resource 对应，可选值：file（文件）、url（链接）或 base64（Base64 编码） | string   | no       | all      | yes               |
+| fileFrom          | iOS：当 resourceType 设为 file 时，指定在 iOS 文件系统中的搜索路径。目前支持 documentsDirectory（文档目录）、libraryDirectory（库目录）、cachesDirectory（缓存目录）、tempDirectory（临时目录）和 bundle（应用包）。<br>HarmonyOS：支持 files（文件目录）、cache（缓存目录）、temp（临时目录） | string   | no       | iOS      | yes               |
+| onLoad            | 加载完成时触发的回调函数                                     | function | no       | all      | yes               |
+| onError           | 加载失败时触发的回调函数，错误信息通过参数返回（原文 Type 列修正为 function） | style    | no       | all      | yes               |
+| style             | CSS 样式                       | string   | no       | all      | yes               |
+| fadeInDuration    | 加载完成后 PDF 视图淡入显示的时长（单位：毫秒，默认 0.0）    | number   | no       | all      | yes               |
+| enableAnnotations | 仅 Android 支持：是否启用 Android 视图注释功能（默认 false） | boolean  | no       | Android  | no                |
+| urlProps          | URL 类型的扩展属性，支持指定 HTTP 方法、请求头和请求体       | map      | no       | all      | no                |
+| onPageChanged     | 页面切换时触发的回调函数，返回当前页和总页数信息             | function | no       | Android  | no                |
+| onScrolled        | PDF 滚动时触发的回调函数，返回滚动偏移量（范围 0-1，目前仅支持 0 和 1） | function | no       | all      | no                |
 
 ### 静态方法
 
@@ -208,9 +303,9 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name   | Description                                                                                                                                                                     | Type     | Required | Platform | HarmonyOS Support |
-| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | -------- | ----------------- |
-| reload | Allows to reload the PDF document. This can be useful in such cases as network issues, document is expired, etc. To reload the document you will need a `ref` to the component: | function | yes      | all      | yes               |
+| Name   | Description                                                  | Type     | Required | Platform | HarmonyOS Support |
+| ------ | ------------------------------------------------------------ | -------- | -------- | -------- | ----------------- |
+| reload | 允许重新加载 PDF 文档。这在网络问题、文档过期等情况下非常有用。 要重新加载文档，你需要获取该组件的 `ref` 引用: | function | yes      | all      | yes               |
 
 ## 遗留问题
 

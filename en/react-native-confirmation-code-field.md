@@ -14,18 +14,35 @@
 
 > [!TIP] [Github address](https://github.com/retyui/react-native-confirmation-code-field)
 
+Please go to the Releases page of the third-party library to check the version information:
+
+| Third Party Library Version | Supported RN Version |
+| --------------------------- | -------------------- |
+| 7.3.2                       | 0.72                 |
+| 8.0.0                       | 0.77                 |
+
 ## Installation and Usage
+
+Go to the project directory and enter the following commands:
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install react-native-confirmation-code-field@7.3.2
+
+# 0.77
+npm install react-native-confirmation-code-field@8.0.0
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add react-native-confirmation-code-field@7.3.2
+
+# 0.77
+yarn add react-native-confirmation-code-field@8.0.0
 ```
 
 <!-- tabs:end -->
@@ -112,11 +129,11 @@ This document is verified based on the following versions:
 1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Preview2; IDE：DevEco Studio 5.0.3.200; ROM：205.0.0.18;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
 
-## component
+## API
 
-> [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
+> [!TIP] The "Platform" column indicates the platform where the component is supported in the original third-party library.
 
-> [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
+> [!TIP] The "HarmonyOS Support" column of "yes" means that the HarmonyOS platform supports the component; "no" means not supported; "partially" means partial support. The usage method is consistent across platforms, and the effect is aligned with the iOS or Android effect.
 
 | Name        | Description                                                                                                                                                                                          | Type      | Platform | HarmonyOS Support |
 | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | -------- | ----------------- |
@@ -125,9 +142,9 @@ This document is verified based on the following versions:
 
 ## CodeField Properties
 
-> [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
+> [!TIP] The "Platform" column indicates the platform where the properties are supported in the original third-party library.
 
-> [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
+> [!TIP] The "HarmonyOS Support" column of "yes" means that the HarmonyOS platform supports the property; "no" means not supported; "partially" means partial support. The usage method is consistent across platforms, and the effect is aligned with the iOS or Android effect.
 
 | Name              | Description                                                                                                                | Type                     | Required | Platform | HarmonyOS Support |
 | ----------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------ | -------- | -------- | ----------------- |
@@ -141,9 +158,9 @@ This document is verified based on the following versions:
 
 ## Hooks
 
-> [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
+> [!TIP] The "Platform" column indicates the platform where the properties are supported in the original third-party library.
 
-> [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
+> [!TIP] The "HarmonyOS Support" column of "yes" means that the HarmonyOS platform supports the property; "no" means not supported; "partially" means partial support. The usage method is consistent across platforms, and the effect is aligned with the iOS or Android effect.
 
 | Name                  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Type           | Required | Platform | HarmonyOS Support |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | -------- | -------- | ----------------- |

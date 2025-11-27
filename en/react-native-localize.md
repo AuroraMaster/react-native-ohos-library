@@ -14,16 +14,15 @@
 
 > [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-localize)
 
-This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-localize`, After introducing the new version of the third-party library, The version correspondence details are as follows:
+Find the matching version information in the release address of a third-party library:
 
-| Version                        | Package Name                                  | Repository                                                   | Release                                                      |
-| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <= 3.1.0-0.0.1@deprecated | @react-native-oh-tpl/react-native-localize | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-localize) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-localize/releases) |
-| > 3.1.0                        | @react-native-ohos/react-native-localize       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-localize) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localize/releases) |
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------- |
+| <= 3.1.0-0.0.1@deprecated | @react-native-oh-tpl/react-native-localize | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-localize) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-localize/releases) | 0.72 |
+| 3.1.0 | @react-native-ohos/react-native-localize | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-localize) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localize/releases) | 0.72 |
+| 3.4.2                        | @react-native-ohos/react-native-localize       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-localize) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localize/releases) | 0.77 |
 
 ## Installation and Usage
-
-Find the matching version information in the release address of a third-party library: [@react-native-ohos/react-native-localize Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localize/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -123,16 +122,18 @@ export default LocalizeDemo;
 
 Version > @react-native-ohos/react-native-localize@3.1.0, compatible with codegen-lib for generating bridge code.
 
-this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
+This repository has been adapted to `Codegen`. You need to actively execute the generation of third-party library bridge code before using it. For details, see [Codegen Usage Guide](/en/codegen.md).
+
+**Note:** 0.77 does not require Codegen execution.
 
 ## Link
 
-Version > @react-native-ohos/react-native-localize@3.1.0 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Version > @react-native-ohos/react-native-localize@3.1.0 now supports Autolink without requiring manual configuration.
 Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-Currently, Version <= @react-native-oh-tpl/react-native-localize@3.1.0-0.0.1@deprecated does not support AutoLink. Therefore, you need to manually configure the linking.
+Version <= @react-native-oh-tpl/react-native-localize@3.1.0-0.0.1@deprecated does not support AutoLink. Therefore, you need to manually configure the linking.
 
-Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+First, open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
 ### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
 
@@ -156,6 +157,17 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
+- 0.72
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-oh-tpl/react-native-localize": "file:../../node_modules/@react-native-oh-tpl/react-native-localize/harmony/rn_localize.har"
+  }
+```
+
+- 0.77
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -176,13 +188,61 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 3. Introducing RNLocalizePackage to ArkTS
+### 3. Configuring CMakeLists and Introducing RNLocalizePackage (Only for 0.77)
+
+```diff
+...
+
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_END: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-localize/src/main/cpp" ./rn_localize)
+# RNOH_END: manual_package_linking_1
+
+add_library(rnoh_app SHARED
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_localize)
+# RNOH_BEGIN: manual_package_linking_2
+```
+
+Open the `entry/src/main/cpp/PackageProvider.cpp` file and add:
+
+```diff
+#include "RNOH/PackageProvider.h"
++ #include "RNLocalizePackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
++        std::make_shared<RNLocalizePackage>(ctx)
+}
+```
+
+### 4. Introducing RNLocalizePackage to ArkTS
 
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
 ```diff
   ...
-  
+// 0.72
++ import { RNLocalizePackage } from '@react-native-oh-tpl/react-native-localize/ts';
+
+// 0.77
 + import { RNLocalizePackage } from '@react-native-ohos/react-native-localize/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -193,7 +253,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4. Running
+### 5. Running
 
 Click the `sync` button in the upper right corner.
 
@@ -210,9 +270,10 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+The following versions have been verified:
 
-Check the release version information in the release address of the third-party library: [@react-native-ohos/react-native-localize Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localize/releases)
+1. RNOH:0.72.28; SDK:HarmonyOS NEXT DB2; IDE:DevEco Studio 5.0.3.500; ROM:3.0.0.28;
+2. RNOH: 0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
 
 ## API
 
@@ -221,20 +282,20 @@ Check the release version information in the release address of the third-party 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
 
-| Name                      | Description                                    | Required | Platform | HarmonyOS Support |
-|---------------------------| ---------------------------------------------- | -------- |----------|-------------------|
-| getLocales()              | Returns the user preferred locales, in order.             | No       | All      | yes               |
-| getNumberFormatSettings() | Returns number formatting settings. | No       | All      | yes               |
-| getCurrencies()           | Returns the user preferred currency codes, in order. | No       | All      | yes               |
-| getCountry()              | Returns the user current country code (based on its device locale, not on its position).                                  | No       | All      | yes               |
-| getCalendar()             | Returns the user preferred calendar format. | No       | All      | yes               |
-| getTemperatureUnit()      | Returns the user preferred temperature unit. | No       | All      | No                |
-| getTimeZone()             | Returns the user preferred timezone (based on its device settings, not on its position).             | No       | All      | yes               |
-| uses24HourClock()         | Returns true if the user prefers 24h clock format, false if they prefer 12h clock format. | No       | All      | yes               |
-| usesMetricSystem()        | Returns true if the user prefers metric measure system, false if they prefer imperial. | No       | All      | No                |
-| usesAutoDateAndTime()     | Tells if the automatic date & time setting is enabled on the phone. Android only                                 | No       | Android  | No                |
-| usesAutoTimeZone()        | Tells if the automatic time zone setting is enabled on the phone. Android only | No       | Android  | No                |
-| findBestLanguageTag()     | Returns the best language tag possible and its reading direction | No       | All      | yes               |
+| Name                                     | Description                                                  | Required | Platform | HarmonyOS Support |
+| ---------------------------------------- | ------------------------------------------------------------ | -------- | -------- | ----------------- |
+| getLocales()                             | Returns the user preferred locales, in order.                | No       | All      | yes               |
+| getNumberFormatSettings()                | Returns number formatting settings.                          | No       | All      | yes               |
+| getCurrencies()                          | Returns the user preferred currency codes, in order.         | No       | All      | yes               |
+| getCountry()                             | Returns the user current country code (based on its device locale, not on its position). | No       | All      | yes               |
+| getCalendar()                            | Returns the user preferred calendar format.                  | No       | All      | yes               |
+| getTemperatureUnit()                     | Returns the user preferred temperature unit.                 | No       | All      | No                |
+| getTimeZone()                            | Returns the user preferred timezone (based on its device settings, not on its position). | No       | All      | yes               |
+| uses24HourClock()                        | Returns true if the user prefers 24h clock format, false if they prefer 12h clock format. | No       | All      | yes               |
+| usesMetricSystem()                       | Returns true if the user prefers metric measure system, false if they prefer imperial. | No       | All      | No                |
+| usesAutoDateAndTime()                    | Tells if the automatic date & time setting is enabled on the phone. Android only | No       | Android  | No                |
+| usesAutoTimeZone()                       | Tells if the automatic time zone setting is enabled on the phone. Android only | No       | Android  | No                |
+| findBestLanguageTag()                    | Returns the best language tag possible and its reading direction | No       | All      | yes               |
 
 ## Known Issues
 - [ ]  Temperature and length units cannot be obtained in HarmonyOS  [issue#2](https://github.com/react-native-oh-library/react-native-localize/issues/2)

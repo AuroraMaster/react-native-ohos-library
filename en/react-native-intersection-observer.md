@@ -1,24 +1,21 @@
-> Template version: v0.2.2
+> Template version: v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-intersection-observer</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/zhbhun/react-native-intersection-observer">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/zhbhun/react-native-intersection-observer/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-        <!-- <img src="https://img.shields.io/badge/license-Apache-blue.svg" alt="License" /> -->
-    </a>
-</p>
 
+This project is based on [react-native-intersection-observer@0.2.0](https://github.com/zhbhun/react-native-intersection-observer/tree/0.2.0).
 
-> [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-intersection-observer/tree/sig)
+Please visit the Release release address of the third-party library to view the corresponding version information:
+
+| Version | Releases info                                                     | Support RN version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+|  0.2.0  | [@react-native-oh-tpl/react-native-intersection-observer Releases](https://github.com/react-native-oh-library/react-native-intersection-observer/releases) | 0.72       |
+| 0.3.0   | [@react-native-ohos/react-native-intersection-observer Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-intersection-observer/releases)     | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 ## Installation and Usage
-
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-intersection-observer Releases](https://github.com/react-native-oh-library/react-native-intersection-observer/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -29,13 +26,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# 0.72 
 npm install @react-native-oh-tpl/react-native-intersection-observer
+
+# 0.77 
+npm install @react-native-ohos/react-native-intersection-observer
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72 
 yarn add @react-native-oh-tpl/react-native-intersection-observer
+
+# 0.77 
+yarn add @react-native-ohos/react-native-intersection-observer
 ```
 
 <!-- tabs:end -->
@@ -80,10 +85,10 @@ export default App;
 
 #### Compatibility
 
-This document is verified based on the following versions:
+The content in this document has been verified under the following environment:
 
-1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Preview2; IDE：DevEco Studio 5.0.3.200; ROM：205.0.0.18;
-2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+1. RNOH: 0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## Properties
 

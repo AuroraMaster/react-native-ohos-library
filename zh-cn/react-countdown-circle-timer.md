@@ -13,6 +13,12 @@
 > [!TIP] [Github 地址](https://github.com/vydimitrov/react-countdown-circle-timer)
 
 ## 安装与使用
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本| 支持RN版本 |
+| ---------- | ---------- |
+| 3.2.1      | 0.72       |
+| 3.2.1      | 0.77       |
 
 <!-- tabs:start -->
 
@@ -100,25 +106,25 @@ const styles = StyleSheet.create({
 
 > [!TIP] "HarmonyOS Support"列为 Yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-|          Name           |                                                                                         Description                                                                                         |              Type               | Required |  Platform   | HarmonyOS Support |
+|          名称           |                                                                                         描述                                                                                         |              类型               | 是否必需 |  支持的平台   | 是否支持HarmonyOS |
 | :---------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------: | :------: | :---------: | :---------------: |
-|        duration         |                                                                                Countdown duration in seconds                                                                                |             number              |   Yes    | Android/iOS |        Yes        |
-|         colors          |                      colors prop is either:(Single valid color in any format or URL to a gradient;Array of colors in HEX format. At least 2 colors should be provided)                      |       `string & string[]`       |    No    | Android/iOS |        Yes        |
-|       colorsTime        | Indicates the time when a color should switch to the next color. The first number is the countdown duration and the last one is 0 or goal. Works only when colors is an array of HEX colors |            number[]             |    No    | Android/iOS |        Yes        |
-|        isPlaying        |                                                                                   Play or pause animation                                                                                   |             boolean             |    No    | Android/iOS |        Yes        |
-|  initialRemainingTime   |                                                             Set the initial remaining time if it is different than the duration                                                             |             number              |    No    | Android/iOS |        Yes        |
-|     updateInterval      |                                  Update interval in seconds. Determines how often the timer updates. When set to 0 the value will update on each key frame                                  |             number              |    No    | Android/iOS |        Yes        |
-|          size           |                                                                             Width and height of the SVG element                                                                             |             number              |    No    | Android/iOS |        Yes        |
-|       strokeWidth       |                                                                                      Path stroke width                                                                                      |             number              |    No    | Android/iOS |        Yes        |
-|    trailStrokeWidth     |                                                                                     Trail stroke width                                                                                      |             number              |    No    | Android/iOS |        Yes        |
-|      strokeLinecap      |                                                                                    Path stroke line cap                                                                                     |    `round 、 square 、 butt`    |    No    | Android/iOS |        Yes        |
-|        rotation         |                                                                              Progress path rotation direction                                                                               | `clockwise 、 counterclockwise` |    No    | Android/iOS |        Yes        |
-|        isGrowing        |                                                            Indicated if the progress path should be growing instead of shrinking                                                            |             boolean             |    No    | Android/iOS |        Yes        |
-|       trailColor        |                                                                      Circle trail color - takes any valid color format                                                                      |             string              |    No    | Android/iOS |        Yes        |
-| isSmoothColorTransition |                                                            Indicates if the colors should smoothly transition to the next color                                                             |             boolean             |    No    | Android/iOS |        Yes        |
-|        children         |                                                          Render function to customize the time/content in the center of the circle                                                          |            function             |    No    | Android/iOS |        Yes        |
-|       onComplete        |                                                                             On animation complete event handler                                                                             |            function             |    No    | Android/iOS |        Yes        |
-|        onUpdate         |                                                                           On remaining time update event handler                                                                            |            function             |    No    | Android/iOS |        Yes        |
+|        duration         |                                                                                倒计时持续时间（秒）                                                                                |             number              |   Yes    | Android/iOS |        Yes        |
+|         colors          |                      colors 属性可以是：（任意格式的单一有效颜色或渐变的 URL；HEX 格式的颜色数组。至少应提供 2 种颜色）                      |       `string & string[]`       |    No    | Android/iOS |        Yes        |
+|       colorsTime        | 表示颜色应切换到下一种颜色的时间。第一个数字是倒计时时长，最后一个数字是 0 或目标值。仅在 colors 是 HEX 颜色数组时有效 |            number[]             |    No    | Android/iOS |        Yes        |
+|        isPlaying        |                                                                                   播放或暂停动画                                                                                   |             boolean             |    No    | Android/iOS |        Yes        |
+|  initialRemainingTime   |                                                             如果与持续时间不同，请设置初始剩余时间                                                             |             number              |    No    | Android/iOS |        Yes        |
+|     updateInterval      |                                  更新间隔（秒）。决定计时器更新的频率。设置为0时，数值将在每个关键帧上更新                                  |             number              |    No    | Android/iOS |        Yes        |
+|          size           |                                                                             SVG 元素的宽度和高度                                                                             |             number              |    No    | Android/iOS |        Yes        |
+|       strokeWidth       |                                                                                      路径笔画宽度                                                                                      |             number              |    No    | Android/iOS |        Yes        |
+|    trailStrokeWidth     |                                                                                     轨迹笔触宽度                                                                                      |             number              |    No    | Android/iOS |        Yes        |
+|      strokeLinecap      |                                                                                    路径描边线端点                                                                                     |    `round 、 square 、 butt`    |    No    | Android/iOS |        Yes        |
+|        rotation         |                                                                              进度条旋转方向                                                                               | `clockwise 、 counterclockwise` |    No    | Android/iOS |        Yes        |
+|        isGrowing        |                                                            指示进度条的路径应该是增长而不是缩小                                                            |             boolean             |    No    | Android/iOS |        Yes        |
+|       trailColor        |                                                                      圆圈轨迹颜色 - 可以使用任何有效的颜色格式                                                                      |             string              |    No    | Android/iOS |        Yes        |
+| isSmoothColorTransition |                                                            指示颜色是否应平滑过渡到下一个颜色                                                            |             boolean             |    No    | Android/iOS |        Yes        |
+|        children         |                                                          渲染函数，用于自定义圆心的时间/内容                                                          |            function             |    No    | Android/iOS |        Yes        |
+|       onComplete        |                                                                             在动画完成事件处理程序上                                                                             |            function             |    No    | Android/iOS |        Yes        |
+|        onUpdate         |                                                                           在剩余时间更新事件处理程序                                                                            |            function             |    No    | Android/iOS |        Yes        |
 
 ## 遗留问题
 

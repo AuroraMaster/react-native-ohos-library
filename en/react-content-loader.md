@@ -14,26 +14,39 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-content-loader)
 
+The repository for this third-party library has been migrated to Gitcode, and it now supports direct download from npm. The new package name is: `@react-native-ohos/react-content-loader`. The specific version relationships are as follows:
+
+| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
+| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
+| 7.0.2  | @react-native-oh-tpl/react-content-loader | [Github](https://github.com/react-native-oh-library/react-content-loader) | [Github Releases](https://github.com/react-native-oh-library/react-content-loader/releases) | 0.72 |
+| 7.1.0 | @react-native-ohos/react-content-loader   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-content-loader) | [GitCode Releases]() | 0.77 |
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-content-loader Releases](https://github.com/react-native-oh-library/react-content-loader/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+For older versions not published to npm, please refer to the [Installation Guide](/en/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
-
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# V7.0.2 for RN0.72
 npm install @react-native-oh-tpl/react-content-loader
+
+# V7.1.0 for RN0.77
+npm install @react-native-ohos/react-content-loader
 ```
 
 #### **yarn**
 
 ```bash
+# V7.0.2 for RN0.72
 yarn add @react-native-oh-tpl/react-content-loader
+
+# V7.1.0 for RN0.77
+yarn add @react-native-ohos/react-content-loader
 ```
 
 <!-- tabs:end -->
@@ -91,7 +104,9 @@ If it is not included, follow the guide provided in [@react-native-oh-tpl/react-
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-content-loader Releases](https://github.com/react-native-oh-library/react-content-loader/releases)
+This document is verified based on the following versions:
+1. RNOH:0.72.96; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
+2. RNOH:0.77.18; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
 
 ## Properties
 
@@ -119,6 +134,7 @@ Check the release version information in the release address of the third-party 
 | style             | css style                                                                                                                                                                                                                                                                                 | React.CSSProperties | no       | React DOM only | no                |
 
 ## Known Issues
+
 
 - [ ] beforeMaskProperties 设置非 svg 暴露出来的组件时无效: [issue#256](https://github.com/react-native-oh-library/react-native-harmony-svg/issues/256)
 

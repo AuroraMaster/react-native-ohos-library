@@ -14,14 +14,14 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-content-loader)
 
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`react-content-loader`，具体版本所属关系如下：
+
+| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
+| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
+| 7.0.2  | @react-native-oh-tpl/react-content-loader | [Github](https://github.com/react-native-oh-library/react-content-loader) | [Github Releases](https://github.com/react-native-oh-library/react-content-loader/releases) | 0.72 |
+| 7.1.0 | @react-native-ohos/react-content-loader   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-content-loader) | [GitCode Releases]() | 0.77 |
+
 ## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 7.0.2      | [@react-native-oh-tpl/react-content-loader Releases](https://github.com/react-native-oh-library/react-content-loader/releases) | 0.72       |
-| 7.0.3      | [@react-native-ohos/react-content-loader Releases]()         | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -36,7 +36,7 @@
 # V7.0.2 for RN0.72
 npm install @react-native-oh-tpl/react-content-loader
 
-# V7.0.3 for RN0.77
+# V7.1.0 for RN0.77
 npm install @react-native-ohos/react-content-loader
 ```
 
@@ -46,7 +46,7 @@ npm install @react-native-ohos/react-content-loader
 # V7.0.2 for RN0.72
 yarn add @react-native-oh-tpl/react-content-loader
 
-# V7.0.3 for RN0.77
+# V7.1.0 for RN0.77
 yarn add @react-native-ohos/react-content-loader
 ```
 
@@ -97,13 +97,10 @@ export function AppExample() {
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+在以下版本验证通过：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 7.0.2      | [@react-native-oh-tpl/react-content-loader Releases](https://github.com/react-native-oh-library/react-content-loader/releases) | 0.72       |
-| 7.0.3      | [@react-native-ohos/react-content-loader Releases]()         | 0.77       |
-
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.1 Release SDK; IDE：DevEco Studio 5.1.1.840; ROM：6.0.0;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release SDK; IDE：DevEco Studio 5.1.1.840; ROM：6.0.0;
 
 ## 属性
 
@@ -115,20 +112,20 @@ export function AppExample() {
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| animate  | Opt-out of animations with false         | boolean  | no | all      | yes |
-| speed  | Animation speed in seconds         | number  | no | all      | yes |
-| rtl  | Content right-to-left         | boolean  | no | all      | yes |
-| backgroundColor  | Used as background of animation         | string  | no | all      | yes |
-| viewBox  | Use viewBox props to set a custom viewBox value,for more information about how to use it,read the article [How to Scale SVG](https://css-tricks.com/scale-svg/)         | string  | no | all      | yes |
-| foregroundColor  | Used as the foreground of animation         | string  | no | all      | yes |
-| interval  |  Animation interval in seconds         | number  | no | all      | yes |
-| beforeMask  | Define custom shapes before content         | JSX.Element  | no | all      | partially |
-| uniqueKey  | Use the same value of prop key, that will solve inconsistency on the SSR         | string  | no | React DOM only      | no |
-| title  |  It's used to describe what element it is. Use '' (empty string) to remove.    | string  | no | React DOM only      | no |
-| baseUrl  | Required if you're using `<base url="/" />` document `<head/>`. This prop is common used as: `<ContentLoader baseUrl={window.location.pathname} />` which will fill the SVG attribute with the relative path. Related [#93](https://github.com/danilowoz/react-content-loader/issues/93). | string  | no | React DOM only      | no |
-| backgroundOpacity  |  Background opacity (0 = transparent, 1 = opaque)used to solve an issue in [Safari](#safari--ios)     | number  | no | React DOM only      | no |
-| foregroundOpacity  |  Animation opacity (0 = transparent, 1 = opaque)used to solve an issue in [Safari](#safari--ios)     | number  | no | React DOM only      | no |
-| style  |  css style     | React.CSSProperties  | no | React DOM only      | no |
+| animate  | 设置为 false 以禁用动画         | boolean  | no | all      | yes |
+| speed  | 动画速度（以秒为单位）         | number  | no | all      | yes |
+| rtl  | 内容从右到左         | boolean  | no | all      | yes |
+| backgroundColor  | 用作动画的背景         | string  | no | all      | yes |
+| viewBox  | 使用 viewBox 属性设置自定义 viewBox 值，有关如何使用的更多信息，请阅读文章 [How to Scale SVG](https://css-tricks.com/scale-svg/)         | string  | no | all      | yes |
+| foregroundColor  | 用作动画的前景         | string  | no | all      | yes |
+| interval  |  动画间隔（以秒为单位）         | number  | no | all      | yes |
+| beforeMask  | 在内容之前定义自定义形状         | JSX.Element  | no | all      | partially |
+| uniqueKey  | 使用相同的 prop key 值，这将解决 SSR 中的不一致性问题         | string  | no | React DOM only      | no |
+| title  |  用于描述元素是什么。使用 ''（空字符串）来移除。    | string  | no | React DOM only      | no |
+| baseUrl  | 如果你在文档的 <head/> 中使用<base url="/" />，那么这个属性是必需的。这个属性通常这样使用：<ContentLoader baseUrl={window.location.pathname} />`，它将用相对路径填充 SVG 属性。相关[#93](https://github.com/danilowoz/react-content-loader/issues/93). | string  | no | React DOM only      | no |
+| backgroundOpacity  |  背景透明度（0 = 透明，1 = 不透明）用于解决 [Safari](#safari--ios)中的一个问题     | number  | no | React DOM only      | no |
+| foregroundOpacity  |  动画透明度（0 = 透明，1 = 不透明）用于解决 [Safari](#safari--ios)中的一个问题    | number  | no | React DOM only      | no |
+| style  |  css 样式     | React.CSSProperties  | no | React DOM only      | no |
 
 
 ## 遗留问题

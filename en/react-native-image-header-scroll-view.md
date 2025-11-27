@@ -12,16 +12,16 @@
     </a>
 </p>
 
-
-
-
-
 > [!TIP] [Github address](https://github.com/bamlab/react-native-image-header-scroll-view)
 
+Please go to the Releases page of the third-party library to check the compatible version information:
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+| 0.10.3 | @react-native-oh-tpl/react-native-image-header-scroll-view | [Github](https://github.com/react-native-oh-library/react-native-image-header-scroll-view) | [Github Releases](https://github.com/react-native-oh-library/react-native-image-header-scroll-view/releases) | 0.72 |
+| 1.1.0                        | @react-native-ohos/react-native-image-header-scroll-view     | [Github](https://github.com/bamlab/react-native-image-header-scroll-view) | [Github Releases](https://github.com/bamlab/react-native-image-header-scroll-view/releases) | 0.77 |
+
 ## Installation and Usage
-
-
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-image-header-scroll-view Releases](https://github.com/react-native-oh-library/react-native-image-header-scroll-view/releases). For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -30,13 +30,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-image-header-scroll-view
+
+# 0.77
+npm install @react-native-ohos/react-native-image-header-scroll-view
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-image-header-scroll-view
+
+# 0.77
+yarn add @react-native-ohos/react-native-image-header-scroll-view
 ```
 
 <!-- tabs:end -->
@@ -155,6 +163,7 @@ function HeaderImageExample () {
             useNativeDriver: true,
           }).start();
         } else {
+          // If current is not visible, execute fade out animation
           Animated.timing(fadeAnim, {
             toValue: 0,
             duration: 100,
@@ -228,9 +237,10 @@ export default HeaderImageExample;
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+Verified on the following versions:
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-image-header-scroll-view Releases](https://github.com/react-native-oh-library/react-native-image-header-scroll-view/releases)
+1. RNOH:0.72.28; SDK:HarmonyOS NEXT DB2; IDE:DevEco Studio 5.0.3.500; ROM:3.0.0.28;
+2. RNOH: 0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
 
 ## API
 
@@ -291,8 +301,8 @@ Check the release version information in the release address of the third-party 
 ## Known Issues
 
 ## Others
--  foregroundExtrapolate属性无法生效，与Android、iOS一致：[issue#2](https://github.com/bamlab/react-native-image-header-scroll-view/issues/132 )。
--  ScrollViewComponent属性无法滚动，与Android、iOS一致：[issue#3](https://github.com/bamlab/react-native-image-header-scroll-view/issues/133 )。
+- The foregroundExtrapolate property does not take effect, consistent with Android and iOS: [issue#2](https://github.com/bamlab/react-native-image-header-scroll-view/issues/132).
+- The ScrollViewComponent property cannot scroll, consistent with Android and iOS: [issue#3](https://github.com/bamlab/react-native-image-header-scroll-view/issues/133).
 
 
 

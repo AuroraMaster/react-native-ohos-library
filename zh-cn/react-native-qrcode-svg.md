@@ -14,24 +14,36 @@
 
 > [!TIP] [Github 地址](https://github.com/awesomejerry/react-native-qrcode-svg)
 
+| Version  | Supported RN Version  |
+| -----    | -------------------- |
+| 6.2.0  |  0.72 |
+| 6.3.20 |  0.77 |
+
 ## 安装与使用
 
+
 进入到工程目录并输入以下命令：
-
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# V6.2.0
 npm install react-native-qrcode-svg@6.2.0
+
+# V6.3.20
+npm install react-native-qrcode-svg@6.3.20
 ```
 
 #### **yarn**
 
 ```bash
+# V6.2.0
 yarn add react-native-qrcode-svg@6.2.0
+
+# V6.3.20
+yarn add react-native-qrcode-svg@6.3.20
 ```
 
 <!-- tabs:end -->
@@ -51,8 +63,7 @@ export const SvgDemo = () => {
         <View style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
             <QRCode
                 size={300}
-              
-                value="http://awesome.link.qr"
+                value="HelloWorld"
             />
         </View>
     )
@@ -69,9 +80,13 @@ export const SvgDemo = () => {
 
 ### 兼容性
 
-在以下版本验证通过
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-1.RNOH：0.72.27; SDK：HarmonyOS-Next-DB1 5.0.0.29(SP1); IDE：DevEco Studio 5.0.3.400; ROM：3.0.0.25;
+在下述版本验证通过：
+
+1. RNOH：0.72.27; SDK：HarmonyOS-Next-DB1 5.0.0.29(SP1); IDE：DevEco Studio 5.0.3.400; ROM：3.0.0.25;
+2. RNOH：0.72.96; SDK：HarmonyOS 5.1.1 Release SDK; IDE：DevEco Studio 5.1.1.840; ROM：6.0.0;
+3. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release SDK; IDE：DevEco Studio 5.1.1.840; ROM：6.0.0;
 
 ## 属性
 
@@ -81,22 +96,25 @@ export const SvgDemo = () => {
 
 | Name                   | Description                                                                                                               | Type     | Required | Platform | HarmonyOS Support |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | -------- | ----------------- |
-| `size`                 | Size of rendered image in pixels                                                                                          | number   | No       | iOS,Android      | yes               |
-| `value`                | String Value of the QR code                                                                                               | string   | yes      | iOS,Android      | yes               |
-| `color`                | Color of the QR code                                                                                                      | string   | No       | iOS,Android      | yes               |
-| `backgroundColor`      | Color of the background                                                                                                   | string   | No       | iOS,Android      | yes               |
-| `enableLinearGradient` | enables or disables linear gradient                                                                                       | boolean  | No       | iOS,Android      | yes                |
-| `linearGradient`       | array of 2 rgb colors used to create the linear gradient                                                                  | string[] | No       | iOS,Android      | yes                |
-| `gradientDirection`    | the direction of the linear gradient                                                                                      | string   | No       | iOS,Android      | yes                |
-| `logo`                 | Image source object. Ex. {uri: 'base64string'} or {require('pathToImage')}                                                | object   | No       | iOS,Android      | yes               |
-| `logoSize`             | Size of the imprinted logo. Bigger logo = less error correction in QR code                                                | number   | No       | iOS,Android      | yes               |
-| `logoBackgroundColor`  | The logo gets a filled quadratic background with this color. Use 'transparent' if your logo already has its own backdrop. | string   | No       | iOS,Android      | yes               |
-| `logoMargin`           | logo's distance to its wrapper                                                                                            | number   | No       | iOS,Android      | yes               |
-| `logoBorderRadius`     | the border-radius of logo image (Android is not supported)                                                                | number   | No       | iOS      | yes                |
-| `quietZone`            | quiet zone around the qr in pixels (useful when saving image to gallery)                                                  | number   | No       | iOS,Android      | yes                |
-| `getRef`               | Get SVG ref for further usage                                                                                             | callback | No       | iOS,Android      | yes            |
-| `ecl`                  | Error correction level                                                                                                    | string   | No       | iOS,Android      | yes               |
-| `onError(error)`       | Callback fired when exception happened during the code generating process                                                 | callback | No       | iOS,Android      | yes            |
+| `size`                 | 渲染图像的尺寸，以像素为单位                                                                                              | number   | No       | iOS,Android      | yes               |
+| `value`                | 二维码的字符串值                                                                                                          | string   | yes      | iOS,Android      | yes               |
+| `color`                | 二维码的颜色                                                                                                              | string   | No       | iOS,Android      | yes               |
+| `backgroundColor`      | 背景颜色                                                                                                                  | string   | No       | iOS,Android      | yes               |
+| `enableLinearGradient` | 启用或禁用线性渐变                                                                                                        | boolean  | No       | iOS,Android      | yes                |
+| `linearGradient`       | 用于创建线性渐变的2个RGB颜色数组                                                                                          | string[] | No       | iOS,Android      | yes                |
+| `gradientDirection`    | 线性渐变的方向                                                                                                            | string   | No       | iOS,Android      | yes                |
+| `logo`                 | 图像源对象。例如：{uri: 'base64string'} 或 {require('pathToImage')}                                                       | V6.2.0 : `ImageSourcePropType` <br/> v6.3.20 :  `ImageSourcePropType  \| string`  | No       | iOS,Android      | yes               |
+| `logoSize`             | 嵌入logo的尺寸。较大的logo = 二维码中较少的纠错能力                                                                       | number   | No       | iOS,Android      | yes               |
+| `logoBackgroundColor`  | logo会获得一个以此颜色填充的正方形背景。如果您的logo已有自己的背景，请使用'transparent'                                    | string   | No       | iOS,Android      | yes               |
+| `logoMargin`           | logo与其包装器的距离                                                                                                      | number   | No       | iOS,Android      | yes               |
+| `logoBorderRadius`     | logo图像的边框半径（Android不支持）                                                                                       | number   | No       | iOS      | yes                |
+| `quietZone`            | 二维码周围的静区（quiet zone），以像素为单位（在保存图像到相册时有用）                                                    | number   | No       | iOS,Android      | yes                |
+| `getRef`               | 获取SVG引用以供进一步使用                                                                                                 | callback | No       | iOS,Android      | yes            |
+| `ecl`                  | 错误纠正等级                                                                                                              | string   | No       | iOS,Android      | yes               |
+| `onError(error)`       | 在代码生成过程中发生异常时触发的回调函数                                                                                  | callback | No       | iOS,Android      | yes            |
+| `logoSVG`<sup>6.3.20+</sup> | 作为logo渲染的SVG。可以是svg字符串，也可以是React组件（如果您使用'@svgr/webpack'或类似工具）。如果同时提供了此prop和`logo`，则此prop优先，`logo`将被忽略 | React.FC<SvgProps> \| string | No | All | yes |
+| `logoColor`<sup>6.3.20+</sup> | 如果通过`logoSVG` prop提供logo，此颜色将设置为其`fill`属性，否则无效 | string | No | All | yes |
+| `testID`<sup>6.3.20+</sup> | 用于测试的testID | string | No | All | yes |
 
 ## 遗留问题
 
@@ -105,3 +123,4 @@ export const SvgDemo = () => {
 ## 开源协议
 
 本项目基于 [The MIT License (MIT)](https://github.com/awesomejerry/react-native-qrcode-svg/blob/master/LICENSE) ，请自由地享受和参与开源。
+

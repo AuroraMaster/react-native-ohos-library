@@ -14,24 +14,37 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-date-picker)
 
-## Installation and Usage
+This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-date-picker`, After introducing the new version of the third-party library, The version correspondence details are as follows:
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-date-picker Releases](https://github.com/react-native-oh-library/react-native-date-picker/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+| Third-party Library Version | Release Information                                          | Supported RN Version |
+| --------------------------- | ------------------------------------------------------------ | -------------------- |
+| 5.0.5                       | [@react-native-oh-tpl/react-native-date-picker Releases](https://github.com/react-native-oh-library/react-native-date-picker/releases) | 0.72                 |
+| 5.1.0                       | [@react-native-ohos/react-native-date-picker Releases]()     | 0.77                 |
+
+## Installation and Usage
 
 Go to the project directory and execute the following instruction:
 
-
+<!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-date-picker
+
+# 0.77
+npm install @react-native-ohos/react-native-date-picker
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-date-picker
+
+# 0.77
+yarn add @react-native-ohos/react-native-date-picker
 ```
 
 The following code shows the basic use scenario of the repository:
@@ -93,16 +106,30 @@ Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
 Currently, two methods are available:
 
+- Use the HAR file.
+- Directly link to the source code。
+
 Method 1 (recommended): Use the HAR file.
 
 > [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
+-  0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-date-picker": "file:../../node_modules/@react-native-oh-tpl/react-native-date-picker/harmony/date_picker.har"
+  }
+```
+
+-  0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-date-picker": "file:../../node_modules/@react-native-ohos/react-native-date-picker/harmony/date_picker.har"
   }
 ```
 
@@ -119,31 +146,69 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-Open `entry/oh-package.json5` file and add the following dependencies:
+### 3.Configure CMakeLists and introduce RNDatePickerPackage
 
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-date-picker": "file:../../node_modules/@react-native-oh-tpl/react-native-date-picker/harmony/date_picker"
-  }
+> [!TIP] Only 0.77 requires configuration of CMakeLists and introduction of RNDatePickerPackage.
+
+Open `entry/src/main/cpp/CMakeLists. txt`  and add the following code:
+
+```diff
+txtproject(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++ set(OH_MODULE "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: add_package_subdirectories
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
++ add_subdirectory("${OH_MODULE}/@react-native-ohos/react-native-date-picker/src/main/cpp" ./date_picker)
+
+# RNOH_END: add_package_subdirectories
+
+add_library(rnoh_app SHARED
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: link_packages
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_date_picker)
+# RNOH_END: link_packages
 ```
 
-Click the `sync` button in the upper right corner.
+Open `entry/src/main/cpp/PackageProvider.cpp` and add the following code:
 
-Alternatively, run the following instruction on the terminal:
+```diff
+#include "RNOH/PackageProvider.h"
+#include "SamplePackage.h"
++ #include "DatePickerPackage.h"
 
-```bash
-cd entry
-ohpm install 
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+      std::make_shared<SamplePackage>(ctx),
++     std::make_shared<DatePickerPackage>(ctx), 
+    };
+}
 ```
 
-### 3. Introducing RNDatePicker Component to ArkTS
+### 4. Introducing RNDatePicker Component to ArkTS
 
-(If the code of the repository is written through CAPI, delete this section.)<br>Find `function buildCustomRNComponent()`, which is usually located in `entry/src/main/ets/pages/index.ets` or `entry/src/main/ets/rn/LoadBundle.ets`, and add the following code:
+Find `function buildCustomRNComponent()`, which is usually located in `entry/src/main/ets/pages/index.ets` or `entry/src/main/ets/rn/LoadBundle.ets`, and add the following code:
 
 ```diff
   ...
+//  0.72
 + import { RNDatePicker } from "@react-native-oh-tpl/react-native-date-picker"
+
+//  0.77
++ import { RNDatePicker } from "@react-native-ohos/react-native-date-picker"
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -170,13 +235,17 @@ const arkTsComponentNames: Array<string> = [
 + RNDatePicker.NAME, 
   ];
 ```
-### 4. Introducing RNDatePickerPackage to ArkTS
+### 5. Introducing RNDatePickerPackage to ArkTS
 
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
 ```diff
   ...
+//  0.72
 + import {RNDatePickerPackage} from '@react-native-oh-tpl/react-native-date-picker/ts';
+
+//  0.77
++ import {RNDatePickerPackage} from '@react-native-ohos/react-native-date-picker/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -186,7 +255,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 5. Running
+### 6. Running
 
 Click the `sync` button in the upper right corner.
 
@@ -203,10 +272,11 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+Verified in the following version:
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-date-picker Releases](https://github.com/react-native-oh-library/react-native-date-picker/releases)
+RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.200;ROM: 3.0.0.18;
 
+RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK;IDE: DevEco Studio  6.0.0.868;ROM:6.0.0.112;
 
 ## Properties 
 

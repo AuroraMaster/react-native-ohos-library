@@ -14,6 +14,10 @@
 
 > [!Tip] [GitHub address](https://github.com/easyui/react-native-ezswiper)
 
+| Version   | Support RN version |
+| ------------ | ---------- |
+| 1.3.0       | 0.72/0.77   |
+
 ## Installation and Usage
 
 Go to the project directory and execute the following instruction:
@@ -325,8 +329,9 @@ const styles = StyleSheet.create({
 
 This document is verified based on the following versions:
 
- 1.RNOH: 0.72.29; SDK：OpenHarmony-5.0.0.65; IDE：DevEco Studio 5.0.3.706; ROM：NEXT.0.0.65;
- 2.RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+ 1. RNOH: 0.72.29; SDK：OpenHarmony-5.0.0.65; IDE：DevEco Studio 5.0.3.706; ROM：NEXT.0.0.65;
+ 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+ 3. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM：NEXT 5.1.0.150; 
 
 ## Properties
 

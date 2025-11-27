@@ -18,17 +18,15 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/ReactNativeLocalization)
 
-## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-localization`，具体版本所属关系如下：
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 |-------| ------------------------------------------------------------ | ---------- |
 | 2.3.2@deprecated | [@react-native-oh-tpl/react-native-localization Releases(deprecated)](https://github.com/react-native-oh-library/react-native-localization/releases) | 0.72       |
-| 2.3.3 | [@react-native-ohos/react-native-localization Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localization/releases)                        | 0.72       |
-| 2.4.0 | [@react-native-ohos/react-native-localization Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localization/releases)                        | 0.77       |
+| 2.3.2            | [@react-native-oh-tpl/react-native-localization Releases](https://github.com/react-native-oh-library/ReactNativeLocalization/releases) | 0.72       |
+| 2.4.0            | [@react-native-ohos/react-native-localization Releases]()    | 0.77       |
 
-对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -240,7 +238,7 @@ ohpm install
 
 ```diff
   ...
-+ import { RNReactLocalizationPackage } from '@react-native-ohos/react-native-localization';
++ import { RNReactLocalizationPackage } from '@react-native-ohos/react-native-localization/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -250,7 +248,68 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.运行
+### 4.配置 CMakeLists 和引入 LocalizationPackage
+
+> [!TIP] 0.77 需要执行 
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-localization/src/main/cpp" ./localization)
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_localization)
+# RNOH_END: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "LocalizationPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++       std::make_shared<LocalizationPackage>(ctx),
+    };
+}
+```
+
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -267,15 +326,11 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+在下述版本验证通过：
 
-请到三方库的 Releases 发布地址查看配套的版本信息：
+RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-|-------| ------------------------------------------------------------ | ---------- |
-| 2.3.2@deprecated | [@react-native-oh-tpl/react-native-localization Releases(deprecated)](https://github.com/react-native-oh-library/react-native-localization/releases) | 0.72       |
-| 2.3.3 | [@react-native-ohos/react-native-localization Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localization/releases)                        | 0.72       |
-| 2.4.0 | [@react-native-ohos/react-native-localization Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localization/releases)                        | 0.77       |
+RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release SDK；IDE：DevEco Studio  6.0.0.868; ROM：6.0.0.112; 
 
 ## 静态方法
 
@@ -283,15 +338,15 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
-| ---- | :---------- | ---- | :------: | :------: | :----------------: |
-| setLanguage(languageCode)                 | force manually a particular language                         | void     |   yes    | iOS/Android |        yes        |
-| getLanguage()                             | get the current displayed language                           | string   |   yes    | iOS/Android |        yes        |
-| getInterfaceLanguage()                    | get the current device interface language                    | string   |   yes    | iOS/Android |        yes        |
-| formatString()                            | format the passed string replacing its placeholders with the other arguments strings | string   |   yes    | iOS/Android |        yes        |
-| getAvailableLanguages()                   | get an array of the languages passed in the constructor      | string[] |   yes    | iOS/Android |        yes        |
-| getString(key: string, language?: string) | character information based on the key value | string | yes | iOS/Android | yes |
-| setContent(props: any) | replace the NamedLocalization object without reinstantiating the object | void | yes | iOS/Android | yes |
+| Name                                      | Description                                                  | Type     | Required |  Platform   | HarmonyOS Support |
+| ----------------------------------------- | :----------------------------------------------------------- | -------- | :------: | :---------: | :---------------: |
+| setLanguage(languageCode)                 | 手动强制设置为特定语言                                       | void     |   yes    | iOS/Android |        yes        |
+| getLanguage()                             | 获取当前显示的语言                                           | string   |   yes    | iOS/Android |        yes        |
+| getInterfaceLanguage()                    | 获取当前设备的系统界面语言                                   | string   |   yes    | iOS/Android |        yes        |
+| formatString()                            | 格式化传入的字符串，用其他参数替换字符串中的占位符。         | string   |   yes    | iOS/Android |        yes        |
+| getAvailableLanguages()                   | 获取在构造函数中传入的语言数组                               | string[] |   yes    | iOS/Android |        yes        |
+| getString(key: string, language?: string) | 根据键（key）获取对应的字符信息。如果指定了 `language`，则获取特定语言的字符信息。 | string   |   yes    | iOS/Android |        yes        |
+| setContent(props: any)                    | 替换 `NamedLocalization` 对象的内容，而无需重新实例化该对象。 | void     |   yes    | iOS/Android |        yes        |
 
 ## 遗留问题
 
