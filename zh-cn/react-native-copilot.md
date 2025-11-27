@@ -17,6 +17,11 @@
 
 ## 安装与使用
 
+| 三方库版本 | 支持RN版本 |
+| ---------- | ---------- |
+| 3.3.2      | 0.72       |
+| 3.3.3      | 0.77       |
+
 <!-- tabs:start -->
 
 进入到工程目录并输入以下命令：
@@ -24,13 +29,21 @@
 #### **npm**
 
 ```bash
+# V3.3.2
 npm install --save react-native-copilot@3.3.2
+
+# V3.3.3
+npm install --save react-native-copilot@3.3.3
 ```
 
 #### **yarn**
 
 ```bash
+# V3.3.2
 yarn add react-native-copilot@3.3.2
+
+# V3.3.3
+yarn add react-native-copilot@3.3.3
 ```
 
 <!-- tabs:end -->
@@ -216,9 +229,9 @@ const styles = StyleSheet.create({
 
 ## Link
 
-本库在 HarmonyOS NEXT 侧实现依赖@react-native-oh-tpl/react-native-svg 的原生端代码，如已在 HarmonyOS NEXT 工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
+本库在 HarmonyOS NEXT 侧实现依赖react-native-svg 的原生端代码，如已在 HarmonyOS NEXT 工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
 
-如未引入请参照[@react-native-oh-tpl/react-native-svg 文档的 Link 章节](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-svg-capi.md#link)进行引入
+如未引入请参照[react-native-svg 文档的 Link 章节](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-svg-capi.md#link)进行引入
 
 ## 约束与限制
 
@@ -228,6 +241,7 @@ const styles = StyleSheet.create({
 
 1. RNOH：0.72.27; SDK：HarmonyOS-Next-DB1 5.0.0.25; IDE：DevEco Studio 5.0.3.400SP7; ROM：3.0.0.25;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## 属性
 
@@ -237,15 +251,15 @@ const styles = StyleSheet.create({
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name            | Description                       | Type         | Required | Platform    | HarmonyOS Support |
-| --------------- | --------------------------------- | ------------ | -------- | ----------- | ----------------- |
-| CopilotProps    | Prompt Style Properties           | CopilotProps | no       | Android/iOS | partially         |
-| TooltipProps    | Prompt Tool Properties            | TooltipProps | no       | Android/iOS | yes               |
-| CopilotProvider | Custom Tooltip Styles             | function     | no       | Android/iOS | yes               |
-| CopilotStep     | Customizing Component Step Styles | function     | no       | Android/iOS | yes               |
-| DefaultUI       | Default UI Attributes             | object       | no       | Android/iOS | yes               |
-| useCopilot      | Use Prompt Style                  | function     | no       | Android/iOS | yes               |
-| walkthroughable | Wrappable Components              | function     | no       | Android/iOS | yes               |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `CopilotProps` | 提示样式属性 | CopilotProps | no | Android/iOS | partially |
+| `TooltipProps` | 提示工具属性 | TooltipProps | no | Android/iOS | yes |
+| `CopilotProvider` | 自定义提示框样式 | function | no | Android/iOS | yes |
+| `CopilotStep` | 自定义组件步骤样式 | function | no | Android/iOS | yes |
+| `DefaultUI` | 默认 UI 属性 | object | no | Android/iOS | yes |
+| `useCopilot` | 使用提示样式 | function | no | Android/iOS | yes |
+| `walkthroughable` | 可包裹组件 | function | no | Android/iOS | yes |
 
 ### CopilotProps
 

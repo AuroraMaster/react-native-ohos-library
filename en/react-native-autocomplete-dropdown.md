@@ -18,18 +18,31 @@
 
 ## Installation and Usage
 
+| Version | RN Version |
+| ---------- | ---------- |
+| 4.0.0      | 0.72       |
+| 4.3.1      | 0.77       |
+
 <!-- tabs:start -->
 
 ####  npm
 
 ```bash
-npm install react-native-autocomplete-dropdown@4.0.0-rc.5
+# V4.0.0
+npm install react-native-autocomplete-dropdown@4.0.0
+
+# V4.3.1
+npm install react-native-autocomplete-dropdown@4.3.1
 ```
 
 #### yarn
 
 ```bash
-yarn add react-native-autocomplete-dropdown@4.0.0-rc.5
+# V4.0.0
+yarn add react-native-autocomplete-dropdown@4.0.0
+
+# V4.3.1
+yarn add react-native-autocomplete-dropdown@4.3.1
 ```
 
 <!-- tabs:end -->
@@ -103,6 +116,7 @@ If it is not included, follow the guide provided in @react-native-oh-tpl/react-n
 This document is verified based on the following versions:
 
 1. RNOH: 0.72.27; SDK：HarmonyOS-Next-DB1 5.0.0.25; IDE: DevEco Studio 5.0.3.400SP7; ROM: 3.0.0.25;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
    
 ## Properties

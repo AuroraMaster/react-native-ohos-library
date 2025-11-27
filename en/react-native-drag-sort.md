@@ -17,7 +17,14 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-drag-sort Releases](https://github.com/react-native-oh-library/react-native-drag-sort/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+
+Please refer to the Release page of the corresponding third-party library for version information:
+| Version | Releases                                                     | RN Version | 
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 2.4.4     | [@react-native-oh-tpl/react-native-drag-sort Releases](https://github.com/react-native-oh-library/react-native-drag-sort/releases) | 0.72       |
+| 2.5.0   | [@react-native-ohos/react-native-drag-sort Releases]()     | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -28,13 +35,21 @@ Go to the project directory and execute the following instruction:
 #### **yarn**
 
 ```bash
+# V2.4.4
 yarn add @react-native-oh-tpl/react-native-drag-sort
+
+# V2.5.0
+yarn add @react-native-ohos/react-native-drag-sort
 ```
 
 #### **npm**
 
 ```bash
+# V2.4.4
 npm install @react-native-oh-tpl/react-native-drag-sort
+
+# V2.5.0
+npm install @react-native-ohos/react-native-drag-sort
 ```
 
 ### Tip
@@ -571,7 +586,17 @@ const styles = StyleSheet.create({
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-drag-sort Releases](https://github.com/react-native-oh-library/react-native-drag-sort/releases)
+
+Please refer to the Release page of the corresponding third-party library for version information:
+| Version | Releases                                                     | RN Version | 
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 2.4.4     | [@react-native-oh-tpl/react-native-drag-sort Releases](https://github.com/react-native-oh-library/react-native-drag-sort/releases) | 0.72       |
+| 2.5.0   | [@react-native-ohos/react-native-drag-sort Releases]()     | 0.77       |
+
+The content of this document has been verified based on the following versions:
+
+1. RNOH: 0.72.98; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.0.3.906; ROM: NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## Properties
 

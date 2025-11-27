@@ -16,22 +16,40 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-picker Releases](https://github.com/react-native-oh-library/react-native-picker/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 4.3.9    | [@react-native-oh-tpl/react-native-picker Releases](https://github.com/react-native-oh-library/react-native-picker/releases)  | 0.72       |
+| 4.4.0    | [@react-native-ohos/react-native-picker Releases]()     | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
+
+
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-picker
+
+# 0.77
+npm install @react-native-ohos/react-native-picker
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-picker
+
+# 0.77
+yarn add @react-native-ohos/react-native-picker
 ```
 
 <!-- tabs:end -->
@@ -139,13 +157,20 @@ export default MyPicker;
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- 0.72
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-picker": "file:../../node_modules/@react-native-oh-tpl/react-native-picker/harmony/picker.har"
   }
 ```
-
+- 0.77
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-oh-tpl/react-native-picker": "file:../../node_modules/@react-native-ohos/react-native-picker/harmony/picker.har"
+  }
+```
 点击右上角的 `sync` 按钮
 
 或者在终端执行：
@@ -181,7 +206,11 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+# 0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-picker/src/main/cpp" ./picker)
+
+# 0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-picker/src/main/cpp" ./picker)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -221,10 +250,12 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 ### 4.在 ArkTs 侧引入 PickerViewPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
-
 ```diff
   ...
+  // 0.72
 + import { PickerViewPackage } from "@react-native-oh-tpl/react-native-picker/ts"
+  // 0.77
++ import { PickerViewPackage } from "@react-native-ohos/react-native-picker/ts"
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -232,7 +263,6 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
-
 ### 5.运行
 
 点击右上角的 `sync` 按钮
@@ -252,7 +282,16 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-picker Releases](https://github.com/react-native-oh-library/react-native-picker/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 4.3.9    | [@react-native-oh-tpl/react-native-picker Releases](https://github.com/react-native-oh-library/react-native-picker/releases)  | 0.72       |
+| 4.4.0    | [@react-native-ohos/react-native-picker Releases]()     | 0.77       |
+
+本文档内容基于以下版本验证通过：
+
+1. RNOH: 0.72.98; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.0.3.906; ROM: NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 
 ## 属性
@@ -291,14 +330,14 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name | Description | Type     | Required | Platform    | HarmonyOS Support |
-| --- |----------|----------|----------|-------------|-------------------|
-|init        |init and pass parameters to picker      | function | no       | iOS/Android | yes               |
-|toggle      |show or hide picker                     | function | no       | iOS/Android | yes               |
-|show        |show picker                             | function | no       | iOS/Android | yes               |
-|hide        |hide picker                             | function | no       | iOS/Android | yes               |
-|select      |select a row                            | function | no       | iOS/Android | yes                |
-|isPickerShow|get status of picker, return a boolean  | function | no       | iOS/Android | yes               |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `init` | 初始化并向选择器传递参数 | function | no | iOS/Android | yes |
+| `toggle` | 显示或隐藏选择器 | function | no | iOS/Android | yes |
+| `show` | 显示选择器 | function | no | iOS/Android | yes |
+| `hide` | 隐藏选择器 | function | no | iOS/Android | yes |
+| `select` | 选择某一行 | function | no | iOS/Android | yes |
+| `isPickerShow` | 获取选择器状态，返回布尔值 | function | no | iOS/Android | yes |
 
 ## 遗留问题
 

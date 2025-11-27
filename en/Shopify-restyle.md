@@ -16,6 +16,11 @@
 
 ## Installation and Usage
 
+| Version | RN Version |
+| ---------- | ---------- |
+| 2.4.4      | 0.72       |
+| 2.4.5      | 0.77       |
+
 Go to the project directory and execute the following instruction:
 
 <!-- tabs:start -->
@@ -23,13 +28,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# V2.4.4
 npm install @shopify/restyle@2.4.4
+
+# V2.4.5
+npm install @shopify/restyle@2.4.5
 ```
 
 #### **yarn**
 
 ```bash
+# V2.4.4
 yarn add @shopify/restyle@2.4.4
+
+# V2.4.5
+yarn add @shopify/restyle@2.4.5
 ```
 
 <!-- tabs:end -->
@@ -108,6 +121,7 @@ This document is verified based on the following versions:
 
 1. RNOH：0.72.27; SDK：HarmonyOS NEXT Developer Beta1 5.0.0.25; IDE：DevEco Studio 5.0.3.400; ROM：3.0.0.25
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## Hooks
 

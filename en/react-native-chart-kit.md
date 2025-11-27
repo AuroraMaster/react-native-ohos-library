@@ -23,6 +23,10 @@
 
 ## Installation and Usage
 
+| Version | RN Version |
+| ---------- | ---------- |
+| 6.12.0      | 0.72/0.77      |
+
 Go to the project directory and execute the following instruction:
 
 <!-- tabs:start -->
@@ -123,6 +127,7 @@ To use this repository, you need to use the correct React-Native and RNOH versio
 This document is verified based on the following versions:
 
 1. RNOH: 0.72.20; SDK：HarmonyOS NEXT Developer Preview2; IDE：DevEco Studio 5.0.3.300SP1; ROM：3.0.0.18;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## Properties (If Any)
 
@@ -194,7 +199,7 @@ This document is verified based on the following versions:
 |      |                                        |        |          |          |                   |
 | ---- | -------------------------------------- | ------ | -------- | -------- | ----------------- |
 | Name | Description                            | Type   | Required | Platform | HarmonyOS Support |
-| bezier | Data for the chart - see example above | Object | No       | All      | Yes               |
+| bezier | Smooth and bend the line chart | boolean | No       | All      | Yes               |
 
 ### Progress Ring
 

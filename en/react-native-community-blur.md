@@ -18,7 +18,14 @@
 
 This library has been adapted to C-API versions starting from version 4.4.0-0.1.0. The C-API versions offer better performance and speed compared to the ArkTS versions.
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-community-blur Releases](https://github.com/react-native-oh-library/react-native-blur/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please refer to the Release page of the corresponding third-party library for version information:：
+
+| Version | Releases                                                     | RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 4.4.0      | [@react-native-oh-tpl/react-native-community-blur Releases](https://github.com/react-native-oh-library/react-native-blur/releases) | 0.72       |
+| 4.5.0      | [@react-native-ohos/react-native-community-blur Releases]()  | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -29,13 +36,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# V4.4.0
 npm install @react-native-oh-tpl/blur
+
+# V4.5.0
+npm install @react-native-ohos/blur
 ```
 
 #### **yarn**
 
 ```bash
+# V4.4.0
 yarn add @react-native-oh-tpl/blur
+
+# V4.5.0
+yarn add @react-native-ohos/blur
 ```
 
 <!-- tabs:end -->
@@ -265,7 +280,13 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: add_package_subdirectories
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+# V4.4.0
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/blur/src/main/cpp" ./blur)
+
+# V4.5.0
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/blur/src/main/cpp" ./blur)
+
 # RNOH_END: add_package_subdirectories
 
 add_library(rnoh_app SHARED
@@ -351,7 +372,18 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-community-blur Releases](https://github.com/react-native-oh-library/react-native-blur/releases)
+Please refer to the Release page of the corresponding third-party library for version information:
+
+| Version | Releases                                                     | RN Releases |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 4.4.0      | [@react-native-oh-tpl/react-native-community-blur Releases](https://github.com/react-native-oh-library/react-native-blur/releases) | 0.72       |
+| 4.5.0      | [@react-native-ohos/react-native-community-blur Releases]()  | 0.77       |
+
+
+The content of this document has been verified based on the following versions:
+
+1. RNOH: 0.72.98; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.0.3.906; ROM: NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## Properties
 

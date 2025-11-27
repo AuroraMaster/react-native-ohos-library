@@ -24,7 +24,8 @@ This third-party library has been migrated to Gitcode and is now available for d
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-ohos/react-native-blob-util Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-blob-util/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -491,7 +492,10 @@ Then build and run the code.
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
 Check the release version information in the release address of the third-party library: [@react-native-ohos/react-native-blob-util Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-blob-util/releases)
+The content of this document has been verified based on the following versions:
 
+1. RNOH: 0.72.98; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.0.3.906; ROM: NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 ## APIs
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
