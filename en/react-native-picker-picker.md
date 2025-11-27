@@ -19,21 +19,35 @@
 Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/picker Releases](https://github.com/react-native-oh-library/picker/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
+| Library Version | Release Info | Supported RN Version |
+| :--- | :--- | :--- |
+| 2.6.1 | [@react-native-oh-tpl/picker Releases](https://github.com/react-native-oh-library/picker/releases) | 0.72 |
+| 2.11.1 | [@react-native-ohos/picker Releases]() | 0.77 |
 
+For older versions not published to npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
+Navigate to your project directory and enter the following commands:
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/picker
+
+# 0.77
+npm install @react-native-ohos/picker
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/picker
+
+# 0.77
+yarn add @react-native-ohos/picker
 ```
 
 <!-- tabs:end -->
@@ -44,7 +58,7 @@ The following code shows the basic use scenario of the repository:
 
 ```js
 import * as React from "react";
-import { Picker } from "@react-native-oh-tpl/picker";
+import { Picker } from "@react-native-picker/picker";
 import { View } from "react-native";
 
 export const PickerExample = ()=>{
@@ -94,6 +108,8 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
+-  0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -102,10 +118,18 @@ Open `entry/oh-package.json5` file and add the following dependencies:
   }
 ```
 
-Click the `sync` button in the upper right corner.
+-  0.77
 
-Alternatively, run the following instruction on the terminal:
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
+    "@react-native-ohos/picker": "file:../../node_modules/@react-native-ohos/picker/harmony/picker.har",
+  }
+```
+Click the `sync` button in the top-right corner.
+
+Or, run the following in your terminal:
 ```bash
 cd entry
 ohpm install
@@ -140,7 +164,12 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+# 0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/picker/src/main/cpp" ./picker)
+
+# 0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/picker/src/main/cpp" ./picker)
+
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -185,7 +214,11 @@ Find `function buildCustomRNComponent()`, which is usually located in `entry/src
 
 ```diff
   ...
+// 0.72
 + import { RNCPicker, PICKER_TYPE } from "@react-native-oh-tpl/picker"
+
+// 0.77
++ import { RNCPicker, PICKER_TYPE } from "@react-native-ohos/picker"
 
  @Builder
  export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -220,7 +253,11 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
+// 0.72
 + import { RNCPickerPackage } from '@react-native-oh-tpl/picker/ts';
+
+// 0.77
++ import { RNCPickerPackage } from '@react-native-ohos/picker/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -247,9 +284,9 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
-
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/picker Releases](https://github.com/react-native-oh-library/picker/releases)
+This document is verified based on the following versions:
+1. RNOH：0.72.86; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## Properties
 
@@ -283,7 +320,7 @@ Check the release version information in the release address of the third-party 
 |----------------------|----------------------------------------------------------------------------------------------------------|---------------|----------|----------|-------------------|
 | `label`              | Displayed value on the Picker Item.                                                                      | string        | Yes      | All      | Yes               |
 | `value`              | Actual value on the Pickmodeler Item.                                                                    | number,string | Yes      | All      | Yes               |
-| `color`              | Displayed color on the Picker Item.                                                                      | ColorValue    | Yes      | All      | No                |
+| `color`              | Displayed color on the Picker Item.                                                                      | ColorValue    | No       | All      | No                |
 | `fontFamily`         | Displayed fontFamily on the Picker Item.                                                                 | string        | No       | All      | No                |
 | `style`              | Style to apply to individual item labels.                                                                | ViewStyleProp | No       | Android  | No                |
 | `enabled`            | If set to false, the specific item will be disabled, i.e. the user will not be able to make a selection. | boolean       | No       | Android  | No                |
@@ -291,9 +328,6 @@ Check the release version information in the release address of the third-party 
 
 ## Static Methods
 
-> [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
-
-> [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
 | Name    | Description                     | Type     | Required | Platform | HarmonyOS Support |
 |---------|---------------------------------|----------|----------|----------|-------------------|

@@ -16,6 +16,11 @@
 
 ## 安装与使用
 
+| 三方库版本 | 支持RN版本 |
+| :--- | :--- |
+| 4.0.1 | 0.72 |
+| 4.1.2 | 0.77 |
+
 > [!TIP] 需要配套的服务和三方依赖
 
 | Dependencies                         | Version |
@@ -27,13 +32,19 @@
 #### **npm**
 
 ```bash
+#0.72
 npm install --save react-native-bouncy-checkbox@4.0.1
+#0.77
+npm install --save react-native-bouncy-checkbox@4.1.2
 ```
 
 #### **yarn**
 
 ```bash
-yarn install --save react-native-bouncy-checkbox@4.0.1
+#0.72
+yarn add react-native-bouncy-checkbox@4.0.1
+#0.77
+yarn add react-native-bouncy-checkbox@4.1.2
 ```
 
 下面的代码展示了这个库的基本使用场景：
@@ -101,6 +112,7 @@ const styles = StyleSheet.create({
 本文档内容基于以下版本验证：
 
 1. RNOH: 0.72.27; SDK：HarmonyOS-Next-DB1 5.0.0.25; IDE：DevEco Studio  5.0.3.404; ROM：5.0.0.31;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## 属性
 
@@ -109,32 +121,33 @@ const styles = StyleSheet.create({
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
 
-| Name                 | Description                                                  | Type      | Required | Platform | HarmonyOS Support |
-| :------------------- | ------------------------------------------------------------ | --------- | -------- | -------- | ----------------- |
-| isChecked            | if you want to control check state yourself, you can use `isChecked` prop now! | boolean   | no       | All      | yes               |
-| onPress              | set your own onPress functionality after the bounce effect, callback receives the next `isChecked` boolean if disableBuiltInState is false | function  | no       | All      | yes               |
-| onLongPress          | set your own onLongPress functionality after the bounce effect, callback receives the next `isChecked` boolean if disableBuiltInState is false | function  | no       | All      | yes               |
-| text                 | set the checkbox's text                                      | string    | no       | All      | yes               |
-| textComponent        | set the checkbox's text by a React Component                 | component | no       | All      | yes               |
-| disableText          | if you want to use checkbox without text, you can enable it  | boolean   | no       | All      | yes               |
-| size                 | size of `width` and `height` of the checkbox                 | number    | no       | All      | yes               |
-| style                | set/override the container style                             | style     | no       | All      | yes               |
-| textStyle            | set/override the text style                                  | style     | no       | All      | yes               |
-| iconStyle            | set/override the outer icon container style                  | style     | no       | All      | yes               |
-| innerIconStyle       | set/override the inner icon container style                  | style     | no       | All      | yes               |
-| fillColor            | change the checkbox's filled color                           | color     | no       | All      | yes               |
-| unfillColor          | change the checkbox's un-filled color when it's not checked  | color     | no       | All      | yes               |
-| iconComponent        | set your own icon component                                  | component | no       | All      | yes               |
-| checkIconImageSource | set your own check icon image                                | image     | no       | All      | yes               |
-| textContainerStyle   | set/override the text container style                        | ViewStyle | no       | All      | yes               |
-| ImageComponent       | set your own Image component instead of RN's default Image   | component | no       | All      | yes               |
-| TouchableComponent   | set/override the main TouchableOpacity component with any Touchable Component like Pressable | component | no       | All      | yes               |
-| bounceEffectIn       | change the bounce effect when press in                       | number    | no       | All      | yes               |
-| bounceEffectOut      | change the bounce effect when press out                      | number    | no       | All      | yes               |
-| bounceVelocityIn     | change the bounce velocity when press in                     | number    | no       | All      | yes               |
-| bounceVelocityOut    | change the bounce velocity when press out                    | number    | no       | All      | yes               |
-| bouncinessIn         | change the bounciness when press in                          | number    | no       | All      | yes               |
-| bouncinessOut        | change the bounciness when press out                         | number    | no       | All      | yes               |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| isChecked | 如果你想自行控制选中状态，现在可以使用 `isChecked` 属性！ | boolean | no | All | yes |
+| onPress | 设置弹跳效果后的自定义点击功能，如果 disableBuiltInState 为 false，回调会接收下一个 `isChecked` 布尔值。 | function | no | All | yes |
+| onLongPress | 设置弹跳效果后的自定义长按功能，如果 disableBuiltInState 为 false，回调会接收下一个 `isChecked` 布尔值。 | function | no | All | yes |
+| text | 设置复选框的文本。 | string | no | All | yes |
+| textComponent | 通过 React 组件设置复选框的文本。 | component | no | All | yes |
+| disableText | 如果你想使用不带文本的复选框，可以启用此项。 | boolean | no | All | yes |
+| useBuiltInState<sup>4.1.2+</sup> | 若要完全在外部使用自己的状态控制复选框，只需将其设置为 `false` 并将你的状态值传递给 `isChecked` 属性。 | boolean | no | All | yes |
+| size | 复选框 `width`（宽）和 `height`（高）的大小。 | number | no | All | yes |
+| style | 设置/覆盖容器样式。 | style | no | All | yes |
+| textStyle | 设置/覆盖文本样式。 | style | no | All | yes |
+| iconStyle | 设置/覆盖外部图标容器样式。 | style | no | All | yes |
+| innerIconStyle | 设置/覆盖内部图标容器样式。 | style | no | All | yes |
+| fillColor | 更改复选框的填充颜色。 | color | no | All | yes |
+| unfillColor | 更改复选框未被选中时的未填充颜色。 | color | no | All | yes |
+| iconComponent | 设置你自己的图标组件。 | component | no | All | yes |
+| checkIconImageSource | 设置你自己的选中图标图片。 | image | no | All | yes |
+| textContainerStyle | 设置/覆盖文本容器样式。 | ViewStyle | no | All | yes |
+| ImageComponent | 设置你自己的 Image 组件来代替 RN 的默认 Image 组件。 | component | no | All | yes |
+| TouchableComponent | 使用任何 Touchable 组件（如 Pressable）设置/覆盖主 TouchableOpacity 组件。 | component | no | All | yes |
+| bounceEffectIn | 更改按下时的弹跳效果。 | number | no | All | yes |
+| bounceEffectOut | 更改松开时的弹跳效果。 | number | no | All | yes |
+| bounceVelocityIn | 更改按下时的弹跳速度。 | number | no | All | yes |
+| bounceVelocityOut | 更改松开时的弹跳速度。 | number | no | All | yes |
+| bouncinessIn | 更改按下时的弹性。 | number | no | All | yes |
+| bouncinessOut | 更改松开时的弹性。 | number | no | All | yes |
 
 ### 
 

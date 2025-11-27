@@ -17,6 +17,10 @@
 
 ## Installation and Usage
 
+| Library Version | Supported RN Version |
+| :--- | :--- |
+| 8.1.0 | 0.72/0.77 |
+
 <!-- tabs:start -->
 
 #### **npm**
@@ -126,6 +130,7 @@ This document is verified based on the following versions:
 
 1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## Properties
 
@@ -137,7 +142,7 @@ This document is verified based on the following versions:
 |           Name            |                    Description                    |                           Type                           | Required |  Platform   | HarmonyOS Support |
 | :-----------------------: | :-----------------------------------------------: | :------------------------------------------------------: | :------: | :---------: | :---------------: |
 |     **type**     |       Choose one of the built-in types: star, rocket, bell, heart or use type custom to render a custom image (optional)        |                         String                           |    No    | iOS/Android |        Yes        |
-|     **ratingImage**             |                   Pass in a custom image source; use this along with type='custom' prop above (optional)                   |                         String                           |    YES   | iOS/Android |        Yes        |
+|     **ratingImage**             |                   Pass in a custom image source; use this along with type='custom' prop above (optional)                   |                         String                           |   No   | iOS/Android |        Yes        |
 |      **ratingColor**       |                 Pass in a custom fill-color for the rating icon; use this along with type='custom' prop above (optional)              |                         String                           |    No    | iOS/Android |        Yes        |
 |  **ratingBackgroundColor**   |       Pass in a custom background-fill-color for the rating icon; use this along with type='custom' prop above (optional)      |                         String                           |    No    | iOS/Android |        Yes        |
 |     **tintColor**     |       Color used to change the background of the rating icon (optional)        |                         String                           |    No    | iOS/Android |        Yes        |
@@ -153,7 +158,7 @@ This document is verified based on the following versions:
 |     **jumpValue**     |       The value to jump when rating value changes (if jumpValue === 0.5, rating value increases/decreases like 0, 0.5, 1.0, 1.5 ...). Default is 0 (not to jump)        |                         number                           |    No    | iOS/Android |        Yes        |
 |     **onStartRating**     |       Callback method when the user starts rating. Gives you the start rating value as a whole number         |                         function                           |    No    | iOS/Android |        Yes        |
 |     **onSwipeRating**     |       Callback method when the user is swiping. Gives you the current rating value as a whole number         |                         function                           |    No    | iOS/Android |        Yes        |
-|     **onFinishRating**     |       Callback method when the user finishes rating. Gives you the final rating value as a whole number (required)         |                         function                           |    No    | iOS/Android |        Yes        |
+|     **onFinishRating**     |       Callback method when the user finishes rating. Gives you the final rating value as a whole number (required)         |                         function                           |    Yes    | iOS/Android |        Yes        |
 
 ## **API（AirbnbRating）**
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.

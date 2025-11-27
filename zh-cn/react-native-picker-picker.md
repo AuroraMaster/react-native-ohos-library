@@ -16,7 +16,14 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/picker Releases](https://github.com/react-native-oh-library/picker/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 2.6.1      | [@react-native-oh-tpl/picker Releases](https://github.com/react-native-oh-library/picker/releases) | 0.72       |
+| 2.11.1     | [@react-native-ohos/picker Releases]()                     | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +32,21 @@
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/picker
+
+# 0.77
+npm install @react-native-ohos/picker
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/picker
+
+# 0.77
+yarn add @react-native-ohos/picker
 ```
 
 <!-- tabs:end -->
@@ -42,7 +57,8 @@ yarn add @react-native-oh-tpl/picker
 
 ```js
 import * as React from "react";
-import { Picker } from "@react-native-oh-tpl/picker";
+import { Picker } from "@react-native-picker/picker";
+
 import { View } from "react-native";
 
 export const PickerExample = ()=>{
@@ -62,6 +78,8 @@ export const PickerExample = ()=>{
 ```
 
 ## 使用 Codegen
+
+> [!TIP] V2.11.1 不需要执行 Codegen。
 
 本库已经适配了 Codegen ，在使用前需要主动执行生成三方库桥接代码，详细请参考 [Codegen 使用文档。](/zh-cn/codegen.md)
 
@@ -95,11 +113,23 @@ export const PickerExample = ()=>{
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+-  0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
     "@react-native-oh-tpl/picker": "file:../../node_modules/@react-native-oh-tpl/picker/harmony/picker.har",
+  }
+```
+
+-  0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+
+    "@react-native-ohos/picker": "file:../../node_modules/@react-native-ohos/picker/harmony/picker.har",
   }
 ```
 
@@ -140,7 +170,12 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+# 0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/picker/src/main/cpp" ./picker)
+
+# 0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/picker/src/main/cpp" ./picker)
+
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -184,7 +219,11 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
+// 0.72
 + import { RNCPicker, PICKER_TYPE } from "@react-native-oh-tpl/picker"
+
+// 0.77
++ import { RNCPicker, PICKER_TYPE } from "@react-native-ohos/picker"
 
  @Builder
  export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -219,7 +258,11 @@ const arkTsComponentNames: Array<string> = [
 
 ```diff
   ...
+// 0.72
 + import { RNCPickerPackage } from '@react-native-oh-tpl/picker/ts';
+
+// 0.77
++ import { RNCPickerPackage } from '@react-native-ohos/picker/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -246,9 +289,9 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
-
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/picker Releases](https://github.com/react-native-oh-library/picker/releases)
+本文档内容基于以下版本验证通过：
+1. RNOH：0.72.86; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## 属性
 
@@ -258,42 +301,42 @@ ohpm install
 
 ### PickerProps
 
-| Name                      | Description                                                                                       | Type                                                         | Required | Platform              | HarmonyOS Support |
-|---------------------------|---------------------------------------------------------------------------------------------------|--------------------------------------------------------------|----------|-----------------------|-------------------|
-| `onValueChange`           | Callback for when an item is selected.                                                            | function                                                     | No       | All                   | Yes               |
-| `selectedValue`           | Value matching value of one of the items. Can be a string or an integer.                          | any                                                          | No       | All                   | Yes               |
-| `style`                   | NA                                                                                                | pickerStyleType                                              | No       | All                   | Yes               |
-| `testID`                  | Used to locate this view in end-to-end tests.                                                     | string                                                       | No       | All                   | Yes               |
-| `enabled`                 | If set to false, the picker will be disabled, i.e. the user will not be able to make a selection. | boolean                                                      | No       | Android, Web, Windows | Yes               |
-| `mode`                    | On Android, specifies how to display the selection items when the user taps on the picker         | enum('dialog', 'dropdown')                                   | No       | Android               | No                |
-| `dropdownIconColor`       | On Android, specifies color of dropdown triangle.                                                 | ColorValue                                                   | No       | Android               | No                |
-| `dropdownIconRippleColor` | On Android, specifies ripple color of dropdown triangle.                                          | ColorValue                                                   | No       | Android               | No                |
-| `prompt`                  | Prompt string for this picker, used on Android in dialog mode as the title of the dialog.         | string                                                       | No       | Android               | No                |
-| `itemStyle`               | Style to apply to each of the item labels.                                                        | [text styles](https://reactnative.dev/docs/text-style-props) | No       | iOS, Windows          | partially         |
-| `numberOfLines`           | On Android & iOS, used to truncate the text with an ellipsis after computing the text layout.     | number                                                       | No       | Android, iOS          | No                |
-| `onBlur`                  | NA                                                                                                | function                                                     | No       | Android               | No                |
-| `onFocus`                 | NA                                                                                                | function                                                     | No       | Android               | No                |
-| `selectionColor`          | Color to apply to the selection indicator.                                                        | ColorValue                                                   | No       | iOS                   | Yes               |
-| `themeVariant`            | NA                                                                                                | enum('light', 'dark')                                        | No       | iOS                   | No                |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `onValueChange` | 选中某项时的回调函数。 | function | No | All | Yes |
+| `selectedValue` | 与其中某项的值相匹配的值。可以是字符串或整数。 | any | No | All | Yes |
+| `style` | 应用于 Picker 视图的样式。 | pickerStyleType | No | All | Yes |
+| `testID` | 用于在端到端测试中定位此视图。 | string | No | All | Yes |
+| `enabled` | 如果设置为 false，选择器将被禁用，即用户将无法进行选择。 | boolean | No | Android, Web, Windows | Yes |
+| `mode` | 在 Android 上，指定用户点击选择器时如何显示选项。 | enum('dialog', 'dropdown') | No | Android | No |
+| `dropdownIconColor` | 在 Android 上，指定下拉三角形的颜色。 | ColorValue | No | Android | No |
+| `dropdownIconRippleColor` | 在 Android 上，指定下拉三角形的波纹颜色。 | ColorValue | No | Android | No |
+| `prompt` | 此选择器的提示字符串，在 Android 的 dialog 模式下用作对话框标题。 | string | No | Android | No |
+| `itemStyle` | 应用于每个选项标签的样式。 | [text styles](https://reactnative.dev/docs/text-style-props) | No | iOS, Windows | partially |
+| `numberOfLines` | 在 Android 和 iOS 上，用于在计算文本布局后用省略号截断文本。 | number | No | Android, iOS | No |
+| `onBlur` | 当选择器失去焦点时的回调函数。 | function | No | Android | No |
+| `onFocus` | 当选择器获得焦点时的回调函数。 | function | No | Android | No |
+| `selectionColor` | 应用于选中指示器的颜色。 | ColorValue | No | iOS | Yes |
+| `themeVariant` | 指定 iOS 上的主题变体（例如 'light' 或 'dark'）。 | enum('light', 'dark') | No | iOS | No |
 
 ### PickerItemProps
 
-| Name                 | Description                                                                                              | Type          | Required | Platform | HarmonyOS Support |
-|----------------------|----------------------------------------------------------------------------------------------------------|---------------|----------|----------|-------------------|
-| `label`              | Displayed value on the Picker Item.                                                                      | string        | Yes      | All      | Yes               |
-| `value`              | Actual value on the Pickmodeler Item.                                                                    | number,string | Yes      | All      | Yes               |
-| `color`              | Displayed color on the Picker Item.                                                                      | ColorValue    | Yes      | All      | No                |
-| `fontFamily`         | Displayed fontFamily on the Picker Item.                                                                 | string        | No       | All      | No                |
-| `style`              | Style to apply to individual item labels.                                                                | ViewStyleProp | No       | Android  | No                |
-| `enabled`            | If set to false, the specific item will be disabled, i.e. the user will not be able to make a selection. | boolean       | No       | Android  | No                |
-| `contentDescription` | Sets the content description to the Picker Item.                                                         | string        | No       | Android  | No                |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `label` | 显示在 Picker 选项上的文字。 | string | Yes | All | Yes |
+| `value` | Picker 选项的实际值。 | number,string | Yes | All | Yes |
+| `color` | Picker 选项显示的颜色。 | ColorValue | No | All | No |
+| `fontFamily` | Picker 选项显示的字体。 | string | No | All | No |
+| `style` | 应用于单个选项标签的样式。 | ViewStyleProp | No | Android | No |
+| `enabled` | 如果设置为 false，该特定选项将被禁用，即用户无法选中它。 | boolean | No | Android | No |
+| `contentDescription` | 设置 Picker 选项的内容描述。 | string | No | Android | No |
 
 ## 静态方法
 
-| Name    | Description                     | Type     | Required | Platform | HarmonyOS Support |
-|---------|---------------------------------|----------|----------|----------|-------------------|
-| `blur`  | Programmatically closes picker. | function | No       | Android  | No                |
-| `focus` | Programmatically opens picker.  | function | No       | Android  | No                |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `blur` | 以编程方式关闭选择器。 | function | No | Android | No |
+| `focus` | 以编程方式打开选择器。 | function | No | Android | No |
 
 ## 遗留问题
 

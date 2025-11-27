@@ -19,7 +19,13 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-blurhash Releases](https://github.com/react-native-oh-library/react-native-blurhash/releases)。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+| 三方库版本  | 发布信息                                                     | 支持RN版本 |
+| ----------- | ------------------------------------------------------------ | ---------- |
+|2.0.3|[@react-native-oh-tpl/react-native-blurhash Releases](https://github.com/react-native-oh-library/react-native-blurhash/releases)|0.72|
+|2.1.0|[@react-native-ohos/react-native-blurhash Releases]()|0.77|
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -30,13 +36,21 @@
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-blurhash
+
+# 0.77
+npm install @react-native-ohos/react-native-blurhash
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-blurhash
+
+# 0.77
+yarn add @react-native-ohos/react-native-blurhash
 ```
 
 <!-- tabs:end -->
@@ -282,11 +296,19 @@ export default BlurhashDemo
 > [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
 
 打开 `entry/oh-package.json5`，添加以下依赖
-
+- 0.72
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-blurhash": "file:../../node_modules/@react-native-oh-tpl/react-native-blurhash/harmony/blurhash.har"
+  }
+```
+
+- 0.77
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-blurhash": "file:../../node_modules/@react-native-ohos/react-native-blurhash/harmony/blurhash.har"
   }
 ```
 
@@ -325,7 +347,12 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+# 0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-blurhash/src/main/cpp" ./blurhash)
+
+# 0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-blurhash/src/main/cpp" ./blurhash)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -368,7 +395,11 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
+// 0.72
 + import {BlurhashPackage} from '@react-native-oh-tpl/react-native-blurhash/ts';
+
+// 0.77
++ import {BlurhashPackage} from '@react-native-ohos/react-native-blurhash/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -396,9 +427,9 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
-
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-blurhash Releases](https://github.com/react-native-oh-library/react-native-blurhash/releases)
+本文档内容基于以下版本验证通过：
+1. RNOH：0.72.86; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## 属性
 
@@ -406,19 +437,18 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name                                       | Description                                                  | Type      | Required | Platform | HarmonyOS Support |
-| ------------------------------------------ | ------------------------------------------------------------ | --------- | -------- | -------- | ----------------- |
-| `blurhash`                                 | The blurhash string to use. Example: `LGFFaXYk^6#M@-5c,1J5@[or[Q6.` | string    | yes      | All      | yes               |
-| `decodeWidth?`                             | The width (resolution) to decode to. Higher values decrease performance, use `16` for large lists, otherwise you can increase it to `32`. | number    | no       | All      | yes               |
-| `decodeHeight?`                            | The height (resolution) to decode to. Higher values decrease performance, use `16` for large lists, otherwise you can increase it to `32`. | number    | no       | All      | yes               |
-| `decodePunch?`                             | Adjusts the contrast of the output image. Tweak it if you want a different look for your placeholders. | number    | no       | All      | yes               |
-| `decodeAsync?`                             | Asynchronously decode the Blurhash on a background Thread instead of the UI-Thread. | boolean   | no       | All      | yes               |
-| `resizeMode?`                              | Sets the resize mode of the image. (no, `'repeat'` is not supported.) | enum      | no       | All      | yes               |
-| `onLoadStart?: () => void`                 | A callback to call when the Blurhash started to decode the given `blurhash` string. | function  | no       | All      | yes               |
-| `onLoadEnd?: () => void`                   | A callback to call when the Blurhash successfully decoded the given `blurhash` string and rendered the image to the `<Blurhash>` view. | function  | no       | All      | yes               |
-| `onLoadError?: (message?: string) => void` | A callback to call when the Blurhash failed to load. Use the `message` parameter to get the error message. | function  | no       | All      | yes               |
-| All `View` props                           | All properties from the React Native `View`. Use `style.width` and `style.height` for display-sizes. Also, `style.borderRadius` is natively supported on iOS. | ViewProps | no       | All      | yes               |
-
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `blurhash` | 要使用的 blurhash 字符串。例如：`LGFFaXYk^6#M@-5c,1J5@[or[Q6.` | string | yes | All | yes |
+| `decodeWidth?` | 解码的目标宽度（分辨率）。值越高会降低性能，对于长列表建议使用 `16`，否则可以增加到 `32`。 | number | no | All | yes |
+| `decodeHeight?` | 解码的目标高度（分辨率）。值越高会降低性能，对于长列表建议使用 `16`，否则可以增加到 `32`。 | number | no | All | yes |
+| `decodePunch?` | 调整输出图像的对比度。如果你想要占位符呈现不同的外观，可以微调此参数。 | number | no | All | yes |
+| `decodeAsync?` | 在后台线程而不是 UI 线程上异步解码 Blurhash。 | boolean | no | All | yes |
+| `resizeMode?` | 设置图像的调整模式。（注：不支持 `'repeat'`。） | enum | no | All | yes |
+| `onLoadStart?: () => void` | 当 Blurhash 开始解码给定的 `blurhash` 字符串时调用的回调函数。 | function | no | All | yes |
+| `onLoadEnd?: () => void` | 当 Blurhash 成功解码给定的 `blurhash` 字符串并将图像渲染到 `<Blurhash>` 视图时调用的回调函数。 | function | no | All | yes |
+| `onLoadError?: (message?: string) => void` | 当 Blurhash 加载失败时调用的回调函数。使用 `message` 参数获取错误信息。 | function | no | All | yes |
+| All `View` props | 来自 React Native `View` 的所有属性。使用 `style.width` 和 `style.height` 来设置显示尺寸。此外，iOS 原生支持 `style.borderRadius`。 | ViewProps | no | All | yes |
 
 ## API
 
@@ -426,12 +456,12 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name               | Description                                                  | Type                                                         | Required | Platform | HarmonyOS Support |
-| ------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | -------- | ----------------- |
-| encode()           | Encodes the given image URI to a blurhash string             | (imageUri: string, componentsX: number, componentsY: number)=> Promise\<string>; | no       | All      | yes               |
-| clearCosineCache() | Clears the cosine cache and frees up memory.                 | ()=> void                                                    | no       | All      | yes               |
-| getAverageColor()   | Gets the average color in a given blurhash string.           | (blurhash: string)=> RGB \|undefined;                        | no       | All      | yes               |
-| isBlurhashValid()  | Verifies if the given blurhash is valid by checking it's type, length and size flag. | (blurhash: string)=> ReturnType\<typeof isBlurhashValid>;    | no       | All      | yes               |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| encode() | 将给定的图片 URI 编码为 blurhash 字符串。 | (imageUri: string, componentsX: number, componentsY: number)=> Promise\<string>; | no | All | yes |
+| clearCosineCache() | 清除余弦缓存并释放内存。 | ()=> void | no | All | yes |
+| getAverageColor() | 获取给定 blurhash 字符串中的平均颜色。 | (blurhash: string)=> RGB \|undefined; | no | All | yes |
+| isBlurhashValid() | 通过检查类型、长度和尺寸标志来验证给定的 blurhash 是否有效。 | (blurhash: string)=> ReturnType\<typeof isBlurhashValid>; | no | All | yes |
 
 ## 遗留问题
 

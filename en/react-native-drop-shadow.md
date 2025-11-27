@@ -17,19 +17,35 @@
 
 ## Installation and Usage
 
+| Library Version | Supported RN Version |
+| --------------- | -------------------- |
+| 1.0.0           | 0.72                 |
+| 1.0.3           | 0.77                 |
+
+Navigate to the project directory and enter the following command:
+
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install react-native-drop-shadow@1.0.0
+
+# 0.77
+npm install react-native-drop-shadow@1.0.3
 ```
+
 
 #### **yarn**
-
 ```bash
+# 0.72
 yarn add react-native-drop-shadow@1.0.0
+
+# 0.77
+yarn add react-native-drop-shadow@1.0.3
 ```
+
 
 <!-- tabs:end -->
 
@@ -128,6 +144,8 @@ This document is verified based on the following versions:
 react-native-harmony: 0.72.23; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio: 5.0.3.27; ROM: 3.0.0.19;
 
 react-native-harmony: 0.72.33; SDK: Openharmony 5.0.0.71(API Version 12 Release); IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+
+react-native-harmony: 0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## Properties
 
