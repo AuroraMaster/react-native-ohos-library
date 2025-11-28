@@ -12,7 +12,11 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/eranbo/react-native-base64/tree/0.2.1)
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 支持RN版本 |
+| ---------- | ---------- |
+| 0.2.2    | 0.72/0.77 |
 
 ## 安装与使用
 
@@ -23,13 +27,13 @@
 #### **npm**
 
 ```bash
-npm i react-native-base64@0.2.1
+npm install react-native-base64@0.2.2
 ```
 
 #### **yarn**
 
 ```bash
-yarn add react-native-base64@0.2.1
+yarn add react-native-base64@0.2.2
 ```
 
 <!-- tabs:end -->
@@ -109,6 +113,7 @@ const styles = StyleSheet.create({
 
 1. RNOH: 0.72.29; SDK：HarmonyOS-Next-DB1 5.0.0.61; IDE：DevEco Studio 5.0.3.706; ROM：5.0.0.61;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK:HarmonyOS  5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
 
 ## 静态方法:
 
@@ -116,11 +121,11 @@ const styles = StyleSheet.create({
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
-| ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| encode  | encode from string  | string  | no | Android、iOS | yes |
-| decode  | decode base64 strings   | string  | no | Android、iOS | yes |
-| encodeFromByteArray  | encode from Unit8Array  | Unit8Array  | no | Android、iOS | yes |
+| Name | Description | Type | Required | Platform    | HarmonyOS Support  |
+| ---- | ----------- | ---- | -------- |-------------| ------------------ |
+| encode  | 从字符串编码  | string  | no | Android iOS | yes |
+| decode  | 解码 base64 字符串   | string  | no | Android iOS | yes |
+| encodeFromByteArray  | 从 Unit8Array 编码  | Unit8Array  | no | Android iOS | yes |
 
 ## 遗留问题
 
