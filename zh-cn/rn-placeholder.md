@@ -12,7 +12,12 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/rn-placeholder)
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 支持RN版本  |
+| ----------| ---------- |
+| 3.0.3    | 0.72/0.77 |
+
 
 ## 安装与使用
 
@@ -65,6 +70,7 @@ export default App;
 本文档内容基于以下版本验证通过：
 
 1. RNOH：0.72.27; SDK：HarmonyOS-Next-DB1 5.0.0.29(SP1) ; IDE：DevEco Studio 5.0.3.400; ROM：3.0.0.25;
+2. RNOH: 0.77.18; SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
 
 ## 属性
 
@@ -76,47 +82,47 @@ export default App;
 
 **组件 Placeholder**
 
-It's the wrapper around all of the other components. Using alone will not produce anything interesting. You have put some line or media inside to make it powerful.It accepts all the props of a React Native View plus:
+它是所有其他组件的外层包装。单独使用并不会产生有趣的效果；需要在其中放入一些行或媒体来发挥作用。它接受 React Native View 的全部属性，另外还包含：
 
 | Name      | Description                                         | Type          | Required | Platform | HarmonyOS Support |
 | --------- | --------------------------------------------------- | ------------- | -------- | -------- | ----------------- |
-| Animation | An optional component that animates the placeholder | Animations    | no       | All      | Yes               |
-| Left      | An optional component to display on the left        | ComponentType | no       | All      | Yes               |
-| Right     | An optional component to display on the right       | ComponentType | no       | All      | Yes               |
+| Animation | 一个可选组件，用于为占位符添加动画效果 | Animations    | no       | All      | Yes               |
+| Left      | 一个可选组件，显示在左侧        | ComponentType | no       | All      | Yes               |
+| Right     | 一个可选组件，显示在右侧       | ComponentType | no       | All      | Yes               |
 
 **_Animations_**
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | --------- | -------------------------------------------------- | ------------- | -------- | -------- | -------- |
-| Fade | This is the base animation that makes the placeholder become clearer on a specified interval| ComponentType | no | All | Yes |
-| ShineOverlay | This applies a tiny overlay from left to right of the placeholder. It's pretty neat but it has the drawback to only work without style customization: only on white background with gray lines |ComponentType| no | All | Yes |
-| Shine | The shine animation is an attempt to overcome the overlay problem of the ShineOverlay animation by animating only the differnt part of the placeholder | ComponentType | no | All | Yes |
-| Loader | A simple placeholder animation based on the standard loader (ActivityIndicator) of each platforms | ComponentType | no | All | Yes |
-| Progressive | A progressive loading animation effect | ComponentType | no | All | Yes |
-| Tweaking existing animations | It's possible to tweak a specific animation by passing it additional props. However keep in mind that it's important to spread the props from the Animation render function. Else you will be in strange behaviors| ComponentType | no | All | Yes |
+| Fade | 这是基础动画，会在指定的时间间隔让占位内容逐渐清晰| ComponentType | no | All | Yes |
+| ShineOverlay | 这会向占位符应用一个从左到右的 tiny 覆盖层。效果不错，但仅在不自定义样式时有效：仅在白色背景上显示灰色线|ComponentType| no | All | Yes |
+| Shine | 这个 shine 动画试图通过仅动画占位符的不同部分来克服 ShineOverlay 动画的覆盖层问题 | ComponentType | no | All | Yes |
+| Loader | 这是一个基于每个平台标准加载器（ActivityIndicator）的简单占位符动画| ComponentType | no | All | Yes |
+| Progressive | 一个渐进加载动画效果 | ComponentType | no | All | Yes |
+| Tweaking existing animations | 可以通过传递附加属性来调整特定动画。然而请记住，重要的是要将属性从 Animation 渲染函数中传播出来。否则会出现异常行为| ComponentType | no | All | Yes |
 
 **组件 PlaceholderLine**
 
-A PlaceholderLine is one of the two basic and visual components of a placeholder.
+PlaceholderLine 是占位符的两种基础且可视的组件之一。
 
 | Name     | Description                                                            | Type    | Required | Platform | HarmonyOS Support |
 | -------- | ---------------------------------------------------------------------- | ------- | -------- | -------- | ----------------- |
-| height   | The line height, default is 12                                         | number  | no       | All      | Yes               |
-| color    | The line color, default is #efefef                                     | string  | no       | All      | Yes               |
-| width    | The line width in percent, default is 100(%)                           | number  | no       | All      | Yes               |
-| noMargin | Defines if a line should have a margin bottom or not, default is false | boolean | no       | All      | Yes               |
-| style    | Customize the style of the underlying View component                   | object  | no       | All      | Yes               |
+| height   | 行高，默认值为 12	                                      | number  | no       | All      | Yes               |
+| color    | 颜色，默认值为 #efefef                                   | string  | no       | All      | Yes               |
+| width    | 行宽，默认值为 100(%)	                                | number  | no       | All      | Yes               |
+| noMargin | 是否带有底部边距，默认值为 false | boolean | no       | All      | Yes               |
+| style    | 自定义底层 View 组件的样式	                   | object  | no       | All      | Yes               |
 
 **组件 PlaceholderMedia**
 
-A PlaceholderMedia is the second of the two basic and visual components of a placeholder. It can be used a single placeholder like following:
+PlaceholderMedia 是占位符的两种基础且可视的组件中的另一个。它也可以像下面这样单独作为占位使用：
 
 | Name    | Description                                              | Type    | Required | Platform | HarmonyOS Support |
 | ------- | -------------------------------------------------------- | ------- | -------- | -------- | ----------------- |
-| size    | The media size (height / width), default is 40           | number  | no       | All      | Yes               |
-| isRound | Defines if the media is rounded or not, default is false | boolean | no       | All      | Yes               |
-| color   | The media color, default is #efefef                      | string  | no       | All      | Yes               |
-| style   | Customize the style of the underlying View component     | object  | no       | All      | Yes               |
+| size    | 媒体大小（高度 / 宽度），默认值为 40           | number  | no       | All      | Yes               |
+| isRound | 定义媒体是否为圆角， 默认值为 false | boolean | no       | All      | Yes               |
+| color   | 媒体颜色，默认值为 #efefef                      | string  | no       | All      | Yes               |
+| style   | 自定义底层 View 组件的样式     | object  | no       | All      | Yes               |
 
 ## 遗留问题
 ## 其他

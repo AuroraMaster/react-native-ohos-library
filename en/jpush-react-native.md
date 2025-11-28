@@ -12,12 +12,16 @@
     </a>
 </p>
 
-> [!TIP] [GitHub address](https://github.com/react-native-oh-library/jpush-react-native)
+This project is based on [jpush-react-native](https://github.com/react-native-oh-library/jpush-react-native).
 
+Please go to the corresponding Release release address of the third-party library to view the version information of the Release package:
+| Version                        | Package Name                             | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |------------|
+| 3.1.1@deprecated | @react-native-oh-library/jpush-react-native Releases | [Github(deprecated)](https://github.com/react-native-oh-library/jpush-react-native/releases) | [Github deprecated](https://github.com/react-native-oh-library/jpush-react-native/releases) | 0.72       |
+| 3.1.2                      | @react-native-ohos/jpush-react-native Releases | [GitCode](https://gitcode.com/openharmony-sig/rntpc_jpush-react-native) | [GitCode Releases](https://gitcode.com/openharmony-sig/jpush-react-native/releases) | 0.72       |
+| 3.2.0 | @react-native-ohos/jpush-react-native Releases       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_jpush-react-native) | [GitCode Releases](https://gitcode.com/openharmony-sig/jpush-react-native/releases) | 0.77 |
 
 ## Installation and Usage
-
-Find the matching version information in the release address of a third-party library：[@react-native-oh-tpl/jpush-react-native Releases](https://github.com/react-native-oh-library/jpush-react-native/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -26,13 +30,13 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/jpush-react-native
+npm install @react-native-ohos/jpush-react-native
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/jpush-react-native
+yarn add @react-native-ohos/jpush-react-native
 ```
 <!-- tabs:end -->
 
@@ -110,12 +114,10 @@ Method 1 (recommended): Use the HAR file.
 Open `entry/oh-package.json5` file and add the following dependencies:
 
 ```json
-
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/jpush-react-native": "file:../../node_modules/@react-native-oh-tpl/jpush-react-native/harmony/jpush_react_native.har"
+    "@react-native-ohos/jpush-react-native": "file:../../node_modules/@react-native-ohos/jpush-react-native/harmony/jpush_react_native.har"
 }
-
 ```
 
 Click the `sync` button in the upper right corner.
@@ -132,12 +134,59 @@ Method 2: Directly link to the source code.
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
 
-### 3. Introducing RNJPushPackage to ArkTS
+### 3. Configure CMakeLists and import RNJPushPackage
+
+> V3.2.0 requires configuring CMakeLists and importing RNJPushPackage.
+
+```diff
+...
+
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_END: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/jpush-react-native/src/main/cpp" ./jPushModule)
+# RNOH_END: manual_package_linking_1
+
+add_library(rnoh_app SHARED
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_jPushModule)
+# RNOH_BEGIN: manual_package_linking_2
+```
+
+Open `entry/src/main/cpp/PackageProvider.cpp`，and add：
+
+```diff
+#include "RNOH/PackageProvider.h"
++ #include "JPushModulePackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
++        std::make_shared<JPushModulePackage>(ctx)
+}
+```
+
+### 4. Introducing RNJPushPackage to ArkTS
 
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
 ```diff
-+ import {RNJPushPackage} from  "@react-native-oh-tpl/jpush-react-native/ts";
++ import {RNJPushPackage} from  "@react-native-ohos/jpush-react-native/ts";
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -147,7 +196,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4. Running
+### 5. Running
 
 Click the `sync` button in the upper right corner.
 
@@ -167,7 +216,10 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/jpush-react-native Releases](https://github.com/react-native-oh-library/jpush-react-native/releases)
+Check the release version information in the release address of the third-party library: 
+1. RNOH: 0.72.33; SDK: HarmonyOS NEXT Beta1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH:0.77.18; SDK:HarmonyOS  5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
 
 ## Static Methods
 
@@ -228,10 +280,8 @@ Check the release version information in the release address of the third-party 
 |  setSmartPushEnable(enable:boolean):void |   Enable or disable intelligent push.   |function   | no | iOS,Android     | no |
 |  setGeofenceEnable(enable:boolean):void |   Enable or disable geofencing.   |function   | no |Android     | no |
 |  setCollectControl(enable:boolean):void |   Enable or disable centralized control.   |function   | no | iOS、Android     | no |
-
 ## Known Issues
 - [ ] setProperties、deleteProperties、cleanProperties、pageEnterTo、pageLeave、initCrashHandler、setMaxGeofenceNumber、deleteGeofence、addNotificationListener、addInappMessageListener，setCollectControl、setSmartPushEnable These methods are currently not supported in the Aurora Push HarmonyOS SDK[issue#1](https://github.com/react-native-oh-library/jpush-react-native/issues/1)
-
 ## Others
 
 

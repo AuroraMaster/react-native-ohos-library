@@ -12,7 +12,11 @@
     </a>
 </p>
 
-> [!TIP] [GitHub address](https://github.com/react-native-oh-library/rn-placeholder)
+Please go to the corresponding Release release address of the third-party library to view the version information of the Release package:
+
+| Version  | Support RN version  |
+| ----------| ---------- |
+| 3.0.3     | 0.72/0.77 |
 
 ## Installation and Usage
 
@@ -67,6 +71,7 @@ export default App;
 This document is verified based on the following versions:
 
 1. RNOH：0.72.27; SDK：HarmonyOS-Next-DB1 5.0.0.29(SP1) ; IDE：DevEco Studio 5.0.3.400; ROM：3.0.0.25;
+2. RNOH: 0.77.18; SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
 
 ## Properties
 
