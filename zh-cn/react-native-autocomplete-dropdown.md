@@ -18,18 +18,31 @@
 
 ## 安装与使用
 
+| 三方库版本 | 支持RN版本 |
+| ---------- | ---------- |
+| 4.0.0      | 0.72       |
+| 4.3.1      | 0.77       |
+
 <!-- tabs:start -->
 
 ####  npm
 
 ```bash
-npm install react-native-autocomplete-dropdown@4.0.0-rc.5
+# V4.0.0
+npm install react-native-autocomplete-dropdown@4.0.0
+
+# V4.3.1
+npm install react-native-autocomplete-dropdown@4.3.1
 ```
 
 #### yarn
 
 ```bash
-yarn add react-native-autocomplete-dropdown@4.0.0-rc.5
+# V4.0.0
+yarn add react-native-autocomplete-dropdown@4.0.0
+
+# V4.3.1
+yarn add react-native-autocomplete-dropdown@4.3.1
 ```
 
 <!-- tabs:end -->
@@ -92,9 +105,9 @@ export const LocalDataSetExample = memo(() => {
 
 ## Link
 
-本库 HarmonyOS 侧实现依赖@react-native-oh-tpl/react-native-svg 的原生端代码，如已在 HarmonyOS 工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
+本库 HarmonyOS 侧实现依赖react-native-svg 的原生端代码，如已在 HarmonyOS 工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
 
-如未引入请参照[@react-native-oh-tpl/react-native-svg 文档](/zh-cn/react-native-svg-capi.md)进行引入
+如未引入请参照[react-native-svg 文档](/zh-cn/react-native-svg-capi.md)进行引入
 
 ## 约束与限制
 
@@ -103,6 +116,7 @@ export const LocalDataSetExample = memo(() => {
 本文档内容基于以下版本验证通过：
 
 1. RNOH: 0.72.27; SDK：HarmonyOS-Next-DB1 5.0.0.25; IDE: DevEco Studio 5.0.3.400SP7; ROM: 3.0.0.25;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
    
 ## 属性
@@ -112,47 +126,49 @@ export const LocalDataSetExample = memo(() => {
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
 
-| Name                          | Description                                                                                                   | Type                | Required | Platform    | HarmonyOS Support |
-|-------------------------------|---------------------------------------------------------------------------------------------------------------|---------------------|----------|-------------|-------------------|
-| dataSet                       | set of list items                                                                                             | array               | no       | iOS/Android | yes               |
-| initialValue                  | string (id) or object that contain id                                                                         | object \| string    | no       | iOS/Android | yes               |
-| loading                       | 	loading state                                                                                                | boolean             | no       | iOS/Android | yes               |
-| useFilter                     | whether use local filter by dataSet (useful set to false for remote filtering to prevent rerender twice)      | boolean             | no       | iOS/Android | yes               |
-| showClear                     | show clear button                                                                                             | boolean             | no       | iOS/Android | yes               |
-| showChevron                   | show chevron (open/close) button                                                                              | boolean             | no       | iOS/Android | yes               |
-| closeOnSubmit                 | sets the max stroke line width                                                                                | boolean             | no       | iOS/Android | yes               |
-| clearOnFocus                  | whether to clear typed text on focus                                                                          | boolean             | no       | iOS/Android | yes               |
-| caseSensitive                 | whether to perform case-sensitive search                                                                      | boolean             | no       | iOS/Android | yes               |
-| ignoreAccents                 | ignore diacritics                                                                                             | boolean             | no       | iOS/Android | yes               |
-| trimSearchText                | trim the searched text                                                                                        | boolean             | no       | iOS/Android | yes               |
-| editable                      | is textInput editable                                                                                         | boolean             | no       | iOS/Android | yes               |
-| debounce                      | wait ms before call onChangeText                                                                              | number              | no       | iOS/Android | yes               |
-| suggestionsListMaxHeight      | max height of dropdown                                                                                        | number              | no       | iOS/Android | yes               |
-| direction                     | "up" or "down"                                                                                                | up \| down          | no       | iOS/Android | yes               |
-| matchFrom                     | whether match suggestions from start of titles or anywhere in the title. Possible values are "any" or "start" | any \| start        | no       | iOS/Android | yes               |
-| onChangeText                  | event textInput onChangeText                                                                                  | function            | no       | iOS/Android | yes               |
-| onSelectItem                  | event onSelectItem                                                                                            | function            | no       | iOS/Android | yes               |
-| onOpenSuggestionsList         | event onOpenSuggestionsList                                                                                   | function            | no       | iOS/Android | yes               |
-| onChevronPress                | event onChevronPress                                                                                          | function            | no       | iOS/Android | yes               |
-| onClear                       | event on clear button press                                                                                   | function            | no       | iOS/Android | yes               |
-| onSubmit                      | event on submit KB button press                                                                               | function            | no       | iOS/Android | yes               |
-| onBlur                        | event fired on text input blur	                                                                               | function            | no       | iOS/Android | yes               |
-| onFocus                       | event on focus text input                                                                                     | function            | no       | iOS/Android | yes               |
-| renderItem                    | JSX for render item (item, searchText) => JSX                                                                 | function            | no       | iOS/Android | yes               |
-| controller                    | return reference to module controller with methods close, open, toggle, clear, setInputText, setItem          | function            | no       | iOS/Android | yes               |
-| containerStyle                | containerStyle                                                                                                | ViewStyle           | no       | iOS/Android | yes               |
-| inputContainerStyle           | custom input container style                                                                                  | ViewStyle           | no       | iOS/Android | yes               |
-| rightButtonsContainerStyle    | rightButtonsContainerStyle                                                                                    | ViewStyle           | no       | iOS/Android | yes               |
-| suggestionsListContainerStyle | suggestionsListContainerStyle                                                                                 | ViewStyle           | no       | iOS/Android | yes               |
-| suggestionsListTextStyle      | suggestionsListTextStyle                                                                                      | TextStyle           | no       | iOS/Android | yes               |
-| rightIconComponent            | custom chevron icon                                                                                           | React.Component     | no       | iOS/Android | yes               |
-| ChevronIconComponent          | Chevron Custom Icon                                                                                           | React.Component     | no       | iOS/Android | yes               |
-| ClearIconComponent            | Clear Custom Icon                                                                                             | React.Component     | no       | iOS/Android | yes               |
-| EmptyResultComponent          | replace the default `` Component on empty result                                                              | React.Component     | no       | iOS/Android | yes               |
-| InputComponent                | input element component                                                                                       | React.ComponentType | no       | iOS/Android | yes               |
-| emptyResultText               | replace the default "Nothing found" text on empty result                                                      | string              | no       | iOS/Android | yes               |
-| textInputProps                | text input props                                                                                              | TextInputProps      | no       | iOS/Android | yes               |
-| flatListProps                 | props for \ component                                                                                         | FlatListProps       | no       | iOS/Android | yes               |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `dataSet` | 列表项的集合 | array | no | iOS/Android | yes |
+| `initialValue` | 字符串（id）或包含 id 的对象 | object \| string | no | iOS/Android | yes |
+| `loading` | 加载状态 | boolean | no | iOS/Android | yes |
+| `useFilter` | 是否使用基于 dataSet 的本地过滤（对于远程过滤，设置为 false 很有用，以防止重复渲染） | boolean | no | iOS/Android | yes |
+| `showClear` | 显示清除按钮 | boolean | no | iOS/Android | yes |
+| `showChevron` | 显示箭头（展开/关闭）按钮 | boolean | no | iOS/Android | yes |
+| `closeOnSubmit` | 设置最大描边线宽 | boolean | no | iOS/Android | yes |
+| `clearOnFocus` | 聚焦时是否清除已输入的文本 | boolean | no | iOS/Android | yes |
+| `caseSensitive` | 是否执行区分大小写的搜索 | boolean | no | iOS/Android | yes |
+| `ignoreAccents` | 忽略变音符号 | boolean | no | iOS/Android | yes |
+| `trimSearchText` | 去除搜索文本的首尾空格 | boolean | no | iOS/Android | yes |
+| `editable` | textInput 是否可编辑 | boolean | no | iOS/Android | yes |
+| `debounce` | 调用 onChangeText 前等待的毫秒数 | number | no | iOS/Android | yes |
+| `suggestionsListMaxHeight` | 下拉列表的最大高度 | number | no | iOS/Android | yes |
+| `direction` | "up"（向上）或 "down"（向下） | up \| down | no | iOS/Android | yes |
+| `matchFrom` | 是从标题开头匹配建议，还是在标题任意位置匹配。可能的值为 "any" 或 "start" | any \| start | no | iOS/Android | yes |
+| `onChangeText` | textInput 的 onChangeText 事件 | function | no | iOS/Android | yes |
+| `onSelectItem` | onSelectItem 事件 | function | no | iOS/Android | yes |
+| `onOpenSuggestionsList` | onOpenSuggestionsList 事件 | function | no | iOS/Android | yes |
+| `onChevronPress` | onChevronPress 事件 | function | no | iOS/Android | yes |
+| `onClear` | 清除按钮按下时的事件 | function | no | iOS/Android | yes |
+| `onSubmit` | 键盘提交按钮按下时的事件 | function | no | iOS/Android | yes |
+| `onBlur` | 文本输入失去焦点时触发的事件 | function | no | iOS/Android | yes |
+| `onFocus` | 文本输入获得焦点时的事件 | function | no | iOS/Android | yes |
+| `renderItem` | 用于渲染列表项的 JSX (item, searchText) => JSX | function | no | iOS/Android | yes |
+| `controller` | 返回模块控制器的引用，包含方法 close, open, toggle, clear, setInputText, setItem | function | no | iOS/Android | yes |
+| `containerStyle` | 容器样式 | ViewStyle | no | iOS/Android | yes |
+| `inputContainerStyle` | 自定义输入框容器样式 | ViewStyle | no | iOS/Android | yes |
+| `rightButtonsContainerStyle` | 右侧按钮容器样式 | ViewStyle | no | iOS/Android | yes |
+| `suggestionsListContainerStyle` | 建议列表容器样式 | ViewStyle | no | iOS/Android | yes |
+| `suggestionsListTextStyle` | 建议列表文本样式 | TextStyle | no | iOS/Android | yes |
+| `rightIconComponent` | 自定义箭头图标 | React.Component | no | iOS/Android | yes |
+| `ChevronIconComponent` | 自定义箭头图标 | React.Component | no | iOS/Android | yes |
+| `ClearIconComponent` | 自定义清除图标 | React.Component | no | iOS/Android | yes |
+| `EmptyResultComponent` | 替换结果为空时的默认组件 | React.Component | no | iOS/Android | yes |
+| `InputComponent` | 输入元素组件 | React.ComponentType | no | iOS/Android | yes |
+| `emptyResultText` | 替换结果为空时的默认文本 "Nothing found" | string | no | iOS/Android | yes |
+| `textInputProps` | 文本输入属性 | TextInputProps | no | iOS/Android | yes |
+| `flatListProps` | 传递给 `FlatList` 组件的属性 | FlatListProps | no | iOS/Android | yes |
+| `caseSensitive`<sup>4.3.1+</sup> | 是否执行区分大小写的搜索 | bool | no | iOS/Android | yes |
+| `editable`<sup>4.3.1+</sup> | textInput 是否可编辑 | bool | no | iOS/Android | yes |
 
 
 ## 遗留问题

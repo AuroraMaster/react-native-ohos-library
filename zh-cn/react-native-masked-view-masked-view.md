@@ -33,12 +33,16 @@
 #### **npm**
 
 ```bash
+
 npm install @react-native-ohos/masked-view
 ```
 
 #### **yarn**
 
 ```bash
+
+
+# V0.2.11
 yarn add @react-native-ohos/masked-view
 ```
 
@@ -81,7 +85,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     maskElementText: {
-        color: Colors.black,
+        color: "#00ccffff",
         width:'100%',
         height:60,
         fontSize: 50,
@@ -96,7 +100,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     text: {
-        color: Colors.darkChestnut,
+        color: "#ffee00ff",
         fontSize: 8,
         width:'100%',
         height:40,
@@ -110,10 +114,7 @@ export default MaskedDemo
 
 ## Link
 
-Version >= @react-native-ohos/masked-view@0.2.11，已支持 Autolink，无需手动配置，目前只支持72框架。
-Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
-
-此步骤为手动配置原生依赖项的指导。
+目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -140,6 +141,7 @@ Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_nati
 > [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
 
 打开 `entry/oh-package.json5`，添加以下依赖
+
 
 ```json
 "dependencies": {
@@ -184,7 +186,9 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/masked-view/src/main/cpp" ./masked-view)
+
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -240,13 +244,17 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库的 Releases 发布地址查看配套的版本信息：
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
 | 0.2.10@deprecated      | [@react-native-oh-tpl/masked-view Releases(deprecated)](https://github.com/react-native-oh-library/masked-view/releases) | 0.72       |
 | 0.2.11      | [@react-native-ohos/masked-view Releases](https://gitcode.com/openharmony-sig/rntpc_masked-view/releases)                        | 0.72       |
 | 0.3.3      | [@react-native-ohos/masked-view Releases](https://gitcode.com/openharmony-sig/rntpc_masked-view/releases)                        | 0.77       |
+
+本文档内容基于以下版本验证通过：
+1. RNOH: 0.72.98; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.0.3.906; ROM: NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## 属性
 

@@ -22,7 +22,7 @@
 | ------------- | ------------------------------------------------------------ | ---------- |
 | 5.6.2@deprecated  | [@react-native-oh-tpl/react-native-shake Releases(deprecated)](https://github.com/react-native-oh-library/react-native-shake/releases) | 0.72       |
 | 5.6.3             | [@react-native-ohos/react-native-shake Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-shake/releases)           | 0.72       |
-| 6.0.1             | [@react-native-ohos/react-native-shake Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-shake/releases)           | 0.77       |
+| 6.0.2             | [@react-native-ohos/react-native-shake Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-shake/releases)           | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -248,8 +248,12 @@ ohpm install
 | ------------- | ------------------------------------------------------------ | ---------- |
 | 5.6.2@deprecated  | [@react-native-oh-tpl/react-native-shake Releases(deprecated)](https://github.com/react-native-oh-library/react-native-shake/releases) | 0.72       |
 | 5.6.3             | [@react-native-ohos/react-native-shake Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-shake/releases)           | 0.72       |
-| 6.0.1             | [@react-native-ohos/react-native-shake Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-shake/releases)           | 0.77       |
+| 6.0.2             | [@react-native-ohos/react-native-shake Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-shake/releases)           | 0.77       |
 
+本文档内容基于以下版本验证通过：
+
+1. RNOH: 0.72.98; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.0.3.906; ROM: NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ### 权限要求
 
@@ -269,10 +273,10 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
-| ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| addListener  | add shake event listening         | function  | yes | ios/andriod      | yes |
-| removeAllListeners  | remove event listening         | function  | yes | ios/andriod      | yes |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `addListener` | 添加摇一摇事件监听 | function | yes | ios/andriod | yes |
+| `removeAllListeners` | 移除事件监听 | function | yes | ios/andriod | yes |
 
 ## 遗留问题
 

@@ -14,14 +14,17 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-theme-control)
 
+## 安装与使用
+
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
-| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
-| 6.0.1 | @react-native-oh-tpl/react-native-theme-control | [Github](https://github.com/react-native-oh-library/react-native-theme-control) | [Github Releases](https://github.com/react-native-oh-library/react-native-theme-control/releases) | 0.72 |
-| 6.1.1                        | @react-native-ohos/react-native-theme-control       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-theme-control) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-theme-control/releases) | 0.77 |
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 6.0.1@deprecated     | [@react-native-oh-tpl/react-native-theme-control Releases(deprecated)](https://github.com/react-native-oh-library/react-native-theme-control/releases) | 0.72       |
+| 6.0.2      | [@react-native-ohos/react-native-theme-control Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-theme-control/releases) | 0.72       |
+| 6.1.1      | [@react-native-ohos/react-native-theme-control Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-theme-control/releases) | 0.77       |
 
-## 安装与使用
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -30,20 +33,12 @@
 #### **npm**
 
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/react-native-theme-control
-
-# 0.77
 npm install @react-native-ohos/react-native-theme-control
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn add @react-native-oh-tpl/react-native-theme-control
-
-# 0.77
 yarn add @react-native-ohos/react-native-theme-control
 ```
 
@@ -110,13 +105,15 @@ export function SimpleScreen() {
 
 ## 使用 Codegen
 
-> [!TIP] 0.77 不需要执行 Codegen。
+Version >= @react-native-ohos/react-native-theme-control@6.0.2，已适配codegen-lib生成桥接代码。
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-theme-control@6.0.2，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -144,17 +141,6 @@ export function SimpleScreen() {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- 0.72
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-theme-control": "file:../../node_modules/@react-native-oh-tpl/react-native-theme-control/harmony/themecontrol.har"
-  }
-```
-
-- 0.77
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -177,7 +163,7 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 RNThemeControlPackage
 
-> [!TIP] 0.77 需要配置 CMakeLists 和引入 RNThemeControlPackage。
+> [!TIP] V6.0.2 需要配置 CMakeLists 和引入 RNThemeControlPackage。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -234,10 +220,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-// 0.72
-+ import { RNThemeControlPackage } from '@react-native-oh-tpl/react-native-theme-control/ts'
-
-// 0.77
 + import { RNThemeControlPackage } from '@react-native-ohos/react-native-theme-control/ts'
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -248,7 +230,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 5.在 entry/src/main/ets/abilityStage 新建 MyAbilityStage.ets
+### 5.在 `entry/src/main/ets/abilityStage` 新建 `MyAbilityStage.ets`
 
 打开 `entry/src/main/ets/abilityStage/MyAbilityStage.ets`，添加：
 
@@ -282,12 +264,8 @@ export default class MyAbilityStage extends AbilityStage {
 ```diff
 + import {RNAbility} from '@rnoh/react-native-openharmony';
 + import Want from '@ohos.app.ability.Want';
-// 0.72
-+ import { RNThemeControlModule } from '@react-native-oh-tpl/react-native-theme-control';
-
-// 0.77
 + import { RNThemeControlModule } from '@react-native-ohos/react-native-theme-control';
-
+    .....
 +  export default class EntryAbility extends RNAbility {
 +    onCreate(want: Want): void {
 +    super.onCreate(want);
@@ -334,11 +312,10 @@ ohpm install
 
 ### 兼容性
 
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-在以下版本验证通过：
-
-1. RNOH:0.72.28; SDK:HarmonyOS NEXT DB2; IDE:DevEco Studio 5.0.3.500; ROM:3.0.0.28;
-2. RNOH: 0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## API
 

@@ -16,7 +16,14 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/datetimepicker Releases](https://github.com/react-native-oh-library/datetimepicker/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 7.6.2      | [@react-native-oh-tpl/datetimepicker Releases](https://github.com/react-native-oh-library/datetimepicker/releases) | 0.72       |
+| 8.4.3      | [@react-native-ohos/datetimepicker Releases]()               | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +32,21 @@
 #### **npm**
 
 ```bash
+# V7.6.2
 npm install @react-native-oh-tpl/datetimepicker
+
+# V8.4.3
+npm install @react-native-ohos/datetimepicker
 ```
 
 #### **yarn**
 
 ```bash
+# V7.6.2
 yarn add @react-native-oh-tpl/datetimepicker
+
+# V8.4.3
+yarn add @react-native-ohos/datetimepicker
 ```
 
 <!-- tabs:end -->
@@ -99,8 +114,6 @@ export const MDatetimepicker = () => {
 
 ### 1.在工程根目录的 `oh-package.json5` 添加 overrides 字段
 
-
-
 ```json
 {
   ...
@@ -123,11 +136,23 @@ export const MDatetimepicker = () => {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- V7.6.2
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
     "@react-native-oh-tpl/datetimepicker": "file:../../node_modules/@react-native-oh-tpl/datetimepicker/harmony/datetimepicker.har"
+}
+```
+
+- V8.4.3
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+
+    "@react-native-ohos/datetimepicker": "file:../../node_modules/@react-native-ohos/datetimepicker/harmony/datetimepicker.har"
 }
 ```
 
@@ -166,7 +191,13 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+# V7.6.2
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/datetimepicker/src/main/cpp" ./datetimepicker)
+
+# V8.4.3
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/datetimepicker/src/main/cpp" ./datetimepicker)
+
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -209,7 +240,11 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
+// V7.6.2
 + import { RNDateTimePicker, DATETIME_PICKER_VIEW_TYPE } from "@react-native-oh-tpl/datetimepicker"
+
+// V8.4.3
++ import { RNDateTimePicker, DATETIME_PICKER_VIEW_TYPE } from "@react-native-ohos/datetimepicker"
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -226,7 +261,7 @@ export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
 ```
 
 > [!TIP] 本库使用了混合方案，需要添加组件名。（如使用混合方案）
- 
+
 在`entry/src/main/ets/pages/index.ets` 或 `entry/src/main/ets/rn/LoadBundle.ets` 找到常量 `arkTsComponentNames` 在其数组里添加组件名
 
 ```diff
@@ -256,7 +291,18 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/datetimepicker Releases](https://github.com/react-native-oh-library/datetimepicker/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 7.6.2      | [@react-native-oh-tpl/datetimepicker Releases](https://github.com/react-native-oh-library/datetimepicker/releases) | 0.72       |
+| 8.4.3      | [@react-native-ohos/datetimepicker Releases]()               | 0.77       |
+
+本文档内容基于以下版本验证通过：
+
+1. RNOH: 0.72.98; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.0.3.906; ROM: NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
+
 
 ## 属性
 
@@ -266,34 +312,38 @@ ohpm install
 
 详情请查看[datetimepicker 官方文档](https://github.com/react-native-datetimepicker/datetimepicker)
 
-| Name        | Description                                              | Type     | Required | Platform                 | HarmonyOS Support                                 |
-| ----------- | -------------------------------------------------------- | -------- | -------- | ------------------------ | ------------------------------------------------- |
-| mode        | Defines the type of the picker                           | string   | 否       | All                      | partially (仅支持 date/time 模式)                      |
-| style       | Sets style directly on picker component.                 | object   | 否       | IOS only                 | yes                                               |
-| display     | Defines the visual display of the picker. The default value is "default". | string   | 否       | All                      | partially (支持"default"，<br/>"spinner"，"compact"，"inline") |
-| onChange    | Date change handler.                                     | function | 否       | All                      | partially (仅支持 type 为 set 类型)                     |
-| value       | Defines the date or time value used in the component.    | Date     | 是       | All                      | partially (仅 mode=date 且 <br/>display=spinner 时支持动态设置) |
-| is24Hour    | Allows changing of the time picker to a 24-hour format.  | bool     | 否       | Windows and Android only | yes                                               |
-| maximumDate | Defines the maximum date that can be selected            | Date     | 否       | All                      | partially (仅支持在 mode=date 且 <br/>display=spinner 时设置) |
-| minimumDate | Defines the minimum date that can be selected.           | Date     | 否       | All                      | partially (仅支持在 mode=date 且 <br/>display=spinner 时设置) |
-| disabled    | If true, the user won't be able to interact with the view. | bool     | 否       | IOS only                 | yes                                               |
-| textColor   | Allows changing of the textColor of the date picker.     | string   | 否       | IOS only                 | partially (仅支持在 mode=date 且 <br/>display=compact 时设置) |
-| timeZoneName   | Allows changing of the time zone of the date picker. By default, <br/>it uses the device's time zone.<br/> Use the time zone name from the IANA (TZDB) database name in https://en.wikipedia.org/wiki/List_of_tz_database_time_zones. | string   | 否       | iOS and Android only                 |  No  |
-| timeZoneOffsetInMinutes    | Allows changing of the time zone of the date picker.<br/> By default, it uses the device's time zone.<br/> We strongly recommend using timeZoneName prop instead; <br/>this prop has known issues in the android implementation (eg. #528). | number   | 否       | iOS and Android only                 |  No  |
-| timeZoneOffsetInSeconds    | Allows changing of the time zone of the date picker. <br/>By default, it uses the device's time zone. | number  | 否       |  Windows only                |  No  |
-| dayOfWeekFormat   | Sets the display format for the day of the week headers.<br/> Reference: https://docs.microsoft.com/en-us/uwp/api/windows.<br/>ui.xaml.controls.calendarview.dayofweekformat?view=winrt-18362#remarks    | string   | 否       | Windows only                 |  No  |
-| dateFormat   | Sets the display format for the date value in the picker's <br/>text box. Reference: https://docs.microsoft.com/en-us/uwp/api/windows.globalization.datetimeformatting.datetimeformatter?view=winrt-18362#examples    | string   | 否       | Windows only                 |  No  |
-| firstDayOfWeek    | Indicates which day is shown as the first day of the week.    | number   | 否 | Android and Windows only                 |  No  |
-| accentColor    | Allows changing the accentColor (tintColor) of the date picker. <br/>Has no effect when display is "spinner".    | string   | 否       | iOS only                 |  No  |
-| themeVariant    | Allows overriding system theme variant (dark or light mode) <br/>used by the date picker. However,<br/> we recommend that you instead control the theme of the whole application using react-native-theme-control.   | string   | 否       | iOS only                |  No  |
-| locale    | Allows changing the locale of the component. <br/>This affects the displayed text and the date / time formatting. <br/>By default, the device's locale is used.<br/> Please note using this prop is discouraged due to not working <br/>reliably in all picker modes. Prefer localization as documented in Localization note. | string   | 否       | iOS only                 |  No  |
-| positiveButton    | Set the positive button label and text color.            | Object   | 否       | Android only                 | No   |
-| neutralButton    | Allows displaying neutral button on picker dialog. <br/>Pressing button can be observed in onChange handler<br/> as event.type === 'neutralButtonPressed'    | Object   | 否       | Android only                 |  No  |
-| negativeButton     | Set the negative button label and text color.            | Object   | 否       | Android only                 |  No  |
-| minuteInterval     | The interval at which minutes can be selected. <br/>Possible values are: 1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30On<br/> Windows, this can be any number between 0-59.    | number   | 否       | All                 |  No  |
-| testID     | Usually used by app automation frameworks. <br/>Fully supported on iOS.<br/> On Android, only supported for mode="date".    | string   | 否       | All                 |  Yes  |
-| ViewProps     | On iOS, you can pass any View props to the component.<br/> Given that the underlying component is a native view, <br/>not all of them are guaranteed to be supported,<br/> but testID and onLayout are known to work.   | Object   | 否       | iOS only                 |  No  |
-| onError     | Callback that is called when an error occurs inside <br/>the date picker native code (such as null activity). | function   | 否       | Android only                 |  No  |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `mode` | 定义选择器的类型 | string | 否 | All | partially (仅支持 date/time 模式) |
+| `style` | 直接设置选择器组件的样式。 | object | 否 | IOS only | yes |
+| `display` | 定义选择器的视觉显示方式。默认值为 "default"。 | string | 否 | All | partially (支持"default"，<br/>"spinner"，"compact"，"inline") |
+| `design` | 定义选择器是否应使用 Material 3 组件或默认选择器。默认值为 "default"。 | string | 否 | Android only | No |
+| `initialInputMode` | 仅当 design 为 "material" 时生效。允许设置选择器的初始输入模式。 | string | 否 | Android only | No |
+| `title` | 仅当 design 为 "material" 时生效。允许设置选择器对话框的标题。 | string | 否 | Android only | No |
+| `fullscreen` | 仅当 design 为 "material" 时生效。允许设置日期选择器对话框全屏显示。 | bool | 否 | Android only | No |
+| `onChange` | 日期变更处理程序。 | function | 否 | All | partially (仅支持 type 为 set 类型) |
+| `value` | 定义组件中使用的日期或时间值。 | Date | 是 | All | partially (仅 mode=date 且 <br/>display=spinner 时支持动态设置) |
+| `is24Hour` | 允许将时间选择器更改为 24 小时制格式。 | bool | 否 | Windows and Android only | yes |
+| `maximumDate` | 定义可选择的最大日期。 | Date | 否 | All | partially (仅支持在 mode=date 且 <br/>display=spinner 时设置) |
+| `minimumDate` | 定义可选择的最小日期。 | Date | 否 | All | partially (仅支持在 mode=date 且 <br/>display=spinner 时设置) |
+| `disabled` | 如果为 true，用户将无法与该视图交互。 | bool | 否 | IOS only | yes |
+| `textColor` | 允许更改日期选择器的文本颜色。 | string | 否 | IOS only | partially (仅支持在 mode=date 且 <br/>display=compact 时设置) |
+| `timeZoneName` | 允许更改日期选择器的时区。默认情况下，使用设备的时区。<br/>使用来自 https://en.wikipedia.org/wiki/List_of_tz_database_time_zones 的 IANA (TZDB) 数据库名称中的时区名称。 | string | 否 | iOS and Android only | No |
+| `timeZoneOffsetInMinutes` | 允许更改日期选择器的时区。<br/>默认情况下，使用设备的时区。<br/>我们强烈建议改用 timeZoneName 属性；<br/>此属性在 Android 实现中存在已知问题（例如 #528）。 | number | 否 | iOS and Android only | No |
+| `timeZoneOffsetInSeconds` | 允许更改日期选择器的时区。<br/>默认情况下，使用设备的时区。 | number | 否 | Windows only | No |
+| `dayOfWeekFormat` | 设置星期标题的显示格式。<br/>参考：https://docs.microsoft.com/en-us/uwp/api/windows.<br/>ui.xaml.controls.calendarview.dayofweekformat?view=winrt-18362#remarks | string | 否 | Windows only | No |
+| `dateFormat` | 设置选择器文本框中日期值的显示格式。<br/>参考：https://docs.microsoft.com/en-us/uwp/api/windows.globalization.datetimeformatting.datetimeformatter?view=winrt-18362#examples | string | 否 | Windows only | No |
+| `firstDayOfWeek` | 指定哪一天显示为一周的第一天。 | number | 否 | Android and Windows only | No |
+| `accentColor` | 允许更改日期选择器的强调色（tintColor）。<br/>当 display 为 "spinner" 时无效。 | string | 否 | iOS only | No |
+| `themeVariant` | 允许覆盖日期选择器使用的系统主题变体（深色或浅色模式）。<br/>但是，我们建议您使用 react-native-theme-control 来控制整个应用程序的主题。 | string | 否 | iOS only | No |
+| `locale` | 允许更改组件的区域设置（locale）。<br/>这会影响显示的文本和日期/时间格式。<br/>默认情况下，使用设备的区域设置。<br/>请注意，不建议使用此属性，因为它在所有选择器模式下工作均不可靠。建议按照“本地化说明”中的记录进行本地化。 | string | 否 | iOS only | No |
+| `positiveButton` | 设置确认按钮（positive button）的标签和文本颜色。 | Object | 否 | Android only | No |
+| `neutralButton` | 允许在选择器对话框上显示中性按钮。<br/>按下按钮可以在 onChange 处理程序中通过 event.type === 'neutralButtonPressed' 观察到。 | Object | 否 | Android only | No |
+| `negativeButton` | 设置取消按钮（negative button）的标签和文本颜色。 | Object | 否 | Android only | No |
+| `minuteInterval` | 可选分钟的时间间隔。<br/>可能的值为：1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30。<br/>在 Windows 上，这可以是 0-59 之间的任意数字。 | number | 否 | All | No |
+| `testID` | 通常由应用自动化框架使用。<br/>在 iOS 上完全支持。<br/>在 Android 上，仅在 mode="date" 时支持。 | string | 否 | All | Yes |
+| `ViewProps` | 在 iOS 上，您可以将任何 View 属性传递给组件。<br/>鉴于底层组件是原生视图，<br/>不能保证支持所有属性，<br/>但 testID 和 onLayout 是有效的。 | Object | 否 | iOS only | No |
+| `onError` | 当日期选择器原生代码内部发生错误（如 activity 为空）时调用的回调。 | function | 否 | Android only | No |
 
 
 ## 遗留问题

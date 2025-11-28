@@ -183,6 +183,7 @@ ohpm install
 本文档内容基于以下版本验证通过：
 
 1. RNOH: 0.72.20-CAPI; SDK: HarmonyOS NEXT Developer Preview2; IDE: DevEco Studio 4.1.3.700; ROM: 3.0.0.19;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## 静态方法
 
@@ -192,7 +193,7 @@ ohpm install
 >
 > | Name                          | Description                                          | Type    | Required | Platform    | HarmonyOS Support |
 > | ----------------------------- | ---------------------------------------------------- | ------- | -------- | ----------- | ----------------- |
-> | global.crypto.getRandomValues | lets you get cryptographically strong random values. | funtion | no       | IOS/Android | yes               |
+> | global.crypto.getRandomValues | 允许你获取具有加密强度的随机值。 | funtion | no       | IOS/Android | yes               |
 
 ## 开源协议
 

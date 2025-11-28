@@ -16,36 +16,29 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-cardview Releases](https://github.com/react-native-oh-library/react-native-cardview/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information                                                                                                                          | Supported RN Version |
+|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------| ---------- |
+| 2.0.3@deprecated            | [@react-native-oh-tpl/react-native-cardview Releases(deprecated)](https://github.com/react-native-oh-library/react-native-cardview/releases) | 0.72       |
+| 2.0.4                       | [@react-native-ohos/react-native-cardview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-cardview/releases)                | 0.72       |
+| 2.1.0                       | [@react-native-ohos/react-native-cardview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-cardview/releases)                | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
-
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| Third-party library version | Post Information                                                     | Supports RN version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 2.0.3      | [@react-native-oh-tpl/react-native-cardview Releases](https://github.com/react-native-oh-library/react-native-cardview/releases) | 0.72       |
-| 2.1.0     | [@react-native-ohos/react-native-cardviewReleases]()         | 0.77       |
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
-#0.72
-npm install @react-native-oh-tpl/react-native-cardview
-
-#0.77
 npm install @react-native-ohos/react-native-cardview
 ```
 
 #### **yarn**
 
 ```bash
-#0.72
-yarn add @react-native-oh-tpl/react-native-cardview
-
-#0.77
 yarn add @react-native-ohos/react-native-cardview
 ```
 
@@ -126,7 +119,9 @@ const styles = StyleSheet.create({
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-cardview@2.0.4 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -145,23 +140,14 @@ Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
 Currently, two methods are available:
 
+- Use the HAR file.
+- Directly link to the source code。
 
 Method 1 (recommended): Use the HAR file.
 
 > [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
-
-- 0.72
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-cardview": "file:../../node_modules/@react-native-oh-tpl/react-native-cardview/harmony/card_view.har"
-  }
-```
-
-- 0.77
 
 ```json
 "dependencies": {
@@ -205,10 +191,6 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-# 0.72
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-cardview/src/main/cpp" ./card-view)
-
-# 0.77
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-cardview/src/main/cpp" ./card-view)
 # RNOH_END: manual_package_linking_1
 
@@ -263,7 +245,11 @@ Then build and run the code.
 
 ### Compatibility
 
-1. RNOH：0.72.33; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+
+The following combinations have been verified:
+
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## Properties 

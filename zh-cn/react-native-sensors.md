@@ -8,10 +8,11 @@
 
 该第三方库的仓库已迁移至 Gitee，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-sensors`，具体版本所属关系如下：
 
-| Version                        | Package Name                                  | Repository                                                   | Release                                                      |
-| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <= 7.2.1-rc.2-0.0.1@deprecated | @react-native-oh-library/react-native-sensors | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-sensors) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-sensors/releases) |
-| > 7.2.1                        | @react-native-ohos/react-native-sensors       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-sensors) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-sensors/releases) |
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 7.2.1@deprecated     | [@react-native-oh-library/react-native-sensors Releases(deprecated)](https://github.com/react-native-oh-library/react-native-sensors/releases) | 0.72       |
+| 7.2.3      | [@react-native-ohos/react-native-sensors Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-sensors/releases) | 0.72       |
+| 7.3.7      | [@react-native-ohos/react-native-sensors Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-sensors/releases) | 0.77       |
 
 ## 1. 安装与使用
 
@@ -137,6 +138,8 @@ export default App;
 
 ## 2. Manual Link
 
+Version >= @react-native-ohos/react-native-sensors@7.2.3，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
 此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
@@ -229,7 +232,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-+ import {SensorsPackage} from '@react-native-oh-tpl/react-native-sensors/ts';
++ import {SensorsPackage} from '@react-native-ohos/react-native-sensors/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -256,7 +259,10 @@ ohpm install
 
 ### 3.1 兼容性
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/react-native-sensors Releases](https://gitee.com/openharmony-sig/rntpc_react-native-sensors/releases)
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ### 3.2 权限要求
 

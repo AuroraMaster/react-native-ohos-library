@@ -19,6 +19,11 @@
 
 Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-unistyles Releases](https://github.com/react-native-oh-library/react-native-unistyles/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
+| Version | Post Information                                                     | Support RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 2.7.2      | [@react-native-oh-tpl/react-native-unistyles Releases](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-unistyles%2Freleases) | 0.72       |
+| 2.43.1     | [@react-native-ohos/react-native-unistyles Releases]()       | 0.77       |
+
 Go to the project directory and execute the following instruction:
 
 
@@ -28,13 +33,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-unistyles
+
+# 0.77
+npm install @react-native-ohos/react-native-unistyles
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-unistyles
+
+# 0.77
+yarn add @react-native-ohos/react-native-unistyles
 ```
 
 <!-- tabs:end -->
@@ -416,10 +429,21 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
+- 0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-unistyles": "file:../../node_modules/@react-native-oh-tpl/react-native-unistyles/harmony/unistyles.har"
+}
+```
+
+- 0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-unistyles": "file:../../node_modules/@react-native-ohos/react-native-unistyles/harmony/unistyles.har"
 }
 ```
 
@@ -458,7 +482,11 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+# 0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-unistyles/src/main/cpp" ./unistyles)
+
+# 0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-unistyles/src/main/cpp" ./unistyles)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -501,7 +529,11 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
+// 0.72
 + import {RNUnistylesPackage} from '@react-native-oh-tpl/react-native-unistyles/ts';
+
+// 0.77
++ import {RNUnistylesPackage} from '@react-native-ohos/react-native-unistyles/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -528,9 +560,10 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+The content of this document has been validated based on the following version:
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-unistyles Releases](https://github.com/react-native-oh-library/react-native-unistyles/releases)
+1. RNOH：0.72.33; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## Runtime
 

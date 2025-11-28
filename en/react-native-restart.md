@@ -17,23 +17,30 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library：[@react-native-oh-tpl/react-native-restart Releases](https://github.com/react-native-oh-library/react-native-restart/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information                                                                                                                        | Supported RN Version |
+|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------| ---------- |
+| 0.0.27@deprecated           | [@react-native-oh-tpl/react-native-restart Releases(deprecated)](https://github.com/react-native-oh-library/react-native-restart/releases) | 0.72       |
+| 0.0.28                      | [@react-native-ohos/react-native-restart Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-restart/releases)                | 0.72       |
+| 0.1.0                       | [@react-native-ohos/react-native-restart Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-restart/releases)                | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-restart
+npm install @react-native-ohos/react-native-restart
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-restart
+yarn add @react-native-ohos/react-native-restart
 ```
 
 <!-- tabs:end -->
@@ -80,11 +87,15 @@ const styles = StyleSheet.create({
 
 ## Use Codegen
 
+Version >= @react-native-ohos/react-native-restart@0.0.28, compatible with codegen-lib for generating bridge code.
+
 If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-restart@0.0.28 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 ### 1.Open `entry/oh-package.json5` file and add the following dependencies:
@@ -102,7 +113,8 @@ Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
 Currently, two methods are available:
 
- 
+- Use the HAR file.
+- Directly link to the source code。
 
 Method 1 (recommended): Use the HAR file.
 
@@ -113,7 +125,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-   	"@react-native-oh-tpl/react-native-restart": "file:../../node_modules/@react-native-oh-tpl/react-native-restart/harmony/rn_restart.har",
+   	"@react-native-ohos/react-native-restart": "file:../../node_modules/@react-native-ohos/react-native-restart/harmony/rn_restart.har",
   }
 ```
 
@@ -130,14 +142,75 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 3. Introducing RNRestartPackage to ArkTS
+### 3. Configure CMakeLists and import BootSplashPackage
+
+> V0.0.28 requires the configuration of CMakeLists and the introduction of RestartPackage.
+
+Open the `entry/src/main/cpp/CMakeLists.txt` file and add the following code:
+
+```cmake
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-restart/src/main/cpp" ./restart)
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_restart)
+# RNOH_END: manual_package_linking_2
+```
+
+Open the `entry/src/main/cpp/PackageProvider.cpp`，file and add the following code:
+
+```c++
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "RestartPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++       std::make_shared<RestartPackage>(ctx)
+    };
+}
+```
+
+### 4. Introducing RNRestartPackage to ArkTS
 
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
 ```diff
 import type { RNPackageContext, RNPackage } from "rnoh/ts";
 import { SamplePackage } from "rnoh-sample-package/ts";
-+ import { RNRestartPackage } from '@react-native-oh-tpl/react-native-restart/ts';
++ import { RNRestartPackage } from '@react-native-ohos/react-native-restart/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -153,7 +226,10 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-restart Releases](https://github.com/react-native-oh-library/react-native-restart/releases)
+The following combinations have been verified:
+
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## Static Methods
 

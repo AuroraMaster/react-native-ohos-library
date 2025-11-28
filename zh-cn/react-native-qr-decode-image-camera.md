@@ -17,7 +17,15 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-qr-decode-image-camera Releases](https://github.com/react-native-oh-library/react-native-qr-decode-image-camera/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.1.4@deprecated     | [@react-native-oh-tpl/react-native-qr-decode-image-camera Releases(deprecated)](https://github.com/react-native-oh-library/react-native-qr-decode-image-camera/releases) | 0.72       |
+| 1.1.5      | [@react-native-ohos/react-native-qr-decode-image-camera Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-qr-decode-image-camera/releases) | 0.72       |
+| 1.2.0      | [@react-native-ohos/react-native-qr-decode-image-camera Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-qr-decode-image-camera/releases) | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -26,13 +34,13 @@
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-qr-decode-image-camera
+npm install @react-native-ohos/react-native-qr-decode-image-camera
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-qr-decode-image-camera
+yarn add @react-native-ohos/react-native-qr-decode-image-camera
 ```
 
 <!-- tabs:end -->
@@ -140,13 +148,19 @@ const styles = StyleSheet.create({
 
 ## 使用 Codegen
 
+Version >= @react-native-ohos/react-native-vision-camera@1.1.5，已适配codegen-lib生成桥接代码。
+
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
-本库鸿蒙侧实现依赖@react-native-oh-tpl/react-native-vision-camera 的原生端代码，如已在鸿蒙工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
+Version >= @react-native-ohos/react-native-vision-camera@1.1.5，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-如未引入请参照[@react-native-oh-tpl/react-native-vision-camera](/zh-cn/react-native-vision-camera.md)进行引入
+本库鸿蒙侧实现依赖@react-native-ohos/react-native-vision-camera 的原生端代码，如已在鸿蒙工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
+
+如未引入请参照[@react-native-ohos/react-native-vision-camera](/zh-cn/react-native-vision-camera.md)进行引入
+
+此步骤为手动配置原生依赖项的指导。
 
 ## 1.在工程根目录的 `oh-package.json5` 添加 overrides 字段
 
@@ -172,10 +186,19 @@ const styles = StyleSheet.create({
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- 0.72
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-qr-decode-image-camera": "file:../../node_modules/@react-native-oh-tpl/react-native-qr-decode-image-camera/harmony/qr_decode_image_camera.har"
+    "@react-native-ohos/react-native-qr-decode-image-camera": "file:../../node_modules/@react-native-ohos/react-native-qr-decode-image-camera/harmony/qr_decode_image_camera.har"
+  }
+```
+
+- 0.77
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-qr-decode-image-camera": "file:../../node_modules/@react-native-ohos/react-native-qr-decode-image-camera/harmony/qr_decode_image_camera.har"
   }
 ```
 
@@ -199,7 +222,7 @@ ohpm install
 
 ```diff
   ...
-+ import {RNQrDecodeImageCameraPackage} from '@react-native-oh-tpl/react-native-qr-decode-image-camera/ts';
++ import {RNQrDecodeImageCameraPackage} from '@react-native-ohos/react-native-qr-decode-image-camera/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -215,7 +238,10 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 ```diff
   ...
+  // 0.72
 + import { NativeScan } from "@react-native-oh-tpl/react-native-qr-decode-image-camera"
+  // 0.77
++ import { NativeScan } from "@react-native-ohos/react-native-qr-decode-image-camera"
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -231,7 +257,69 @@ export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
 ...
 ```
 
-### 5.运行
+### 5.配置 CMakeLists 和引入 QrDecodeImageCameraPackage
+
+> [!TIP] 0.77 需要执行 
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-qr-decode-image-camera/src/main/cpp" ./qr-decode-image-camera)
+
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_qr_decode_image_camera)
+# RNOH_END: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "QrDecodeImageCameraPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++       std::make_shared<QrDecodeImageCameraPackage>(ctx),
+    };
+}
+```
+
+### 6.运行
 
 点击右上角的 `sync` 按钮
 
@@ -248,10 +336,13 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下版本验证通过：
+1. RNOH：0.72.86; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-qr-decode-image-camera](https://github.com/react-native-oh-library/react-native-qr-decode-image-camera/releases)
 
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## 静态方法
 
@@ -271,38 +362,38 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name               | Description                                      | Type    | Required | Platform    | HarmonyOS Support |
-| ------------------ | ------------------------------------------------ | ------- | -------- | ----------- | ----------------- |
-| isRepeatScan       | whether to allow repeated scanning               | boolean | no       | iOS/Android | yes               |
-| zoom               | Camera focal length range 0-1                    | number  | no       | iOS/Android | no                |
-| flashMode          | Turn on the flashlight                           | boolean | no       | iOS/Android | yes               |
-| onRead             | scan callback                                    | funtion | yes      | iOS/Android | yes               |
-| maskColor          | mask layer color                                 | string  | no       | iOS/Android | yes               |
-| borderColor        | border color                                     | string  | no       | iOS/Android | yes               |
-| cornerColor        | Color of corner of scan frame                    | string  | no       | iOS/Android | yes               |
-| borderWidth        | border width of scan frame                       | number  | no       | iOS/Android | yes               |
-| cornerBorderWidth  | border width of scan frame corner                | number  | no       | iOS/Android | yes               |
-| cornerBorderLength | width and height of the corner of the scan frame | number  | no       | iOS/Android | yes               |
-| rectHeight         | Scan frame height                                | number  | no       | iOS/Android | yes               |
-| rectWidth          | Scan Frame Width                                 | number  | no       | iOS/Android | yes               |
-| finderX            | scan frame X axis offset                         | number  | no       | iOS/Android | yes               |
-| finderY            | scan frame Y axis offset                         | number  | no       | iOS/Android | yes               |
-| isCornerOffset     | whether the corners are offset                   | boolean | no       | iOS/Android | yes               |
-| cornerOffsetSize   | offset                                           | number  | no       | iOS/Android | yes               |
-| bottomHeight       | Reserved height at the bottom                    | number  | no       | iOS/Android | yes               |
-| scanBarAnimateTime | scan line time                                   | number  | no       | iOS/Android | yes               |
-| scanBarColor       | scan line color                                  | string  | no       | iOS/Android | yes               |
-| scanBarImage       | scan line image                                  | any     | no       | iOS/Android | yes               |
-| scanBarHeight      | scan line height                                 | number  | no       | iOS/Android | yes               |
-| scanBarMargin      | scanline left and right margin                   | number  | no       | IOS/Android | yes               |
-| hintText           | hintText                                         | string  | no       | IOS/Android | yes               |
-| hintTextStyle      | hint string style                                | object  | no       | iOS/Android | yes               |
-| hintTextPosition   | hintTextPosition                                 | number  | no       | iOS/Android | yes               |
-| renderTopView      | render top View                                  | funtion | no       | iOS/Android | yes               |
-| renderBottomView   | render bottom View                               | funtion | no       | iOS/Android | yes               |
-| isShowScanBar      | whether to show scan lines                       | boolean | no       | iOS/Android | yes               |
-| topViewStyle       | render top container style                       | object  | no       | iOS/Android | yes               |
-| bottomViewStyle    | render bottom container style                    | object  | no       | iOS/Android | yes               |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| isRepeatScan | 是否允许重复扫描 | boolean | no | iOS/Android | yes |
+| zoom | 相机焦距范围 0-1 | number | no | iOS/Android | no |
+| flashMode | 开启闪光灯 | boolean | no | iOS/Android | yes |
+| onRead | 扫描回调 | funtion | yes | iOS/Android | yes |
+| maskColor | 遮罩层颜色 | string | no | iOS/Android | yes |
+| borderColor | 边框颜色 | string | no | iOS/Android | yes |
+| cornerColor | 扫描框边角颜色 | string | no | iOS/Android | yes |
+| borderWidth | 扫描框边框宽度 | number | no | iOS/Android | yes |
+| cornerBorderWidth | 扫描框边角宽度 | number | no | iOS/Android | yes |
+| cornerBorderLength | 扫描框边角的宽高 | number | no | iOS/Android | yes |
+| rectHeight | 扫描框高度 | number | no | iOS/Android | yes |
+| rectWidth | 扫描框宽度 | number | no | iOS/Android | yes |
+| finderX | 扫描框 X 轴偏移量 | number | no | iOS/Android | yes |
+| finderY | 扫描框 Y 轴偏移量 | number | no | iOS/Android | yes |
+| isCornerOffset | 边角是否有偏移 | boolean | no | iOS/Android | yes |
+| cornerOffsetSize | 偏移量 | number | no | iOS/Android | yes |
+| bottomHeight | 底部预留高度 | number | no | iOS/Android | yes |
+| scanBarAnimateTime | 扫描线动画时间 | number | no | iOS/Android | yes |
+| scanBarColor | 扫描线颜色 | string | no | iOS/Android | yes |
+| scanBarImage | 扫描线图片 | any | no | iOS/Android | yes |
+| scanBarHeight | 扫描线高度 | number | no | iOS/Android | yes |
+| scanBarMargin | 扫描线左右边距 | number | no | IOS/Android | yes |
+| hintText | 提示文本 | string | no | IOS/Android | yes |
+| hintTextStyle | 提示文本样式 | object | no | iOS/Android | yes |
+| hintTextPosition | 提示文本位置 | number | no | iOS/Android | yes |
+| renderTopView | 渲染顶部视图 | funtion | no | iOS/Android | yes |
+| renderBottomView | 渲染底部视图 | funtion | no | iOS/Android | yes |
+| isShowScanBar | 是否显示扫描线 | boolean | no | iOS/Android | yes |
+| topViewStyle | 顶部容器样式 | object | no | iOS/Android | yes |
+| bottomViewStyle | 底部容器样式 | object | no | iOS/Android | yes |
 
 ## 遗留问题
 

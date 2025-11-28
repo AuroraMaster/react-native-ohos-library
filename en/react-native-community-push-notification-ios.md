@@ -4,15 +4,16 @@
   <h1 align="center"> <code>@react-native-community/push-notification-ios</code> </h1>
 </p>
 
-> [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-push-notification-ios)
 
-This third-party library has been migrated to Gitee and is now available for direct download from npm, the new package name is: `@react-native-ohos/push-notification-ios`, The version correspondence details are as follows:
+This project is based on [@react-native-community/push-notification-ios@1.11.0](https://github.com/react-native-push-notification/ios/tree/v1.11.0)。
 
-| Version      | Package Name                               | Repository                                                   | Release                                                      | Version for RN |
-| ------------ | ------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------- |
-| 1.11.0-0.1.3 | @react-native-oh-tpl/push-notification-ios | [Github(deprecated)](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-push-notification-ios) | [Github Releases(deprecated)](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-push-notification-ios%2Freleases) | 0.72           |
-| 1.11.1       | @react-native-ohos/push-notification-ios   | [GitCode](https://gitee.com/link?target=https%3A%2F%2Fgitcode.com%2Fopenharmony-sig%2Frntpc_ios) | [GitCode Releases](https://gitee.com/link?target=https%3A%2F%2Fgitcode.com%2Fopenharmony-sig%2Frntpc_ios%2Freleases) | 0.72           |
-| 1.12.0       | @react-native-ohos/push-notification-ios   | [GitCode](https://gitee.com/link?target=https%3A%2F%2Fgitcode.com%2Fopenharmony-sig%2Frntpc_ios) | [GitCode Releases]()                                         | 0.77           |
+This third-party library has been migrated to GitCode and is now available for direct download from npm, the new package name is: `@react-native-ohos/push-notification-ios`, The version correspondence details are as follows:
+
+| Third-party Library Version | Release Information    | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.11.0@deprecated     | [@react-native-oh-tpl/push-notification-ios Releases(deprecated)](https://github.com/react-native-oh-library/react-native-push-notification-ios/releases) | 0.72       |
+| 1.11.2      | [@react-native-ohos/push-notification-ios Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-push-notification-ios/releases) | 0.72       |
+| 1.12.0      | [@react-native-ohos/push-notification-ios Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-push-notification-ios/releases) | 0.77       |
 
 ## 1. Installation and Usage
 
@@ -164,6 +165,9 @@ export const App = () => {
 
 ## 2. Manual Link
 
+Version >= @react-native-ohos/push-notification-ios@1.11.2，now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
 This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
@@ -295,11 +299,12 @@ Then build and run the code.
 
 ### 3.1. Compatibility
 
-Verified in the following version:
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.200;ROM: 3.0.0.18;
+The following combinations have been verified:
 
-RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK;IDE: DevEco Studio  6.0.0.868;ROM:6.0.0.112;
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## 4. API
 

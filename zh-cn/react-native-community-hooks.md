@@ -16,6 +16,11 @@
 
 ## 安装与使用
 
+| 三方库版本 | 支持RN版本 |
+| ---------- | ---------- |
+| 3.0.0      | 0.72       |
+| 3.1.0      | 0.77       |
+
 进入到工程目录并输入以下命令：
 
 <!-- tabs:start -->
@@ -23,14 +28,24 @@
 ####  npm
 
 ```bash
+# 0.72
 npm install @react-native-community/hooks@3.0.0
+
+# 0.77
+npm install @react-native-community/hooks@3.1.0
 ```
+
 
 #### yarn
 
 ```bash
+# 0.72
 yarn add @react-native-community/hooks@3.0.0
+
+# 0.77
+yarn add @react-native-community/hooks@3.1.0
 ```
+
 
 <!-- tabs:end -->
 
@@ -130,6 +145,7 @@ const styles = StyleSheet.create({
 
 1.RNOH: 0.72.27; SDK：HarmonyOS-Next-DB1 5.0.0.25; IDE：DevEco Studio 5.0.3.400SP7; ROM：3.0.0.25;
 2.RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3.RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## API
 
@@ -138,27 +154,29 @@ const styles = StyleSheet.create({
 > [!Tip] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
 
-| Name           | Description                   | Type | Required | Platform    | HarmonyOS Support |
-|----------------|-------------------------------| -- | -------- | ----------- | ----------------- |
-| useAccessibilityInfo    | Check whether some configurations of the device are enabled.See useAccessibilityInfo Api | Function | False       | Android / iOS | Yes           |
-| useAppState    | Tells you whether the application is in the foreground or background | Function | False       | Android / iOS | Yes           |
-| useBackHandler  | Used to listen for the back button event on the device. You can call your own function to handle the back behavior. | Function | False       | Android / iOS | Yes               |
-| useImageDimensions  | Used to listen for the back button event on the device. You can call your own function to handle the back behavior. | Function | False       | Android / iOS | Yes     |
-| useKeyboard  | Return whether the keyboard is invoked and the keyboard width and height. | Function | False       | Android / iOS | Yes       |
-| useInteractionManager  | Schedule some of the more time-consuming tasks for after all the interactions or animations have been completed. | Function | False       | Android / iOS | Yes       |
-| useDeviceOrientation  | Check whether the device is in landscape or portrait mode. | Function | False       | Android / iOS | Yes       |
-| useLayout  | Returns the x-axis and y-axis coordinates of an element and the width and height of the element. | Function | False       | Android / iOS | Yes       |
-| useRefresh  | pull down to refresh. | Function | False       | Android / iOS | Yes       |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+|---|---|---|---|---|---|
+| useAccessibilityInfo | 检查设备的某些配置是否已启用。详见 useAccessibilityInfo Api | Function | False | Android / iOS | Yes |
+| useAppState | 告知应用当前是在前台还是后台。 | Function | False | Android / iOS | Yes |
+| useBackHandler | 用于监听设备上的返回按钮事件。您可以调用自己的函数来处理返回行为。 | Function | False | Android / iOS | Yes |
+| useImageDimensions | 用于监听设备上的返回按钮事件。您可以调用自己的函数来处理返回行为。 | Function | False | Android / iOS | Yes |
+| useKeyboard | 返回键盘是否弹出及其宽度和高度。 | Function | False | Android / iOS | Yes |
+| useInteractionManager | 在所有交互或动画完成后，安排执行一些较为耗时的任务。 | Function | False | Android / iOS | Yes |
+| useDeviceOrientation | 检查设备处于横屏还是竖屏模式。 | Function | False | Android / iOS | Yes |
+| useLayout | 返回一个元素的 x 轴和 y 轴坐标，以及其宽度和高度。 | Function | False | Android / iOS | Yes |
+| useRefresh | 下拉刷新。 | Function | False | Android / iOS | Yes |
 
-useAccessibilityInfo 方法返回值
-| Name           | Description                   | Platform    | HarmonyOS Support |
-|----------------|-------------------------------| -------- | ----------------- |
-| isBoldTextEnabled  | whether bold text is enabled | iOS | Yes        |
-| isScreenReaderEnabled    | Whether the Screen Reading Function Is Enabled | Android / iOS | Yes   |
-| isGrayscaleEnabled  | Whether grayscale mode is enabled | iOS | No        |
-| isInvertColorsEnabled  | Whether color inversion is enabled | iOS | No        |
-| isReduceMotionEnabled  | Whether reduction animation is enabled | Android / iOS | No        |
-| isReduceTransparencyEnabled  | Whether reduce transparency is enabled | iOS | No        |
+
+**useAccessibilityInfo 方法返回值**
+| Name | Description | Platform | HarmonyOS Support |
+|---|---|---|---|
+| isBoldTextEnabled | 粗体文本是否已启用。 | iOS | Yes |
+| isScreenReaderEnabled | 屏幕阅读功能是否已启用。 | Android / iOS | Yes |
+| isGrayscaleEnabled | 灰度模式是否已启用。 | iOS | No |
+| isInvertColorsEnabled | 颜色反转是否已启用。 | iOS | No |
+| isReduceMotionEnabled | 减弱动态效果（动画）是否已启用。 | Android / iOS | No |
+| isReduceTransparencyEnabled | 降低透明度是否已启用。 | iOS | No |
+
 
 ## 遗留问题
 

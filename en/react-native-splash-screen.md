@@ -6,14 +6,17 @@
 
 This project is based on [react-native-splash-screen@3.3.0](https://github.com/crazycodeboy/react-native-splash-screen/tree/v3.3.0).
 
-This third-party library has been migrated to GitCode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-splash-screen`, The version correspondence details are as follows:
-
-| Version                   | Package Name                                      | Repository                                                                                  | Release                                                                                                       |
-|---------------------------| ------------------------------------------------- |---------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
-| <= 3.3.0-0.0.2@deprecated | @react-native-oh-tpl/react-native-splash-screen | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-splash-screen) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-splash-screen/releases) |
-| > 3.3.0                   | @react-native-ohos/react-native-splash-screen   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-splash-screen)             | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-splash-screen/releases)             |
-
 ## 1. Installation and Usage
+
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information                                                                                                                                    | Supported RN Version |
+|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------| ---------- |
+| 3.3.0@deprecated            | [@react-native-oh-tpl/react-native-splash-screen Releases(deprecated)](https://github.com/react-native-oh-library/react-native-splash-screen/releases) | 0.72       |
+| 3.3.1                       | [@react-native-ohos/react-native-splash-screen Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-splash-screen/releases)                | 0.72       |
+| 3.4.0                       | [@react-native-ohos/react-native-splash-screen Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-splash-screen/releases)                | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -90,13 +93,21 @@ export default class WelcomePage extends Component {
 }
 ```
 
-## 2. Manual Link
+## 2. Use Codegen
+
+Version >= @react-native-ohos/react-native-splash-screen@3.3.1, compatible with codegen-lib for generating bridge code.
+
+If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
+
+## 3. Manual Link
+
+Version >= @react-native-ohos/react-native-splash-screen@3.3.1 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
-### 2.1. Overrides RN SDK
+### 3.1. Overrides RN SDK
 
 To ensure the project relies on the same version of the RN SDK, you need to add an `overrides` field in the project's root `oh-package.json5` file, specifying the RN SDK version to be used. The replacement version can be a specific version number, a semver range, or a locally available HAR package or source directory.
 
@@ -112,7 +123,7 @@ For more information about the purpose of this field, please refer to the [offic
 }
 ```
 
-### 2.2. Introducing Native Code
+### 3.2. Introducing Native Code
 
 Currently, two methods are available:
 
@@ -144,11 +155,12 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 2.3. Configuring CMakeLists and Introducing SplashScreenPackage
+### 3.3. Configuring CMakeLists and Introducing SplashScreenPackage
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
 ```diff
+  ...
 + set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
 
 # RNOH_BEGIN: manual_package_linking_1
@@ -177,7 +189,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 2.4. Introducing  SplashScreenPackage to ArkTS
+### 3.4. Introducing  SplashScreenPackage to ArkTS
 
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
@@ -193,7 +205,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 2.5. Running
+### 3.5. Running
 
 Click the `sync` button in the upper right corner.
 
@@ -205,7 +217,6 @@ ohpm install
 ```
 
 Then build and run the code.
-
 
 The following code demonstrates the basic usage scenario of this library:
 
@@ -236,13 +247,18 @@ export default App;
 
 ```
 
-## 3. Constraints
+## 4. Constraints
 
-### 3.1. Compatibility
+### 4.1. Compatibility
 
-Check the release version information in the release address of the third-party library: [@react-native-ohos/react-native-splash-screen Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-splash-screen/releases)
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-## 4. API
+The following combinations have been verified:
+
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+
+## 5. API
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
@@ -266,13 +282,13 @@ Check the release version information in the release address of the third-party 
 | backgroundColor | 启动页背景色 | string |
 | pageUrl | 首页路由 | bool |
 
-## 5. Known Issues
+## 6. Known Issues
 
-## 6. Others
+## 7. Others
 
 - In iOS, the working principle of the show() method is as follows: In the entry application method, the home page of the App is first loaded, and then a while loop is used to keep the interface on the App's splash screen. During this time, the home page still loads asynchronously. Once the loading is complete, stopping the while loop will hide the splash screen and display the home page.
   In HarmonyOS, the home page is loaded by calling windowStage.loadContent in the entry onWindowStageCreate method. If a while loop is used at this point, the home page cannot be loaded asynchronously.
 
-## 7.License
+## 8. License
 
 This project is licensed under [The MIT License (MIT)](https://github.com/crazycodeboy/react-native-splash-screen/blob/v3.3.0/LICENSE).

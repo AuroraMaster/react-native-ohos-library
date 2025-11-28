@@ -17,6 +17,10 @@
 
 ## Installation and Usage
 
+| Version | RN Version |
+| ---------- | ---------- |
+| 12.0.0     | 0.72       |
+| 13.0.0     | 0.77       |
 <!-- tabs:start -->
 
 Go to the project directory and execute the following instruction:
@@ -24,12 +28,17 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# V12.0.0
 npm i react-navigation-header-buttons@12.0.0
+
+# V13.0.0
+npm i react-navigation-header-buttons@13.0.0
 ```
 
 #### **yarn**
 
 ```bash
+# V12.0.0
 yarn add react-navigation-header-buttons@12.0.0
 ```
 
@@ -146,6 +155,7 @@ This document is verified based on the following versions:
 
 1. RNOH: 0.72.26; SDK：HarmonyOS NEXT Developer Beta1 5.0.0.25; IDE：DevEco Studio 5.0.3.300SP2; ROM:3.0.0.24(Canary3);
 2. RNOH: 0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## Properties
 

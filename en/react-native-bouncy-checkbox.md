@@ -16,6 +16,11 @@
 
 ## Installation and Usage
 
+| Library Version | Supported RN Version |
+| :--- | :--- |
+| 4.0.1 | 0.72 |
+| 4.1.2 | 0.77 |
+
 > [!TIP] This repository depends on the following libraries, please refer to the corresponding documentation:
 
 | Dependencies                         | Version |
@@ -27,13 +32,19 @@ This repository depends on the following libraries[@freakycoder/react-native-bou
 #### **npm**
 
 ```bash
+#0.72
 npm install --save react-native-bouncy-checkbox@4.0.1
+#0.77
+npm install --save react-native-bouncy-checkbox@4.1.2
 ```
 
 #### **yarn**
 
 ```bash
-yarn install --save react-native-bouncy-checkbox@4.0.1
+#0.72
+yarn add react-native-bouncy-checkbox@4.0.1
+#0.77
+yarn add react-native-bouncy-checkbox@4.1.2
 ```
 
 The following code shows the basic use scenario of the repository:
@@ -102,6 +113,7 @@ const styles = StyleSheet.create({
 This document is verified based on the following versions:
 
 1. RNOH: 0.72.27; SDK：HarmonyOS-Next-DB1 5.0.0.25; IDE：DevEco Studio  5.0.3.404; ROM：5.0.0.31;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## Properties (If Any)
 
@@ -118,6 +130,7 @@ This document is verified based on the following versions:
 | text                 | set the checkbox's text                                      | string    | no       | All      | yes               |
 | textComponent        | set the checkbox's text by a React Component                 | component | no       | All      | yes               |
 | disableText          | if you want to use checkbox without text, you can enable it  | boolean   | no       | All      | yes               |
+| useBuiltInState<sup>4.1.2+</sup> | To fully control the checkbox itself outside with your own state, just set to `false` and send your state value to `isChecked` prop. | boolean | no | All | yes |
 | size                 | size of `width` and `height` of the checkbox                 | number    | no       | All      | yes               |
 | style                | set/override the container style                             | style     | no       | All      | yes               |
 | textStyle            | set/override the text style                                  | style     | no       | All      | yes               |

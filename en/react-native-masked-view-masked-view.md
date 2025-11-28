@@ -35,12 +35,16 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+
 npm install @react-native-ohos/masked-view
 ```
 
 #### **yarn**
 
 ```bash
+
+
+# V0.2.11
 yarn add @react-native-ohos/masked-view
 ```
 
@@ -246,6 +250,11 @@ Please refer to the Releases page of the third-party library for the correspondi
 | 0.2.10@deprecated      | [@react-native-oh-tpl/masked-view Releases(deprecated)](https://github.com/react-native-oh-library/masked-view/releases) | 0.72       |
 | 0.2.11      | [@react-native-ohos/masked-view Releases](https://gitcode.com/openharmony-sig/rntpc_masked-view/releases)                        | 0.72       |
 | 0.3.3      | [@react-native-ohos/masked-view Releases](https://gitcode.com/openharmony-sig/rntpc_masked-view/releases)                        | 0.77       |
+
+The content of this document has been verified based on the following versions:
+
+1. RNOH: 0.72.98; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.0.3.906; ROM: NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## Properties
 

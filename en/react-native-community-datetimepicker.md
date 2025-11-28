@@ -15,8 +15,14 @@
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/datetimepicker)
 
 ## Installation and Usage
+Please refer to the Release page of the corresponding third-party library for version information:
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/datetimepicker Releases](https://github.com/react-native-oh-library/datetimepicker/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+| Version | Releases                                                     | RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 7.6.2      | [@react-native-oh-tpl/datetimepicker Releases](https://github.com/react-native-oh-library/datetimepicker/releases) | 0.72       |
+| 8.4.3      | [@react-native-ohos/datetimepicker Releases]()               | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -27,13 +33,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# V7.6.2
 npm install @react-native-oh-tpl/datetimepicker
+
+# V8.4.3
+npm install @react-native-ohos/datetimepicker
 ```
 
 #### **yarn**
 
 ```bash
+# V7.6.2
 yarn add @react-native-oh-tpl/datetimepicker
+
+# V8.4.3
+yarn add @react-native-ohos/datetimepicker
 ```
 
 <!-- tabs:end -->
@@ -121,6 +135,8 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
+- V7.6.2
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -128,6 +144,14 @@ Open `entry/oh-package.json5` file and add the following dependencies:
     "@react-native-oh-tpl/datetimepicker": "file:../../node_modules/@react-native-oh-tpl/datetimepicker/harmony/datetimepicker.har"
 }
 ```
+- V8.4.3
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+
+    "@react-native-ohos/datetimepicker": "file:../../node_modules/@react-native-ohos/datetimepicker/harmony/datetimepicker.har"
+}
 
 Click the `sync` button in the upper right corner.
 
@@ -164,7 +188,13 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+# V7.6.2
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/datetimepicker/src/main/cpp" ./datetimepicker)
+
+# V8.4.3
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/datetimepicker/src/main/cpp" ./datetimepicker)
+
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -207,7 +237,11 @@ Find `function buildCustomRNComponent()`, which is usually located in `entry/src
 
 ```diff
   ...
+// V7.6.2
 + import { RNDateTimePicker, DATETIME_PICKER_VIEW_TYPE } from "@react-native-oh-tpl/datetimepicker"
+
+// V8.4.3
++ import { RNDateTimePicker, DATETIME_PICKER_VIEW_TYPE } from "@react-native-ohos/datetimepicker"
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -255,7 +289,17 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/datetimepicker Releases](https://github.com/react-native-oh-library/datetimepicker/releases)
+Please refer to the Release page of the corresponding third-party library for version information:
+
+| Version | Releases                                                     | RN Releases |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 7.6.2      | [@react-native-oh-tpl/datetimepicker Releases](https://github.com/react-native-oh-library/datetimepicker/releases) | 0.72       |
+| 8.4.3      | [@react-native-ohos/datetimepicker Releases]()               | 0.77       |
+
+The content of this document has been verified based on the following versions:
+
+1. RNOH: 0.72.98; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.0.3.906; ROM: NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## Properties
 

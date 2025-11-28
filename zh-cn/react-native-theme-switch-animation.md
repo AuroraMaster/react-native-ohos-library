@@ -18,32 +18,27 @@
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 0.6.0      | [@react-native-oh-tpl/react-native-theme-switch-animation Releases](https://github.com/react-native-oh-library/react-native-theme-switch-animation/releases) | 0.72       |
-| 0.8.1      | [@react-native-ohos/react-native-theme-switch-animation Releases]() | 0.77       |
+| 三方库版本         | 发布信息                                                                                                                                                                     | 支持RN版本 |
+|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------| ---------- |
+| 0.6.0@deprecated | [@react-native-oh-tpl/react-native-theme-switch-animation Releases(deprecated)](https://github.com/react-native-oh-library/react-native-theme-switch-animation/releases) | 0.72       |
+| 0.6.1            | [@react-native-ohos/react-native-theme-switch-animation Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-theme-switch-animation/releases)                | 0.72       |
+| 0.8.1            | [@react-native-ohos/react-native-theme-switch-animation Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-theme-switch-animation/releases)                | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+进入到工程目录并输入以下命令：
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
-# V0.6.0
-npm install @react-native-oh-tpl/react-native-theme-switch-animation
-
-# V0.8.1
 npm install @react-native-ohos/react-native-theme-switch-animation
 ```
 
 #### **yarn**
 
 ```bash
-# V0.6.0
-yarn add @react-native-oh-tpl/react-native-theme-switch-animation
-
-# V0.8.1
 yarn add @react-native-ohos/react-native-theme-switch-animation
 ```
 
@@ -127,14 +122,15 @@ export default ReactNativeThemeSwitchAnimationDemo;
 
 ## 使用 Codegen
 
-> [!TIP] V0.8.1 不需要执行 Codegen。
+Version >= @react-native-ohos/react-native-theme-switch-animation@0.6.1，已适配codegen-lib生成桥接代码。
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
-
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-theme-switch-animation@0.6.1，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -162,18 +158,6 @@ export default ReactNativeThemeSwitchAnimationDemo;
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- V0.6.0
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-
-    "@react-native-oh-tpl/react-native-theme-switch-animation": "file:../../node_modules/@react-native-oh-tpl/react-native-theme-switch-animation/harmony/react_native_theme_switch.har"
-  }
-```
-
-- V0.8.1
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -194,9 +178,10 @@ ohpm install
 方法二：直接链接源码
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
+
 ### 3.配置 CMakeLists 和引入 ThemeSwitchAnimationPackage
 
-> [!TIP] 若使用的是 0.6.0 版本，请跳过本章。
+> V0.6.1 需要配置CMakeLists 和引入 BootSplashPackage。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -261,10 +246,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
 ...
-// V0.6.0
-+ import { RNThemeSwitchPackage } from "@react-native-oh-tpl/react-native-theme-switch-animation/ts";
-
-// V0.8.1
 + import { RNThemeSwitchPackage } from "@react-native-ohos/react-native-theme-switch-animation/ts";
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -274,6 +255,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+
 ### 5.运行
 
 点击右上角的 `sync` 按钮
@@ -291,20 +273,18 @@ ohpm install
 
 ### 注意事项
 
-本库 HarmonyOS 侧实现依赖@react-native-oh-tpl/react-native-safe-area-context的原生端代码，如已在 HarmonyOS 工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
+本库 HarmonyOS 侧实现依赖@react-native-ohos/react-native-safe-area-context的原生端代码，如已在 HarmonyOS 工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
 
-如未引入react-native-safe-area-context请参照[@react-native-oh-tpl/react-native-safe-area-context 文档](/zh-cn/react-native-safe-area-context.md)进行引入
+如未引入react-native-safe-area-context请参照[@react-native-ohos/react-native-safe-area-context 文档](/zh-cn/react-native-safe-area-context.md)进行引入
 
 ### 兼容性
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库的 Releases 发布地址查看配套的版本信息：
+在以下版本验证通过：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 0.6.0      | [@react-native-oh-tpl/react-native-theme-switch-animation Releases](https://github.com/react-native-oh-library/react-native-theme-switch-animation/releases) | 0.72       |
-| 0.8.1      | [@react-native-ohos/react-native-theme-switch-animation Releases]() | 0.77       |
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## 属性
 

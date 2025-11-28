@@ -15,6 +15,9 @@
 > [!TIP] [GitHub address](https://github.com/iberHK/react-native-picker)
 
 ## Installation and Usage
+| Library Version | Supported RN Version |
+| :--- | :--- |
+| 2.0.0 | 0.72/0.77 |
 
 Go to the project directory and execute the following instruction:
 
@@ -160,9 +163,9 @@ export default class MainPage extends BaseComponent {
 
 ## Link
 
-The HarmonyOS implementation of this library depends on the native code from @react-native-oh-tpl/react-native-svg. If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly.
+The HarmonyOS implementation of this library depends on the native code from @react-native-ohos/react-native-svg. If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly.
 
-If it is not included, follow the guide provided in [@react-native-oh-tpl/react-native-svg](/en/react-native-svg-capi.md) to add it to your project.
+If it is not included, follow the guide provided in [@react-native-ohos/react-native-svg](/en/react-native-svg-capi.md) to add it to your project.
 
 ## Constraints
 
@@ -171,6 +174,7 @@ If it is not included, follow the guide provided in [@react-native-oh-tpl/react-
 This document is verified based on the following versions:
 
 1. RNOH: 0.72.26; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.300; ROM: 3.0.0.25;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## Properties
 

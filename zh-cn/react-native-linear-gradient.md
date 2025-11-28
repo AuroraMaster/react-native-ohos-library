@@ -8,10 +8,11 @@
 
 该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-linear-gradient`，具体版本所属关系如下：
 
-| Version                   | Package Name                                      | Repository         | Release                    |
-| ------------------------- | ------------------------------------------------- | ------------------ | -------------------------- |
-| <= 3.0.0-0.5.0@deprecated | @react-native-oh-tpl/react-native-linear-gradient | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-linear-gradient) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-linear-gradient/releases) |
-| > 3.0.0                   | @react-native-ohos/react-native-linear-gradient   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) |
+| Version                   | Package Name                                      | Repository         | Release                    | Supported RN Version |
+| ------------------------- | ------------------------------------------------- | ------------------ | -------------------------- | -------------------------- |
+| <= 3.0.0-0.5.0@deprecated | @react-native-oh-tpl/react-native-linear-gradient | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-linear-gradient) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-linear-gradient/releases) | 0.72 |
+| 3.0.0 | @react-native-oh-tpl/react-native-linear-gradient | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/tree/br_rnoh0.72) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) | 0.72 |
+| 3.1.0                   | @react-native-ohos/react-native-linear-gradient   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/tree/br_rnoh0.77) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) | 0.77 |
 
 ## 1. 安装与使用
 
@@ -205,15 +206,15 @@ ohpm install
 
 > [!TIP] "如果“HarmonyOS 支持”列的值为“yes”，则表示 HarmonyOS 平台支持该属性；“no”则表示不支持；“partially”表示部分支持该属性的功能。该属性在不同平台上的使用方法相同，效果与 iOS 或 Android 平台一致。
 
-| Name        | Description                                              | Type                   | Required | Platform | HarmonyOS Support |
-| ----------- | -------------------------------------------------------- | ---------------------- | -------- | -------- | ----------------- |
-| colors      | Color Array                                              | (string\|number)[]     | NO       | All      | yes               |
-| locations   | Color for unknown array (length 0 or the same as colors) | number[]               | NO       | All      | yes               |
-| useAngle    | Use angle (default false)                                | boolean                | NO       | All      | yes               |
-| angle       | Angle (useAngle=true valid)                              | number                 | NO       | All      | yes               |
-| angleCenter | Middle angle coordinate                                  | { x: number,y: number} | NO       | All      | no                |
-| start       | Starting point coordinates (default value: {x: 0.5,1})   | { x: number,y: number} | NO       | All      | yes               |
-| end         | End point coordinates (default value: {x: 0.5,1})        | { x: number,y: number} | NO       | All      | yes               |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| colors | 颜色数组 | (string\|number)[] | NO | All | yes |
+| locations | 颜色位置数组（长度为 0 或与 colors 相同） | number[] | NO | All | yes |
+| useAngle | 是否使用角度（默认为 false） | boolean | NO | All | yes |
+| angle | 角度（当 useAngle=true 时有效） | number | NO | All | yes |
+| angleCenter | 角度中心坐标 | { x: number,y: number} | NO | All | no |
+| start | 起点坐标（默认值：{x: 0.5, 1}） | { x: number,y: number} | NO | All | yes |
+| end | 终点坐标（默认值：{x: 0.5, 1}） | { x: number,y: number} | NO | All | yes |
 
 ## 5. 遗留问题
 

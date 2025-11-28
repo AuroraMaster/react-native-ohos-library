@@ -33,20 +33,20 @@
 #### **npm**
 
 ```bash
-# V2.7.2
+# 0.72
 npm install @react-native-oh-tpl/react-native-unistyles
 
-# V2.43.1
+# 0.77
 npm install @react-native-ohos/react-native-unistyles
 ```
 
 #### **yarn**
 
 ```bash
-# V2.7.2
+# 0.72
 yarn add @react-native-oh-tpl/react-native-unistyles
 
-# V2.43.1
+# 0.77
 yarn add @react-native-ohos/react-native-unistyles
 ```
 
@@ -418,7 +418,7 @@ const autoGuidelinePlugin: UnistylesPlugin = {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- V2.7.2
+- 0.72
 
 ```json
 "dependencies": {
@@ -427,7 +427,7 @@ const autoGuidelinePlugin: UnistylesPlugin = {
 }
 ```
 
-- V2.43.1
+- 0.77
 
 ```json
 "dependencies": {
@@ -472,10 +472,10 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
 
-# V2.7.2
+# 0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-unistyles/src/main/cpp" ./unistyles)
 
-# V2.43.1
+# 0.77
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-unistyles/src/main/cpp" ./unistyles)
 
 # RNOH_END: manual_package_linking_1
@@ -520,10 +520,10 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-// V2.7.2
+// 0.72
 + import {RNUnistylesPackage} from '@react-native-oh-tpl/react-native-unistyles/ts';
 
-// V2.43.1
+// 0.77
 + import {RNUnistylesPackage} from '@react-native-ohos/react-native-unistyles/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -551,14 +551,10 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 2.7.2      | [@react-native-oh-tpl/react-native-unistyles Releases](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-unistyles%2Freleases) | 0.72       |
-| 2.43.1     | [@react-native-ohos/react-native-unistyles Releases]()       | 0.77       |
+1. RNOH：0.72.33; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ### UnistylesRuntime
 
@@ -568,24 +564,24 @@ UnistylesRuntime 是 Unitstyles 库 的一个Host Object。它始终保持最新
 
 | Name                 | Description                                                                  | Type                 | Required | Platform        | HarmonyOS Support |
 | -------------------- | ---------------------------------------------------------------------------- | -------------------- | -------- | --------------- | ----------------- |
-| `screenWidth`        | Screen dimensions Width                                                      | number               | no       | All             | yes               |
-| `screenHeight`       | Screen dimensions Height                                                     | number               | no       | All             | yes               |
-| `enabledPlugins`     | Names of currently enabled plugins                                           | boolean              | no       | All             | yes               |
-| `hasAdaptiveThemes`  | Indicates if you have enabled adaptive themes                                | boolean              | no       | All             | yes               |
-| `themeName`          | Name of the selected theme or an empty string if you don’t use themes        | string               | no       | All             | yes               |
-| `breakpoint`         | Current breakpoint or always undefined if you don’t use breakpoints          | UnistylesBreakpoints | no       | All             | yes               |
-| `colorScheme`        | Get your device’s color scheme. Available options dark, light or unspecified | string               | no       | All             | yes               |
-| `contentSizeCategory` | Your device’s content size category                                          | string               | no       | All             | yes               |
-| `insets`             | Device insets which are safe to put content into                             | inset                | no       | All             | yes               |
-| `statusBar.width`    | Status bar dimensions width                                                  | number               | no       | All             | yes               |
-| `statusBar.height`   | Status bar dimensions height                                                 | number               | no       | All             | yes               |
-| `navigationBar.height` | Navigation bar dimensions height                                             | number               | no       | Android 		  | yes               |
-| `navigationBar.width` | Navigation bar dimensions width                                              | number               | no       | Android 		  | yes               |
-| `ScreenOrientation`  | Your device’s orientation                                                    | ScreenOrientation    | no       | All             | yes               |
-| `pixelRatio`<sup>2.43.1+</sup> | Pixel density of the device | number | no | All | yes |
-| `fontScale`<sup>2.43.1+</sup> | Font scale of the device | number | no | All | yes |
-| `hairlineWidth`<sup>2.43.1+</sup> | The thinnest width of the platform | number | no | All | yes |
-| `rtl`<sup>2.43.1+</sup> | Indicates if the device is in RTL mode | boolean | no | All | yes |
+| `screenWidth`        | 屏幕尺寸宽度                                                      | number               | no       | All             | yes               |
+| `screenHeight`       | 屏幕尺寸高度                                                     | number               | no       | All             | yes               |
+| `enabledPlugins`     | 当前启用的插件名称                                           | boolean              | no       | All             | yes               |
+| `hasAdaptiveThemes`  | 指示是否启用了自适应主题                                | boolean              | no       | All             | yes               |
+| `themeName`          | 所选主题的名称，如果不使用主题则为空字符串        | string               | no       | All             | yes               |
+| `breakpoint`         | 当前断点，如果不使用断点则始终未定义          | UnistylesBreakpoints | no       | All             | yes               |
+| `colorScheme`        | 获取设备的颜色方案。可用选项：暗色、亮色或未指定 | string               | no       | All             | yes               |
+| `contentSizeCategory` | 设备的内容大小类别                                          | string               | no       | All             | yes               |
+| `insets`             | 设备的内边距，用于安全放置内容                             | inset                | no       | All             | yes               |
+| `statusBar.width`    | 状态栏尺寸宽度                                                  | number               | no       | All             | yes               |
+| `statusBar.height`   | 状态栏尺寸高度                                                 | number               | no       | All             | yes               |
+| `navigationBar.height` | 导航栏尺寸高度                                             | number               | no       | Android 		  | yes               |
+| `navigationBar.width` | 导航栏尺寸宽度                                              | number               | no       | Android 		  | yes               |
+| `ScreenOrientation`  | 设备的朝向                                                    | ScreenOrientation    | no       | All             | yes               |
+| `pixelRatio`<sup>2.43.1+</sup> | 设备的像素密度 | number | no | All | yes |
+| `fontScale`<sup>2.43.1+</sup> | 设备的字体缩放比例 | number | no | All | yes |
+| `hairlineWidth`<sup>2.43.1+</sup> | 平台的最细宽度 | number | no | All | yes |
+| `rtl`<sup>2.43.1+</sup> | 指示设备是否处于RTL模式 | boolean | no | All | yes |
 
 
 ## 静态方法
@@ -598,18 +594,18 @@ UnistylesRuntime 是 Unitstyles 库 的一个Host Object。它始终保持最新
 
 | Name               | Description                                                  | Type     | Required | Platform | HarmonyOS Support |
 | ------------------ | ------------------------------------------------------------ | -------- | -------- | -------- | ----------------- |
-| `useInitialTheme`  | using multiple themes and need to determine the initial theme during runtime | function | no       | All      | yes               |
-| `useStyles`        | set current styles                                           | function | no       | All      | yes               |
-| `createStyleSheet` | create unistyles StyleSheet                                  | function | no       | All      | yes               |
+| `useInitialTheme`  | 使用多个主题并在运行时确定初始主题 | function | no       | All      | yes               |
+| `useStyles`        | 设置当前样式                                           | function | no       | All      | yes               |
+| `createStyleSheet` | 创建unistyles样式表                                  | function | no       | All      | yes               |
 
 #### mq
 
 | Name     | Description                   | Type     | Required | Platform | HarmonyOS Support |
 | -------- | ----------------------------- | -------- | -------- | -------- | ----------------- |
-| `width`  | width from xx onwards         | function | no       | All      | yes               |
-| `height` | heigh from xx onwards         | function | no       | All      | yes               |
+| `width`  | 宽度从xx开始         | function | no       | All      | yes               |
+| `height` | 高度从xx开始         | function | no       | All      | yes               |
 | `and`    | and                           | function | no       | All      | yes               |
-| `only`   | width or height from xx to xx | function | no       | All      | yes               |
+| `only`   | 宽度或高度从xx到xx | function | no       | All      | yes               |
 
 ## API
 
@@ -621,26 +617,26 @@ UnistylesRuntime 是 Unitstyles 库 的一个Host Object。它始终保持最新
 
 | Name                                           | Description                                                  | Type     | Required | Platform | HarmonyOS Support |
 | ---------------------------------------------- | ------------------------------------------------------------ | -------- | -------- | -------- | ----------------- |
-| `statusBar.setColor`                           | Update statusBar color at runtime                            | function | no       | All      | yes               |
-| `navigationBar.setColor`                       | Update navigationBar color at runtime                        | function | no       | All      | yes               |
-| `setAdaptiveThemes`                            | Toggle adaptive themes                                       | function | no       | All      | yes               |
-| `setTheme`                                     | Change the current theme                                     | function | no       | All      | yes               |
-| `updateTheme`                                  | Update the theme at runtime                                  | function | no       | All      | yes               |
-| `removePlugin`                                 | Disable a plugin                                             | function | no       | All      | yes               |
-| `addPlugin`                                    | Enable a plugin                                              | function | no       | All      | yes               |
-| `statusBar.setHidden`<sup>2.43.1+</sup>        | Show/hide status bar at runtime                              | function | no       | All      | no                |
-| `navigationBar.setHidden`<sup>2.43.1+</sup>    | Show/hide navigation bar at runtime                          | function | no       | All      | no                |
-| `setImmersiveMode`<sup>2.43.1+</sup>           | Enable/disable immersive mode (hiding both status and navigation bars) | function | no       | All      | no                |
-| `setRootViewBackgroundColor`<sup>2.43.1+</sup> | Set root view background color                               | function | no       | All      | yes               |
-| `getTheme`<sup>2.43.1+</sup>                   | Get theme by name or current theme if not specified          | function | no       | All      | yes               |
+| `statusBar.setColor`                           | 在运行时更新状态栏颜色                            | function | no       | All      | yes               |
+| `navigationBar.setColor`                       | 在运行时更新导航栏颜色                        | function | no       | All      | no               |
+| `setAdaptiveThemes`                            | 切换自适应主题                                       | function | no       | All      | yes               |
+| `setTheme`                                     | 更改当前主题                                     | function | no       | All      | yes               |
+| `updateTheme`                                  | 在运行时更新主题                                  | function | no       | All      | yes               |
+| `removePlugin`                                 | 禁用插件                                             | function | no       | All      | yes               |
+| `addPlugin`                                    | 启用插件                                             | function | no       | All      | yes               |
+| `statusBar.setHidden`<sup>2.43.1+</sup>        | 在运行时显示/隐藏状态栏                              | function | no       | All      | no                |
+| `navigationBar.setHidden`<sup>2.43.1+</sup>    | 在运行时显示/隐藏导航栏                          | function | no       | All      | no                |
+| `setImmersiveMode`<sup>2.43.1+</sup>           | 启用/禁用沉浸模式（隐藏状态栏和导航栏） | function | no       | All      | no                |
+| `setRootViewBackgroundColor`<sup>2.43.1+</sup> | 设置根视图背景颜色                               | function | no       | All      | yes               |
+| `getTheme`<sup>2.43.1+</sup>                   | 按名称获取主题，如果未指定则获取当前主题          | function | no       | All      | yes               |
 
 #### UnistylesRegistry
 
 | Name             | Description          | Type     | Required | Platform | HarmonyOS Support |
 | ---------------- | -------------------- | -------- | -------- | -------- | ----------------- |
-| `addThemes`      | register themes      | function | no       | All      | yes               |
-| `addBreakpoints` | register breakpoints | function | no       | All      | yes               |
-| `addConfig`      | register config      | function | no       | All      | yes               |
+| `addThemes`      | 注册主题      | function | no       | All      | yes               |
+| `addBreakpoints` | 注册断点 | function | no       | All      | yes               |
+| `addConfig`      | 注册配置      | function | no       | All      | yes               |
 
 ## 遗留问题
 

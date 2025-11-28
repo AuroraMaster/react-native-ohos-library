@@ -17,19 +17,34 @@
 
 ## 安装与使用
 
+| 三方库版本 | 支持RN版本 |
+| ---------- | ---------- |
+| 12.0.0     | 0.72       |
+| 13.0.0     | 0.77       |
+
+<!-- tabs:start -->
+
 <!-- tabs:start -->
 进入到工程目录并输入以下命令：
 
 #### **npm**
 
 ```bash
+# V12.0.0
 npm i react-navigation-header-buttons@12.0.0
+
+# V13.0.0
+npm i react-navigation-header-buttons@13.0.0
 ```
 
 #### **yarn**
 
 ```bash
+# V12.0.0
 yarn add react-navigation-header-buttons@12.0.0
+
+# V13.0.0
+yarn add react-navigation-header-buttons@13.0.0
 ```
 
 
@@ -143,6 +158,7 @@ export function UsageWithIcons({ navigation }) {
 
 1. RNOH: 0.72.26; SDK：HarmonyOS NEXT Developer Beta1 5.0.0.25; IDE：DevEco Studio 5.0.3.300SP2; ROM:3.0.0.24(Canary3);
 2. RNOH: 0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## 属性
 
@@ -152,12 +168,12 @@ export function UsageWithIcons({ navigation }) {
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name            | Description     | Type                                                                                                                     | Required | Platform | HarmonyOS Support    |
-| --------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------- | ------- | -------- | ----------- |
-| HeaderButtonComponent            | component that renders the buttons, HeaderButton by default  |`ComponentType`| no   | iOS/Android       | yes |
-| children            | 	whatever you want to render inside  |`ReactNode`| yes   | iOS/Android       | yes |
-| left            | 	Whether to add margin distance  |boolean| no   | iOS/Android       | yes |
-| preset            | headers are typically rendered in Stack Navigator, however, you can also render them in a Tab Navigator header. Pass 'tabHeader' if button margins are missing.  |`’tabHeader’/‘stackHeader’`| no   | iOS/Android       | yes |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `HeaderButtonComponent` | 渲染按钮的组件，默认为 HeaderButton | `ComponentType` | no | iOS/Android | yes |
+| `children` | 你想要在内部渲染的任何内容 | `ReactNode` | yes | iOS/Android | yes |
+| `left` | 是否添加边距距离 | boolean | no | iOS/Android | yes |
+| `preset` | 标题通常在 Stack Navigator 中渲染，但你也可以在 Tab Navigator 标题中渲染它们。如果缺少按钮边距，请传递 'tabHeader'。 | `’tabHeader’/‘stackHeader’` | no | iOS/Android | yes |
 
 ### Item
 
@@ -165,13 +181,13 @@ export function UsageWithIcons({ navigation }) {
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name            | Description     | Type                                                                                                                     | Required | Platform | HarmonyOS Support    |
-| --------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------- | ------- | -------- | ----------- |
-| title            | 	title for the button, required  |string| no   | iOS/Android       | yes |
-| onPress            | 	function to call on press |function| no   | iOS/Android       | yes |
-| iconName            | 	icon name, used together with the IconComponent prop  |string| no   | iOS/Android       | yes |
-| style            | style to apply to the touchable element that wraps the button  |` ViewStyle`| no   | iOS/Android       | yes |
-| buttonStyle            | style to apply to the text / icon |` ViewStyle`| no   | iOS/Android       | yes |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `title` | 按钮的标题，必填 | string | no | iOS/Android | yes |
+| `onPress` | 按下时调用的函数 | function | no | iOS/Android | yes |
+| `iconName` | 图标名称，与 IconComponent 属性一起使用 | string | no | iOS/Android | yes |
+| `style` | 应用于包裹按钮的可触摸元素的样式 | `ViewStyle` | no | iOS/Android | yes |
+| `buttonStyle` | 应用于文本/图标的样式 | `ViewStyle` | no | iOS/Android | yes |
 
 ### OverflowMenu
 
@@ -179,14 +195,14 @@ export function UsageWithIcons({ navigation }) {
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name            | Description     | Type                                                                                                                     | Required | Platform | HarmonyOS Support    |
-| --------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------- | ------- | -------- | ----------- |
-| OverflowIcon            | React element or component for the overflow icon  |` ReactElement / ComponentType`| no   | iOS/Android       | yes |
-| style            | 	optional styles for overflow button|`ViewStyle`| no   | iOS/Android       | yes |
-| onPress            | 	function that is called when overflow menu is pressed.  |function| no   | iOS/Android       | yes |
-| left              | Whether to add margin distance |boolean| no   | iOS/Android       | yes |
-| children              | the overflow items|`ReactNode`| yes   | iOS/Android       | yes |
-| preset              |	headers are typically rendered in Stack Navigator, however, you can also render them in a Tab Navigator header. Pass 'tabHeader' if button margins are missing. |` 'tabHeader' / 'stackHeader'`| no   | iOS/Android       | yes |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `OverflowIcon` | 溢出图标的 React 元素或组件 | `ReactElement / ComponentType` | no | iOS/Android | yes |
+| `style` | 溢出按钮的可选样式 | `ViewStyle` | no | iOS/Android | yes |
+| `onPress` | 当按下溢出菜单时调用的函数。 | function | no | iOS/Android | yes |
+| `left` | 是否添加边距距离 | boolean | no | iOS/Android | yes |
+| `children` | 溢出项 | `ReactNode` | yes | iOS/Android | yes |
+| `preset` | 标题通常在 Stack Navigator 中渲染，但你也可以在 Tab Navigator 标题中渲染它们。如果缺少按钮边距，请传递 'tabHeader'。 | ` 'tabHeader' / 'stackHeader'` | no | iOS/Android | yes |
 
 ### HiddenItem
 
@@ -194,13 +210,13 @@ export function UsageWithIcons({ navigation }) {
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name            | Description     | Type                                                                                                                     | Required | Platform | HarmonyOS Support    |
-| --------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------- | ------- | -------- | ----------- |
-| title            |title for the button, required  |string| no   | iOS/Android       | yes |
-| style            | style to apply to the touchable element that wraps the text|`ViewStyle`| no   | iOS/Android       | yes |
-| titleStyle            | style to apply to the text |`TextStyle`| no   | iOS/Android       | yes |
-| onPress            |function to call on press  |function| no   | iOS/Android       | yes |
-| disabled              | disabled 'item' is greyed out and onPress is not called on touch |boolean| no   | iOS/Android       | yes |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `title` | 按钮的标题，必填 | string | no | iOS/Android | yes |
+| `style` | 应用于包裹文本的可触摸元素的样式 | `ViewStyle` | no | iOS/Android | yes |
+| `titleStyle` | 应用于文本的样式 | `TextStyle` | no | iOS/Android | yes |
+| `onPress` | 按下时调用的函数 | function | no | iOS/Android | yes |
+| `disabled` | 禁用的“项目”会变灰，且触摸时不会调用 onPress | boolean | no | iOS/Android | yes |
 
 
 ### HeaderButton
@@ -210,13 +226,13 @@ export function UsageWithIcons({ navigation }) {
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
 
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `title` | 按钮的标题，必填 | string | no | iOS/Android | yes |
+| `style` | 应用于包裹文本的可触摸元素的样式 | `ViewStyle` | no | iOS/Android | yes |
+| `onPress` | 按下时调用的函数 | function | no | iOS/Android | yes |
+| `renderButton` | 你可以使用 renderButton 完全自定义 PlatformPressable 内部渲染的内容 | ReactNode | no | iOS/Android | yes |
 
-| Name            | Description     | Type                                                                                                                     | Required | Platform | HarmonyOS Support    |
-| --------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------- | ------- | -------- | ----------- |
-| title            |title for the button, required  |string| no   | iOS/Android       | yes |
-| style            | style to apply to the touchable element that wraps the text|`ViewStyle`| no   | iOS/Android       | yes |
-| onPress            |function to call on press  |function| no   | iOS/Android       | yes |
-| renderButton              |You can fully customize what it renders inside of the PlatformPressable using the renderButton |ReactNode | no   | iOS/Android       | yes |
 ## 遗留问题
 
 ## 其他

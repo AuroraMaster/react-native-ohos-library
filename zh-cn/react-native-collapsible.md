@@ -17,6 +17,11 @@
 
 ## 安装与使用
 
+| 三方库版本 | 支持RN版本 |
+| ---------- | ---------- |
+| 1.6.1      | 0.72       |
+| 1.6.2      | 0.77       |
+
 进入到工程目录并输入以下命令：
 
 <!-- tabs:start -->
@@ -24,13 +29,21 @@
 #### **npm**
 
 ```bash
+# 0.72
 npm install react-native-collapsible@1.6.1
+
+# 0.77
+npm install react-native-collapsible@1.6.2
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add react-native-collapsible@1.6.1
+
+# 0.77
+yarn add react-native-collapsible@1.6.2
 ```
 
 <!-- tabs:end -->
@@ -91,6 +104,7 @@ const CONTENT = [
 
 1. RNOH: 0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## 属性
 
@@ -98,42 +112,42 @@ const CONTENT = [
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 #### Collapsible
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
-| ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| **`align`**                   | Alignment of the content when transitioning, can be `top`, `center` or `bottom`                           | enum | no | All | yes |                                                                                                                                                                                       
-| **`collapsed`**               | Whether to show the child components or not                                                                | boolean | no | All | yes |                                                                                                                                                                                     
-| **`collapsedHeight`**         | Which height should the component collapse to                                                           | number | no | All | yes |                                                                                                                                                                                       
-| **`enablePointerEvents`**     | Enable pointer events on collapsed view                                                                   | boolean | no | All | yes |                                                                                                                                                                                         
-| **`duration`**                | Duration of transition in milliseconds                                                                   | number | no | All | yes |                                                                                                                                                                                        
-| **`easing`**                  | Function or function name from [`Easing`](https://github.com/facebook/react-native/blob/master/Libraries/Animated/src/Easing.js) (or [`tween-functions`](https://github.com/chenglou/tween-functions) if < RN 0.8). Collapsible will try to combine `Easing` functions for you if you name them like `tween-functions`. | string \| function | no | All | yes |
-| **`renderChildrenCollapsed`** | Render children in collapsible even if not visible.                                                       | boolean | no | All | yes |                                                                                                                                                                                          
-| **`style`**                   | Optional styling for the container                                                                       | object | no | All | yes |                                                                                                                                                                                         
-| **`onAnimationEnd`**          | Callback when the toggle animation is done. Useful to avoid heavy layouting work during the animation    | function | no | All | yes |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **`align`** | 过渡时内容的对齐方式，可以是 `top`、`center` 或 `bottom`。 | enum | no | All | yes |
+| **`collapsed`** | 是否显示子组件。 | boolean | no | All | yes |
+| **`collapsedHeight`** | 组件折叠后的高度。 | number | no | All | yes |
+| **`enablePointerEvents`** | 在折叠视图上启用指针事件。 | boolean | no | All | yes |
+| **`duration`** | 过渡持续时间（以毫秒为单位）。 | number | no | All | yes |
+| **`easing`** | 来自 [`Easing`](https://github.com/facebook/react-native/blob/master/Libraries/Animated/src/Easing.js) 的函数或函数名（如果 RN < 0.8，则是 [`tween-functions`](https://github.com/chenglou/tween-functions)）。如果你使用类似 `tween-functions` 的命名方式，Collapsible 会尝试为你组合 `Easing` 函数。 | string \| function | no | All | yes |
+| **`renderChildrenCollapsed`** | 即使不可见，也在折叠组件中渲染子元素。 | boolean | no | All | yes |
+| **`style`** | 容器的可选样式。 | object | no | All | yes |
+| **`onAnimationEnd`** | 切换动画结束时的回调。用于避免在动画期间进行繁重的布局工作。 | function | no | All | yes |
 
 #### Accordion 
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
-| ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| **`sections`**                                          | An array of sections passed to the render methods                                                              | array | no | All | yes |
-| **`renderHeader(content, index, isActive, sections)`**  | A function that should return a renderable representing the header                                             | function | no | All | yes |
-| **`renderContent(content, index, isActive, sections)`** | A function that should return a renderable representing the content                                            | function | no | All | yes |
-| **`renderFooter(content, index, isActive, sections)`**  | A function that should return a renderable representing the footer                                             | function | no | All | yes |
-| **`renderSectionTitle(content, index, isActive)`**      | A function that should return a renderable representing the title of the section outside the touchable element | function | no | All | yes |
-| **`onChange(indexes)`**                                 | A function that is called when the currently active section(s) are updated.                                    | function | no | All | yes |
-| **`keyExtractor(item, index)`**                         | Used to extract a unique key for a given item at the specified index.                                          | function | no | All | yes |
-| **`activeSections`**                                    | Control which indices in the `sections` array are currently open. If empty, closes all sections.               | array | no | All | yes |
-| **`underlayColor`**                                     | The color of the underlay that will show through when tapping on headers. Defaults to black.                   | string | no | All | yes |
-| **`touchableComponent`**                                | The touchable component used in the Accordion. Defaults to `TouchableHighlight`                                | object | no | All | yes |
-| **`touchableProps`**                                    | Properties for the `touchableComponent`                                                                        | object | no | All | yes |
-| **`disabled`**                                          | Set whether the user can interact with the Accordion                                                           | boolean | no | All | yes |
-| **`align`**                                             | See `Collapsible`                                                                                              | enum | no | All | yes |
-| **`duration`**                                          | See `Collapsible`                                                                                              | number | no | All | yes |
-| **`easing`**                                            | See `Collapsible`                                                                                              | string \| function | no | All | yes |
-| **`onAnimationEnd(key, index)`**                        | See `Collapsible`.                                                                                             | function | no | All | yes |
-| **`expandFromBottom`**                                  | Expand content from the bottom instead of the top                                                              | boolean | no | All | yes |
-| **`expandMultiple`**                                    | Allow more than one section to be expanded. Defaults to false.                                                 | boolean | no | All | yes |
-| **`sectionContainerStyle`**                             | Optional styling for the section container.                                                                    | object | no | All | yes |
-| **`containerStyle`**                                    | Optional styling for the Accordion container.                                                                  | object | no | All | yes |
-| **`renderAsFlatList`**                                  | Optional rendering as FlatList (defaults to false).                                                            | boolean | no | All | yes |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **`sections`** | 传递给渲染方法的 sections 数组。 | array | no | All | yes |
+| **`renderHeader(content, index, isActive, sections)`** | 一个函数，应返回表示标题的可渲染内容。 | function | no | All | yes |
+| **`renderContent(content, index, isActive, sections)`** | 一个函数，应返回表示内容的可渲染内容。 | function | no | All | yes |
+| **`renderFooter(content, index, isActive, sections)`** | 一个函数，应返回表示页脚的可渲染内容。 | function | no | All | yes |
+| **`renderSectionTitle(content, index, isActive)`** | 一个函数，应返回表示可触摸元素外部 section 标题的可渲染内容。 | function | no | All | yes |
+| **`onChange(indexes)`** | 当当前激活的 section 更新时调用的函数。 | function | no | All | yes |
+| **`keyExtractor(item, index)`** | 用于提取指定索引处给定项的唯一键。 | function | no | All | yes |
+| **`activeSections`** | 控制 `sections` 数组中哪些索引当前处于展开状态。如果为空，则关闭所有 section。 | array | no | All | yes |
+| **`underlayColor`** | 点击标题时显示的底层颜色。默认为黑色。 | string | no | All | yes |
+| **`touchableComponent`** | Accordion 中使用的可触摸组件。默认为 `TouchableHighlight`。 | object | no | All | yes |
+| **`touchableProps`** | `touchableComponent` 的属性。 | object | no | All | yes |
+| **`disabled`** | 设置用户是否可以与 Accordion 交互。 | boolean | no | All | yes |
+| **`align`** | 见 `Collapsible`。 | enum | no | All | yes |
+| **`duration`** | 见 `Collapsible`。 | number | no | All | yes |
+| **`easing`** | 见 `Collapsible`。 | string \| function | no | All | yes |
+| **`onAnimationEnd(key, index)`** | 见 `Collapsible`。 | function | no | All | yes |
+| **`expandFromBottom`** | 从底部而不是顶部展开内容。 | boolean | no | All | yes |
+| **`expandMultiple`** | 允许展开多个 section。默认为 false。 | boolean | no | All | yes |
+| **`sectionContainerStyle`** | section 容器的可选样式。 | object | no | All | yes |
+| **`containerStyle`** | Accordion 容器的可选样式。 | object | no | All | yes |
+| **`renderAsFlatList`** | 可选作为 FlatList 渲染（默认为 false）。 | boolean | no | All | yes |
 
 ## 遗留问题
 
