@@ -19,12 +19,13 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息，并下载适用版本的 tgz 包：
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 6.1.1      | [@react-native-oh-tpl/react-native-bootsplash Releases](https://github.com/react-native-oh-library/react-native-bootsplash/releases) | 0.72       |
-| 6.3.5      | [@react-native-ohos/react-native-bootsplash Releases]()      | 0.77       |
+| 三方库版本            | 发布信息                                                                                                                                        | 支持RN版本 |
+|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------| ---------- |
+| 6.1.1@deprecated | [@react-native-oh-tpl/react-native-bootsplash Releases(deprecated)](https://github.com/react-native-oh-library/react-native-bootsplash/releases) | 0.72       |
+| 6.1.2            | [@react-native-ohos/react-native-bootsplash Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-bootsplash/releases)                | 0.72       |
+| 6.3.5            | [@react-native-ohos/react-native-bootsplash Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-bootsplash/releases)                | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -35,20 +36,12 @@
 #### **npm**
 
 ```bash
-# V6.1.1
-npm install @react-native-oh-tpl/react-native-bootsplash
-
-# V6.3.5
 npm install @react-native-ohos/react-native-bootsplash
 ```
 
 #### **yarn**
 
 ```bash
-# V6.1.1
-yarn add @react-native-oh-tpl/react-native-bootsplash
-
-# V6.3.5
 yarn add @react-native-ohos/react-native-bootsplash
 ```
 
@@ -132,10 +125,6 @@ assets/bootsplash/logo@4x.png
 ```diff
 + import { window } from '@kit.ArkUI';
 
-// V6.1.1
-+ import { RNBootSplashScreen } from '@react-native-oh-tpl/react-native-bootsplash/src/main/ets/RNBootSplashScreen';
-
-// V6.3.5
 + import { RNBootSplashScreen } from '@react-native-ohos/react-native-bootsplash/src/main/ets/RNBootSplashScreen';
 
 export default class EntryAbility extends RNAbility {
@@ -267,13 +256,15 @@ export default App;
 
 ## 使用 Codegen
 
-> [TIP]  V6.3.5 不需要执行 Codegen。
+Version >= @react-native-ohos/react-native-bootsplash@6.1.2，已适配codegen-lib生成桥接代码。
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-bootsplash@6.1.2，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -301,17 +292,6 @@ export default App;
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- V6.1.1
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-bootsplash": "file:../../node_modules/@react-native-oh-tpl/react-native-bootsplash/harmony/boot_splash.har"
-}
-```
-
-- V6.3.5
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -334,7 +314,7 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 BootSplashPackage
 
-> V6.3.5 需要配置CMakeLists 和引入 BootSplashPackage。
+> V6.1.2 需要配置CMakeLists 和引入 BootSplashPackage。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -400,10 +380,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-  // V6.1.1
-+ import { RNBootSplashPackage } from '@react-native-oh-tpl/react-native-bootsplash/ts';
-
-  // V6.3.5
 + import { RNBootSplashPackage } from '@react-native-ohos/react-native-bootsplash/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -433,12 +409,10 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+在以下版本验证通过：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 6.1.1      | [@react-native-oh-tpl/react-native-bootsplash Releases](https://github.com/react-native-oh-library/react-native-bootsplash/releases) | 0.72       |
-| 6.3.5      | [@react-native-ohos/react-native-bootsplash Releases]()      | 0.77       |
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## API
 

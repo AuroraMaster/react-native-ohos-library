@@ -16,7 +16,15 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-view-shot Releases](https://github.com/react-native-oh-library/react-native-view-shot/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本  | 发布信息                                                  | 支持RN版本 |
+|--------| ------------------------------------------------------------ | ---------- |
+| 3.8.0@deprecated  | [@react-native-oh-tpl/react-native-view-shot Releases(deprecated)](https://github.com/react-native-oh-library/react-native-view-shot/releases) | 0.72       |
+| 3.8.1             | [@react-native-ohos/react-native-view-shot Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-view-shot/releases)   | 0.72       |
+| 3.9.0             | [@react-native-ohos/react-native-view-shot Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-view-shot/releases)   | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +33,13 @@
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-view-shot
+npm install @react-native-ohos/react-native-view-shot
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-view-shot
+yarn add @react-native-ohos/react-native-view-shot
 ```
 
 <!-- tabs:end -->
@@ -112,7 +120,9 @@ export function ViewShotDemo() {
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-view-shot@3.8.1，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -144,7 +154,7 @@ export function ViewShotDemo() {
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
-    "@react-native-oh-tpl/react-native-view-shot": "file:../../node_modules/@react-native-oh-tpl/react-native-view-shot/harmony/view_shot.har"
+    "@react-native-ohos/react-native-view-shot": "file:../../node_modules/@react-native-ohos/react-native-view-shot/harmony/view_shot.har"
   }
 ```
 
@@ -176,7 +186,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-view-shot/src/main/cpp" ./view-shot)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-view-shot/src/main/cpp" ./view-shot)
 # RNOH_BEGIN: manual_package_linking_1
 
 add_library(rnoh_app SHARED
@@ -215,7 +225,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-+ import { ViewShotPackage } from '@react-native-oh-tpl/react-native-view-shot/ts';
++ import { ViewShotPackage } from '@react-native-ohos/react-native-view-shot/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -243,7 +253,10 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/view-shot Releases](https://github.com/react-native-oh-library/react-native-view-shot/releases)
+在以下版本验证通过：
+
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## 属性
 

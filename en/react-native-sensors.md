@@ -8,10 +8,11 @@ This project is based on [react-native-sensors@7.2.1-rc.2](https://github.com/re
 
 This third-party library has been migrated to Gitee and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-sensors`, The version correspondence details are as follows:
 
-| Version                        | Package Name                             | Repository                                                   | Release                                                      |
-| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <= 7.2.1-rc.2-0.0.1@deprecated | @react-native-oh-library/react-native-sensors  | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-sensors) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-sensors/releases) |
-| > 7.2.1                        | @react-native-ohos/react-native-sensors | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-sensors) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-sensors/releases) |
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 7.2.1@deprecated     | [@react-native-oh-library/react-native-sensors Releases(deprecated)](https://github.com/react-native-oh-library/react-native-sensors/releases) | 0.72       |
+| 7.2.3      | [@react-native-ohos/react-native-sensors Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-sensors/releases) | 0.72       |
+| 7.3.7      | [@react-native-ohos/react-native-sensors Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-sensors/releases) | 0.77       |
 
 
 ## Installation and Usage
@@ -138,6 +139,9 @@ export default App;
 
 ## 2. Manual Link
 
+Version >= @react-native-ohos/react-native-sensors@7.2.3 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
 This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
@@ -230,7 +234,7 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
-+ import {SensorsPackage} from '@react-native-oh-tpl/react-native-sensors/ts';
++ import {SensorsPackage} from '@react-native-ohos/react-native-sensors/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -257,7 +261,10 @@ Then build and run the code.
 
 ### 3.1 Compatibility
 
-Check the release version information in the release address of the third-party library:[@react-native-ohos/react-native-sensors Releases](https://gitee.com/openharmony-sig/rntpc_react-native-sensors/releases)
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ### 3.2 Permission Requirements (If Any)
 

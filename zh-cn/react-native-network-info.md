@@ -16,16 +16,13 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-network-info)
 
-请到三方库的 Releases 发布地址查看配套的版本信息：
+## 安装与使用
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 5.2.1      | [@react-native-oh-tpl/react-native-network-info  Releases](https://github.com/react-native-oh-library/react-native-network-info/releases) | 0.72       |
-| 5.3.0      | @react-native-ohos/react-native-network-info  Releases       | 0.77       |
-
-对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
-
-## 安装与使用
+| 5.2.1@deprecated     | [@react-native-oh-tpl/react-native-network-info Releases(deprecated)](https://github.com/react-native-oh-library/react-native-network-info/releases) | 0.72       |
+| 5.2.2                | [@react-native-ohos/react-native-network-info Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-network-info/releases) | 0.72       |
+| 5.3.0                | [@react-native-ohos/react-native-network-info Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-network-info/releases) | 0.77       |
 
 进入到工程目录并输入以下命令：
 
@@ -34,18 +31,12 @@
 #### **npm**
 
 ```bash
-# 0.72 
-npm install @react-native-oh-tpl/react-native-network-info
-# 0.77
 npm install @react-native-ohos/react-native-network-info
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn add @react-native-oh-tpl/react-native-network-info
-# 0.77
 yarn add @react-native-ohos/react-native-network-info
 ```
 
@@ -166,11 +157,15 @@ const styles = StyleSheet.create({
 
 ## 使用 Codegen
 
+Version >= @react-native-ohos/react-native-network-info@5.2.2，已适配codegen-lib生成桥接代码。
+
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-network-info@5.2.2，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -198,17 +193,6 @@ const styles = StyleSheet.create({
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-* 0.72
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-network-info": "file:../../node_modules/@react-native-oh-tpl/react-native-network-info/harmony/rn_network_info.har"
-  }
-```
-
-* 0.77
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -227,7 +211,7 @@ ohpm install
 
 方法二：直接链接源码
 
-> 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
+> [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
 ### 3.配置 CMakeLists 和引入 RNOrientationPackage
 
@@ -286,9 +270,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-  # 0.72
-+  import { RNNetworkInfoPackage } from '@react-native-oh-tpl/react-native-network-info/ts';
-  # 0.77
 +  import { RNNetworkInfoPackage } from '@react-native-ohos/react-native-network-info/ts';
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -315,10 +296,12 @@ ohpm install
 
 ### 兼容性
 
-本文档内容基于以下版本验证通过：
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
-2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release SDK; IDE：DevEco Studio  6.0.0.868; ROM：6.0.0.112;
+在以下版本验证通过：
+
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ### 权限要求
 
@@ -340,7 +323,7 @@ ohpm install
 
 ## 静态方法
 
-> [!TIP]"平台"列表示该属性在原三方库上支持的平台。
+> [!TIP]"Platform"列表示该属性在原三方库上支持的平台。
 
 > [!TIP]"HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 

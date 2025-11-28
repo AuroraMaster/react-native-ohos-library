@@ -14,14 +14,17 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-PDFView)
 
-This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-view-pdf`, After introducing the new version of the third-party library, The version correspondence details are as follows:
-
-| Third-party Library Version | Release Information                                          | Supported RN Version |
-| --------------------------- | ------------------------------------------------------------ | -------------------- |
-| 0.14.0                      | [@react-native-oh-tpl/react-native-view-pdf Releases](https://github.com/react-native-oh-library/react-native-PDFView/releases) | 0.72                 |
-| 0.15.0                      | [@react-native-ohos/react-native-view-pdf Releases]()        | 0.77                 |
-
 ## Installation and Usage
+
+Find the matching version information in the release address of a third-party library: 
+
+| Third-party Library Version | Release Information    | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.14.0@deprecated     | [@react-native-oh-tpl/react-native-view-pdf Releases(deprecated)](https://github.com/react-native-oh-library/react-native-PDFView/releases) | 0.72       |
+| 0.14.1      | [@react-native-ohos/react-native-view-pdf Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-view-pdf/releases) | 0.72       |
+| 0.15.0      | [@react-native-ohos/react-native-view-pdf Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-view-pdf/releases) | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -30,20 +33,12 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/react-native-view-pdf
-
-# 0.77
 npm install @react-native-ohos/react-native-view-pdf
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn add @react-native-oh-tpl/react-native-view-pdf
-
-# 0.77
 yarn add @react-native-ohos/react-native-view-pdf
 ```
 
@@ -73,11 +68,16 @@ export function PdfViewExample() {
 
 ## Use Codegen
 
+Version >= @react-native-ohos/react-native-view-pdf@0.14.1，compatible with codegen-lib for generating bridge code.
+
 If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-view-pdf@0.14.1 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -101,17 +101,6 @@ Method 1 (recommended): Use the HAR file.
 > [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
-
-- 0.72
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-view-pdf": "file:../../node_modules/@react-native-oh-tpl/react-native-view-pdf/harmony/pdf_view.har"
-  }
-```
-
-- 0.77
 
 ```json
 "dependencies": {
@@ -139,10 +128,6 @@ Find `function buildCustomRNComponent()`, which is usually located in `entry/src
 
 ```diff
   ...
-// 0.72
-+ import { RNPDFView } from '@react-native-oh-tpl/react-native-view-pdf'
-
-// 0.77
 + import { RNPDFView } from '@react-native-ohos/react-native-view-pdf'
 
 @Builder
@@ -171,14 +156,13 @@ const arkTsComponentNames: Array<string> = [
 + RNPDFView.NAME
   ];
 ```
-
 ### 4.Configure CMakeLists and introduce ViewPdfPackage
 
-> [!TIP] If using version 0.72, please skip this chapter.
+> [!TIP] Version `0.15.0` and above requires
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
-```
+```diff
 project(rnapp)
 cmake_minimum_required(VERSION 3.4.1)
 set(CMAKE_SKIP_BUILD_RPATH TRUE)
@@ -216,7 +200,7 @@ target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
 
 Open `entry/src/main/cpp/PackageProvider.cpp` and add the following code:
 
-```
+```diff
 #include "RNOH/PackageProvider.h"
 #include "generated/RNOHGeneratedPackage.h"
 #include "SamplePackage.h"
@@ -239,10 +223,6 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
-// 0.72
-+ import { PDFViewPackage } from '@react-native-oh-tpl/react-native-view-pdf/ts'
-
-// 0.77
 + import { PDFViewPackage } from '@react-native-ohos/react-native-view-pdf/ts'
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -268,11 +248,12 @@ ohpm install
 
 ### Compatibility
 
-Verified in the following version:
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.200;ROM: 3.0.0.18;
+The following combinations have been verified:
 
-RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK;IDE: DevEco Studio  6.0.0.868;ROM:6.0.0.112;https://github.com/react-native-oh-library/react-native-PDFView/releases)
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## Properties
 

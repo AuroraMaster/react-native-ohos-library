@@ -17,14 +17,15 @@
 
 ## Installation and Usage
 
-Please refer to the Releases page of the third-party library for corresponding version information:
+Find the matching version information in the release address of a third-party library：
 
-| Library Version | Release Information | Supported RN Version |
-| :--- | :--- | :--- |
-| 1.1.3 | [@react-native-oh-tpl/react-native-qr-decode-image-camera Releases](https://github.com/react-native-oh-library/react-native-qr-decode-image-camera/releases) | 0.72 |
-| 1.2.0 | [@react-native-ohos/react-native-qr-decode-image-camera Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-qr-decode-image-camera) | 0.77 |
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.1.4@deprecated     | [@react-native-oh-tpl/react-native-qr-decode-image-camera Releases(deprecated)](https://github.com/react-native-oh-library/react-native-qr-decode-image-camera/releases) | 0.72       |
+| 1.1.5      | [@react-native-ohos/react-native-qr-decode-image-camera Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-qr-decode-image-camera/releases) | 0.72       |
+| 1.2.0      | [@react-native-ohos/react-native-qr-decode-image-camera Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-qr-decode-image-camera/releases) | 0.77       |
 
-For older versions not published to npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -34,18 +35,12 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/react-native-qr-decode-image-camera
-# 0.77
 npm install @react-native-ohos/react-native-qr-decode-image-camera
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn add @react-native-oh-tpl/react-native-qr-decode-image-camera
-# 0.77
 yarn add @react-native-ohos/react-native-qr-decode-image-camera
 ```
 
@@ -154,13 +149,20 @@ const styles = StyleSheet.create({
 
 ## Use Codegen
 
+Version >= @react-native-ohos/react-native-vision-camera@1.1.5，compatible with codegen-lib for generating bridge code.
+
 If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
-The HarmonyOS implementation of this library depends on the native code of `react-native-vision-camera`. If this library has already been integrated into your HarmonyOS project, there is no need to include it again. You can skip the steps in this section and proceed directly.
+Version >= @react-native-ohos/react-native-vision-camera@1.1.5 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-If it has not been included, please refer to [react-native-vision-camera docs](/en/react-native-vision-camera.md) for integration.
+The HarmonyOS implementation of this library depends on the native code from @react-native-ohos/react-native-vision-camera. If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly. 
+
+If it is not included, follow the guide provided in @react-native-ohos/react-native-vision-camera to add it to your project.
+
+This step provides guidance for manually configuring native dependencies.
 
 ## 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
 
@@ -185,22 +187,12 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
-- 0.72
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-qr-decode-image-camera": "file:../../node_modules/@react-native-oh-tpl/react-native-qr-decode-image-camera/harmony/qr_decode_image_camera.har"
-  }
-```
-
-- 0.77
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-ohos/react-native-qr-decode-image-camera": "file:../../node_modules/@react-native-ohos/react-native-qr-decode-image-camera/harmony/qr_decode_image_camera.har"
   }
 ```
-
 
 Click the `sync` button in the upper right corner.
 
@@ -222,11 +214,7 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
-  // 0.72
-+ import {RNQrDecodeImageCameraPackage} from '@react-native-oh-tpl/react-native-qr-decode-image-camera/ts';
-  // 0.77
 + import {RNQrDecodeImageCameraPackage} from '@react-native-ohos/react-native-qr-decode-image-camera/ts';
-
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -340,10 +328,10 @@ Then build and run the code.
 
 ### Compatibility
 
-This document is verified based on the following versions:
-1. RNOH：0.72.86; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
-2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## Static Methods
 

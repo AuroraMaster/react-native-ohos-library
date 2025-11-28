@@ -46,7 +46,15 @@ code-push release <AppName> <bundle.harmony.js> "< version number > "--descripti
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-code-push Releases](https://github.com/react-native-oh-library/react-native-code-push/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 8.2.2@deprecated  | [@react-native-oh-tpl/react-native-code-push Releases(deprecated)](https://github.com/react-native-oh-library/react-native-code-push/releases) | 0.72       |
+| 8.2.3             | [@react-native-ohos/react-native-code-push Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-code-push/releases)   | 0.72       |
+| 9.0.2             | [@react-native-ohos/react-native-code-push Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-code-push/releases)   | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -57,13 +65,13 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-code-push
+npm install @react-native-ohos/react-native-code-push
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-code-push
+yarn add @react-native-ohos/react-native-code-push
 ```
 
 <!-- tabs:end -->
@@ -194,11 +202,16 @@ export default CodePush(codePushOptions)(App);
 
 ## Use Codegen
 
+Version >= @react-native-ohos/react-native-code-push@8.2.3, compatible with codegen-lib for generating bridge code.
+
 If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-code-push@8.2.3 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -226,7 +239,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-code-push": "file:../../node_modules/@react-native-oh-tpl/react-native-code-push/harmony/codePush.har"
+    "@react-native-ohos/react-native-code-push": "file:../../node_modules/@react-native-ohos/react-native-code-push/harmony/codePush.har"
   }
 ```
 
@@ -249,7 +262,7 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
-+ import { CodePushPackage } from "@react-native-oh-tpl/react-native-code-push/ts";
++ import { CodePushPackage } from "@react-native-ohos/react-native-code-push/ts";
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -264,7 +277,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 Open `entry/src/main/ets/pages/index.ets` and invoke the comparingVersion method to compare the code-push version number to clear historical sandbox resources during installation.
 
 ```diff
-+ import { comparingVersion } from "@react-native-oh-tpl/react-native-code-push";
++ import { comparingVersion } from "@react-native-ohos/react-native-code-push";
 
 @Entry
 @Component
@@ -383,7 +396,10 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-code-push Releases](https://github.com/react-native-oh-library/react-native-code-push/releases)
+The following combinations have been verified:
+
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## API
 

@@ -4,16 +4,19 @@
   <h1 align="center"> <code>react-native-audio</code> </h1>
 </p>
 
-This project is based on [react-native-audio@4.2.2](https://github.com/jsierles/react-native-audio/tree/v4.2.2).
-
-This third-party library has been migrated to Gitee and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-audio`, The version correspondence details are as follows:
-
-| Version                        | Package Name                             | Repository                                                   | Release                                                      |
-| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <= 4.2.2@deprecated | @react-native-oh-library/react-native-audio  | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-audio) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-audio/releases) |
-| > 4.2.2                        | @react-native-ohos/react-native-audio | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-audio) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-audio/releases) |
+> [!TIP] [GitHub address](https://github.com/jsierles/react-native-audio)
 
 ## Installation and Usage
+
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information                                                                                                                              | Supported RN Version |
+|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------| ---------- |
+| 4.2.3@deprecated  | [@react-native-oh-tpl/react-native-audio Releases(deprecated)](https://github.com/react-native-oh-library/react-native-audio/releases) | 0.72       |
+| 4.2.4             | [@react-native-ohos/react-native-audio Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-audio/releases)   | 0.72       |
+| 4.3.0             | [@react-native-ohos/react-native-audio Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-audio/releases)   | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -187,6 +190,9 @@ export default () => {
 
 ## 2. Manual Link
 
+Version >= @react-native-ohos/react-native-audio@4.2.4 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
 This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
@@ -243,7 +249,7 @@ Method 2: Directly link to the source code.
 
 ### 2.3 Configuring CMakeLists and Introducing AudioPackage Package
 
-> **[!TIP] Version 4.2.3 and above requires.**
+> **[!TIP] Version 4.2.4 and above requires.**
 
 Open entry/src/main/cpp/CMakeLists.txt and add the following code:
 
@@ -307,7 +313,12 @@ Then build and run the code.
 
 ### 3.1 Compatibility
 
-Check the release version information in the release address of the third-party library:[@react-native-ohos/react-native-audio Releases](https://gitee.com/openharmony-sig/rntpc_react-native-audio/releases)
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+
+The following combinations have been verified:
+
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## 4. API
 
