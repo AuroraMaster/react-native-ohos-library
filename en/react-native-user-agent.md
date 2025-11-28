@@ -16,36 +16,33 @@
 
 > [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-user-agent)
 
-Please go to the Releases page of the third-party library to check the compatible version information:
-
-| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
-| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
-| 2.3.1 | @react-native-oh-tpl/react-native-user-agent | [Github](https://github.com/react-native-oh-library/react-native-user-agent) | [Github Releases](https://github.com/react-native-oh-library/react-native-user-agent/releases) | 0.72 |
-| 2.4.0                        | @react-native-ohos/react-native-user-agent      | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-user-agent) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-user-agent/releases) | 0.77 |
-
 ## Installation and Usage
 
-Go to the project directory and enter the following command:
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 2.3.1@deprecated  | [@react-native-oh-tpl/react-native-user-agent Releases(deprecated)](https://github.com/react-native-oh-library/react-native-user-agent/releases) | 0.72       |
+| 2.3.2             | [@react-native-ohos/react-native-user-agent Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-user-agent/releases)   | 0.72       |
+| 2.4.0             | [@react-native-ohos/react-native-user-agent Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-user-agent/releases)   | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+
+Go to the project directory and execute the following instruction:
+
+
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/react-native-user-agent
-
-# 0.77
 npm install @react-native-ohos/react-native-user-agent
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn add @react-native-oh-tpl/react-native-user-agent
-
-# 0.77
 yarn add @react-native-ohos/react-native-user-agent
 ```
 
@@ -98,13 +95,15 @@ export default function UserAgentExample() {
 
 ## Use Codegen
 
-This library has been adapted to `Codegen`. Before using it, you need to actively execute the generation of bridge code for third-party libraries. For details, please refer to [Codegen Usage Document](/en/codegen.md).
+Version >= @react-native-ohos/react-native-user-agent@2.3.2, compatible with codegen-lib for generating bridge code.
 
-**Note:** 0.77 does not require Codegen execution.
+If this repository has been adapted to Codegen, generate the bridge code of the third-party library by using the Codegen. For details, see[ Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-user-agent@2.3.2 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the harmony directory of the HarmonyOS project in DevEco Studio.
 
@@ -128,20 +127,9 @@ Currently, two methods are available:
 
 Method 1 (recommended): Use the HAR file.
 
-> [!TIP] The HAR package is located in the `harmony` folder under the third-party library installation path.
+> [!TIP] The HAR file is stored in the harmony directory in the installation path of the third-party library.
 
-Open `entry/oh-package.json5` file and add the following dependencies:
-
-- 0.72
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-user-agent": "file:../../node_modules/@react-native-oh-tpl/react-native-user-agent/harmony/user_agent.har"
-  }
-```
-
-- 0.77
+Open entry/oh-package.json5 file and add the following dependencies:
 
 ```json
 "dependencies": {
@@ -227,10 +215,7 @@ Open `entry/src/main/ets/RNPackagesFactory.ts` and add:
 
 ```diff
   ...
-// 0.72
-+  import { RNUserAgentPackage } from '@react-native-oh-tpl/react-native-user-agent/ts';
-
-// 0.77
+  
 +  import { RNUserAgentPackage } from '@react-native-ohos/react-native-user-agent/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -257,12 +242,14 @@ Then build and run the code.
 
 ### Compatibility
 
-Verified on the following versions:
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-1. RNOH:0.72.28; SDK:HarmonyOS NEXT DB2; IDE:DevEco Studio 5.0.3.500; ROM:3.0.0.28;
-2. RNOH: 0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
+The following combinations have been verified:
 
-## API
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+
+## Properties
 
 > [!tip] The Platform column indicates the platform where the properties are supported in the original third-party library.
 

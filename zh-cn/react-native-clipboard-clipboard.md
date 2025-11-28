@@ -14,14 +14,15 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/clipboard/tree/sig)
 
-| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
-| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
-| 1.13.2 | @react-native-oh-tpl/clipboard | [Github](https://github.com/react-native-oh-library/clipboard) | [Github Releases](https://github.com/react-native-oh-library/clipboard/releases) | 0.72 |
-| 1.16.3                        | @react-native-ohos/clipboard       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_clipboard) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_clipboard/releases) | 0.77 |
-
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.13.2@deprecated     | [@react-native-oh-tpl/clipboard Releases(deprecated)](https://github.com/react-native-oh-library/clipboard/releases) | 0.72       |
+| 1.13.3                | [@react-native-ohos/clipboard Releases](https://gitcode.com/openharmony-sig/rntpc_clipboard/releases) | 0.72       |
+| 1.16.3                | [@react-native-ohos/clipboard Releases](https://gitcode.com/openharmony-sig/rntpc_clipboard/releases) | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -30,20 +31,12 @@
 #### **npm**
 
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/clipboard
-
-# 0.77
 npm install @react-native-ohos/clipboard
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn add @react-native-oh-tpl/clipboard
-
-# 0.77
 yarn add @react-native-ohos/clipboard
 ```
 
@@ -52,8 +45,6 @@ yarn add @react-native-ohos/clipboard
 下面的代码展示了这个库的基本使用场景：
 
 > [!WARNING] 使用时 import 的库名不变。
-
-#### **For RN0.72**
 
 ```js
 import Clipboard from "@react-native-clipboard/clipboard";
@@ -166,18 +157,6 @@ export default App;
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- 0.72
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-
-    "@react-native-oh-tpl/clipboard": "file:../../node_modules/@react-native-oh-tpl/clipboard/harmony/clipboard.har"
-  }
-```
-
-- 0.77
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -221,13 +200,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-
-# 0.72
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/clipboard/src/main/cpp" ./clipboard)
-
-# 0.77
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/clipboard/src/main/cpp" ./clipboard)
-
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -271,11 +244,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 ```diff
 import type {RNPackageContext, RNPackage} from 'rnoh/ts';
 import {SamplePackage} from 'rnoh-sample-package/ts';
-
-// 0.72
-+ import {ClipboardPackage} from '@react-native-oh-tpl/clipboard/ts';
-
-// 0.77
 + import {ClipboardPackage} from '@react-native-ohos/clipboard/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -304,10 +272,12 @@ ohpm install
 
 ### 兼容性
 
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+
 在以下版本验证通过：
 
-1. RNOH:0.72.28; SDK:HarmonyOS NEXT DB2; IDE:DevEco Studio 5.0.3.500; ROM:3.0.0.28;
-2. RNOH: 0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ### 权限要求
 

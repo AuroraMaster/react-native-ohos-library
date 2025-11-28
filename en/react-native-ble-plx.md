@@ -16,7 +16,15 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-ble-plx Releases](https://github.com/react-native-oh-library/react-native-ble-plx/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Find the matching version information in the release address of a third-party library: 
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 3.2.0@deprecated     | [@react-native-oh-tpl/react-native-ble-plx Releases(deprecated)](https://github.com/react-native-oh-library/react-native-ble-plx/releases) | 0.72       |
+| 3.2.1      | [@react-native-ohos/react-native-ble-plx Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-ble-plx/releases) | 0.72       |
+| 3.5.1      | [@react-native-ohos/react-native-ble-plx Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-ble-plx/releases) | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -27,13 +35,13 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-ble-plx
+npm install @react-native-ohos/react-native-ble-plx
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-ble-plx
+yarn add @react-native-ohos/react-native-ble-plx
 ```
 
 <!-- tabs:end -->
@@ -205,11 +213,16 @@ export default App;
 
 ## Use Codegen
 
+Version >= @react-native-ohos/react-native-ble-plx@3.2.1, compatible with codegen-lib for generating bridge code.
+
 This repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-ble-plx@3.2.1 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -238,7 +251,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-ble-plx": "file:../../node_modules/@react-native-oh-tpl/react-native-ble-plx/harmony/rn_bleplx.har"
+    "@react-native-ohos/react-native-ble-plx": "file:../../node_modules/@react-native-ohos/react-native-ble-plx/harmony/rn_bleplx.har"
   }
 ```
 
@@ -261,7 +274,7 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
-+ import {BlePlxPackage} from '@react-native-oh-tpl/react-native-ble-plx/ts';
++ import {BlePlxPackage} from '@react-native-ohos/react-native-ble-plx/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -290,7 +303,8 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library:[@react-native-oh-tpl/react-native-ble-plx Releases](https://github.com/react-native-oh-library/react-native-ble-plx/releases)
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ### Permission Requirements
 

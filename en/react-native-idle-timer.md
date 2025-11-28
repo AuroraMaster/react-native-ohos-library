@@ -17,7 +17,15 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library and download an applicable .tgz package:[@react-native-oh-tpl/react-native-idle-timer Releases](https://github.com/react-native-oh-library/react-native-idle-timer/releases).
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information                                                                                                                                    | Supported RN Version |
+|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------| ---------- |
+| 2.2.3@deprecated      | [@react-native-oh-tpl/react-native-idle-timer Releases(deprecated)](https://github.com/react-native-oh-library/react-native-idle-timer/releases) | 0.72       |
+| 2.2.4      | [@react-native-ohos/react-native-idle-timer Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-idle-timer/releases)                        | 0.72       |
+| 2.3.0      | [@react-native-ohos/react-native-idle-timer Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-idle-timer/releases)                        | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -28,13 +36,13 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-idle-timer
+npm install @react-native-ohos/react-native-idle-timer
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-idle-timer
+yarn add @react-native-ohos/react-native-idle-timer
 ```
 
 <!-- tabs:end -->
@@ -70,11 +78,15 @@ export default IdleTimerExample;
 
 ## Use Codegen
 
+> [!TIP] Version >= 2.2.4 no need to execute Codegen
+
 If this repository has been adapted to Codegen, generate the bridge code of the third-party library by using the Codegen. For details, see[ Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-idle-timer@2.2.4 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the harmony directory of the HarmonyOS project in DevEco Studio.
 
@@ -105,7 +117,7 @@ Open entry/oh-package.json5 file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony" : "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-idle-timer": "file:../../node_modules/@react-native-oh-tpl/react-native-idle-timer/harmony/idle_timer.har"
+    "@react-native-ohos/react-native-idle-timer": "file:../../node_modules/@react-native-ohos/react-native-idle-timer/harmony/idle_timer.har"
   }
 ```
 
@@ -130,7 +142,7 @@ Open the entry/src/main/ets/RNPackagesFactory.ts file and add the following code
 ```diff
   ...
 import type {RNPackageContext, RNPackage} from '@rnoh/react-native-openharmony/ts';
-+import {RNIdleTimerPackage}  from '@react-native-oh-tpl/react-native-idle-timer/ts';
++import {RNIdleTimerPackage}  from '@react-native-ohos/react-native-idle-timer/ts';
 
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -159,7 +171,10 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-idle-timer Releases](https://github.com/react-native-oh-library/react-native-idle-timer/releases)
+The following combinations have been verified:
+
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## API
 

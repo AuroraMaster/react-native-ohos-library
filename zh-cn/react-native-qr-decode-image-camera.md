@@ -21,8 +21,9 @@
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 1.1.3      | [@react-native-oh-tpl/react-native-qr-decode-image-camera Releases](https://github.com/react-native-oh-library/react-native-qr-decode-image-camera/releases) | 0.72       |
-| 1.2.0      | [@react-native-ohos/react-native-qr-decode-image-camera Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-qr-decode-image-camera) | 0.77       |
+| 1.1.4@deprecated     | [@react-native-oh-tpl/react-native-qr-decode-image-camera Releases(deprecated)](https://github.com/react-native-oh-library/react-native-qr-decode-image-camera/releases) | 0.72       |
+| 1.1.5      | [@react-native-ohos/react-native-qr-decode-image-camera Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-qr-decode-image-camera/releases) | 0.72       |
+| 1.2.0      | [@react-native-ohos/react-native-qr-decode-image-camera Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-qr-decode-image-camera/releases) | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -33,18 +34,12 @@
 #### **npm**
 
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/react-native-qr-decode-image-camera
-# 0.77
 npm install @react-native-ohos/react-native-qr-decode-image-camera
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn add @react-native-oh-tpl/react-native-qr-decode-image-camera
-# 0.77
 yarn add @react-native-ohos/react-native-qr-decode-image-camera
 ```
 
@@ -153,15 +148,19 @@ const styles = StyleSheet.create({
 
 ## 使用 Codegen
 
-> [!TIP] V1.2.0 不需要执行 Codegen。
+Version >= @react-native-ohos/react-native-vision-camera@1.1.5，已适配codegen-lib生成桥接代码。
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
-本库鸿蒙侧实现依赖 react-native-vision-camera 的原生端代码，如已在鸿蒙工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
+Version >= @react-native-ohos/react-native-vision-camera@1.1.5，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-如未引入请参照[react-native-vision-camera 文档](/zh-cn/react-native-vision-camera.md)进行引入
+本库鸿蒙侧实现依赖@react-native-ohos/react-native-vision-camera 的原生端代码，如已在鸿蒙工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
+
+如未引入请参照[@react-native-ohos/react-native-vision-camera](/zh-cn/react-native-vision-camera.md)进行引入
+
+此步骤为手动配置原生依赖项的指导。
 
 ## 1.在工程根目录的 `oh-package.json5` 添加 overrides 字段
 
@@ -191,7 +190,7 @@ const styles = StyleSheet.create({
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-qr-decode-image-camera": "file:../../node_modules/@react-native-oh-tpl/react-native-qr-decode-image-camera/harmony/qr_decode_image_camera.har"
+    "@react-native-ohos/react-native-qr-decode-image-camera": "file:../../node_modules/@react-native-ohos/react-native-qr-decode-image-camera/harmony/qr_decode_image_camera.har"
   }
 ```
 
@@ -223,9 +222,6 @@ ohpm install
 
 ```diff
   ...
-  // 0.72
-+ import {RNQrDecodeImageCameraPackage} from '@react-native-oh-tpl/react-native-qr-decode-image-camera/ts';
-  // 0.77
 + import {RNQrDecodeImageCameraPackage} from '@react-native-ohos/react-native-qr-decode-image-camera/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -345,7 +341,8 @@ ohpm install
 2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 
-
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## 静态方法
 

@@ -17,7 +17,15 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-text-size Releases](https://github.com/react-native-oh-library/react-native-text-size/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Find the matching version information in the release address of a third-party library:
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 4.0.0@deprecated     | [@react-native-oh-tpl/react-native-text-size Releases(deprecated)](https://github.com/react-native-oh-library/react-native-text-size/releases) | 0.72       |
+| 4.0.1                | [@react-native-ohos/react-native-text-size Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-text-size/releases) | 0.72       |
+| 4.1.0                | [@react-native-ohos/react-native-text-size Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-text-size/releases) | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -28,13 +36,13 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-text-size
+npm install @react-native-ohos/react-native-text-size
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-text-size
+yarn add @react-native-ohos/react-native-text-size
 ```
 
 <!-- tabs:end -->
@@ -191,7 +199,10 @@ export default function TextSizeExample() {
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-text-size@4.0.1 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -219,7 +230,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-text-size": "file:../../node_modules/@react-native-oh-tpl/react-native-text-size/harmony/text_size.har"
+    "@react-native-ohos/react-native-text-size": "file:../../node_modules/@react-native-ohos/react-native-text-size/harmony/text_size.har"
   }
 ```
 
@@ -258,7 +269,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-text-size/src/main/cpp" ./text-size)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-text-size/src/main/cpp" ./text-size)
 # RNOH_END: manual_package_linking_1
 
 add_library(rnoh_app SHARED
@@ -296,7 +307,7 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
-+ import { RNTextSizePackage } from '@react-native-oh-tpl/react-native-text-size/ts';
++ import { RNTextSizePackage } from '@react-native-ohos/react-native-text-size/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -325,7 +336,10 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-text-size Releases](https://github.com/react-native-oh-library/react-native-text-size/releases)
+The following combinations have been verified:
+
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## API
 

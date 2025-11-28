@@ -14,14 +14,17 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-exception-handler)
 
-该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-exception-handler`，具体版本所属关系如下：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 2.10.10    | [@react-native-oh-tpl/react-native-exception-handler Releases](https://github.com/react-native-oh-library/react-native-exception-handler/releases) | 0.72       |
-| 2.11.0     | [@react-native-ohos/react-native-exception-handler Releases]() | 0.77       |
-
 ## 安装与使用
+
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本           | 发布信息                                                                                                                                                         | 支持RN版本 |
+|--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------| ---------- |
+| 2.10.10@deprecated | [@react-native-oh-tpl/react-native-exception-handler Releases(deprecated)](https://github.com/react-native-oh-library/react-native-exception-handler/releases) | 0.72       |
+| 2.10.11            | [@react-native-ohos/react-native-exception-handler Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-exception-handler/releases)                | 0.72       |
+| 2.11.0             | [@react-native-ohos/react-native-exception-handler Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-exception-handler/releases)                | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -30,20 +33,12 @@
 #### **npm**
 
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/react-native-exception-handler
-
-# 0.77
 npm install @react-native-ohos/react-native-exception-handler
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn add @react-native-oh-tpl/react-native-exception-handler
-
-# 0.77
 yarn add @react-native-ohos/react-native-exception-handler
 ```
 
@@ -128,15 +123,17 @@ export const ReactNativeExceptionHandler = () => {
 };
 ```
 
-##  使用 Codegen
+## 使用 Codegen
 
-> [!TIP]  0.72 不需要执行 Codegen。
+Version >= @react-native-ohos/react-native-exception-handler@2.10.11，已适配codegen-lib生成桥接代码。
 
-本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](https://gitee.com/react-native-oh-library/usage-docs/blob/39316eccca7657d77dfdc9e90cfbf64e6a7713f3/zh-cn/codegen.md)。
+本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-exception-handler@2.10.11，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -163,18 +160,6 @@ export const ReactNativeExceptionHandler = () => {
 > [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
 
 打开 `entry/oh-package.json5`，添加以下依赖
-
--  0.72
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-
-    "@react-native-oh-tpl/react-native-exception-handler": "file:../../node_modules/@react-native-oh-tpl/react-native-exception-handler/harmony/exception_handler.har",
-  }
-```
-
--  0.77
 
 ```json
 "dependencies": {
@@ -219,13 +204,6 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-
-#  0.72
-
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-exception-handler/src/main/cpp" ./exception-handler)
-
-#  0.77
-
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-exception-handler/src/main/cpp" ./exception-handler)
 # RNOH_END: manual_package_linking_1
 
@@ -264,19 +242,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 ### 4.在 ArkTs 侧引入 ExceptionHandlerPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
--  0.72
-```diff
-    ...
-+   import {ExceptionHandlerPackage} from '@react-native-oh-tpl/react-native-exception-handler/ts';
 
-export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
-  return [
-    new SamplePackage(ctx),
-+   new ExceptionHandlerPackage(ctx)
-  ];
-}
-```
--  0.77
 ```diff
     ...
 +   import {ExceptionHandlerPackage} from '@react-native-ohos/react-native-exception-handler/ts';
@@ -288,6 +254,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+
 ### 5.运行
 
 点击右上角的 `sync` 按钮
@@ -298,17 +265,19 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 cd entry
 ohpm install
 ```
+
 然后编译、运行即可。
 
 ## 约束与限制
 
 ### 兼容性
 
-在下述版本验证通过：
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
+在以下版本验证通过：
 
-RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release SDK；IDE：DevEco Studio  6.0.0.868; ROM：6.0.0.112; 
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## 静态方法
 

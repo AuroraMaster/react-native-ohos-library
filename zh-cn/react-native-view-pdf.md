@@ -14,14 +14,17 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-PDFView)
 
-该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-view-pdf`，具体版本所属关系如下：
+## 安装与使用
+
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 0.14.0     | [@react-native-oh-tpl/react-native-view-pdf Releases](https://github.com/react-native-oh-library/react-native-PDFView/releases) | 0.72       |
-| 0.15.0     | [@react-native-ohos/react-native-view-pdf Releases]()        | 0.77       |
+| 0.14.0@deprecated     | [@react-native-oh-tpl/react-native-view-pdf Releases(deprecated)](https://github.com/react-native-oh-library/react-native-PDFView/releases) | 0.72       |
+| 0.14.1      | [@react-native-ohos/react-native-view-pdf Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-view-pdf/releases) | 0.72       |
+| 0.15.0      | [@react-native-ohos/react-native-view-pdf Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-view-pdf/releases) | 0.77       |
 
-## 安装与使用
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -30,20 +33,12 @@
 #### **npm**
 
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/react-native-view-pdf
-
-# 0.77
 npm install @react-native-ohos/react-native-view-pdf
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn add @react-native-oh-tpl/react-native-view-pdf
-
-# 0.77
 yarn add @react-native-ohos/react-native-view-pdf
 ```
 
@@ -73,11 +68,15 @@ export function PdfViewExample() {
 
 ## 使用 Codegen
 
+Version >= @react-native-ohos/react-native-view-pdf@0.14.1，已适配codegen-lib生成桥接代码。
+
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
-目前鸿蒙暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-view-pdf@0.14.1，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的鸿蒙工程 `harmony`
 
@@ -105,17 +104,6 @@ export function PdfViewExample() {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- 0.72
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-view-pdf": "file:../../node_modules/@react-native-oh-tpl/react-native-view-pdf/harmony/pdf_view.har"
-  }
-```
-
-- 0.77
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -142,10 +130,6 @@ ohpm install
 
 ```diff
   ...
-// 0.72
-+ import { RNPDFView } from '@react-native-oh-tpl/react-native-view-pdf'
-
-// 0.77
 + import { RNPDFView } from '@react-native-ohos/react-native-view-pdf'
 
 @Builder
@@ -177,11 +161,11 @@ const arkTsComponentNames: Array<string> = [
 
 ### 4.配置 CMakeLists 和引入 ViewPdfPackage
 
-> [!TIP] 若使用的是 0.72版本，请跳过本章。
+> [!TIP] 版本 `0.15.0` 及以上需要
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
-```
+```diff
 project(rnapp)
 cmake_minimum_required(VERSION 3.4.1)
 set(CMAKE_SKIP_BUILD_RPATH TRUE)
@@ -219,7 +203,7 @@ target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
 
 打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
 
-```
+```diff
 #include "RNOH/PackageProvider.h"
 #include "generated/RNOHGeneratedPackage.h"
 #include "SamplePackage.h"
@@ -242,10 +226,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-// 0.72
-+ import { PDFViewPackage } from '@react-native-oh-tpl/react-native-view-pdf/ts'
-
-// 0.77
 + import { PDFViewPackage } from '@react-native-ohos/react-native-view-pdf/ts'
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -271,11 +251,12 @@ ohpm install
 
 ### 兼容性
 
-在下述版本验证通过：
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
+在以下版本验证通过：
 
-RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release SDK；IDE：DevEco Studio  6.0.0.868; ROM：6.0.0.112; 
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## 属性
 

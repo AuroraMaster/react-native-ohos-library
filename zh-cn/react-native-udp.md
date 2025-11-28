@@ -18,20 +18,28 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-udp Releases](https://github.com/react-native-oh-library/react-native-udp/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本  | 发布信息                                                     | 支持RN版本 |
+|--------| ------------------------------------------------------------ | ---------- |
+| 4.1.7@deprecated  | [@react-native-oh-tpl/react-native-udp Releases(deprecated)](https://github.com/react-native-oh-library/react-native-udp/releases) | 0.72       |
+| 4.1.8             | [@react-native-ohos/react-native-udp Releases](https://gitcode.com/openharmony-sig/rntpc_platform-colors/releases)   | 0.72       |
+| 4.2.0             | [@react-native-ohos/react-native-udp Releases](https://gitcode.com/openharmony-sig/rntpc_platform-colors/releases)   | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-udp
+npm install @react-native-ohos/react-native-udp
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-udp
+yarn add @react-native-ohos/react-native-udp
 ```
 
 下面的代码展示了这个库的基本使用场景：
@@ -158,11 +166,16 @@ export default App;
 
 ## 使用 Codegen
 
+Version >= @react-native-ohos/react-native-udp@4.1.8，已适配codegen-lib生成桥接代码。
+
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-udp@4.1.8，已支持 Autolink，无需手动配置，目前只支持72框架。
+Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -193,7 +206,7 @@ export default App;
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-udp": "file:../../node_modules/@react-native-oh-tpl/react-native-udp/harmony/react_native_udp.har"
+    "@react-native-ohos/react-native-udp": "file:../../node_modules/@react-native-ohos/react-native-udp/harmony/react_native_udp.har"
   }
 ```
 
@@ -210,16 +223,75 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
+### 3.配置 CMakeLists 和引入 UdpPackage
 
+> [!TIP] 若使用的是 4.1.8 版本，请跳过本章。
 
-### 3.在 ArkTs 侧引入 RNUdpPackage
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-udp/src/main/cpp" ./rnoh_udp)
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_udp)
+# RNOH_END: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "UdpPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++       std::make_shared<UdpPackage>(ctx),
+    };
+}
+```
+
+### 4.在 ArkTs 侧引入 RNUdpPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
 ...
 
-+ import {RNUdpPackage} from '@react-native-oh-tpl/react-native-udp/ts';
++ import {RNUdpPackage} from '@react-native-ohos/react-native-udp/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -229,7 +301,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.运行
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -248,9 +320,10 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-udp Releases](https://github.com/react-native-oh-library/react-native-udp/releases)
+在以下版本验证通过：
 
-
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## API
 

@@ -14,14 +14,17 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/clipboard/tree/sig)
 
-Please check the matching version information at the Releases page of the third-party library:
-
-| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
-| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
-| 1.13.2 | @react-native-oh-tpl/clipboard | [Github](https://github.com/react-native-oh-library/clipboard) | [Github Releases](https://github.com/react-native-oh-library/clipboard/releases) | 0.72 |
-| 1.16.3                        | @react-native-ohos/clipboard       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_clipboard) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_clipboard/releases) | 0.77 |
-
 ## Installation and Usage
+
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.13.2@deprecated     | [@react-native-oh-tpl/clipboard Releases(deprecated)](https://github.com/react-native-oh-library/clipboard/releases) | 0.72       |
+| 1.13.3                | [@react-native-ohos/clipboard Releases](https://gitcode.com/openharmony-sig/rntpc_clipboard/releases) | 0.72       |
+| 1.16.3                | [@react-native-ohos/clipboard Releases](https://gitcode.com/openharmony-sig/rntpc_clipboard/releases) | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -30,20 +33,12 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/clipboard
-
-# 0.77
 npm install @react-native-ohos/clipboard
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn add @react-native-oh-tpl/clipboard
-
-# 0.77
 yarn add @react-native-ohos/clipboard
 ```
 
@@ -52,8 +47,6 @@ yarn add @react-native-ohos/clipboard
 The following code shows the basic use scenario of the repository:
 
 > [!WARNING] The name of the imported repository remains unchanged.
-
-#### **For RN0.72**
 
 ```js
 import Clipboard from "@react-native-clipboard/clipboard";
@@ -160,23 +153,11 @@ Currently, two methods are available:
 1. Introduce via har package (this method will be deprecated after the IDE improves related functions, currently the preferred method);
 2. Directly link to the source code.
 
-Method 1: Introduce via har package
+Method 1 (recommended): Use the HAR file.
 
 > [!TIP] The har package is located in the [harmony] folder in the third-party library installation path.
 
-Open `entry/oh-package.json5` and add the following dependencies:
-
-- 0.72
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-
-    "@react-native-oh-tpl/clipboard": "file:../../node_modules/@react-native-oh-tpl/clipboard/harmony/clipboard.har"
-  }
-```
-
-- 0.77
+Open `entry/oh-package.json5` file and add the following dependencies:
 
 ```json
 "dependencies": {
@@ -221,13 +202,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-
-# 0.72
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/clipboard/src/main/cpp" ./clipboard)
-
-# 0.77
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/clipboard/src/main/cpp" ./clipboard)
-
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -271,11 +246,6 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 ```diff
 import type {RNPackageContext, RNPackage} from 'rnoh/ts';
 import {SamplePackage} from 'rnoh-sample-package/ts';
-
-// 0.72
-+ import {ClipboardPackage} from '@react-native-oh-tpl/clipboard/ts';
-
-// 0.77
 + import {ClipboardPackage} from '@react-native-ohos/clipboard/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -304,22 +274,19 @@ Then build and run the code.
 
 ### Compatibility
 
-This document is verified based on the following versions:
-
-1. RNOH:0.72.28; SDK:HarmonyOS NEXT DB2; IDE:DevEco Studio 5.0.3.500; ROM:3.0.0.28;
-2. RNOH: 0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
-
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/clipboard Releases](https://github.com/react-native-oh-library/clipboard/releases)
+The following combinations have been verified:
+
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+
 
 ### Permission Requirements
 
 > [!TIP] The "ohos.permission.READ_PASTEBOARD" permission level is <B>system_basic</B>, and the authorization method is <B>user_grant</B>. [Configuration Guide for Using ACL Signature](https://developer.harmonyos.com/cn/docs/documentation/doc-guides-V3/signing-0000001587684945-V3#section157591551175916)
 
 #### Add permissions in the module.json5 file under the entry directory
-
-Open `entry/src/main/module.json5` and add the following code:
 
 ```diff
 ...
@@ -353,7 +320,7 @@ Open `entry/src/main/resources/base/element/string.json` and add the following c
 }
 ```
 
-## API
+## Properties
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 

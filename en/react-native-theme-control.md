@@ -14,46 +14,39 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-theme-control)
 
-Please check the matching version information at the Releases page of the third-party library:
-
-| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
-| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
-| 6.0.1 | @react-native-oh-tpl/react-native-theme-control | [Github](https://github.com/react-native-oh-library/react-native-theme-control) | [Github Releases](https://github.com/react-native-oh-library/react-native-theme-control/releases) | 0.72 |
-| 6.1.1                        | @react-native-ohos/react-native-theme-control       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-theme-control) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-theme-control/releases) | 0.77 |
-
 ## Installation and Usage
 
-Navigate to the project directory and enter the following commands:
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 6.0.1@deprecated     | [@react-native-oh-tpl/react-native-theme-control Releases(deprecated)](https://github.com/react-native-oh-library/react-native-theme-control/releases) | 0.72       |
+| 6.0.2      | [@react-native-ohos/react-native-theme-control Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-theme-control/releases) | 0.72       |
+| 6.1.1      | [@react-native-ohos/react-native-theme-control Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-theme-control/releases) | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+
+Go to the project directory and execute the following instruction:
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/react-native-theme-control
-
-# 0.77
 npm install @react-native-ohos/react-native-theme-control
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn add @react-native-oh-tpl/react-native-theme-control
-
-# 0.77
 yarn add @react-native-ohos/react-native-theme-control
 ```
 
-> [!TIP] This library also depends on [react-native-community/segmented-control](/en/react-native-community-segmented-control.md)
-
 <!-- tabs:end -->
 
-The following code shows the basic usage scenario of this library:
+The following code shows the basic use scenario of the repository:
 
-> [!WARNING] When using it, the imported library name remains unchanged.
+> [!WARNING] The name of the imported repository remains unchanged.
 
 ```js
 import * as React from 'react';
@@ -79,48 +72,51 @@ export function SimpleScreen() {
     const values: Array<ThemePreference> = ['light', 'dark', 'system'];
     return (
         <View
-            style={{
-                backgroundColor: bgColor,
-                flexGrow: 1,
-                flexShrink: 1,
-                alignItems: 'center',
-                justifyContent: 'space-evenly',
-            }}
-        >
-            <SystemBars
-                backgroundColor={barsBackground}
-                dividerColor={dividerColor}
-            />
-            <SegmentedControl
-                style={{ width: '100%' }}
-                values={values}
-                selectedIndex={values.indexOf(themePreference)}
-                onChange={({ nativeEvent }: { nativeEvent: any }) => {
-                    setThemePreference(nativeEvent.value as ThemePreference);
-                }}
-            />
-            <Text style={textColorStyle}>useColorScheme(): {colorScheme}</Text>
-            <Text style={textColorStyle}>
-                useThemePreference(): {themePreference}
-            </Text>
-        </View>
-    );
+    style={{
+        backgroundColor: bgColor,
+        flexGrow: 1,
+        flexShrink: 1,
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+    }}
+>
+<SystemBars
+backgroundColor={barsBackground}
+dividerColor={dividerColor}
+/>
+    <SegmentedControl
+style={{ width: '100%' }}
+values={values}
+selectedIndex={values.indexOf(themePreference)}
+onChange={({ nativeEvent }: { nativeEvent: any }) => {
+    setThemePreference(nativeEvent.value as ThemePreference);
+}}
+/>
+    <Text style={textColorStyle}>useColorScheme(): {colorScheme}</Text>
+    <Text style={textColorStyle}>
+useThemePreference(): {themePreference}
+</Text>
+    </View>
+);
 }
 ```
 
 ## Use Codegen
 
-> [!TIP] V0.77 does not require Codegen execution.
+Version >= @react-native-ohos/react-native-theme-control@6.0.2, compatible with codegen-lib for generating bridge code.
 
-This library has been adapted to `Codegen`. Before using it, you need to actively generate the third-party library bridge code. For details, please refer to [Codegen Usage Document](/en/codegen.md).
+If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink, so the Link step needs to be manually configured.
+Version >= @react-native-ohos/react-native-theme-control@6.0.2 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-First, you need to open the HarmonyOS project `harmony` in the project with DevEco Studio.
+This step provides guidance for manually configuring native dependencies.
 
-### 1. Add overrides field in `oh-package.json5` in the project root directory
+Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+
+### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
 
 ```json
 {
@@ -131,34 +127,20 @@ First, you need to open the HarmonyOS project `harmony` in the project with DevE
 }
 ```
 
-### 2. Import native code
+### 2. Introducing Native Code
 
-There are currently two methods:
+Currently, two methods are available:
 
-1. Import through har package (this method will be deprecated after the IDE improves related functions, currently the preferred method);
-2. Directly link the source code.
+Method 1 (recommended): Use the HAR file.
 
-Method 1: Import through har package (recommended)
+> [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
 
-> [!TIP] The har package is located in the `harmony` folder of the third-party library installation path.
-
-Open `entry/oh-package.json5` and add the following dependencies:
-
-- 0.72
+Open `entry/oh-package.json5` file and add the following dependencies:
 
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-theme-control": "file:../../node_modules/@react-native-oh-tpl/react-native-theme-control/harmony/themecontrol.har"
-  }
-```
-
-- 0.77
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-ohos/react-native-theme-control": "file:../../node_modules/@react-native-ohos/react-native-theme-control/harmony/themecontrol.har"
+    "@react-native-ohos/react-native-theme-control": "file:../../node_modules/@react-native-ohos/react-native-theme-control/harmony/themecontrol.har",
   }
 ```
 
@@ -175,11 +157,11 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 3. Configure CMakeLists and import RNThemeControlPackage
+### 3.Configuring CMakeLists and Introducing RNThemeControlPackage
 
-> [!TIP] V0.77 needs to configure CMakeLists and import RNThemeControlPackage.
+> [!TIP] V6.0.2 requires configuring CMakeLists and introducing RNThemeControlPackage.
 
-Open `entry/src/main/cpp/CMakeLists.txt` and add:
+Open `entry/src/main/cpp/CMakeLists.txt`， and add:
 
 ```diff
 project(rnapp)
@@ -209,9 +191,9 @@ target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
 # RNOH_BEGIN: manual_package_linking_2
 ```
 
-> [!Tip] Note: The NODE_MODULES definition above is the installation path of the source library. Users can define NODE_MODULES according to the path where the source library is installed.
+> [!Tip] Note: The NODE_MODULES definition above refers to the installation path of the source library. Users can define NODE_MODULES based on the installation path of their source library.
 
-Open `entry/src/main/cpp/PackageProvider.cpp` and add:
+Open `entry/src/main/cpp/PackageProvider.cpp`， and add:
 
 ```diff
 #include "RNOH/PackageProvider.h"
@@ -228,16 +210,12 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 4. Import RNThemeControlPackage on the ArkTs side
+### 4. Introducing RNThemeControlPackage to ArkTS
 
-Open `entry/src/main/ets/RNPackagesFactory.ts` and add:
+Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
 ```diff
   ...
-// 0.72
-+ import { RNThemeControlPackage } from '@react-native-oh-tpl/react-native-theme-control/ts'
-
-// 0.77
 + import { RNThemeControlPackage } from '@react-native-ohos/react-native-theme-control/ts'
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -277,17 +255,13 @@ export default class MyAbilityStage extends AbilityStage {
 
 ### 6. Open the `entry/src/main/ets/entryability/EntryAbility.ets` file and add the following code:
 
-Open `entry/src/main/ets/entryability/EntryAbility.ets` and add:
+Open the `entry/src/main/ets/abilityStage/MyAbilityStage.ets` file and add the following code:
 
 ```diff
 + import {RNAbility} from '@rnoh/react-native-openharmony';
 + import Want from '@ohos.app.ability.Want';
-// 0.72
-+ import { RNThemeControlModule } from '@react-native-oh-tpl/react-native-theme-control';
-
-// 0.77
 + import { RNThemeControlModule } from '@react-native-ohos/react-native-theme-control';
-
+    .....
 +  export default class EntryAbility extends RNAbility {
 +    onCreate(want: Want): void {
 +    super.onCreate(want);
@@ -334,10 +308,10 @@ Then build and run the code.
 
 ### Compatibility
 
-Verified on the following versions:
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-1. RNOH:0.72.28; SDK:HarmonyOS NEXT DB2; IDE:DevEco Studio 5.0.3.500; ROM:3.0.0.28;
-2. RNOH: 0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## API
 

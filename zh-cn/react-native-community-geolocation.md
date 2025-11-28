@@ -14,14 +14,15 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-geolocation/tree/sig)
 
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
-| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
-| 3.1.0 | @react-native-oh-tpl/geolocation | [Github](https://github.com/react-native-oh-library/react-native-geolocation) | [Github Releases](https://github.com/react-native-oh-library/react-native-geolocation/releases) | 0.72 |
-| 3.4.1                        | @react-native-ohos/react-native-geolocation       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-geolocation) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-geolocation/releases) | 0.77 |
-
 ## 安装与使用
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 3.1.0@deprecated     | [@react-native-oh-tpl/react-native-geolocation Releases(deprecated)](https://github.com/react-native-oh-library/react-native-geolocation/releases) | 0.72       |
+| 3.1.1                | [@react-native-ohos/react-native-geolocation Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-geolocation/releases) | 0.72       |
+| 3.4.1                | [@react-native-ohos/react-native-geolocation Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-geolocation/releases) | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -30,20 +31,12 @@
 #### **npm**
 
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/geolocation
-
-# 0.77
 npm install @react-native-ohos/geolocation
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn add @react-native-oh-tpl/geolocation
-
-# 0.77
 yarn add @react-native-ohos/geolocation
 ```
 
@@ -75,7 +68,9 @@ export function GeolocationDemo(): JSX.Element {
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-geolocation@3.1.1，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -102,17 +97,6 @@ export function GeolocationDemo(): JSX.Element {
 > [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
 
 打开 `entry/oh-package.json5`，添加以下依赖
-
-- 0.72
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/geolocation": "file:../../node_modules/@react-native-oh-tpl/geolocation/harmony/geolocation.har"
-  }
-```
-
-- 0.77
 
 ```json
 "dependencies": {
@@ -156,13 +140,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-
-# 0.72
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/geolocation/src/main/cpp" ./geolocation)
-
-# 0.77
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/geolocation/src/main/cpp" ./geolocation)
-
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -204,10 +182,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-// 0.72
-+ import {GeoLocationPackage} from '@react-native-oh-tpl/geolocation/ts';
-
-// 0.77
 + import {GeoLocationPackage} from '@react-native-ohos/geolocation/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -235,10 +209,12 @@ ohpm install
 
 ### 兼容性
 
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+
 在以下版本验证通过：
 
-1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
-2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
+1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ### 权限要求
 
