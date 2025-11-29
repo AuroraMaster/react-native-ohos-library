@@ -15,8 +15,8 @@
 
 | 三方库版本      | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 1.9.1      | [@react-native-ohos/react-native-echarts-pro Releases](https://github.com/supervons/react-native-echarts-pro) | 0.72       |
-| 1.9.3      | [@react-native-ohos/react-native-echarts-pro Releases](https://github.com/supervons/react-native-echarts-pro) | 0.77       |
+| 1.9.1      | [react-native-echarts-pro Releases](https://github.com/supervons/react-native-echarts-pro) | 0.72       |
+| 1.9.3      | [react-native-echarts-pro Releases](https://github.com/supervons/react-native-echarts-pro) | 0.77       |
 
 进入到工程目录并输入以下命令：
 
@@ -103,7 +103,9 @@ export default function RNEPDemo() {
 
 本文档内容基于以下版本验证通过：
 
-1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：205.0.0.18;
+1. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.29(SP1); IDE: DevEco Studio 5.0.3.403; ROM: 3.0.0.25;
+2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM：NEXT 5.1.0.150;
 
 ## 属性
 

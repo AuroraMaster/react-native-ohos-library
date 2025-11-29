@@ -17,7 +17,11 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-ble-manager Releases](https://github.com/react-native-oh-library/react-native-ble-manager/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please refer to the Releases page of the third-party library for the corresponding version information:
+| Third-party Library Version  | Release Information                       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 11.5.2     | [@react-native-oh-tpl/react-native-ble-manager Releases](https://github.com/react-native-oh-library/react-native-ble-manager/releases) | 0.72       |
+| 12.1.5     | [@react-native-ohos/react-native-ble-manager Releases]()     | 0.77       |
 
 Go to the project directory and execute the following instruction:
 
@@ -519,6 +523,12 @@ ohpm install
 Then build and run the code.
 
 ## Constraints
+
+This document is verified based on the following versions:
+
+1. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.29(SP1); IDE: DevEco Studio 5.0.3.403; ROM: 3.0.0.25;
+2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM：NEXT 5.1.0.150;
 
 ### Compatibility
 
