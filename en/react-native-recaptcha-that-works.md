@@ -15,6 +15,14 @@
 
 > [!TIP] [ GitHub address](https://github.com/douglasjunior/react-native-recaptcha-that-works)
 
+Please refer to the Releases page of the third-party library for the corresponding version information:
+
+| Third-party Library Version | Supported RN Version |
+|-------|---------- |
+| 2.0.0 | 0.72/0.77 |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+
 ## Installation and Usage
 
 Go to the project directory and execute the following instruction:
@@ -130,6 +138,7 @@ This document is verified based on the following versions:
 
 1. RNOH: 0.72.28; OH SDK: HarmonyOS-Next-DB2 5.0.0.31 (API Version 12 Beta2); IDE: DevEco Studio: 5.0.3.500; ROM: 3.0.0.31;
 2. RNOH: 0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH: 0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## Properties
 
