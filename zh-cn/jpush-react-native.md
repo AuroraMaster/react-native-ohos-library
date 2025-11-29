@@ -12,12 +12,17 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/jpush-react-native)
+本项目基于 [jpush-react-native](https://github.com/react-native-oh-library/jpush-react-native) 开发。
+
+请到三方库的 Releases 发布地址查看配套的版本信息：
+| Version                        | Package Name                             | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |------------|
+| 3.1.1@deprecated | @react-native-oh-library/jpush-react-native Releases | [Github(deprecated)](https://github.com/react-native-oh-library/jpush-react-native/releases) | [Github deprecated](https://github.com/react-native-oh-library/jpush-react-native/releases) | 0.72       |
+| 3.1.2                      | @react-native-ohos/jpush-react-native Releases | [GitCode](https://gitcode.com/openharmony-sig/rntpc_jpush-react-native) | [GitCode Releases](https://gitcode.com/openharmony-sig/jpush-react-native/releases) | 0.72      |
+| 3.2.0 | @react-native-ohos/jpush-react-native Releases       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_jpush-react-native) | [GitCode Releases](https://gitcode.com/openharmony-sig/jpush-react-native/releases) | 0.77 |
 
 
 ## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/jpush-react-native Releases](https://github.com/react-native-oh-library/jpush-react-native/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 <!-- tabs:start -->
@@ -25,13 +30,13 @@
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/jpush-react-native
+npm install @react-native-ohos/jpush-react-native
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/jpush-react-native
+yarn add @react-native-ohos/jpush-react-native
 ```
 <!-- tabs:end -->
 
@@ -113,12 +118,10 @@ export default App;
 打开 `entry/oh-package.json5`，添加以下依赖
 
 ```json
-
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/jpush-react-native": "file:../../node_modules/@react-native-oh-tpl/jpush-react-native/harmony/jpush_react_native.har"
+    "@react-native-ohos/jpush-react-native": "file:../../node_modules/@react-native-ohos/jpush-react-native/harmony/jpush_react_native.har"
 }
-
 ```
 
 点击右上角的 `sync` 按钮
@@ -134,13 +137,59 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
+### 3. 配置 CMakeLists 和引入 RNJPushPackage
 
-### 3. 在 ArkTs 侧引入 RNJPushPackage
+> V3.2.0  需要配置 CMakeLists 和引入 RNJPushPackage。
+
+```diff
+...
+
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_END: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/jpush-react-native/src/main/cpp" ./jPushModule)
+# RNOH_END: manual_package_linking_1
+
+add_library(rnoh_app SHARED
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_jPushModule)
+# RNOH_BEGIN: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
++ #include "JPushModulePackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
++        std::make_shared<JPushModulePackage>(ctx)
+}
+```
+
+### 4. 在 ArkTs 侧引入 RNJPushPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，由于引入的是ets文件，请将RNPackagesFactory.ts文件名后缀  ts 修改为 ets，添加：
 
 ```diff
-+ import {RNJPushPackage} from  "@react-native-oh-tpl/jpush-react-native/ts";
++ import {RNJPushPackage} from  "@react-native-ohos/jpush-react-native/ts";
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -150,7 +199,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4. 运行
+### 5. 运行
 
 点击右上角的 `sync` 按钮
 
@@ -170,7 +219,9 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/jpush-react-native Releases](https://github.com/react-native-oh-library/jpush-react-native/releases)
+1. RNOH: 0.72.33; SDK:HarmonyOS NEXT Beta1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH:0.77.18; SDK:HarmonyOS  5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
 
 ## 静态方法
 
