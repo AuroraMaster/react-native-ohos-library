@@ -1,4 +1,4 @@
-> Template version: v0.2.2
+> Template version: v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-flexi-radio-button</code> </h1>
@@ -16,16 +16,19 @@
 > [!TIP] [Github address](https://github.com/thegamenicorus/react-native-flexi-radio-button)
 
 ## Installation and Usage
-<!-- tabs:start -->
+
+| version  |  Support RN version |
+| ---------- | ---------- |
+| 0.2.2      | 0.72/0.77      |
+
 
 #### **npm**
 
 ```bash
-npm i react-native-flexi-radio-button@0.2.2
+npm install react-native-flexi-radio-button@0.2.2
 ```
 
 #### **yarn**
-
 ```bash
 yarn add react-native-flexi-radio-button@0.2.2
 ```
@@ -138,9 +141,10 @@ modify in render()
 
 This document is verified based on the following versions:
 
-react-native-harmony: 0.72.23; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio: 5.0.3.27; ROM: 3.0.0.19;
-
-react-native-harmony: 0.72.33; SDK: Openharmony 5.0.0.71(API Version 12 Release); IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+1. RNOH: 0.72.23; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio: 5.0.3.27; ROM: 3.0.0.19;
+2. RNOH: 0.72.33; SDK: Openharmony 5.0.0.71(API Version 12 Release); IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+4. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## Properties
 
@@ -151,23 +155,23 @@ react-native-harmony: 0.72.33; SDK: Openharmony 5.0.0.71(API Version 12 Release)
 ##### Radio Group:
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| size | 单选按钮的大小  | number  | no       | Android/IOS | yes       |
-| thickness  | 单选按钮边框的宽度 | number  | no       | Android/IOS | yes             |
-| color  | 单选按钮的颜色   | string  | no       | Android/IOS | yes             |
-| activeColor  | 选择时单选按钮的颜色   | string  | no       | Android/IOS | yes             |
-| highlightColor  | 选择后单选按钮的背景 | string  | no       | Android/IOS | yes             |
-| selectedIndex  | 单选组的默认选择索引，可以更改为新值或空值以进行明确选择 | number  | no | Android/IOS | yes  |
-| style  | 如果提供，则要应用的自定义样式 | object  | no       | Android/IOS | yes             |
-| onSelect  | 选择单选按钮时要调用的函数    | function(index, value)  | no       | Android/IOS | yes             |
+| size | Radio button size  | number  | no       | Android/IOS | yes       |
+| thickness  | Radio button border width | number  | no       | Android/IOS | yes             |
+| color  | Radio button color   | string  | no       | Android/IOS | yes             |
+| activeColor  | Selected radio button color   | string  | no       | Android/IOS | yes             |
+| highlightColor  | Selected radio button background | string  | no       | Android/IOS | yes             |
+| selectedIndex  | Default selection index for radio group, can be updated to new value or null for explicit selection | number  | no | Android/IOS | yes  |
+| style  | Custom styles to apply if provided | object  | no       | Android/IOS | yes             |
+| onSelect  | Function to call when radio button is selected    | function(index, value)  | no       | Android/IOS | yes             |
 
 ##### Radio Button:
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| value  | value 将在回调时作为第二个参数传递onSelect | any  | no       | Android/IOS | yes      |
-| style  | 要应用于“RadioButton”组件的样式   | object  | no       | Android/IOS | yes      |
-| color  | 按钮颜色  | string  | no       | Android/IOS | yes             |
-| disabled  | 如果为 true，则禁用此组件的所有交互  | bool  | no       | Android/IOS | yes    |
+| value  | The value will be passed as the second argument in the onSelect callback | any  | no       | Android/IOS | yes      |
+| style  | Styles to be applied to the RadioButton component   | object  | no       | Android/IOS | yes      |
+| color  | Button color  | string  | no       | Android/IOS | yes             |
+| disabled  |  If true, all interactions for this component are disabled  | bool  | no       | Android/IOS | yes    |
 
 ## Known Issues
 

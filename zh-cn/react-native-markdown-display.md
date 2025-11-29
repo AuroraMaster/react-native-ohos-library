@@ -1,4 +1,4 @@
-> 模板版本：v0.2.2
+> 模板版本：v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-markdown-display</code> </h1>
@@ -18,6 +18,11 @@
 
 请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-markdown-display Releases](https://github.com/react-native-oh-library/react-native-markdown-display/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
+| version | Package Name                                       |Repository | Release               |  RN version |
+| ---------- | ------------------------------------------------------------ | -------|--------|---------- |
+| 7.0.1     | @react-native-oh-tpl/react-native-markdown-display | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-markdown-display)  | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-markdown-display/releases)|0.72       |
+| 7.1.0    | @react-native-ohos/react-native-markdown-display  |[Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-markdown-display)  | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-markdown-display/releases)| 0.77       |
+
 进入到工程目录并输入以下命令：
 
 <!-- tabs:start -->
@@ -25,13 +30,21 @@
 #### **npm**
 
 ```bash
+#0.72
 npm install @react-native-oh-tpl/react-native-markdown-display
+
+#0.77
+npm install @react-native-ohos/react-native-markdown-display
 ```
 
 #### **yarn**
 
 ```bash
+#0.72
 yarn add @react-native-oh-tpl/react-native-markdown-display
+
+#0.77
+yarn add @react-native-ohos/react-native-markdown-display
 ```
 
 <!-- tabs:end -->
@@ -80,8 +93,9 @@ export default App;
 
 在以下版本验证通过
 
-- RNOH：0.72.13; SDK：HarmonyOS NEXT Developer Preview1; IDE：DevEco Studio 4.1.3.500; ROM：204.1.0.59;
-- RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
+1. RNOH：0.72.13; SDK：HarmonyOS NEXT Developer Preview1; IDE：DevEco Studio 4.1.3.500; ROM：204.1.0.59;
+2. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112
 
 ## 属性
 
@@ -97,18 +111,18 @@ export default App;
 
 | Name                      | Description                                                                                                                                                                                           | Default                                                                                                                    | Required | Platform | HarmonyOS Support |
 | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | ----------------- |
-| `children`                | The markdown string to render, or the [pre-processed tree](https://github.com/react-native-oh-library/react-native-markdown-display/tree/sig#pre-processing)                                          | N/A                                                                                                                        | Yes      | All      | yes               |
-| `style`                   | An object to override the styling for the various rules, [see style section below](https://github.com/react-native-oh-library/react-native-markdown-display/tree/sig#rules-and-styles) for more info  | [source](https://github.com/react-native-oh-library/react-native-markdown-display/blob/7.0.2-0.0.1/src/lib/styles.js)      | No       | All      | yes               |
-| `mergeStyle`              | If true, when a style is supplied, the individual items are merged with the default styles instead of overwriting them                                                                                | `true`                                                                                                                     | No       | All      | yes               |
-| `rules`                   | An object of rules that specify how to render each markdown item, [see rules section below](https://github.com/react-native-oh-library/react-native-markdown-display/tree/sig#rules) for more info    | [source](https://github.com/react-native-oh-library/react-native-markdown-display/blob/7.0.2-0.0.1/src/lib/renderRules.js) | No       | All      | yes               |
-| `onLinkPress`             | A handler function to change click behaviour, [see handling links section below](https://github.com/react-native-oh-library/react-native-markdown-display/tree/sig#handling-links) for more info      | `import { Linking } from 'react-native';` and `Linking.openURL(url);`                                                      | No       | All      | yes               |
-| `debugPrintTree`          | Will print the AST tree to the console to help you see what the markdown is being translated to                                                                                                       | `false`                                                                                                                    | No       | All      | yes               |
-| `renderer`                | Used to specify a custom renderer, you can not use the rules or styles props with a custom renderer.                                                                                                  | `instanceOf(AstRenderer)`                                                                                                  | No       | All      | yes               |
-| `markdownit`              | A custom markdownit instance with your configuration, default is `MarkdownIt({typographer: true})`                                                                                                    | `instanceOf(MarkdownIt)`                                                                                                   | No       | All      | yes               |
-| `maxTopLevelChildren`     | If defined as a number will only render out first `n` many top level children, then will try to render out `topLevelMaxExceededItem`                                                                  | `null`                                                                                                                     | No       | All      | yes               |
-| `topLevelMaxExceededItem` | Will render when `maxTopLevelChildren` is hit. Make sure to give it a key!                                                                                                                            | `<Text key="dotdotdot">...</Text>`                                                                                         | No       | All      | yes               |
-| `allowedImageHandlers`    | Any image that does not start with one of these will have the `defaultImageHandler` value prepended to it (unless `defaultImageHandler` is null in which case it won't try to render anything)        | `['data:image/png;base64', 'data:image/gif;base64', 'data:image/jpeg;base64', 'https://', 'http://']`                      | No       | All      | yes               |
-| `defaultImageHandler`     | Will be prepended to an image url if it does not start with something in the `allowedImageHandlers` array, if this is set to null, it won't try to recover but will just not render anything instead. | `http://`                                                                                                                  | No       | All      | yes               |
+| `children`                | 要渲染的 Markdown 字符串，或 [pre-processed tree](https://github.com/react-native-oh-library/react-native-markdown-display/tree/sig#pre-processing)                                          | N/A                                                                                                                        | Yes      | All      | yes               |
+| `style`                   | 用于覆盖各类规则样式的配置对象，如需更多信息，请点击 [see style section below](https://github.com/react-native-oh-library/react-native-markdown-display/tree/sig#rules-and-styles)   | [source](https://github.com/react-native-oh-library/react-native-markdown-display/blob/7.0.2-0.0.1/src/lib/styles.js)      | No       | All      | yes               |
+| `mergeStyle`              | 若此项为 true，当传入样式参数时，各独立样式项将与默认样式进行合并而非完全覆盖 them                                                                                | `true`                                                                                                                     | No       | All      | yes               |
+| `rules`                   | 用于定义各 Markdown 元素渲染规则的配置对象，如需更多信息，请看 [see rules section below](https://github.com/react-native-oh-library/react-native-markdown-display/tree/sig#rules)    | [source](https://github.com/react-native-oh-library/react-native-markdown-display/blob/7.0.2-0.0.1/src/lib/renderRules.js) | No       | All      | yes               |
+| `onLinkPress`             |用于改变点击行为的处理函数，如需更多信息，请看 [see handling links section below](https://github.com/react-native-oh-library/react-native-markdown-display/tree/sig#handling-links)       | `import { Linking } from 'react-native';` and `Linking.openURL(url);`                                                      | No       | All      | yes               |
+| `debugPrintTree`          | 该功能将在控制台输出 AST 语法树，帮助您查看 Markdown 文档的转换结果。to                                                                                                       | `false`                                                                                                                    | No       | All      | yes               |
+| `renderer`                | 当使用自定义渲染器时，将无法同时启用 rules 或 styles 属性配置 。                                                                                                | `instanceOf(AstRenderer)`                                                                                                  | No       | All      | yes               |
+| `markdownit`              | 可传入自定义配置的 markdownit 实例，默认值为 MarkdownIt({typographer: true})。`                                                                                                    | `instanceOf(MarkdownIt)`                                                                                                   | No       | All      | yes               |
+| `maxTopLevelChildren`     | 若设置为数值，则仅渲染前 n 个顶层子元素，随后将尝试渲染 topLevelMaxExceededItem 组件。`topLevelMaxExceededItem`                                                                  | `null`                                                                                                                     | No       | All      | yes               |
+| `topLevelMaxExceededItem` | 当达到 maxTopLevelChildren 限制时将渲染此组件，请务必为其设置 key 属性！                                                                                                                          | `<Text key="dotdotdot">...</Text>`                                                                                         | No       | All      | yes               |
+| `allowedImageHandlers`    | 对于未以指定前缀开头的图片链接，系统将自动前置 defaultImageHandler 值（若该值为 null 则放弃渲染）。        | `['data:image/png;base64', 'data:image/gif;base64', 'data:image/jpeg;base64', 'https://', 'http://']`                      | No       | All      | yes               |
+| `defaultImageHandler`     | 若图片 URL 未以 allowedImageHandlers 数组中的前缀开头，系统将自动前置此默认值；若该值设为 null，则不会尝试修复而直接放弃渲染。 | `http://`                                                                                                                  | No       | All      | yes               |
 
 ## 遗留问题
 

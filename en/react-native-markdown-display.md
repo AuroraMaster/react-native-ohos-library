@@ -18,6 +18,11 @@
 
 Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-markdown-display Releases](https://github.com/react-native-oh-library/react-native-markdown-display/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
+| version | Package Name                                       |Repository | Release               |  RN version |
+| ---------- | ------------------------------------------------------------ | -------|--------|---------- |
+| 7.0.1     | @react-native-oh-tpl/react-native-markdown-display | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-markdown-display)  | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-markdown-display/releases)|0.72       |
+| 7.1.0    | @react-native-ohos/react-native-markdown-display  |[Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-markdown-display)  | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-markdown-display/releases)| 0.77       |
+
 Go to the project directory and execute the following instruction：
 
 
@@ -27,13 +32,21 @@ Go to the project directory and execute the following instruction：
 #### **npm**
 
 ```bash
+#0.72
 npm install @react-native-oh-tpl/react-native-markdown-display
+
+#0.77
+npm install @react-native-ohos/react-native-markdown-display
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-markdown-display
+#0.72
+yarn install @react-native-oh-tpl/react-native-markdown-display
+
+#0.77
+yarn install @react-native-ohos/react-native-markdown-display
 ```
 
 <!-- tabs:end -->

@@ -1,4 +1,4 @@
-> Template version: v0.2.2
+> Template version: v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-waterfall-flow</code> </h1>
@@ -16,20 +16,22 @@
 
 ## Installation and Usage
 
-Go to the project directory and execute the following instruction:
+| version  |  Support RN version |
+| ---------- | ---------- |
+| 1.1.5      | 0.72/0.77      |
 
-<!-- tabs:start -->
+Go to the project directory and execute the following instruction:
 
 #### **npm**
 
 ```bash
-npm install react-native-waterfall-flow@1.1.5 --save
+npm install react-native-waterfall-flow@1.1.5
 ```
 
 #### **yarn**
 
 ```bash
-yarn add react-native-waterfall-flow@1.1.5 --save
+yarn add react-native-waterfall-flow@1.1.5
 ```
 
 <!-- tabs:end -->
@@ -234,6 +236,8 @@ This document is verified based on the following versions:
 
 1. RNOH: 0.72.29; SDK: HarmonyOS NEXT Developer Beta6; IDE: DevEco Studio 5.0.3.706; ROM: NEXT.0.0.65;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+4. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## Properties
 
@@ -243,17 +247,17 @@ This document is verified based on the following versions:
 
 | Name                    | Description                                                                                                                                                                            | Type                  | Required | Platform | HarmonyOS Support |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | -------- | -------- | ----------------- |
-| `renderItem`            | 用于将当前`item`渲染到列表中                                                                                                                                                           | function              | Yes      | All      | yes               |
-| `data`                  | 瀑布流数据源，可以是任意内容的数组                                                                                                                                                     | array                 | Yes      | All      | yes               |
-| `numColumns`            | 瀑布流的列数，默认为 2，即两列                                                                                                                                                         | number                | No       | All      | yes               |
-| `ListHeaderComponent`   | 头部组件。可以是 React Component 或 render 函数。                                                                                                                                      | component`, `function | No       | All      | yes               |
-| `ListFooterComponent`   | 尾部组件。可以是 React Component 或 render 函数。                                                                                                                                      | component`, `function | No       | All      | yes               |
-| `ListEmptyComponent`    | 列表为空时渲染该组件。可以是 React Component 或 render 函数                                                                                                                            | component`, `function | No       | All      | yes               |
-| `onEndReached`          | 当列表滚动到底部是调用                                                                                                                                                                 | function              | No       | All      | yes               |
-| `onRefresh`             | 如果设置了此选项，则会在列表头部添加一个标准的[`RefreshControl`](https://www.react-native.cn/docs/refreshcontrol) 控件，以便实现“下拉刷新”的功能。同时你需要正确设置`refreshing`属性。 | function              | No       | All      | yes               |
-| `refreshing`            | 在等待加载新数据时将此属性设为 true，列表就会显示出一个正在加载的符号。                                                                                                                | boolean               | No       | All      | yes               |
-| `style`                 | 用于设置瀑布流外层样式，默认会有`{ flex: 1 }`的样式，即高度充满父容器                                                                                                                  | object                | No       | All      | yes               |
-| `contentContainerStyle` | 瀑布流内容容器样式                                                                                                                                                                     | object                | No       | All      | yes               |
+| `renderItem`            | Used to render the current item into the list                                                                                                                                                           | function              | Yes      | All      | yes               |
+| `data`                  | Waterfall flow data source, which can be an array of any type of content.                                                                                                                                                     | array                 | Yes      | All      | yes               |
+| `numColumns`            | The number of columns in the waterfall flow, default is 2 (i.e., two columns).                                                                                                                                                         | number                | No       | All      | yes               |
+| `ListHeaderComponent`   | Header component. Can be a React Component or a render function.                                                                                                                                      | component`, `function | No       | All      | yes               |
+| `ListFooterComponent`   | Footer component. Can be a React Component or a render function.                                                                                                                                      | component`, `function | No       | All      | yes               |
+| `ListEmptyComponent`    | Component to render when the list is empty. Can be a React Component or a render function.                                                                                                                            | component`, `function | No       | All      | yes               |
+| `onEndReached`          | Called when the list is scrolled to the bottom.                                                                                                                                                                 | function              | No       | All      | yes               |
+| `onRefresh`             | If this option is set, a standard[`RefreshControl`](https://www.react-native.cn/docs/refreshcontrol) component will be added to the list header to enable pull-to-refresh functionality. You must also set the refreshing property correctly. | function              | No       | All      | yes               |
+| `refreshing`            | Set this property to true while waiting for new data to load, and the list will display a loading indicator.                                                                                                                | boolean               | No       | All      | yes               |
+| `style`                 | Used to set the outer container style of the waterfall flow. By default, it has the style { flex: 1 }, meaning it fills the height of the parent container.                                                                                                                  | object                | No       | All      | yes               |
+| `contentContainerStyle` | Waterfall flow content container style.                                                                                                                                                                     | object                | No       | All      | yes               |
 
 ## Static Methods
 
@@ -263,9 +267,9 @@ This document is verified based on the following versions:
 
 | Name                       | Description                                                                                                                                     | Type   | Required | Platform | HarmonyOS Support |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------ | -------- | -------- | ----------------- |
-| `scrollToEnd([params])`    | 滚动到瀑布流列表的底部                                                                                                                          | object | No       | All      | yes               |
-| `scrollToIndex([params])`  | 将位于指定位置的元素滚动到可视区的指定位置，当 viewPosition 为 0 时将它滚动到屏幕顶部，为 1 时将它滚动到屏幕底部，为 0.5 时将它滚动到屏幕中央。 | object | Yes      | All      | yes               |
-| `scrollToOffset([params])` | 滚动列表到指定的偏移（以像素为单位），等同于 ScrollView 的 scrollTo 方法。                                                                      | object | Yes      | All      | yes               |
+| `scrollToEnd([params])`    | Scroll to the bottom of the waterfall flow list.                                                                                                                          | object | No       | All      | yes               |
+| `scrollToIndex([params])`  | Scrolls the element at the specified position to a defined location within the visible area. When viewPosition is 0, it scrolls to the top of the screen; when 1, it scrolls to the bottom of the screen; and when 0.5, it scrolls to the center of the screen. | object | Yes      | All      | yes               |
+| `scrollToOffset([params])` | Scrolls the list to the specified offset (in pixels), equivalent to the scrollTo method of ScrollView.                                                                      | object | Yes      | All      | yes               |
 
 ## Known Issues
 
