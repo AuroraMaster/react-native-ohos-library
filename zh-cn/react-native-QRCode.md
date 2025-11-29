@@ -17,7 +17,14 @@
 
 ## 安装与使用
 
-1、请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-qrcode](https://github.com/react-native-oh-library/react-native-qrcode/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本  | 发布信息                                                     | 支持RN版本 |
+| ----------- | ------------------------------------------------------------ | ---------- |
+| 0.2.7 | [@react-native-oh-tpl/react-native-qrcode Releases](https://github.com/react-native-oh-library/react-native-qrcode/releases) | 0.72       |
+| 0.3.0      | [@react-native-ohos/react-native-qrcode Releases]()            | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](https://gitee.com/react-native-oh-library/usage-docs/blob/000c9a56a4c5ed4e8bcc5c8a849ee18bba92a374/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -26,13 +33,19 @@
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-qrcode
+# 0.77
+npm install @react-native-ohos/react-native-qrcode
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-qrcode
+# 0.72 
+yarn install @react-native-oh-tpl/react-native-qrcode
+# 0.77
+yarn install @react-native-ohos/react-native-qrcode
 ```
 
 <!-- tabs:end -->
@@ -100,9 +113,9 @@ const styles = StyleSheet.create({
 
 ## Link
 
-本库鸿蒙侧实现依赖@react-native-oh-tpl/react-native-webview 的原生端代码，如已在鸿蒙工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
+本库鸿蒙侧实现依赖react-native-webview 的原生端代码，如已在鸿蒙工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
 
-如未引入请参照[@react-native-oh-tpl/react-native-webview 文档](/zh-cn/react-native-webview.md)进行引入
+如未引入请参照[react-native-webview 文档](/zh-cn/react-native-webview.md)进行引入
 
 ## 约束与限制
 
@@ -110,12 +123,22 @@ const styles = StyleSheet.create({
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-qrcode](https://github.com/react-native-oh-library/react-native-qrcode/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息:
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.2.7      | [@react-native-oh-tpl/react-native-qrcode Releases](https://github.com/react-native-oh-library/react-native-qrcode/releases) | 0.72       |
+| 0.3.0      | [@react-native-ohos/react-native-qrcode Releases]()              | 0.77       |
+
+本文档内容基于以下版本验证通过：
+
+1. RNOH: 0.72.98; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.0.3.906; ROM: NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## 属性
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
- 
+
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
 ### QRCode
@@ -124,10 +147,10 @@ const styles = StyleSheet.create({
 
 | Name    | Type   | Description                 | Required | Platform    | HarmonyOS Support |
 | ------- | ------ | --------------------------- | -------- | ----------- | ----------------- |
-| value   | string | What the qrcode stands for. | no       | iOS/Android | yes               |
-| size    | number | qrcode size                 | no       | iOS/Android | yes               |
-| bgColor | string | backgroundColor             | no       | iOS/Android | yes               |
-| fgColor | string | fgColor                     | no       | iOS/Android | yes               |
+| value   | string | 二维码的内容 | no       | iOS/Android | yes               |
+| size    | number | 二维码尺寸                 | no       | iOS/Android | yes               |
+| bgColor | string | 背景颜色             | no       | iOS/Android | yes               |
+| fgColor | string | 前景颜色                     | no       | iOS/Android | yes               |
 
 ## 遗留问题
 

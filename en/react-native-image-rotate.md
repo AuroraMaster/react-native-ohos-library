@@ -244,6 +244,11 @@ Please refer to the Releases page of the third-party library for the correspondi
 | 2.1.1 | [@react-native-ohos/react-native-image-rotate Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-rotate/releases)                        | 0.72       |
 | 2.2.0 | [@react-native-ohos/react-native-image-rotate Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-rotate/releases)                        | 0.77       |
 
+The content of this document has been verified based on the following versions:
+
+1. RNOH: 0.72.98; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.0.3.906; ROM: NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
+
 ## Static Method
 
 > [!TIP]The Platform column indicates the platform where the properties are supported in the original third-party library.

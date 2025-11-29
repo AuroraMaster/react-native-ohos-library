@@ -334,8 +334,8 @@ ohpm install
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| getAdvertisingInfo  |Check the permission, apply for the permission, and obtain the OAID.         | Function  | yes | iOS/Android      | yes |
-| getAdvertisingInfoAndCheckAuthorization  | The function is the same as above, and is used to keep the porting uniform.         | Function  | no | iOS/Android      | yes |
+| getAdvertisingInfo  |检查权限，申请权限，获取OAID。        | Function  | yes | iOS/Android      | yes |
+| getAdvertisingInfoAndCheckAuthorization  | 该功能与上述相同，用于保持移植的一致性。        | Function  | no | iOS/Android      | yes |
 
 ## 遗留问题
 
