@@ -14,8 +14,6 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-inappbrowser)
 
-## 安装与使用
-
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
@@ -25,6 +23,8 @@
 | 3.8.0 | [@react-native-ohos/react-native-inappbrowser-reborn Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-inappbrowser/releases)                        | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -412,7 +412,7 @@ export default class BrowserManagerAbility extends UIAbility {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-```
+```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-ohos/react-native-inappbrowser-reborn": "file:../../node_modules/@react-native-ohos/react-native-inappbrowser-reborn/harmony/inappbrowser.har"
@@ -432,7 +432,68 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/link-source-code.md)
 
-### 3.在 ArkTs 侧引入 RNInAppBrowserPackage
+### 3.配置CMakeLists 和引入 InappbrowserRebornPackage
+
+> [!TIP] 若使用的是 3.7.0 版本，请跳过本章
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```cmake
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-inappbrowser-reborn/src/main/cpp" ./inappbrowser-reborn)
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_inappbrowser_reborn)
+# RNOH_END: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```c++
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "InappbrowserRebornPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++       std::make_shared<InappbrowserRebornPackage>(ctx)
+    };
+}
+```
+
+### 4.在 ArkTs 侧引入 RNInAppBrowserPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
@@ -448,7 +509,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.运行
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -465,16 +526,10 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下版本验证通过：
 
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-|-------| ------------------------------------------------------------ | ---------- |
-| 3.7.0@deprecated | [@react-native-oh-tpl/react-native-inappbrowser-reborn Releases(deprecated)](https://github.com/react-native-oh-library/react-native-inappbrowser/releases) | 0.72       |
-| 3.7.1 | [@react-native-ohos/react-native-inappbrowser-reborn Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-inappbrowser/releases)                        | 0.72       |
-| 3.8.0 | [@react-native-ohos/react-native-inappbrowser-reborn Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-inappbrowser/releases)                        | 0.77       |
-
+1. RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.200; ROM: 3.0.0.18;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.868; ROM: 6.0.0.112;
 
 ## API
 
@@ -482,48 +537,48 @@ ohpm install
 
 | Name        | Description                                                  | Type     | Required | Platform    | HarmonyOS Support |
 | ----------- | ------------------------------------------------------------ | -------- | -------- | ----------- | ----------------- |
-| open  | Opens the url with Safari in a modal on iOS using SFSafariViewController, and Chrome in a new custom tab on Android. On iOS, the modal Safari will not share cookies with the system Safari.                      | function | no       | iOS/Android | yes               |
-| close       | Dismisses the system's presented web browser. | function | no       | iOS/Android | yes               |
-| openAuth |Opens the url with Safari in a modal on iOS using SFAuthenticationSession/ASWebAuthenticationSession, and Chrome in a new custom tab on Android. On iOS, the user will be asked whether to allow the app to authenticate using the given url (OAuth flow with deep linking redirection).                                       | function | no       | iOS/Android | yes               |
-| closeAuth | Dismisses the current authentication session.                                  | function | no       | iOS/Android | yes               |
-| isAvailable  | Detect if the device supports this plugin.                                           | function | no       | iOS/Android | yes               |
-| onStart  | Initialize a bound background service so the application can communicate its intention to the browser. After the service is connected, the client can be used to Warms up the browser to make navigation faster and indicates that a given URL may be loaded in the future. - Android Only.                                           | function | no       | Android | yes               |
-| warmup  | Warm up the browser process - Android Only.                                           | function | no       | Android | yes               |
-| mayLaunchUrl  | Tells the browser of a likely future navigation to a URL. The most likely URL has to be specified first. Optionally, a list of other likely URLs can be provided. They are treated as less likely than the first one, and have to be sorted in decreasing priority order. These additional URLs may be ignored. All previous calls to this method will be deprioritized - Android Only.                                          | function | no       | Android | yes               |
+| open  | 在 iOS 上使用 SFSafariViewController 以模态方式打开 Safari，在 Android 上使用新的自定义标签页打开 Chrome。在 iOS 上，模态 Safari 不会与系统 Safari 共享 Cookie。                      | function | no       | iOS/Android | yes               |
+| close       | 关闭系统呈现的网页浏览器。 | function | no       | iOS/Android | yes               |
+| openAuth |在 iOS 上使用 SFAuthenticationSession/ASWebAuthenticationSession 以模态方式打开 Safari，在 Android 上使用新的自定义标签页打开 Chrome。在 iOS 上，用户将被询问是否允许应用使用给定的 URL 进行身份验证（使用深度链接重定向的 OAuth 流程）。                                       | function | no       | iOS/Android | yes               |
+| closeAuth | 关闭当前的身份验证会话。                                  | function | no       | iOS/Android | yes               |
+| isAvailable  | 检测设备是否支持此插件。                                           | function | no       | iOS/Android | yes               |
+| onStart  | 初始化绑定的后台服务，以便应用程序可以向浏览器传达其意图。服务连接后，客户端可用于预热浏览器以加快导航速度，并指示给定的 URL 可能会在将来加载。- 仅限 Android。                                           | function | no       | Android | yes               |
+| warmup  | 预热浏览器进程 - 仅限 Android。                                           | function | no       | Android | yes               |
+| mayLaunchUrl  | 告诉浏览器可能的未来导航到某个 URL。必须首先指定最可能的 URL。可选择提供其他可能 URL 的列表。它们被视为比第一个 URL 可能性小，并且必须按优先级递减的顺序排序。这些额外的 URL 可能会被忽略。之前对此方法的所有调用都将被降级 - 仅限 Android。                                        | function | no       | Android | yes               |
 
 ## 属性
 **iOS Options**
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| dismissButtonStyle  | The style of the dismiss button. [done/close/cancel]         | String  | NO | iOS      | yes |
-| preferredBarTintColor  | The color to tint the background of the navigation bar and the toolbar. [white/#FFFFFF]         | String  | NO | iOS      | yes |
-| preferredControlTintColor  | The color to tint the control buttons on the navigation bar and the toolbar. [gray/#808080]         | String  | NO | iOS      | yes |
-| readerMode   | A value that specifies whether Safari should enter Reader mode, if it is available. [true/false]         | Boolean  | NO | iOS      | NO |
-| animated    | Animate the presentation. [true/false]        | Boolean  | NO | iOS      | NO |
-| modalPresentationStyle     | The presentation style for modally presented view controllers. [automatic/none/fullScreen/pageSheet/formSheet/currentContext/custom/overFullScreen/overCurrentContext/popover]        | String  | NO | iOS      | NO |
-| modalTransitionStyle      | The transition style to use when presenting the view controller. [coverVertical/flipHorizontal/crossDissolve/partialCurl]        | String  | NO | IOS      | NO |
-| modalEnabled       | Present the SafariViewController modally or as push instead. [true/false]       | Boolean  | NO | iOS      | NO |
-| enableBarCollapsing        | Determines whether the browser's tool bars will collapse or not. [true/false]       | Boolean  | NO | iOS      | NO |
-| ephemeralWebSession         | Prevent re-use cookies of previous session (openAuth only) [true/false]       | Boolean  | NO | iOS      | NO |
-| formSheetPreferredContentSize          | Custom size for iPad formSheet modals [{width: 400, height: 500}]       | Boolean  | NO | iOS      | NO |
+| dismissButtonStyle  | 关闭按钮的样式。[done/close/cancel]     | String  | NO | iOS      | yes |
+| preferredBarTintColor  | 用于导航栏和工具栏背景的着色颜色。[white/#FFFFFF]         | String  | NO | iOS      | yes |
+| preferredControlTintColor  | 用于导航栏和工具栏上控制按钮的着色颜色。[gray/#808080]         | String  | NO | iOS      | yes |
+| readerMode   | 指定 Safari 是否应进入阅读模式（如果可用）的值。[true/false]         | Boolean  | NO | iOS      | NO |
+| animated    | 是否对呈现进行动画处理。[true/false]        | Boolean  | NO | iOS      | NO |
+| modalPresentationStyle     | 模态呈现视图控制器的呈现样式。[automatic/none/fullScreen/pageSheet/formSheet/currentContext/custom/overFullScreen/overCurrentContext/popover]        | String  | NO | iOS      | NO |
+| modalTransitionStyle      | 呈现视图控制器时使用的过渡样式。[coverVertical/flipHorizontal/crossDissolve/partialCurl]        | String  | NO | IOS      | NO |
+| modalEnabled       | 以模态方式呈现 SafariViewController 或改为推送方式。[true/false]       | Boolean  | NO | iOS      | NO |
+| enableBarCollapsing        | 确定浏览器的工具栏是否折叠。[true/false]       | Boolean  | NO | iOS      | NO |
+| ephemeralWebSession         | 防止重用前一个会话的 cookie（仅限 openAuth）。[true/false]       | Boolean  | NO | iOS      | NO |
+| formSheetPreferredContentSize          | iPad formSheet 模态框的自定义尺寸。[{width: 400, height: 500}]       | Boolean  | NO | iOS      | NO |
 
 **Android  Options**
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| showTitle   | Sets whether the title should be shown in the custom tab. [true/false]         | Boolean  | NO | Android      | NO |
-| toolbarColor    | Sets the toolbar color. [gray/#808080]         | String  | NO | Android      | NO |
-| secondaryToolbarColor     | Sets the color of the secondary toolbar. [white/#FFFFFF]         | String  | NO | Android      | NO |
-| navigationBarColor      | Sets the navigation bar color. [gray/#808080]         | String  | NO | Android      | NO |
-| navigationBarDividerColor       | Sets the navigation bar divider color. [white/#FFFFFF]         | String  | NO | Android      | NO |
-| enableUrlBarHiding        | Enables the url bar to hide as the user scrolls down on the page. [true/false]         | String  | NO | Android      | NO |
-| enableDefaultShare         | Adds a default share item to the menu. [true/false]         | String  | NO | Android      | NO |
-| animations          | Sets the start and exit animations. [{ startEnter, startExit, endEnter, endExit }]         | Object  | NO | Android      | NO |
-| headers           | The data are key/value pairs, they will be sent in the HTTP request headers for the provided url. [{ 'Authorization': 'Bearer ...' }]         | Object  | NO | Android      | NO |
-| forceCloseOnRedirection            | Open Custom Tab in a new task to avoid issues redirecting back to app scheme. [true/false]         | Boolean  | NO | Android      | NO |
-| hasBackButton             | Sets a back arrow instead of the default X icon to close the custom tab. [true/false]         | Boolean  | NO | Android      | NO |
-| browserPackage              | Package name of a browser to be used to handle Custom Tabs.         | Boolean  | NO | Android      | NO |
-| showInRecents               | Determining whether browsed website should be shown as separate entry in Android recents/multitasking view. [true/false]         | Boolean  | NO | Android      | NO |
-| includeReferrer           | Determining whether to include your package name as referrer for the website to track. [true/false]       | Boolean  | NO | Android      | NO |
+| showTitle   | 设置是否在自定义标签页中显示标题。[true/false]         | Boolean  | NO | Android      | NO |
+| toolbarColor    | 设置工具栏颜色。[gray/#808080]         | String  | NO | Android      | NO |
+| secondaryToolbarColor     | 设置辅助工具栏的颜色。[white/#FFFFFF]         | String  | NO | Android      | NO |
+| navigationBarColor      | 设置导航栏颜色。[gray/#808080]         | String  | NO | Android      | NO |
+| navigationBarDividerColor       | 设置导航栏分隔线颜色。[white/#FFFFFF]         | String  | NO | Android      | NO |
+| enableUrlBarHiding        | 启用当用户向下滚动页面时隐藏 URL 栏。[true/false]         | String  | NO | Android      | NO |
+| enableDefaultShare         | 在菜单中添加默认分享项。[true/false]         | String  | NO | Android      | NO |
+| animations          | 设置启动和退出动画。[{ startEnter, startExit, endEnter, endExit }]         | Object  | NO | Android      | NO |
+| headers           | 数据为键值对，将作为 HTTP 请求头发送到提供的 URL。[{ 'Authorization': 'Bearer ...' }]         | Object  | NO | Android      | NO |
+| forceCloseOnRedirection            | 在新任务中打开自定义标签页，以避免重定向回应用 scheme 时出现问题。[true/false]         | Boolean  | NO | Android      | NO |
+| hasBackButton             | 设置返回箭头而不是默认的 X 图标来关闭自定义标签页。[true/false]         | Boolean  | NO | Android      | NO |
+| browserPackage              | 用于处理自定义标签页的浏览器包名。        | Boolean  | NO | Android      | NO |
+| showInRecents               | 确定浏览的网站是否应显示为 Android 最近任务/多任务视图中的单独条目。[true/false]         | Boolean  | NO | Android      | NO |
+| includeReferrer           | 确定是否将您的包名作为引荐来源包含在内以供网站跟踪。[true/false]       | Boolean  | NO | Android      | NO |
 
 
 ## 遗留问题
