@@ -23,8 +23,8 @@
 | 三方库版本  | 发布信息                                                     | 支持RN版本 |
 |--------| ------------------------------------------------------------ | ---------- |
 | 4.1.7@deprecated  | [@react-native-oh-tpl/react-native-udp Releases(deprecated)](https://github.com/react-native-oh-library/react-native-udp/releases) | 0.72       |
-| 4.1.8             | [@react-native-ohos/react-native-udp Releases](https://gitcode.com/openharmony-sig/rntpc_platform-colors/releases)   | 0.72       |
-| 4.2.0             | [@react-native-ohos/react-native-udp Releases](https://gitcode.com/openharmony-sig/rntpc_platform-colors/releases)   | 0.77       |
+| 4.1.8             | [@react-native-ohos/react-native-udp Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-udp/releases)   | 0.72       |
+| 4.2.0             | [@react-native-ohos/react-native-udp Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-udp/releases)   | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 

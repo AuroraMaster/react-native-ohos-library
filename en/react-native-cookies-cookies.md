@@ -16,7 +16,14 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/cookies Releases](https://github.com/react-native-oh-library/react-native-cookies/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 6.2.1      | [@react-native-oh-tpl/cookies Releases](https://github.com/react-native-oh-library/react-native-cookies) | 0.72       |
+| 6.3.0     | [@react-native-ohos/cookies Releases](https://gitcode.com/openharmony-sig/rntpc_cookies/releases)                    | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -27,18 +34,26 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# V6.2.1
 npm install @react-native-oh-tpl/cookies
+
+# V6.3.0
+npm install @react-native-ohos/cookies
 ```
 
 #### **yarn**
 
-```
+```bash
+# V6.2.1
 yarn add @react-native-oh-tpl/cookies
+
+# V6.3.0
+yarn add @react-native-ohos/cookies
 ```
 
 <!-- tabs:end -->
 
-On HarmonyOS, **react-native-cookies** must be used together with **react-native-webview**. For details, see [@react-native-oh-tpl/react-native-webview](/en/react-native-webview.md).
+On HarmonyOS, **react-native-cookies** must be used together with **react-native-webview**. For details, see [@react-native-ohos/react-native-webview](/en/react-native-webview.md).
 
 The following code shows the basic use scenario of the repository:
 
@@ -214,11 +229,23 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
+- 0.72
+
 ```json
 "dependencies": {
-    ...
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/cookies": "file:../../node_modules/@react-native-oh-tpl/cookies/harmony/rn_cookies.har",
+
+    "@react-native-oh-tpl/op-sqlite": "file:../../node_modules/@react-native-oh-tpl/cookies/harmony/rn_cookies.har"
+  }
+```
+
+- 0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+
+    "@react-native-ohos/op-sqlite": "file:../../node_modules/@react-native-ohos/cookies/harmony/rn_cookies.har"
   }
 ```
 
@@ -292,9 +319,23 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
+- 0.72
 ```diff
-  ...
+...
 + import {CookiesPackage} from '@react-native-oh-tpl/cookies/ts';
+
+export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
+  return [
+    ...
++  	new CookiesPackage(ctx),
+  ];
+}
+```
+
+- 0.77
+```diff
+...
++ import {CookiesPackage} from '@react-native-ohos/cookies/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -323,7 +364,10 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/cookies Releases](https://github.com/react-native-oh-library/react-native-cookies/releases)
+This document is verified based on the following versions:
+
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM：NEXT 5.1.0.150;
 
 ## Static Methods
 

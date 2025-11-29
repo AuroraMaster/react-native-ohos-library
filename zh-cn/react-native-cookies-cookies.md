@@ -16,7 +16,14 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/cookies Releases](https://github.com/react-native-oh-library/react-native-cookies/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 6.2.1      | [@react-native-oh-tpl/cookies Releases](https://github.com/react-native-oh-library/react-native-cookies) | 0.72       |
+| 6.3.0     | [@react-native-ohos/cookies Releases](https://gitcode.com/openharmony-sig/rntpc_cookies/releases)                    | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -25,18 +32,26 @@
 #### **npm**
 
 ```bash
+# V6.2.1
 npm install @react-native-oh-tpl/cookies
+
+# V6.3.0
+npm install @react-native-ohos/cookies
 ```
 
 #### **yarn**
 
-```
+```bash
+# V6.2.1
 yarn add @react-native-oh-tpl/cookies
+
+# V6.3.0
+yarn add @react-native-ohos/cookies
 ```
 
 <!-- tabs:end -->
 
-HarmonyOS 中使用 react-native-cookies 需要配合 react-native-webview 使用，具体请参考[@react-native-oh-tpl/react-native-webview](/zh-cn/react-native-webview.md)
+HarmonyOS 中使用 react-native-cookies 需要配合 react-native-webview 使用，具体请参考[@react-native-ohos/react-native-webview](/zh-cn/react-native-webview.md)
 
 下面的代码展示了这个库的基本使用场景：
 
@@ -213,11 +228,23 @@ const styles = StyleSheet.create({
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+- 0.72
+
 ```json
 "dependencies": {
-    ...
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/cookies": "file:../../node_modules/@react-native-oh-tpl/cookies/harmony/rn_cookies.har",
+
+    "@react-native-oh-tpl/op-sqlite": "file:../../node_modules/@react-native-oh-tpl/cookies/harmony/rn_cookies.har"
+  }
+```
+
+- 0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+
+    "@react-native-ohos/op-sqlite": "file:../../node_modules/@react-native-ohos/cookies/harmony/rn_cookies.har"
   }
 ```
 
@@ -291,9 +318,23 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
+- 0.72
 ```diff
-  ...
+...
 + import {CookiesPackage} from '@react-native-oh-tpl/cookies/ts';
+
+export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
+  return [
+    ...
++  	new CookiesPackage(ctx),
+  ];
+}
+```
+
+- 0.77
+```diff
+...
++ import {CookiesPackage} from '@react-native-ohos/cookies/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -322,7 +363,11 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/cookies Releases](https://github.com/react-native-oh-library/react-native-cookies/releases)
+本文档内容基于以下版本验证通过：
+
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM：NEXT 5.1.0.150;
+
 
 ## 静态方法
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
