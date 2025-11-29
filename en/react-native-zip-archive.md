@@ -15,25 +15,39 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-zip-archive)
 
+Please refer to the Releases page of the third-party library for the corresponding version information:
+
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 7.0.0      | [@react-native-oh-tpl/react-native-zip-archive Releases](https://github.com/react-native-oh-library/react-native-zip-archive/releases) | 0.72       |
+| 7.1.0      | [@react-native-ohos/react-native-zip-archive Releases]()     | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library：[@react-native-oh-tpl/react-native-zip-archive Releases](https://github.com/react-native-oh-library/react-native-zip-archive/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
-
 Go to the project directory and execute the following instruction:
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-zip-archive
+
+# 0.77
+npm install @react-native-ohos/react-native-zip-archive
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-zip-archive
+
+# 0.77
+yarn add @react-native-ohos/react-native-zip-archive
 ```
 
 <!-- tabs:end -->
@@ -395,7 +409,9 @@ const styles = StyleSheet.create({
 
 ## Use Codegen
 
-If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
+> [!TIP] V7.0.0 does not require executing Codegen.
+
+This library has adapted Codegen, and before using it, you need to actively execute the generation of third-party library bridge code. For details, please refer to[Codegen Usage Document](/zh-cn/codegen.md)。
 
 ## Link
 
@@ -418,18 +434,27 @@ Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
 Currently, two methods are available:
 
- 
-
 Method 1 (recommended): Use the HAR file.
 
 > [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
+-  0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 +   "@react-native-oh-tpl/react-native-zip-archive": "file:../../node_modules/@react-native-oh-tpl/react-native-zip-archive/harmony/zipArchive_package.har"
+  }
+```
+
+-  0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
++   "@react-native-ohos/react-native-zip-archive": "file:../../node_modules/@react-native-ohos/react-native-zip-archive/harmony/zipArchive_package.har"
   }
 ```
 
@@ -458,6 +483,10 @@ set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
 set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
 + set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
 set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+# 0.77
++ set(ZIP_ARCHIVE_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules/@react-native-ohos/react-native-zip-archive/src/main/cpp")
+
 set(LOG_VERBOSITY_LEVEL 1)
 set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
 set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
@@ -468,16 +497,31 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+# 0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-zip-archive/src/main/cpp" ./zipArchive-package)
+
+# 0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-zip-archive/src/main/cpp" ./zipArchive-package)
+
 # RNOH_END: manual_package_linking_1
 
+# 0.72
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+# 0.77
++ file(GLOB ZIP_ARCHIVE_GENERATED_CPP_FILES "${ZIP_ARCHIVE_CPP_DIR}/generated/*.cpp")
 
 add_library(rnoh_app SHARED
     ${GENERATED_CPP_FILES}
++    ${ZIP_ARCHIVE_GENERATED_CPP_FILES}
     "./PackageProvider.cpp"
     "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
 )
+
+# 0.77
++ target_include_directories(rnoh_app PUBLIC ${ZIP_ARCHIVE_CPP_DIR})
+
 target_link_libraries(rnoh_app PUBLIC rnoh)
 
 # RNOH_BEGIN: manual_package_linking_2
@@ -486,12 +530,32 @@ target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
 # RNOH_END: manual_package_linking_2
 ```
 
+open `entry/src/main/cpp/PackageProvider.cpp` and add：
+
+```diff
+#include "RNOH/PackageProvider.h"
++#include "generated/ZipArchivePackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx)
+{
+    return {
++        std::make_shared<ZipArchivePackage>(ctx),
+    };
+}
+```
+
 ### 4. Introducing ZipArchivePackage to ArkTS
 
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
 ```diff
+// 0.72
 + import {ZipArchivePackage} from '@react-native-oh-tpl/react-native-zip-archive/ts';
+
+// 0.77
++ import {ZipArchivePackage} from '@react-native-ohos/react-native-zip-archive/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -518,9 +582,10 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+This document is verified based on the following versions:
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-library/react-native-zip-archive Releases](https://github.com/react-native-oh-library/react-native-zip-archive/releases)
+1. RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.200; ROM: 3.0.0.18;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.868; ROM: 6.0.0.112;
 
 ## API
 
