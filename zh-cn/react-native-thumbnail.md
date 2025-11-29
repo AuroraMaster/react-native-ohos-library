@@ -261,6 +261,11 @@ ohpm install
 | 1.1.4 | [@react-native-ohos/react-native-thumbnail Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-thumbnail/releases)                        | 0.72       |
 | 1.2.0 | [@react-native-ohos/react-native-thumbnail Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-thumbnail/releases)                        | 0.77       |
 
+本文档内容基于以下版本验证通过：
+
+1. RNOH: 0.72.98; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.0.3.906; ROM: NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
+
 ## API
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
@@ -269,7 +274,7 @@ ohpm install
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| get  | Generates a thumbnail for a video file. | function | no | All      | yes |
+| get  | 为视频文件生成缩略图。 | function | no | All      | yes |
 
 ## 遗留问题
 

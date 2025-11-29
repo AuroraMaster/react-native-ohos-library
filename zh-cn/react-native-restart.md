@@ -239,9 +239,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 | Name      | Description                       | Type     | Required | Platform | HarmonyOS Support |
 | --------- | --------------------------------- | -------- | -------- | -------- | ----------------- |
-| restart   | restart your react native project | Function | no       | All      | yes               |
-| Restart   | restart your react native project | Function | no       | All      | yes               |
-| getReason | get the cause of the last restart | Function | no       | All      | yes               |
+| restart   | 重启RN工程 | Function | no       | All      | yes               |
+| Restart   | 重启RN工程 | Function | no       | All      | yes               |
+| getReason | 获取重启原因 | Function | no       | All      | yes               |
 ## 遗留问题
 
 ## 其他

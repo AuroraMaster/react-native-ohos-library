@@ -17,7 +17,15 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-qrcode](https://github.com/react-native-oh-library/react-native-qrcode/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please refer to the Release page of the corresponding third-party library for version information:
+
+| Version  | Release                                                     | RN Version |
+| ----------- | ------------------------------------------------------------ | ---------- |
+| 0.2.7 | [@react-native-oh-tpl/react-native-qrcode Releases](https://github.com/react-native-oh-library/react-native-qrcode/releases) | 0.72       |
+| 0.3.0      | [@react-native-ohos/react-native-qrcode Releases]()            | 0.77       |
+
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -28,13 +36,19 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-qrcode
+# 0.77
+npm install @react-native-ohos/react-native-qrcode
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-qrcode
+# 0.72
+yarn install @react-native-oh-tpl/react-native-qrcode
+# 0.77
+yarn install @react-native-ohos/react-native-qrcode
 ```
 
 <!-- tabs:end -->
@@ -102,9 +116,9 @@ const styles = StyleSheet.create({
 
 ## Link
 
-The HarmonyOS implementation of this library depends on the native code from @react-native-oh-tpl/react-native-webview. If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly.
+The HarmonyOS implementation of this library depends on the native code from react-native-webview. If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly.
 
-If it is not included, follow the guide provided in [@react-native-oh-tpl/react-native-webview](/en/react-native-webview.md) to add it to your project.
+If it is not included, follow the guide provided in [react-native-webview](/en/react-native-webview.md) to add it to your project.
 
 ## Constraints
 
@@ -112,7 +126,17 @@ If it is not included, follow the guide provided in [@react-native-oh-tpl/react-
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-qrcode](https://github.com/react-native-oh-library/react-native-qrcode/releases)
+Please refer to the Release page of the corresponding third-party library for version information:
+
+| Version | Releases                                                     | RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.2.7      | [@react-native-oh-tpl/react-native-qrcode Releases](https://github.com/react-native-oh-library/react-native-qrcode/releases) | 0.72       |
+| 0.3.0      | [@react-native-ohos/react-native-qrcode Releases]()              | 0.77       |
+
+The content of this document has been verified based on the following versions:
+
+1. RNOH: 0.72.98; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.0.3.906; ROM: NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## Properties
 
