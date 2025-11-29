@@ -14,27 +14,35 @@
 
 > [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-bindingx)
 
+The repository of this third-party library has been migrated to Gitcode and supports direct download from npm. The new package name is: @react-native-ohos/react-native-bindingx. The specific version ownership relationship is as follows:
+| Version | Package Name                                                     | Repository | Release | Support RN version |
+| ---------- | ------------------------------------------------------------ | ---------- |  ---------- |  ---------- |
+| 1.0.3 | @react-native-oh-tpl/react-native-bindingx | [Github](https://github.com/react-native-oh-library/react-native-bindingx/tree/sig)|[Github Releases](https://github.com/react-native-oh-library/react-native-bindingx/releases)|0.72       |
+| 1.1.0 | @react-native-ohos/react-native-bindingx          | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-bindingx/tree/br_rnoh0.77) |[Gitcode Releases]() | 0.77       |
 
 ## Installation and Usage
-
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-bindingx Releases](https://github.com/react-native-oh-library/react-native-bindingx/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
 
-
 <!-- tabs:start -->
 
-#### **npm**
-
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-bindingx
+
+# 0.77
+npm install @react-native-ohos/react-native-bindingx
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-bindingx
+
+# 0.77
+yarn add @react-native-ohos/react-native-bindingx
 ```
 
 <!-- tabs:end -->
@@ -186,7 +194,11 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    // 0.72版本引入
     "@react-native-oh-tpl/react-native-bindingx": "file:../../node_modules/@react-native-oh-tpl/react-native-bindingx/harmony/bindingx.har"
+
+     // 0.77版本引入
+    "@react-native-ohos/react-native-bindingx": "file:../../node_modules/@react-native-ohos/react-native-bindingx/harmony/bindingx.har"
   }
 ```
 
@@ -201,7 +213,7 @@ ohpm install
 
 Method 2: Directly link to the source code.
 
-> [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
+For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
 ### 3. Configuring CMakeLists and Introducing ReactBindingXPackge
 
@@ -225,7 +237,11 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+# 0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-bindingx/src/main/cpp" ./bindingx)
+
+# 0.77
++ add_subdirectory("${OH_MODULES}/@react-native-oh-ohos/react-native-bindingx/src/main/cpp" ./bindingx)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -270,7 +286,11 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
++ // 0.72  
 + import {ReactBindingXPackage} from '@react-native-oh-tpl/react-native-bindingx/ts';
+
++ // 0.77  
++ import {ReactBindingXPackage} from '@react-native-ohos/react-native-bindingx/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -297,9 +317,10 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+The content of this document has been verified based on the following versions:
 
-Check the release version information in the release address of the third-party library:[@react-native-oh-tpl/react-native-bindingx Releases](https://github.com/react-native-oh-library/react-native-bindingx/releases)
+1、RNOH: 0.72.28; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.1.1.830; ROM: 6.0.0.112 SP12;  
+2、RNOH: 0.77.18; SDK: HarmonyOS-5.1.1.208(API19); IDE: DevEco Studio 5.1.1.830; ROM: 6.0.0.112 SP12
 
 ## API
 
