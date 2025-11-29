@@ -1,4 +1,4 @@
-> Template version: v0.2.2
+> Template version: v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-material-ripple</code> </h1>
@@ -16,6 +16,10 @@
 
 ## Installation and Usage
 
+| version  |  Support RN version |
+| ---------- | ---------- |
+| 0.9.1      | 0.72/0.77      |
+
 Go to the project directory and execute the following instruction:
 
 #### **npm**
@@ -25,7 +29,6 @@ npm install react-native-material-ripple@0.9.1
 ```
 
 #### **yarn**
-
 ```bash
 yarn add react-native-material-ripple@0.9.1
 ```
@@ -132,6 +135,9 @@ This document is verified based on the following versions:
 
 1. RNOH：0.72.27; SDK：HarmonyOS NEXT Developer Beta1 5.0.0.25; IDE：DevEco Studio 5.0.3.400; ROM：3.0.0.25
 2. RNOH：0.72.28; SDK：HarmonyOS NEXT Developer Beta3 5.0.0.36; IDE：DevEco Studio 5.0.3.535; ROM：5.0.0.36
+3. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+4. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+5. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## Properties
 

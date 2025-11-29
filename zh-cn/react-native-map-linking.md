@@ -6,28 +6,35 @@
 
 本项目基于 [react-native-map-linking@1.0.1](https://github.com/starlight36/react-native-map-linking) 开发。
 
-该第三方库的仓库已迁移至 Gitee，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-map-linking`，具体版本所属关系如下：
+该第三方库的仓库已迁移至 GitCode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-map-linking`，具体版本所属关系如下：
 
-| Version                   | Package Name                                  | Repository                                                                                | Release                                                                                                     |
-| ------------------------- | --------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| <= 1.0.1-0.0.1@deprecated | @react-native-oh-tpl/react-native-map-linking | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-map-linking) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-map-linking/releases) |
-| > 1.0.1                   | @react-native-ohos/react-native-map-linking   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-map-linking)                 | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-map-linking/releases)                 |
+| Version                   | Package Name                                  | Repository                                                                                | Release                                                                                                     | RN version |
+| ------------------------- | --------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ---------- |
+| 1.0.4 | @react-native-ohos/react-native-map-linking | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-map-linking) | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-map-linking/releases) | 0.72 |
+| 1.1.0  | @react-native-ohos/react-native-map-linking   | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-map-linking)             | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-map-linking/releases)             | 0.77 |
+
 
 ## 1. 安装与使用
 
 进入到工程目录并输入以下命令：
 
-<!-- tabs:start -->
-
 #### **npm**
 
 ```bash
+#1.0.4
+npm install @react-native-ohos/react-native-map-linking
+
+#1.1.0
 npm install @react-native-ohos/react-native-map-linking
 ```
 
 #### **yarn**
 
 ```bash
+#1.0.4
+yarn add @react-native-ohos/react-native-map-linking
+
+#1.1.0
 yarn add @react-native-ohos/react-native-map-linking
 ```
 
@@ -135,7 +142,16 @@ export default MapLinkingDemo;
 
 ### 2.2 兼容性
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/react-native-map-linking Releases](https://gitee.com/openharmony-sig/rntpc_react-native-map-linking/releases)
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+| Version                   | Package Name                                  | Repository                                                                                | Release                                                                                                     | RN version |
+| ------------------------- | --------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ---------- |
+| 1.0.4 | @react-native-ohos/react-native-map-linking | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-map-linking) | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-map-linking/releases) | 0.72 |
+| 1.1.0  | @react-native-ohos/react-native-map-linking   | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-map-linking)             | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-map-linking/releases)             | 0.77 |
+
+在以下版本验证通过：
+
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 3. APIs
 

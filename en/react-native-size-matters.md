@@ -1,4 +1,4 @@
-> Template version: v0.2.2
+> Template version: v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-size-matters</code> </h1>
@@ -16,9 +16,13 @@
 
 ## Installation and Usage
 
+| version | Support RN version |
+| ---------- | ---------- |
+| 0.4.2   | 0.72/0.77       |
+
+
 Go to the project directory and execute the following instruction:
 
-<!-- tabs:start -->
 
 #### **npm**
 
@@ -29,7 +33,7 @@ npm install react-native-size-matters@0.4.2
 #### **yarn**
 
 ```bash
-yarn add react-native-size-matters@0.4.2
+npm install react-native-size-matters@0.4.2
 ```
 
 <!-- tabs:end -->
@@ -223,7 +227,8 @@ This document is verified based on the following versions:
 
 1. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.29(SP1); IDE: DevEco Studio 5.0.3.400; ROM: 3.0.0.25;
 2. RNOH: 0.72.33; SDK: OpenHarmony 5.0.0.71 (API Version 12 Release); IDE: DevEco Studio 5.0.3.900; ROM: NEXT.0.0.71;
-
+3. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+4. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 ## API
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.

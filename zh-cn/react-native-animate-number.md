@@ -1,4 +1,4 @@
-> 模板版本：v0.2.2
+> 模板版本：v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-animate-number</code> </h1>
@@ -17,6 +17,12 @@
 > [!TIP] [Github 地址](https://github.com/wkh237/react-native-animate-number/tree/0.1.2)
 
 ## 安装与使用
+
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本| 支持RN版本 |
+| -------- | ----------|
+| 0.1.2    | 0.72/0.77      |
 
 进入到工程目录并输入以下命令：
 
@@ -150,19 +156,20 @@ export default App;
 
 1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112
 
 ## 属性
 
 | Name         | Description                                                                                                                                                 | Type     | Required | Platform    | HarmonyOS Support |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | ----------- | ----------------- |
-| `value`      | The value of AnimateNumber component.                                                                                                                       | number   | yes      | Android IOS | YES               |
-| `countBy`    | Set this property to force the component's value increase/decrease by this number.                                                                          | number   | No       | Android IOS | YES               |
-| `interval`   | Base interval of each animation frame, in `ms`.                                                                                                             | number   | No       | Android IOS | YES               |
-| `steps`      | Set total frame number of animation, say, if interval is 14 and steps is 30, the animation will take 14x30ms to finish when it uses linear timing function. | number   | No       | Android IOS | YES               |
-| `timing`     | A style object that allow you to customize the WebView style.                                                                                               | number   | No       | Android IOS | YES               |
-| `formatter`  | The custom css content will be added to the page's <head>.                                                                                                  | string   | No       | Android IOS | YES               |
-| `onProgress` | Either updated height or width will trigger onSizeUpdated.                                                                                                  | function | No       | Android IOS | YES               |
-| `onFinish`   | Boolean value that determines whether a horizontal scroll indicator is shown in the WebView.                                                                | function | No       | Android IOS | YES               |
+| `value`      | AnimateNumber 组件的值。                                                                                                                      | number   | yes      | Android IOS | YES               |
+| `countBy`    | 将此属性设置为强制组件值按此数值增加/减少。                                                                        | number   | No       | Android IOS | YES               |
+| `interval`   | 每帧动画的基本间隔时间（单位：毫秒）。                                                                                                           | number   | No       | Android IOS | YES               |
+| `steps`      | 设置动画的总帧数。例如，若间隔为14毫秒且步数为30帧，当采用线性缓动函数时，该动画将耗时14×30毫秒完成。 | number   | No       | Android IOS | YES               |
+| `timing`     | 一个用于自定义 WebView 样式的样式对象.                                                                                               | number   | No       | Android IOS | YES               |
+| `formatter`  | 自定义 CSS 内容将被添加到页面中。                                                                                               | string   | No       | Android IOS | YES               |
+| `onProgress` | 高度或宽度的任意变更都将触发 onSizeUpdated 事件。                                                                                                  | function | No       | Android IOS | YES               |
+| `onFinish`   | 布尔值，用于控制是否在 WebView 中显示水平滚动指示器。                                                               | function | No       | Android IOS | YES               |
 
 ## 遗留问题
 

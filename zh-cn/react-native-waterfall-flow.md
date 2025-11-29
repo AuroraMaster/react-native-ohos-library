@@ -1,4 +1,4 @@
-> 模板版本：v0.2.2
+> 模板版本：v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-waterfall-flow</code> </h1>
@@ -16,20 +16,22 @@
 
 ## 安装与使用
 
-进入到工程目录并输入以下命令：
+| 三方库版本  |  支持RN版本 |
+| ---------- | ---------- |
+| 1.1.5      | 0.72/0.77      |
 
-<!-- tabs:start -->
+进入到工程目录并输入以下命令：
 
 #### **npm**
 
 ```bash
-npm install react-native-waterfall-flow@1.1.5 --save
+npm install react-native-waterfall-flow@1.1.5
 ```
 
 #### **yarn**
 
 ```bash
-yarn add react-native-waterfall-flow@1.1.5 --save
+yarn add react-native-waterfall-flow@1.1.5
 ```
 
 <!-- tabs:end -->
@@ -166,6 +168,8 @@ export default App;
 
 1. RNOH: 0.72.29; SDK：HarmonyOS NEXT Developer Beta6; IDE：DevEco Studio 5.0.3.706; ROM：NEXT.0.0.65;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+4. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 

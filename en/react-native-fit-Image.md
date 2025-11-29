@@ -1,4 +1,4 @@
-> Template version: v0.2.2
+> Template version: v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-fit-image</code> </h1>
@@ -19,9 +19,11 @@
 
 ## Installation and Usage
 
-Go to the project directory and execute the following instruction:
+| version  |  Support RN version |
+| ---------- | ---------- |
+| 1.5.5      | 0.72/0.77      |
 
-<!-- tabs:start -->
+Go to the project directory and execute the following instruction:
 
 #### **npm**
 
@@ -288,18 +290,20 @@ This document is verified based on the following versions
 
 1. RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Preview2; IDE: DevEco Studio 5.0.3.200; ROM: 3.0.0.21;
 2. RNOH: 0.72.33; SDK: OpenHarmony 5.0.0.71 (API Version 12 Release); IDE: DevEco Studio 5.0.3.900; ROM: NEXT.0.0.71;
+3. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+4. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## Properties
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-| Name               | Description                                                  | Type          | Required | Platform                                      | HarmonyOS Support | Remark                                                       |
-| ------------------ | ------------------------------------------------------------ | ------------- | -------- | --------------------------------------------- | ----------------- | ------------------------------------------------------------ |
-| `style`            | Width, height, and border style of the image.                | object        | yes      | Android and iOS                               | yes               | If **orginalWidth** and **orginalHeight** are not set, the **width** and **height** must be set in **style** so that the image can be loaded. |
+| Name               | Description                                                  | Type          | Required | Platform                                      | HarmonyOS Support  |
+| ------------------ | ------------------------------------------------------------ | ------------- | -------- | --------------------------------------------- | ----------------- |
+| `style`            | Width, height, and border style of the image.                | object        | yes      | Android and iOS                               | yes                |
 | `source`           | Image source:<br>For local image, source={require('./assets/expo.png')}.<br>For network image, source={{uri:"xxx"}}. | string        | yes      | Android and iOS                               | yes               |                                                              |
 | `width`            | Property of an image style.                                  | number        | yes      | Android and iOS                               | yes               |                                                              |
 | `height`           | Property of an image style.                                  | number        | yes      | Android and iOS                               | yes               |                                                              |
-| `borderRadius`     | Image style (rounded corner).                                | number        | no       | Not supported on Android, iOS, and HarmonyOS. | no                | This property does not take effect on HarmonyOS, Android, and iOS: [issues](https://github.com/huiseoul/react-native-fit-image/issues/111) |
+| `borderRadius`     | Image style (rounded corner).                                | number        | no       | Not supported on Android, iOS, and HarmonyOS. | no                |
 | `indicator`        | Indicator. The value can be **true** (default) or **false**. | boolean       | no       | Android and iOS                               | yes               |                                                              |
 | `indicatorColor`   | Indicator color.                                             | string        | no       | Android and iOS                               | yes               |                                                              |
 | `indicatorSize`    | Indicator size. The value can be `large`, `small`, or number (for example, indicatorSize={20}). | string/number | no       | Android and iOS                               | yes               |                                                              |
@@ -308,9 +312,9 @@ This document is verified based on the following versions
 | onLoad             | Callback invoked when the image is successfully loaded.      | function      | no       | Android and iOS                               | yes               |                                                              |
 | resolveAssetSource | Function used to obtain the width and height of a local image.<br>Example: const img1 = require('./assets/expo.png')<br>let  res = Image.resolveAssetSource(img1) | function      | no       | Android and iOS                               | yes               |                                                              |
 | getSize            | Function used to obtain the network image size.<br>Example: Image.getSize(uri,(width,height)=>{},(fail)=>{}) | function      | no       | Android and iOS                               | yes               |                                                              |
-| onError            | Callback invoked when the image resource fails to be obtained. | function      | no       | Not supported on Android, iOS, and HarmonyOS. | no                | As described in the original library, some properties are not working: [issues](https://github.com/huiseoul/react-native-fit-image/issues/76). |
-| onLoadStart        | Callback invoked when resources are just loaded.             | function      | no       | Not supported on Android, iOS, and HarmonyOS. | no                | As described in the original library, some properties are not working: [issues](https://github.com/huiseoul/react-native-fit-image/issues/76). |
-| onLayout           | Callback invoked when the resource size is changed or the resource is loaded. | function      | no       | Not supported on Android, iOS, and HarmonyOS. | no                | As described in the original library, some properties are not working: [issues](https://github.com/huiseoul/react-native-fit-image/issues/76). |
+| onError            | Callback invoked when the image resource fails to be obtained. | function      | no       | Not supported on Android, iOS, and HarmonyOS. | no                |
+| onLoadStart        | Callback invoked when resources are just loaded.             | function      | no       | Not supported on Android, iOS, and HarmonyOS. | no                |
+| onLayout           | Callback invoked when the resource size is changed or the resource is loaded. | function      | no       | Not supported on Android, iOS, and HarmonyOS. | no                |
 | orginalWidth       | Original image width.                                        | number        | no       | Android and iOS                               | yes               |                                                              |
 | orginalHeight      | Original image height.                                       | number        | no       | Android and iOS                               | yes               |                                                              |
 
@@ -318,7 +322,10 @@ This document is verified based on the following versions
 
 - [ ] The `onError`, `onLoadStart`, and `onLayout` callbacks are not supported on Android, iOS, and HarmonyOS: [issues](https://github.com/huiseoul/react-native-fit-image/issues/76).
 - [ ] The `borderRadius` property is not supported on HarmonyOS, iOS, and Android: [issues](https://github.com/huiseoul/react-native-fit-image/issues/111).
-
+- [ ] `style` image width and height properties: when originalWidth and originalHeight attributes are not added, width and height must be set in the style to load the image properly
+- [ ] `onError` triggered when image resource fails to load. As noted by the original library author, some props are not working: [issues](https://github.com/huiseoul/react-native-fit-image/issues/76)
+- [ ] `onLoadStart` triggered when resource starts loading. As noted by the original library author, some props are not working: [issues](https://github.com/huiseoul/react-native-fit-image/issues/76)
+- [ ] `onLayout` triggered when resource starts loading. As noted by the original library author, some props are not working: [issues](https://github.com/huiseoul/react-native-fit-image/issues/76)
 ## Others
 
 ## License

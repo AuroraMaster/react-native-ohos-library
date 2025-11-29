@@ -1,4 +1,4 @@
-> 模板版本：v0.2.2
+> 模板版本：v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-safe-module</code> </h1>
@@ -18,35 +18,33 @@
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 1.2.0      | [@react-native-oh-tpl/react-native-safe-module Releases](https://github.com/react-native-oh-library/react-native-safe-module/releases) | 0.72       |
-| 1.2.1      | [@react-native-ohos/react-native-safe-module Releases]()     | 0.77       |
+| version | Package Name                                       |Repository | Release               |  RN version |
+| ---------- | ------------------------------------------------------------ | -------|--------|---------- |
+| 1.2.0     | @react-native-oh-tpl/react-native-safe-module | [Github](https://github.com/react-native-oh-library/react-native-safe-module)  | [Github Releases](https://github.com/react-native-oh-library/react-native-safe-module/releases)|0.72       |
+| 1.3.0    | @react-native-ohos/react-native-safe-module  | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-module)  | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-module/releases)| 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 
 进入到工程目录并输入以下命令：
 
-<!-- tabs:start -->
-
 #### **npm**
 
 ```bash
-#1.2.0
+#0.72
 npm install @react-native-oh-tpl/react-native-safe-module
 
-#1.2.1
+#0.77
 npm install @react-native-ohos/react-native-safe-module
 ```
 
 #### **yarn**
 
 ```bash
-#1.2.0
+#0.72
 yarn add @react-native-oh-tpl/react-native-safe-module
 
-#1.2.1
+#0.77
 yarn add @react-native-ohos/react-native-safe-module
 ```
 
@@ -91,6 +89,13 @@ export default App;
 | 1.2.0      | [@react-native-oh-tpl/react-native-safe-module Releases](https://github.com/react-native-oh-library/react-native-safe-module/releases) | 0.72       |
 | 1.2.1      | [@react-native-ohos/react-native-safe-module Releases]()     | 0.77       |
 
+在以下版本验证通过
+
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112
+
+## 属性
+
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
@@ -105,11 +110,11 @@ SafeModule.create(options) | 创建Module | Object | Yes | iOS/Android | Yes |
 
 | Name                                                      | Description                                                                                                         | Type     | Required | Platform | HarmonyOS Support |
 | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | -------- | -------- | -------- | ----------------- |
-| options.moduleName                                             |  The name, or array of names, to look for the module at on the NativeModules namespace.                                                                                      | string/Array<string> | Yes       | iOS/Android      | Yes               |
-| options.mock                                              | The mock implementation of the native module.                                        | mixed | Yes       | iOS/Android      | Yes               |
-| options.getVersion                                | A function that returns the version of the native module. Only needed if you are specifying overrides and not exporting a VERSION property on your native module. Defaults to x => x.VERSION.                                                                                                  | (module) => string/number | No       | iOS/Android      | Yes                |
-| options.overrides                                 | A map of version numbers to overridden implementations of the corresponding property/method. If an overridden property or method is a function, it will be called during SafeModule.create(...) with two arguments, the original value of that property on the original module, and the original module itself. The return value of this function will be put on the return value of SafeModule.create(...).                                                                                                  | [version: string]: mixed   | No       | iOS/Android      | Yes               |
-| options.isEventEmitter                              |  A flag indicating that the native module is expected to be an EventEmitter. Puts the EventEmitter instance on the emitter property of the resulting module. Defaults to false.                                                                                                  | bool   | No       | iOS/Android      | Yes                |
+| options.moduleName                                             |  需在 NativeModules 命名空间中查找的模块名称或名称数组。                                                                                      | string/Array<string> | Yes       | iOS/Android      | Yes               |
+| options.mock                                              | 该原生模块的模拟实现                                        | mixed | Yes       | iOS/Android      | Yes               |
+| options.getVersion                                | 用于获取原生模块版本的函数。仅在指定了覆盖配置且未在原生模块中导出 VERSION 属性时需要设置。默认值为 x => x.VERSION。VERSION.                                                                                                  | (module) => string/number | No       | iOS/Android      | Yes                |
+| options.overrides                                 | 版本号与对应属性/方法覆写实现的映射表。若被覆写的属性或方法为函数类型，该函数将在 SafeModule.create(...) 执行期间被调用，并接收两个参数：原始模块中该属性的初始值及原始模块本身。此函数的返回值将被设置为 SafeModule.create(...) 的返回结果。                                                                                                  | [version: string]: mixed   | No       | iOS/Android      | Yes               |
+| options.isEventEmitter                              | 标识原生模块是否为 EventEmitter 的标记。若启用，会将 EventEmitter 实例挂载至生成模块的 emitter 属性。默认值为 false。                                                                                                  | bool   | No       | iOS/Android      | Yes                |
 
 
 ## 遗留问题
