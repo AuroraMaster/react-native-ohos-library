@@ -17,7 +17,14 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-exit-app Releases](https://github.com/react-native-oh-library/react-native-exit-app/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 2.0.0      | [@react-native-oh-tpl/react-native-exit-app Releases](https://github.com/react-native-oh-library/react-native-exit-app/releases) | 0.72       |
+| 2.1.0      | @react-native-ohos/react-native-exit-app Releases Releases   | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +32,19 @@
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-exit-app
+# 0.77 
+npm install @react-native-ohos/react-native-exit-app
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72 
 yarn add @react-native-oh-tpl/react-native-exit-app
+# 0.77 
+yarn add @react-native-ohos/react-native-exit-app
 ```
 
 
@@ -110,10 +123,21 @@ export default App;
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+* 0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-exit-app": "file:../../node_modules/@react-native-oh-tpl/react-native-exit-app/harmony/exit_app.har"
+  }
+```
+
+* 0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-exit-app": "file:../../node_modules/@react-native-ohos/react-native-exit-app/harmony/exit_app.har"
   }
 ```
 
@@ -130,14 +154,57 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 3.在 ArkTs 侧引入 ExitAppPackage
+### 3.配置 CMakeLists 和引入 RNMlkitOcrPackage
+
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-exit-app/src/main/cpp" ./exit_app)
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_exit_app)
+# RNOH_END: manual_package_linking_2
+```
+
+### 4.在 ArkTs 侧引入 ExitAppPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
   ...
-  
+  # 0.72 
 +  import { ExitAppPackage } from '@react-native-oh-tpl/react-native-exit-app/ts';
+  # 0.77 
++  import { ExitAppPackage } from '@react-native-ohos/react-native-exit-app/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -147,7 +214,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.运行
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -164,9 +231,9 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
-
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-exit-app Releases](https://github.com/react-native-oh-library/react-native-exit-app/releases)
+本文档内容基于以下版本验证通过：
+1. RNOH：0.72.86; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## 静态方法
 

@@ -15,6 +15,10 @@
 
 > [!TIP] [Github 地址](https://github.com/obipawan/react-native-hyperlink)
 
+| 三方库版本 | 支持RN版本 |
+| :--- | :--- |
+| 0.0.22| 0.72/0.77 |
+
 ## 安装与使用
 
 进入到工程目录并输入以下命令：
@@ -84,6 +88,7 @@ export default function App() {
 
 1. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.25 (API Version 12 Canary4); IDE: DevEco Studio 5.0.3.400SP7; ROM: 3.0.0.29;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## 属性
 
@@ -91,15 +96,15 @@ export default function App() {
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name            | Description                                                                       | Type                     | Required | Platform | HarmonyOS Support |
-| --------------- | --------------------------------------------------------------------------------- | ------------------------ | -------- | -------- | ----------------- |
-| linkify         | linkify-it object, for custom schema                                              | object                   | no       | all      | yes               |
-| linkStyle       | highlight clickable text with styles                                              | object                   | no       | all      | yes               |
-| linkText        | A string or a func to replace parsed text                                         | string   &#124; function | no       | all      | yes               |
-| onPress         | Func to handle click over a clickable text with parsed text as arg                | function                 | no       | all      | yes               |
-| onLongPress     | Func to handle long click over a clickable text with parsed text as arg           | function                 | no       | all      | yes               |
-| linkDefault     | A platform specific fallback to handle onPress. Uses Linking. Disabled by default | boolean                  | no       | all      | yes               |
-| injectViewProps | Func with url as a param to inject props to the clickable component               | function                 | no       | all      | yes               |
+| Name            | Description                                                                 | Type                     | Required | Platform | HarmonyOS Support |
+| --------------- | --------------------------------------------------------------------------- | ------------------------ | -------- | -------- | ----------------- |
+| linkify         | linkify-it 对象，用于自定义模式                                             | object                   | no       | all      | yes               |
+| linkStyle       | 设置可点击文本的高亮样式                                                    | object                   | no       | all      | yes               |
+| linkText        | 用于替换被解析文本的字符串或函数                                            | string   &#124; function | no       | all      | yes               |
+| onPress         | 点击可点击文本时的回调函数，以解析后的文本作为参数                          | function                 | no       | all      | yes               |
+| onLongPress     | 长按可点击文本时的回调函数，以解析后的文本作为参数                          | function                 | no       | all      | yes               |
+| linkDefault     | 处理 onPress 的平台特定默认回退行为。使用 Linking。默认禁用                 | boolean                  | no       | all      | yes               |
+| injectViewProps | 以 URL 为参数的函数，用于向可点击组件注入属性                               | function                 | no       | all      | yes               |
 
 ## 遗留问题
 

@@ -14,6 +14,10 @@
 
 > [!TIP] [GitHub address](https://github.com/shifeng1993/react-native-secharts)
 
+| Library Version | Supported RN Version |
+| :--- | :--- |
+| 1.7.0 | 0.72/0.77 |
+
 ## Installation and Usage
 
 Go to the project directory and execute the following instruction:
@@ -128,11 +132,10 @@ const styles = StyleSheet.create({
 
 ## Link
 
-> [!TIP] This library depends on @react-native-oh-tpl/react-native-webview 13.10.2-0.2.0
 
-The HarmonyOS implementation of this library depends on the native code from @react-native-oh-tpl/react-native-webview. If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly.
+The HarmonyOS implementation of this library depends on the native code from react-native-webview. If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly.
 
-If it is not included, follow the guide provided in [@react-native-oh-tpl/react-native-webview](/en/react-native-webview.md) to add it to your project.
+If it is not included, follow the guide provided in [react-native-webview docs](/en/react-native-webview.md) to add it to your project.
 
 ## Constraints
 
@@ -141,6 +144,7 @@ If it is not included, follow the guide provided in [@react-native-oh-tpl/react-
 This document is verified based on the following versions:
 
 1. RNOH: 0.72.27; SDK: HarmonyOS NEXT Developer Beta1 5.0.0.25; IDE: DevEco Studio 5.0.3.400SP7; ROM: 3.0.0.25;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## Properties
 
@@ -148,14 +152,14 @@ This document is verified based on the following versions:
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-| Name              | Description                                                                                                                            | Type     | Required | Platform | HarmonyOS Support |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | -------- | ----------------- |
-| `option`          | echarts 配置项，option 详情参见 https://echarts.apache.org/zh/option.html#title                                                        | object   | yes      | All      | yes               |
-| `backgroundColor` | 图表画布背景色                                                                                                                         | string   | no       | All      | yes               |
-| `width`           | 画布宽度                                                                                                                               | number   | no       | All      | yes               |
-| `height`          | 画布高度                                                                                                                               | number   | no       | All      | yes               |
-| `renderLoading`   | loading 时遮罩，默认不支持自定义，如需自定义，请修改 react-native-secharts 依赖的源码 main/dist/index.js 中 startInLoadingState={true} | function | no       | All      | yes               |
-| `onPress`         | 画布中数据点击事件                                                                                                                     | function | no       | All      | yes               |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `option` | ECharts configuration options. For details, please refer to https://echarts.apache.org/zh/option.html#title | object | yes | All | yes |
+| `backgroundColor` | Background color of the chart canvas | string | no | All | yes |
+| `width` | Canvas width | number | no | All | yes |
+| `height` | Canvas height | number | no | All | yes |
+| `renderLoading` | Loading overlay. Customization is not supported by default. To customize, please modify `startInLoadingState={true}` in `main/dist/index.js` within the `react-native-secharts` source code. | function | no | All | yes |
+| `onPress` | Data press/click event on the canvas | function | no | All | yes |
 
 ## Static Methods
 
@@ -163,19 +167,19 @@ This document is verified based on the following versions:
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-| Prop        | Description                                                                                                                                                                   | Type     | Required | Platform | HarmonyOS Support |
-| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | -------- | ----------------- |
-| `setOption` | 该参数接收 option 对象，1.5.0 之后版本的 react-native-secharts 不建议使用此方法了，可以直接用 react 的组件内 state 进行绑定，如果需要变更，直接 setstate 新的 option 即可。） | function | no       | All      | yes               |
-| `getImage`  | 返回函数的参数 base64，可结合 RNFS 写入相册                                                                                                                                   | function | no       | All      | yes               |
-| `clear`     | 清空 echarts 画布                                                                                                                                                             | function | no       | All      | yes               |
+| Prop | Description | Type | Required | Platform | HarmonyOS Support |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `setOption` | Accepts an option object. Using this method is not recommended for `react-native-secharts` versions after 1.5.0. You can bind directly using React component state; simply update the state with the new option to trigger changes. | function | no | All | yes |
+| `getImage` | Returns a base64 string via the callback, which can be combined with RNFS to save the image to the gallery. | function | no | All | yes |
+| `clear` | Clears the ECharts canvas. | function | no | All | yes |
 
 ## Known Issues
 
 ## Others
 
-renderLoading 属性在 Android 和 iOS 设置之后不生效，HarmonyOS 与 Android,iOS 表现一致。 [issue#109](https://github.com/shifeng1993/react-native-secharts/issues/109)
+The `renderLoading` prop does not take effect on Android and iOS. HarmonyOS behaves consistently with Android and iOS. [issue#109](https://github.com/shifeng1993/react-native-secharts/issues/109)
 
-原库使用了在线 CDN，Echarts 组件需在网络支持下才能正常展示，HarmonyOS 与 Android,iOS 表现一致。 [issue#79](https://github.com/shifeng1993/react-native-secharts/issues/79)
+The original library uses an online CDN, so the ECharts component requires network support to display correctly. HarmonyOS behaves consistently with Android and iOS. [issue#79](https://github.com/shifeng1993/react-native-secharts/issues/79)
 
 ## License
 
