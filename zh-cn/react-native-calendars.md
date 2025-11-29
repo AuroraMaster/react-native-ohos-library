@@ -14,18 +14,33 @@
 
 > [!TIP] [Github 地址](https://github.com/wix/react-native-calendars/tree/1.1304.1)
 
+| 三方库版本                 | 支持RN版本                 |
+| ------------------------- | -------------------------- |
+| 1.1304.1               |  0.72 |
+| 1.1313.0               |  0.77 |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
 ## 安装与使用
+
+进入到工程目录并输入以下命令：
 
 #### **npm**
 
 ```bash
+#0.72
 npm install --save react-native-calendars@1.1304.1
+#0.77
+npm install --save react-native-calendars@1.1313.0
 ```
 
 #### **yarn**
 
 ```bash
-yarn install --react-native-calendars@1.1304.1
+#0.72
+yarn add react-native-calendars@1.1304.1
+#0.77
+yarn add react-native-calendars@1.1313.0
 ```
 
 下面的代码展示了这个库的基本使用场景：
@@ -124,149 +139,173 @@ export default MySvgComponent;
 
 本文档内容基于以下版本验证：
 
-1. RNOH: 0.72.28; SDK：HarmonyOS-Next-DB1 5.0.0.25; IDE：DevEco Studio  5.0.3.535; ROM：5.0.0.31; 
+1. RNOH: 0.72.28; SDK：HarmonyOS-Next-DB1 5.0.0.25; IDE：DevEco Studio  5.0.3.535; ROM：5.0.0.31;
+2. RNOH： 0.77.17; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
-### Agenda 
 
-| Name                     | Description                                                                                                | Type                 | Required | Platform | HarmonyOS Support |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------- | -------------------- | -------- | -------- | ----------------- |
-| items                    | the list of items that have to be displayed in agenda. If you want to render item as empty date the value of date key has to be an empty array []. If there exists no value for date key it is considered that the date in question is not yet loaded                                    | AgendaSchedule                | no       | All      | yes               |
-| selected                 | initially selected day | string               | no       | All      | yes               |
-| hideKnob                 | Whether to hide the knob | boolean               | no       | All      | yes               |
-| showClosingKnob                 | Whether the knob should always be visible (when hideKnob = false) | boolean               | no       | All      | yes               |
-| showOnlySelectedDayItems                 | Whether to show items only for the selected date | boolean               | no       | All      | yes               |
-| loadItemsForMonth            | Handler which gets executed when items for a certain month should be loaded (month became visible)                           | function | no       | All      | yes               |
-| onDayChange        | Handler which gets executed when day changes while scrolling agenda list                      | function | no       | All      | yes               |
-| onCalendarToggled         | Handler which gets executed when the calendar is opened or closed         | function | no       | All      | yes               |
-| renderKnob | Replace default agenda's knob with a custom one | function | no       | All      | yes               |
-| renderEmptyData                 | Replace default ActivityIndicator with a custom one | function               | no       | All      | yes               |
+### Agenda
 
-### AgendaList 
+| Name              | Description                                                  | Type           | Required | Platform | HarmonyOS Support |
+| ----------------- | ------------------------------------------------------------ | -------------- | -------- | -------- | ----------------- |
+| items             | 必须在议程中显示的项目列表。如果你想将项目呈现为空日期，日期键的值必须是一个空数组[]。如果日期键没有值，则认为相关日期尚未加载 | AgendaSchedule | no       | All      | yes               |
+| selected          | 初始选中的日期                                       | string         | no       | All      | yes               |
+| hideKnob          | 是否隐藏旋钮                                     | boolean        | no       | All      | yes               |
+| showClosingKnob   | 旋钮是否应始终可见（hideKonb=false时） | boolean        | no       | All      | yes               |
+| loadItemsForMonth | 当需要加载特定月份时（该月变得可见）执行的处理函数 | function       | no       | All      | yes               |
+| onDayChange       | 当日期发生变化时执行的处理函数 | function       | no       | All      | yes               |
+| onCalendarToggled | 打开或关闭日历时执行的处理函数 | function       | no       | All      | yes               |
+| renderKnob        | 将默认议程的旋钮替换为自定义旋钮              | function       | no       | All      | yes               |
+| renderList        | 用自定义实现的组件覆盖内部列表      | function       | no       | All      | yes               |
+| showOnlySelectedDayItems        | 是否仅显示所选日期的项目      | boolean       | no       | All      | yes               |
+| renderEmptyData        | 将默认ActivityIndicator替换为自定义ActivityIndicator      | function       | no       | All      | yes               |
 
-| Name                     | Description                                                                                                | Type                 | Required | Platform | HarmonyOS Support |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------- | -------------------- | -------- | -------- | ----------------- |
-| theme                    | Specify theme properties to override specific styles for calendar parts                                    | Theme                | no       | All      | yes               |
-| dayFormat                 | Day format in section title. Formatting values: http://arshaw.com/xdate/#Formatting | string               | no       | All      | yes               |
-| useMoment                 | Whether to use moment.js for date string formatting | boolean               | no       | All      | yes               |
-| markToday                 | Whether to mark today's title with the 'Today, ...' string | boolean               | no       | All      | yes               |
-| avoidDateUpdates                 | Whether to block the date change in calendar (and calendar context provider) when agenda scrolls | boolean               | no       | All      | yes               |
-| scrollToNextEvent                 | hether to enable scrolling the agenda list to the next date with content when pressing a day without content | boolean               | no       | All      | yes               |
-| viewOffset                 | Offset scroll to the section | number               | no       | All      | yes               |
-| sectionStyle                 | The style passed to the section view | ViewStyle               | no       | All      | yes               |
-| dayFormatter            | A function to custom format the section header's title                           | function | no       | All      | yes               |
+### AgendaList
 
-### Calendar 
+| Name              | Description                                                  | Type      | Required | Platform | HarmonyOS Support |
+| ----------------- | ------------------------------------------------------------ | --------- | -------- | -------- | ----------------- |
+| theme             | 指定主题属性以覆盖日历零件的特定样式 | Theme     | no       | All      | yes               |
+| dayFormat         | 章节标题中的日期格式。格式化值： http://arshaw.com/xdate/#Formatting | string    | no       | All      | yes               |
+| useMoment         | 是否使用moment.js进行日期字符串格式化          | boolean   | no       | All      | yes               |
+| markToday         | 是否将今日标题标记为"Today, ..."字符串   | boolean   | no       | All      | yes               |
+| avoidDateUpdates  | 议程滚动时是否阻止日历（和日历上下文提供程序）中的日期更改 | boolean   | no       | All      | yes               |
+| scrollToNextEvent | 当按下没有内容的一天时，是否启用将议程列表滚动到下一个有内容的日期 | boolean   | no       | All      | yes               |
+| viewOffset        | 滚动的偏移量                                 | number    | no       | All      | yes               |
+| sectionStyle      | 传递给日期段标题容器的样式                         | ViewStyle | no       | All      | yes               |
+| dayFormatter      | 用于自定义日期标题格式的函数       | function  | no       | All      | yes               |
+| infiniteListProps | 若定义此参数，则使用InfiniteList而不是SectionList。此为实验性功能，后续可能发生变更 | object    | no       | All      | yes               |
 
-| Name                     | Description                                                                                                | Type                 | Required | Platform | HarmonyOS Support |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------- | -------------------- | -------- | -------- | ----------------- |
-| theme                    | Specify theme properties to override specific styles for calendar parts                                    | Theme                | no       | All      | yes               |
-| firstDay                 | If firstDay=1 week starts from Monday. Note that dayNames and dayNamesShort should still start from Sunday | number               | no       | All      | yes               |
-| hideArrows                 | Whether to hide the arrows | boolean               | no       | All      | yes               |
-| disableArrowLeft                 | Whether to disable the left arrow | boolean               | no       | All      | yes               |
-| disableArrowRight                 | Whether to disable the right arrow | boolean               | no       | All      | yes               |
-| arrowsHitSlop                 | Left & Right arrows. Additional distance outside of the buttons in which a press is detected, default: 20 |   number               | no       | All      | yes               |
-| hideDayNames                 | Whether to hide the days names | boolean               | no       | All      | yes               |
-| monthFormat                | Month format for the header's title. Formatting values | string               | no       | All      | yes               |
-| displayLoadingIndicator  | Display loading indicator                                                                                  | boolean              | no       | All      | yes               |
-| showWeekNumbers          | Show week numbers                                                                                          | boolean              | no       | All      | yes               |
-| style                    | Specify style for calendar container element                                                               | StyleProp<ViewStyle> | no       | All      | yes               |
-| disabledDaysIndexes                    | Whether to apply custom disable color to selected day indexes                                                               | number[] | no       | All      | yes               |
-| current                  | Initially visible month                                                                                    | string               | no       | All      | yes               |
-| initialDate              | Initially visible month. If changed will initialize the calendar to this value                             | string               | no       | All      | yes               |
-| minDate                  | Minimum date that can be selected, dates before minDate will be grayed out                                 | string               | no       | All      | yes               |
-| maxDate                  | Maximum date that can be selected, dates after maxDate will be grayed out                                  | string               | no       | All      | yes               |
-| markedDates              | Collection of dates that have to be marked                                                                 | MarkedDates          | no       | All      | yes               |
-| hideExtraDays            | Do not show days of other months in month page                                                             | boolean              | no       | All      | yes               |
-| showSixWeeks             | Always show six weeks on each month (only when hideExtraDays = false)                                      | boolean              | no       | All      | yes               |
-| disableMonthChange       | Disables changing month when click on days of other months (when hideExtraDays is false)                   | boolean              | no       | All      | yes               |
-| enableSwipeMonths        | Enable the option to swipe between months                                                                  | boolean              | no       | All      | yes               |
-| disabledByDefault        | Disable days by default                                                                                    | boolean              | no       | All      | yes               |
-| headerStyle              | Style passed to the header                                                                                 | StyleProp<ViewStyle> | no       | All      | yes               |
-| allowSelectionOutOfRange | Allow selection of dates before minDate or after maxDate                                                   | boolean              | no       | All      | yes               |
-| disableAllTouchEventsForDisabledDays | Whether to disable all touch events for disabled days (can be override with 'disableTouchEvent' in 'markedDates')                                                   | boolean              | no       | All      | yes               |
-| disableAllTouchEventsForInactiveDays | Whether to disable all touch events for inactive days (can be override with 'disableTouchEvent' in 'markedDates')                                                   | boolean              | no       | All      | yes               |
-| dayComponent | Replace default day with custom day rendering component element                                                   | JSX.Element              | no       | All      | yes               |
-| customHeaderTitle             | Replace default title with custom element                             | JSX.Element              | no       | All      | yes               |
-| customHeader              | Allow rendering a totally custom header                             | any               | no       | All      | yes               |
-| onDayPress            | Handler which gets executed on day press                           | function | no       | All      | yes               |
-| onDayLongPress        | Handler which gets executed on day long press                      | function | no       | All      | yes               |
-| onMonthChange         | Handler which gets executed when month changes in calendar         | function | no       | All      | yes               |
-| onVisibleMonthsChange | Handler which gets executed when visible month changes in calendar | function | no       | All      | yes               |
-| onPressArrowLeft                 | Handler which gets executed when press left arrow. It receive a callback to go to the previous month | function               | no       | All      | yes               |
-| onPressArrowRight                 | Handler which gets executed when press right arrow. It receive a callback to go to the next month | function               | no       | All      | yes               |
-| renderArrow                 | Replace default arrows with custom ones (direction: 'left','right') | function               | no       | All      | yes               |
-| renderHeader              | Replace default title with custom one                             | function               | no       | All      | yes               |
+### Calendar
 
+| Name                                    | Description                                                  | Type                 | Required | Platform | HarmonyOS Support |
+| --------------------------------------- | ------------------------------------------------------------ | -------------------- | -------- | -------- | ----------------- |
+| theme                                   | 用于覆盖日历组件特定样式的主题配置 | Theme                | no       | All      | yes               |
+| style                                   | 用于设置日历容器元素的样式                 | ViewStyle | no       | All      | yes               |
+| current                                 | 初始显示的月份                                      | string               | no       | All      | yes               |
+| initialDate                             | 初始显示的月份（若变更将以此值重新初始化日历） | string               | no       | All      | yes               |
+| minDate                                 | 可选择的最小日期，此日期之前的日期将显示为灰色 | string               | no       | All      | yes               |
+| maxDate                                 | 可选择的最大日期，此日期之后的日期将显示为灰色 | string               | no       | All      | yes               |
+| markedDates                             | 需要被标记的日期集合                   | MarkedDates          | no       | All      | yes               |
+| hideExtraDays                           | 是否在月份页面中隐藏其他月份的日期               | boolean              | no       | All      | yes               |
+| showSixWeeks                            | 是否始终在每个月份显示六周（当hideExtraDays=false时） | boolean              | no       | All      | yes               |
+| disableMonthChange                      | 当点击其他月份的日期时是否禁用月份切换（当hideExtraDays为false时） | boolean              | no       | All      | yes               |
+| enableSwipeMonths                       | 是否启用月份滑动切换功能                    | boolean              | no       | All      | yes               |
+| disabledByDefault                       | 是否默认禁用所有日期                                      | boolean              | no       | All      | yes               |
+| headerStyle                             | 传递给标题头的样式                                   | ViewStyle | no       | All      | yes               |
+| customHeader                            | 允许渲染完全自定义的标题头                      | any                  | no       | All      | yes               |
+| onDayPress                              | 日期被点击时执行的处理函数                     | function             | no       | All      | yes               |
+| onDayLongPress                          | 日期被长按时执行的处理函数                | function             | no       | All      | yes               |
+| onMonthChange                           | 日历中月份变更时执行的处理函数   | function             | no       | All      | yes               |
+| onVisibleMonthsChange                   | 日历中可见月份变更时执行的处理函数 | function             | no       | All      | yes               |
+| disabledByWeekDays<sup> 1.1313.0+</sup> | 按星期几禁用日期（周日=0）                 | number[]             | no       | All      | yes               |
+| testID | Test ID                 | string             | no       | All      | yes               |
+| allowSelectionOutOfRange                | 是否允许选择minDate之前或maxDate之后的日期     | boolean              | no       | All      | yes               |
+| firstDay                                  | 若firstDay=1，则周从周一开始。注意：dayNames和dayNamesShort仍应从周日开始                                                     | number               | no       | All      | yes               |
+| displayLoadingIndicator                                  | 是否显示加载指示器                                                      | boolean               | no       | All      | yes               |
+| showWeekNumbers                                  | 是否显示周数                                                      | boolean               | no       | All      | yes               |
+| monthFormat                                  | 标题头的月份格式，格式化值参考： <http://arshaw.com/xdate/#Formatting>                                                      | string               | no       | All      | yes               |
+| hideDayNames                                  | 是否隐藏日期名称                                                       | boolean               | no       | All      | yes               |
+| hideArrows                                  | 是否隐藏箭头                                                      | boolean               | no       | All      | yes               |
+| arrowsHitSlop                                  | 左右箭头，按钮外部的附加距离，在此距离内检测到按下（默认：20）                                                      | number               | no       | All      | yes               |
+| disableArrowLeft                                  | 是否禁用左箭头                                                      | boolean               | no       | All      | yes               |
+| disableArrowRight                                  | 是否禁用右箭头                                                      | boolean               | no       | All      | yes               |
+| renderArrow                                  | 用自定义箭头替换默认箭头（方向：'left','right'）                                                      | function               | no       | All      | yes               |
+| onPressArrowLeft                                  | 按下左箭头时执行的处理函数，接收跳转到上个月的回调                                                      | function               | no       | All      | yes               |
+| onPressArrowRight                                  | 按下右箭头时执行的处理函数，接收跳转到下个月的回调                                                      | function               | no       | All      | yes               |
+| disabledDaysIndexes                                  | 是否为选定的日期索引应用自定义禁用颜色                                                      | number[]               | no       | All      | yes               |
+| renderHeader                                  | 用自定义标题替换默认标题                                                      | function               | no       | All      | yes               |
+| customHeaderTitle                                  | 用自定义元素替换默认标题                                                      | JSX.Element               | no       | All      | yes               |
+| dayComponent                                  | 用自定义日期渲染组件替换默认日期组件                                                       | JSX.Element               | no       | All      |yes               |
+| disableAllTouchEventsForDisabledDays                                  | 是否为禁用的日期禁用所有触摸事件（可通过markedDates中的'disableTouchEvent'覆盖）                                                      | boolean               | no       | All      |yes               |
+| disableAllTouchEventsForInactiveDays                                  | 是否为非活动日期禁用所有触摸事件（可通过markedDates中的'disableTouchEvent'覆盖）                                                      | boolean               | no       | All      |yes               |
 
-### CalendarList 
+### CalendarList
 
-| Name                     | Description                                                                                                | Type                 | Required | Platform | HarmonyOS Support |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------- | -------------------- | -------- | -------- | ----------------- |
-| pastScrollRange                    | Max amount of months allowed to scroll to the past                                    | number                | no       | All      | yes               |
-| futureScrollRange                 | Max amount of months allowed to scroll to the future | number               | no       | All      | yes               |
-| calendarStyle                 | Specify style for calendar container element | ViewStyle               | no       | All      | yes               |
-| calendarHeight                 | Dynamic calendar height | number               | no       | All      | yes               |
-| calendarWidth                 | Used when calendar scroll is horizontal, (when pagingEnabled = false) | number               | no       | All      | yes               |
-| staticHeader                 | Whether to use a fixed header that doesn't scroll (when horizontal = true) | boolean               | no       | All      | yes               |
-| showScrollIndicator                 | Whether to enable or disable vertical / horizontal scroll indicator | boolean               | no       | All      | yes               |
+| Name                | Description                                                  | Type      | Required | Platform | HarmonyOS Support |
+| ------------------- | ------------------------------------------------------------ | --------- | -------- | -------- | ----------------- |
+| pastScrollRange     | 允许向过去方向滚动显示的最大月份数量           | number    | no       | All      | yes               |
+| futureScrollRange   | 允许向未来方向滚动显示的最大月份数量         | number    | no       | All      | yes               |
+| calendarStyle       | 用于设置日历容器元素的样式                 | ViewStyle | no       | All      | yes               |
+| calendarHeight      | 动态设置日历高度                                      | number    | no       | All      | yes               |
+| calendarWidth       | 在水平滚动日历且分页未启用时使用（当pagingEnabled = false） | number    | no       | All      | yes               |
+| staticHeader        | 是否使用固定不滚动的标题头（当horizontal = true时） | boolean   | no       | All      | yes               |
+| showScrollIndicator | 是否启用垂直/水平滚动指示器 | boolean   | no       | All      | yes               |
+| animateScroll       | 是否启用月份自动滚动的动画效果                     | boolean   | no       | All      | yes               |
+| contentContainerStyle       | 应用于包裹所有子视图的滚动视图内容容器的样式                     | StyleProp\<ViewStyle>   | no       | All      | yes               |
 
-### CalendarProvider 
+### CalendarProvider
 
-| Name                     | Description                                                                                                | Type                 | Required | Platform | HarmonyOS Support |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------- | -------------------- | -------- | -------- | ----------------- |
-| theme                    | Specify theme properties to override specific styles for calendar parts                                    | Theme                | no       | All      | yes               |
-| style                 | Specify style for calendar container element | ViewStyle               | no       | All      | yes               |
-| date                 | Initial date in 'yyyy-MM-dd' format | string              | no       | All      | yes               |
-| showTodayButton                 | Whether to show the today button | boolean               | no       | All      | yes               |
-| todayButtonStyle                 | Today button's style | ViewStyle               | no       | All      | yes               |
-| todayBottomMargin                 | Today button's top position | number               | no       | All      | yes               |
-| disabledOpacity                 | The opacity for the disabled today button (0-1) | number               | no       | All      | yes               |
-| onDateChanged            | Handler which gets executed when the date changes                           | function | no       | All      | yes               |
-| onMonthChange            | Handler which gets executed when the month changes changes                           | function | no       | All      | yes               |
+| Name                                        | Description                                                  | Type                      | Required | Platform | HarmonyOS Support |
+| ------------------------------------------- | ------------------------------------------------------------ | ------------------------- | -------- | -------- | ----------------- |
+| theme                                       | 用于覆盖日历组件特定样式的主题配置 | Theme                     | no       | All      | yes               |
+| style                                       | 用于设置日历容器元素的样式                 | ViewStyle                 | no       | All      | yes               |
+| date                                        | 初始日期，格式为'yyyy-MM-dd'                          | string                    | no       | All      | yes               |
+| showTodayButton                             | 是否显示"今天"按钮                             | boolean                   | no       | All      | yes               |
+| todayButtonStyle                            | "今天"按钮的样式                                         | ViewStyle                 | no       | All      | yes               |
+| todayBottomMargin                           | "今天"按钮距离底部的边距                                  | number                    | no       | All      | yes               |
+| disabledOpacity                             | 禁用状态下"今天"按钮的透明度（0-1）              | number                    | no       | All      | yes               |
+| onDateChanged                               | 日期变更时执行的处理函数            | function                  | no       | All      | yes               |
+| onMonthChange                               | 月份变更时执行的处理函数   | function                  | no       | All      | yes               |
+| disableAutoDaySelection<sup>1.1313.0+</sup> | 在特定日历导航类型中禁用自动日期选择（选项来自ExpandableCalendar.navigationTypes） | CalendarNavigationTypes[] | no       | All      | yes               |
+| numberOfDays                                | 在时间线日历中显示的天数       | number                    | no       | All      | yes               |
+| timelineLeftInset                           | 时间线日历的左侧插入距离（侧边栏宽度），默认为72 | number                    | no       | All      | yes               |
 
-### ExpandableCalendar 
+### ExpandableCalendar
 
-| Name                     | Description                                                                                                | Type                 | Required | Platform | HarmonyOS Support |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------- | -------------------- | -------- | -------- | ----------------- |
-| initialPosition                    | The initial position of the calendar ('open' or 'closed')                                    | Positions                | no       | All      | yes               |
-| disablePan                 | Whether to disable the pan gesture and disable the opening and closing of the calendar (initialPosition will persist) | boolean               | no       | All      | yes               |
-| hideKnob                 | Whether to hide the knob | boolean              | no       | All      | yes               |
-| leftArrowImageSource                 | The source for the left arrow image | ImageSourcePropType               | no       | All      | yes               |
-| rightArrowImageSource                 | The source for the right arrow image | ImageSourcePropType               | no       | All      | yes               |
-| allowShadow                 | Whether to have shadow/elevation for the calendar | boolean               | no       | All      | yes               |
-| disableWeekScroll                 | Whether to disable the week scroll in closed position | boolean               | no       | All      | yes               |
-| openThreshold                 | The threshold for opening the calendar with the pan gesture | number               | no       | All      | yes               |
-| closeThreshold                 | closeThreshold | number               | no       | All      | yes               |
-| onCalendarToggled            | Handler which gets executed when the calendar is opened or closed                           | function | no       | All      | yes               |
+| Name                  | Description                                                  | Type                | Required | Platform | HarmonyOS Support |
+| --------------------- | ------------------------------------------------------------ | ------------------- | -------- | -------- | ----------------- |
+| initialPosition       | 日历的初始位置（'open' 展开或 'closed' 收起）    | Positions           | no       | All      | yes               |
+| disablePan            | 是否禁用平移手势并禁用日历的打开和关闭（initialPosition将保持固定） | boolean             | no       | All      | yes               |
+| hideKnob              | 是否隐藏拖拽手柄                                     | boolean             | no       | All      | yes               |
+| leftArrowImageSource  | 左侧箭头图片的资源地址                          | ImageSourcePropType | no       | All      | yes               |
+| rightArrowImageSource | 右侧箭头图片的资源地址                         | ImageSourcePropType | no       | All      | yes               |
+| allowShadow           | 是否为日历添加阴影/ elevation 效果            | boolean             | no       | All      | yes               |
+| disableWeekScroll     | 在收起状态下是否禁用周滚动        | boolean             | no       | All      | yes               |
+| openThreshold         | 通过拖拽手势展开日历的触发阈值  | number              | no       | All      | yes               |
+| closeThreshold        | 通过拖拽手势收起日历的触发阈值                                               | number              | no       | All      | yes               |
+| onCalendarToggled     | 日历展开或收起时执行的处理函数 | function            | no       | All      | yes               |
+| closeOnDayPress       | 点击日期时是否自动收起日历，默认=true   | boolean             | no       | All      | yes               |
 
-### Timeline 
+### Timeline
 
-| Name                     | Description                                                                                                | Type                 | Required | Platform | HarmonyOS Support |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------- | -------------------- | -------- | -------- | ----------------- |
-| theme                    | Specify theme properties to override specific styles for calendar parts                                    | Theme                | no       | All      | yes               |
-| style                 | Specify style for calendar container element | ViewStyle               | no       | All      | yes               |
-| events                 | List of events to render on the timeline | Event[]              | no       | All      | yes               |
-| start                 | The timeline day start time | number               | no       | All      | yes               |
-| end                 | The timeline day end time | number              | no       | All      | yes               |
-| scrollToFirst                 | Whether to scroll to the first event | boolean               | no       | All      | yes               |
-| format24h                | Whether to use 24 hours format for the timeline hours | boolean               | no       | All      | yes               |
-| onEventPress            | Handler which gets executed when event is pressed                           | function | no       | All      | yes               |
-| onBackgroundLongPress            | Handler which gets executed when background is long pressed. Pass to handle creation of a new event                           | function | no       | All      | yes               |
-| onBackgroundLongPressOut            | Handler which gets executed when background's long pressed released. Pass to handle creation of a new event                           | function | no       | All      | yes               |
-| renderEvent            | Specify a custom event block                           | function | no       | All      | yes               |
+| Name                     | Description                                                  | Type               | Required | Platform | HarmonyOS Support |
+| ------------------------ | ------------------------------------------------------------ | ------------------ | -------- | -------- | ----------------- |
+| theme                    | 用于覆盖时间线组件特定样式的主题配置 | Theme              | no       | All      | yes               |
+| styles                    | 用于设置时间线容器元素的样式                 | Theme          | no       | All      | yes               |
+| events                   | 要在时间线上渲染的事件列表                     | Event[]            | no       | All      | yes               |
+| start                    | 时间线一天的开始时间                                  | number             | no       | All      | yes               |
+| end                      | 时间线一天的结束时间                                    | number             | no       | All      | yes               |
+| scrollToFirst            | 是否滚动到第一个事件                         | boolean            | no       | All      | yes               |
+| format24h                | 是否使用24小时制显示时间线小时        | boolean            | no       | All      | yes               |
+| onEventPress             | 事件被点击时执行的处理函数            | function           | no       | All      | yes               |
+| onBackgroundLongPress    | 背景被长按时执行的处理函数，用于处理新事件的创建 | function           | no       | All      | yes               |
+| onBackgroundLongPressOut | 背景长按释放时执行的处理函数，用于处理新事件的创建 | function           | no       | All      | yes               |
+| renderEvent              | 指定自定义事件块的渲染函数                                 | function           | no       | All      | yes               |
+| date                     | 此时间线实例的日期，ISO格式（如2011-10-25） | string \|string[]  | no       | All      | yes               |
+| eventTapped <sup>deprecated from 1.1304.1+</sup>             | 已弃用（从1.1304.1+版本开始），请使用onEventPress代替                                     | function           | no       | All      | yes               |
+| scrollToNow              | 加载时是否滚动到当前时间                    | boolean            | no       | All      | yes               |
+| initialTime              | 初始滚动到的时间                                    | object             | no       | All      | yes               |
+| showNowIndicator         | 是否显示当前时间指示器                                | boolean            | no       | All      | yes               |
+| scrollOffset             | 时间线组件将同步的滚动偏移值       | number              | no       | All      | yes               |
+| onChangeOffset           | 监听时间线组件的滚动事件           | function           | no       | All      | yes               |
+| overlapEventsSpacing     | 重叠事件之间的间距                           | number             | no       | All      | yes               |
+| rightEdgeSpacing         | 右侧边缘保留的间距（用于背景按压）     | number             | no       | All      | yes               |
+| unavailableHours         | 不可用小时的时间范围                                     | UnavailableHours[] | no       | All      | yes               |
+| unavailableHoursColor    | 不可用时间段的背景颜色                       | string             | no       | All      | yes               |
+| numberOfDays             | 在时间线日历中显示的天数       | number             | no       | All      | yes               |
+| timelineLeftInset        | 时间线日历的左侧插入距离（侧边栏宽度），默认为72 | number             | no       | All      | yes               |
+| testID        | 测试标识 | string             | no       | All      | yes               |
 
-### WeekCalendar 
+### WeekCalendar
 
-| Name                     | Description                                                                                                | Type                 | Required | Platform | HarmonyOS Support |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------- | -------------------- | -------- | -------- | ----------------- |
-| allowShadow                    | Whether to have shadow/elevation for the calendar                                   | boolean                | no       | All      | yes               |
-| hideDayNames                 | Whether to hide the names of the week days | boolean               | no       | All      | yes               |
-
+| Name        | Description                                       | Type    | Required | Platform | HarmonyOS Support |
+| ----------- | ------------------------------------------------- | ------- | -------- | -------- | ----------------- |
+| allowShadow | 是否为日历添加阴影/ elevation 效果       | boolean | no       |All      | yes               |
+| hideDayNames | 是否隐藏星期几的名称 | boolean | no       | All      | yes               |
 
 ## 遗留问题
 

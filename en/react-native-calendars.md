@@ -14,18 +14,33 @@
 
 > [!TIP] [GitHub address](https://github.com/wix/react-native-calendars/tree/1.1304.1)
 
+| Version                 | Support RN version                 |
+| ------------------------- | -------------------------- |
+| 1.1304.1               |  0.72 |
+| 1.1313.0               |  0.77 |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+
 ## Installation and Usage
+
+Go to the project directory and execute the following instruction:
 
 #### **npm**
 
 ```bash
+#0.72
 npm install --save react-native-calendars@1.1304.1
+#0.77
+npm install --save react-native-calendars@1.1313.0
 ```
 
 #### **yarn**
 
 ```bash
-yarn install --react-native-calendars@1.1304.1
+#0.72
+yarn add react-native-calendars@1.1304.1
+#0.77
+yarn add react-native-calendars@1.1313.0
 ```
 
 The following code shows the basic use scenario of the repository:
@@ -124,149 +139,173 @@ export default MySvgComponent;
 
 This document is verified based on the following versions:
 
-1. RNOH: 0.72.28; SDK：HarmonyOS-Next-DB1 5.0.0.25; IDE：DevEco Studio  5.0.3.535; ROM：5.0.0.31; 
+1. RNOH: 0.72.28; SDK：HarmonyOS-Next-DB1 5.0.0.25; IDE：DevEco Studio  5.0.3.535; ROM：5.0.0.31;
+2. RNOH： 0.77.17; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## Properties (If Any)
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
-### Agenda 
 
-| Name                     | Description                                                                                                | Type                 | Required | Platform | HarmonyOS Support |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------- | -------------------- | -------- | -------- | ----------------- |
-| items                    | the list of items that have to be displayed in agenda. If you want to render item as empty date the value of date key has to be an empty array []. If there exists no value for date key it is considered that the date in question is not yet loaded                                    | AgendaSchedule                | no       | All      | yes               |
-| selected                 | initially selected day | string               | no       | All      | yes               |
-| hideKnob                 | Whether to hide the knob | boolean               | no       | All      | yes               |
-| showClosingKnob                 | Whether the knob should always be visible (when hideKnob = false) | boolean               | no       | All      | yes               |
-| showOnlySelectedDayItems                 | Whether to show items only for the selected date | boolean               | no       | All      | yes               |
-| loadItemsForMonth            | Handler which gets executed when items for a certain month should be loaded (month became visible)                           | function | no       | All      | yes               |
-| onDayChange        | Handler which gets executed when day changes while scrolling agenda list                      | function | no       | All      | yes               |
-| onCalendarToggled         | Handler which gets executed when the calendar is opened or closed         | function | no       | All      | yes               |
-| renderKnob | Replace default agenda's knob with a custom one | function | no       | All      | yes               |
-| renderEmptyData                 | Replace default ActivityIndicator with a custom one | function               | no       | All      | yes               |
+### Agenda
 
-### AgendaList 
+| Name              | Description                                                  | Type           | Required | Platform | HarmonyOS Support |
+| ----------------- | ------------------------------------------------------------ | -------------- | -------- | -------- | ----------------- |
+| items             | the list of items that have to be displayed in agenda. If you want to render item as empty date the value of date key has to be an empty array []. If there exists no value for date key it is considered that the date in question is not yet loaded | AgendaSchedule | no       | All      | yes               |
+| selected          | initially selected day                                       | string         | no       | All      | yes               |
+| hideKnob          | Whether to hide the knob                                     | boolean        | no       | All      | yes               |
+| showClosingKnob   | Whether the knob should always be visible (when hideKnob = false) | boolean        | no       | All      | yes               |
+| loadItemsForMonth | Handler which gets executed when items for a certain month should be loaded (month became visible) | function       | no       | All      | yes               |
+| onDayChange       | Handler which gets executed when day changes while scrolling agenda list | function       | no       | All      | yes               |
+| onCalendarToggled | Handler which gets executed when the calendar is opened or closed | function       | no       | All      | yes               |
+| renderKnob        | Replace default agenda's knob with a custom one              | function       | no       | All      | yes               |
+| renderList        | override inner list with a custom implemented component      | function       | no       | All      | yes               |
+| showOnlySelectedDayItems        | Whether to show items only for the selected date      | boolean       | no       | All      | yes               |
+| renderEmptyData        | Replace default ActivityIndicator with a custom one      | function       | no       | All      | yes               |
 
-| Name                     | Description                                                                                                | Type                 | Required | Platform | HarmonyOS Support |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------- | -------------------- | -------- | -------- | ----------------- |
-| theme                    | Specify theme properties to override specific styles for calendar parts                                    | Theme                | no       | All      | yes               |
-| dayFormat                 | Day format in section title. Formatting values: http://arshaw.com/xdate/#Formatting | string               | no       | All      | yes               |
-| useMoment                 | Whether to use moment.js for date string formatting | boolean               | no       | All      | yes               |
-| markToday                 | Whether to mark today's title with the 'Today, ...' string | boolean               | no       | All      | yes               |
-| avoidDateUpdates                 | Whether to block the date change in calendar (and calendar context provider) when agenda scrolls | boolean               | no       | All      | yes               |
-| scrollToNextEvent                 | hether to enable scrolling the agenda list to the next date with content when pressing a day without content | boolean               | no       | All      | yes               |
-| viewOffset                 | Offset scroll to the section | number               | no       | All      | yes               |
-| sectionStyle                 | The style passed to the section view | ViewStyle               | no       | All      | yes               |
-| dayFormatter            | A function to custom format the section header's title                           | function | no       | All      | yes               |
+### AgendaList
 
-### Calendar 
+| Name              | Description                                                  | Type      | Required | Platform | HarmonyOS Support |
+| ----------------- | ------------------------------------------------------------ | --------- | -------- | -------- | ----------------- |
+| theme             | Specify theme properties to override specific styles for calendar parts | Theme     | no       | All      | yes               |
+| dayFormat         | Day format in section title. Formatting values: http://arshaw.com/xdate/#Formatting | string    | no       | All      | yes               |
+| useMoment         | Whether to use moment.js for date string formatting          | boolean   | no       | All      | yes               |
+| markToday         | Whether to mark today's title with the 'Today, ...' string   | boolean   | no       | All      | yes               |
+| avoidDateUpdates  | Whether to block the date change in calendar (and calendar context provider) when agenda scrolls | boolean   | no       | All      | yes               |
+| scrollToNextEvent | Whether to enable scrolling the agenda list to the next date with content when pressing a day without content | boolean   | no       | All      | yes               |
+| viewOffset        | Offset scroll to the section                                 | number    | no       | All      | yes               |
+| sectionStyle      | The style passed to the section view                         | ViewStyle | no       | All      | yes               |
+| dayFormatter      | A function to custom format the section header's title       | function  | no       | All      | yes               |
+| infiniteListProps | If defined, uses InfiniteList instead of SectionList. This feature is experimental and subject to change. | object    | no       | All      | yes               |
 
-| Name                     | Description                                                                                                | Type                 | Required | Platform | HarmonyOS Support |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------- | -------------------- | -------- | -------- | ----------------- |
-| theme                    | Specify theme properties to override specific styles for calendar parts                                    | Theme                | no       | All      | yes               |
-| firstDay                 | If firstDay=1 week starts from Monday. Note that dayNames and dayNamesShort should still start from Sunday | number               | no       | All      | yes               |
-| hideArrows                 | Whether to hide the arrows | boolean               | no       | All      | yes               |
-| disableArrowLeft                 | Whether to disable the left arrow | boolean               | no       | All      | yes               |
-| disableArrowRight                 | Whether to disable the right arrow | boolean               | no       | All      | yes               |
-| arrowsHitSlop                 | Left & Right arrows. Additional distance outside of the buttons in which a press is detected, default: 20 |   number               | no       | All      | yes               |
-| hideDayNames                 | Whether to hide the days names | boolean               | no       | All      | yes               |
-| monthFormat                | Month format for the header's title. Formatting values | string               | no       | All      | yes               |
-| displayLoadingIndicator  | Display loading indicator                                                                                  | boolean              | no       | All      | yes               |
-| showWeekNumbers          | Show week numbers                                                                                          | boolean              | no       | All      | yes               |
-| style                    | Specify style for calendar container element                                                               | StyleProp<ViewStyle> | no       | All      | yes               |
-| disabledDaysIndexes                    | Whether to apply custom disable color to selected day indexes                                                               | number[] | no       | All      | yes               |
-| current                  | Initially visible month                                                                                    | string               | no       | All      | yes               |
-| initialDate              | Initially visible month. If changed will initialize the calendar to this value                             | string               | no       | All      | yes               |
-| minDate                  | Minimum date that can be selected, dates before minDate will be grayed out                                 | string               | no       | All      | yes               |
-| maxDate                  | Maximum date that can be selected, dates after maxDate will be grayed out                                  | string               | no       | All      | yes               |
-| markedDates              | Collection of dates that have to be marked                                                                 | MarkedDates          | no       | All      | yes               |
-| hideExtraDays            | Do not show days of other months in month page                                                             | boolean              | no       | All      | yes               |
-| showSixWeeks             | Always show six weeks on each month (only when hideExtraDays = false)                                      | boolean              | no       | All      | yes               |
-| disableMonthChange       | Disables changing month when click on days of other months (when hideExtraDays is false)                   | boolean              | no       | All      | yes               |
-| enableSwipeMonths        | Enable the option to swipe between months                                                                  | boolean              | no       | All      | yes               |
-| disabledByDefault        | Disable days by default                                                                                    | boolean              | no       | All      | yes               |
-| headerStyle              | Style passed to the header                                                                                 | StyleProp<ViewStyle> | no       | All      | yes               |
-| allowSelectionOutOfRange | Allow selection of dates before minDate or after maxDate                                                   | boolean              | no       | All      | yes               |
-| disableAllTouchEventsForDisabledDays | Whether to disable all touch events for disabled days (can be override with 'disableTouchEvent' in 'markedDates')                                                   | boolean              | no       | All      | yes               |
-| disableAllTouchEventsForInactiveDays | Whether to disable all touch events for inactive days (can be override with 'disableTouchEvent' in 'markedDates')                                                   | boolean              | no       | All      | yes               |
-| dayComponent | Replace default day with custom day rendering component element                                                   | JSX.Element              | no       | All      | yes               |
-| customHeaderTitle             | Replace default title with custom element                             | JSX.Element              | no       | All      | yes               |
-| customHeader              | Allow rendering a totally custom header                             | any               | no       | All      | yes               |
-| onDayPress            | Handler which gets executed on day press                           | function | no       | All      | yes               |
-| onDayLongPress        | Handler which gets executed on day long press                      | function | no       | All      | yes               |
-| onMonthChange         | Handler which gets executed when month changes in calendar         | function | no       | All      | yes               |
-| onVisibleMonthsChange | Handler which gets executed when visible month changes in calendar | function | no       | All      | yes               |
-| onPressArrowLeft                 | Handler which gets executed when press left arrow. It receive a callback to go to the previous month | function               | no       | All      | yes               |
-| onPressArrowRight                 | Handler which gets executed when press right arrow. It receive a callback to go to the next month | function               | no       | All      | yes               |
-| renderArrow                 | Replace default arrows with custom ones (direction: 'left','right') | function               | no       | All      | yes               |
-| renderHeader              | Replace default title with custom one                             | function               | no       | All      | yes               |
+### Calendar
 
+| Name                                    | Description                                                  | Type                 | Required | Platform | HarmonyOS Support |
+| --------------------------------------- | ------------------------------------------------------------ | -------------------- | -------- | -------- | ----------------- |
+| theme                                   | Specify theme properties to override specific styles for calendar parts | Theme                | no       | All      | yes               |
+| style                                   | Specify style for calendar container element                 | ViewStyle | no       | All      | yes               |
+| current                                 | Initially visible month                                      | string               | no       | All      | yes               |
+| initialDate                             | Initially visible month. If changed will initialize the calendar to this value | string               | no       | All      | yes               |
+| minDate                                 | Minimum date that can be selected, dates before minDate will be grayed out | string               | no       | All      | yes               |
+| maxDate                                 | Maximum date that can be selected, dates after maxDate will be grayed out | string               | no       | All      | yes               |
+| markedDates                             | Collection of dates that have to be marked                   | MarkedDates          | no       | All      | yes               |
+| hideExtraDays                           | Whether to hide days of other months in the month page               | boolean              | no       | All      | yes               |
+| showSixWeeks                            | Whether to always show six weeks on each month (when hideExtraDays = false) | boolean              | no       | All      | yes               |
+| disableMonthChange                      | Whether to disable changing month when click on days of other months (when hideExtraDays is false) | boolean              | no       | All      | yes               |
+| enableSwipeMonths                       | Whether to enable the option to swipe between months                    | boolean              | no       | All      | yes               |
+| disabledByDefault                       | Whether to disable days by default                                      | boolean              | no       | All      | yes               |
+| headerStyle                             | Style passed to the header                                   | ViewStyle | no       | All      | yes               |
+| customHeader                            | Allow rendering a totally custom header                      | any                  | no       | All      | yes               |
+| onDayPress                              | Handler which gets executed on day press                     | function             | no       | All      | yes               |
+| onDayLongPress                          | Handler which gets executed on day long press                | function             | no       | All      | yes               |
+| onMonthChange                           | Handler which gets executed when month changes in calendar   | function             | no       | All      | yes               |
+| onVisibleMonthsChange                   | Handler which gets executed when visible month changes in calendar | function             | no       | All      | yes               |
+| disabledByWeekDays<sup> 1.1313.0+</sup> | Disable dates by days of the week (Sunday=0)                 | number[]             | no       | All      | yes               |
+| testID | Test ID                 | string             | no       | All      | yes               |
+| allowSelectionOutOfRange                | Whether to allow selection of dates before minDate or after maxDate     | boolean              | no       | All      | yes               |
+| firstDay                                  | If firstDay=1 week starts from Monday. Note that dayNames and dayNamesShort should still start from Sunday                                                      | number               | no       | All      | yes               |
+| displayLoadingIndicator                                  | Whether to display loading indicator                                                      | boolean               | no       | All      | yes               |
+| showWeekNumbers                                  | Whether to show weeks numbers                                                      | boolean               | no       | All      | yes               |
+| monthFormat                                  | Month format for the header's title. Formatting values: <http://arshaw.com/xdate/#Formatting>                                                      | string               | no       | All      | yes               |
+| hideDayNames                                  | Whether to hide the days names                                                       | boolean               | no       | All      | yes               |
+| hideArrows                                  | Whether to hide the arrows                                                      | boolean               | no       | All      | yes               |
+| arrowsHitSlop                                  | Left & Right arrows. Additional distance outside of the buttons in which a press is detected, default: 20                                                      | number               | no       | All      | yes               |
+| disableArrowLeft                                  | Whether to disable the left arrow                                                      | boolean               | no       | All      | yes               |
+| disableArrowRight                                  | Whether to disable the right arrow                                                      | boolean               | no       | All      | yes               |
+| renderArrow                                  | Replace default arrows with custom ones (direction: 'left','right')                                                      | function               | no       | All      | yes               |
+| onPressArrowLeft                                  | Handler which gets executed when press left arrow. It receive a callback to go to the previous month                                                      | function               | no       | All      | yes               |
+| onPressArrowRight                                  | Handler which gets executed when press right arrow. It receive a callback to go to the next month                                                      | function               | no       | All      | yes               |
+| disabledDaysIndexes                                  | Whether to apply custom disable color to selected day indexes                                                      | number[]               | no       | All      | yes               |
+| renderHeader                                  | Replace default title with custom one                                                      | function               | no       | All      | yes               |
+| customHeaderTitle                                  | Replace default title with custom element                                                      | JSX.Element               | no       | All      | yes               |
+| dayComponent                                  | Replace default day with custom day rendering component                                                       | JSX.Element               | no       | All      |yes               |
+| disableAllTouchEventsForDisabledDays                                  | Whether to disable all touch events for disabled days (can be override with 'disableTouchEvent' in 'markedDates')                                                      | boolean               | no       | All      |yes               |
+| disableAllTouchEventsForInactiveDays                                  | Whether to disable all touch events for inactive days (can be override with 'disableTouchEvent' in 'markedDates')                                                      | boolean               | no       | All      |yes               |
 
-### CalendarList 
+### CalendarList
 
-| Name                     | Description                                                                                                | Type                 | Required | Platform | HarmonyOS Support |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------- | -------------------- | -------- | -------- | ----------------- |
-| pastScrollRange                    | Max amount of months allowed to scroll to the past                                    | number                | no       | All      | yes               |
-| futureScrollRange                 | Max amount of months allowed to scroll to the future | number               | no       | All      | yes               |
-| calendarStyle                 | Specify style for calendar container element | ViewStyle               | no       | All      | yes               |
-| calendarHeight                 | Dynamic calendar height | number               | no       | All      | yes               |
-| calendarWidth                 | Used when calendar scroll is horizontal, (when pagingEnabled = false) | number               | no       | All      | yes               |
-| staticHeader                 | Whether to use a fixed header that doesn't scroll (when horizontal = true) | boolean               | no       | All      | yes               |
-| showScrollIndicator                 | Whether to enable or disable vertical / horizontal scroll indicator | boolean               | no       | All      | yes               |
+| Name                | Description                                                  | Type      | Required | Platform | HarmonyOS Support |
+| ------------------- | ------------------------------------------------------------ | --------- | -------- | -------- | ----------------- |
+| pastScrollRange     | Max amount of months allowed to scroll to the past           | number    | no       | All      | yes               |
+| futureScrollRange   | Max amount of months allowed to scroll to the future         | number    | no       | All      | yes               |
+| calendarStyle       | Specify style for calendar container element                 | ViewStyle | no       | All      | yes               |
+| calendarHeight      | Dynamic calendar height                                      | number    | no       | All      | yes               |
+| calendarWidth       | Used when calendar scroll is horizontal, (when pagingEnabled = false) | number    | no       | All      | yes               |
+| staticHeader        | Whether to use a fixed header that doesn't scroll (when horizontal = true) | boolean   | no       | All      | yes               |
+| showScrollIndicator | Whether to enable or disable vertical / horizontal scroll indicator | boolean   | no       | All      | yes               |
+| animateScroll       | Whether to animate the auto month scroll                     | boolean   | no       | All      | yes               |
+| contentContainerStyle       | These styles will be applied to the scroll view content container which wraps all of the child views.                     | StyleProp\<ViewStyle>   | no       | All      | yes               |
 
-### CalendarProvider 
+### CalendarProvider
 
-| Name                     | Description                                                                                                | Type                 | Required | Platform | HarmonyOS Support |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------- | -------------------- | -------- | -------- | ----------------- |
-| theme                    | Specify theme properties to override specific styles for calendar parts                                    | Theme                | no       | All      | yes               |
-| style                 | Specify style for calendar container element | ViewStyle               | no       | All      | yes               |
-| date                 | Initial date in 'yyyy-MM-dd' format | string              | no       | All      | yes               |
-| showTodayButton                 | Whether to show the today button | boolean               | no       | All      | yes               |
-| todayButtonStyle                 | Today button's style | ViewStyle               | no       | All      | yes               |
-| todayBottomMargin                 | Today button's top position | number               | no       | All      | yes               |
-| disabledOpacity                 | The opacity for the disabled today button (0-1) | number               | no       | All      | yes               |
-| onDateChanged            | Handler which gets executed when the date changes                           | function | no       | All      | yes               |
-| onMonthChange            | Handler which gets executed when the month changes changes                           | function | no       | All      | yes               |
+| Name                                        | Description                                                  | Type                      | Required | Platform | HarmonyOS Support |
+| ------------------------------------------- | ------------------------------------------------------------ | ------------------------- | -------- | -------- | ----------------- |
+| theme                                       | Specify theme properties to override specific styles for calendar parts | Theme                     | no       | All      | yes               |
+| style                                       | Specify style for calendar container element                 | ViewStyle                 | no       | All      | yes               |
+| date                                        | Initial date in 'yyyy-MM-dd' format                          | string                    | no       | All      | yes               |
+| showTodayButton                             | Whether to show the today button                             | boolean                   | no       | All      | yes               |
+| todayButtonStyle                            | Today button's style                                         | ViewStyle                 | no       | All      | yes               |
+| todayBottomMargin                           | Today button's top position                                  | number                    | no       | All      | yes               |
+| disabledOpacity                             | The opacity for the disabled today button (0-1)              | number                    | no       | All      | yes               |
+| onDateChanged                               | Handler which gets executed when the date changes            | function                  | no       | All      | yes               |
+| onMonthChange                               | Handler which gets executed when the month changes   | function                  | no       | All      | yes               |
+| disableAutoDaySelection<sup>1.1313.0+</sup> | The calendar navigation type in which to disable the auto day selection (get options from ExpandableCalendar.navigationTypes) | CalendarNavigationTypes[] | no       | All      | yes               |
+| numberOfDays                                | The number of days to present in the timeline calendar       | number                    | no       | All      | yes               |
+| timelineLeftInset                           | The left inset of the timeline calendar (sidebar width), default is 72 | number                    | no       | All      | yes               |
 
-### ExpandableCalendar 
+### ExpandableCalendar
 
-| Name                     | Description                                                                                                | Type                 | Required | Platform | HarmonyOS Support |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------- | -------------------- | -------- | -------- | ----------------- |
-| initialPosition                    | The initial position of the calendar ('open' or 'closed')                                    | Positions                | no       | All      | yes               |
-| disablePan                 | Whether to disable the pan gesture and disable the opening and closing of the calendar (initialPosition will persist) | boolean               | no       | All      | yes               |
-| hideKnob                 | Whether to hide the knob | boolean              | no       | All      | yes               |
-| leftArrowImageSource                 | The source for the left arrow image | ImageSourcePropType               | no       | All      | yes               |
-| rightArrowImageSource                 | The source for the right arrow image | ImageSourcePropType               | no       | All      | yes               |
-| allowShadow                 | Whether to have shadow/elevation for the calendar | boolean               | no       | All      | yes               |
-| disableWeekScroll                 | Whether to disable the week scroll in closed position | boolean               | no       | All      | yes               |
-| openThreshold                 | The threshold for opening the calendar with the pan gesture | number               | no       | All      | yes               |
-| closeThreshold                 | closeThreshold | number               | no       | All      | yes               |
-| onCalendarToggled            | Handler which gets executed when the calendar is opened or closed                           | function | no       | All      | yes               |
+| Name                  | Description                                                  | Type                | Required | Platform | HarmonyOS Support |
+| --------------------- | ------------------------------------------------------------ | ------------------- | -------- | -------- | ----------------- |
+| initialPosition       | The initial position of the calendar ('open' or 'closed')    | Positions           | no       | All      | yes               |
+| disablePan            | Whether to disable the pan gesture and disable the opening and closing of the calendar (initialPosition will persist) | boolean             | no       | All      | yes               |
+| hideKnob              | Whether to hide the knob                                     | boolean             | no       | All      | yes               |
+| leftArrowImageSource  | The source for the left arrow image                          | ImageSourcePropType | no       | All      | yes               |
+| rightArrowImageSource | The source for the right arrow image                         | ImageSourcePropType | no       | All      | yes               |
+| allowShadow           | Whether to have shadow/elevation for the calendar            | boolean             | no       | All      | yes               |
+| disableWeekScroll     | Whether to disable the week scroll in closed position        | boolean             | no       | All      | yes               |
+| openThreshold         | The threshold for opening the calendar with the pan gesture  | number              | no       | All      | yes               |
+| closeThreshold        | The threshold for closing the calendar with the pan gesture                                               | number              | no       | All      | yes               |
+| onCalendarToggled     | Handler which gets executed when the calendar is opened or closed | function            | no       | All      | yes               |
+| closeOnDayPress       | Whether to close the calendar on day press. Default = true   | boolean             | no       | All      | yes               |
 
-### Timeline 
+### Timeline
 
-| Name                     | Description                                                                                                | Type                 | Required | Platform | HarmonyOS Support |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------- | -------------------- | -------- | -------- | ----------------- |
-| theme                    | Specify theme properties to override specific styles for calendar parts                                    | Theme                | no       | All      | yes               |
-| style                 | Specify style for calendar container element | ViewStyle               | no       | All      | yes               |
-| events                 | List of events to render on the timeline | Event[]              | no       | All      | yes               |
-| start                 | The timeline day start time | number               | no       | All      | yes               |
-| end                 | The timeline day end time | number              | no       | All      | yes               |
-| scrollToFirst                 | Whether to scroll to the first event | boolean               | no       | All      | yes               |
-| format24h                | Whether to use 24 hours format for the timeline hours | boolean               | no       | All      | yes               |
-| onEventPress            | Handler which gets executed when event is pressed                           | function | no       | All      | yes               |
-| onBackgroundLongPress            | Handler which gets executed when background is long pressed. Pass to handle creation of a new event                           | function | no       | All      | yes               |
-| onBackgroundLongPressOut            | Handler which gets executed when background's long pressed released. Pass to handle creation of a new event                           | function | no       | All      | yes               |
-| renderEvent            | Specify a custom event block                           | function | no       | All      | yes               |
+| Name                     | Description                                                  | Type               | Required | Platform | HarmonyOS Support |
+| ------------------------ | ------------------------------------------------------------ | ------------------ | -------- | -------- | ----------------- |
+| theme                    | Specify theme properties to override specific styles for calendar parts | Theme              | no       | All      | yes               |
+| styles                    | Specify style for calendar container element                 | Theme          | no       | All      | yes               |
+| events                   | List of events to render on the timeline                     | Event[]            | no       | All      | yes               |
+| start                    | The timeline day start time                                  | number             | no       | All      | yes               |
+| end                      | The timeline day end time                                    | number             | no       | All      | yes               |
+| scrollToFirst            | Whether to scroll to the first event                         | boolean            | no       | All      | yes               |
+| format24h                | Whether to use 24 hours format for the timeline hours        | boolean            | no       | All      | yes               |
+| onEventPress             | Handler which gets executed when event is pressed            | function           | no       | All      | yes               |
+| onBackgroundLongPress    | Handler which gets executed when background is long pressed. Pass to handle creation of a new event | function           | no       | All      | yes               |
+| onBackgroundLongPressOut | Handler which gets executed when background's long pressed released. Pass to handle creation of a new event | function           | no       | All      | yes               |
+| renderEvent              | Specify a custom event block                                 | function           | no       | All      | yes               |
+| date                     | The date / dates of this timeline instance in ISO format (e.g. 2011-10-25) | string \|string[]  | no       | All      | yes               |
+| eventTapped <sup>deprecated from 1.1304.1+</sup>              | Use onEventPress instead                                     | function           | no       | All      | yes               |
+| scrollToNow              | Should scroll to current time when loaded                    | boolean            | no       | All      | yes               |
+| initialTime              | Initial time to scroll to                                    | object             | no       | All      | yes               |
+| showNowIndicator         | Whether to show now indicator                                | boolean            | no       | All      | yes               |
+| scrollOffset             | A scroll offset value that the timeline will sync with       | number              | no       | All      | yes               |
+| onChangeOffset           | Listen to onScroll event of the timeline component           | function           | no       | All      | yes               |
+| overlapEventsSpacing     | Spacing between overlapping events                           | number             | no       | All      | yes               |
+| rightEdgeSpacing         | Spacing to keep at the right edge (for background press)     | number             | no       | All      | yes               |
+| unavailableHours         | Range of available hours                                     | UnavailableHours[] | no       | All      | yes               |
+| unavailableHoursColor    | Background color for unavailable hours                       | string             | no       | All      | yes               |
+| numberOfDays             | The number of days to present in the timeline calendar       | number             | no       | All      | yes               |
+| timelineLeftInset        | The left inset of the timeline calendar (sidebar width), default is 72 | number             | no       | All      | yes               |
+| testID        | Identifier for testing | string             | no       | All      | yes               |
 
-### WeekCalendar 
+### WeekCalendar
 
-| Name                     | Description                                                                                                | Type                 | Required | Platform | HarmonyOS Support |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------- | -------------------- | -------- | -------- | ----------------- |
-| allowShadow                    | Whether to have shadow/elevation for the calendar                                   | boolean                | no       | All      | yes               |
-| hideDayNames                 | Whether to hide the names of the week days | boolean               | no       | All      | yes               |
-
+| Name        | Description                                       | Type    | Required | Platform | HarmonyOS Support |
+| ----------- | ------------------------------------------------- | ------- | -------- | -------- | ----------------- |
+| allowShadow | Whether to have shadow/elevation for the calendar | boolean | no       | All      | yes               |
+| hideDayNames | Whether to hide the names of the week days | boolean | no       | All      | yes               |
 
 ## Known Issues
 
@@ -274,4 +313,4 @@ This document is verified based on the following versions:
 
 ## License
 
-This project is licensed under [The MIT License (MIT)](https://github.com/wix/react-native-calendars/blob/master/LICENSE).
+This project is licensed under [The MIT License (MIT)](https://github.com/wix/react-native-calendars/blob/master/LICENSE) Please enjoy and participate freely in open source.
