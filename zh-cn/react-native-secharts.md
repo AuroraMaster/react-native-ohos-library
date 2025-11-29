@@ -14,6 +14,10 @@
 
 > [!TIP] [Github 地址](https://github.com/shifeng1993/react-native-secharts)
 
+| 三方库版本 | 支持RN版本 |
+| :--- | :--- |
+| 1.7.0 | 0.72/0.77 |
+
 ## 安装与使用
 
 进入到工程目录并输入以下命令：
@@ -128,11 +132,10 @@ const styles = StyleSheet.create({
 
 ## Link
 
-> [!TIP] 本库依赖的@react-native-oh-tpl/react-native-webview 使用的版本为 13.10.2-0.2.0
 
-本库 HarmonyOS 侧实现依赖@react-native-oh-tpl/react-native-webview 的原生端代码，如已在 HarmonyOS 工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
+本库 HarmonyOS 侧实现依赖 react-native-webview 的原生端代码，如已在 HarmonyOS 工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
 
-如未引入请参照[@react-native-oh-tpl/react-native-webview 文档的 Link 章节](/zh-cn/react-native-webview.md)进行引入
+如未引入请参照[react-native-webview 文档](/zh-cn/react-native-webview.md)进行引入
 
 ## 约束与限制
 
@@ -141,6 +144,7 @@ const styles = StyleSheet.create({
 本文档内容基于以下版本验证通过：
 
 1. RNOH：0.72.27; SDK：HarmonyOS NEXT Developer Beta1 5.0.0.25；IDE：DevEco Studio 5.0.3.400SP7; ROM：3.0.0.25;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## 属性
 

@@ -15,6 +15,9 @@
 
 > [!TIP] [Github 地址](https://github.com/taskrabbit/react-native-parsed-text)
 
+| 三方库版本 | 支持RN版本 |
+| :--- | :--- |
+| 0.0.22| 0.72/0.77 |
 
 ## 安装与使用
 
@@ -173,6 +176,7 @@ const styles = StyleSheet.create({
 
 1. RNOH：0.72.27; SDK：HarmonyOS NEXT Developer Beta1 5.0.0.25; IDE：DevEco Studio 5.0.3.400SP7; ROM：3.0.0.25;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## 属性
 

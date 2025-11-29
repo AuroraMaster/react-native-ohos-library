@@ -15,6 +15,10 @@
 
 > [!TIP] [Github 地址](https://github.com/heyman333/react-native-responsive-fontSize)
 
+| 三方库版本 | 支持RN版本 |
+| :--- | :--- |
+| 0.5.1 | 0.72/0.77 |
+
 ## 安装与使用
 
 <!-- tabs:start -->
@@ -78,6 +82,7 @@ export default App;
 
 1. RNOH：0.72.27; SDK：HarmonyOS-NEXT-DB1 5.0.0.25; IDE：DevEco Studio 5.0.3.400SP7; ROM：3.0.0.25;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## 静态方法
 
@@ -87,21 +92,21 @@ export default App;
 
 | Name         | Description                                                  | Type     | Required | Platform    | HarmonyOS Support |
 | ------------ | ------------------------------------------------------------ | -------- | -------- | ----------- | ----------------- |
-| RFPercentage | The font size is calculated as a percentage of the height(`width` in landscape mode) of the device. | function | no       | Android/iOS | yes               |
-| RFValue      | The font size is calculated based on standardScreenHeight and passed value | function | no       | Android/iOS | yes               |
+| RFPercentage | 字体大小按设备高度（横屏模式下为`宽度`）的百分比计算。       | function | no       | Android/iOS | yes               |
+| RFValue      | 字体大小基于标准屏幕高度和传入的值计算                       | function | no       | Android/iOS | yes               |
 
 **RFPercentage参数**
 
 | Name    | Description | Type   | Required | Platform    | HarmonyOS Support |
 | ------- | ----------- | ------ | -------- | ----------- | ----------------- |
-| percent | font size   | number | yes      | Android/iOS | yes               |
+| percent | 字体大小    | number | yes      | Android/iOS | yes               |
 
 **RFValue参数**
 
-| Name                 | Description            | Type   | Required | Platform    | HarmonyOS Support |
-| -------------------- | ---------------------- | ------ | -------- | ----------- | ----------------- |
-| value                | font size              | number | yes      | Android/iOS | yes               |
-| standardScreenHeight | standard screen height | number | no       | Android/iOS | yes               |
+| Name                 | Description  | Type   | Required | Platform    | HarmonyOS Support |
+| -------------------- | ------------ | ------ | -------- | ----------- | ----------------- |
+| value                | 字体大小     | number | yes      | Android/iOS | yes               |
+| standardScreenHeight | 标准屏幕高度 | number | no       | Android/iOS | yes               |
 
 ## 遗留问题
 
