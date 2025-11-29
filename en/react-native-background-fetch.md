@@ -388,13 +388,11 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Please refer to the Releases page of the third-party library for the corresponding version information
+This document is verified based on the following versions:
 
-| Third-party Library Version | Release Information       | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 4.2.5@deprecated      | [@react-native-oh-tpl/react-native-background-fetch Releases(deprecated)](https://github.com/react-native-oh-library/react-native-background-fetch/releases) | 0.72       |
-| 4.2.6      | [@react-native-ohos/react-native-background-fetch Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-background-fetch/releases) | 0.72       |
-| 4.3.0      | [@react-native-ohos/react-native-background-fetch Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-background-fetch/releases) | 0.77       |
+1. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.29(SP1); IDE: DevEco Studio 5.0.3.403; ROM: 3.0.0.25;
+2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM：NEXT 5.1.0.150;
 
 ## API
 
