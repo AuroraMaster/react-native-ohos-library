@@ -14,17 +14,15 @@
 
 > [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-clippath/tree/capi)
 
+The repository of this third-party library has been migrated to Gitcode and supports direct download from npm. The new package name is: @react-native-ohos/react-native-clippathview. The specific version ownership relationship is as follows:
+
+| Version | Package Name                                                    | Repository | Release | Support RN version |
+| ---------- | ------------------------------------------------------------ | ---------- |  ---------- |  ---------- |
+| 1.1.8@deprecated | @react-native-oh-tpl/react-native-clippathview | [Github](https://github.com/react-native-oh-library/react-native-clippath/tree/capi)|[Github Releases](https://github.com/react-native-oh-library/react-native-clippath/releases)|0.72       |
+| 1.9.0 | @react-native-ohos/react-native-clippathview           | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-clippath/tree/br_rnoh0.77) |[Gitcode Releases]() | 0.77       |
+| 1.2.0 | @react-native-ohos/react-native-clippathview           | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-clippath/tree/br_rnoh0.77) |[Gitcode Releases]() | 0.77       |
+
 ## Installation and Usage
-
-Please refer to the Releases page of the third-party library for the corresponding version information
-
-| Third-party Library Version | Release Information                                                                                                                              | Supported RN Version |
-|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------| ---------- |
-| 1.1.8@deprecated            | [@react-native-oh-tpl/react-native-clippathview Releases(deprecated)](https://github.com/react-native-oh-library/react-native-clippath/releases) | 0.72       |
-| 1.1.9                       | [@react-native-ohos/react-native-clippathview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-clippath/releases)                | 0.72       |
-| 1.2.0                       | [@react-native-ohos/react-native-clippathview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-clippath/releases)                | 0.77       |
-
-For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -33,12 +31,22 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+
+# 0.72
+npm install @react-native-oh-tpl/react-native-clippathview
+
+# 0.77
 npm install @react-native-ohos/react-native-clippathview
 ```
 
 #### **yarn**
 
 ```bash
+
+# 0.72
+yarn add @react-native-oh-tpl/react-native-clippathview
+
+# 0.77
 yarn add @react-native-ohos/react-native-clippathview
 ```
 
@@ -104,6 +112,10 @@ Open  `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+     // 0.72
+    "@react-native-oh-tpl/react-native-clippathview": "file:../../node_modules/@react-native-oh-tpl/react-native-clippathview/harmony/clipPath.har",
+
+    // 0.77
     "@react-native-ohos/react-native-clippathview": "file:../../node_modules/@react-native-ohos/react-native-clippathview/harmony/clipPath.har",
 }
 ```
@@ -119,7 +131,7 @@ ohpm install
 
 Method 2: Directly link to the source code.
 
-> [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
+For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
 
 ### 3. Configuring CMakeLists and Introducing ClipPathViewPackage
@@ -137,6 +149,10 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_END: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ # 0.72
++ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-clippathview/src/main/cpp" ./clippath)
+
++ # 0.77
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-clippathview/src/main/cpp" ./clippath)
 # RNOH_END: manual_package_linking_1
 
@@ -176,6 +192,10 @@ Open the  `entry/src/main/ets/RNPackagesFactory.ts` file and add the following c
 
 ```diff
   ...
++ // 0.72  
++ import { ClipPathPackage } from '@react-native-oh-tpl/react-native-clippathview/ts';
+
++ // 0.77
 + import { ClipPathPackage } from '@react-native-ohos/react-native-clippathview/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -203,12 +223,11 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
-
 The following combinations have been verified:
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.1.1.830; ROM: 6.0.0.112 SP12; 
+2. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+3. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## Properties 
 
