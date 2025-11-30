@@ -18,6 +18,13 @@
 
 Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-maps Releases](https://github.com/react-native-oh-library/react-native-maps/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| Third-party Library Version | Release Information                                            | Supported RN Version|
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.10.3     | [@react-native-oh-tpl/react-native-maps Releases](https://github.com/react-native-oh-library/react-native-maps/releases) | 0.72       |
+| 1.24.4     | [@react-native-ohos/react-native-maps Releases]()            | 0.77       |
+
 Go to the project directory and execute the following instruction:
 
 
@@ -455,6 +462,12 @@ Then build and run the code.
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
 Check the release version information in the release address of the third-party library: [react-natvie-maps Releases](https://github.com/react-native-oh-library/react-native-maps/releases)
+
+This document is verified based on the following versions:
+
+1. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.29(SP1); IDE: DevEco Studio 5.0.3.403; ROM: 3.0.0.25;
+2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM：NEXT 5.1.0.150;
 
 ### Permission Requirements
 

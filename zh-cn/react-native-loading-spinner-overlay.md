@@ -14,6 +14,10 @@
 
 > [!TIP] [Github 地址](https://github.com/ladjs/react-native-loading-spinner-overlay)
 
+| 三方库版本                 | 支持RN版本                 |
+| ------------------------- | -------------------------- |
+| 3.0.1               |  0.72/0.77 |
+
 ## 安装与使用
 
 进入到工程目录并输入以下命令：
@@ -87,6 +91,7 @@ const styles = StyleSheet.create({
 
 1. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.25; IDE: DevEco Studio 5.0.3.400SP7; ROM: 3.0.0.25;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -96,17 +101,17 @@ const styles = StyleSheet.create({
 
 | Name | Description | Type | Default | Required | Platform | HarmonyOS Support |
 | --- | --- | --- | --- | --- | --- | --- |
-| cancelable | If set to false, it will prevent spinner from hiding when pressing the hardware back button. If set to true, it will allow spinner to hide if the hardware back button is pressed. | Boolean | `false` | no | Android | yes |
-| color | Changes the spinner's color (example values are `red`, `#ff0000`, etc). For adjusting the contrast see `overlayColor` prop below. | String | `"white"` | no | All | yes |
-| animation | Changes animation on show and hide spinner's view. | String (enum) `none`, `slide`, `fade` | `"none"` | no | All | yes |
-| overlayColor | Changes the color of the overlay. | String | `rgba(0, 0, 0, 0.25)` | no | All | yes |
-| size | Sets the spinner's size. No other cross-platform sizes are supported right now. | String (enum) `small`, `normal`, `large` | `"large"` | no | All | yes |
-| textContent | Optional text field to be shown. | String | `""` | no | All | yes |
-| textStyle | The style to be applied to the `<Text>` that displays the `textContent`. | StyleSheet | `-` | no | All | yes |
-| visible | Controls the visibility of the spinner. | Boolean | `false` | yes | All | yes |
-| indicatorStyle | Additional styles for the [ActivityIndicator](https://facebook.github.io/react-native/docs/activityindicator) to inherit | StyleSheet | `undefined` | no | All | yes |
-| customIndicator | An alternative, custom component to use instead of the default `<ActivityIndicator />` | Element | `undefined` | no | All | yes |
-| children | Children element(s) to nest inside the spinner | Element | `undefined` | no | All | yes |
+| cancelable | 设置为false时，按下返回按钮将阻止spinner隐藏。设置为true时，按下返回按钮将允许spinner隐藏。 | Boolean | `false` | no | Android | yes |
+| color | 更改spinner的颜色（例如值有`red`、`#ff0000`等）。要调整对比度，请参见下面的`overlayColor`属性。 | String | `"white"` | no | All | yes |
+| animation | 更改显示和隐藏spinner视图时的动画效果。 | String (enum) `none`, `slide`, `fade` | `"none"` | no | All | yes |
+| overlayColor | 更改遮罩层的颜色。 | String | `rgba(0, 0, 0, 0.25)` | no | All | yes |
+| size | 设置spinner的大小。目前不支持其他跨平台大小。 | String (enum) `small`, `normal`, `large` | `"large"` | no | All | yes |
+| textContent | 可选的要显示的文本字段。 | String | `""` | no | All | yes |
+| textStyle | 应用于显示`textContent`的`<Text>`的样式。 | StyleSheet | `-` | no | All | yes |
+| visible | 控制spinner的可见性。 | Boolean | `false` | yes | All | yes |
+| indicatorStyle | [ActivityIndicator](https://facebook.github.io/react-native/docs/activityindicator)继承的额外样式 | StyleSheet | `undefined` | no | All | yes |
+| customIndicator | 用于替代默认`<ActivityIndicator />`的自定义组件 | Element | `undefined` | no | All | yes |
+| children | 要嵌套在spinner内部的子元素 | Element | `undefined` | no | All | yes |
 
 ## 遗留问题
 

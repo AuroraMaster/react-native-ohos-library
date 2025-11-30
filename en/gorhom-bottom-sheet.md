@@ -14,6 +14,13 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-bottom-sheet)
 
+The repository for this third-party library has been migrated to Gitcode, and it now supports direct download from npm. The new package name is: `@react-native-ohos/bottom-sheet`. The specific version relationships are as follows:
+
+| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
+| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
+| 4.6.4  | @react-native-oh-tpl/bottom-sheet | [Github](https://github.com/react-native-oh-library/react-native-bottom-sheet) | [Github Releases](https://github.com/react-native-oh-library/react-native-bottom-sheet/releases) | 0.72 |
+| 5.1.7 | @react-native-ohos/bottom-sheet   |[Github](https://github.com/react-native-oh-library/react-native-bottom-sheet) | [Github Releases](https://github.com/react-native-oh-library/react-native-bottom-sheet/releases) | 0.77 |
+
 ## Installation and Usage
 
 Find the matching version information in the release address of a third-party library: [@react-native-oh-library/bottom-sheet Releases](https://github.com/react-native-oh-library/react-native-bottom-sheet/releases). For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
@@ -23,13 +30,21 @@ Find the matching version information in the release address of a third-party li
 #### npm
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/bottom-sheet
+
+# 0.77
+npm install @react-native-ohos/bottom-sheet
 ```
 
 #### yarn
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/bottom-sheet
+
+# 0.77
+yarn add @react-native-ohos/bottom-sheet
 ```
 
 <!-- tabs:end -->
@@ -161,17 +176,21 @@ If this repository has been adapted to `Codegen`, generate the bridge code of th
 
 ## Link
 
-The HarmonyOS implementation of this library depends on the native code from @react-native-oh-tpl/react-native-reanimated and @react-native-oh-tpl/react-native-gesture-handler.If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly.
+The HarmonyOS implementation of this library depends on the native code from react-native-reanimated and react-native-gesture-handler.If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly.
 
-If it is not included, follow the guide provided in [@react-native-oh-tpl/react-native-reanimated docs](/en/react-native-reanimated.md) and [@react-native-oh-tpl/react-native-gesture-handler docs](/en/react-native-gesture-handler.md) to add it to your project.
+If it is not included, follow the guide provided in [react-native-reanimated docs](/en/react-native-reanimated.md) and [react-native-gesture-handler docs](/en/react-native-gesture-handler.md) to add it to your project.
 
 ## Constraints
 
 ### Compatibility
 
+This library is adapted based on react-native-bottom-sheet. To use this library, you need to use the correct React-Native and RNOH versions. Additionally, you need to use the matching DevEco Studio and phone ROM.
+
 This document is verified based on the following versions:
 
 1. RNOH: 0.72.29; SDK: HarmonyOS-Next-DB1 5.0.0.61; IDE: DevEco Studio 5.0.3.706; ROM: 5.0.0.61;
+2. RNOH:0.72.96; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
+3. RNOH:0.77.18; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
 
 ## Properties
 
@@ -211,7 +230,6 @@ This document is verified based on the following versions:
 | --------------------- | ------------------------------------------------------------ | --------------------------------------- | -------- | ------------- | ----------------- |
 | handleHeight          | Handle height helps to calculate the internal container and sheet layouts. If handleComponent is provided, the library internally will calculate its layout, unless handleHeight is provided too. | number                                  | No       | Android/iOS| Yes               |
 | containerHeight       | Container height helps to calculate the internal sheet layouts. If containerHeight not provided, the library internally will calculate it, however this will cause an extra re-rendering. | number                                  | No       | Android/iOS| Yes               |
-| contentHeight         | Content height helps dynamic snap points calculation.        | number \| Animated.SharedValue\<number> | No       | Android/iOS| Yes               |
 | containerOffset       | Container offset helps to accurately detect container offsets. | Animated.SharedValue\<Insets>           | No       | Android/iOS| Yes               |
 | topInset              | Top inset to be added to the bottom sheet container, usually it comes from @react-navigation/stack hook useHeaderHeight or from react-native-safe-area-context hook useSafeArea. | number                                  | No       | Android/iOS| Yes               |
 | bottomInset           | Bottom inset to be added to the bottom sheet container.      | number                                  | No       | Android/iOS| Yes               |

@@ -1,4 +1,4 @@
-> 模板版本：v0.2.0
+> 模板版本：v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-switch-pro</code> </h1>
@@ -17,7 +17,13 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-switch-pro Releases](https://github.com/react-native-oh-library/react-native-switch-pro/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+| version | Package Name                                       |Repository | Release               |  RN version |
+| ---------- | ------------------------------------------------------------ | -------|--------|---------- |
+| 1.0.5     | @react-native-oh-tpl/react-native-switch-pro | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-switch-pro)  | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-switch-pro/releases)|0.72       |
+| 1.1.0    | @react-native-ohos/react-native-switch-pro  |[Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-switch-pro)  | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-switch-pro/releases)| 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包
 
 进入到工程目录并输入以下命令：
 
@@ -26,13 +32,21 @@
 #### **npm**
 
 ```bash
+#0.72
 npm install @react-native-oh-tpl/react-native-switch-pro
+
+#0.77
+npm install @react-native-ohos/react-native-switch-pro
 ```
 
 #### **yarn**
 
 ```bash
+#0.72
 yarn add @react-native-oh-tpl/react-native-switch-pro
+
+#0.77
+yarn add @react-native-ohos/react-native-switch-pro
 ```
 
 <!-- tabs:end -->
@@ -60,11 +74,20 @@ import Switch from 'react-native-switch-pro'
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-switch-pro Releases](https://github.com/react-native-oh-library/react-native-switch-pro/releases)
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.0.5      | [@react-native-oh-tpl/react-native-switch-pro Releases](https://github.com/react-native-oh-library/react-native-switch-pro/releases) | 0.72       |
+| 1.1.0     | [@react-native-ohos/react-native-switch-pro Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-switch-pro) | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包
 
 本文档内容基于以下版本验证通过：
 
-react-native-harmony: 0.72.23; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio: 5.0.3.27; ROM: 3.0.0.19;
+1. RNOH: 0.72.23; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio: 5.0.3.27; ROM: 3.0.0.19;
+2. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -74,18 +97,18 @@ react-native-harmony: 0.72.23; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco 
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| width| width of switch  | number  | no | Android/IOS      | yes              |
-| height  | height of switch         | number  | no | Android/IOS      | yes                |
-| value  | state of switch which can be used to bidirectional binding | bool  | no | Android/IOS      | yes |
-| disabled  | whether switch is clickable | bool  | no | Android/IOS      | yes |
-| circleColorActive  | color for circle handler of switch when it is on | string  | no | Android/IOS      | yes |
-| circleColorInactive  | color for circle handler of switch when it is off | string  | no | Android/IOS      | yes |
+| width| 开关宽度  | number  | no | Android/IOS      | yes              |
+| height  | 开关高度         | number  | no | Android/IOS      | yes                |
+| value  | 支持双向绑定的开关状态 | bool  | no | Android/IOS      | yes |
+| disabled  | 开关是否可点击 | bool  | no | Android/IOS      | yes |
+| circleColorActive  | 开关开启状态下圆形控制柄的颜色 | string  | no | Android/IOS      | yes |
+| circleColorInactive  | 开关关闭状态下圆形控制柄的颜色 | string  | no | Android/IOS      | yes |
 | style  | styles that will be applied for switch container | style  | no | Android/IOS      | yes |
-| circleStyle  | styles that will be applied for the circle | style  | no | Android/IOS      | yes |
-| backgroundActive  | color of switch when it is on | string  | no | Android/IOS      | yes |
-| backgroundInactive  | color of switch when it is of | string  | no | Android/IOS      | yes |
-| onSyncPress  | callback when switch is clicked | func  | no | Android/IOS      | yes |
-| onAsyncPress | has a callback with result of async | func  | no | Android/IOS      | yes | 
+| circleStyle  | 将应用于开关容器的样式 | style  | no | Android/IOS      | yes |
+| backgroundActive  | 开关开启时的颜色 | string  | no | Android/IOS      | yes |
+| backgroundInactive  | 开关关闭时的颜色 | string  | no | Android/IOS      | yes |
+| onSyncPress  | 点击开关时的回调 | func  | no | Android/IOS      | yes |
+| onAsyncPress | 有一个回调结果为async | func  | no | Android/IOS      | yes | 
 
 
 ## 注意

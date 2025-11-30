@@ -16,6 +16,11 @@
 
 ## Installation and Usage
 
+| Third-party Library Version    | Release Information          | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 3.5.1      | [@react-native-ohos/react-native-reanimated-carousel Releases]| 0.72       |
+| 4.0.2      | [@react-native-ohos/react-native-reanimated-carousel Releases]| 0.77       |
+
 Go to the project directory and execute the following instruction:
 
 <!-- tabs:start -->
@@ -186,7 +191,9 @@ If it is not included, follow the guide provided in [@react-native-oh-tpl/react-
 
 This document is verified based on the following versions:
 
-1. RNOH: 0.72.29; SDK: HarmonyOS-Next-DB6 5.0.0.61; IDE: DevEco Studio 5.0.3.706; ROM: NEXT.0.0.61;
+1. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.29(SP1); IDE: DevEco Studio 5.0.3.403; ROM: 3.0.0.25;
+2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM：NEXT 5.1.0.150;
 
 ## Properties
 

@@ -1,4 +1,4 @@
-> 模板版本：v0.2.2
+> 模板版本：v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-material-ripple</code> </h1>
@@ -16,6 +16,10 @@
 
 ## 安装与使用
 
+| 三方库版本  |  支持RN版本 |
+| ---------- | ---------- |
+| 0.9.1      | 0.72/0.77      |
+
 进入到工程目录并输入以下命令：
 
 
@@ -26,7 +30,6 @@ npm install react-native-material-ripple@0.9.1
 ```
 
 #### **yarn**
-
 ```bash
 yarn add react-native-material-ripple@0.9.1
 ```
@@ -134,6 +137,8 @@ export const MateriaRippleExample = () => {
 1. RNOH：0.72.27; SDK：HarmonyOS NEXT Developer Beta1 5.0.0.25; IDE：DevEco Studio 5.0.3.400; ROM：3.0.0.25
 2. RNOH：0.72.28; SDK：HarmonyOS NEXT Developer Beta3 5.0.0.36; IDE：DevEco Studio 5.0.3.535; ROM：5.0.0.36
 3. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+4. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+5. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -143,20 +148,20 @@ export const MateriaRippleExample = () => {
 
 | Name                          | Description                                     | Type     | Required | Platform    | HarmonyOS Support |
 | ----------------------------- | ----------------------------------------------- | -------- | -------- | ----------- | ----------------- |
-| `rippleColor`                 | Ripple color(default:rgb(0, 0, 0))              | String   | no       | iOS/Android | yes               |
-| `rippleOpacity`               | Ripple opacity(default:0.3)                     | Number   | no       | iOS/Android | yes               |
-| `rippleDuration`              | Ripple duration in ms(default:400)              | Number   | no       | iOS/Android | yes               |
-| `rippleSize`                  | Ripple size restriction(default:0)              | Number   | no       | iOS/Android | yes               |
-| `rippleContainerBorderRadius` | Ripple container border radius (default:0)      | Number   | no       | iOS/Android | yes               |
-| `rippleCentered`              | Ripple always starts from center(default:false) | Boolean  | no       | iOS/Android | yes               |
-| `rippleSequential`            | Ripple should start in sequence(default:false)  | Boolean  | no       | iOS/Android | yes               |
-| `rippleFades`                 | Ripple fades out(default:true)                  | Boolean  | no       | iOS/Android | yes               |
-| `disabled`                    | Ripple should ignore touches(default:false)     | Boolean  | no       | iOS/Android | yes               |
-| `onPressIn`                   | Touch moved in or started callback              | Function | no       | iOS/Android | yes               |
-| `onPressOut`                  | Touch moved out or terminated callback          | Function | no       | iOS/Android | yes               |
-| `onPress`                     | Touch up inside bounds callback                  | Function | no       | iOS/Android | yes               |
-| `onLongPress`                 | Touch delayed after onPressIn callback          | Function | no       | iOS/Android | yes               |
-| `onRippleAnimation`           | Animation start callback                        | Function | no       | iOS/Android | yes               |
+| `rippleColor`                 | 波纹颜色(default:rgb(0, 0, 0))              | String   | no       | iOS/Android | yes               |
+| `rippleOpacity`               | 波纹透明度(default:0.3)                     | Number   | no       | iOS/Android | yes               |
+| `rippleDuration`              | 波纹持续时间（毫秒）(default:400)              | Number   | no       | iOS/Android | yes               |
+| `rippleSize`                  | 波纹大小限制(default:0)              | Number   | no       | iOS/Android | yes               |
+| `rippleContainerBorderRadius` | 波纹容器边框圆角 (default:0)      | Number   | no       | iOS/Android | yes               |
+| `rippleCentered`              | 波纹总是从中心开始(default:false) | Boolean  | no       | iOS/Android | yes               |
+| `rippleSequential`            | 波纹效果应按顺序触发(default:false)  | Boolean  | no       | iOS/Android | yes               |
+| `rippleFades`                 | 波纹淡出(default:true)                  | Boolean  | no       | iOS/Android | yes               |
+| `disabled`                    | 波纹应忽略触摸(default:false)     | Boolean  | no       | iOS/Android | yes               |
+| `onPressIn`                   | 触摸移动进入或开始回调              | Function | no       | iOS/Android | yes               |
+| `onPressOut`                  | 触摸移出或终止回调          | Function | no       | iOS/Android | yes               |
+| `onPress`                     | 触摸在边界内抬起回调                  | Function | no       | iOS/Android | yes               |
+| `onLongPress`                 | 触摸在 onPressIn 回调后延迟          | Function | no       | iOS/Android | yes               |
+| `onRippleAnimation`           | 动画开始回调                        | Function | no       | iOS/Android | yes               |
 
 Other [TouchableWithoutFeedback](https://facebook.github.io/react-native/docs/touchablewithoutfeedback.html) properties will also work
 

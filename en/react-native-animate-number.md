@@ -1,4 +1,4 @@
-> Template version: v0.2.2
+> Template version: v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-animate-number</code> </h1>
@@ -17,6 +17,11 @@
 > [!TIP] [Github address](https://github.com/wkh237/react-native-animate-number/tree/0.1.2)
 
 ## Installation and Usage
+
+| Version | Support RN version |
+| -------- | ----------|
+| 0.1.2    | 0.72/0.77      |
+
 
 Go to the project directory and execute the following instruction:
 
@@ -150,6 +155,7 @@ This document is verified based on the following versions:
 
 1. RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.200; ROM: 3.0.0.18;
 2. RNOH: 0.72.33; SDK: OpenHarmony 5.0.0.71 (API Version 12 Release); IDE: DevEco Studio 5.0.3.900; ROM: NEXT.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112
 
 ## Properties
 

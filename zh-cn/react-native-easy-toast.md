@@ -1,4 +1,4 @@
-> 模板版本：v0.2.0
+> 模板版本：v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-easy-toast</code> </h1>
@@ -18,9 +18,11 @@
 
 ## 安装与使用
 
-进入到工程目录并输入以下命令：
+| 三方库版本  |  支持RN版本 |
+| ---------- | ---------- |
+| 2.3.0      | 0.72/0.77      |
 
-<!-- tabs:start -->
+进入到工程目录并输入以下命令：
 
 #### **npm**
 
@@ -75,6 +77,8 @@ export default class App extends Component {
 
 1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Preview2(B.0.73); IDE：DevEco Studio 5.0.3.200; ROM：2.0.0.58;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+4. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 
 ## 属性
@@ -87,13 +91,13 @@ export default class App extends Component {
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| style  | Custom style toast | View.propTypes.style  | no | All | yes |
-| position  | Custom toast position | PropTypes.oneOf(['top','center','bottom',])  | no | All | yes |
-| positionValue  | Custom toast position value | React.PropTypes.number | no | All | yes |
-| fadeInDuration  | Custom toast show duration | React.PropTypes.number  | no | All | yes |
-| fadeOutDuration  | Custom toast close duration | React.PropTypes.number  | no | All | yes |
-| opacity  | Custom toast opacity | React.PropTypes.number  | no | All | yes |
-| textStyle  | Custom style text | View.propTypes.style  | no | All | yes |
+| style  | 定制样式提示框 | View.propTypes.style  | no | All | yes |
+| position  | 自定义提示框位置 | PropTypes.oneOf(['top','center','bottom',])  | no | All | yes |
+| positionValue  | 自定义提示框位置数值 | React.PropTypes.number | no | All | yes |
+| fadeInDuration  | 自定义提示框显示时长 | React.PropTypes.number  | no | All | yes |
+| fadeOutDuration  | 自定义提示框关闭时长 | React.PropTypes.number  | no | All | yes |
+| opacity  | 自定义提示框透明度 | React.PropTypes.number  | no | All | yes |
+| textStyle  | 自定义文本样式 | View.propTypes.style  | no | All | yes |
 
 ## 静态方法
 
@@ -103,8 +107,8 @@ export default class App extends Component {
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| show  | show a toast,unit is millisecond，and do callback  | (text: string, duration: number, callback: function, onPress: function)  | no | All      | yes |
-| close  | start the close timer  | -  | no | All | yes |
+| show  | 显示一个提示框（单位：毫秒），并执行回调函数  | (text: string, duration: number, callback: function, onPress: function)  | no | All      | yes |
+| close  | 启动关闭定时器  | -  | no | All | yes |
 
 ## 遗留问题
 

@@ -15,6 +15,11 @@
 
 > [!TIP] [Github 地址](https://github.com/esthor/react-native-swipeable-list)
 
+| 三方库版本 | 支持RN版本 |
+| :--- | :--- |
+| 0.1.2| 0.72/0.77 |
+
+
 ## 安装与使用
 
 <!-- tabs:start -->
@@ -428,6 +433,7 @@ export default App;
 
 1. RNOH：0.72.27; SDK：HarmonyOS NEXT Developer Beta1 5.0.0.25; IDE：DevEco Studio 5.0.3.400SP7; ROM：3.0.0.25;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## 属性
 
@@ -437,13 +443,13 @@ SwipeableFlatList 组件接收所有[React Native FlatList](https://facebook.git
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name                | Description                                                                                                                                                                                  | Type      | Required | Platform    | HarmonyOS Support |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | -------- | ----------- | ----------------- |
-| data                | An array (or array-like list) of items to render.                                                                                                                                            | ArrayLike | yes      | iOS/Android | yes               |
-| renderItem          | Takes an item from data and renders it into the list.                                                                                                                                        | function  | yes      | iOS/Android | yes               |
-| shouldBounceOnMount | To alert the user that swiping is possible, the first row can bounce on component mount(default = `true`）.                                                                                  | boolean   | no       | iOS/Android | yes               |
-| maxSwipeDistance    | Maximum distance to open to after a swipe.                                                                                                                                                   | number    | no       | iOS/Android | yes               |
-| renderQuickActions  | Callback method to render the view that will be unveiled on swipe. Type `renderItemType` (which provides `index` and `item`, which will be very useful for performing actions on your items. | function  | yes      | iOS/Android | yes               |
+| Name                | Description                                                                                                                           | Type      | Required | Platform    | HarmonyOS Support |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | --------- | -------- | ----------- | ----------------- |
+| data                | 要渲染的项目数组（或类似数组的列表）。                                                                                                | ArrayLike | yes      | iOS/Android | yes               |
+| renderItem          | 从数据中获取一项并将其渲染到列表中。                                                                                                  | function  | yes      | iOS/Android | yes               |
+| shouldBounceOnMount | 为了提示用户可以滑动，第一行在组件挂载时会弹跳一下（默认 = `true`）。                                                                 | boolean   | no       | iOS/Android | yes               |
+| maxSwipeDistance    | 滑动后打开的最大距离。                                                                                                                | number    | no       | iOS/Android | yes               |
+| renderQuickActions  | 渲染滑动后显示视图的回调方法。类型为 `renderItemType`（提供 `index` 和 `item`，这对执行项目操作非常有用）。 | function  | yes      | iOS/Android | yes               |
 
 ## 遗留问题
 

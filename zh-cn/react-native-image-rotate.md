@@ -27,10 +27,6 @@
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
-进入到工程目录并输入以下命令：
-
-
-
 <!-- tabs:start -->
 
 进入到工程目录并输入以下命令：
@@ -243,6 +239,11 @@ ohpm install
 | 2.1.0@deprecated | [@react-native-oh-tpl/react-native-image-rotate Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-rotate/releases) | 0.72       |
 | 2.1.1 | [@react-native-ohos/react-native-image-rotate Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-rotate/releases)                        | 0.72       |
 | 2.2.0 | [@react-native-ohos/react-native-image-rotate Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-rotate/releases)                        | 0.77       |
+
+本文档内容基于以下版本验证通过：
+
+1. RNOH: 0.72.98; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.0.3.906; ROM: NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## 静态方法
 

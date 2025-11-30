@@ -19,6 +19,10 @@
 
 进入到工程目录并输入以下命令：
 
+| 三方库版本 | 支持RN版本 |
+| ---------- | ---------- |
+| 2.2.3      | 0.72/0.77      |
+
 <!-- tabs:start --> 
 
 #### **npm**
@@ -73,6 +77,7 @@ export default MyComponent
 
 1. RNOH：0.72.26; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.300; ROM：3.0.0.25;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## API
 
@@ -84,7 +89,7 @@ export default MyComponent
 
 | Name                                                         | Description                                                  | Type     | Required | Platform | HarmonyOS Support |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | -------- | -------- | ----------------- |
-| sectionListGetItemLayout({getItemHeight, getSeparatorHeight, getSectionHeaderHeight,getSectionFooterHeight,listHeaderHeight}) | This package provides a function that helps you construct the getItemLayout function for your SectionLists. For an explanation of why this exists, see this post. It's meant to be used like this | function | Yes      | All      | Yes               |
+| sectionListGetItemLayout({getItemHeight, getSeparatorHeight, getSectionHeaderHeight,getSectionFooterHeight,listHeaderHeight}) | 为SectionLists构造getItemLayout函数 | function | Yes      | All      | Yes               |
 
 ## 遗留问题
 

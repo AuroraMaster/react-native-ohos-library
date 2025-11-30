@@ -15,9 +15,16 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-zip-archive)
 
-## 安装与使用
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-zip-archive Releases](https://github.com/react-native-oh-library/react-native-zip-archive/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 7.0.0      | [@react-native-oh-tpl/react-native-zip-archive Releases](https://github.com/react-native-oh-library/react-native-zip-archive/releases) | 0.72       |
+| 7.1.0      | [@react-native-ohos/react-native-zip-archive Releases]()     | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -25,14 +32,24 @@
 
 #### **npm**
 
+#### **npm**
+
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-zip-archive
+
+# 0.77
+npm install @react-native-ohos/react-native-zip-archive
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-zip-archive
+
+# 0.77
+yarn add @react-native-ohos/react-native-zip-archive
 ```
 
 <!-- tabs:end -->
@@ -402,6 +419,8 @@ const styles = StyleSheet.create({
 
 ## 使用 Codegen
 
+> [!TIP] V7.0.0不需要执行Codegen。
+
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
@@ -434,10 +453,21 @@ const styles = StyleSheet.create({
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+-  0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 +   "@react-native-oh-tpl/react-native-zip-archive": "file:../../node_modules/@react-native-oh-tpl/react-native-zip-archive/harmony/zipArchive_package.har"
+  }
+```
+
+-  0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
++   "@react-native-ohos/react-native-zip-archive": "file:../../node_modules/@react-native-ohos/react-native-zip-archive/harmony/zipArchive_package.har"
   }
 ```
 
@@ -466,6 +496,10 @@ set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
 set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
 + set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
 set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+# 0.77
++ set(ZIP_ARCHIVE_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules/@react-native-ohos/react-native-zip-archive/src/main/cpp")
+
 set(LOG_VERBOSITY_LEVEL 1)
 set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
 set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
@@ -476,16 +510,31 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+
+# 0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-zip-archive/src/main/cpp" ./zipArchive-package)
+
+# 0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-zip-archive/src/main/cpp" ./zipArchive-package)
+
 # RNOH_END: manual_package_linking_1
 
+# 0.72
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+# 0.77
++ file(GLOB ZIP_ARCHIVE_GENERATED_CPP_FILES "${ZIP_ARCHIVE_CPP_DIR}/generated/*.cpp")
 
 add_library(rnoh_app SHARED
     ${GENERATED_CPP_FILES}
++    ${ZIP_ARCHIVE_GENERATED_CPP_FILES}
     "./PackageProvider.cpp"
     "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
 )
+
+# 0.77
++ target_include_directories(rnoh_app PUBLIC ${ZIP_ARCHIVE_CPP_DIR})
+
 target_link_libraries(rnoh_app PUBLIC rnoh)
 
 # RNOH_BEGIN: manual_package_linking_2
@@ -494,12 +543,32 @@ target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
 # RNOH_END: manual_package_linking_2
 ```
 
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
++#include "generated/ZipArchivePackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx)
+{
+    return {
++        std::make_shared<ZipArchivePackage>(ctx),
+    };
+}
+```
+
 ### 4.在 ArkTs 侧引入 ZipArchivePackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
+// 0.72
 + import {ZipArchivePackage} from '@react-native-oh-tpl/react-native-zip-archive/ts';
+
+// 0.77
++ import {ZipArchivePackage} from '@react-native-ohos/react-native-zip-archive/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -526,9 +595,10 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-library/react-native-zip-archive Releases](https://github.com/react-native-oh-library/react-native-zip-archive/releases)
+1. RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.200; ROM: 3.0.0.18;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.868; ROM: 6.0.0.112;
 
 ## API
 
@@ -538,14 +608,14 @@ ohpm install
 
 | Name                | Description                                                  | Type    | Required | Platform | HarmonyOS Support |
 | ------------------- | ------------------------------------------------------------ | ------- | -------- | -------- | ----------------- |
-| zip                 | File or folder compression                                   | string  | no       | All      | yes               |
-| unzip               | Decompression of files or folders                            | string  | no       | All      | yes               |
-| zipWithPassword     | Compress files or folders with a password                    | string  | no       | All      | yes               |
-| unzipWithPassword   | Extract files or folders with a password                     | string  | no       | All      | yes               |
-| isPasswordProtected | Check if the password exists during password decompression   | boolean | no       | All      | yes               |
-| unzipAssets         | Pass in the specified directory during decompression         | string  | no       | All      | yes               |
-| getUncompressedSize | File size after decompression                                | number  | no       | All      | yes               |
-| subscribe           | Display progress bar during compression and password decompression | void    | no       | All      | yes               |
+| zip                 | 文件或文件夹压缩                                   | string  | no       | All      | yes               |
+| unzip               | 文件或文件夹解压缩                            | string  | no       | All      | yes               |
+| zipWithPassword     | 使用密码压缩文件或文件夹                    | string  | no       | All      | yes               |
+| unzipWithPassword   | 使用密码解压文件或文件夹                     | string  | no       | All      | yes               |
+| isPasswordProtected | 检查解压时是否存在密码保护   | boolean | no       | All      | yes               |
+| unzipAssets         | 解压时传入指定目录         | string  | no       | All      | yes               |
+| getUncompressedSize | 获取解压后的文件大小                               | number  | no       | All      | yes               |
+| subscribe           | 在压缩和密码解压过程中显示进度条 | void    | no       | All      | yes               |
 
 ## 遗留问题
 

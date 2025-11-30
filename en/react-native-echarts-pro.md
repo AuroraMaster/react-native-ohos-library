@@ -13,9 +13,12 @@
 
 ## Installation and Usage
 
-Go to the project directory and execute the following instruction:
+Please refer to the Releases page of the third-party library for the corresponding version information:
 
-
+| Third-party Library Version    | Release Information          | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.9.1      | [react-native-echarts-pro Releases](https://github.com/supervons/react-native-echarts-pro) | 0.72       |
+| 1.9.3      | [react-native-echarts-pro Releases](https://github.com/supervons/react-native-echarts-pro) | 0.77       |
 
 <!-- tabs:start -->
 
@@ -90,7 +93,10 @@ If not introduced, please refer to the Link section of the document [@react-nati
 
 This document is verified based on the following versions:
 
-1. RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.200; ROM: 205.0.0.18
+1. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.29(SP1); IDE: DevEco Studio 5.0.3.403; ROM: 3.0.0.25;
+2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM：NEXT 5.1.0.150;
+
 
 ## Properties
 

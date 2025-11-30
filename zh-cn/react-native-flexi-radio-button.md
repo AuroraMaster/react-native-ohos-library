@@ -1,4 +1,4 @@
-> 模板版本：v0.2.2
+> 模板版本：v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-flexi-radio-button</code> </h1>
@@ -16,16 +16,18 @@
 > [!TIP] [Github 地址](https://github.com/thegamenicorus/react-native-flexi-radio-button)
 
 ## 安装与使用
-<!-- tabs:start -->
+
+| 三方库版本  |  支持RN版本 |
+| ---------- | ---------- |
+| 0.2.2      | 0.72/0.77      |
 
 #### **npm**
 
 ```bash
-npm i react-native-flexi-radio-button@0.2.2
+npm install react-native-flexi-radio-button@0.2.2
 ```
 
 #### **yarn**
-
 ```bash
 yarn add react-native-flexi-radio-button@0.2.2
 ```
@@ -138,9 +140,10 @@ modify in render()
 
 本文档内容基于以下版本验证通过：
 
-react-native-harmony: 0.72.23; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio: 5.0.3.27; ROM: 3.0.0.19;
-
-react-native-harmony: 0.72.33; SDK: Openharmony 5.0.0.71(API Version 12 Release); IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+1. RNOH: 0.72.23; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio: 5.0.3.27; ROM: 3.0.0.19;
+2. RNOH: 0.72.33; SDK: Openharmony 5.0.0.71(API Version 12 Release); IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+4. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 

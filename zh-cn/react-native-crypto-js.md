@@ -16,6 +16,10 @@
 
 ## 安装与使用
 
+| 三方库版本 | 支持RN版本 |
+| ---------- | ---------- |
+| 1.0.0      | 0.72/0.77      |
+
 进入到工程目录并输入以下命令：
 
 <!-- tabs:start -->
@@ -126,6 +130,7 @@ export const ReactNativeCryptoJsExample = () => {
 
 1. RNOH: 0.72.29; SDK：HarmonyOS-Next-DB1 5.0.0.61; IDE：DevEco Studio 5.0.3.706; ROM：5.0.0.61;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## API
 
@@ -135,10 +140,10 @@ export const ReactNativeCryptoJsExample = () => {
 
 | Name             | Description | Type | Required | Platform | HarmonyOS Support |
 | -------------------- | --------------- | -------- | -------- | -------- | ----------------- |
-| CryptoJS.AES.encrypt | AES encryption | string   | No      | Android、iOS      | yes               |
-| CryptoJS.AES.decrypt | AES decryption | string   | No      | Android、iOS      | yes               |
-| CryptoJS.MD5         | MD5 encryption | string   | No      | Android、iOS      | yes               |
-| CryptoJS.HmacMD5     | HmacMD5 encryption | string   | No      | no       | no                |
+| CryptoJS.AES.encrypt | AES 加密 | string   | No      | Android、iOS      | yes               |
+| CryptoJS.AES.decrypt | AES 解密 | string   | No      | Android、iOS      | yes               |
+| CryptoJS.MD5         | MD5 加密 | string   | No      | Android、iOS      | yes               |
+| CryptoJS.HmacMD5     | HmacMD5 加密 | string   | No      | no       | no                |
 
 ## 遗留问题
 
