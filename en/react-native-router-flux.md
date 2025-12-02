@@ -319,13 +319,13 @@ Defines the core interface for page route configuration.
 | backButtonTintColor | Back button color | string | no | iOS/Android | yes |
 | drawer | Whether to use as drawer menu | boolean | no | iOS/Android | yes |
 | failure | Callback function or scene key when navigation fails | function\| string | no | Android | no |
-| headerBackTitle | Header back button title | string | no | Android | no |
+| headerBackTitle | Header back button title | string | no | iOS/Android | yes |
 | hideNavBar | Whether to hide navigation bar | boolean | no | iOS/Android | yes |
 | hideTabBar | Whether to hide tab bar | boolean | no | iOS/Android | yes |
-| hideBackImage | Whether to hide back image | boolean | no | Android | no |
+| hideBackImage | Whether to hide back image | boolean | no | iOS/Android | yes |
 | initial | Whether to use as initial scene | boolean | no | iOS/Android | yes |
 | leftButtonImage | Left button image | Image | no | iOS/Android | yes |
-| modal | Whether to display in modal form | boolean | no | iOS/Android | yes |
+| modal | Whether to display in modal form | boolean | no | no | no |
 | navigationBarTitleImage | Navigation bar title image | Image | no | iOS/Android | yes |
 | navigationBarTitleImageStyle | Navigation bar title image style | style | no | iOS/Android | yes |
 | navTransparent | Whether navigation bar is transparent | boolean | no | iOS/Android | yes |
@@ -340,7 +340,7 @@ Defines the core interface for page route configuration.
 | rightTitle | Right button title | string | no | iOS/Android | yes |
 | rightButtonImage | Right button image | Image \| null | no | iOS/Android | yes |
 | rightButtonTextStyle | Right button text style | style | no | iOS/Android | yes |
-| success | Callback function or scene key when navigation succeeds | function\| string | no | Android | no |
+| success | Callback function or scene key when navigation succeeds | function\| string | no | iOS/Android | yes |
 | tabs | Whether to use as tab container | boolean | no | iOS/Android | yes |
 | title | Scene title | function \| string | no | iOS/Android | yes |
 | titleStyle | Title style | style | no | iOS/Android | yes |
@@ -411,13 +411,13 @@ Defines all methods for navigation operations.
 | currentScene | Current scene information | object | no | iOS/Android | yes |
 | jump | Jump to specified scene | function | no | iOS/Android | yes |
 | pop | Go back to previous scene | function | no | iOS/Android | yes |
-| popAndPush | Go back and push new scene | function | no | Android | no |
+| popAndPush | Go back and push new scene | function | no | no | no |
 | popTo | Go back to specified scene | function | no | iOS/Android | yes |
 | push | Push new scene | function | no | iOS/Android | yes |
 | refresh | Refresh current scene | function| no | iOS/Android | yes |
 | replace | Replace current scene | function | no | iOS/Android | yes |
 | reset | Reset navigation stack to specified scene | function | no | iOS/Android | yes |
-| addRef | Add reference | function | no | Android | no |
+| addRef | Add reference | function | no | iOS/Android | yes |
 | drawerOpen | Open drawer menu | object | no | iOS/Android | yes |
 | drawerClose | Close drawer menu | object | no | iOS/Android | yes |
 
