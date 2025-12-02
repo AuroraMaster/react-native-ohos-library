@@ -25,18 +25,30 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# 0.72
 npm install react-native-canvas@0.1.39
+
+# 0.77 
+npm install react-native-canvas@0.1.40
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add react-native-canvas@0.1.39
+
+#0.77
+yarn add react-native-canvas@0.1.40
 ```
 
 [!TIP] If the dependency is not fully installed, please perform:
 ```bash
-npm install --save-dev @type/react-native-canvas@0.1.39
+# 0.72
+npm insatll --save-dev @type/react-native-canvas@0.1.39
+
+#0.77
+npm install --save-dev @type/react-native-canvas@0.1.40
 ```
 
 <!-- tabs:end -->
@@ -134,9 +146,9 @@ export default CanvasDemo;
 
 ## Link
 
-The HarmonyOS implementation of this library relies on the native code of @react-native-oh-tpl/react-native-webview，If the library has already been introduced in the HarmonyOS project, there is no need to introduce it again. You can skip the steps in this chapter and use it directly.
+The HarmonyOS implementation of this library relies on the native code of @react-native-ohos/react-native-webview，If the library has already been introduced in the HarmonyOS project, there is no need to introduce it again. You can skip the steps in this chapter and use it directly.
 
-If not introduced, please refer to the Link section of the document[@react-native-oh-tpl/react-native-webview ](react-native-webview.md)for introduction.
+If not introduced, please refer to the Link section of the document[@react-native-ohos/react-native-webview ](react-native-webview.md)for introduction.
 
 ## Constraints
 
@@ -145,6 +157,7 @@ If not introduced, please refer to the Link section of the document[@react-nativ
 This document is verified based on the following versions:
 
 1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Preview2; IDE：DevEco Studio 5.0.3.200; ROM：205.0.0.18;
+2. RNOH: 0.77.18; SDK: HarmonyOS-5.1.1.208(API19); IDE: DevEco Studio 5.1.1.830; ROM: 6.0.0.112 SP12;
 
 ## Properties
 

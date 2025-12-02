@@ -25,18 +25,30 @@
 #### **npm**
 
 ```bash
+# 0.72
 npm install react-native-canvas@0.1.39
+
+# 0.77
+npm install react-native-canvas@0.1.40
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add react-native-canvas@0.1.39
+
+# 0.77
+yarn add react-native-canvas@0.1.40
 ```
 
 [!TIP] 如果依赖未完全安装，请执行：
 ```bash
+# 0.72
 npm install --save-dev @type/react-native-canvas@0.1.39
+
+# 0.77
+npm install --save-dev @type/react-native-canvas@0.1.40
 ```
 
 <!-- tabs:end -->
@@ -134,18 +146,18 @@ export default CanvasDemo;
 
 ## Link
 
-本库 HarmonyOS 侧实现依赖@react-native-oh-tpl/react-native-webview 的原生端代码，如已在 HarmonyOS 工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
+本库 HarmonyOS 侧实现依赖@react-native-ohos/react-native-webview 的原生端代码，如已在 HarmonyOS 工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
 
-如未引入请参照[@react-native-oh-tpl/react-native-webview ](react-native-webview.md)文档的 Link 章节进行引入
+如未引入请参照[@react-native-ohos/react-native-webview ](react-native-webview.md)文档的 Link 章节进行引入
 
 ## 约束与限制
 
 ### 兼容性
 
-在以下版本验证通过
+本文档内容基于以下版本验证通过：
 
 1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Preview2; IDE：DevEco Studio 5.0.3.200; ROM：205.0.0.18;
-
+2. RNOH: 0.77.18; SDK: HarmonyOS-5.1.1.208(API19); IDE: DevEco Studio 5.1.1.830; ROM: 6.0.0.112 SP12;
 ## 属性
 
 | Name           | Description                                                                                                                                                                                   | Type     | Required | Platform    | HarmonyOS Support |
