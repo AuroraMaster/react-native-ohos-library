@@ -14,6 +14,12 @@
 
 > [!TIP] [Github 地址](https://github.com/mastermoo/react-native-action-button)
 
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 支持RN版本 |
+| ---------- | ---------- |
+| 2.8.5    | 0.72/0.77    |
+
 ## 安装与使用
 
 进入到工程目录并输入以下命令：
@@ -91,6 +97,7 @@ const styles = StyleSheet.create({
 2. RNOH：0.72.13; SDK：HarmonyOS NEXT Developer Preview1; IDE：DevEco Studio 4.1.3.500; ROM：2.0.0.58;
 3. RNOH：0.72.27; SDK：HarmonyOS-Next-DB1 5.0.0.29(SP1); IDE：DevEco Studio 5.0.3.400; ROM：3.0.0.25;
 4. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+5. RNOH: 0.77.18; SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
 
 ## 属性
 
@@ -100,47 +107,47 @@ const styles = StyleSheet.create({
 
 | Name                      |  Description                                                                                                                                                                                                                                             | Type     | Required | Platform |  HarmonyOS Support |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |----------| -------- |
-| resetToken                | use this to reset the internal component state (expand/collapse) in a re-render cycle. Synchronize the component state.                                                                                                                           | any      | No       | All      | Yes      |
-| size                      | use this to change the size of the Button                                                                                                                                                                                                         | number   | No       | All        | Yes      |
-| active                    | action buttons visible or not                                                                                                                                                                                                                     | boolean  | No       | All        | Yes      |
-| position                  | one of: left center and right                                                                                                                                                                                                                     | string   | No       | All        | Yes      |
-| autoInactive              | Auto hide ActionButtons when ActionButton.Item is pressed.                                                                                                                                                                                        | boolean  | No       | All        | Yes      |
-| hideShadow                | use this to hide the default elevation and boxShadow                                                                                                                                                                                              | boolean  | No       | All        | Yes      |
-| spacing                   | spacing between the ActionButton.Items                                                                                                                                                                                                            | number   | No       | All        | Yes      |
-| offsetX                   | offset from the left/right side of the screen                                                                                                                                                                                                     | number   | No       | All        | Yes      |
-| offsetY                   | offset from the bottom/top of the screen                                                                                                                                                                                                          | number   | No       | All        | Yes      |
-| buttonText                | use this to set a different text on the button                                                                                                                                                                                                    | string   | No       | All        | Yes      |
-| degrees                   | degrees to rotate icon                                                                                                                                                                                                                            | number   | No       | All        | Yes      |
-| shadowStyle               | The custom shadow style you want to pass in the action button                                                                                                                                                                                     | style    | No       | All        | Yes      |
-| bgColor                   | background color when ActionButtons are visible                                                                                                                                                                                                   | string   | No       | All        | Yes      |
-| bgOpacity                 | set the transparency of the background color                                                                                                                                                                                                      | number   | No       | All        | Yes      |
-| buttonTextStyle           | use this to set the textstyle of the button's text                                                                                                                                                                                                | style    | No       | All        | Yes      |
-| verticalOrientation       | direction action buttons should expand. One of: up or down                                                                                                                                                                                        | string   | No       | All        | Yes      |
-| backgroundTappable        | make background tappable in active state of ActionButton                                                                                                                                                                                          | boolean  | No       | All        | Yes      |
-| activeOpacity             | activeOpacity props of TouchableOpacity                                                                                                                                                                                                           | number   | No       | All        | Yes      |
-| renderIcon                | Function to render the component for ActionButton Icon. It is passed a boolean, active, which is true if the FAB has been expanded, and false if it is collapsed, allowing you to show a different icon when the ActionButton Items are expanded. | function | No       | All        | Yes      |
-| onPress                   | fires, when ActionButton is tapped                                                                                                                                                                                                                | function | No       | All        | Yes      |
-| useNativeFeedback         | Android: Whether to use a TouchableNativeFeedback                                                                                                                                                                                                 | boolean  | No       | Android  | No       |
-| fixNativeFeedbackRadius   | Android: Activate this to fix TouchableNativeFeedback Ripple UI problems                                                                                                                                                                          | boolean  | No       | Android  | No       |
-| nativeFeedbackRippleColor | Android: Pass a color to the Ripple Effect of a TouchableNativeFeedback                                                                                                                                                                           | string   | No       | Android  | No       |
+| resetToken                | 用于在重新渲染周期中重置内部组件状态（展开/折叠）。同步组件状态。                                                                                                                           | any      | No       | All      | Yes      |
+| size                      | 用于改变按钮的大小                                                                                                                                                                                                         | number   | No       | All        | Yes      |
+| active                    | 操作按钮是否可见                                                                                                                                                                                                                     | boolean  | No       | All        | Yes      |
+| position                  | 可选值之一：left、center 和 right                                                                                                                                                                                                                     | string   | No       | All        | Yes      |
+| autoInactive              | 当按下 ActionButton.Item 时自动隐藏 ActionButtons。                                                                                                                                                                                        | boolean  | No       | All        | Yes      |
+| hideShadow                | 用于隐藏默认的 elevation 和 boxShadow                                                                                                                                                                                              | boolean  | No       | All        | Yes      |
+| spacing                   | ActionButton.Items 之间的间距                                                                                                                                                                                                            | number   | No       | All        | Yes      |
+| offsetX                   | 距离屏幕左侧/右侧的偏移量                                                                                                                                                                                                     | number   | No       | All        | Yes      |
+| offsetY                   | 距离屏幕底部/顶部的偏移量                                                                                                                                                                                                          | number   | No       | All        | Yes      |
+| buttonText                | 用于在按钮上设置不同的文本                                                                                                                                                                                                    | string   | No       | All        | Yes      |
+| degrees                   | 旋转图标的角度                                                                                                                                                                                                            | number   | No       | All        | Yes      |
+| shadowStyle               | 您想要传递给操作按钮的自定义阴影样式                                                                                                                                                                                                     | style    | No       | All        | Yes      |
+| bgColor                   | ActionButtons 可见时的背景颜色                                                                                                                                                                                                   | string   | No       | All        | Yes      |
+| bgOpacity                 | 设置背景颜色的透明度                                                                                                                                                                                                      | number   | No       | All        | Yes      |
+| buttonTextStyle           | 用于设置按钮文本的文本样式                                                                                                                                                                                                | style    | No       | All        | Yes      |
+| verticalOrientation       | 操作按钮应展开的方向。可选值之一：up 或 down                                                                                                                                                                                        | string   | No       | All        | Yes      |
+| backgroundTappable        | 使 ActionButton 处于活动状态时背景可点击                                                                                                                                                                                          | boolean  | No       | All        | Yes      |
+| activeOpacity             | TouchableOpacity 的 activeOpacity 属性                                                                                                                                                                                                           | number   | No       | All        | Yes      |
+| renderIcon                | 用于渲染 ActionButton 图标组件的函数。它会传递一个布尔值 active，当 FAB 展开时为 true，折叠时为 false，允许您在 ActionButton Items 展开时显示不同的图标。 | function | No       | All        | Yes      |
+| onPress                   | 当点击 ActionButton 时触发                                                                                                                                                                                                                | function | No       | All        | Yes      |
+| useNativeFeedback         | Android：是否使用 TouchableNativeFeedback                                                                                                                                                                                                 | boolean  | No       | Android  | No       |
+| fixNativeFeedbackRadius   | Android：激活此选项以修复 TouchableNativeFeedback 的涟漪 UI 问题                                                                                                                                                                          | boolean  | No       | Android  | No       |
+| nativeFeedbackRippleColor | Android：为 TouchableNativeFeedback 的涟漪效果传递颜色                                                                                                                                                                           | string   | No       | Android  | No       |
 
 ### ActionButton.Item:
 
 | Name                      |  Description                                                                                                                                                                                                                                             | Type     | Required | Platform |  HarmonyOS Support |
 | ------------------------- | -------------------------------------------------------------------------- | -------- | -------- |----------| -------- |
-| size                      | use this to change the size of the Button                                  | number   | No       | All      | Yes      |
-| buttonColor               | background color of the Button                                             | string   | No       | All      | Yes      |
-| title                     | the title shown next to the button. When undefined the title is not hidden | string   | No       | All      | Yes      |
-| textStyle                 | use this to set the textstyle of the button's item text                    | style    | No       | All      | Yes      |
-| shadowStyle               | The custom shadow style you want to pass in the action button item         | style    | No       | All      | Yes      |
-| textContainerStyle        | use this to set the textstyle of the button's item text container          | style    | No       | All      | Yes      |
-| spaceBetween              | use this to set the space between the Button and the text container        | number   | No       | All      | Yes      |
-| hideLabelShadow           | use this to hide the button's label default elevation and boxShadow        | boolean  | No       | All      | Yes      |
-| activeOpacity             | activeOpacity props of TouchableOpacity                                    | number   | No       | All      | Yes      |
-| onPress                   | required function, triggers when a button is tapped                        | function | No       | All      | Yes      |
-| useNativeFeedback         | Android: Whether to use a TouchableNativeFeedback                          | boolean  | No       | Android  | No       |
-| fixNativeFeedbackRadius   | Android: Activate this to fix TouchableNativeFeedback Ripple UI problems   | boolean  | No       | Android  | No       |
-| nativeFeedbackRippleColor | Android: Pass a color to the Ripple Effect of a TouchableNativeFeedback    | string   | No       | Android  | No       |
+| size                      | 用于改变按钮的大小                                  | number   | No       | All      | Yes      |
+| buttonColor               | 按钮的背景颜色                                             | string   | No       | All      | Yes      |
+| title                     | 按钮旁边显示的标题。当未定义时标题不会被隐藏 | string   | No       | All      | Yes      |
+| textStyle                 | 用于设置按钮项文本的文本样式                    | style    | No       | All      | Yes      |
+| shadowStyle               | 您想要传递给操作按钮项的自定义阴影样式         | style    | No       | All      | Yes      |
+| textContainerStyle        | 用于设置按钮项文本容器的文本样式          | style    | No       | All      | Yes      |
+| spaceBetween              | 用于设置按钮和文本容器之间的间距        | number   | No       | All      | Yes      |
+| hideLabelShadow           | 用于隐藏按钮标签的默认 elevation 和 boxShadow        | boolean  | No       | All      | Yes      |
+| activeOpacity             | TouchableOpacity 的 activeOpacity 属性                                    | number   | No       | All      | Yes      |
+| onPress                   | 必需的函数，在点击按钮时触发                        | function | No       | All      | Yes      |
+| useNativeFeedback         | Android：是否使用 TouchableNativeFeedback                          | boolean  | No       | Android  | No       |
+| fixNativeFeedbackRadius   | Android：激活此选项以修复 TouchableNativeFeedback 的涟漪 UI 问题   | boolean  | No       | Android  | No       |
+| nativeFeedbackRippleColor | Android：为 TouchableNativeFeedback 的涟漪效果传递颜色    | string   | No       | Android  | No       |
 
 ## 遗留问题
 

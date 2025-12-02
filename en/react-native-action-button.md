@@ -14,6 +14,12 @@
 
 > [!TIP] [GitHub address](https://github.com/mastermoo/react-native-action-button)
 
+Please go to the corresponding Release release address of the third-party library to view the version information of the Release package:
+
+| Version | Support RN version |
+| ---------- | ---------- |
+| 2.8.5    | 0.72/0.77    |
+
 ## Installation and Usage
 
 Go to the project directory and execute the following instruction:
@@ -92,6 +98,7 @@ This document is verified based on the following versions:
 2. RNOH: 0.72.13; SDK: HarmonyOS NEXT Developer Preview1; IDE: DevEco Studio 4.1.3.500; ROM: 2.0.0.58;
 3. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.29(SP1); IDE: DevEco Studio 5.0.3.400; ROM: 3.0.0.25;
 4. RNOH: 0.72.33; SDK: OpenHarmony 5.0.0.71(API Version 12 Release); IDE: DevEco Studio 5.0.3.900; ROM: NEXT.0.0.71;
+5. RNOH: 0.77.18; SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
 
 ## Properties
 
