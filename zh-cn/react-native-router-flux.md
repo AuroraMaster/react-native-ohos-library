@@ -36,24 +36,26 @@ npm install @react-native-ohos/react-native-router-flux
 
 # 0.72
 npm install react-native-screens@3.34.0
-npm install @react-navigation/drawer@^7.1.17
-npm install @react-navigation/bottom-tabs@^7.1.0
+npm install @react-navigation/drawer@7.1.17
+npm install @react-navigation/bottom-tabs@7.1.0
 npm install @react-navigation/stack@7.2.10
 npm install @react-native-oh-tpl/react-native-pager-view@6.2.3-0.2.8
 npm install @react-native-oh-tpl/react-native-tab-view@3.5.2-0.1.3
-npm install @react-native-oh-tpl/react-native-gesture-handler@^2.14.1-2.14.15
-npm install @react-native-oh-tpl/react-native-reanimated@^3.6.4-rc.1
+npm install @react-native-oh-tpl/react-native-gesture-handler@2.14.1-2.14.15
+npm install @react-native-oh-tpl/react-native-reanimated@3.6.4-rc.1
+npm install @react-navigation/material-top-tabs@6.5.0
 
 
 # 0.77
 npm install react-native-screens@3.29.0
-npm install @react-navigation/drawer@^7.1.17
-npm install @react-navigation/bottom-tabs@^7.1.0
+npm install @react-navigation/drawer@7.1.17
+npm install @react-navigation/bottom-tabs@7.1.0
 npm install @react-navigation/stack@7.2.10
 npm install @react-native-ohos/react-native-pager-view@6.7.2-rc.2
 npm install @react-native-ohos/react-native-tab-view@4.0.11-rc.1
 npm install @react-native-ohos/react-native-gesture-handler@2.23.2-rc.1
 npm install @react-native-ohos/react-native-reanimated@3.18.1-rc.1
+npm install @react-navigation/material-top-tabs@7.4.0
 ```
 
 #### **yarn**
@@ -63,24 +65,26 @@ yarn add @react-native-ohos/react-native-router-flux
 
 # 0.72
 yarn add react-native-screens@3.34.0
-yarn add @react-navigation/drawer@^7.1.17
-yarn add @react-navigation/bottom-tabs@^7.1.0
+yarn add @react-navigation/drawer@7.1.17
+yarn add @react-navigation/bottom-tabs@7.1.0
 yarn add @react-navigation/stack@7.2.10
 yarn add @react-native-oh-tpl/react-native-pager-view@6.2.3-0.2.8
 yarn add @react-native-oh-tpl/react-native-tab-view@3.5.2-0.1.3
-yarn add @react-native-oh-tpl/react-native-gesture-handler@^2.14.1-2.14.15
-yarn add @react-native-oh-tpl/react-native-reanimated@^3.6.4-rc.1
+yarn add @react-native-oh-tpl/react-native-gesture-handler@2.14.1-2.14.15
+yarn add @react-native-oh-tpl/react-native-reanimated@3.6.4-rc.1
+yarn add @react-navigation/material-top-tabs@6.5.0
 
 
 # 0.77
 yarn add react-native-screens@3.29.0
-yarn add @react-navigation/drawer@^7.1.17
-yarn add @react-navigation/bottom-tabs@^7.1.0
+yarn add @react-navigation/drawer@7.1.17
+yarn add @react-navigation/bottom-tabs@7.1.0
 yarn add @react-navigation/stack@7.2.10
 yarn add @react-native-ohos/react-native-pager-view@6.7.2-rc.2
 yarn add @react-native-ohos/react-native-tab-view@4.0.11-rc.1
 yarn add @react-native-ohos/react-native-gesture-handler@2.23.2-rc.1
 yarn add @react-native-ohos/react-native-reanimated@3.18.1-rc.1
+yarn add @react-navigation/material-top-tabs@7.4.0
 ```
 
 下面的代码展示了这个库的基本使用场景：
@@ -329,7 +333,7 @@ Router 管理整个应用的页面导航和转场效果。
 | hideBackImage | 是否隐藏返回图片 | boolean | no | iOS/Android | yes |
 | initial | 是否作为初始场景 | boolean | no | iOS/Android | yes |
 | leftButtonImage | 左侧按钮图片 | Image | no | iOS/Android | yes |
-| modal | 是否以模态形式显示 | boolean | no | no | no |
+| modal | 是否以模态形式显示 | boolean | no | / | no |
 | navigationBarTitleImage | 导航栏标题图片 | Image | no | iOS/Android | yes |
 | navigationBarTitleImageStyle | 导航栏标题图片样式 | style | no | iOS/Android | yes |
 | navTransparent | 导航栏是否透明 | boolean | no | iOS/Android | yes |
@@ -416,7 +420,7 @@ Router 管理整个应用的页面导航和转场效果。
 | currentScene | 当前场景信息 | object | no | iOS/Android | yes |
 | jump | 跳转到指定场景 | function| no | iOS/Android | yes |
 | pop | 返回上一个场景 | function | no | iOS/Android | yes |
-| popAndPush | 返回并推入新场景 | function| no | no | no |
+| popAndPush | 返回并推入新场景 | function| no | / | no |
 | popTo | 返回到指定场景 | function| no | iOS/Android | yes |
 | push | 推入新场景 | function| no | iOS/Android | yes |
 | refresh | 刷新当前场景 | function| no | iOS/Android | yes |

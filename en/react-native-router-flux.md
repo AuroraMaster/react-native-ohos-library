@@ -31,24 +31,26 @@ npm install @react-native-ohos/react-native-router-flux
 
 # 0.72
 npm install react-native-screens@3.34.0
-npm install @react-navigation/drawer@^7.1.17
-npm install @react-navigation/bottom-tabs@^7.1.0
+npm install @react-navigation/drawer@7.1.17
+npm install @react-navigation/bottom-tabs@7.1.0
 npm install @react-navigation/stack@7.2.10
 
 npm install @react-native-oh-tpl/react-native-pager-view@6.2.3-0.2.8
 npm install @react-native-oh-tpl/react-native-tab-view@3.5.2-0.1.3
-npm install @react-native-oh-tpl/react-native-gesture-handler@^2.14.1-2.14.15
-npm install @react-native-oh-tpl/react-native-reanimated@^3.6.4-rc.1
+npm install @react-native-oh-tpl/react-native-gesture-handler@2.14.1-2.14.15
+npm install @react-native-oh-tpl/react-native-reanimated@3.6.4-rc.1
+npm install @react-navigation/material-top-tabs@6.5.0
 
 # 0.77
 npm install react-native-screens@3.29.0
-npm install @react-navigation/drawer@^7.1.17
-npm install @react-navigation/bottom-tabs@^7.1.0
+npm install @react-navigation/drawer@7.1.17
+npm install @react-navigation/bottom-tabs@7.1.0
 npm install @react-navigation/stack@7.2.10
 npm install @react-native-ohos/react-native-pager-view@6.7.2-rc.2
 npm install @react-native-ohos/react-native-tab-view@4.0.11-rc.1
 npm install @react-native-ohos/react-native-gesture-handler@2.23.2-rc.1
 npm install @react-native-ohos/react-native-reanimated@3.18.1-rc.1
+npm install @react-navigation/material-top-tabs@7.4.0
 ```
 
 #### **yarn**
@@ -58,23 +60,25 @@ yarn add @react-native-ohos/react-native-router-flux
 
 # 0.72
 yarn add react-native-screens@3.34.0
-yarn add @react-navigation/drawer@^7.1.17
-yarn add @react-navigation/bottom-tabs@^7.1.0
+yarn add @react-navigation/drawer@7.1.17
+yarn add @react-navigation/bottom-tabs@7.1.0
 yarn add @react-navigation/stack@7.2.10
 yarn add @react-native-oh-tpl/react-native-pager-view@6.2.3-0.2.8
 yarn add @react-native-oh-tpl/react-native-tab-view@3.5.2-0.1.3
-yarn add @react-native-oh-tpl/react-native-gesture-handler@^2.14.1-2.14.15
-yarn add @react-native-oh-tpl/react-native-reanimated@^3.6.4-rc.1
+yarn add @react-native-oh-tpl/react-native-gesture-handler@2.14.1-2.14.15
+yarn add @react-native-oh-tpl/react-native-reanimated@3.6.4-rc.1
+yarn add @react-navigation/material-top-tabs@6.5.0
 
 # 0.77
 yarn add react-native-screens@3.29.0
-yarn add @react-navigation/drawer@^7.1.17
-yarn add @react-navigation/bottom-tabs@^7.1.0
+yarn add @react-navigation/drawer@7.1.17
+yarn add @react-navigation/bottom-tabs@7.1.0
 yarn add @react-navigation/stack@7.2.10
 yarn add @react-native-ohos/react-native-pager-view@6.7.2-rc.2
 yarn add @react-native-ohos/react-native-tab-view@4.0.11-rc.1
 yarn add @react-native-ohos/react-native-gesture-handler@2.23.2-rc.1
 yarn add @react-native-ohos/react-native-reanimated@3.18.1-rc.1
+yarn add @react-navigation/material-top-tabs@7.4.0
 ```
 
 The following code shows the basic use scenario of the repository:
@@ -325,7 +329,7 @@ Defines the core interface for page route configuration.
 | hideBackImage | Whether to hide back image | boolean | no | iOS/Android | yes |
 | initial | Whether to use as initial scene | boolean | no | iOS/Android | yes |
 | leftButtonImage | Left button image | Image | no | iOS/Android | yes |
-| modal | Whether to display in modal form | boolean | no | no | no |
+| modal | Whether to display in modal form | boolean | no | / | no |
 | navigationBarTitleImage | Navigation bar title image | Image | no | iOS/Android | yes |
 | navigationBarTitleImageStyle | Navigation bar title image style | style | no | iOS/Android | yes |
 | navTransparent | Whether navigation bar is transparent | boolean | no | iOS/Android | yes |
@@ -411,7 +415,7 @@ Defines all methods for navigation operations.
 | currentScene | Current scene information | object | no | iOS/Android | yes |
 | jump | Jump to specified scene | function | no | iOS/Android | yes |
 | pop | Go back to previous scene | function | no | iOS/Android | yes |
-| popAndPush | Go back and push new scene | function | no | no | no |
+| popAndPush | Go back and push new scene | function | no | / | no |
 | popTo | Go back to specified scene | function | no | iOS/Android | yes |
 | push | Push new scene | function | no | iOS/Android | yes |
 | refresh | Refresh current scene | function| no | iOS/Android | yes |
