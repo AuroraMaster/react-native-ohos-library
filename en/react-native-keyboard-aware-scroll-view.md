@@ -3,20 +3,16 @@
 <p align="center">
   <h1 align="center"> <code>react-native-keyboard-aware-scroll-view</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/APSL/react-native-keyboard-aware-scroll-view">
-        <img src="https://img.shields.io/badge/platforms-ios%20|%20android%20|%20web%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/APSL/react-native-keyboard-aware-scroll-view/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
 
-> [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-keyboard-aware-scroll-view)
+Please visit the Release release address of the third-party library to view the corresponding version information:
+
+| Version                        | Package Name                             | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -----------
+| <= 0.9.5@deprecated | @react-native-oh-tpl/react-native-keyboard-aware-scroll-view  | [Github@deprecated](https://github.com/react-native-oh-library/react-native-keyboard-aware-scroll-view) | [Github Releases@deprecated](https://github.com/react-native-oh-library/react-native-keyboard-aware-scroll-view/releases) | 0.72       |
+| 0.9.5                        | @react-native-ohos/react-native-keyboard-aware-scroll-view | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-keyboard-aware-scroll-view) | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-keyboard-aware-scroll-view/releases) | 0.72       |
+| 0.10.0                        | @react-native-ohos/react-native-keyboard-aware-scroll-view | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-keyboard-aware-scroll-view) | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-keyboard-aware-scroll-view/releases) | 0.77       |
 
 ## Installation and Usage
-
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-keyboard-aware-scroll-view Releases](https://github.com/react-native-oh-library/react-native-keyboard-aware-scroll-view/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -27,13 +23,13 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-keyboard-aware-scroll-view
+npm install @react-native-ohos/react-native-keyboard-aware-scroll-view
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-keyboard-aware-scroll-view
+yarn add @react-native-ohos/react-native-keyboard-aware-scroll-view
 ```
 
 <!-- tabs:end -->
@@ -99,9 +95,9 @@ const styles = StyleSheet.create({
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
-
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-keyboard-aware-scroll-view Releases](https://github.com/react-native-oh-library/react-native-keyboard-aware-scroll-view/releases)
+This document is verified based on the following versions:
+1. RNOH：0.72.29; SDK：HarmonyOS NEXT Developer Beta6 SDK; IDE: DevEco Studio 5.0.3.706; ROM：3.0.0.65;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release; IDE: DevEco Studio 6.0.0.858; ROM：6.0.0.112;
 
 ## Properties
 

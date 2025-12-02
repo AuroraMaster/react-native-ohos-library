@@ -3,26 +3,14 @@
 <p align="center">
   <h1 align="center"> <code>react-native-largelist</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/bolan9999/react-native-largelist">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/bolan9999/react-native-largelist/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-        <!-- <img src="https://img.shields.io/badge/license-Apache-blue.svg" alt="License" /> -->
-    </a>
-</p>
-
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-largelist)
-
-## 安装与使用
-
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 3.1.0      | [@react-native-oh-tpl/react-native-largelist Releases](https://github.com/react-native-oh-library/react-native-largelist/releases) | 0.72       |
-| 3.1.1      | [@react-native-ohos/react-native-largelist Releases]()     | 0.77       |
+| Version                        | Package Name                             | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -----------
+| 3.1.1 | @react-native-oh-tpl/react-native-largelist  | [Github](https://github.com/react-native-oh-library/react-native-largelist) | [Github Releases](https://github.com/react-native-oh-library/react-native-largelist/releases) | 0.72  |
+| 3.2.0 | @react-native-ohos/react-native-largelist  | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-largelist) | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-largelist/releases) | 0.77  |
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -31,20 +19,18 @@
 #### **npm**
 
 ```bash
-# V3.1.0
+# 0.72
 npm install @react-native-oh-tpl/react-native-largelist
-
-# V3.1.1  
+# 0.77
 npm install @react-native-ohos/react-native-largelist
 ```
 
 #### **yarn**
 
 ```bash
-# V3.1.0
+# 0.72
 yarn add @react-native-oh-tpl/react-native-largelist
-
-# V3.1.1
+# 0.77
 yarn add @react-native-ohos/react-native-largelist
 ```
 <!-- tabs:end -->
@@ -157,14 +143,9 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
-
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 3.1.0      | [@react-native-oh-tpl/react-native-largelist Releases](https://github.com/react-native-oh-library/react-native-largelist/releases) | 0.72       |
-| 3.1.1        | [@react-native-ohos/react-native-largelist Releases]()     | 0.77       |
+本文档内容基于以下版本验证通过：
+1. RNOH：0.72.79; SDK：HarmonyOS 5.0.0 Release SDK; IDE: DevEco Studio 5.0.7.210; ROM：5.0.0.135;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release; IDE: DevEco Studio 6.0.0.858; ROM：6.0.0.112;
 
 ## 属性
 

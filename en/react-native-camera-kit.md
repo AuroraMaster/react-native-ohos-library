@@ -3,20 +3,6 @@
 <p align="center">
   <h1 align="center"> <code>react-native-camera-kit</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/teslamotors/react-native-camera-kit">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/teslamotors/react-native-camera-kit/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
-
-
-
-> [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-camera-kit)
-
-## Installation and Usage
 
 Please refer to the Releases page of the third-party library for the corresponding version information:
 
@@ -25,6 +11,8 @@ Please refer to the Releases page of the third-party library for the correspondi
 | 14.0.1@deprecated      | [@react-native-oh-tpl/react-native-camera-kit Releases(deprecated)](https://github.com/react-native-oh-library/react-native-camera-kit/releases) | 0.72       |
 | 14.0.2      | [@react-native-ohos/react-native-camera-kit Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-camera-kit/releases)                        | 0.72       |
 | 15.1.1     | [@react-native-ohos/react-native-camera-kit Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-camera-kit/releases)                        | 0.77       |
+
+## Installation and Usage
 
 For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
@@ -289,15 +277,9 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
-
-Please refer to the Releases page of the third-party library for the corresponding version information:
-
-| Third-party Library Version | Release Information                                                     | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 14.0.1@deprecated      | [@react-native-oh-tpl/react-native-camera-kit Releases(deprecated)](https://github.com/react-native-oh-library/react-native-camera-kit/releases) | 0.72       |
-| 14.0.2      | [@react-native-ohos/react-native-camera-kit Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-camera-kit/releases)                        | 0.72       |
-| 15.1.1     | [@react-native-ohos/react-native-camera-kit Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-camera-kit/releases)                        | 0.77       |
+This document is verified based on the following versions:
+1. RNOH：0.72.40; SDK：HarmonyOS NEXT Developer DB3; IDE: DevEco Studio: 5.0.5.220; ROM：NEXT.0.0.105;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release; IDE: DevEco Studio 6.0.0.858; ROM：6.0.0.112;
 
 ### Permission Requirements
 
@@ -379,8 +361,8 @@ Open `entry/src/main/resources/base/element/string.json` and add the following i
 | ------------------- | ------------------------------------------------------------ | --------------------- | -------- | -------- | ----------------- |
 | ref                 | Reference on the camera view                                 | Ref                   | no       | All      | yes               |
 | style               | Style to apply on the camera view                            | StyleProp\<ViewStyle> | no       | All      | yes               |
-| flashMode           | Camera flash mode. Default: `auto`                           | 'on'`/`'off'`/`'auto' | no       | All      | yes               |
-| focusMode           | Camera focus mode. Default: on                               | 'on'`/`'off'          | no       | All      | yes               |
+| flashMode           | Camera flash mode. Default: FlashMode.FLASH_MODE_CLOSE                           | FlashMode.FLASH_MODE_CLOSE / FlashMode.FLASH_MODE_OPEN / FlashMode.FLASH_MODE_AUTO / FlashMode.FLASH_MODE_ALWAYS_OPEN | no       | All      | yes               |
+| focusMode           | Camera focus mode. Default: FOCUS_MODE_AUTO                               | FOCUS_MODE_CONTINUOUS_AUTO / FOCUS_MODE_AUTO / FOCUS_MODE_LOCKED / FocusMode.FOCUS_MODE_MANUAL          | no       | All      | yes               |
 | zoomMode            | Enable the pinch to zoom gesture. Default: on                | 'on'`/`'off'          | no       | All      | yes               |
 | zoom                | Control the zoom. Default: 1.0                               | Number                | no       | All      | yes               |
 | maxZoom             | Maximum zoom allowed (but not beyond what camera allows). Default: undefined (camera default max) | Number                | no       | All      | yes               |
@@ -404,7 +386,7 @@ Open `entry/src/main/resources/base/element/string.json` and add the following i
 | ------------------- | ------------------------------------------------------------ | --------------------- | -------- | -------- | ----------------- |
 | ref                 | Reference on the camera view                                 | Ref                   | no       | All      | yes               |
 | style               | Style to apply on the camera view                            | StyleProp\<ViewStyle> | no       | All      | yes               |
-| flashMode           | Get secret value                                             | 'on'`/`'off'`/`'auto' | no       | All      | yes               |
+| flashMode           | Get secret value                                             | FlashMode.FLASH_MODE_CLOSE / FlashMode.FLASH_MODE_ALWAYS_OPEN | no       | All      | yes               |
 | zoomMode            | Enable the pinch to zoom gesture. Default: on                | 'on'`/`'off'          | no       | All      | yes               |
 | zoom                | Control the zoom. Default: 1.0                               | Number                | no       | All      | yes               |
 | maxZoom             | Maximum zoom allowed (but not beyond what camera allows). Default: undefined (camera default max) | Number                | no       | All      | yes               |

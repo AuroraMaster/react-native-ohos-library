@@ -3,16 +3,12 @@
 <p align="center">
   <h1 align="center"> <code>react-native-shimmer-placeholder</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/tomzaku/react-native-shimmer-placeholder">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/tomzaku/react-native-shimmer-placeholder/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
 
-> [!TIP] [GitHub address](https://github.com/tomzaku/react-native-shimmer-placeholder)
+Please visit the Release release address of the third-party library to view the corresponding version information:
+
+| Version   |  Support RN version  |
+| ---------- |  ---------- |
+| 2.0.9      |  0.72/0.77 |
 
 ## Installation and Usage
 
@@ -90,6 +86,7 @@ If it is not included, follow the guide provided in @react-native-oh-tpl/react-n
 This document is verified based on the following versions:
 
 1. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.25; IDE: DevEco Studio 5.0.3.400SP7; ROM: 3.0.0.25;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM：NEXT 5.1.0.150; 
 
 ## Properties
 

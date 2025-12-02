@@ -3,16 +3,12 @@
 <p align="center">
   <h1 align="center"> <code>react-native-shimmer-placeholder</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/tomzaku/react-native-shimmer-placeholder">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/tomzaku/react-native-shimmer-placeholder/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
 
-> [!TIP] [Github 地址](https://github.com/tomzaku/react-native-shimmer-placeholder)
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| Version   |  Support RN version  |
+| ---------- |  ----------  |
+| 2.0.9      |  0.72/0.77 |
 
 ## 安装与使用
 
@@ -90,6 +86,7 @@ export class ShimmerPlaceholderTest extends Component {
 本文档内容基于以下版本验证通过：
 
 1. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.25; IDE: DevEco Studio 5.0.3.400SP7; ROM: 3.0.0.25;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM：NEXT 5.1.0.150; 
 
 ## 属性
 
@@ -99,23 +96,23 @@ export class ShimmerPlaceholderTest extends Component {
 
 | Name                       | Description                                                                                            | Required | Type      | Platform | HarmonyOS Support |
 | -------------------------- | ------------------------------------------------------------------------------------------------------ | -------- | --------- | -------- | ----------------- |
-| **LinearGradient**         | Linear Gradient components ('react-native-linear-gradient' or 'expo-linear-gradient')                  | no       | Component | ALL      | yes               |
-| **visible**                | Visible child components                                                                               | no       | boolean   | ALL      | yes               |
-| **style**                  | Container Style                                                                                        | no       | Style     | ALL      | yes               |
-| **shimmerStyle**           | Shimmer Style only                                                                                     | no       | Style     | ALL      | yes               |
-| **contentStyle**           | Content Style when visible                                                                             | no       | Style     | ALL      | yes               |
-| **location**               | Locations of shimmer                                                                                   | no       | number[]  | ALL      | yes               |
-| **width**                  | Width of row                                                                                           | no       | number    | ALL      | yes               |
-| **duration**               | Duration of shimmer over a row                                                                         | no       | number    | ALL      | yes               |
-| **height**                 | Height of row                                                                                          | no       | number    | ALL      | yes               |
-| **shimmerWidthPercent**    | Percent of shimmer width                                                                               | no       | number    | ALL      | yes               |
-| **isReversed**             | Reverse direction of animation                                                                         | no       | boolean   | ALL      | yes               |
-| **stopAutoRun**            | Stop running shimmer animation at beginning                                                            | no       | boolean   | ALL      | yes               |
-| **isInteraction**          | Defines whether or not the shimmer animation creates an interaction handle on the `InteractionManager` | no       | boolean   | ALL      | yes               |
-| **shimmerColors**          | Colors of the shimmer.                                                                                 | no       | string[]  | ALL      | yes               |
-| **containerProps**         | Props passed to the outermost View                                                                     | no       | ViewProps | ALL      | yes               |
-| **shimmerContainerProps**  | Props passed to the View which contains the loading animation                                          | no       | ViewProps | ALL      | yes               |
-| **childrenContainerProps** | Props passed to the View which contains the children                                                   | no       | ViewProps | ALL      | yes               |
+| **LinearGradient**         | 线性渐变组件('react-native-linear-gradient' 或 'expo-linear-gradient')                                | no       | Component | ALL      | yes               |
+| **visible**                | 显示子组件                                                                                             | no       | boolean   | ALL      | yes               |
+| **style**                  | 容器样式                                                                                               | no       | Style     | ALL      | yes               |
+| **shimmerStyle**           | 闪烁效果样式                                                                                           | no       | Style     | ALL      | yes               |
+| **contentStyle**           | 可见时的内容样式                                                                                       | no       | Style     | ALL      | yes               |
+| **location**               | 闪烁位置                                                                                               | no       | number[]  | ALL      | yes               |
+| **width**                  | 行宽度                                                                                                 | no       | number    | ALL      | yes               |
+| **duration**               | 闪烁效果持续时间                                                                                       | no       | number    | ALL      | yes               |
+| **height**                 | 行高度                                                                                                 | no       | number    | ALL      | yes               |
+| **shimmerWidthPercent**    | 闪烁效果宽度百分比                                                                                     | no       | number    | ALL      | yes               |
+| **isReversed**             | 反向动画                                                                                               | no       | boolean   | ALL      | yes               |
+| **stopAutoRun**            | 在开始时停止闪烁动画                                                                                   | no       | boolean   | ALL      | yes               |
+| **isInteraction**          | 定义闪烁动画是否在 `InteractionManager` 上创建交互句柄                                                | no       | boolean   | ALL      | yes               |
+| **shimmerColors**          | 闪烁效果颜色                                                                                           | no       | string[]  | ALL      | yes               |
+| **containerProps**         | 传递给最外层View的属性                                                                                 | no       | ViewProps | ALL      | yes               |
+| **shimmerContainerProps**  | 传递给包含加载动画的View的属性                                                                         | no       | ViewProps | ALL      | yes               |
+| **childrenContainerProps** | 传递给包含子元素的View的属性                                                                           | no       | ViewProps | ALL      | yes               |
 
 ## 静态方法
 
@@ -125,7 +122,7 @@ export class ShimmerPlaceholderTest extends Component {
 
 | Method          | Description                 | Type     | **Required** | Platform | HarmonyOS Support |
 | --------------- | --------------------------- | -------- | ------------ | -------- | ----------------- |
-| **getAnimated** | get Animated of Placeholder | Animated | no           | ALL      | yes               |
+| **getAnimated** | 获取占位符的Animated对象 | Animated | no           | ALL      | yes               |
 
 ## 遗留问题
 

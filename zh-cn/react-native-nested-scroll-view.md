@@ -3,28 +3,14 @@
 <p align="center">
   <h1 align="center"> <code>react-native-nested-scroll-view</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/cesardeazevedo/react-native-nested-scroll-view">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/cesardeazevedo/react-native-nested-scroll-view/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-        <!-- <img src="https://img.shields.io/badge/license-Apache-blue.svg" alt="License" /> -->
-    </a>
-</p>
-
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-nested-scroll-view)
-
-## 安装与使用
-
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 9.0.0      | [@react-native-oh-tpl/react-native-nested-scroll-view Releases](https://github.com/react-native-oh-library/react-native-nested-scroll-view/releases) | 0.72       |
-| 9.0.1      | [@react-native-ohos/react-native-nested-scroll-view Releases]()     | 0.77       |
+| Version                        | Package Name                             | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -----------
+| 9.0.0 | @react-native-oh-tpl/react-native-nested-scroll-view  | [Github](https://github.com/react-native-oh-library/react-native-nested-scroll-view) | [Github Releases](https://github.com/react-native-oh-library/react-native-nested-scroll-view/releases) | 0.72  |
+| 9.1.0 | @react-native-ohos/react-native-nested-scroll-view  | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-nested-scroll-view) | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-nested-scroll-view/releases) | 0.77  |
 
-对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -33,20 +19,18 @@
 #### **npm**
 
 ```bash
-# 9.0.0
+# 0.72
 npm install @react-native-oh-tpl/react-native-nested-scroll-view
-
-# 9.0.1
+# 0.77
 npm install @react-native-ohos/react-native-nested-scroll-view
 ```
 
 #### **yarn**
 
 ```bash
-# 9.0.0
+# 0.72
 yarn add @react-native-oh-tpl/react-native-nested-scroll-view
-
-# 9.0.1
+# 0.77
 yarn add @react-native-ohos/react-native-nested-scroll-view
 ```
 
@@ -128,13 +112,9 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
-
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 9.0.0      | [@react-native-oh-tpl/react-native-nested-scroll-view Releases](https://github.com/react-native-oh-library/react-native-nested-scroll-view/releases) | 0.72       |
-| 9.0.1     | [@react-native-ohos/react-native-nested-scroll-view Releases]()     | 0.77       |
+本文档内容基于以下版本验证通过：
+1. RNOH：0.72.27; SDK：HarmonyOS NEXT Developer Canary3 SP2; IDE: DevEco Studio: 5.0.3.300; ROM：3.0.0.22(Canary3);
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release; IDE: DevEco Studio 6.0.0.858; ROM：6.0.0.112;
 
 
 ## 属性

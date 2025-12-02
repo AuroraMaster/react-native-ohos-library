@@ -3,20 +3,6 @@
 <p align="center">
   <h1 align="center"> <code>react-native-camera-kit</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/teslamotors/react-native-camera-kit">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/teslamotors/react-native-camera-kit/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
-
-
-
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-camera-kit)
-
-## 安装与使用
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
@@ -25,6 +11,8 @@
 | 14.0.1@deprecated      | [@react-native-oh-tpl/react-native-camera-kit Releases(deprecated)](https://github.com/react-native-oh-library/react-native-camera-kit/releases) | 0.72       |
 | 14.0.2      | [@react-native-ohos/react-native-camera-kit Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-camera-kit/releases)                        | 0.72       |
 | 15.1.1     | [@react-native-ohos/react-native-camera-kit Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-camera-kit/releases)                        | 0.77       |
+
+## 安装与使用
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -287,15 +275,9 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
-
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 14.0.1@deprecated      | [@react-native-oh-tpl/react-native-camera-kit Releases(deprecated)](https://github.com/react-native-oh-library/react-native-camera-kit/releases) | 0.72       |
-| 14.0.2      | [@react-native-ohos/react-native-camera-kit Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-camera-kit/releases)                        | 0.72       |
-| 15.1.1     | [@react-native-ohos/react-native-camera-kit Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-camera-kit/releases)                        | 0.77       |
+本文档内容基于以下版本验证通过：
+1. RNOH：0.72.40; SDK：HarmonyOS NEXT Developer DB3; IDE: DevEco Studio: 5.0.5.220; ROM：NEXT.0.0.105;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release; IDE: DevEco Studio 6.0.0.858; ROM：6.0.0.112;
 
 ### 权限要求
 
@@ -375,57 +357,57 @@ ohpm install
 
 | Name            | Description          | Type     | Required | Platform    | HarmonyOS Support |
 |-----------------|----------------------|----------|----------|-------------|-------------------|
-| ref | Reference on the camera view     | Ref | no       | All | yes               |
-| style | Style to apply on the camera view | StyleProp\<ViewStyle> | no       | All | yes               |
-| flashMode  | Camera flash mode. Default: `auto` | 'on'`/`'off'`/`'auto' | no       | All | yes               |
-| focusMode  | Camera focus mode. Default: on     | 'on'`/`'off' | no       | All | yes               |
-| zoomMode  | Enable the pinch to zoom gesture. Default: on     | 'on'`/`'off' | no       | All | yes               |
-| zoom  | Control the zoom. Default: 1.0     | Number | no       | All | yes               |
-| maxZoom  | Maximum zoom allowed (but not beyond what camera allows). Default: undefined (camera default max)     | Number | no       | All | yes               |
-| onZoom  | Callback when user makes a pinch gesture, regardless of what the zoom prop was set to. Returned event contains zoom. Ex: onZoom={(e) => console.log(e.nativeEvent.zoom)}.     | Function | no       | All | yes               |
-| torchMode  | Toggle flash light when camera is active. Default: off     | 'on'`/`'off' | no       | All | yes               |
-| cameraType  | Choose what camera to use. Default: `CameraType. | 'front'/'back' | no       | All | yes               |
-| onOrientationChange  | Callback when physical device orientation changes. Returned event contains orientation. Ex: onOrientationChange={(event) => console.log(event.nativeEvent.orientation)}. Use import { Orientation } from 'react-native-camera-kit'; if (event.nativeEvent.orientation === Orientation.PORTRAIT) { ... } to understand the new value     | Function | no       | iOS | yes               |
-| onError  | Android only. Callback when camera fails to initialize. Ex: onError={(e) => console.log(e.nativeEvent.errorMessage)}.     | Function | no       | Android | yes               |
-| shutterPhotoSound  |Android only. Enable or disable the shutter sound when capturing a photo. Default: `true`     | Boolean | no       | Android | yes   
-| ratioOverlay  | Show a guiding overlay in the camera preview for the selected ratio. Does not crop image as of v9.0. Example: '16:9'     | String | no       | iOS | yes               |
-| ratioOverlayColor  | Any color with alpha. Default: '#ffffff77'     | String | no       | All | yes               |
-| resetFocusTimeout  | Dismiss tap to focus after this many milliseconds. Default 0 (disabled). Example: 5000 is 5 seconds.     | Number | no       | All | yes               |
-| resetFocusWhenMotionDetected	  | Dismiss tap to focus when focus area content changes. Native iOS feature, see documentation: https://developer.apple.com/documentation/avfoundation/avcapturedevice/1624644-subjectareachangemonitoringenabl?language=objc). Default true.     | Boolean | no       | iOS | no             |
-| resizeMode  | Determines the scaling and cropping behavior of content within the view. cover (resizeAspectFill on iOS) scales the content to fill the view completely, potentially cropping content if its aspect ratio differs from the view. contain (resizeAspect on iOS) scales the content to fit within the view's bounds without cropping, ensuring all content is visible but may introduce letterboxing. Default behavior depends on the specific use case.     | 'cover' / 'contain' | no       | iOS | no             |
-| onCaptureButtonPressIn  | Callback when iPhone capture button is pressed in. Ex: onCaptureButtonPressIn={() => console.log("volume button pressed in")}    | Function | no       | iOS | yes          |
-| onCaptureButtonPressOut  | Callback when iPhone capture button is released. Ex: onCaptureButtonPressOut={() => console.log("volume button released")}     | Function | no       | iOS | no             |
+| ref | 相机视图的引用     | Ref | no       | All | yes               |
+| style | 应用在相机视图上的样式 | StyleProp\<ViewStyle> | no       | All | yes               |
+| flashMode  | 相机闪光灯模式。默认值：FlashMode.FLASH_MODE_CLOSE | FlashMode.FLASH_MODE_CLOSE / FlashMode.FLASH_MODE_OPEN / FlashMode.FLASH_MODE_AUTO / FlashMode.FLASH_MODE_ALWAYS_OPEN | no       | All | yes               |
+| focusMode  | 相机对焦模式。默认值：FOCUS_MODE_AUTO     | FOCUS_MODE_CONTINUOUS_AUTO / FOCUS_MODE_AUTO / FOCUS_MODE_LOCKED / FocusMode.FOCUS_MODE_MANUAL | no       | All | yes               |
+| zoomMode  | 启用双指缩放手势。默认值：开启     | 'on'`/`'off' | no       | All | yes               |
+| zoom  | 控制缩放。默认值：1.0     | Number | no       | All | yes               |
+| maxZoom  | 允许的最大缩放倍数（但不超过相机允许的最大值）。默认值：undefined（相机默认最大值）     | Number | no       | All | yes               |
+| onZoom  | 用户做出捏合手势时的回调，无论zoom属性被设置为什么值。返回的事件包含zoom。例如：onZoom={(e) => console.log(e.nativeEvent.zoom)}。     | Function | no       | All | yes               |
+| torchMode  | 相机激活时切换闪光灯。默认值：关闭     | 'on'`/`'off' | no       | All | yes               |
+| cameraType  | 选择使用的相机。默认值：`CameraType. | 'front'/'back' | no       | All | yes               |
+| onOrientationChange  | 物理设备方向改变时的回调。返回的事件包含orientation。例如：onOrientationChange={(event) => console.log(event.nativeEvent.orientation)}。使用import { Orientation } from 'react-native-camera-kit'; if (event.nativeEvent.orientation === Orientation.PORTRAIT) { ... }来理解新值     | Function | no       | iOS | yes               |
+| onError  | 仅Android。相机初始化失败时的回调。例如：onError={(e) => console.log(e.nativeEvent.errorMessage)}。     | Function | no       | Android | yes               |
+| shutterPhotoSound  |仅Android。启用或禁用拍照时的快门声音。默认值：`true`     | Boolean | no       | Android | yes   
+| ratioOverlay  | 在相机预览中显示选定比例的引导覆盖层。不会裁剪图像（截至v9.0）。例如：'16:9'     | String | no       | iOS | yes               |
+| ratioOverlayColor  | 任何带透明度的颜色。默认值：'#ffffff77'     | String | no       | All | yes               |
+| resetFocusTimeout  | 在这么多毫秒后取消点击对焦。默认值0（禁用）。例如：5000是5秒。     | Number | no       | All | yes               |
+| resetFocusWhenMotionDetected	  | 当对焦区域内容发生变化时取消点击对焦。原生iOS功能，参见文档：https://developer.apple.com/documentation/avfoundation/avcapturedevice/1624644-subjectareachangemonitoringenabl?language=objc)。默认值true。     | Boolean | no       | iOS | no             |
+| resizeMode  | 确定视图内内容的缩放和裁剪行为。cover（在iOS上为resizeAspectFill）将内容缩放到完全填充视图，如果其宽高比与视图不同，则可能裁剪内容。contain（在iOS上为resizeAspect）将内容缩放到视图边界内而不裁剪，确保所有内容可见但可能引入黑边。默认行为取决于具体使用情况。     | 'cover' / 'contain' | no       | iOS | no             |
+| onCaptureButtonPressIn  | iPhone拍摄按钮按下时的回调。例如：onCaptureButtonPressIn={() => console.log("volume button pressed in")}    | Function | no       | iOS | yes          |
+| onCaptureButtonPressOut  | iPhone拍摄按钮释放时的回调。例如：onCaptureButtonPressOut={() => console.log("volume button released")}     | Function | no       | iOS | no             |
 
 **ScanCode**：扫码组件
 
 | Name            | Description          | Type     | Required | Platform    | HarmonyOS Support |
 |-----------------|----------------------|----------|----------|-------------|-------------------|
-| ref | Reference on the camera view     | Ref | no       | All      | yes               |
-| style | Style to apply on the camera view | StyleProp\<ViewStyle> | no       | All | yes               |
-| flashMode  | Get secret value     | 'on'`/`'off'`/`'auto' | no       | All | yes          |
-| zoomMode  | Enable the pinch to zoom gesture. Default: on     | 'on'`/`'off' | no       | All | yes               |
-| zoom  | Control the zoom. Default: 1.0     | Number | no       | All | yes               |
-| maxZoom  | Maximum zoom allowed (but not beyond what camera allows). Default: undefined (camera default max)     | Number | no       | All | yes               |
-| onZoom  | Callback when user makes a pinch gesture, regardless of what the zoom prop was set to. Returned event contains zoom. Ex: onZoom={(e) => console.log(e.nativeEvent.zoom)}.     | Function | no       | All | yes               |
-| torchMode  | Toggle flash light when camera is active. Default: off     | 'on'`/`'off' | no       | All | yes               |
-| cameraType                   | Choose what camera to use. Default: `CameraType.             | 'front'/'back'        | no       | All | no                |
-| onOrientationChange  | Callback when physical device orientation changes. Returned event contains orientation. Ex: onOrientationChange={(event) => console.log(event.nativeEvent.orientation)}. Use import { Orientation } from 'react-native-camera-kit'; if (event.nativeEvent.orientation === Orientation.PORTRAIT) { ... } to understand the new value     | Function | no       | iOS | no             |
-| onError  | Android only. Callback when camera fails to initialize. Ex: onError={(e) => console.log(e.nativeEvent.errorMessage)}.     | Function | no       | Android | yes               |
-| resetFocusTimeout  | Dismiss tap to focus after this many milliseconds. Default 0 (disabled). Example: 5000 is 5 seconds.     | Number | no       | All | yes               |
-| scanThrottleDelay  | Duration between scan detection in milliseconds. Default 2000 (2s) if you need to dynamically set this value, you need to add the key parameter to force refresh this component     | Number | no       | All | yes              |
-| scanBarcode  | Enable barcode scanner. Default: `false`     | boolean | no       | All | yes               |
-| showFrame  | Show frame in barcode scanner. Default: `false`     | boolean | no       | All | yes               |
-| laserColor  | Color of barcode scanner laser visualization. Default: `red`     | string | no       | All | yes               |
-| frameColor  | Color of barcode scanner frame visualization. Default: `yellow`     | string | no       | All | yes               |
-| onReadCode  | Callback when scanner successfully reads barcode. Returned event contains `codeStringValue`. Default: `null`. Ex: `onReadCode={(event) => console.log(event.nativeEvent.codeStringValue)}     | Function | no       | All | yes               |
+| ref | 相机视图的引用     | Ref | no       | All      | yes               |
+| style | 应用在相机视图上的样式 | StyleProp\<ViewStyle> | no       | All | yes               |
+| flashMode  | 获取秘密值     | FlashMode.FLASH_MODE_CLOSE / FlashMode.FLASH_MODE_ALWAYS_OPEN | no       | All | yes          |
+| zoomMode  | 启用双指缩放手势。默认值：开启     | 'on'`/`'off' | no       | All | yes               |
+| zoom  | 控制缩放。默认值：1.0     | Number | no       | All | yes               |
+| maxZoom  | 允许的最大缩放倍数（但不超过相机允许的最大值）。默认值：undefined（相机默认最大值）     | Number | no       | All | yes               |
+| onZoom  | 用户做出捏合手势时的回调，无论zoom属性被设置为什么值。返回的事件包含zoom。例如：onZoom={(e) => console.log(e.nativeEvent.zoom)}。     | Function | no       | All | yes               |
+| torchMode  | 相机激活时切换闪光灯。默认值：关闭     | 'on'`/`'off' | no       | All | yes               |
+| cameraType                   | 选择使用的相机。默认值：`CameraType.             | 'front'/'back'        | no       | All | no                |
+| onOrientationChange  | 物理设备方向改变时的回调。返回的事件包含orientation。例如：onOrientationChange={(event) => console.log(event.nativeEvent.orientation)}。使用import { Orientation } from 'react-native-camera-kit'; if (event.nativeEvent.orientation === Orientation.PORTRAIT) { ... }来理解新值     | Function | no       | iOS | no             |
+| onError  | 仅Android。相机初始化失败时的回调。例如：onError={(e) => console.log(e.nativeEvent.errorMessage)}。     | Function | no       | Android | yes               |
+| resetFocusTimeout  | 在这么多毫秒后取消点击对焦。默认值0（禁用）。例如：5000是5秒。     | Number | no       | All | yes               |
+| scanThrottleDelay  | 扫描检测之间的时间间隔（毫秒）。默认值2000（2秒），如果需要动态设置此值，需要添加key参数来强制刷新此组件     | Number | no       | All | yes              |
+| scanBarcode  | 启用条形码扫描器。默认值：`false`     | boolean | no       | All | yes               |
+| showFrame  | 在条形码扫描器中显示框架。默认值：`false`     | boolean | no       | All | yes               |
+| laserColor  | 条形码扫描器激光可视化的颜色。默认值：`red`     | string | no       | All | yes               |
+| frameColor  | 条形码扫描器框架可视化的颜色。默认值：`yellow`     | string | no       | All | yes               |
+| onReadCode  | 扫描器成功读取条形码时的回调。返回的事件包含`codeStringValue`。默认值：`null`。例如：`onReadCode={(event) => console.log(event.nativeEvent.codeStringValue)}     | Function | no       | All | yes               |
 
 ## 静态方法
 
 | Name  | Description         | Type       | Required | Platform | HarmonyOS Support |
 | ----- | ------------------- | ---------- | -------- | -------- | ----------------- |
-| capture  | Capture image as JPEG.  | Promise<CaptureData> | No       | All      | Yes               |
-| requestDeviceCameraAuthorization  | `AVAuthorizationStatusAuthorized` returns `true` otherwise, returns `false` | Promise<boolean> | No       | All      | Yes               |
-| checkDeviceCameraAuthorizationStatus  | `AVAuthorizationStatusAuthorized` returns `true` otherwise, returns `false` | Promise<boolean> | All      | Yes               |Yes|
+| capture  | 以JPEG格式捕获图像。  | Promise<CaptureData> | No       | All      | Yes               |
+| requestDeviceCameraAuthorization  | `AVAuthorizationStatusAuthorized`返回`true`，否则返回`false` | Promise<boolean> | No       | All      | Yes               |
+| checkDeviceCameraAuthorizationStatus  | `AVAuthorizationStatusAuthorized`返回`true`，否则返回`false` | Promise<boolean> | All      | Yes               |Yes|
 
 
 ## 遗留问题
