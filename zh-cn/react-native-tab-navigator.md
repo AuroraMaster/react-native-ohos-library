@@ -3,27 +3,16 @@
 <p align="center">
   <h1 align="center"> <code>react-native-tab-navigator</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/ptomasroos/react-native-tab-navigator">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/ptomasroos/react-native-tab-navigator/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-        <!-- <img src="https://img.shields.io/badge/license-Apache-blue.svg" alt="License" /> -->
-    </a>
-</p>
-
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-tab-navigator)
-
-## 安装与使用
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 0.3.4      | [@react-native-oh-tpl/react-native-tab-navigator Releases](https://github.com/react-native-oh-library/react-native-tab-navigator/releases) | 0.72       |
-| 0.4.0      | [@react-native-ohos/react-native-file-viewer Releases]()     | 0.77       |
+| Version                        | Package Name                             | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -----------
+| <=0.3.4@deprecated | @react-native-oh-tpl/react-native-tab-navigator  | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-tab-navigator) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-tab-navigator/releases) | 0.72  |
+| 0.3.4 | @react-native-ohos/react-native-tab-navigator  | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-tab-navigator) | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-tab-navigator/releases) | 0.72  |
+| 0.4.0 | @react-native-ohos/react-native-tab-navigator  | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-tab-navigator) | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-tab-navigator/releases) | 0.77  |
 
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -32,20 +21,12 @@
 #### **npm**
 
 ```bash
-# V0.3.4
-npm install @react-native-oh-tpl/react-native-tab-navigator
-
-# V0.3.5
 npm install @react-native-ohos/react-native-tab-navigator
 ```
 
 #### **yarn**
 
 ```bash
-# V0.3.4
-yarn add @react-native-oh-tpl/react-native-tab-navigator
-
-# V0.3.5
 yarn add @react-native-ohos/react-native-tab-navigator
 ```
 
@@ -130,14 +111,9 @@ export default App;
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
-
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 0.3.4      | [@react-native-oh-tpl/react-native-tab-navigator Releases](https://github.com/react-native-oh-library/react-native-tab-navigator/releases) | 0.72       |
-| 0.3.5      | [@react-native-ohos/react-native-file-viewer Releases]()     | 0.77       |
+本文档内容基于以下版本验证通过：
+1. RNOH：0.72.26; SDK：HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio: 5.0.3.300SP2; ROM：3.0.0.25;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release; IDE: DevEco Studio 6.0.0.858; ROM：6.0.0.112;
 
 ## 属性
 
@@ -149,29 +125,29 @@ export default App;
 
 | Name              | Description                     | Type           | Required | Platform    | HarmonyOS Support |
 | ----------------- | ------------------------------- | -------------- | -------- | ----------- | ----------------- |
-| sceneStyle        | define for rendered scene       | object (style) | No       | iOS/Android | Yes               |
-| tabBarStyle       | define style for TabBar         | object (style) | No       | iOS/Android | Yes               |
-| tabBarShadowStyle | define shadow style for tabBar  | object (style) | No       | iOS/Android | Yes               |
-| hidesTabTouch     | disable onPress opacity for Tab | boolean        | No       | iOS/Android | Yes               |
+| sceneStyle        | 定义渲染场景的样式       | object (style) | No       | iOS/Android | Yes               |
+| tabBarStyle       | 定义TabBar的样式         | object (style) | No       | iOS/Android | Yes               |
+| tabBarShadowStyle | 定义tabBar的阴影样式  | object (style) | No       | iOS/Android | Yes               |
+| hidesTabTouch     | 禁用Tab的onPress透明度 | boolean        | No       | iOS/Android | Yes               |
 
 ### TabNavigator.Item props
 
 | Name               | Description                                        | Type             | Required | Platform    | HarmonyOS Support |
 | ------------------ | -------------------------------------------------- | ---------------- | -------- | ----------- | ----------------- |
-| renderIcon         | returns Item icon                                  | function         | No       | iOS/Android | Yes               |
-| renderSelectedIcon | returns selected Item icon                         | function         | No       | iOS/Android | Yes               |
-| badgeText          | text for Item badge                                | string or number | No       | iOS/Android | Yes               |
-| renderBadge        | returns Item badge                                 | function         | No       | iOS/Android | Yes               |
-| title              | Item title                                         | string           | No       | iOS/Android | Yes               |
-| titleStyle         | styling for Item title                             | style            | No       | iOS/Android | Yes               |
-| selectedTitleStyle | styling for selected Item title                    | style            | No       | iOS/Android | Yes               |
-| tabStyle           | styling for tab                                    | style            | No       | iOS/Android | Yes               |
-| selected           | return whether the item is selected                | boolean          | No       | iOS/Android | Yes               |
-| onPress            | onPress method for Item                            | function         | No       | iOS/Android | Yes               |
-| allowFontScaling   | allow font scaling for title                       | boolean          | No       | iOS/Android | Yes               |
-| accessible         | indicates if this item is an accessibility element | boolean          | No       | iOS/Android | Yes               |
-| accessibilityLabel | override text for screen readers                   | string           | No       | iOS/Android | Yes               |
-| testID             | used to locate this item in end-to-end-tests       | string           | No       | iOS/Android | Yes               |
+| renderIcon         | 返回Item图标                                  | function         | No       | iOS/Android | Yes               |
+| renderSelectedIcon | 返回选中的Item图标                         | function         | No       | iOS/Android | Yes               |
+| badgeText          | Item徽章的文本                                | string or number | No       | iOS/Android | Yes               |
+| renderBadge        | 返回Item徽章                                 | function         | No       | iOS/Android | Yes               |
+| title              | Item标题                                         | string           | No       | iOS/Android | Yes               |
+| titleStyle         | Item标题的样式                             | style            | No       | iOS/Android | Yes               |
+| selectedTitleStyle | 选中Item标题的样式                    | style            | No       | iOS/Android | Yes               |
+| tabStyle           | tab的样式                                    | style            | No       | iOS/Android | Yes               |
+| selected           | 返回item是否被选中                | boolean          | No       | iOS/Android | Yes               |
+| onPress            | Item的onPress方法                            | function         | No       | iOS/Android | Yes               |
+| allowFontScaling   | 允许标题字体缩放                       | boolean          | No       | iOS/Android | Yes               |
+| accessible         | 指示此item是否为辅助功能元素 | boolean          | No       | iOS/Android | Yes               |
+| accessibilityLabel | 覆盖屏幕阅读器的文本                   | string           | No       | iOS/Android | Yes               |
+| testID             | 用于在端到端测试中定位此item       | string           | No       | iOS/Android | Yes               |
 
 ## 遗留问题
 

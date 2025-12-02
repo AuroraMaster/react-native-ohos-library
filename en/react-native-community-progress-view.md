@@ -6,12 +6,14 @@
 
 This project is based on [react-native-community/progress-view@1.4.2](https://github.com/react-native-progress-view/progress-view).
 
-This third-party library has been migrated to Gitee and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-progress-view`, The version correspondence details are as follows:
+Please visit the Release release address of the third-party library to view the corresponding version information:
 
-| Version                        | Package Name                             | Repository                                                   | Release                                                      |
-| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <= 1.4.2@deprecated | @react-native-oh-tpl/progress-view  | [Github(deprecated)](https://github.com/react-native-oh-library/progress-view) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/progress-view/releases) |
-| > 1.4.2                        | @react-native-ohos/progress-view | [Gitee](https://gitee.com/openharmony-sig/rntpc_progress-view) | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_progress-view/releases) |
+| Version                        | Package Name                             | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -----------
+| <= 1.4.2@deprecated | @react-native-oh-tpl/progress-view  | [Github(deprecated)](https://github.com/react-native-oh-library/progress-view) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/progress-view/releases) | 0.72       |
+| 1.4.3                        | @react-native-ohos/progress-view | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_progress-view) | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_progress-view/releases) | 0.72       |
+| 1.5.0                        | @react-native-ohos/progress-view | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_progress-view) | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_progress-view/releases) | 0.77       |
+
 
 
 ## Installation and Usage
@@ -222,9 +224,10 @@ Then build and run the code.
 
 ### 3.1 Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+This document is verified based on the following versions:
+1. RNOH：0.72.38; SDK：HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.1.1.830; ROM：5.0.0.110;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release; IDE: DevEco Studio 6.0.0.858; ROM：6.0.0.112;
 
-Check the release version information in the release address of the third-party library: [@react-native-ohos/react-native-progress-view Releases](https://gitee.com/openharmony-sig/rntpc_progress-view/releases)
 
 ## 4. Properties
 
@@ -244,7 +247,7 @@ Check the release version information in the release address of the third-party 
 
 ## 5. Known Issues
 
-- [ ] 原库部分接口在 HarmonyOS 中没有对应属性及接口处理相关逻辑，问题: [issue#1](https://github.com/react-native-oh-library/progress-view/issues/5)
+- [ ] Some interfaces in the original library do not have corresponding properties and interface processing logic in HarmonyOS. Problem: [issue#1](https://github.com/react-native-oh-library/progress-view/issues/5)
 
 ## 6. Others
 

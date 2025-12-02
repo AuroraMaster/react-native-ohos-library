@@ -7,12 +7,13 @@
 
 本项目基于 [react-native-community/progress-view@1.4.2](https://github.com/react-native-progress-view/progress-view) 开发。
 
-该第三方库的仓库已迁移至 Gitee，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-progress-view`，具体版本所属关系如下：
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| Version                        | Package Name                             | Repository                                                   | Release                                                      |
-| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <= 1.4.2@deprecated | @react-native-oh-tpl/progress-view  | [Github(deprecated)](https://github.com/react-native-oh-library/progress-view) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/progress-view/releases) |
-| > 1.4.2                        | @react-native-ohos/progress-view | [Gitee](https://gitee.com/openharmony-sig/rntpc_progress-view) | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_progress-view/releases) |
+| Version                        | Package Name                             | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -----------
+| <= 1.4.2@deprecated | @react-native-oh-tpl/progress-view  | [Github(deprecated)](https://github.com/react-native-oh-library/progress-view) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/progress-view/releases) | 0.72       |
+| 1.4.3                        | @react-native-ohos/progress-view | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_progress-view) | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_progress-view/releases) | 0.72       |
+| 1.5.0                        | @react-native-ohos/progress-view | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_progress-view) | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_progress-view/releases) | 0.77       |
 
 ## 安装与使用
 
@@ -223,9 +224,9 @@ ohpm install
 
 ### 3.1 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
-
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/react-native-progress-view Releases](https://gitee.com/openharmony-sig/rntpc_progress-view/releases)
+本文档内容基于以下版本验证通过：
+1. RNOH：0.72.38; SDK：HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.1.1.830; ROM：5.0.0.110;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release; IDE: DevEco Studio 6.0.0.858; ROM：6.0.0.112;
 
 ## 4. 属性
 
@@ -235,13 +236,13 @@ ohpm install
 
 | Name                | Description                                | Type   | Required | Platform | HarmonyOS Support |
 | ------------------- | ------------------------------------------ | ------ | -------- | -------- | ----------------- |
-| `progress`          | The progress value (between 0 and 1).      | number | No       | All      | Yes               |
-| `progressTintColor` | The tint color of the progress bar itself. | string | No       | All      | Yes               |
-| `trackTintColor`    | The tint color of the progress bar track.  | string | No       | All      | Yes               |
-| `progressImage`     | A stretchable image to display as the progress bar.      | Image.propTypes.source | No       | All      | No               |
-| `trackImage` | A stretchable image to display behind the progress bar. Network images only work on Windows.| Image.propTypes.source | No       | All      | No               |
-| `progressViewStyle`    | The progress bar style. Network images only work on Windows.  | enum('default', 'bar') | No       | All      | No               |
-| `isIndeterminate`    | Turns progress bar into an indeterminate progress bar.  | bool | No       | Windows      | Partially               |
+| `progress`          | 进度值（在0和1之间）。      | number | No       | All      | Yes               |
+| `progressTintColor` | 进度条本身的着色。 | string | No       | All      | Yes               |
+| `trackTintColor`    | 进度条轨道的着色。  | string | No       | All      | Yes               |
+| `progressImage`     | 作为进度条显示的可拉伸图像。      | Image.propTypes.source | No       | All      | No               |
+| `trackImage` | 显示在进度条后面的可拉伸图像。仅网络图像在Windows上有效。| Image.propTypes.source | No       | All      | No               |
+| `progressViewStyle`    | 进度条样式。仅网络图像在Windows上有效。  | enum('default', 'bar') | No       | All      | No               |
+| `isIndeterminate`    | 将进度条转换为不定期进度条。  | bool | No       | Windows      | Partially               |
 
 ## 5. 遗留问题
 
