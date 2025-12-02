@@ -16,9 +16,14 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-reanimated-bottom-sheet)
 
-## Installation and Usage
+The repository of this third-party library Github and supports direct download from npm. The new package name is: @react-native-ohos/reanimated-bottom-sheet. The specific version ownership relationship is as follows:
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-library/react-native-reanimated-bottom-sheet Releases](https://github.com/react-native-oh-library/react-native-reanimated-bottom-sheet/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+| Version      | Package Name      | Repository | Release | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |  ---------- |  ---------- |
+| 1.0.0 | @react-native-oh-tpl/reanimated-bottom-sheet | [Github](https://github.com/react-native-oh-library/react-native-reanimated-bottom-sheet)|[Github Releases](https://github.com/react-native-oh-library/react-native-reanimated-bottom-sheet/releases)|0.72       |
+| 1.1.0 | @react-native-ohos/reanimated-bottom-sheet         | [Github](https://github.com/react-native-oh-library/react-native-reanimated-bottom-sheet/tree/br_rnoh0.77) |[Github Releases]() | 0.77       |
+
+## Installation and Usage
 
 Go to the project directory and execute the following instruction:
 
@@ -27,13 +32,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/reanimated-bottom-sheet
+
+# 0.77
+npm install @react-native-ohos/reanimated-bottom-sheet
 ```
 
 #### **yarn**
 
 ```bash
-yarn add  @react-native-oh-tpl/reanimated-bottom-sheet
+# 0.72
+yarn add @react-native-oh-tpl/reanimated-bottom-sheet
+
+# 0.77
+yarn add @react-native-ohos/reanimated-bottom-sheet
 ```
 
 <!-- tabs:end -->
@@ -112,21 +125,28 @@ export default function () {
 
 This repository depends on the following libraries, please refer to the corresponding documentation:
 
+RN 0.72
 - [@react-native-oh-tpl/react-native-gesture-handler](/en/react-native-gesture-handler.md)
 - [@react-native-oh-tpl/react-native-reanimated](/en/react-native-reanimated.md)
 - [@react-native-oh-tpl/bottom-sheet](/en/gorhom-bottom-sheet.md)
 
-The HarmonyOS implementation of this library depends on the native code from @react-native-oh-tpl/react-native-reanimated、@react-native-oh-tpl/react-native-gesture-handler. If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly.
+RN 0.77
+- [@react-native-ohos/react-native-gesture-handler](/en/react-native-gesture-handler.md)
+- [@react-native-ohos/react-native-reanimated](/en/react-native-reanimated.md)
+- [@react-native-ohos/bottom-sheet](/en/gorhom-bottom-sheet.md)
 
-If it is not included, follow the guide provided in [@react-native-oh-tpl/react-native-reanimated](/en/react-native-reanimated.md)、[@react-native-oh-tpl/react-native-gesture-handler](/en/react-native-gesture-handler.md) to add it to your project.
+The HarmonyOS implementation of this library depends on the native code from react-native-reanimated、react-native-gesture-handler. If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly.
+
+If it is not included, follow the guide provided in [react-native-reanimated](/en/react-native-reanimated.md)、[react-native-gesture-handler](/en/react-native-gesture-handler.md) to add it to your project.
 
 ## Constraints
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+This document is verified based on the following versions:
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-library/react-native-reanimated-bottom-sheet Releases](https://github.com/react-native-oh-library/react-native-reanimated-bottom-sheet/releases)
+1、RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.1.1.830; ROM: 6.0.0.112 SP12;  
+2、RNOH: 0.77.18; SDK: HarmonyOS-5.1.1.208(API19); IDE: DevEco Studio 5.1.1.830; ROM: 6.0.0.112 SP12; 
 
 ## Properties
 
