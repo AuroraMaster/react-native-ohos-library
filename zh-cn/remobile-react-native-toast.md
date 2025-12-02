@@ -1,33 +1,23 @@
 <!--{%raw%}-->
-> 模板版本：v0.2.2
+> 模板版本：v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>@remobile/react-native-toast</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/remobile/react-native-toast">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/remobile/react-native-toast/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-        <!-- <img src="https://img.shields.io/badge/license-Apache-blue.svg" alt="License" /> -->
-    </a>
-</p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-toast)
+本项目基于 [react-native-toast@1.0.7](https://github.com/remobile/react-native-toast) 开发。
 
-## 安装与使用
+请到三方库的 Releases发布地址查看配套的版本信息：
 
-请到三方库的 Releases
-发布地址查看配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 1.0.7@deprecated      | [@react-native-oh-tpl/react-native-toast Releases(deprecated)](https://github.com/react-native-oh-library/react-native-toast/releases) | 0.72       |
-| 1.0.8      | [@react-native-ohos/react-native-toast Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-toast/releases)    | 0.72       |
-| 1.1.0      | [@react-native-ohos/react-native-toast Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-toast/releases)    | 0.77       |
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+|1.0.7@deprecated  | @react-native-oh-tpl/react-native-toast | [Github](https://github.com/react-native-oh-library/react-native-toast) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-toast/releases) | 0.72 |
+|  1.0.8           | @react-native-ohos/react-native-toast   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-toast) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-toast/releases) | 0.72 |
+|  1.1.0           | @react-native-ohos/react-native-toast   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-toast) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-toast/releases) | 0.77 |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -263,16 +253,10 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下环境验证通过：
 
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 1.0.7@deprecated      | [@react-native-oh-tpl/react-native-toast Releases(deprecated)](https://github.com/react-native-oh-library/react-native-toast/releases) | 0.72       |
-| 1.0.8      | [@react-native-ohos/react-native-toast Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-toast/releases)    | 0.72       |
-| 1.1.0      | [@react-native-ohos/react-native-toast Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-toast/releases)    | 0.77       |
-
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## API
 
@@ -282,14 +266,14 @@ ohpm install
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- |---------| -------- | ------------------ |
-| show()  | Displays the location of the toast, its duration, the content of the message | function  | no     | android      | yes |
-| showShortTop()  | Display the top Toast for a short time | function  | no     | android      | yes |
-| showShortCenter()  | Display the center Toast for a short time | function  | no     | android      | yes |
-| showShortBottom()  | Display the bottom Toast for a short time | function  | no     | android      | yes |
-| showLongTop()  | Display the top Toast for a long time | function  | no     | android      | yes |
-| showLongCenter()  | Display the center Toast for a long time | function  | no     | android      | yes |
-| showLongBottom()  | Display the bottom Toast for a long time | function  | no     | android      | yes |
-| hide()  | Hide the toast that is being displayed         | function  | no      | android      | no |
+| show()  | 显示Toast的位置、持续时间和消息内容 | function  | no     | android      | yes |
+| showShortTop()  | 短时间显示顶部Toast | function  | no     | android      | yes |
+| showShortCenter()  | 短时间显示居中Toast | function  | no     | android      | yes |
+| showShortBottom()  | 短时间显示底部Toast | function  | no     | android      | yes |
+| showLongTop()  | 长时间显示顶部Toast | function  | no     | android      | yes |
+| showLongCenter()  | 长时间显示居中Toast | function  | no     | android      | yes |
+| showLongBottom()  | 长时间显示底部Toast | function  | no     | android      | yes |
+| hide()  | 隐藏正在显示的Toast         | function  | no      | android      | no |
 
 ## 遗留问题
 

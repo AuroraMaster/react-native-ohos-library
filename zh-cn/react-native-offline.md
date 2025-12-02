@@ -1,18 +1,18 @@
-> 模板版本：v0.2.2
+> 模板版本：v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-offline</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/rgommezz/react-native-offline">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20window%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/rgommezz/react-native-offline/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
 
-> [!TIP] [Github 地址](https://github.com/rgommezz/react-native-offline)
+> [!TIP] [GitHub address](https://github.com/rgommezz/react-native-offline)
+
+请到三方库的 Releases发布地址查看配套的版本信息：
+
+| 三方库版本 | 支持RN版本 |
+| ----------| ---------- |
+| 6.0.2     |  0.72/0.77 |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 ## 安装与使用
 
@@ -114,6 +114,7 @@ export const offlineDemoTest = () => {
 
 1. RNOH: 0.72.27; SDK：HarmonyOS-Next-DB1 5.0.0.25; IDE：DevEco Studio 5.0.3.400; ROM：3.0.0.25;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -123,21 +124,21 @@ export const offlineDemoTest = () => {
 
 | Name                  | Description                                                  | Type        | Required | Platform              | HarmonyOS Support |
 | --------------------- | ------------------------------------------------------------ | ----------- | -------- | --------------------- | ----------------- |
-| children              | a React Element. This is the only required prop.             | React.Node  | yes      | Android、iOS、Windows | yes               |
-| pingTimeout           | amount of time (in ms) that the component should wait for the ping response. Defaults to 10000 ms. If you want to use a different value, it's recommended to use a higher one. | number      | no       | Android、iOS、Windows | yes               |
-| pingServerUrl         | remote server to ping to. Defaults to https://www.google.com/ since it's probably one the most stable servers out there, but you can provide your own if needed. Warning: www.google.com is a blocked domain in China, so if you need your app to be accessible from there, you MUST use another domain. | string      | no       | Android、iOS、Windows | yes               |
-| shouldPing            | flag that denotes whether the extra ping check will be performed or not. Defaults to true. | boolean     | no       | Android、iOS、Windows | yes               |
-| pingInterval          | the interval (in ms) you want to ping the server at. Defaults to 0, and that means it is not going to check connectivity regularly. If opted in, it's advised not to choose a very small value, because that may drain your battery. Choose wisely. Something around 30000 ms should be fine. | number      | no       | Android、iOS、Windows | yes               |
-| pingOnlyIfOffline     | when set to true and pingInterval > 0, it will ping the remote server regularly only if offline. Defaults to false. | boolean     | no       | Android、iOS、Windows | yes               |
-| pingInBackground      | whether or not to check connectivity when app isn't in the foreground. Defaults to false. | boolean     | no       | Android、iOS、Windows | yes               |
-| httpMethod            | http method used to ping the server. Supports HEAD or OPTIONS. Defaults to HEAD. | HTTPMethod  | no       | Android、iOS、Windows | yes               |
-| customHeaders         | optional custom headers to add for ping request.             | HTTPHeaders | no       | Android、iOS、Windows | yes               |
-| regexActionType       | regular expression to indicate the action types to be intercepted in offline mode. By default it's configured to intercept actions for fetching data following the Redux convention. That means that it will intercept actions with types such as FETCH_USER_ID_REQUEST, FETCH_PRODUCTS_REQUEST etc. | RegExp      | no       | Android、iOS、Windows | yes               |
-| actionTypes           | array with additional action types to intercept that don't fulfil the RegExp criteria. For instance, it's useful for actions that carry along refreshing data, such as REFRESH_LIST. | Arrays      | no       | Android、iOS、Windows | yes               |
-| queueReleaseThrottle  | waiting time in ms between dispatches when flushing the offline queue. Useful to reduce the server pressure when coming back online. Defaults to 50ms. | number      | no       | Android、iOS、Windows | yes               |
-| shouldDequeueSelector | function that receives the redux application state and returns a boolean. It'll be executed every time an action is dispatched, before it reaches the reducer. This is useful to control if the queue should be released when the connection is regained and there were actions queued up. Returning true (the default behaviour) releases the queue, whereas returning false prevents queue release. For example, you may wanna perform some authentication checks, prior to releasing the queue. Note, if the result of shouldDequeueSelector changes while the queue is being released, the queue will not halt. If you want to halt the queue while is being released, please see relevant FAQ section. | boolean     | no       | Android、iOS、Windows | yes               |
-| url                   | remote server to ping to. Defaults to https://www.google.com/ since it's probably one the most stable servers out there, but you can provide your own if needed. Warning: www.google.com is a blocked domain in China, so if you need your app to be accessible from there, you MUST use another domain. | string      | no       | Android、iOS、Windows | yes               |
-| method                | http method used to ping the server. Supports HEAD or OPTIONS. Defaults to HEAD. | HTTPMethod  | no       | Android、iOS、Windows | yes               |
+| children              | 一个React元素。这是唯一必需的属性。             | React.Node  | yes      | Android、iOS、Windows | yes               |
+| pingTimeout           | 组件应等待ping响应的时间（以毫秒为单位）。默认为10000毫秒。如果要使用不同的值，建议使用更高的值。 | number      | no       | Android、iOS、Windows | yes               |
+| pingServerUrl         | 要ping的远程服务器。默认为https://www.google.com/，因为这可能是最稳定的服务器之一，但您可以根据需要提供自己的服务器。警告：www.google.com在中国是被屏蔽的域名，因此如果需要您的应用程序在那里可访问，您必须使用其他域名。 | string      | no       | Android、iOS、Windows | yes               |
+| shouldPing            | 标志位，表示是否执行额外的ping检查。默认为true。 | boolean     | no       | Android、iOS、Windows | yes               |
+| pingInterval          | 您想要ping服务器的时间间隔（以毫秒为单位）。默认为0，这意味着不会定期检查连接性。如果选择定期检查，建议不要选择很小的值，因为这可能会消耗电池。明智地选择。大约30000毫秒应该比较合适。 | number      | no       | Android、iOS、Windows | yes               |
+| pingOnlyIfOffline     | 当设置为true且pingInterval > 0时，只有在离线时才会定期ping远程服务器。默认为false。 | boolean     | no       | Android、iOS、Windows | yes               |
+| pingInBackground      | 当应用程序不在前台时是否检查连接性。默认为false。 | boolean     | no       | Android、iOS、Windows | yes               |
+| httpMethod            | 用于ping服务器的http方法。支持HEAD或OPTIONS。默认为HEAD。 | HTTPMethod  | no       | Android、iOS、Windows | yes               |
+| customHeaders         | 为ping请求添加的可选自定义标头。             | HTTPHeaders | no       | Android、iOS、Windows | yes               |
+| regexActionType       | 正则表达式，用于指示在离线模式下要拦截的操作类型。默认情况下，它被配置为拦截遵循Redux约定的数据获取操作。这意味着它将拦截类型如FETCH_USER_ID_REQUEST、FETCH_PRODUCTS_REQUEST等的操作。 | RegExp      | no       | Android、iOS、Windows | yes               |
+| actionTypes           | 不满足正则表达式条件的其他操作类型的数组。例如，对于携带刷新数据的操作（如REFRESH_LIST）很有用。 | Arrays      | no       | Android、iOS、Windows | yes               |
+| queueReleaseThrottle  | 刷新离线队列时分发操作之间的等待时间（以毫秒为单位）。当重新连接时，有助于减少服务器压力。默认为50毫秒。 | number      | no       | Android、iOS、Windows | yes               |
+| shouldDequeueSelector | 接收redux应用程序状态并返回布尔值的函数。每次分发操作时都会执行此函数，在操作到达reducer之前。这对于控制当重新连接且有操作排队时是否应释放队列很有用。返回true（默认行为）释放队列，而返回false则阻止队列释放。例如，您可能希望在释放队列之前执行一些身份验证检查。注意，如果shouldDequeueSelector的结果在队列释放过程中发生变化，队列不会停止。如果您希望在队列释放过程中停止队列，请参见相关的FAQ部分。 | boolean     | no       | Android、iOS、Windows | yes               |
+| url                   | 要ping的远程服务器。默认为https://www.google.com/，因为这可能是最稳定的服务器之一，但您可以根据需要提供自己的服务器。警告：www.google.com在中国是被屏蔽的域名，因此如果需要您的应用程序在那里可访问，您必须使用其他域名。 | string      | no       | Android、iOS、Windows | yes               |
+| method                | 用于ping服务器的http方法。支持HEAD或OPTIONS。默认为HEAD。 | HTTPMethod  | no       | Android、iOS、Windows | yes               |
 
 ## 静态方法
 
@@ -147,13 +148,13 @@ export const offlineDemoTest = () => {
 
 | Name                    | Description                                                  | Type | Required | Platform              | HarmonyOS Support |
 | ----------------------- | ------------------------------------------------------------ | ---- | -------- | --------------------- | ----------------- |
-| NetworkProvider         | Provider component that injects the network state to children  components via React Context. Only children prop is required, the rest  are optional. It should be used on top of your components hierarchy, ideally  in (or close to) the entry point. | func | no       | Android、iOS、Windows | yes               |
-| NetworkConsumer         | React component that subscribes to connectivity changes. It requires a  function as a child. The function receives the current connectivity status  and returns a React node. This component should be rendered within a  NetworkProvider in order to work properly. | func | no       | Android、iOS、Windows | yes               |
-| useIsConnected          | Returns a boolean indicating whether you are connected to the network or not. | func | no       | Android、iOS、Windows | yes               |
-| ReduxNetworkProvider    | Uses a provider component mechanism. The same props as for `NetworkProvider` apply. Make sure your component is a descendant of the react-redux `<Provider>` component, so that `ReduxNetworkProvider` has access to the store. | func | no       | Android、iOS、Windows | yes               |
-| networkSaga             | Just fork this saga from your root saga. It accepts the same config options as NetworkProvider and ReduxNetworkProvider. Recommended if you are using redux-saga, since it's a very elegant way to deal with global connectivity changes, without having to wrap your components with extra functionality. | func | no       | Android、iOS、Windows | yes               |
-| createNetworkMiddleware | Function that returns a Redux middleware which listens to specific actions targeting API calls in online/offline mode. | func | no       | Android、iOS、Windows | yes               |
-| OfflineQueue            | A queue system to store actions that failed due to lack of connectivity. It works for both plain object actions and thunks. | func | no       | Android、iOS、Windows | yes               |
+| NetworkProvider         | 提供程序组件，通过React Context将网络状态注入到子组件中。只需要children属性，其余都是可选的。应该在组件层次结构的顶部使用，理想情况下在（或接近）入口点。 | func | no       | Android、iOS、Windows | yes               |
+| NetworkConsumer         | 订阅连接性变化的React组件。它需要一个函数作为子组件。该函数接收当前的连接状态并返回一个React节点。为了正常工作，此组件应在NetworkProvider内渲染。 | func | no       | Android、iOS、Windows | yes               |
+| useIsConnected          | 返回一个布尔值，指示您是否连接到网络。 | func | no       | Android、iOS、Windows | yes               |
+| ReduxNetworkProvider    | 使用提供程序组件机制。与`NetworkProvider`相同的属性适用。确保您的组件是react-redux `<Provider>`组件的后代，以便`ReduxNetworkProvider`可以访问store。 | func | no       | Android、iOS、Windows | yes               |
+| networkSaga             | 只需从您的根saga中派生此saga。它接受与NetworkProvider和ReduxNetworkProvider相同的配置选项。如果您使用redux-saga，这是推荐的方式，因为它是一种非常优雅的处理全局连接性变化的方法，而无需用额外功能包装您的组件。 | func | no       | Android、iOS、Windows | yes               |
+| createNetworkMiddleware | 返回一个Redux中间件的函数，该中间件监听针对在线/离线模式API调用的特定操作。 | func | no       | Android、iOS、Windows | yes               |
+| OfflineQueue            | 一个队列系统，用于存储由于缺乏连接性而失败的操作。它适用于普通对象操作和thunks。 | func | no       | Android、iOS、Windows | yes               |
 
 ## 遗留问题
 

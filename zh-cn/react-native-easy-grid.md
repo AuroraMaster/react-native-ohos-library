@@ -1,19 +1,18 @@
-> 模板版本：v0.2.2
+> 模板版本：v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-easy-grid</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/GeekyAnts/react-native-easy-grid">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/GeekyAnts/react-native-easy-grid/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-Apache License 2.0-green.svg" alt="License" />
-    </a>
-</p>
 
-> [!TIP] [Github 地址](https://github.com/GeekyAnts/react-native-easy-grid)
+> [!TIP] [GitHub address](https://github.com/GeekyAnts/react-native-easy-grid)
 
+请到三方库的 Releases发布地址查看配套的版本信息：
+
+| 三方库版本 | 支持RN版本 |
+| ----------| ---------- |
+| 0.2.2    |  0.72/0.77 |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 ## 安装与使用
 
@@ -73,7 +72,8 @@ export default App;
 
 本文档内容基于以下版本验证通过：
 
-RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 
 ## 属性

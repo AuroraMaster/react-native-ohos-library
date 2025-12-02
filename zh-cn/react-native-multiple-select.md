@@ -1,19 +1,18 @@
-> 模板版本：v0.2.2
+> 模板版本：v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-multiple-select</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/toystars/react-native-multiple-select">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/toystars/react-native-multiple-select/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
 
-> [!TIP] [Github 地址](https://github.com/toystars/react-native-multiple-select)
+> [!TIP] [ GitHub address](https://github.com/toystars/react-native-multiple-select)
 
+请到三方库的 Releases发布地址查看配套的版本信息：
+
+| 三方库版本 | 支持RN版本 |
+| ----------| ---------- |
+| 0.5.12    |  0.72/0.77 |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 ## 安装与使用
 
@@ -150,6 +149,8 @@ RNApp({
 
 1. RNOH: 0.72.29; SDK: HarmonyOS NEXT Developer Beta6; IDE: DevEco Studio 5.0.3.706; ROM: 3.0.0.61;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+4. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -159,59 +160,59 @@ RNApp({
 
 | Prop   | Description   | Type       | Required | Platform | HarmonyOS Support |
 | ----- | ----- | -------- | -------- | -------- | -------- |
-| `altFontFamily`  | Font family for searchInputPlaceholderText |  String | no     | All  | yes      |
-| `canAddItems`  | Defaults to "false". This allows a user to add items to the list of items provided. You need to handle adding the new items in the onAddItem function prop. Items may be added with the return key on the native keyboard| Boolean  |  no     | All   | yes      |
-| `displayKey`  | Defaults to "name". This string will be used to select the key to display the objects in the items array| String  |  no     | All   | yes      |
-| `fixedHeight`  | Defaults to false. Specifies if select dropdown take height of content or a fixed height with a scrollBar (There is an issue with this behavior when component is nested in a ScrollView in which scroll event will only be dispatched to parent ScrollView and select component won't be scrollable). See this issue for more info| Boolean  |  no     | All   | yes      |
-| `filterMethod`  | Defaults to "partial". options: ["partial", "full"] Choose the logic on how the system filters items based on searchTerm. partial: checks all individual words and if at least one word matches will include that item. full: checks to ensure the item contains the full substring of searchterm in order minus any leading or trailing spaces| String  |  no     | All   | yes      |
-| `flatListProps`  | Properties for the FlatList. Pass any property that is required on the FlatList of the dropdown menu| Object  |  no     | All   | yes      |
-| `fontFamily`  | Custom font family to be used in component (affects all text except searchInputPlaceholderText described above)| String  |  no     | All   | yes      |
-| `fontSize`  | Font size for selected item name displayed as label for multiselect.| Number  |  no     | All   | yes      |
-| `hideDropdown`  |  Defaults false. Hide dropdown menu with a cancel, and use arrow-back| Boolean  |  no     | All   | yes      |
-| `hideSubmitButton`  | Defaults to false. Hide submit button from dropdown, and rather use arrow-button in search field| Boolean  |  no     | All   | yes      |
-| `hideTags`  | Defaults to false. Hide tokenized selected items, in case selected items are to be shown somewhere else in view (check below for more info)| Boolean  |  no     | All   | yes      |
-| `searchIcon`  | Element or functional component to change the Search Icon| Element, Object, boolean, Function |  no     | All   | yes      |
-| `itemFontFamily`  | Font family for each non-selected item in multi-select drop-down| String  |  no     | All   | yes      |
-| `itemFontSize`  |Font size used for each item in the multi-select drop-down| Number  |  no     | All   | yes      |
-| `itemTextColor`  |  Text color for each non-selected item in multi-select drop-down| String  |  no     | All   | yes      |
-| `items`  |List of items to display in the multi-select component. JavaScript Array of objects. Each object must contain a name and unique identifier (Check sample above)| Array, control prop  |  	yes     | All   | yes      |
-| `noItemsText`  |  Text that replace default "no items to display"| String  |  no     | All   | yes      |
-| `onAddItem`  | JavaScript function passed in as an argument. The function is called everytime a new item is added, and receives the entire list of items. Here you should ensure that the new items are added to your provided list of items in addition to any other consequences of new items being added| function  |  no     | All   | yes      |
-| `onChangeInput`  | JavaScript function passed in as an argument. The function is called everytime TextInput is changed with the value| function  |  no     | All   | yes      |
-| `onClearSelector`  | JavaScript function passeed in as an argument. The function is called everytime back button is pressed| function  |  no     | All   | yes      |
-| `onSelectedItemsChange`  | JavaScript function passed in as an argument. The function is to be defined with an argument (selectedItems). Triggered when Submit button is clicked (for multi select) or item is clicked (for single select). (Check sample above)| function  |  yes     | All   | yes      |
-| `onToggleList`  | JavaScript function passed in as an argument. The function is called everytime the multiselect component is pressed| function  |  no     | All   | yes      |
-| `searchInputPlaceholderText`  | Placeholder text displayed in multi-select filter input| String  |  no     | All   | yes      |
-| `searchInputStyle`  | Style object for multi-select input element| Object  |  no     | All   | yes      |
-| `selectText`  | Text displayed in main component| String  |  no     | All   | yes      |
-| `selectedText`  | Text displayed when an item is selected can be replaced by any string| String  |  no     | All   | yes      |
-| `selectedItemFontFamily`  |  Font family for each selected item in multi-select drop-down| String  |  no     | All   | yes      |
-| `selectedItemIconColor`  | Color for selected check icon for each selected item in multi-select drop-down| String  |  no     | All   | yes      |
-| `selectedItemTextColor`  |Text color for each selected item in multi-select drop-down| String  |  no     | All   | yes      |
-| `single`  | Toggles select component between single option and multi option| Boolean  |  no     | All   | yes      |
-| `styleDropdownMenu`  | Style the view of the dropdown menu| Style  |  no     | All   | yes      |
-| `styleDropdownMenuSubsection`  |Style the inner view of the dropdown menu| Style  |  no     | All   | yes      |
-| `styleIndicator`  | Style the Icon for indicator| Style  |  no     | All   | yes      |
-| `styleInputGroup`  | Style the Container of the Text Input Group| Style  |  no     | All   | yes      |
-| `styleItemsContainer`  |Style the Container of the items that are displayed in a list| Style  |  no     | All   | yes      |
-| `styleListContainer`  | Style the Container of main list| Style  |  no     | All   | yes      |
-| `styleMainWrapper`  | Style the Main Container of the MultiSelector| Style  |  no     | All   | yes      |
-| `styleRowList`  | Style the Row that is displayed after you| Style  |  no     | All   | yes      |
-| `styleSelectorContainer`  | Style the Container of the Selector when user clicks on the dropdown| Style  |  no     | All   | yes      |
-| `styleTextDropdown`  | Style text of the Dropdown| Text Style  |  no     | All   | yes      |
-| `styleTextDropdownSelected`  | Style text of the Dropdown selected| Text Style  |  no     | All   | yes      |
-| `styleTextTag`  | Style text of the tag| Text Style  |  no     | All   | yes      |
-| `submitButtonColor`  | Background color for submit button| String  |  no     | All   | yes      |
-| `submitButtonText`  |Text displayed on submit button| String  |  no     | All   | yes      |
-| `tagBorderColor`  |  Border color for each selected item| String  |  no     | All   | yes      |
-| `tagContainerStyle`  | Style the container of the tag view| Style  |  no     | All   | yes      |
-| `tagRemoveIconColor`  | Color to be used for the remove icon in selected items list| String  |  no     | All   | yes      |
-| `tagTextColor`  | Text color for selected items list| String  |  no     | All   | yes      |
-| `textColor`  | Color for selected item name displayed as label for multiselect| String  |  no     | All   | yes      |
-| `textInputProps`  | Properties for the Text Input. Pass any property that is required on the text input| Object  |  no     | All   | yes      |
-| `uniqueKey`  | Unique identifier that is part of each item's properties. Used internally as means of identifying each item (Check sample below)| String  |  yes     | All   | yes      |
-| `selectedItems`  | List of selected items keys . JavaScript Array of strings, that can be instantiated with the component| Array, control prop  |  no     | All   | yes      |
-| `removeSelected`  | Filter selected items from list to be shown in List| Boolean  |  no     | All   | yes      |
+| `altFontFamily`  | 搜索输入框占位符文本的字体族 |  String | no     | All  | yes      |
+| `canAddItems`  | 默认为"false"。这允许用户向提供的项目列表中添加项目。您需要在onAddItem函数属性中处理添加新项目。可以使用本机键盘上的回车键添加项目| Boolean  |  no     | All   | yes      |
+| `displayKey`  | 默认为"name"。此字符串将用于选择在items数组中显示对象的键| String  |  no     | All   | yes      |
+| `fixedHeight`  | 默认为false。指定选择下拉菜单是采用内容高度还是带滚动条的固定高度（当组件嵌套在ScrollView中时，此行为存在问题，滚动事件只会分派给父ScrollView，选择组件将不可滚动）。有关更多信息，请参见此问题| Boolean  |  no     | All   | yes      |
+| `filterMethod`  | 默认为"partial"。选项：["partial", "full"] 选择系统根据搜索词过滤项目的逻辑。partial：检查所有单独的单词，如果至少有一个单词匹配，则包含该项目。full：检查以确保项目按顺序包含搜索词的完整子字符串，不包括任何前导或尾随空格| String  |  no     | All   | yes      |
+| `flatListProps`  | FlatList的属性。传递下拉菜单FlatList所需的任何属性| Object  |  no     | All   | yes      |
+| `fontFamily`  | 组件中使用的自定义字体族（影响除上述searchInputPlaceholderText之外的所有文本）| String  |  no     | All   | yes      |
+| `fontSize`  | 多选中标记显示的选定项目名称的字体大小。| Number  |  no     | All   | yes      |
+| `hideDropdown`  | 默认为false。隐藏带有取消按钮的下拉菜单，使用返回箭头| Boolean  |  no     | All   | yes      |
+| `hideSubmitButton`  | 默认为false。从下拉菜单中隐藏提交按钮，而是在搜索字段中使用箭头按钮| Boolean  |  no     | All   | yes      |
+| `hideTags`  | 默认为false。隐藏标记化的选定项目，以防选定项目在视图中的其他位置显示（请查看下面的更多信息）| Boolean  |  no     | All   | yes      |
+| `searchIcon`  | 更改搜索图标的元素或功能组件| Element, Object, boolean, Function |  no     | All   | yes      |
+| `itemFontFamily`  | 多选下拉菜单中每个未选定项目的字体族| String  |  no     | All   | yes      |
+| `itemFontSize`  | 多选下拉菜单中每个项目的字体大小| Number  |  no     | All   | yes      |
+| `itemTextColor`  | 多选下拉菜单中每个未选定项目的文本颜色| String  |  no     | All   | yes      |
+| `items`  | 在多选组件中显示的项目列表。JavaScript对象数组。每个对象必须包含名称和唯一标识符（请查看上面的示例）| Array, control prop  |  	yes     | All   | yes      |
+| `noItemsText`  | 替换默认"没有要显示的项目"的文本| String  |  no     | All   | yes      |
+| `onAddItem`  | 作为参数传入的JavaScript函数。每次添加新项目时都会调用该函数，并接收整个项目列表。在这里，您应该确保将新项目添加到您提供的项目列表中，以及处理添加新项目的其他后果| function  |  no     | All   | yes      |
+| `onChangeInput`  | 作为参数传入的JavaScript函数。每次TextInput更改时都会调用该函数，并传递值| function  |  no     | All   | yes      |
+| `onClearSelector`  | 作为参数传入的JavaScript函数。每次按下返回按钮时都会调用该函数| function  |  no     | All   | yes      |
+| `onSelectedItemsChange`  | 作为参数传入的JavaScript函数。该函数需要定义一个参数（selectedItems）。当点击提交按钮（多选）或点击项目（单选）时触发。（请查看上面的示例）| function  |  yes     | All   | yes      |
+| `onToggleList`  | 作为参数传入的JavaScript函数。每次按下多选组件时都会调用该函数| function  |  no     | All   | yes      |
+| `searchInputPlaceholderText`  | 多选过滤器输入框中显示的占位符文本| String  |  no     | All   | yes      |
+| `searchInputStyle`  | 多选输入元素的样式对象| Object  |  no     | All   | yes      |
+| `selectText`  | 主组件中显示的文本| String  |  no     | All   | yes      |
+| `selectedText`  | 选择项目时显示的文本，可以替换为任何字符串| String  |  no     | All   | yes      |
+| `selectedItemFontFamily`  | 多选下拉菜单中每个选定项目的字体族| String  |  no     | All   | yes      |
+| `selectedItemIconColor`  | 多选下拉菜单中每个选定项目的选中复选图标的颜色| String  |  no     | All   | yes      |
+| `selectedItemTextColor`  | 多选下拉菜单中每个选定项目的文本颜色| String  |  no     | All   | yes      |
+| `single`  | 在单选和多选之间切换选择组件| Boolean  |  no     | All   | yes      |
+| `styleDropdownMenu`  | 设置下拉菜单视图的样式| Style  |  no     | All   | yes      |
+| `styleDropdownMenuSubsection`  | 设置下拉菜单内部视图的样式| Style  |  no     | All   | yes      |
+| `styleIndicator`  | 设置指示器图标的样式| Style  |  no     | All   | yes      |
+| `styleInputGroup`  | 设置文本输入组容器的样式| Style  |  no     | All   | yes      |
+| `styleItemsContainer`  | 设置列表中显示的项目容器的样式| Style  |  no     | All   | yes      |
+| `styleListContainer`  | 设置主列表容器的样式| Style  |  no     | All   | yes      |
+| `styleMainWrapper`  | 设置多选器主容器的样式| Style  |  no     | All   | yes      |
+| `styleRowList`  | 设置显示在您之后的行的样式| Style  |  no     | All   | yes      |
+| `styleSelectorContainer`  | 设置用户点击下拉菜单时选择器容器的样式| Style  |  no     | All   | yes      |
+| `styleTextDropdown`  | 设置下拉菜单文本的样式| Text Style  |  no     | All   | yes      |
+| `styleTextDropdownSelected`  | 设置选定下拉菜单文本的样式| Text Style  |  no     | All   | yes      |
+| `styleTextTag`  | 设置标签文本的样式| Text Style  |  no     | All   | yes      |
+| `submitButtonColor`  | 提交按钮的背景颜色| String  |  no     | All   | yes      |
+| `submitButtonText`  | 提交按钮上显示的文本| String  |  no     | All   | yes      |
+| `tagBorderColor`  | 每个选定项目的边框颜色| String  |  no     | All   | yes      |
+| `tagContainerStyle`  | 设置标签视图容器的样式| Style  |  no     | All   | yes      |
+| `tagRemoveIconColor`  | 选定项目列表中用于移除图标的颜色| String  |  no     | All   | yes      |
+| `tagTextColor`  | 选定项目列表的文本颜色| String  |  no     | All   | yes      |
+| `textColor`  | 多选中标记显示的选定项目名称的颜色| String  |  no     | All   | yes      |
+| `textInputProps`  | 文本输入的属性。传递文本输入所需的任何属性| Object  |  no     | All   | yes      |
+| `uniqueKey`  | 每个项目属性中的唯一标识符。在内部用作识别每个项目的手段（请查看下面的示例）| String  |  yes     | All   | yes      |
+| `selectedItems`  | 选定项目键的列表。JavaScript字符串数组，可以与组件一起实例化| Array, control prop  |  no     | All   | yes      |
+| `removeSelected`  | 从列表中过滤选定的项目以在列表中显示| Boolean  |  no     | All   | yes      |
 
 
 ## 遗留问题

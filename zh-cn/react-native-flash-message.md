@@ -1,18 +1,18 @@
-> 模板版本：v0.2.2
+> 模板版本：v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-flash-message</code> </h1>
 </p>
-<p align="center">
-   <a href="https://github.com/lucasferreira/react-native-flash-message">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/lucasferreira/react-native-flash-message/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
 
-> [!Tip] [Github 地址](https://github.com/lucasferreira/react-native-flash-message)
+> [!Tip] [GitHub address](https://github.com/lucasferreira/react-native-flash-message)
+
+请到三方库的 Releases发布地址查看配套的版本信息：
+
+| 三方库版本 | 支持RN版本 |
+| ----------| ---------- |
+| 0.4.2     |  0.72/0.77 |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 ## 安装与使用
 
@@ -111,6 +111,7 @@ const styles = StyleSheet.create({
 
 1. RNOH: 0.72.27; SDK：HarmonyOS-Next-DB1 5.0.0.25; IDE：DevEco Studio 5.0.3.400SP7; ROM：3.0.0.25;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 方法
 
@@ -122,31 +123,31 @@ const styles = StyleSheet.create({
 
 | Name                   | Description | Required | Platform | HarmonyOS Support |
 | ---------------------- | ----------- | -------- | ----------------- | ----------------- |
-| hideOnPress            | Controls if the flash message can be closed on press      | NO        | iOS/Android               | YES               |
-| onPress                | onPress callback for flash message press           | NO        | iOS/Android               | YES               |
-| onLongPress            | onLongPress callback for flash message press           | NO        | iOS/Android               | YES               |
-| animated               | Controls if the flash message will be shown with animation or not           | NO        | iOS/Android               | YES               |
-| animationDuration      | Animations duration/speed           | NO        | iOS/Android               | YES               |
-| autoHide               | Controls if the flash message can hide itself after some duration time           | NO        | iOS/Android               | YES               |
-| duration               | How many milliseconds the flash message will be shown if the autoHide it's true           | NO        | iOS/Android               | YES               |
-| hideStatusBar          | Controls if the flash message will auto hide the native status bar. Note: Works OK in iOS, not all Android versions support this. | NO | iOS/Android   | YES   |
-| statusBarHeight        | Use this prop to set a custom status bar height that will be add in flash message padding top calc | NO        | iOS/Android               | YES     |
-| floating               | The floating prop unstick the message from the edges and applying some border radius to component  | NO        | iOS/Android               | YES               |
-| position               | The position prop set the position of a flash message. Expected options: "top" (default), "bottom", "center" or a custom object with { top, left, right, bottom } position           | NO        | iOS/Android               | YES               |
-| icon                   | The icon prop could be a render function that return a new JSX Element to be placed in icon position OR a definition of the graphical icon of a flash message. Expected options: "none" (default), "auto" (guided by type), "success", "info", "warning", "danger", a custom icon (render function) or a custom object with icon type/name and position (left or right) attributes, e.g.: { icon: "success", position: "right" }           | NO       | iOS/Android               | YES               |
-| style                  | Apply a custom style object in flash message container | NO       | iOS/Android               | YES               |
-| textStyle              | Apply a custom style object in flash message descript/text text label   | NO       | iOS/Android               | YES               |
-| titleStyle             | Apply a custom style object in flash message title text label           | NO       | iOS/Android               | YES               |
-| titleProps              | Set a custom props object in flash message title text label          | NO       | iOS/Android               | YES               |
-| textProps              | Set a custom props object in flash message all text components          | NO       | iOS/Android               | YES               |
-| iconProps              | Set a custom props object to use inside the renderFlashMessageIcon method as third argument           | NO       | iOS/Android               | YES               |
-| renderBeforeContent    | Render custom JSX before title in flash message.          | NO        | iOS/Android               | YES               |
-| renderCustomContent    | Render custom JSX below title in flash message.           | NO        | iOS/Android               | YES               |
-| renderAfterContent     | Render custom JSX after the title (or description) of a flash message.           | NO        | iOS/Android               | YES               |
-| renderFlashMessageIcon | Set a custom render function for inside message icons           | NO        | iOS/Android               | YES               |
-| transitionConfig       | Set the transition config function used in shown/hide anim interpolations           | NO        | iOS/Android               | YES               |
-| canRegisterAsDefault   | Use to handle if the instance can be registed as default/global instance           | NO        | iOS/Android               | YES               |
-| MessageComponent       | Set the default flash message render component used to show all the messages           | NO       | iOS/Android               | YES               |
+| hideOnPress            | 控制闪存消息是否可以通过按下关闭      | NO        | iOS/Android               | YES               |
+| onPress                | 闪存消息按下的onPress回调           | NO        | iOS/Android               | YES               |
+| onLongPress            | 闪存消息按下的onLongPress回调           | NO        | iOS/Android               | YES               |
+| animated               | 控制闪存消息是否以动画形式显示           | NO        | iOS/Android               | YES               |
+| animationDuration      | 动画持续时间/速度           | NO        | iOS/Android               | YES               |
+| autoHide               | 控制闪存消息是否可以在一段时间后自动隐藏           | NO        | iOS/Android               | YES               |
+| duration               | 如果autoHide为true，闪存消息将显示多少毫秒           | NO        | iOS/Android               | YES               |
+| hideStatusBar          | 控制闪存消息是否会自动隐藏原生状态栏。注意：在iOS上工作正常，并非所有Android版本都支持此功能。 | NO | iOS/Android   | YES   |
+| statusBarHeight        | 使用此属性设置自定义状态栏高度，该高度将添加到闪存消息的顶部内边距计算中 | NO        | iOS/Android               | YES     |
+| floating               | floating属性使消息从边缘分离，并对组件应用一些边框半径  | NO        | iOS/Android               | YES               |
+| position               | position属性设置闪存消息的位置。预期选项："top"（默认）、"bottom"、"center"或带有{ top, left, right, bottom }位置的自定义对象           | NO        | iOS/Android               | YES               |
+| icon                   | icon属性可以是一个返回新JSX元素以放置在图标位置的渲染函数，或者是闪存消息的图形图标定义。预期选项："none"（默认）、"auto"（由类型引导）、"success"、"info"、"warning"、"danger"、自定义图标（渲染函数）或带有图标类型/名称和位置（左或右）属性的自定义对象，例如：{ icon: "success", position: "right" }           | NO       | iOS/Android               | YES               |
+| style                  | 在闪存消息容器中应用自定义样式对象 | NO       | iOS/Android               | YES               |
+| textStyle              | 在闪存消息描述/文本标签中应用自定义样式对象   | NO       | iOS/Android               | YES               |
+| titleStyle             | 在闪存消息标题文本标签中应用自定义样式对象           | NO       | iOS/Android               | YES               |
+| titleProps              | 在闪存消息标题文本标签中设置自定义props对象          | NO       | iOS/Android               | YES               |
+| textProps              | 在闪存消息所有文本组件中设置自定义props对象          | NO       | iOS/Android               | YES               |
+| iconProps              | 设置自定义props对象以在renderFlashMessageIcon方法中作为第三个参数使用           | NO       | iOS/Android               | YES               |
+| renderBeforeContent    | 在闪存消息标题之前渲染自定义JSX。          | NO        | iOS/Android               | YES               |
+| renderCustomContent    | 在闪存消息标题下方渲染自定义JSX。           | NO        | iOS/Android               | YES               |
+| renderAfterContent     | 在闪存消息的标题（或描述）之后渲染自定义JSX。           | NO        | iOS/Android               | YES               |
+| renderFlashMessageIcon | 为内部消息图标设置自定义渲染函数           | NO        | iOS/Android               | YES               |
+| transitionConfig       | 设置用于显示/隐藏动画插值的过渡配置函数           | NO        | iOS/Android               | YES               |
+| canRegisterAsDefault   | 用于处理实例是否可以注册为默认/全局实例           | NO        | iOS/Android               | YES               |
+| MessageComponent       | 设置用于显示所有消息的默认闪存消息渲染组件           | NO       | iOS/Android               | YES               |
 
 
 ## 遗留问题

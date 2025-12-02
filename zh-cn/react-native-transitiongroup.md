@@ -1,23 +1,22 @@
-> 模板版本：v0.2.2
+> 模板版本：v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-transitiongroup</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/madsleejensen/react-native-transitiongroup">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-     <a href="https://www.mit-license.org">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="Supported platforms" />
-    </a>
-</p>
 
+本项目基于 [react-native-transitiongroup@1.2.0](https://github.com/madsleejensen/react-native-transitiongroup) 开发。
 
-> [!Tip] [Github 地址](https://github.com/react-native-oh-library/react-native-transitiongroup)
+请到三方库的 Releases发布地址查看配套的版本信息：
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+|  1.2.0            | @react-native-oh-tpl/react-native-transitiongroup  | [GitHub](https://github.com/react-native-oh-library/react-native-transitiongroup) | [GitHub Releases](https://github.com/react-native-oh-library/react-native-transitiongroup/releases) 
+| 0.72 |
+|  1.3.0            | @react-native-ohos/react-native-transitiongroup    | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-transitiongroup) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-transitiongroup/releases) | 0.77 |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 ## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-transitiongroup Releases](https://github.com/react-native-oh-library/react-native-transitiongroup/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -26,13 +25,21 @@
 #### **npm**
 
 ```bash
+# 0.72 
 npm install @react-native-oh-tpl/react-native-transitiongroup
+
+# 0.77 
+npm install @react-native-ohos/react-native-transitiongroup
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72 
 yarn add @react-native-oh-tpl/react-native-transitiongroup
+
+# 0.77 
+yarn add @react-native-ohos/react-native-transitiongroup
 ```
 
 <!-- tabs:end -->
@@ -144,9 +151,10 @@ const styles = StyleSheet.create({
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-transitiongroup Releases](https://github.com/react-native-oh-library/react-native-transitiongroup/releases)
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## API
 

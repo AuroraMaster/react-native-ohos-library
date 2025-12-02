@@ -1,23 +1,22 @@
-> Template version: v0.2.2
+> Template version: v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-transitiongroup</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/madsleejensen/react-native-transitiongroup">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-     <a href="https://www.mit-license.org">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="Supported platforms" />
-    </a>
-</p>
 
+This project is developed based on [react-native-transitiongroup@1.2.0](https://github.com/madsleejensen/react-native-transitiongroup).
+Please check the corresponding version information in the Releases section of the third-party library's repository:
 
-> [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-transitiongroup)
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+|  1.2.0            | @react-native-oh-tpl/react-native-transitiongroup  | [GitHub](https://github.com/react-native-oh-library/react-native-transitiongroup) | [GitHub Releases](https://github.com/react-native-oh-library/react-native-transitiongroup/releases) 
+| 0.72 |
+|  1.3.0            | @react-native-ohos/react-native-transitiongroup    | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-transitiongroup) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-transitiongroup/releases) | 0.77 |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+
 
 ## Installation and Usage
-
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-transitiongroup Releases](https://github.com/react-native-oh-library/react-native-transitiongroup/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -28,13 +27,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+#0.72
 npm install @react-native-oh-tpl/react-native-transitiongroup
+
+#0.77
+npm install @react-native-ohos/react-native-transitiongroup
 ```
 
 #### **yarn**
 
 ```bash
+#0.72
 yarn add @react-native-oh-tpl/react-native-transitiongroup
+
+#0.77
+yarn add @react-native-ohos/react-native-transitiongroup
 ```
 
 <!-- tabs:end -->
@@ -146,9 +153,10 @@ const styles = StyleSheet.create({
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+This document is verified based on the following versions:
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-transitiongroup Releases](https://github.com/react-native-oh-library/react-native-transitiongroup/releases)
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## APIs
 

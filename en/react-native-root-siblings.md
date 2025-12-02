@@ -1,21 +1,22 @@
-> Template version: v0.2.2
+> Template version: v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-root-siblings</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/magicismight/react-native-root-siblings">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/magicismight/react-native-root-siblings/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-        <!-- <img src="https://img.shields.io/badge/license-Apache-blue.svg" alt="License" /> -->
-    </a>
-</p>
 
 > [! TIP] [Github address](https://github.com/magicismight/react-native-root-siblings/tree/v5.0.1)
 
+Please check the corresponding version information in the Releases section of the third-party library's repository:
+
+| Third-Party Library Version | Supported RN Version |
+| ----------------------------| -------------------- |
+| 5.0.1                     |  0.72/0.77 |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+
 ## Installation and Usage
+
+Go to the project directory and execute the following instruction:
 
 <!-- tabs:start -->
 
@@ -280,9 +281,9 @@ var styles = StyleSheet.create({
 
 This document is verified based on the following versions:
 
-RNOH: 0.72.23; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio: 5.0.3.27; ROM: 3.0.0.19; 
-
-RNOH: 0.72.33; SDK: Openharmony 5.0.0.71(API Version 12 Release); IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+1. RNOH: 0.72.23; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio: 5.0.3.27; ROM: 3.0.0.19; 
+2. RNOH: 0.72.33; SDK: Openharmony 5.0.0.71(API Version 12 Release); IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## Static Methods
 

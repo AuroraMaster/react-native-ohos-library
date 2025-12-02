@@ -1,18 +1,18 @@
-> Template version: v0.2.2
+> Template version: v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-multiple-select</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/toystars/react-native-multiple-select">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/toystars/react-native-multiple-select/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
 
 > [!TIP] [ GitHub address](https://github.com/toystars/react-native-multiple-select)
+
+Please check the corresponding version information in the Releases section of the third-party library's repository:
+
+| Third-Party Library Version | Supported RN Version |
+| ----------------------------| -------------------- |
+| 0.5.12                      |  0.72/0.77 |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 ## Installation and Usage
 
@@ -151,6 +151,8 @@ This document is verified based on the following versions:
 
 1. RNOH: 0.72.29; SDK: HarmonyOS NEXT Developer Beta6; IDE: DevEco Studio 5.0.3.706; ROM: 3.0.0.61;
 2. RNOH: 0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+4. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## Properties
 

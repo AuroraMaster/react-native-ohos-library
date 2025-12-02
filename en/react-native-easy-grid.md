@@ -1,18 +1,19 @@
-> Template version: v0.2.2
+> Template version: v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-easy-grid</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/GeekyAnts/react-native-easy-grid">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/GeekyAnts/react-native-easy-grid/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-Apache License 2.0-green.svg" alt="License" />
-    </a>
-</p>
 
 > [!TIP] [GitHub address](https://github.com/GeekyAnts/react-native-easy-grid)
+
+Please check the corresponding version information in the Releases section of the third-party library's repository:
+
+| Third-Party Library Version | Supported RN Version |
+| ----------------------------| -------------------- |
+| 0.2.2                      |  0.72/0.77 |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+
 
 ## Installation and Usage
 
@@ -67,7 +68,8 @@ export default App;
 
 This document is verified based on the following versions:
 
-RNOH: 0.72.27; SDK: HarmonyOS-NEXT Developer Beta1 5.0.0.25 ; IDE: DevEco Studio 5.0.3.400SP7; ROM: 3.0.0.25;
+1. RNOH: 0.72.27; SDK: HarmonyOS-NEXT Developer Beta1 5.0.0.25 ; IDE: DevEco Studio 5.0.3.400SP7; ROM: 3.0.0.25;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## Properties
 
