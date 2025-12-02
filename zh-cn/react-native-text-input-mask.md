@@ -18,16 +18,15 @@
 >
 > [!TIP] [Gitcode 地址](https://gitcode.com/openharmony-sig/rntpc_react-native-text-input-mask)
 
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：@react-native-ohos/react-native-text-input-mask，具体版本所属关系如下：
+
+
+| 三方库版本 | 包名                                                    | 仓库地址 | 发布(Release) | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |  ---------- |  ---------- |
+| 3.1.5 | @react-native-oh-tpl/react-native-text-input-mask | [Github](https://github.com/react-native-oh-library/react-native-text-input-mask)|[Github Releases](https://github.com/react-native-oh-library/react-native-text-input-mask/releases)|0.72       |
+| 3.2.0 | @react-native-ohos/react-native-text-input-mask         | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-text-input-mask/tree/br_rnoh0.77) |[Gitcode Releases]() | 0.77       |
+
 ## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 3.1.5      | [@react-native-oh-tpl/react-native-text-input-mask Releases](https://github.com/react-native-oh-library/react-native-text-input-mask/releases) | 0.72       |
-| 3.1.5      | [@react-native-ohos/react-native-text-input-mask Releases]() | 0.77       |
-
-对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -39,7 +38,7 @@
 # V3.1.5 for RN0.72
 npm install @react-native-oh-tpl/react-native-text-input-mask
 
-# V3.1.5 for RN0.77
+# V3.2.0 for RN0.77
 npm install @react-native-ohos/react-native-text-input-mask
 ```
 
@@ -49,7 +48,7 @@ npm install @react-native-ohos/react-native-text-input-mask
 # V3.1.5 for RN0.72
 yarn add @react-native-oh-tpl/react-native-text-input-mask
 
-# V3.1.5 for RN0.77
+# V3.2.0 for RN0.77
 yarn add @react-native-ohos/react-native-text-input-mask
 ```
 
@@ -194,7 +193,7 @@ const styles = StyleSheet.create({
   }
 ```
 
-- V3.1.5 for RN0.77
+- V3.2.0 for RN0.77
 
 ```json
   "dependencies": {
@@ -214,7 +213,7 @@ ohpm install
 
 方法二：直接链接源码
 
-> [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
+如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
 ### 3.配置 CMakeLists 和引入 RNTextInputMaskPackage
 
@@ -241,7 +240,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 # V3.1.5 for RN0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-text-input-mask/src/main/cpp" ./RNTextInputMask)
 
-# V3.1.5 for RN0.72
+# V3.2.0 for RN0.77
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-text-input-mask/src/main/cpp" ./RNTextInputMask)
 
 add_library(rnoh_app SHARED
@@ -279,7 +278,7 @@ target_link_libraries(rnoh_app PUBLIC rnoh)
 // V3.1.5 for RN0.72
 + import { RNTextInputMaskPackage } from '@react-native-oh-tpl/react-native-text-input-mask/ts'
 
-// V3.1.5 for RN0.77
+// V3.2.0 for RN0.77
 + import { RNTextInputMaskPackage } from '@react-native-ohos/react-native-text-input-mask/ts'
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -307,14 +306,10 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 3.1.5      | [@react-native-oh-tpl/react-native-text-input-mask Releases](https://github.com/react-native-oh-library/react-native-text-input-mask/releases) | 0.72       |
-| 3.1.5      | [@react-native-ohos/react-native-text-input-mask Releases]() | 0.77       |
+1、RNOH: 0.72.28; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.1.1.830; ROM: 6.0.0.112 SP12;  
+2、RNOH: 0.77.18; SDK: HarmonyOS-5.1.1.208(API19); IDE: DevEco Studio 5.1.1.830; ROM: 6.0.0.112 SP12
 
 
 ##  API
