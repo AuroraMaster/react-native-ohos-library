@@ -1,20 +1,18 @@
-> 模板版本：v0.2.2
+> 模板版本：v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-htmlview</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/jsdf/react-native-htmlview">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/jsdf/react-native-htmlview/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-ISC-green.svg" alt="License" />
-        <!-- <img src="https://img.shields.io/badge/license-Apache-blue.svg" alt="License" /> -->
-    </a>
-</p>
 
+> [!TIP] [GitHub address](https://github.com/jsdf/react-native-htmlview)
 
-> [!TIP] [Github 地址](https://github.com/jsdf/react-native-htmlview)
+请到三方库的 Releases发布地址查看配套的版本信息：
+
+| 三方库版本 | 支持RN版本 |
+| ----------| ---------- |
+| 0.17.0    |  0.72/0.77 |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 ## 安装与使用
 
@@ -93,6 +91,8 @@ export default HtmlViewExample;
 
 1. RNOH: 0.72.20-CAPI; SDK: HarmonyOS NEXT Developer Preview2; IDE: DevEco Studio 4.1.3.700; ROM: 3.0.0.19;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+4. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -104,15 +104,15 @@ export default HtmlViewExample;
 
 | Name            | Description                                                  | Type   | Required | Platform | HarmonyOS Support |
 | --------------- | ------------------------------------------------------------ | ------ | -------- | -------- | ----------------- |
-| value           | a string of HTML content to render                           | string | yes      | All      | yes               |
-| onLinkPress     | a function which will be called with a url when a link is pressed. Passing this prop will override how links are handled | string | no       | All      | yes               |
-| onLinkLongPress | a function which will be called with a url when a link is long pressed. The default is | string | no       | All      | yes               |
-| stylesheet      | a stylesheet object keyed by tag name, which will override the styles applied to those respective tags. | string | no       | All      | yes               |
-| renderNode      | a custom function to render HTML nodes however you see fit.  | string | no       | All      | yes               |
-| bullet          | text which is rendered before every inside a `li``ul`        | string | no       | All      | yes               |
-| paragraphBreak  | text which appears after every element`p`                    | string | no       | All      | yes               |
-| lineBreak       | text which appears after text elements which create a new line | string | no       | All      | yes               |
-| addLineBreaks   | when explicitly , effectively sets                           | string | no       | All      | yes               |
+| value           | 要渲染的HTML内容字符串                           | string | yes      | All      | yes               |
+| onLinkPress     | 当链接被点击时会调用此函数并传入URL。传递此属性将覆盖链接的处理方式 | string | no       | All      | yes               |
+| onLinkLongPress | 当链接被长按时会调用此函数并传入URL。默认行为是 | string | no       | All      | yes               |
+| stylesheet      | 通过标签名称键控的样式表对象，将覆盖应用于这些相应标签的样式。 | string | no       | All      | yes               |
+| renderNode      | 自定义函数，用于按您认为合适的方式渲染HTML节点。  | string | no       | All      | yes               |
+| bullet          | 在`ul`内每个`li`元素前渲染的文本        | string | no       | All      | yes               |
+| paragraphBreak  | 在每个`p`元素后出现的文本                    | string | no       | All      | yes               |
+| lineBreak       | 在创建新行的文本元素后出现的文本 | string | no       | All      | yes               |
+| addLineBreaks   | 当明确设置时，有效设置为                           | boolean | no       | All      | yes               |
 
 ## 开源协议
 

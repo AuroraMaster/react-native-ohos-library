@@ -1,31 +1,23 @@
-> Template version: v0.2.2
+> Template version: v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>@remobile/react-native-toast</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/remobile/react-native-toast">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/remobile/react-native-toast/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-        <!-- <img src="https://img.shields.io/badge/license-Apache-blue.svg" alt="License" /> -->
-    </a>
-</p>
 
-> [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-toast)
+This project is developed based on [react-native-toast@1.0.7](https://github.com/remobile/react-native-toast).
+
+Please refer to the Releases page of the third-party library for the corresponding version information:
+
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+|1.0.7@deprecated  | @react-native-oh-tpl/react-native-toast | [Github](https://github.com/react-native-oh-library/react-native-toast) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-toast/releases) | 0.72 |
+|  1.0.8           | @react-native-ohos/react-native-toast   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-toast) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-toast/releases) | 0.72 |
+|  1.1.0           | @react-native-ohos/react-native-toast   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-toast) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-toast/releases) | 0.77 |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 ## Installation and Usage
 
-Please refer to the Releases page of the third-party library for the corresponding version information
-
-| Third-party Library Version | Release Information                         | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 1.0.7@deprecated      | [@react-native-oh-tpl/react-native-toast Releases(deprecated)](https://github.com/react-native-oh-library/react-native-toast/releases) | 0.72       |
-| 1.0.8      | [@react-native-ohos/react-native-toast Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-toast/releases)    | 0.72       |
-| 1.1.0      | [@react-native-ohos/react-native-toast Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-toast/releases)    | 0.77       |
-
-For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -257,15 +249,10 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+This document content has been verified against the following environments:
 
-Please refer to the Releases page of the third-party library for the corresponding version information
-
-| Third-party Library Version | Release Information                         | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 1.0.7@deprecated      | [@react-native-oh-tpl/react-native-toast Releases(deprecated)](https://github.com/react-native-oh-library/react-native-toast/releases) | 0.72       |
-| 1.0.8      | [@react-native-ohos/react-native-toast Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-toast/releases)    | 0.72       |
-| 1.1.0      | [@react-native-ohos/react-native-toast Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-toast/releases)    | 0.77       |
+1. RNOH: 0.72.33; SDK: OpenHarmony 5.0.0.71(API Version 12 Release); IDE: DevEco Studio 5.0.3.900; ROM: NEXT.0.0.71;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 
 ## API

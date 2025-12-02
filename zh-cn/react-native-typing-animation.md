@@ -1,23 +1,22 @@
-> 模板版本：v0.2.2
+> 模板版本：v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-typing-animation</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/watadarkstar/react-native-typing-animation">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/watadarkstar/react-native-typing-animation/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-        <!-- <img src="https://img.shields.io/badge/license-Apache-blue.svg" alt="License" /> -->
-    </a>
-</p>
 
+> [!TIP] [GitHub address](https://github.com/watadarkstar/react-native-typing-animation)
 
+请到三方库的 Releases发布地址查看配套的版本信息：
 
-> [!TIP] [Github 地址](https://github.com/watadarkstar/react-native-typing-animation)
+| 三方库版本 | 支持RN版本 |
+| ----------| ---------- |
+| 0.1.7    |  0.72/0.77 |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 ## 安装与使用
+
+进入到工程目录并输入以下命令：
 
 <!-- tabs:start -->
 
@@ -208,9 +207,10 @@ export default TypingAnimationDemos;
 
 本文档内容基于以下版本验证通过：
 
-1.RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
-
-2.RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
+2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+4. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -220,16 +220,15 @@ export default TypingAnimationDemos;
 
 |     Name     |                         Description                          |  Type   | Required |  Platform   | HarmonyOS Support |
 | :----------: | :----------------------------------------------------------: | :-----: | :------: | :---------: | :---------------: |
-|    style     |              Container styles; default is `{}`               | Object  |    No    | Android/ios |        Yes        |
-|   dotColor   |             Dot color; default is `#000` (black)             | String  |    No    | Android/ios |        Yes        |
-|  dotStyles   |                 Dot styles; default is `{}`                  | Object  |    No    |   Android   |        No         |
-|  dotRadius   |                 Dot radius; default is `2.5`                 | Integer |    No    | Android/ios |        Yes        |
-|  dotMargin   |      Dot margin, the space between dots; default is `3`      | Integer |    No    | Android/ios |        Yes        |
-| dotAmplitude |                Dot amplitude; default is `3`                 | Integer |    No    | Android/ios |        Yes        |
-|   dotSpeed   | Dot speed, the speed of the whole animation view; default is `0.15` | Integer |    No    | Android/ios |        Yes        |
-|     dotY     |        Dot y, the starting y coordinate; default is 6        | Integer |    No    | Android/ios |        Yes        |
-|     dotX     |  Dot x, the x coordinate of the center dot; default is `12`  | Integer |    No    | Android/ios |        Yes        |
-|     show     |  Visibility, whether the whole animation view is displayed or not; default is true  | Boolean |    No    | Android/ios |        Yes        |
+|    style     |              容器样式；默认值为`{}`               | Object  |    No    | Android/ios |        Yes        |
+|   dotColor   |             点颜色；默认值为`#000`（黑色）             | String  |    No    | Android/ios |        Yes        |
+|  dotStyles   |                 点样式；默认值为`{}`                  | Object  |    No    |   Android   |        No         |
+|  dotRadius   |                 点半径；默认值为`2.5`                 | Integer |    No    | Android/ios |        Yes        |
+|  dotMargin   |      点边距，点之间的间距；默认值为`3`      | Integer |    No    | Android/ios |        Yes        |
+| dotAmplitude |                点振幅；默认值为`3`                 | Integer |    No    | Android/ios |        Yes        |
+|   dotSpeed   | 点速度，整个动画视图的速度；默认值为`0.15` | Integer |    No    | Android/ios |        Yes        |
+|     dotY     |        点y坐标，起始y坐标；默认值为6        | Integer |    No    | Android/ios |        Yes        |
+|     dotX     |  点x坐标，中心点的x坐标；默认值为`12`  | Integer |    No    | Android/ios |        Yes        |
 
 ## 遗留问题
 
