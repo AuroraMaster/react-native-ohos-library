@@ -16,6 +16,10 @@
 
 > [!TIP] [Github 地址](https://github.com/yigithanyucedag/react-native-feather)
 
+| 三方库版本  | 支持RN版本 |
+| ---------- | ---------- |
+| 1.1.2      | 0.72/0.77  |
+
 ## 安装与使用
 
 <!-- tabs:start -->
@@ -79,6 +83,7 @@ export default FeatherExample;
 
 1. RNOH：0.72.13; SDK：HarmonyOS NEXT Developer Preview1; IDE：DevEco Studio 4.1.3.500; ROM：204.1.0.59;
 2. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1 B.0.18、HarmonyOS NEXT Developer Preview0 B.0.60、HarmonyOS NEXT Developer Preview2 B.0.73; IDE：DevEco Studio 5.0.3.200; ROM：2.0.0.18;
+3. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## 属性
 
@@ -88,14 +93,13 @@ export default FeatherExample;
 
 该库为UI组件库，通过配置属性标签，实现对应的功能。
 
-| Prop        | Description                                                  | Default      | HarmonyOS Support |
-| ----------- | ------------------------------------------------------------ | ------------ | ----------------- |
-| width       | Width of the icon.                                           | 24           | yes               |
-| height      | Height of the icon.                                          | 24           | yes               |
-| stroke      | The stroke prop refers to the color outline the icon.        | currentColor | yes               |
-| strokeWidth | The strokeWidth prop specifies the width of the outline on the icon. | 2            | yes               |
-| fill        | The fill prop refers to the color inside the icon.           | none         | yes               |
-
+| Prop        | Description                                                          | Default      | HarmonyOS Support |
+| ----------- | -------------------------------------------------------------------- | ------------ | ----------------- |
+| width       | 图标的宽度                                                   | 24           | yes               |
+| height      | 图标的高度                                                  | 24           | yes               |
+| stroke      | 描边属性指的是图标的颜色轮廓.                | currentColor | yes               |
+| strokeWidth | strokeWidth 属性指定图标轮廓的宽度. | 2            | yes               |
+| fill        | fill 属性指的是图标内部的颜色.                   | none         | yes               |
 
 
 ## 遗留问题

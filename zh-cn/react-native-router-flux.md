@@ -322,14 +322,14 @@ Router 管理整个应用的页面导航和转场效果。
 | backButtonImage | 返回按钮图片路径 | string | no | iOS/Android | yes |
 | backButtonTintColor | 返回按钮颜色 | string | no | iOS/Android | yes |
 | drawer | 是否作为抽屉菜单 | boolean | no | iOS/Android | yes |
-| failure | 导航失败时的回调函数或场景key | function \| string | no | Android | no |
-| headerBackTitle | 头部返回按钮标题 | string | no | Android | no |
+| failure | 导航失败时的回调函数或场景key | function \| string | no | iOS/Android | yes |
+| headerBackTitle | 头部返回按钮标题 | string | no | iOS/Android | yes |
 | hideNavBar | 是否隐藏导航栏 | boolean | no | iOS/Android | yes |
 | hideTabBar | 是否隐藏标签栏 | boolean | no | iOS/Android | yes |
-| hideBackImage | 是否隐藏返回图片 | boolean | no | Android | no |
+| hideBackImage | 是否隐藏返回图片 | boolean | no | iOS/Android | yes |
 | initial | 是否作为初始场景 | boolean | no | iOS/Android | yes |
 | leftButtonImage | 左侧按钮图片 | Image | no | iOS/Android | yes |
-| modal | 是否以模态形式显示 | boolean | no | iOS/Android | yes |
+| modal | 是否以模态形式显示 | boolean | no | no | no |
 | navigationBarTitleImage | 导航栏标题图片 | Image | no | iOS/Android | yes |
 | navigationBarTitleImageStyle | 导航栏标题图片样式 | style | no | iOS/Android | yes |
 | navTransparent | 导航栏是否透明 | boolean | no | iOS/Android | yes |
@@ -344,7 +344,7 @@ Router 管理整个应用的页面导航和转场效果。
 | rightTitle | 右侧按钮标题 | string | no | iOS/Android | yes |
 | rightButtonImage | 右侧按钮图片 | Image \| null | no | iOS/Android | yes |
 | rightButtonTextStyle | 右侧按钮文本样式 | style | no | iOS/Android | yes |
-| success | 导航成功时的回调函数或场景key | function \| string | no | Android | no |
+| success | 导航成功时的回调函数或场景key | function \| string | no | iOS/Android | yes |
 | tabs | 是否作为标签页容器 | boolean | no | iOS/Android | yes |
 | title | 场景标题 | function \| string | no | iOS/Android | yes |
 | titleStyle | 标题样式 | style | no | iOS/Android | yes |
@@ -416,13 +416,13 @@ Router 管理整个应用的页面导航和转场效果。
 | currentScene | 当前场景信息 | object | no | iOS/Android | yes |
 | jump | 跳转到指定场景 | function| no | iOS/Android | yes |
 | pop | 返回上一个场景 | function | no | iOS/Android | yes |
-| popAndPush | 返回并推入新场景 | function| no | Android | no |
+| popAndPush | 返回并推入新场景 | function| no | no | no |
 | popTo | 返回到指定场景 | function| no | iOS/Android | yes |
 | push | 推入新场景 | function| no | iOS/Android | yes |
 | refresh | 刷新当前场景 | function| no | iOS/Android | yes |
 | replace | 替换当前场景 | function| no | iOS/Android | yes |
 | reset | 重置导航栈到指定场景 | function| no | iOS/Android | yes |
-| addRef | 添加引用 | function | no | Android | no |
+| addRef | 添加引用 | function | no | iOS/Android | yes |
 | drawerOpen | 打开抽屉菜单 | object | no | iOS/Android | yes |
 | drawerClose | 关闭抽屉菜单 | object | no | iOS/Android | yes |
 
