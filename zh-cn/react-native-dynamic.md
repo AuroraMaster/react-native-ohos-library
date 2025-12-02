@@ -14,6 +14,9 @@
 
 > [!TIP] [Github 地址](https://github.com/codemotionapps/react-native-dynamic)
 
+| 三方库版本  | 支持RN版本 |
+| ---------- | ---------- |
+| 1.0.0      | 0.72/0.77  |
 
 ## 安装与使用
 
@@ -182,6 +185,7 @@ const dynamicStyles = new DynamicStyleSheet({
 
 1. RNOH：0.72.26; SDK：HarmonyOS NEXT Developer Beta1；IDE：DevEco Studio 5.0.3.300; ROM：3.0.0.24;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## 属性
 
@@ -191,12 +195,12 @@ const dynamicStyles = new DynamicStyleSheet({
 
 | Prop   | Description   | Type       | Required | Platform | HarmonyOS Support |
 | ----- | ----- | -------- | -------- | -------- | -------- |
-| `useDarkMode`  | Returns a boolean. true when dark mode is on. |  function | no     | All  | yes      |
-| `DynamicValue`  | A helper class meant to be used with DynamicStyleSheet and useDynamicValue. The first argument is the value to be used with a light color scheme, the second argument is the value to be used with a dark color scheme. | function  |  no     | All   | yes      |
-| `DynamicStyleSheet`  | Just like StyleSheet but with support for dynamic values.| function  |  no     | All   | yes      |
-| `ColorSchemeProvider`  | Allows you to set a specific mode for children.| function  |  no     | All   | yes      |
-| `useDynamicValue`  | Returns the appropriate value depending on the theme. You can either pass a DynamicValue, an object containing dark and light properties, or just two arguments.| function  |  no     | All   | yes      |
-| `useColorSchemeContext`  | Returns dark or light but reads value from context.| function  |  no     | All   | yes      |
+| `useDarkMode`  | 返回布尔值。如果暗模式开启，则为 true. |  function | no     | All  | yes      |
+| `DynamicValue`  | 一个辅助类，用于与 DynamicStyleSheet 和 useDynamicValue 一起使用。第一个参数是用于浅色主题的值，第二个参数是用于深色主题的值. | function  |  no     | All   | yes      |
+| `DynamicStyleSheet`  | 就像 StyleSheet，但支持动态值.| function  |  no     | All   | yes      |
+| `ColorSchemeProvider`  | 允许您为儿童设置特定模式.| function  |  no     | All   | yes      |
+| `useDynamicValue`  | 根据主题返回适当的值。你可以传入 DynamicValue、包含 dark 和 light 属性的对象，或者仅传入两个参数.| function  |  no     | All   | yes      |
+| `useColorSchemeContext`  | 返回暗色或亮色，但从上下文中读取值.| function  |  no     | All   | yes      |
 
 
 ## 遗留问题

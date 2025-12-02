@@ -12,6 +12,10 @@
 
 > [!TIP] [GitHub address](https://github.com/yigithanyucedag/react-native-feather)
 
+| Version  | Support RN Version |
+| ---------- | ---------- |
+| 1.1.2      | 0.72/0.77  |
+
 ## Installation and Usage
 
 <!-- tabs:start -->
@@ -82,6 +86,7 @@ If it is not included, follow the guide provided in [@react-native-oh-tpl/react-
 
 1. RNOH: 0.72.13; SDK: HarmonyOS NEXT Developer Preview1; IDE: DevEco Studio 4.1.3.500; ROM: 204.1.0.59;
 2. RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1 B.0.18, HarmonyOS NEXT Developer Preview0 B.0.60, HarmonyOS NEXT Developer Preview2 B.0.73; IDE: DevEco Studio 5.0.3.200; ROM: 2.0.0.18;
+3. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## Properties
 
@@ -91,13 +96,13 @@ This library receives all [SVG properties](https://gitee.com/react-native-oh-lib
 
 This library is a UI component library. You can configure properties to implement corresponding functionalities.
 
-| Prop        | Description                                                          | Default      | HarmonyOS Support |
-| ----------- | -------------------------------------------------------------------- | ------------ | ----------------- |
-| width       | Width of the icon.                                                   | 24           | yes               |
-| height      | Height of the icon.                                                  | 24           | yes               |
-| stroke      | The stroke prop refers to the color outline the icon.                | currentColor | yes               |
+| Prop        | Description                                                  | Default      | HarmonyOS Support |
+| ----------- | ------------------------------------------------------------ | ------------ | ----------------- |
+| width       | Width of the icon.                                           | 24           | yes               |
+| height      | Height of the icon.                                          | 24           | yes               |
+| stroke      | The stroke prop refers to the color outline the icon.        | currentColor | yes               |
 | strokeWidth | The strokeWidth prop specifies the width of the outline on the icon. | 2            | yes               |
-| fill        | The fill prop refers to the color inside the icon.                   | none         | yes               |
+| fill        | The fill prop refers to the color inside the icon.           | none         | yes               |
 
 ## Known Issues
 

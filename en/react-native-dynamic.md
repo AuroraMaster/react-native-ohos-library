@@ -14,6 +14,10 @@
 
 > [!TIP] [GitHub address](https://github.com/codemotionapps/react-native-dynamic)
 
+| Version  | Support RN Version |
+| ---------- | ---------- |
+| 1.0.0      | 0.72/0.77  |
+
 ## Installation and Usage
 
 Go to the project directory and execute the following instruction:
@@ -181,6 +185,7 @@ This document is verified based on the following versions:
 
 1. RNOH: 0.72.26; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.300; ROM: 3.0.0.24;
 2. RNOH: 0.72.33; SDK: OpenHarmony 5.0.0.71(API Version 12 Release); IDE: DevEco Studio 5.0.3.900; ROM: NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## Properties
 

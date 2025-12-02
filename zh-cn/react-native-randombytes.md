@@ -25,7 +25,7 @@
 |-------| ------------------------------------------------------------ | ---------- |
 | 3.6.1@deprecated | [@react-native-oh-tpl/react-native-randombytes Releases(deprecated)](https://github.com/react-native-oh-library/react-native-randombytes/releases) | 0.72       |
 | 3.6.2 | [@react-native-ohos/react-native-randombytes Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-randombytes/releases)                        | 0.72       |
-| 3.6.3 | [@react-native-ohos/react-native-randombytes Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-randombytes/releases)                        | 0.77       |
+| 3.7.0 | [@react-native-ohos/react-native-randombytes Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-randombytes/releases)                        | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -201,18 +201,9 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
-
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-|-------| ------------------------------------------------------------ | ---------- |
-| 3.6.1@deprecated | [@react-native-oh-tpl/react-native-randombytes Releases(deprecated)](https://github.com/react-native-oh-library/react-native-randombytes/releases) | 0.72       |
-| 3.6.2 | [@react-native-ohos/react-native-randombytes Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-randombytes/releases)                        | 0.72       |
-| 3.6.3 | [@react-native-ohos/react-native-randombytes Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-randombytes/releases)                        | 0.77       |
-
 本文档内容基于以下版本验证通过：
 1. RNOH: 0.72.20-CAPI; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.200; ROM: 3.0.0.18;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## API
 
@@ -224,8 +215,8 @@ ohpm install
 
 | Name           | Description                   | Type | Required | Platform    | HarmonyOS Support |
 |----------------|-------------------------------| -- | -------- | ----------- | ----------------- |
-| randombytes    | generate secure random numbers. | function | No       | IOS/Android | yes               |
-| seedSJCL       | Add entropy to the pools.       | function | No       | IOS/Android | yes               |
+| randombytes    | 生成安全的随机数 | function | No       | IOS/Android | yes               |
+| seedSJCL       | 向池子中添加熵       | function | No       | IOS/Android | yes               |
 
 
 ## 其他
