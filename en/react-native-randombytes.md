@@ -25,7 +25,7 @@ Please refer to the Releases page of the third-party library for the correspondi
 |-------| ------------------------------------------------------------ | ---------- |
 | 3.6.1@deprecated | [@react-native-oh-tpl/react-native-randombytes Releases(deprecated)](https://github.com/react-native-oh-library/react-native-randombytes/releases) | 0.72       |
 | 3.6.2 | [@react-native-ohos/react-native-randombytes Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-randombytes/releases)                        | 0.72       |
-| 3.6.3 | [@react-native-ohos/react-native-randombytes Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-randombytes/releases)                        | 0.77       |
+| 3.7.0 | [@react-native-ohos/react-native-randombytes Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-randombytes/releases)                        | 0.77       |
 
 For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
@@ -196,18 +196,9 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
-
-Please refer to the Releases page of the third-party library for the corresponding version information
-
-| Third-party Library Version | Release Information                                                     | Supported RN Version |
-|-------| ------------------------------------------------------------ | ---------- |
-| 3.6.1@deprecated | [@react-native-oh-tpl/react-native-randombytes Releases(deprecated)](https://github.com/react-native-oh-library/react-native-randombytes/releases) | 0.72       |
-| 3.6.2 | [@react-native-ohos/react-native-randombytes Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-randombytes/releases)                        | 0.72       |
-| 3.6.3 | [@react-native-ohos/react-native-randombytes Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-randombytes/releases)                        | 0.77       |
-
 This document is verified based on the following versions:
 1. RNOH: 0.72.20-CAPI; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.200; ROM: 3.0.0.18;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## API
 

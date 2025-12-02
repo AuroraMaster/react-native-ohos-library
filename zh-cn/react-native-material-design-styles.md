@@ -15,6 +15,9 @@
 
 > [!TIP] [Github 地址](https://github.com/binggg/react-native-material-design-styles)
 
+| 三方库版本  | 支持RN版本 |
+| ---------- | ---------- |
+| 0.2.7      | 0.72/0.77  |
 
 
 ## 安装与使用
@@ -119,7 +122,7 @@ const styles = StyleSheet.create({
 
 1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
-
+3. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 
 ## API
@@ -130,9 +133,9 @@ const styles = StyleSheet.create({
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| typography  | use StyleSheet.create(typography)        | function  | yes | iOS/android      | yes |
-| color  | use color.paperBlue500.color        | function  | yes | iOS/android      | yes |
-| defaultTheme  | use StyleSheet.create(defaultTheme)         | function  | yes | iOS/android      | yes |
+| typography  | 使用 StyleSheet.create(typography)        | function  | yes | iOS/android      | yes |
+| color  | 使用 color.paperBlue500.color        | function  | yes | iOS/android      | yes |
+| defaultTheme  | 使用 StyleSheet.create(defaultTheme)         | function  | yes | iOS/android      | yes |
 ## 遗留问题
 
 
