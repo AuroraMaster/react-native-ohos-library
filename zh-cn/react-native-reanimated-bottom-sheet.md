@@ -16,9 +16,14 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-reanimated-bottom-sheet)
 
-## 安装与使用
+该第三方库的仓库Github上，且支持直接从 npm 下载，新的包名为：@react-native-ohos/reanimated-bottom-sheet，具体版本所属关系如下：
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-library/react-native-reanimated-bottom-sheet Releases](https://github.com/react-native-oh-library/react-native-reanimated-bottom-sheet/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+| 三方库版本 | 包名                              | 仓库地址 | 发布(Release) | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |  ---------- |  ---------- |
+| 1.0.0 | @react-native-oh-tpl/reanimated-bottom-sheet | [Github](https://github.com/react-native-oh-library/react-native-reanimated-bottom-sheet)|[Github Releases](https://github.com/react-native-oh-library/react-native-reanimated-bottom-sheet/releases)|0.72       |
+| 1.1.0 | @react-native-ohos/reanimated-bottom-sheet         | [Github](https://github.com/react-native-oh-library/react-native-reanimated-bottom-sheet/tree/br_rnoh0.77) |[Github Releases]() | 0.77       |
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -27,13 +32,21 @@
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/reanimated-bottom-sheet
+
+# 0.77
+npm install @react-native-ohos/reanimated-bottom-sheet
 ```
 
 #### **yarn**
 
 ```bash
-yarn add  @react-native-oh-tpl/reanimated-bottom-sheet
+# 0.72
+yarn add @react-native-oh-tpl/reanimated-bottom-sheet
+
+# 0.77
+yarn add @react-native-ohos/reanimated-bottom-sheet
 ```
 
 <!-- tabs:end -->
@@ -109,21 +122,29 @@ export default function () {
 ## Link
 
 本库依赖以下三方库，请查看对应文档：
+
+RN 0.72
 + [@react-native-oh-tpl/react-native-gesture-handler](/zh-cn/react-native-gesture-handler.md)
 + [@react-native-oh-tpl/react-native-reanimated](/zh-cn/react-native-reanimated.md)
 + [@react-native-oh-tpl/bottom-sheet](/zh-cn/gorhom-bottom-sheet.md)
 
-本库 HarmonyOS 侧实现依赖@react-native-oh-tpl/react-native-reanimated、@react-native-oh-tpl/react-native-gesture-handler的原生端代码，如已在鸿蒙工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
+RN 0.77
++ [@react-native-ohos/react-native-gesture-handler](/zh-cn/react-native-gesture-handler.md)
++ [@react-native-ohos/react-native-reanimated](/zh-cn/react-native-reanimated.md)
++ [@react-native-ohos/bottom-sheet](/zh-cn/gorhom-bottom-sheet.md)
 
-如未引入请参照[@react-native-oh-tpl/react-native-reanimated 文档](/zh-cn/react-native-reanimated.md)、[@react-native-oh-tpl/react-native-gesture-handler 文档](/zh-cn/react-native-gesture-handler.md)进行引入
+本库 HarmonyOS 侧实现依赖上述的react-native-reanimated、react-native-gesture-handler的原生端代码，如已在鸿蒙工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
+
+如未引入请参照[react-native-reanimated 文档](/zh-cn/react-native-reanimated.md)、[react-native-gesture-handler 文档](/zh-cn/react-native-gesture-handler.md)进行引入
 
 ## 约束与限制
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-library/react-native-reanimated-bottom-sheet Releases](https://github.com/react-native-oh-library/react-native-reanimated-bottom-sheet/releases)
+1、RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.1.1.830; ROM: 6.0.0.112 SP12;  
+2、RNOH: 0.77.18; SDK: HarmonyOS-5.1.1.208(API19); IDE: DevEco Studio 5.1.1.830; ROM: 6.0.0.112 SP12;
 
 ## 属性
 
