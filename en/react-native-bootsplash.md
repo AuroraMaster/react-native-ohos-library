@@ -459,13 +459,15 @@ useHideAnimation(config: {UseHideAnimationConfig}) => {container: ContainerProps
 | darkLogo                 | logo image in animation in dark mode                         | ImageRequireSource | No       | iOS/Android | partially         |
 | brand                    | brand image in animation                                     | ImageRequireSource | No       | iOS/Android | partially         |
 | darkBrand                | brand image in animation in dark mode                        | ImageRequireSource | No       | iOS/Android | partially         |
-| statusBarTranslucent     | sets whether the status bar is transparent                   | boolean            | No       | iOS/Android | partially         |
-| navigationBarTranslucent | sets whether the navigation bar is transparent               | boolean            | No       | iOS/Android | partially         |
+| statusBarTranslucent     | sets whether the status bar is transparent                   | boolean            | No       | iOS/Android | No                |
+| navigationBarTranslucent | sets whether the navigation bar is transparent               | boolean            | No       | iOS/Android | No                |
 | animate                  | custom hide animation                                        | function           | Yes      | iOS/Android | partially         |
 
 ## Known Issues
 
 - [ ] The animation property cannot be set in the HarmonyOS window, because setting the fade parameter of the hide API to true does not take effect. [issue#13](https://github.com/react-native-oh-library/react-native-bootsplash/issues/13)
+- [ ] The navigationBarTranslucent property is not supported on HarmonyOS, and setting the navigationBarTranslucent parameter to true on the useHideAnimation interface has no effect problem: [issue#6](https://gitcode.com/openharmony-sig/rntpc_react-native-bootsplash/issues/6)
+- [ ] The statusBarTranslucent property is not supported on HarmonyOS, and setting the statusBarTranslucent parameter to true on the useHideAnimation interface has no effect problem: [issue#6](https://gitcode.com/openharmony-sig/rntpc_react-native-bootsplash/issues/6)
 
 ## Others
 

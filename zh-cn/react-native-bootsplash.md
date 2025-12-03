@@ -450,13 +450,15 @@ useHideAnimation(config: {UseHideAnimationConfig}) => {container: ContainerProps
 | darkLogo | logo image in animation in dark mode | ImageRequireSource | No      | iOS/Android | partially               |
 | brand | brand image in animation | ImageRequireSource | No      | iOS/Android | partially               |
 | darkBrand | brand image in animation in dark mode | ImageRequireSource | No      | iOS/Android | partially               |
-| statusBarTranslucent | sets whether the status bar is transparent | boolean | No      | iOS/Android | partially               |
-| navigationBarTranslucent | sets whether the navigation bar is transparent | boolean | No      | iOS/Android | partially               |
+| statusBarTranslucent | sets whether the status bar is transparent | boolean | No      | iOS/Android | No                        |
+| navigationBarTranslucent | sets whether the navigation bar is transparent | boolean | No      | iOS/Android | No                        |
 | animate | custom hide animation | function | Yes      | iOS/Android | partially               |
 
 ## 遗留问题
 
 - [ ] HarmonyOS的window窗口上不支持设置动画属性，hide接口fade参数设置true没有效果 问题: [issue#13](https://github.com/react-native-oh-library/react-native-bootsplash/issues/13)
+- [ ] HarmonyOS的上不支持navigationBarTranslucent属性，useHideAnimation接口navigationBarTranslucent参数设置true没有效果  问题: [issue#6](https://gitcode.com/openharmony-sig/rntpc_react-native-bootsplash/issues/6)
+- [ ] HarmonyOS的上不支持statusBarTranslucent属性，useHideAnimation接口statusBarTranslucent参数设置true没有效果  问题: [issue#6](https://gitcode.com/openharmony-sig/rntpc_react-native-bootsplash/issues/6)
 
 ## 其他
 - 执行generate-bootsplash命令行时，由于 `--brand, --brand-width 和 --dark-*` 选项需要购买license才能使用，涉及功能未开源，HarmonyOS平台不支持使用
