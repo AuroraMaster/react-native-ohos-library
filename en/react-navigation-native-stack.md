@@ -1,45 +1,57 @@
-> 模板版本：v0.2.2
+> Template version: v0.2.2
 
 <p align="center">
   <h1 align="center"> <code>@react-navigation/native-stack</code> </h1>
 </p>
 <p align="center">
-    <a href="https://github.com/react-navigation/react-navigation/tree/6.x/packages/native-stack">
+    <a href="https://github.com/react-navigation/react-navigation/tree/main/packages/native-stack">
         <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20web%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
     </a>
-    <a href="https://github.com/react-navigation/react-navigation/blob/6.x/packages/native-stack/LICENSE">
+    <a href="https://github.com/react-navigation/react-navigation/blob/main/packages/native-stack/LICENSE">
          <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
     </a>
 </p>
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-navigation/tree/sig/packages/native-stack)
 
-## 安装与使用
+The repository for this third-party library has been migrated to Gitcode, and it now supports direct download from npm. The new package name is: `@react-native-ohos/native-stack`. The specific version relationships are as follows:
 
-> [!TIP] native-stack的tgz包在react-navigation Releases。
+| Version                        | Package Name                             | Repository                                                   | Release                                                      | Version for RN |
+| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+| 6.9.26 | @react-native-oh-tpl/native-stack  | [Github](https://github.com/react-native-oh-library/react-navigation/tree/sig/packages/native-stack) | [Github Releases](https://github.com/react-native-oh-library/react-navigation/releases) | 0.72       |
+| 7.3.11                        | @react-native-ohos/native-stack | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-navigation/tree/br_rnoh0.77/packages/native-stack) | [GitCode Releases]() | 0.77       |
 
-Find the matching version information in the release address of a third-party library：[@react-native-oh-library/react-navigation Releases](https://github.com/react-native-oh-library/react-navigation/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+For older versions that have not been released to npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package
 
-进入到工程目录并输入以下命令：
+## Installation and Usage
 
+Go to the project directory and execute the following instruction:
 
 <!-- tabs:start -->
 
 ### **npm**
 
 ```bash
+# for RN0.72
 npm install @react-native-oh-tpl/native-stack
+
+# for RN0.77
+npm install @react-native-ohos/native-stack
 ```
 
 ### **yarn**
 
 ```bash
+# for RN0.72
 yarn install @react-native-oh-tpl/native-stack
+
+# for RN0.77
+yarn install @react-native-ohos/native-stack
 ```
 
 <!-- tabs:end -->
 
-下面的代码展示了这个库的基本使用场景：
+The following code demonstrates the basic usage scenarios of this library:
 
 ```tsx
 import * as React from 'react';
@@ -123,31 +135,34 @@ export default function App() {
 
 ## Link
 
-本库依赖以下三方库，请查看对应文档：
+This library relies on the following third-party libraries, please refer to the corresponding documentation:
 + [react-native-screens](/zh-cn/react-native-screens.md)
-+ [@react-navigation/native](/zh-cn/react-navigation-native.md)
-+ [@react-navigation/elements](/zh-cn/react-navigation-elements.md)
-+ [@react-native-oh-library/react-native-safe-area-context](/zh-cn/react-native-safe-area-context.md)
++ [native](/zh-cn/react-navigation-native.md)
++ [elements](/zh-cn/react-navigation-elements.md)
++ [react-native-safe-area-context](/zh-cn/react-native-safe-area-context.md)
 
-本库 HarmonyOS 侧实现依赖@react-native-oh-library/react-native-safe-area-context 的原生端代码，如已在 HarmonyOS 工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
+The HarmonyOS implementation of this library relies on the native code of react-native-safe-area-context. If the library has already been introduced in the HarmonyOS project, there is no need to introduce it again. You can skip the steps in this chapter and use it directly.
 
-如未引入请参照[@react-native-oh-library/react-native-safe-area-context 文档的 Link 章节](/zh-cn/react-native-safe-area-context.md#link)进行引入
+If not introduced, please refer to [Link chapter of document react-native-safe-area-context](/zh-cn/react-native-safe-area-context.md#link)for introduction
 
-## 约束与限制
+## Constraints
 
-### 兼容性
+### Compatibility
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-library/react-navigation Releases](https://github.com/react-native-oh-library/react-navigation/releases)
+Verified in the following version:
 
-## 属性
+1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
+2. RNOH：0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
-> [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
+## Properties
 
-> [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
+> [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
-以下属性已验证，更多属性详情请查看 [react-navigation/native-stack 的文档介绍](https://reactnavigation.org/docs/native-stack-navigator)
+> [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
+
+The following attributes have been verified. For more details on the attributes, please refer to [document  react-navigation/native-stack](https://reactnavigation.org/docs/native-stack-navigator)
 
 **Props**
 | Name             | Description                                                                                                                       | Type   | Required | Platform | HarmonyOS Support |
@@ -155,7 +170,9 @@ export default function App() {
 | id               | Optional unique ID for the navigator. This can be used with navigation.getParent to refer to this navigator in a child navigator. | string | no       | all      | yes               |
 | initialRouteName | The name of the route to render on first load of the navigator.                                                                   | string | no       | all      | yes               |
 | screenOptions    | Default options to use for the screens in the navigator.                                                                          | object | no       | all      | yes               |
-
+| layout<sup>7.3.10+</sup>          | A  layout is a wrapper around the navigator. It can be useful for augmenting the  navigators with additional UI with a wrapper.The difference from adding a  wrapper around the navigator manually is that the code in a layout callback  has access to the navigator's state, options etc. | object | no       | all      | yes               |
+| screenLayout<sup>7.3.10+</sup>    | A  screen layout is a wrapper around each screen in the navigator. It makes it  easier to provide things such as an error boundary and suspense fallback for  all screens in the navigator, or wrap each screen with additional UI. | object | no       | all      | yes               |
+| screenListeners<sup>7.3.10+</sup> | You can pass a prop named `screenListeners` to the navigator component, where you can specify listeners for events from all screens for this navigator. | object | no       | all      | yes               |
 
 **Options & screenOptions**
 | Name                          | Description                                                                                                                                                                                                                                                                                                                                  | Type                                                                                                                                     | Required | Platform    | HarmonyOS Support |
@@ -190,7 +207,7 @@ export default function App() {
 | statusBarColor                | Sets the status bar color (similar to the StatusBar component). Defaults to initial status bar color.                                                                                                                                                                                                                                        | string                                                                                                                                   | no       | Android     | no                |
 | statusBarTranslucent          | Sets the translucency of the status bar (similar to the StatusBar component). Defaults to false.                                                                                                                                                                                                                                             | boolean                                                                                                                                  | no       | Android     | no                |
 | contentStyle                  | Style object for the scene content.                                                                                                                                                                                                                                                                                                          | object                                                                                                                                   | no       | all         | yes               |
-| customAnimationOnGesture      | Whether the gesture to dismiss should use animation provided to animation prop. Defaults to false.                                                                                                                                                                                                                                           | boolean                                                                                                                                  | no       | iOS         | no                |
+| customAnimationOnGesture<sup>deprecated from 7.3.10 </sup>> | Whether the gesture to dismiss should use animation provided to animation prop. Defaults to false. | boolean                                                      | no       | iOS          | no                |
 | fullScreenGestureEnabled      | Whether the gesture to dismiss should work on the whole screen. Using gesture to dismiss with this option results in the same transition animation as simple_push. This behavior can be changed by setting customAnimationOnGesture prop. Achieving the default iOS animation isn't possible due to platform limitations. Defaults to false. | boolean                                                                                                                                  | no       | iOS         | no                |
 | gestureEnabled                | Whether you can use gestures to dismiss this screen. Defaults to true.                                                                                                                                                                                                                                                                       | boolean                                                                                                                                  | no       | iOS         | no                |
 | animationTypeForReplace       | The type of animation to use when this screen replaces another screen. Defaults to pop.                                                                                                                                                                                                                                                      | 'push'&#124;'pop'                                                                                                                         | no       | Android，iOS | no                |
@@ -203,19 +220,36 @@ export default function App() {
 | navigationBarColor            | Sets the navigation bar color. Defaults to initial status bar color.                                                                                                                                                                                                                                                                         | string                                                                                                                                   | no       | Android     | no                |
 | navigationBarHidden           | Boolean indicating whether the navigation bar should be hidden. Defaults to false.                                                                                                                                                                                                                                                           | boolean                                                                                                                                  | no       | Android     | no                |
 | freezeOnBlur                  | Boolean indicating whether to prevent inactive screens from re-rendering. Defaults to false. Defaults to true when enableFreeze() from react-native-screens package is run at the top of the application.                                                                                                                                    | boolean                                                                                                                                  | no       | Android,iOS | no                |
+| headerBackButtonDisplayMode<sup>7.3.10+</sup>               | How the back button displays icon and title.                 | 'default' \| 'generic' \| 'minimal '                         | no       | iOS          | yes               |
+| animationMatchesGesture<sup>7.3.10+</sup>                   | Whether  the gesture to dismiss should use animation provided to animation prop.  Defaults to false. Doesn't affect the behavior of screens presented modally. | boolean                                                      | no       | iOS          | no                |
+| sheetElevation<sup>7.3.10+</sup>                            | Works only when presentation is set to formSheet.<br/>Integer value describing elevation of the sheet, impacting shadow on the top edge of the sheet. | number                                                       | no       | Android      | no                |
+| sheetExpandsWhenScrolledToEdge<sup>7.3.10+</sup>            | Works only when presentation is set to formSheet.<br/>Whether the sheet should expand to larger detent when scrolling. | boolean                                                      | no       | iOS          | no                |
+| sheetCornerRadius<sup>7.3.10+</sup>                         | Works only when presentation is set to formSheet.<br/>The corner radius that the sheet will try to render with. | number                                                       | no       | Android,iOS  | no                |
+| sheetInitialDetentIndex<sup>7.3.10+</sup>                   | Works only when presentation is set to formSheet.<br/>Index of the detent the sheet should expand to after being opened. | number                                                       | no       | Android,iOS  | no                |
+| sheetGrabberVisible<sup>7.3.10+</sup>                       | Works only when presentation is set to formSheet.<br/>Boolean indicating whether the sheet shows a grabber at the top. | boolean                                                      | no       | iOS          | no                |
+| sheetLargestUndimmedDetentIndex<sup>7.3.10+</sup>           | Works only when presentation is set to formSheet.<br/>The largest sheet detent for which a view underneath won't be dimmed. | 'none' \| 'last'                                             | no       | Android,iOS  | no                |
 
 **Events**
+
 | Name            | Description                                                                      | Type     | Required | Platform | HarmonyOS Support |
 |-----------------|----------------------------------------------------------------------------------|----------|----------|----------|-------------------|
 | transitionStart | This event is fired when the transition animation starts for the current screen. | function | no       | all      | no                |
 | transitionEnd   | This event is fired when the transition animation ends for the current screen.   | function | no       | all      | no                |
 
-## 遗留问题
+**Hooks<sup>7.3.10+</sup>**
 
-- [ ] react-native-screens功能缺失，导致headerSearchBarOptions等属性功能无法实现：[issue#25](https://github.com/react-native-oh-library/react-navigation/issues/25)
+| Name                    | Description                                                  | Type     | Required | Platform | HarmonyOS Support |
+| ----------------------- | ------------------------------------------------------------ | -------- | -------- | -------- | ----------------- |
+| useAnimatedHeaderHeight | The hook returns an animated value representing the height of the header. | function | no       | all      | yes               |
 
-## 其他
+## Known Issues
 
-## 开源协议
+- [ ] Function react-native-screens is missing, resulting in the inability to implement attribute functions such as headerSearchBarOptions：[issue#25](https://github.com/react-native-oh-library/react-navigation/issues/25)
+- [ ] V7.3.10 Hongmeng side did not implement formSheet, resulting in the formSheet of the presentation not being Hongmeng standardized：[issue#2](https://gitcode.com/openharmony-sig/rntpc_react-navigation/issues/2)
+- [ ] V7.3.10 AnimationMatchesGesture did not implement Harmonyization due to dependency on third-party library react-native-screen: [issue#3](https://gitcode.com/openharmony-sig/rntpc_react-navigation/issues/3)
 
-本项目基于 [The MIT License (MIT)](https://github.com/react-navigation/react-navigation/blob/main/packages/native-stack/LICENSE) ，请自由地享受和参与开源。
+## Others
+
+## License
+
+This project is licensed under [The MIT License (MIT)](https://github.com/react-navigation/react-navigation/blob/main/packages/native-stack/LICENSE).
