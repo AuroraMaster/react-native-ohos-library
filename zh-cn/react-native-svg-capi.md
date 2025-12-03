@@ -271,6 +271,7 @@ ohpm install
 |        color        |         颜色         |     string      |    No    |   All    |        Yes        |
 |        title        |      组件标题名      |     string      |    No    |   All    |        Yes        |
 | preserveAspectRatio | 是否强制进行统一缩放 |     string      |    No    |   All    |        Yes        |
+| style | 用于控制组件的视觉外观和布局 |object |    No    |   All    |        Yes        |
 
 **G**：该元素是用于对其他 SVG 元素进行分组的容器
 
@@ -425,11 +426,9 @@ ohpm install
 
 **ClipPath**：该元素定义一条剪切路径，可作为其他元素的 clipPath 属性的值
 
-> 注： 该组件无属性
-
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | :--: | :---------: | :--: | -------- | -------- | ----------------- |
-|  /   |      /      |  /   | /        | All      | Yes               |
+|  id    |      元素的唯一标识符。      |  string   | No       | All   | Yes   |
 
 **Marker**：用于在绘制类组件上添加标记
 
