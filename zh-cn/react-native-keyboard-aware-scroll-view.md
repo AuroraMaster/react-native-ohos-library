@@ -3,20 +3,17 @@
 <p align="center">
   <h1 align="center"> <code>react-native-keyboard-aware-scroll-view</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/APSL/react-native-keyboard-aware-scroll-view">
-        <img src="https://img.shields.io/badge/platforms-ios%20|%20android%20|%20web%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/APSL/react-native-keyboard-aware-scroll-view/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-keyboard-aware-scroll-view)
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| Version                        | Package Name                             | Repository                                                   | Release                                                      | RN Version |
+| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -----------
+| <= 0.9.5@deprecated | @react-native-oh-tpl/react-native-keyboard-aware-scroll-view  | [Github@deprecated](https://github.com/react-native-oh-library/react-native-keyboard-aware-scroll-view) | [Github Releases@deprecated](https://github.com/react-native-oh-library/react-native-keyboard-aware-scroll-view/releases) | 0.72       |
+| 0.9.5                        | @react-native-ohos/react-native-keyboard-aware-scroll-view | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-keyboard-aware-scroll-view) | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-keyboard-aware-scroll-view/releases) | 0.72       |
+| 0.10.0                        | @react-native-ohos/react-native-keyboard-aware-scroll-view | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-keyboard-aware-scroll-view) | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-keyboard-aware-scroll-view/releases) | 0.77       |
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-keyboard-aware-scroll-view Releases](https://github.com/react-native-oh-library/react-native-keyboard-aware-scroll-view/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +22,13 @@
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-keyboard-aware-scroll-view
+npm install @react-native-ohos/react-native-keyboard-aware-scroll-view
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-keyboard-aware-scroll-view
+yarn add @react-native-ohos/react-native-keyboard-aware-scroll-view
 ```
 
 <!-- tabs:end -->
@@ -97,9 +94,9 @@ const styles = StyleSheet.create({
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
-
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-keyboard-aware-scroll-view Releases](https://github.com/react-native-oh-library/react-native-keyboard-aware-scroll-view/releases)
+本文档内容基于以下版本验证通过：
+1. RNOH：0.72.29; SDK：HarmonyOS NEXT Developer Beta6 SDK; IDE: DevEco Studio 5.0.3.706; ROM：3.0.0.65;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release; IDE: DevEco Studio 6.0.0.858; ROM：6.0.0.112;
 
 ## 属性
 
@@ -111,22 +108,22 @@ const styles = StyleSheet.create({
 
 | Name                      | Description                                                                                    | Type                                                                                                                                                             | Required | Platform | HarmonyOS Support |
 | ------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | ----------------- |
-| viewIsInsideTabBar        | Adds an extra offset that represents the `TabBarIOS` height.                                   | boolean                                                                                                                                                          | NO       | iOS      | YES                |
-| resetScrollToCoords       | Coordinates that will be used to reset the scroll when the keyboard hides.                     | Object: {x: number, y: number}                                                                                                                                   | NO       | All      | YES               |
-| enableAutomaticScroll     | When focus in `TextInput` will scroll the position, default is enabled.                        | boolean                                                                                                                                                          | NO       | All      | YES               |
-| extraHeight               | Adds an extra offset when focusing the `TextInput`s.                                           | number                                                                                                                                                           | NO       | All      | YES               |
-| extraScrollHeight         | Adds an extra offset to the keyboard. Useful if you want to stick elements above the keyboard. | number                                                                                                                                                           | NO       | All      | YES               |
-| enableResetScrollToCoords | Lets the user enable or disable automatic resetScrollToCoords.                                 | boolean                                                                                                                                                          | NO       | All      | YES               |
-| keyboardOpeningTime       | Sets the delay time before scrolling to new position, default is 250                           | number                                                                                                                                                           | NO       | iOS      | YES                |
-| onKeyboardWillShow          | What to do when the keyboard is about to appear                                                | (event?) => void                                                                                                                                                 | NO       | iOS      | NO                |
-| onKeyboardDidShow           | What to do when the keyboard appears                                                           | (event?) => void                                                                                                                                                 | NO       | All      | YES               |
-| onKeyboardWillHide          | What to do when the keyboard is about to be hidden                                             | (event?) => void                                                                                                                                                 | NO       | iOS      | NO                |
-| onKeyboardDidHide           | What to do when hiding the keyboard                                                            | (event?) => void                                                                                                                                                 | NO       | All      | YES               |
-| onKeyboardWillChangeFrame   | When the keyboard status is about to change                                                    | (event?) => void                                                                                                                                                 | NO       | iOS      | NO                |
-| onKeyboardDidChangeFrame    | When the keyboard status changes                                                               | (event?) => void                                                                                                                                                 | NO       | iOS      | NO                |
-| scrollToPosition          | Scroll to specific position with or without animation.                                         | (x: number, y: number, animated: bool = true) => void                                                                                                            | NO       | All      | YES               |
-| scrollToEnd               | Scroll to end with or without animation.                                                       | (animated?: bool = true) => void                                                                                                                                 | NO       | All      | YES               |
-| scrollIntoView            | Scrolls an element inside a KeyboardAwareScrollView into view.                                 | (element: React.Element<\*>, options: { getScrollPosition: ?(parentLayout, childLayout, contentOffset) => { x: number, y: number, animated: boolean } }) => void | NO       | All      | YES                |
+| viewIsInsideTabBar        | 添加一个额外的偏移量，代表 `TabBarIOS` 的高度                                           | boolean                                                                                                                                                          | NO       | iOS      | YES                |
+| resetScrollToCoords       | 当键盘隐藏时用于重置滚动的坐标                                                               | Object: {x: number, y: number}                                                                                                                                   | NO       | All      | YES               |
+| enableAutomaticScroll     | 当焦点在 `TextInput` 中时将滚动位置，默认启用                                           | boolean                                                                                                                                                          | NO       | All      | YES               |
+| extraHeight               | 在焦点设置在 `TextInput` 时添加额外偏移                                                   | number                                                                                                                                                           | NO       | All      | YES               |
+| extraScrollHeight         | 添加额外偏移到键盘。如果要在键盘上方放置元素很有用                                       | number                                                                                                                                                           | NO       | All      | YES               |
+| enableResetScrollToCoords | 让用户启用或禁用自动 resetScrollToCoords                                                   | boolean                                                                                                                                                          | NO       | All      | YES               |
+| keyboardOpeningTime       | 设置滚动到新位置之前的延迟时间，默认为 250                                               | number                                                                                                                                                           | NO       | iOS      | YES                |
+| onKeyboardWillShow          | 键盘即将出现时执行的操作                                                                   | (event?) => void                                                                                                                                                 | NO       | iOS      | NO                |
+| onKeyboardDidShow           | 键盘出现时执行的操作                                                                       | (event?) => void                                                                                                                                                 | NO       | All      | YES               |
+| onKeyboardWillHide          | 键盘即将隐藏时执行的操作                                                                   | (event?) => void                                                                                                                                                 | NO       | iOS      | NO                |
+| onKeyboardDidHide           | 键盘隐藏时执行的操作                                                                       | (event?) => void                                                                                                                                                 | NO       | All      | YES               |
+| onKeyboardWillChangeFrame   | 键盘状态即将更改时执行的操作                                                               | (event?) => void                                                                                                                                                 | NO       | iOS      | NO                |
+| onKeyboardDidChangeFrame    | 键盘状态改变时执行的操作                                                                   | (event?) => void                                                                                                                                                 | NO       | iOS      | NO                |
+| scrollToPosition          | 滚动到特定位置，可带有或不带动画                                                           | (x: number, y: number, animated: bool = true) => void                                                                                                            | NO       | All      | YES               |
+| scrollToEnd               | 滚动到末尾，可带有或不带动画                                                               | (animated?: bool = true) => void                                                                                                                                 | NO       | All      | YES               |
+| scrollIntoView            | 将 KeyboardAwareScrollView 内的元素滚动到视图中                                            | (element: React.Element<\*>, options: { getScrollPosition: ?(parentLayout, childLayout, contentOffset) => { x: number, y: number, animated: boolean } }) => void | NO       | All      | YES                |
 
 ## 遗留问题
 
