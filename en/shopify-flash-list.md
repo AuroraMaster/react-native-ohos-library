@@ -14,34 +14,29 @@
 
 > [!TIP] [Github address](https://github.com/react-native-oh-library/flash-list)
 
-Please visit the Release release address of the third-party library to view the corresponding version information: 
-
-| Version                   | Releases info                                     |  Support RN version         |
-| ------------------------- | ------------------------------------------------- |  -------------------------- |
-| 1.6.3      | [@react-native-oh-tpl/flash-list Releases](https://github.com/react-native-oh-library/flash-list/releases) | 0.72       |
-| 1.8.3      | [@react-native-ohos/flash-list Releases]()                   | 0.77       |
-
 ## Installation and Usage
+
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| <= 1.6.3-0.2.9@deprecated  | [@react-native-oh-tpl/flash-list Releases(deprecated)](https://github.com/react-native-oh-library/flash-list/releases) | 0.72       |
+| 1.6.4                      | [@react-native-ohos/flash-list Releases](https://gitcode.com/openharmony-sig/rntpc_flash-list/releases)   | 0.72       |
+| 1.8.3                      | [@react-native-ohos/flash-list Releases](https://gitcode.com/openharmony-sig/rntpc_flash-list/releases)   | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
 #### **npm**
 
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/flash-list
-
-# 0.77
 npm install @react-native-ohos/flash-list
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn add @react-native-oh-tpl/flash-list
-
-# 0.77
 yarn add @react-native-ohos/flash-list
 ```
 
@@ -76,25 +71,14 @@ const MyList = () => {
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/flash-list@1.6.4 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
 ### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
-
-- 0.72
-
-```json
-{
-  "overrides": {
-    "@rnoh/react-native-openharmony": "^0.72.38" // ohpm version
-    // "@rnoh/react-native-openharmony" : "./react_native_openharmony.har" // a locally available HAR package
-    // "@rnoh/react-native-openharmony" : "./react_native_openharmony" // source code directory
-  }
-}
-```
-
-- 0.77
 
 ```json
 {
@@ -117,16 +101,6 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
-- 0.72
-
-```json
-"dependencies": {
-    "@react-native-oh-tpl/flash-list": "file:../../node_modules/@react-native-oh-tpl/flash-list/harmony/flash_list.har"
-  }
-```
-
-- 0.77
-
 ```json
 "dependencies": {
     "@react-native-ohos/flash-list": "file:../../node_modules/@react-native-ohos/flash-list/harmony/flash_list.har"
@@ -148,6 +122,8 @@ Method 2: Directly link to the source code.
 
 ### 3. Configuring CMakeLists and Introducing FlashListPackage
 
+> V1.6.4 requires configuring CMakeLists and importing FlashListPackage
+
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
 ```diff
@@ -168,10 +144,6 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-# 0.72
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/flash-list/src/main/cpp" ./flash-list)
-
-# 0.77
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/flash-list/src/main/cpp" ./flash-list)
 # RNOH_END: manual_package_linking_1
 
@@ -226,10 +198,12 @@ Then build and run the code.
 
 ### Compatibility
 
-This document is verified based on the following versions:
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-1. RNOH: 0.72.27; SDK: HarmonyOS-NEXT-DB1; IDE: DevEco Studio 5.0.3.400SP7; ROM: 3.0.0.29;
-2. RNOH: 0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+Verified in the following versions.
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## Properties
