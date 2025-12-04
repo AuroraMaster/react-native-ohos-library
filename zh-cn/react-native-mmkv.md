@@ -238,13 +238,14 @@ ohpm install
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
+
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- |-------------------|
 | set      | 存储键值对数据 | void | no | iOS/Android | yes             |
-| getBoolean     | 获取boolean值                 | boolean / undefined | no       | iOS/Android | yes               |
-| getString          | 获取string值             | string / undefined      | no       | iOS/Android | yes               |
-| getNumber        | 获取number值             | number / undefined                | no       | iOS/Android | yes               |
-| getBuffer     | 获取buffer值 | ArrayBufferLike / undefined          | no       | iOS/Android | yes               |
+| getBoolean     | 获取boolean值                 | boolean \| undefined | no       | iOS/Android | yes               |
+| getString          | 获取string值             | string \| undefined      | no       | iOS/Android | yes               |
+| getNumber        | 获取number值             | number \| undefined                | no       | iOS/Android | yes               |
+| getBuffer     | 获取buffer值 | ArrayBufferLike \| undefined          | no       | iOS/Android | yes               |
 | contains | 判断mmkv是否包含某个key值             | boolean                | no       | iOS/Android | yes               |
 | delete      | mmkv删除某个key值 | void | no | iOS/Android | yes             |
 | getAllKeys     | 获取所有key值                 | string[] | no       | iOS/Android | yes               |
