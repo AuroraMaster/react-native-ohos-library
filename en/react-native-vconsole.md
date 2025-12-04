@@ -122,11 +122,12 @@ This document is verified based on the following versions:
 
 ## Known Issues
 
-- [ ] 本库在 HarmonyOS 存在 Clipboard 无法使用的问题，其已从新版 rn 框架中移除，依赖 Clipboard 的相关功能，监控面板 network 标签页 Copy cURL to clipboard、Copy request query to clipboard、Copy response to clipboard 均无法正常复制以及粘贴，问题: [issue#2](https://github.com/kafudev/react-native-vconsole/issues/2)
-- [ ] 本库在 HarmonyOS 存在 DevMenu 菜单无法启用的问题，新版本 rn 框架中已经将其从 NativeModules 移除，DevMenu 菜单里的 ReLoad、Fps 等调试相关功能均无法正常使用， 问题: [issue#3](https://github.com/kafudev/react-native-vconsole/issues/3)
+- [ ] There is an issue with Clipboard functionality in HarmonyOS, which has been removed from the new RN framework. As a result, clipboard-related features such as "Copy cURL to clipboard," "Copy request query to clipboard," and "Copy response to clipboard" in the monitoring panel's network tab cannot function properly for copying and pasting. Problem: [issue#2](https://github.com/kafudev/react-native-vconsole/issues/2)
+- [ ] This library has an issue with the DevMenu menu not being enabled in HarmonyOS. In the new version of the rn framework, it has been removed from NativeModules, and debugging related functions such as ReLoad and Fps in the DevMenu menu cannot be used properly. Problem: [issue#3](https://github.com/kafudev/react-native-vconsole/issues/3)
+- [ ] This library cannot display the VConsole log panel for the first time in HarmonyOS. Problem: [issue#4](https://github.com/kafudev/react-native-vconsole/issues/4)
 
 ## Others
 
 ## License
 
-This project is licensed under [The MIT License (MIT)](https://github.com/kafudev/react-native-vconsole/blob/main/LICENSE) ，请自由地享受和参与开源
+This project is licensed under [The MIT License (MIT)](https://github.com/kafudev/react-native-vconsole/blob/main/LICENSE) ,Please enjoy and participate freely in open source
