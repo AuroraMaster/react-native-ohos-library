@@ -259,7 +259,10 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/async-storage Releases](https://gitcode.com/openharmony-sig/rntpc_async-storage/releases)
+本文档内容基于以下版本验证通过过：   
+
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM：NEXT 5.1.0.150;
 
 ## API
 

@@ -259,7 +259,10 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-ohos/async-storage Releases](https://gitcode.com/openharmony-sig/rntpc_async-storage/releases)
+This document is verified based on the following versions:
+
+1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM：NEXT 5.1.0.150;
 
 ## APIs
 
