@@ -236,13 +236,14 @@ The content of this document has been validated based on the following version:
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
+
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- |-------------------|
 | set      | Store key-value pair data | void | no | iOS/Android | yes             |
-| getBoolean     | Obtain the boolean value                 | boolean / undefined | no       | iOS/Android | yes               |
-| getString          | Obtain the string value              | string / undefined      | no       | iOS/Android | yes               |
-| getNumber        | Obtain the number value              | number / undefined                | no       | iOS/Android | yes               |
-| getBuffer     | Obtain the buffer value  | ArrayBufferLike / undefined          | no       | iOS/Android | yes               |
+| getBoolean     | Obtain the boolean value                 | boolean \| undefined | no       | iOS/Android | yes               |
+| getString          | Obtain the string value              | string \| undefined      | no       | iOS/Android | yes               |
+| getNumber        | Obtain the number value              | number \|undefined                | no       | iOS/Android | yes               |
+| getBuffer     | Obtain the buffer value  | ArrayBufferLike \| undefined          | no       | iOS/Android | yes               |
 | contains | Determine whether mmkv contains a certain key value             | boolean                | no       | iOS/Android | yes               |
 | delete      | Delete a key value from mmkv | void | no | iOS/Android | yes             |
 | getAllKeys     | Get all key values                 | string[] | no       | iOS/Android | yes               |
