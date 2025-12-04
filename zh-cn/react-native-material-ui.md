@@ -259,6 +259,7 @@ struct Index {
 | icon     |           When the icon is set, the content will be <Icon name={icon} /> element           | PropTypes.string,<br>{name:string,color,size} |    no    | iOS/Android |        yes        |
 | size     | Just sugar for style={{ container: { width: size, height: size, borderRadius: size / 2 }}} |               PropTypes.number                |    no    | iOS/Android |        yes        |
 | stroke   |                                      Stroke on Badge                                       |               PropTypes.number                |    no    | iOS/Android |        yes        |
+| style    |                                      You can override any style for this  Badge            |               PropTypes.array                 |    no    | iOS/Android |        yes        |
 
 ### Icon
 
@@ -280,6 +281,8 @@ struct Index {
 | size       |  Size of icon (default is 24 - see spacing in palette)   |      PropTypes.number       |    no    | iOS/Android |        yes        |
 | name       |                   Name of icon to show                   | PropTypes.string.isRequired |   yes    | iOS/Android |        yes        |
 | children   | It'll be used instead of icon (see props name) if exists |      PropTypes.element      |    no    | iOS/Android |        yes        |
+| onPress    | Called when IconToggle is pressed.                       |      PropTypes.func         |    no    | iOS/Android |        yes        |
+| style      | You can override any style for this  IconToggle          |      PropTypes.array        |    no    | iOS/Android |        yes        |
 
 ### BottomNavigation
 
