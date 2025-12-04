@@ -149,13 +149,13 @@ const styles = StyleSheet.create({
 
 ## Use Codegen
 
-Version >= @react-native-ohos/react-native-vision-camera@1.1.5，compatible with codegen-lib for generating bridge code.
+Version >= @react-native-ohos/react-native-qr-decode-image-camera@1.1.5，compatible with codegen-lib for generating bridge code.
 
 If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
-Version >= @react-native-ohos/react-native-vision-camera@1.1.5 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Version >= @react-native-ohos/react-native-qr-decode-image-camera@1.1.5 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
 Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 The HarmonyOS implementation of this library depends on the native code from @react-native-ohos/react-native-vision-camera. If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly. 

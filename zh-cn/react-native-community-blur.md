@@ -16,14 +16,13 @@
 
 ## 安装与使用
 
-本库已经适配`C-API版本`从版本`4.4.0-0.1.0`开始的版本为`C-API版本`，`C-API版本`在性能和速度上都优于`ArkTS版本`。
-
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 4.4.0      | [@react-native-oh-tpl/react-native-community-blur Releases](https://github.com/react-native-oh-library/react-native-blur/releases) | 0.72       |
-| 4.5.0      | [@react-native-ohos/react-native-community-blur Releases]()  | 0.77       |
+| 三方库版本  | 发布信息                                                  | 支持RN版本 |
+|--------| ------------------------------------------------------------ | ---------- |
+| <= 4.4.1@deprecated  | [@react-native-oh-tpl/blur Releases(deprecated)](https://github.com/react-native-oh-library/react-native-blur/releases) | 0.72       |
+| 4.4.2             | [@react-native-ohos/blur Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-blur/releases)   | 0.72       |
+| 4.5.0             | [@react-native-ohos/blur Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-blur/releases)   | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -34,20 +33,12 @@
 #### **npm**
 
 ```bash
-# V4.4.0
-npm install @react-native-oh-tpl/blur
-
-# V4.5.0
 npm install @react-native-ohos/blur
 ```
 
 #### **yarn**
 
 ```bash
-# V4.4.0
-yarn add @react-native-oh-tpl/blur
-
-# V4.5.0
 yarn add @react-native-ohos/blur
 ```
 
@@ -216,7 +207,9 @@ const styles = StyleSheet.create({
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/blur@4.4.2，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -244,18 +237,6 @@ const styles = StyleSheet.create({
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- V4.4.0
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-
-    "@react-native-oh-tpl/blur": "file:../../node_modules/@react-native-oh-tpl/blur/harmony/blur.har"
-  }
-```
-
-- V4.5.0
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -279,6 +260,8 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 BlurPackage
 
+> V4.4.2 需要配置 CMakeLists 和引入 BlurPackage
+
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
 ```diff
@@ -292,11 +275,6 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: add_package_subdirectories
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-
-# V4.4.0
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/blur/src/main/cpp" ./blur)
-
-# V4.5.0
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/blur/src/main/cpp" ./blur)
 
 # RNOH_END: add_package_subdirectories
@@ -338,7 +316,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 
 ```diff
-+ import {  BlurView, BLUR_TYPE } from "@react-native-oh-tpl/blur"
++ import {  BlurView, BLUR_TYPE } from "@react-native-ohos/blur"
 
 @Builder
 function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -377,7 +355,7 @@ const arkTsComponentNames: Array<string> = [
 ```bash
 cd entry
 ohpm install
-````
+```
 
 然后编译、运行即可。
 
@@ -387,18 +365,11 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+在以下版本验证通过：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 4.4.0      | [@react-native-oh-tpl/react-native-community-blur Releases](https://github.com/react-native-oh-library/react-native-blur/releases) | 0.72       |
-| 4.5.0      | [@react-native-ohos/react-native-community-blur Releases]()  | 0.77       |
-
-
-本文档内容基于以下版本验证通过：
-
-1. RNOH: 0.72.98; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.0.3.906; ROM: NEXT.0.0.71;
-2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 
 ## 属性
