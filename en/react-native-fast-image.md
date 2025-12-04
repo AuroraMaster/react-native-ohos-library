@@ -14,15 +14,17 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-fast-image)
 
-The repository of this third-party library has been migrated to Gitcode and supports direct download from npm. The new package name is: @react-native-ohos/react-native-fast-image. The specific version ownership relationship is as follows:
-
-
-| Version | Package Name                              | Repository | Release | Support RN version |
-| ---------- | ------------------------------------------------------------ | ---------- |  ---------- |  ---------- |
-| 8.6.3 | @react-native-oh-tpl/react-native-fast-image | [Github](https://github.com/react-native-oh-library/react-native-fast-image)|[Github Releases](https://github.com/react-native-oh-library/react-native-fast-image/releases)|0.72       |
-| 8.7.0 | @react-native-ohos/react-native-fast-image          | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-fast-image/tree/br_rnoh0.77) |[Gitcode Releases]() | 0.77       |
-
 ## Installation and Usage
+
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| <= 8.6.3-0.4.17@deprecated  | [@react-native-oh-tpl/react-native-fast-image Releases(deprecated)](https://github.com/react-native-oh-library/react-native-fast-image/releases) | 0.72       |
+| 8.6.4             | [@react-native-ohos/react-native-fast-image Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fast-image/releases)   | 0.72       |
+| 8.7.0             | [@react-native-ohos/react-native-fast-image Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fast-image/releases)   | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -33,20 +35,12 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/react-native-fast-image
-
-# 0.77
 npm install @react-native-ohos/react-native-fast-image
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn add @react-native-oh-tpl/react-native-fast-image
-
-# 0.77
 yarn add @react-native-ohos/react-native-fast-image
 ```
 
@@ -117,7 +111,10 @@ const styles = StyleSheet.create({
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-fast-image@8.6.4 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/en/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -145,10 +142,6 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    // 0.72
-    "@react-native-oh-tpl/react-native-fast-image": "file:../../node_modules/@react-native-oh-tpl/react-native-fast-image/harmony/fast_image.har"
-
-     // 0.77
     "@react-native-ohos/react-native-fast-image": "file:../../node_modules/@react-native-ohos/react-native-fast-image/harmony/fast_image.har"
   }
 ```
@@ -167,6 +160,8 @@ Method 2: Directly link to the source code.
 For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
 ### 3. Configuring CMakeLists and Introducing FastImagePackage
+
+> V8.6.4 requires configuring CMakeLists and importing FastImagePackage
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
@@ -188,10 +183,6 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-# 0.72
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-fast-image/src/main/cpp" ./fast-image)
-
-# 0.77
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-fast-image/src/main/cpp" ./fast-image)
 # RNOH_END: manual_package_linking_1
 
@@ -235,10 +226,6 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
-+ // 0.72 
-+ import {FastImagePackage} from '@react-native-oh-tpl/react-native-fast-image/ts';
-
-+ // 0.77
 + import {FastImagePackage} from '@react-native-ohos/react-native-fast-image/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -266,10 +253,13 @@ Then build and run the code.
 
 ### Compatibility
 
-The content of this document has been verified based on the following version：
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-1、RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.1.1.830; ROM: 6.0.0.112 SP12;  
-2、RNOH: 0.77.18; SDK: HarmonyOS-5.1.1.208(API19); IDE: DevEco Studio 5.1.1.830; ROM: 6.0.0.112 SP12;
+Verified in the following versions.
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## Properties
 

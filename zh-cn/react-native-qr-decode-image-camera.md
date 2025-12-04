@@ -148,13 +148,13 @@ const styles = StyleSheet.create({
 
 ## 使用 Codegen
 
-Version >= @react-native-ohos/react-native-vision-camera@1.1.5，已适配codegen-lib生成桥接代码。
+Version >= @react-native-ohos/react-native-qr-decode-image-camera@1.1.5，已适配codegen-lib生成桥接代码。
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
-Version >= @react-native-ohos/react-native-vision-camera@1.1.5，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+Version >= @react-native-ohos/react-native-qr-decode-image-camera@1.1.5，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 本库鸿蒙侧实现依赖@react-native-ohos/react-native-vision-camera 的原生端代码，如已在鸿蒙工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
 
