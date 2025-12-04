@@ -21,8 +21,9 @@
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 3.5.1      | [@react-native-oh-tpl/react-native-search-bar Releases](https://github.com/react-native-oh-library/react-native-search-bar/releases) | 0.72       |
-| 3.5.2      | [@react-native-ohos/react-native-search-bar Releases]()      | 0.77       |
+| 3.5.1@deprecated  | [@react-native-oh-tpl/react-native-search-bar Releases(deprecated)](https://github.com/react-native-oh-library/react-native-search-bar/releases) | 0.72       |
+| 3.5.2             | [@react-native-ohos/react-native-search-bar Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-search-bar/releases) | 0.72       |
+| 3.6.0             | [@react-native-ohos/react-native-search-bar Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-search-bar/releases) | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -33,20 +34,12 @@
 #### **npm**
 
 ```bash
-# V3.5.1 for RN0.72
-npm install @react-native-oh-tpl/react-native-search-bar
-
-# V3.5.2 for RN0.77
 npm install @react-native-ohos/react-native-search-bar
 ```
 
 #### **yarn**
 
 ```bash
-# V3.5.1 for RN0.72
-yarn add @react-native-oh-tpl/react-native-search-bar
-
-# V3.5.2 for RN0.77
 yarn add @react-native-ohos/react-native-search-bar
 ```
 
@@ -117,7 +110,9 @@ export default SearchBarDemo;
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-search-bar@3.5.2，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -145,18 +140,6 @@ export default SearchBarDemo;
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- V3.5.1 for RN0.72
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-
-    "@react-native-oh-tpl/react-native-search-bar": "file:../../node_modules/@react-native-oh-tpl/react-native-search-bar/harmony/search_bar.har",
-  }
-```
-
-- V3.5.2 for RN0.77
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -180,6 +163,8 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 SearchBarPackage
 
+> V3.5.2  需要配置 CMakeLists 和引入 SearchBarPackage
+
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
 ```diff
@@ -193,13 +178,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-
-# V3.5.1 for RN0.72
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-search-bar/src/main/cpp" ./search-bar)
-
-# V3.5.2 for RN0.77
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-search-bar/src/main/cpp" ./search-bar)
-
 # RNOH_END: manual_package_linking_1
 
 add_library(rnoh_app SHARED
@@ -239,10 +218,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
     ...
-// V3.5.1 for RN0.72
-+ import { RNCSearchBar } from "@react-native-oh-tpl/react-native-search-bar"
-
-// V3.5.2 for RN0.77
 + import { RNCSearchBar } from "@react-native-ohos/react-native-search-bar"
 
 @Builder
@@ -291,12 +266,11 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+在以下版本验证通过：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 3.5.1      | [@react-native-oh-tpl/react-native-search-bar Releases](https://github.com/react-native-oh-library/react-native-search-bar/releases) | 0.72       |
-| 3.5.2      | [@react-native-ohos/react-native-search-bar Releases]()      | 0.77       |
+1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
 
 ## 属性
 

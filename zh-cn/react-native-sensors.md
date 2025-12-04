@@ -176,7 +176,7 @@ Version >= @react-native-ohos/react-native-sensors@7.2.3，已支持 Autolink，
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-ohos/react-native-sensors": "file:../../node_modules/react-native-ohos/react-native-sensors/harmony/sensors.har"
+    "@react-native-ohos/react-native-sensors": "file:../../node_modules/@react-native-ohos/react-native-sensors/harmony/sensors.har"
   }
 ```
 

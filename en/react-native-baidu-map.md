@@ -16,7 +16,15 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-baidu-map Releases](https://github.com/react-native-oh-library/react-native-baidu-map/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.0.37@deprecated  | [@react-native-oh-tpl/react-native-baidu-map Releases(deprecated)](https://github.com/react-native-oh-library/react-native-baidu-map/releases) | 0.72       |
+| 1.0.38             | [@react-native-ohos/react-native-baidu-map Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-baidu-map/releases)   | 0.72       |
+| 1.1.0              | [@react-native-ohos/react-native-baidu-map Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-baidu-map/releases)   | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -27,13 +35,13 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-baidu-map
+npm install @react-native-ohos/react-native-baidu-map
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-baidu-map
+yarn add @react-native-ohos/react-native-baidu-map
 ```
 
 <!-- tabs:end -->
@@ -157,7 +165,10 @@ export default App;
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-baidu-map@1.0.38 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -186,7 +197,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
 "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-"@react-native-oh-tpl/react-native-baidu-map": "file:../../node_modules/@react-native-oh-tpl/react-native-baidu-map/harmony/baidu_map.har"
+"@react-native-ohos/react-native-baidu-map": "file:../../node_modules/@react-native-ohos/react-native-baidu-map/harmony/baidu_map.har"
 }
 ```
 
@@ -204,6 +215,8 @@ Method 2: Directly link to the source code.
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
 ### 3. Configuring CMakeLists and Introducing BaiduMapPackage
+
+> V1.0.38 requires configuring CMakeLists and importing BaiduMapPackage.
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
@@ -225,7 +238,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-baidu-map/src/main/cpp" ./baidu-map)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-baidu-map/src/main/cpp" ./baidu-map)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -268,7 +281,7 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
-+ import {BaiduMapPackage} from '@react-native-oh-tpl/react-native-baidu-map/ts';
++ import {BaiduMapPackage} from '@react-native-ohos/react-native-baidu-map/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -298,7 +311,7 @@ or `entry/src/main/ets/rn/LoadBundle.ets`, and add the following code:
 +  BaiduMapOverlayText,
 +  BaiduMapOverlayMarker,
 +  BaiduMapView
-+} from '@react-native-oh-tpl/react-native-baidu-map';
++} from '@react-native-ohos/react-native-baidu-map';
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -381,7 +394,11 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library:[@react-native-oh-tpl/react-native-baidu-map Releases](https://github.com/react-native-oh-library/react-native-baidu-map/releases)
+Verified successfully in the following versions:
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
 
 ### Permission Requirements
 

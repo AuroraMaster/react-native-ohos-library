@@ -14,15 +14,17 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-bindingx)
 
-该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：@react-native-ohos/react-native-bindingx，具体版本所属关系如下：
-
-
-| 三方库版本 | 包名                                                    | 仓库地址 | 发布(Release) | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |  ---------- |  ---------- |
-| 1.0.3 | @react-native-oh-tpl/react-native-bindingx | [Github](https://github.com/react-native-oh-library/react-native-bindingx/tree/sig)|[Github Releases](https://github.com/react-native-oh-library/react-native-bindingx/releases)|0.72       |
-| 1.1.0 | @react-native-ohos/react-native-bindingx          | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-bindingx/tree/br_rnoh0.77) |[Gitcode Releases]() | 0.77       |
-
 ## 安装与使用
+
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本  | 发布信息                                                  | 支持RN版本 |
+|--------| ------------------------------------------------------------ | ---------- |
+| 1.0.3@deprecated  | [@react-native-oh-tpl/react-native-bindingx Releases(deprecated)](https://github.com/react-native-oh-library/react-native-bindingx/releases) | 0.72       |
+| 1.0.4             | [@react-native-ohos/react-native-bindingx Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-bindingx/releases)   | 0.72       |
+| 1.1.0             | [@react-native-ohos/react-native-bindingx Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-bindingx/releases)   | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -31,20 +33,12 @@
 #### **npm**
 
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/react-native-bindingx
-
-# 0.77
 npm install @react-native-ohos/react-native-bindingx
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn add @react-native-oh-tpl/react-native-bindingx
-
-# 0.77
 yarn add @react-native-ohos/react-native-bindingx
 ```
 
@@ -168,7 +162,9 @@ const styles = StyleSheet.create({
 
 ## Link
 
-目前HarmonyOS暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-bindingx@1.0.4，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的HarmonyOS工程 `harmony`
 
@@ -199,10 +195,6 @@ const styles = StyleSheet.create({
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-     // 0.72版本引入
-    "@react-native-oh-tpl/react-native-bindingx": "file:../../node_modules/@react-native-oh-tpl/react-native-bindingx/harmony/bindingx.har"
-
-     // 0.77版本引入
     "@react-native-ohos/react-native-bindingx": "file:../../node_modules/@react-native-ohos/react-native-bindingx/harmony/bindingx.har"
   }
 ```
@@ -221,6 +213,8 @@ ohpm install
 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
 ### 3.配置 CMakeLists 和引入 ReactBindingXPackge
+
+> V1.0.4 需要配置 CMakeLists 和引入 ReactBindingXPackge
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -242,10 +236,6 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-# 0.72
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-bindingx/src/main/cpp" ./bindingx)
-
-# 0.77
 + add_subdirectory("${OH_MODULES}/@react-native-oh-ohos/react-native-bindingx/src/main/cpp" ./bindingx)
 # RNOH_END: manual_package_linking_1
 
@@ -290,11 +280,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
-  ...
-+ // 0.72  
-+ import {ReactBindingXPackage} from '@react-native-oh-tpl/react-native-bindingx/ts';
-
-+ // 0.77  
+  ... 
 + import {ReactBindingXPackage} from '@react-native-ohos/react-native-bindingx/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -322,10 +308,13 @@ ohpm install
 
 ### 兼容性
 
-本文档内容基于以下版本验证通过：
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-1、RNOH: 0.72.28; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.1.1.830; ROM: 6.0.0.112 SP12;  
-2、RNOH: 0.77.18; SDK: HarmonyOS-5.1.1.208(API19); IDE: DevEco Studio 5.1.1.830; ROM: 6.0.0.112 SP12
+在以下版本验证通过：
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
 
 ## API
 

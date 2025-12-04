@@ -15,16 +15,17 @@
 
 > [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-amap-geolocation) 
 
-please check the release version information in the release address of the third-party library:
-
-| Library Version	 | Release Information	                                                     | Supported RN Versions |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 1.2.3      | [@react-native-oh-tpl/react-native-amap-geolocation Releases](https://github.com/react-native-oh-library/react-native-amap-geolocation/releases) | 0.72       |
-| 1.3.0     | [@react-native-ohos/react-native-amap-geolocation Releases]() | 0.77       |
-
-For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
-
 ## Installation and Usage
+
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.2.3@deprecated | [@react-native-oh-tpl/react-native-amap-geolocation Releases(deprecated)](https://github.com/react-native-oh-library/react-native-amap-geolocation/releases) | 0.72       |
+| 1.2.4 | [@react-native-ohos/react-native-amap-geolocation Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-amap-geolocation/releases) | 0.72       |
+| 1.3.0 | [@react-native-ohos/react-native-amap-geolocation Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-amap-geolocation/releases) | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -33,18 +34,12 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/react-native-amap-geolocation
-# 0.77
 npm install @react-native-ohos/react-native-amap-geolocation
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn add @react-native-oh-tpl/react-native-amap-geolocation
-# 0.77
 yarn add @react-native-ohos/react-native-amap-geolocation
 ```
 
@@ -301,12 +296,16 @@ There are several important points to note when using this library:
 
 ## Use Codegen
 
-This repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
+Version >= @react-native-ohos/react-native-amap-geolocation@1.2.4, compatible with codegen-lib for generating bridge code.
 
+This repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-amap-geolocation@1.2.4 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -332,17 +331,6 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
-- 0.72
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-amap-geolocation": "file:../../node_modules/@react-native-oh-tpl/react-native-amap-geolocation/harmony/amap_geolocation.har"
-  }
-```
-
-- 0.77
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -363,15 +351,47 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 3. Introducing AmapGeolocationPackage to ArkTS
+### 3. Configuring CMakeLists and Introducing AmapGeolocationPackage
+
+> V1.2.4 requires configuring CMakeLists and importing AmapGeolocationPackage
+
+Open `entry/src/main/cpp/CMakeLists.txt` and add:
+
+```diff
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+
+# RNOH_BEGIN: manual_package_linking_1
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-amap-geolocation/src/main/cpp" ./amap_geolocation)
+# RNOH_END: manual_package_linking_1
+
+# RNOH_BEGIN: manual_package_linking_2
++ target_link_libraries(rnoh_app PUBLIC rnoh_amap_geolocation)
+# RNOH_END: manual_package_linking_2
+```
+
+Open `entry/src/main/cpp/PackageProvider.cpp` and add:
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
++ #include "AmapGeolocationPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
++       std::make_shared<AmapGeolocationPackage>(ctx),
+    };
+}
+```
+
+### 4. Introducing AmapGeolocationPackage to ArkTS
 
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
 ```diff
 ...
-# 0.72
-+  import {AMapGeolocationPackage} from '@react-native-oh-tpl/react-native-amap-geolocation/ts';
-# 0.77
 +  import {AMapGeolocationPackage} from '@react-native-ohos/react-native-amap-geolocation/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -382,7 +402,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4. Running
+### 5. Running
 
 Click the `sync` button in the upper right corner.
 
@@ -399,8 +419,13 @@ Then build and run the code.
 
 ### Compatibility
 
-1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
-2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release SDK; IDE： DevEco Studio 6.0.0.868; ROM：6.0.0.112;
+To use this library, you need to use the correct React-Native and RNOH versions. Additionally, you need to use the matching DevEco Studio and phone ROM.
+
+Verified successfully in the following versions:
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
 
 ### Permission Requirements
 
