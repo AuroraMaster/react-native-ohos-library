@@ -14,38 +14,31 @@
 
 > [!TIP] [Github Address](https://github.com/react-native-oh-library/ting)
 
-The repository for this third-party library has been migrated to Gitcode, and it now supports direct download from npm. The new package name is: `@react-native-ohos/ting`. The specific version relationships are as follows:
-
-| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
-| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
-| 1.2.2 | @react-native-oh-tpl/ting | [Github](https://github.com/react-native-oh-library/ting) | [Github Releases](https://github.com/react-native-oh-library/async-storage/releases) | 0.72 |
-| 1.3.0 | @react-native-ohos/ting   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_ting) | [GitCode Releases]() | 0.77 |
-
 ## Installation and Usage
 
-For older versions not published to npm, please refer to the [Installation Guide](/en/tgz-usage.md) to install the tgz package.
+Please refer to the Releases page of the third-party library for the corresponding version information
 
-Navigate to your project directory and enter the following commands:
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.2.2@deprecated  | [@react-native-oh-tpl/ting Releases(deprecated)](https://github.com/react-native-oh-library/ting/releases) | 0.72       |
+| 1.2.3             | [@react-native-ohos/ting Releases](https://gitcode.com/openharmony-sig/rntpc_ting/releases)   | 0.72       |
+| 1.3.0             | [@react-native-ohos/ting Releases](https://gitcode.com/openharmony-sig/rntpc_ting/releases)   | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+
+Go to the project directory and execute the following instruction:
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
-# V1.2.2
-npm install @react-native-oh-tpl/ting
-
-# V1.3.0
 npm install @react-native-ohos/ting
 ```
 
 #### **yarn**
 
 ```bash
-# V1.2.2
-yarn add @react-native-oh-tpl/ting
-
-# V1.3.0
 yarn add @react-native-ohos/ting
 ```
 
@@ -88,11 +81,16 @@ export default App;
 
 ## Using Codegen
 
+Version >= @react-native-ohos/ting@1.2.3, compatible with codegen-lib for generating bridge code.
+
 This library has been adapted for `Codegen`. Before use, you need to actively generate the third-party library bridging code. Please refer to the [Codegen Usage Documentation](/en/codegen.md) for details.
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink, so the Link step requires manual configuration.
+Version >= @react-native-ohos/ting@1.2.3 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 First, use DevEco Studio to open the HarmonyOS project `harmony` within your project.
 
@@ -120,17 +118,6 @@ Method 1: Import via har package (Recommended)
 
 Open `entry/oh-package.json5` and add the following dependencies:
 
-- V1.2.2
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/ting": "file:../../node_modules/@react-native-oh-tpl/ting/harmony/ting.har"
-}
-```
-
-- V1.3.0 
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -153,7 +140,9 @@ Method 2: Link Source Code Directly
 
 ### 3. Configure CMakeLists and Import RNTingPackage
 
-> V1.3.0 requires configuring CMakeLists and importing RNTingPackage.
+> V1.2.3 requires configuring CMakeLists and importing RNTingPackage.
+
+Open `entry/src/main/cpp/CMakeLists.txt` and add:
 
 ```diff
 ...
@@ -204,10 +193,6 @@ Open `entry/src/main/ets/RNPackagesFactory.ets` and add:
 
 ```diff
   ...
-// V1.2.2
-+ import {RNTingPackage} from '@react-native-oh-tpl/ting';
-
-// V1.3.0
 + import {RNTingPackage} from '@react-native-ohos/ting';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -238,8 +223,10 @@ Then compile and run.
 To use this library, you need to use the correct React-Native and RNOH versions. Additionally, you need to use the matching DevEco Studio and phone ROM.
 
 Verified successfully in the following versions:
-1. RNOH:0.72.96; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
-2. RNOH:0.77.18; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
 
 ## Properties
 

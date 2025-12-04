@@ -17,7 +17,15 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library:[@react-native-oh-tpl/react-native-syan-image-picker Releases](https://github.com/react-native-oh-library/react-native-syan-image-picker/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.5.3@deprecated  | [@react-native-oh-tpl/react-native-syan-image-picker Releases(deprecated)](https://github.com/react-native-oh-library/react-native-syan-image-picker/releases) | 0.72       |
+| 0.5.4             | [@react-native-ohos/react-native-syan-image-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-syan-image-picker/releases)   | 0.72       |
+| 0.6.0             | [@react-native-ohos/react-native-syan-image-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-syan-image-picker/releases)   | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -28,13 +36,13 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-syan-image-picker
+npm install @react-native-ohos/react-native-syan-image-picker
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-syan-image-picker
+yarn add @react-native-ohos/react-native-syan-image-picker
 ```
 
 <!-- tabs:end -->
@@ -311,11 +319,16 @@ const styles = StyleSheet.create({
 
 ## Use Codegen
 
+Version >= @react-native-ohos/react-native-syan-image-picker@0.5.4, compatible with codegen-lib for generating bridge code.
+
 This repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-syan-image-picker@0.5.4 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -402,7 +415,7 @@ export default class ImageCropAbility extends UIAbility {
 **(3)Create ImageEdit.ets under entry/src/main/ets/pages.**
 
 ```
-import { ImageCrop } from '@react-native-oh-tpl/react-native-syan-image-picker';
+import { ImageCrop } from '@react-native-ohos/react-native-syan-image-picker';
 
 @Entry
 @Component
@@ -445,7 +458,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-syan-image-picker": "file:../../node_modules/@react-native-oh-tpl/react-native-syan-image-picker/harmony/syan_image_picker.har"
+    "@react-native-ohos/react-native-syan-image-picker": "file:../../node_modules/@react-native-ohos/react-native-syan-image-picker/harmony/syan_image_picker.har"
   }
 ```
 
@@ -468,7 +481,7 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
-+   import {SyanImagePickerPackage} from '@react-native-oh-tpl/react-native-syan-image-picker/ts';
++   import {SyanImagePickerPackage} from '@react-native-ohos/react-native-syan-image-picker/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -497,11 +510,11 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library:[@react-native-oh-tpl/react-native-syan-image-picker Releases](https://github.com/react-native-oh-library/react-native-syan-image-picker/releases)
+Verified successfully in the following versions:
 
-This document is verified based on the following versions:
-
-1.  RNOH：0.72.26; SDK：HarmonyOS NEXT Developer Beta1 B.0.22、IDE：DevEco Studio 5.0.3.300SP2; ROM：3.0.0.24;
+1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
 
 
 

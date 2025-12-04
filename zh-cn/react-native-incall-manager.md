@@ -497,7 +497,7 @@ export default function InCallManagerExample() {
 ```
 ## Link
 
-Version > @react-native-ohos/react-native-incall-manager@3.1.0，已支持 Autolink，无需手动配置，目前只支持72框架。
+Version > @react-native-ohos/react-native-incall-manager@4.2.1，已支持 Autolink，无需手动配置，目前只支持72框架。
 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 此步骤为手动配置原生依赖项的指导。

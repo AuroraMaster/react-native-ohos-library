@@ -15,14 +15,17 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-image-resizer)
 
+## 安装与使用
+
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
-| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
-| 3.0.9 | @react-native-oh-tpl/react-native-image-resizer | [Github](https://github.com/react-native-oh-library/react-native-image-resizer) | [Github Releases](https://github.com/react-native-oh-library/react-native-image-resizer/releases) | 0.72 |
-| 3.1.0                        | @react-native-ohos/react-native-image-resizer       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-image-resizer) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-resizer/releases) | 0.77 |
+| 三方库版本  | 发布信息                                                  | 支持RN版本 |
+|--------| ------------------------------------------------------------ | ---------- |
+| 3.0.9@deprecated  | [@react-native-oh-tpl/react-native-image-resizer Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-resizer/releases) | 0.72       |
+| 3.0.10            | [@react-native-ohos/react-native-image-resizer Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-resizer/releases)   | 0.72       |
+| 3.1.0             | [@react-native-ohos/react-native-image-resizer Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-resizer/releases)   | 0.77       |
 
-## 安装与使用
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -31,20 +34,12 @@
 #### **npm**
 
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/react-native-image-resizer
-
-# 0.77
 npm install @react-native-ohos/react-native-image-resizer
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn add @react-native-oh-tpl/react-native-image-resizer
-
-# 0.77
 yarn add @react-native-ohos/react-native-image-resizer
 ```
 
@@ -283,13 +278,15 @@ export default ImageResizerDemo;
 
 ## 使用 Codegen
 
-> [!TIP] 0.77 不需要执行Codegen
+Version >= @react-native-ohos/react-native-image-resizer@3.0.10，已适配codegen-lib生成桥接代码。
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-image-resizer@3.0.10，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -317,17 +314,6 @@ export default ImageResizerDemo;
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-0.72
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-image-resizer": "file:../../node_modules/@react-native-oh-tpl/react-native-image-resizer/harmony/image_resizer.har"
-  }
-```
-
-0.77
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -354,9 +340,6 @@ ohpm install
 
 ```diff
   ...
-  //0.72
-+ import {ImageResizerPackage} from '@react-native-oh-tpl/react-native-image-resizer/ts';
-  //0.77
 + import {ImageResizerPackage} from '@react-native-ohos/react-native-image-resizer/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -369,7 +352,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 ### 4.配置 CMakeLists 和引入 ImageResizerPackage
 
-> 0.77 需要配置 CMakeLists 和引入 ImageResizerPackage。
+> V3.0.10 需要配置 CMakeLists 和引入 ImageResizerPackage。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -435,18 +418,21 @@ ohpm install
 
 然后编译、运行即可。
 
-[!TIP] 本库还依赖了[[@react-native-oh-tpl/react-native-image-picker](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-image-picker.md)，如已在 HarmonyOS 工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
+[!TIP] 本库还依赖了[[@react-native-ohos/react-native-image-picker](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-image-picker.md)，如已在 HarmonyOS 工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
 
-如未引入请参照[@react-native-oh-tpl/react-native-image-picker](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-image-picker.md) 文档的 Link 章节](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-image-picker.md#link)进行引入
+如未引入请参照[@react-native-ohos/react-native-image-picker](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-image-picker.md) 文档的 Link 章节](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-image-picker.md#link)进行引入
 
 ## 约束与限制
 
 ### 兼容性
 
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+
 在以下版本验证通过：
 
-1. RNOH:0.72.28; SDK:HarmonyOS NEXT DB2; IDE:DevEco Studio 5.0.3.500; ROM:3.0.0.28;
-2. RNOH: 0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
+1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
 
 ## 属性
 

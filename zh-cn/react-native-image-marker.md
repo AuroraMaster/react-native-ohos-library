@@ -15,16 +15,17 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-image-marker)
 
+## 安装与使用
+
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 1.2.6      | [@react-native-oh-tpl/react-native-image-marker Releases](https://github.com/react-native-oh-library/react-native-image-marker/releases) | 0.72       |
-| 1.3.0      | [@react-native-ohos/react-native-image-marker Releases]()    | 0.77       |
+| 三方库版本  | 发布信息                                                  | 支持RN版本 |
+|--------| ------------------------------------------------------------ | ---------- |
+| 1.2.6@deprecated  | [@react-native-oh-tpl/react-native-image-marker Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-marker/releases) | 0.72       |
+| 1.2.7             | [@react-native-ohos/react-native-image-marker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-marker/releases)   | 0.72       |
+| 1.3.0             | [@react-native-ohos/react-native-image-marker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-marker/releases)   | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
-
-## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -35,20 +36,12 @@
 #### **npm**
 
 ```bash
-# V0.72
-npm install @react-native-oh-tpl/react-native-image-marker
-
-# 0.77
 npm install @react-native-ohos/react-native-image-marker
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn add @react-native-oh-tpl/react-native-image-marker
-
-# 0.77 
 yarn add @react-native-ohos/react-native-image-marker
 ```
 
@@ -203,11 +196,15 @@ export const ImageMarkerText = () => {
 
 ## 使用 Codegen
 
+Version >=  @react-native-ohos/react-native-image-marker@1.2.7，已适配codegen-lib生成桥接代码。
+
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-image-marker@1.2.7，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -235,17 +232,6 @@ export const ImageMarkerText = () => {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- 0.72
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-image-marker": "file:../../node_modules/@react-native-oh-tpl/react-native-image-marker/harmony/image_marker.har"
-  }
-```
-
-- 0.77
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -266,16 +252,61 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 3.在 ArkTs 侧引入 RNImageMarkerPackage
+### 3.配置 CMakeLists 和引入 RNImageMarkerPackage
+
+> V1.2.7  需要配置 CMakeLists 和引入 RNImageMarkerPackage
+
+打开 `entry/src/main/cpp/CMakeLists.txt` 添加：
+
+```diff
+...
+
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_END: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-image-marker/src/main/cpp" ./image_marker)
+# RNOH_END: manual_package_linking_1
+
+add_library(rnoh_app SHARED
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_image_marker)
+# RNOH_BEGIN: manual_package_linking_2
+```
+
+Open `entry/src/main/cpp/PackageProvider.cpp`，and add：
+
+```diff
+#include "RNOH/PackageProvider.h"
++ #include "RNImageMarkerPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
++        std::make_shared<RNImageMarkerPackage>(ctx)
+}
+```
+
+### 4.在 ArkTs 侧引入 RNImageMarkerPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
   ...
-// 0.72
-+ import {RNImageMarkerPackage} from '@react-native-oh-tpl/react-native-image-marker/ts';
-
-// 0.77  
 + import {RNImageMarkerPackage} from '@react-native-ohos/react-native-image-marker/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -286,7 +317,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.运行
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -303,10 +334,13 @@ ohpm install
 
 ### 兼容性
 
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+
 本文档内容基于以下版本验证通过：
 
-1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
-2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
+1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
 
 ### 权限要求
 

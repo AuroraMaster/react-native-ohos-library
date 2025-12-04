@@ -18,10 +18,11 @@
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| 三方库版本 | 发布信息                                                     | 支持RN版本 | 
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 6.2.1      | [@react-native-oh-tpl/cookies Releases](https://github.com/react-native-oh-library/react-native-cookies) | 0.72       |
-| 6.3.0     | [@react-native-ohos/cookies Releases](https://gitcode.com/openharmony-sig/rntpc_cookies/releases)                    | 0.77       |
+| 6.2.1@deprecated | [@react-native-oh-tpl/cookies Releases(deprecated)](https://github.com/react-native-oh-library/react-native-cookies/releases) | 0.72       |
+| 6.2.2            | [@react-native-ohos/cookies Releases](https://gitcode.com/openharmony-sig/rntpc_cookies/releases) | 0.72       |
+| 6.3.0            | [@react-native-ohos/cookies Releases](https://gitcode.com/openharmony-sig/rntpc_cookies/releases) | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -32,20 +33,12 @@
 #### **npm**
 
 ```bash
-# V6.2.1
-npm install @react-native-oh-tpl/cookies
-
-# V6.3.0
 npm install @react-native-ohos/cookies
 ```
 
 #### **yarn**
 
-```bash
-# V6.2.1
-yarn add @react-native-oh-tpl/cookies
-
-# V6.3.0
+```
 yarn add @react-native-ohos/cookies
 ```
 
@@ -201,7 +194,7 @@ const styles = StyleSheet.create({
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/cookies@6.2.2，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 ### 1.在工程根目录的 `oh-package.json5` 添加 overrides 字段
@@ -228,23 +221,10 @@ const styles = StyleSheet.create({
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- 0.72
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-
-    "@react-native-oh-tpl/op-sqlite": "file:../../node_modules/@react-native-oh-tpl/cookies/harmony/rn_cookies.har"
-  }
-```
-
-- 0.77
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-
-    "@react-native-ohos/op-sqlite": "file:../../node_modules/@react-native-ohos/cookies/harmony/rn_cookies.har"
+    "@react-native-ohos/cookies": "file:../../node_modules/@react-native-ohos/cookies/harmony/rn_cookies.har",
   }
 ```
 
@@ -263,6 +243,8 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 CookiesPackage
 
+> V6.2.2  需要配置 CMakeLists 和引入 CookiesPackage
+
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
 ```diff
@@ -279,7 +261,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/cookies/src/main/cpp" ./rn_cookies)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/cookies/src/main/cpp" ./rn_cookies)
 # RNOH_BEGIN: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -318,20 +300,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
-- 0.72
-```diff
-...
-+ import {CookiesPackage} from '@react-native-oh-tpl/cookies/ts';
-
-export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
-  return [
-    ...
-+  	new CookiesPackage(ctx),
-  ];
-}
-```
-
-- 0.77
 ```diff
 ...
 + import {CookiesPackage} from '@react-native-ohos/cookies/ts';
@@ -363,11 +331,11 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-本文档内容基于以下版本验证通过：
+在以下版本验证通过：
 
-1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM：NEXT 5.1.0.150;
-
+1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
 
 ## 静态方法
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。

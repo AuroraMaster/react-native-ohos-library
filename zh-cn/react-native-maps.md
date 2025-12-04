@@ -18,10 +18,13 @@
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 1.10.3     | [@react-native-oh-tpl/react-native-maps Releases](https://github.com/react-native-oh-library/react-native-maps/releases) | 0.72       |
-| 1.24.4     | [@react-native-ohos/react-native-maps Releases]()            | 0.77       |
+| 三方库版本  | 发布信息                                                  | 支持RN版本 |
+|--------| ------------------------------------------------------------ | ---------- |
+| 1.10.3@deprecated  | [@react-native-oh-tpl/react-native-maps Releases(deprecated)](https://github.com/react-native-oh-library/react-native-maps/releases) | 0.72       |
+| 1.10.4             | [@react-native-ohos/react-native-maps Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-maps/releases)   | 0.72       |
+| 1.24.4             | [@react-native-ohos/react-native-maps Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-maps/releases)   | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -30,13 +33,13 @@
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-maps
+npm install @react-native-ohos/react-native-maps
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-maps
+yarn add @react-native-ohos/react-native-maps
 ```
 
 <!-- tabs:end -->
@@ -199,7 +202,9 @@ const styles = StyleSheet.create({
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-maps@1.10.4，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -230,7 +235,7 @@ const styles = StyleSheet.create({
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-maps": "file:../../node_modules/@react-native-oh-tpl/react-native-maps/harmony/maps.har"
+    "@react-native-ohos/react-native-maps": "file:../../node_modules/@react-native-ohos/react-native-maps/harmony/maps.har"
   }
 ```
 
@@ -248,6 +253,8 @@ ohpm install
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
 ### 3.配置 CMakeLists 和引入 MapsPackge
+
+> V1.10.4 需要配置 CMakeLists 和引入 MapsPackge
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -269,7 +276,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-maps/src/main/cpp" ./maps)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-maps/src/main/cpp" ./maps)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -327,7 +334,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 +  AIRMapOverlay,
 +  AIR_MAP_CLUSTER_TYPE,
 +  AIRMapCluster,
-+ } from "@react-native-oh-tpl/react-native-maps"
++ } from "@react-native-ohos/react-native-maps"
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -430,7 +437,7 @@ const arkTsComponentNames: Array<string> = [
 
 ```diff
   ...
-+ import {MapsPackage} from '@react-native-oh-tpl/react-native-maps/ts';
++ import {MapsPackage} from '@react-native-ohos/react-native-maps/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -459,13 +466,11 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[react-natvie-maps Releases](https://github.com/react-native-oh-library/react-native-maps/releases)
+在以下版本验证通过：
 
-本文档内容基于以下版本验证通过：
-
-1. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.29(SP1); IDE: DevEco Studio 5.0.3.403; ROM: 3.0.0.25;
-2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
-3. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM：NEXT 5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
 
 ### 权限要求
 

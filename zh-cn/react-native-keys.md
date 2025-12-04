@@ -18,10 +18,17 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-library/react-native-keys Releases](https://github.com/react-native-oh-library/react-native-keys/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本  | 发布信息                                                  | 支持RN版本 |
+|--------| ------------------------------------------------------------ | ---------- |
+| 0.7.11@deprecated  | [@react-native-oh-tpl/react-native-keys Releases(deprecated)](https://github.com/react-native-oh-library/react-native-keys/releases) | 0.72       |
+| 0.7.12             | [@react-native-ohos/react-native-keys Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-keys/releases)   | 0.72       |
+| 0.8.0              | [@react-native-ohos/react-native-keys Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-keys/releases)   | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
-
 
 
 <!-- tabs:start -->
@@ -29,13 +36,13 @@
 ####  npm
 
 ```bash
-npm install @react-native-oh-tpl/react-native-keys
+npm install @react-native-ohos/react-native-keys
 ```
 
 #### yarn
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-keys
+yarn add @react-native-ohos/react-native-keys
 ```
 
 <!-- tabs:end -->
@@ -44,7 +51,7 @@ yarn add @react-native-oh-tpl/react-native-keys
 
 >[!WARNING] 使用时 import 的库名不变。
 
-1. Create a new file keys.development.json in the root of your React Native app and add Envs in secure object for protected envs variables and add Envs in public for public usage this:
+1. 在React Native应用的根目录下创建一个新文件keys.development.json，并在secure object中添加受保护的变量Envs，并在public中添加Envs以供公共使用：
  
 ```json
 {
@@ -62,7 +69,7 @@ yarn add @react-native-oh-tpl/react-native-keys
 
 ```
 
-2. Use Public Keys & Secure Keys
+2. 使用公钥 & 安全钥匙
 
 ``` js
 import Keys from 'react-native-keys';
@@ -78,7 +85,9 @@ Keys.secureFor('SECRET_KEY');
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-keys@0.7.12，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -109,7 +118,7 @@ Keys.secureFor('SECRET_KEY');
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-keys": "file:../../node_modules/@react-native-oh-tpl/react-native-keys/harmony/rnoh_keys.har"
+    "@react-native-ohos/react-native-keys": "file:../../node_modules/@react-native-ohos/react-native-keys/harmony/rnoh_keys.har"
   }
 ```
 
@@ -127,6 +136,8 @@ ohpm install
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
 ### 3.配置 CMakeLists 和引入 RNOHKeysPackage
+
+> V0.7.12 需要配置 CMakeLists 和引入 RNOHKeysPackage
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -148,7 +159,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-keys/src/main/cpp" ./rnohkeys)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-keys/src/main/cpp" ./rnohkeys)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -191,7 +202,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-+ import { RNKeysPackage } from '@react-native-oh-tpl/react-native-keys';
++ import { RNKeysPackage } from '@react-native-ohos/react-native-keys';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -230,8 +241,11 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-library/react-native-keys Releases](https://github.com/react-native-oh-library/react-native-keys/releases)
+在以下版本验证通过：
 
+1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
    
 ## API
 

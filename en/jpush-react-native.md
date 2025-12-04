@@ -12,16 +12,19 @@
     </a>
 </p>
 
-This project is based on [jpush-react-native](https://github.com/react-native-oh-library/jpush-react-native).
-
-Please go to the corresponding Release release address of the third-party library to view the version information of the Release package:
-| Version                        | Package Name                             | Repository                                                   | Release                                                      | RN Version |
-| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |------------|
-| 3.1.1@deprecated | @react-native-oh-library/jpush-react-native Releases | [Github(deprecated)](https://github.com/react-native-oh-library/jpush-react-native/releases) | [Github deprecated](https://github.com/react-native-oh-library/jpush-react-native/releases) | 0.72       |
-| 3.1.2                      | @react-native-ohos/jpush-react-native Releases | [GitCode](https://gitcode.com/openharmony-sig/rntpc_jpush-react-native) | [GitCode Releases](https://gitcode.com/openharmony-sig/jpush-react-native/releases) | 0.72       |
-| 3.2.0 | @react-native-ohos/jpush-react-native Releases       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_jpush-react-native) | [GitCode Releases](https://gitcode.com/openharmony-sig/jpush-react-native/releases) | 0.77 |
+> [!TIP] [GitHub address](https://github.com/react-native-oh-library/jpush-react-native)
 
 ## Installation and Usage
+
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 3.1.1@deprecated  | [@react-native-oh-tpl/jpush-react-native Releases(deprecated)](https://github.com/react-native-oh-library/jpush-react-native/releases) | 0.72       |
+| 3.1.2             | [@react-native-ohos/jpush-react-native Releases](https://gitcode.com/openharmony-sig/rntpc_jpush-react-native/releases)   | 0.72       |
+| 3.2.0             | [@react-native-ohos/jpush-react-native Releases](https://gitcode.com/openharmony-sig/rntpc_jpush-react-native/releases)   | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -84,11 +87,16 @@ export default App;
 ```
 ## Use Codegen
 
+Version >= @react-native-ohos/jpush-react-native@3.1.2, compatible with codegen-lib for generating bridge code.
+
 If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/jpush-react-native@3.1.2 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -136,7 +144,9 @@ Method 2: Directly link to the source code.
 
 ### 3. Configure CMakeLists and import RNJPushPackage
 
-> V3.2.0 requires configuring CMakeLists and importing RNJPushPackage.
+> V3.1.2 requires configuring CMakeLists and importing RNJPushPackage.
+
+Open `entry/src/main/cpp/CMakeLists.txt`，and add：
 
 ```diff
 ...
@@ -216,10 +226,11 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: 
-1. RNOH: 0.72.33; SDK: HarmonyOS NEXT Beta1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+The following combinations have been verified:
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
-3. RNOH:0.77.18; SDK:HarmonyOS  5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
+3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
 
 ## Static Methods
 

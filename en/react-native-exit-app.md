@@ -16,32 +16,27 @@
 
 ## Installation and Usage
 
-Please refer to the Releases page of the third-party library for matching version information:
+Please refer to the Releases page of the third-party library for the corresponding version information
 
-| Library Version | Release Info | Supported RN Version |
-| :--- | :--- | :--- |
-| 2.0.0 | [@react-native-oh-tpl/react-native-exit-app Releases](https://github.com/react-native-oh-library/react-native-exit-app/releases) | 0.72 |
-| 2.1.0 | @react-native-ohos/react-native-exit-app Releases Releases | 0.77 |
+| Third-party Library Version | Release Information                                                                                                                              | Supported RN Version |
+|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------| ---------- |
+| 2.0.0@deprecated  | [@react-native-oh-tpl/react-native-exit-app Releases(deprecated)](https://github.com/react-native-oh-library/react-native-exit-app/releases) | 0.72       |
+| 2.0.1             | [@react-native-ohos/react-native-exit-app Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-exit-app/releases) | 0.72       |
+| 2.1.0             | [@react-native-ohos/react-native-exit-app Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-exit-app/releases) | 0.77       |
 
-For older versions not published to npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
 #### **npm**
 
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/react-native-exit-app
-# 0.77 
 npm install @react-native-ohos/react-native-exit-app
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72 
-yarn add @react-native-oh-tpl/react-native-exit-app
-# 0.77 
 yarn add @react-native-ohos/react-native-exit-app
 ```
 
@@ -86,11 +81,15 @@ export default App;
 
 ## Use Codegen
 
+Version >= @react-native-ohos/react-native-exit-app@2.0.1, compatible with codegen-lib for generating bridge code.
+
 If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-exit-app@2.0.1 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -115,23 +114,13 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
-* 0.72
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-exit-app": "file:../../node_modules/@react-native-oh-tpl/react-native-exit-app/harmony/exit_app.har"
-  }
-```
-
-* 0.77 
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-ohos/react-native-exit-app": "file:../../node_modules/@react-native-ohos/react-native-exit-app/harmony/exit_app.har"
   }
 ```
+
 Click the `sync` button in the upper right corner.
 
 Alternatively, run the following instruction on the terminal:
@@ -145,10 +134,11 @@ Method 2: Directly Link Source Code
 
 > [!TIP] If you need to directly link the source code, please refer to the [Direct Source Code Linking Guide](/en/link-source-code.md).
 
-### 3. Configure CMakeLists and Include RNMlkitOcrPackage
+### 3. Configure CMakeLists and import ExitAppPackage
 
-Open `entry/src/main/cpp/CMakeLists.txt` and add:
+> V2.0.1 requires configuring CMakeLists and importing ExitAppPackage.
 
+Open the `entry/src/main/cpp/CMakeLists.txt` file and add the following code:
 
 ```diff
 project(rnapp)
@@ -186,15 +176,31 @@ target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
 # RNOH_END: manual_package_linking_2
 ```
 
-### 4.在 ArkTs 侧引入 ExitAppPackage
+Open the `entry/src/main/cpp/PackageProvider.cpp` file and add the following code:
+
+```
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "ExitAppPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++       std::make_shared<ExitAppPackage>(ctx),
+    };
+}
+```
+
+### 4. Introducing ExitAppPackage to ArkTS
 
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
 ```diff
   ...
-  # 0.72 
-+  import { ExitAppPackage } from '@react-native-oh-tpl/react-native-exit-app/ts';
-  # 0.77 
 +  import { ExitAppPackage } from '@react-native-ohos/react-native-exit-app/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -205,7 +211,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4. Running
+### 5. Running
 
 Click the `sync` button in the upper right corner.
 
@@ -222,9 +228,13 @@ Then build and run the code.
 
 ### Compatibility
 
-This document is verified based on the following versions:
-1. RNOH：0.72.86; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
-2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+
+The following combinations have been verified:
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
 
 ## Static Methods
 

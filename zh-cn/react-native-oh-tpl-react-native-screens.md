@@ -23,7 +23,7 @@
 
 如未引入请参照 [@react-navigation/native 文档的 Link 章节](/zh-cn/react-navigation-native.md) ，[@react-native-oh-tpl/react-native-gesture-handler 文档的 Link 章节](/zh-cn/react-native-gesture-handler.md) ，[@react-native-oh-tpl/react-native-safe-area-context 文档的 Link 章节](/zh-cn/react-native-safe-area-context.md)进行引入。
 
-### 4.8.1
+### 3.34.1
 本库实现依赖 @react-navigation/native 、 @react-navigation/native-stack 、 @react-native-ohos/react-native-safe-area-context 、 @react-native-ohos/react-native-gesture-handler、@react-native-ohos/react-native-reanimated 的原生端代码，如已在工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
 
 注：若已引入 `@react-native-oh-tpl/native-stack，@react-native-ohos/native-stack` 库，请务必卸载，否则本库将无法正确指向，导致无法使用。
@@ -31,10 +31,12 @@
 如未引入请参照 [@react-navigation/native 文档的 Link 章节](/zh-cn/react-navigation-native.md) ，[@react-native-ohos/react-native-gesture-handler 文档的 Link 章节](/zh-cn/react-native-gesture-handler.md) ，[@react-native-ohos/react-native-safe-area-context 文档的 Link 章节](/zh-cn/react-native-safe-area-context.md)，[@react-native-ohos/react-native-reanimated 文档的 Link 章节](/zh-cn/react-native-reanimated.md)进行引入。
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
-| 三方库版本  | 发布信息                                                     | 支持RN版本 |
-| ----------- | ------------------------------------------------------------ | ---------- |
-|3.34.0|[@react-native-oh-tpl/react-native-screens Releases](https://github.com/react-native-oh-library/react-native-harmony-screens/releases) |0.72|
-|4.8.1|[@react-native-ohos/react-native-screens Releases]() |0.77|
+
+| 三方库版本  | 发布信息                                                  | 支持RN版本 |
+|--------| ------------------------------------------------------------ | ---------- |
+| 3.34.0@deprecated  | [@react-native-oh-tpl/react-native-screens Releases(deprecated)](https://github.com/react-native-oh-library/react-native-harmony-screens/releases) | 0.72       |
+| 3.34.1             | [@react-native-ohos/react-native-screens Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-screens/releases)   | 0.72       |
+| 4.8.1              | [@react-native-ohos/react-native-screens Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-screens/releases)   | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -44,7 +46,7 @@
 
 ```bash
 # 0.72
-npm install @react-native-oh-tpl/react-native-screens@3.34.0-X.X.X
+npm install @react-native-ohos/react-native-screens@3.34.1-X.X.X
 npm install @react-navigation/native-stack@6.9.13
 
 # 0.77
@@ -56,7 +58,7 @@ npm install @react-navigation/native-stack@7.2.0
 
 ```bash
 # 0.72
-yarn install @react-native-oh-tpl/react-native-screens@3.34.0-X.X.X
+yarn install @react-native-ohos/react-native-screens@3.34.1-X.X.X
 yarn install @react-navigation/native-stack@6.9.13
 
 # 0.77
@@ -150,14 +152,16 @@ export default function App() {
 
 ##  使用 Codegen
 
-> [!TIP] V4.8.1 不需要执行 Codegen。
+Version >= @react-native-ohos/react-native-screens@3.34.1，已适配codegen-lib生成桥接代码。
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/codegen.md)。
 
 ## Link
 
+Version >= @react-native-ohos/react-native-screens@3.34.1，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-目前HarmonyOS暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+此步骤为手动配置原生依赖项的指导。
+
 首先需要使用 DevEco Studio 打开项目里的HarmonyOS工程 `harmony`
 
 ### 1.在工程根目录的 `oh-package.json5` 添加 overrides 字段
@@ -184,14 +188,6 @@ export default function App() {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- 0.72
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../../node_modules/@rnoh/react-native-harmony/harmony/react_native_openharmony.har",
-    "@react-native-oh-tpl/react-native-screens": "file:../../node_modules/@react-native-oh-tpl/react-native-screens/harmony/screens.har"
-  }
-```
-- 0.77
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../../node_modules/@rnoh/react-native-harmony/harmony/react_native_openharmony.har",
@@ -214,6 +210,8 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 Package
 
+> V3.34.1 需要配置 CMakeLists 和引入 RnohReactNativeHarmonyScreensPackage
+
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
 ```diff
@@ -235,10 +233,6 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-# 0.72
-+ add_subdirectory("${OH_MODULES_DIR}/@react-native-oh-tpl/react-native-screens/src/main/cpp" ./rnoh_screens)
-
-# 0.77
 + add_subdirectory("${OH_MODULES_DIR}/@react-native-ohos/react-native-screens/src/main/cpp" ./rnoh_screens)
 # RNOH_END: manual_package_linking_1
 
@@ -281,10 +275,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-// 0.72
-+ import { componentBuilder } from "@react-native-oh-tpl/react-native-screens"
-
-// 0.77
 + import { componentBuilder } from "@react-native-ohos/react-native-screens"
 
 @Builder
@@ -323,10 +313,6 @@ const arkTsComponentNames: Array<string> = [
 ```diff
   ...
 import type { RNPackageContext, RNPackage } from '@rnoh/react-native-openharmony';
-// 0.72
-+ import RnohReactNativeHarmonyScreensPackage from '@react-native-oh-tpl/react-native-screens';
-
-// 0.77
 + import RnohReactNativeHarmonyScreensPackage from '@react-native-ohos/react-native-screens';
 
 export function createRNOHPackages(ctx: RNPackageContext): RNPackage[] {
@@ -356,11 +342,11 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
-| 三方库版本  | 发布信息                                                     | 支持RN版本 |
-| ----------- | ------------------------------------------------------------ | ---------- |
-|3.34.0|[@react-native-oh-tpl/react-native-screens Releases](https://github.com/react-native-oh-library/react-native-harmony-screens/releases) |0.72|
-|4.8.1|[@react-native-ohos/react-native-screens Releases]() |0.77|
+在以下版本验证通过：
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
 
 ## 属性
 
