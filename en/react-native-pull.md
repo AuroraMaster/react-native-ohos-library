@@ -1,4 +1,4 @@
-> Template version: v0.2.2
+> Template Version: v0.2.2
 
 <p align="center">
 <h1 align="center"> <code>react-native-pull</code> </h1>
@@ -14,38 +14,48 @@
 
 
 
-> [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-pull)
+> [!TIP] [Github Address](https://github.com/react-native-oh-library/react-native-pull)
 
-## Installation and Usage
+## Installation & Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-pull/releases](https://github.com/react-native-oh-library/react-native-pull/releases). For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+| Third-party Library Version | Release Information                                                  | Supported RN Version |
+|-----------------------------| --------------------------------------------------------------------- | -------------------- |
+| 2.0.4                       | [@react-native-oh-tpl/react-native-pull releases](https://github.com/react-native-oh-library/react-native-pull/releases) | 0.72                 |
+| 2.1.0                       | [@react-native-ohos/react-native-pull Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-pull/releases)   | 0.77                 |
 
-Go to the project directory and execute the following instruction:
+For older versions not published to npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
+Navigate to your project directory and enter the following commands:
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-pull
+# 0.77
+npm install @react-native-ohos/react-native-pull
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-pull
+#0.77
+yarn add @react-native-ohos/react-native-pull
 ```
 
 <!-- tabs:end -->
 
-The following code shows the basic use scenario of the repository:
+The following demo code demonstrates basic usage scenarios of this library:
 
-> [!WARNING] The library name imported during use remains unchanged.
+> [!WARNING] The import library name remains unchanged when using.
 
 **PullViewDemo**
 
-> code example
+> Code Example
 
 ```js
 import React, { Component, useState } from 'react';
@@ -102,11 +112,11 @@ const PullViewDemo = () => {
   };
   const topIndicatorRender = (pulling: any, pullok: any, pullrelease: any) => {
     if (pulling) {
-      setCount('Pull-to-refresh: pulling...')
+      setCount('Pull to refresh pulling...')
     } else if (pullok) {
-      setCount('Release-to-refresh: pullok...')
+      setCount('Release to refresh pullok......')
     } else if (pullrelease) {
-      setCount('Refreshing: pullrelease...')
+      setCount('Refreshing pullrelease......')
     }
     return (
       <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: 60 }}>
@@ -156,7 +166,7 @@ const styles = StyleSheet.create({
 
 **PullListDemo**
 
-> code example
+> Code Example
 
 ```jsx
 import React, { useState } from 'react';
@@ -315,17 +325,17 @@ const PullListDemo = () => {
 
 
     const onPushing = (gesturePosition: any) => {
-        testObj.pushing = 'x:' + gesturePosition.x + '------' + 'y: ' + gesturePosition.y
+        testObj.pushing= 'x:' + gesturePosition.x + '------' + 'y：' + gesturePosition.y
         setData(testObj)
     };
 
     const topIndicatorRender = (pulling: any, pullok: any, pullrelease: any) => {
       if (pulling) {
-          setCount('Current PullList state: pulling...')
+          setCount('Current PullList Status: pulling...')
       } else if (pullok) {
-          setCount('Current PullList state: pullok...')
+          setCount('Current PullList Status: pullok......')
       } else if (pullrelease) {
-          setCount('Current PullList state: pullrelease...')
+          setCount('Current PullList Status: pullrelease......')
       }
 
   return (
@@ -379,20 +389,20 @@ const PullListDemo = () => {
 
     const [refreshing, setRefreshing] = useState(false)
     const onRefresh = () => {
-      // Logic for loading data
+      // Data loading logic
       setRefreshing(true)
-      // After data loading is completed
+      // After data loading is complete
       setTimeout(() => {
         setRefreshing(false)
-      }, 2000); // Assuming that data loading takes 2 seconds
+      }, 2000); // Assuming data loading takes 2 seconds
     };
     const refreshControl = (
       <RefreshControl
         refreshing={refreshing}
         onRefresh={onRefresh}
-        tintColor="#ff0000" // Optional, set the color of the refresh indicator
-        title="Loading..." // Optional, set the text displayed when refreshing
-        colors={['#ff0000', '#00ff00', '#0000ff']} // Optional, set the color array for the refresh indicator
+        tintColor="#ff0000" // Optional, set refresh indicator color
+        title="Loading..." // Optional, set text displayed during refresh
+        colors={['#ff0000', '#00ff00', '#0000ff']} // Optional, set refresh indicator color array
         progressBackgroundColor="#ffffff" // Optional, set progress background color
       />
     );
@@ -409,7 +419,7 @@ const PullListDemo = () => {
             topIndicatorHeight={60}
             pageSize={5}
             scrollViewProps={{
-                scrollEventThrottle: 16, // Reduce the delay of scrolling events and improve the responsiveness of scrolling
+                scrollEventThrottle: 16, // Reduce scroll event delay, improve scroll responsiveness
               }}
             initialListSize={5}
             onEndReached={loadMore}
@@ -449,41 +459,44 @@ export default PullListDemo;
 
 ```
 
-## Constraints
+## Constraints & Limitations
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+To use this library, you need to use the correct React-Native and RNOH versions. Additionally, you need to use the matching DevEco Studio and phone ROM.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-pull/releases](https://github.com/react-native-oh-library/react-native-pull/releases)
+Verified in the following versions:
+
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## Properties
 
-> [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
+> [!TIP] The "Platform" column indicates the platforms supported by the original third-party library.
 
-> [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
+> [!TIP] "HarmonyOS Support" column: yes means the property is supported on HarmonyOS platform; no means not supported; partially means partially supported. The usage method is cross-platform consistent, with effects benchmarked against iOS or Android effects.
 
-**`PullView` & `PullList` Pull down effect attribute**
+**`PullView` & `PullList` Pull-to-refresh Properties**
 
-| Name                 | Description                                                  | Type     | Required | Platform    | HarmonyOS Support |
-| -------------------- | ------------------------------------------------------------ | -------- | -------- | ----------- | ----------------- |
-| `style`              | Sets the component style, such as width, height, and background color. | Style    | no       | android,ios | yes               |
-| `onPulling`          | Called when the component is in the **pulling** state.       | function | no       | android,ios | yes               |
-| `onPullOk`           | Called when the component is in the **pullok** state.        | function | no       | android,ios | yes               |
-| `onPullRelease`      | Called when the component is in the **pullrelease** state. This function contains the **resolve **parameter. You should call **resolve()** at the end. | function | no       | android,ios | yes               |
-| `onPushing`          | Called when the component is in the **pushing** state. This function contains the **gesturePosition** parameter, which is a **{x, y}** object in JSON format. When the component is pulled from top to bottom, the value of **gesturePosition.y** is greater than 0. When the object is pushed from bottom to top, the value of **gesturePosition.y** is less than 0. | function | no       | android,ios | yes               |
-| `topIndicatorRender` | Renders the top indicator component. This function contains four parameters: **ispulling**, **ispullok**, **ispullrelease** and **gesturePosition**. You can use **gesturePosition** to define the animation header. | function | no       | android,ios | yes               |
-| `topIndicatorHeight` | Specifies the height of the top indicator component. This property is necessary when **topIndicatorRender** is defined. | number   | no       | android,ios | yes               |
-| `isPullEnd`          | Indicates whether the pull-down ends. If the value is **true**, the top indicator component is hidden. This parameter is optional. | boolean  | no       | android,ios | no               |
-| `onRefresh`          | Called when the refresh starts.                              | function | no       | android,ios | yes               |
-| `refreshing`         | Indicates whether the component is being refreshed.          | function | no       | android,ios | yes               |
+| Name                 | Description                                                                                                                                                                | Type     | Required | Platform    | HarmonyOS Support |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | ----------- | ----------------- |
+| `style`              | Set component styles, such as width/height/backgroundColor, etc.                                                                                                           | Style    | no       | android,ios | yes               |
+| `onPulling`          | Method executed when in `pulling` state                                                                                                                                     | function | no       | android,ios | yes               |
+| `onPullOk`           | Method executed when in `pullok` state                                                                                                                                      | function | no       | android,ios | yes               |
+| `onPullRelease`      | Method executed when in `pullrelease` state, accepts one parameter: `resolve`, should call `resolve()` after completing operations.                                        | function | no       | android,ios | yes               |
+| `onPushing`          | Method executed when pushing from bottom to top, accepts one parameter: `gesturePosition`. gesturePosition is a JSON format {x, y} object, gesturePosition.y > 0 when pulling from top to bottom, gesturePosition.y < 0 when pushing from bottom to top. | function | no       | android,ios | yes               |
+| `topIndicatorRender` | Rendering method for top refresh indicator component, accepts 4 parameters: `ispulling`, `ispullok`, `ispullrelease`, `gesturePosition`, you can use `gesturePosition` to define animated header. | function | no       | android,ios | yes               |
+| `topIndicatorHeight` | Height of top refresh indicator component, required if topIndicatorRender is defined                                                                                        | number   | no       | android,ios | yes               |
+| `isPullEnd`          | Whether pull has ended, if true then hide top refresh indicator component, not required                                                                                     | boolean  | no       | android,ios | no              |
+| `onRefresh`          | Method called when starting refresh                                                                                                                                         | function | no       | android,ios | yes               |
+| `refreshing`         | Indicates whether refreshing is in progress                                                                                                                                 | function | no       | android,ios | yes               |
 
 ## Known Issues
 
 ## Others
 
-- The isPullEnd property does not take effect; [issue#28](https://github.com/greatbsky/react-native-pull/issues/28)
+- isPullEnd property not working; [issue#28](https://github.com/greatbsky/react-native-pull/issues/28)
 
-## License
+## Open Source License
 
-This project is licensed under [The MIT License (MIT)](https://github.com/greatbsky/react-native-pull/blob/master/LICENSE).
+This project is based on [The MIT License (MIT)](https://github.com/greatbsky/react-native-pull/blob/master/LICENSE), feel free to enjoy and participate in open source.

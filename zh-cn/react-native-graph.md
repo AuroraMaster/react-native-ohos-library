@@ -16,6 +16,14 @@
 
 ## 安装与使用
 
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.1.0     | [react-native-graph release](https://github.com/margelo/react-native-graph/releases) | 0.72/0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
 
 进入到工程目录并输入以下命令：
 
@@ -108,20 +116,20 @@ const styles = StyleSheet.create({
 ```
 ## Link
 
-本库 HarmonyOS 侧实现依赖@react-native-oh-tpl/react-native-reanimated , @react-native-oh-tpl/react-native-gesture-handler , @react-native-oh-tpl/react-native-skia 的原生端代码，如已在 HarmonyOS 工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
+本库 HarmonyOS 侧实现依赖react-native-reanimated , react-native-gesture-handler , react-native-skia 的原生端代码，如已在 HarmonyOS 工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
 
-如未引入请参照[@react-native-oh-tpl/react-native-reanimated文档](/zh-cn/react-native-reanimated.md)、[@react-native-oh-tpl/react-native-gesture-handler文档](/zh-cn/react-native-gesture-handler.md)、[@react-native-oh-tpl/react-native-skia文档](/zh-cn/react-native-skia.md)、进行引入
+如未引入请参照[react-native-reanimated文档](/zh-cn/react-native-reanimated.md)、[react-native-gesture-handler文档](/zh-cn/react-native-gesture-handler.md)、[react-native-skia文档](/zh-cn/react-native-skia.md)、进行引入
 ## 约束与限制
 
 ### 兼容性
 
-本文档内容基于以下版本验证通过：
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-1. RNOH：0.72.28; SDK：HarmonyOS NEXT Developer Beta5 5.0.0.60; IDE：DevEco Studio 5.0.3.655; ROM：3.0.0.60
+在以下版本验证通过：
 
-2. RNOH：0.72.31; SDK：HarmonyOS NEXT Beta1 SDK 5.0.0.68; IDE：DevEco Studio 5.0.3.810; ROM：5.0.0.60
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
-3. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
 ## 属性
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
@@ -130,25 +138,25 @@ const styles = StyleSheet.create({
 
 | Name                          | Description                                     | Type     | Required | Platform    | HarmonyOS Support |
 | ----------------------------- | ----------------------------------------------- | -------- | -------- | ----------- | ----------------- |
-| `animated` | Whether to animate between data changes             | Boolean   | yes       | iOS/Android | yes               |
-| `points` | All points to be marked in the graph. Coordinate system will adjust to scale automatically.                   | GraphPoint[]   | yes       | iOS/Android | yes               |
-| `color`| Color of the graph line (path)              | String   | yes       | iOS/Android | yes               |
-| `enableFadeInMask` |Enable the Fade-In Gradient Effect at the beginning of the Graph| Boolean| no       | iOS/Android | yes               |
-| `lineThickness` |The width of the graph line (path)| Number | no       | iOS/Android | yes               |
-| `gradientFillColors` |(Optional) Colors for the fill gradient below the graph line| Color[] | no       | iOS/Android | yes               |
-| `range` |Range of the graph's x and y-axis. The range must be greaterthan the range given by the points| GraphRange | no       | iOS/Android | yes               |
-| `enablePanGesture`| Whether to enable the pan gesture.(animated Property must be true)              | Boolean   | no       | iOS/Android | yes               |
-| `horizontalPadding` | Horizontal padding applied to graph, so the pan gesture dot doesn't get cut off horizontally(animated Property must be true)      | Number   | no       | iOS/Android | yes               |
-| `verticalPadding`| Vertical padding applied to graph, so the pan gesture dot doesn't get cut off vertically(animated Property must be true) | Number  | no       | iOS/Android | yes               |
-| `enableIndicator`| Enables an indicator which is displayed at the end of the graph(animated Property must be true)  | Boolean  | no       | iOS/Android | yes               |
-| `indicatorPulsating`  | Let's the indicator pulsate(animated GraphEnableIndicator Property must be true) | Boolean  | no       | iOS/Android | yes               |
-| `panGestureDelay`| Delay after which the pan gesture starts(animated enablePanGesture Property must be true)`}| Number  | no       | iOS/Android | yes               |
-| `onPointSelected`  | Called for each point while the user is scrubbing/panning through the graph(animated enablePanGesture Property must be true)| (point: GraphPoint) => void | no       | iOS/Android | yes               |
-| `onGestureStart` |Called once the user starts scrubbing/panning through the graph (animated enablePanGesture Property must be true)|  () => void | no       | iOS/Android | yes               |
-| `onGestureEnd` |Called once the user stopped scrubbing/panning through the graph (animated enablePanGesture Property must be true)| () => void | no       | iOS/Android | yes               |
-| `SelectionDot`|The element that renders the selection dot(animated enablePanGesture Property must be true)| React.ComponentType\<SelectionDotProps> \| null | no       | iOS/Android | yes               |
-| `TopAxisLabel` |The element that gets rendered above the Graph (usually the "max" point/value of the Graph)(animated Property must be true)| React.ReactElement \| null | no       | iOS/Android | yes               |
-| `BottomAxisLabel` |The element that gets rendered below the Graph (usually the "min" point/value of the Graph)(animated Property must be true)| React.ReactElement \| null | no       | iOS/Android | yes               |
+| `animated` | 是否在数据变化时启用动画效果 | Boolean   | yes       | iOS/Android | yes               |
+| `points` | 图表中要标记的所有点。坐标系会自动调整以适应缩放 | GraphPoint[]   | yes       | iOS/Android | yes               |
+| `color`| 图表线条（路径）的颜色 | String   | yes       | iOS/Android | yes               |
+| `enableFadeInMask` | 在图表开头启用淡入渐变效果 | Boolean| no       | iOS/Android | yes               |
+| `lineThickness` | 图表线条（路径）的宽度 | Number | no       | iOS/Android | yes               |
+| `gradientFillColors` | 图表线条下方填充渐变的颜色（可选） | Color[] | no       | iOS/Android | yes               |
+| `range` | 图表x轴和y轴的范围。范围必须大于点给定的范围 | GraphRange | no       | iOS/Android | yes               |
+| `enablePanGesture`| 是否启用手势拖拽（animated属性必须为true） | Boolean   | no       | iOS/Android | yes               |
+| `horizontalPadding` | 应用于图表的水平内边距，防止拖拽点被水平截断（animated属性必须为true） | Number   | no       | iOS/Android | yes               |
+| `verticalPadding`| 应用于图表的垂直内边距，防止拖拽点被垂直截断（animated属性必须为true） | Number  | no       | iOS/Android | yes               |
+| `enableIndicator`| 启用显示在图表末端的指示器（animated属性必须为true） | Boolean  | no       | iOS/Android | yes               |
+| `indicatorPulsating`  | 让指示器产生脉动效果（animated GraphEnableIndicator属性必须为true） | Boolean  | no       | iOS/Android | yes               |
+| `panGestureDelay`| 拖拽手势开始前的延迟时间（animated enablePanGesture属性必须为true） | Number  | no       | iOS/Android | yes               |
+| `onPointSelected`  | 当用户在图表中滑动/拖拽时，为每个点调用的回调函数（animated enablePanGesture属性必须为true） | (point: GraphPoint) => void | no       | iOS/Android | yes               |
+| `onGestureStart` | 当用户开始在图表中滑动/拖拽时调用（animated enablePanGesture属性必须为true） | () => void | no       | iOS/Android | yes               |
+| `onGestureEnd` | 当用户停止在图表中滑动/拖拽时调用（animated enablePanGesture属性必须为true） | () => void | no       | iOS/Android | yes               |
+| `SelectionDot`| 渲染选择点的元素（animated enablePanGesture属性必须为true） | React.ComponentType\<SelectionDotProps> \| null | no       | iOS/Android | yes               |
+| `TopAxisLabel` | 渲染在图表上方的元素（通常是图表的"最大"点/值）（animated属性必须为true） | React.ReactElement \| null | no       | iOS/Android | yes               |
+| `BottomAxisLabel` | 渲染在图表下方的元素（通常是图表的"最小"点/值）（animated属性必须为true） | React.ReactElement \| null | no       | iOS/Android | yes               |
 
 
 

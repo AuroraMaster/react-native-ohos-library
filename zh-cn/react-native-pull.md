@@ -18,7 +18,12 @@
 
 ## 安装与使用
 
-请到三方库的地址查看配套的版本信息：[@react-native-oh-tpl/react-native-pull/releases](https://github.com/react-native-oh-library/react-native-pull/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+| 三方库版本  | 发布信息                                                  | 支持RN版本 |
+|--------| ------------------------------------------------------------ | ---------- |
+| 2.0.4  | [@react-native-oh-tpl/react-native-pull releases](https://github.com/react-native-oh-library/react-native-pull/releases) | 0.72       |
+| 2.1.0            | [@react-native-ohos/react-native-pull Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-pull/releases)   | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -27,13 +32,19 @@
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-pull
+# 0.77
+npm install @react-native-ohos/react-native-pull
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-pull
+#0.77
+yarn add @react-native-ohos/react-native-pull
 ```
 
 <!-- tabs:end -->
@@ -454,7 +465,10 @@ export default PullListDemo;
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-pull/releases](https://github.com/react-native-oh-library/react-native-pull/releases)
+在以下版本验证通过：
+
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 

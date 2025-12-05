@@ -1,4 +1,4 @@
-> Template version: v0.3.0
+> Template Version: v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>@react-native-community/toolbar-android</code> </h1>
@@ -6,26 +6,27 @@
 
 This project is based on [@react-native-toolbar-android/toolbar-android@v0.2.1](https://github.com/react-native-toolbar-android/toolbar-android/tree/v0.2.1).
 
-This third-party library has been migrated to Gitee and is now available for direct download from npm, the new package name is: `@react-native-ohos/toolbar-android`, The version correspondence details are as follows:
+The third-party library repository has been migrated to Gitee and supports direct download from npm. The new package name is: `@react-native-ohos/toolbar-android`. The specific version relationships are as follows:
 
-| Version         | Package Name                                      | Repository         | Release                    |
-|-----------------| ------------------------------------------------- | ------------------ | -------------------------- |
-| <= 0.2.1-0.0.4  | @react-native-oh-tpl/toolbar-android | [Github(deprecated)](https://github.com/react-native-oh-library/toolbar-android) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/toolbar-android/releases) |
-| >= 0.2.2        | @react-native-ohos/toolbar-android   | [Gitee](https://gitee.com/openharmony-sig/rntpc_toolbar-android) | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_toolbar-android/releases) |
+| Version | Package Name | Repository | Release | Supported RN Version |
+|-----------------|-----|--------|----------------------------------- | ------------------ | 
+| <= 0.2.1-0.0.4@deprecated  | @react-native-oh-tpl/toolbar-android| [Github(deprecated)](https://github.com/react-native-oh-library/toolbar-android)| [@react-native-oh-tpl/toolbar-android Releases(deprecated)](https://github.com/react-native-oh-library/toolbar-android/releases) | 0.72
+| 0.2.2  | @react-native-ohos/toolbar-android | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_toolbar-android/tree/master)| [@react-native-ohos/toolbar-android Releases](https://gitcode.com/openharmony-sig/rntpc_toolbar-android/releases) | 0.72
+| 0.3.0  | @react-native-ohos/toolbar-android | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_toolbar-android/tree/master)| [@react-native-ohos/toolbar-android Releases](https://gitcode.com/openharmony-sig/rntpc_toolbar-android/releases) | 0.77 
 
-## 1.Installation and Usage
+## 1. Installation & Usage
 
-Go to the project directory and execute the following instruction:
+Navigate to your project directory and run the following command:
 
 <!-- tabs:start -->
 
-#### npm
+#### **npm**
 
 ```bash
 npm install @react-native-ohos/toolbar-android
 ```
 
-#### yarn
+#### **yarn**
 
 ```bash
 yarn add @react-native-ohos/toolbar-android
@@ -33,9 +34,9 @@ yarn add @react-native-ohos/toolbar-android
 
 <!-- tabs:end -->
 
-The following code shows the basic use scenario of the repository:
+The following code demonstrates basic usage scenarios of this library:
 
-> [!WARNING] The name of the imported repository remains unchanged.
+> [!WARNING] The import library name remains unchanged during use.
 
 ```js
 import React, { useState } from "react";
@@ -114,41 +115,41 @@ const styles = StyleSheet.create({
 export default App;
 ```
 
-## 2.Manual Link
+## 2. Manual Link
 
 This step provides guidance for manually configuring native dependencies.
 
-Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+First, you need to open the HarmonyOS project `harmony` within your project using DevEco Studio.
 
-### 2.1.Overrides RN SDK
+### 2.1. Overrides RN SDK
 
-To ensure the project relies on the same version of the RN SDK, you need to add an `overrides` field in the project's root `oh-package.json5` file, specifying the RN SDK version to be used. The replacement version can be a specific version number, a semver range, or a locally available HAR package or source directory.
+To ensure the project depends on the same version of RN SDK, you need to add the overrides field to the root `oh-package.json5`, pointing to the RN SDK version required by the project. The replaced version can be a specific version number, a fuzzy version, or a locally existing HAR package or source code directory.
 
-For more information about the purpose of this field, please refer to the [official documentation](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-oh-package-json5-V5#en-us_topic_0000001792256137_overrides).
+For details about this field, please read the [official documentation](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-oh-package-json5-V5#zh-cn_topic_0000001792256137_overrides)
 
 ```json
 {
   ...
   "overrides": {
-    "@rnoh/react-native-openharmony": "^0.72.38" // ohpm version
-    // "@rnoh/react-native-openharmony" : "./react_native_openharmony.har" // a locally available HAR package
-    // "@rnoh/react-native-openharmony" : "./react_native_openharmony" // source code directory
+    "@rnoh/react-native-openharmony": "^0.72.38" // ohpm online version
+    // "@rnoh/react-native-openharmony" : "./react_native_openharmony.har" // path to local har package
+    // "@rnoh/react-native-openharmony" : "./react_native_openharmony" // path to source code
   }
 }
 ```
 
-### 2.2.Introducing Native Code
+### 2.2. Import Native Code
 
-Currently, two methods are available:
+There are currently two methods:
 
-- Use the HAR file.
-- Directly link to the source code。
+- Import via har package;
+- Link source code directly.
 
-Method 1 (recommended): Use the HAR file.
+Method 1: Import via har package (Recommended)
 
-> [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
+> [!TIP] The har package is located in the `harmony` folder of the installed third-party library path.
 
-Open `entry/oh-package.json5` file and add the following dependencies:
+Open `entry/oh-package.json5` and add the following dependencies:
 
 ```json
 "dependencies": {
@@ -156,24 +157,24 @@ Open `entry/oh-package.json5` file and add the following dependencies:
   }
 ```
 
-Click the `sync` button in the upper right corner.
+Click the `sync` button in the top right corner.
 
-Alternatively, run the following instruction on the terminal:
+Or execute in the terminal:
 
 ```bash
 cd entry
 ohpm install
 ```
 
-Method 2: Directly link to the source code.
+Method 2: Link Source Code Directly
 
-> [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
+> [!TIP] If you need to link source code directly, please refer to the [Direct Link Source Code Guide](/zh-cn/link-source-code.md)
 
-### 2.3.Configuring CMakeLists and Introducing ToolbarAndroidPackage
+### 2.3. Configure CMakeLists and Import ToolbarAndroidPackage
 
-Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
+Open `entry/src/main/cpp/CMakeLists.txt` and add:
 
-```diff
+```cmake
 project(rnapp)
 cmake_minimum_required(VERSION 3.4.1)
 set(CMAKE_SKIP_BUILD_RPATH TRUE)
@@ -205,9 +206,9 @@ target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
 # RNOH_END: link_packages
 ```
 
-Open `entry/src/main/cpp/PackageProvider.cpp` and add the following code:
+Open `entry/src/main/cpp/PackageProvider.cpp` and add:
 
-```diff
+```c++
 ...
 + #include "ToolbarAndroidPackage.h"
 
@@ -221,13 +222,13 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 2.4.Introducing RNCCheckBoxPackage to ArkTS
+### 2.4. Import RNCCheckBoxPackage on the ArkTS Side
 
-> [!TIP] Required for version `v0.2.22` and above
+> [!TIP] Required for version v0.2.22 and above
 
 Open `entry/src/main/ets/RNPackagesFactory.ts` and add:
 
-```diff
+```typescript
   ...
 + import {ToolbarAndroidPackage} from '@react-native-ohos/toolbar-android/src/main/ets/ToolbarAndroidPackage';
 
@@ -236,14 +237,13 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 +   return [new ToolbarAndroidPackage(ctx)];
   ];
 }
-
 ```
 
-### 2.5.Introducing RNCToolbarAndroid Component to ArkTS
+### 2.5. Import RNCToolbarAndroid Component on the ArkTS Side
 
-Find `function buildCustomRNComponent()`, which is usually located in `entry/src/main/ets/pages/index.ets` or `entry/src/main/ets/rn/LoadBundle.ets`, and add the following code:
+Find **function buildCustomRNComponent()**, usually located in `entry/src/main/ets/pages/index.ets` or `entry/src/main/ets/rn/LoadBundle.ets`, and add:
 
-```diff
+```typescript
   ...
 + import { RNCToolbarAndroid} from '@react-native-ohos/toolbar-android/src/main/ets/RNCToolbarAndroid'
 
@@ -261,74 +261,77 @@ Find `function buildCustomRNComponent()`, which is usually located in `entry/src
   ...
 ```
 
-> [!TIP] If the repository uses a mixed solution, the component name needs to be added.
+> [!TIP] This library uses a hybrid solution and requires adding the component name.
 
-Find the constant `arkTsComponentNames` in `entry/src/main/ets/pages/index.ets` or `entry/src/main/ets/rn/LoadBundle.ets` and add the component name to the array.
+Find the constant `arkTsComponentNames` in `entry/src/main/ets/pages/index.ets` or `entry/src/main/ets/rn/LoadBundle.ets` and add the component name to the array:
 
-```diff
+```typescript
 const arkTsComponentNames: Array<string> = [
   ...
 + RNCToolbarAndroid.NAME
 ];
 ```
 
-### 2.6.Running
+### 2.6. Run
 
-Click the `sync` button in the upper right corner.
+Click the `sync` button in the top right corner.
 
-Alternatively, run the following instruction on the terminal:
+Or execute in the terminal:
 
 ```bash
 cd entry
 ohpm install
 ```
 
-Then build and run the code.
+Then compile and run.
 
-## 3.Constraints
+## 3. Constraints & Limitations
 
-### 3.1Compatibility
+### 3.1 Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+To use this library, you need the correct React-Native and RNOH versions. Additionally, you need to use the matching DevEco Studio and phone ROM.
 
-Check the release version information in the release address of the third-party library: [@react-native-ohos/toolbar-android Releases](https://gitee.com/openharmony-sig/rntpc_toolbar-android/releases)
+Verified in the following versions:
 
-## 4.Properties
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.868; ROM: 6.0.0.112;
 
-> [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
+## 4. Props
 
-> [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
+> [!TIP] The "Platform" column indicates the platforms supported by the original third-party library for that property.
+
+> [!TIP] The "HarmonyOS Support" column: 'Yes' means the property is supported on the HarmonyOS platform; 'No' means it is not supported; 'partially' means partial support. The usage method is consistent across platforms, with effects benchmarked against iOS or Android.
 
 Inherits [View Props](https://reactnative.dev/docs/view#props).
 
-| Name              | Description                                                                                                                                                                                     | Type                                                                                                          | Required  | Platform | HarmonyOS Support |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |-----------| -------- | ----------------- |
-| actions           | Sets possible actions on the toolbar as part of the action menu. These are displayed as icons or text on the right side of the widget. If they don't fit they are placed in an 'overflow' menu. | array of object: {title: string,icon: ImageSource,show: enum('always', 'ifRoom', 'never'),showWithText: bool} | No        | Android  | yes               |
-| contentInsetStart | Sets the content inset for the toolbar starting edge.                                                                                                                                           | number                                                                                                        | No        | Android  | yes               |
-| contentInsetEnd   | Sets the content inset for the toolbar ending edge.                                                                                                                                             | number                                                                                                        | No        | Android  | yes               |
-| logo              | Sets the toolbar logo.                                                                                                                                                                          | ImageSource                                                                                                   | No        | Android  | yes               |
-| navIcon           | Sets the navigation icon.                                                                                                                                                                       | ImageSource                                                                                                   | No        | Android  | yes               |
-| onActionSelected  | Callback that is called when an action is selected. The only argument that is passed to the callback is the position of the action in the actions array.                                        | function                                                                                                      | No        | Android  | yes               |
-| onIconClicked     | Callback called when the icon is selected.                                                                                                                                                      | function                                                                                                      | No        | Android  | yes               |
-| overflowIcon      | Sets the overflow icon.                                                                                                                                                                         | ImageSource                                                                                                   | No        | Android  | yes               |
-| rtl               | Used to set the toolbar direction to RTL.                                                                                                                                                       | bool                                                                                                          | No        | Android  | yes               |
-| subtitle          | Sets the toolbar subtitle.                                                                                                                                                                      | string                                                                                                        | No        | Android  | yes               |
-| subtitleColor     | Sets the toolbar subtitle color.                                                                                                                                                                | string                                                                                                        | No        | Android  | yes               |
-| title             | Sets the toolbar title.                                                                                                                                                                         | string                                                                                                        | No        | Android  | yes               |
-| titleColor        | Sets the toolbar title color.                                                                                                                                                                   | string                                                                                                        | No        | Android  | yes               |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+|-----------------|---------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|-----------|----------|-------------------|
+| actions | Sets possible actions on the toolbar as part of the action menu. These are displayed as icons or text on the right side of the widget. If they don't fit they are placed in an 'overflow' menu. | array of object: {title: string,icon: ImageSource,show: enum('always', 'ifRoom', 'never'),showWithText: bool} | No | Android | Yes |
+| contentInsetStart | Sets the content inset for the toolbar starting edge. | number | No | Android | Yes |
+| contentInsetEnd | Sets the content inset for the toolbar ending edge. | number | No | Android | Yes |
+| logo | Sets the toolbar logo. | ImageSource | No | Android | Yes |
+| navIcon | Sets the navigation icon. | ImageSource | No | Android | Yes |
+| onActionSelected | Callback that is called when an action is selected. The only argument that is passed to the callback is the position of the action in the actions array. | function | No | Android | Yes |
+| onIconClicked | Callback called when the icon is selected. | function | No | Android | Yes |
+| overflowIcon | Sets the overflow icon. | ImageSource | No | Android | Yes |
+| rtl | Used to set the toolbar direction to RTL. | bool | No | Android | Yes |
+| subtitle | Sets the toolbar subtitle. | string | No | Android | Yes |
+| subtitleColor | Sets the toolbar subtitle color. | string | No | Android | Yes |
+| title | Sets the toolbar title. | string | No | Android | Yes |
+| titleColor | Sets the toolbar title color. | string | No | Android | Yes |
 
-#### 4.1.Props of ImageSource
+#### 4.1. Props of ImageSource
 
-| Name   | Description                                            | Type   | Required | Platform | HarmonyOS Support |
-| ------ | ------------------------------------------------------ | ------ | -------- | -------- | ----------------- |
-| uri    | load image from a url, e.g. require('./some_icon.png') | string | Yes      | android  | yes               |
-| width  | the width of the image                                 | number | No       | android  | yes               |
-| height | the height of the image                                | number | No       | android  | yes               |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+|------|---------------------------------------------------------------------------------------------------------------------------------------|--------|----------|----------|-------------------|
+| uri | load image from a url, e.g. require('./some_icon.png') | string | Yes | android | Yes |
+| width | the width of the image | number | No | android | Yes |
+| height | the height of the image | number | No | android | Yes |
 
-## 5.Known Issues
+## 5. Known Issues
 
-## 6.Others
+## 6. Others
 
-## 7.License
+## 7. License
 
-This project is licensed under [The MIT License (MIT)](https://gitee.com/openharmony-sig/rntpc_toolbar-android/blob/master/LICENSE).
+This project is based on [The MIT License (MIT)](https://gitee.com/openharmony-sig/rntpc_toolbar-android/blob/master/LICENSE). Feel free to enjoy and contribute to open source.

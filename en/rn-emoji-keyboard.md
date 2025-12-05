@@ -16,10 +16,16 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/rn-emoji-keyboard Releases](https://github.com/react-native-oh-library/rn-emoji-keyboard/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please check the compatible version information at the third-party library's Releases page:
 
-Go to the project directory and execute the following instruction:
+| Third-Party Library Version | Release Information                                                     | Supported RN Version |
+| --------------------------- | ----------------------------------------------------------------------- | -------------------- |
+| 1.7.0                       | [@react-native-oh-tpl/rn-emoji-keyboard Releases](https://gitcode.com/openharmony-sig/rntpc_rn-emoji-keyboard/releases) | 0.72                 |
+| 1.8.0                       | [@react-native-ohos/rn-emoji-keyboard Releases](https://gitcode.com/openharmony-sig/rntpc_rn-emoji-keyboard/releases) | 0.77                 |
 
+For older versions not published to npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+
+Navigate to the project directory and enter the following command:
 
 
 <!-- tabs:start -->
@@ -27,13 +33,19 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+//0.72
 npm install @react-native-oh-tpl/rn-emoji-keyboard
+//0.77
+npm install @react-native-ohos/rn-emoji-keyboard
 ```
 
 #### **yarn**
 
 ```bash
+//0.72
 yarn add @react-native-oh-tpl/rn-emoji-keyboard
+//0.77
+yarn add @react-native-ohos/rn-emoji-keyboard
 ```
 
 <!-- tabs:end -->
@@ -144,9 +156,12 @@ const styles = StyleSheet.create({
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+To use this library, you need to use the correct React-Native and RNOH versions. Additionally, you need to use the compatible DevEco Studio and mobile ROM.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/rn-emoji-keyboard Releases](https://github.com/react-native-oh-library/rn-emoji-keyboard/releases)
+The following versions have been verified:
+
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.868; ROM: 6.0.0.112;
 
 ## Properties
 

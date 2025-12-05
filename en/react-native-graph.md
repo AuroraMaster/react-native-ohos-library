@@ -1,5 +1,4 @@
-> Template version: v0.2.2
-
+> Template Version: v0.2.2
 <p align="center">
   <h1 align="center"> <code>react-native-graph</code> </h1>
 </p>
@@ -12,154 +11,164 @@
     </a>
 </p>
 
-> [!TIP] [ GitHub address](https://github.com/margelo/react-native-graph)
+> [!TIP] [Github Address](https://github.com/margelo/react-native-graph)
 
 ## Installation and Usage
 
-Go to the project directory and execute the following instruction:
+Please check the corresponding version information in the third-party library's Releases:
+
+| Third-party Library Version | Release Information | Supported RN Version |
+| --------------------------- | ------------------- | -------------------- |
+| 1.1.0                       | [react-native-graph release](https://github.com/margelo/react-native-graph/releases) | 0.72/0.77            |
+
+For older versions not published to npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+
+Navigate to your project directory and enter the following commands:
 
 #### **npm**
 
 ```bash
-npm install react-natvie-graph@1.1.0
+npm install react-native-graph@1.1.0
 ```
 
 #### **yarn**
 
 ```bash
-yarn add react-natvie-graph@1.1.0
+yarn add react-native-graph@1.1.0
 ```
 
-The following code shows the basic use scenario of the repository:
+The following code demonstrates basic usage scenarios of this library:
 
 ```ts
-import React, { useState } from "react";
-import { View, StyleSheet, Text, Button } from "react-native";
-import { LineGraph } from "react-native-graph";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+import React, {  useState } from 'react'
+import { View, StyleSheet, Text, Button } from 'react-native'
+import { LineGraph } from 'react-native-graph'
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 interface GraphPoint {
-  value: number;
-  date: Date;
-}
+    value: number
+    date: Date
+  }
 interface GraphXRange {
-  min: Date;
-  max: Date;
+    min: Date;
+    max: Date;
 }
 interface GraphYRange {
-  min: number;
-  max: number;
+    min: number;
+    max: number;
 }
 interface GraphPathRange {
-  x: GraphXRange;
-  y: GraphYRange;
+    x: GraphXRange;
+    y: GraphYRange;
 }
 type GraphRange = Partial<GraphPathRange>;
 type Color = string | Float32Array | number | number[];
 
-export default function () {
-  const generateRandomGraphData = (length: number): GraphPoint[] => {
-    return Array<number>(length)
-      .fill(0)
-      .map((_, index) => ({
-        date: new Date(
-          new Date(2000, 0, 1).getTime() + 1000 * 60 * 60 * 24 * index
-        ),
-        value: Math.random() * 10,
-      }));
-  };
-  const POINT_COUNT = 50;
-  const POINTS = generateRandomGraphData(POINT_COUNT);
-  const [points, setPoints] = useState(POINTS);
-  const [isAnimated, setIsAnimated] = useState(true);
-  const [enablePanGesture, setEnablePanGesture] = useState(false);
+export default function() {
+    const generateRandomGraphData=(length: number): GraphPoint[]=>{
+        return Array<number>(length)
+          .fill(0)
+          .map((_, index) => ({
+            date: new Date(
+              new Date(2000, 0, 1).getTime() + 1000 * 60 * 60 * 24 * index
+            ),
+            value: Math.random()*10,
+          }))
+      }
+    const POINT_COUNT=50
+      const POINTS = generateRandomGraphData(POINT_COUNT)
+      const [points, setPoints] = useState(POINTS)
+      const [isAnimated, setIsAnimated] = useState(true)
+      const [enablePanGesture, setEnablePanGesture] = useState(false)
 
-  const color = "#dd4400";
-
-  return (
-    <View style={{ flex: 1 }}>
-      <GestureHandlerRootView style={{ flex: 1 }}>
+      const color='#dd4400'
+  
+      
+    return (
+        <View style={{ flex: 1 }}>
+    <GestureHandlerRootView style={{ flex: 1 }}>
         <Text>{`enablePanGesture value is ${enablePanGesture}`}</Text>
-        <LineGraph
-          style={styles.graph}
-          animated={isAnimated}
-          color={color}
-          points={points}
-          enablePanGesture={enablePanGesture}
+        <LineGraph 
+        style={styles.graph}
+        animated={isAnimated}
+        color={color}
+        points={points}
+        enablePanGesture={enablePanGesture}
         />
-        <Button
-          title="change enablePanGesture"
-          onPress={() => setEnablePanGesture(!enablePanGesture)}
-        />
-      </GestureHandlerRootView>
+        <Button title='change enablePanGesture' onPress={()=>setEnablePanGesture(!enablePanGesture)} />
+     </GestureHandlerRootView>
     </View>
-  );
+    )
+
 }
 
 const styles = StyleSheet.create({
-  graph: {
-    alignSelf: "center",
-    width: "100%",
-    aspectRatio: 1.4,
-    marginVertical: 20,
-  },
-});
+
+    graph: {
+        alignSelf: 'center',
+        width: '100%',
+        aspectRatio: 1.4,
+        marginVertical: 20,
+      },
+})
 ```
 
 ## Link
 
-The HarmonyOS implementation of this library depends on the native code from @react-native-oh-tpl/react-native-reanimated , @react-native-oh-tpl/react-native-gesture-handler , @react-native-oh-tpl/react-native-skia. If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly.
+The HarmonyOS implementation of this library depends on the native code of react-native-reanimated, react-native-gesture-handler, and react-native-skia. If these libraries have already been introduced in your HarmonyOS project, you do not need to introduce them again and can skip this section to start using directly.
 
-If it is not included, follow the guide provided in[@react-native-oh-tpl/react-native-reanimated docs](/en/react-native-reanimated.md)、[@react-native-oh-tpl/react-native-gesture-handler docs](/en/react-native-gesture-handler.md)、[@react-native-oh-tpl/react-native-skia docs](/en/react-native-skia.md) to add it to your project.
+If not introduced, please refer to:
+- [react-native-reanimated Documentation](/zh-cn/react-native-reanimated.md)
+- [react-native-gesture-handler Documentation](/zh-cn/react-native-gesture-handler.md)  
+- [react-native-skia Documentation](/zh-cn/react-native-skia.md)
 
-## Constraints
+## Constraints and Limitations
 
 ### Compatibility
 
-This document is verified based on the following versions:
+To use this library, you need to use the correct React-Native and RNOH versions. Additionally, you need to use the matching DevEco Studio and phone ROM.
 
-1. RNOH：0.72.28; SDK：HarmonyOS NEXT Developer Beta5 5.0.0.60; IDE：DevEco Studio 5.0.3.655; ROM：3.0.0.60
+Verified in the following versions:
 
-2. RNOH：0.72.31; SDK：HarmonyOS NEXT Beta1 SDK 5.0.0.68; IDE：DevEco Studio 5.0.3.810; ROM：5.0.0.60
-
-3. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.868; ROM: 6.0.0.112;
 
 ## Properties
 
-> [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
+> [!TIP] The "Platform" column indicates the platforms supported by the original third-party library for this property.
 
-> [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
+> [!TIP] "HarmonyOS Support" being yes means the property is supported on HarmonyOS platform; no means not supported; partially means partially supported. The usage method is consistent across platforms, with effects benchmarked against iOS or Android.
 
-| Name                 | Description                                                                                                                  | Type                                            | Required | Platform    | HarmonyOS Support |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- | -------- | ----------- | ----------------- |
-| `animated`           | Whether to animate between data changes                                                                                      | Boolean                                         | yes      | iOS/Android | yes               |
-| `points`             | All points to be marked in the graph. Coordinate system will adjust to scale automatically.                                  | GraphPoint[]                                    | yes      | iOS/Android | yes               |
-| `color`              | Color of the graph line (path)                                                                                               | String                                          | yes      | iOS/Android | yes               |
-| `enableFadeInMask`   | Enable the Fade-In Gradient Effect at the beginning of the Graph                                                             | Boolean                                         | no       | iOS/Android | yes               |
-| `lineThickness`      | The width of the graph line (path)                                                                                           | Number                                          | no       | iOS/Android | yes               |
-| `gradientFillColors` | (Optional) Colors for the fill gradient below the graph line                                                                 | Color[]                                         | no       | iOS/Android | yes               |
-| `range`              | Range of the graph's x and y-axis. The range must be greaterthan the range given by the points                               | GraphRange                                      | no       | iOS/Android | yes               |
-| `enablePanGesture`   | Whether to enable the pan gesture.(animated Property must be true)                                                           | Boolean                                         | no       | iOS/Android | yes               |
-| `horizontalPadding`  | Horizontal padding applied to graph, so the pan gesture dot doesn't get cut off horizontally(animated Property must be true) | Number                                          | no       | iOS/Android | yes               |
-| `verticalPadding`    | Vertical padding applied to graph, so the pan gesture dot doesn't get cut off vertically(animated Property must be true)     | Number                                          | no       | iOS/Android | yes               |
-| `enableIndicator`    | Enables an indicator which is displayed at the end of the graph(animated Property must be true)                              | Boolean                                         | no       | iOS/Android | yes               |
-| `indicatorPulsating` | Let's the indicator pulsate(animated GraphEnableIndicator Property must be true)                                             | Boolean                                         | no       | iOS/Android | yes               |
-| `panGestureDelay`    | Delay after which the pan gesture starts(animated enablePanGesture Property must be true)`}                                  | Number                                          | no       | iOS/Android | yes               |
-| `onPointSelected`    | Called for each point while the user is scrubbing/panning through the graph(animated enablePanGesture Property must be true) | (point: GraphPoint) => void                     | no       | iOS/Android | yes               |
-| `onGestureStart`     | Called once the user starts scrubbing/panning through the graph (animated enablePanGesture Property must be true)            | () => void                                      | no       | iOS/Android | yes               |
-| `onGestureEnd`       | Called once the user stopped scrubbing/panning through the graph (animated enablePanGesture Property must be true)           | () => void                                      | no       | iOS/Android | yes               |
-| `SelectionDot`       | The element that renders the selection dot(animated enablePanGesture Property must be true)                                  | React.ComponentType\<SelectionDotProps> \| null | no       | iOS/Android | yes               |
-| `TopAxisLabel`       | The element that gets rendered above the Graph (usually the "max" point/value of the Graph)(animated Property must be true)  | React.ReactElement \| null                      | no       | iOS/Android | yes               |
-| `BottomAxisLabel`    | The element that gets rendered below the Graph (usually the "min" point/value of the Graph)(animated Property must be true)  | React.ReactElement \| null                      | no       | iOS/Android | yes               |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+|------|-------------|------|----------|----------|-------------------|
+| `animated` | Whether to enable animation effects when data changes | Boolean | yes | iOS/Android | yes |
+| `points` | All points to be marked in the graph. Coordinate system will adjust to scale automatically | GraphPoint[] | yes | iOS/Android | yes |
+| `color` | Color of the graph line (path) | String | yes | iOS/Android | yes |
+| `enableFadeInMask` | Enable the Fade-In Gradient Effect at the beginning of the Graph | Boolean | no | iOS/Android | yes |
+| `lineThickness` | The width of the graph line (path) | Number | no | iOS/Android | yes |
+| `gradientFillColors` | (Optional) Colors for the fill gradient below the graph line | Color[] | no | iOS/Android | yes |
+| `range` | Range of the graph's x and y-axis. The range must be greater than the range given by the points | GraphRange | no | iOS/Android | yes |
+| `enablePanGesture` | Whether to enable the pan gesture (animated Property must be true) | Boolean | no | iOS/Android | yes |
+| `horizontalPadding` | Horizontal padding applied to graph, so the pan gesture dot doesn't get cut off horizontally (animated Property must be true) | Number | no | iOS/Android | yes |
+| `verticalPadding` | Vertical padding applied to graph, so the pan gesture dot doesn't get cut off vertically (animated Property must be true) | Number | no | iOS/Android | yes |
+| `enableIndicator` | Enables an indicator which is displayed at the end of the graph (animated Property must be true) | Boolean | no | iOS/Android | yes |
+| `indicatorPulsating` | Let's the indicator pulsate (animated GraphEnableIndicator Property must be true) | Boolean | no | iOS/Android | yes |
+| `panGestureDelay` | Delay after which the pan gesture starts (animated enablePanGesture Property must be true) | Number | no | iOS/Android | yes |
+| `onPointSelected` | Called for each point while the user is scrubbing/panning through the graph (animated enablePanGesture Property must be true) | (point: GraphPoint) => void | no | iOS/Android | yes |
+| `onGestureStart` | Called once the user starts scrubbing/panning through the graph (animated enablePanGesture Property must be true) | () => void | no | iOS/Android | yes |
+| `onGestureEnd` | Called once the user stopped scrubbing/panning through the graph (animated enablePanGesture Property must be true) | () => void | no | iOS/Android | yes |
+| `SelectionDot` | The element that renders the selection dot (animated enablePanGesture Property must be true) | React.ComponentType\<SelectionDotProps> \| null | no | iOS/Android | yes |
+| `TopAxisLabel` | The element that gets rendered above the Graph (usually the "max" point/value of the Graph) (animated Property must be true) | React.ReactElement \| null | no | iOS/Android | yes |
+| `BottomAxisLabel` | The element that gets rendered below the Graph (usually the "min" point/value of the Graph) (animated Property must be true) | React.ReactElement \| null | no | iOS/Android | yes |
 
 ## Known Issues
 
-- [ ] A third-party library that relies on gesture libraries may encounter bugs in gesture indicator points when clicking on charts, causing the page to freeze and making it impossible to click on the buttons in the component. Clicking again will return to normal, and we need to wait for the gesture library to update before it returns to normal [issues#38](https://github.com/react-native-oh-library/react-native-harmony-gesture-handler/issues/38)
+- [ ] For third-party libraries that depend on the gesture library, after clicking on the graph, there is a BUG where the gesture indicator point appears, causing the page to freeze and unable to click buttons in the component. It returns to normal after clicking again. This needs to be fixed after the gesture library is updated [issues#38](https://github.com/react-native-oh-library/react-native-harmony-gesture-handler/issues/38)
 
 ## Others
 
-- The original library code for the animated attribute of react native graph is currently problematic. Whether it is false or true, data changes are static and do not have animation effects. There are user issues and PRs in the original library, and the animation can only function properly after adding and merging the corresponding PR code [issue#111](https://github.com/margelo/react-native-graph/pull/111)
+- The animated property of react-native-graph currently has issues in the original library code. Whether false or true, data changes are static without animation effects. Users have raised issues and PRs in the original library. Animation will work normally only after the corresponding PR code is merged [issue#111](https://github.com/margelo/react-native-graph/pull/111)
 
 ## License
 
-This project is licensed under [The MIT License (MIT)](https://github.com/margelo/react-native-graph/blob/main/LICENSE).
+This project is based on [The MIT License (MIT)](https://github.com/margelo/react-native-graph/blob/main/LICENSE). Feel free to enjoy and participate in open source.

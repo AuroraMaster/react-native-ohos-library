@@ -8,10 +8,11 @@
 
 该第三方库的仓库已迁移至 Gitee，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/toolbar-android`，具体版本所属关系如下：
 
-| Version         | Package Name                                      | Repository         | Release                    |
-|-----------------| ------------------------------------------------- | ------------------ | -------------------------- |
-| <= 0.2.1-0.0.4  | @react-native-oh-tpl/toolbar-android | [Github(deprecated)](https://github.com/react-native-oh-library/toolbar-android) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/toolbar-android/releases) |
-| >= 0.2.2        | @react-native-ohos/toolbar-android   | [Gitee](https://gitee.com/openharmony-sig/rntpc_toolbar-android) | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_toolbar-android/releases) |
+| Version | Package Name | Repository | Release | Supported RN Version |
+|-----------------|-----|--------|----------------------------------- | ------------------ | 
+| <= 0.2.1-0.0.4@deprecated  | @react-native-oh-tpl/toolbar-android| [Github(deprecated)](https://github.com/react-native-oh-library/toolbar-android)| [@react-native-oh-tpl/toolbar-android Releases(deprecated)](https://github.com/react-native-oh-library/toolbar-android/releases) | 0.72
+| 0.2.2  | @react-native-ohos/toolbar-android | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_toolbar-android/tree/master)| [@react-native-ohos/toolbar-android Releases](https://gitcode.com/openharmony-sig/rntpc_toolbar-android/releases) | 0.72
+| 0.3.0  | @react-native-ohos/toolbar-android | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_toolbar-android/tree/master)| [@react-native-ohos/toolbar-android Releases](https://gitcode.com/openharmony-sig/rntpc_toolbar-android/releases) | 0.77  
 
 ## 1.安装与使用
 
@@ -149,7 +150,6 @@ export default App;
 > [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
 
 打开 `entry/oh-package.json5`，添加以下依赖
-
 ```json
 "dependencies": {
     "@react-native-ohos/toolbar-android": "file:../../node_modules/@react-native-ohos/toolbar-android/harmony/toolbar_android.har"
@@ -291,7 +291,10 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/toolbar-android Releases](https://gitee.com/openharmony-sig/rntpc_toolbar-android/releases)
+在以下版本验证通过：
+
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 4.属性
 
@@ -301,29 +304,29 @@ ohpm install
 
 Inherits [View Props](https://reactnative.dev/docs/view#props).
 
-| Name              | Description                                                                                                                                                                                     | Type                                                                                                          | Required  | Platform | HarmonyOS Support |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |-----------| -------- | ----------------- |
-| actions           | Sets possible actions on the toolbar as part of the action menu. These are displayed as icons or text on the right side of the widget. If they don't fit they are placed in an 'overflow' menu. | array of object: {title: string,icon: ImageSource,show: enum('always', 'ifRoom', 'never'),showWithText: bool} | No        | Android  | yes               |
-| contentInsetStart | Sets the content inset for the toolbar starting edge.                                                                                                                                           | number                                                                                                        | No        | Android  | yes               |
-| contentInsetEnd   | Sets the content inset for the toolbar ending edge.                                                                                                                                             | number                                                                                                        | No        | Android  | yes               |
-| logo              | Sets the toolbar logo.                                                                                                                                                                          | ImageSource                                                                                                   | No        | Android  | yes               |
-| navIcon           | Sets the navigation icon.                                                                                                                                                                       | ImageSource                                                                                                   | No        | Android  | yes               |
-| onActionSelected  | Callback that is called when an action is selected. The only argument that is passed to the callback is the position of the action in the actions array.                                        | function                                                                                                      | No        | Android  | yes               |
-| onIconClicked     | Callback called when the icon is selected.                                                                                                                                                      | function                                                                                                      | No        | Android  | yes               |
-| overflowIcon      | Sets the overflow icon.                                                                                                                                                                         | ImageSource                                                                                                   | No        | Android  | yes               |
-| rtl               | Used to set the toolbar direction to RTL.                                                                                                                                                       | bool                                                                                                          | No        | Android  | yes               |
-| subtitle          | Sets the toolbar subtitle.                                                                                                                                                                      | string                                                                                                        | No        | Android  | yes               |
-| subtitleColor     | Sets the toolbar subtitle color.                                                                                                                                                                | string                                                                                                        | No        | Android  | yes               |
-| title             | Sets the toolbar title.                                                                                                                                                                         | string                                                                                                        | No        | Android  | yes               |
-| titleColor        | Sets the toolbar title color.                                                                                                                                                                   | string                                                                                                        | No        | Android  | yes               |
+| Name              | Description                                                                                                                              | Type                                                                                                          | Required  | Platform | HarmonyOS Support |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |-----------| -------- | ----------------- |
+| actions           | 在操作菜单中设置工具栏上的可能操作。这些操作以图标或文本形式显示在小部件右侧。如果空间不足，它们会被放入"溢出"菜单中。 | 对象数组: {title: string,icon: ImageSource,show: enum('always', 'ifRoom', 'never'),showWithText: bool} | No        | Android  | Yes               |
+| contentInsetStart | 设置工具栏起始边缘的内容内边距。                                                                                                        | number                                                                                                        | No        | Android  | Yes               |
+| contentInsetEnd   | 设置工具栏结束边缘的内容内边距。                                                                                                          | number                                                                                                        | No        | Android  | Yes               |
+| logo              | 设置工具栏徽标。                                                                                                                       | ImageSource                                                                                                   | No        | Android  | Yes               |
+| navIcon           | 设置导航图标。                                                                                                                        | ImageSource                                                                                                   | No        | Android  | Yes               |
+| onActionSelected  | 选择操作时调用的回调函数。传递给回调的唯一参数是操作在操作数组中的位置。                                                               | function                                                                                                      | No        | Android  | Yes               |
+| onIconClicked     | 点击图标时调用的回调函数。                                                                                                             | function                                                                                                      | No        | Android  | Yes               |
+| overflowIcon      | 设置溢出图标。                                                                                                                        | ImageSource                                                                                                   | No        | Android  | Yes               |
+| rtl               | 用于将工具栏方向设置为从右到左。                                                                                                        | bool                                                                                                          | No        | Android  | Yes               |
+| subtitle          | 设置工具栏副标题。                                                                                                                     | string                                                                                                        | No        | Android  | Yes               |
+| subtitleColor     | 设置工具栏副标题颜色。                                                                                                                 | string                                                                                                        | No        | Android  | Yes               |
+| title             | 设置工具栏标题。                                                                                                                       | string                                                                                                        | No        | Android  | Yes               |
+| titleColor        | 设置工具栏标题颜色。                                                                                                                   | string                                                                                                        | No        | Android  | Yes               |
 
 #### 4.1.Props of ImageSource
 
 | Name   | Description                                            | Type   | Required | Platform | HarmonyOS Support |
 | ------ | ------------------------------------------------------ | ------ | -------- | -------- | ----------------- |
-| uri    | load image from a url, e.g. require('./some_icon.png') | string | Yes      | android  | yes               |
-| width  | the width of the image                                 | number | No       | android  | yes               |
-| height | the height of the image                                | number | No       | android  | yes               |
+| uri    | 从URL加载图片，例如 require('./some_icon.png')         | string | Yes      | android  | Yes               |
+| width  | 图片宽度                                               | number | No       | android  | Yes               |
+| height | 图片高度                                               | number | No       | android  | Yes               |                                | number | No       | android  | Yes               |
 
 ## 5.遗留问题
 

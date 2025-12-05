@@ -1,4 +1,4 @@
-> 模板版本：v0.2.2
+> Template Version: v0.2.2
 
 <p align="center">
   <h1 align="center"> <code>react-native-ffmpeg-kit</code> </h1>
@@ -14,9 +14,9 @@
 </p>
 
 
-> [!tip] [Github 地址](https://github.com/react-native-oh-library/ffmpeg-kit)
+> [!tip] [Github Address](https://github.com/react-native-oh-library/ffmpeg-kit)
 
-## 安装与使用
+## Installation & Usage
 | Third-party Library Version | Release Information | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
 | 6.0.3     | [@react-native-oh-tpl/react-native-ffmpeg-kit release](https://github.com/react-native-oh-library/ffmpeg-kit/releases) | 0.72
@@ -42,10 +42,9 @@ yarn add @react-native-oh-tpl/react-native-ffmpeg-kit
 yarn add @react-native-ohos/react-native-ffmpeg-kit
 ```
 
+The following code demonstrates basic usage scenarios of this library:
 
-下面的代码展示了这个库的基本使用场景：
-
-> [!WARNING] 使用时 import 的库名不变。
+> [!WARNING] The import library name remains unchanged when using.
 
 ```js
 import React from 'react';
@@ -280,11 +279,11 @@ const styles = StyleSheet.create({
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Currently, HarmonyOS does not support AutoLink, so the Link step needs to be configured manually.
 
-首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
+First, you need to open the HarmonyOS project `harmony` in your project using DevEco Studio.
 
-### 1.在工程根目录的 `oh-package.json5` 添加 overrides 字段
+### 1. Add the overrides field to `oh-package.json5` in the project root directory
 
 ```json
 {
@@ -295,18 +294,18 @@ const styles = StyleSheet.create({
 }
 ```
 
-### 2.引入原生端代码
+### 2. Import native code
 
-目前有两种方法：
+There are currently two methods:
 
-1. 通过 har 包引入（在 IDE 完善相关功能后该方法会被遗弃，目前首选此方法）；
-2. 直接链接源码。
+1. Import via har package (this method will be deprecated after IDE improves related functionality, currently this is the preferred method);
+2. Directly link source code.
 
-方法一：通过 har 包引入（推荐）
+Method 1: Import via har package (Recommended)
 
-> [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
+> [!TIP] The har package is located in the `harmony` folder of the third-party library installation path.
 
-打开 `entry/oh-package.json5`，添加以下依赖
+Open `entry/oh-package.json5` and add the following dependencies:
 
 ```json
 "dependencies": {
@@ -319,22 +318,22 @@ const styles = StyleSheet.create({
   }
 ```
 
-点击右上角的 `sync` 按钮
+Click the `sync` button in the upper right corner.
 
-或者在终端执行：
+Or execute in the terminal:
 
 ```bash
 cd entry
 ohpm install
 ```
 
-方法二：直接链接源码
+Method 2: Directly link source code
 
-> [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
+> [!TIP] If you need to use direct source code linking, please refer to [Direct Link Source Code Instructions](/en/link-source-code.md)
 
-### 3.配置 CMakeLists 和引入 GestureHandlerPackage
+### 3. Configure CMakeLists and import GestureHandlerPackage
 
-打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+Open `entry/src/main/cpp/CMakeLists.txt` and add:
 
 ```diff
 project(rnapp)
@@ -375,7 +374,7 @@ target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
 # RNOH_END: manual_package_linking_2
 ```
 
-打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+Open `entry/src/main/cpp/PackageProvider.cpp` and add:
 
 ```diff
 #include "RNOH/PackageProvider.h"
@@ -392,15 +391,16 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 4.在 ArkTs 侧引入 Gesture Handler Package
+### 4. Import Gesture Handler Package on ArkTs side
 
-打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
+Open `entry/src/main/ets/RNPackagesFactory.ts` and add:
 
 ```diff
 //0.72
 + import { FFmpegKitPackage } from '@react-native-oh-tpl/react-native-ffmpeg-kit/ts';
 //0.77
 + import { FFmpegKitPackage } from '@react-native-ohos/react-native-ffmpeg-kit/ts';
+
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
     new SamplePackage(ctx),
@@ -409,99 +409,97 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 5.运行
+### 5. Run
 
-点击右上角的 `sync` 按钮
+Click the `sync` button in the upper right corner.
 
-或者在终端执行：
+Or execute in the terminal:
 
 ```bash
 cd entry
 ohpm install
 ```
 
-然后编译、运行即可。
+Then compile and run.
 
-## 约束与限制
+## Constraints & Limitations
 
-### 兼容性
+### Compatibility
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+To use this library, you need to use the correct React-Native and RNOH versions. Additionally, you need to use the matching DevEco Studio and phone ROM.
 
-在以下版本验证通过：
+Verified with the following versions:
 
 1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
-2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.868; ROM: 6.0.0.112;
 
+## API
 
-##  API
+> [!tip] The "Platform" column indicates the platforms supported by the original third-party library for this property.
 
-
-> [!tip] "Platform"列表示该属性在原三方库上支持的平台。
-
-> [!tip] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
+> [!tip] A value of "yes" in the "HarmonyOS Support" column indicates that the property is supported on the HarmonyOS platform; "no" indicates it is not supported; "partially" indicates partial support. The usage method is cross-platform consistent, with effects benchmarked against iOS or Android effects.
 
 #### FFmpegKit
 
-| Name   | Description                                                                                  | Type                             | Required | Platform | HarmonyOS Support |
-| ---------- | ------------------------------------------------------------------------------------------------ | ------------------------------------ | -------- | -------- | -------- |
-| execute    | 同步执行提供的 FFmpeg 命令。使用空格字符将命令分割为参数。您可以使用单引号或双引号字符来指定命令中的参数。                                     | Promise | yes      | All      | yes      |
-| executeAsync    | 为给定命令启动异步 FFmpeg 执行。使用空格字符将命令分割为参数。您可以使用单引号或双引号字符来指定命令中的参数。                                     | Promise | yes      | All      | yes      |
-| cancel    | 取消指定 `sessionId` 的会话。 | Promise | yes      | All      | yes      |
-| listSessions    | 列出会话历史中的所有 FFmpeg 会话。 | Promise | yes      | All      | yes      |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+|------|-------------|------|----------|----------|-------------------|
+| execute | Synchronously executes FFmpeg command provided. Space character is used to split the command into arguments. You can use single or double quote characters to specify arguments inside your command. | Promise | yes | All | yes |
+| executeAsync | Starts an asynchronous FFmpeg execution for the given command. Space character is used to split the command into arguments. You can use single or double quote characters to specify arguments inside your command. | Promise | yes | All | yes |
+| cancel | Cancels the session specified with `sessionId`. | Promise | yes | All | yes |
+| listSessions | Lists all FFmpeg sessions in the session history. | Promise | yes | All | yes |
 
 #### FFmpegKitConfig
 
-| Name   | Description                                                                                  | Type                             | Required | Platform | HarmonyOS Support |
-| :--------- | ------------------------------------------------------------------------------------------------ | ------------------------------------ | -------- | -------- | -------- |
-| enableLogCallback    | 设置全局回调以重定向 FFmpeg/FFprobe 日志。                                     | Promise | yes      | All      | yes      |
-| enableStatisticsCallback    | 设置全局回调以重定向 FFmpeg 统计信息。                                     | Promise | yes      | All      | yes      |
-| enableLogs    | 启用日志。 | Promise | yes      | All      | yes      |
-| sessionStateToString    | 返回提供的 SessionState 的字符串表示形式。 | void | yes      | All      | yes      |
-| parseArguments    | 将给定命令解析为参数。使用空格字符分割参数。支持单引号和双引号字符。 | void | yes      | All      | yes      |
-| asyncFFprobeExecute    | 为给定会话启动异步 FFprobe 执行。 | Promise | yes      | All      | yes      |
-| getLogLevel    | 返回当前日志级别。 | void | yes      | All      | yes      |
-| clearSessions    | 清除会话历史中的所有会话（包括正在进行的会话）。 | Promise | yes      | All      | yes      |
-| setSessionHistorySize    | 设置会话历史大小。 | Promise | yes      | All      | yes      |
-| init    | 异步初始化库。 | Promise | yes      | All      | yes      |
-| ignoreSignal    | 注册新的忽略信号。被忽略的信号不会被 `FFmpegKit` 库处理。 | Promise      | yes      | All      |yes|
-| setLogLevel    | 设置日志级别。 | Promise | yes      | All      | yes      |
-| getPlatform    | 返回库加载所在的平台名称。 | Promise | yes      | All      | yes      |
-| getFFmpegVersion    | 返回 `FFmpegKit` 库中捆绑的 FFmpeg 版本。 | Promise | yes      | All      | yes      |
-| getSessions    | 返回会话历史中的所有会话。 | Promise | yes      | All      | yes      |
-| setFontDirectoryList    | 注册给定字体目录列表中的字体，使其可在 FFmpeg 过滤器中使用。 | Promise | yes      | All      | yes      |
-| setEnvironmentVariable    | 设置环境变量。 | Promise | yes      | All      | yes      |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+|------|-------------|------|----------|----------|-------------------|
+| enableLogCallback | Sets a global callback to redirect FFmpeg/FFprobe logs. | Promise | yes | All | yes |
+| enableStatisticsCallback | Sets a global callback to redirect FFmpeg statistics. | Promise | yes | All | yes |
+| enableLogs | Enables logs. | Promise | yes | All | yes |
+| sessionStateToString | Returns the string representation of the SessionState provided. | void | yes | All | yes |
+| parseArguments | Parses the given command into arguments. Uses space character to split the arguments. Supports single and double quote characters. | void | yes | All | yes |
+| asyncFFprobeExecute | Starts an asynchronous FFprobe execution for the given session. | Promise | yes | All | yes |
+| getLogLevel | Returns the current log level. | void | yes | All | yes |
+| clearSessions | Clears all, including ongoing, sessions in the session history. | Promise | yes | All | yes |
+| setSessionHistorySize | Sets the session history size. | Promise | yes | All | yes |
+| init | Initializes the library asynchronously. | Promise | yes | All | yes |
+| ignoreSignal | Registers a new ignored signal. Ignored signals are not handled by `FFmpegKit` library. | Promise | yes | All | yes |
+| setLogLevel | Sets the log level. | Promise | yes | All | yes |
+| getPlatform | Returns the platform name the library is loaded on. | Promise | yes | All | yes |
+| getFFmpegVersion | Returns the version of FFmpeg bundled within `FFmpegKit` library. | Promise | yes | All | yes |
+| getSessions | Returns all sessions in the session history. | Promise | yes | All | yes |
+| setFontDirectoryList | Registers the fonts inside the given list of font directories, so they become available to use in FFmpeg filters. | Promise | yes | All | yes |
+| setEnvironmentVariable | Sets an environment variable. | Promise | yes | All | yes |
 
 #### FFprobeSession
 
-| Name   | Description                                                                                  | Type                             | Required | Platform | HarmonyOS Support |
-| :--------- | ------------------------------------------------------------------------------------------------ | ------------------------------------ | -------- | -------- | -------- |
-| create    | 创建新的 FFprobe 会话。                                     | Promise | yes      | All      | yes      |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+|------|-------------|------|----------|----------|-------------------|
+| create | Creates a new FFprobe session. | Promise | yes | All | yes |
 
 #### ReturnCode
 
-| Name   | Description                                                                                  | Type                             | Required | Platform | HarmonyOS Support |
-| :--------- | ------------------------------------------------------------------------------------------------ | ------------------------------------ | -------- | -------- | -------- |
-| isSuccess    | 是否成功。                                     | boolean | yes      | All      | yes      |
-| isCancel    | 是否取消。                                     | boolean | yes      | All      | yes      |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+|------|-------------|------|----------|----------|-------------------|
+| isSuccess | Success or not. | boolean | yes | All | yes |
+| isCancel | Cancel or not. | boolean | yes | All | yes |
 
 #### FFprobeKit
 
-| Name   | Description                                                                                  | Type                             | Required | Platform | HarmonyOS Support |
-| :--------- | ------------------------------------------------------------------------------------------------ | ------------------------------------ | -------- | -------- | -------- |
-| getMediaInformation    | 提取指定路径文件的媒体信息。                                     | Promise | yes      | All      | yes      |
-| listFFprobeSessions    | 列出会话历史中的所有 FFprobe 会话。                                     | Promise | yes      | All      | yes      |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+|------|-------------|------|----------|----------|-------------------|
+| getMediaInformation | Extracts media information for the file specified with path. | Promise | yes | All | yes |
+| listFFprobeSessions | Lists all FFprobe sessions in the session history. | Promise | yes | All | yes |
 
 #### Packages
 
-| Name   | Description                                                                                  | Type                             | Required | Platform | HarmonyOS Support |
-| :--------- | ------------------------------------------------------------------------------------------------ | ------------------------------------ | -------- | -------- | -------- |
-| getPackageName    | 返回 FFmpegKit ReactNative 二进制包名称。 |  |  |  | |                           | Promise | yes      | All      | yes      |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+|------|-------------|------|----------|----------|-------------------|
+| getPackageName | Returns the FFmpegKit ReactNative binary package name. | | | | | | Promise | yes | All | yes |
 
-## 遗留问题
+## Known Issues
 
-## 其他
+## Others
 
-## 开源协议
+## Open Source License
 
-本项目基于 [The GNU License (GNU)](https://github.com/arthenica/ffmpeg-kit/blob/main/LICENSE) ，请自由地享受和参与开源。
+This project is based on [The GNU License (GNU)](https://github.com/arthenica/ffmpeg-kit/blob/main/LICENSE), please feel free to enjoy and participate in open source.

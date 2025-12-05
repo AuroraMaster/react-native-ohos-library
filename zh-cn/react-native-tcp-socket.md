@@ -18,11 +18,11 @@
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本  | 发布信息                                                  | 支持RN版本 |
-|--------| ------------------------------------------------------------ | ---------- |
-| 6.2.0@deprecated  | [@react-native-oh-tpl/react-native-tcp-socket Releases(deprecated)](https://github.com/react-native-oh-library/react-native-tcp-socket/releases) | 0.72       |
-| 6.2.1             | [@react-native-ohos/react-native-tcp-socket Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-tcp-socket/releases)   | 0.72       |
-| 6.3.1             | [@react-native-ohos/react-native-tcp-socket Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-tcp-socket/releases)   | 0.77       |
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 6.2.0@deprecated | [@react-native-oh-tpl/react-native-tcp-socket Releases(deprecated)](https://github.com/react-native-oh-library/react-native-tcp-socket/releases) | 0.72 |
+| 6.2.1 | [@react-native-ohos/react-native-tcp-socket Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-tcp-socket/releases) | 0.72 |
+| 6.3.1 | [@react-native-ohos/react-native-tcp-socket Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-tcp-socket/releases) | 0.77 |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -575,12 +575,11 @@ const styles = StyleSheet.create({
 
 ## 使用 Codegen
 
-Version >= @react-native-ohos/react-native-tcp-socket@6.2.1，已适配codegen-lib生成桥接代码。
+> [!TIP] Version >= @react-native-ohos/react-native-tcp-socket@6.2.1，已适配codegen-lib生成桥接代码
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
-
 Version >= @react-native-ohos/react-native-tcp-socket@6.2.1，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 此步骤为手动配置原生依赖项的指导。
@@ -611,7 +610,7 @@ Version >= @react-native-ohos/react-native-tcp-socket@6.2.1，已支持 Autolink
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-```json
+```JSON
 "dependencies": {
     "@rnoh/react-native-openharmony" : "file:../react_native_openharmony",
     "@react-native-ohos/react-native-tcp-socket": "file:../../node_modules/@react-native-ohos/react-native-tcp-socket/harmony/tcp_socket.har"
@@ -631,7 +630,69 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 3.在 ArkTs 侧引入 TcpSocketPackage
+
+### 3.配置CMakeLists 和引入 TcpSocketPackage
+
+> [!TIP] 若使用的是 6.2.0 版本，请跳过本章
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```cmake
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-tcp-socket/src/main/cpp" ./tcp-socket)
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_tcp_socket)
+# RNOH_END: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```c++
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "TcpSocketPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++       std::make_shared<TcpSocketPackage>(ctx)
+    };
+}
+```
+
+### 4.在 ArkTs 侧引入 TcpSocketPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
@@ -646,7 +707,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.运行
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -667,8 +728,8 @@ ohpm install
 
 在以下版本验证通过：
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ### 权限要求
 
@@ -694,88 +755,89 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name                                         | Description                                         | Type     | Required | Platform    | HarmonyOS Support |
-| -------------------------------------------- | --------------------------------------------------- | -------- | -------- | ----------- | ----------------- |
-| connect(options, callback)                   | Same as createConnection,Creating a TCP Socket      | function | no       | Android,iOS | yes               |
-| createServer(connectionListener)             | Creating a TCP Server                               | function | no       | Android,iOS | yes               |
-| createConnection(options, callback)          | Creating a TCP Socket                               | function | no       | Android,iOS | yes               |
-| createTLSServer(options, connectionListener) | Creating a TLS-based TCP Server                     | function | no       | Android,iOS | yes               |
-| connectTLS                                   | Creating a TLS-based encrypted connection           | function | no       | Android,iOS | yes               |
-| isIP                                         | Check whether a character string is an IP address   | function | no       | Android,iOS | yes               |
-| isIPv4                                       | Check whether a character string is an IPv4 address | function | no       | Android,iOS | yes               |
-| isIPv6                                       | Check whether a character string is an IPv6 address | function | no       | Android,iOS | yes               |
-| Server                                       | TCP Server Object                                   | object   | no       | Android,iOS | yes               |
-| Socket                                       | TCP Socket Object                                   | object   | no       | Android,iOS | yes               |
-| TLSServer                                    | TLS Server Object                                   | object   | no       | Android,iOS | yes               |
-| TLSSocket                                    | TLS Socket Object                                   | object   | no       | Android,iOS | yes               |
+| Name                                                       | Description                                         | Type     | Required | Platform    | HarmonyOS Support |
+| ---------------------------------------------------------- | --------------------------------------------------- | -------- | -------- | ----------- | ----------------- |
+| connect(options, callback)                                 | 同createConnection，创建TCP套接字                   | function | No       | Android,iOS | Yes               |
+| createServer(connectionListener)                           | 创建TCP服务器                                       | function | No       | Android,iOS | Yes               |
+| createServer(options，connectionListener)<sup>6.3.1+</sup> | 创建TCP服务器                                       | function | No       | Android,iOS | Yes               |
+| createConnection(options, callback)                        | 创建TCP套接字                                       | function | No       | Android,iOS | Yes               |
+| createTLSServer(options, connectionListener)               | 创建基于TLS的TCP服务器                              | function | No       | Android,iOS | Yes               |
+| connectTLS                                                 | 创建基于TLS的加密连接                               | function | No       | Android,iOS | Yes               |
+| isIP                                                       | 检查字符串是否为IP地址                              | function | No       | Android,iOS | Yes               |
+| isIPv4                                                     | 检查字符串是否为IPv4地址                            | function | No       | Android,iOS | Yes               |
+| isIPv6                                                     | 检查字符串是否为IPv6地址                            | function | No       | Android,iOS | Yes               |
+| Server                                                     | TCP服务器对象                                       | object   | No       | Android,iOS | Yes               |
+| Socket                                                     | TCP套接字对象                                       | object   | No       | Android,iOS | Yes               |
+| TLSServer                                                  | TLS服务器对象                                       | object   | No       | Android,iOS | Yes               |
+| TLSSocket                                                  | TLS套接字对象                                       | object   | No       | Android,iOS | Yes               |
 
 ### Server
 
-| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| Name | Description | Type | Required | Platform | HarmonyOS |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| address() | Returns the bound `address`, the address `family` name, and `port` of the server as reported by the operating system if listening | function | no | Android,iOS | yes |
-| listen(options, callback) | Start a server listening for connections | function | no | Android,iOS | yes |
-| close(callback) | Stops the server from accepting new connections and keeps existing connections | function |no | Android,iOS | yes |
-| getConnections(callback) | Asynchronously get the number of concurrent connections on the server | function | no | Android,iOS | yes |
-| listening | whether to enable the listening | boolean | no | Android,iOS | yes |
-| on('close') | Triggered when the server is shut down | event | no | Android,iOS | yes |
-| on('connection') | Triggered when the server receives a new connection | event | no | Android,iOS | yes |
-| on('error') | Triggered when an error occurs on the server | event | no | Android,iOS | yes |
-| on('listening') | Triggered when the server starts listening | event | no | Android,iOS | yes |
+| address() | 返回服务器绑定的地址、地址族名称和端口号 | function | No | Android,iOS | Yes |
+| listen(options, callback) | 启动服务器监听连接 | function | No | Android,iOS | Yes |
+| close(callback) | 停止服务器接受新连接，但保持现有连接 | function | No | Android,iOS | Yes |
+| getConnections(callback) | 异步获取服务器上的并发连接数 | function | No | Android,iOS | Yes |
+| listening | 是否启用监听 | boolean | No | Android,iOS | Yes |
+| on('close') | 当服务器关闭时触发 | event | No | Android,iOS | Yes |
+| on('connection') | 当服务器接收到新连接时触发 | event | No | Android,iOS | Yes |
+| on('error') | 当服务器发生错误时触发 | event | No | Android,iOS | Yes |
+| on('listening') | 当服务器开始监听时触发 | event | No | Android,iOS | Yes |
 
 
 ### Socket
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
-| ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| address() | Returns the bound `address`, the address `family` name and `port` of the socket as reported | function | no | Android,iOS | yes |
-| destroy() | Ensures that no more I/O activity happens on this socket. Destroys the stream and closes the connection | function | no | Android,iOS | yes |
-| end() | Half-closes the socket. i.e., it sends a FIN packet. It is possible the server will still send some data | function | no | Android,iOS | yes |
-| setEncoding(encoding) | Set the encoding for the socket as a Readable Stream. By default, no encoding is assigned and stream data will be returned as `Buffer` objects | function | no | Android,iOS | yes |
-| setNoDelay(noDelay) | Set no delay                                                 | function | no | Android,iOS | yes |
-| setTimeout() | Sets the socket to timeout after `timeout` milliseconds of inactivity on the socket. By default `TcpSocket` do not have a timeout | function | no | Android,iOS | yes |
-| write(buffer, encoding, cb) | Sends data on the socket. The second parameter specifies the encoding in the case of a string — it defaults to UTF8 encoding | function | no | Android,iOS | yes |
-| pause() | Pauses the reading of data. That is, `'data'` events will not be emitted. Useful to throttle back an upload | function | no | Android,iOS | yes |
-| resume() | Resumes reading after a call to `socket.pause()` | function | no | Android,iOS | yes |
-| writableNeedDrain | whether need to wait for data to be written to the socket | boolean | no | Android,iOS | yes |
-| bytesRead | Indicates the number of bytes of data that have been read from the socket | number | no | Android,iOS | yes |
-| bytesWritten | get the number of bytes last written to the socket | number | no | Android,iOS | yes |
-| connecting | whether the current socket is being connected | boolean | no | Android,iOS | yes |
-| destroyed | Whether the socket has been destroyed | boolean | no | Android,iOS | yes |
-| localAddress | Local ip address | string | no | Android,iOS | yes |
-| localPort | Local port | number | no | Android,iOS | yes |
-| remoteAddress | remote server IP address | string | no | Android,iOS | yes |
-| remoteFamily | remote server IP address type | string | no | Android,iOS | yes |
-| remotePort | remote server port | number | no | Android,iOS | yes |
-| pending | Whether  has pending data to be sent to the remote server | boolean | no | Android,iOS | yes |
-| timeout | The timeout period for the socket, in milliseconds. The default timeout period is 30 seconds | number | no | Android,iOS | yes |
-| readyState | the state of socket,`0`: not connected,`1`:connected,2:  closing,3:closed | number | no | Android,iOS | yes |
-| on('pause') | Triggered when pauses the reading of data | event | no | Android,iOS | yes |
-| on('resume') | Triggered when Resumes the reading of data | event | no | Android,iOS | yes |
-| on('close') | Triggered when socket is  closed | event | no | Android,iOS | yes |
-| on('connect') | Triggered when socket is  connected | event | no | Android,iOS | yes |
-| on('data') | Triggered when socket  receives data | event | no | Android,iOS | yes |
-| on('drain') | Triggered when the buffer becomes empty, indicating that data can be written to the socke | event | no | Android,iOS | yes |
-| on('error') | Triggered when an error occurs on the socket | event | no | Android,iOS | yes |
-| on('timeout') | Triggered When the connection or data transmission times out | event | no | Android,iOS | yes |
+| ---- | ---- | ---- | -------- | ---- | -------- |
+| address() | 返回套接字绑定的地址、地址族名称和端口号 | function | No | Android,iOS | Yes |
+| destroy() | 确保该套接字上不再发生I/O活动。销毁流并关闭连接 | function | No | Android,iOS | Yes |
+| end() | 半关闭套接字（发送FIN包），服务器可能仍会发送数据 | function | No | Android,iOS | Yes |
+| setEncoding(encoding) | 设置套接字作为可读流的编码格式，默认为Buffer对象 | function | No | Android,iOS | Yes |
+| setNoDelay(noDelay) | 设置无延迟 | function | No | Android,iOS | Yes |
+| setTimeout() | 设置套接字空闲超时时间，默认无超时 | function | No | Android,iOS | Yes |
+| write(buffer, encoding, cb) | 通过套接字发送数据，字符串编码默认为UTF8 | function | No | Android,iOS | Yes |
+| pause() | 暂停数据读取（停止触发data事件），用于控制上传速率 | function | No | Android,iOS | Yes |
+| resume() | 恢复被pause()暂停的数据读取 | function | No | Android,iOS | Yes |
+| writableNeedDrain | 是否需要等待数据写入套接字 | boolean | No | Android,iOS | Yes |
+| bytesRead | 已从套接字读取的数据字节数 | number | No | Android,iOS | Yes |
+| bytesWritten | 最后写入套接字的字节数 | number | No | Android,iOS | Yes |
+| connecting | 当前套接字是否正在连接中 | boolean | No | Android,iOS | Yes |
+| destroyed | 套接字是否已被销毁 | boolean | No | Android,iOS | Yes |
+| localAddress | 本地IP地址 | string | No | Android,iOS | Yes |
+| localPort | 本地端口号 | number | No | Android,iOS | Yes |
+| remoteAddress | 远程服务器IP地址 | string | No | Android,iOS | Yes |
+| remoteFamily | 远程服务器IP地址类型 | string | No | Android,iOS | Yes |
+| remotePort | 远程服务器端口号 | number | No | Android,iOS | Yes |
+| pending | 是否仍有待发送到远程服务器的数据 | boolean | No | Android,iOS | Yes |
+| timeout | 套接字超时时长（毫秒），默认为30秒 | number | No | Android,iOS | Yes |
+| readyState | 套接字状态：0-未连接,1-已连接,2-关闭中,3-已关闭 | number | No | Android,iOS | Yes |
+| on('pause') | 暂停数据读取时触发 | event | No | Android,iOS | Yes |
+| on('resume') | 恢复数据读取时触发 | event | No | Android,iOS | Yes |
+| on('close') | 套接字关闭时触发 | event | No | Android,iOS | Yes |
+| on('connect') | 套接字连接成功时触发 | event | No | Android,iOS | Yes |
+| on('data') | 套接字接收到数据时触发 | event | No | Android,iOS | Yes |
+| on('drain') | 缓冲区清空可继续写入数据时触发 | event | No | Android,iOS | Yes |
+| on('error') | 套接字发生错误时触发 | event | No | Android,iOS | Yes |
+| on('timeout') | 连接或数据传输超时时触发 | event | No | Android,iOS | Yes |
 
 ### TLSServer
 
-[!TIP] TLSServer继承自Server对象，拥有Server对象的所有属性、方法和事件，以下仅列出其独有的属性。
+[!TIP] TLSServer 继承自 Server 对象，拥有 Server 对象的所有属性、方法和事件，以下仅列出其独有的属性。
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
-| ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| setSecureContext(options) | Set Security Context | function | no | Android,iOS | yes |
-| on('secureConnection') | Triggered When a secure TLS connection is established | event | no | Android,iOS | yes |
+| ---- | ---- | ---- | -------- | ---- | -------- |
+| setSecureContext(options) | 设置安全上下文 | function | No | Android,iOS | Yes |
+| on('secureConnection') | 当建立安全的 TLS 连接时触发 | event | No | Android,iOS | Yes |
 
 ### TLSSocket
 
 [!TIP] TLSSocket继承自Socket对象，拥有Socket对象的所有属性、方法和事件，以下仅列出其独有的属性。
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
-| ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| getCertificate() | Get a Local Certificate Information | function | no | Android | yes |
-| getPeerCertificate() | Get the Certificate Information of the Remote Server | function | no | Android | yes |
-| on('secureConnect') | Triggered When a secure connection is established | event | no | Android,iOS | yes |
+| ---- | ---- | ---- | -------- | ---- | -------- |
+| getCertificate() | 获取本地证书信息 | function | No | Android | Yes |
+| getPeerCertificate() | 获取远程服务器的证书信息 | function | No | Android | Yes |
+| on('secureConnect') | 当建立安全连接时触发 | event | No | Android,iOS | Yes |
 
 ## 遗留问题
 

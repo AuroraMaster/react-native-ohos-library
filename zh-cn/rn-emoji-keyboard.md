@@ -15,8 +15,14 @@
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/rn-emoji-keyboard)
 
 ## 安装与使用
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/rn-emoji-keyboard Releases](https://github.com/react-native-oh-library/rn-emoji-keyboard/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.7.0 | [@react-native-oh-tpl/rn-emoji-keyboard Releases](https://gitcode.com/openharmony-sig/rntpc_rn-emoji-keyboard/releases) | 0.72 |
+| 1.8.0 | [@react-native-ohos/rn-emoji-keyboard Releases](https://gitcode.com/openharmony-sig/rntpc_rn-emoji-keyboard/releases) | 0.77 |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +31,19 @@
 #### **npm**
 
 ```bash
+//0.72
 npm install @react-native-oh-tpl/rn-emoji-keyboard
+//0.77
+npm install @react-native-ohos/rn-emoji-keyboard
 ```
 
 #### **yarn**
 
 ```bash
+//0.72
 yarn add @react-native-oh-tpl/rn-emoji-keyboard
+//0.77
+yarn add @react-native-ohos/rn-emoji-keyboard
 ```
 
 <!-- tabs:end -->
@@ -143,7 +155,10 @@ const styles = StyleSheet.create({
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/rn-emoji-keyboard Releases](https://github.com/react-native-oh-library/rn-emoji-keyboard/releases)
+在以下版本验证通过：
+
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 详细请查看 [rn-emoji-keyboard 的文档介绍](https://github.com/TheWidlarzGroup/rn-emoji-keyboard)
@@ -152,106 +167,127 @@ const styles = StyleSheet.create({
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
+你说得对，我需要保持完整格式。让我重新翻译描述列的内容：
+
 | Name                            | Description                                                                                                                                                                                                                                            | Type                                                                     | Required | Platform    | HarmonyOS Support |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------ | -------- | ----------- | ----------------- |
-| `open`                          | Required props which indicates whether the modal should be displayed on the screen.(dafault:false)                                                                                                                                                     | boolean                                                                  | yes      | iOS/Android | yes               |
-| `onClose`                       | Callback fired when the component is to be closed.(dafault:undefined)                                                                                                                                                                                  | () => void                                                               | yes      | iOS/Android | yes               |
-| `onEmojiSelected`               | Callback fired when the emoji is selected. The passed function expose an object with selected emoji data. It also returns alreadySelected boolean indicating whether pressed emoji is already selected or not (see selectedEmojis).(dafault:undefined) | (emoji: { emoji, name, slug, unicode_version, alreadySelected }) => void | yes      | iOS/Android | yes               |
-| `allowMultipleSelections`       | Allow select multiple emoji without dismiss keyboard.(default:false)                                                                                                                                                                                   | boolean                                                                  | no       | iOS/Android | yes               |
-| `categoryPosition`              | Allow to change the position of available emoji categories container.(default:floating)                                                                                                                                                                | floating \| top \| bottom                                                | no       | iOS/Android | yes               |
-| `categoryOrder`                 | Allow to change order of available emoji categories container.(default:[])                                                                                                                                                                             | CategoryTypes[]                                                          | no       | iOS/Android | yes               |
-| `defaultHeight`                 | Specify collapsed container height. It can be either a number in points or a string in a percentage of the screen.(default:40%)                                                                                                                        | number \| string                                                         | no       | iOS/Android | yes               |
-| `disabledCategories`            | Allow to hide specific categories by passing an array with their slugs.(default:[])                                                                                                                                                                    | CategoryTypes[]                                                          | no       | iOS/Android | yes               |
-| `disableSafeArea`               | Allow to disable SafeAreaView inside the emoji keyboard.(default:false)                                                                                                                                                                                | Boolean                                                                  | no       | iOS/Android | yes               |
-| `emojisByCategory`              | Set of emojis that can be displayed in the app. You can pass your own emojis set or use the one that we have prepared.(default:emojisByCategory)                                                                                                       | EmojisByCategory[]                                                       | no       | iOS/Android | yes               |
-| `emojiSize`                     | Set size of the single emoji.(default:28)                                                                                                                                                                                                              | number                                                                   | no       | iOS/Android | yes               |
-| `enableRecentlyUsed`            | Reveal extra category with recently used emojis.(default:false)                                                                                                                                                                                        | boolean                                                                  | no       | iOS/Android | yes               |
-| `enableSearchBar`               | Reveal the search bar, used to find specific emoji.(default:false)                                                                                                                                                                                     | boolean                                                                  | no       | iOS/Android | yes               |
-| `hideSearchBarClearIcon`        | Hide the search bar clear icon inside the search input.(default:false)                                                                                                                                                                                 | boolean                                                                  | no       | iOS/Android | yes               |
-| `customButtons`                 | Inject custom buttons into the component.(default:null)                                                                                                                                                                                                | React.ReactNode                                                          | no       | iOS/Android | yes               |
-| `enableCategoryChangeAnimation` | Allow to turn off FlatList scrolling animation when category is changed. Setting this to false will also overwrite enableSearchAnimation value.(default:true)                                                                                          | boolean                                                                  | no       | iOS/Android | yes               |
-| `enableCategoryChangeGesture`   | Allow to use horizontal swipe gesture to change emoji category.(default:true)                                                                                                                                                                          | boolean                                                                  | no       | iOS/Android | yes               |
-| `enableSearchAnimation`         | Allow to turn off FlatList scrolling animation when search results are updated.(default:true)                                                                                                                                                          | boolean                                                                  | no       | iOS/Android | yes               |
-| `expandable`                    | Show knob and enable expand on swipe up.(default:true)                                                                                                                                                                                                 | boolean                                                                  | no       | iOS/Android | yes               |
-| `expandedHeight`                | Specify expanded container height. It can be either a number in points or a string in a percentage of the screen.expandedHeight works only if expandable props is set to true.(default:80%)                                                            | number \| string                                                         | no       | iOS/Android | yes               |
-| `hideHeader`                    | Hide labels with category names.(default:false)                                                                                                                                                                                                        | boolean                                                                  | no       | iOS/Android | yes               |
-| `theme`                         | This is the name of property that has every component styles inside.(default:defaultTheme)                                                                                                                                                             | Record<string, string \| object>                                         | no       | iOS/Android | yes               |
-| `styles`                        | This is the name of property that has every component styles inside.(default:{})                                                                                                                                                                       | Record<string, ViewStyle>                                                | no       | iOS/Android | yes               |
-| `onCategoryChangeFailed`        | Callback fired when the category change failed.(default:warn(info))                                                                                                                                                                                    | ( info: {index, highestMeasuredFrameIndex, averageItemLength} ) => void  | no       | iOS/Android | yes               |
-| `onRequestClose`                | Callback fired when emoji keyboard is closing.(default:undefined)                                                                                                                                                                                      | () => void                                                               | no       | iOS/Android | yes               |
-| `selectedEmojis`                | Array of currently selected emojis. It must contain emoji's name.(default:undefined)                                                                                                                                                                   | emoji.name[]                                                             | no       | iOS/Android | yes               |
+| `open`                          | 必需属性，指示模态框是否应在屏幕上显示（默认：false）                                                                                                                                                                                                 | boolean                                                                  | yes      | iOS/Android | yes               |
+| `onClose`                       | 组件关闭时触发的回调函数（默认：undefined）                                                                                                                                                                                                          | () => void                                                               | yes      | iOS/Android | yes               |
+| `onEmojiSelected`               | 选择表情时触发的回调函数。传递的函数会接收包含所选表情数据的对象，并返回 alreadySelected 布尔值，指示按下的表情是否已被选择（参见 selectedEmojis）（默认：undefined）                                                                                   | (emoji: { emoji, name, slug, unicode_version, alreadySelected }) => void | yes      | iOS/Android | yes               |
+| `allowMultipleSelections`       | 允许在不关闭键盘的情况下选择多个表情（默认：false）                                                                                                                                                                                                   | boolean                                                                  | no       | iOS/Android | yes               |
+| `categoryPosition`              | 允许更改可用表情分类容器的位置（默认：floating）                                                                                                                                                                                                      | floating \| top \| bottom                                                | no       | iOS/Android | yes               |
+| `categoryOrder`                 | 允许更改可用表情分类容器的顺序（默认：[]）                                                                                                                                                                                                            | CategoryTypes[]                                                          | no       | iOS/Android | yes               |
+| `defaultHeight`                 | 指定折叠状态容器高度。可以是点数（points）或屏幕百分比字符串（默认：40%）                                                                                                                                                                             | number \| string                                                         | no       | iOS/Android | yes               |
+| `disabledCategories`            | 允许通过传递分类slug数组来隐藏特定分类（默认：[]）                                                                                                                                                                                                    | CategoryTypes[]                                                          | no       | iOS/Android | yes               |
+| `disableSafeArea`               | 允许禁用表情键盘内的安全区域视图（默认：false）                                                                                                                                                                                                       | Boolean                                                                  | no       | iOS/Android | yes               |
+| `emojisByCategory`              | 可在应用中显示的表情集合。可以传递自定义表情集或使用我们已准备好的集合（默认：emojisByCategory）                                                                                                                                                     | EmojisByCategory[]                                                       | no       | iOS/Android | yes               |
+| `emojiSize`                     | 设置单个表情的大小（默认：28）                                                                                                                                                                                                                        | number                                                                   | no       | iOS/Android | yes               |
+| `enableRecentlyUsed`            | 显示包含最近使用表情的额外分类（默认：false）                                                                                                                                                                                                         | boolean                                                                  | no       | iOS/Android | yes               |
+| `enableSearchBar`               | 显示搜索栏，用于查找特定表情（默认：false）                                                                                                                                                                                                           | boolean                                                                  | no       | iOS/Android | yes               |
+| `hideSearchBarClearIcon`        | 隐藏搜索输入框内的清除图标（默认：false）                                                                                                                                                                                                             | boolean                                                                  | no       | iOS/Android | yes               |
+| `customButtons`                 | 向组件注入自定义按钮（默认：null）                                                                                                                                                                                                                    | React.ReactNode                                                          | no       | iOS/Android | yes               |
+| `enableCategoryChangeAnimation` | 允许在分类更改时关闭FlatList滚动动画。设置为false也会覆盖enableSearchAnimation值（默认：true）                                                                                                                                                        | boolean                                                                  | no       | iOS/Android | yes               |
+| `enableCategoryChangeGesture`   | 允许使用水平滑动手势更改表情分类（默认：true）                                                                                                                                                                                                        | boolean                                                                  | no       | iOS/Android | yes               |
+| `enableSearchAnimation`         | 允许在搜索结果更新时关闭FlatList滚动动画（默认：true）                                                                                                                                                                                                | boolean                                                                  | no       | iOS/Android | yes               |
+| `expandable`                    | 显示拖动柄并启用向上滑动展开功能（默认：true）                                                                                                                                                                                                        | boolean                                                                  | no       | iOS/Android | yes               |
+| `expandedHeight`                | 指定展开状态容器高度。可以是点数（points）或屏幕百分比字符串。仅当expandable属性设置为true时生效（默认：80%）                                                                                                                                         | number \| string                                                         | no       | iOS/Android | yes               |
+| `hideHeader`                    | 隐藏包含分类名称的标签（默认：false）                                                                                                                                                                                                                 | boolean                                                                  | no       | iOS/Android | yes               |
+| `theme`                         | 包含每个组件样式的属性名称（默认：defaultTheme）                                                                                                                                                                                                      | Record<string, string \| object>                                         | no       | iOS/Android | yes               |
+| `styles`                        | 包含每个组件样式的属性名称（默认：{}）                                                                                                                                                                                                                | Record<string, ViewStyle>                                                | no       | iOS/Android | yes               |
+| `onCategoryChangeFailed`        | 分类更改失败时触发的回调函数（默认：warn(info)）                                                                                                                                                                                                      | ( info: {index, highestMeasuredFrameIndex, averageItemLength} ) => void  | no       | iOS/Android | yes               |
+| `onRequestClose`                | 表情键盘关闭时触发的回调函数（默认：undefined）                                                                                                                                                                                                       | () => void                                                               | no       | iOS/Android | yes               |
+| `selectedEmojis`                | 当前已选表情的数组。必须包含表情的name属性（默认：undefined）                                                                                                                                                                                         | emoji.name[]                                                             | no       | iOS/Android | yes               |
 
 ### Full list of theme properties
 
 | Name                       | Description                                                                                   | Type   | Required | Platform    | HarmonyOS Support |
 | -------------------------- | --------------------------------------------------------------------------------------------- | ------ | -------- | ----------- | ----------------- |
-| `backdrop`                 | Set background-color of the modal backdrop.(default:#00000055)                                | string | no       | iOS/Android | yes               |
-| `knob`                     | Set background-color of the modal knob.(default:#ffffff)                                      | string | no       | iOS/Android | yes               |
-| `container`                | Set background-color of the whole modal container.(default:#ffffff)                           | string | no       | iOS/Android | yes               |
-| `header`                   | Set category name text color.(default:#00000099)                                              | string | no       | iOS/Android | yes               |
-| `skinTonesContainer`       | Set background-color of the skin tones container.(default:#e3dbcd)                            | string | no       | iOS/Android | yes               |
-| `category.icon`            | color of the icon.(default:#000000)                                                           | string | no       | iOS/Android | yes               |
-| `category.iconActive`      | color of the icon if it's active.(default:#005b96)                                            | string | no       | iOS/Android | yes               |
-| `category.container`       | background-color of the categories container.(default:#e3dbcd)                                | string | no       | iOS/Android | yes               |
-| `category.containerActive` | background-color of the currently active category.(default:#ffffff)                           | string | no       | iOS/Android | yes               |
-| `search.text`              | color of the search bar text.(default:#000000cc)                                              | string | no       | iOS/Android | yes               |
-| `search.placeholder`       | color of the search bar placeholder text.(default:#00000055)                                  | string | no       | iOS/Android | yes               |
-| `search.icon`              | color of the search bar icon.(default:#00000055)                                              | string | no       | iOS/Android | yes               |
-| `search.background`        | background-color of the search bar.(default:#00000011)                                        | string | no       | iOS/Android | yes               |
-| `emoji.selected`           | color of the selected emoji background.Works only with selectedEmojis prop. (default:#e3dbcd) | string | no       | iOS/Android | yes               |
+| `backdrop`                 | 设置模态框背景的背景色（默认：#00000055）                                                     | string | no       | iOS/Android | yes               |
+| `knob`                     | 设置模态框拖动柄的背景色（默认：#ffffff）                                                     | string | no       | iOS/Android | yes               |
+| `container`                | 设置整个模态框容器的背景色（默认：#ffffff）                                                   | string | no       | iOS/Android | yes               |
+| `header`                   | 设置分类名称文本颜色（默认：#00000099）                                                       | string | no       | iOS/Android | yes               |
+| `skinTonesContainer`       | 设置肤色选择容器的背景色（默认：#e3dbcd）                                                     | string | no       | iOS/Android | yes               |
+| `category.icon`            | 分类图标的颜色（默认：#000000）                                                               | string | no       | iOS/Android | yes               |
+| `category.iconActive`      | 活动分类图标的颜色（默认：#005b96）                                                           | string | no       | iOS/Android | yes               |
+| `category.container`       | 分类容器的背景色（默认：#e3dbcd）                                                             | string | no       | iOS/Android | yes               |
+| `category.containerActive` | 当前活动分类的背景色（默认：#ffffff）                                                         | string | no       | iOS/Android | yes               |
+| `search.text`              | 搜索栏文本颜色（默认：#000000cc）                                                             | string | no       | iOS/Android | yes               |
+| `search.placeholder`       | 搜索栏占位符文本颜色（默认：#00000055）                                                       | string | no       | iOS/Android | yes               |
+| `search.icon`              | 搜索栏图标颜色（默认：#00000055）                                                             | string | no       | iOS/Android | yes               |
+| `search.background`        | 搜索栏背景色（默认：#00000011）                                                               | string | no       | iOS/Android | yes               |
+| `emoji.selected`           | 已选表情的背景颜色。仅在使用selectedEmojis属性时生效（默认：#e3dbcd）                          | string | no       | iOS/Android | yes               |
+
+### Full list of theme properties
+
+| Name                       | Description                                                                                   | Type   | Required | Platform    | HarmonyOS Support |
+| -------------------------- | --------------------------------------------------------------------------------------------- | ------ | -------- | ----------- | ----------------- |
+| `backdrop`                 | 设置模态框背景的背景色（默认：#00000055）                                                     | string | no       | iOS/Android | yes               |
+| `knob`                     | 设置模态框拖动柄的背景色（默认：#ffffff）                                                     | string | no       | iOS/Android | yes               |
+| `container`                | 设置整个模态框容器的背景色（默认：#ffffff）                                                   | string | no       | iOS/Android | yes               |
+| `header`                   | 设置分类名称文本颜色（默认：#00000099）                                                       | string | no       | iOS/Android | yes               |
+| `skinTonesContainer`       | 设置肤色选择容器的背景色（默认：#e3dbcd）                                                     | string | no       | iOS/Android | yes               |
+| `category.icon`            | 分类图标的颜色（默认：#000000）                                                               | string | no       | iOS/Android | yes               |
+| `category.iconActive`      | 活动分类图标的颜色（默认：#005b96）                                                           | string | no       | iOS/Android | yes               |
+| `category.container`       | 分类容器的背景色（默认：#e3dbcd）                                                             | string | no       | iOS/Android | yes               |
+| `category.containerActive` | 当前活动分类的背景色（默认：#ffffff）                                                         | string | no       | iOS/Android | yes               |
+| `search.text`              | 搜索栏文本颜色（默认：#000000cc）                                                             | string | no       | iOS/Android | yes               |
+| `search.placeholder`       | 搜索栏占位符文本颜色（默认：#00000055）                                                       | string | no       | iOS/Android | yes               |
+| `search.icon`              | 搜索栏图标颜色（默认：#00000055）                                                             | string | no       | iOS/Android | yes               |
+| `search.background`        | 搜索栏背景色（默认：#00000011）                                                               | string | no       | iOS/Android | yes               |
+| `emoji.selected`           | 已选表情的背景颜色。仅在使用selectedEmojis属性时生效（默认：#e3dbcd）                          | string | no       | iOS/Android | yes               |
 
 ### Full list of styles properties
 
 | Name        | Description                                                                                                                               | Type                                      | Required | Platform    | HarmonyOS Support |
 | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- | -------- | ----------- | ----------------- |
-| `container` | Set styles of the whole modal container.(default:{})                                                                                      | ViewStyle                                 | no       | iOS/Android | yes               |
-| `header`    | Set styles of header text. Header is the component containing category name.(default:{})                                                  | TextStyle                                 | no       | iOS/Android | yes               |
-| `knob`      | Set styles of the modal knob.Works only in the modal mode with knob enabled.(default:{})                                                  | ViewStyle                                 | no       | iOS/Android | yes               |
-| `category`  | SSet styles of the category component. You can pass different styles for the container and the icon.(default:{ container: {}, icon: {} }) | { container: ViewStyle, icon: TextStyle } | no       | iOS/Android | yes               |
-| `searchBar` | Set styles of the searchBar component. You can pass different styles for the container and the text.(default:{ container: {}, text: {} }) | { container: ViewStyle, text: TextStyle } | no       | iOS/Android | yes               |
-| `emoji`     | Set styles of the emoji component. You can pass styles for selected state.(default:{ selected: {} })                                      | { selected: ViewStyle }                   | no       | iOS/Android | yes               |
+| `container` | 设置整个模态框容器的样式（默认：{}）                                                                                                       | ViewStyle                                 | no       | iOS/Android | yes               |
+| `header`    | 设置标题文本的样式。标题是包含分类名称的组件（默认：{}）                                                                                   | TextStyle                                 | no       | iOS/Android | yes               |
+| `knob`      | 设置模态框拖动柄的样式。仅在使用启用拖动柄的模态模式时生效（默认：{}）                                                                     | ViewStyle                                 | no       | iOS/Android | yes               |
+| `category`  | 设置分类组件的样式。可以为容器和图标传递不同的样式（默认：{ container: {}, icon: {} }）                                                   | { container: ViewStyle, icon: TextStyle } | no       | iOS/Android | yes               |
+| `searchBar` | 设置搜索栏组件的样式。可以为容器和文本传递不同的样式（默认：{ container: {}, text: {} }）                                                 | { container: ViewStyle, text: TextStyle } | no       | iOS/Android | yes               |
+| `emoji`     | 设置表情组件的样式。可以为选中状态传递样式（默认：{ selected: {} }）                                                                       | { selected: ViewStyle }                   | no       | iOS/Android | yes               |
 
 ### Full list of EmojisByCategory type
 
 | Name  | Description | Type          | Required | Platform    | HarmonyOS Support |
 | ----- | ----------- | ------------- | -------- | ----------- | ----------------- |
-| title | EmojisByCategory  title       | CategoryTypes | yes      | iOS/Android | yes               |
-| data  | EmojisByCategory emoji data        | JsonEmoji[]   | yes      | iOS/Android | yes               |
+| title | EmojisByCategory 标题       | CategoryTypes | yes      | iOS/Android | yes               |
+| data  | EmojisByCategory 表情数据        | JsonEmoji[]   | yes      | iOS/Android | yes               |
 
 ### Full list of CategoryTypes type
 
 | Name  | Description | Type          | Required | Platform    | HarmonyOS Support |
 | ----- | ----------- | ------------- | -------- | ----------- | ----------------- |
-| `CategoryTypes` | CategoryTypes type | "search" \| "smileys_emotion" \| "people_body" \| "animals_nature" \| "food_drink" \| "travel_places" \| "activities" \| "objects" \| "symbols" \| "flags" \| "recently_used" | no       | iOS/Android | yes               |
+| `CategoryTypes` | CategoryTypes 类型 | "search" \| "smileys_emotion" \| "people_body" \| "animals_nature" \| "food_drink" \| "travel_places" \| "activities" \| "objects" \| "symbols" \| "flags" \| "recently_used" | no       | iOS/Android | yes               |
 
 ### Full list of JsonEmoji type
 
 | Name        | Description | Type     | Required | Platform    | HarmonyOS Support |
 | ----------- | ----------- | -------- | -------- | ----------- | ----------------- |
-| emoji       | JsonEmoji   emoji      | string   | yes      | iOS/Android | yes               |
-| name        | JsonEmoji     name    | string   | yes      | iOS/Android | yes               |
-| v           | JsonEmoji   version     | string   | yes      | iOS/Android | yes               |
-| toneEnabled | JsonEmoji    toneEnabled     | boolean  | yes      | iOS/Android | yes               |
-| keywords    | JsonEmoji  keywords       | string[] | no      | iOS/Android | yes               |
+| emoji       | JsonEmoji 表情      | string   | yes      | iOS/Android | yes               |
+| name        | JsonEmoji 名称    | string   | yes      | iOS/Android | yes               |
+| v           | JsonEmoji 版本     | string   | yes      | iOS/Android | yes               |
+| toneEnabled | JsonEmoji 启用色调     | boolean  | yes      | iOS/Android | yes               |
+| keywords    | JsonEmoji 关键词       | string[] | no      | iOS/Android | yes               |
 
 ### Full list of EmojiType type
 
 | Name        | Description | Type     | Required | Platform    | HarmonyOS Support |
 | ----------- | ----------- | -------- | -------- | ----------- | ----------------- |
-| emoji       | EmojiType   emoji      | string   | yes      | iOS/Android | yes               |
-| name        | EmojiType     name    | string   | yes      | iOS/Android | yes               |
-| slug           | EmojiType   slug     | string   | yes      | iOS/Android | yes               |
-| unicode_version | EmojiType   version     | string  | yes      | iOS/Android | yes               |
-| toneEnabled    | EmojiType  toneEnabled       | boolean | yes      | iOS/Android | yes               |
-| alreadySelected    | EmojiType alreadySelected     | boolean | no      | iOS/Android | yes               |
+| emoji       | EmojiType 表情      | string   | yes      | iOS/Android | yes               |
+| name        | EmojiType 名称    | string   | yes      | iOS/Android | yes               |
+| slug           | EmojiType 标识符     | string   | yes      | iOS/Android | yes               |
+| unicode_version | EmojiType 版本     | string  | yes      | iOS/Android | yes               |
+| toneEnabled    | EmojiType 启用色调       | boolean | yes      | iOS/Android | yes               |
+| alreadySelected    | EmojiType 已选择状态     | boolean | no      | iOS/Android | yes               |
 
 ## 静态方法
 
 ### useRecentPicksPersistence
 
-The library gives you the possibility to persists recent emoji picks by your own. This mean that you can use for that reason whatever you want.
+该库提供了通过自定义方式持久化最近使用表情的可能性。这意味着您可以使用任何您想要的方式来实现此功能。
 
-Async storage? - sure. Backend as store - no problem. Choose how you want to handle it, we only require a Promise
+异步存储？——当然可以。后端作为存储？——没问题。选择您想要的处理方式，我们只需要一个Promise
 
 > [!TIP] This functionality requires to enable enableRecentlyUsed in your emoji keyboard component
 
@@ -261,8 +297,8 @@ Async storage? - sure. Backend as store - no problem. Choose how you want to han
 
 | Name             | Description                                                                                                | Type     | Required | Platform    | HarmonyOS Support |
 | ---------------- | ---------------------------------------------------------------------------------------------------------- | -------- | -------- | ----------- | ----------------- |
-| `initialization` | This property is used at the very beginning to restore previous state.                                     | Function | yes      | iOS/Android | yes               |
-| `onStateChange`  | This property is used every time when user selects emoji and keyboard has enabled enableRecentlyUsed props | Function | yes      | iOS/Android | yes               |
+| `initialization` | 此属性在初始阶段用于恢复之前的状态                                                                         | Function | yes      | iOS/Android | yes               |
+| `onStateChange`  | 当用户选择表情且键盘启用了 enableRecentlyUsed 属性时，每次都会使用此属性                                   | Function | yes      | iOS/Android | yes               |
 
 ## 遗留问题
 

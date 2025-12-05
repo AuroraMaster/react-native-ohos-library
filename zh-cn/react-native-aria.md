@@ -15,16 +15,22 @@
 > [!TIP] [Github 地址](https://github.com/gluestack/react-native-aria/tree/main)
 
 ## 安装与使用
-
-React Native ARIA是可增量采用的。每个组件都作为单独的包发布，因此您可以在单个组件中使用它，并随着时间的推移逐渐添加更多组件。所有这些包都在npm上的@react-native-aria范围内发布。
 > [!TIP] 该库已经不再维护，如果执行总包命令，项目运行缺失模块，就需要卸载旧包，在命令后增加--legacy-peer-deps，然后再次下载包文件
+
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 0.2.4     | [react-native-aria release](https://github.com/gluestack/react-native-aria/releases) | 0.72/0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
 #### **yarn**
 
 ```bash
-yarn add react-native-aria@0.2.3
+yarn add react-native-aria@0.2.4
 ```
 
 <!-- tabs:end -->
@@ -32,7 +38,7 @@ yarn add react-native-aria@0.2.3
 #### **npm**
 
 ```bash
-npm install react-native-aria@0.2.3
+npm install react-native-aria@0.2.4
 ```
 
 <!-- tabs:end -->
@@ -515,12 +521,12 @@ export default TriggerWrapper
 
 ### 兼容性
 
-本文档内容基于以下版本验证通过：
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-1. RNOH：0.72.13; SDK：HarmonyOS NEXT Developer Preview1; IDE：DevEco Studio 4.1.3.500; ROM：2.0.0.59;
-2. RNOH：0.72.27; SDK：HarmonyOS-Next-DB1 5.0.0.29(SP1) ; IDE：DevEco Studio 5.0.3.400; ROM：3.0.0.25;
-3. RNOH：0.72.29; SDK：HarmonyOS NEXT Developer Beta6; IDE：DevEco Studio 5.0.3.706; ROM：3.0.0.61;
-4. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+在以下版本验证通过：
+
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## Hooks
 
@@ -528,17 +534,18 @@ export default TriggerWrapper
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name               | Description                                                                                                                                                                                                   | Type     | Required | Platform | HarmonyOS Support |
-|--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|----------|----------|-------------------|
-| useToggleButton    | Provides the behavior and accessibility implementation for a toggle button component. ToggleButtons allow users to toggle a selection on or off, for example switching between two states or modes.           | Function | no       | iOS,Android      | yes               |
-| useCheckbox        | Provides the behavior and accessibility implementation for a checkbox component. Checkboxes allow users to select multiple items from a list of individual items, or to mark one individual item as selected. | Function | no       | iOS,Android      | yes               |
-| useCheckboxGroup   | Provides the behavior and accessibility implementation for a checkbox group component. Checkbox groups allow users to select multiple items from a list of options.                                           | Function | no       | iOS,Android      | yes               |
-| useRadioGroup      | Provides the behavior and accessibility implementation for a radio group component. Radio groups allow users to select a single item from a list of mutually exclusive options.                               | Function | no       | iOS,Android      | yes               |
-| useSwitch          | Provides the behavior and accessibility implementation for a switch component. A switch is similar to a checkbox, but represents on/off values as opposed to selection.                                       | Function | no       | iOS,Android      | yes               |
-| OverlayContainer   | Provides React Portal like functionality for React Native apps which can be useful for displaying absolutely positioned components like Menu, Tooltip, Popover.                                               | Function | no       | iOS,Android      | yes               |
-| useOverlayPosition | Handles positioning overlays like popovers and menus relative to a trigger element, and updating the position when the window resizes.                                                                        | Function | no       | iOS,Android      | yes               |
+| Name               | Description                                                                                                                                                                                                   | Type     | Required | Platform    | HarmonyOS Support |
+|--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|----------|-------------|-------------------|
+| useToggleButton    | 为切换按钮组件提供行为和可访问性实现。切换按钮允许用户打开或关闭选择，例如在两种状态或模式之间切换。                                           | Function | No       | iOS,Android | Yes               |
+| useCheckbox        | 为复选框组件提供行为和可访问性实现。复选框允许用户从单个项目列表中选择多个项目，或将单个项目标记为已选择。                                     | Function | No       | iOS,Android | Yes               |
+| useCheckboxGroup   | 为复选框组组件提供行为和可访问性实现。复选框组允许用户从选项列表中选择多个项目。                                                               | Function | No       | iOS,Android | Yes               |
+| useRadioGroup      | 为单选按钮组组件提供行为和可访问性实现。单选按钮组允许用户从互斥选项列表中选择单个项目。                                                       | Function | No       | iOS,Android | Yes               |
+| useSwitch          | 为开关组件提供行为和可访问性实现。开关类似于复选框，但表示开/关值而不是选择。                                                                 | Function | No       | iOS,Android | Yes               |
+| OverlayContainer   | 为 React Native 应用提供类似 React Portal 的功能，可用于显示绝对定位的组件，如菜单、工具提示、弹出框。                                         | Function | No       | iOS,Android | Yes               |
+| useOverlayPosition | 处理相对于触发元素定位叠加层（如弹出框和菜单），并在窗口调整大小时更新位置。                                                                   | Function | No       | iOS,Android | Yes               |
 
 ## 遗留问题
+1. 切换勾选状态后立刻触发朗读暂时不支持。
 
 ## 其他
 
