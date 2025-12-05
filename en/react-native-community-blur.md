@@ -16,14 +16,13 @@
 
 ## Installation and Usage
 
-This library has been adapted to C-API versions starting from version 4.4.0-0.1.0. The C-API versions offer better performance and speed compared to the ArkTS versions.
+Please refer to the Releases page of the third-party library for the corresponding version information
 
-Please refer to the Release page of the corresponding third-party library for version information:：
-
-| Version | Releases                                                     | RN Version |
+| Third-party Library Version | Release Information       | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 4.4.0      | [@react-native-oh-tpl/react-native-community-blur Releases](https://github.com/react-native-oh-library/react-native-blur/releases) | 0.72       |
-| 4.5.0      | [@react-native-ohos/react-native-community-blur Releases]()  | 0.77       |
+| <= 4.4.1@deprecated  | [@react-native-oh-tpl/blur Releases(deprecated)](https://github.com/react-native-oh-library/react-native-blur/releases) | 0.72       |
+| 4.4.2             | [@react-native-ohos/blur Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-blur/releases)   | 0.72       |
+| 4.5.0             | [@react-native-ohos/blur Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-blur/releases)   | 0.77       |
 
 For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
@@ -36,20 +35,12 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-# V4.4.0
-npm install @react-native-oh-tpl/blur
-
-# V4.5.0
 npm install @react-native-ohos/blur
 ```
 
 #### **yarn**
 
 ```bash
-# V4.4.0
-yarn add @react-native-oh-tpl/blur
-
-# V4.5.0
 yarn add @react-native-ohos/blur
 ```
 
@@ -219,7 +210,10 @@ const styles = StyleSheet.create({
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/blur@4.4.2 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -248,7 +242,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
-    "@react-native-oh-tpl/blur": "file:../../node_modules/@react-native-oh-tpl/blur/harmony/blur.har"
+    "@react-native-ohos/blur": "file:../../node_modules/@react-native-ohos/blur/harmony/blur.har"
   }
 ```
 
@@ -267,6 +261,8 @@ Method 2: Directly link to the source code.
 
 ### 3. Configuring CMakeLists and Introducing BlurPackage
 
+> V4.4.2 requires configuring CMakeLists and importing BlurPackage
+
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
 ```diff
@@ -280,11 +276,6 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: add_package_subdirectories
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-
-# V4.4.0
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/blur/src/main/cpp" ./blur)
-
-# V4.5.0
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/blur/src/main/cpp" ./blur)
 
 # RNOH_END: add_package_subdirectories
@@ -325,7 +316,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 Find `function buildCustomRNComponent()`, which is usually located in `entry/src/main/ets/pages/index.ets` or `entry/src/main/ets/rn/LoadBundle.ets`, and add the following code:
 
 ```diff
-+ import {  BlurView, BLUR_TYPE } from "@react-native-oh-tpl/blur"
++ import {  BlurView, BLUR_TYPE } from "@react-native-ohos/blur"
 
 @Builder
 function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -372,18 +363,11 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Please refer to the Release page of the corresponding third-party library for version information:
+Verified in the following versions.
 
-| Version | Releases                                                     | RN Releases |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 4.4.0      | [@react-native-oh-tpl/react-native-community-blur Releases](https://github.com/react-native-oh-library/react-native-blur/releases) | 0.72       |
-| 4.5.0      | [@react-native-ohos/react-native-community-blur Releases]()  | 0.77       |
-
-
-The content of this document has been verified based on the following versions:
-
-1. RNOH: 0.72.98; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.0.3.906; ROM: NEXT.0.0.71;
-2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## Properties
 

@@ -17,19 +17,25 @@
 > [!TIP] [Github 地址](https://github.com/byteburgers/react-native-autocomplete-input)
 
 ## 安装与使用
+
+请到三方库的 Releases 发布地址查看配套的版本信息：
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 5.5.6     | [react-native-autocomplete-input release](https://github.com/byteburgers/react-native-autocomplete-input/releases) | 0.72/0.77       |
+
 <!-- tabs:start -->
 进入到工程目录并输入以下命令：
 
 #### **npm**
 
 ```bash
-npm install --save react-native-autocomplete-input@5.4.0
+npm install --save react-native-autocomplete-input@5.5.6
 ```
 
 #### **yarn**
 
 ```bash
-yarn add react-native-autocomplete-input@5.4.0
+yarn add react-native-autocomplete-input@5.5.6
 ```
 
 <!-- tabs:end -->
@@ -152,11 +158,12 @@ export default App;
 
 ### 兼容性
 
-本文档内容基于以下版本验证通过：
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-1. RNOH：0.72.27; SDK：HarmonyOS-Next-DB1 5.0.0.25; IDE：DevEco Studio 5.0.3.400SP7; ROM：3.0.0.25;
+在以下版本验证通过：
 
-2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
@@ -165,15 +172,15 @@ export default App;
 
 | Name                | Description                                                  | Type     | Required | Platform    | HarmonyOS Support |
 | ------------------- | ------------------------------------------------------------ | -------- | -------- | ----------- | ----------------- |
-| containerStyle      | These styles will be applied to the container which surrounds the autocomplete component. | style    | no       | Android/iOS | yes               |
-| hideResults         | Set to `true` to hide the suggestion list.                   | bool     | no       | Android/iOS | yes               |
-| data                | An array with suggestion items to be rendered in `renderItem({ item, i })`. Any array with length > 0 will open the suggestion list and any array with length < 1 will hide the list. | array    | no       | Android/iOS | yes               |
-| inputContainerStyle | These styles will be applied to the container which surrounds the textInput component. | style    | no       | Android/iOS | yes               |
-| listContainerStyle  | These styles will be applied to the container which surrounds the result list. | style    | no       | Android/iOS | yes               |
-| onShowResults       | will be called when the autocomplete suggestions appear or disappear. | function | no       | Android/iOS | yes               |
-| renderTextInput     | render custom TextInput. All props passed to this function.  | function | no       | Android/iOS | yes               |
-| flatListProps       | custom props to FlatList.                                    | object   | no       | Android/iOS | yes               |
-| renderResultList    | render custom result list. Can be used to replace FlatList. All props passed to this function. | function | no       | Android/iOS | yes               |
+| containerStyle      | 这些样式将应用于环绕自动完成组件的容器 | style    | no       | Android/iOS | yes               |
+| hideResults         | 设置为 `true` 以隐藏建议列表 | bool     | no       | Android/iOS | yes               |
+| data                | 包含要在 `renderItem({ item, i })` 中渲染的建议项的数组。任何长度 > 0 的数组将打开建议列表，任何长度 < 1 的数组将隐藏列表 | array    | no       | Android/iOS | yes               |
+| inputContainerStyle | 这些样式将应用于环绕文本输入组件的容器 | style    | no       | Android/iOS | yes               |
+| listContainerStyle  | 这些样式将应用于环绕结果列表的容器 | style    | no       | Android/iOS | yes               |
+| onShowResults       | 当自动完成建议出现或消失时将被调用 | function | no       | Android/iOS | yes               |
+| renderTextInput     | 渲染自定义文本输入组件。所有属性都传递给此函数 | function | no       | Android/iOS | yes               |
+| flatListProps       | 传递给 FlatList 的自定义属性 | object   | no       | Android/iOS | yes               |
+| renderResultList    | 渲染自定义结果列表。可用于替换 FlatList。所有属性都传递给此函数 | function | no       | Android/iOS | yes               |
 
 ## 遗留问题
 

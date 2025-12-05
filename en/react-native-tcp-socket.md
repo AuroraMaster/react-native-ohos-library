@@ -1,4 +1,4 @@
-> Template version: v0.2.2
+> Template Version: v0.2.2
 
 <p align="center">
   <h1 align="center"> <code>react-native-tcp-socket</code> </h1>
@@ -7,34 +7,33 @@
     <a href="https://github.com/Rapsssito/react-native-tcp-socket">
         <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
     </a>
-        <a href="https://github.com/Rapsssito/react-native-tcp-socket/blob/master/LICENSE">
+    <a href="https://github.com/Rapsssito/react-native-tcp-socket/blob/master/LICENSE">
         <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
     </a>
 </p>
 
-> [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-tcp-socket)
+> [!TIP] [Github Address](https://github.com/react-native-oh-library/react-native-tcp-socket)
 
-## Installation and Usage
+## Installation & Usage
 
-Please refer to the Releases page of the third-party library for the corresponding version information
+Please check the corresponding version information in the third-party library's Releases:
 
-| Third-party Library Version | Release Information       | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 6.2.0@deprecated  | [@react-native-oh-tpl/react-native-tcp-socket Releases(deprecated)](https://github.com/react-native-oh-library/react-native-tcp-socket/releases) | 0.72       |
-| 6.2.1             | [@react-native-ohos/react-native-tcp-socket Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-tcp-socket/releases)   | 0.72       |
-| 6.3.1             | [@react-native-ohos/react-native-tcp-socket Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-tcp-socket/releases)   | 0.77       |
+| Third-party Version | Release Information | Supported RN Version |
+| ------------------- | ------------------- | -------------------- |
+| 6.2.0@deprecated | [@react-native-oh-tpl/react-native-tcp-socket Releases(deprecated)](https://github.com/react-native-oh-library/react-native-tcp-socket/releases) | 0.72 |
+| 6.2.1 | [@react-native-ohos/react-native-tcp-socket Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-tcp-socket/releases) | 0.72 |
+| 6.3.1 | [@react-native-ohos/react-native-tcp-socket Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-tcp-socket/releases) | 0.77 |
 
-For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+For older versions not published to npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
-Go to the project directory and execute the following instruction:
-
-
+Navigate to your project directory and run the following command:
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# V0.77
 npm install @react-native-ohos/react-native-tcp-socket
 ```
 
@@ -46,9 +45,9 @@ yarn add @react-native-ohos/react-native-tcp-socket
 
 <!-- tabs:end -->
 
-The following code shows the basic use scenario of the repository:
+The following code demonstrates basic usage scenarios of this library:
 
-> [!WARNING] The name of the imported repository remains unchanged.
+> [!WARNING] The import library name remains unchanged during use.
 
 ```js
 import React, {useState} from 'react';
@@ -517,28 +516,28 @@ export const TcpSocketDemo = () => {
         keyExtractor={item => item.id.toString()}
       />
       <TouchableOpacity onPress={createTcpServer} style={styles.moduleButton}>
-        <Text style={styles.buttonText}>creating a tcp server</Text>
+        <Text style={styles.buttonText}>Create TCP Server</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={createTcpClient} style={styles.moduleButton}>
-        <Text style={styles.buttonText}>creating a tcp client</Text>
+        <Text style={styles.buttonText}>Create TCP Client</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={tcpSendData} style={styles.moduleButton}>
-        <Text style={styles.buttonText}>client and server communication</Text>
+        <Text style={styles.buttonText}>Client-Server Communication</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={tcpPauseResume} style={styles.moduleButton}>
-        <Text style={styles.buttonText}>pause and resume of data</Text>
+        <Text style={styles.buttonText}>Data Pause & Resume</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={tcpLongData} style={styles.moduleButton}>
-        <Text style={styles.buttonText}>long data transmission</Text>
+        <Text style={styles.buttonText}>Long Data Transfer</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={tcpClose} style={styles.moduleButton}>
-        <Text style={styles.buttonText}>close link</Text>
+        <Text style={styles.buttonText}>Close Connection</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={createTlsServer} style={styles.moduleButton}>
-        <Text style={styles.buttonText}>creating a TLS server</Text>
+        <Text style={styles.buttonText}>Create TLS Server</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={createTlsClient} style={styles.moduleButton}>
-        <Text style={styles.buttonText}>creating a TLS client</Text>
+        <Text style={styles.buttonText}>Create TLS Client</Text>
       </TouchableOpacity>
     </View>
   );
@@ -575,22 +574,21 @@ const styles = StyleSheet.create({
 });
 ```
 
-## Use Codegen
+## Using Codegen
 
-Version >= @react-native-ohos/react-native-tcp-socket@6.2.1, compatible with codegen-lib for generating bridge code.
+> [!TIP] Version >= @react-native-ohos/react-native-tcp-socket@6.2.1, compatible with codegen-lib for generating bridge code.
 
-If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
+This library has been adapted for `Codegen`. Before use, you need to actively execute the command to generate the third-party library bridging code. Please refer to the [Codegen Usage Documentation](/zh-cn/codegen.md) for details.
 
 ## Link
-
 Version >= @react-native-ohos/react-native-tcp-socket@6.2.1 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
 Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 This step provides guidance for manually configuring native dependencies.
 
-Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+First, you need to open the HarmonyOS project `harmony` within your project using DevEco Studio.
 
-### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
+### 1. Add the overrides field to the root `oh-package.json5`
 
 ```json
 {
@@ -601,39 +599,103 @@ Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 }
 ```
 
-### 2. Introducing Native Code
+### 2. Import Native Code
 
-Currently, two methods are available:
+There are currently two methods:
 
-Method 1 (recommended): Use the HAR file.
+1. Import via har package (Recommended until IDE functionality is improved);
+2. Link source code directly.
 
-> [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
+Method 1: Import via har package (Recommended)
 
-Open `entry/oh-package.json5` file and add the following dependencies:
+> [!TIP] The har package is located in the `harmony` folder of the installed third-party library path.
 
-```json
+Open `entry/oh-package.json5` and add the following dependencies:
+
+```JSON
 "dependencies": {
     "@rnoh/react-native-openharmony" : "file:../react_native_openharmony",
     "@react-native-ohos/react-native-tcp-socket": "file:../../node_modules/@react-native-ohos/react-native-tcp-socket/harmony/tcp_socket.har"
   }
 ```
 
-Click the `sync` button in the upper right corner.
+Click the `sync` button in the top right corner.
 
-Alternatively, run the following instruction on the terminal:
+Or execute in the terminal:
 
 ```bash
 cd entry
 ohpm install
 ```
 
-Method 2: Directly link to the source code.
+Method 2: Link Source Code Directly
 
-> [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
+> [!TIP] If you need to link source code directly, please refer to the [Direct Link Source Code Guide](/zh-cn/link-source-code.md).
 
-### 3. Introducing TcpSocketPackage to ArkTS
+### 3. Configure CMakeLists and Import TcpSocketPackage
 
-Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
+> [!TIP] If using version 6.2.0, skip this chapter.
+
+Open `entry/src/main/cpp/CMakeLists.txt` and add:
+
+```cmake
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-tcp-socket/src/main/cpp" ./tcp-socket)
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_tcp_socket)
+# RNOH_END: manual_package_linking_2
+```
+
+Open `entry/src/main/cpp/PackageProvider.cpp` and add:
+
+```c++
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "TcpSocketPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++       std::make_shared<TcpSocketPackage>(ctx)
+    };
+}
+```
+
+### 4. Import TcpSocketPackage on the ArkTS Side
+
+Open `entry/src/main/ets/RNPackagesFactory.ts` and add:
 
 ```diff
   ...
@@ -646,35 +708,35 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4. Running
+### 5. Run
 
-Click the `sync` button in the upper right corner.
+Click the `sync` button in the top right corner.
 
-Alternatively, run the following instruction on the terminal:
+Or execute in the terminal:
 
 ```bash
 cd entry
 ohpm install
 ```
 
-Then build and run the code.
+Then compile and run.
 
-## Constraints
+## Constraints & Limitations
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+To use this library, you need the correct React-Native and RNOH versions. Additionally, you need to use the matching DevEco Studio and phone ROM.
 
-The following combinations have been verified:
+Verified in the following versions:
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.868; ROM: 6.0.0.112;
 
 ### Permission Requirements
 
-需要获取网络信息权限："ohos.permission.GET_NETWORK_INFO"和使用网络权限："ohos.permission.INTERNET"，配置方法如下：
+Requires network information permission: "ohos.permission.GET_NETWORK_INFO" and internet usage permission: "ohos.permission.INTERNET". Configure as follows:
 
-打开`entry/src/main/module.json5`，添加：
+Open `entry/src/main/module.json5` and add:
 
 ```json
 "requestPermissions": [
@@ -690,100 +752,100 @@ The following combinations have been verified:
 
 ## API
 
-> [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
+> [!TIP] The "Platform" column indicates the platforms supported by the original third-party library for that property.
 
-> [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
+> [!TIP] The "HarmonyOS Support" column: 'Yes' means the property is supported on the HarmonyOS platform; 'No' means it is not supported; 'partially' means partial support. The usage method is consistent across platforms, with effects benchmarked against iOS or Android.
 
-| Name                                         | Description                                         | Type     | Required | Platform    | HarmonyOS Support |
-| -------------------------------------------- | --------------------------------------------------- | -------- | -------- | ----------- | ----------------- |
-| connect(options, callback)                   | Same as createConnection,Creating a TCP Socket      | function | no       | Android,iOS | yes               |
-| createServer(connectionListener)             | Creating a TCP Server                               | function | no       | Android,iOS | yes               |
-| createConnection(options, callback)          | Creating a TCP Socket                               | function | no       | Android,iOS | yes               |
-| createTLSServer(options, connectionListener) | Creating a TLS-based TCP Server                     | function | no       | Android,iOS | yes               |
-| connectTLS                                   | Creating a TLS-based encrypted connection           | function | no       | Android,iOS | yes               |
-| isIP                                         | Check whether a character string is an IP address   | function | no       | Android,iOS | yes               |
-| isIPv4                                       | Check whether a character string is an IPv4 address | function | no       | Android,iOS | yes               |
-| isIPv6                                       | Check whether a character string is an IPv6 address | function | no       | Android,iOS | yes               |
-| Server                                       | TCP Server Object                                   | object   | no       | Android,iOS | yes               |
-| Socket                                       | TCP Socket Object                                   | object   | no       | Android,iOS | yes               |
-| TLSServer                                    | TLS Server Object                                   | object   | no       | Android,iOS | yes               |
-| TLSSocket                                    | TLS Socket Object                                   | object   | no       | Android,iOS | yes               |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---------------------------------------------------------- | --------------------------------------------------- | -------- | -------- | ----------- | ----------------- |
+| connect(options, callback) | Same as createConnection, Creating a TCP Socket | function | No | Android,iOS | Yes |
+| createServer(connectionListener) | Creating a TCP Server | function | No | Android,iOS | Yes |
+| createServer(options，connectionListener)<sup>6.3.1+</sup> | Creating a TCP Server | function | No | Android,iOS | Yes |
+| createConnection(options, callback) | Creating a TCP Socket | function | No | Android,iOS | Yes |
+| createTLSServer(options, connectionListener) | Creating a TLS-based TCP Server | function | No | Android,iOS | Yes |
+| connectTLS | Creating a TLS-based encrypted connection | function | No | Android,iOS | Yes |
+| isIP | Check whether a character string is an IP address | function | No | Android,iOS | Yes |
+| isIPv4 | Check whether a character string is an IPv4 address | function | No | Android,iOS | Yes |
+| isIPv6 | Check whether a character string is an IPv6 address | function | No | Android,iOS | Yes |
+| Server | TCP Server Object | object | No | Android,iOS | Yes |
+| Socket | TCP Socket Object | object | No | Android,iOS | Yes |
+| TLSServer | TLS Server Object | object | No | Android,iOS | Yes |
+| TLSSocket | TLS Socket Object | object | No | Android,iOS | Yes |
 
 ### Server
 
-| Name                      | Description                                                                                                                       | Type     | Required | Platform    | HarmonyOS Support |
-| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | ----------- | ----------------- |
-| address()                 | Returns the bound `address`, the address `family` name, and `port` of the server as reported by the operating system if listening | function | no       | Android,iOS | yes               |
-| listen(options, callback) | Start a server listening for connections                                                                                          | function | no       | Android,iOS | yes               |
-| close(callback)           | Stops the server from accepting new connections and keeps existing connections                                                    | function | no       | Android,iOS | yes               |
-| getConnections(callback)  | Asynchronously get the number of concurrent connections on the server                                                             | function | no       | Android,iOS | yes               |
-| listening                 | whether to enable the listening                                                                                                   | boolean  | no       | Android,iOS | yes               |
-| on('close')               | Triggered when the server is shut down                                                                                            | event    | no       | Android,iOS | yes               |
-| on('connection')          | Triggered when the server receives a new connection                                                                               | event    | no       | Android,iOS | yes               |
-| on('error')               | Triggered when an error occurs on the server                                                                                      | event    | no       | Android,iOS | yes               |
-| on('listening')           | Triggered when the server starts listening                                                                                        | event    | no       | Android,iOS | yes               |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---- | ----------- | ---- | -------- | -------- | ----------------- |
+| address() | Returns the bound address, address family name, and port of the server | function | No | Android,iOS | Yes |
+| listen(options, callback) | Start a server listening for connections | function | No | Android,iOS | Yes |
+| close(callback) | Stops the server from accepting new connections and keeps existing connections | function | No | Android,iOS | Yes |
+| getConnections(callback) | Asynchronously get the number of concurrent connections on the server | function | No | Android,iOS | Yes |
+| listening | whether to enable the listening | boolean | No | Android,iOS | Yes |
+| on('close') | Triggered when the server is shut down | event | No | Android,iOS | Yes |
+| on('connection') | Triggered when the server receives a new connection | event | No | Android,iOS | Yes |
+| on('error') | Triggered when an error occurs on the server | event | No | Android,iOS | Yes |
+| on('listening') | Triggered when the server starts listening | event | No | Android,iOS | Yes |
 
 ### Socket
-
-| Name                        | Description                                                                                                                                    | Type     | Required | Platform    | HarmonyOS Support |
-| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | ----------- | ----------------- |
-| address()                   | Returns the bound `address`, the address `family` name and `port` of the socket as reported                                                    | function | no       | Android,iOS | yes               |
-| destroy()                   | Ensures that no more I/O activity happens on this socket. Destroys the stream and closes the connection                                        | function | no       | Android,iOS | yes               |
-| end()                       | Half-closes the socket. i.e., it sends a FIN packet. It is possible the server will still send some data                                       | function | no       | Android,iOS | yes               |
-| setEncoding(encoding)       | Set the encoding for the socket as a Readable Stream. By default, no encoding is assigned and stream data will be returned as `Buffer` objects | function | no       | Android,iOS | yes               |
-| setNoDelay(noDelay)         | Set no delay                                                                                                                                   | function | no       | Android,iOS | yes               |
-| setTimeout()                | Sets the socket to timeout after `timeout` milliseconds of inactivity on the socket. By default `TcpSocket` do not have a timeout              | function | no       | Android,iOS | yes               |
-| write(buffer, encoding, cb) | Sends data on the socket. The second parameter specifies the encoding in the case of a string — it defaults to UTF8 encoding                   | function | no       | Android,iOS | yes               |
-| pause()                     | Pauses the reading of data. That is, `'data'` events will not be emitted. Useful to throttle back an upload                                    | function | no       | Android,iOS | yes               |
-| resume()                    | Resumes reading after a call to `socket.pause()`                                                                                               | function | no       | Android,iOS | yes               |
-| writableNeedDrain           | whether need to wait for data to be written to the socket                                                                                      | boolean  | no       | Android,iOS | yes               |
-| bytesRead                   | Indicates the number of bytes of data that have been read from the socket                                                                      | number   | no       | Android,iOS | yes               |
-| bytesWritten                | get the number of bytes last written to the socket                                                                                             | number   | no       | Android,iOS | yes               |
-| connecting                  | whether the current socket is being connected                                                                                                  | boolean  | no       | Android,iOS | yes               |
-| destroyed                   | Whether the socket has been destroyed                                                                                                          | boolean  | no       | Android,iOS | yes               |
-| localAddress                | Local ip address                                                                                                                               | string   | no       | Android,iOS | yes               |
-| localPort                   | Local port                                                                                                                                     | number   | no       | Android,iOS | yes               |
-| remoteAddress               | remote server IP address                                                                                                                       | string   | no       | Android,iOS | yes               |
-| remoteFamily                | remote server IP address type                                                                                                                  | string   | no       | Android,iOS | yes               |
-| remotePort                  | remote server port                                                                                                                             | number   | no       | Android,iOS | yes               |
-| pending                     | Whether has pending data to be sent to the remote server                                                                                       | boolean  | no       | Android,iOS | yes               |
-| timeout                     | The timeout period for the socket, in milliseconds. The default timeout period is 30 seconds                                                   | number   | no       | Android,iOS | yes               |
-| readyState                  | the state of socket,`0`: not connected,`1`:connected,2: closing,3:closed                                                                       | number   | no       | Android,iOS | yes               |
-| on('pause')                 | Triggered when pauses the reading of data                                                                                                      | event    | no       | Android,iOS | yes               |
-| on('resume')                | Triggered when Resumes the reading of data                                                                                                     | event    | no       | Android,iOS | yes               |
-| on('close')                 | Triggered when socket is closed                                                                                                                | event    | no       | Android,iOS | yes               |
-| on('connect')               | Triggered when socket is connected                                                                                                             | event    | no       | Android,iOS | yes               |
-| on('data')                  | Triggered when socket receives data                                                                                                            | event    | no       | Android,iOS | yes               |
-| on('drain')                 | Triggered when the buffer becomes empty, indicating that data can be written to the socke                                                      | event    | no       | Android,iOS | yes               |
-| on('error')                 | Triggered when an error occurs on the socket                                                                                                   | event    | no       | Android,iOS | yes               |
-| on('timeout')               | Triggered When the connection or data transmission times out                                                                                   | event    | no       | Android,iOS | yes               |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---- | ---- | ---- | -------- | ---- | -------- |
+| address() | Returns the bound address, address family name and port of the socket | function | No | Android,iOS | Yes |
+| destroy() | Ensures that no more I/O activity happens on this socket. Destroys the stream and closes the connection | function | No | Android,iOS | Yes |
+| end() | Half-closes the socket. i.e., it sends a FIN packet. It is possible the server will still send some data | function | No | Android,iOS | Yes |
+| setEncoding(encoding) | Set the encoding for the socket as a Readable Stream. By default, no encoding is assigned and stream data will be returned as `Buffer` objects | function | No | Android,iOS | Yes |
+| setNoDelay(noDelay) | Set no delay | function | No | Android,iOS | Yes |
+| setTimeout() | Sets the socket to timeout after `timeout` milliseconds of inactivity on the socket. By default `TcpSocket` do not have a timeout | function | No | Android,iOS | Yes |
+| write(buffer, encoding, cb) | Sends data on the socket. The second parameter specifies the encoding in the case of a string — it defaults to UTF8 encoding | function | No | Android,iOS | Yes |
+| pause() | Pauses the reading of data. That is, `'data'` events will not be emitted. Useful to throttle back an upload | function | No | Android,iOS | Yes |
+| resume() | Resumes reading after a call to `socket.pause()` | function | No | Android,iOS | Yes |
+| writableNeedDrain | whether need to wait for data to be written to the socket | boolean | No | Android,iOS | Yes |
+| bytesRead | Indicates the number of bytes of data that have been read from the socket | number | No | Android,iOS | Yes |
+| bytesWritten | get the number of bytes last written to the socket | number | No | Android,iOS | Yes |
+| connecting | whether the current socket is being connected | boolean | No | Android,iOS | Yes |
+| destroyed | Whether the socket has been destroyed | boolean | No | Android,iOS | Yes |
+| localAddress | Local ip address | string | No | Android,iOS | Yes |
+| localPort | Local port | number | No | Android,iOS | Yes |
+| remoteAddress | remote server IP address | string | No | Android,iOS | Yes |
+| remoteFamily | remote server IP address type | string | No | Android,iOS | Yes |
+| remotePort | remote server port | number | No | Android,iOS | Yes |
+| pending | Whether has pending data to be sent to the remote server | boolean | No | Android,iOS | Yes |
+| timeout | The timeout period for the socket, in milliseconds. The default timeout period is 30 seconds | number | No | Android,iOS | Yes |
+| readyState | the state of socket,`0`: not connected,`1`:connected,2: closing,3:closed | number | No | Android,iOS | Yes |
+| on('pause') | Triggered when pauses the reading of data | event | No | Android,iOS | Yes |
+| on('resume') | Triggered when Resumes the reading of data | event | No | Android,iOS | Yes |
+| on('close') | Triggered when socket is closed | event | No | Android,iOS | Yes |
+| on('connect') | Triggered when socket is connected | event | No | Android,iOS | Yes |
+| on('data') | Triggered when socket receives data | event | No | Android,iOS | Yes |
+| on('drain') | Triggered when the buffer becomes empty, indicating that data can be written to the socket | event | No | Android,iOS | Yes |
+| on('error') | Triggered when an error occurs on the socket | event | No | Android,iOS | Yes |
+| on('timeout') | Triggered When the connection or data transmission times out | event | No | Android,iOS | Yes |
 
 ### TLSServer
 
-[!TIP] TLSServer 继承自 Server 对象，拥有 Server 对象的所有 Properties、方法和事件，以下仅列出其独有的 Properties。
+[!TIP] TLSServer inherits from the Server object and has all properties, methods, and events of the Server object. Only its unique properties are listed below.
 
-| Name                      | Description                                           | Type     | Required | Platform    | HarmonyOS Support |
-| ------------------------- | ----------------------------------------------------- | -------- | -------- | ----------- | ----------------- |
-| setSecureContext(options) | Set Security Context                                  | function | no       | Android,iOS | yes               |
-| on('secureConnection')    | Triggered When a secure TLS connection is established | event    | no       | Android,iOS | yes               |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---- | ---- | ---- | -------- | ---- | -------- |
+| setSecureContext(options) | Set Security Context | function | No | Android,iOS | Yes |
+| on('secureConnection') | Triggered When a secure TLS connection is established | event | No | Android,iOS | Yes |
 
 ### TLSSocket
 
-[!TIP] TLSSocket 继承自 Socket 对象，拥有 Socket 对象的所有 Properties、方法和事件，以下仅列出其独有的 Properties。
+[!TIP] TLSSocket inherits from the Socket object and has all properties, methods, and events of the Socket object. Only its unique properties are listed below.
 
-| Name                 | Description                                          | Type     | Required | Platform    | HarmonyOS Support |
-| -------------------- | ---------------------------------------------------- | -------- | -------- | ----------- | ----------------- |
-| getCertificate()     | Get a Local Certificate Information                  | function | no       | Android     | yes               |
-| getPeerCertificate() | Get the Certificate Information of the Remote Server | function | no       | Android     | yes               |
-| on('secureConnect')  | Triggered When a secure connection is established    | event    | no       | Android,iOS | yes               |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---- | ---- | ---- | -------- | ---- | -------- |
+| getCertificate() | Get Local Certificate Information | function | No | Android | Yes |
+| getPeerCertificate() | Get the Certificate Information of the Remote Server | function | No | Android | Yes |
+| on('secureConnect') | Triggered When a secure connection is established | event | No | Android,iOS | Yes |
 
 ## Known Issues
 
-- [ ] 目前无法实现多线程: [issue#3](https://github.com/react-native-oh-library/react-native-tcp-socket/issues/3)
-- [ ] 获取证书只有异步接口，目前返回值是一个 promise，与安卓上同步接口不一致: [issue#4](https://github.com/react-native-oh-library/react-native-tcp-socket/issues/4)
+- [ ] Currently unable to implement multithreading: [issue#3](https://github.com/react-native-oh-library/react-native-tcp-socket/issues/3)
+- [ ] Certificate retrieval only has an async interface, currently returns a promise, inconsistent with the synchronous interface on Android: [issue#4](https://github.com/react-native-oh-library/react-native-tcp-socket/issues/4)
 
 ## Others
 
 ## License
 
-This project is licensed under [The MIT License (MIT)](https://github.com/Rapsssito/react-native-tcp-socket/blob/master/LICENSE).
+This project is based on [The MIT License (MIT)](https://github.com/Rapsssito/react-native-tcp-socket/blob/master/LICENSE). Feel free to enjoy and contribute to open source.

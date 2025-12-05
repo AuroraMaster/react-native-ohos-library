@@ -14,35 +14,29 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/flash-list)
 
+## 安装与使用
+
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 1.6.3      | [@react-native-oh-tpl/flash-list Releases](https://github.com/react-native-oh-library/flash-list/releases) | 0.72       |
-| 1.8.3      | [@react-native-ohos/flash-list Releases]()                   | 0.77       |
+| 三方库版本  | 发布信息                                                  | 支持RN版本 |
+|--------| ------------------------------------------------------------ | ---------- |
+| <= 1.6.3-0.2.9@deprecated  | [@react-native-oh-tpl/flash-list Releases(deprecated)](https://github.com/react-native-oh-library/flash-list/releases) | 0.72       |
+| 1.6.4                      | [@react-native-ohos/flash-list Releases](https://gitcode.com/openharmony-sig/rntpc_flash-list/releases)   | 0.72       |
+| 1.8.3                      | [@react-native-ohos/flash-list Releases](https://gitcode.com/openharmony-sig/rntpc_flash-list/releases)   | 0.77       |
 
-
-## 安装与使用
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
 #### **npm**
 
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/flash-list
-
-# 0.77
 npm install @react-native-ohos/flash-list
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn add @react-native-oh-tpl/flash-list
-
-# 0.77
 yarn add @react-native-ohos/flash-list
 ```
 
@@ -77,26 +71,13 @@ const MyList = () => {
 
 ## Link
 
-目前HarmonyOS暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/flash-list@1.6.4，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的HarmonyOS工程 `harmony`
 
 ### 1.在工程根目录的 `oh-package.json5` 添加 overrides 字段
-
-- 0.72
-
-```json
-{
-  ...
-  "overrides": {
-    "@rnoh/react-native-openharmony": "^0.72.38" // ohpm 在线版本
-    // "@rnoh/react-native-openharmony" : "./react_native_openharmony.har" // 指向本地 har 包的路径
-    // "@rnoh/react-native-openharmony" : "./react_native_openharmony" // 指向源码路径
-  }
-}
-```
-
-- 0.77
 
 ```json
 {
@@ -122,16 +103,6 @@ const MyList = () => {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- 0.72
-
-```json
-"dependencies": {
-    "@react-native-oh-tpl/flash-list": "file:../../node_modules/@react-native-oh-tpl/flash-list/harmony/flash_list.har"
-  }
-```
-
-- 0.77
-
 ```json
 "dependencies": {
     "@react-native-ohos/flash-list": "file:../../node_modules/@react-native-ohos/flash-list/harmony/flash_list.har"
@@ -153,6 +124,8 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 FlashListPackage
 
+> V1.6.4 需要配置 CMakeLists 和引入 FlashListPackage
+
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
 ```diff
@@ -173,10 +146,6 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-# 0.72
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/flash-list/src/main/cpp" ./flash-list)
-
-# 0.77
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/flash-list/src/main/cpp" ./flash-list)
 # RNOH_END: manual_package_linking_1
 
@@ -231,10 +200,12 @@ ohpm install
 
 ### 兼容性
 
-本文档内容基于以下版本验证通过：
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-1. RNOH: 0.72.27; SDK: HarmonyOS-NEXT-DB1; IDE: DevEco Studio 5.0.3.400SP7; ROM: 3.0.0.29;
-2. RNOH: 0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+在以下版本验证通过：
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 属性

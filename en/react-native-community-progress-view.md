@@ -4,19 +4,20 @@
   <h1 align="center"> <code>@react-native-community/progress-view</code> </h1>
 </p>
 
-This project is based on [react-native-community/progress-view@1.4.2](https://github.com/react-native-progress-view/progress-view).
-
-Please visit the Release release address of the third-party library to view the corresponding version information:
-
-| Version                        | Package Name                             | Repository                                                   | Release                                                      | RN Version |
-| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -----------
-| <= 1.4.2@deprecated | @react-native-oh-tpl/progress-view  | [Github(deprecated)](https://github.com/react-native-oh-library/progress-view) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/progress-view/releases) | 0.72       |
-| 1.4.3                        | @react-native-ohos/progress-view | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_progress-view) | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_progress-view/releases) | 0.72       |
-| 1.5.0                        | @react-native-ohos/progress-view | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_progress-view) | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_progress-view/releases) | 0.77       |
-
+> [!TIP] [Github address](https://github.com/react-native-oh-library/progress-view) 
 
 
 ## Installation and Usage
+
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 1.4.2@deprecated  | [@react-native-oh-tpl/progress-view Releases(deprecated)](https://github.com/react-native-oh-library/progress-view/releases) | 0.72       |
+| 1.4.3             | [@react-native-ohos/progress-view Releases](https://gitcode.com/openharmony-sig/rntpc_progress-view/releases)   | 0.72       |
+| 1.5.0             | [@react-native-ohos/progress-view Releases](https://gitcode.com/openharmony-sig/rntpc_progress-view/releases)   | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -57,6 +58,9 @@ export default function ProgressViewExample() {
 ```
 
 ## 2. Manual Link
+
+Version >= @react-native-ohos/progress-view@1.4.3 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 This step provides guidance for manually configuring native dependencies.
 
@@ -109,6 +113,8 @@ Method 2: Directly link to the source code.
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
 ### 2.3 Configuring CMakeLists and Introducing ProgressViewPackage Package
+
+> V1.4.3 requires configuring CMakeLists and importing ProgressViewPackage.
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
@@ -224,10 +230,13 @@ Then build and run the code.
 
 ### 3.1 Compatibility
 
-This document is verified based on the following versions:
-1. RNOH：0.72.38; SDK：HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.1.1.830; ROM：5.0.0.110;
-2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release; IDE: DevEco Studio 6.0.0.858; ROM：6.0.0.112;
+To use this library, you need to use the correct React-Native and RNOH versions. Additionally, you need to use the matching DevEco Studio and phone ROM.
 
+Verified successfully in the following versions:
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
 
 ## 4. Properties
 

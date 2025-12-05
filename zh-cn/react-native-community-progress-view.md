@@ -5,17 +5,19 @@
 </p>
 
 
-本项目基于 [react-native-community/progress-view@1.4.2](https://github.com/react-native-progress-view/progress-view) 开发。
+> [!TIP] [Github 地址](https://github.com/react-native-oh-library/progress-view) 
+
+## 安装与使用
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| Version                        | Package Name                             | Repository                                                   | Release                                                      | RN Version |
-| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -----------
-| <= 1.4.2@deprecated | @react-native-oh-tpl/progress-view  | [Github(deprecated)](https://github.com/react-native-oh-library/progress-view) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/progress-view/releases) | 0.72       |
-| 1.4.3                        | @react-native-ohos/progress-view | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_progress-view) | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_progress-view/releases) | 0.72       |
-| 1.5.0                        | @react-native-ohos/progress-view | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_progress-view) | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_progress-view/releases) | 0.77       |
+| 三方库版本  | 发布信息                                                  | 支持RN版本 |
+|--------| ------------------------------------------------------------ | ---------- |
+| 1.4.2@deprecated  | [@react-native-oh-tpl/progress-view Releases(deprecated)](https://github.com/react-native-oh-library/progress-view/releases) | 0.72       |
+| 1.4.3             | [@react-native-ohos/progress-view Releases](https://gitcode.com/openharmony-sig/rntpc_progress-view/releases)   | 0.72       |
+| 1.5.0             | [@react-native-ohos/progress-view Releases](https://gitcode.com/openharmony-sig/rntpc_progress-view/releases)   | 0.77       |
 
-## 安装与使用
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -54,6 +56,8 @@ export default function ProgressViewExample() {
 ```
 
 ## 2. Manual Link
+
+Version >= @react-native-ohos/progress-view@1.4.3，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 此步骤为手动配置原生依赖项的指导。
 
@@ -109,6 +113,8 @@ ohpm install
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
 ### 2.3 配置 CMakeLists 和引入 ProgressViewPackage
+
+> V1.4.3 需要配置 CMakeLists 和引入 ProgressViewPackage
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -224,9 +230,13 @@ ohpm install
 
 ### 3.1 兼容性
 
-本文档内容基于以下版本验证通过：
-1. RNOH：0.72.38; SDK：HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.1.1.830; ROM：5.0.0.110;
-2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release; IDE: DevEco Studio 6.0.0.858; ROM：6.0.0.112;
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+
+在以下版本验证通过：
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
 
 ## 4. 属性
 

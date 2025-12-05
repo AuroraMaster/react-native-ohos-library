@@ -24,27 +24,29 @@ Note: If the `@react-native-oh-tpl/native-stack` library has been introduced, pl
 
 If it is not included, follow the guide provided in [@react-navigation/native](/en/react-navigation-native.md) and [@react-native-oh-tpl/react-native-safe-area-context](/en/react-native-safe-area-context.md) and [@react-native-oh-tpl/react-native-gesture-handler](/en/react-native-gesture-handler.md) to add it to your project.
 
-### 4.8.1
+### 3.34.1
 The implementation of this library depends on the native  code from @react-navigation/native and @react-navigation/native-stack and @react-native-ohos/react-native-safe-area-context and @react-native-ohos/react-native-gesture-handler and @react-native-ohos/react-native-reanimated. If this library is included into your application, there is no need to include it again; you can skip the steps in this section and use it directly.
 
 Note: If the `@react-native-oh-tpl/native-stack，@react-native-ohos/native-stack` library has been introduced, please uninstall it. Otherwise, this library will fail to be referenced and cannot be used.
 
 If it is not included, follow the guide provided in [@react-navigation/native](/en/react-navigation-native.md) and [@react-native-ohos/react-native-safe-area-context](/en/react-native-safe-area-context.md) and [@react-native-ohos/react-native-gesture-handler](/en/react-native-gesture-handler.md)  and [@react-native-ohos/react-native-reanimated](/en/react-native-reanimated.md) to add it to your project.
 
-Please visit the Releases page of the third-party library to check the corresponding version information: 
-| Version  | Releases info                                                      | Support RN version |
-| ----------- | ------------------------------------------------------------ | ---------- |
-|3.34.0|[@react-native-oh-tpl/react-native-screens Releases](https://github.com/react-native-oh-library/react-native-harmony-screens/releases) |0.72|
-|4.8.1|[@react-native-ohos/react-native-screens Releases]() |0.77|
+Please refer to the Releases page of the third-party library for the corresponding version information
 
-For older versions that have not been published to npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 3.34.0@deprecated  | [@react-native-oh-tpl/react-native-screens Releases(deprecated)](https://github.com/react-native-oh-library/react-native-harmony-screens/releases) | 0.72       |
+| 3.34.1             | [@react-native-ohos/react-native-screens Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-screens/releases)   | 0.72       |
+| 4.8.1              | [@react-native-ohos/react-native-screens Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-screens/releases)   | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
 # 0.72
-npm install @react-native-oh-tpl/react-native-screens@3.34.0-X.X.X
+npm install @react-native-ohos/react-native-screens@3.34.1-X.X.X
 npm install @react-navigation/native-stack@6.9.13
 
 # 0.77
@@ -56,7 +58,7 @@ npm install @react-navigation/native-stack@7.2.0
 
 ```bash
 # 0.72
-yarn install @react-native-oh-tpl/react-native-screens@3.34.0-X.X.X
+yarn install @react-native-ohos/react-native-screens@3.34.1-X.X.X
 yarn install @react-navigation/native-stack@6.9.13
 
 # 0.77
@@ -151,13 +153,17 @@ export default function App() {
 
 ## Use Codegen
 
->[! TIP] V4.8.1 does not require execution of Codegen.
+Version >= @react-native-ohos/react-native-screens@3.34.1, compatible with codegen-lib for generating bridge code.
 
 If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](https://gitee.com/react-native-oh-library/usage-docs/blob/master/en/codegen.md).
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-screens@3.34.1 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
+
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
 ### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
@@ -181,14 +187,6 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
-- 0.72
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../../node_modules/@rnoh/react-native-harmony/harmony/react_native_openharmony.har",
-    "@react-native-oh-tpl/react-native-screens": "file:../../node_modules/@react-native-oh-tpl/react-native-screens/harmony/screens.har"
-  }
-```
-- 0.77
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../../node_modules/@rnoh/react-native-harmony/harmony/react_native_openharmony.har",
@@ -211,6 +209,8 @@ Method 2: Directly link to the source code.
 
 ### 3. Configuring CMakeLists and Introducing Package
 
+> V3.34.1 requires configuring CMakeLists and importing RnohReactNativeHarmonyScreensPackage.
+
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
 ```diff
@@ -232,10 +232,6 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-# 72
-+ add_subdirectory("${OH_MODULES_DIR}/@react-native-oh-tpl/react-native-screens/src/main/cpp" ./rnoh_screens)
-
-# 77
 + add_subdirectory("${OH_MODULES_DIR}/@react-native-ohos/react-native-screens/src/main/cpp" ./rnoh_screens)
 # RNOH_END: manual_package_linking_1
 
@@ -278,10 +274,6 @@ Find `function buildCustomRNComponent()`, which is usually located in `entry/src
 
 ```diff
   ...
-// 72  
-+ import { componentBuilder } from "@react-native-oh-tpl/react-native-screens"
-
-// 77  
 + import { componentBuilder } from "@react-native-ohos/react-native-screens"
 
 @Builder
@@ -320,10 +312,6 @@ Open `src/main/ets/RNOHPackagesFactory.ets`, add:
 
 ```diff
 import type { RNPackageContext, RNPackage } from '@rnoh/react-native-openharmony';
-// 72
-+ import RnohReactNativeHarmonyScreensPackage from '@react-native-oh-tpl/react-native-screens';
-
-// 77
 + import RnohReactNativeHarmonyScreensPackage from '@react-native-ohos/react-native-screens';
 
 export function createRNOHPackages(ctx: RNPackageContext): RNPackage[] {
@@ -352,13 +340,13 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+To use this library, you need to use the correct React-Native and RNOH versions. Additionally, you need to use the matching DevEco Studio and phone ROM.
 
-Check the release version information in the release address of the third-party library:
-| Version  | Releases info                                                      | Support RN version |
-| ----------- | ------------------------------------------------------------ | ---------- |
-|3.34.0|[@react-native-oh-tpl/react-native-screens Releases](https://github.com/react-native-oh-library/react-native-harmony-screens/releases) |0.72|
-|4.8.1|[@react-native-ohos/react-native-screens Releases]() |0.77|
+Verified successfully in the following versions:
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
 
 ## Properties
 
