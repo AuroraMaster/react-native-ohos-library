@@ -16,6 +16,11 @@
 > [!TIP] [ GitHub address](https://github.com/byteburgers/react-native-autocomplete-input)
 
 ## Installation and Usage
+Please check the corresponding version information in the third-party library's Releases:
+
+| Third-party Library Version | Release Information | Supported RN Version |
+| --------------------------- | ------------------- | -------------------- |
+| 5.5.6                       | [react-native-autocomplete-input release](https://github.com/byteburgers/react-native-autocomplete-input/releases) | 0.72/0.77            |
 
 <!-- tabs:start -->
 
@@ -24,13 +29,13 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm install --save react-native-autocomplete-input@5.4.0
+npm install --save react-native-autocomplete-input@5.5.6
 ```
 
 #### **yarn**
 
 ```bash
-yarn add react-native-autocomplete-input@5.4.0
+yarn add react-native-autocomplete-input@5.5.6
 ```
 
 <!-- tabs:end -->
@@ -164,9 +169,12 @@ export default App;
 
 ### Compatibility
 
-This document is verified based on the following versions:
+To use this library, you need to use the correct React-Native and RNOH versions. Additionally, you need to use the matching DevEco Studio and phone ROM.
 
-RNOH：0.72.27; SDK：HarmonyOS-Next-DB1 5.0.0.25; IDE：DevEco Studio 5.0.3.400SP7; ROM：3.0.0.25;
+Verified in the following versions:
+
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.868; ROM: 6.0.0.112;
 
 ## Properties
 

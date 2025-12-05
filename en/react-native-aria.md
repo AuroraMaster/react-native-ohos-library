@@ -1,4 +1,4 @@
-> Template version: v0.2.2
+> Template Version: v0.2.2
 
 <p align="center">
   <h1 align="center"> <code>react-native-aria</code> </h1>
@@ -12,32 +12,34 @@
     </a>
 </p>
 
-> [!TIP] [GitHub address](https://github.com/gluestack/react-native-aria/tree/main)
+> [!TIP] [Github Address](https://github.com/gluestack/react-native-aria/tree/main)
 
-## Installation and Usage
+## Installation & Usage
+> [!TIP] This library is no longer maintained. If you encounter missing modules when running the project after executing the general package command, you need to uninstall the old packages and add `--legacy-peer-deps` to the command, then download the package files again.
 
-React Native ARIA是可增量采用的。每个组件都作为单独的包发布，因此您可以在单个组件中使用它，并随着时间的推移逐渐添加更多组件。所有这些包都在npm上的@react-native-aria范围内发布。
-> [!TIP] 该库已经不再维护，如果执行总包命令，项目运行缺失模块，就需要卸载旧包，在命令后增加--legacy-peer-deps，然后再次下载包文件
+Please check the corresponding version information in the third-party library's Releases:
 
-Go to the project directory and execute the following instruction:
+| Third-party Version | Release Information | Supported RN Version |
+| ------------------- | ------------------- | -------------------- |
+| 0.2.4 | [react-native-aria release](https://github.com/gluestack/react-native-aria/releases) | 0.72/0.77 |
+
+For older versions not published to npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+
+Navigate to your project directory and run the following command:
 
 #### **yarn**
 
 ```bash
-yarn add react-native-aria@0.2.3
+yarn add react-native-aria@0.2.4
 ```
-
-<!-- tabs:end -->
 
 #### **npm**
 
 ```bash
-npm install react-native-aria@0.2.3
+npm install react-native-aria@0.2.4
 ```
 
-<!-- tabs:end -->
-
-除了总包之外，我们还提供了一些单独包，如：@react-native-aria/button
+In addition to the main package, we also provide some separate packages, such as: @react-native-aria/button
 
 #### **yarn**
 
@@ -45,19 +47,13 @@ npm install react-native-aria@0.2.3
 yarn add @react-native-aria/button@0.2.7
 ```
 
-<!-- tabs:end -->
-
 #### **npm**
 
 ```bash
 npm install @react-native-aria/button@0.2.7
 ```
 
-<!-- tabs:end -->
-
-The following code shows the basic use scenario of the repository:
-
-> [!WARNING] The name of the imported repository remains unchanged.
+The following code demonstrates the basic usage scenario of useToggleButton:
 
 ```js
 import React from "react";
@@ -80,7 +76,7 @@ export function ToggleButton(props: any) {
                     padding: 5, width: 100, height: 30, justifyContent: 'center', alignItems: 'center'
                 }}
             >
-                <Text style={{ color: state.isSelected ? "#f1f1f1" : "#000" }} >点击切换</Text>
+                <Text style={{ color: state.isSelected ? "#f1f1f1" : "#000" }} >Click to toggle</Text>
             </Pressable>
         </View>
     );
@@ -90,7 +86,7 @@ export default ToggleButton
 
 ```
 
-下面的代码展示了useCheckbox与useCheckboxGroup的基本使用场景：
+The following code demonstrates the basic usage scenario of useCheckbox and useCheckboxGroup:
 
 ```javascript
 import React, { useContext, useRef } from 'react';
@@ -102,7 +98,7 @@ import { useFocusRing } from '@react-native-aria/focus';
 
 let CheckboxGroupContext = React.createContext<any>(null);
 
-const CheckboxItems = [{ key: 'soccer', value: '足球' }, { key: 'baseball', value: '棒球' }, { key: 'basketball', value: '篮球' }]
+const CheckboxItems = [{ key: 'soccer', value: 'Football' }, { key: 'baseball', value: 'Baseball' }, { key: 'basketball', value: 'Basketball' }]
 const findName = (value: string) => {
     const item = CheckboxItems.find(i => { return i.key === value; })
     return item && item.value
@@ -119,7 +115,7 @@ export function CheckboxGroup(props: any) {
             <CheckboxGroupContext.Provider value={state}>
                 {children}
             </CheckboxGroupContext.Provider>
-            <View><Text>已经选择：</Text>{props.value.map(i=>{
+            <View><Text>Selected：</Text>{props.value.map(i=>{
                 return <Text>{findName(i)}</Text>
             })}</View> 
         </View>
@@ -177,7 +173,7 @@ export default CheckboxExample
 
 ```
 
-下面的代码展示了useRadio与useRadioGroup的基本使用场景：
+The following code demonstrates the basic usage scenario of useRadio and useRadioGroup:
 
 ```javascript
 import React from "react";
@@ -188,7 +184,7 @@ import { useFocusRing } from "@react-native-aria/focus";
 
 let RadioContext = React.createContext<any>({});
 
-const radioItems = [{ key: 'dogs', value: '狗子' }, { key: 'cats', value: '猫儿' }]
+const radioItems = [{ key: 'dogs', value: 'Dogs' }, { key: 'cats', value: 'Cats' }]
 const findName = (value: string) => {
     const item = radioItems.find(i => { return i.key === value; })
     return item && item.value
@@ -211,7 +207,7 @@ export function RadioGroup(props: any) {
             >
                 {children}
             </RadioContext.Provider>
-            <Text>已经选择：{findName(state.selectedValue as string)}</Text>
+            <Text>Selected：{findName(state.selectedValue as string)}</Text>
         </View>
     );
 }
@@ -250,7 +246,7 @@ export default RadioExample
 
 ```
 
-下面的代码展示了useSwitch的基本使用场景：
+The following code demonstrates the basic usage scenario of useSwitch:
 
 ```javascript
 import { useToggleState } from "@react-stately/toggle";
@@ -368,7 +364,7 @@ export function Switch(origProps: any) {
             <View style={[...createToggleSwitchStyle(), { marginBottom: 5 }]}>
                 <Animated.View style={createInsideCircleStyle()}>{icon}</Animated.View>
             </View>
-            <Text style={{ marginLeft: 5 }}>{isOn ? "开" : "关"}</Text>
+            <Text style={{ marginLeft: 5 }}>{isOn ? "On" : "Off"}</Text>
         </View>
     );
 }
@@ -403,7 +399,7 @@ export default ControlledSwitch
 
 ```
 
-下面的代码展示了useOverlayPosition的基本使用场景：
+The following code demonstrates the basic usage scenario of useOverlayPosition:
 
 ```javascript
 import React from "react";
@@ -494,7 +490,7 @@ export function Trigger({ placement }: any) {
                         paddingVertical: 10,
                     }}
                 >
-                    <Text>点我一下</Text>
+                    <Text>Click me</Text>
                 </View>
             </Pressable>
             <Modal visible={toggleState.isSelected} onRequestClose={toggleState.toggle}>
@@ -511,40 +507,40 @@ export default TriggerWrapper
 
 ```
 
-更多hooks请参考[react-native-aria官方文档](https://geekyants.github.io/react-native-aria/docs/)
+For more hooks, please refer to the [react-native-aria official documentation](https://geekyants.github.io/react-native-aria/docs/)
 
-## Constraints
+## Constraints & Limitations
 
 ### Compatibility
 
-This document is verified based on the following versions:
+To use this library, you need the correct React-Native and RNOH versions. Additionally, you need to use the matching DevEco Studio and phone ROM.
 
-1. RNOH：0.72.13; SDK：HarmonyOS NEXT Developer Preview1; IDE：DevEco Studio 4.1.3.500; ROM：2.0.0.59;
-2. RNOH：0.72.27; SDK：HarmonyOS-Next-DB1 5.0.0.29(SP1) ; IDE：DevEco Studio 5.0.3.400; ROM：3.0.0.25;
-3. RNOH：0.72.29; SDK：HarmonyOS NEXT Developer Beta6; IDE：DevEco Studio 5.0.3.706; ROM：3.0.0.61;
-4. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+Verified in the following versions:
+
+1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.868; ROM: 6.0.0.112;
 
 ## Hooks
 
-> [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
+> [!TIP] The "Platform" column indicates the platforms supported by the original third-party library for that property.
 
-> [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
+> [!TIP] The "HarmonyOS Support" column: 'Yes' means the property is supported on the HarmonyOS platform; 'No' means it is not supported; 'partially' means partial support. The usage method is consistent across platforms, with effects benchmarked against iOS or Android.
 
-| Name               | Description                                                                                                                                                                                                   | Type     | Required | Platform | HarmonyOS Support |
-|--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|----------|----------|-------------------|
-| useToggleButton    | Provides the behavior and accessibility implementation for a toggle button component. ToggleButtons allow users to toggle a selection on or off, for example switching between two states or modes.           | Function | no       | iOS,Android      | yes               |
-| useCheckbox        | Provides the behavior and accessibility implementation for a checkbox component. Checkboxes allow users to select multiple items from a list of individual items, or to mark one individual item as selected. | Function | no       | iOS,Android      | yes               |
-| useCheckboxGroup   | Provides the behavior and accessibility implementation for a checkbox group component. Checkbox groups allow users to select multiple items from a list of options.                                           | Function | no       | iOS,Android      | yes               |
-| useRadioGroup      | Provides the behavior and accessibility implementation for a radio group component. Radio groups allow users to select a single item from a list of mutually exclusive options.                               | Function | no       | iOS,Android      | yes               |
-| useSwitch          | Provides the behavior and accessibility implementation for a switch component. A switch is similar to a checkbox, but represents on/off values as opposed to selection.                                       | Function | no       | iOS,Android      | yes               |
-| OverlayContainer   | Provides React Portal like functionality for React Native apps which can be useful for displaying absolutely positioned components like Menu, Tooltip, Popover.                                               | Function | no       | iOS,Android      | yes               |
-| useOverlayPosition | Handles positioning overlays like popovers and menus relative to a trigger element, and updating the position when the window resizes.                                                                        | Function | no       | iOS,Android      | yes               |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+|--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|----------|-------------|-------------------|
+| useToggleButton    | Provides the behavior and accessibility implementation for a toggle button component. ToggleButtons allow users to toggle a selection on or off, for example switching between two states or modes.           | Function | No       | iOS,Android | Yes               |
+| useCheckbox        | Provides the behavior and accessibility implementation for a checkbox component. Checkboxes allow users to select multiple items from a list of individual items, or to mark one individual item as selected. | Function | No       | iOS,Android | Yes               |
+| useCheckboxGroup   | Provides the behavior and accessibility implementation for a checkbox group component. Checkbox groups allow users to select multiple items from a list of options.                                           | Function | No       | iOS,Android | Yes               |
+| useRadioGroup      | Provides the behavior and accessibility implementation for a radio group component. Radio groups allow users to select a single item from a list of mutually exclusive options.                               | Function | No       | iOS,Android | Yes               |
+| useSwitch          | Provides the behavior and accessibility implementation for a switch component. A switch is similar to a checkbox, but represents on/off values as opposed to selection.                                       | Function | No       | iOS,Android | Yes               |
+| OverlayContainer   | Provides React Portal like functionality for React Native apps which can be useful for displaying absolutely positioned components like Menu, Tooltip, Popover.                                               | Function | No       | iOS,Android | Yes               |
+| useOverlayPosition | Handles positioning overlays like popovers and menus relative to a trigger element, and updating the position when the window resizes.                                                                        | Function | No       | iOS,Android | Yes               |
 
 ## Known Issues
+1. Immediate voice reading after toggling selection state is currently not supported.
 
 ## Others
 
 ## License
 
-This project is licensed under [The MIT License (MIT)](https://github.com/gluestack/react-native-aria/blob/main/LICENSE).
-
+This project is based on [The MIT License (MIT)](https://github.com/gluestack/react-native-aria/blob/main/LICENSE). Feel free to enjoy and contribute to open source.
