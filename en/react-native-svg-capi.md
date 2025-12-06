@@ -559,9 +559,13 @@ For details, see [react-native-svg](https://github.com/software-mansion/react-na
 |   y    | 在 y 轴上平移距离 | number\| string | No       | All      | Yes               |
 | width  |     元素宽度      | number\| string | No       | All      | Yes               |
 | height |     元素高度      | number\| string | No       | All      | Yes               |
-| SvgNodeCommonProps |     svg公共属性（见下面Common props）      | object | No       | All      | Yes               |
-| SvgRenderableCommonProps |     svg render属性（见下面Common props）      | object | No       | All      | Yes               |
-| SvgGroupCommonProps |     svg group属性（见下面FontProps props）      | object | No       | All      | Yes               |
+| SvgNodeCommonProps.opacity | 设置透明度      | number | No       | All      | Yes               |
+| SvgNodeCommonProps.matrix |  设置transform动画 | Array<number> | No       | All      | Yes               |
+| SvgNodeCommonProps.mask |   指定使用 Mask 元素实现遮罩效果  | string | No       | All      | Yes               |
+| SvgNodeCommonProps.clipPath |  指定、关联一条裁剪路径  | string | No       | All      | Yes               |
+| SvgNodeCommonProps.clipRule | 设置裁剪规则       | string | No       | All      | Yes               |
+| SvgRenderableCommonProps |     Object      | object | No       | All      | No          |
+| SvgGroupCommonProps |     Object      | object | No       | All      | No               |
 
 
 **函数**
