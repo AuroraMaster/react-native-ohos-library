@@ -177,7 +177,7 @@ Method 2: Directly link to the source code.
 
 ### 3. Configuring CMakeLists and Introducing PermissionsPackage
 
-> V4.1.3 requires configuring CMakeLists and importing PermissionsPackage
+> If you are using version <= 4.1.2-0.1.7, please skip this chapter.
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 

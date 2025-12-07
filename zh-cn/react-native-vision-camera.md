@@ -153,7 +153,7 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 VisionCameraPackage
 
-> V4.0.3 需要配置 CMakeLists 和引入 VisionCameraPackage
+> 若使用的是 <= 4.0.2 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
