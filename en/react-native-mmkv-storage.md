@@ -253,7 +253,7 @@ Method 2: Directly link to the source code.
 
 ### 3. Configuring CMakeLists and Introducing MMKVNativePackage
 
-> V0.10.5 requires configuring CMakeLists and importing RNOHMMKVStoragePackage
+> If you are using version <= 0.10.4, please skip this chapter.
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 

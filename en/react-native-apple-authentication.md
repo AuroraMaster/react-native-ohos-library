@@ -20,7 +20,7 @@ Please refer to the Releases page of the third-party library for the correspondi
 
 | Third-party Library Version | Release Information                                       | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 2.3.0@deprecated      | [@react-native-oh-tpl/react-native-apple-authentication Releases(deprecated)](https://github.com/react-native-oh-library/react-native-apple-authentication/releases) | 0.72       |
+| <= 2.3.0-0.0.1@deprecated      | [@react-native-oh-tpl/react-native-apple-authentication Releases(deprecated)](https://github.com/react-native-oh-library/react-native-apple-authentication/releases) | 0.72       |
 | 2.3.1      | [@react-native-ohos/react-native-apple-authentication Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-apple-authentication/releases) | 0.72       |
 | 2.4.2      | [@react-native-ohos/react-native-apple-authentication Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-apple-authentication/releases) | 0.77       |
 
@@ -90,7 +90,7 @@ export default AppleAuthenticationDemo;
 
 ## Use Codegen
 
-> [!TIP] V2.3.1 no need to execute Codegen.
+Version >= @react-native-ohos/react-native-apple-authentication@2.3.1, compatible with codegen-lib for generating bridge code.
 
 If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
@@ -146,7 +146,7 @@ Method 2: Directly link to the source code.
 
 ### 3.Configure CMakeLists and import RNOHAppleAuthenticationPackage
 
-> V2.3.1 need configure CMakeLists and import RNOHAppleAuthenticationPackage
+> If you are using version <= 2.3.0-0.0.1, please skip this chapter.
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -244,19 +244,12 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Please refer to the Releases page of the third-party library for the corresponding version information
+Verified in the following versions.
 
-| Third-party Library Version | Release Information                                       | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 2.3.0@deprecated      | [@react-native-oh-tpl/react-native-apple-authentication Releases(deprecated)](https://github.com/react-native-oh-library/react-native-apple-authentication/releases) | 0.72       |
-| 2.3.1      | [@react-native-ohos/react-native-apple-authentication Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-apple-authentication/releases) | 0.72       |
-| 2.4.2      | [@react-native-ohos/react-native-apple-authentication Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-apple-authentication/releases) | 0.77       |
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
-This document is verified based on the following versions:
-
-1. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.29(SP1); IDE: DevEco Studio 5.0.3.403; ROM: 3.0.0.25;
-2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
-3. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM：NEXT 5.1.0.150;
 
 ## Properties
 

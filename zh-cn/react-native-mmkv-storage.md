@@ -255,7 +255,7 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 RNOHMMKVStoragePackage
 
-> V0.10.5 需要配置 CMakeLists 和引入 RNOHMMKVStoragePackage
+> 若使用的是 <= 0.10.4 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -277,7 +277,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-mmkv-storage/src/main/cpp" ./mmkv-storage)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-mmkv-storage/src/main/cpp" ./mmkv_storage)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")

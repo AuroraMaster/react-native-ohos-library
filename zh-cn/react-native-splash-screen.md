@@ -4,7 +4,7 @@
   <h1 align="center"> <code>react-native-splash-screen</code> </h1>
 </p>
 
-本项目基于 [react-native-splash-screen@3.3.0](https://github.com/crazycodeboy/react-native-splash-screen/tree/v3.3.0) 开发。
+> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-splash-screen)
 
 ## 1. 安装与使用
 
@@ -12,7 +12,7 @@
 
 | 三方库版本         | 发布信息                                                                                                                                                 | 支持RN版本 |
 |------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------| ---------- |
-| 3.3.0@deprecated | [@react-native-oh-tpl/react-native-splash-screen Releases(deprecated)](https://github.com/react-native-oh-library/react-native-splash-screen/releases) | 0.72       |
+| <= 3.3.0-0.0.2@deprecated | [@react-native-oh-tpl/react-native-splash-screen Releases(deprecated)](https://github.com/react-native-oh-library/react-native-splash-screen/releases) | 0.72       |
 | 3.3.1            | [@react-native-ohos/react-native-splash-screen Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-splash-screen/releases)                | 0.72       |
 | 3.4.0            | [@react-native-ohos/react-native-splash-screen Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-splash-screen/releases)                | 0.77       |
 
@@ -157,35 +157,50 @@ ohpm install
 > 
 ### 3.3. 配置 CMakeLists 和引入 SplashScreenPackage
 
-打开 entry/src/main/cpp/CMakeLists.txt，添加：
+> 若使用的是 <= 3.3.0-0.0.2 版本，请跳过本章。
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
 ```diff
-  ...
-+ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+...
 
-# RNOH_BEGIN: manual_package_linking_1
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_END: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-splash-screen/src/main/cpp" ./splash_screen)
 # RNOH_END: manual_package_linking_1
 
+add_library(rnoh_app SHARED
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
 # RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
 + target_link_libraries(rnoh_app PUBLIC rnoh_splash_screen)
-# RNOH_END: manual_package_linking_2
+# RNOH_BEGIN: manual_package_linking_2
 ```
 
-打开 entry/src/main/cpp/PackageProvider.cpp，添加：
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
 
 ```diff
 #include "RNOH/PackageProvider.h"
-#include "generated/RNOHGeneratedPackage.h"
 + #include "SplashScreenPackage.h"
 
 using namespace rnoh;
 
 std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
     return {
-      std::make_shared<RNOHGeneratedPackage>(ctx),
-+     std::make_shared<SplashScreenPackage>(ctx)
-    };
++        std::make_shared<SplashScreenPackage>(ctx)
 }
 ```
 
@@ -255,8 +270,9 @@ export default App;
 
 在以下版本验证通过：
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 5. API
 

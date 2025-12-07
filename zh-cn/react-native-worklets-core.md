@@ -155,7 +155,7 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 WorkletsPackage
 
-> V1.3.4 需要配置 CMakeLists 和引入 WorkletsPackage
+> 若使用的是 <= 1.3.3-0.0.4 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -176,7 +176,7 @@ add_compile_definitions(WITH_HITRACE_SYSTRACE)
 add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULE_DIR}/@react-native-ohos/react-native-worklets-core/src/main/cpp" ./worklets)
++ add_subdirectory("${OH_MODULE_DIR}/@react-native-ohos/react-native-worklets-core/src/main/cpp" ./rn_worklets)
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
 

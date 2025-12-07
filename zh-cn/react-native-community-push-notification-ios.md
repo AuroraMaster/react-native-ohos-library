@@ -4,17 +4,18 @@
   <h1 align="center"> <code>@react-native-community/push-notification-ios</code> </h1>
 </p>
 
-本项目基于 [@react-native-community/push-notification-ios@1.11.0](https://github.com/react-native-push-notification/ios/tree/v1.11.0) 开发。
 
-该第三方库的仓库已迁移至 GitCode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/push-notification-ios`，具体版本所属关系如下：
+> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-push-notification-ios)
+
+## 1. 安装与使用
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 1.11.0@deprecated     | [@react-native-oh-tpl/push-notification-ios Releases(deprecated)](https://github.com/react-native-oh-library/react-native-push-notification-ios/releases) | 0.72       |
+| <= 1.11.0-0.1.3@deprecated     | [@react-native-oh-tpl/push-notification-ios Releases(deprecated)](https://github.com/react-native-oh-library/react-native-push-notification-ios/releases) | 0.72       |
 | 1.11.2      | [@react-native-ohos/push-notification-ios Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-push-notification-ios/releases) | 0.72       |
 | 1.12.0      | [@react-native-ohos/push-notification-ios Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-push-notification-ios/releases) | 0.77       |
 
-## 1. 安装与使用
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -164,7 +165,7 @@ export const App = () => {
 
 ## 2. Manual Link
 
-Version >= @react-native-ohos/push-notification-ios@1.11.2，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+Version >= @react-native-ohos/react-native-background-fetch@4.2.6，已支持 Autolink，无需手动配置（仍需手动配置的内容已在对应标题处标记），目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 此步骤为手动配置原生依赖项的指导。
 
@@ -220,7 +221,7 @@ ohpm install
 
 ### 2.3. 配置 CMakeLists 和引入 PushNotificationPackage
 
-打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+> 若使用的是 <= 1.11.0-0.1.3 版本，请跳过本章。
 
 ```diff
 + set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
@@ -267,7 +268,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 2.5. 在 ArkTs 侧Ability中添加
+### 2.5. 在 ArkTs 侧Ability中添加（该模块始终需要手动配置）
 
 打开 `entry/src/main/ets/entryability/EntryAbility.ets`，在onNewWant回调中添加：
 
@@ -301,8 +302,9 @@ ohpm install
 
 在以下版本验证通过：
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 4. API
 

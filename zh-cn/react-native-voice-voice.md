@@ -20,7 +20,7 @@
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 3.2.4@deprecated      | [@react-native-oh-tpl/voice Releases(deprecated)](https://github.com/react-native-oh-library/voice/releases) | 0.72       |
+| <= 3.2.4-0.0.5@deprecated      | [@react-native-oh-tpl/voice Releases(deprecated)](https://github.com/react-native-oh-library/voice/releases) | 0.72       |
 | 3.2.5      | [@react-native-ohos/voice Releases](https://gitcode.com/openharmony-sig/rntpc_voice/releases)                        | 0.72       |
 | 3.3.0      | [@react-native-ohos/voice Releases](https://gitcode.com/openharmony-sig/rntpc_voice/releases)                        | 0.77       |
 
@@ -367,7 +367,7 @@ export default VoiceTest;
 ```
 ## 使用 Codegen
 
-> [!TIP] Version >= 3.2.5 不需要执行Codegen
+Version >= @react-native-ohos/voice@3.2.5，已适配codegen-lib生成桥接代码。
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
@@ -426,7 +426,7 @@ ohpm install
 
 ### 3.配置CMakeLists 和引入 VoicePackage
 
-> [!TIP] 若使用的是 3.2.4 版本，请跳过本章
+> 若使用的是 <= 3.2.4-0.0.5 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -520,13 +520,11 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+在以下版本验证通过：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 3.2.4@deprecated      | [@react-native-oh-tpl/voice Releases(deprecated)](https://github.com/react-native-oh-library/voice/releases) | 0.72       |
-| 3.2.5      | [@react-native-ohos/voice Releases](https://gitcode.com/openharmony-sig/rntpc_voice/releases)                        | 0.72       |
-| 3.3.0      | [@react-native-ohos/voice Releases](https://gitcode.com/openharmony-sig/rntpc_voice/releases)                        | 0.77       |
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ### 权限要求
 由于此库涉及语音识别会使用到系统录音功能，使用时需要配置对应的权限，权限需配置在entry/src/main目录下module.json5和entry/src/main/resources/base/element目录下string.json文件
