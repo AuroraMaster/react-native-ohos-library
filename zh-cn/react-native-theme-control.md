@@ -20,7 +20,7 @@
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 6.0.1@deprecated     | [@react-native-oh-tpl/react-native-theme-control Releases(deprecated)](https://github.com/react-native-oh-library/react-native-theme-control/releases) | 0.72       |
+| <= 6.0.1-1.0.3@deprecated     | [@react-native-oh-tpl/react-native-theme-control Releases(deprecated)](https://github.com/react-native-oh-library/react-native-theme-control/releases) | 0.72       |
 | 6.0.2      | [@react-native-ohos/react-native-theme-control Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-theme-control/releases) | 0.72       |
 | 6.1.1      | [@react-native-ohos/react-native-theme-control Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-theme-control/releases) | 0.77       |
 
@@ -111,7 +111,7 @@ Version >= @react-native-ohos/react-native-theme-control@6.0.2，已适配codege
 
 ## Link
 
-Version >= @react-native-ohos/react-native-theme-control@6.0.2，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+Version >= @react-native-ohos/react-native-theme-control@6.0.2，已支持 Autolink，无需手动配置（仍需手动配置的内容已在对应标题处标记），目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 此步骤为手动配置原生依赖项的指导。
 
@@ -163,7 +163,8 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 RNThemeControlPackage
 
-> [!TIP] V6.0.2 需要配置 CMakeLists 和引入 RNThemeControlPackage。
+> 若使用的是 <= 6.0.1-1.0.3 版本，请跳过本章。
+
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -181,6 +182,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
 + add_subdirectory("${OH_MODULE_DIR}/@react-native-ohos/react-native-theme-control/src/main/cpp" ./themecontrol)
 # RNOH_END: manual_package_linking_1
+
 
 add_library(rnoh_app SHARED
     "./PackageProvider.cpp"
@@ -230,7 +232,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 5.在 `entry/src/main/ets/abilityStage` 新建 `MyAbilityStage.ets`
+### 5.在 `entry/src/main/ets/abilityStage` 新建 `MyAbilityStage.ets`（该模块始终需要手动配置）
 
 打开 `entry/src/main/ets/abilityStage/MyAbilityStage.ets`，添加：
 
@@ -257,7 +259,7 @@ export default class MyAbilityStage extends AbilityStage {
 }
 ```
 
-### 6.在 entry/src/main/ets/entryability/EntryAbility.ets 配置生命周期调用
+### 6.在 entry/src/main/ets/entryability/EntryAbility.ets 配置生命周期调用（该模块始终需要手动配置）
 
 打开 `entry/src/main/ets/entryability/EntryAbility.ets`，添加：
 
@@ -312,10 +314,14 @@ ohpm install
 
 ### 兼容性
 
+
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+在以下版本验证通过：
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## API
 

@@ -20,7 +20,7 @@
 
 | 三方库版本  | 发布信息                                                  | 支持RN版本 |
 |--------| ------------------------------------------------------------ | ---------- |
-| 1.10.3@deprecated  | [@react-native-oh-tpl/react-native-maps Releases(deprecated)](https://github.com/react-native-oh-library/react-native-maps/releases) | 0.72       |
+| <= 1.10.3-0.1.4@deprecated  | [@react-native-oh-tpl/react-native-maps Releases(deprecated)](https://github.com/react-native-oh-library/react-native-maps/releases) | 0.72       |
 | 1.10.4             | [@react-native-ohos/react-native-maps Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-maps/releases)   | 0.72       |
 | 1.24.4             | [@react-native-ohos/react-native-maps Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-maps/releases)   | 0.77       |
 
@@ -254,7 +254,7 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 MapsPackge
 
-> V1.10.4 需要配置 CMakeLists 和引入 MapsPackge
+> 若使用的是 <= 1.10.3-0.1.4 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -468,9 +468,9 @@ ohpm install
 
 在以下版本验证通过：
 
-1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
-3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ### 权限要求
 

@@ -21,7 +21,7 @@ Find the matching version information in the release address of a third-party li
 
 | Third-party Library Version | Release Information       | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 4.0.0@deprecated     | [@react-native-oh-tpl/react-native-text-size Releases(deprecated)](https://github.com/react-native-oh-library/react-native-text-size/releases) | 0.72       |
+| <= 4.0.0-0.0.11@deprecated     | [@react-native-oh-tpl/react-native-text-size Releases(deprecated)](https://github.com/react-native-oh-library/react-native-text-size/releases) | 0.72       |
 | 4.0.1                | [@react-native-ohos/react-native-text-size Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-text-size/releases) | 0.72       |
 | 4.1.0                | [@react-native-ohos/react-native-text-size Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-text-size/releases) | 0.77       |
 
@@ -249,6 +249,8 @@ Method 2: Directly link to the source code.
 
 ### 3. Configuring CMakeLists and Introducing RNTextSizePackage
 
+> If you are using version <= 4.0.0-0.0.11, please skip this chapter.
+
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
 ```diff
@@ -269,7 +271,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-text-size/src/main/cpp" ./text-size)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-text-size/src/main/cpp" ./text_size)
 # RNOH_END: manual_package_linking_1
 
 add_library(rnoh_app SHARED
@@ -336,10 +338,12 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-The following combinations have been verified:
+Verified in the following versions.
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+
 
 ## API
 
