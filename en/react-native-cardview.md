@@ -20,11 +20,11 @@ Please refer to the Releases page of the third-party library for the correspondi
 
 | Third-party Library Version | Release Information                                                                                                                          | Supported RN Version |
 |-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------| ---------- |
-| 2.0.3@deprecated            | [@react-native-oh-tpl/react-native-cardview Releases(deprecated)](https://github.com/react-native-oh-library/react-native-cardview/releases) | 0.72       |
+| <= 2.0.3-0.0.2@deprecated   | [@react-native-oh-tpl/react-native-cardview Releases(deprecated)](https://github.com/react-native-oh-library/react-native-cardview/releases) | 0.72                 |
 | 2.0.4                       | [@react-native-ohos/react-native-cardview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-cardview/releases)                | 0.72       |
 | 2.1.0                       | [@react-native-ohos/react-native-cardview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-cardview/releases)                | 0.77       |
 
-For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+For older versions not published on npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -171,6 +171,8 @@ Method 2: Directly link to the source code.
 
 ### 3. Configuring CMakeLists and Introducing CardViewPackage
 
+> If you are using version <= 2.0.3-0.0.2, please skip this chapter.
+
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
 ```diff
@@ -228,7 +230,22 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 4. Running
+### 4. Introducing CardViewPackage to ArkTS
+
+Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
+
+```diff
++ import {CardViewPackage} from '@react-native-ohos/react-native-audio-recorder-player/ts';
+
+export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
+  return [
+    new SamplePackage(ctx),
++   new CardViewPackage(ctx)
+  ];
+}
+```
+
+### 5. Running
 
 Click the `sync` button in the upper right corner.
 
@@ -247,10 +264,11 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-The following combinations have been verified:
+Verified in the following versions.
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## Properties 
 

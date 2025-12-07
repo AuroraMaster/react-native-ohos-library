@@ -11,17 +11,19 @@
         <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
 </p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-clippath/tree/capi)
-
-该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：@react-native-ohos/react-native-clippathview，具体版本所属关系如下：
-
-| 三方库版本 | 包名                                                    | 仓库地址 | 发布(Release) | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |  ---------- |  ---------- |
-| 1.1.8@deprecated | @react-native-oh-tpl/react-native-clippathview | [Github](https://github.com/react-native-oh-library/react-native-clippath/tree/capi)|[Github Releases](https://github.com/react-native-oh-library/react-native-clippath/releases)|0.72       |
-| 1.1.9 | @react-native-ohos/react-native-clippathview           | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-clippath/tree/br_rnoh0.77) |[Gitcode Releases]() | 0.77       |
-| 1.2.0 | @react-native-ohos/react-native-clippathview           | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-clippath/tree/br_rnoh0.77) |[Gitcode Releases]() | 0.77       |
+> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-clippath)
 
 ## 安装与使用
+
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| <= 1.1.8-0.1.6@deprecated | [@react-native-oh-tpl/react-native-clippathview Releases(deprecated)](https://github.com/react-native-oh-library/react-native-clippath/releases) | 0.72         |
+| 1.1.9                    | [@react-native-ohos/react-native-clippathview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-clippath/releases)                | 0.72         |
+| 1.2.0                    | [@react-native-ohos/react-native-clippathview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-clippath/releases)                | 0.77         |
+
+对于未发布到 npm 的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装 tgz 包。
 
 进入到工程目录并输入以下命令：
 
@@ -29,20 +31,12 @@
 
 #### **npm**
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/react-native-clippathview
-
-# 0.77
 npm install @react-native-ohos/react-native-clippathview
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn add @react-native-oh-tpl/react-native-clippathview
-
-# 0.77
 yarn add @react-native-ohos/react-native-clippathview
 ```
 
@@ -108,10 +102,7 @@ Version >= @react-native-ohos/react-native-clippathview@1.1.9，已支持 Autoli
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    // 0.72
-    "@react-native-oh-tpl/react-native-clippathview": "file:../../node_modules/@react-native-oh-tpl/react-native-clippathview/harmony/clipPath.har",
 
-    // 0.77
     "@react-native-ohos/react-native-clippathview": "file:../../node_modules/@react-native-ohos/react-native-clippathview/harmony/clipPath.har",
 }
 ```
@@ -132,6 +123,8 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 ClipPathViewPackage
 
+> 若使用的是 <= 1.1.8-0.1.6 版本，请跳过本章。
+
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
 ```diff
@@ -145,10 +138,6 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_END: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ # 0.72
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-clippathview/src/main/cpp" ./clippath)
-
-+ # 0.77
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-clippathview/src/main/cpp" ./clippath)
 # RNOH_END: manual_package_linking_1
 
@@ -188,10 +177,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-+ // 0.72 
-+ import { ClipPathPackage } from '@react-native-oh-tpl/react-native-clippathview/ts';
-
-+ // 0.77
 + import { ClipPathPackage } from '@react-native-ohos/react-native-clippathview/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -219,12 +204,13 @@ ohpm install
 
 ### 兼容性
 
-本文档内容基于以下版本验证通过：
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
 在以下版本验证通过：
-1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.1.1.830; ROM: 6.0.0.112 SP12;  
-2. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-3. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 属性
 

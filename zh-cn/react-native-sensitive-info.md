@@ -23,7 +23,7 @@
 
 | 三方库版本  | 发布信息                                                  | 支持RN版本 |
 |--------| ------------------------------------------------------------ | ---------- |
-| 6.0.0@deprecated  | [@react-native-oh-tpl/react-native-sensitive-info Releases(deprecated)](https://github.com/react-native-oh-library/react-native-sensitive-info/releases) | 0.72       |
+| <= 6.0.0-alpha.9-0.0.3@deprecated | [@react-native-oh-tpl/react-native-sensitive-info Releases(deprecated)](https://github.com/react-native-oh-library/react-native-sensitive-info/releases) | 0.72         |
 | 6.0.1             | [@react-native-ohos/react-native-sensitive-info Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-sensitive-info/releases)   | 0.72       |
 | 6.1.0             | [@react-native-ohos/react-native-sensitive-info Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-sensitive-info/releases)   | 0.77       |
 
@@ -189,7 +189,69 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 3.在 ArkTs 侧引入 RNSensitiveInfoPackage 
+### 3.配置 CMakeLists 和引入 RNSensitiveInfoPackage
+
+> 若使用的是 <= 6.0.0-alpha.9-0.0.3 版本，请跳过本章。
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-sensitive-info/src/main/cpp" ./react_native_sensitive_info)
+
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_sensitive_info)
+# RNOH_END: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "RNSensitiveInfoPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+      std::make_shared<RNOHGeneratedPackage>(ctx),
+      std::make_shared<SamplePackage>(ctx),
++     std::make_shared<RNSensitiveInfoPackage>(ctx)
+    };
+}
+```
+
+### 4.在 ArkTs 侧引入 RNSensitiveInfoPackage
 
 打开 entry/src/main/ets/组件RNPackagesFactory.ts，添加：
 
@@ -207,7 +269,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.运行
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -230,9 +292,9 @@ ohpm install
 
 在以下版本验证通过：
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ### 权限要求
 在  YourProject/entry/src/main/module.json5补上配置
