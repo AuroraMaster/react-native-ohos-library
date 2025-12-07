@@ -16,18 +16,19 @@ Template version: v0.2.2
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/ReactNativeLocalization)
 
+## Installation and Usage
+
 This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-localization`, After introducing the new version of the third-party library, The version correspondence details are as follows:
 
 | Third-party Library Version | Release Information                                                     | Supported RN Version |
 |-------| ------------------------------------------------------------ | ---------- |
-| 2.3.2@deprecated | [@react-native-oh-tpl/react-native-localization Releases(deprecated)](https://github.com/react-native-oh-library/react-native-localization/releases) | 0.72       |
-| 2.3.2 | [@react-native-oh-tpl/react-native-localization Releases](https://github.com/react-native-oh-library/ReactNativeLocalization/releases)                       | 0.72       |
-| 2.4.0 | [@react-native-ohos/react-native-localization Releases]()                        | 0.77       |
+| <=2.3.2-0.0.1@deprecated | [@react-native-oh-tpl/react-native-localization Releases(deprecated)](https://github.com/react-native-oh-library/react-native-localization/releases) | 0.72       |
+| 2.3.3           | [@react-native-ohos/react-native-localization Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localization/releases) | 0.72       |
+| 2.4.0            | [@react-native-ohos/react-native-localization Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localization/releases) | 0.77       |
 
-## Installation and Usage
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
-
 
 <!-- tabs:start -->
 
@@ -245,7 +246,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 ### 4.Configure CMakeLists and introduce LocalizationPackage
 
-> [!TIP] 0.77 need to execute
+> If you are using version <=2.3.2-0.0.1, please skip this chapter.
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
@@ -321,11 +322,13 @@ Then build and run the code.
 
 ### Compatibility
 
-Verified in the following version:
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.200;ROM: 3.0.0.18;
+Verified in the following versions.
 
-RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK;IDE: DevEco Studio  6.0.0.868;ROM:6.0.0.112;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## Static Methods
 

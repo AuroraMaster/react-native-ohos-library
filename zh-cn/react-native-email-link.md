@@ -20,7 +20,7 @@
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 1.15.0@deprecated     | [@react-native-oh-tpl/react-native-email-link Releases(deprecated)](https://github.com/react-native-oh-library/react-native-email-link/releases) | 0.72       |
+| <=1.15.0-0.0.2@deprecated | [@react-native-oh-tpl/react-native-email-link Releases(deprecated)](https://github.com/react-native-oh-library/react-native-email-link/releases) | 0.72       |
 | 1.15.1     | [@react-native-ohos/react-native-email-link Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-email-link/releases) | 0.72       |
 | 1.16.2     | [@react-native-ohos/react-native-email-link Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-email-link/releases) | 0.77       |
 
@@ -158,8 +158,6 @@ Version >= @react-native-ohos/react-native-email-link@1.15.1，已适配codegen-
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/codegen.md)。
 
-**注意：** V1.16.1 不需要执行 Codegen。
-
 ## Link
 
 Version >= @react-native-ohos/react-native-email-lin@1.15.1，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
@@ -215,7 +213,7 @@ ohpm install
 
 ### 3.配置 CMakeLists和引入 RNOHGeneratedPackage
 
-> V1.16.1 需要配置 CMakeLists和引入 RNOHGeneratedPackage。
+> 若使用的是 <= 1.15.0-0.0.2 版本，请跳过本章。
 
 本库将codegen生成的代码内置在库文件中。
 
@@ -284,7 +282,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.运行
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -303,8 +301,11 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+在以下版本验证通过：
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## API
 

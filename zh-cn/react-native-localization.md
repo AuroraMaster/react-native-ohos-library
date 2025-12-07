@@ -18,15 +18,17 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/ReactNativeLocalization)
 
+## 安装与使用
+
 该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-localization`，具体版本所属关系如下：
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 |-------| ------------------------------------------------------------ | ---------- |
-| 2.3.2@deprecated | [@react-native-oh-tpl/react-native-localization Releases(deprecated)](https://github.com/react-native-oh-library/react-native-localization/releases) | 0.72       |
-| 2.3.2            | [@react-native-oh-tpl/react-native-localization Releases](https://github.com/react-native-oh-library/ReactNativeLocalization/releases) | 0.72       |
-| 2.4.0            | [@react-native-ohos/react-native-localization Releases]()    | 0.77       |
+| <=2.3.2-0.0.1@deprecated | [@react-native-oh-tpl/react-native-localization Releases(deprecated)](https://github.com/react-native-oh-library/react-native-localization/releases) | 0.72       |
+| 2.3.3           | [@react-native-ohos/react-native-localization Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localization/releases) | 0.72       |
+| 2.4.0            | [@react-native-ohos/react-native-localization Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localization/releases) | 0.77       |
 
-## 安装与使用
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -250,7 +252,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 ### 4.配置 CMakeLists 和引入 LocalizationPackage
 
-> [!TIP] 0.77 需要执行 
+> 若使用的是 <=2.3.2-0.0.1 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -326,11 +328,13 @@ ohpm install
 
 ### 兼容性
 
-在下述版本验证通过：
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
+在以下版本验证通过：
 
-RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release SDK；IDE：DevEco Studio  6.0.0.868; ROM：6.0.0.112; 
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 静态方法
 

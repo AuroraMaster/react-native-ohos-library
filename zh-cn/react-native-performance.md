@@ -22,7 +22,7 @@
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 5.1.2@deprecated      | [@react-native-oh-tpl/react-native-performance Releases(deprecated)](https://github.com/react-native-oh-library/react-native-performance/releases) | 0.72       |
+| <=5.1.2-0.0.3@deprecated | [@react-native-oh-tpl/react-native-performance Releases(deprecated)](https://github.com/react-native-oh-library/react-native-performance/releases) | 0.72       |
 | 5.1.3      | [@react-native-ohos/react-native-performance Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-performance/releases)     | 0.72       |
 | 5.2.0      | [@react-native-ohos/react-native-performance Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-performance/releases)     | 0.77       |
 
@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
 ```
 ## 使用 Codegen
 
-> [!TIP] V5.1.3 不需要执行 Codegen。
+Version >= @react-native-ohos/react-native-performance@5.1.3，已适配codegen-lib生成桥接代码。
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
@@ -278,7 +278,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 ### 4.配置 CMakeLists 和引入 PerformancePackage
 
-> [!TIP] 若使用的是V 5.1.2 版本，请跳过本章
+> 若使用的是 <=5.1.2-0.0.3 版本，请跳过本章
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -354,10 +354,13 @@ ohpm install
 ## 约束与限制
 
 ### 兼容性
-本文档内容基于以下版本验证通过：
+1. 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-1. RNOH：0.72.33; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+   在以下版本验证通过：
+
+   1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+   2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+   3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## Performance
 

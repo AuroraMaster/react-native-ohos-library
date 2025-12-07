@@ -22,7 +22,7 @@
 
 | 三方库版本  | 发布信息                                                  | 支持RN版本 |
 |--------| ------------------------------------------------------------ | ---------- |
-| 2.3.1@deprecated  | [@react-native-oh-tpl/react-native-user-agent Releases(deprecated)](https://github.com/react-native-oh-library/react-native-user-agent/releases) | 0.72       |
+| <=2.3.1-0.0.1@deprecated | [@react-native-oh-tpl/react-native-user-agent Releases(deprecated)](https://github.com/react-native-oh-library/react-native-user-agent/releases) | 0.72       |
 | 2.3.2             | [@react-native-ohos/react-native-user-agent Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-user-agent/releases)   | 0.72       |
 | 2.4.0             | [@react-native-ohos/react-native-user-agent Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-user-agent/releases)   | 0.77       |
 
@@ -151,7 +151,7 @@ ohpm install
 
 ### 3.配置 CMakeLists  和引入 UserAgent
 
->注：0.77 不需要配置 CMakeLists 。
+>若使用的是 <=2.3.1-0.0.1 版本，请跳过本章。
 
 ```diff
 project(rnapp)
@@ -244,8 +244,9 @@ ohpm install
 
 在以下版本验证通过：
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 属性
 
