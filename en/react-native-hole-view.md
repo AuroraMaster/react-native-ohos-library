@@ -20,7 +20,7 @@ Please refer to the Releases page of the third-party library for the correspondi
 
 | Third-party Library Version | Release Information       | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| <= 3.0.0-alpha4-0.0.5@deprecated  | [@react-native-oh-tpl/react-native-hole-view Releases(deprecated)](https://github.com/react-native-oh-library/react-native-hole-view/releases) | 0.72       |
+| <= 3.0.0-alpha4-0.0.5@deprecated | [@react-native-oh-tpl/react-native-hole-view Releases(deprecated)](https://github.com/react-native-oh-library/react-native-hole-view/releases) | 0.72                 |
 | 3.0.1             | [@react-native-ohos/react-native-hole-view Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-hole-view/releases)   | 0.72       |
 | 3.1.0             | [@react-native-ohos/react-native-hole-view Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-hole-view/releases)   | 0.77       |
 
@@ -196,7 +196,7 @@ Method 2: Directly link to the source code.
 
 ### 3. Configuring CMakeLists and Introducing HoleViewPackage
 
-> V3.0.1 requires configuring CMakeLists and importing HoleViewPackage
+> If you are using version <= 3.0.0-alpha4-0.0.5, please skip this chapter.
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
@@ -255,7 +255,22 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 4. Running
+### 4. Introducing RNOHHoleViewPackage to ArkTS
+
+Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
+
+```diff
++ import {RNOHHoleViewPackage} from '@react-native-ohos/react-native-audio-recorder-player/ts';
+
+export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
+  return [
+    new SamplePackage(ctx),
++   new RNOHHoleViewPackage(ctx)
+  ];
+}
+```
+
+### 5. Running
 
 Click the `sync` button in the upper right corner.
 

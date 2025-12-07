@@ -4,17 +4,19 @@
   <h1 align="center"> <code>react-native-sensors</code> </h1>
 </p>
 
-本项目基于 [react-native-sensors@7.2.1-rc.2](https://github.com/react-native-sensors/react-native-sensors/tree/v7.2.1-rc.2) 开发。
-
-该第三方库的仓库已迁移至 Gitee，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-sensors`，具体版本所属关系如下：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 7.2.1@deprecated     | [@react-native-oh-library/react-native-sensors Releases(deprecated)](https://github.com/react-native-oh-library/react-native-sensors/releases) | 0.72       |
-| 7.2.3      | [@react-native-ohos/react-native-sensors Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-sensors/releases) | 0.72       |
-| 7.3.7      | [@react-native-ohos/react-native-sensors Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-sensors/releases) | 0.77       |
+> [!TIP] [Github 地址](https://github.com/react-native-sensors/react-native-sensors)
 
 ## 1. 安装与使用
+
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本  | 发布信息                                                  | 支持RN版本 |
+|--------| ------------------------------------------------------------ | ---------- |
+| <= 7.2.1@deprecated | [@react-native-oh-library/react-native-sensors Releases(deprecated)](https://github.com/react-native-oh-library/react-native-sensors/releases) | 0.72         |
+| 7.2.3               | [@react-native-ohos/react-native-sensors Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-sensors/releases)                    | 0.72         |
+| 7.3.7               | [@react-native-ohos/react-native-sensors Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-sensors/releases)                    | 0.77         |
+
+对于未发布到 npm 的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装 tgz 包。
 
 进入到工程目录并输入以下命令：
 
@@ -195,7 +197,7 @@ ohpm install
 
 ### 2.3 配置 CMakeLists 和引入 SensorsPackage
 
- > **[!TIP] 版本 7.2.2 及以上需要.**
+> 若使用的是 <= 7.2.1 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -228,6 +230,8 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
+### 2.4 在 ArkTs 侧引入 SensorsPackage
+
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
@@ -242,7 +246,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 2.4 运行
+### 2.5 运行
 
 点击右上角的 `sync` 按钮
 
@@ -261,8 +265,11 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+在以下版本验证通过：
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ### 3.2 权限要求
 

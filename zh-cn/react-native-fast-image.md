@@ -20,7 +20,7 @@
 
 | 三方库版本  | 发布信息                                                  | 支持RN版本 |
 |--------| ------------------------------------------------------------ | ---------- |
-| <= 8.6.3-0.4.17@deprecated  | [@react-native-oh-tpl/react-native-fast-image Releases(deprecated)](https://github.com/react-native-oh-library/react-native-fast-image/releases) | 0.72       |
+| <= 8.6.3-0.4.17@deprecated | [@react-native-oh-tpl/react-native-fast-image Releases(deprecated)](https://github.com/react-native-oh-library/react-native-fast-image/releases) | 0.72         |
 | 8.6.4             | [@react-native-ohos/react-native-fast-image Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fast-image/releases)   | 0.72       |
 | 8.7.0             | [@react-native-ohos/react-native-fast-image Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fast-image/releases)   | 0.77       |
 
@@ -161,7 +161,7 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 FastImagePackage
 
-> V8.6.4 需要配置 CMakeLists 和引入 FastImagePackage
+> 若使用的是 <= 8.6.3-0.4.17 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 

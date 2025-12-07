@@ -20,7 +20,7 @@
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 4.1.2@deprecated      | [@react-native-oh-tpl/react-native-track-player Releases(deprecated)](https://github.com/react-native-oh-library/react-native-track-player/releases) | 0.72       |
+| <= 4.1.2@deprecated | [@react-native-oh-tpl/react-native-track-player Releases(deprecated)](https://github.com/react-native-oh-library/react-native-track-player/releases) | 0.72         |
 | 4.1.3       | [@react-native-ohos/react-native-track-player Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-track-player/releases)                        | 0.72       |
 | 4.2.0     | [@react-native-ohos/react-native-track-player Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-track-player/releases)                        | 0.77       |
 
@@ -200,7 +200,7 @@ ohpm install
 
 ### 3.配置CMakeLists 和引入 TrackPlayerPackage
 
-> [!TIP] 若使用的是 4.1.2 版本，请跳过本章
+> 若使用的是 <= 4.1.2 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -292,10 +292,13 @@ ohpm install
 
 ### 兼容性
 
-本文档内容基于以下版本验证通过：
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-1. RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.200; ROM: 3.0.0.18;
-2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.868; ROM: 6.0.0.112;
+在以下版本验证通过：
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ### 权限要求
 

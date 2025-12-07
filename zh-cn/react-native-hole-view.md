@@ -22,7 +22,7 @@
 
 | 三方库版本  | 发布信息                                                  | 支持RN版本 |
 |--------| ------------------------------------------------------------ | ---------- |
-| <= 3.0.0-alpha4-0.0.5@deprecated  | [@react-native-oh-tpl/react-native-hole-view Releases(deprecated)](https://github.com/react-native-oh-library/react-native-hole-view/releases) | 0.72       |
+| <= 3.0.0-alpha4-0.0.5@deprecated | [@react-native-oh-tpl/react-native-hole-view Releases(deprecated)](https://github.com/react-native-oh-library/react-native-hole-view/releases) | 0.72         |
 | 3.0.1             | [@react-native-ohos/react-native-hole-view Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-hole-view/releases)   | 0.72       |
 | 3.1.0             | [@react-native-ohos/react-native-hole-view Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-hole-view/releases)   | 0.77       |
 
@@ -200,7 +200,7 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 HoleViewPackage
 
-> V3.0.1 需要配置 CMakeLists 和引入 HoleViewPackage
+> 若使用的是 <= 3.0.0-alpha4-0.0.5 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -259,7 +259,22 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 4.运行
+### 4.在 ArkTs 侧引入 RNOHHoleViewPackage
+
+打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
+
+```diff
++ import {RNOHHoleViewPackage} from '@react-native-ohos/react-native-audio-recorder-player/ts';
+
+export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
+  return [
+    new SamplePackage(ctx),
++   new RNOHHoleViewPackage(ctx)
+  ];
+}
+```
+
+### 5.运行
 
 点击右上角的 `sync` 按钮
 

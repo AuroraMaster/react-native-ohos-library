@@ -13,7 +13,7 @@
 
 | 三方库版本  | 发布信息                                                  | 支持RN版本 |
 |--------| ------------------------------------------------------------ | ---------- |
-| 1.4.2@deprecated  | [@react-native-oh-tpl/progress-view Releases(deprecated)](https://github.com/react-native-oh-library/progress-view/releases) | 0.72       |
+| <= 1.4.2-0.0.8@deprecated | [@react-native-oh-tpl/progress-view Releases(deprecated)](https://github.com/react-native-oh-library/progress-view/releases) | 0.72         |
 | 1.4.3             | [@react-native-ohos/progress-view Releases](https://gitcode.com/openharmony-sig/rntpc_progress-view/releases)   | 0.72       |
 | 1.5.0             | [@react-native-ohos/progress-view Releases](https://gitcode.com/openharmony-sig/rntpc_progress-view/releases)   | 0.77       |
 
@@ -114,7 +114,7 @@ ohpm install
 
 ### 2.3 配置 CMakeLists 和引入 ProgressViewPackage
 
-> V1.4.3 需要配置 CMakeLists 和引入 ProgressViewPackage
+> 若使用的是 <= 1.4.2-0.0.8 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -197,7 +197,7 @@ const arkTsComponentNames: Array<string> = [
   ];
 ```
 
- > **[!TIP] 版本 1.4.3 及以上需要.**
+### 2.4 在 ArkTs 侧引入 ProgressViewPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
@@ -213,7 +213,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 2.4 运行
+### 2.5 运行
 
 点击右上角的 `sync` 按钮
 
@@ -234,9 +234,9 @@ ohpm install
 
 在以下版本验证通过：
 
-1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
-3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 4. 属性
 
