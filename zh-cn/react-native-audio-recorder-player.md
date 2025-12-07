@@ -17,9 +17,10 @@
 ## 安装与使用
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
+
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 3.6.10@deprecated     | [@react-native-oh-tpl/react-native-audio-recorder-player Releases(deprecated)](https://github.com/react-native-oh-library/react-native-audio-recorder-player/releases) | 0.72       |
+| <= 3.6.10-0.0.2@deprecated     | [@react-native-oh-tpl/react-native-audio-recorder-player Releases(deprecated)](https://github.com/react-native-oh-library/react-native-audio-recorder-player/releases) | 0.72       |
 | 3.6.11      | [@react-native-ohos/react-native-audio-recorder-player Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-audio-recorder-player/releases)     | 0.72       |
 | 3.6.14      | [@react-native-ohos/react-native-audio-recorder-player Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-audio-recorder-player/releases)     | 0.77       |
 
@@ -518,8 +519,7 @@ export default Page;
 ```
 ## Link
 
-Version > @react-native-ohos/react-native-audio-recorder-player@3.6.11，已支持 Autolink，无需手动配置，目前只支持72框架。
-Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+Version >= @react-native-ohos/react-native-audio-recorder-player@3.6.11，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 此步骤为手动配置原生依赖项的指导。
 
@@ -535,6 +535,7 @@ Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_nati
   }
 }
 ```
+
 ### 引入原生端代码
 
 目前有两种方法：
@@ -568,6 +569,8 @@ ohpm install
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
 ### 配置 CMakeLists 和引入 RNAudioRecorderPlayerPackage
+
+> 若使用的是 <= 3.6.10-0.0.2 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -625,7 +628,8 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
     };
 }
 ```
-### 在 ArkTs 侧引入 react-native-audio-recorder-player Package
+
+### 在 ArkTs 侧引入 RNAudioRecorderPlayerPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
@@ -639,6 +643,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+
 ### 运行
 
 点击右上角的 `sync` 按钮
@@ -657,13 +662,11 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 3.6.10@deprecated     | [@react-native-oh-tpl/react-native-audio-recorder-player Releases(deprecated)](https://github.com/react-native-oh-library/react-native-audio-recorder-player/releases) | 0.72       |
-| 3.6.11      | [@react-native-ohos/react-native-audio-recorder-player Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-audio-recorder-player/releases)     | 0.72       |
-| 3.6.14      | [@react-native-ohos/react-native-audio-recorder-player Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-audio-recorder-player/releases)     | 0.77       |
+在以下版本验证通过：
 
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ### 权限要求
 

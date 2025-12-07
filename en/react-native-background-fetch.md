@@ -21,11 +21,11 @@ Please refer to the Releases page of the third-party library for the correspondi
 
 | Third-party Library Version | Release Information       | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 4.2.5@deprecated      | [@react-native-oh-tpl/react-native-background-fetch Releases(deprecated)](https://github.com/react-native-oh-library/react-native-background-fetch/releases) | 0.72       |
+| <= 4.2.5-0.0.2@deprecated      | [@react-native-oh-tpl/react-native-background-fetch Releases(deprecated)](https://github.com/react-native-oh-library/react-native-background-fetch/releases) | 0.72       |
 | 4.2.6      | [@react-native-ohos/react-native-background-fetch Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-background-fetch/releases) | 0.72       |
 | 4.3.0      | [@react-native-ohos/react-native-background-fetch Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-background-fetch/releases) | 0.77       |
 
-For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -212,7 +212,7 @@ If this repository has been adapted to `Codegen`, generate the bridge code of th
 
 ## Link
 
-Version >= @react-native-ohos/react-native-background-fetch@4.2.6 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Version >= @react-native-ohos/react-native-background-fetch@4.2.6 now supports Autolink without requiring manual configuration(The content that still needs to be manually configured has been marked in the corresponding title), currently only supports 72 frameworks.
 Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 This step provides guidance for manually configuring native dependencies.
@@ -262,7 +262,7 @@ Method 2: Directly link to the source code.
 
 ### Configure CMakeLists and import RNBackgroundFetchPackage
 
-> [!TIP] If using version 4.2.6, please configure CMakeLists and import ShakePackge
+> If you are using version <= 4.2.5-0.0.2, please skip this chapter.
 
 open `entry/src/main/cpp/CMakeLists.txt`，add：
 
@@ -334,7 +334,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### Introducing RNBackgroundFetchExtensionAbility to ArkTS
+### Introducing RNBackgroundFetchExtensionAbility to ArkTS(This module always requires manual configuration)
 
 1. Open'entry/src/main/ets', create a new directory and ArkTS file, and create a new directory and name it WorkSchedulerExtension. In the WorkSchedulerExtension directory, create an ArkTS file and name it WorkSchedulerExtension.ets to implement the delayed task callback interface.
 
@@ -388,11 +388,11 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-This document is verified based on the following versions:
+Verified in the following versions.
 
-1. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.29(SP1); IDE: DevEco Studio 5.0.3.403; ROM: 3.0.0.25;
-2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
-3. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM：NEXT 5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## API
 

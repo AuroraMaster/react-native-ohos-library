@@ -4,15 +4,17 @@
   <h1 align="center"> <code>react-native-camera-kit</code> </h1>
 </p>
 
+> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-camera-kit)
+
+## 安装与使用
+
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 14.0.1@deprecated      | [@react-native-oh-tpl/react-native-camera-kit Releases(deprecated)](https://github.com/react-native-oh-library/react-native-camera-kit/releases) | 0.72       |
+| <= 14.0.1@deprecated      | [@react-native-oh-tpl/react-native-camera-kit Releases(deprecated)](https://github.com/react-native-oh-library/react-native-camera-kit/releases) | 0.72       |
 | 14.0.2      | [@react-native-ohos/react-native-camera-kit Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-camera-kit/releases)                        | 0.72       |
 | 15.1.1     | [@react-native-ohos/react-native-camera-kit Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-camera-kit/releases)                        | 0.77       |
-
-## 安装与使用
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -258,7 +260,56 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 5.运行
+### 5.配置 CMakeLists 和引入 CameraKitPackage
+
+> 若使用的是 <= 14.0.1 版本，请跳过本章。
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+...
+
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_END: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-camera-kit/src/main/cpp" ./camera_kit)
+# RNOH_END: manual_package_linking_1
+
+add_library(rnoh_app SHARED
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_camera_kit)
+# RNOH_BEGIN: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
++ #include "CameraKitPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
++        std::make_shared<CameraKitPackage>(ctx)
+}
+```
+
+### 6.运行
 
 点击右上角的 `sync` 按钮
 
@@ -275,9 +326,13 @@ ohpm install
 
 ### 兼容性
 
-本文档内容基于以下版本验证通过：
-1. RNOH：0.72.40; SDK：HarmonyOS NEXT Developer DB3; IDE: DevEco Studio: 5.0.5.220; ROM：NEXT.0.0.105;
-2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release; IDE: DevEco Studio 6.0.0.858; ROM：6.0.0.112;
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+
+在以下版本验证通过：
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ### 权限要求
 

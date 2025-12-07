@@ -15,16 +15,17 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-file-viewer)
 
-The repository of this third-party library has been migrated to Gitcode and supports direct download from npm. The new package name is: @react-native-ohos/react-native-file-viewer. The specific version relationships are as follows:
+## Installation and Usage
+
+Please refer to the Releases page of the third-party library for the corresponding version information
 
 | Third-party Library Version | Release Information                                                     | Supported RN Version |
-|-------| ------------------------------------------------------------ | ---------- |
-| 2.1.6@deprecated | [@react-native-oh-tpl/react-native-file-viewer Releases(deprecated)](https://github.com/react-native-oh-library/react-native-file-viewer/releases) | 0.72       |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| <= 2.1.6@deprecated | [@react-native-oh-tpl/react-native-file-viewer Releases(deprecated)](https://github.com/react-native-oh-library/react-native-file-viewer/releases) | 0.72       |
 | 2.1.7 | [@react-native-ohos/react-native-file-viewer Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-file-viewer/releases)                        | 0.72       |
 | 2.2.0 | [@react-native-ohos/react-native-file-viewer Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-file-viewer/releases)                        | 0.77       |
 
-
-## Installation and Usage
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -216,12 +217,10 @@ Method 2: Directly link to the source code.
 
 ### 3.configuring CMakeLists and introducing FileViewerPackage
 
-> [!TIP] If you are using a RN0.72 project, please skip this chapter.
+> If you are using version <= 2.1.6, please skip this chapter.
 
 Open `entry/src/main/cpp/CMakeLists.txt`，add：  
 
-
-### 3. in ArkTs import RNFileViewerPackage
 ```cmake
 project(rnapp)
 cmake_minimum_required(VERSION 3.4.1)
@@ -278,7 +277,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 ```
 
 
-### 3. Introducing RNFileViewerTurboModule Package to ArkTS
+### 4. Introducing RNFileViewerTurboModule Package to ArkTS
 
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
@@ -311,10 +310,13 @@ Then build and run the code.
 
 ### Compatibility
 
-This document is verified based on the following versions:
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-1. RNOH: 0.72.33; SDK: OpenHarmony 5.0.0.71 (API Version 12 Release); IDE: DevEco Studio 5.0.3.900; ROM: NEXT.0.0.71;
-2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
+Verified in the following versions.
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## API
 
