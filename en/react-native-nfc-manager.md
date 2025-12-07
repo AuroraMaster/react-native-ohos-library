@@ -20,11 +20,11 @@ Please refer to the Releases page of the third-party library for the correspondi
 
 | Third-party Library Version | Release Information       | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 3.15.0@deprecated     | [@react-native-oh-tpl/react-native-nfc-manager Releases(deprecated)](https://github.com/react-native-oh-library/react-native-nfc-manager/releases) | 0.72       |
+|  <= 3.15.0-0.0.4@deprecated     | [@react-native-oh-tpl/react-native-nfc-manager Releases(deprecated)](https://github.com/react-native-oh-library/react-native-nfc-manager/releases) | 0.72       |
 | 3.15.1                | [@react-native-ohos/react-native-nfc-manager Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-nfc-manager/releases)     | 0.72       |
 | 3.16.2                | [@react-native-ohos/react-native-nfc-manager Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-nfc-manager/releases)     | 0.77       |
 
-For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+For older versions not published on npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -98,7 +98,7 @@ If this repository has been adapted to `Codegen`, generate the bridge code of th
 
 ## Link
 
-Version >= @react-native-ohos/react-native-nfc-manager@3.15.1 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Version >= @react-native-ohos/react-native-nfc-manager@3.15.1 now supports Autolink without requiring manual configuration(The content that still needs to be manually configured has been marked in the corresponding title), currently only supports 72 frameworks.
 Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 This step provides guidance for manually configuring native dependencies.
@@ -115,7 +115,7 @@ Adding the overrides Field to oh-package.json5 File in the Root Directory of the
 }
 ```
 
-## Configuring an Entry
+## Configuring an Entry(This module always requires manual configuration)
 
 The **tag** module provides APIs for operating and managing NFC tags. The following tag read modes are available: <br>Background mode: The device reads the tag by using NFC without starting any application, and then searches for applications based on the tag type. If only one application is matched, the card reading page of that application will be started. If multiple applications are matched, an application selector will be started, asking the user to select an application. <br>Foreground mode: A foreground application has priority to read the NFC tag discovered.
 
@@ -232,7 +232,7 @@ Method 2: Directly link to the source code.
 
 ### 3. Introducing RNNfcManagerPackage to ArkTS
 
-> [!TIP] If using version 3.15.0, please configure CMakeLists and import ShakePackge
+> If you are using version <= 3.15.0-0.0.4, please skip this chapter.
 
 open `entry/src/main/cpp/CMakeLists.txt`，add：
 
@@ -325,10 +325,11 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-The following combinations have been verified:
+Verified in the following versions.
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ### Permission Requirements
 

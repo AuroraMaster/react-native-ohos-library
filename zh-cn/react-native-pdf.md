@@ -20,7 +20,7 @@
 
 | 三方库版本         | 发布信息                                                                                                                             | 支持RN版本 |
 |------------------|------------------------------------------------------------------------------------------------------------------------------------| ---------- |
-| 6.7.4@deprecated | [@react-native-oh-tpl/react-native-pdf Releases(deprecated)](https://github.com/react-native-oh-library/react-native-pdf/releases) | 0.72       |
+| <= 6.7.4-0.3.6@deprecated | [@react-native-oh-tpl/react-native-pdf Releases(deprecated)](https://github.com/react-native-oh-library/react-native-pdf/releases) | 0.72       |
 | 6.7.5            | [@react-native-ohos/react-native-pdf Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-pdf/releases)                | 0.72       |
 | 6.8.0            | [@react-native-ohos/react-native-pdf Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-pdf/releases)                | 0.77       |
 
@@ -153,6 +153,8 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 PdfViewPackage
 
+> 若使用的是 <= 6.7.4-0.3.6 版本，请跳过本章。
+
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
 ```diff
@@ -265,8 +267,9 @@ ohpm install
 
 在以下版本验证通过：
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 属性
 
