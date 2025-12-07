@@ -261,7 +261,7 @@ Method 2: Directly link to the source code.
 
 ### 3. Configuring CMakeLists and Introducing BlurPackage
 
-> V4.4.2 requires configuring CMakeLists and importing BlurPackage
+> If you are using version <= 4.4.1, please skip this chapter.
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
