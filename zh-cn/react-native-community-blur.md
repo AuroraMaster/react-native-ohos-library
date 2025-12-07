@@ -260,7 +260,7 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 BlurPackage
 
-> V4.4.2 需要配置 CMakeLists 和引入 BlurPackage
+> 若使用的是 <= 4.4.1 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
