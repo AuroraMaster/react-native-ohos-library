@@ -4,7 +4,7 @@
   <h1 align="center"> <code>react-native-image-sequence</code> </h1>
 </p>
 
-This project is based on [react-native-image-sequence@0.9.1](https://github.com/bwindsor/react-native-image-sequence/tree/aee3d372d7960234721e32d2b02432fb5d0fa98b).
+> [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-image-sequence)
 
 ## 1. Installation and Usage
 
@@ -12,11 +12,11 @@ Please refer to the Releases page of the third-party library for the correspondi
 
 | Third-party Library Version | Release Information       | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 0.9.1@deprecated     | [@react-native-oh-tpl/react-native-mage-sequence-2 Releases(deprecated)](https://github.com/react-native-oh-library/react-native-mage-sequence-2/releases) | 0.72       |
-| 0.9.2                | [@react-native-ohos/react-native-mage-sequence-2 Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-mage-sequence-2/releases) | 0.72       |
-| 0.10.0                | [@react-native-ohos/react-native-mage-sequence-2 Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-mage-sequence-2/releases) | 0.77       |
+| <= 0.9.1-0.0.3@deprecated     | [@react-native-oh-tpl/react-native-image-sequence-2 Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-sequence/releases) | 0.72       |
+| 0.9.2                | [@react-native-ohos/react-native-image-sequence-2 Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-sequence/releases) | 0.72       |
+| 0.10.0                | [@react-native-ohos/react-native-image-sequence-2 Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-sequence/releases) | 0.77       |
 
-For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -342,6 +342,8 @@ Method 2: Directly link to the source code.
 
 ### 3.3. Configuring CMakeLists and Introducing ImageSequence2Package Package
 
+> If you are using version <= 0.9.1-0.0.3, please skip this chapter.
+
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
 ```diff
@@ -430,12 +432,13 @@ Then build and run the code.
 
 ### 4.1. Compatibility
 
-Please refer to the Releases page of the third-party library for the corresponding version information
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-The following combinations have been verified:
+Verified in the following versions.
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 5. Properties
 

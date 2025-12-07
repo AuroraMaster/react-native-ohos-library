@@ -5,7 +5,7 @@
 </p>
 
 
-本项目基于 [react-native-image-sequence@0.9.1](https://github.com/bwindsor/react-native-image-sequence/tree/aee3d372d7960234721e32d2b02432fb5d0fa98b) 开发。
+> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-image-sequence)
 
 ## 1. 安装与使用
 
@@ -13,9 +13,9 @@
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 0.9.1@deprecated     | [@react-native-oh-tpl/react-native-mage-sequence-2 Releases(deprecated)](https://github.com/react-native-oh-library/react-native-mage-sequence-2/releases) | 0.72       |
-| 0.9.2                | [@react-native-ohos/react-native-mage-sequence-2 Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-mage-sequence-2/releases) | 0.72       |
-| 0.10.0                | [@react-native-ohos/react-native-mage-sequence-2 Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-mage-sequence-2/releases) | 0.77       |
+| <= 0.9.1-0.0.3@deprecated     | [@react-native-oh-tpl/react-native-image-sequence-2 Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-sequence/releases) | 0.72       |
+| 0.9.2                | [@react-native-ohos/react-native-image-sequence-2 Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-sequence/releases) | 0.72       |
+| 0.10.0                | [@react-native-ohos/react-native-image-sequence-2 Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-sequence/releases) | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -295,9 +295,9 @@ Version >= @react-native-ohos/react-native-image-sequence-2@0.9.2，已支持 Au
 
 ### 3.1. Overrides RN SDK
 
-为了让工程依赖同一个版本的 RN SDK，需要在工程根目录的 `oh-package.json5` 添加 overrides 字段，指向工程需要使用的 RN SDK 版本。替换的版本既可以是一个具体的版本号，也可以是一个模糊版本，还可以是本地存在的 HAR 包或源码目录。
+为了让工程依赖同一个版本的 RN SDK，需要在工程根目录的 `harmony/oh-package.json5` 添加 overrides 字段，指向工程需要使用的 RN SDK 版本。替换的版本既可以是一个具体的版本号，也可以是一个模糊版本，还可以是本地存在的 HAR 包或源码目录。
 
-为了让工程依赖同一个版本的 RN SDK，需要在工程根目录的 `oh-package.json5` 添加 overrides 字段，指向工程需要使用的 RN SDK 版本。替换的版本既可以是一个具体的版本号，也可以是一个模糊版本，还可以是本地存在的 HAR 包或源码目录。
+关于该字段的作用请阅读[官方说明](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-oh-package-json5-V5#zh-cn_topic_0000001792256137_overrides)
 
 ```json
 {
@@ -343,6 +343,8 @@ ohpm install
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
 ### 3.3. 配置 CMakeLists 和引入 ImageSequence2Package
+
+> 若使用的是 <= 0.9.1-0.0.3 版本，请跳过本章。
 
  打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -436,8 +438,9 @@ ohpm install
 
 在以下版本验证通过：
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 5. 属性
 
