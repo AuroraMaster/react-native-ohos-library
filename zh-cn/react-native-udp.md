@@ -22,7 +22,7 @@
 
 | 三方库版本  | 发布信息                                                     | 支持RN版本 |
 |--------| ------------------------------------------------------------ | ---------- |
-| 4.1.7@deprecated  | [@react-native-oh-tpl/react-native-udp Releases(deprecated)](https://github.com/react-native-oh-library/react-native-udp/releases) | 0.72       |
+| <=4.1.7-0.0.2@deprecated | [@react-native-oh-tpl/react-native-udp Releases(deprecated)](https://github.com/react-native-oh-library/react-native-udp/releases) | 0.72       |
 | 4.1.8             | [@react-native-ohos/react-native-udp Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-udp/releases)   | 0.72       |
 | 4.2.0             | [@react-native-ohos/react-native-udp Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-udp/releases)   | 0.77       |
 
@@ -225,11 +225,11 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 UdpPackage
 
-> [!TIP] 若使用的是 4.1.8 版本，请跳过本章。
+> [!TIP] 若使用的是 <=4.1.7-0.0.2版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
-```
+```diff
 project(rnapp)
 cmake_minimum_required(VERSION 3.4.1)
 set(CMAKE_SKIP_BUILD_RPATH TRUE)
@@ -267,7 +267,7 @@ target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
 
 打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
 
-```
+```diff
 #include "RNOH/PackageProvider.h"
 #include "generated/RNOHGeneratedPackage.h"
 #include "SamplePackage.h"
@@ -322,8 +322,9 @@ ohpm install
 
 在以下版本验证通过：
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## API
 

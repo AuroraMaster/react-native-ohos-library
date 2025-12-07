@@ -22,7 +22,7 @@ Please refer to the Releases page of the third-party library for the correspondi
 
 | Third-party Library Version | Release Information       | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 2.3.1@deprecated  | [@react-native-oh-tpl/react-native-user-agent Releases(deprecated)](https://github.com/react-native-oh-library/react-native-user-agent/releases) | 0.72       |
+| <=2.3.1-0.0.1@deprecated | [@react-native-oh-tpl/react-native-user-agent Releases(deprecated)](https://github.com/react-native-oh-library/react-native-user-agent/releases) | 0.72       |
 | 2.3.2             | [@react-native-ohos/react-native-user-agent Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-user-agent/releases)   | 0.72       |
 | 2.4.0             | [@react-native-ohos/react-native-user-agent Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-user-agent/releases)   | 0.77       |
 
@@ -153,7 +153,7 @@ Method 2: Directly link to the source code.
 
 ### 3.Configuring CMakeLists and introducing UserAgent
 
-> Note: 0.77 does not require configuring CMakeLists.
+> If you are using version <=2.3.1-0.0.1, please skip this chapter.
 
 ```diff
 project(rnapp)
@@ -246,8 +246,9 @@ To use this repository, you need to use the correct React-Native and RNOH versio
 
 The following combinations have been verified:
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## Properties
 

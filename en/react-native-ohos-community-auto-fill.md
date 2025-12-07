@@ -1,3 +1,5 @@
+> Template version: v0.2.2
+
 <p align="center">
   <h1 align="center"> <code>@react-native-ohos/auto-fill</code> </h1>
 </p>
@@ -8,9 +10,12 @@
     </a>
 </p>
 
+
 Based on the HarmonyOS [autoFillManager](https://developer.huawei.com/consumer/en/doc/harmonyos-references-V5/js-apis-app-ability-autofillmanager-V5) module, auto-fill provides the feature of saving the form input data to the recent forms for automatic filling. This feature is supported only in OpenHarmony OS.
 
 <video controls src="https://github.com/user-attachments/assets/19be83fb-2afb-4a31-9e7f-cba3848a5892" title="auto-fill-demo" width="180"></video>
+
+> [!TIP] [ GitHub address](https://github.com/react-native-oh-library/auto-fill)
 
 ## Prerequisites
 
@@ -20,13 +25,13 @@ Based on the HarmonyOS [autoFillManager](https://developer.huawei.com/consumer/e
 4. Log in to a HUAWEI ID on the device.
 5. Pass the [textContentType](https://reactnative.cn/docs/textinput#textcontenttype) attribute to the **TextInput** component on the service side.
 
-## How to Install
+## Installation and Usage
 
 Please refer to the Releases page of the third-party library for the corresponding version information
 
 | Third-party Library Version | Release Information       | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 1.0.1@deprecated  | [@react-native-ohos-community/auto-fill Releases(deprecated)](https://github.com/react-native-oh-library/auto-fill/releases) | 0.72       |
+| <=1.0.1@deprecated | [@react-native-ohos-community/auto-fill Releases(deprecated)](https://github.com/react-native-oh-library/auto-fill/releases) | 0.72       |
 | 1.0.2             | [@react-native-ohos/auto-fill Releases](https://gitcode.com/openharmony-sig/rntpc_auto-fill/releases)   | 0.72       |
 | 1.1.0             | [@react-native-ohos/auto-fill Releases](https://gitcode.com/openharmony-sig/rntpc_auto-fill/releases)   | 0.77       |
 
@@ -34,17 +39,17 @@ For older versions not published on npm, please refer to the [Installation Guide
 
 Go to the project directory and execute the following instructions:
 
+#### npm
 
-- **npm**
-  
-  ```bash
-  npm install @react-native-ohos/auto-fill
-  ```
-- **yarn**
-  
-  ```bash
-  yarn add @react-native-ohos/auto-fill
-  ```
+```bash
+npm install @react-native-ohos/auto-fill
+```
+
+#### **yarn**
+
+```bash
+yarn add @react-native-ohos/auto-fill
+```
 
 ## Description
 
@@ -192,7 +197,7 @@ For details, see [Direct Linking of Source Code](https://gitee.com/react-native-
 
 #### 3. Configuring CMakeLists and Introducing AutoFillPackage
 
-> V1.0.2 requires configuring CMakeLists and importing AutoFillPackage.
+> If you are using version <=1.0.1, please skip this chapter.
 
 Open **entry/src/main/cpp/CMakeLists.txt** and add the following code:
 
@@ -251,6 +256,21 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
+#### 5.Running
+
+Click the `sync` button in the upper right corner.
+
+Alternatively, run the following instruction on the terminal:
+
+```bash
+cd entry
+ohpm install
+```
+
+Then build and run the code.
+
+
+
 ## Constraints
 
 ### Compatibility
@@ -259,9 +279,9 @@ To use this library, you need to use the correct React Native and RNOH versions.
 
 Verified successfully in the following versions:
 
-1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
-3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 
 ## API Description

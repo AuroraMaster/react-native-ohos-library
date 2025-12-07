@@ -21,11 +21,11 @@ Please refer to the Releases page of the third-party library for the correspondi
 
 | Third-party Library Version | Release Information       | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 2.2.1@deprecated      | [@react-native-oh-tpl/react-native-haptic-feedback Releases(deprecated)](https://github.com/react-native-oh-library/react-native-haptic-feedback/releases) | 0.72       |
+| <=2.2.1@deprecated  | [@react-native-oh-tpl/react-native-haptic-feedback Releases(deprecated)](https://github.com/react-native-oh-library/react-native-haptic-feedback/releases) | 0.72       |
 | 2.2.2      | [@react-native-ohos/react-native-haptic-feedback Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-haptic-feedback/releases)    | 0.72       |
 | 2.3.4      | [@react-native-ohos/react-native-haptic-feedback Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-haptic-feedback/releases)    | 0.77       |
 
-For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -181,7 +181,7 @@ Method 2: Directly link to the source code.
 
 ### 3. Configure CMakeLists and import RNHapticFeedbackPackage
 
-> [!TIP] If using version 2.2.1, please skip this chapter
+>  If using version 2.2.1, please skip this chapter
 
 open `entry/src/main/cpp/CMakeLists.txt`，add：
 
@@ -275,15 +275,15 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Please refer to the Releases page of the third-party library for the corresponding version information
+Verified in the following versions.
 
-| Third-party Library Version | Release Information       | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 2.2.1@deprecated      | [@react-native-oh-tpl/react-native-haptic-feedback Releases(deprecated)](https://github.com/react-native-oh-library/react-native-haptic-feedback/releases) | 0.72       |
-| 2.2.2      | [@react-native-ohos/react-native-haptic-feedback Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-haptic-feedback/releases)    | 0.72       |
-| 2.3.4      | [@react-native-ohos/react-native-haptic-feedback Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-haptic-feedback/releases)    | 0.77       |
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ### Permission Requirements
+
+#### Include applicable permissions in the module.json5 file within the entry directory.
 
 Add the configuration to the **entry/src/main/module.json5** file.
 ```js
