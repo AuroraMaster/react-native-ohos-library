@@ -21,7 +21,7 @@ Find the matching version information in the release address of a third-party li
 
 | Third-party Library Version | Release Information       | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 5.2.1@deprecated     | [@react-native-oh-tpl/react-native-network-info Releases(deprecated)](https://github.com/react-native-oh-library/react-native-network-info/releases) | 0.72       |
+| <= 5.2.1-0.0.1@deprecated     | [@react-native-oh-tpl/react-native-network-info Releases(deprecated)](https://github.com/react-native-oh-library/react-native-network-info/releases) | 0.72       |
 | 5.2.2                | [@react-native-ohos/react-native-network-info Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-network-info/releases) | 0.72       |
 | 5.3.0                | [@react-native-ohos/react-native-network-info Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-network-info/releases) | 0.77       |
 
@@ -218,7 +218,7 @@ Method 2: Directly link to the source code.
 
 ### 3. Configure CMakeLists and Introduce RNOrientationPackage
 
-> [!TIP] Version `5.3.0` and above require
+> If you are using version <= 5.2.1-0.0.1, please skip this chapter.
 
 Open `entry/src/main/cpp/CMakeLists.txt`，Add：  
 
@@ -301,10 +301,11 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-The following combinations have been verified:
+Verified in the following versions.
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ### Permission Requirements
 

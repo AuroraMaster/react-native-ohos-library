@@ -20,7 +20,7 @@
 
 | 三方库版本    | 发布信息                                                     | 支持RN版本 |
 | ------------- | ------------------------------------------------------------ | ---------- |
-| 5.6.2@deprecated  | [@react-native-oh-tpl/react-native-shake Releases(deprecated)](https://github.com/react-native-oh-library/react-native-shake/releases) | 0.72       |
+| <= 5.6.2-0.0.1@deprecated  | [@react-native-oh-tpl/react-native-shake Releases(deprecated)](https://github.com/react-native-oh-library/react-native-shake/releases) | 0.72       |
 | 5.6.3             | [@react-native-ohos/react-native-shake Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-shake/releases)           | 0.72       |
 | 6.0.2             | [@react-native-ohos/react-native-shake Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-shake/releases)           | 0.77       |
 
@@ -173,7 +173,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 ### 4.配置 CMakeLists 和引入 ShakePackge
 
-> [!TIP] V5.6.3 需要配置 CMakeLists 和引入 ShakePackge。
+> 若使用的是 <= 5.6.2-0.0.1 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -239,21 +239,13 @@ ohpm install
 
 ### 兼容性
 
-
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库的 Releases 发布地址查看配套的版本信息：
+在以下版本验证通过：
 
-| 三方库版本    | 发布信息                                                     | 支持RN版本 |
-| ------------- | ------------------------------------------------------------ | ---------- |
-| 5.6.2@deprecated  | [@react-native-oh-tpl/react-native-shake Releases(deprecated)](https://github.com/react-native-oh-library/react-native-shake/releases) | 0.72       |
-| 5.6.3             | [@react-native-ohos/react-native-shake Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-shake/releases)           | 0.72       |
-| 6.0.2             | [@react-native-ohos/react-native-shake Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-shake/releases)           | 0.77       |
-
-本文档内容基于以下版本验证通过：
-
-1. RNOH: 0.72.98; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.0.3.906; ROM: NEXT.0.0.71;
-2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ### 权限要求
 

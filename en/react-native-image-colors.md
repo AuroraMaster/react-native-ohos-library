@@ -19,11 +19,11 @@ Please refer to the Releases page of the third-party library for the correspondi
 
 | Third-party Library Version | Release Information       | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 2.4.0@deprecated      | [@react-native-oh-tpl/react-native-image-colors Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-colors/releases) | 0.72       |
+| <= 2.4.0-0.0.7@deprecated      | [@react-native-oh-tpl/react-native-image-colors Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-colors/releases) | 0.72       |
 | 2.4.1      | [@react-native-ohos/react-native-image-colors Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-colors/releases)             | 0.72       |
 | 2.5.1      | [@react-native-ohos/react-native-image-colors Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-colors/releases)             | 0.77       |
 
-For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+For older versions not published on npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
 
 ## Installation and Usage
 
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
 
 ## Use Codegen
 
-> [!TIP] V2.4.1 no need to execute Codegen
+Version >= @react-native-ohos/react-native-image-colors@2.4.1，compatible with codegen-lib for generating bridge code.
 
 If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
@@ -261,7 +261,7 @@ Method 2: Directly link to the source code.
 
 ### 3. Configure CMakeLists and import ImageColorsPackage
 
-> [!TIP] If using version 2.4.0, please skip this chapter
+> If you are using version <= 2.4.0-0.0.7, please skip this chapter.
 
 open `entry/src/main/cpp/CMakeLists.txt`，add：
 
@@ -353,10 +353,13 @@ Then build and run the code.
 
 ### Compatibility
 
-This document is verified based on the following versions:
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
-2. RNOH: 0.77.17; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
+Verified in the following versions.
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## API
 
