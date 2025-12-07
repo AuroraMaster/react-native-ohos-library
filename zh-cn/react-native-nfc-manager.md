@@ -20,7 +20,7 @@
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 3.15.0@deprecated     | [@react-native-oh-tpl/react-native-nfc-manager Releases(deprecated)](https://github.com/react-native-oh-library/react-native-nfc-manager/releases) | 0.72       |
+| <= 3.15.0-0.0.4@deprecated     | [@react-native-oh-tpl/react-native-nfc-manager Releases(deprecated)](https://github.com/react-native-oh-library/react-native-nfc-manager/releases) | 0.72       |
 | 3.15.1                | [@react-native-ohos/react-native-nfc-manager Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-nfc-manager/releases)     | 0.72       |
 | 3.16.2                | [@react-native-ohos/react-native-nfc-manager Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-nfc-manager/releases)     | 0.77       |
 
@@ -98,7 +98,7 @@ Version >= @react-native-ohos/react-native-nfc-manager@3.15.1，已适配codegen
 
 ## Link
 
-Version >= @react-native-ohos/react-native-nfc-manager@3.15.1，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+Version >= @react-native-ohos/react-native-nfc-manager@3.15.1，已支持 Autolink，无需手动配置（仍需手动配置的内容已在对应标题处标记），目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 此步骤为手动配置原生依赖项的指导。
 
@@ -114,7 +114,7 @@ Version >= @react-native-ohos/react-native-nfc-manager@3.15.1，已支持 Autoli
 }
 ```
 
-## 配置Entry
+## 配置Entry(该模块始终需要手动配置)
 
 本库主要用于操作及管理NFC Tag，提供后台读卡和前台应用优先分发两种读卡模式。后台读卡是指不需要打开应用程序，电子设备通过NFC读取标签卡片后，根据标签卡片的类型匹配到一个或多个应用程序。如果仅匹配到一个，则直接拉起应用程序的读卡页面；如果是多个则弹出应用选择器，让用户选择指定的读卡应用。前台读卡是指提前打开应用程序，并进入对应的NFC读卡页面后读卡，只会把读到的标签卡片信息分发给前台应用程序。
 
@@ -234,7 +234,7 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 NfcManagerPackage
 
-> [!TIP] 若使用的是 3.15.0 版本，请跳过本章。
+> 若使用的是 <= 3.15.0-0.0.4 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -330,10 +330,9 @@ ohpm install
 
 在以下版本验证通过：
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-
-对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ### 权限要求
 打开 `entry/src/main/module.json5`，添加以下权限配置
