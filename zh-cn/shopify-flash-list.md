@@ -124,7 +124,7 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 FlashListPackage
 
-> V1.6.4 需要配置 CMakeLists 和引入 FlashListPackage
+> 若使用的是 <= 1.6.3-0.2.9 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 

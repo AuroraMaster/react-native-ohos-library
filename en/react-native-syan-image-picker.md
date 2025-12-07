@@ -21,11 +21,11 @@ Please refer to the Releases page of the third-party library for the correspondi
 
 | Third-party Library Version | Release Information       | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 0.5.3@deprecated  | [@react-native-oh-tpl/react-native-syan-image-picker Releases(deprecated)](https://github.com/react-native-oh-library/react-native-syan-image-picker/releases) | 0.72       |
+| <= 0.5.3-0.0.4@deprecated  | [@react-native-oh-tpl/react-native-syan-image-picker Releases(deprecated)](https://github.com/react-native-oh-library/react-native-syan-image-picker/releases) | 0.72       |
 | 0.5.4             | [@react-native-ohos/react-native-syan-image-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-syan-image-picker/releases)   | 0.72       |
 | 0.6.0             | [@react-native-ohos/react-native-syan-image-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-syan-image-picker/releases)   | 0.77       |
 
-For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -325,8 +325,7 @@ This repository has been adapted to `Codegen`, generate the bridge code of the t
 
 ## Link
 
-Version >= @react-native-ohos/react-native-syan-image-picker@0.5.4 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
-Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+Version >= @react-native-ohos/react-native-syan-image-picker@0.5.4 now supports Autolink without requiring manual configuration(The content that still needs to be manually configured has been marked in the corresponding title), currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 This step provides guidance for manually configuring native dependencies.
 
@@ -343,7 +342,7 @@ Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 }
 ```
 
-### 2.Configure Entry
+### 2.Configure Entry(This module always requires manual configuration)
 
 **(1)Create ImageCropAbility.ets under entry/src/main/ets/entryability**
 
@@ -491,7 +490,56 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 5. Running
+### 5.Configuring CMakeLists and Introducing SyanImagePickerPackage
+
+> If you are using version <= 0.5.3-0.0.4, please skip this chapter.
+
+Open `entry/src/main/cpp/CMakeLists.txt`，and add the following code:
+
+```diff
+...
+
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_END: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-syan-image-picker/src/main/cpp" ./syan_image_picker)
+# RNOH_END: manual_package_linking_1
+
+add_library(rnoh_app SHARED
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_syan_image_picker)
+# RNOH_BEGIN: manual_package_linking_2
+```
+
+Open `entry/src/main/cpp/PackageProvider.cpp`，and add the following code:
+
+```diff
+#include "RNOH/PackageProvider.h"
++ #include "SyanImagePickerPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
++        std::make_shared<SyanImagePickerPackage>(ctx)
+}
+```
+
+### 6. Running
 
 Click the `sync` button in the upper right corner.
 
@@ -512,11 +560,9 @@ To use this repository, you need to use the correct React-Native and RNOH versio
 
 Verified successfully in the following versions:
 
-1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
-3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
-
-
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## ImagePickerOption(Configuration Options for Selecting Photos or Data)
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.

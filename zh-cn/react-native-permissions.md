@@ -177,7 +177,7 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 PermissionsPackage
 
-> V4.1.3 需要配置 CMakeLists 和引入 PermissionsPackage
+> 若使用的是 <= 4.1.2-0.1.7 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 

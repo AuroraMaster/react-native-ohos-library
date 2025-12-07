@@ -122,7 +122,7 @@ Method 2: Directly link to the source code.
 
 ### 3. Configuring CMakeLists and Introducing FlashListPackage
 
-> V1.6.4 requires configuring CMakeLists and importing FlashListPackage
+> If you are using version <= 1.6.3-0.2.9, please skip this chapter.
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
