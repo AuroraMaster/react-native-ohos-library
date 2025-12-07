@@ -12,18 +12,20 @@
     </a>
 </p>
 
-This project is based on [react-native-device-info](https://github.com/react-native-device-info/react-native-device-info).
-
-This third-party library has been migrated to Gitee and is now available for direct download from npm, the new package name is:`@react-native-ohos/react-native-device-info`, The version correspondence details are as follows:
-
-| Version           | Package Name                                  | Repository                                                                      | Release                    |Support RN version|
-|-------------------|-----------------------------------------------|---------------------------------------------------------------------------------| -------------------------- |-------------------|
-| 11.1.0@deprecated | @react-native-oh-tpl/react-native-device-info | [Github（deprecated）](https://github.com/react-native-oh-library/react-native-device-info) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-device-info/releases) |0.72       |
-| 11.1.1            | @react-native-ohos/react-native-device-info   | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-device-info)   | [Github Releases](https://github.com/react-native-oh-library/react-native-device-info/releases) |0.72       |
-| 14.0.5            | @react-native-ohos/react-native-device-info   | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-device-info)   | [GitCode Releases]() |0.77       |
+> [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-device-info)
 
 
 ## Installation and Usage
+
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+|-------| ------------------------------------------------------------ | ---------- |
+| <= 11.1.0-0.0.8@deprecated | [@react-native-oh-tpl/react-native-device-info Releases(deprecated)](https://github.com/react-native-oh-library/react-native-device-info/releases) | 0.72       |
+| 11.1.1 | [@react-native-ohos/react-native-device-info Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-device-info/releases)                        | 0.72       |
+| 14.0.5  | [@react-native-ohos/react-native-device-info Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-device-info/releases)                        | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -159,11 +161,15 @@ export default App;
 ```
 ## Use Codegen
 
-This repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
+Version >= @react-native-ohos/react-native-device-info@11.1.1, compatible with codegen-lib for generating bridge code.
+
+If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-device-info@11.1.1 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -209,7 +215,9 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 3.Configuring CMakeLists
+### 3.Configuring CMakeLists and Introducing RNDeviceInfoPackage
+
+> If you are using version <= 11.1.0-0.0.8, please skip this chapter.
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code
 
@@ -247,7 +255,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
         std::make_shared<SamplePackage>(ctx),
 +       std::make_shared<RNDeviceInfoPackage>(ctx),
     };
-
+}
 ```
 
 ### 4. Introducing RNDeviceInfoPackage to ArkTS
@@ -285,8 +293,11 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-1. RNOH: 0.72.27; SDK: HarmonyOS 5.1.1 Release SDK; IDE: DevEco Studio 5.1.1 Release; ROM: 5.0.1.120;
-2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+Verified in the following versions.
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ### Permission Requirements
 

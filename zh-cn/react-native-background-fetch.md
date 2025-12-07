@@ -21,7 +21,7 @@
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 4.2.5@deprecated      | [@react-native-oh-tpl/react-native-background-fetch Releases(deprecated)](https://github.com/react-native-oh-library/react-native-background-fetch/releases) | 0.72       |
+| <= 4.2.5-0.0.2@deprecated      | [@react-native-oh-tpl/react-native-background-fetch Releases(deprecated)](https://github.com/react-native-oh-library/react-native-background-fetch/releases) | 0.72       |
 | 4.2.6      | [@react-native-ohos/react-native-background-fetch Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-background-fetch/releases) | 0.72       |
 | 4.3.0      | [@react-native-ohos/react-native-background-fetch Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-background-fetch/releases) | 0.77       |
 
@@ -212,7 +212,7 @@ Version >= @react-native-ohos/react-native-background-fetch@4.2.6，已适配cod
 
 ## Link
 
-Version >= @react-native-ohos/react-native-background-fetch@4.2.6，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+Version >= @react-native-ohos/react-native-background-fetch@4.2.6，已支持 Autolink，无需手动配置（仍需手动配置的内容已在对应标题处标记），目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 此步骤为手动配置原生依赖项的指导。
 
@@ -264,7 +264,7 @@ ohpm install
 
 ### 配置 CMakeLists 和引入 RNBackgroundFetchPackage
 
-> [!TIP] V4.2.6 需要配置CMakeLists 和引入 RNBackgroundFetchPackage。
+> 若使用的是 <= 4.2.5-0.0.2 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -336,7 +336,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 在 ArkTs 侧引入 RNBackgroundFetchExtensionAbility
+### 在 ArkTs 侧引入 RNBackgroundFetchExtensionAbility（该模块始终需要手动配置）
 
 1. 打开 `entry/src/main/ets`，新建目录及 ArkTS 文件，新建一个目录并命名为 WorkSchedulerExtension。在 WorkSchedulerExtension 目录下，新建一个 ArkTS 文件并命名为 WorkSchedulerExtension.ets，用以实现延迟任务回调接口。
 
@@ -392,11 +392,11 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-本文档内容基于以下版本验证通过：
+在以下版本验证通过：
 
-1. RNOH: 0.72.27; SDK: HarmonyOS-Next-DB1 5.0.0.29(SP1); IDE: DevEco Studio 5.0.3.403; ROM: 3.0.0.25;
-2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
-3. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM：NEXT 5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## API
 

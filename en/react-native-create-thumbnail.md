@@ -22,10 +22,13 @@ Please refer to the Releases page of the third-party library for the correspondi
 
 | Third-party Library Version | Release Information                                                     | Supported RN Version |
 |-------| ------------------------------------------------------------ | ---------- |
-| 2.0.0@deprecated | [@react-native-oh-tpl/react-native-create-thumbnail Releases(deprecated)](https://github.com/react-native-oh-library/react-native-create-thumbnail/releases) | 0.72       |
+| <= 2.0.0-0.0.4@deprecated | [@react-native-oh-tpl/react-native-create-thumbnail Releases(deprecated)](https://github.com/react-native-oh-library/react-native-create-thumbnail/releases) | 0.72       |
 | 2.0.1 | [@react-native-ohos/react-native-create-thumbnail Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-create-thumbnail/releases)                        | 0.72       |
 | 2.1.0 | [@react-native-ohos/react-native-create-thumbnail Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-create-thumbnail/releases)                        | 0.77       |
 
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+
+Go to the project directory and execute the following instruction:
 
 <!-- tabs:start -->
 
@@ -212,9 +215,9 @@ ohpm install --no-link
 
 ### 3.Configure CMakeLists and include CreateThumbnailPackage
 
-> [!TIP] If you are using version 2.0.0, please skip this chapter.
+> If you are using version <= 2.0.0-0.0.4, please skip this chapter.
 
-打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
 ```diff
 project(rnapp)
@@ -252,7 +255,7 @@ target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
 # RNOH_END: manual_package_linking_2
 ```
 
-打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+Open `entry/src/main/cpp/PackageProvider.cpp` and add the following code:
 
 ```diff
 #include "RNOH/PackageProvider.h"
@@ -304,10 +307,13 @@ Then build and run the code.
 
 ### Compatibility
 
-The content of this document has been validated based on the following version:
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-1. RNOH：0.72.33; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+Verified in the following versions.
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## API
 

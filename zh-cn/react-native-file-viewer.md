@@ -15,16 +15,17 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-file-viewer)
 
-该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：@react-native-ohos/react-native-file-viewer，具体版本所属关系如下：
+## 安装与使用
+
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 |-------| ------------------------------------------------------------ | ---------- |
-| 2.1.6@deprecated | [@react-native-oh-tpl/react-native-file-viewer Releases(deprecated)](https://github.com/react-native-oh-library/react-native-file-viewer/releases) | 0.72       |
+| <= 2.1.6@deprecated | [@react-native-oh-tpl/react-native-file-viewer Releases(deprecated)](https://github.com/react-native-oh-library/react-native-file-viewer/releases) | 0.72       |
 | 2.1.7 | [@react-native-ohos/react-native-file-viewer Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-file-viewer/releases)                        | 0.72       |
 | 2.2.0 | [@react-native-ohos/react-native-file-viewer Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-file-viewer/releases)                        | 0.77       |
 
-
-## 安装与使用
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -198,7 +199,7 @@ ohpm install
 
 ### 3.配置CMakeLists 和引入 FileViewerPackage
 
-> [!TIP] 若使用的是 RN0.72工程，请跳过本章
+> 若使用的是 <= 2.1.6 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -291,10 +292,13 @@ ohpm install
 
 ### 兼容性
 
-本文档内容基于以下版本验证通过：
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
-2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release SDK; IDE： DevEco Studio  6.0.0.868; ROM：6.0.0.112;
+在以下版本验证通过：
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## API
 

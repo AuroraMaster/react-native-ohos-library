@@ -4,17 +4,19 @@
   <h1 align="center"> <code>react-native-camera-kit</code> </h1>
 </p>
 
+> [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-camera-kit)
+
+## Installation and Usage
+
 Please refer to the Releases page of the third-party library for the corresponding version information:
 
 | Third-party Library Version | Release Information                                                     | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 14.0.1@deprecated      | [@react-native-oh-tpl/react-native-camera-kit Releases(deprecated)](https://github.com/react-native-oh-library/react-native-camera-kit/releases) | 0.72       |
+| <= 14.0.1@deprecated      | [@react-native-oh-tpl/react-native-camera-kit Releases(deprecated)](https://github.com/react-native-oh-library/react-native-camera-kit/releases) | 0.72       |
 | 14.0.2      | [@react-native-ohos/react-native-camera-kit Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-camera-kit/releases)                        | 0.72       |
 | 15.1.1     | [@react-native-ohos/react-native-camera-kit Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-camera-kit/releases)                        | 0.77       |
 
-## Installation and Usage
-
-For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -211,9 +213,9 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 3. Configuring CMakeLists and Introducing xxx Package
+### 3. Introduce RTNCameraKitView component to ArkTs
 
-Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
+Find `function buildCustomRNComponent()`, Generally located in `entry/src/main/ets/pages/index.ets ` or `entry/src/main/ets/rn/LoadBundle.ets`, add:
 
 ```diff
   ...
@@ -231,17 +233,14 @@ export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
 ...
 }
 ...
-> [!TIP] If the repository uses a mixed solution, the component name needs to be added.  
+```
 
-Find the constant `arkTsComponentNames` in `entry/src/main/ets/pages/index.ets` or `entry/src/main/ets/rn/LoadBundle.ets` and add the component name to the array.
+In `entry/src/main/ets/pages/index.ets`, if the `arkTsComponentNames` array (new in later versions) exists in the current file, add the following: `RTNCameraKitView.NAME`
 
-​```diff
-const arkTsComponentNames: Array<string> = [
-  SampleView.NAME,
-  GeneratedSampleView.NAME,
-  PropsDisplayer.NAME,
-+ RTNCameraKitView.NAME
-  ];
+```ts
+  ...
+ const arkTsComponentNames: Array<string> = [..., RTNCameraKitView.NAME]; 
+  ...
 ```
 
 ### 4. Introducing RTNCameraKitPackage to ArkTS
@@ -260,7 +259,56 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 5. Running
+### 5. Configuring CMakeLists and Introducing CameraKitPackage
+
+> If you are using version <= 14.0.1, please skip this chapter.
+
+Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
+
+```diff
+...
+
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_END: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-camera-kit/src/main/cpp" ./camera_kit)
+# RNOH_END: manual_package_linking_1
+
+add_library(rnoh_app SHARED
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_camera_kit)
+# RNOH_BEGIN: manual_package_linking_2
+```
+
+Open `entry/src/main/cpp/PackageProvider.cpp` and add the following code:
+
+```diff
+#include "RNOH/PackageProvider.h"
++ #include "CameraKitPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
++        std::make_shared<CameraKitPackage>(ctx)
+}
+```
+
+### 6. Running
 
 Click the `sync` button in the upper right corner.
 
@@ -277,9 +325,13 @@ Then build and run the code.
 
 ### Compatibility
 
-This document is verified based on the following versions:
-1. RNOH：0.72.40; SDK：HarmonyOS NEXT Developer DB3; IDE: DevEco Studio: 5.0.5.220; ROM：NEXT.0.0.105;
-2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release; IDE: DevEco Studio 6.0.0.858; ROM：6.0.0.112;
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+
+Verified in the following versions.
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ### Permission Requirements
 

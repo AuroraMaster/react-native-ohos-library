@@ -5,19 +5,19 @@
   <h1 align="center"> <code>@remobile/react-native-toast</code> </h1>
 </p>
 
-本项目基于 [react-native-toast@1.0.7](https://github.com/remobile/react-native-toast) 开发。
+> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-toast)
+
+## 安装与使用
 
 请到三方库的 Releases发布地址查看配套的版本信息：
 
-| Version                        | Package Name                                  | Repository                                                   | Release                                                      | RN Version |
-| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
-|1.0.7@deprecated  | @react-native-oh-tpl/react-native-toast | [Github](https://github.com/react-native-oh-library/react-native-toast) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-toast/releases) | 0.72 |
-|  1.0.8           | @react-native-ohos/react-native-toast   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-toast) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-toast/releases) | 0.72 |
-|  1.1.0           | @react-native-ohos/react-native-toast   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-toast) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-toast/releases) | 0.77 |
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| <= 1.0.7-0.0.3@deprecated      | [@react-native-oh-tpl/react-native-toast Releases(deprecated)](https://github.com/react-native-oh-library/react-native-toast/releases) | 0.72       |
+| 1.0.8      | [@react-native-ohos/react-native-toast Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-toast/releases)    | 0.72       |
+| 1.1.0      | [@react-native-ohos/react-native-toast Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-toast/releases)    | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
-
-## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -102,7 +102,7 @@ export default ToastMasterDemo;
 
 ## 使用 Codegen
 
-> [!TIP] V1.0.8 不需要执行 Codegen。
+Version >= @react-native-ohos/react-native-toast@1.0.8，已适配codegen-lib生成桥接代码。
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
@@ -176,7 +176,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 ### 4.配置 CMakeLists 和引入 ToastPackage
 
-> [!TIP] 若使用的是V 1.0.7 版本，请跳过本章
+> 若使用的是 <= 1.0.7-0.0.3 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -198,7 +198,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-toast/src/main/cpp" ./toast)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-toast/src/main/cpp" ./rn_toast)
 
 # RNOH_END: manual_package_linking_1
 
@@ -213,7 +213,7 @@ target_link_libraries(rnoh_app PUBLIC rnoh)
 
 # RNOH_BEGIN: manual_package_linking_2
 target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
-+ target_link_libraries(rnoh_app PUBLIC rn_toast)
++ target_link_libraries(rnoh_app PUBLIC rnoh_toast)
 # RNOH_END: manual_package_linking_2
 ```
 
@@ -253,10 +253,13 @@ ohpm install
 
 ### 兼容性
 
-本文档内容基于以下环境验证通过：
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
-2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
+在以下版本验证通过：
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## API
 
