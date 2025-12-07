@@ -21,11 +21,11 @@ Please refer to the Releases page of the third-party library for the correspondi
 
 | Third-party Library Version | Release Information                                                     | Supported RN Version |
 |-------| ------------------------------------------------------------ | ---------- |
-| 2.1.0@deprecated | [@react-native-oh-tpl/react-native-image-rotate Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-rotate/releases) | 0.72       |
+| <= 2.1.0-0.0.1@deprecated | [@react-native-oh-tpl/react-native-image-rotate Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-rotate/releases) | 0.72       |
 | 2.1.1 | [@react-native-ohos/react-native-image-rotate Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-rotate/releases)                        | 0.72       |
 | 2.2.0 | [@react-native-ohos/react-native-image-rotate Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-rotate/releases)                        | 0.77       |
 
-For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+For older versions not published on npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -145,6 +145,8 @@ const styles = StyleSheet.create({
 
 ## Use Codegen
 
+Version >= @react-native-ohos/react-native-inappbrowser@2.1.1, The codegen-lib has been adapted to generate bridge code.
+
 If this repository has been adapted to Codegen, generate the bridge code of the third-party library by using the Codegen. For details, see[ Codegen Usage Guide](/en/codegen.md).
 
 ## Link
@@ -200,7 +202,68 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see[Directly Linking Source Code](/en/link-source-code.md)
 
-### 3.Introducing RNImageRotatePackage Package to ArkTS
+### 3.Configuring CMakeLists and Introducing ImageRotatePackage
+
+> If you are using version <= 2.1.0-0.0.1, please skip this chapter.
+
+Open `entry/src/main/cpp/CMakeLists.txt`, and add the following code:
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-image-rotate/src/main/cpp" ./imageRotate)
+
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_image_rotate)
+# RNOH_END: manual_package_linking_2
+```
+Open `entry/src/main/cpp/PackageProvider.cpp`, and add the following code:
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "ImageRotatePackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+      std::make_shared<RNOHGeneratedPackage>(ctx),
+      std::make_shared<SamplePackage>(ctx),
++     std::make_shared<ImageRotatePackage>(ctx)
+    };
+}
+```
+
+### 4.Introducing RNImageRotatePackage Package to ArkTS
 
 Open the entry/src/main/ets/RNPackagesFactory.ts file and add the following code:
 
@@ -217,7 +280,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.Running
+### 5.Running
 
 Click the sync button in the upper right corner.
 
@@ -236,18 +299,11 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Please refer to the Releases page of the third-party library for the corresponding version information
+Verified in the following versions.
 
-| Third-party Library Version | Release Information                                                     | Supported RN Version |
-|-------| ------------------------------------------------------------ | ---------- |
-| 2.1.0@deprecated | [@react-native-oh-tpl/react-native-image-rotate Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-rotate/releases) | 0.72       |
-| 2.1.1 | [@react-native-ohos/react-native-image-rotate Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-rotate/releases)                        | 0.72       |
-| 2.2.0 | [@react-native-ohos/react-native-image-rotate Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-rotate/releases)                        | 0.77       |
-
-The content of this document has been verified based on the following versions:
-
-1. RNOH: 0.72.98; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.0.3.906; ROM: NEXT.0.0.71;
-2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## Static Method
 

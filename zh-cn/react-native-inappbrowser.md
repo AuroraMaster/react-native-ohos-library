@@ -14,19 +14,21 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-inappbrowser)
 
+## 安装与使用
+
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 |-------| ------------------------------------------------------------ | ---------- |
-| 3.7.0@deprecated | [@react-native-oh-tpl/react-native-inappbrowser-reborn Releases(deprecated)](https://github.com/react-native-oh-library/react-native-inappbrowser/releases) | 0.72       |
+| <= 3.7.0-0.0.4@deprecated | [@react-native-oh-tpl/react-native-inappbrowser-reborn Releases(deprecated)](https://github.com/react-native-oh-library/react-native-inappbrowser/releases) | 0.72       |
 | 3.7.1 | [@react-native-ohos/react-native-inappbrowser-reborn Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-inappbrowser/releases)                        | 0.72       |
 | 3.8.0 | [@react-native-ohos/react-native-inappbrowser-reborn Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-inappbrowser/releases)                        | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
-## 安装与使用
-
 进入到工程目录并输入以下命令：
+
+<!-- tabs:start -->
 
 #### **npm**
 
@@ -271,7 +273,7 @@ Version >= @react-native-ohos/react-native-inappbrowser@3.7.1，已适配codegen
 
 ## Link
 
-Version >= @react-native-ohos/react-native-localize@3.7.1，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+Version >= @react-native-ohos/react-native-localize@3.7.1，已支持 Autolink，无需手动配置（仍需手动配置的内容已在对应标题处标记），目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 此步骤为手动配置原生依赖项的指导。
 
@@ -287,7 +289,7 @@ Version >= @react-native-ohos/react-native-localize@3.7.1，已支持 Autolink�
 }
 ```
 
-### 1.配置Entry
+### 1.配置Entry(该模块始终需要手动配置)
 
 **1.在 entry/src/main/ets/entryability 下创建 BrowserManagerAbility.ets**
 
@@ -434,7 +436,7 @@ ohpm install
 
 ### 3.配置CMakeLists 和引入 InappbrowserRebornPackage
 
-> [!TIP] 若使用的是 3.7.0 版本，请跳过本章
+> 若使用的是 <= 3.7.0-0.0.4 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -526,11 +528,13 @@ ohpm install
 
 ### 兼容性
 
-本文档内容基于以下版本验证通过：
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-1. RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.200; ROM: 3.0.0.18;
-2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.868; ROM: 6.0.0.112;
+在以下版本验证通过：
 
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 ## API
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。

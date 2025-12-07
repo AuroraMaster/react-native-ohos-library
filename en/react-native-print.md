@@ -14,17 +14,17 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-print)
 
+## Installation and Usage
+
 Please refer to the Releases page of the third-party library for the corresponding version information
 
 | Third-party Library Version | Release Information       | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 0.11.0@deprecated  | [@react-native-oh-tpl/react-native-print Releases(deprecated)](https://github.com/react-native-oh-library/react-native-print/releases) | 0.72       |
+| <= 0.11.0-0.0.3@deprecated  | [@react-native-oh-tpl/react-native-print Releases(deprecated)](https://github.com/react-native-oh-library/react-native-print/releases) | 0.72       |
 | 0.11.1             | [@react-native-ohos/react-native-print Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-print/releases)   | 0.72       |
 | 0.12.0             | [@react-native-ohos/react-native-print Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-print/releases)   | 0.77       |
 
-For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
-
-## Installation and Usage
+For older versions not published on npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -118,7 +118,7 @@ export default function RNPrint(): JSX.Element {
 
 ## Use Codegen
 
-[!TIP] V0.11.1 does not require executing Codegen.
+Version >= @react-native-ohos/react-native-inappbrowser@0.11.1, The codegen-lib has been adapted to generate bridge code.
 
 If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/zh-cn/codegen.md).
 
@@ -174,7 +174,7 @@ Method 2: Directly link to the source code.
 
 ### 3.Configuring CMakeLists and Introducing PrintPackage
 
-> [!TIP] If you are using version 0.11.0, please skip this chapter.
+> If you are using version <= 0.11.0-0.0.3, please skip this chapter.
 
 open `entry/src/main/cpp/CMakeLists.txt` and add:
 
@@ -266,10 +266,13 @@ Then build and run the code.
 
 ### Compatibility
 
-This document is verified based on the following versions:
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-1. RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.200; ROM: 3.0.0.18;
-2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.868; ROM: 6.0.0.112;
+Verified in the following versions.
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ### Permission Requirements
 
