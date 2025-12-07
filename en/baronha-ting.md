@@ -20,11 +20,11 @@ Please refer to the Releases page of the third-party library for the correspondi
 
 | Third-party Library Version | Release Information       | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 1.2.2@deprecated  | [@react-native-oh-tpl/ting Releases(deprecated)](https://github.com/react-native-oh-library/ting/releases) | 0.72       |
+| <= 1.2.2-0.0.3@deprecated  | [@react-native-oh-tpl/ting Releases(deprecated)](https://github.com/react-native-oh-library/ting/releases) | 0.72       |
 | 1.2.3             | [@react-native-ohos/ting Releases](https://gitcode.com/openharmony-sig/rntpc_ting/releases)   | 0.72       |
 | 1.3.0             | [@react-native-ohos/ting Releases](https://gitcode.com/openharmony-sig/rntpc_ting/releases)   | 0.77       |
 
-For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+For older versions not published on npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -87,8 +87,7 @@ This library has been adapted for `Codegen`. Before use, you need to actively ge
 
 ## Link
 
-Version >= @react-native-ohos/ting@1.2.3 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
-Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+Version >= @react-native-ohos/ting@1.2.3 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 This step provides guidance for manually configuring native dependencies.
 
@@ -140,7 +139,7 @@ Method 2: Link Source Code Directly
 
 ### 3. Configure CMakeLists and Import RNTingPackage
 
-> V1.2.3 requires configuring CMakeLists and importing RNTingPackage.
+> If you are using version <=1.2.2-0.0.3, please skip this chapter.
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add:
 
@@ -220,13 +219,13 @@ Then compile and run.
 
 ### Compatibility
 
-To use this library, you need to use the correct React-Native and RNOH versions. Additionally, you need to use the matching DevEco Studio and phone ROM.
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Verified successfully in the following versions:
+Verified in the following versions.
 
-1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
-3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## Properties
 
