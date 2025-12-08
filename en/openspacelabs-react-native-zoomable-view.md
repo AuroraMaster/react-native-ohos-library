@@ -15,6 +15,12 @@
 
 > [!TIP] [GitHub address](https://github.com/openspacelabs/react-native-zoomable-view)
 
+| Version                 | Support RN version                 |
+| ------------------------- | -------------------------- |
+| 2.4.2                 |  0.72/0.77 |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+
 ## Installation and Usage
 
 Go to the project directory and execute the following instruction:
@@ -24,13 +30,13 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm install @openspacelabs/react-native-zoomable-view@2.1.6
+npm install @openspacelabs/react-native-zoomable-view@2.4.2
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @openspacelabs/react-native-zoomable-view@2.1.6
+yarn add @openspacelabs/react-native-zoomable-view@2.4.2
 ```
 
 <!-- tabs:end -->
@@ -171,13 +177,15 @@ This document is verified based on the following versions:
 | onPanResponderGrant              | function | The gesture has started                                                                                                                                                                                                                                                                                                              | no       | All      | yes               |
 | onPanResponderEnd                | function | Will be called when gesture ends (more accurately, on pan responder "release")                                                                                                                                                                                                                                                       | no       | All      | yes               |
 | onPanResponderTerminate          | function | Will be called when the gesture is force-interrupted by another handler                                                                                                                                                                                                                                                              | no       | All      | yes               |
-| onPanResponderTerminationRequest | function | Callback asking whether the gesture should be interrupted by another handler                                                                                                                                                                                                                                                         | no       | IOS      | yes               |
+| onPanResponderTerminationRequest | function | Callback asking whether the gesture should be interrupted by another handler                                                                                                                                                                                                                                                         | no       | IOS      | no               |
 | onPanResponderMove               | function | Will be called when user moves while touching                                                                                                                                                                                                                                                                                        | no       | All      | yes               |
 | onShouldBlockNativeResponder     | function | Returns whether this component should block native components from becoming the JS responder                                                                                                                                                                                                                                         | no       | All      | yes               |
 | zoomTo                           | function | Changes the zoom level to a specific number                                                                                                                                                                                                                                                                                          | no       | All      | yes               |
 | zoomBy                           | function | Changes the zoom level relative to the current level (use positive numbers to zoom in, negative numbers to zoom out)                                                                                                                                                                                                                 | no       | All      | yes               |
 | moveTo                           | function | Shifts the zoomed part to a specific point (in px relative to x: 0, y: 0)                                                                                                                                                                                                                                                            | no       | All      | yes               |
 | moveBy                           | function | Shifts the zoomed part by a specific pixel number                                                                                                                                                                                                                                                                                    | no       | All      | yes               |
+| disableMomentum              | boolean | Enable inertia scrolling after dragging ends                                                                                                                                                                                                                                                                                    | no       | All      | yes               |
+
 
 ## Known Issues
 
