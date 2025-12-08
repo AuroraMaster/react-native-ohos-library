@@ -14,9 +14,16 @@
 
 > [!Tip] [Github address](https://github.com/react-native-oh-library/react-native-harmony-reanimated/tree/sig)
 
+The repository of this third-party library has been migrated to Gitcode and supports direct download from npm. The new package name is: @react-native-ohos/react-native-reanimated. The specific version ownership relationship is as follows:
+
+| Version | Package Name                                                     | Repository | Release | Support RN version |
+| ---------- | ------------------------------------------------------------ | ---------- |  ---------- |  ---------- |
+| 3.6.0 | @react-native-oh-tpl/react-native-reanimated | [Github](https://github.com/react-native-oh-library/react-native-harmony-reanimated)|[Github Releases](https://github.com/react-native-oh-library/react-native-harmony-reanimated/releases)|0.72       |
+| 3.18.0 | @react-native-ohos/react-native-reanimated         | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-reanimated/tree/br_rnoh0.77) |[Gitcode Releases]() | 0.77       |
+
+
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-reanimated Releases](https://github.com/react-native-oh-library/react-native-harmony-reanimated/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -27,15 +34,25 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+# 0.72
 npm install react-native-reanimated@3.6.0
 npm install @react-native-oh-tpl/react-native-reanimated
+
+# 0.77
+npm install react-native-reanimated@3.18.0
+npm install @react-native-ohos/react-native-reanimated
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add react-native-reanimated@3.6.0
 yarn add @react-native-oh-tpl/react-native-reanimated
+
+# 0.77
+yarn add react-native-reanimated@3.18.0
+yarn add @react-native-ohos/react-native-reanimated
 ```
 
 <!-- tabs:end -->
@@ -132,11 +149,23 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
+- 0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
     "@react-native-oh-tpl/react-native-reanimated": "file:../../node_modules/@react-native-oh-tpl/react-native-reanimated/harmony/reanimated.har"
+  }
+```
+
+- 0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+
+    "@react-native-ohos/react-native-reanimated": "file:../../node_modules/@react-native-ohos/react-native-reanimated/harmony/reanimated.har"
   }
 ```
 
@@ -151,7 +180,7 @@ ohpm install
 
 Method 2: Directly link to the source code.
 
-> [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
+For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
 ### 3. Configuring CMakeLists and Introducing ReanimatedPackage
 
@@ -169,7 +198,11 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_END: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+# 0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-reanimated/src/main/cpp" ./reanimated)
+
+# 0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-reanimated/src/main/cpp" ./reanimated)
 # RNOH_END: manual_package_linking_1
 
 add_library(rnoh_app SHARED
@@ -209,7 +242,11 @@ Open`entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
 ```diff
   ...
-+ import { ReanimatedPackage } from '@react-native-oh-tpl/react-native-reanimated/ts';
+// 0.72
++ import { ReanimatedPackage} from '@react-native-oh-tpl/react-native-reanimated/ts';
+
+// 0.77
++ import { ReanimatedPackage} from '@react-native-ohos/react-native-reanimated/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -236,9 +273,11 @@ Then build and run the code.
 
 ### Compatibility
 
-This library is adapted based on react-native-reanimated (version=3.6.0). To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-reanimated Releases](https://github.com/react-native-oh-library/react-native-harmony-reanimated/releases)
+The content of this document has been verified based on the following version：
+
+1、RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.1.1.830; ROM: 6.0.0.112 SP12;  
+2、RNOH: 0.77.18; SDK: HarmonyOS-5.1.1.208(API19); IDE: DevEco Studio 5.1.1.830; ROM: 6.0.0.112 SP12;
 
 ## API
 
@@ -262,6 +301,52 @@ Check the release version information in the release address of the third-party 
 | `measure`          | measure lets you synchronously get the dimensions and position of a view on the screen, all on the UI thread.                                                                                                              | function | No       | All      | yes               |
 | `Easing`           | easing set motion trajectory                                                                                                                                                                                               | function | No       | All      | yes               |
 | `useAnimatedKeyboard`           | useAnimatedKeyboard lets you create animations based on state and height of the virtual keyboard.                                                                                                             | function | No       | All      | yes               |
+| `useComposedEventHandler`<sup>3.18.0+</sup> | This is a hook that lets you compose useEvent-based event handlers (such as useAnimatedScrollHandler or your own custom ones) into a single, combined event handler. | function | No       | All      | yes               |
+| `makeMutable`<sup>3.18.0+</sup> | makeMutable is a function internally used by the useSharedValue hook to create a shared value | function | No       | All      | yes               |
+| `ReducedMotionConfig`<sup>3.18.0+</sup> | change behavior in response to the device's reduced motion accessibility setting. | function | No       | All      | yes               |
+| `useAnimatedGestureHandler`<sup>deprecated from 3.18.0</sup> | lets you create animations based on gesture handlers. | function | No | All | No |
+| `useScrollViewOffset` | lets you to create animations based on the offset of a ScrollView.<br /><br />3.6.0:useScrollViewOffset(aref: RefObject<Animated.ScrollView>) => [SharedValue\<number\>];<br />3.18.0:useScrollViewOffset(animatedRef: AnimatedRef\<AnimatedScrollView\>, providedOffset?: SharedValue\<number\>): SharedValue\<number\>; | function | No | All | yes |
+
+## Properties
+
+**WithSpringConfig**
+
+| Name                    | Description                                                  | Type             | Required | Platform        | HarmonyOS  Support |
+| ----------------------- | ------------------------------------------------------------ | ---------------- | -------- | --------------- | ------------------ |
+| clamp<sup>3.18.0+</sup> | Limit of the scope of movement. If your spring would exceed this limit, then `dampingRatio` will be reduced (to make the spring less bouncy) | [number, number] | No       | Android and iOS | yes                |
+
+**SharedValue**
+
+| Name                  | Description                                                  | Type     | Required | Platform        | HarmonyOS  Support |
+| --------------------- | ------------------------------------------------------------ | -------- | -------- | --------------- | ------------------ |
+| get<sup>3.18.0+</sup> | Returns current value                                        | function | No       | Android and iOS | yes                |
+| set<sup>3.18.0+</sup> | Updates stored value (supports direct value or updater function) | function | No       | Android and iOS | yes                |
+| addListener           | Registers value change listener<br /><br />3.6.0:addListener:(listenerID: number, listener: (value: any) => void) => void;<br />3.18.0:addListener:(listenerID: number, listener: (value: Value) => void) => void; | function | No       | Android and iOS | yes                |
+| modify                | Applies transformation to current value<br /><br />3.6.0:modify:(modifier?: (value: any) => any, forceUpdate?: boolean) => void;<br />3.18.0:modify:(modifier?: \<T extends Value\>(value: T) => T, forceUpdate?: boolean) => void; | Object   | No       | Android and iOS | yes                |
+
+**DerivedValue**
+
+| Name                                 | Description                 | Type     | Required | Platform        | HarmonyOS  Support |
+| ------------------------------------ | --------------------------- | -------- | -------- | --------------- | ------------------ |
+| set<sup>deprecated from 3.18.0</sup> | Derived values are readonly | function | No       | Android and iOS | No                 |
+
+**CurrentLayoutAnimationsValues**
+
+| Name                                  | Description           | Type   | Required | Platform        | HarmonyOS  Support |
+| ------------------------------------- | --------------------- | ------ | -------- | --------------- | ------------------ |
+| currentBorderRadius<sup>3.18.0+</sup> | Border radius of view | number | No       | Android and iOS | No                 |
+
+**EntryAnimationsValues**
+
+| Name                                 | Description           | Type   | Required | Platform        | HarmonyOS  Support |
+| ------------------------------------ | --------------------- | ------ | -------- | --------------- | ------------------ |
+| targetBorderRadius<sup>3.18.0+</sup> | Border radius of view | number | No       | Android and iOS | No                 |
+
+**itemLayoutAnimation**
+
+| Name                                  | Description                               | Type            | Required | Platform        | HarmonyOS  Support |
+| ------------------------------------- | ----------------------------------------- | --------------- | -------- | --------------- | ------------------ |
+| itemLayoutAnimation<sup>3.18.0+</sup> | Defines layout transitions for list items | LayoutAnimation | No       | Android and iOS | yes                |
 
 ## Known Issues
 
