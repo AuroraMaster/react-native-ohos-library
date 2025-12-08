@@ -14,9 +14,16 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-shared-element)
 
-## 安装与使用
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-shared-element Releases](https://github.com/react-native-oh-library/react-native-shared-element/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| <=0.8.9-0.0.6      | [@react-native-oh-tpl/react-native-shared-element Releases](https://github.com/react-native-oh-library/react-native-shared-element/releases) | 0.72       |
+| 0.9.1     | [@react-native-ohos/react-native-shared-element Releases]()     | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +32,21 @@
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-shared-element
+	
+# 0.77
+npm install @react-native-ohos/react-native-shared-element
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-shared-element
+	
+# 0.77
+yarn add @react-native-ohos/react-native-shared-element
 ```
 
 <!-- tabs:end -->
@@ -237,10 +252,21 @@ const styles = StyleSheet.create({
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
+-  0.72
+
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-oh-tpl/react-native-shared-element": "file:../../node_modules/@react-native-oh-tpl/react-native-shared-element/harmony/shared_element.har"
+}
+```
+
+-  0.77
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-shared-element": "file:../../node_modules/@react-native-ohos/react-native-shared-element/harmony/shared_element.har"
 }
 ```
 
@@ -279,7 +305,11 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
+# 0.72
 + add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-shared-element/src/main/cpp" ./shared-element)
+
+# 0.77
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-shared-element/src/main/cpp" ./shared-element)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -333,9 +363,10 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-shared-element Releases](https://github.com/react-native-oh-library/react-native-shared-element/releases)
+1. RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.200; ROM: 3.0.0.18;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.868; ROM: 6.0.0.112;
 
 ## 组件
 
@@ -347,22 +378,22 @@ ohpm install
 
 | Name          | Description                                                  | Type     | Required | Platform | HarmonyOS Support |
 | ------------- | ------------------------------------------------------------ | -------- | -------- | -------- | ----------------- |
-| children      | A single child component, which must map to a real view in the native view hierarchy | element  | yes      | ALL      | yes               |
-| onNode        | Event handler that sets or unsets the node-handle            | function | yes      | ALL      | yes               |
-| View props... | Other props supported by View                                | NA       | yes      | ALL      | yes               |
+| children      | 设置或取消设置节点句柄的事件处理程序                            | element  | yes      | ALL      | yes               |
+| onNode        | 设置或取消设置节点句柄的事件处理程序            | function | yes      | ALL      | yes               |
+| View props... | View 支持的其他属性                                | NA       | yes      | ALL      | yes               |
 
 ### SharedElementTransition
 
 | Name      | Description                                                  | Type                                                         | Required | Platform | HarmonyOS Support |
 | --------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | -------- | ----------------- |
-| start     | Start node- and ancestor                                     | { node: SharedElementNode, ancestor: SharedElementNode }     | yes      | ALL      | yes               |
-| end       | End node- and ancestor                                       | { node: SharedElementNode, ancestor: SharedElementNode }     | yes      | ALL      | yes               |
-| position  | Interpolated position (0..1), between the start- and end nodes | number\|Animated.Value\|Reanimated.Value                     | yes      | ALL      | yes               |
-| animation | Type of animation, e.g move start element or cross-fade between start- and end elements (default = move) | [SharedElementAnimation](https://github.com/IjzerenHein/react-native-shared-element#SharedElementAnimation) | yes      | ALL      | yes               |
-| resize    | Resize behavior (default = auto)                             | [SharedElementResize](https://github.com/IjzerenHein/react-native-shared-element#SharedElementResize) | yes      | ALL      | yes               |
-| align     | Alignment behavior (default = auto)                          | [SharedElementAlign](https://github.com/IjzerenHein/react-native-shared-element#SharedElementAlign) | yes      | ALL      | yes               |
-| debug     | Renders debug overlays for diagnosing measuring and animations | boolean                                                      | no       | ALL      | yes               |
-| onMeasure | Event handler that is called when nodes have been measured and snapshotted | function                                                     | no       | ALL      | yes               |
+| start     | 起始节点和祖先节点                                     | { node: SharedElementNode, ancestor: SharedElementNode }     | yes      | ALL      | yes               |
+| end       | 结束节点和祖先节点                                       | { node: SharedElementNode, ancestor: SharedElementNode }     | yes      | ALL      | yes               |
+| position  | 在起始节点和结束节点之间的插值位置 (0..1) | number\|Animated.Value\|Reanimated.Value                     | yes      | ALL      | yes               |
+| animation | 动画类型，例如移动起始元素或在起始元素和结束元素之间淡入淡出（默认值 = move） | [SharedElementAnimation](https://github.com/IjzerenHein/react-native-shared-element#SharedElementAnimation) | yes      | ALL      | yes               |
+| resize    | 调整大小行为（默认值 = auto）                             | [SharedElementResize](https://github.com/IjzerenHein/react-native-shared-element#SharedElementResize) | yes      | ALL      | yes               |
+| align     | 对齐行为（默认值 = auto）                          | [SharedElementAlign](https://github.com/IjzerenHein/react-native-shared-element#SharedElementAlign) | yes      | ALL      | yes               |
+| debug     | 渲染调试覆盖层以诊断测量和动画 | boolean                                                      | no       | ALL      | yes               |
+| onMeasure | 当节点被测量和快照时调用的事件处理程序 | function                                                     | no       | ALL      | yes               |
 
 ## 属性
 
@@ -374,34 +405,34 @@ ohpm install
 
 | Name | Description                                                  | Type   | Required | Platform | HarmonyOS Support |
 | --------- | ------------------------------------------------------------ | ------ | -------- | -------- | ----------------- |
-| move      | Moves the start- element to the end position                 | string | no       | ALL      | yes               |
-| fade      | Cross-fades between the start- and end elements              | string | no       | ALL      | yes               |
-| fade-in   | Fade-in the end element coming from the start position (start-element is not visible) | string | no       | ALL      | yes               |
-| fade-out  | Fade-out the start element to the end position (end-element is not visible) | string | no       | ALL      | yes               |
+| move      | 将起始元素移动到结束位置                 | string | no       | ALL      | yes               |
+| fade      | 在起始元素和结束元素之间淡入淡出              | string | no       | ALL      | yes               |
+| fade-in   | 从起始位置淡入结束元素（起始元素不可见） | string | no       | ALL      | yes               |
+| fade-out  | 将起始元素淡出到结束位置（结束元素不可见） | string | no       | ALL      | yes               |
 
 #### SharedElementResize
 
 | Name | Description                                                  | Type   | Required | Platform | HarmonyOS Support |
 | --------- | ------------------------------------------------------------ | ------ | -------- | -------- | ----------------- |
-| auto      | Automatically selects the default resize behavior. For images this will perform the best possible transition based on the of the image. For other kinds of views, this will default to .`resizeMode` `stretch` | string | no       | ALL      | yes               |
-| stretch   | Stretches the element to the same shape and size of the other element. If the aspect-ratio of the content differs, you may see stretching. In that case consider the or resize options.`clip` `none` | string | no       | ALL      | yes               |
-| clip      | Do not resize, but clip the content to the size of the other content. This option is for instance useful in combination with components, where you want to reveal more text.`<Text>` | string | no       | ALL      | yes               |
-| none      | Do not resize the content. When combined with , this creates a plain cross-fade effect without any resizing or clipping`fade` | string | no       | ALL      | yes               |
+| auto      | 自动选择默认的调整大小行为。对于图像，这将根据图像执行最佳可能的过渡。对于其他类型的视图，这将默认为 resizeMode 的 stretch | string | no       | ALL      | yes               |
+| stretch   | 将元素拉伸到与其他元素相同的形状和大小。如果内容的宽高比不同，您可能会看到拉伸效果。在这种情况下，请考虑使用 clip 或 none 调整选项       | ALL      | yes               |
+| clip      | 不调整大小，而是将内容裁剪到其他内容的大小。例如，此选项与`<Text>`组件结合使用时很有用，您可以显示更多文本 | string | no       | ALL      | yes               |
+| none      | 不调整内容大小。与`fade`结合使用时，这会产生简单的淡入淡出效果，而不会有任何调整大小或裁剪 | string | no       | ALL      | yes               |
 
 #### SharedElementAlign
 
 | Name          | Description                                                      | Type   | Required | Platform | HarmonyOS Support |
 |---------------|------------------------------------------------------------------|--------|----------|----------|-------------------|
-| auto          |  the default alignment strategy is used, which is center-center  | string | no       | ALL      | yes               |
-| left-center   | Aligns the shared element to the left-center position            | string | no       | ALL      | yes               |
-| left-top      | Aligns the shared element to the left-top position               | string | no       | ALL      | yes               |
-| left-bottom    | Aligns the shared element to the left-bottom position             | string | no       | ALL      | yes               |
-| right-center  | Aligns the shared element to the right-center position          | string | no       | ALL      | yes               |
-| right-top     | Aligns the shared element to the right-top position              | string | no       | ALL      | yes               |
-| right-bottom  | Aligns the shared element to the right-bottom position           | string | no       | ALL      | yes               |
-| center-top    | Aligns the shared element to the center-top position             | string | no       | ALL      | yes               |
-| center-center | Aligns the shared element to the center-center position         | string | no       | ALL      | yes               |
-| center-bottom | Aligns the shared element to the center-bottom position         | string | no       | ALL      | yes               |
+| auto          | 使用默认的对齐策略，即居中对齐  | string | no       | ALL      | yes               |
+| left-center   | 将共享元素对齐到左中位置            | string | no       | ALL      | yes               |
+| left-top      | 将共享元素对齐到左上位置              | string | no       | ALL      | yes               |
+| left-bottom    | 将共享元素对齐到左下位置             | string | no       | ALL      | yes               |
+| right-center  | 将共享元素对齐到右中位置          | string | no       | ALL      | yes               |
+| right-top     | 将共享元素对齐到右上位置              | string | no       | ALL      | yes               |
+| right-bottom  | 将共享元素对齐到右下位置           | string | no       | ALL      | yes               |
+| center-top    | 将共享元素对齐到中上位置             | string | no       | ALL      | yes               |
+| center-center | 将共享元素对齐到正中位置         | string | no       | ALL      | yes               |
+| center-bottom | 将共享元素对齐到中下位置         | string | no       | ALL      | yes               |
 
 
 ## 遗留问题
