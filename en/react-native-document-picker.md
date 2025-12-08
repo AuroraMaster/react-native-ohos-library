@@ -12,11 +12,11 @@ Please refer to the Releases page of the third-party library for the correspondi
 
 | Third-party Library Version | Release Information       | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 9.2.0@deprecated  | [@react-native-oh-tpl/react-native-document-picker Releases(deprecated)](https://github.com/react-native-oh-library/document-picker/releases) | 0.72       |
+| <= 9.2.0-0.0.2@deprecated  | [@react-native-oh-tpl/react-native-document-picker Releases(deprecated)](https://github.com/react-native-oh-library/document-picker/releases) | 0.72       |
 | 9.2.2             | [@react-native-ohos/react-native-document-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-document-picker/releases)   | 0.72       |
 | 9.3.2             | [@react-native-ohos/react-native-document-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-document-picker/releases)   | 0.77       |
 
-For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -370,7 +370,7 @@ Method 2: Directly link to the source code.
 
 ### 2.3 Configuring CMakeLists and Introducing DocumentPickerPackage
 
-> **[!TIP] Version v9.2.0 and above requires.**
+> If you are using version <= 9.2.0-0.0.2, please skip this chapter.
 
 Open entry/src/main/cpp/CMakeLists.txt and add the following code:
 
@@ -433,13 +433,13 @@ Then build and run the code.
 ## 3. Constraints
 ### 3.1 Compatibility
 
-Please refer to the Releases page of the third-party library for the corresponding version information
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-| Third-party Library Version | Release Information       | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 9.2.0@deprecated  | [@react-native-oh-tpl/react-native-document-picker Releases(deprecated)](https://github.com/react-native-oh-library/document-picker/releases) | 0.72       |
-| 9.2.2             | [@react-native-ohos/react-native-document-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-document-picker/releases)   | 0.72       |
-| 9.3.2             | [@react-native-ohos/react-native-document-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-document-picker/releases)   | 0.77       |
+Verified in the following versions.
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 
 ## 4. Properties

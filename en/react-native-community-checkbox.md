@@ -4,18 +4,19 @@
   <h1 align="center"> <code>@react-native-community/checkbox</code> </h1>
 </p>
 
-This project is based on [@react-native-community/checkbox](https://github.com/react-native-checkbox/react-native-checkbox).
-
-
-This third-party library has been migrated to Gitee and is now available for direct download from npm, the new package name is:`@react-native-ohos/checkbox`, The version correspondence details are as follows:
-
-| Version                    | Package Name                    | Repository                                                                             | Release                    | Support RN version |
-|----------------------------|---------------------------------|----------------------------------------------------------------------------------------| -------------------------- |--------------------|
-| <= 0.5.16-0.1.0@deprecated | @react-native-oh-tpl/checkbox   | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-checkbox) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-checkbox/releases) | 0.72               |
-| 0.5.17                     | @react-native-ohos/checkbox   | [Github](https://gitcode.com/openharmony-sig/rntpc_react-native-checkbox) | [Github Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-checkbox/releases) | 0.72               |
-| 0.6.0                      | @react-native-ohos/checkbox     | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-checkbox)             | [GitCode Releases]() | 0.77               |
+> [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-checkbox)
 
 ## 1. Installation and Usage
+
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| <= 0.5.16-0.1.0@deprecated     | [@react-native-oh-tpl/checkbox Releases(deprecated)](https://github.com/react-native-oh-library/react-native-checkbox/releases) | 0.72       |
+| 0.5.17      | [@react-native-ohos/checkbox Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-checkbox/releases)     | 0.72       |
+| 0.6.0      | [@react-native-ohos/checkbox Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-checkbox/releases)     | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -65,6 +66,9 @@ export default function CheckBoxExample() {
 ```
 
 ## 2. Manual Link
+
+Version >= @react-native-ohos/checkbox@0.5.17 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 This step provides guidance for manually configuring native dependencies.
 
@@ -119,7 +123,9 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 2.3. Configuring CMakeLists and Introducing CheckboxPackge
+### 2.3. Configuring CMakeLists and Introducing CheckboxPackage
+
+> If you are using version <= 0.5.16-0.1.0, please skip this chapter.
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
@@ -169,8 +175,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 ```
 
 ### 2.4. Introducing RNCCheckBoxPackage to ArkTS
-
-> [!TIP] Required for version `v0.5.17` and above
 
 Open `entry/src/main/ets/RNPackagesFactory.ts` and add:
 
@@ -237,7 +241,13 @@ Then build and run the code.
 
 ### 3.1. Compatibility
 
-Check the release version information in the release address of the third-party library: [@react-native-ohos/checkbox Releases](https://gitee.com/openharmony-sig/rntpc_react-native-checkbox/releases)
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+
+Verified in the following versions.
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 4. Properties
 

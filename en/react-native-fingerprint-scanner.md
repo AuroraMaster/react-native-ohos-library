@@ -12,19 +12,20 @@
     </a>
 </p>
 
-This project is based on [jreact-native-fingerprint-scanner](https://github.com/react-native-oh-library/react-native-fingerprint-scanner).
+> [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-fingerprint-scanner)
+
+## Installation and Usage
 
 Please refer to the Releases page of the third-party library for the corresponding version information
 
-| Version          | Package Name                                                 | Repository | Release | RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- | ---------- | ---------- |
-| 6.0.0@deprecated      | @react-native-oh-tpl/react-native-fingerprint-scanner Releases | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-fingerprint-scanner/releases) |[Github(Releases)](https://github.com/react-native-oh-library/react-native-fingerprint-scanner/releases)  | 0.72 |
-| 6.0.1      | @react-native-ohos/react-native-fingerprint-scanner Releases  | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-fingerprint-scanner)       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-fingerprint-scanner/releases) | 0.72 |
-| 6.1.0      | [@react-native-ohos/react-native-fingerprint-scanner Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fingerprint-scanner/releases)    |   [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-fingerprint-scanner)     | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-fingerprint-scanner/releases) | 0.77 |
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| <= 6.0.0-0.0.4@deprecated      | [@react-native-oh-tpl/react-native-fingerprint-scanner Releases(deprecated)](https://github.com/react-native-oh-library/react-native-fingerprint-scanner/releases)  | 0.72 |
+| 6.0.1      | [@react-native-ohos/react-native-fingerprint-scanner Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fingerprint-scanner/releases) | 0.72 |
+| 6.1.0      | [@react-native-ohos/react-native-fingerprint-scanner Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fingerprint-scanner/releases) | 0.77 |
 
-For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+For older versions not published on npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
 
-## Installation and Usage
 
 Go to the project directory and execute the following instruction:
 
@@ -93,7 +94,7 @@ export default function App() {
 
 ## Use Codegen
 
-> [!TIP] V6.0.1 no need to execute Codegen
+Version >= @react-native-ohos/react-native-fingerprint-scanner@6.0.1, compatible with codegen-lib for generating bridge code.
 
 If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
@@ -165,7 +166,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 ### 4. Configure CMakeLists and import FingerprintScannerPackage
 
-> [!TIP] If using version 6.0.0, please skip this chapter
+> If you are using version <= 6.0.0-0.0.4, please skip this chapter.
 
 open `entry/src/main/cpp/CMakeLists.txt`，add：
 
@@ -244,11 +245,12 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Please refer to the Releases page of the third-party library for the corresponding version information
+Verified in the following versions.
 
-1. RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1 B.0.18; IDE: DevEco Studio: 5.0.3.200; ROM: 3.0.0.18;
-2. RNOH: 0.72.33; SDK: Openharmony 5.0.0.71(API Version 12 Release); IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
-3. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM：NEXT 5.1.0.150; 
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+
 
 ### Permission Requirements
 

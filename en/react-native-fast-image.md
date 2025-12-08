@@ -20,7 +20,7 @@ Please refer to the Releases page of the third-party library for the correspondi
 
 | Third-party Library Version | Release Information       | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| <= 8.6.3-0.4.17@deprecated  | [@react-native-oh-tpl/react-native-fast-image Releases(deprecated)](https://github.com/react-native-oh-library/react-native-fast-image/releases) | 0.72       |
+| <= 8.6.3-0.4.17@deprecated  | [@react-native-oh-tpl/react-native-fast-image Releases(deprecated)](https://github.com/react-native-oh-library/react-native-fast-image/releases) | 0.72                 |
 | 8.6.4             | [@react-native-ohos/react-native-fast-image Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fast-image/releases)   | 0.72       |
 | 8.7.0             | [@react-native-ohos/react-native-fast-image Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-fast-image/releases)   | 0.77       |
 
@@ -161,7 +161,7 @@ For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
 ### 3. Configuring CMakeLists and Introducing FastImagePackage
 
-> V8.6.4 requires configuring CMakeLists and importing FastImagePackage
+> If you are using version <= 8.6.3-0.4.17, please skip this chapter.
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 

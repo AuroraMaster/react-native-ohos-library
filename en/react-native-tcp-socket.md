@@ -20,11 +20,11 @@ Please check the corresponding version information in the third-party library's 
 
 | Third-party Version | Release Information | Supported RN Version |
 | ------------------- | ------------------- | -------------------- |
-| 6.2.0@deprecated | [@react-native-oh-tpl/react-native-tcp-socket Releases(deprecated)](https://github.com/react-native-oh-library/react-native-tcp-socket/releases) | 0.72 |
+| <= 6.2.0-0.0.3@deprecated | [@react-native-oh-tpl/react-native-tcp-socket Releases(deprecated)](https://github.com/react-native-oh-library/react-native-tcp-socket/releases) | 0.72 |
 | 6.2.1 | [@react-native-ohos/react-native-tcp-socket Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-tcp-socket/releases) | 0.72 |
 | 6.3.1 | [@react-native-ohos/react-native-tcp-socket Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-tcp-socket/releases) | 0.77 |
 
-For older versions not published to npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+For older versions not published to npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Navigate to your project directory and run the following command:
 
@@ -576,7 +576,7 @@ const styles = StyleSheet.create({
 
 ## Using Codegen
 
-> [!TIP] Version >= @react-native-ohos/react-native-tcp-socket@6.2.1, compatible with codegen-lib for generating bridge code.
+> Version >= @react-native-ohos/react-native-tcp-socket@6.2.1, compatible with codegen-lib for generating bridge code.
 
 This library has been adapted for `Codegen`. Before use, you need to actively execute the command to generate the third-party library bridging code. Please refer to the [Codegen Usage Documentation](/zh-cn/codegen.md) for details.
 
@@ -634,7 +634,7 @@ Method 2: Link Source Code Directly
 
 ### 3. Configure CMakeLists and Import TcpSocketPackage
 
-> [!TIP] If using version 6.2.0, skip this chapter.
+> If you are using version <= 6.2.0-0.0.3, please skip this chapter.
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add:
 
@@ -725,12 +725,13 @@ Then compile and run.
 
 ### Compatibility
 
-To use this library, you need the correct React-Native and RNOH versions. Additionally, you need to use the matching DevEco Studio and phone ROM.
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Verified in the following versions:
+Verified in the following versions.
 
-1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
-2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.868; ROM: 6.0.0.112;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ### Permission Requirements
 

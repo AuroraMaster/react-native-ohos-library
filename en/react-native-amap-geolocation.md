@@ -21,11 +21,11 @@ Please refer to the Releases page of the third-party library for the correspondi
 
 | Third-party Library Version | Release Information       | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 1.2.3@deprecated | [@react-native-oh-tpl/react-native-amap-geolocation Releases(deprecated)](https://github.com/react-native-oh-library/react-native-amap-geolocation/releases) | 0.72       |
+| <= 1.2.3-0.0.5@deprecated | [@react-native-oh-tpl/react-native-amap-geolocation Releases(deprecated)](https://github.com/react-native-oh-library/react-native-amap-geolocation/releases) | 0.72       |
 | 1.2.4 | [@react-native-ohos/react-native-amap-geolocation Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-amap-geolocation/releases) | 0.72       |
 | 1.3.0 | [@react-native-ohos/react-native-amap-geolocation Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-amap-geolocation/releases) | 0.77       |
 
-For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+For older versions not published on npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -353,7 +353,7 @@ Method 2: Directly link to the source code.
 
 ### 3. Configuring CMakeLists and Introducing AmapGeolocationPackage
 
-> V1.2.4 requires configuring CMakeLists and importing AmapGeolocationPackage
+> If you are using version <= 1.2.3-0.0.5, please skip this chapter.
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add:
 
@@ -419,13 +419,13 @@ Then build and run the code.
 
 ### Compatibility
 
-To use this library, you need to use the correct React-Native and RNOH versions. Additionally, you need to use the matching DevEco Studio and phone ROM.
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Verified successfully in the following versions:
+Verified in the following versions.
 
-1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
-3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ### Permission Requirements
 

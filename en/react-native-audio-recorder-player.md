@@ -17,9 +17,10 @@
 ## Installation and Usage
 
 Please refer to the Releases page of the third-party library for the corresponding version information
+
 | Third-party Library Version | Release Information                                                     | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 3.6.10@deprecated     | [@react-native-oh-tpl/react-native-audio-recorder-player Releases(deprecated)](https://github.com/react-native-oh-library/react-native-audio-recorder-player/releases) | 0.72       |
+| <= 3.6.10-0.0.2@deprecated     | [@react-native-oh-tpl/react-native-audio-recorder-player Releases(deprecated)](https://github.com/react-native-oh-library/react-native-audio-recorder-player/releases) | 0.72       |
 | 3.6.11      | [@react-native-ohos/react-native-audio-recorder-player Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-audio-recorder-player/releases)     | 0.72       |
 | 3.6.14      | [@react-native-ohos/react-native-audio-recorder-player Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-audio-recorder-player/releases)     | 0.77       |
 
@@ -527,7 +528,7 @@ This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
-### Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
+### Adding the overrides Field to `oh-package.json5 File` in the Root Directory of the Project
 
 ```json
 {
@@ -547,8 +548,6 @@ Method 1 (recommended): Use the HAR file.
 > [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
-
-+ V3.6.11
 
 ```json
 "dependencies": {
@@ -572,6 +571,8 @@ Method 2: Directly link to the source code.
 > [!TIP] or details, see [Directly Linking Source Code](/en/link-source-code.md).
 
 ### Configuring CMakeLists and Introducing RNAudioRecorderPlayerPackage
+
+> If you are using version <= 3.6.10-0.0.2, please skip this chapter.
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
@@ -630,7 +631,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### Introducing react-native-audio-recorder-player Package to ArkTS
+### Introducing RNAudioRecorderPlayerPackage to ArkTS
 
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
@@ -664,12 +665,11 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Please refer to the Releases page of the third-party library for the corresponding version information
-| Third-party Library Version | Release Information                                                     | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 3.6.10@deprecated     | [@react-native-oh-tpl/react-native-audio-recorder-player Releases(deprecated)](https://github.com/react-native-oh-library/react-native-audio-recorder-player/releases) | 0.72       |
-| 3.6.11      | [@react-native-ohos/react-native-audio-recorder-player Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-audio-recorder-player/releases)     | 0.72       |
-| 3.6.14      | [@react-native-ohos/react-native-audio-recorder-player Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-audio-recorder-player/releases)     | 0.77       |
+Verified in the following versions.
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ### Permission Requirements
 

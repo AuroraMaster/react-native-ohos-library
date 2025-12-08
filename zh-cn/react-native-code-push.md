@@ -51,7 +51,7 @@ code-push release <AppName> <bundle.harmony.js> "<版本号>" --description "<v1
 
 | 三方库版本  | 发布信息                                                  | 支持RN版本 |
 |--------| ------------------------------------------------------------ | ---------- |
-| 8.2.2@deprecated  | [@react-native-oh-tpl/react-native-code-push Releases(deprecated)](https://github.com/react-native-oh-library/react-native-code-push/releases) | 0.72       |
+| <= 8.2.2-0.0.10@deprecated  | [@react-native-oh-tpl/react-native-code-push Releases(deprecated)](https://github.com/react-native-oh-library/react-native-code-push/releases) | 0.72       |
 | 8.2.3             | [@react-native-ohos/react-native-code-push Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-code-push/releases)   | 0.72       |
 | 9.0.2             | [@react-native-ohos/react-native-code-push Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-code-push/releases)   | 0.77       |
 
@@ -260,8 +260,67 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+### 4.配置 CMakeLists 和引入 CodePushPackage
 
-### 4.在 ArkTs 侧引入 comparingVersion 方法
+> 若使用的是 <= 8.2.2-0.0.10 版本，请跳过本章。
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-code-push/src/main/cpp" ./codePush)
+
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_code_push)
+# RNOH_END: manual_package_linking_2
+```
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "CodePushPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+      std::make_shared<RNOHGeneratedPackage>(ctx),
+      std::make_shared<SamplePackage>(ctx),
++     std::make_shared<CodePushPackage>(ctx)
+    };
+}
+```
+### 5.在 ArkTs 侧引入 comparingVersion 方法
 
 打开 `entry/src/main/ets/pages/index.ets`，调用 comparingVersion 方法比对code-push版本号，用于覆盖安装时清除沙箱历史资源
 
@@ -279,7 +338,7 @@ struct Index {
 ```
 
 
-### 5.运行
+### 6.运行
 
 点击右上角的 `sync` 按钮
 
@@ -388,8 +447,9 @@ build() {
 
 在以下版本验证通过：
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## API
 

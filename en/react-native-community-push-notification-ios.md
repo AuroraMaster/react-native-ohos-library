@@ -5,17 +5,17 @@
 </p>
 
 
-This project is based on [@react-native-community/push-notification-ios@1.11.0](https://github.com/react-native-push-notification/ios/tree/v1.11.0)。
+> [!TIP] [ GitHub address](https://github.com/react-native-oh-library/react-native-push-notification-ios)
 
-This third-party library has been migrated to GitCode and is now available for direct download from npm, the new package name is: `@react-native-ohos/push-notification-ios`, The version correspondence details are as follows:
+## 1. Installation and Usage
 
 | Third-party Library Version | Release Information    | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 1.11.0@deprecated     | [@react-native-oh-tpl/push-notification-ios Releases(deprecated)](https://github.com/react-native-oh-library/react-native-push-notification-ios/releases) | 0.72       |
+| <= 1.11.0-0.1.3@deprecated     | [@react-native-oh-tpl/push-notification-ios Releases(deprecated)](https://github.com/react-native-oh-library/react-native-push-notification-ios/releases) | 0.72       |
 | 1.11.2      | [@react-native-ohos/push-notification-ios Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-push-notification-ios/releases) | 0.72       |
 | 1.12.0      | [@react-native-ohos/push-notification-ios Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-push-notification-ios/releases) | 0.77       |
 
-## 1. Installation and Usage
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -165,7 +165,7 @@ export const App = () => {
 
 ## 2. Manual Link
 
-Version >= @react-native-ohos/push-notification-ios@1.11.2，now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Version >= @react-native-ohos/react-native-background-fetch@4.2.6 now supports Autolink without requiring manual configuration(The content that still needs to be manually configured has been marked in the corresponding title), currently only supports 72 frameworks.
 Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 This step provides guidance for manually configuring native dependencies.
@@ -222,7 +222,7 @@ Method 2: Directly link to the source code.
 
 ### 2.3. Configuring CMakeLists and Introducing PushNotificationPackage
 
-Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
+> If you are using version <= 1.11.0-0.1.3, please skip this chapter.
 
 ```diff
 + set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
@@ -236,7 +236,7 @@ Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 # RNOH_END: manual_package_linking_2
 ```
 
-Open `entry/src/main/cpp/PackageProvider.cpp` and add the following code:
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
 
 ```diff
 #include "RNOH/PackageProvider.h"
@@ -269,7 +269,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 2.5. Introducing PushNotificationModule to ArkTS
+### 2.5. Introducing PushNotificationModule to ArkTS (This module always requires manual configuration)
 
 Open the `entry/src/main/ets/entryability/EntryAbility.ets`，file and add the following code：
 
@@ -301,10 +301,12 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-The following combinations have been verified:
+Verified in the following versions.
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+
 
 ## 4. API
 

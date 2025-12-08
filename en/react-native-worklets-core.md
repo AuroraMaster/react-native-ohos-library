@@ -153,7 +153,7 @@ Method 2: Directly link to the source code.
 
 ### 3. Configuring CMakeLists and Introducing WorkletsPackage
 
-> V1.3.4 requires configuring CMakeLists and importing WorkletsPackage
+> If you are using version <= 1.3.3-0.0.4, please skip this chapter.
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
@@ -174,7 +174,7 @@ add_compile_definitions(WITH_HITRACE_SYSTRACE)
 add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULE_DIR}/@react-native-ohos/react-native-worklets-core/src/main/cpp" ./worklets)
++ add_subdirectory("${OH_MODULE_DIR}/@react-native-ohos/react-native-worklets-core/src/main/cpp" ./rn_worklets)
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
 

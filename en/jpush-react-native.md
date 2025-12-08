@@ -20,11 +20,11 @@ Please refer to the Releases page of the third-party library for the correspondi
 
 | Third-party Library Version | Release Information       | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 3.1.1@deprecated  | [@react-native-oh-tpl/jpush-react-native Releases(deprecated)](https://github.com/react-native-oh-library/jpush-react-native/releases) | 0.72       |
+| <= 3.1.1-0.0.5@deprecated  | [@react-native-oh-tpl/jpush-react-native Releases(deprecated)](https://github.com/react-native-oh-library/jpush-react-native/releases) | 0.72       |
 | 3.1.2             | [@react-native-ohos/jpush-react-native Releases](https://gitcode.com/openharmony-sig/rntpc_jpush-react-native/releases)   | 0.72       |
 | 3.2.0             | [@react-native-ohos/jpush-react-native Releases](https://gitcode.com/openharmony-sig/rntpc_jpush-react-native/releases)   | 0.77       |
 
-For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+For older versions not published on npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -93,8 +93,7 @@ If this repository has been adapted to `Codegen`, generate the bridge code of th
 
 ## Link
 
-Version >= @react-native-ohos/jpush-react-native@3.1.2 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
-Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+Version >= @react-native-ohos/jpush-react-native@3.1.2 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 This step provides guidance for manually configuring native dependencies.
 
@@ -144,7 +143,7 @@ Method 2: Directly link to the source code.
 
 ### 3. Configure CMakeLists and import RNJPushPackage
 
-> V3.1.2 requires configuring CMakeLists and importing RNJPushPackage.
+> If you are using version <= 3.1.1-0.0.5, please skip this chapter.
 
 Open `entry/src/main/cpp/CMakeLists.txt`，and add：
 
@@ -226,11 +225,11 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-The following combinations have been verified:
+Verified in the following versions.
 
-1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
-3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## Static Methods
 
@@ -291,6 +290,7 @@ The following combinations have been verified:
 |  setSmartPushEnable(enable:boolean):void |   Enable or disable intelligent push.   |function   | no | iOS,Android     | no |
 |  setGeofenceEnable(enable:boolean):void |   Enable or disable geofencing.   |function   | no |Android     | no |
 |  setCollectControl(enable:boolean):void |   Enable or disable centralized control.   |function   | no | iOS、Android     | no |
+
 ## Known Issues
 - [ ] setProperties、deleteProperties、cleanProperties、pageEnterTo、pageLeave、initCrashHandler、setMaxGeofenceNumber、deleteGeofence、addNotificationListener、addInappMessageListener，setCollectControl、setSmartPushEnable These methods are currently not supported in the Aurora Push HarmonyOS SDK[issue#1](https://github.com/react-native-oh-library/jpush-react-native/issues/1)
 ## Others

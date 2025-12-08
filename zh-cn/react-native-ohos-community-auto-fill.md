@@ -1,3 +1,4 @@
+> 模板版本：v0.2.2
 <p align="center">
   <h1 align="center"> <code>@react-native-ohos/auto-fill</code> </h1>
 </p>
@@ -7,7 +8,7 @@
         <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
     </a>
 </p>
-
+[!TIP] [Github 地址](https://github.com/react-native-oh-library/auto-fill)
 
 auto-fill 基于 HarmonyOS [autoFillManager](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-app-ability-autofillmanager-V5) 模块，提供将表单输入数据保存到历史表单输入中，以供下次自动填充的功能，仅支持 ohos 平台。
 
@@ -21,13 +22,13 @@ auto-fill 基于 HarmonyOS [autoFillManager](https://developer.huawei.com/consum
 4. 设备需要登录华为账号。
 5. 业务侧需要给 `TextInput` 组件传入 [`textContentType`](https://reactnative.cn/docs/textinput#textcontenttype) 属性。
 
-## 安装
+## 安装与使用
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
 | 三方库版本  | 发布信息                                                  | 支持RN版本 |
 |--------| ------------------------------------------------------------ | ---------- |
-| 1.0.1@deprecated  | [@react-native-ohos-community/auto-fill Releases(deprecated)](https://github.com/react-native-oh-library/auto-fill/releases) | 0.72       |
+| <=1.0.1@deprecated | [@react-native-ohos-community/auto-fill Releases(deprecated)](https://github.com/react-native-oh-library/auto-fill/releases) | 0.72       |
 | 1.0.2             | [@react-native-ohos/auto-fill Releases](https://gitcode.com/openharmony-sig/rntpc_auto-fill/releases)   | 0.72       |
 | 1.1.0             | [@react-native-ohos/auto-fill Releases](https://gitcode.com/openharmony-sig/rntpc_auto-fill/releases)   | 0.77       |
 
@@ -35,16 +36,17 @@ auto-fill 基于 HarmonyOS [autoFillManager](https://developer.huawei.com/consum
 
 进入到工程目录并输入以下命令：
 
-- **npm**
-  
-  ```bash
-  npm install @react-native-ohos/auto-fill
-  ```
-- **yarn**
-  
-  ```bash
-  yarn add @react-native-ohos/auto-fill
-  ```
+#### **npm**
+
+```bash
+npm install @react-native-ohos/auto-fill
+```
+
+#### **yarn**
+
+```bash
+yarn add @react-native-ohos/auto-fill
+```
 
 ## 使用说明
 
@@ -190,7 +192,7 @@ ohpm install
 
 #### 3. 配置 CMakeLists 和引入 AutoFillPackage
 
-> V1.0.2 需要配置 CMakeLists 和引入 AutoFillPackage
+> 若使用的是 <=1.0.1 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -204,7 +206,7 @@ set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-har
 set(LOG_VERBOSITY_LEVEL 1)
 
 # RNOH_BEGIN: manual_package_linking_1
-+ add_subdirectory("${OH_MODULES}/@react-native-ohos/auto-fill/src/main/cpp" ./auto-fill)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/auto-fill/src/main/cpp" ./auto_fill)
 # RNOH_END: manual_package_linking_1
 
 add_library(rnoh_app SHARED
@@ -249,16 +251,30 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
+#### 5.运行
+
+点击右上角的 `sync` 按钮
+
+或者在终端执行：
+
+```bash
+cd entry
+ohpm install
+```
+
+然后编译、运行即可。
+
 ## 约束与限制
+
 ### 兼容性
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
 在以下版本验证通过：
 
-1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
-3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 
 ## API 接口说明

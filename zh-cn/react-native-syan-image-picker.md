@@ -21,7 +21,7 @@
 
 | 三方库版本  | 发布信息                                                  | 支持RN版本 |
 |--------| ------------------------------------------------------------ | ---------- |
-| 0.5.3@deprecated  | [@react-native-oh-tpl/react-native-syan-image-picker Releases(deprecated)](https://github.com/react-native-oh-library/react-native-syan-image-picker/releases) | 0.72       |
+| <= 0.5.3-0.0.4@deprecated  | [@react-native-oh-tpl/react-native-syan-image-picker Releases(deprecated)](https://github.com/react-native-oh-library/react-native-syan-image-picker/releases) | 0.72       |
 | 0.5.4             | [@react-native-ohos/react-native-syan-image-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-syan-image-picker/releases)   | 0.72       |
 | 0.6.0             | [@react-native-ohos/react-native-syan-image-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-syan-image-picker/releases)   | 0.77       |
 
@@ -323,7 +323,7 @@ Version >= @react-native-ohos/react-native-syan-image-picker@0.5.4，已适配co
 
 ## Link
 
-Version >= @react-native-ohos/react-native-syan-image-picker@0.5.4，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+Version >= @react-native-ohos/react-native-syan-image-picker@0.5.4，已支持 Autolink，无需手动配置（仍需手动配置的内容已在对应标题处标记），目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 此步骤为手动配置原生依赖项的指导。
 
@@ -340,7 +340,7 @@ Version >= @react-native-ohos/react-native-syan-image-picker@0.5.4，已支持 A
 }
 ```
 
-### 2.配置Entry
+### 2.配置Entry（该模块始终需要手动配置）
 
 **(1)在 entry/src/main/ets/entryability 下创建 ImageCropAbility.ets**
 
@@ -474,7 +474,56 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 4.在 ArkTs 侧引入SyanImagePickerPackage
+### 4.配置 CMakeLists 和引入 SyanImagePickerPackage
+
+> 若使用的是 <= 0.5.3-0.0.4 版本，请跳过本章。
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+...
+
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_END: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-syan-image-picker/src/main/cpp" ./syan_image_picker)
+# RNOH_END: manual_package_linking_1
+
+add_library(rnoh_app SHARED
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_syan_image_picker)
+# RNOH_BEGIN: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
++ #include "SyanImagePickerPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
++        std::make_shared<SyanImagePickerPackage>(ctx)
+}
+```
+
+### 5.在 ArkTs 侧引入SyanImagePickerPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
@@ -490,7 +539,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 5.运行
+### 6.运行
 
 点击右上角的 `sync` 按钮
 
@@ -511,11 +560,9 @@ ohpm install
 
 在以下版本验证通过：
 
-1. RNOH: 0.72.96; SDK: HarmonyOS 5.1.0.150 (API Version 12); IDE: DevEco Studio 5.1.1.830; ROM: 5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
-3. RNOH: 0.77.18; SDK: HarmonyOS 5.0.0.71(API Version 12 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 5.1.0.150;
-
-
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## ImagePickerOption(选择图片或数据的配置项)
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。

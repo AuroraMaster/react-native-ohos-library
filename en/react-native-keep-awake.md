@@ -20,7 +20,7 @@
 Find the matching version information in the release address of a third-party library: 
 
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 4.0.0@deprecated     | [@react-native-oh-tpl/react-native-keep-awake Releases(deprecated)](https://github.com/react-native-oh-library/react-native-keep-awake/releases) | 0.72       |
+| <= 4.0.0-0.0.1@deprecated     | [@react-native-oh-tpl/react-native-keep-awake Releases(deprecated)](https://github.com/react-native-oh-library/react-native-keep-awake/releases) | 0.72       |
 | 4.0.1      | [@react-native-ohos/react-native-keep-awake Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-keep-awake/releases) | 0.72       |
 | 4.1.0      | [@react-native-ohos/react-native-keep-awake Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-keep-awake/releases) | 0.77       |
 
@@ -189,7 +189,7 @@ ohpm install --no-link
 
 ### 3.Configuring CMakeLists and Introducing RNThemeControlPackage
 
-> [!TIP] If you are using version 4.0.0, please skip this chapter.
+> If you are using version <= 4.0.0-0.0.1, please skip this chapter.
 
 Open `entry/src/main/cpp/CMakeLists.txt`， and add:
 
@@ -283,12 +283,11 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+Verified in the following versions.
 
-This document is verified based on the following versions:
-
-1. RNOH: 0.72.20; SDK: HarmonyOS NEXT Developer Beta1 B.0.18, HarmonyOS NEXT Developer Preview0 B.0.60, HarmonyOS NEXT Developer Preview2 B.0.73; IDE: DevEco Studio 5.0.3.200; ROM: 2.0.0.18;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## Usage
 

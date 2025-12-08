@@ -20,7 +20,7 @@ Please refer to the Releases page of the third-party library for the correspondi
 
 | Third-party Library Version | Release Information                                                                                                                                    | Supported RN Version |
 |-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------| ---------- |
-| 1.2.0@deprecated      | [@react-native-oh-tpl/react-native-idfa-aaid Releases(deprecated)](https://github.com/react-native-oh-library/react-native-idfa-aaid/releases) | 0.72       |
+| <=1.2.0-0.0.1@deprecated | [@react-native-oh-tpl/react-native-idfa-aaid Releases(deprecated)](https://github.com/react-native-oh-library/react-native-idfa-aaid/releases) | 0.72       |
 | 1.2.1      | [@react-native-ohos/react-native-idfa-aaid Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-idfa-aaid/releases)                        | 0.72       |
 | 1.3.0      | [@react-native-ohos/react-native-idfa-aaid Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-idfa-aaid/releases)                        | 0.77       |
 
@@ -178,7 +178,7 @@ export default App;
 
 ## Use Codegen
 
-> [!TIP] Version >= 1.2.1 no need to execute Codegen
+Version >= @react-native-ohos/react-native-idfa-aaid@1.2.1, compatible with codegen-lib for generating bridge code.
 
 If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
@@ -251,7 +251,69 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
-### 4. Running
+### 4.Configuring CMakeLists and Introducing  IdfaAaidPackage
+
+> If you are using version <=1.2.0-0.0.1, please skip this chapter。
+
+Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-idfa-aaid/src/main/cpp" ./getOaid)
+
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_getOaid)
+# RNOH_END: manual_package_linking_2
+```
+
+Open `entry/src/main/cpp/PackageProvider.cpp` and add the following code:
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "IdfaAaidPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+      std::make_shared<RNOHGeneratedPackage>(ctx),
+      std::make_shared<SamplePackage>(ctx),
++     std::make_shared<IdfaAaidPackage>(ctx)
+    };
+}
+```
+
+### 5. Running
 
 Click the `sync` button in the upper right corner.
 
@@ -272,12 +334,15 @@ To use this repository, you need to use the correct React-Native and RNOH versio
 
 The following combinations have been verified:
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ### Permission Requirements (If Any)
 
-[!TIP] "ohos.permission.APP_TRACKING_CONSENT"，"ohos.permission.APP_TRACKING_CONSENT"权限等级为<B>normal</B>，授权方式为<B>user_grant</B>[使用 ACL 签名的配置指导](https://developer.harmonyos.com/cn/docs/documentation/doc-guides-V3/signing-0000001587684945-V3#section157591551175916)
+[!TIP] 
+
+"ohos.permission.APP_TRACKING_CONSENT"，the permission level of"ohos.permission.APP_TRACKING_CONSENT" is <B>normal</B>，and the granting method is <B>user_grant</B>[Configuration guide for using ACL signatures](https://developer.harmonyos.com/cn/docs/documentation/doc-guides-V3/signing-0000001587684945-V3#section157591551175916)
 
 #### Include applicable permissions in the module.json5 file within the entry directory.
 在 `YourProject/entry/src/main/module.json5`补上配置
@@ -305,8 +370,6 @@ The following combinations have been verified:
   }
 }
 ```
-在 `YourProject/entry/src/main/resources/base/element/string.json`补上配置
-
 #### Apply the reasons for applicable permission in the entry directory.
 
 打开 `entry/src/main/resources/base/element/string.json`，添加：
@@ -322,8 +385,7 @@ The following combinations have been verified:
   ]
 }
 ```
-当前的 HarmonyOS 版本中，当用户请求 APP_TRACKING_CONSENT 权限时，系统并不会弹出授权提示框，而是默认禁止该应用获取 OAID 的权限.为了引导用户手动开启此权限，应用端可以自主设计并展示弹窗，指引用户前往设置界面进行相应的操作。此外，应用应严格按照 user_grant 权限的申请流程来提交请求，具体申请细节请参考：
-[user_grant （用户授权）权限列表](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/permissions-for-all-V5#user_grant%E7%94%A8%E6%88%B7%E6%8E%88%E6%9D%83%E6%9D%83%E9%99%90%E5%88%97%E8%A1%A8)
+ 当前的 HarmonyOS 版本中，当用户请求 APP_TRACKING_CONSENT 权限时，系统并不会弹出授权提示框，而是默认禁止该应用获取 OAID 的权限.为了引导用户手动开启此权限，应用端可以自主设计并展示弹窗，指引用户前往设置界面进行相应的操作。此外，应用应严格按照 user_grant 权限的申请流程来提交请求，具体申请细节请参考： [user_grant （用户授权）权限列表](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/permissions-for-all-V5#user_grant%E7%94%A8%E6%88%B7%E6%8E%88%E6%9D%83%E6%9D%83%E9%99%90%E5%88%97%E8%A1%A8) 
 
 ## Static Methods (If Any)
 

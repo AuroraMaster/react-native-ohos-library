@@ -613,7 +613,7 @@ Overlay displays floating layers.
 | autoKeyboardInsets | Auto-adjust for keyboard. | bool | no | iOS/Android | yes |
 | onAppearCompleted | Event after appearing finishes. | function | no | iOS/Android | yes |
 | onDisappearCompleted | Event after disappearing finishes. | function | no | iOS/Android | yes |
-| onCloseRequest | Close request handler. | function | no | iOS/Android | yes |
+| onCloseRequest | Close request handler(Called when tapping the translucent area outside the content). | function | no | iOS/Android | yes |
 
 **Overlay.PullView**
 

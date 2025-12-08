@@ -20,7 +20,7 @@
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 6.2.0@deprecated | [@react-native-oh-tpl/react-native-tcp-socket Releases(deprecated)](https://github.com/react-native-oh-library/react-native-tcp-socket/releases) | 0.72 |
+| <= 6.2.0-0.0.3@deprecated | [@react-native-oh-tpl/react-native-tcp-socket Releases(deprecated)](https://github.com/react-native-oh-library/react-native-tcp-socket/releases) | 0.72 |
 | 6.2.1 | [@react-native-ohos/react-native-tcp-socket Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-tcp-socket/releases) | 0.72 |
 | 6.3.1 | [@react-native-ohos/react-native-tcp-socket Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-tcp-socket/releases) | 0.77 |
 
@@ -575,7 +575,7 @@ const styles = StyleSheet.create({
 
 ## 使用 Codegen
 
-> [!TIP] Version >= @react-native-ohos/react-native-tcp-socket@6.2.1，已适配codegen-lib生成桥接代码
+Version >= @react-native-ohos/react-native-tcp-socket@6.2.1，已适配codegen-lib生成桥接代码。
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
@@ -633,7 +633,7 @@ ohpm install
 
 ### 3.配置CMakeLists 和引入 TcpSocketPackage
 
-> [!TIP] 若使用的是 6.2.0 版本，请跳过本章
+> 若使用的是 <= 6.2.0-0.0.3 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -728,8 +728,9 @@ ohpm install
 
 在以下版本验证通过：
 
-1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
-2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ### 权限要求
 
