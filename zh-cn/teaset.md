@@ -613,7 +613,7 @@ Theme 为全局主题配置，用于统一应用的视觉风格。
 | autoKeyboardInsets | 自动键盘占位 | bool | no | iOS/Android | yes |
 | onAppearCompleted | 浮层显示完成事件 | function | no | iOS/Android | yes |
 | onDisappearCompleted | 浮层消失完成事件 | function | no | iOS/Android | yes |
-| onCloseRequest | 浮层关闭请求事件 | function | no | iOS/Android | yes |
+| onCloseRequest | 浮层关闭请求事件(在点击内容之外的半透明区域时调用) | function | no | iOS/Android | yes |
 
 **Overlay.PullView - 拖拉浮层**
 
