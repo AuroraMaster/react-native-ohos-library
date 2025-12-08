@@ -35,16 +35,12 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-
 npm install @react-native-ohos/masked-view
 ```
 
 #### **yarn**
 
 ```bash
-
-
-# V0.2.11
 yarn add @react-native-ohos/masked-view
 ```
 
