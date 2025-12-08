@@ -389,7 +389,7 @@ Check the release version information in the release address of the third-party 
 | `displayFrameRate` | Whether to display the FPS counter                                       | boolean  | No       | iOS Android | Yes               |
 | `isTransparent`    | Whether to enable transparent background rendering                       | boolean  | No       | iOS Android | Yes               |
 | `androidView`      | The SurfaceView identifier used for native rendering binding on Android  | string   | No       | iOS Android | Yes               |
-| `antiAliasing`     | Anti-aliasing level; 0 disables anti-aliasing                            | number   | No       | iOS Android | Yes               |
+| `antiAliasing`     | Anti-aliasing level. Available values: 0, 1, 2, 4, 8, 16. Higher values generally provide better anti-aliasing quality at the cost of performance. 0 and 1 indicate that anti-aliasing is disabled. If the specified anti-aliasing level exceeds the maximum level supported by the device, HarmonyOS will automatically apply the highest supported level instead. | number   | No       | iOS Android | Yes               |
 | `onInitialized`    | Callback invoked after the native engine has completed initialization    | function | No       | iOS Android | Yes               |
 
 `NativeEngineView` is a native UI component bridged into React Native.
@@ -397,7 +397,7 @@ Check the release version information in the release address of the third-party 
 | Name                     | Description                                                             | Type     | Required | Platform     | HarmonyOS Support |
 | ------------------------ | ----------------------------------------------------------------------- | -------- | -------- | ------------ | ----------------- |
 | `isTransparent`          | Whether to enable transparent background rendering                      | boolean  | No       | iOS Android  | Yes               |
-| `antiAliasing`           | Anti-aliasing level; 0 disables anti-aliasing                           | number   | No       | iOS Android  | Yes               |
+| `antiAliasing`           | Anti-aliasing level. Available values: 0, 1, 2, 4, 8, 16. Higher values generally provide better anti-aliasing quality at the cost of performance. 0 and 1 indicate that anti-aliasing is disabled. If the specified anti-aliasing level exceeds the maximum level supported by the device, HarmonyOS will automatically apply the highest supported level instead. | number   | No       | iOS Android  | Yes               |
 | `androidView`            | The SurfaceView identifier used for native rendering binding on Android | string   | No       | iOS Android  | Yes               |
 | `onSnapshotDataReturned` | Callback returning screenshot data from the native side                 | function | No       | iOS Android  | Yes               |
 
