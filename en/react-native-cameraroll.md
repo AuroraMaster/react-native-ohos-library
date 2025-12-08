@@ -234,9 +234,9 @@ RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK;IDE: DevEco Studio  6.0.0.868;RO
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support | Remarks |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ | ---- |
-| save | 保存图片/视频 | function | no | iOS/Android | partially | 由于原库版本升级，该方法已弃用，可用saveAsset接口代替。 |
-| saveAsset | 保存图片/视频 | function | no | iOS/Android | partially |  |
-| saveToCameraRoll | 保存图片/视频 | function | no | iOS/Android | partially | 由于原库版本升级，该方法已弃用，调用会弹出警告，可用saveAsset接口代替。 |
+| save | 保存图片/视频 | function | no | iOS/Android | partially | 由于原库版本升级，该方法已弃用，可用saveAsset接口代替。<br />Image support format: png/jpg/jpeg/heif/bmp/gif/webp/svg/heic<br />Video support formats：mp4/mov |
+| saveAsset | 保存图片/视频 | function | no | iOS/Android | partially | Image support format: png/jpg/jpeg/heif/bmp/gif/webp/svg/heic<br />Video support formats：mp4/mov |
+| saveToCameraRoll | 保存图片/视频 | function | no | iOS/Android | partially | 由于原库版本升级，该方法已弃用，调用会弹出警告，可用saveAsset接口代替。<br />Image support format: png/jpg/jpeg/heif/bmp/gif/webp/svg/heic<br />Video support formats：mp4/mov |
 | getPhotos | 查找图片/视频 | function | no | iOS/Android | no | 由于 HarmonyOS 安全策略要求，该接口需要使用 ohos.permission.READ_IMAGEVIDEO 和 ohos.permission.WRITE_IMAGEVIDEO 权限，需应用方自行申请后，才可以正常使用 |
 | getAlbums | 查找相册 | function | no | iOS/Android | no | 由于 HarmonyOS 安全策略要求，该接口需要使用 ohos.permission.READ_IMAGEVIDEO 和 ohos.permission.WRITE_IMAGEVIDEO 权限，需应用方自行申请后，才可以正常使用 |
 | deletePhotos | 删除图片/视频 | function | no | iOS/Android | no | 由于 HarmonyOS 安全策略要求，该接口需要使用 ohos.permission.READ_IMAGEVIDEO 和 ohos.permission.WRITE_IMAGEVIDEO 权限，需应用方自行申请后，才可以正常使用 |
