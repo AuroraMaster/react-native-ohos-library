@@ -224,39 +224,39 @@ const styles = StyleSheet.create({
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| snapPoints  | Points for the bottom sheet to snap to, points should be sorted from bottom to top. It accepts array of number and string.    | Array<string>  | YES | ALL      | YES |
-| backgroundStyle  | View style to be applied to the background component.    | ViewStyle  | NO | ALL      | YES |
-| index  | Initial snap index. You also could provide -1 to initiate bottom sheet in closed state.    | number  | NO | ALL      | YES |
-| detached  | Defines whether the bottom sheet is attached to the bottom or no.  | boolean  | NO | ALL      | YES |
-| overDragResistanceFactor  | Defines how violently sheet has to be stopped while over dragging.  | number  | NO |   ALL    | YES |
-| enableOverDrag  | Enable over drag for the sheet.  | boolean  | NO |   ALL    | YES |
-| enablePanDownToClose  | Enable pan down gesture to close the sheet.  | boolean  | NO |ALL| YES |
-| enableHandlePanningGesture  | Enable handle panning gesture interaction.  | boolean  | NO |ALL| YES |
-| enableContentPanningGesture  | Enable content panning gesture interaction. | boolean  | NO |ALL| YES |
-| enableDynamicSizing  | Enable dynamic sizing for content view and scrollable content size.  | boolean  | NO | ALL      | YES |
-| animateOnMount  | This will initially mount the sheet closed and when it's mounted and calculated the layout, it will snap to initial snap point index.  | boolean  | NO | ALL      | YES |
-| style  | View style to be applied at the sheet container, it also could be an AnimatedStyle. This is helpful to add shadow to the sheet.  | ViewStyle  | NO | ALL      | YES |
-| handleStyle  | View style to be applied to the handle component. | ViewStyle   | NO | ALL      | YES |
-| handleIndicatorStyle  | View style to be applied to the handle indicator component. | ViewStyle  | NO | ALL      | YES |
-| handleHeight  | Handle height helps to calculate the internal container and sheet layouts. If handleComponent is provided, the library internally will calculate its layout, unless handleHeight is provided too.| number  | NO | ALL      | NO |
-| contentHeight  | Content height helps dynamic snap points calculation.| number  | NO | ALL      | YES |
-| topInset  | Top inset to be added to the bottom sheet container, usually it comes from @react-navigation/stack hook useHeaderHeight or from react-native-safe-area-context hook useSafeArea.| number  | NO | ALL      | YES |
-| bottomInset  |Bottom inset to be added to the bottom sheet container.| number  | NO | ALL      | YES |
-| maxDynamicContentSize  |Max dynamic content size height to limit the bottom sheet height from exceeding a provided size.| number  | NO |    ALL     | YES |
-| keyboardBehavior  |Defines the keyboard appearance behavior.| 'extend' or 'fillParent' or 'interactive'  | NO |NO| NO |
-| keyboardBlurBehavior  |Defines the keyboard blur behavior.| 'none' or 'restore'  | NO |    NO   | NO |
-| animationConfigs  |Animation configs, this could be created by:|function  | NO |   ALL    | YES |
-| handleComponent  |Component to be placed as a sheet handle.|React.FC\<BottomSheetHandleProps>  | NO | ALL      | YES |
-| backdropComponent  |Component to be placed as a sheet backdrop, by default is set to null, however the library also provide a default implementation BottomSheetBackdrop of a backdrop but you will need to provide it manually.|React.FC\<BottomSheetBackgroundProps>  | NO | ALL      | YES |
-| backgroundComponent  |Component to be placed as a sheet background.|React.FC\<BottomSheetBackgroundProps> | NO | ALL      | YES |
-| footerComponent  |Component to be placed as a sheet footer.|React.FC\<BottomSheetFooterProps>  | NO | ALL      | YES |
+| snapPoints  | 底部弹窗可吸附的位置，从低到高排序，支持数字或字符串数组。    | Array<string>  | YES | ALL      | YES |
+| backgroundStyle  | 应用于背景组件的样式。    | ViewStyle  | NO | ALL      | YES |
+| index  | 初始吸附位置索引，设为 -1 可默认关闭。    | number  | NO | ALL      | YES |
+| detached  | 是否附着在底部。  | boolean  | NO | ALL      | YES |
+| overDragResistanceFactor  | 控制过度拖拽时阻尼力度。  | number  | NO |   ALL    | YES |
+| enableOverDrag  | 是否允许过度拖拽。  | boolean  | NO |   ALL    | YES |
+| enablePanDownToClose  | 允许下拉手势关闭。  | boolean  | NO |ALL| YES |
+| enableHandlePanningGesture  | 允许拖拽手柄交互。  | boolean  | NO |ALL| YES |
+| enableContentPanningGesture  | 允许拖拽内容区交互。 | boolean  | NO |ALL| YES |
+| enableDynamicSizing  | 启用内容区和可滚动内容的动态尺寸。  | boolean  | NO | ALL      | YES |
+| animateOnMount  | 初始以关闭状态挂载，布局计算后自动吸附到初始位置。  | boolean  | NO | ALL      | YES |
+| style  | 应用于弹窗容器的样式，可为 AnimatedStyle，常用于添加阴影。  | ViewStyle  | NO | ALL      | YES |
+| handleStyle  | 应用于手柄的样式。 | ViewStyle   | NO | ALL      | YES |
+| handleIndicatorStyle  | 应用于手柄指示条的样式。 | ViewStyle  | NO | ALL      | YES |
+| handleHeight  | 手柄高度用于计算内部容器与弹窗布局；若已提供 handleComponent，库会自动测量，除非同时指定 handleHeight。| number  | NO | ALL      | NO |
+| contentHeight  | 内容高度用于动态吸附点计算。| number  | NO | ALL      | YES |
+| topInset  | 添加到底部弹窗容器的顶部内边距，通常来自 useHeaderHeight 或 useSafeArea.| number  | NO | ALL      | YES |
+| bottomInset  | 添加到底部弹窗容器的底部内边距。| number  | NO | ALL      | YES |
+| maxDynamicContentSize  | 动态内容的最大高度，限制弹窗高度不超过该值。| number  | NO |    ALL     | YES |
+| keyboardBehavior  | 键盘出现时的行为。| 'extend' or 'fillParent' or 'interactive'  | NO |NO| NO |
+| keyboardBlurBehavior  | 键盘收起时的行为。| 'none' or 'restore'  | NO |    NO   | NO |
+| animationConfigs  | 用于自定义 Timing 或 Spring 动画配置| object  | NO |   ALL    | YES |
+| handleComponent  | 自定义手柄组件。|React.FC\<BottomSheetHandleProps>  | NO | ALL      | YES |
+| backdropComponent  | 自定义背景遮罩组件，默认 null；库提供 BottomSheetBackdrop 需手动传入。|React.FC\<BottomSheetBackgroundProps>  | NO | ALL      | YES |
+| backgroundComponent  | 自定义背景组件。|React.FC\<BottomSheetBackgroundProps> | NO | ALL      | YES |
+| footerComponent  | 自定义底部栏组件。|React.FC\<BottomSheetFooterProps>  | NO | ALL      | YES |
 
 
 ### Navigation helpers
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| snapTo  | Snaps the current sheet to index.    | (index: number) => void  | NO | ALL      | YES |
+| snapTo  | 将当前弹窗吸附到指定索引。    | (index: number) => void  | NO | ALL      | YES |
 
 
 ## 遗留问题
