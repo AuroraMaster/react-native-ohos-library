@@ -1055,7 +1055,7 @@ The following component attributes are currently supported:
 -  The **brand** property of the **Icon** component is invalid, which is the same as that on Android and iOS: [issue#20](https://github.com/react-native-elements/react-native-elements/issues/3952).
 -  The **centerComponent** property of the **Header** component cannot be centered: [issue#21](https://github.com/react-native-elements/react-native-elements/issues/3953).
 -  The **skipAndroidStatusBar** property of the **ToolTip** component is invalid, which is the same as that on Android and iOS: [issue#22](https://github.com/react-native-elements/react-native-elements/issues/3954).
-
+-  The current progress bar of the Slider component does not fully cover the overall progress bar, which is consistent with Android and iOS：[issuse#23](https://github.com/react-native-elements/react-native-elements/issues/4010)。
 
 ## License
 

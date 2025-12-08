@@ -1041,6 +1041,7 @@ export default Avatars;
 -  Icon组件的brand属性设置无效，与Android、iOS一致：[issue#20](https://github.com/react-native-elements/react-native-elements/issues/3952)。
 -  Header组件的centerComponent属性设置上下无法居中：[issue#21](https://github.com/react-native-elements/react-native-elements/issues/3953)。
 -  ToolTip组件的skipAndroidStatusBar属性设置无效，与Android、iOS一致：[issue#22](https://github.com/react-native-elements/react-native-elements/issues/3954)。
+-  Slider组件的当前进度条未完全覆盖总进度条，与Android、iOS一致：[issuse#23](https://github.com/react-native-elements/react-native-elements/issues/4010)。
 
 ## 开源协议
 
