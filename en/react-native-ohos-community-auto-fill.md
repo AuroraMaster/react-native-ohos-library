@@ -35,7 +35,7 @@ Please refer to the Releases page of the third-party library for the correspondi
 | 1.0.2             | [@react-native-ohos/auto-fill Releases](https://gitcode.com/openharmony-sig/rntpc_auto-fill/releases)   | 0.72       |
 | 1.1.0             | [@react-native-ohos/auto-fill Releases](https://gitcode.com/openharmony-sig/rntpc_auto-fill/releases)   | 0.77       |
 
-For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
+For older versions not published on npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instructions:
 

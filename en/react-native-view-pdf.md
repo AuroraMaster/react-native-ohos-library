@@ -21,8 +21,8 @@ Find the matching version information in the release address of a third-party li
 | Third-party Library Version | Release Information    | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
 | <=0.14.0-0.0.2@deprecated | [@react-native-oh-tpl/react-native-view-pdf Releases(deprecated)](https://github.com/react-native-oh-library/react-native-PDFView/releases) | 0.72       |
-| 0.14.1      | [@react-native-ohos/react-native-view-pdf Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-view-pdf/releases) | 0.72       |
-| 0.15.0      | [@react-native-ohos/react-native-view-pdf Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-view-pdf/releases) | 0.77       |
+| 0.14.1      | [@react-native-ohos/react-native-view-pdf Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-pdfview/releases) | 0.72       |
+| 0.15.0      | [@react-native-ohos/react-native-view-pdf Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-pdfview/releases) | 0.77       |
 
 For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
