@@ -4,7 +4,7 @@
   <h1 align="center"> <code>react-native-document-picker</code> </h1>
 </p>
 
-> [!tip] [GitHub address](https://github.com/react-native-documents/document-picker)
+> [!tip] [GitHub address](https://github.com/react-native-oh-library/document-picker)
 
 ## 1. Installation and Usage
 

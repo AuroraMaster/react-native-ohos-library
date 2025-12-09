@@ -22,7 +22,7 @@ Please refer to the Releases page of the third-party library for the correspondi
 | ---------- | ------------------------------------------------------------ | ---------- |
 | <= 3.6.10-0.0.2@deprecated     | [@react-native-oh-tpl/react-native-audio-recorder-player Releases(deprecated)](https://github.com/react-native-oh-library/react-native-audio-recorder-player/releases) | 0.72       |
 | 3.6.11      | [@react-native-ohos/react-native-audio-recorder-player Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-audio-recorder-player/releases)     | 0.72       |
-| 3.6.14      | [@react-native-ohos/react-native-audio-recorder-player Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-audio-recorder-player/releases)     | 0.77       |
+| 3.7.0       | [@react-native-ohos/react-native-audio-recorder-player Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-audio-recorder-player/releases)     | 0.77       |
 
 For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
