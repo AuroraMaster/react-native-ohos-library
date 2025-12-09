@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
 
 ## Use Codegen
 
-Version >= @react-native-ohos/react-native-inappbrowser@2.1.1, The codegen-lib has been adapted to generate bridge code.
+Version >= @react-native-ohos/react-native-image-rotate@2.1.1, The codegen-lib has been adapted to generate bridge code.
 
 If this repository has been adapted to Codegen, generate the bridge code of the third-party library by using the Codegen. For details, see[ Codegen Usage Guide](/en/codegen.md).
 
