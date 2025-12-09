@@ -20,7 +20,7 @@
 
 | 三方库版本  | 发布信息                                                  | 支持RN版本 |
 |--------| ------------------------------------------------------------ | ---------- |
-| <=2.2.0-0.0.4@deprecated  | [@react-native-oh-tpl/react-native-bindingx Releases(deprecated)](https://github.com/react-native-oh-library/react-native-bindingx/releases) | 0.72       |
+| <=1.0.3-0.0.4@deprecated  | [@react-native-oh-tpl/react-native-bindingx Releases(deprecated)](https://github.com/react-native-oh-library/react-native-bindingx/releases) | 0.72       |
 | 1.0.4             | [@react-native-ohos/react-native-bindingx Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-bindingx/releases)   | 0.72       |
 | 1.1.0             | [@react-native-ohos/react-native-bindingx Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-bindingx/releases)   | 0.77       |
 
