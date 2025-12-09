@@ -8,10 +8,10 @@
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 0.6.0      |                        | 0.72       |
-| 0.6.0     |                     | 0.77       |
+| 0.6.1      | [@react-native-ohos/react-native-turbo-log Releases](https://github.com/react-native-oh-library/react-native-turbo-log/releases) | 0.72       |
+| 0.7.0     | [@react-native-ohos/react-native-turbo-log Releases](https://github.com/react-native-oh-library/react-native-turbo-log/releases) | 0.77       |
 
-> [!TIP] [Github 地址](https://github.com/mattermost/react-native-turbo-log)
+> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-turbo-log)
 
 ## 安装与使用
 
@@ -168,13 +168,11 @@ const styles = StyleSheet.create({
 ```
 ## 使用 Codegen
 
-Version >= @react-native-ohos/react-native-turbo-log@0.6.0，已适配codegen-lib生成桥接代码。
+Version >= @react-native-ohos/react-native-turbo-log@0.6.1，已适配codegen-lib生成桥接代码。
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
-
-Version >= @react-native-ohos/react-native-turbo-log@14.0.2，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 此步骤为手动配置原生依赖项的指导。
 
@@ -243,7 +241,7 @@ cmake_minimum_required(VERSION 3.4.1)
 set(CMAKE_SKIP_BUILD_RPATH TRUE)
 set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
 set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
-set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
 set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../oh_modules/@rnoh/react-native-openharmony/src/main/cpp")
 set(RNOH_GENERATED_DIR "${CMAKE_CURRENT_SOURCE_DIR}/generated")
 set(LOG_VERBOSITY_LEVEL 1)
@@ -257,7 +255,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-gesture-handler/src/main/cpp" ./gesture-handler)
-+ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-turbo-log/src/main/cpp" ./rhon-turbo-log)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-turbo-log/src/main/cpp" ./rnoh-turbo-log)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp") # this line is needed by codegen v1
@@ -315,7 +313,7 @@ ohpm install
 1. RNOH：0.72.90; SDK：HarmonyOS NEXT Developer DB3; IDE: DevEco Studio: 5.0.5.220; ROM：NEXT.0.0.105;
 2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release; IDE: DevEco Studio 6.0.0.858; ROM：6.0.0.112;
 
-```
+
 
 ## 属性
 

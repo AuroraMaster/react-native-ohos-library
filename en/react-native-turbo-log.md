@@ -8,10 +8,10 @@ Please refer to the Releases page of the third-party library for the matching ve
 
 | Third-party library version | Release information | Supported RN version |
 | --------------------------- | ------------------- | -------------------- |
-| 0.6.0                       |                     | 0.72                 |
-| 0.6.0                       |                     | 0.77                 |
+| 0.6.1                       | [@react-native-ohos/react-native-turbo-log Releases](https://github.com/react-native-oh-library/react-native-turbo-log/releases) | 0.72                 |
+| 0.7.0                       | [@react-native-ohos/react-native-turbo-log Releases](https://github.com/react-native-oh-library/react-native-turbo-log/releases) | 0.77                 |
 
-> [!TIP] [Github 地址](https://github.com/mattermost/react-native-turbo-log)
+> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-turbo-log)
 
 ####  npm
 
@@ -160,12 +160,11 @@ const styles = StyleSheet.create({
 
 ```
 ## Using Codegen
-Version >= @react-native-ohos/react-native-turbo-log@14.0.2, which has been adapted to codegen-lib to generate bridge code.
+Version >= @react-native-ohos/react-native-turbo-log@0.6.1, which has been adapted to codegen-lib to generate bridge code.
 
 This library has been adapted to Codegen. Before using it, you need to actively execute the generation of third-party library bridge code. For details, please refer to the Codegen Usage Documentation.
 
 ## Link
-Version >= @react-native-ohos/react-native-turbo-log@14.0.2, which supports Autolink and no manual configuration is required. Currently, only the 72 framework is supported. Autolink framework guide document: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/en/Autolinking.md
 This step is a guide for manually configuring native dependencies.
 First, you need to open the HarmonyOS project harmony in the project using DevEco Studio.
 
@@ -230,7 +229,7 @@ cmake_minimum_required(VERSION 3.4.1)
 set(CMAKE_SKIP_BUILD_RPATH TRUE)
 set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
 set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
-set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
 set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../oh_modules/@rnoh/react-native-openharmony/src/main/cpp")
 set(RNOH_GENERATED_DIR "${CMAKE_CURRENT_SOURCE_DIR}/generated")
 set(LOG_VERBOSITY_LEVEL 1)
@@ -303,7 +302,7 @@ The content of this document has been verified based on the following versions�
 1. RNOH：0.72.90; SDK：HarmonyOS NEXT Developer DB3; IDE: DevEco Studio: 5.0.5.220; ROM：NEXT.0.0.105;
 2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release; IDE: DevEco Studio 6.0.0.858; ROM：6.0.0.112;
 
-```
+
 
 ## Properties
 
