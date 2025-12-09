@@ -106,10 +106,11 @@ class BLEServiceInstance {
 }
 
 class App extends React.Component {
-  deviceName: string = 'time'
-  serviceUuid: string = '00001820-0000-1000-8000-00805F9B34FB'
-  characteristicUuid: string = '00001820-0000-1000-8000-00805F9B34FB'
-  descriptorUuid: string = '00002903-0000-1000-8000-00805F9B34FB'
+  //该库使用需注意以下属性设置
+  deviceName: string = 'time'//蓝牙设备名称
+  serviceUuid: string = '00001820-0000-1000-8000-00805F9B34FB'//注意大小写必须大写，服务端一样必须大写(扫描到英文字符会默认UPPERCASE导致指定serviceUuid找不到服务)
+  characteristicUuid: string = '00001820-0000-1000-8000-00805F9B34FB'//需要英文字符大写
+  descriptorUuid: string = '00002903-0000-1000-8000-00805F9B34FB'//需要英文字符大写
 
   device?: Device;
 
@@ -435,6 +436,7 @@ ohpm install
 - [ ] requestConnectionPriorityForDevice(deviceId: string, connectionPriority: number,transactionId: string)接口harmony暂不支持: [issue#5](https://github.com/react-native-oh-library/react-native-ble-plx/issues/5)
 
 ## 其他
+
 
 ## 开源协议
 
