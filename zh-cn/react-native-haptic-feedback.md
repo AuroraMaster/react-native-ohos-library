@@ -125,7 +125,7 @@ export default HapticFeedbackExample;
 
 ## 使用 Codegen
 
-> [!TIP] V2.2.2 不需要执行 Codegen。
+Version >= @react-native-ohos/react-native-haptic-feedback@2.2.2，已适配codegen-lib生成桥接代码。
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
