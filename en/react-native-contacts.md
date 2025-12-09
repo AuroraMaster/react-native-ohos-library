@@ -635,6 +635,9 @@ Open the `entry/src/main/module.json5` file and add the following code:
 - [ ] **viewExistingContact**: Only the name and phone number are displayed on the viewing page. The contact application needs to support all properties. [issue#1](https://github.com/react-native-oh-library/react-native-contacts/issues/1)
 - [ ] **editExistingContact**: There is no independent page for editing only phone numbers. [issue#1](https://github.com/react-native-oh-library/react-native-contacts/issues/1)
 - [ ] **writePhotoToPath**: The system contact application does not support this API. [issue#1](https://github.com/react-native-oh-library/react-native-contacts/issues/1)
+- [ ] **openExistingContact**: At present, no relevant interface is provided to open the edit mode for existing contacts. The current behavior is that it opens in view mode. If the existing contact does not exist, a blank page will be returned. [issue#9](https://gitcode.com/openharmony-sig/rntpc_react-native-contacts/issues/9)
+- [ ] **viewExistingContact**: If the existing contact does not exist, a blank page will be returned. [issue#9](https://gitcode.com/openharmony-sig/rntpc_react-native-contacts/issues/9)
+- [ ] state, department and isStarred these fields are not supported at present.[issue#9](https://gitcode.com/openharmony-sig/rntpc_react-native-contacts/issues/9)
 
 ## Others
 

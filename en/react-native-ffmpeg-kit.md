@@ -432,6 +432,7 @@ Verified with the following versions:
 
 1. RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); ROM: 5.0.0.107;
 2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.868; ROM: 6.0.0.112;
+3. This third-party library is not compatible with API levels below 13;
 
 ## API
 

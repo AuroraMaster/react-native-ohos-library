@@ -630,6 +630,9 @@ ohpm install
 - [ ] viewExistingContact：查看界面只有姓名和电话信息，需要联系人应用补齐所有属性[issue#1](https://github.com/react-native-oh-library/react-native-contacts/issues/1)
 - [ ] editExistingContact：没有单独的只支持编辑电话号码的页面，目前同编辑页面[issue#1](https://github.com/react-native-oh-library/react-native-contacts/issues/1)
 - [ ] writePhotoToPath：系统联系人应用不支持[issue#1](https://github.com/react-native-oh-library/react-native-contacts/issues/1)
+- [ ] openExistingContact：打开现有联系人的编辑模式目前没有提供相关接口，现状是按照查看方式打开。如果现有联系人不存在返回空白页[issue#9](https://gitcode.com/openharmony-sig/rntpc_react-native-contacts/issues/9)
+- [ ] viewExistingContact：如果现有联系人不存在返回空白页[issue#9](https://gitcode.com/openharmony-sig/rntpc_react-native-contacts/issues/9)
+- [ ] state(州)，department(部门)，isStarred(重点联系人标记)三个字段目前不支持[issue#9](https://gitcode.com/openharmony-sig/rntpc_react-native-contacts/issues/9)
 
 ## 其他
 

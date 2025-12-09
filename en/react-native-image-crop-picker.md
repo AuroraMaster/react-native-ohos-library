@@ -66,6 +66,7 @@ const ImageCropPickDemo = () => {
   const [writeTempFile, setTempFile] = React.useState(true);
   const [includeBase64, setBase64] = React.useState(false);
   const [freeStyleCropEnabled, setFreeStyleCropEnabled] = React.useState(false);
+  const [cropperCircleOverlay, setCropperCircleOverlay] = React.useState(false);
   const [forceJpg, setForceJpg] = React.useState(false);
   const [showsSelectedCount, setShowsSelectedCount] = React.useState(true);
   const [selectedButton, setSelectedButton] = React.useState('any');
@@ -542,6 +543,16 @@ const ImageCropPickDemo = () => {
           </View>
 
           <View style={styles.TextInputBox}>
+
+            <Text style={styles.inputLable}>cropperCircleOverlay :</Text>
+            <Button
+              title={`${cropperCircleOverlay}`}
+              onPress={() => cropperCircleOverlay ? setCropperCircleOverlay(false) : setCropperCircleOverlay(true)}
+            />
+
+          </View>
+
+          <View style={styles.TextInputBox}>
             <Text style={styles.inputLable}>compressImageQuality:</Text>
             <TextInput
               style={styles.numberInput}
@@ -667,6 +678,7 @@ const ImageCropPickDemo = () => {
                   freeStyleCropEnabled: freeStyleCropEnabledCropper,
                   compressImageQuality: imageQualityCropper,
                   forceJpg: forceJpgCropper,
+                  cropperCircleOverlay: cropperCircleOverlay,
                   cropperToolbarTitle: cropperTitle,
                   cropperChooseText: chooseText,
                   cropperChooseColor: chooseColor,
@@ -916,7 +928,70 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 ### 2.5. Configuration Entry(This module always requires manual configuration)
 
-**(1)Create ImageEditAbility.ets under entry/src/main/ets/entryability**
+**(1)Change EntryAbility.ets under entry/src/main/ets/entryability**
+
+```diff
+import {RNAbility} from '@rnoh/react-native-openharmony';
+import { AbilityConstant, Want } from '@kit.AbilityKit';
+import window from '@ohos.window';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0000;
+
+export default class EntryAbility extends RNAbility {
+
+  onCreate(want: Want) {
+    super.onCreate(want)
+  }
+
+  getPagePath() {
+    return 'pages/Index';
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // Main window is created, set main page for this ability
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+    windowStage.loadContent('pages/Index', (err) => {
+
++      let windowClass: window.Window = windowStage.getMainWindowSync()
++      let isLayoutFullScreen = true
++      windowClass.setWindowLayoutFullScreen(isLayoutFullScreen).then(() => {
++        console.info('Succeeded in setting the window layout to full-screen mode.')
++      }).catch((err: BusinessError) => {
++       console.error(`Failed to set the window layout to full-screen mode. Code is ${err.code}, message is ${err.message}`)
++      })
+
++      let type = window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR;
++      let avoidArea = windowClass.getWindowAvoidArea(type);
++      let bottomRectHeight = avoidArea.bottomRect.height; // 获取到导航区域的高度
++      AppStorage.setOrCreate('bottomRectHeight', bottomRectHeight);
+
++      type = window.AvoidAreaType.TYPE_SYSTEM;
++      avoidArea = windowClass.getWindowAvoidArea(type);
++      let topRectHeight = avoidArea.topRect.height; // 获取状态栏区域高度
++      AppStorage.setOrCreate('topRectHeight', topRectHeight);
+
++      windowClass.on('avoidAreaChange', (data) => {
++        if (data.type === window.AvoidAreaType.TYPE_SYSTEM) {
++          let topRectHeight = data.area.topRect.height;
++          AppStorage.setOrCreate('topRectHeight', topRectHeight);
++        } else if (data.type == window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR) {
++          let bottomRectHeight = data.area.bottomRect.height;
++          AppStorage.setOrCreate('bottomRectHeight', bottomRectHeight);
++        }
++      });
+
+      if (err.code) {
+        hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
+    });
+ }
+}
+```
+
+**(2)Create ImageEditAbility.ets under entry/src/main/ets/entryability**
 
 ```
 import UIAbility from '@ohos.app.ability.UIAbility'
@@ -965,7 +1040,7 @@ export default class ImageEditAbility extends UIAbility {
 }
 ```
 
-**(2)Register ImageEditAbility in entry/src/main/module.json5.**
+**(3)Register ImageEditAbility in entry/src/main/module.json5.**
 
 ```
 "abilities":[
@@ -984,28 +1059,42 @@ export default class ImageEditAbility extends UIAbility {
 
 ```
 
-**(3)Create entry/src/main/ets/pages under ImageEdit.ets**
+**(4)Create entry/src/main/ets/pages under ImageEdit.ets**
 
 ```
 import { ImageEditInfo } from '@react-native-ohos/react-native-image-crop-picker';
+import { CircleImageInfo } from '@react-native-ohos/react-native-image-crop-picker';
 
 @Entry
 @Component
 struct ImageEdit {
+  @State cropperCircleOverlay: boolean = false;
+  @StorageProp('bottomRectHeight')
+  bottomRectHeight: number = 0;
+  @StorageProp('topRectHeight')
+  topRectHeight: number = 0;
 
- build() {
-  Row(){
-   Column(){
-    ImageEditInfo();
-   }
-   .width('100%')
+  build() {
+    Row() {
+      Column() {
+        if(!this.cropperCircleOverlay){
+          ImageEditInfo()
+        } else {
+          CircleImageInfo()
+        }
+      }
+      .width('100%')
+      .padding({
+        top: this.getUIContext().px2vp(this.topRectHeight),
+        bottom: this.getUIContext().px2vp(this.bottomRectHeight)
+      })
+    }
+    .height('100%')
   }
-  .height('100%')
- }
 }
 ```
 
-**(4)Add configuration in entry/src/main/resources/base/profile/main_pages.json**
+**(5)Add configuration in entry/src/main/resources/base/profile/main_pages.json**
 
 ```
 {
@@ -1079,7 +1168,7 @@ Verified in the following versions.
 | cropperToolbarWidgetColor (Android only) | string (default `darker orange`)                             | When cropping image, determines the color of Toolbar text and buttons. | no       | Android | no       |
 | freeStyleCropEnabled                      | bool (default false)                                         | Enables user to apply custom rectangle area for cropping     | no       | All      | yes      |
 | cropperToolbarTitle                       | string (default `Edit Photo`)                                | When cropping image, determines the title of Toolbar.        | no       | All      | yes      |
-| cropperCircleOverlay                      | bool (default false)                                         | Enable or disable circular cropping mask.                    | no       | All      | no      |
+| cropperCircleOverlay                      | bool (default false)                                         | Enable or disable circular cropping mask.                    | no       | All      | yes      |
 | disableCropperColorSetters (Android only) | bool (default false)                                         | When cropping image, disables the color setters for cropping library. | no       | Android | no       |
 | minFiles (iOS only)                    | number (default 1)                                           | Min number of files to select when using `multiple` option   | no       | iOS   | no      |
 | maxFiles (iOS only)                    | number (default 5)                                           | Max number of files to select when using `multiple` option   | no       | iOS   | yes      |

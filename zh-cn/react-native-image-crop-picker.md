@@ -66,6 +66,7 @@ const ImageCropPickDemo = () => {
   const [writeTempFile, setTempFile] = React.useState(true);
   const [includeBase64, setBase64] = React.useState(false);
   const [freeStyleCropEnabled, setFreeStyleCropEnabled] = React.useState(false);
+  const [cropperCircleOverlay, setCropperCircleOverlay] = React.useState(false);
   const [forceJpg, setForceJpg] = React.useState(false);
   const [showsSelectedCount, setShowsSelectedCount] = React.useState(true);
   const [selectedButton, setSelectedButton] = React.useState('any');
@@ -542,6 +543,16 @@ const ImageCropPickDemo = () => {
           </View>
 
           <View style={styles.TextInputBox}>
+
+            <Text style={styles.inputLable}>cropperCircleOverlay :</Text>
+            <Button
+              title={`${cropperCircleOverlay}`}
+              onPress={() => cropperCircleOverlay ? setCropperCircleOverlay(false) : setCropperCircleOverlay(true)}
+            />
+
+          </View>
+
+          <View style={styles.TextInputBox}>
             <Text style={styles.inputLable}>compressImageQuality:</Text>
             <TextInput
               style={styles.numberInput}
@@ -667,6 +678,7 @@ const ImageCropPickDemo = () => {
                   freeStyleCropEnabled: freeStyleCropEnabledCropper,
                   compressImageQuality: imageQualityCropper,
                   forceJpg: forceJpgCropper,
+                  cropperCircleOverlay: cropperCircleOverlay,
                   cropperToolbarTitle: cropperTitle,
                   cropperChooseText: chooseText,
                   cropperChooseColor: chooseColor,
@@ -917,7 +929,70 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 ### 2.5. 配置Entry(该模块始终需要手动配置)
 
-**(1)在 entry/src/main/ets/entryability 下创建 ImageEditAbility.ets**
+**(1)在 entry/src/main/ets/entryability 下修改 EntryAbility.ets**
+
+```diff
+import {RNAbility} from '@rnoh/react-native-openharmony';
+import { AbilityConstant, Want } from '@kit.AbilityKit';
+import window from '@ohos.window';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0000;
+
+export default class EntryAbility extends RNAbility {
+
+  onCreate(want: Want) {
+    super.onCreate(want)
+  }
+
+  getPagePath() {
+    return 'pages/Index';
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // Main window is created, set main page for this ability
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+    windowStage.loadContent('pages/Index', (err) => {
+
++      let windowClass: window.Window = windowStage.getMainWindowSync()
++      let isLayoutFullScreen = true
++      windowClass.setWindowLayoutFullScreen(isLayoutFullScreen).then(() => {
++        console.info('Succeeded in setting the window layout to full-screen mode.')
++      }).catch((err: BusinessError) => {
++       console.error(`Failed to set the window layout to full-screen mode. Code is ${err.code}, message is ${err.message}`)
++      })
+
++      let type = window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR;
++      let avoidArea = windowClass.getWindowAvoidArea(type);
++      let bottomRectHeight = avoidArea.bottomRect.height; // 获取到导航区域的高度
++      AppStorage.setOrCreate('bottomRectHeight', bottomRectHeight);
+
++      type = window.AvoidAreaType.TYPE_SYSTEM;
++      avoidArea = windowClass.getWindowAvoidArea(type);
++      let topRectHeight = avoidArea.topRect.height; // 获取状态栏区域高度
++      AppStorage.setOrCreate('topRectHeight', topRectHeight);
+
++      windowClass.on('avoidAreaChange', (data) => {
++        if (data.type === window.AvoidAreaType.TYPE_SYSTEM) {
++          let topRectHeight = data.area.topRect.height;
++          AppStorage.setOrCreate('topRectHeight', topRectHeight);
++        } else if (data.type == window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR) {
++          let bottomRectHeight = data.area.bottomRect.height;
++          AppStorage.setOrCreate('bottomRectHeight', bottomRectHeight);
++        }
++      });
+
+      if (err.code) {
+        hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
+    });
+ }
+}
+```
+
+**(2)在 entry/src/main/ets/entryability 下创建 ImageEditAbility.ets**
 
 ```
 import UIAbility from '@ohos.app.ability.UIAbility'
@@ -966,7 +1041,7 @@ export default class ImageEditAbility extends UIAbility {
 }
 ```
 
-**(2)在 entry/src/main/module.json5 注册 ImageEditAbility**
+**(3)在 entry/src/main/module.json5 注册 ImageEditAbility**
 
 ```
 "abilities":[
@@ -985,28 +1060,45 @@ export default class ImageEditAbility extends UIAbility {
 
 ```
 
-**(3)在 entry/src/main/ets/pages 下创建 ImageEdit.ets**
+**(4)在 entry/src/main/ets/pages 下创建 ImageEdit.ets**
 
 ```
 import { ImageEditInfo } from '@react-native-ohos/react-native-image-crop-picker';
-
+import { CircleImageInfo } from '@react-native-ohos/react-native-image-crop-picker';
 @Entry
 @Component
 struct ImageEdit {
+  @State cropperCircleOverlay: boolean = false;
+  @StorageProp('bottomRectHeight')
+  bottomRectHeight: number = 0;
+  @StorageProp('topRectHeight')
+  topRectHeight: number = 0;
 
- build() {
-  Row(){
-   Column(){
-    ImageEditInfo();
-   }
-   .width('100%')
+  aboutToAppear(): void {
+    this.cropperCircleOverlay = AppStorage.Get('cropperCircleOverlay') || false
   }
-  .height('100%')
- }
+
+  build() {
+    Row() {
+      Column() {
+        if(!this.cropperCircleOverlay){
+          ImageEditInfo()
+        } else {
+          CircleImageInfo()
+        }
+      }
+      .width('100%')
+      .padding({
+        top: this.getUIContext().px2vp(this.topRectHeight),
+        bottom: this.getUIContext().px2vp(this.bottomRectHeight)
+      })
+    }
+    .height('100%')
+  }
 }
 ```
 
-**(4)在 entry/src/main/resources/base/profile/main_pages.json 添加配置**
+**(5)在 entry/src/main/resources/base/profile/main_pages.json 添加配置**
 
 ```
 {
@@ -1080,7 +1172,7 @@ ohpm install
 | cropperToolbarWidgetColor (Android only)  | string (default `darker orange`)                             | 裁剪图片时，指定工具栏文本和按钮的颜色。                     | no       | Android  | no                |
 | freeStyleCropEnabled                      | bool (default false)                                         | 允许用户自定义裁剪区域的矩形范围                             | no       | All      | yes               |
 | cropperToolbarTitle                       | string (default `Edit Photo`)                                | 裁剪图片时，指定工具栏的标题。                               | no       | All      | yes               |
-| cropperCircleOverlay                      | bool (default false)                                         | 启用或禁用圆形裁剪遮罩。                                     | no       | All      | no                |
+| cropperCircleOverlay                      | bool (default false)                                         | 启用或禁用圆形裁剪遮罩。                                     | no       | All      | yes                |
 | disableCropperColorSetters (Android only) | bool (default false)                                         | 裁剪图片时，禁用裁剪库的颜色设置功能。                       | no       | Android  | no                |
 | minFiles (iOS only)                       | number (default 1)                                           | 启用 `multiple` 选项时，最少选择的文件数量                   | no       | iOS      | no                |
 | maxFiles (iOS only)                       | number (default 5)                                           | 启用 `multiple` 选项时，最多选择的文件数量                   | no       | iOS      | yes               |

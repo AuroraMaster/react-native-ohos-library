@@ -23,7 +23,7 @@
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
 | 1.4.16     | [@react-native-oh-tpl/react-native-gifted-charts Releases](https://github.com/react-native-oh-library/react-native-gifted-charts/releases) | 0.72       |
-| 1.4.62     | [@react-native-ohos/react-native-gifted-charts Releases]()   | 0.77       |
+| 1.5.0      | [@react-native-ohos/react-native-gifted-charts Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-gifted-charts/releases)   | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -34,20 +34,20 @@
 #### **npm**
 
 ```bash
-# V1.4.16
+# 0.72
 npm install @react-native-oh-tpl/react-native-gifted-charts
 
-# V1.4.62
+# 0.77
 npm install @react-native-ohos/react-native-gifted-charts
 ```
 
 #### **yarn**
 
 ```bash
-# V1.4.16
+# 0.72
 yarn add @react-native-oh-tpl/react-native-gifted-charts
 
-# V1.4.62
+# 0.77
 yarn add @react-native-ohos/react-native-gifted-charts
 ```
 
@@ -101,10 +101,10 @@ export default function () {
 
 请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 1.4.16     | [@react-native-oh-tpl/react-native-gifted-charts Releases](https://github.com/react-native-oh-library/react-native-gifted-charts/releases) | 0.72       |
-| 1.4.62     | [@react-native-ohos/react-native-gifted-charts Releases]()   | 0.77       |
+本文档内容基于以下版本验证通过：
+
+1. RNOH: 0.72.33; SDK: OpenHarmony 5.0.0.71(API Version 12 Release); IDE: DevEco Studio 5.0.3.900; ROM: NEXT.0.0.71;
+2. RNOH: 0.77.18; SDK: HarmonyOS 5.1.1 Release; IDE: DevEco Studio 5.1.1.830; ROM: NEXT 5.1.0.150;
 
 ## 属性
 
