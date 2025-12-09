@@ -57,22 +57,6 @@ Add the following code to the tsconfig. json file:
 
 ```
 
-Add the following code to the metro.config.js file:
-
-```js
-const config = {
-...
-  resolver: {
-    unstable_enablePackageExports: true,
-  },
-};
-module.exports = mergeConfig(
-  ...
-  config,
-);
-
-```
-
 <!-- tabs:end -->
 
 The following code shows the basic use scenario of the repository:
@@ -81,7 +65,7 @@ The following code shows the basic use scenario of the repository:
 
 ```js
 import * as React from "react";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import {
   HeaderButtons,
   Item,
@@ -92,7 +76,7 @@ import {
   HiddenItemProps,
   HeaderButtonProps,
   HeaderButton,
-} from "react-navigation-header-buttons";
+} from "react-navigation-header-buttons/lib/module";
 import { Text } from "react-native";
 
 const MaterialHeaderButton = (props: HeaderButtonProps) => (

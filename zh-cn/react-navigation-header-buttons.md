@@ -61,20 +61,6 @@ yarn add react-navigation-header-buttons@13.0.0
   }
 
 ```
-在metro.config.js文件中添加如下代码:
-```js
-const config = {
-...
-  resolver: {
-    unstable_enablePackageExports: true,
-  },
-};
-module.exports = mergeConfig(
-  ...
-  config,
-);
-
-```
 
 <!-- tabs:end -->
 
@@ -84,7 +70,7 @@ module.exports = mergeConfig(
 
 ```js
 import * as React from 'react';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {
   HeaderButtons,
   Item,
@@ -95,7 +81,7 @@ import {
   HiddenItemProps,
   HeaderButtonProps,
   HeaderButton,
-} from 'react-navigation-header-buttons';
+} from 'react-navigation-header-buttons/lib/module';
 import { Text } from 'react-native';
 
 const MaterialHeaderButton = (props: HeaderButtonProps) => (
