@@ -4,7 +4,7 @@
   <h1 align="center"> <code>react-native-document-picker</code> </h1>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-documents/document-picker)
+> [!TIP] [Github 地址](https://github.com/react-native-oh-library/document-picker)
 
 ## 1. 安装与使用
 
