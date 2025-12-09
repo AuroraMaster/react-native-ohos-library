@@ -108,10 +108,11 @@ class BLEServiceInstance {
 }
 
 class App extends React.Component {
-  deviceName: string = 'time'
-  serviceUuid: string = '00001820-0000-1000-8000-00805F9B34FB'
-  characteristicUuid: string = '00001820-0000-1000-8000-00805F9B34FB'
-  descriptorUuid: string = '00002903-0000-1000-8000-00805F9B34FB'
+  //Adjust the parameters according to the specific device configuration.
+  deviceName: string = 'time'// The Bluetooth device name.
+  serviceUuid: string = '00001820-0000-1000-8000-00805F9B34FB'// Must be uppercase; the server must use the same uppercase.  Scanning English characters will default to uppercase, which may prevent the specified serviceUuid from being found.
+  characteristicUuid: string = '00001820-0000-1000-8000-00805F9B34FB'// Must be uppercase English characters.
+  descriptorUuid: string = '00002903-0000-1000-8000-00805F9B34FB'// Must be uppercase English characters.
 
   device?: Device;
 
@@ -435,6 +436,7 @@ Verified in the following versions.
 - [ ] requestConnectionPriorityForDevice(deviceId: string, connectionPriority: number,transactionId: string) is not supported in harmony: [issue#5](https://github.com/react-native-oh-library/react-native-ble-plx/issues/5)
 
 ## Others
+
 
 ## License
 
