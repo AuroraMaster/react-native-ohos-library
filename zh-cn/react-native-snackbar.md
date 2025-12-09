@@ -18,11 +18,11 @@
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本  | 发布信息                                                  | 支持RN版本 |
-|--------| ------------------------------------------------------------ | ---------- |
-| <= 2.7.1-0.0.2@deprecated  | [@react-native-oh-tpl/react-native-snackbar Releases(deprecated)](https://github.com/react-native-oh-library/react-native-snackbar/releases) | 0.72       |
-| 2.7.2             | [@react-native-ohos/react-native-snackbar Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-snackbar/releases)   | 0.72       |
-| 2.9.0             | [@react-native-ohos/react-native-snackbar Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-snackbar/releases)   | 0.77       |
+| 三方库版本                     | 发布信息                                                  | 支持RN版本 |
+|---------------------------| ------------------------------------------------------------ | ---------- |
+| <= 2.7.1-0.0.2@deprecated | [@react-native-oh-tpl/react-native-snackbar Releases(deprecated)](https://github.com/react-native-oh-library/react-native-snackbar/releases) | 0.72       |
+| 2.7.2                     | [@react-native-ohos/react-native-snackbar Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-snackbar/releases)   | 0.72       |
+| 2.9.1                     | [@react-native-ohos/react-native-snackbar Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-snackbar/releases)   | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 

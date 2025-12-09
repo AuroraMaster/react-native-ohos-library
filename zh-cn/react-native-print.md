@@ -118,7 +118,7 @@ export default function RNPrint(): JSX.Element {
 
 ## 使用 Codegen
 
-Version >= @react-native-ohos/react-native-inappbrowser@0.11.1，已适配codegen-lib生成桥接代码。
+Version >= @react-native-ohos/react-native-print@0.11.1，已适配codegen-lib生成桥接代码。
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 

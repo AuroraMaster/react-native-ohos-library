@@ -19,10 +19,10 @@
 Please refer to the Releases page of the third-party library for the corresponding version information
 
 | Third-party Library Version | Release Information       | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| <= 2.7.1-0.0.2@deprecated  | [@react-native-oh-tpl/react-native-snackbar Releases(deprecated)](https://github.com/react-native-oh-library/react-native-snackbar/releases) | 0.72       |
-| 2.7.2             | [@react-native-ohos/react-native-snackbar Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-snackbar/releases)   | 0.72       |
-| 2.9.0             | [@react-native-ohos/react-native-snackbar Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-snackbar/releases)   | 0.77       |
+|-----------------------------| ------------------------------------------------------------ | ---------- |
+| <= 2.7.1-0.0.2@deprecated   | [@react-native-oh-tpl/react-native-snackbar Releases(deprecated)](https://github.com/react-native-oh-library/react-native-snackbar/releases) | 0.72       |
+| 2.7.2                       | [@react-native-ohos/react-native-snackbar Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-snackbar/releases)   | 0.72       |
+| 2.9.1                       | [@react-native-ohos/react-native-snackbar Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-snackbar/releases)   | 0.77       |
 
 For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
