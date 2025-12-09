@@ -26,7 +26,7 @@
 | ---------- | ------------------------------------------------------------ | ---------- |
 | <= 4.2.0-0.0.4@deprecated | [@react-native-oh-tpl/react-native-incall-manager Releases(deprecated)](https://github.com/react-native-oh-library/react-native-incall-manager/releases) | 0.72         |
 | 4.2.1      | [@react-native-ohos/react-native-incall-manager Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-incall-manager/releases)                        | 0.72       |
-| 4.2.2      | [@react-native-ohos/react-native-incall-manager Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-incall-manager/releases)                        | 0.77       |
+| 4.3.0      | [@react-native-ohos/react-native-incall-manager Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-incall-manager/releases)                        | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -497,7 +497,7 @@ export default function InCallManagerExample() {
 ```
 ## Link
 
-Version > @react-native-ohos/react-native-incall-manager@4.2.1，已支持 Autolink，无需手动配置，目前只支持72框架。
+Version >= @react-native-ohos/react-native-incall-manager@4.2.1，已支持 Autolink，无需手动配置，目前只支持72框架。
 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 此步骤为手动配置原生依赖项的指导。

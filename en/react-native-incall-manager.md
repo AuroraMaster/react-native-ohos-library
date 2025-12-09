@@ -25,7 +25,7 @@ Please refer to the Releases page of the third-party library for the correspondi
 | ---------- | ------------------------------------------------------------ | ---------- |
 | <= 4.2.0-0.0.4@deprecated   | [@react-native-oh-tpl/react-native-incall-manager Releases(deprecated)](https://github.com/react-native-oh-library/react-native-incall-manager/releases) | 0.72                 |
 | 4.2.1      | [@react-native-ohos/react-native-incall-manager Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-incall-manager/releases)                        | 0.72       |
-| 4.2.2      | [@react-native-ohos/react-native-incall-manager Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-incall-manager/releases)                        | 0.77       |
+| 4.3.0      | [@react-native-ohos/react-native-incall-manager Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-incall-manager/releases)                        | 0.77       |
 
 For older versions not published on npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
 
