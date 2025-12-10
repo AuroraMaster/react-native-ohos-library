@@ -237,7 +237,7 @@ For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
 ### 3. Configuring CMakeLists and Introducing SmartRefreshLayoutPackage
 
-> V0.6.8 requires configuring CMakeLists and importing SmartRefreshLayoutPackage.
+> If you are using version <= 0.6.7-0.2.18, please skip this chapter.
 
 Open  `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 

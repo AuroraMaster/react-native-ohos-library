@@ -13,7 +13,7 @@
 | 三方库版本         | 发布信息                                                                                                                                                 | 支持RN版本 |
 |------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------| ---------- |
 | <= 3.3.0-0.0.2@deprecated | [@react-native-oh-tpl/react-native-splash-screen Releases(deprecated)](https://github.com/react-native-oh-library/react-native-splash-screen/releases) | 0.72       |
-| 3.3.1            | [@react-native-ohos/react-native-splash-screen Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-splash-screen/releases)                | 0.72       |
+| 3.3.2            | [@react-native-ohos/react-native-splash-screen Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-splash-screen/releases)                | 0.72       |
 | 3.4.0            | [@react-native-ohos/react-native-splash-screen Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-splash-screen/releases)                | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
@@ -95,13 +95,13 @@ export default class WelcomePage extends Component {
 
 ## 2. 使用 Codegen
 
-Version >= @react-native-ohos/react-native-splash-screen@3.3.1，已适配codegen-lib生成桥接代码。
+Version >= @react-native-ohos/react-native-splash-screen@3.3.2，已适配codegen-lib生成桥接代码。
 
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## 3. Manual Link
 
-Version >= @react-native-ohos/react-native-splash-screen@3.3.1，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+Version >= @react-native-ohos/react-native-splash-screen@3.3.2，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 此步骤为手动配置原生依赖项的指导。
 

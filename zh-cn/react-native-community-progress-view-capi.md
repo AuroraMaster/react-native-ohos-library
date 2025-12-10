@@ -16,7 +16,15 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/progress-view Releases](https://github.com/react-native-oh-library/progress-view/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本  | 发布信息                                                  | 支持RN版本 |
+|--------| ------------------------------------------------------------ | ---------- |
+| <= 1.4.2-0.0.8@deprecated | [@react-native-oh-tpl/progress-view Releases(deprecated)](https://github.com/react-native-oh-library/progress-view/releases) | 0.72         |
+| 1.4.3             | [@react-native-ohos/progress-view Releases](https://gitcode.com/openharmony-sig/rntpc_progress-view/releases)   | 0.72       |
+| 1.5.0             | [@react-native-ohos/progress-view Releases](https://gitcode.com/openharmony-sig/rntpc_progress-view/releases)   | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -25,13 +33,13 @@
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/progress-view
+npm install @react-native-ohos/progress-view
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/progress-view
+yarn add @react-native-ohos/progress-view
 ```
 
 <!-- tabs:end -->
@@ -56,7 +64,9 @@ export default function ProgressViewExample() {
 
 ## Link
 
-目前HarmonyOS暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/progress-view@1.4.3，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的HarmonyOS工程 `harmony`
 
@@ -87,7 +97,7 @@ export default function ProgressViewExample() {
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/progress-view": "file:../../node_modules/@react-native-oh-tpl/progress-view/harmony/progress_view.har"
+    "@react-native-ohos/progress-view": "file:../../node_modules/@react-native-ohos/progress-view/harmony/progress_view.har"
   }
 ```
 
@@ -106,6 +116,8 @@ ohpm install
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
 ### 3.配置 CMakeLists 和引入 ProgressViewPackage
+
+> 若使用的是 <= 1.4.2-0.0.8 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -128,7 +140,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/progress-view/src/main/cpp" ./progress-view)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/progress-view/src/main/cpp" ./progress-view)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -164,7 +176,23 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 4.运行
+### 4 在 ArkTs 侧引入 ProgressViewPackage
+
+打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
+
+```diff
+  ...
++ import { ProgressViewPackage } from "@react-native-ohos/progress-view/ts";
+
+export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
+  return [
+    new SamplePackage(ctx),
++   new ProgressViewPackage(ctx), 
+  ];
+}
+```
+
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -183,7 +211,11 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-library/progress-view Releases](https://github.com/react-native-oh-library/progress-view/releases)
+在以下版本验证通过：
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 属性
 

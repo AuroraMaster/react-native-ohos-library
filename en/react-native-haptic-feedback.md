@@ -125,7 +125,7 @@ export default HapticFeedbackExample;
 
 ## Use Codegen
 
-> [!TIP] V2.2.2 no need to execute Codegen
+Version >= @react-native-ohos/react-native-haptic-feedback@2.2.2 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
 
 If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 

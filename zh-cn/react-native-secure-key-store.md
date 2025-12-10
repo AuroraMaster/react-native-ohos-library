@@ -19,7 +19,7 @@
 
 | 三方库版本 | 发布信息 | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 2.6.1      | [@react-native-ohos/react-native-secure-key-store Releases](https://github.com/react-native-oh-library/react-native-secure-key-store/releases) | 0.72，0.77       |
+| 2.0.11     | [@react-native-ohos/react-native-secure-key-store Releases](https://github.com/react-native-oh-library/react-native-secure-key-store/releases) | 0.72，0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -30,15 +30,13 @@
 #### **npm**
 
 ```bash
-# V2.6.1
-npm install @react-native-ohos/react-native-secure-key-store 目前无
+npm install @react-native-ohos/react-native-secure-key-store
 ```
 
 #### **yarn**
 
 ```bash
-# V2.6.1
-yarn add @react-native-ohos/react-native-secure-key-store 目前无
+yarn add @react-native-ohos/react-native-secure-key-store
 ```
 
 <!-- tabs:end -->
@@ -188,19 +186,21 @@ const styles = StyleSheet.create({
 });
 
 export default AppDemo;
-```
-```
-## Using Codegen
-Version >= @react-native-ohos/react-native-secure-key-store@14.0.2, which has been adapted to codegen-lib to generate bridge code.
 
-This library has been adapted to Codegen. Before using it, you need to actively execute the generation of third-party library bridge code. For details, please refer to the Codegen Usage Documentation.
+```
+## 使用 Codegen
+
+Version >= @react-native-ohos/react-native-secure-key-store@2.0.11, 已适配codegen-lib生成桥接代码。
+
+本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
-Version >= @react-native-ohos/react-native-secure-key-store@14.0.2, which supports Autolink and no manual configuration is required. Currently, only the 72 framework is supported. Autolink framework guide document: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/en/Autolinking.md
-This step is a guide for manually configuring native dependencies.
-First, you need to open the HarmonyOS project harmony in the project using DevEco Studio.
 
-### Add overrides field to oh-package.json in the project root directory
+此步骤为手动配置原生依赖项的指导。
+
+首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
+
+### 1.在工程根目录的 `oh-package.json` 添加 overrides字段
 
 ```json
 {
@@ -211,6 +211,8 @@ First, you need to open the HarmonyOS project harmony in the project using DevEc
   ...
 }
 ```
+
+### 2.引入原生端代码
 
 There are currently two methods:
 
@@ -226,25 +228,25 @@ Open the entry/oh-package.json5 file and append the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-ohos/react-native-turbo-log": "file:../../node_modules/@@react-native-ohos/react-native-secure-key-store/harmony/secure_key_store.har"
+    "@react-native-ohos/react-native-secure-key-store": "file:../../node_modules/@react-native-ohos/react-native-secure-key-store/harmony/secure_key_store.har"
   }
 ```
 
-Click the sync button at the top right corner.
+点击右上角的 `sync` 按钮
 
-Or run this command in the terminal:
+或者在终端执行：
 
 ```bash
 cd entry
 ohpm install
 ```
 
-Method 2: Link the source code directly
+方法二：直接链接源码
 
-> [!TIP] For direct source code linking, refer to [Direct Source Code Linking Instructions](/zh-cn/link-source-code.md)
+> [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
 
-### 4.Configure CMakeLists and import turbo_log
+### 4.配置 CMakeLists 和引入 RTNSecureKeyStorePackage
 
 open entry/src/main/cpp/CMakeLists.txt，add：
 
@@ -261,7 +263,7 @@ cmake_minimum_required(VERSION 3.4.1)
 set(CMAKE_SKIP_BUILD_RPATH TRUE)
 set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
 set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
-set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
 set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../oh_modules/@rnoh/react-native-openharmony/src/main/cpp")
 set(RNOH_GENERATED_DIR "${CMAKE_CURRENT_SOURCE_DIR}/generated")
 set(LOG_VERBOSITY_LEVEL 1)
@@ -312,22 +314,44 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 5.Run
+### 5.在 ArkTs 侧引入 RNSecureKeyStorePackage
 
-Click the sync button in the upper right corner.
+打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
-Alternatively, execute the following command in the terminal:
+```diff
+  ...
++ import { RNSecureKeyStorePackage } from "@react-native-ohos/react-native-secure-key-store/ts";
+
+export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
+  return [
+    new SamplePackage(ctx),
++   new RNSecureKeyStorePackage(ctx)
+  ];
+}
+```
+
+### 6.运行
+
+点击右上角的 `sync` 按钮
+
+或者在终端执行：
+
+```bash
+cd entry
+ohpm install
+```
+
+然后编译、运行即可。
+
 ## 约束与限制
 
 ### 兼容性
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 2.6.1      | [@react-native-ohos/react-native-secure-key-store Releases](https://github.com/react-native-oh-library/react-native-secure-key-store/releases) | 0.72，0.77   目前无       |
+本文档内容基于以下版本验证通过：
+1. RNOH：0.72.90; SDK：HarmonyOS NEXT Developer DB3; IDE: DevEco Studio: 5.0.5.220; ROM：NEXT.0.0.105;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release; IDE: DevEco Studio 6.0.0.858; ROM：6.0.0.112;
 
 ## 技术实现
 

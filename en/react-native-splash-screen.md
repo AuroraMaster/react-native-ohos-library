@@ -13,7 +13,7 @@ Please refer to the Releases page of the third-party library for the correspondi
 | Third-party Library Version | Release Information                                                                                                                                    | Supported RN Version |
 |-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------| ---------- |
 | <= 3.3.0-0.0.2@deprecated            | [@react-native-oh-tpl/react-native-splash-screen Releases(deprecated)](https://github.com/react-native-oh-library/react-native-splash-screen/releases) | 0.72       |
-| 3.3.1                       | [@react-native-ohos/react-native-splash-screen Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-splash-screen/releases)                | 0.72       |
+| 3.3.2                       | [@react-native-ohos/react-native-splash-screen Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-splash-screen/releases)                | 0.72       |
 | 3.4.0                       | [@react-native-ohos/react-native-splash-screen Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-splash-screen/releases)                | 0.77       |
 
 For older versions not published on npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
@@ -95,13 +95,13 @@ export default class WelcomePage extends Component {
 
 ## 2. Use Codegen
 
-Version >= @react-native-ohos/react-native-splash-screen@3.3.1, compatible with codegen-lib for generating bridge code.
+Version >= @react-native-ohos/react-native-splash-screen@3.3.2, compatible with codegen-lib for generating bridge code.
 
 If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## 3. Manual Link
 
-Version >= @react-native-ohos/react-native-splash-screen@3.3.1 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+Version >= @react-native-ohos/react-native-splash-screen@3.3.2 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 This step provides guidance for manually configuring native dependencies.
 

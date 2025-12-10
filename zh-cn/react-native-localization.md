@@ -24,7 +24,7 @@
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 |-------| ------------------------------------------------------------ | ---------- |
-| <=2.3.2-0.0.1@deprecated | [@react-native-oh-tpl/react-native-localization Releases(deprecated)](https://github.com/react-native-oh-library/react-native-localization/releases) | 0.72       |
+| <=2.3.2-0.0.1@deprecated | [@react-native-oh-tpl/react-native-localization Releases(deprecated)](https://github.com/react-native-oh-library/ReactNativeLocalization/releases) | 0.72       |
 | 2.3.3           | [@react-native-ohos/react-native-localization Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localization/releases) | 0.72       |
 | 2.4.0            | [@react-native-ohos/react-native-localization Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localization/releases) | 0.77       |
 

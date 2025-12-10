@@ -14,16 +14,17 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/progress-bar-android)
 
+## 安装与使用
+
 请到三方库的 Releases 发布地址查看配套的版本信息:
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 1.0.4      | [@react-native-oh-tpl/progress-bar-android Releases](https://github.com/react-native-oh-library/progress-bar-android/releases) | 0.72       |
-| 1.1.0      | @react-native-ohos/progress-bar-android Releases             | 0.77       |
+| 三方库版本 | 发布信息                | 支持RN版本 |
+|-------| ------------------------------------------------------------ | ---------- |
+| <= 1.0.4-0.1.1@deprecated | [@react-native-oh-tpl/progress-bar-android Releases(deprecated)](https://github.com/react-native-oh-library/progress-bar-android/releases) | 0.72       |
+| 1.0.6 | [@react-native-ohos/progress-bar-android Releases](https://gitcode.com/openharmony-sig/rntpc_progress-bar-android/releases)                        | 0.72       |
+| 1.1.0  | [@react-native-ohos/progress-bar-android Releases](https://gitcode.com/openharmony-sig/rntpc_progress-bar-android/releases)                        | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
-
-## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -32,18 +33,12 @@
 #### **yarn**
 
 ```bash
-# 0.72
-yarn add @react-native-oh-tpl/progress-bar-android
-# 0.77
 yarn add @react-native-ohos/progress-bar-android
 ```
 
 #### **npm**
 
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/progress-bar-android
-# 0.77
 npm install @react-native-ohos/progress-bar-android
 ```
 
@@ -68,7 +63,10 @@ export default function ProgressBarExample() {
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/progress-bar-android@1.0.6，已支持 Autolink，无需手动配置，目前只支持72框架。
+Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -97,17 +95,6 @@ export default function ProgressBarExample() {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-* 0.72
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/progress-bar-android": "file:../../node_modules/@react-native-oh-tpl/progress-bar-android/harmony/progress_bar_android.har"
-  }
-```
-
-* 0.77
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -130,6 +117,8 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 ProgressBarAndroidPackage
 
+> 若使用的是 <= 1.0.4-0.1.1 版本，请跳过本章。
+
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
 ```diff
@@ -151,9 +140,6 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-# 0.72
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/progress-bar-android/src/main/cpp" ./progress-bar-android)
-# 0.77
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/progress-bar-android/src/main/cpp" ./progress-bar-android)
 # RNOH_END: manual_package_linking_1
 
@@ -197,9 +183,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-# 0.72
-+ import { ProgressBarAndroid, PROGRESS_BAR_TYPE } from "@react-native-oh-tpl/progress-bar-android"
-# 0.77
 + import { ProgressBarAndroid, PROGRESS_BAR_TYPE } from "@react-native-ohos/progress-bar-android"
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
@@ -246,11 +229,13 @@ ohpm install
 
 ### 兼容性
 
-本文档内容基于以下版本验证通过：
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+在以下版本验证通过：
 
-2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release SDK; IDE：DevEco Studio  6.0.0.868; ROM： 6.0.0.112;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 属性
 
