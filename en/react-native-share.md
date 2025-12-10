@@ -12,23 +12,20 @@
     </a>
 </p>
 
-> [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-share)
+This project is based on [react-native-share](https://github.com/react-native-share/react-native-share).
+
+This third-party library has been migrated to Gitee and is now available for direct download from npm, the new package name is:`@react-native-ohos/react-native-share`, The version correspondence details are as follows:
+
+| Version                    | Package Name                          | Repository         | Release                    | Support RN version |
+|----------------------------|---------------------------------------| ------------------ | -------------------------- |--------------------|
+| <=10.2.1-0.0.6@deprecated    | @react-native-oh-tpl/react-native-share Releases(deprecated)  | [Github](https://github.com/react-native-oh-library/react-native-share) | [Github Releases](https://github.com/react-native-oh-library/react-native-share/releases) | 0.72               |
+| 10.2.2                     | @react-native-ohos/react-native-share | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-share) | [Github Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-share/releases) | 0.72               |
+| 12.1.1                      | @react-native-ohos/react-native-share | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-share) | [GitCode Releases]() | 0.77               |
+
 
 ## Installation and Usage
 
-Please refer to the Releases page of the third-party library for the corresponding version information
-
-| Third-party Library Version | Release Information       | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| <=10.2.1-0.0.6@deprecated | [@react-native-oh-tpl/react-native-share Releases(deprecated)](https://github.com/react-native-oh-library/react-native-share/releases) | 0.72       |
-| 10.2.2             | [@react-native-ohos/react-native-share Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-share/releases)   | 0.72       |
-| 12.1.1             | [@react-native-ohos/react-native-share Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-share/releases)   | 0.77       |
-
-For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
-
 Go to the project directory and execute the following instruction:
-
-
 
 <!-- tabs:start -->
 
@@ -291,16 +288,16 @@ Verified successfully in the following versions:
 
 | Name                  | Description                                                                                                                                              | Type                       | Required | Platform    | HarmonyOS Support |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | -------- | ----------- | ----------------- |
-| type                  | 分享路径资源类型 Mime Typ                                                                                                                                | string                     | no       | iOS,Android | yes               |
+| type                  | 分享路径资源类型 Mime Type                                                                                                                                | string                     | no       | iOS,Android | yes               |
 | urls                  | 分享多个路径                                                                                                                                             | string[]                   | no       | iOS,Android | yes               |
 | url                   | 分享路径                                                                                                                                                 | string[]                   | no       | iOS,Android | yes               |
 | filename              | 分享路径文件名                                                                                                                                           | string                     | no       | iOS,Android | yes               |
 | filenames             | 分享多个路径的文件名（不带后缀，如 123，要与 urls 对应）                                                                                                 | Array<string>              | no       | iOS,Android | yes               |
-| message               | 分享短信消息文本                                                                                                                                         | string                     | no       | iOS,Android | yes               |
-| title                 | 分享标题                                                                                                                                                 | string                     | no       | iOS,Android | yes               |
-| subject               | 分享内容摘要                                                                                                                                             | string                     | no       | iOS,Android | yes               |
+| message               | 分享短信消息文本                                                                                                                                         | string                     | no       | iOS,Android | partially               |
+| title                 | 分享标题                                                                                                                                                 | string                     | no       | iOS,Android | partially               |
+| subject               | 分享内容摘要                                                                                                                                             | string                     | no       | iOS,Android | partially               |
 | email                 | 收件人邮箱地址                                                                                                                                           | string                     | no       | iOS,Android | no                |
-| recipient             | 接收短信消息的号码                                                                                                                                       | string                     | no       | iOS,Android | yes               |
+| recipient             | 接收短信消息的号码                                                                                                                                       | string                     | no       | iOS,Android | no               |
 | excludedActivityTypes | 系统分享面板操作区不应显示的能力列表(harmonyOS 中传参例如['0','1']，对应解释为: 0:复制到剪切板,1:保存到媒体库,2:保存到文件管理器 ,3:打印,4:保存到中转站) | ActivityType[] \| string[] | no       | iOS,Android | partially         |
 | failOnCancel          | 分享失败的是否抛出异                                                                                                                                     | boolean                    | no       | iOS,Android | yes               |
 | showAppsToView        | 是否显示可以预览分享文件的 APP                                                                                                                           | boolean                    | no       | Android     | no                |
@@ -311,17 +308,17 @@ Verified successfully in the following versions:
 **ShareSingleOptions** : 三方 APP 分享参数
 
 | Name                  | Description                                                                  | Type     | Required | Platform    | HarmonyOS Support |
-| --------------------- | ---------------------------------------------------------------------------- | -------- | -------- | ----------- | ----------------- |
+| --------------------- | ---------------------------------------------------------------------------- | -------- | -------- | ----------- |-------------------|
 | social                | 分享的三方 APP 名称                                                          | string   | yes      | iOS,Android | partially         |
-| appId                 | 三方 APP 上架市场的 appid(social 为 instagramstories,facebookstories 时必传) | string   | no       | iOS,Android | yes               |
-| type                  | 分享路径资源类型 Mime Typ                                                    | string   | no       | iOS,Android | yes               |
+| appId                 | 三方 APP 上架市场的 appid(social 为 instagramstories,facebookstories 时必传) | string   | no       | iOS,Android | no                |
+| type                  | 分享路径资源类型 Mime Type                                                    | string   | no       | iOS,Android | no              |
 | urls                  | 分享多个路径                                                                 | string[] | no       | iOS,Android | yes               |
 | url                   | 分享路径                                                                     | string[] | no       | iOS,Android | yes               |
-| filename              | 分享路径文件名（不带后缀，如 123）                                           | string   | no       | iOS,Android | yes               |
+| filename              | 分享路径文件名（不带后缀，如 123）                                           | string   | no       | iOS,Android | no                |
 | message               | 分享短信消息文本                                                             | string   | no       | iOS,Android | yes               |
-| title                 | 分享标题                                                                     | string   | no       | iOS,Android | yes               |
+| title                 | 分享标题                                                                     | string   | no       | iOS,Android | no                |
 | subject               | 分享内容摘要                                                                 | string   | no       | iOS,Android | yes               |
-| email                 | 收件人邮箱地址                                                               | string   | no       | iOS,Android | no                |
+| email                 | 收件人邮箱地址                                                               | string   | no       | iOS,Android | yes               |
 | recipient             | 接收短信消息的号码                                                           | string   | no       | iOS,Android | yes               |
 | forceDialog           | 是否开启三方分享对话框                                                       | boolean  | no       | Android     | no                |
 | backgroundImage       | 背景图像（social 为 instagramstories,facebookstories 传参）                  | string   | no       | iOS,Android | no                |
@@ -333,7 +330,7 @@ Verified successfully in the following versions:
 **Social**: 可支持的三方 APP 种类
 
 | Name              | Description      | Type   | Required | Platform    | HarmonyOS Support |
-| ----------------- | ---------------- | ------ | -------- | ----------- | ----------------- |
+| ----------------- | ---------------- | ------ | -------- | ----------- |-------------------|
 | FACEBOOK          | facebook         | string | yes      | iOS,Android | no                |
 | FACEBOOK_STORIES  | facebookstories  | string | yes      | iOS,Android | no                |
 | PAGESMANAGER      | pagesmanager     | string | yes      | iOS,Android | no                |
@@ -343,7 +340,7 @@ Verified successfully in the following versions:
 | INSTAGRAM         | instagram        | string | yes      | iOS,Android | no                |
 | INSTAGRAM_STORIES | instagramstories | string | yes      | iOS,Android | no                |
 | GOOGLEPLUS        | googleplus       | string | yes      | iOS,Android | no                |
-| EMAIL             | email            | string | yes      | iOS,Android | no                |
+| EMAIL             | email            | string | yes      | iOS,Android | yes               |
 | PINTEREST         | pinterest        | string | yes      | iOS,Android | no                |
 | LINKEDIN          | linkedin         | string | yes      | iOS,Android | no                |
 | SMS               | sms              | string | yes      | iOS,Android | yes               |
@@ -385,9 +382,9 @@ Verified successfully in the following versions:
 **IsPackageInstalledResult**: 调用是否安装三方应用接口返回的数据类型
 
 | Name        | Description         | Type    | Required | Platform    | HarmonyOS Support |
-| ----------- | ------------------- | ------- | -------- | ----------- | ----------------- |
-| message     | 返回的消息          | string  | yes      | iOS,Android | yes               |
-| isInstalled | 三方 APP 是否已安装 | boolean | yes      | iOS,Android | yes               |
+| ----------- | ------------------- | ------- | -------- | ----------- |-------------------|
+| message     | 返回的消息          | string  | yes      | iOS,Android | no                |
+| isInstalled | 三方 APP 是否已安装 | boolean | yes      | iOS,Android | no                |
 
 **ActivityItem**: 系统面板分享类型
 

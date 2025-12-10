@@ -12,20 +12,20 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-share)
+本项目基于 [react-native-share](https://github.com/react-native-share/react-native-share) 开发。
+
+
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-share`，具体版本所属关系如下：
+
+| Version                    | Package Name                          | Repository         | Release                    | Support RN version |
+|----------------------------|---------------------------------------| ------------------ | -------------------------- |--------------------|
+| <=10.2.1-0.0.6@deprecated    | @react-native-oh-tpl/react-native-share Releases(deprecated)  | [Github](https://github.com/react-native-oh-library/react-native-share) | [Github Releases](https://github.com/react-native-oh-library/react-native-share/releases) | 0.72               |
+| 10.2.2                     | @react-native-ohos/react-native-share | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-share) | [Github Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-share/releases) | 0.72               |
+| 12.1.1                      | @react-native-ohos/react-native-share | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-share) | [GitCode Releases]() | 0.77               |
+
 
 
 ## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本  | 发布信息                                                  | 支持RN版本 |
-|--------| ------------------------------------------------------------ | ---------- |
-| <=10.2.1-0.0.6@deprecated | [@react-native-oh-tpl/react-native-share Releases(deprecated)](https://github.com/react-native-oh-library/react-native-share/releases) | 0.72       |
-| 10.2.2             | [@react-native-ohos/react-native-share Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-share/releases)   | 0.72       |
-| 12.1.1             | [@react-native-ohos/react-native-share Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-share/releases)   | 0.77       |
-
-对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -146,7 +146,66 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 3.在 ArkTs 侧引入 RNSharePackage
+### 3.配置CMakeLists和引入RNSharePackage
+
+>[!TIP] V12.1.0及以上需要配置CMakeLists和引入RNSharePackage。
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
+set(OH_MODULE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules/@rnoh/react-native-openharmony/src/main/cpp")
+set(RNOH_GENERATED_DIR "${CMAKE_CURRENT_SOURCE_DIR}/generated")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+# (VM) Define a variable and assign it to the current module's cpp directory
+set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+
+# Add the Header File directory, including cpp, cpp/include, and tell cmake to find the Header Files introduced by the code here
+include_directories(${NATIVERENDER_ROOT_PATH}
+                    ${NATIVERENDER_ROOT_PATH}/include)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-share/src/main/cpp" ./share)
+
+file(GLOB GENERATED_CPP_FILES "${CMAKE_CURRENT_SOURCE_DIR}/generated/*.cpp") # this line is needed by codegen v1
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
++ target_link_libraries(rnoh_app PUBLIC rnoh_share)
+
+```
+
+打开`entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
++ #include "RNSharePackage.h"
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx)
+{
+    return {
++        std::make_shared<RNSharePackage>(ctx)
+    };
+}
+```
+
+### 4.在 ArkTs 侧引入 RNSharePackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
@@ -158,55 +217,6 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
     new SamplePackage(ctx),
 +   new RNSharePackage(ctx)
   ];
-}
-```
-
-### 4. 配置 CMakeLists 和引入 RNSharePackage
-
-> 若使用的是 <=10.2.1-0.0.6 版本，请跳过本章。
-
-打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
-
-```diff
-...
-
-project(rnapp)
-cmake_minimum_required(VERSION 3.4.1)
-set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
-+ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
-set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
-
-add_subdirectory("${RNOH_CPP_DIR}" ./rn)
-
-# RNOH_END: manual_package_linking_1
-add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-share/src/main/cpp" ./react_native_share)
-# RNOH_END: manual_package_linking_1
-
-add_library(rnoh_app SHARED
-    "./PackageProvider.cpp"
-    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
-)
-
-target_link_libraries(rnoh_app PUBLIC rnoh)
-
-# RNOH_BEGIN: manual_package_linking_2
-target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
-+ target_link_libraries(rnoh_app PUBLIC rnoh_share)
-# RNOH_BEGIN: manual_package_linking_2
-```
-
-打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
-
-```diff
-#include "RNOH/PackageProvider.h"
-+ #include "RNSharePackage.h"
-
-using namespace rnoh;
-
-std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
-    return {
-+        std::make_shared<RNSharePackage>(ctx)
 }
 ```
 
@@ -286,74 +296,74 @@ ohpm install
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 |  Social  | 支持分享的三方APP名称        | object  | yes | iOS,Android      | partially |
 |  open: (options: ShareOptions) => Promise<ShareOpenResult\>  | 系统分享         | fuction  | yes | iOS,Android      | yes |
-|   shareSingle: (options: ShareSingleOptions) => Promise<ShareSingleResult\>  | 三方分APP分享         | fuction  | yes | iOS,Android      | partially |
-|    isPackageInstalled: (packagename: string) => Promise <IsPackageInstalledResult\>  | 三方APP是否已在本机安装        | fuction  | yes | iOS,Android      | no |
+|  shareSingle: (options: ShareSingleOptions) => Promise<ShareSingleResult\>  | 三方分APP分享         | fuction  | yes | iOS,Android      | partially |
+|  isPackageInstalled: (packagename: string) => Promise <IsPackageInstalledResult\>  | 三方APP是否已在本机安装        | fuction  | yes | iOS,Android      | no |
 
 **ShareOptions** ：系统分享参数
 
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
-| ---- | ----------- | ---- | -------- | -------- | ------------------ |
-|   type  | 分享路径资源类型Mime Typ        | string   | no | iOS,Android      | yes |
-|  urls  | 分享多个路径       | string[]  | no | iOS,Android      | yes |
-|  url  | 分享路径       | string[]  | no | iOS,Android      | yes |
-|  filename  | 分享路径文件名      | string | no | iOS,Android      | yes |
-|  filenames  | 分享多个路径的文件名（不带后缀，如123，要与urls对应）      | Array<string>  | no | iOS,Android      | yes |
-|  message  | 分享短信消息文本      | string  | no | iOS,Android      | yes |
-|  title  | 分享标题      | string  | no | iOS,Android      | yes |
-|  subject  | 分享内容摘要      | string  | no | iOS,Android      | yes |
-|  email  | 收件人邮箱地址      | string  | no | iOS,Android      | no |
-|  recipient  | 接收短信消息的号码     | string  | no | iOS,Android      | yes |
-|  excludedActivityTypes  | 系统分享面板操作区不应显示的能力列表(harmonyOS中传参例如['0','1']，对应解释为： 0:复制到剪切板,1:保存到媒体库,2:保存到文件管理器 ,3:打印,4:保存到中转站)      | ActivityType[] \| string[]  | no | iOS,Android      | partially |
-|  failOnCancel  | 分享失败的是否抛出异      | boolean  | no | iOS,Android      | yes |
-|  showAppsToView  | 是否显示可以预览分享文件的APP     | boolean  | no | Android      | no |
-|  saveToFiles  | 是否保存分享的路径文件到本地    | boolean  | no | iOS,Android       | yes |
-|  activityItemSources  | 系统分享面板中自定义分享数据   | ActivityItemSource[]  | no | iOS      | no |
-|  isNewTask  | 是否开启Activity的启动模式FLAG_ACTIVITY_NEW_TASK    | boolean  | no | Android      | no |
+| Name | Description                                                                                    | Type | Required | Platform | HarmonyOS Support |
+| ---- |------------------------------------------------------------------------------------------------| ---- | -------- | -------- |-------------------|
+|  type  | 分享路径资源类型Mime Type                                                                              | string   | no | iOS,Android      | yes               |
+|  urls  | 分享多个路径                                                                                         | string[]  | no | iOS,Android      | yes               |
+|  url  | 分享路径                                                                                           | string[]  | no | iOS,Android      | yes               |
+|  filename  | 分享路径文件名                                                                                        | string | no | iOS,Android      | yes               |
+|  filenames  | 分享多个路径的文件名（不带后缀，如123，要与urls对应）                                                                 | Array<string>  | no | iOS,Android      | yes               |
+|  message  | 分享短信消息文本                                                                                       | string  | no | iOS,Android      | 	partially                |
+|  title  | 分享标题                                                                                           | string  | no | iOS,Android      | 	partially               |
+|  subject  | 分享内容摘要                                                                                         | string  | no | iOS,Android      | 	partially                |
+|  email  | 收件人邮箱地址                                                                                        | string  | no | iOS,Android      | no                |
+|  recipient  | 接收短信消息的号码                                                                                      | string  | no | iOS,Android      | no                |
+|  excludedActivityTypes  | 系统分享面板操作区不应显示的能力列表(harmonyOS中传参例如['0','1']，对应解释为： 0:复制到剪切板,1:保存到媒体库,2:保存到文件管理器 ,3:打印,4:保存到中转站) | ActivityType[] \| string[]  | no | iOS,Android      | partially         |
+|  failOnCancel  | 分享失败的是否抛出异                                                                                     | boolean  | no | iOS,Android      | yes               |
+|  showAppsToView  | 是否显示可以预览分享文件的APP                                                                               | boolean  | no | Android      | no                |
+|  saveToFiles  | 是否保存分享的路径文件到本地                                                                                 | boolean  | no | iOS,Android       | yes               |
+|  activityItemSources  | 系统分享面板中自定义分享数据                                                                                 | ActivityItemSource[]  | no | iOS      | no                |
+|  isNewTask  | 是否开启Activity的启动模式FLAG_ACTIVITY_NEW_TASK                                                        | boolean  | no | Android      | no                |
 
 **ShareSingleOptions** ：三方APP分享参数
 
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
-| ---- | ----------- | ---- | -------- | -------- | ------------------ |
-|   social  |分享的三方APP名称       | string   | yes | iOS,Android      | partially |
-|   appId  |三方APP上架市场的appid(social为instagramstories,facebookstories时必传)       | string   | no | iOS,Android      | yes |
-|   type  | 分享路径资源类型Mime Typ        | string   | no | iOS,Android      | yes |
-|  urls  | 分享多个路径       | string[]  | no | iOS,Android      | yes |
-|  url  | 分享路径       | string[] | no | iOS,Android      | yes |
-|  filename  | 分享路径文件名（不带后缀，如 123）      | string | no | iOS,Android      | yes |
-|  message  | 分享短信消息文本      | string  | no | iOS,Android      | yes |
-|  title  | 分享标题      | string  | no | iOS,Android      | yes |
-|  subject  | 分享内容摘要      | string  | no | iOS,Android      | yes |
-|  email  | 收件人邮箱地址      | string  | no | iOS,Android      | no |
-|  recipient  | 接收短信消息的号码     | string  | no | iOS,Android      | yes |
-|  forceDialog  | 是否开启三方分享对话框     | boolean  | no | Android      | no |
-|  backgroundImage  |  背景图像（social为instagramstories,facebookstories传参）   | string  | no | iOS,Android      | no |
-|  stickerImage  | 贴纸图像（social为instagramstories,facebookstories传参）   | string  | no | iOS,Android      | no |
-|  backgroundBottomColor  | 背景底部颜色（social为instagramstories,facebookstories传参）  | string  | no | iOS,Android       | no |
-|  attributionURL  | 属性路径（social为instagramstories,facebookstories传参）  | string  | no | iOS,Android     | no |
-|  backgroundVideo  | 背景视频（social为instagramstories,facebookstories传参）   | string  | no | iOS,Android     | no |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---- | ----------- | ---- | -------- | -------- |-------------------|
+|   social  |分享的三方APP名称       | string   | yes | iOS,Android      | partially         |
+|   appId  |三方APP上架市场的appid(social为instagramstories,facebookstories时必传)       | string   | no | iOS,Android      | no                |
+|   type  | 分享路径资源类型Mime Typ        | string   | no | iOS,Android      | no                |
+|  urls  | 分享多个路径       | string[]  | no | iOS,Android      | yes               |
+|  url  | 分享路径       | string[] | no | iOS,Android      | yes               |
+|  filename  | 分享路径文件名（不带后缀，如 123）      | string | no | iOS,Android      | no                |
+|  message  | 分享短信消息文本      | string  | no | iOS,Android      | yes               |
+|  title  | 分享标题      | string  | no | iOS,Android      | no                |
+|  subject  | 分享内容摘要      | string  | no | iOS,Android      | yes               |
+|  email  | 收件人邮箱地址      | string  | no | iOS,Android      | yes               |
+|  recipient  | 接收短信消息的号码     | string  | no | iOS,Android      | yes               |
+|  forceDialog  | 是否开启三方分享对话框     | boolean  | no | Android      | no                |
+|  backgroundImage  |  背景图像（social为instagramstories,facebookstories传参）   | string  | no | iOS,Android      | no                |
+|  stickerImage  | 贴纸图像（social为instagramstories,facebookstories传参）   | string  | no | iOS,Android      | no                |
+|  backgroundBottomColor  | 背景底部颜色（social为instagramstories,facebookstories传参）  | string  | no | iOS,Android       | no                |
+|  attributionURL  | 属性路径（social为instagramstories,facebookstories传参）  | string  | no | iOS,Android     | no                |
+|  backgroundVideo  | 背景视频（social为instagramstories,facebookstories传参）   | string  | no | iOS,Android     | no                |
 
 **Social**：可支持的三方APP种类
 
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
-| ---- | ----------- | ---- | -------- | -------- | ------------------ |
-|  FACEBOOK  | facebook | string | yes | iOS,Android      | no |
-| FACEBOOK_STORIES | facebookstories | string | yes | iOS,Android      | no |
-| PAGESMANAGER | pagesmanager  | string  | yes | iOS,Android  | no |
-| TWITTER | twitter | string  | yes | iOS,Android      | no |
-| WHATSAPP | whatsapp | string  | yes | iOS,Android      | no |
-|  WHATSAPPBUSINESS  | whatsappbusiness | string   | yes | iOS,Android      | no |
-| INSTAGRAM | instagram | string    | yes | iOS,Android      | no |
-| INSTAGRAM_STORIES | instagramstories  | string  | yes | iOS,Android      | no |
-| GOOGLEPLUS | googleplus        | string  | yes | iOS,Android      | no |
-| EMAIL | email        | string  | yes | iOS,Android  | no |
-|  PINTEREST  | pinterest | string   | yes | iOS,Android  | no |
-| LINKEDIN | linkedin | string    | yes | iOS,Android      | no |
-| SMS | sms | string  | yes | iOS,Android      | yes |
-| TELEGRAM | telegram | string  | yes | iOS,Android      | no |
-|  SNAPCHAT  | snapchat | string   | yes | iOS,Android      | no |
-| MESSENGER | messenger  | string  | yes | iOS,Android      | no |
-| VIBER | viber | string  | yes | iOS,Android      | no |
-| DISCORD | discord | string  | yes | iOS,Android   | no |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---- | ----------- | ---- | -------- | -------- |-------------------|
+|  FACEBOOK  | facebook | string | yes | iOS,Android      | no                |
+| FACEBOOK_STORIES | facebookstories | string | yes | iOS,Android      | no                |
+| PAGESMANAGER | pagesmanager  | string  | yes | iOS,Android  | no                |
+| TWITTER | twitter | string  | yes | iOS,Android      | no                |
+| WHATSAPP | whatsapp | string  | yes | iOS,Android      | no                |
+|  WHATSAPPBUSINESS  | whatsappbusiness | string   | yes | iOS,Android      | no                |
+| INSTAGRAM | instagram | string    | yes | iOS,Android      | no                |
+| INSTAGRAM_STORIES | instagramstories  | string  | yes | iOS,Android      | no                |
+| GOOGLEPLUS | googleplus        | string  | yes | iOS,Android      | no                |
+| EMAIL | email        | string  | yes | iOS,Android  | yes               |
+|  PINTEREST  | pinterest | string   | yes | iOS,Android  | no                |
+| LINKEDIN | linkedin | string    | yes | iOS,Android      | no                |
+| SMS | sms | string  | yes | iOS,Android      | yes               |
+| TELEGRAM | telegram | string  | yes | iOS,Android      | no                |
+|  SNAPCHAT  | snapchat | string   | yes | iOS,Android      | no                |
+| MESSENGER | messenger  | string  | yes | iOS,Android      | no                |
+| VIBER | viber | string  | yes | iOS,Android      | no                |
+| DISCORD | discord | string  | yes | iOS,Android   | no                |
 
 **ShareAsset** ：分享图片、视频数据枚举
 
@@ -387,10 +397,10 @@ ohpm install
 
 **IsPackageInstalledResult**：调用是否安装三方应用接口返回的数据类型
 
-| Name | Description | Type | Required | Platform | HarmonyOS Support  |
-| ---- | ----------- | ---- | -------- | -------- | ------------------ |
-|  message  | 返回的消息 | string | yes | iOS,Android      | yes |
-| isInstalled | 三方APP是否已安装 | boolean | yes | iOS,Android      | yes |
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---- | ----------- | ---- | -------- | -------- |-------------------|
+|  message  | 返回的消息 | string | yes | iOS,Android      | no                |
+| isInstalled | 三方APP是否已安装 | boolean | yes | iOS,Android      | no                |
 
 **ActivityItem**：系统面板分享类型
 
