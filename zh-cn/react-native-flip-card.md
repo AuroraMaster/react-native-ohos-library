@@ -15,6 +15,12 @@
 
 > [!TIP] [Github 地址](https://github.com/moschan/react-native-flip-card)
 
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 支持RN版本  |
+| ----------| ---------- |
+| 3.5.7   | 0.72/0.77 |
+
 ## 安装与使用
 
 <!-- tabs:start -->
@@ -211,6 +217,7 @@ export const FlipCardExample = () => {
 
 1. RNOH: 0.72.26; SDK：HarmonyOS NEXT Developer Beta1 5.0.0.25; IDE：DevEco Studio 5.0.3.300SP2; ROM:3.0.0.24;
 2. RNOH: 0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH: 0.77.18; SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
 
 ## 属性
 
@@ -224,17 +231,17 @@ export const FlipCardExample = () => {
 
 | Name            | Type     | Description                                                                                                                     | Default | Required | Platform    | HarmonyOS Support |
 | --------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------- | ------- | -------- | ----------- | ----------------- |
-| flip            | boolean  | If you change default display side, you can set true to this param. If you change side, you can pass bool variable dynamically. | false   | no       | iOS/Android | yes               |
-| clickable       | boolean  | If you want to disable click a card, you can set false to this paramicon.                                                       | true    | no       | iOS/Android | yes               |
-| friction        | number   | The friction of card animation                                                                                                  | 6       | no       | iOS/Android | yes               |
-| perspective     | number   | The amount of perspective applied to the flip transformation                                                                    | 1000    | no       | iOS/Android | yes               |
-| flipHorizontal  | boolean  | If you set true, a card flip to horizontal.                                                                                     | false   | no       | iOS/Android | yes               |
-| flipVertical    | boolean  | If you set false, a card not flip to vertical. If you set true both flipHoriszontal and flipVertical , a card flip to diagonal. | true    | no       | iOS/Android | yes               |
-| onFlipStart     | function | When a card starts a flip animation, call onFlipEnd function with param.                                                        | NA      | no       | iOS/Android | yes               |
-| onFlipEnd       | function | When a card finishes a flip animation, call onFlipEnd function with param.                                                      | NA      | no       | iOS/Android | yes               |
-| alignHeight     | boolean  | If you pass true to alignHeight param, the card keep height of bigger side.                                                     | false   | no       | iOS/Android | yes               |
-| alignWidth      | boolean  | If you pass true to alignWidth param, the card keep width of bigger side.                                                       | false   | no       | iOS/Android | yes               |
-| useNativeDriver | boolean  | If you pass true to useNativeDriver param, the card animation will utilize the native driver.                                   | true    | no       | iOS/Android | yes               |
+| flip            | boolean  | 如果您想更改默认显示面，可以将此参数设置为true。如果您要动态更改显示面，可以传递布尔变量。 | false   | no       | iOS/Android | yes               |
+| clickable       | boolean  | 如果您想禁用卡片点击，可以将此参数设置为false。                                                      | true    | no       | iOS/Android | yes               |
+| friction        | number   | 卡片动画的摩擦系数                                                                                                 | 6       | no       | iOS/Android | yes               |
+| perspective     | number   | 应用于翻转变换的透视效果量                                                                 | 1000    | no       | iOS/Android | no               |
+| flipHorizontal  | boolean  | 如果设置为true，卡片将水平翻转。                                                                                    | false   | no       | iOS/Android | yes               |
+| flipVertical    | boolean  | 如果设置为false，卡片不会垂直翻转。如果同时将flipHorizontal和flipVertical设置为true，卡片将沿对角线翻转。| true    | no       | iOS/Android | yes               |
+| onFlipStart     | function | 当卡片开始翻转动画时，会调用onFlipStart函数并传递参数。                                                       | NA      | no       | iOS/Android | yes               |
+| onFlipEnd       | function | 当卡片完成翻转动画时，会调用onFlipEnd函数并传递参数。                                                      | NA      | no       | iOS/Android | yes               |
+| alignHeight     | boolean  | 如果将alignHeight参数设置为true，卡片将保持较大一面的高度。                                               | false   | no       | iOS/Android | yes               |
+| alignWidth      | boolean  | 如果将alignWidth参数设置为true，卡片将保持较大一面的宽度。                                                     | false   | no       | iOS/Android | yes               |
+| useNativeDriver | boolean  | 如果将useNativeDriver参数设置为true，卡片动画将使用原生驱动。                                | true    | no       | iOS/Android | yes               |
 
 ## 遗留问题
 
