@@ -16,10 +16,17 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-svg Releases](https://github.com/react-native-oh-library/react-native-harmony-svg/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please refer to the Releases page of the third-party library for the corresponding version information:
+
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| <= 15.0.1@deprecated      | [@react-native-oh-tpl/react-native-svg Releases(deprecated)](https://github.com/react-native-oh-library/react-native-harmony-svg/releases) | 0.72       |
+| 15.0.2      | [@react-native-ohos/react-native-svg Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-svg/releases)                        | 0.72       |
+| 15.12.1    | [@react-native-ohos/react-native-svg Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-svg/releases)                        | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
-
 
 
 <!-- tabs:start -->
@@ -27,15 +34,25 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm install react-native-svg@15.0.0
-npm install @react-native-oh-tpl/react-native-svg
+# 0.72
+npm install react-native-svg@15.0.1
+npm install @react-native-ohos/react-native-svg
+
+# 0.77
+npm install react-native-svg@15.12.0
+npm install @react-native-ohos/react-native-svg
 ```
 
 #### **yarn**
 
 ```bash
-yarn add react-native-svg@15.0.0
-yarn add @react-native-oh-tpl/react-native-svg
+# 0.72
+yarn add react-native-svg@15.0.1
+yarn add @react-native-ohos/react-native-svg
+
+# 0.77
+yarn add react-native-svg@15.12.0
+yarn add @react-native-ohos/react-native-svg
 ```
 
 <!-- tabs:end -->
@@ -69,7 +86,9 @@ const styles = StyleSheet.create({
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-svg@15.0.2 now supports Autolink without requiring manual configuration(The content that still needs to be manually configured has been marked in the corresponding title), currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -97,7 +116,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-svg": "file:../../node_modules/@react-native-oh-tpl/react-native-svg/harmony/svg.har"
+    "@react-native-ohos/react-native-svg": "file:../../node_modules/@react-native-ohos/react-native-svg/harmony/svg.har"
   }
 ```
 
@@ -115,6 +134,8 @@ Method 2: Directly link to the source code.
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
 ### 3. Configuring CMakeLists and Introducing SVGPackage
+
+> If you are using version <= 15.0.1, please skip this chapter.
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
@@ -136,7 +157,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-svg/src/main/cpp" ./svg)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-svg/src/main/cpp" ./svg)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -179,7 +200,7 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
-+ import { SvgPackage } from '@react-native-oh-tpl/react-native-svg/ts';
++ import { SvgPackage } from '@react-native-ohos/react-native-svg/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -202,15 +223,16 @@ ohpm install
 
 Then build and run the code.
 
-### 在 ArkTs 侧引入和注册字体文件(非必选配置项)
+### On the ArkTs side, importing and registering font files is an optional configuration step.（Non-mandatory configuration items，this module always requires manual configuration）
 
-> [!TIP] 本项非必配项，当使用 Text 组件的 fontFamily Properties 指定字体时才需配置
+> [!TIP] This item is not mandatory. It only needs to be configured when using the fontFamily Properties property in the Text to specify a custom font.
 
-步骤一：
-复制字体文件到 `entry/src/main/resources/rawfile/assets/fonts` 目录下(如使用了外部字体文件，需要将\*.ttf 文件复制过来)
 
-步骤二：
-打开 `entry/src/main/ets/pages/Index.ets`，添加以下代码
+Step 1:
+Copy the font files to the entry/src/main/resources/rawfile/assets/fonts directory (if external font files are used, you need to copy the *.ttf files over).
+
+Step 2：
+Open `entry/src/main/ets/pages/Index.ets` and add the following code:
 
     const fonts: Record<string, Resource> = {
         "Noto Sans Pau Cin Hau": $rawfile("assets/fonts/Noto Sans Pau Cin Hau.ttf") ,
@@ -227,7 +249,6 @@ Then build and run the code.
             Column(){
                 //...
 
-                //注册字体文件
                 RNApp({
                 rnInstanceConfig: {
                     //...
@@ -246,7 +267,12 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-svg Releases](https://github.com/react-native-oh-library/react-native-harmony-svg/releases)
+Verified in the following versions.
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+
 
 ## Properties
 

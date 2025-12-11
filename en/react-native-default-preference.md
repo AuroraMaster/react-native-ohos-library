@@ -117,17 +117,6 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
--  0.72
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-ohos/react-native-default-preference": "file:../../node_modules/@react-native-ohos/react-native-default-preference/harmony/react_native_default_preference.har"
-  }
-```
-
--  0.77
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -216,10 +205,6 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 ```diff
 ...
 
-//  0.72
-+ import { RNDefaultPreferencePackage } from '@react-native-oh-tpl/react-native-default-preference/ts';
-
-//  0.77
 + import { RNDefaultPreferencePackage } from '@react-native-ohos/react-native-default-preference/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
