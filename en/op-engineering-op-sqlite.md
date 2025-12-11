@@ -21,8 +21,15 @@ Template version: v0.2.2
 
 ## Installation and Usage
 
+Please refer to the Releases page of the third-party library for the corresponding version information
 
-Find the matching version information in the release address of a third-party library and download an applicable .tgz package:[@react-native-oh-tpl/op-sqlite Releases](https://github.com/react-native-oh-library/op-sqlite/releases)
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| <= 8.0.2-0.0.3@deprecated  | [@react-native-oh-tpl/op-sqlite Releases(deprecated)](https://github.com/react-native-oh-library/op-sqlite/releases) | 0.72       |
+| 8.0.3                | [@react-native-ohos/op-sqlite Releases](https://gitcode.com/openharmony-sig/rntpc_op-sqlite/releases)   | 0.72       |
+| 14.0.1                | [@react-native-ohos/op-sqlite Releases](https://gitcode.com/openharmony-sig/rntpc_op-sqlite/releases)   | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -33,13 +40,13 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/op-sqlite
+npm install @react-native-ohos/op-sqlite
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/op-sqlite
+yarn add @react-native-ohos/op-sqlite
 ```
 
 <!-- tabs:end -->
@@ -63,7 +70,7 @@ import {
     open,
     type DB
 } from '@op-engineering/op-sqlite';
-import { HARMONY_DATABASE_PATH } from '@react-native-oh-tpl/op-sqlite';
+import { HARMONY_DATABASE_PATH } from '@react-native-ohos/op-sqlite';
 
 export default function OpSqliteExample() {
     
@@ -98,7 +105,10 @@ For details, see [Source Repository Document Address](https://ospfranco.notion.s
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/op-sqlite@8.0.3 now supports Autolink without requiring manual configuration(The content that still needs to be manually configured has been marked in the corresponding title), currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -125,7 +135,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
-    "@react-native-oh-tpl/op-sqlite": "file:../../node_modules/@react-native-oh-tpl/op-sqlite/harmony/rn_op_sqlite.har"
+    "@react-native-ohos/op-sqlite": "file:../../node_modules/@react-native-ohos/op-sqlite/harmony/rn_op_sqlite.har"
   }
 ```
 
@@ -143,6 +153,8 @@ Method 2: Directly link to the source code.
 > [!TIP] For details, see [Directly Linking Source Code](/zh-cn/link-source-code.md).
 
 ### 3. Configuring CMakeLists and Introducing RNOpSqlitePackage
+
+> If you are using version <= 8.0.2-0.0.3, please skip this chapter.
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
@@ -164,7 +176,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/op-sqlite/src/main/cpp" ./rn_op_sqlite)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/op-sqlite/src/main/cpp" ./rn_op_sqlite)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -204,7 +216,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
 ```diff
-+ import { RNOpSqlitePackage } from '@react-native-oh-tpl/op-sqlite/ts';
++ import { RNOpSqlitePackage } from '@react-native-ohos/op-sqlite/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -213,7 +225,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
-### 5. Create a `package.json` file in the root directory of your IDE project and configure the parameters.
+### 5. Create a `package.json` file in the root directory of your IDE project and configure the parameters.(This module always requires manual configuration)
 
 ```json
 {
@@ -226,14 +238,14 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 5. Introducing opSqlitePlugin to ArkTS
+### 6. Introducing opSqlitePlugin to ArkTS(This module always requires manual configuration)
 
 Open the `entry/hvigorfile.ts` file and add the following code:
 
 ```diff
 + import { hapTasks, OhosHapContext, OhosPluginId, Target } from '@ohos/hvigor-ohos-plugin';
 + import { HvigorPlugin, HvigorNode, getNode } from '@ohos/hvigor';
-+ import { opSqlitePlugin } from './oh_modules/@react-native-oh-tpl/op-sqlite/hvigorfile.ts';
++ import { opSqlitePlugin } from './oh_modules/@react-native-ohos/op-sqlite/hvigorfile.ts';
 
 +const path = require('path');
 +const rootRNPackagePath = path.join(__dirname, '../package.json'); //The configuration is based on the actual package path
@@ -244,7 +256,7 @@ export default {
 }
 ```
 
-### 6. Running
+### 7. Running
 
 Click the `sync` button in the upper right corner.
 
@@ -262,11 +274,13 @@ Then build and run the code.
 
 ### Compatibility
 
-
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
+Verified in the following versions.
 
-Check the release version information in the release address of the third-party library:[@react-native-oh-tpl/op-sqlite Releases](https://github.com/react-native-oh-library/op-sqlite/releases)
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 
 ### Permission Requirements

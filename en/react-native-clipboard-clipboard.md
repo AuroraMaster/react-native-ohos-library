@@ -289,7 +289,7 @@ Verified in the following versions.
 
 ### Permission Requirements
 
-> [!TIP] The "ohos.permission.READ_PASTEBOARD" permission level is <B>system_basic</B>, and the authorization method is <B>user_grant</B>. [Configuration Guide for Using ACL Signature](https://developer.harmonyos.com/cn/docs/documentation/doc-guides-V3/signing-0000001587684945-V3#section157591551175916)
+> The "ohos.permission.READ_PASTEBOARD" permission level is <B>system_basic</B>, and the authorization method is <B>user_grant</B>. [Configuration Guide for Using ACL Signature](https://developer.harmonyos.com/cn/docs/documentation/doc-guides-V3/signing-0000001587684945-V3#section157591551175916)
 
 #### Add permissions in the module.json5 file under the entry directory
 

@@ -37,7 +37,7 @@ Please refer to the Releases page of the third-party library for the correspondi
 | ---------- | ------------------------------------------------------------ | ---------- |
 | <= 3.34.0-0.0.2@deprecated  | [@react-native-oh-tpl/react-native-screens Releases(deprecated)](https://github.com/react-native-oh-library/react-native-harmony-screens/releases) | 0.72       |
 | 3.34.1             | [@react-native-ohos/react-native-screens Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-screens/releases)   | 0.72       |
-| 4.8.1              | [@react-native-ohos/react-native-screens Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-screens/releases)   | 0.77       |
+| 4.8.1              | [@react-native-ohos/react-native-screens Releases](https://github.com/react-native-oh-library/react-native-harmony-screens/releases)   | 0.77       |
 
 For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
@@ -58,12 +58,12 @@ npm install @react-navigation/native-stack@7.2.0
 
 ```bash
 # 0.72
-yarn install @react-native-ohos/react-native-screens@3.34.1-X.X.X
-yarn install @react-navigation/native-stack@6.9.13
+yarn add @react-native-ohos/react-native-screens@3.34.1-X.X.X
+yarn add @react-navigation/native-stack@6.9.13
 
 # 0.77
-yarn install @react-native-ohos/react-native-screens@4.8.1-X.X.X
-yarn install @react-navigation/native-stack@7.2.0
+yarn add @react-native-ohos/react-native-screens@4.8.1-X.X.X
+yarn add @react-navigation/native-stack@7.2.0
 ```
 
 The following code shows the basic use scenario of the repository:
