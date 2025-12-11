@@ -20,8 +20,9 @@
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 7.6.2      | [@react-native-oh-tpl/datetimepicker Releases](https://github.com/react-native-oh-library/datetimepicker/releases) | 0.72       |
-| 8.4.3      | [@react-native-ohos/datetimepicker Releases]()               | 0.77       |
+| <= 7.6.2-0.1.1@deprecated      | [@react-native-oh-tpl/datetimepicker Releases(deprecated)](https://github.com/react-native-oh-library/datetimepicker/releases) | 0.72       |
+| 7.6.3      | [@react-native-ohos/datetimepicker Releases](https://gitcode.com/openharmony-sig/rntpc_datetimepicker/releases) | 0.72       |
+| 8.4.3      | [@react-native-ohos/datetimepicker Releases](https://gitcode.com/openharmony-sig/rntpc_datetimepicker/releases) | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -32,20 +33,12 @@
 #### **npm**
 
 ```bash
-# V7.6.2
-npm install @react-native-oh-tpl/datetimepicker
-
-# V8.4.3
 npm install @react-native-ohos/datetimepicker
 ```
 
 #### **yarn**
 
 ```bash
-# V7.6.2
-yarn add @react-native-oh-tpl/datetimepicker
-
-# V8.4.3
 yarn add @react-native-ohos/datetimepicker
 ```
 
@@ -108,7 +101,10 @@ export const MDatetimepicker = () => {
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/datetimepicker@7.6.3，已支持 Autolink，无需手动配置，目前只支持72框架。
+Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -136,18 +132,6 @@ export const MDatetimepicker = () => {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- V7.6.2
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-
-    "@react-native-oh-tpl/datetimepicker": "file:../../node_modules/@react-native-oh-tpl/datetimepicker/harmony/datetimepicker.har"
-}
-```
-
-- V8.4.3
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -171,6 +155,8 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 datetimepicker
 
+> 若使用的是 <= 7.6.2-0.1.1 版本，请跳过本章。
+
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
 ```diff
@@ -192,10 +178,6 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
 
-# V7.6.2
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/datetimepicker/src/main/cpp" ./datetimepicker)
-
-# V8.4.3
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/datetimepicker/src/main/cpp" ./datetimepicker)
 
 # RNOH_END: manual_package_linking_1
@@ -240,10 +222,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-// V7.6.2
-+ import { RNDateTimePicker, DATETIME_PICKER_VIEW_TYPE } from "@react-native-oh-tpl/datetimepicker"
-
-// V8.4.3
 + import { RNDateTimePicker, DATETIME_PICKER_VIEW_TYPE } from "@react-native-ohos/datetimepicker"
 
 @Builder
@@ -291,17 +269,11 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+在以下版本验证通过：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 7.6.2      | [@react-native-oh-tpl/datetimepicker Releases](https://github.com/react-native-oh-library/datetimepicker/releases) | 0.72       |
-| 8.4.3      | [@react-native-ohos/datetimepicker Releases]()               | 0.77       |
-
-本文档内容基于以下版本验证通过：
-
-1. RNOH: 0.72.98; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.0.3.906; ROM: NEXT.0.0.71;
-2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 
 ## 属性
