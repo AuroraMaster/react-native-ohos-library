@@ -17,7 +17,14 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-library/react-native-MJRefresh Releases](https://github.com/react-native-oh-library/react-native-MJRefresh/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                | 支持RN版本 |
+|-------| ------------------------------------------------------------ | ---------- |
+| <= 0.7.0-0.2.2@deprecated | [@react-native-oh-tpl/react-native-MJRefresh Releases(deprecated)](https://github.com/react-native-oh-library/react-native-MJRefresh/releases) | 0.72       |
+| 0.7.1 | [@react-native-ohos/react-native-MJRefresh Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-mjrefresh/releases)                        | 0.72       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -26,13 +33,13 @@
 #### npm
 
 ```bash
-npm install @react-native-oh-tpl/react-native-mjrefresh
+npm install @react-native-ohos/react-native-mjrefresh
 ```
 
 #### yarn
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-mjrefresh
+yarn add @react-native-ohos/react-native-mjrefresh
 ```
 
 <!-- tabs:end -->
@@ -121,7 +128,10 @@ export default class MjRefreshDemo extends Component<{}, State> {
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-mjrefresh@0.7.1，已支持 Autolink，无需手动配置，目前只支持72框架。
+Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -153,7 +163,7 @@ export default class MjRefreshDemo extends Component<{}, State> {
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
-    "@react-native-oh-tpl/react-native-mjrefresh": "file:../../node_modules/@react-native-oh-tpl/react-native-mjrefresh/harmony/mjrefresh.har"
+    "@react-native-ohos/react-native-mjrefresh": "file:../../node_modules/@react-native-ohos/react-native-mjrefresh/harmony/mjrefresh.har"
   }
 ```
 
@@ -171,6 +181,8 @@ ohpm install
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
 ### 3.配置 CMakeLists 和引入 MJRefreshPackge
+
+> 若使用的是 <= 0.7.0-0.2.2 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -192,7 +204,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-mjrefresh/src/main/cpp" ./mjrefresh)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-mjrefresh/src/main/cpp" ./mjrefresh)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -246,7 +258,11 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-library/react-native-MJRefresh Releases](https://github.com/react-native-oh-library/react-native-MJRefresh/releases)
+在以下版本验证通过：
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 属性
 
