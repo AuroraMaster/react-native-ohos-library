@@ -15,6 +15,12 @@
 
 > [!TIP] [GitHub address](https://github.com/moschan/react-native-flip-card)
 
+Please go to the corresponding Release release address of the third-party library to view the version information of the Release package:
+
+| Version | RN Version |
+| ---------- | ---------- |
+| 3.5.7   | 0.72/0.77  |
+
 ## Installation and Usage
 
 <!-- tabs:start -->
@@ -211,6 +217,7 @@ This document is verified based on the following versions:
 
 1. RNOH: 0.72.26; SDK：HarmonyOS NEXT Developer Beta1 5.0.0.25; IDE：DevEco Studio 5.0.3.300SP2; ROM:3.0.0.24;
 2. RNOH: 0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH: 0.77.18; SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
 
 ## Properties
 
@@ -227,7 +234,7 @@ This library is a UI component library that achieves corresponding functionaliti
 | flip            | boolean  | If you change default display side, you can set true to this param. If you change side, you can pass bool variable dynamically. | false   | no       | iOS/Android | yes               |
 | clickable       | boolean  | If you want to disable click a card, you can set false to this paramicon.                                                       | true    | no       | iOS/Android | yes               |
 | friction        | number   | The friction of card animation                                                                                                  | 6       | no       | iOS/Android | yes               |
-| perspective     | number   | The amount of perspective applied to the flip transformation                                                                    | 1000    | no       | iOS/Android | yes               |
+| perspective     | number   | The amount of perspective applied to the flip transformation                                                                    | 1000    | no       | iOS/Android | no              |
 | flipHorizontal  | boolean  | If you set true, a card flip to horizontal.                                                                                     | false   | no       | iOS/Android | yes               |
 | flipVertical    | boolean  | If you set false, a card not flip to vertical. If you set true both flipHoriszontal and flipVertical , a card flip to diagonal. | true    | no       | iOS/Android | yes               |
 | onFlipStart     | function | When a card starts a flip animation, call onFlipEnd function with param.                                                        | NA      | no       | iOS/Android | yes               |
