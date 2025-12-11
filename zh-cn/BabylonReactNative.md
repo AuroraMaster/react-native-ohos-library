@@ -386,23 +386,23 @@ ohpm install
 
 `EngineView` 是一个 React Native 组件，用来渲染 Babylon.js 的 3D 场景。
 
-| Name               | Description                                                                                                                                                                          | Type     | Required | Platform     | HarmonyOS Support |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | -------- | ------------ | ----------------- |
-| `camera`           | 初始化时默认绑定的摄像机对象                                                                                                                                                            | Camera   | Yes       | iOS Android  | Yes               |
-| `displayFrameRate` | 是否显示 FPS 计数器                                                                                                                                                                    | boolean  | No       | iOS Android  | Yes               |
-| `isTransparent`    | 是否启用透明背景                                                                                                                                                                       | boolean  | No       | iOS Android  | Yes               |
-| `androidView`      | 用于 native 渲染绑定的SurfaceView ID                                                                                                                                                   | string   | No       | iOS Android  | Yes               |
-| `antiAliasing`     | 抗锯齿等级，可选值:0、1、2、4、8、16，值越大理论上消除锯齿越明显，但性能代价越高，0和1表示关闭抗锯齿。如果设置的抗锯齿等级超过设备支持的最大抗锯齿等级，HarmonyOS以设备实际支持的最大抗锯齿等级生效。 | number   | No       | iOS Android  | Yes               |
-| `onInitialized`    | 在原生引擎初始化完成后的回调                                                                                                                                                            | function | No       | iOS Android  | Yes               |
+| Name               | Description                                                                                                                                                                 | Type     | Required | Platform     | HarmonyOS Support |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | ------------ | ----------------- |
+| `camera`           | 初始化时默认绑定的摄像机对象                                                                                                                                                   | Camera   | Yes       | iOS Android  | Yes               |
+| `displayFrameRate` | 是否显示 FPS 计数器                                                                                                                                                           | boolean  | No       | iOS Android  | Yes               |
+| `isTransparent`    | 是否启用透明背景                                                                                                                                                              | boolean  | No       | iOS Android  | Yes               |
+| `androidView`      | 用于 native 渲染绑定的SurfaceView ID                                                                                                                                          | string   | No       | iOS Android  | Yes               |
+| `antiAliasing`     | 抗锯齿等级，可选值:0、1、2、4、8、16，值越大理论上消除锯齿越明显，但性能代价越高，0和1表示关闭抗锯齿。如果设置的抗锯齿等级超过设备支持的最大抗锯齿等级，以设备实际支持的最大抗锯齿等级生效。 | number   | No       | iOS Android  | Yes               |
+| `onInitialized`    | 在原生引擎初始化完成后的回调                                                                                                                                                    | function | No       | iOS Android  | Yes               |
 
 `NativeEngineView` 是 React Native 原生桥接的 Native UI 组件。
 
-| Name                     | Description                                                                                                                                                                           | Type     | Required | Platform     | HarmonyOS Support |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | ------------ | ----------------- |
-| `isTransparent`          | 控制原生渲染背景是否透明                                                                                                                                                                | boolean  | No       | iOS Android  | Yes               |
-| `antiAliasing`           | 抗锯齿等级，可选值:0、1、2、4、8、16，值越大理论上消除锯齿越明显，但性能代价越高，0和1表示关闭抗锯齿。如果设置的抗锯齿等级超过设备支持的最大抗锯齿等级，HarmonyOS以设备实际支持的最大抗锯齿等级生效。 | number   | No       | iOS Android  | Yes               |
-| `androidView`            | 用于 native 渲染绑定的SurfaceView ID                                                                                                                                                   | string   | No       | iOS Android  | Yes               |
-| `onSnapshotDataReturned` | 原生返回截图数据的回调                                                                                                                                                                  | function | No       | iOS Android  | Yes               |
+| Name                     | Description                                                                                                                                                                  | Type     | Required | Platform     | HarmonyOS Support |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------  | -------- | -------- | ------------ | ----------------- |
+| `isTransparent`          | 控制原生渲染背景是否透明                                                                                                                                                       | boolean  | No       | iOS Android  | Yes               |
+| `antiAliasing`           | 抗锯齿等级，可选值:0、1、2、4、8、16，值越大理论上消除锯齿越明显，但性能代价越高，0和1表示关闭抗锯齿。如果设置的抗锯齿等级超过设备支持的最大抗锯齿等级，以设备实际支持的最大抗锯齿等级生效。 | number   | No       | iOS Android  | Yes               |
+| `androidView`            | 用于 native 渲染绑定的SurfaceView ID                                                                                                                                          | string   | No       | iOS Android  | Yes               |
+| `onSnapshotDataReturned` | 原生返回截图数据的回调                                                                                                                                                         | function | No       | iOS Android  | Yes               |
 
 # API
 
