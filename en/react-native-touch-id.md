@@ -14,15 +14,16 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-touch-id)
 
+
+The repository for this third-party library has been migrated to Gitcode, and it now supports direct download from npm. The new package name is: `@react-native-ohos/react-native-touch-id`. The specific version relationships are as follows:
+
+| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
+| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
+| <= 4.4.1-0.0.3@deprecated  | @react-native-oh-tpl/react-native-touch-id | [Github](https://github.com/react-native-oh-library/react-native-touch-id) | [Github Releases](https://github.com/react-native-oh-library/react-native-touch-id/releases) | 0.72 |
+| 4.4.2 | @react-native-ohos/react-native-touch-id   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-touch-id) | [GitCode Releases]() | 0.72 |
+| 4.5.0 | @react-native-ohos/react-native-touch-id   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-touch-id) | [GitCode Releases]() | 0.77 |
+
 ## Installation and Usage
-
-Please refer to the Releases page of the third-party library for the corresponding version information
-
-| Third-party Library Version | Release Information                                                     | Supported RN Version |
-|-------| ------------------------------------------------------------ | ---------- |
-| <= 4.4.1-0.0.3@deprecated   | [@react-native-oh-tpl/react-native-touch-id Releases(deprecated)](https://github.com/react-native-oh-library/react-native-touch-id/releases) | 0.72                 |
-| 4.4.2 | [@react-native-ohos/react-native-touch-id Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-touch-id/releases)                        | 0.72       |
-| 4.5.0 | [@react-native-ohos/react-native-touch-id Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-touch-id/releases)                        | 0.77       |
 
 For older versions not published on npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
 
@@ -36,12 +37,18 @@ Go to the project directory and execute the following instruction:
 ```bash
 npm install @react-native-ohos/react-native-touch-id
 ```
+If an error occurs during compilation indicating that the source library needs to be imported, you can run the following command
+
+```bash
+npm install --force
+```
 
 #### **yarn**
 
 ```bash
 yarn add @react-native-ohos/react-native-touch-id
 ```
+
 
 <!-- tabs:end -->
 
@@ -270,6 +277,27 @@ In your `module.json5`
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | isSupported  | Whether touchid is supported | function  | yes | ios/andriod      | yes |
 | authenticate  | Verify touchid | function  | yes | ios/andriod      | yes |
+## API Parameters Introduction
+### authenticate(reason?: string, config?: AuthenticateConfig);
+* **reason**: A string providing a clear reason for requesting authentication
+* **config**: A configuration object for more detailed dialog settings
+  * **AuthenticateConfig**:
+	| Name | Description | Type | Required | Platform | HarmonyOS Support  |
+	| ---- | ----------- | ---- | -------- | -------- | ------------------ |
+	| title  | **Android only** - Title of the confirmation dialog | string  | no | ios/android      | yes |
+	| imageColor  | **Android only** - Color of the fingerprint image | string  | no | ios/android      | no |
+	| imageErrorColor  | **Android only** - Color of the fingerprint image after a failed attempt | string  | no | ios/android      | no |
+	| sensorDescription  | **Android only** - Text displayed next to the fingerprint image | string  | no | ios/android      | no |
+	| sensorErrorDescription  | **Android only** - Text displayed next to the fingerprint image after a failed attempt | string  | no | ios/android      | no |
+	| cancelText  | **Android only** - Cancel button text | string  | no | ios/android      | yes |
+	| fallbackLabel  | **iOS only** - By default shows "Show Password" label. If set to empty string, the label will be invisible | string  | no | ios/android      | no |
+	| passcodeFallback  | **iOS only** - Defaults to false. If set to true, will allow fallback to passcode | boolean  | no | ios/android      | no |
+### isSupported(config?: IsSupportedConfig): `Promise<BiometryType>`;
+* **config** - Returns a `Promise` that rejects if TouchID is not supported. On iOS, resolves to a `biometryType` string with value `FaceID` or `TouchID`
+ * **IsSupportedConfig**:
+ 	| Name | Description | Type | Required | Platform | HarmonyOS Support  |
+	| ---- | ----------- | ---- | -------- | -------- | ------------------ |
+    | unifiedErrors| Returns unified error messages | boolean | no | ios/android      | yes |
 ## Properties
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
@@ -280,21 +308,24 @@ In your `module.json5`
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| Touch ID Error  | Permission verification failed | string  | no | harmonry      | yes |
-| Touch ID Error  | Incorrect parameters | string  | no | harmonry      | yes |
-| Touch ID Error  | Authentication failed  | string  | no | harmonry  | yes |
-| Touch ID Error  | The operation is canceled   | string  | no | harmonry  | yes |
-| Touch ID Error  | The operation is time-out | string  | no | harmonry  | yes |
-| Touch ID Error  | The authentication type is not supported   | string | no | harmonry  | yes |
-| Touch ID Error  | The authentication trust level is not supported | string  | no | harmonry      | yes |
-| Touch ID Error  | The authentication task is busy | string  | no | harmonry      | yes |
-| Touch ID Error  | The authenticator is locked  | string  | no | harmonry  | yes |
-| Touch ID Error  | General operation error   | string  | no | harmonry  | no |
-| Touch ID Error  | The authentication type is not supported | string  | no | harmonry  | yes |
-| Touch ID Error  | The type of credential has not been enrolled   | string | no | harmonry  | yes |
-| Touch ID Error  | The authentication is canceled from widget's navigation button   | string | no | harmonry  | yes |
-| Touch ID Error  | Indicates that current authentication failed because of PIN expired   | string | no | harmonry  | yes |
+| 201  | Permission verification failed | string  | no | harmonry      | yes |
+| 401  | Incorrect parameters | string  | no | harmonry      | no |
+| 12500001  | Authentication failed  | string  | no | harmonry  | yes |
+| 12500002  | General operation error   | string  | no | harmonry  | no |
+| 12500003  | The operation is canceled   | string  | no | harmonry  | yes |
+| 12500004  | The operation is time-out | string  | no | harmonry  | no |
+| 12500005  | The authentication type is not supported   | string | no | harmonry  | no |
+| 12500006  | The authentication trust level is not supported | string  | no | harmonry      | no |
+| 12500007  | The authentication task is busy | string  | no | harmonry      | no |
+| 12500009  | The authenticator is locked  | string  | no | harmonry  | yes |
+| 12500010  | The type of credential has not been enrolled   | string | no | harmonry  | yes |
+| 12500011  | The authentication is canceled from widget's navigation button   | string | no | harmonry  | yes |
+| 12500013  | Indicates that current authentication failed because of PIN expired   | string | no | harmonry  | no |
+
 ## Known Issues
+
+- [ ] The config parameter is partially supported.[issue#13](https://github.com/react-native-oh-library/react-native-touch-id/issues/13)
+- [ ] Error is partially supported.[issue#12](https://gitcode.com/openharmony-sig/rntpc_react-native-touch-id/issues/12)
 
 ## Others
 

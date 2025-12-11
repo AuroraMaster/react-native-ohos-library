@@ -14,15 +14,15 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-touch-id)
 
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-touch-id`，具体版本所属关系如下：
+
+| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
+| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
+| <= 4.4.1-0.0.3@deprecated  | @react-native-oh-tpl/react-native-touch-id | [Github](https://github.com/react-native-oh-library/react-native-touch-id) | [Github Releases](https://github.com/react-native-oh-library/react-native-touch-id/releases) | 0.72 |
+| 4.4.2  | @react-native-ohos/react-native-touch-id | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-touch-id) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-touch-id/releases) | 0.72 |
+| 4.5.0 | @react-native-ohos/react-native-touch-id   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-touch-id) | [GitCode Releases]() | 0.77 |
+
 ## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-|-------| ------------------------------------------------------------ | ---------- |
-| <= 4.4.1-0.0.3@deprecated | [@react-native-oh-tpl/react-native-touch-id Releases(deprecated)](https://github.com/react-native-oh-library/react-native-touch-id/releases) | 0.72         |
-| 4.4.2 | [@react-native-ohos/react-native-touch-id Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-touch-id/releases)                        | 0.72       |
-| 4.5.0 | [@react-native-ohos/react-native-touch-id Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-touch-id/releases)                        | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -36,6 +36,11 @@
 npm install @react-native-ohos/react-native-touch-id
 ```
 
+如果在编译时报错为需引入源库，可以运行如下指令
+
+```bash
+npm install --force
+```
 #### **yarn**
 
 ```bash
@@ -269,8 +274,30 @@ In your `module.json5`
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| isSupported  | Whether touchid is supported | function  | yes | ios/andriod      | yes |
-| authenticate  | Verify touchid | function  | yes | ios/andriod      | yes |
+| isSupported  | 是否支持 Touch ID | function  | yes | ios/andriod      | yes |
+| authenticate  | 验证 Touch ID | function  | yes | ios/andriod      | yes |
+
+## API 参数介绍
+### authenticate(reason?: string, config?: AuthenticateConfig);
+* **reason**: 提供请求身份验证的明确原因的字符串
+* **config**: 用于更详细对话框设置的配置对象
+  * **AuthenticateConfig**:
+	| Name | Description | Type | Required | Platform | HarmonyOS Support  |
+	| ---- | ----------- | ---- | -------- | -------- | ------------------ |
+	| title  | **仅Android** - 确认对话框的标题 | string  | no | ios/andriod      | yes |
+	| imageColor  | **仅Android** - 指纹图像的颜色 | string  | no | ios/andriod      | no |
+	| imageErrorColor  | **仅Android** - 尝试失败后指纹图像的颜色 | string  | no | ios/andriod      | no |
+	| sensorDescription  | **仅Android** - 指纹图像旁边显示的文字 | string  | no | ios/andriod      | no |
+	| sensorErrorDescription  | **仅Android** - 尝试失败后指纹图像旁边显示的文字 | string  | no | ios/andriod      | no |
+	| cancelText  | **仅Android** - 取消按钮文字 | string  | no | ios/andriod      | yes |
+	| fallbackLabel  | **仅iOS** - 默认显示"显示密码"标签。如果设置为空字符串，标签将不可见 | string  | no | ios/andriod      | no |
+	| passcodeFallback  | **仅iOS** - 默认设置为false。如果设置为true，将允许使用键盘密码 | boolean  | no | ios/andriod      | no |
+### isSupported(config?: IsSupportedConfig): `Promise<BiometryType>`;
+* **config** - 返回一个`Promise`，如果TouchID不支持则会拒绝。在iOS上会解析为一个`biometryType`字符串，值为`FaceID`或`TouchID`
+ * **IsSupportedConfig**:
+ 	| Name | Description | Type | Required | Platform | HarmonyOS Support  |
+	| ---- | ----------- | ---- | -------- | -------- | ------------------ |
+    | unifiedErrors| 返回统一的错误信息 |boolean| no | ios/andriod      | yes |
 ## 属性
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
@@ -281,21 +308,24 @@ In your `module.json5`
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| Touch ID Error  | Permission verification failed | string  | no | harmonry      | yes |
-| Touch ID Error  | Incorrect parameters | string  | no | harmonry      | yes |
-| Touch ID Error  | Authentication failed  | string  | no | harmonry  | yes |
-| Touch ID Error  | The operation is canceled   | string  | no | harmonry  | yes |
-| Touch ID Error  | The operation is time-out | string  | no | harmonry  | yes |
-| Touch ID Error  | The authentication type is not supported   | string | no | harmonry  | yes |
-| Touch ID Error  | The authentication trust level is not supported | string  | no | harmonry      | yes |
-| Touch ID Error  | The authentication task is busy | string  | no | harmonry      | yes |
-| Touch ID Error  | The authenticator is locked  | string  | no | harmonry  | yes |
-| Touch ID Error  | General operation error   | string  | no | harmonry  | no |
-| Touch ID Error  | The authentication type is not supported | string  | no | harmonry  | yes |
-| Touch ID Error  | The type of credential has not been enrolled   | string | no | harmonry  | yes |
-| Touch ID Error  | The authentication is canceled from widget's navigation button   | string | no | harmonry  | yes |
-| Touch ID Error  | Indicates that current authentication failed because of PIN expired   | string | no | harmonry  | yes |
+| 201  | Permission verification failed | string  | no | harmonry      | yes |
+| 401  | Incorrect parameters | string  | no | harmonry      | no |
+| 12500001  | Authentication failed  | string  | no | harmonry  | yes |
+| 12500002  | General operation error   | string  | no | harmonry  | no |
+| 12500003  | The operation is canceled   | string  | no | harmonry  | yes |
+| 12500004  | The operation is time-out | string  | no | harmonry  | no |
+| 12500005  | The authentication type is not supported   | string | no | harmonry  | no |
+| 12500006  | The authentication trust level is not supported | string  | no | harmonry      | no |
+| 12500007  | The authentication task is busy | string  | no | harmonry      | no |
+| 12500009  | The authenticator is locked  | string  | no | harmonry  | yes |
+| 12500010  | The type of credential has not been enrolled   | string | no | harmonry  | yes |
+| 12500011  | The authentication is canceled from widget's navigation button   | string | no | harmonry  | yes |
+| 12500013  | Indicates that current authentication failed because of PIN expired   | string | no | harmonry  | no |
+
 ## 遗留问题
+
+- [ ] config参数部分支持.[issue#13](https://github.com/react-native-oh-library/react-native-touch-id/issues/13)
+- [ ] error部分触发。[issue#12](https://gitcode.com/openharmony-sig/rntpc_react-native-touch-id/issues/12)
 
 ## 其他
 
