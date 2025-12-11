@@ -12,40 +12,33 @@
     </a>
 </p>
 
-> [!TIP] [Github Address](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-area-context)
-
-The repository for this third-party library has been migrated to Gitcode, and it now supports direct download from npm. The new package name is: `@react-native-ohos/react-native-safe-area-context`. The specific version relationships are as follows:
-
-| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
-| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
-| 4.7.4  | @react-native-oh-tpl/react-native-safe-area-context | [Github](https://github.com/react-native-oh-library/react-native-safe-area-context) | [Github Releases](https://github.com/react-native-oh-library/react-native-safe-area-context/releases) | 0.72 |
-| 5.1.1 | @react-native-ohos/react-native-safe-area-context   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-area-context) | [GitCode Releases]() | 0.77 |
+> [!TIP] [Github Address](https://github.com/react-native-oh-library/react-native-safe-area-context)
 
 ## Installation and Usage
 
-For older versions not published to npm, please refer to the [Installation Guide](/en/tgz-usage.md) to install the tgz package.
+Please refer to the Releases page of the third-party library for the corresponding version information
 
-Navigate to your project directory and enter the following commands:
+| Third-party Library Version | Release Information       | Supported RN Version |
+|-----------------------------| ------------------------------------------------------------ | ---------- |
+| <= 4.7.4-0.2.1@deprecated | [@react-native-oh-tpl/react-native-safe-area-context Releases(deprecated)](https://github.com/react-native-oh-library/react-native-safe-area-context/releases) | 0.72       |
+| 4.7.5 | [@react-native-ohos/react-native-safe-area-context Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-area-context/releases)               | 0.72       |
+| 5.1.1 | [@react-native-ohos/react-native-safe-area-context Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-area-context/releases)               | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+
+Go to the project directory and execute the following instruction:
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
-# V4.7.4
-npm install @react-native-oh-tpl/react-native-safe-area-context
-
-# V5.1.1
 npm install @react-native-ohos/react-native-safe-area-context
 ```
 
 #### **yarn**
 
 ```bash
-# V4.7.4
-yarn add @react-native-oh-tpl/react-native-safe-area-context
-
-# V5.1.1
 yarn add @react-native-ohos/react-native-safe-area-context
 ```
 
@@ -81,9 +74,11 @@ export default App;
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink, so the Link step requires manual configuration.
+Version >= @react-native-ohos/react-native-safe-area-context@4.7.5 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-First, you need to open the HarmonyOS project `harmony` within your project using DevEco Studio.
+This step provides guidance for manually configuring native dependencies.
+
+Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
 ### 1. Add the overrides field to the root `oh-package.json5` of the project
 
@@ -109,18 +104,6 @@ Method 1: Import via har package
 
 Open `entry/oh-package.json5` and add the following dependencies:
 
-- V4.7.4
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-
-    "@react-native-oh-tpl/react-native-safe-area-context": "file:../../node_modules/@react-native-oh-tpl/react-native-safe-area-context/harmony/safe_area.har"
-  }
-```
-
-- V5.1.1
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -144,6 +127,8 @@ Method 2: Link Source Code Directly
 
 ### 3. Configure CMakeLists and Import SafeAreaViewPackage
 
+> If you are using version <= 4.7.4-0.2.1, please skip this chapter.
+
 Open `entry/src/main/cpp/CMakeLists.txt` and add:
 
 ```diff
@@ -165,10 +150,6 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
 
-# V4.7.4
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-safe-area-context/src/main/cpp" ./safe-area)
-
-# V5.1.1
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-safe-area-context/src/main/cpp" ./safe-area)
 
 # RNOH_END: manual_package_linking_1
@@ -213,10 +194,6 @@ Open `entry/src/main/ets/RNPackagesFactory.ts` and add:
 
 ```diff
 ...
-// V4.7.4
-+ import {SafeAreaViewPackage} from '@react-native-oh-tpl/react-native-safe-area-context/ts';
-
-// V5.1.1
 + import {SafeAreaViewPackage} from '@react-native-ohos/react-native-safe-area-context/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -242,12 +219,13 @@ Then compile and run.
 
 ## Compatibility
 
-To use this library, you need to use the correct React-Native and RNOH versions. Additionally, you need to use the matching DevEco Studio and phone ROM.
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-This document is verified based on the following versions:
-1. RNOH:0.72.96; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
-2. RNOH:0.77.18; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
+Verified successfully in the following versions:
 
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## Props
 
