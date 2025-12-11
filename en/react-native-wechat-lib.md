@@ -15,16 +15,18 @@
 
 > [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-wechat-lib)
 
-Please check the corresponding version information at the third-party library's Releases page:
-
-| Library Version | Release Information                                                     |  Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 3.0.6     | [@react-native-ohos/react-native-wechat-lib Releases](https://github.com/react-native-oh-library/react-native-wechat-lib/releases) | 0.72       |
-| 3.1.0    | [@react-native-ohos/react-native-wechat-lib Releases]() | 0.77       |
-
 ## Installation and Usage
 
-Go to the project directory and execute the following instruction:：
+Please check the corresponding version information at the third-party library's Releases page:
+
+| Third-party Library Version | Release Information                                                     |  Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| 3.0.6     | [@react-native-ohos/react-native-wechat-lib Releases](https://github.com/react-native-oh-library/react-native-wechat-lib/releases) | 0.72       |
+| 3.1.0    | [@react-native-ohos/react-native-wechat-lib Releases](https://github.com/react-native-oh-library/react-native-wechat-lib/releases) | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+
+Go to the project directory and execute the following instruction:
 
 <!-- tabs:start -->
 
@@ -143,7 +145,10 @@ const styles = StyleSheet.create({
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-wechat-lib@3.0.6 now supports Autolink without requiring manual configuration(The content that still needs to be manually configured has been marked in the corresponding title), currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -188,7 +193,7 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 3. Configuring EntryAbility
+### 3. Configuring EntryAbility(This module always requires manual configuration)
 
 Open `entry\src\main\ets\entryability\EntryAbility.ets` and add the following code:
 
@@ -332,10 +337,13 @@ Then build and run the code.
 
 ### Compatibility
 
-This document is verified based on the following versions:
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
-2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
+Verified in the following versions.
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## API
 
