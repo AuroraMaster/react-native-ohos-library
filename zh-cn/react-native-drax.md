@@ -14,13 +14,18 @@
 
 
 
-
-
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-drax)
 
-## 安装与使用
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-drax Releases](https://github.com/react-native-oh-library/react-native-drax/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+| Version                        | Package Name                             | Repository                                                   | Release                                                      | Version for RN |
+| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+| 0.10.3 | @react-native-oh-tpl/react-native-drax  | [Github](https://github.com/react-native-oh-library/react-native-drax) | [Github Releases](https://github.com/react-native-oh-library/react-native-drax/releases) | 0.72       |
+| 0.11.1                        | @react-native-ohos/react-native-drax | [Github](https://github.com/react-native-oh-library/react-native-drax/tree/br_rnoh0.77) | [Github Releases](https://github.com/react-native-oh-library/react-native-drax/releases) | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -29,13 +34,21 @@
 #### **npm**
 
 ```bash
+# for RN0.72
 npm install @react-native-oh-tpl/react-native-drax
+
+# for RN0.77
+npm install @react-native-ohos/react-native-drax
 ```
 
 #### **yarn**
 
 ```bash
+# for RN0.72
 yarn add @react-native-oh-tpl/react-native-drax
+
+# for RN0.77
+yarn add @react-native-ohos/react-native-drax
 ```
 
 <!-- tabs:end -->
@@ -129,7 +142,10 @@ const styles = StyleSheet.create({
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-drax Releases](https://github.com/react-native-oh-library/react-native-drax/releases)
+在下述版本验证通过：
+
+1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
+2. RNOH：0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -141,79 +157,103 @@ const styles = StyleSheet.create({
 
 |               Name                |                         Description                          |     Type      | Required |  Platform   | HarmonyOS Support |
 | :-------------------------------: | :----------------------------------------------------------: | :-----------: | :------: | :---------: | :---------------: |
-|            onDragStart            |          Callback function at the start of dragging          |   function    |    no    | iOS/Android |        Yes        |
-|              onDrag               |              Callback function during dragging               |   function    |    no    | iOS/Android |        Yes        |
-|            onDragEnter            |           Callback function when a drag is entered           |   function    |    no    | iOS/Android |        Yes        |
-|            onDragOver             |       Callback function when dragging the floating top       |   function    |    no    | iOS/Android |        Yes        |
-|            onDragExit             |            Callback function when the drag exits             |   function    |    no    | iOS/Android |        Yes        |
-|             onDragEnd             |           Callback function at the end of dragging           |   function    |    no    | iOS/Android |        Yes        |
-|            onDragDrop             |        Callback function when dragging and releasing         |   function    |    no    | iOS/Android |        Yes        |
-|           onSnapbackEnd           |    Callback function at the end of the rebound animation     |   function    |    no    | iOS/Android |        Yes        |
-|        onReceiveDragEnter         |           Callback function when a drag is entered           |   function    |    no    | iOS/Android |        Yes        |
-|         onReceiveDragOver         |         Callback function when dragging and hovering         |   function    |    no    | iOS/Android |        Yes        |
-|         onReceiveDragExit         |            Callback function when the drag exits             |   function    |    no    | iOS/Android |        Yes        |
-|         onReceiveDragDrop         |        Callback function when dragging and releasing         |   function    |    no    | iOS/Android |        Yes        |
-|        onMonitorDragStart         |    Callback function when the start of a drag is detected    |   function    |    no    | iOS/Android |        Yes        |
-|        onMonitorDragEnter         |       Callback function when a drag entry is detected        |   function    |    no    | iOS/Android |        Yes        |
-|         onMonitorDragOver         |         Callback function when dragging is detected          |   function    |    no    | iOS/Android |        Yes        |
-|         onMonitorDragExit         |        Callback function when a drag exit is detected        |   function    |    no    | iOS/Android |        Yes        |
-|         onMonitorDragEnd          |    Callback function when the end of dragging is detected    |   function    |    no    | iOS/Android |        Yes        |
-|         onMonitorDragDrop         |      Callback function after a drag release is detected      |   function    |    no    | iOS/Android |        Yes        |
-|          animateSnapback          | Whether to animate hovering view snapshots after drag release |    boolean    |    no    | iOS/Android |        Yes        |
-|              payload              |                  Data passed when dragging                   |      any      |    no    | iOS/Android |        Yes        |
-|            dragPayload            |              Data transferred by the drag party              |      any      |    no    | iOS/Android |        Yes        |
-|          receiverPayload          |               Data transferred by the receiver               |      any      |    no    | iOS/Android |        Yes        |
-|         dragInactiveStyle         |            Style of the drag side before the drag            |    object     |    no    | iOS/Android |        Yes        |
-|           draggingStyle           |      The style applied to the drag side during the drag      |    object     |    no    | iOS/Android |        Yes        |
-|     draggingWithReceiverStyle     | The style applied to the drag side when the drag side is directly above the recipient |    object     |    no    | iOS/Android |        Yes        |
-|   draggingWithoutReceiverStyle    | The style applied to the drag side when the drag side is not directly above the recipient |    object     |    no    | iOS/Android |        Yes        |
-|         dragReleasedStyle         | The style applied to the drag side when the drag side is released |    object     |    no    | iOS/Android |        Yes        |
-|            hoverStyle             | Drag sideDrag sideThe style applied to the drag side snapshot when the snapshot is hovered |    object     |    no    | iOS/Android |        Yes        |
-|        hoverDraggingStyle         | Drag side The style applied to the drag side snapshot when dragging |    object     |    no    | iOS/Android |        Yes        |
-|  hoverDraggingWithReceiverStyle   | The style applied to the snapshot of the drager when the drager is directly above the recipient |    object     |    no    | iOS/Android |        Yes        |
-| hoverDraggingWithoutReceiverStyle | The style applied to the drag side snapshot when the drag side is not directly above the recipient |    object     |    no    | iOS/Android |        Yes        |
-|      hoverDragReleasedStyle       | Drag side The style applied to the drag side snapshot when the drag stops |    object     |    no    | iOS/Android |        Yes        |
-|       receiverInactiveStyle       |  The style applied to the recipient before the drag starts   |    object     |    no    | iOS/Android |        Yes        |
-|          receivingStyle           | The style applied to the recipient when the drag is directly above the recipient |    object     |    no    | iOS/Android |        Yes        |
-|        otherDraggingStyle         |      Styles applied to the drag side during other drags      |    object     |    no    | iOS/Android |        Yes        |
-|  otherDraggingWithReceiverStyle   | The style applied to the drag side when the other drag side is directly above the recipient |    object     |    no    | iOS/Android |        Yes        |
-| otherDraggingWithoutReceiverStyle | The style applied to the drag party when the other drag party is not directly above the recipient |    object     |    no    | iOS/Android |        Yes        |
-|           renderContent           | Renders the content of the internal subnodes of the drag-and-drop component |   function    |    no    | iOS/Android |        Yes        |
-|        renderHoverContent         | Used to render the content of the internal subnodes of the drag-and-drop copy component |   function    |    no    | iOS/Android |        Yes        |
-|           registration            | Callback function, which can receive data transferred within the component |   function    |    no    | iOS/Android |        Yes        |
-|             onMeasure             | Callback function, which can receive data transferred within the component |   function    |    no    | iOS/Android |        Yes        |
-|         lockDragXPosition         | Indicates whether to lock the drag in the horizontal direction (x axis) |    boolean    |    no    | iOS/Android |        Yes        |
-|         lockDragYPosition         | Indicates whether to lock the drag in the vertical direction (y axis) |    boolean    |    no    | iOS/Android |        Yes        |
-|             children              | Renders the content of the internal subnodes of the drag-and-drop component. This parameter is valid only when the renderContent rendering method does not exist | React Element |    no    | iOS/Android |        Yes        |
-|              noHover              |   Sets whether to disable the drag-and-drop copy function    |    boolean    |    no    | iOS/Android |        Yes        |
-|          longPressDelay           | Sets the minimum time (in milliseconds) for the view to recognize touch and hold gestures |    number     |    no    | iOS/Android |        Yes        |
-|             draggable             | Indicates whether dragging is allowed. The default value is true |    boolean    |    no    | iOS/Android |        Yes        |
+|            onDragStart            | 拖拽开始时的回调函数          |   function    |    no    | iOS/Android |        Yes        |
+|              onDrag               | 拖拽过程中的回调函数               |   function    |    no    | iOS/Android |        Yes        |
+|            onDragEnter            | 拖拽进入时的回调函数           |   function    |    no    | iOS/Android |        Yes        |
+|            onDragOver             | 在浮动视图上方拖拽时的回调函数       |   function    |    no    | iOS/Android |        Yes        |
+|            onDragExit             | 拖拽退出时的回调函数             |   function    |    no    | iOS/Android |        Yes        |
+|             onDragEnd             | 拖拽结束时的回调函数           |   function    |    no    | iOS/Android |        Yes        |
+|            onDragDrop             | 拖拽释放时的回调函数         |   function    |    no    | iOS/Android |        Yes        |
+|           onSnapbackEnd           | 回弹动画结束时的回调函数     |   function    |    no    | iOS/Android |        Yes        |
+|        onReceiveDragEnter         | 接收拖拽进入时的回调函数           |   function    |    no    | iOS/Android |        Yes        |
+|         onReceiveDragOver         | 接收拖拽悬停时的回调函数         |   function    |    no    | iOS/Android |        Yes        |
+|         onReceiveDragExit         | 接收拖拽退出时的回调函数             |   function    |    no    | iOS/Android |        Yes        |
+|         onReceiveDragDrop         | 接收拖拽释放时的回调函数         |   function    |    no    | iOS/Android |        Yes        |
+|        onMonitorDragStart         | 监测到拖拽开始时的回调函数    |   function    |    no    | iOS/Android |        Yes        |
+|        onMonitorDragEnter         | 监测到拖拽进入时的回调函数        |   function    |    no    | iOS/Android |        Yes        |
+|         onMonitorDragOver         | 监测到拖拽进行时的回调函数          |   function    |    no    | iOS/Android |        Yes        |
+|         onMonitorDragExit         | 监测到拖拽退出时的回调函数        |   function    |    no    | iOS/Android |        Yes        |
+|         onMonitorDragEnd          | 监测到拖拽结束时的回调函数    |   function    |    no    | iOS/Android |        Yes        |
+|         onMonitorDragDrop         | 监测到拖拽释放后的回调函数      |   function    |    no    | iOS/Android |        Yes        |
+|          animateSnap          | 是否在拖拽释放后为悬停视图快照添加回弹动画 |    boolean    |    no    | iOS/Android |        Yes        |
+|              payload              | 拖拽时传递的数据                   |      any      |    no    | iOS/Android |        Yes        |
+|            dragPayload            | 拖拽方传输的数据              |      any      |    no    | iOS/Android |        Yes        |
+|          receiverPayload          | 接收方传输的数据               |      any      |    no    | iOS/Android |        Yes        |
+|         dragInactiveStyle         | 拖拽前拖拽方的样式            |    object     |    no    | iOS/Android |        Yes        |
+|           draggingStyle           | 拖拽过程中应用于拖拽方的样式      |    object     |    no    | iOS/Android |        Yes        |
+|     draggingWithReceiverStyle     | 当拖拽方直接在接收方上方时应用于拖拽方的样式 |    object     |    no    | iOS/Android |        Yes        |
+|   draggingWithoutReceiverStyle    | 当拖拽方不在接收方上方时应用于拖拽方的样式 |    object     |    no    | iOS/Android |        Yes        |
+|         dragReleasedStyle         | 当拖拽方释放时应用于拖拽方的样式 |    object     |    no    | iOS/Android |        Yes        |
+|            hoverStyle             | 当快照悬停时应用于拖拽方快照的样式 |    object     |    no    | iOS/Android |        Yes        |
+|        hoverDraggingStyle         | 拖拽时应用于拖拽方快照的样式 |    object     |    no    | iOS/Android |        Yes        |
+|  hoverDraggingWithReceiverStyle   | 当拖拽方直接在接收方上方时应用于拖拽方快照的样式 |    object     |    no    | iOS/Android |        Yes        |
+| hoverDraggingWithoutReceiverStyle | 当拖拽方不在接收方上方时应用于拖拽方快照的样式 |    object     |    no    | iOS/Android |        Yes        |
+|      hoverDragReleasedStyle       | 当拖拽停止时应用于拖拽方快照的样式 |    object     |    no    | iOS/Android |        Yes        |
+|       receiverInactiveStyle       |  拖拽开始前应用于接收方的样式   |    object     |    no    | iOS/Android |        Yes        |
+|          receivingStyle           | 当拖拽直接在接收方上方时应用于接收方的样式 |    object     |    no    | iOS/Android |        Yes        |
+|        otherDraggingStyle         | 其他拖拽方拖拽期间应用于拖拽方的样式      |    object     |    no    | iOS/Android |        Yes        |
+|  otherDraggingWithReceiverStyle   | 当其他拖拽方直接在接收方上方时应用于拖拽方的样式 |    object     |    no    | iOS/Android |        Yes        |
+| otherDraggingWithoutReceiverStyle | 当其他拖拽方不在接收方上方时应用于拖拽方的样式 |    object     |    no    | iOS/Android |        Yes        |
+|           renderContent           | 渲染拖拽组件内部子节点的内容 |   function    |    no    | iOS/Android |        Yes        |
+|        renderHoverContent         | 用于渲染拖拽复制组件内部子节点的内容 |   function    |    no    | iOS/Android |        Yes        |
+|           registration            | 回调函数，可接收组件内部传输的数据 |   function    |    no    | iOS/Android |        Yes        |
+|             onMeasure             | 回调函数，可接收组件内部传输的数据 |   function    |    no    | iOS/Android |        Yes        |
+|         lockDragXPosition         | 指示是否在水平方向（x轴）锁定拖拽 |    boolean    |    no    | iOS/Android |        Yes        |
+|         lockDragYPosition         | 指示是否在垂直方向（y轴）锁定拖拽 |    boolean    |    no    | iOS/Android |        Yes        |
+|             children              | 渲染拖拽组件内部子节点的内容。仅当 renderContent 渲染方法不存在时此参数有效 | React Element |    no    | iOS/Android |        Yes        |
+|              noHover              | 设置是否禁用拖拽复制功能    |    boolean    |    no    | iOS/Android |        Yes        |
+|          longPressDelay           | 设置视图识别触摸和长按手势的最短时间（以毫秒为单位） |    number     |    no    | iOS/Android |        Yes        |
+|             draggable             | 指示是否允许拖拽。默认值为 true |    boolean    |    no    | iOS/Android |        Yes        |
 
 ###  DraxScrollView
 
 |   Name   |          Description          |     Type      | Required |  Platform   | HarmonyOS Support |
 | :------: | :---------------------------: | :-----------: | :------: | :---------: | :---------------: |
-| children | Component React Node subnode  | React Element |    no    | iOS/Android |        Yes        |
-| onScroll | Sliding event callback method |   function    |    no    | iOS/Android |        Yes        |
+| children | 组件子节点  | React Element |    no    | iOS/Android |        Yes        |
+| onScroll | 滑动事件回调函数 |   function    |    no    | iOS/Android |        Yes        |
 
 ### DraxList
 
-|           Name           |                         Description                          |   Type   | Required |  Platform   | HarmonyOS Support |
-| :----------------------: | :----------------------------------------------------------: | :------: | :------: | :---------: | :---------------: |
-|           data           |            Data source of the DraxList component             |  array   |    no    | iOS/Android |        Yes        |
-|      flatListStyle       |      Sets the style of the internal FlatList component       |  object  |    no    | iOS/Android |        Yes        |
-|        itemStyles        | Sets the style of an item in the internal FlatList component |  object  |    no    | iOS/Android |        Yes        |
-|    renderItemContent     |  Method for Rendering Item Items in the DraxList Component   | function |    no    | iOS/Android |        Yes        |
-|  renderItemHoverContent  | Method of Rendering Item Snapshots in the DraxList Component | function |    no    | iOS/Android |        Yes        |
-|     onItemDragStart      | Callback is executed when an item in the DraxList component starts to be dragged | function |    no    | iOS/Android |        Yes        |
-| onItemDragPositionChange | Callback is executed when the position of an item in the DraxList component changes | function |    no    | iOS/Android |        Yes        |
-|      onItemDragEnd       | Callback when the drag of an item in the DraxList component ends | function |    no    | iOS/Android |        Yes        |
-|      onItemReorder       | Callback for recording the moving index position of an item  | function |    no    | iOS/Android |        Yes        |
-|       reorderable        |           Sets whether to enable automatic sorting           | boolean  |    no    | iOS/Android |        Yes        |
-|    viewPropsExtractor    |     Props can be returned based on the data of each item     | function |    no    | iOS/Android |        Yes        |
-|         onScroll         |                Sliding event callback method                 | function |    no    | iOS/Android |        Yes        |
-|      itemsDraggable      | Indicates whether items in the FlatList component can be dragged | boolean  |    no    | iOS/Android |        Yes        |
-| lockItemDragsToMainAxis  | Indicates whether to lock the drag direction of items in the FlatList component to the main axis direction | boolean  |    no    | iOS/Android |        Yes        |
+|                      Name                      |                         Description                          |   Type   | Required |  Platform   | HarmonyOS Support |
+| :--------------------------------------------: | :----------------------------------------------------------: | :------: | :------: | :---------: | :---------------: |
+|                      data                      | DraxList 组件的数据源             |  array   |   yes    | iOS/Android |        Yes        |
+|          flatListStyle<sup>废弃</sup>          | 设置内部 FlatList 组件的样式       |  object  |    no    | iOS/Android |        Yes        |
+|           itemStyles<sup>废弃</sup>            | 设置内部 FlatList 组件中项目的样式 |  object  |    no    | iOS/Android |        Yes        |
+|        renderItemContent<sup>废弃</sup>        | DraxList 组件中项目项的渲染方法   | function |    no    | iOS/Android |        Yes        |
+|     renderItemHoverContent<sup>废弃</sup>      | DraxList 组件中项目快照的渲染方法 | function |    no    | iOS/Android |        Yes        |
+|       viewPropsExtractor<sup>废弃</sup>        | 可以根据每个项目的数据返回属性     | function |    no    | iOS/Android |        Yes        |
+|            onScroll<sup>废弃</sup>             | 滑动事件回调方法                 | function |    no    | iOS/Android |        Yes        |
+|         itemsDraggable<sup>废弃</sup>          | 指示 FlatList 组件中的项目是否可以被拖拽 | boolean  |    no    | iOS/Android |        Yes        |
+| monitoringExternalDragStyle <sup>0.11.1+</sup> | 在监测外部项目拖拽时应用于父 DraxView 的样式属性 |  object  |    no    | iOS/Android |        Yes        |
+|                onItemDragStart                 | 当列表项重新排序拖拽动作开始时的回调处理程序 | function |    no    | iOS/Android |        Yes        |
+|            onItemDragPositionChange            | 当列表项位置（索引）在重新排序拖拽期间发生变化时的回调处理程序 | function |    no    | iOS/Android |        Yes        |
+|                 onItemDragEnd                  | 当列表项重新排序拖拽动作结束时的回调处理程序 | function |    no    | iOS/Android |        Yes        |
+|                 onItemReorder                  | 当列表项在列表内移动，重新排序列表时的回调处理程序 | function |    no    | iOS/Android |        Yes        |
+|                  reorderable                   | 列表是否可以通过拖拽项目来重新排序？如果设置了 onItemReorder，则默认为 true | boolean  |    no    | iOS/Android |        Yes        |
+|            lockItemDragsToMainAxis             | 如果为 true，将项目拖拽锁定到列表的主轴       | boolean  |    no    | iOS/Android |        Yes        |
+|                 longPressDelay                 | 视图在拖拽开始前需要被按压的时间（以毫秒为单位） |  number  |    no    | iOS/Android |        Yes        |
+|          renderItem<sup>0.11.1+</sup>          | 渲染 DraxList 中每个项目的函数。这扩展了 React Native 标准的 FlatList renderItem，通过为每个列表项提供拖拽相关的属性来增加 Drax 特定的功能 | function |   yes    | iOS/Android |        Yes        |
+|     parentDraxViewProps<sup>0.11.1+</sup>      | 应用于包装 FlatList 的父 DraxView 的属性 |  object  |    no    | iOS/Android |        Yes        |
+|         centerShift<sup>0.11.1+</sup>          | 当为 true 时，项目将基于它们的中心而不是边缘进行移动 | boolean  |    no    | iOS/Android |        Yes        |
+
+### DraxListItem<sup>0.11.1+</sup>
+
+|          Name           | Description                                                  |   Type   | Required |  Platform   | HarmonyOS Support |
+| :---------------------: | ------------------------------------------------------------ | :------: | :------: | :---------: | :---------------: |
+|          index          | 项目在列表中的当前渲染索引                 |  number  |   yes    | iOS/Android |        Yes        |
+|          item           | 正在渲染的数据项目                                 |    T     |   yes    | iOS/Android |        Yes        |
+|      originalIndex      | 在任何重新排序发生前项目的原始索引 |  number  |   yes    | iOS/Android |        Yes        |
+|       horizontal        | 列表是否水平布局                    | boolean  |   yes    | iOS/Android |        Yes        |
+| lockItemDragsToMainAxis | 拖拽移动是否被限制在列表的主轴上 | boolean  |   yes    | iOS/Android |        Yes        |
+|       draggedItem       | 跟踪当前拖拽项目索引的 Reanimated 共享值 |  object  |   yes    | iOS/Android |        Yes        |
+|        shiftsRef        | 在拖拽操作期间跟踪位置偏移的共享值 |  object  |   yes    | iOS/Android |        Yes        |
+|   itemMeasurementsRef   | 存储所有列表项目测量值的可变引用           |  object  |   yes    | iOS/Android |        Yes        |
+| prevItemMeasurementsRef | 存储列表项目先前测量值的可变引用      |  object  |   yes    | iOS/Android |        Yes        |
+|    resetDraggedItem     | 重置拖拽项目状态的函数                     | function |   yes    | iOS/Android |        Yes        |
+|      keyExtractor       | 用于从项目中提取唯一键的可选函数          | function |   yes    | iOS/Android |        Yes        |
+|    previousShiftsRef    | 跟踪先前位置偏移的共享值               |  object  |   yes    | iOS/Android |        Yes        |
+|    registrationsRef     | 存储视图注册数据的可变引用                   |  object  |   yes    | iOS/Android |        Yes        |
+|          data           | DraxList 使用的完整数据数组                 |  array   |   yes    | iOS/Android |        Yes        |
 
 ## 遗留问题
 
