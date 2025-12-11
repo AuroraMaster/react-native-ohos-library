@@ -14,15 +14,17 @@
 
 > [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-text-gradient)
 
-| Version | Package Name | Repository  | Release  | Support RN version |
-| ------- | ------------ | ----------- |----------|--------------------|
-| 0.1.7 | @react-native-oh-tpl/react-native-text-gradient |[GitHub ](https://github.com/react-native-oh-library/react-native-text-gradient)| [GitHub Release ](https://github.com/react-native-oh-library/react-native-text-gradient/releases)| 0.72       |
-| 0.2.0 | @react-native-ohos/react-native-text-gradient | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-text-gradient) | [GitCode Release](https://gitcode.com/openharmony-sig/rntpc_react-native-text-gradient/releases)| 0.77       |
-
-
 ## Installation and Usage
 
-Please go to the corresponding Release release address of the third-party library to view the version information of the Release package:
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+|-----------------------------| ------------------------------------------------------------ | ---------- |
+| <= 0.1.7-0.0.4@deprecated | [@react-native-oh-tpl/react-native-text-gradient Releases(deprecated)](https://github.com/react-native-oh-library/react-native-text-gradient/releases) | 0.72       |
+| 0.1.8                     | [@react-native-ohos/react-native-text-gradient Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-text-gradient/releases)               | 0.72       |
+| 0.2.0                     | [@react-native-ohos/react-native-text-gradient Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-text-gradient/releases)               | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -31,20 +33,12 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/react-native-text-gradient
-
-# 0.77
 npm install @react-native-ohos/react-native-text-gradient
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn install @react-native-oh-tpl/react-native-text-gradient
-
-# 0.77
 yarn install @react-native-ohos/react-native-text-gradient
 ```
 
@@ -102,7 +96,9 @@ const styles = StyleSheet.create({
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-text-gradient@0.1.8 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -121,20 +117,11 @@ Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
 Currently, two methods are available:
 
-
 Method 1 (recommended): Use the HAR file.
 
 > [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
-- V0.72
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-text-gradient": "file:../../node_modules/@react-native-oh-tpl/react-native-text-gradient/harmony/text_gradient.har"
-  }
-```
-- V0.77
 
 ```json
 "dependencies": {
@@ -159,6 +146,8 @@ Method 2: Directly link to the source code.
 
 ### 3. Configuring CMakeLists and Introducing LinearTextGradientPackge
 
+> If you are using version <= 0.1.7-0.0.4, please skip this chapter.
+
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
 ```diff
@@ -179,10 +168,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-# V0.72
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-text-gradient/src/main/cpp" ./text_gradient)
 
-# V0.77
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-text-gradient/src/main/cpp" ./text_gradient)
 # RNOH_END: manual_package_linking_1
 
@@ -226,9 +212,6 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
-// V0.72
-+ import {LinearTextGradientPackage} from '@react-native-oh-tpl/react-native-text-gradient/ts';
-// V0.77
 + import {LinearTextGradientPackage} from '@react-native-ohos/react-native-text-gradient/ts';
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -255,14 +238,13 @@ Then build and run the code.
 
 ### Compatibility
 
-
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Please go to the corresponding Release release address of the third-party library to view the version information of the Release package:
+Verified successfully in the following versions:
 
-1. RNOH: 0.72.33; SDK: Openharmony 5.0.0.71(API Version 12 Release); IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
-2. RNOH: 0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
-
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## Properties
 

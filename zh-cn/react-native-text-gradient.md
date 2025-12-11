@@ -14,14 +14,17 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-text-gradient)
 
-| 三方库版本 |   包 名  |   仓库地址  | 发布信息 | 支持RN版本 |
-| -------- | -------- | --------- |---------|----------|
-| 0.1.7 | @react-native-oh-tpl/react-native-text-gradient |[GitHub ](https://github.com/react-native-oh-library/react-native-text-gradient)| [GitHub Release ](https://github.com/react-native-oh-library/react-native-text-gradient/releases)| 0.72       |
-| 0.2.0 | @react-native-ohos/react-native-text-gradient | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-text-gradient) | [GitCode Release](https://gitcode.com/openharmony-sig/rntpc_react-native-text-gradient/releases)| 0.77       |
-
 ## 安装与使用
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本                     | 发布信息                                                                                                                                            | 支持RN版本 |
+|---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------| ---------- |
+| <= 0.1.7-0.0.4@deprecated | [@react-native-oh-tpl/react-native-text-gradient Releases(deprecated)](https://github.com/react-native-oh-library/react-native-text-gradient/releases) | 0.72       |
+| 0.1.8                     | [@react-native-ohos/react-native-text-gradient Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-text-gradient/releases)               | 0.72       |
+| 0.2.0                     | [@react-native-ohos/react-native-text-gradient Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-text-gradient/releases)               | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -30,20 +33,12 @@
 #### **npm**
 
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/react-native-text-gradient
-
-# 0.77
 npm install @react-native-ohos/react-native-text-gradient
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn install @react-native-oh-tpl/react-native-text-gradient
-
-# 0.77
 yarn install @react-native-ohos/react-native-text-gradient
 ```
 
@@ -101,7 +96,9 @@ const styles = StyleSheet.create({
 
 ## Link
 
-目前HarmonyOS暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-text-gradient@0.1.8，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的HarmonyOS工程 `harmony`
 
@@ -129,15 +126,6 @@ const styles = StyleSheet.create({
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- V0.72
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-text-gradient": "file:../../node_modules/@react-native-oh-tpl/react-native-text-gradient/harmony/text_gradient.har"
-  }
-```
-- V0.77
-
 ```json
 "dependencies": {
    ...
@@ -161,6 +149,8 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 LinearTextGradientPackge
 
+> 若使用的是 <= 0.1.7-0.0.4 版本，请跳过本章
+
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
 ```diff
@@ -181,10 +171,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-# V0.72
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-text-gradient/src/main/cpp" ./text_gradient)
 
-# V0.77
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-text-gradient/src/main/cpp" ./text_gradient)
 # RNOH_END: manual_package_linking_1
 
@@ -228,9 +215,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-// V0.72
-+ import {LinearTextGradientPackage} from '@react-native-oh-tpl/react-native-text-gradient/ts';
-// V0.77
 + import {LinearTextGradientPackage} from '@react-native-ohos/react-native-text-gradient/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -258,15 +242,13 @@ ohpm install
 
 ### 兼容性
 
-
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库的 Releases 发布地址查看配套的版本信息：
+在以下版本验证通过：
 
-1. RNOH: 0.72.33; SDK: Openharmony 5.0.0.71(API Version 12 Release); IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
-2. RNOH: 0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
-
-对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 属性
 

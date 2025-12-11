@@ -12,22 +12,21 @@
     </a>
 </p>
 
-> [!Tip] [Github address](https://github.com/react-native-oh-library/react-native-harmony-reanimated/tree/sig)
-
-The repository of this third-party library has been migrated to Gitcode and supports direct download from npm. The new package name is: @react-native-ohos/react-native-reanimated. The specific version ownership relationship is as follows:
-
-| Version | Package Name                                                     | Repository | Release | Support RN version |
-| ---------- | ------------------------------------------------------------ | ---------- |  ---------- |  ---------- |
-| 3.6.0 | @react-native-oh-tpl/react-native-reanimated | [Github](https://github.com/react-native-oh-library/react-native-harmony-reanimated)|[Github Releases](https://github.com/react-native-oh-library/react-native-harmony-reanimated/releases)|0.72       |
-| 3.18.0 | @react-native-ohos/react-native-reanimated         | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-reanimated/tree/br_rnoh0.77) |[Gitcode Releases]() | 0.77       |
-
+> [!Tip] [Github address](https://github.com/react-native-oh-library/react-native-harmony-reanimated)
 
 ## Installation and Usage
 
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+|-----------------------------| ------------------------------------------------------------ | ---------- |
+| <= 3.6.4@deprecated | [@react-native-oh-tpl/react-native-reanimated Releases(deprecated)](https://github.com/react-native-oh-library/react-native-harmony-reanimated/releases) | 0.72       |
+| 3.6.5 | [@react-native-ohos/react-native-reanimated Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-reanimated/releases)               | 0.72       |
+| 3.18.1 | [@react-native-ohos/react-native-reanimated Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-reanimated/releases)               | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
-
-
 
 <!-- tabs:start -->
 
@@ -36,7 +35,7 @@ Go to the project directory and execute the following instruction:
 ```bash
 # 0.72
 npm install react-native-reanimated@3.6.0
-npm install @react-native-oh-tpl/react-native-reanimated
+npm install @react-native-ohos/react-native-reanimated
 
 # 0.77
 npm install react-native-reanimated@3.18.0
@@ -48,7 +47,7 @@ npm install @react-native-ohos/react-native-reanimated
 ```bash
 # 0.72
 yarn add react-native-reanimated@3.6.0
-yarn add @react-native-oh-tpl/react-native-reanimated
+yarn add @react-native-ohos/react-native-reanimated
 
 # 0.77
 yarn add react-native-reanimated@3.18.0
@@ -123,7 +122,9 @@ export default function App() {
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-reanimated@3.6.5 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -142,24 +143,11 @@ Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
 Currently, two methods are available:
 
-
 Method 1 (recommended): Use the HAR file.
 
 > [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
-
-- 0.72
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-
-    "@react-native-oh-tpl/react-native-reanimated": "file:../../node_modules/@react-native-oh-tpl/react-native-reanimated/harmony/reanimated.har"
-  }
-```
-
-- 0.77
 
 ```json
 "dependencies": {
@@ -184,6 +172,8 @@ For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
 ### 3. Configuring CMakeLists and Introducing ReanimatedPackage
 
+> If you are using version <= 3.6.4, please skip this chapter.
+
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
 ```diff
@@ -198,10 +188,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_END: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-# 0.72
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-reanimated/src/main/cpp" ./reanimated)
 
-# 0.77
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-reanimated/src/main/cpp" ./reanimated)
 # RNOH_END: manual_package_linking_1
 
@@ -242,10 +229,6 @@ Open`entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
 ```diff
   ...
-// 0.72
-+ import { ReanimatedPackage} from '@react-native-oh-tpl/react-native-reanimated/ts';
-
-// 0.77
 + import { ReanimatedPackage} from '@react-native-ohos/react-native-reanimated/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -273,11 +256,13 @@ Then build and run the code.
 
 ### Compatibility
 
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-The content of this document has been verified based on the following version：
+Verified successfully in the following versions:
 
-1、RNOH: 0.72.38; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.1.1.830; ROM: 6.0.0.112 SP12;  
-2、RNOH: 0.77.18; SDK: HarmonyOS-5.1.1.208(API19); IDE: DevEco Studio 5.1.1.830; ROM: 6.0.0.112 SP12;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## API
 

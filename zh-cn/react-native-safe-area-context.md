@@ -12,16 +12,17 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-area-context)
-
-该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-safe-area-context`，具体版本所属关系如下：
-
-| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
-| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
-| 4.7.4  | @react-native-oh-tpl/react-native-safe-area-context | [Github](https://github.com/react-native-oh-library/react-native-safe-area-context) | [Github Releases](https://github.com/react-native-oh-library/react-native-safe-area-context/releases) | 0.72 |
-| 5.1.1 | @react-native-ohos/react-native-safe-area-context   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-area-context) | [GitCode Releases]() | 0.77 |
+> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-safe-area-context)
 
 ## 安装与使用
+
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                                                                                                                                            | 支持RN版本 |
+|-------|-------------------------------------------------------------------------------------------------------------------------------------------------| ---------- |
+| <= 4.7.4-0.2.1@deprecated | [@react-native-oh-tpl/react-native-safe-area-context Releases(deprecated)](https://github.com/react-native-oh-library/react-native-safe-area-context/releases) | 0.72       |
+| 4.7.5 | [@react-native-ohos/react-native-safe-area-context Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-area-context/releases)               | 0.72       |
+| 5.1.1 | [@react-native-ohos/react-native-safe-area-context Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-area-context/releases)               | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -32,20 +33,12 @@
 #### **npm**
 
 ```bash
-# V4.7.4
-npm install @react-native-oh-tpl/react-native-safe-area-context
-
-# V5.1.1
 npm install @react-native-ohos/react-native-safe-area-context
 ```
 
 #### **yarn**
 
 ```bash
-# V4.7.4
-yarn add @react-native-oh-tpl/react-native-safe-area-context
-
-# V5.1.1
 yarn add @react-native-ohos/react-native-safe-area-context
 ```
 
@@ -81,7 +74,9 @@ export default App;
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-safe-area-context@4.7.5，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -109,18 +104,6 @@ export default App;
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- V4.7.4
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-
-    "@react-native-oh-tpl/react-native-safe-area-context": "file:../../node_modules/@react-native-oh-tpl/react-native-safe-area-context/harmony/safe_area.har"
-  }
-```
-
-- V5.1.1
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -144,6 +127,8 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 SafeAreaViewPackage
 
+> 若使用的是 <= 4.7.4-0.2.1 版本，请跳过本章
+
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
 ```diff
@@ -165,10 +150,6 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
 
-# V4.7.4
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-safe-area-context/src/main/cpp" ./safe-area)
-
-# V5.1.1
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-safe-area-context/src/main/cpp" ./safe-area)
 
 # RNOH_END: manual_package_linking_1
@@ -213,10 +194,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
 ...
-// V4.7.4
-+ import {SafeAreaViewPackage} from '@react-native-oh-tpl/react-native-safe-area-context/ts';
-
-// V5.1.1
 + import {SafeAreaViewPackage} from '@react-native-ohos/react-native-safe-area-context/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -246,8 +223,9 @@ ohpm install
 
 在以下版本验证通过：
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.1 Release SDK; IDE：DevEco Studio 5.1.1.840; ROM：6.0.0;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release SDK; IDE：DevEco Studio 5.1.1.840; ROM：6.0.0;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 
 ## 属性
