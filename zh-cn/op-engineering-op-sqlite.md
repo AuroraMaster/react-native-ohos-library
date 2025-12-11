@@ -23,10 +23,11 @@
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 8.0.2      | [@react-native-oh-tpl/op-sqlite Releases](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Fop-sqlite%2Freleases) | 0.72       |
-| 14.0.1     | [@react-native-ohos/op-sqlite Releases]()                    | 0.77       |
+| 三方库版本  | 发布信息                                                  | 支持RN版本 |
+|--------| ------------------------------------------------------------ | ---------- |
+| <= 8.0.2-0.0.3@deprecated  | [@react-native-oh-tpl/op-sqlite Releases(deprecated)](https://github.com/react-native-oh-library/op-sqlite/releases) | 0.72       |
+| 8.0.3                | [@react-native-ohos/op-sqlite Releases](https://gitcode.com/openharmony-sig/rntpc_op-sqlite/releases)   | 0.72       |
+| 14.0.1                | [@react-native-ohos/op-sqlite Releases](https://gitcode.com/openharmony-sig/rntpc_op-sqlite/releases)   | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -37,20 +38,12 @@
 #### **npm**
 
 ```bash
-# V8.0.2
-npm install @react-native-oh-tpl/op-sqlite
-
-# V14.0.1
 npm install @react-native-ohos/op-sqlite
 ```
 
 #### **yarn**
 
 ```bash
-# V8.0.2
-yarn add @react-native-oh-tpl/op-sqlite
-
-# V14.0.1
 yarn add @react-native-ohos/op-sqlite
 ```
 
@@ -125,7 +118,9 @@ export default function OpSqliteExample() {
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/op-sqlite@8.0.3，已支持 Autolink，无需手动配置（仍需手动配置的内容已在对应标题处标记），目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -153,18 +148,6 @@ export default function OpSqliteExample() {
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- V8.0.2
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-
-    "@react-native-oh-tpl/op-sqlite": "file:../../node_modules/@react-native-oh-tpl/op-sqlite/harmony/rn_op_sqlite.har"
-  }
-```
-
-- V14.0.1
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -188,6 +171,8 @@ ohpm install
 
 ### 3. 配置 CMakeLists 和引入 RNOpSqlitePackage
 
+> 若使用的是 <= 8.0.2-0.0.3 版本，请跳过本章。
+
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
 ```diff
@@ -208,11 +193,6 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-
-# V8.0.2
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/op-sqlite/src/main/cpp" ./rn_op_sqlite)
-
-# V14.0.1
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/op-sqlite/src/main/cpp" ./rn_op_sqlite)
 
 # RNOH_END: manual_package_linking_1
@@ -257,10 +237,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-// V8.0.2
-+ import { RNOpSqlitePackage } from '@react-native-oh-tpl/op-sqlite/ts';
-
-// V14.0.1
 + import { RNOpSqlitePackage } from '@react-native-ohos/op-sqlite/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -270,7 +246,8 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
-### 5.在ide的工程根目录创建package.json文件,并配置参数
+
+### 5.在ide的工程根目录创建package.json文件,并配置参数（该模块始终需要手动配置）
 
 ```diff
 {
@@ -285,7 +262,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 6. 在 ArkTs 侧引入 opSqlitePlugin
+### 6. 在 ArkTs 侧引入 opSqlitePlugin（该模块始终需要手动配置）
 
 打开 `entry/hvigorfile.ts`，添加：
 
@@ -293,10 +270,6 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 + import { hapTasks, OhosHapContext, OhosPluginId, Target } from '@ohos/hvigor-ohos-plugin';
 + import { HvigorPlugin, HvigorNode, getNode } from '@ohos/hvigor';
 
-// V8.0.2
-+ import { opSqlitePlugin } from './oh_modules/@react-native-oh-tpl/op-sqlite/hvigorfile.ts';
-
-// V14.0.1
 + import { opSqlitePlugin } from './oh_modules/@react-native-ohos/op-sqlite/hvigorfile.ts';
 
 +const path = require('path');
@@ -325,15 +298,13 @@ ohpm install
 ## 约束与限制
 ### 兼容性
 
-
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+在以下版本验证通过：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 8.0.2      | [@react-native-oh-tpl/op-sqlite Releases](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Fop-sqlite%2Freleases) | 0.72       |
-| 14.0.1     | [@react-native-ohos/op-sqlite Releases]()                    | 0.77       |
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 
 ### 应用权限申请

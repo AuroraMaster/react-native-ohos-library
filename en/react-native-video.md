@@ -14,37 +14,31 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-video)
 
-Find the matching version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases). For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+## Installation and Usage
 
-| version | Package name |Releases info                                                | Support RN version |
-| ------- | ------- | ------------------------------------------------------------ | ------------------ |
-| 5.2.1   | @react-native-oh-tpl/react-native-video | [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases) |0.72|
-| 6.13.1  | @react-native-oh-tpl/react-native-video | [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases) |0.72|
-| 6.14.0  | @react-native-ohos/react-native-video | [@react-native-ohos/react-native-video Releases]() |0.77|
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| <= 6.13.1@deprecated  | [@react-native-oh-tpl/react-native-video Releases(deprecated)](https://github.com/react-native-oh-library/react-native-video/releases) | 0.72       |
+| 6.13.2                | [@react-native-ohos/react-native-video Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-video/releases)   | 0.72       |
+| 6.14.0                | [@react-native-ohos/react-native-video Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-video/releases)   | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
-
-## Installation and Usage
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/react-native-video
-
-# 0.77
 npm install @react-native-ohos/react-native-video
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn add @react-native-oh-tpl/react-native-video
-
-# 0.77
 yarn add @react-native-ohos/react-native-video
 ```
 
@@ -59,7 +53,6 @@ import React, { useState, useRef } from "react";
 import { Button, View, ScrollView, StyleSheet, Switch, Text, TextInput } from "react-native";
 import RNCVideo from "react-native-video";
 
-// V6.13.1
 import {
   type OnPlaybackStateChangedData,
   OnSeekData,
@@ -85,10 +78,7 @@ function RNCVideoDemo() {
   const [onVideoProgress, setOnVideoProgress] = useState("onVideoProgress");
   const [onVideoEnd, setOnVideoEnd] = useState("onVideoEnd");
   const [onVideoBuffer, setOnVideoBuffer] = useState("onVideoBuffer");
-  // V5.2.1
-  const [onPlaybackStalled, setOnPlaybackStalled] = useState("onPlaybackStalled");
 
-  // V6.13.1
   const [onPlaybackStateChanged, setPlaybackStateChanged] = useState("onPlaybackStateChanged");
    
   const [onPlaybackResume, setOnPlaybackResume] = useState("onPlaybackResume");
@@ -144,10 +134,6 @@ function RNCVideoDemo() {
         <Text style={styles.label}>{onVideoEnd}</Text>
         <Text style={styles.label}>{onVideoBuffer}</Text>
 
-		// V5.2.1
-		<Text style={styles.label}>{onPlaybackStalled}</Text>
-
-		// V6.13.1
         <Text style={styles.label}>{onPlaybackStateChanged}</Text>
 
         <Text style={styles.label}>{onPlaybackResume}</Text>
@@ -379,7 +365,6 @@ function RNCVideoDemo() {
             );
           }}
           
-          // V6.13.1
           onSeek = {(data: OnSeekData) => {
             console.log('onSeek');
           }}
@@ -393,20 +378,7 @@ function RNCVideoDemo() {
           onBuffer={(e) => {
             setOnVideoBuffer("onVideoBuffer :" + e.isBuffering);
           }}
-          
-          // V5.2.1
-          onPlaybackStalled={() => {
-            setOnPlaybackStalled("onPlaybackStalled : true");
-            setOnPlaybackResume("onPlaybackResume :false");
-          }}
-          
-          // V5.2.1
-          onPlaybackResume={() => {
-            setOnPlaybackStalled("onPlaybackStalled :false");
-            setOnPlaybackResume("onPlaybackResume :true");
-          }}
 
-          // V6.13.1
           onPlaybackStateChanged={(data: OnPlaybackStateChangedData) => {
             console.log('onPlaybackStateChanged ' + JSON.stringify(data));
             setPlaybackStateChanged("onPlaybackStateChanged : " + JSON.stringify(data));
@@ -486,7 +458,10 @@ export default RNCVideoDemo;
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-video@6.13.2 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -511,18 +486,6 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
-- V0.72
-
-```json
-"dependencies": {
-   ...
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-video": "file:../../node_modules/@react-native-oh-tpl/react-native-video/harmony/rn_video.har"
-  }
-```
-
-- V0.77
-
 ```json
 "dependencies": {
    ...
@@ -546,6 +509,8 @@ Method 2: Directly link to the source code.
 
 ### 3. Configuring CMakeLists and Introducing RNCVideoPackage
 
+> If you are using version <= 6.13.1, please skip this chapter.
+
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
 ```diff
@@ -566,10 +531,6 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-# V0.72
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-video/src/main/cpp" ./video)
-
-# V0.77
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-video/src/main/cpp" ./video)
 # RNOH_BEGIN: manual_package_linking_1
 
@@ -613,10 +574,6 @@ Find `function buildCustomRNComponent()`, which is usually located in `entry/src
 
 ```diff
   ...
-// V0.72
-+ import { RNCVideo, RNC_VIDEO_TYPE } from "@react-native-oh-tpl/react-native-video"
-
-// V0.77
 + import { RNCVideo, RNC_VIDEO_TYPE } from "@react-native-ohos/react-native-video"
 
 @Builder
@@ -650,10 +607,6 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
-// V0.72
-+ import { RNCVideoPackage } from '@react-native-oh-tpl/react-native-video/ts';
-
-// V0.77
 + import { RNCVideoPackage } from '@react-native-ohos/react-native-video/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -685,8 +638,9 @@ To use this repository, you need to use the correct React-Native and RNOH versio
 
 Verified in the following versions.
 
-1. RNOH: 0.72.27; SDK: HarmonyOS 5.1.1 Release SDK; IDE: DevEco Studio 5.1.1 Release; ROM: 5.0.1.120;
-2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## Properties
 
