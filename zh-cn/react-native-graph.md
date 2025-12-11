@@ -114,6 +114,16 @@ const styles = StyleSheet.create({
       },
 })
 ```
+
+### 配置 CMakeLists
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+project(rnapp)
++ cmake_minimum_required(VERSION 3.5)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+
 ## Link
 
 本库 HarmonyOS 侧实现依赖react-native-reanimated , react-native-gesture-handler , react-native-skia 的原生端代码，如已在 HarmonyOS 工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。

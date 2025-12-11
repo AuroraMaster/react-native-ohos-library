@@ -113,6 +113,15 @@ const styles = StyleSheet.create({
 })
 ```
 
+### Config CMakeLists
+
+Open `entry/src/main/cpp/CMakeLists.txt`, add：
+
+```diff
+project(rnapp)
++ cmake_minimum_required(VERSION 3.5)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+
 ## Link
 
 The HarmonyOS implementation of this library depends on the native code of react-native-reanimated, react-native-gesture-handler, and react-native-skia. If these libraries have already been introduced in your HarmonyOS project, you do not need to introduce them again and can skip this section to start using directly.
