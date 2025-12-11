@@ -17,6 +17,12 @@
 
 ## Installation and Usage
 
+Please go to the Releases release address of the third-party library to view the supporting version information: @react-native-ohos/pull-to-refresh Releases.
+
+|Version |Support RN version|
+| -------|----------------- |
+| 4.0.0-rc.8 |   0.72/0.77  |
+
 Go to the project directory and execute the following instruction:
 
 <!-- tabs:start -->
@@ -311,8 +317,9 @@ Open the `entry/src/main/ets/pages/Index.ets` file and add the following code:
 This document is verified based on the following versions:
 
 1. RNOH: 0.72.26; SDK: HarmonyOS NEXT Developer Beta1; IDE: DevEco Studio 5.0.3.300; ROM: 3.0.0.22;
-1. RNOH: 0.72.29; SDK: HarmonyOS NEXT Developer Beta6; IDE: DevEco Studio 5.0.3.700; ROM: 3.0.0.60;
-1. RNOH: 0.72.33; SDK: OpenHarmony 5.0.0.71 (API Version 12 Release); IDE: DevEco Studio 5.0.3.900; ROM: NEXT.0.0.71;
+2. RNOH: 0.72.29; SDK: HarmonyOS NEXT Developer Beta6; IDE: DevEco Studio 5.0.3.700; ROM: 3.0.0.60;
+3. RNOH: 0.72.33; SDK: OpenHarmony 5.0.0.71 (API Version 12 Release); IDE: DevEco Studio 5.0.3.900; ROM: NEXT.0.0.71;
+4. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
 
 ## Components
 
