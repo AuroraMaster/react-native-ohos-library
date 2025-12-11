@@ -3,22 +3,14 @@
 <p align="center">
   <h1 align="center"> <code>react-native-scrollable-tab-view</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/ptomasroos/react-native-scrollable-tab-view">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://www.mit-license.org/">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
+请到三方库的 Releases 发布地址查看配套的版本信息：
 
-
-
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-scrollable-tab-view)
+| Third-party Library Version | Release Information                                                                                                                              | Supported RN Version |
+|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------| ---------- |
+| 1.0.0  | [@react-native-oh-tpl/react-native-scrollable-tab-view Releases](https://github.com/react-native-oh-library/react-native-scrollable-tab-view/releases) | 0.72       |
+| 1.1.0             | [@react-native-ohos/react-native-scrollable-tab-view](https://github.com/react-native-oh-library/react-native-scrollable-tab-view/releases)   | 0.77       |
 
 ## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-scrollable-tab-view Releases](https://github.com/react-native-oh-library/react-native-scrollable-tab-view/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -27,13 +19,19 @@
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-scrollable-tab-view
+# 0.77
+npm install @react-native-ohos/react-native-scrollable-tab-view
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-scrollable-tab-view
+# 0.77
+yarn add @react-native-ohos/react-native-scrollable-tab-view
 ```
 
 <!-- tabs:end -->
@@ -79,9 +77,9 @@ export default () => {
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
-
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-scrollable-tab-view Releases](https://github.com/react-native-oh-library/react-native-scrollable-tab-view/releases)
+This document is verified based on the following versions:
+1. RNOH：0.72.28; SDK：HarmonyOS NEXT Developer DB3; IDE: DevEco Studio: 5.1.1.830; ROM：NEXT.0.0.105;
+2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release; IDE: DevEco Studio 6.0.0.858; ROM：6.0.0.112;
 
 ## 属性
 
