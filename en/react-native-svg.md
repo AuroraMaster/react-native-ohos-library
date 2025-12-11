@@ -12,38 +12,40 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-svg)
+> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-harmony-svg)
 
-## 安装与使用
+## Installation and Usage
 
-> [!TIP] 本项目为 react-native-svg 的ArkTs版本，现已停止维护。
+Please refer to the Releases page of the third-party library for the corresponding version information:
 
-> [!TIP] 如需继续使用请移步至[react-native-svg-capi](/zh-cn/react-native-svg-capi.md) 使用CAPI版本的 react-native-svg。
+| Third-party Library Version | Release Information                                                     | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| <= 15.0.1@deprecated      | [@react-native-oh-tpl/react-native-svg Releases(deprecated)](https://github.com/react-native-oh-library/react-native-harmony-svg/releases) | 0.72       |
+| 15.0.2      | [@react-native-ohos/react-native-svg Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-svg/releases)                        | 0.72       |
+| 15.12.1    | [@react-native-ohos/react-native-svg Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-svg/releases)                        | 0.77       |
 
-Find the matching version information in the release address of a third-party library：[@react-native-oh-tpl/react-native-svg Releases](https://github.com/react-native-oh-library/react-native-svg/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
-进入到工程目录并输入以下命令：
+Go to the project directory and execute the following instruction:
 
 
 <!-- tabs:start -->
-
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-svg
+npm install @react-native-ohos/react-native-svg
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-svg
+yarn add @react-native-ohos/react-native-svg
 ```
-
 <!-- tabs:end -->
 
-下面的代码展示了这个库的基本使用场景：
+The following code shows the basic use scenario of the repository:
 
-> [!WARNING] 使用时 import 的库名不变。
+> [!WARNING] The name of the imported repository remains unchanged.
 
 ```js
 import Svg, { Path } from "react-native-svg";
@@ -55,11 +57,14 @@ import Svg, { Path } from "react-native-svg";
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-svg@15.0.2 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
+This step provides guidance for manually configuring native dependencies.
 
-### 1.在工程根目录的 `oh-package.json5` 添加 overrides 字段
+Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+
+### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
+
 
 ```json
 {
@@ -70,43 +75,42 @@ import Svg, { Path } from "react-native-svg";
 }
 ```
 
-### 2.引入原生端代码
+### 2. Introducing Native Code
 
-目前有两种方法：
+Currently, two methods are available:
 
-1. 通过 har 包引入（在 IDE 完善相关功能后该方法会被遗弃，目前首选此方法）；
-2. 直接链接源码。
+Method 1 (recommended): Use the HAR file.
 
-方法一：通过 har 包引入
+> [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
 
-> [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
-
-打开 `entry/oh-package.json5`，添加以下依赖
+Open `entry/oh-package.json5` file and add the following dependencies:
 
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
-    "@react-native-oh-tpl/svg": "file:../../node_modules/@react-native-oh-tpl/react-native-svg/harmony/svg.har"
+    "@react-native-ohos/svg": "file:../../node_modules/@react-native-ohos/react-native-svg/harmony/svg.har"
   }
 ```
 
-点击右上角的 `sync` 按钮
+Click the `sync` button in the upper right corner.
 
-或者在终端执行：
+Alternatively, run the following instruction on the terminal:
 
 ```bash
 cd entry
 ohpm install
 ```
 
-方法二：直接链接源码
+Method 2: Directly link to the source code.
 
-> [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
+> [!TIP] or details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 3.配置 CMakeLists 和引入 SVGPackage
+### 3.Configuring CMakeLists and Introducing SVGPackage
 
-打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+> If you are using version <= 15.0.1, please skip this chapter.
+
+Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
 ```diff
 project(rnapp)
@@ -126,7 +130,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-svg/src/main/cpp" ./svg)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-svg/src/main/cpp" ./svg)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -144,7 +148,7 @@ target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
 # RNOH_END: link_packages
 ```
 
-打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+Open `entry/src/main/cpp/PackageProvider.cpp` and add the following code:
 
 ```diff
 #include "RNOH/PackageProvider.h"
@@ -163,14 +167,14 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 4.在 ArkTs 侧引入 SVG 组件
+### 4. Introduce SVG component to ArkTs
 
-找到 **function buildCustomComponent()**，一般位于 `entry/src/main/ets/pages/index.ets` 或 `entry/src/main/ets/rn/LoadBundle.ets`，添加：
+Find `function buildCustomRNComponent()`, Generally located in `entry/src/main/ets/pages/index.ets ` or `entry/src/main/ets/rn/LoadBundle.ets`, add:
 
 ```diff
 ...
 import { createRNPackages } from '../RNPackagesFactory'
-+ import { SVG_VIEW_TYPE_NAME, SVGView } from "@react-native-oh-tpl/svg"
++ import { SVG_VIEW_TYPE_NAME, SVGView } from "@react-native-ohos/svg"
 
 @Builder
 function buildCustomComponent(ctx: ComponentBuilderContext) {
@@ -192,9 +196,9 @@ function buildCustomComponent(ctx: ComponentBuilderContext) {
 ...
 ```
 
-> [!TIP] 本库使用了混合方案，需要添加组件名。
+> [!TIP] If the repository uses a mixed solution, the component name needs to be added.
 
-在`entry/src/main/ets/pages/index.ets` 或 `entry/src/main/ets/rn/LoadBundle.ets` 找到常量 `arkTsComponentNames` 在其数组里添加组件名
+Find the constant `arkTsComponentNames` in `entry/src/main/ets/pages/index.ets` or `entry/src/main/ets/rn/LoadBundle.ets` and add the component name to the array.
 
 ```diff
 const arkTsComponentNames: Array<string> = [
@@ -203,26 +207,30 @@ const arkTsComponentNames: Array<string> = [
   ];
 ```
 
-### 5.运行
+### 5. Running
 
-点击右上角的 `sync` 按钮
+Click the `sync` button in the upper right corner.
 
-或者在终端执行：
+Alternatively, run the following instruction on the terminal:
 
 ```bash
 cd entry
 ohpm install
 ```
 
-然后编译、运行即可。
+Then build and run the code.
 
-## 约束与限制
+## Constraints
 
-### 兼容性
+### Compatibility
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-svg Releases](https://github.com/react-native-oh-library/react-native-svg/releases)
+Verified in the following versions.
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 属性
 

@@ -24,8 +24,9 @@
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 1.7.6      | [@react-native-oh-library/react-native-system-setting Releases](https://github.com/react-native-oh-library/react-native-system-setting/releases) | 0.72       |
-| 1.7.6      | [@react-native-oh-library/react-native-system-setting Releases]() | 0.77       |
+| <= 1.7.6-0.0.1@deprecated      | [@react-native-oh-tpl/react-native-system-setting Releases(deprecated)](https://github.com/react-native-oh-library/react-native-system-setting/releases) | 0.72       |
+| 1.7.7     | [@react-native-ohos/react-native-system-setting Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-system-setting/releases)                        | 0.72       |
+| 1.8.0     | [@react-native-ohos/react-native-system-setting Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-system-setting/releases)                        | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -37,20 +38,14 @@
 ####  npm
 
 ```bash
-# V1.7.6 for RN0.72
-npm install @react-native-oh-tpl/react-native-system-setting
 
-# V1.7.6 for RN0.77
 npm install @react-native-ohos/react-native-system-setting
 ```
 
 #### yarn
 
 ```bash
-# V1.7.6 for RN0.72
-yarn add @react-native-oh-tpl/react-native-system-setting
 
-# V1.7.6 for RN0.77
 yarn add @react-native-ohos/react-native-system-setting
 ```
 
@@ -174,13 +169,15 @@ export default SystemSettingDemo
 
 ## 使用 Codegen
 
-> [!TIP] V1.7.6 for RN0.77 不需要执行 Codegen。
+Version >= @react-native-ohos/react-native-system-setting@1.7.7，已适配codegen-lib生成桥接代码。
 
 本库已经适配了 Codegen ，在使用前需要主动执行生成三方库桥接代码，详细请参考 [Codegen 文档](/zh-cn/codegen.md)。
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-system-setting@1.7.7，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -208,16 +205,6 @@ export default SystemSettingDemo
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- V1.7.6 for RN0.72
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-system-setting": "../../node_modules/@react-native-oh-tpl/react-native-system-setting/harmony/react_native_system_setting.har"
-  }
-```
-
-- V1.7.6 for RN0.77
 
 ```json
 "dependencies": {
@@ -241,7 +228,7 @@ ohpm install
 
 ### 3.配置CMakeLists和引入RNSystemSettingPackage
 
->注：仅V1.7.6 for RN0.77需要配置CMakeLists和引入RNSystemSettingPackage
+> 若使用的是 <= 1.7.6-0.0.1 版本，请跳过本章。
 
 ```diff
 project(rnapp)
@@ -301,11 +288,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
-  ...
-// V1.7.6 for RN0.72
-+ import { RNSystemSettingPackage } from '@react-native-oh-tpl/react-native-system-setting/ts';
 
-// V1.7.6 for RN0.77
 + import { RNSystemSettingPackage } from '@react-native-ohos/react-native-system-setting/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -335,13 +318,11 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+在以下版本验证通过：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 1.7.6      | [@react-native-oh-library/react-native-system-setting Releases](https://github.com/react-native-oh-library/react-native-system-setting/releases) | 0.72       |
-| 1.7.6      | [@react-native-oh-library/react-native-system-setting Releases]() | 0.77       |
-
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 ### 权限要求
 
 由于此库涉及蓝牙、亮度等系统控制功能，使用对应接口时则需要配置对应的权限，权限需配置在entry/src/main目录下module.json5文件中。其中部分权限需弹窗向用户申请授权。具体权限配置见文档：[程序访问控制](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/security/AccessToken/Readme-CN.md#/openharmony/docs/blob/master/zh-cn/application-dev/security/AccessToken/app-permission-mgmt-overview.md)。
