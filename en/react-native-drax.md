@@ -14,9 +14,15 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-drax)
 
-## Installation and Usage
+| Version                        | Package Name                             | Repository                                                   | Release                                                      | Version for RN |
+| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+| 0.10.3 | @react-native-oh-tpl/react-native-drax  | [Github](https://github.com/react-native-oh-library/react-native-drax) | [Github Releases](https://github.com/react-native-oh-library/react-native-drax/releases) | 0.72       |
+| 0.11.1                        | @react-native-ohos/react-native-drax | [Github](https://github.com/react-native-oh-library/react-native-drax/tree/br_rnoh0.77) | [Github Releases](https://github.com/react-native-oh-library/react-native-drax/releases) | 0.77       |
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-drax Releases](https://github.com/react-native-oh-library/react-native-drax/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+For older versions that have not been released to npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package
+
+
+## Installation and Usage
 
 Go to the project directory and execute the following instruction:
 
@@ -27,13 +33,21 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
+#  for RN0.72
 npm install @react-native-oh-tpl/react-native-drax
+
+#  for RN0.77
+npm install @react-native-ohos/react-native-drax
 ```
 
 #### **yarn**
 
 ```bash
+#  for RN0.72
 yarn add @react-native-oh-tpl/react-native-drax
+
+#  for RN0.77
+yarn add @react-native-ohos/react-native-drax
 ```
 
 <!-- tabs:end -->
@@ -117,9 +131,9 @@ const styles = StyleSheet.create({
 
 ## Link
 
-The HarmonyOS implementation of this library depends on the native code from @react-native-oh-tpl/react-native-gesture-handler. If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly.
+The HarmonyOS implementation of this library depends on the native code from react-native-gesture-handler. If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly.
 
-If it is not included, follow the guide provided in [@react-native-oh-tpl/react-native-gesture-handler](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-gesture-handler.md) to add it to your project.
+If it is not included, follow the guide provided in [react-native-gesture-handler](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-gesture-handler.md) to add it to your project.
 
 ## Constraints
 
@@ -127,7 +141,10 @@ If it is not included, follow the guide provided in [@react-native-oh-tpl/react-
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-drax Releases](https://github.com/react-native-oh-library/react-native-drax/releases)
+Verified in the following version:
+
+1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
+2. RNOH：0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
 
 ## Properties
 
@@ -146,7 +163,7 @@ Check the release version information in the release address of the third-party 
 |            onDragExit             |            Callback function when the drag exits             |   function    |    no    | iOS/Android |        Yes        |
 |             onDragEnd             |           Callback function at the end of dragging           |   function    |    no    | iOS/Android |        Yes        |
 |            onDragDrop             |        Callback function when dragging and releasing         |   function    |    no    | iOS/Android |        Yes        |
-|           onSnapbackEnd           |    Callback function at the end of the rebound animation     |   function    |    no    | iOS/Android |        Yes        |
+|           onSnapEnd           |    Callback function at the end of the rebound animation     |   function    |    no    | iOS/Android |        Yes        |
 |        onReceiveDragEnter         |           Callback function when a drag is entered           |   function    |    no    | iOS/Android |        Yes        |
 |         onReceiveDragOver         |         Callback function when dragging and hovering         |   function    |    no    | iOS/Android |        Yes        |
 |         onReceiveDragExit         |            Callback function when the drag exits             |   function    |    no    | iOS/Android |        Yes        |
@@ -157,7 +174,7 @@ Check the release version information in the release address of the third-party 
 |         onMonitorDragExit         |        Callback function when a drag exit is detected        |   function    |    no    | iOS/Android |        Yes        |
 |         onMonitorDragEnd          |    Callback function when the end of dragging is detected    |   function    |    no    | iOS/Android |        Yes        |
 |         onMonitorDragDrop         |      Callback function after a drag release is detected      |   function    |    no    | iOS/Android |        Yes        |
-|          animateSnapback          | Whether to animate hovering view snapshots after drag release |    boolean    |    no    | iOS/Android |        Yes        |
+|          animateSnap          | Whether to animate hovering view snapshots after drag release |    boolean    |    no    | iOS/Android |        Yes        |
 |              payload              |                  Data passed when dragging                   |      any      |    no    | iOS/Android |        Yes        |
 |            dragPayload            |              Data transferred by the drag party              |      any      |    no    | iOS/Android |        Yes        |
 |          receiverPayload          |               Data transferred by the receiver               |      any      |    no    | iOS/Android |        Yes        |
@@ -196,22 +213,46 @@ Check the release version information in the release address of the third-party 
 
 ### DraxList
 
-|           Name           |                         Description                          |   Type   | Required |  Platform   | HarmonyOS Support |
-| :----------------------: | :----------------------------------------------------------: | :------: | :------: | :---------: | :---------------: |
-|           data           |            Data source of the DraxList component             |  array   |    no    | iOS/Android |        Yes        |
-|      flatListStyle       |      Sets the style of the internal FlatList component       |  object  |    no    | iOS/Android |        Yes        |
-|        itemStyles        | Sets the style of an item in the internal FlatList component |  object  |    no    | iOS/Android |        Yes        |
-|    renderItemContent     |  Method for Rendering Item Items in the DraxList Component   | function |    no    | iOS/Android |        Yes        |
-|  renderItemHoverContent  | Method of Rendering Item Snapshots in the DraxList Component | function |    no    | iOS/Android |        Yes        |
-|     onItemDragStart      | Callback is executed when an item in the DraxList component starts to be dragged | function |    no    | iOS/Android |        Yes        |
-| onItemDragPositionChange | Callback is executed when the position of an item in the DraxList component changes | function |    no    | iOS/Android |        Yes        |
-|      onItemDragEnd       | Callback when the drag of an item in the DraxList component ends | function |    no    | iOS/Android |        Yes        |
-|      onItemReorder       | Callback for recording the moving index position of an item  | function |    no    | iOS/Android |        Yes        |
-|       reorderable        |           Sets whether to enable automatic sorting           | boolean  |    no    | iOS/Android |        Yes        |
-|    viewPropsExtractor    |     Props can be returned based on the data of each item     | function |    no    | iOS/Android |        Yes        |
-|         onScroll         |                Sliding event callback method                 | function |    no    | iOS/Android |        Yes        |
-|      itemsDraggable      | Indicates whether items in the FlatList component can be dragged | boolean  |    no    | iOS/Android |        Yes        |
-| lockItemDragsToMainAxis  | Indicates whether to lock the drag direction of items in the FlatList component to the main axis direction | boolean  |    no    | iOS/Android |        Yes        |
+|                      Name                      |                         Description                          |   Type   | Required |  Platform   | HarmonyOS Support |
+| :--------------------------------------------: | :----------------------------------------------------------: | :------: | :------: | :---------: | :---------------: |
+|                      data                      |            Data source of the DraxList component             |  array   |   yes    | iOS/Android |        Yes        |
+|          flatListStyle<sup>废弃</sup>          |      Sets the style of the internal FlatList component       |  object  |    no    | iOS/Android |        Yes        |
+|           itemStyles<sup>废弃</sup>            | Sets the style of an item in the internal FlatList component |  object  |    no    | iOS/Android |        Yes        |
+|        renderItemContent<sup>废弃</sup>        |  Method for Rendering Item Items in the DraxList Component   | function |    no    | iOS/Android |        Yes        |
+|     renderItemHoverContent<sup>废弃</sup>      | Method of Rendering Item Snapshots in the DraxList Component | function |    no    | iOS/Android |        Yes        |
+|       viewPropsExtractor<sup>废弃</sup>        |     Props can be returned based on the data of each item     | function |    no    | iOS/Android |        Yes        |
+|            onScroll<sup>废弃</sup>             |                Sliding event callback method                 | function |    no    | iOS/Android |        Yes        |
+|         itemsDraggable<sup>废弃</sup>          | Indicates whether items in the FlatList component can be dragged | boolean  |    no    | iOS/Android |        Yes        |
+| monitoringExternalDragStyle <sup>0.11.1+</sup> | Style props to apply to the parent DraxView when monitoring an External item drag |  object  |    no    | iOS/Android |        Yes        |
+|                onItemDragStart                 | Callback handler for when a list item reorder drag action begins | function |    no    | iOS/Android |        Yes        |
+|            onItemDragPositionChange            | Callback handler for when a list item position (index) changes during a reorder drag | function |    no    | iOS/Android |        Yes        |
+|                 onItemDragEnd                  | Callback handler for when a list item reorder drag action ends | function |    no    | iOS/Android |        Yes        |
+|                 onItemReorder                  | Callback handler for when a list item is moved within the list, reordering the list | function |    no    | iOS/Android |        Yes        |
+|                  reorderable                   | Can the list be reordered by dragging items? Defaults to true if onItemReorder is set | boolean  |    no    | iOS/Android |        Yes        |
+|            lockItemDragsToMainAxis             |       If true, lock item drags to the list's main axis       | boolean  |    no    | iOS/Android |        Yes        |
+|                 longPressDelay                 | Time in milliseconds view needs to be pressed before drag starts |  number  |    no    | iOS/Android |        Yes        |
+|          renderItem<sup>0.11.1+</sup>          | A function that renders each item in the DraxList. This extends React Native's standard `FlatList` renderItem with additional Drax-specific capabilities by providing drag-and-drop related props to each list item. | function |   yes    | iOS/Android |        Yes        |
+|     parentDraxViewProps<sup>0.11.1+</sup>      | Props to apply to the parent DraxView that's wrapping the FlatList |  object  |    no    | iOS/Android |        Yes        |
+|         centerShift<sup>0.11.1+</sup>          | When true, items will shift based on their centers instead of edges | boolean  |    no    | iOS/Android |        Yes        |
+
+### DraxListItem<sup>0.11.1+</sup>
+
+|          Name           | Description                                                  |   Type   | Required |  Platform   | HarmonyOS Support |
+| :---------------------: | ------------------------------------------------------------ | :------: | :------: | :---------: | :---------------: |
+|          index          | Current render index of the item in the list                 |  number  |   yes    | iOS/Android |        Yes        |
+|          item           | The data item being rendered                                 |    T     |   yes    | iOS/Android |        Yes        |
+|      originalIndex      | The original index of the item before any reordering occurred |  number  |   yes    | iOS/Android |        Yes        |
+|       horizontal        | Whether the list is laid out horizontally                    | boolean  |   yes    | iOS/Android |        Yes        |
+| lockItemDragsToMainAxis | Whether drag movements are constrained to the main axis of the list | boolean  |   yes    | iOS/Android |        Yes        |
+|       draggedItem       | Reanimated shared value tracking the currently dragged item index |  object  |   yes    | iOS/Android |        Yes        |
+|        shiftsRef        | Shared value tracking position shifts during drag operations |  object  |   yes    | iOS/Android |        Yes        |
+|   itemMeasurementsRef   | Mutable ref storing measurements of all list items           |  object  |   yes    | iOS/Android |        Yes        |
+| prevItemMeasurementsRef | Mutable ref storing previous measurements of list items      |  object  |   yes    | iOS/Android |        Yes        |
+|    resetDraggedItem     | Function to reset the dragged item state                     | function |   yes    | iOS/Android |        Yes        |
+|      keyExtractor       | Optional function to extract unique keys from items          | function |   yes    | iOS/Android |        Yes        |
+|    previousShiftsRef    | Shared value tracking previous position shifts               |  object  |   yes    | iOS/Android |        Yes        |
+|    registrationsRef     | Mutable ref storing view registration data                   |  object  |   yes    | iOS/Android |        Yes        |
+|          data           | The complete data array used by the DraxList                 |  array   |   yes    | iOS/Android |        Yes        |
 
 ## Known Issues
 
