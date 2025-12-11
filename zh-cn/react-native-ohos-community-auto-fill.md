@@ -120,9 +120,9 @@ React-Native 侧 TextInput 组件接收的 [textContentType](https://reactnative
 ```js
 // key 值为 RN 侧 textContentType 值,
 // value 值为 HarmonyOS 侧 ContentType 值
+
+//说明:textContentType配置项name和（familyName，givenName）不能同时在同一个表单中使用（在护照信息场景中可以同时使用）。
 {
-    "addressCity": CITY_ADDRESS,  // 市
-    "addressState": PROVINCE_ADDRESS, // 省
     "countryName": COUNTRY_ADDRESS, // 国家
     "fullStreetAddress": FULL_STREET_ADDRESS, // 详细地址
     "telephoneNumber": PHONE_NUMBER, // 手机号码
@@ -130,6 +130,12 @@ React-Native 侧 TextInput 组件接收的 [textContentType](https://reactnative
     "password": PASSWORD, // 密码
     "emailAddress": EMAIL_ADDRESS, // 邮箱地址
     "name": PERSON_FULL_NAME, // 姓名
+    "idCardNumber":ID_CARD_NUMBER,//身份证号
+    "familyName":PERSON_LAST_NAME,//姓氏
+    "givenName":PERSON_FIRST_NAME,//名字
+    "passportNumber":PASSPORT_NUMBER,//护照号
+    "validity":VALIDITY,//有效期至
+    "issueAt":ISSUE_AT,//签发地
 }
 ```
 

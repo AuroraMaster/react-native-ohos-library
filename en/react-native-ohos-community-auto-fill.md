@@ -123,9 +123,9 @@ The following lists the mapping between [textContentType](https://reactnative.cn
 ```js
 // The key is the value of textContentType in React Native,
 // The value is the value of ContentType in HarmonyOS.
+
+//Explanation: The textContentType configuration item 'name' and ('familyName', 'givenName') cannot be used in the same form at the same time (they can be used simultaneously in the passport information scenario).
 {
-    "addressCity": CITY_ADDRESS,  // City
-    "addressState": PROVINCE_ADDRESS, // Province
     "countryName": COUNTRY_ADDRESS, // Country
     "fullStreetAddress": FULL_STREET_ADDRESS, // Detailed address
     "telephoneNumber": PHONE_NUMBER, // Phone number
@@ -133,6 +133,12 @@ The following lists the mapping between [textContentType](https://reactnative.cn
     "password": PASSWORD, // Password
     "emailAddress": EMAIL_ADDRESS, //  Email address
     "name": PERSON_FULL_NAME, // Full name
+    "idCardNumber":ID_CARD_NUMBER,//ID card number
+    "familyName":PERSON_LAST_NAME,//Last name
+    "givenName":PERSON_FIRST_NAME,//First name
+    "passportNumber":PASSPORT_NUMBER,//passportNumber
+    "validity":VALIDITY,//validity
+    "issueAt":ISSUE_AT,//issueAt
 }
 ```
 
