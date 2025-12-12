@@ -181,7 +181,7 @@ Method 2: Directly link to the source code.
 
 ### 3. Configure CMakeLists and import RNHapticFeedbackPackage
 
->  If using version 2.2.1, please skip this chapter
+> If you are using version <= 2.2.1, please skip this chapter.
 
 open `entry/src/main/cpp/CMakeLists.txt`，add：
 

@@ -288,6 +288,22 @@ Verified in the following versions.
 | PicturesDirectoryPath        | System Path | string | No       | Windows         | No                | Windows only             |
 | RoamingDirectoryPath         | System Path | string | No       | Windows         | No                | Windows only             |
 
+**DocumentDirectoryPath**  static value ：
+
+/data/storage/el2/base/haps/entry/files
+
+**CachesDirectoryPath**  static value ：
+
+/data/storage/el2/base/haps/entry/cache
+
+**TemporaryDirectoryPath**  static value ：
+
+/data/storage/el2/base/temp
+
+**LibraryDirectoryPath**  static value ：
+
+/data/storage/el2/base/preferences
+
 ## 5. APIs
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
@@ -332,6 +348,116 @@ Verified in the following versions.
 | scanFile                | Scan the file using [Media Scanner](https://developer.android.com/reference/android/media/MediaScannerConnection).                                                            | function | Android     | No       | No                | Android only      |
 | getAllExternalFilesDirs | Returns an array with the absolute paths to application-specific directories on all shared/external storage devices where the application can place persistent files it owns. | function | Android     | No       | No                | Android only      |
 | pathForGroup            | Returns the absolute path to the directory shared for all applications with the same security group identifier.                                                               | function | iOS         | No       | No                | iOS only          |
+
+**mkdir method parameters **
+
+| Name     | Description                                 | Type         | Required | Platform    | HarmonyOS Support |
+| -------- | ------------------------------------------- | ------------ | -------- | ----------- | ----------------- |
+| filepath | Folder creation path                        | string       | yes      | iOS/Android | yes               |
+| options  | Configuration options when creating folders | MkdirOptions | no       | IOS         | no                |
+
+**exists method parameters **
+
+| Name     | Description | Type   | Required | Platform    | HarmonyOS Support |
+| -------- | ----------- | ------ | -------- | ----------- | ----------------- |
+| filepath | File Path   | string | yes      | iOS/Android | yes               |
+
+**readFile method parameters **
+
+| Name              | Description      | Type   | Required | Platform    | HarmonyOS Support |
+| ----------------- | ---------------- | ------ | -------- | ----------- | ----------------- |
+| filepath          | File Path        | string | yes      | iOS/Android | yes               |
+| encodingOrOptions | Encoding Options | any    | no       | iOS/Android | yes               |
+
+**readFileAssets method parameters **
+
+| Name              | Description      | Type   | Required | Platform    | HarmonyOS Support |
+| ----------------- | ---------------- | ------ | -------- | ----------- | ----------------- |
+| filepath          | File Path        | string | yes      | iOS/Android | yes               |
+| encodingOrOptions | Encoding Options | any    | no       | iOS/Android | yes               |
+
+**Writefile method parameters **
+
+| Name              | Description               | Type   | Required | Platform    | HarmonyOS Support |
+| ----------------- | ------------------------- | ------ | -------- | ----------- | ----------------- |
+| filepath          | File Path                 | string | yes      | iOS/Android | yes               |
+| contents          | The content to be written | string | yes      | iOS/Android | yes               |
+| encodingOrOptions | Encoding Options          | any    | no       | iOS/Android | yes               |
+
+**appendFile method parameters **
+
+| Name              | Description         | Type   | Required | Platform    | HarmonyOS Support |
+| ----------------- | ------------------- | ------ | -------- | ----------- | ----------------- |
+| filepath          | File Path           | string | yes      | iOS/Android | yes               |
+| contents          | Content to be added | string | yes      | iOS/Android | yes               |
+| encodingOrOptions | Encoding Options    | stirng | no       | iOS/Android | yes               |
+
+**copyFile method parameters **
+
+| Name     | Description                       | Type        | Required | Platform    | HarmonyOS Support |
+| -------- | --------------------------------- | ----------- | -------- | ----------- | ----------------- |
+| filepath | Path to the source file           | string      | yes      | iOS/Android | yes               |
+| destPath | Destination Path                  | string      | yes      | iOS/Android | yes               |
+| options  | iOS File Protection Level Options | FileOptions | no       | iOS         | no                |
+
+**unlink method parameters **
+
+| Name     | Description             | Type   | Required | Platform    | HarmonyOS Support |
+| -------- | ----------------------- | ------ | -------- | ----------- | ----------------- |
+| filepath | Path to the source file | string | yes      | iOS/Android | yes               |
+
+**hash method parameters **
+
+| Name      | Description             | Type   | Required | Platform    | HarmonyOS Support |
+| --------- | ----------------------- | ------ | -------- | ----------- | ----------------- |
+| filepath  | Path to the source file | string | yes      | iOS/Android | yes               |
+| algorithm | Verification Algorithm  | string | yes      | iOS/Android | yes               |
+
+**moveFile method parameters **
+
+| Name     | Description                       | Type        | Required | Platform    | HarmonyOS Support |
+| -------- | --------------------------------- | ----------- | -------- | ----------- | ----------------- |
+| filepath | Path to the source file           | string      | yes      | iOS/Android | yes               |
+| destPath | Destination Path                  | string      | yes      | iOS/Android | yes               |
+| options  | iOS File Protection Level Options | FileOptions | no       | iOS         | no                |
+
+**read method parameters **
+
+| Name              | Description                | Type   | Required | Platform    | HarmonyOS Support |
+| ----------------- | -------------------------- | ------ | -------- | ----------- | ----------------- |
+| filepath          | File location              | string | yes      | iOS/Android | yes               |
+| length            | Number of bytes read       | number | no       | iOS/Android | yes               |
+| positon           | Start position for reading | number | no       | iOS/Android | yes               |
+| encodingOrOptions | Encoding Options           | any    | no       | iOS/Android | yes               |
+
+**write method parameters **
+
+| Name              | Description                | Type   | Required | Platform    | HarmonyOS Support |
+| ----------------- | -------------------------- | ------ | -------- | ----------- | ----------------- |
+| filepath          | File path                  | string | yes      | iOS/Android | yes               |
+| contents          | Content to be written      | string | yes      | iOS/Android | yes               |
+| positon           | Start position for writing | number | no       | iOS/Android | yes               |
+| encodingOrOptions | Encoding Options           | any    | no       | iOS/Android | yes               |
+
+**touch method parameters **
+
+| Name     | Description        | Type   | Required | Platform    | HarmonyOS Support |
+| -------- | ------------------ | ------ | -------- | ----------- | ----------------- |
+| filepath | File Path          | string | yes      | iOS/Android | yes               |
+| mtime    | Modification Time  | Date   | no       | iOS/Android | yes               |
+| ctime    | Status Change Time | Date   | no       | iOS/Android | yes               |
+
+**stat method parameters **
+
+| Name     | Description | Type   | Required | Platform    | HarmonyOS Support |
+| -------- | ----------- | ------ | -------- | ----------- | ----------------- |
+| filepath | File Path   | string | yes      | iOS/Android | yes               |
+
+**readDir  method parameters **
+
+| Name    | Description | Type   | Required | Platform    | HarmonyOS Support |
+| ------- | ----------- | ------ | -------- | ----------- | ----------------- |
+| dirpath | Folder path | string | yes      | iOS/Android | yes               |
 
 ## 6. Known Issues
 

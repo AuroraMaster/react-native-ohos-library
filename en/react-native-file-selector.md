@@ -14,14 +14,15 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-file-selector)
 
-The repository for this third-party library has been migrated to Gitcode, and it now supports direct download from npm. The new package name is: `@react-native-ohos/react-native-file-selector`. The specific version relationships are as follows:
-
-| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
-| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
-| 1.0.2  | @react-native-oh-tpl/react-native-file-selector | [Github](https://github.com/react-native-oh-library/react-native-file-selector) | [Github Releases](https://github.com/react-native-oh-library/react-native-file-selector/releases) | 0.72 |
-|1.1.0 | @react-native-ohos/react-native-file-selector   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-file-selector) | [GitCode Releases]() | 0.77 |
-
 ## Installation and Usage
+
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+|<= 1.0.2-0.0.3@deprecated | [@react-native-oh-tpl/react-native-file-selector Releases(deprecated)](https://github.com/react-native-oh-library/react-native-file-selector/releases) | 0.72       |
+| 1.0.3 | [@react-native-ohos/react-native-file-selector Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-file-selector/releases)                        | 0.72       |
+| 1.1.0 | [@react-native-ohos/react-native-file-selector Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-file-selector/releases)                        | 0.77       |
 
 For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
@@ -30,18 +31,12 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-# 1.0.2
-npm install @react-native-oh-tpl/react-native-file-selector
-# 1.1.0
 npm install @react-native-ohos/react-native-file-selector
 ```
 
 #### **yarn**
 
 ```bash
-# 1.0.2
-yarn add @react-native-oh-tpl/react-native-file-selector
-# 1.1.0
 yarn add @react-native-ohos/react-native-file-selector
 ```
 
@@ -66,13 +61,18 @@ export default App;
 
 ## Use Codegen
 
-If this repository has been adapted to Codegen, generate the bridge code of the third-party library by using the Codegen. For details, see[ Codegen Usage Guide](/en/codegen.md).
+Version >= @react-native-ohos/react-native-file-selector@1.0.3, compatible with codegen-lib for generating bridge code.
+
+If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-file-selector@1.0.3 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
+Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-Open the harmony directory of the HarmonyOS project in DevEco Studio.
+This step provides guidance for manually configuring native dependencies.
+
+Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
 ### 1.Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
 
@@ -98,15 +98,6 @@ Method 1 (recommended): Use the HAR file.
 
 Open entry/oh-package.json5 file and add the following dependencies:
 
-- V1.0.2
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony" : "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-file-selector": "file:../../node_modules/@react-native-oh-tpl/react-native-file-selector/harmony/file_selector.har"
-  }
-```
-
-- V1.1.0
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony" : "file:../react_native_openharmony",
@@ -134,9 +125,6 @@ Open the entry/src/main/ets/RNPackagesFactory.ts file and add the following code
 ```diff
   ...
 import type {RNPackageContext, RNPackage} from '@rnoh/react-native-openharmony/ts';
-// V1.0.2
-+import {RNFileSelectorPackage}  from '@react-native-oh-tpl/react-native-file-selector/ts';
-// V1.1.0
 +import {RNFileSelectorPackage}  from '@react-native-ohos/react-native-file-selector/ts';
 
 
@@ -147,7 +135,70 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.Running
+### 4.Configuring CMakeLists and Introducing FileSelectorPackage
+
+> If you are using version <= 1.0.2-0.0.3, please skip this chapter.
+
+Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-file-selector/src/main/cpp" ./file-selector)
+
+
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_file_selector)
+# RNOH_END: manual_package_linking_2
+```
+
+Open `entry/src/main/cpp/PackageProvider.cpp` and add the following code:
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "FileSelectorPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++       std::make_shared<FileSelectorPackage>(ctx),
+    };
+}
+```
+
+### 5.Running
 
 Click the sync button in the upper right corner.
 
@@ -166,9 +217,11 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-This document is verified based on the following versions:
-1. RNOH:0.72.96; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
-2. RNOH:0.77.18; SDK:HarmonyOS 5.1.1 Release SDK; IDE:DevEco Studio 5.1.1.840; ROM:6.0.0;
+Verified in the following versions.
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## Properties
 

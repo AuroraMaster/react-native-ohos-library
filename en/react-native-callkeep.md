@@ -1,4 +1,4 @@
-模板版本：v0.2.2
+> Template version: v0.2.2
 
 <p align="center">
   <h1 align="center"> <code>react-native-callkeep</code> </h1>
@@ -18,33 +18,37 @@
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-callkeep)
 
 
-## 安装与使用
+## Installation and Usage
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-callkeep Releases](https://github.com/react-native-oh-library/react-native-callkeep/releases)。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+Find the matching version information in the release address of a third-party library:
 
-进入到工程目录并输入以下命令：
+| Third-party Library Version | Release Information                                                                                                                  | Supported RN Version |
+|----------------------------|--------------------------------------------------------------------------------------------------------------------------------------| ---------- |
+| <= 4.3.14-0.0.1  |  [@react-native-oh-tpl/react-native-callkeep Releases(deprecated)](https://github.com/react-native-oh-library/react-native-callkeep/releases) | 0.72       |
+| 4.3.15          | [@react-native-ohos/react-native-callkeep Releases](https://github.com/react-native-oh-library/react-native-callkeep/releases)                | 0.72       |
 
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
-
+Go to the project directory and execute the following instruction:
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-callkeep
+npm install @react-native-ohos/react-native-callkeep
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-callkeep
+yarn add @react-native-ohos/react-native-callkeep
 ```
 
 <!-- tabs:end -->
 
-下面的代码展示了这个库的基本使用场景：
+The following code shows the basic use scenario of the repository:
 
-> [!WARNING] 使用时 import 的库名不变。
+> [!WARNING] The name of the imported repository remains unchanged.
 
 ```js
 import React, { useState, useEffect } from 'react';
@@ -93,17 +97,21 @@ export function CallKeepExample() {
 }
 
 ```
-## 使用 Codegen
+## Use Codegen
 
-本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
+Version >= @react-native-ohos/react-native-callkeep@4.3.15, compatible with codegen-lib for generating bridge code.
+
+If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
 
 ## Link
 
-目前鸿蒙暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-callkeep@4.3.15, now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-首先需要使用 DevEco Studio 打开项目里的鸿蒙工程 `harmony`
+This step provides guidance for manually configuring native dependencies.
 
-### 在工程根目录的 `oh-package.json5` 添加 overrides字段
+Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+
+### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
 
 ```json
 {
@@ -114,46 +122,92 @@ export function CallKeepExample() {
 }
 ```
 
-### 2.引入原生端代码
+### 2.Introducing Native Code
 
-目前有两种方法：
+Currently, two methods are available:
 
-1. 通过 har 包引入（在 IDE 完善相关功能后该方法会被遗弃，目前首选此方法）；
-2. 直接链接源码。
+Method 1 (recommended): Use the HAR file.
 
-方法一：通过 har 包引入（推荐）
+> [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
 
-> [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
+Open `entry/oh-package.json5` file and add the following dependencies:
 
-打开 `entry/oh-package.json5`，添加以下依赖
 
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-callkeep": "file:../../node_modules/@react-native-oh-tpl/react-native-callkeep/harmony/call_keep.har"
+    "@react-native-ohos/react-native-callkeep": "file:../../node_modules/@react-native-ohos/react-native-callkeep/harmony/call_keep.har"
   }
 ```
 
-点击右上角的 `sync` 按钮
+Click the `sync` button in the upper right corner.
 
-或者在终端执行：
+Alternatively, run the following instruction on the terminal:
 
 ```bash
 cd entry
 ohpm install
 ```
-方法二：直接链接源码
+Method 2: Directly link to the source code.
 
-> [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
+> [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
+
+### 3.Configuring CMakeLists and Introducing RNCallKeepPackage
+
+> If you are using version <= 4.3.14-0.0.1, please skip this chapter.
+
+Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
+
+```diff
+...
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_END: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-callkeep/src/main/cpp" ./callkeep)
+# RNOH_END: manual_package_linking_1
+
+add_library(rnoh_app SHARED
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_callkeep)
+# RNOH_BEGIN: manual_package_linking_2
+```
+
+Open `entry/src/main/cpp/PackageProvider.cpp` and add the following code:
+
+```diff
+#include "RNOH/PackageProvider.h"
++ #include "RNCallKeepPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
++        std::make_shared<RNCallKeepPackage>(ctx)
+}
+```
 
 
-### 3.在 ArkTs 侧引入 RNCallKeepPackage
+### 4.Introducing RNCallKeepPackage to ArkTS
 
-打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
+Open `entry/src/main/ets/RNPackagesFactory.ts`，add：
 
 ```diff
   ...
-+ import { RNCallKeepPackage } from '@react-native-oh-tpl/react-native-callkeep';
++ import { RNCallKeepPackage } from '@react-native-ohos/react-native-callkeep';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -163,27 +217,31 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.运行
+### 5.Running
 
-点击右上角的 `sync` 按钮
+Click the `sync` button in the upper right corner.
 
-或者在终端执行：
+Alternatively, run the following instruction on the terminal:
 
 ```bash
 cd entry
 ohpm install
 ```
 
-然后编译、运行即可。
+Then build and run the code.
 
-## 约束与限制
+## Constraints
 
-### 兼容性
+### Compatibility
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-callkeep Releases](https://github.com/react-native-oh-library/react-native-callkeep/releases)
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
+Verified in the following versions.
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 
 ## 静态方法

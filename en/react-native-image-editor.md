@@ -4,16 +4,19 @@
   <h1 align="center"> <code>@react-native-community/image-editor</code> </h1>
 </p>
 
-This project is based on [@react-native-community/image-editor@3.2.0](https://github.com/callstack/react-native-image-editor/tree/3.2.0).
-
-This third-party library has been migrated to Gitee and is now available for direct download from npm, the new package name is: `@react-native-ohos/image-editor`, The version correspondence details are as follows:
-
-| Version                   | Package Name                                      | Repository         | Release                    |
-| ------------------------- | ------------------------------------------------- | ------------------ | -------------------------- |
-| <= 3.2.1@deprecated | @react-native-oh-tpl/image-editor | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-image-editor) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-editor/releases) |
-| > 3.2.1                   | @react-native-ohos/image-editor   | [Gitee](https://gitee.com/openharmony-sig/rntpc_react-native-image-editor) | [Gitee Releases](https://gitee.com/openharmony-sig/rntpc_react-native-image-editor/releases) |
+> [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-image-editor)
 
 ## 1. Installation and Usage
+
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+|-----------------------------| ------------------------------------------------------------ | ---------- |
+| <= 3.2.0-nc.0.1.3@deprecated | [@react-native-oh-tpl/image-editor Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-editor/releases) | 0.72       |
+| 3.2.1               | [@react-native-ohos/image-editor Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-editor/releases)               | 0.72       |
+| 4.3.1               | [@react-native-ohos/image-editor Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-editor/releases)               | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -185,6 +188,8 @@ const styles = StyleSheet.create({
 
 ## 2. Manual Link
 
+Version >= @react-native-ohos/image-editor@3.2.1 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
 This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
@@ -239,7 +244,7 @@ Method 2: Directly link to the source code.
 
 ### 2.3 Configuring CMakeLists and Introducing ImageEditorPackage
 
-> [!TIP] Version v3.2.1-rc.1 and above requires.
+> If you are using version <= 3.2.0-nc.0.1.3, please skip this chapter.
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
@@ -304,7 +309,13 @@ Then build and run the code.
 
 ### 3.1 Compatibility
 
-Check the release version information in the release address of the third-party library: [@react-native-ohos/image-editor Releases](https://gitee.com/openharmony-sig/rntpc_react-native-image-editor/releases)
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+
+Verified successfully in the following versions:
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 4. Properties 
 

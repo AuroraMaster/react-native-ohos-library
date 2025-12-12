@@ -15,17 +15,17 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-video)
 
+## 安装与使用
+
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| version | Package name                            | Releases info                                                | Support RN version |
-| ------- | --------------------------------------- | ------------------------------------------------------------ | ------------------ |
-| 5.2.1   | @react-native-oh-tpl/react-native-video | [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases) | 0.72               |
-| 6.13.1  | @react-native-oh-tpl/react-native-video | [@react-native-oh-tpl/react-native-video Releases](https://github.com/react-native-oh-library/react-native-video/releases) | 0.72               |
-| 6.14.0  | @react-native-ohos/react-native-video   | [@react-native-ohos/react-native-video Releases]()           | 0.77               |
+| 三方库版本  | 发布信息                                                  | 支持RN版本 |
+|--------| ------------------------------------------------------------ | ---------- |
+| <= 6.13.1@deprecated  | [@react-native-oh-tpl/react-native-video Releases(deprecated)](https://github.com/react-native-oh-library/react-native-video/releases) | 0.72       |
+| 6.13.2                | [@react-native-ohos/react-native-video Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-video/releases)   | 0.72       |
+| 6.14.0                | [@react-native-ohos/react-native-video Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-video/releases)   | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
-
-## 安装与使用
 
 进入到工程目录并输入以下命令
 
@@ -34,20 +34,12 @@
 #### **npm**
 
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/react-native-video
-
-# 0.77
 npm install @react-native-ohos/react-native-video
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn add @react-native-oh-tpl/react-native-video
-
-# 0.77
 yarn add @react-native-ohos/react-native-video
 ```
 
@@ -62,7 +54,6 @@ import React, { useState, useRef } from "react";
 import { Button, View, ScrollView, StyleSheet, Switch, Text, TextInput } from "react-native";
 import RNCVideo from "react-native-video";
 
-// V6.13.1
 import {
   type OnPlaybackStateChangedData,
   OnSeekData,
@@ -88,10 +79,7 @@ function RNCVideoDemo() {
   const [onVideoProgress, setOnVideoProgress] = useState("onVideoProgress");
   const [onVideoEnd, setOnVideoEnd] = useState("onVideoEnd");
   const [onVideoBuffer, setOnVideoBuffer] = useState("onVideoBuffer");
-  // V5.2.1
-  const [onPlaybackStalled, setOnPlaybackStalled] = useState("onPlaybackStalled");
 
-  // V6.13.1
   const [onPlaybackStateChanged, setPlaybackStateChanged] = useState("onPlaybackStateChanged");
    
   const [onPlaybackResume, setOnPlaybackResume] = useState("onPlaybackResume");
@@ -147,10 +135,6 @@ function RNCVideoDemo() {
         <Text style={styles.label}>{onVideoEnd}</Text>
         <Text style={styles.label}>{onVideoBuffer}</Text>
 
-		// V5.2.1
-		<Text style={styles.label}>{onPlaybackStalled}</Text>
-
-		// V6.13.0
         <Text style={styles.label}>{onPlaybackStateChanged}</Text>
 
         <Text style={styles.label}>{onPlaybackResume}</Text>
@@ -382,7 +366,6 @@ function RNCVideoDemo() {
             );
           }}
           
-          // V6.13.1
           onSeek = {(data: OnSeekData) => {
             console.log('onSeek');
           }}
@@ -396,20 +379,7 @@ function RNCVideoDemo() {
           onBuffer={(e) => {
             setOnVideoBuffer("onVideoBuffer :" + e.isBuffering);
           }}
-          
-          // V5.2.1
-          onPlaybackStalled={() => {
-            setOnPlaybackStalled("onPlaybackStalled : true");
-            setOnPlaybackResume("onPlaybackResume :false");
-          }}
-          
-          // V5.2.1
-          onPlaybackResume={() => {
-            setOnPlaybackStalled("onPlaybackStalled :false");
-            setOnPlaybackResume("onPlaybackResume :true");
-          }}
 
-          // V6.13.1
           onPlaybackStateChanged={(data: OnPlaybackStateChangedData) => {
             console.log('onPlaybackStateChanged ' + JSON.stringify(data));
             setPlaybackStateChanged("onPlaybackStateChanged : " + JSON.stringify(data));
@@ -489,7 +459,9 @@ export default RNCVideoDemo;
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/react-native-video@6.13.2，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -517,19 +489,6 @@ export default RNCVideoDemo;
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-
-- V0.72
-
-```json
-"dependencies": {
-   ...
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-video": "file:../../node_modules/@react-native-oh-tpl/react-native-video/harmony/rn_video.har"
-  }
-```
-
-- V0.77
-
 ```json
 "dependencies": {
    ...
@@ -553,6 +512,8 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 RNCVideoPackage
 
+> 若使用的是 <= 6.13.1 版本，请跳过本章。
+
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
 ```diff
@@ -573,11 +534,6 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-
-# V0.72
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-video/src/main/cpp" ./video)
-
-# V0.77
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-video/src/main/cpp" ./video)
 
 # RNOH_BEGIN: manual_package_linking_1
@@ -622,10 +578,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-// V0.72
-+ import { RNCVideo, RNC_VIDEO_TYPE } from "@react-native-oh-tpl/react-native-video"
-
-// V0.77
 + import { RNCVideo, RNC_VIDEO_TYPE } from "@react-native-ohos/react-native-video"
 
 
@@ -660,10 +612,6 @@ const arkTsComponentNames: Array<string> = [
 
 ```diff
   ...
-// V0.72
-+ import { RNCVideoPackage } from '@react-native-oh-tpl/react-native-video/ts';
-
-// V0.77
 + import { RNCVideoPackage } from '@react-native-ohos/react-native-video/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -689,14 +637,15 @@ ohpm install
 
 ## 约束与限制
 
-兼容性
+### 兼容性
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-在以下版本验证通过。
+在以下版本验证通过：
 
-1. RNOH: 0.72.27; SDK: HarmonyOS 5.1.1 Release SDK; IDE: DevEco Studio 5.1.1 Release; ROM: 5.0.1.120;
-2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 属性
 

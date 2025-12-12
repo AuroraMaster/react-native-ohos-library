@@ -184,7 +184,7 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 RNHapticFeedbackPackage
 
->  若使用的是 2.2.1 版本，请跳过本章。
+> 若使用的是 <= 2.2.1 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 

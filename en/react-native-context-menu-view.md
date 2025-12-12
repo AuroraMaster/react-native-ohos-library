@@ -16,24 +16,30 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-context-menu-view Releases](https://github.com/react-native-oh-library/react-native-context-menu-view/releases). For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+|-----------------------------| ------------------------------------------------------------ | ---------- |
+| <= 1.16.0-0.0.6@deprecated | [@react-native-oh-tpl/react-native-context-menu-view Releases(deprecated)](https://github.com/react-native-oh-library/react-native-context-menu-view/releases) | 0.72       |
+| 1.16.1               | [@react-native-ohos/react-native-context-menu-view Releases](https://github.com/react-native-oh-library/react-native-context-menu-view/releases)               | 0.72       |
+| 1.19.1               | [@react-native-ohos/react-native-context-menu-view Releases](https://github.com/react-native-oh-library/react-native-context-menu-view/releases)               | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
-
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-context-menu-view
+npm install @react-native-ohos/react-native-context-menu-view
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-context-menu-view
+yarn add @react-native-ohos/react-native-context-menu-view
 ```
 
 <!-- tabs:end -->
@@ -63,7 +69,9 @@ const Example = () => {
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/react-native-context-menu-view@1.16.1 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -91,7 +99,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-context-menu-view": "file:../../node_modules/@react-native-oh-tpl/react-native-context-menu-view/harmony/context_menu.har"
+    "@react-native-ohos/react-native-context-menu-view": "file:../../node_modules/@react-native-ohos/react-native-context-menu-view/harmony/context_menu.har"
   }
 ```
 
@@ -109,6 +117,8 @@ Method 2: Directly link to the source code.
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
 ### 3. Configuring CMakeLists and Introducing ContextMenuPackage
+
+> If you are using version <= 1.16.0-0.0.6, please skip this chapter.
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
@@ -130,7 +140,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-context-menu-view/src/main/cpp" ./context_menu)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-context-menu-view/src/main/cpp" ./context_menu)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -173,7 +183,7 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
-+ import {ContextMenuPackage} from '@react-native-oh-tpl/react-native-context-menu-view/ts';
++ import {ContextMenuPackage} from '@react-native-ohos/react-native-context-menu-view/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -202,7 +212,11 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-context-menu-view Releases](https://github.com/react-native-oh-library/react-native-context-menu-view/releases)
+Verified successfully in the following versions:
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## Properties
 

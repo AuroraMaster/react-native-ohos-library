@@ -14,16 +14,17 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-slider)
 
+## 安装与使用
+
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 4.4.3      | [@react-native-oh-tpl/slider  Releases](https://github.com/react-native-oh-library/react-native-slider/releases) | 0.72       |
-| 5.0.1      | [@react-native-ohos/slider  Releases]()       | 0.77       |
+| 三方库版本                     | 发布信息                                                                                                                                            | 支持RN版本 |
+|---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------| ---------- |
+| <= 4.4.3-0.3.4@deprecated | [@react-native-oh-tpl/slider Releases(deprecated)](https://github.com/react-native-oh-library/react-native-slider/releases) | 0.72       |
+| 4.4.4                     | [@react-native-ohos/slider Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-slider/releases)               | 0.72       |
+| 5.0.1                     | [@react-native-ohos/slider Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-slider/releases)               | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
-
-## 安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -32,18 +33,12 @@
 #### **npm**
 
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/slider
-# 0.77
 npm install @react-native-ohos/slider
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn add @react-native-oh-tpl/slider
-# 0.77
 yarn add @react-native-ohos/slider
 ```
 
@@ -77,7 +72,9 @@ export default function SliderExample() {
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+Version >= @react-native-ohos/slider@4.4.4，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -90,7 +87,6 @@ export default function SliderExample() {
     "@rnoh/react-native-openharmony" : "./react_native_openharmony"
   }
 }
-
 ```
 
 ### 2.引入原生端代码
@@ -105,18 +101,6 @@ export default function SliderExample() {
 > [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
 
 打开 `entry/oh-package.json5`，添加以下依赖
-
-* 0.72
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-
-    "@react-native-oh-tpl/slider": "file:../../node_modules/@react-native-oh-tpl/slider/harmony/slider.har"
-  }
-```
-
-* 0.77
 
 ```json
 "dependencies": {
@@ -141,6 +125,8 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 SliderPackge
 
+> 若使用的是 <= 4.4.3-0.3.4 版本，请跳过本章
+
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
 ```diff
@@ -154,9 +140,6 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: add_package_subdirectories
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-# 0.72
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/slider/src/main/cpp" ./slider)
-# 0.77
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/slider/src/main/cpp" ./slider)
 # RNOH_END: add_package_subdirectories
 
@@ -196,9 +179,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-  # 0.72
-+ import { RNCSlider, SLIDER_TYPE } from "@react-native-oh-tpl/slider"
-  # 0.77
 + import { RNCSlider, SLIDER_TYPE } from "@react-native-ohos/slider"
 
 @Builder
@@ -242,10 +222,13 @@ ohpm install
 
 ## 兼容性
 
-本文档内容基于以下版本验证通过：
+要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
-2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release SDK; IDE：DevEco Studio  6.0.0.868; ROM：6.0.0.112;
+在以下版本验证通过：
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 属性
 

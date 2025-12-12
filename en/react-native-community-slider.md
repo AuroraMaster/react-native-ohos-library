@@ -14,14 +14,17 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-slider)
 
-| Library Version | Release Information                                                     | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 4.4.3      | [@react-native-oh-tpl/slider  Releases](https://github.com/react-native-oh-library/react-native-slider/releases) | 0.72       |
-| 5.0.1      | [@react-native-ohos/slider  Releases]()       | 0.77       |
+## Installation and Usage
+
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+|-----------------------------| ------------------------------------------------------------ | ---------- |
+| <= 4.4.3-0.3.4@deprecated   | [@react-native-oh-tpl/slider Releases(deprecated)](https://github.com/react-native-oh-library/react-native-slider/releases) | 0.72       |
+| 4.4.4                       | [@react-native-ohos/slider Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-slider/releases) | 0.72       |
+| 5.0.1                       | [@react-native-ohos/slider Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-slider/releases) | 0.77       |
 
 For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
-
-## Installation and Usage
 
 Go to the project directory and execute the following instruction:
 
@@ -30,18 +33,12 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-# 0.72
-npm install @react-native-oh-tpl/slider
-# 0.77
 npm install @react-native-ohos/slider
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
-yarn add @react-native-oh-tpl/slider
-# 0.77
 yarn add @react-native-ohos/slider
 ```
 
@@ -51,7 +48,7 @@ The following code shows the basic use scenario of the repository:
 
 > [!WARNING] The name of the imported repository remains unchanged.
 
-> [!TIP] 使用thumbImage属性时请确保引入的图片路径地址正确，可检查harmony/entry/src/main/resources/rawfile/assets目录下是否被打包至静态资源目录，如若不存在则图片放置文件目录不对
+> [!TIP] When using the thumbImage attribute, please ensure that the imported image path is correct. You can check whether the image has been packaged into the static resource directory under the path harmony/entry/src/main/resources/rawfile/assets. If it does not exist, the file directory where the image is placed is incorrect.
 
 ```js
 import Slider from "@react-native-community/slider"
@@ -74,7 +71,9 @@ export default function SliderExample() {
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+Version >= @react-native-ohos/slider@4.4.4 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+This step provides guidance for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -100,18 +99,6 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
-* 0.72
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-
-    "@react-native-oh-tpl/slider": "file:../../node_modules/@react-native-oh-tpl/slider/harmony/slider.har"
-  }
-```
-
-* 0.77
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -135,6 +122,8 @@ Method 2: Directly link to the source code.
 
 ### 3. Configuring CMakeLists and Introducing SliderPackge
 
+> If you are using version <= 4.4.3-0.3.4, please skip this chapter.
+
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
 ```diff
@@ -148,9 +137,6 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: add_package_subdirectories
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-# 0.72
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/slider/src/main/cpp" ./slider)
-# 0.77
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/slider/src/main/cpp" ./slider)
 # RNOH_END: add_package_subdirectories
 
@@ -190,9 +176,6 @@ Find `function buildCustomRNComponent()`, which is usually located in `entry/src
 
 ```diff
   ...
-  # 0.72
-+ import { RNCSlider, SLIDER_TYPE } from "@react-native-oh-tpl/slider"
-  # 0.77
 + import { RNCSlider, SLIDER_TYPE } from "@react-native-ohos/slider"
 
 @Builder
@@ -239,10 +222,13 @@ Then build and run the code.
 
 ### Compatibility
 
-This document is verified based on the following versions:
+To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
-2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release SDK; IDE：DevEco Studio  6.0.0.868; ROM：6.0.0.112;
+Verified successfully in the following versions:
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## Properties
 

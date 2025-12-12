@@ -116,17 +116,6 @@ Version >= @react-native-ohos/react-native-default-preference@1.4.5，已支持 
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
--  0.72
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-ohos/react-native-default-preference": "file:../../node_modules/@react-native-ohos/react-native-default-preference/harmony/react_native_default_preference.har"
-  }
-```
-
--  0.77
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -215,10 +204,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 ```diff
 ...
 
-//  0.72
-+ import { RNDefaultPreferencePackage } from '@react-native-oh-tpl/react-native-default-preference/ts';
-
-//  0.77
 + import { RNDefaultPreferencePackage } from '@react-native-ohos/react-native-default-preference/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
