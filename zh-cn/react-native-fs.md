@@ -289,6 +289,22 @@ ohpm install
 | PicturesDirectoryPath        | 图片目录 | string | No       | Windows         | No                | Windows only             |
 | RoamingDirectoryPath         | 漫游目录 | string | No       | Windows         | No                | Windows only             |
 
+**DocumentDirectoryPath**静态值：
+
+/data/storage/el2/base/haps/entry/files
+
+**CachesDirectoryPath**静态值：
+
+/data/storage/el2/base/haps/entry/cache
+
+**TemporaryDirectoryPath**静态值：
+
+/data/storage/el2/base/temp
+
+**LibraryDirectoryPath**静态值：
+
+/data/storage/el2/base/preferences
+
 ## 5. API
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
@@ -333,6 +349,116 @@ ohpm install
 | scanFile                | 使用 [Media Scanner](https://developer.android.com/reference/android/media/MediaScannerConnection)扫描文件                      | function | Android     | No       | No                   | Android only      |
 | getAllExternalFilesDirs | 返回一个数组，包含应用程序可以存放其拥有的持久性文件的所有共享/外部存储设备上，应用专属目录的绝对路径                                                                       | function | Android     | No       | No                   | Android only      |
 | pathForGroup            | 返回所有具有相同安全组标识符的应用程序所共享的目录的绝对路径                                                                                            | function | iOS         | No       | No                   | iOS only          |
+
+**mkdir方法参数**
+
+| Name     | Description          | Type         | Required | Platform    | HarmonyOS Support |
+| -------- | -------------------- | ------------ | -------- | ----------- | ----------------- |
+| filepath | 文件夹创建路径       | string       | yes      | iOS/Android | yes               |
+| options  | 创建文件夹时配置选项 | MkdirOptions | no       | IOS         | no                |
+
+**exists方法参数**
+
+| Name     | Description  | Type   | Required | Platform    | HarmonyOS Support |
+| -------- | ------------ | ------ | -------- | ----------- | ----------------- |
+| filepath | 文件所在路径 | string | yes      | iOS/Android | yes               |
+
+**readFile方法参数**
+
+| Name              | Description  | Type   | Required | Platform    | HarmonyOS Support |
+| ----------------- | ------------ | ------ | -------- | ----------- | ----------------- |
+| filepath          | 文件所在路径 | string | yes      | iOS/Android | yes               |
+| encodingOrOptions | 编码选项     | any    | no       | iOS/Android | yes               |
+
+**readFileAssets方法参数**
+
+| Name              | Description  | Type   | Required | Platform    | HarmonyOS Support |
+| ----------------- | ------------ | ------ | -------- | ----------- | ----------------- |
+| filepath          | 文件所在路径 | string | yes      | iOS/Android | yes               |
+| encodingOrOptions | 编码选项     | any    | no       | iOS/Android | yes               |
+
+**Writefile方法参数**
+
+| Name              | Description  | Type   | Required | Platform    | HarmonyOS Support |
+| ----------------- | ------------ | ------ | -------- | ----------- | ----------------- |
+| filepath          | 文件所在路径 | string | yes      | iOS/Android | yes               |
+| contents          | 要写入的内容 | string | yes      | iOS/Android | yes               |
+| encodingOrOptions | 编码选项     | any    | no       | iOS/Android | yes               |
+
+**appendFile方法参数**
+
+| Name              | Description  | Type   | Required | Platform    | HarmonyOS Support |
+| ----------------- | ------------ | ------ | -------- | ----------- | ----------------- |
+| filepath          | 文件所在路径 | string | yes      | iOS/Android | yes               |
+| contents          | 要追加的内容 | string | yes      | iOS/Android | yes               |
+| encodingOrOptions | 编码选项     | stirng | no       | iOS/Android | yes               |
+
+**copyFile方法参数**
+
+| Name     | Description         | Type        | Required | Platform    | HarmonyOS Support |
+| -------- | ------------------- | ----------- | -------- | ----------- | ----------------- |
+| filepath | 源文件所在路径      | string      | yes      | iOS/Android | yes               |
+| destPath | 目标路径            | string      | yes      | iOS/Android | yes               |
+| options  | IOS文件保护级别选项 | FileOptions | no       | iOS         | no                |
+
+**unlink方法参数**
+
+| Name     | Description    | Type   | Required | Platform    | HarmonyOS Support |
+| -------- | -------------- | ------ | -------- | ----------- | ----------------- |
+| filepath | 源文件所在路径 | string | yes      | iOS/Android | yes               |
+
+**hash方法参数**
+
+| Name      | Description    | Type   | Required | Platform    | HarmonyOS Support |
+| --------- | -------------- | ------ | -------- | ----------- | ----------------- |
+| filepath  | 源文件所在路径 | string | yes      | iOS/Android | yes               |
+| algorithm | 校验算法       | string | yes      | iOS/Android | yes               |
+
+**moveFile方法参数**
+
+| Name     | Description         | Type        | Required | Platform    | HarmonyOS Support |
+| -------- | ------------------- | ----------- | -------- | ----------- | ----------------- |
+| filepath | 源文件所在路径      | string      | yes      | iOS/Android | yes               |
+| destPath | 目标路径            | string      | yes      | iOS/Android | yes               |
+| options  | IOS文件保护级别选项 | FileOptions | no       | iOS         | no                |
+
+**read方法参数**
+
+| Name              | Description    | Type   | Required | Platform    | HarmonyOS Support |
+| ----------------- | -------------- | ------ | -------- | ----------- | ----------------- |
+| filepath          | 文件所在路径   | string | yes      | iOS/Android | yes               |
+| length            | 读取的字节数   | number | no       | iOS/Android | yes               |
+| positon           | 读取的起始位置 | number | no       | iOS/Android | yes               |
+| encodingOrOptions | 编码选项       | any    | no       | iOS/Android | yes               |
+
+**write方法参数**
+
+| Name              | Description    | Type   | Required | Platform    | HarmonyOS Support |
+| ----------------- | -------------- | ------ | -------- | ----------- | ----------------- |
+| filepath          | 文件所在路径。 | string | yes      | iOS/Android | yes               |
+| contents          | 写入的内容     | string | yes      | iOS/Android | yes               |
+| positon           | 写入的起始位置 | number | no       | iOS/Android | yes               |
+| encodingOrOptions | 编码选项       | any    | no       | iOS/Android | yes               |
+
+**touch方法参数**
+
+| Name     | Description  | Type   | Required | Platform    | HarmonyOS Support |
+| -------- | ------------ | ------ | -------- | ----------- | ----------------- |
+| filepath | 文件所在路径 | string | yes      | iOS/Android | yes               |
+| mtime    | 修改时间     | Date   | no       | iOS/Android | yes               |
+| ctime    | 状态变更时间 | Date   | no       | iOS/Android | yes               |
+
+**stat方法参数**
+
+| Name     | Description  | Type   | Required | Platform    | HarmonyOS Support |
+| -------- | ------------ | ------ | -------- | ----------- | ----------------- |
+| filepath | 文件所在路径 | string | yes      | iOS/Android | yes               |
+
+**readDir 方法参数**
+
+| Name    | Description    | Type   | Required | Platform    | HarmonyOS Support |
+| ------- | -------------- | ------ | -------- | ----------- | ----------------- |
+| dirpath | 文件夹所在路径 | string | yes      | iOS/Android | yes               |
 
 ## 6. 遗留问题
 
