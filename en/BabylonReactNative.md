@@ -44,6 +44,15 @@ yarn add @react-native-oh-tpl/babylonjs-react-native
 yarn add @react-native-oh-tpl/babylonjs-react-native-harmony
 ```
 
+#### **If using BabylonReactNative in DevEco Studio**
+
+```bash
+When running git --version in the DevEco Studio terminal, if the Git version cannot be detected, follow these steps:
+1.Install Git.(Skip this step if Git is already installed.)
+2.Add the Git executable directory to the system Path environment variable.(Skip this step if the Path already contains the Git directory.)
+3.Restart your computer to ensure the environment variables take effect in DevEco Studio.
+```
+
 <!-- tabs:end -->
 
 The following code shows the basic use scenario of the repository:
