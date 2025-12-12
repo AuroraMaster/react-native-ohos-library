@@ -1,29 +1,22 @@
-> 模板版本：v0.2.2
+> 模板版本：v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-gesture-handler</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/software-mansion/react-native-gesture-handler">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-        <a href="https://github.com/software-mansion/react-native-gesture-handler/blob/main/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-harmony-gesture-handler)
+本项目基于 [react-native-gesture-handler](https://github.com/software-mansion/react-native-gesture-handler) 开发。
 
 该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-gesture-handler`，具体版本所属关系如下：
 
-| Version                        | Package Name                                  | Repository                                                   | Release                                                      |
-| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <= 2.14.17@deprecated | @react-native-oh-tpl/react-native-gesture-handler | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-gesture-handler) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-gesture-handler/releases) |
-| >= 2.14.18                        | @react-native-ohos/react-native-gesture-handler       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-gesture-handler) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-gesture-handler/releases) |
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      |Support RN version    |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ----------------               |
+| <= 2.14.17@deprecated | @react-native-oh-tpl/react-native-gesture-handler | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-gesture-handler) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-gesture-handler/releases) |0.72|
+| 2.14.18                       | @react-native-ohos/react-native-gesture-handler       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-gesture-handler) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-gesture-handler/releases) |0.72|
+|  2.23.2                         | @react-native-ohos/react-native-gesture-handler       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-gesture-handler) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-gesture-handler/releases) |0.77|
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-ohos/react-native-gesture-handler Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-gesture-handler/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-ohos/react-native-gesture-handler Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-gesture-handler/releases)。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -136,10 +129,12 @@ Version <= @react-native-oh-tpl/react-native-gesture-handler@2.14.17@deprecated 
 ### 2.引入原生端代码
 
 > [!TIP] 引入原生代码之前请确认IDE版本，5.0.3.810及其之后的版本需要在harmony工程中的hvigor-config.json5文件中新增如下配置以解决路径过长导致的编译报错问题
-> "properties":{
-          "ohos.nativeResolver":false
-}
 
+```json
+"properties":{
+  "ohos.nativeResolver":false
+}
+```
 目前有两种方法：
 
 1. 通过 har 包引入（在 IDE 完善相关功能后该方法会被遗弃，目前首选此方法）；
@@ -261,11 +256,10 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下版本验证通过：
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/react-native-gesture-handler Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-gesture-handler/releases)
-
-> [!TIP] [官方文档](https://docs.swmansion.com/react-native-gesture-handler/docs/)
+1. RNOH：0.72.33; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
+2. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 5.1.1.830; ROM：5.1.0.150;
 
 ## Gestures
 
@@ -281,7 +275,7 @@ GestureDetector 是 Gesture Handler 库 2.x 版本的一个主要组件。
 
 | Name   | Description                                                                                  | Type                             | Required | Platform | HarmonyOS Support |
 | ---------- | ------------------------------------------------------------------------------------------------ | ------------------------------------ | -------- | -------- | -------- |
-| gesture    | A gesture object containing the configuration and callbacks.                                     | base gestures or any ComposedGesture | yes      | All      | yes      |
+| gesture    | 一个包含配置与回调的手势对象。                                     | base gestures or any ComposedGesture | yes      | All      | yes      |
 
 #### Gesture 的方法
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
@@ -290,13 +284,13 @@ GestureDetector 是 Gesture Handler 库 2.x 版本的一个主要组件。
 
 | method | Description                                                                                  | Type                             | Platform | HarmonyOS Support |
 | ---------- | ------------------------------------------------------------------------------------------------ | ------------------------------------ | -------- | -------- |
-| Gesture.Tap() | Creates a new instance of [TapGesture](https://docs.swmansion.com/react-native-gesture-handler/docs/gestures/tap-gesture) with its default config and no callbacks. | function() | All      | yes    |
-| Gesture.Pan() | Creates a new instance of [PanGesture](https://docs.swmansion.com/react-native-gesture-handler/docs/gestures/pan-gesture) with its default config and no callbacks. | function() | All      | yes    |
-| Gesture.Rotation() | Creates a new instance of [`RotationGesture`](https://docs.swmansion.com/react-native-gesture-handler/docs/gestures/rotation-gesture) with its default config and no callbacks. | function() | All      | yes    |
-| Gesture.LongPress() | Creates a new instance of [`LongPressGesture`](https://docs.swmansion.com/react-native-gesture-handler/docs/gestures/long-press-gesture) with its default config and no callbacks. | function() | All      | yes    |
-| Gesture.Manual() | Creates a new instance of [`ManualGesture`](https://docs.swmansion.com/react-native-gesture-handler/docs/gestures/manual-gesture) with its default config and no callbacks. | function() | All      | yes    |
-| Gesture.Pinch() | Creates a new instance of [`PinchGesture`](https://docs.swmansion.com/react-native-gesture-handler/docs/gestures/pinch-gesture) with its default config and no callbacks. | function() | All      | yes    |
-| Gesture.Fling() | Creates a new instance of [`FlingGesture`](https://docs.swmansion.com/react-native-gesture-handler/docs/gestures/fling-gesture) with its default config and no callbacks. | function() | All      | yes    |
+| Gesture.Tap() | 使用默认配置且无回调创建一个 [TapGesture](https://docs.swmansion.com/react-native-gesture-handler/docs/gestures/tap-gesture) 实例。 | function() | All      | yes    |
+| Gesture.Pan() | 使用默认配置且无回调创建一个 [PanGesture](https://docs.swmansion.com/react-native-gesture-handler/docs/gestures/pan-gesture) 实例。 | function() | All      | yes    |
+| Gesture.Rotation() | 使用默认配置且无回调创建一个 [`RotationGesture`](https://docs.swmansion.com/react-native-gesture-handler/docs/gestures/rotation-gesture) 实例。 | function() | All      | yes    |
+| Gesture.LongPress() | 使用默认配置且无回调创建一个 [`LongPressGesture`](https://docs.swmansion.com/react-native-gesture-handler/docs/gestures/long-press-gesture) 实例。 | function() | All      | yes    |
+| Gesture.Manual() | 使用默认配置且无回调创建一个 [`ManualGesture`](https://docs.swmansion.com/react-native-gesture-handler/docs/gestures/manual-gesture) 实例。 | function() | All      | yes    |
+| Gesture.Pinch() | 使用默认配置且无回调创建一个 [`PinchGesture`](https://docs.swmansion.com/react-native-gesture-handler/docs/gestures/pinch-gesture) 实例。 | function() | All      | yes    |
+| Gesture.Fling() | 使用默认配置且无回调创建一个 [`FlingGesture`](https://docs.swmansion.com/react-native-gesture-handler/docs/gestures/fling-gesture) 实例。 | function() | All      | yes    |
 
 ## Components
 
@@ -314,60 +308,60 @@ Gesture Handler 库提供了一种基于原生按钮的 React Native touchable �
 BaseButton 属性
 | Name | Description                                                                                  | Type                             | Platform | HarmonyOS Support |
 | ---------- | ------------------------------------------------------------------------------------------------ | ------------------------------------ | -------- | -------- |
-| onActiveStateChange | that gets triggered when button changes from inactive to active and vice versa. | function | All   | yes   |
-| onPress | that gets triggered when the button gets pressed | function | All   | yes   |
-| onLongPress | that gets triggered when the button gets pressed for at least `delayLongPress` milliseconds. | function | All   | yes   |
-| exclusive | defines if more than one button could be pressed simultaneously. By default set `true`. | boolean | All   | yes   |
-| delayLongPress | defines the delay, in milliseconds, after which the `onLongPress` callback gets called. By default set to 600. | number | All   | yes   |
+| onActiveStateChange | 当按钮从非激活切换到激活或反向切换时触发。 | function | All   | yes   |
+| onPress | 按钮被按下时触发。 | function | All   | yes   |
+| onLongPress | 按钮按住至少 `delayLongPress` 毫秒后触发。 | function | All   | yes   |
+| exclusive | 是否允许多个按钮同时被按下，默认值为 `true`。 | boolean | All   | yes   |
+| delayLongPress | 触发 `onLongPress` 前的延迟（毫秒），默认 600。 | number | All   | yes   |
 
 ReactButton 属性
 | Name | Description                                                                                  | Type                             | Platform | HarmonyOS Support |
 | ---------- | ------------------------------------------------------------------------------------------------ | ------------------------------------ | -------- | -------- |
-| underlayColor | this is the background color that will be dimmed when button is in active state. | Color | All   | yes   |
+| underlayColor | 按钮处于激活态时会被调暗的背景色。 | Color | All   | yes   |
 
 ### Drawer Layout
 
 属性
 | Name | Description                                                                                  | Type                             | Platform | HarmonyOS Support |
 | ---------- | ------------------------------------------------------------------------------------------------ | ------------------------------------ | -------- | -------- |
-| drawerType | A gesture object                                     | 'front'\|'back'\|'slide' | All | yes |
-| edgewidth | allows for defining how far from the edge of the content view the gesture should activate. | number | All   | yes   |
-| hideStatusBar | when set to `true` Drawer component will use [StatusBar](https://reactnative.dev/docs/statusbar.html) API to hide the OS status bar whenever the drawer is pulled or when its in an "open" state. | boolean | All   | yes   |
-| statusbaranimation | Can be used when `hideStatusBar` is set to `true` and will select the animation used for hiding/showing the status bar. | 'fade'\|'slide'\|'none' | All   | no   |
-| overlaycolor | of a semi-transparent overlay to be displayed on top of the content view when drawer gets open. | color | All   | yes   |
-| rendernavigationview | his attribute is present in the standard implementation already and is one of the required params. | function | All   | yes   |
-| ondrawerclose | This function is called when the drawer is closed. | function | All   | yes   |
-| ondraweropen | This function is called when the drawer is opened. | function | All   | yes   |
-| ondrawerslide | his function is called as a drawer sliding open from touch events. | function | All   | yes   |
-| ondrawerstatechanged | This function is called when the status of the drawer changes. | function | All   | yes   |
-| children | Children is a component which is rendered by default and is wrapped by drawer. | component\| function | All   | yes   |
+| drawerType | 抽屉的展示类型。                                     | 'front'\|'back'\|'slide' | All | yes |
+| edgewidth | 定义手势距离内容视图边缘多远时才会被激活。 | number | All   | yes   |
+| hideStatusBar | 设为 `true` 时，抽屉被拉出或处于打开状态会通过 [StatusBar](https://reactnative.dev/docs/statusbar.html) API 隐藏系统状态栏。 | boolean | All   | yes   |
+| statusbaranimation | 在 `hideStatusBar` 为 `true` 时，选择隐藏/显示状态栏使用的动画。 | 'fade'\|'slide'\|'none' | All   | no   |
+| overlaycolor | 抽屉打开时覆盖在内容视图之上的半透明遮罩颜色。 | color | All   | yes   |
+| rendernavigationview | 标准实现中已包含的必填参数，用于渲染导航视图。 | function | All   | yes   |
+| ondrawerclose | 抽屉关闭时调用。 | function | All   | yes   |
+| ondraweropen | 抽屉打开时调用。 | function | All   | yes   |
+| ondrawerslide | 抽屉因触摸事件滑动打开时调用。 | function | All   | yes   |
+| ondrawerstatechanged | 抽屉状态变化时调用。 | function | All   | yes   |
+| children | 默认渲染并被抽屉包裹的子组件。 | component\| function | All   | yes   |
 
 ### Swipeable
 
 属性
 | Name | Description                                                                                  | Type                             | Platform | HarmonyOS Support |
 | ---------- | ------------------------------------------------------------------------------------------------ | ------------------------------------ | -------- | -------- |
-| friction | a number that specifies how much the visual interaction will be delayed compared to the gesture distance. | number | All | yes |
-| leftThreshold | distance from the left edge at which released panel will animate to the open state | number | All | yes |
-| rightThreshold | distance from the right edge at which released panel will animate to the open state | number | All | yes |
-| dragOffsetFromLeftEdge | distance that the panel must be dragged from the left edge to be considered a swipe. | number                   | All | yes |
-| dragOffsetFromRightEdge | distance that the panel must be dragged from the right edge to be considered a swipe. | number | All | yes |
-| overshootLeft | a boolean value indicating if the swipeable panel can be pulled further than the left actions panel's width. | boolean | All | yes |
-| overshootRight | a boolean value indicating if the swipeable panel can be pulled further than the right actions panel's width. I | boolean | All | yes |
-| overshootFriction | a number that specifies how much the visual interaction will be delayed compared to the gesture distance at overshoot. | number                   | All | yes |
-| onSwipeableOpen | method that is called when action panel gets open | function(direction: 'left' \| 'right', swipeable: Swipeable) | All | yes |
-| onSwipeableClose | method that is called when action panel is closed. | function(direction: 'left' \| 'right', swipeable: Swipeable) | All | yes |
-| onSwipeableWillOpen | Called when action panel starts animating on open (either right or left). | function((direction: 'left' \| 'right')) | All | yes |
-| onSwipeableWillClose | Called when action panel starts animating on close. | function((direction: 'left' \| 'right')) | All | yes |
-| renderLeftActions | This map describes the values to use as inputRange for extra interpolation: AnimatedValue: [startValue, endValue] | function(progressAnimatedValue: AnimatedInterpolation,<br/>    dragAnimatedValue: AnimatedInterpolation,<br/>    swipeable: Swipeable) | All | yes |
-| renderRightActions | method that is expected to return an action panel that is going to be revealed from the right side when user swipes left. | function(progressAnimatedValue: AnimatedInterpolation,<br/>    dragAnimatedValue: AnimatedInterpolation,<br/>    swipeable: Swipeable) | All | yes |
-| containerStyle | style object for the container (Animated.View), for example to override `overflow: 'hidden'`. | StyleProp<ViewStyle> | All | yes |
-| childrenContainerStyle | style object for the children container (Animated.View), for example to apply `flex: 1`. | StyleProp<ViewStyle> | All | yes |
+| friction | 视觉交互相对手势距离的延滞程度。 | number | All | yes |
+| leftThreshold | 释放面板后，从左侧到达该距离就会动画到打开状态。 | number | All | yes |
+| rightThreshold | 释放面板后，从右侧到达该距离就会动画到打开状态。 | number | All | yes |
+| dragOffsetFromLeftEdge | 从左边缘开始拖动到被视为滑动所需的距离。 | number                   | All | yes |
+| dragOffsetFromRightEdge | 从右边缘开始拖动到被视为滑动所需的距离。 | number | All | yes |
+| overshootLeft | 是否允许可滑动面板被拉出超过左侧动作面板宽度。 | boolean | All | yes |
+| overshootRight | 是否允许可滑动面板被拉出超过右侧动作面板宽度。 | boolean | All | yes |
+| overshootFriction | 超出范围时视觉交互相对手势距离的延滞程度。 | number                   | All | yes |
+| onSwipeableOpen | 动作面板打开时调用。 | function(direction: 'left' \| 'right', swipeable: Swipeable) | All | yes |
+| onSwipeableClose | 动作面板关闭时调用。 | function(direction: 'left' \| 'right', swipeable: Swipeable) | All | yes |
+| onSwipeableWillOpen | 动作面板开始动画打开（左/右）时调用。 | function((direction: 'left' \| 'right')) | All | yes |
+| onSwipeableWillClose | 动作面板开始动画关闭时调用。 | function((direction: 'left' \| 'right')) | All | yes |
+| renderLeftActions | 用于返回左侧动作面板的渲染方法，提供的插值输入区间可用于额外动画。 | function(progressAnimatedValue: AnimatedInterpolation,<br/>    dragAnimatedValue: AnimatedInterpolation,<br/>    swipeable: Swipeable) | All | yes |
+| renderRightActions | 用于返回右侧动作面板的渲染方法（向左滑动时显露）。 | function(progressAnimatedValue: AnimatedInterpolation,<br/>    dragAnimatedValue: AnimatedInterpolation,<br/>    swipeable: Swipeable) | All | yes |
+| containerStyle | 容器（Animated.View）的样式对象，例如覆盖 `overflow: 'hidden'`。 | StyleProp<ViewStyle> | All | yes |
+| childrenContainerStyle | 子容器（Animated.View）的样式对象，例如应用 `flex: 1`。 | StyleProp<ViewStyle> | All | yes |
 
 
 ## Gesture handlers(legacy)
 
-> [!WARNING] Consider using the new [gestures API](https://docs.swmansion.com/react-native-gesture-handler/docs/gestures/gesture) instead. The old API is not actively supported and is not receiving the new features. Check out [RNGH 2.0 section in Introduction](https://docs.swmansion.com/react-native-gesture-handler/docs/#rngh-20) for more information.
+> [!WARNING] 建议使用新的 [gestures API](https://docs.swmansion.com/react-native-gesture-handler/docs/gestures/gesture)。旧的 API 已不再积极维护，也不会接收新功能。查看 [Introduction 中的 RNGH 2.0 章节](https://docs.swmansion.com/react-native-gesture-handler/docs/#rngh-20) 了解更多信息。
 
 ### Gesture handlers 通用属性
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
@@ -376,10 +370,10 @@ ReactButton 属性
 
 | NAME                | Description                                                                                                                                   | TYPE                     | Required | Platform | HarmonyOS Support |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | -------- | -------- | -------- |
-| enabled                 | Indicates whether the given handler should be analyzing stream of touch events or not.                                                            | boolean                      | no       | All      | yes      |
-| hitSlop                 | This parameter enables control over what part of the connected view area can be used to begin recognizing the gesture.                            | object                       | no       | All      | yes      |
-| onGestureEvent          | Takes a callback that is going to be triggered for each subsequent touch event while the handler is in an ACTIVE state.                           | callback                     | no       | All      | yes      |
-| onHandlerStateChange    | Takes a callback that is going to be triggered when state of the given handler changes.                                                           | callback                     | no       | All      | yes      |
+| enabled                 | 指定该手势处理器是否应当分析触摸事件流。                                                            | boolean                      | no       | All      | yes      |
+| hitSlop                 | 控制可用来开始识别手势的视图区域范围。                            | object                       | no       | All      | yes      |
+| onGestureEvent          | 当处理器处于 ACTIVE 状态时，对后续触摸事件逐个触发的回调。                           | callback                     | no       | All      | yes      |
+| onHandlerStateChange    | 当处理器状态变化时触发的回调。                                                           | callback                     | no       | All      | yes      |
 
 ### Gesture handlers 通用事件数据
 
@@ -390,8 +384,8 @@ ReactButton 属性
 
 | NAME         | Description                                                             | TYPE | Platform | HarmonyOS Support |
 | ---------------- | --------------------------------------------------------------------------- | ------ | -------- | -------- |
-| state            | Current state of the handler.                                               | State  | All      | yes      |
-| numberOfPointers | Represents the number of pointers (fingers) currently placed on the screen. | number | All      | yes      |
+| state            | 处理器的当前状态。                                               | State  | All      | yes      |
+| numberOfPointers | 当前放在屏幕上的指针（手指）数量。 | number | All      | yes      |
 
 ### PanGestureHandler
 
@@ -402,11 +396,11 @@ ReactButton 属性
 
 | NAME                       | Description                                                                                                                                                                             | TYPE | Required | Platform | HarmonyOS Support |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | -------- | -------- | -------- |
-| minDist                        | Minimum distance the finger (or multiple finger) need to travel before the handler activates.                                                                                               | number  | no       | All      | yes      |
-| minPointers                    | A number of fingers that is required to be placed before handler can activate.                                                                                                              | number  | no       | All      | yes      |
-| maxPointers                    | When the given number of fingers is placed on the screen and handler hasn't yet activated it will fail recognizing the gesture.                                                             | number  | no       | All      | yes      |
-| activeOffsetX                  | Range along X axis (in points) where fingers travels without activation of handler.                                                                                                         | number  | no       | All      | yes      |
-| activeOffsetY                  | Range along Y axis (in points) where fingers travels without activation of handler.                                                                                                         | number  | no       | All      | yes      |
+| minDist                        | 手指（或多指）需要移动的最小距离，超过后处理器才会激活。                                                                                               | number  | no       | All      | yes      |
+| minPointers                    | 处理器激活前需要放置的最少手指数量。                                                                                                              | number  | no       | All      | yes      |
+| maxPointers                    | 当屏幕上放置到指定数量的手指且尚未激活时，将停止识别该手势。                                                             | number  | no       | All      | yes      |
+| activeOffsetX                  | X 轴方向（点单位）内，不会触发处理器激活的移动区间。                                                                                                         | number  | no       | All      | yes      |
+| activeOffsetY                  | Y 轴方向（点单位）内，不会触发处理器激活的移动区间。                                                                                                         | number  | no       | All      | yes      |
 
 #### PanGestureHandler 事件数据
 
@@ -414,27 +408,27 @@ ReactButton 属性
 
 `translationX`
 
-Translation of the pan gesture along X axis accumulated over the time of the gesture. The value is expressed in the point units.
+手势过程中沿 X 轴累计的平移距离，单位为 point。
 
 `translationY`
 
-Translation of the pan gesture along Y axis accumulated over the time of the gesture. The value is expressed in the point units.
+手势过程中沿 Y 轴累计的平移距离，单位为 point。
 
 `velocityX`
 
-Velocity of the pan gesture along the X axis in the current moment. The value is expressed in point units per second.
+当前沿 X 轴的平移速度，单位为 point/s。
 
 `velocityY`
 
-Velocity of the pan gesture along the Y axis in the current moment. The value is expressed in point units per second.
+当前沿 Y 轴的平移速度，单位为 point/s。
 
 `x`
 
-X coordinate of the current position of the pointer (finger or a leading pointer when there are multiple fingers placed) relative to the view attached to the handler. Expressed in point units.
+指针（单指或多指的主指）相对于附加到处理器的视图的当前 X 坐标，单位为 point。
 
 `y`
 
-Y coordinate of the current position of the pointer (finger or a leading pointer when there are multiple fingers placed) relative to the view attached to the handler. Expressed in point units.
+指针（单指或多指的主指）相对于附加到处理器的视图的当前 Y 坐标，单位为 point。
 
 ### TapGestureHandler
 
@@ -445,12 +439,12 @@ Y coordinate of the current position of the pointer (finger or a leading pointer
 
 | NAME      | Description                                                                                                                    | TYPE | Required | Platform | HarmonyOS Support |
 | ------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------ | -------- | -------- | -------- |
-| minPointers   | Minimum number of pointers (fingers) required to be placed before the handler activates.                                           | number | no       | All      | yes      |
-| maxDurationMs | Maximum time, expressed in milliseconds, that defines how fast a finger must be released after a touch.                            | number | no       | All      | yes      |
-| maxDelayMs    | Maximum time, expressed in milliseconds, that can pass before the next tap — if many taps are required.                            | number | no       | All      | yes      |
-| maxDeltaX     | Maximum distance, expressed in points, that defines how far the finger is allowed to travel along the X axis during a tap gesture. | number | no       | All      | yes      |
-| maxDeltaY     | Maximum distance, expressed in points, that defines how far the finger is allowed to travel along the Y axis during a tap gesture. | number | no       | All      | yes      |
-| maxDist       | Maximum distance, expressed in points, that defines how far the finger is allowed to travel during a tap gesture.                  | number | no       | All      | yes      |
+| minPointers   | 处理器激活前需要放置的最少手指数量。                                           | number | no       | All      | yes      |
+| maxDurationMs | 手指触摸后必须在多快时间内抬起的最大时长（毫秒）。                            | number | no       | All      | yes      |
+| maxDelayMs    | 在需要多次点击时，两次点击之间允许经过的最大时间（毫秒）。                            | number | no       | All      | yes      |
+| maxDeltaX     | 点击手势期间手指在 X 轴允许移动的最大距离（point）。 | number | no       | All      | yes      |
+| maxDeltaY     | 点击手势期间手指在 Y 轴允许移动的最大距离（point）。 | number | no       | All      | yes      |
+| maxDist       | 点击手势期间手指允许移动的最大距离（point）。                  | number | no       | All      | yes      |
 
 #### TapGestureHandler 事件数据
 
@@ -458,25 +452,26 @@ Y coordinate of the current position of the pointer (finger or a leading pointer
 
 `x`
 
-X coordinate, expressed in points, of the current position of the pointer (finger or a leading pointer when there are multiple fingers placed) relative to the view attached to the handler.
+指针（单指或多指的主指）相对于附加到处理器的视图的当前 X 坐标，单位为 point。
 
 `y`
 
-Y coordinate, expressed in points, of the current position of the pointer (finger or a leading pointer when there are multiple fingers placed) relative to the view attached to the handler.
+指针（单指或多指的主指）相对于附加到处理器的视图的当前 Y 坐标，单位为 point。
 
 `absoluteX`
 
-X coordinate, expressed in points, of the current position of the pointer (finger or a leading pointer when there are multiple fingers placed) relative to the window. It is recommended to use absoluteX instead of x in cases when the view attached to the handler can be transformed as an effect of the gesture.
+指针（单指或多指的主指）相对于窗口的当前 X 坐标，单位为 point。若手势会导致视图变换，推荐使用 absoluteX 而不是 x。
 
 `absoluteY`
 
-Y coordinate, expressed in points, of the current position of the pointer (finger or a leading pointer when there are multiple fingers placed) relative to the window. It is recommended to use absoluteY instead of y in cases when the view attached to the handler can be transformed as an effect of the gesture.
+指针（单指或多指的主指）相对于窗口的当前 Y 坐标，单位为 point。若手势会导致视图变换，推荐使用 absoluteY 而不是 y。
 
 ## 遗留问题
 
+- [ ] statusbaranimation属性由于Arkts bar 只有淡出淡入动画和RN框架状态栏动画不支持，该功能暂不支持，问题: [issue#55](https://github.com/react-native-oh-library/react-native-harmony-gesture-handler/issues/55)
+
 ## 其他
 
-- [ ] statusbaranimation属性由于Arkts bar 只有淡出淡入动画和RN框架状态栏动画不支持，该功能暂不支持，问题: [issue#55](https://github.com/react-native-oh-library/react-native-harmony-gesture-handler/issues/55)
 
 ## 开源协议
 
