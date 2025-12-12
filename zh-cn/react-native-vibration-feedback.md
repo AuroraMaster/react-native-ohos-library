@@ -24,7 +24,6 @@
 | 1.0.1     | [@react-native-ohos/react-native-vibration-feedback Releases](https://github.com/react-native-oh-library/react-native-vibration-feedback/releases) | 0.72       |
 | 1.1.0     | [@react-native-ohos/react-native-vibration-feedback Releases](https://github.com/react-native-oh-library/react-native-vibration-feedback/releases) | 0.77       |
 
-对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -51,52 +50,36 @@ yarn add @react-native-ohos/react-native-vibration-feedback
 ```js
 import React from "react";
 import { View, Button} from "react-native";
-import {TestCase, Tester, TestSuite} from "@rnoh/testerino"
 import RNVibrationFeedback from 'react-native-vibration-feedback';
 
 const App = (props) => {
 
   return (
-    <Tester style={{flex: 1 , marginTop: 30}}>
-      <TestSuite name='vibration-feedback'>
-          <View style={{ margin: 50, flexDirection: "column", justifyContent: "space-between" }}>
-            <View>
-              <TestCase itShould={"Peek"}>
-                <Button
-                title="Peek"
-                onPress={() => RNVibrationFeedback.vibrateWith(1519)}
-                />
-              </TestCase>
-              <TestCase itShould={"Pop"}>
-                <Button
-                title="Pop"
-                onPress={() => RNVibrationFeedback.vibrateWith(1520)}
-                />
-              </TestCase>
-              <TestCase itShould={"Nope"}>
-                <Button
-                title="Nope"
-                onPress={() => RNVibrationFeedback.vibrateWith(1521)}
-                />
-              </TestCase>
-            </View>
-          </View>
-      </TestSuite>  
-    </Tester>
+    <View style={{ margin: 50, flexDirection: "column", justifyContent: "space-between" }}>
+      <View>
+        <Button
+          title="Peek"
+          onPress={() => RNVibrationFeedback.vibrateWith(1519)}
+        />
+        <Button
+          title="Pop"
+          onPress={() => RNVibrationFeedback.vibrateWith(1520)}
+        />
+        <Button
+          title="Nope"
+          onPress={() => RNVibrationFeedback.vibrateWith(1521)}
+        />
+      </View>
+    </View>
   );
 };
 
 export default App
 ```
 
-## 使用 Codegen
-
-
-本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
-
 ## Link
 
-目前暂不支持AutoLink，所以Link步骤需要手动配置。
+此步骤为手动配置原生依赖项的指导。
 
 首先需要使用DevEco Studio打开项目里的HarmonyOS工程 `harmony`
 
@@ -237,9 +220,9 @@ ohpm install
 
 ### 权限要求
 
-- 由于此库涉及振动功能，使用对应接口时则需要配置对应的权限，权限需配置在entry/src/main目录下module.json5文件中。其中部分权限需弹窗向用户申请授权。具体权限配置见文档：[程序访问控制](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/security/AccessToken/Readme-CN.md#/openharmony/docs/blob/master/zh-cn/application-dev/security/AccessToken/app-permission-mgmt-overview.md)。
+- 由于此库涉及振动功能，使用对应接口时则需要配置对应的权限，权限需配置在**entry/src/main**目录下**module.json5**文件中。其中部分权限需弹窗向用户申请授权。具体权限配置见文档：[程序访问控制](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/security/AccessToken/Readme-CN.md#/openharmony/docs/blob/master/zh-cn/application-dev/security/AccessToken/app-permission-mgmt-overview.md)。
 
-- 此库部分功能与接口需要normal权限：ohos.permission.VIBRATE。
+- 此库部分功能与接口需要**normal**权限：**ohos.permission.VIBRATE**。
 
 ## API
 
@@ -260,8 +243,9 @@ ohpm install
 | 1519 | Peek | 弱短震动
 | 1520 | Pop  | 强烈的短震动        |
 | 1521 | Nope | 短时间内三次震动  |
+
 1521这个震动需要在API18以上才会生效，API18以下使用该震动，会自动变为1519的震动类型。
 
 ## 开源协议
 
-本项目基于 [Apache License 2.0](https://github.com/react-native-oh-library/react-native-vibration-feedback/blob/sig/LICENSE). ，请自由地享受和参与开源。
+本项目基于 [Apache License 2.0](https://github.com/react-native-oh-library/react-native-vibration-feedback/blob/sig/LICENSE)，请自由地享受和参与开源。
