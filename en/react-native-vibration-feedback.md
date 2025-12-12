@@ -16,12 +16,13 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library：[@react-native-ohos/react-native-vibration-feedback Releases](https://github.com/react-native-oh-library/react-native-vibration-feedback/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Find the matching version information in the release address of a third-party library：
 
 | Version | Post Information                                                     | Support RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
 | 1.0.1     | [@react-native-ohos/react-native-vibration-feedback Releases](https://github.com/react-native-oh-library/react-native-vibration-feedback/releases) | 0.72       |
 | 1.1.0     | [@react-native-ohos/react-native-vibration-feedback Releases](https://github.com/react-native-oh-library/react-native-vibration-feedback/releases) | 0.77       |
+
 
 Go to the project directory and execute the following instruction:
 
@@ -48,51 +49,36 @@ The following code shows the basic use scenario of the repository:
 ```js
 import React from "react";
 import { View, Button} from "react-native";
-import {TestCase, Tester, TestSuite} from "@rnoh/testerino"
 import RNVibrationFeedback from 'react-native-vibration-feedback';
 
 const App = (props) => {
 
   return (
-    <Tester style={{flex: 1 , marginTop: 30}}>
-      <TestSuite name='vibration-feedback'>
-          <View style={{ margin: 50, flexDirection: "column", justifyContent: "space-between" }}>
-            <View>
-              <TestCase itShould={"Peek"}>
-                <Button
-                title="Peek"
-                onPress={() => RNVibrationFeedback.vibrateWith(1519)}
-                />
-              </TestCase>
-              <TestCase itShould={"Pop"}>
-                <Button
-                title="Pop"
-                onPress={() => RNVibrationFeedback.vibrateWith(1520)}
-                />
-              </TestCase>
-              <TestCase itShould={"Nope"}>
-                <Button
-                title="Nope"
-                onPress={() => RNVibrationFeedback.vibrateWith(1521)}
-                />
-              </TestCase>
-            </View>
-          </View>
-      </TestSuite>  
-    </Tester>
+    <View style={{ margin: 50, flexDirection: "column", justifyContent: "space-between" }}>
+      <View>
+        <Button
+          title="Peek"
+          onPress={() => RNVibrationFeedback.vibrateWith(1519)}
+        />
+        <Button
+          title="Pop"
+          onPress={() => RNVibrationFeedback.vibrateWith(1520)}
+        />
+        <Button
+          title="Nope"
+          onPress={() => RNVibrationFeedback.vibrateWith(1521)}
+        />
+      </View>
+    </View>
   );
 };
 
 export default App
 ```
 
-## Use Codegen
-
-If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
-
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+This step is a guide for manually configuring native dependencies.
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -110,6 +96,9 @@ Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 ### 2.Introducing Native Code
 
 Currently, two methods are available:
+
+1. Use the HAR file (this method will be deprecated once the IDE supports the relevant functionality and is preferred currently).
+2. Directly link to the source code.
 
 Method 1 (recommended): Use the HAR file.
 
@@ -137,7 +126,7 @@ Method 2: Directly link to the source code.
 
 ### 3.Configuring CMakeLists and Introducing UnistylesPackage
 
-> V3.1.3 Need Configuring CMakeLists and Introducing UnistylesPackage。
+Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
 ```diff
 ...
@@ -227,7 +216,11 @@ The content of this document has been validated based on the following version:
 3. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.112;
 4. RNOH：0.77.18; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 6.0.0.858; ROM：5.0.0.102;
 
+### Permission Requirements
 
+- This library involves the Bluetooth system control function. Therefore, you need to configure the corresponding permission in the **module.json5** file in the **entry/src/main** directory when using the corresponding APIs. Some permissions need to be requested from users in a pop-up window. For details about the permission configuration, see [Application Access Control](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/security/AccessToken/Readme-CN.md#/openharmony/docs/blob/master/zh-cn/application-dev/security/AccessToken/app-permission-mgmt-overview.md)。
+
+- Some functions and APIs of this library require the **normal** permission **ohos.permission.VIBRATE**.
 ## API
 
 > [!tip] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
@@ -250,6 +243,7 @@ Provide the following three types of vibration
 | 1519 | Peek | Weak short vibration            |
 | 1520 | Pop  | Strong short vibration          |
 | 1521 | Nope | Three pops in a short interval  |
+
 The vibration of 1521 needs to be above API18 to take effect. If the vibration is changed below API18, it will automatically change to the vibration type of 1519.
 ## License
 
