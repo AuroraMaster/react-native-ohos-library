@@ -185,11 +185,19 @@ const styles = StyleSheet.create({
 });
 ```
 
-## 2. Manual Link
+## 2. Link
 
-Version >= @react-native-ohos/image-editor@3.2.1，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                              | 是否支持autolink | RN框架版本 |
+|------------------------------|-----------------|------------|
+| ~4.3.1                       |  No              |  0.77     |
+| ~3.2.1                       |  Yes             |  0.72     |
+| <= 3.2.0-nc.0.1.3@deprecated |  No              |  0.72     |
 
-此步骤为手动配置原生依赖项的指导。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
@@ -291,7 +299,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 2.5. 运行
+</details>
+
+## 3. 运行
 
 点击右上角的 `sync` 按钮
 
@@ -304,9 +314,9 @@ ohpm install
 
 然后编译、运行即可。
 
-## 3. 约束与限制
+## 4. 约束与限制
 
-### 3.1. 兼容性
+### 兼容性
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
@@ -316,7 +326,7 @@ ohpm install
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
-## 4. 属性
+## 5. 属性
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
@@ -332,7 +342,7 @@ ohpm install
 | `quality`     | A value in range `0.0` - `1.0` specifying compression level of the result image. `1` means no compression (highest quality) and `0` the highest compression (lowest quality)<br/>**Default value**: `0.9` | number | no       | All      | yes               |
 | `format`      | The format of the resulting image.<br/>**Default value**: based on the provided image;<br/>if value determination is not possible, `'jpeg'` will be used as a fallback.         | string | no       | All      | yes               |
 
-## 5. API
+## 6. API
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
@@ -342,10 +352,10 @@ ohpm install
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | cropImage | Crop the image specified by the URI param. If URI points to a remote image, it will be downloaded automatically. If the image cannot be loaded/downloaded, the promise will be rejected.<br/><br/>If the cropping process is successful, the resultant cropped image will be stored in the cache path, and the CropResult returned in the promise will point to the image in the cache path. ⚠️ Remember to delete the cropped image from the cache path when you are done with it. | function | yes | ios/Android | yes               |
 
-## 6. 遗留问题
+## 7. 遗留问题
 
-## 7. 其他
+## 8. 其他
 
-## 8. 开源协议
+## 9. 开源协议
 
 本项目基于 [The MIT License (MIT)](https://gitee.com/openharmony-sig/rntpc_react-native-image-editor/blob/master/LICENSE) ，请自由地享受和参与开源。

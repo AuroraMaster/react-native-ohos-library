@@ -288,136 +288,31 @@ export const tryDeepLinking = async () => {
 
 ## Use Codegen
 
-Version >= @react-native-ohos/react-native-inappbrowser@3.7.1，Adapted codegen-lib to generate bridge code.
-
-If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
+This library has been adapted for `Codegen`. Before using it, you need to proactively generate the bridge code for the third-party library. For details, please refer to the [Codegen Usage Documentation](/en/codegen.md).
 
 ## Link
 
-Version >= @react-native-ohos/react-native-inappbrowser@3.7.1，Autolink is supported, no manual configuration is required(The content that still needs to be manually configured has been marked in the corresponding title), and currently only supports 72 frames. Autolink Framework Guidance Document：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                           | Is supported autolink | Supported RN Version |
+|---------------------------|-----------------------|----------------------|
+| ~3.8.0                    | No                    |  0.77                |
+| ~3.7.1                    | Yes                   |  0.72                |
+| <= 3.7.0-0.0.4@deprecated | No                    |  0.72                |
 
-This step provides guidance for manually configuring native dependencies.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
 
-```
-Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
+First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
+
+### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
+
+```json
 {
   ...
   "overrides": {
     "@rnoh/react-native-openharmony" : "./react_native_openharmony"
-  }
-}
-```
-
-### 1. Configuring Entry(This module always requires manual configuration)
-
-1. Create **BrowserManagerAbility.ets** in **entry/src/main/ets/entryability**.
-
-```
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { window } from '@kit.ArkUI';
-
-export default class BrowserManagerAbility extends UIAbility {
-
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-  }
-
-  onDestroy(): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
-  }
-
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-
-    windowStage.loadContent('pages/BrowserManagerPage', (err) => {
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-        return;
-      }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
-    });
-  }
-
-  onWindowStageDestroy(): void {
-    // Main window is destroyed, release UI related resources
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
-  }
-
-  onForeground(): void {
-    // Ability has brought to foreground
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
-  }
-
-  onBackground(): void {
-    // Ability has back to background
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
-  }
-}
-
-```
-
-2. Register **BrowserManagerAbility** in **entry/src/main/module.json5**.
-
-```
-"abilities":[{
-    "name": "BrowserManagerAbility",
-    "srcEntry": "./ets/entryability/BrowserManagerAbility.ets",
-    "description": "$string:EntryAbility_desc",
-    "icon": "$media:icon",
-    "startWindowIcon": "$media:startIcon",
-    "startWindowBackground": "$color:start_window_background",
-    "visible": true,
-  }
-...
-]
-```
-
-3. Create **BrowserManagerPage.ets** in **entry/src/main/ets/pages**.
-
-```
-import { BrowserPage } from '@react-native-ohos/react-native-inappbrowser-reborn/Index'
-
-@Entry
-@Component
-struct ChromeTabsManagerPage {
-  build() {
-    Row(){
-      Column(){
-        BrowserPage();
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-
-}
-```
-
-4. Add the following configuration to **entry/src/main/resources/base/profile/main_pages.json**:
-
-```
-{
- "src": [
-  "pages/Index",
-  "pages/BrowserManagerPage"
- ]
-}
-```
-
-5. If you want to warm up the browser client in your application to accelerate its startup, add the following content to **BrowserManagerAbility**:
-
-```
-import { RNInAppBrowserModule } from '@react-native-ohos/react-native-inappbrowser-reborn/ts';
-
-export default class BrowserManagerAbility extends UIAbility {
-
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    RNInAppBrowserModule.start();
   }
 }
 ```
@@ -529,7 +424,125 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 5. Running
+</details>
+
+## Necessary configuration items
+
+> [!TIP] The content of this module cannot be automatically generated by autolink and must always be manually configured.
+
+### Configuring Entry(This module always requires manual configuration)
+
+1. Create **BrowserManagerAbility.ets** in **entry/src/main/ets/entryability**.
+
+```
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
+
+export default class BrowserManagerAbility extends UIAbility {
+
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+  }
+
+  onDestroy(): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // Main window is created, set main page for this ability
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+    windowStage.loadContent('pages/BrowserManagerPage', (err) => {
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
+    });
+  }
+
+  onWindowStageDestroy(): void {
+    // Main window is destroyed, release UI related resources
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+  }
+
+  onForeground(): void {
+    // Ability has brought to foreground
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+  }
+
+  onBackground(): void {
+    // Ability has back to background
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+  }
+}
+
+```
+
+2. Register **BrowserManagerAbility** in **entry/src/main/module.json5**.
+
+```
+"abilities":[{
+    "name": "BrowserManagerAbility",
+    "srcEntry": "./ets/entryability/BrowserManagerAbility.ets",
+    "description": "$string:EntryAbility_desc",
+    "icon": "$media:icon",
+    "startWindowIcon": "$media:startIcon",
+    "startWindowBackground": "$color:start_window_background",
+    "visible": true,
+  }
+...
+]
+```
+
+3. Create **BrowserManagerPage.ets** in **entry/src/main/ets/pages**.
+
+```
+import { BrowserPage } from '@react-native-ohos/react-native-inappbrowser-reborn/Index'
+
+@Entry
+@Component
+struct ChromeTabsManagerPage {
+  build() {
+    Row(){
+      Column(){
+        BrowserPage();
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+
+}
+```
+
+4. Add the following configuration to **entry/src/main/resources/base/profile/main_pages.json**:
+
+```
+{
+ "src": [
+  "pages/Index",
+  "pages/BrowserManagerPage"
+ ]
+}
+```
+
+5. If you want to warm up the browser client in your application to accelerate its startup, add the following content to **BrowserManagerAbility**:
+
+```
+import { RNInAppBrowserModule } from '@react-native-ohos/react-native-inappbrowser-reborn/ts';
+
+export default class BrowserManagerAbility extends UIAbility {
+
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    RNInAppBrowserModule.start();
+  }
+}
+```
+
+## Running
 
 Click the `sync` button in the upper right corner.
 

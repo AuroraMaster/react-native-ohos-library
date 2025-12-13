@@ -278,19 +278,25 @@ export default TestDemo2
 
 ## 2. Use Codegen
 
-Version >= @react-native-ohos/react-native-image-sequence-2@0.9.2, compatible with codegen-lib for generating bridge code.
+This library has been adapted for `Codegen`. Before using it, you need to proactively generate the bridge code for the third-party library. For details, please refer to the [Codegen Usage Documentation](/en/codegen.md).
 
-If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
+## 3. Link
 
-## 3. Manual Link
+|                           | Is supported autolink | Supported RN Version |
+|---------------------------|-----------------------|----------------------|
+| ~0.10.0                   | No                    |  0.77                |
+| ~0.9.2                    | Yes                   |  0.72                |
+| <= 0.9.1-0.0.3@deprecated | No                    |  0.72                |
 
-Version >= @react-native-ohos/react-native-image-sequence-2@0.9.2 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-This step provides guidance for manually configuring native dependencies.
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
 
-Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
-### 3.1. Overrides RN SDK
+### 3.1 Overrides RN SDK
 
 To ensure the project relies on the same version of the RN SDK, you need to add an `overrides` field in the project's root `oh-package.json5` file, specifying the RN SDK version to be used. The replacement version can be a specific version number, a semver range, or a locally available HAR package or source directory.
 
@@ -306,7 +312,7 @@ For more information about the purpose of this field, please refer to the [offic
 }
 ```
 
-### 3.2. Introducing Native Code
+### 3.2 Introducing Native Code
 
 Currently, two methods are available:
 
@@ -340,7 +346,7 @@ Method 2: Directly link to the source code.
 
 > [!TIP]For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 3.3. Configuring CMakeLists and Introducing ImageSequence2Package Package
+### 3.3 Configuring CMakeLists and Introducing ImageSequence2Package Package
 
 > If you are using version <= 0.9.1-0.0.3, please skip this chapter.
 
@@ -415,7 +421,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 3.4. Running
+</details>
+
+## 4. Running
 
 Click the `sync` button in the upper right corner.
 
@@ -428,9 +436,9 @@ ohpm install
 
 Then build and run the code.
 
-## 4. Constraints
+## 5. Constraints
 
-### 4.1. Compatibility
+### Compatibility
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
@@ -440,7 +448,7 @@ Verified in the following versions.
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
-## 5. Properties
+## 6. Properties
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
@@ -455,10 +463,10 @@ Verified in the following versions.
 | downsampleWidth  | The width to use for optional downsampling. Both `downsampleWidth` and `downsampleHeight` must be set to a positive number to enable downsampling. Default: -1 | number  | No       | All      | Yes               |
 | downsampleHeight | The height to use for optional downsampling. Both `downsampleWidth` and `downsampleHeight` must be set to a positive number to enable downsampling. Default: -1 | number  | No       | All      | Yes               |
 
-## 6. Known Issues
+## 7. Known Issues
 
-## 7. Others
+## 8. Others
 
-## 8. License
+## 9. License
 
 This project is licensed under [The MIT License (MIT)](https://github.com/bwindsor/react-native-image-sequence/blob/aee3d372d7960234721e32d2b02432fb5d0fa98b/LICENSE), Please enjoy and participate freely in open source.

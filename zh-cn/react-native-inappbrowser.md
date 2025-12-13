@@ -267,136 +267,31 @@ export const tryDeepLinking = async () => {
 
 ## 使用 Codegen
 
-Version >= @react-native-ohos/react-native-inappbrowser@3.7.1，已适配codegen-lib生成桥接代码。
-
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
-Version >= @react-native-ohos/react-native-inappbrowser@3.7.1，已支持 Autolink，无需手动配置（仍需手动配置的内容已在对应标题处标记），目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                           | 是否支持autolink | RN框架版本 |
+|---------------------------|-----------------|------------|
+| ~3.8.0                    |  No              |  0.77     |
+| ~3.7.1                    |  Yes             |  0.72     |
+| <= 3.7.0-0.0.4@deprecated |  No              |  0.72     |
 
-此步骤为手动配置原生依赖项的指导。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 harmony
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
 
-```
-在工程根目录的 oh-package.json 添加 overrides字段
+首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
+
+### 1.在工程根目录的 `oh-package.json5` 添加 overrides字段
+
+```json
 {
   ...
   "overrides": {
     "@rnoh/react-native-openharmony" : "./react_native_openharmony"
-  }
-}
-```
-
-### 1.配置Entry(该模块始终需要手动配置)
-
-**1.在 entry/src/main/ets/entryability 下创建 BrowserManagerAbility.ets**
-
-```
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { window } from '@kit.ArkUI';
-
-export default class BrowserManagerAbility extends UIAbility {
-
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-  }
-
-  onDestroy(): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
-  }
-
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-
-    windowStage.loadContent('pages/BrowserManagerPage', (err) => {
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-        return;
-      }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
-    });
-  }
-
-  onWindowStageDestroy(): void {
-    // Main window is destroyed, release UI related resources
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
-  }
-
-  onForeground(): void {
-    // Ability has brought to foreground
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
-  }
-
-  onBackground(): void {
-    // Ability has back to background
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
-  }
-}
-
-```
-
-**2.在 entry/src/main/module.json5注册BrowserManagerAbility**
-
-```
-"abilities":[{
-    "name": "BrowserManagerAbility",
-    "srcEntry": "./ets/entryability/BrowserManagerAbility.ets",
-    "description": "$string:EntryAbility_desc",
-    "icon": "$media:icon",
-    "startWindowIcon": "$media:startIcon",
-    "startWindowBackground": "$color:start_window_background",
-    "visible": true,
-  }
-...
-]
-```
-
-**3.在 entry/src/main/ets/pages 下创建 BrowserManagerPage.ets**
-
-```
-import { BrowserPage } from '@react-native-ohos/react-native-inappbrowser-reborn/Index'
-
-@Entry
-@Component
-struct ChromeTabsManagerPage {
-  build() {
-    Row(){
-      Column(){
-        BrowserPage();
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-
-}
-```
-
-**4.在 entry/src/main/resources/base/profile/main_pages.json 添加配置**
-
-```
-{
- "src": [
-  "pages/Index",
-  "pages/BrowserManagerPage"
- ]
-}
-```
-
-**5.如果需要预热应用内浏览器客户端，使其启动速度显著加快，可以将以下内容添加到BrowserManagerAbility**
-
-```
-import { RNInAppBrowserModule } from '@react-native-ohos/react-native-inappbrowser-reborn/ts';
-
-export default class BrowserManagerAbility extends UIAbility {
-
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    RNInAppBrowserModule.start();
   }
 }
 ```
@@ -511,7 +406,125 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 5.运行
+</details>
+
+## 必要的配置项
+
+> [!TIP] 该模块的内容无法通过autolink自动生成，始终需要手动配置。
+
+### 配置Entry(该模块始终需要手动配置)
+
+**1.在 entry/src/main/ets/entryability 下创建 BrowserManagerAbility.ets**
+
+```
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
+
+export default class BrowserManagerAbility extends UIAbility {
+
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+  }
+
+  onDestroy(): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // Main window is created, set main page for this ability
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+    windowStage.loadContent('pages/BrowserManagerPage', (err) => {
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
+    });
+  }
+
+  onWindowStageDestroy(): void {
+    // Main window is destroyed, release UI related resources
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+  }
+
+  onForeground(): void {
+    // Ability has brought to foreground
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+  }
+
+  onBackground(): void {
+    // Ability has back to background
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+  }
+}
+
+```
+
+**2.在 entry/src/main/module.json5注册BrowserManagerAbility**
+
+```
+"abilities":[{
+    "name": "BrowserManagerAbility",
+    "srcEntry": "./ets/entryability/BrowserManagerAbility.ets",
+    "description": "$string:EntryAbility_desc",
+    "icon": "$media:icon",
+    "startWindowIcon": "$media:startIcon",
+    "startWindowBackground": "$color:start_window_background",
+    "visible": true,
+  }
+...
+]
+```
+
+**3.在 entry/src/main/ets/pages 下创建 BrowserManagerPage.ets**
+
+```
+import { BrowserPage } from '@react-native-ohos/react-native-inappbrowser-reborn/Index'
+
+@Entry
+@Component
+struct ChromeTabsManagerPage {
+  build() {
+    Row(){
+      Column(){
+        BrowserPage();
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+
+}
+```
+
+**4.在 entry/src/main/resources/base/profile/main_pages.json 添加配置**
+
+```
+{
+ "src": [
+  "pages/Index",
+  "pages/BrowserManagerPage"
+ ]
+}
+```
+
+**5.如果需要预热应用内浏览器客户端，使其启动速度显著加快，可以将以下内容添加到BrowserManagerAbility**
+
+```
+import { RNInAppBrowserModule } from '@react-native-ohos/react-native-inappbrowser-reborn/ts';
+
+export default class BrowserManagerAbility extends UIAbility {
+
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    RNInAppBrowserModule.start();
+  }
+}
+```
+
+## 运行
 
 点击右上角的 `sync` 按钮
 

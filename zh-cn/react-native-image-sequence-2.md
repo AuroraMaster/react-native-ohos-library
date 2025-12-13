@@ -279,21 +279,27 @@ export default TestDemo2
 
 ## 2. 使用 Codegen
 
-Version >= @react-native-ohos/react-native-image-sequence-2@0.9.2，已适配codegen-lib生成桥接代码。
-
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
-## 3. Manual Link
+## 3. Link
 
-Version >= @react-native-ohos/react-native-image-sequence-2@0.9.2，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                           | 是否支持autolink | RN框架版本 |
+|---------------------------|-----------------|------------|
+| ~0.10.0                   |  No              |  0.77     |
+| ~0.9.2                    |  Yes             |  0.72     |
+| <= 0.9.1-0.0.3@deprecated |  No              |  0.72     |
 
-此步骤为手动配置原生依赖项的指导。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
 关于该字段的作用请阅读[官方说明](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-oh-package-json5-V5#zh-cn_topic_0000001792256137_overrides)
 
-### 3.1. Overrides RN SDK
+### 3.1 Overrides RN SDK
 
 为了让工程依赖同一个版本的 RN SDK，需要在工程根目录的 `harmony/oh-package.json5` 添加 overrides 字段，指向工程需要使用的 RN SDK 版本。替换的版本既可以是一个具体的版本号，也可以是一个模糊版本，还可以是本地存在的 HAR 包或源码目录。
 
@@ -309,7 +315,7 @@ Version >= @react-native-ohos/react-native-image-sequence-2@0.9.2，已支持 Au
 }
 ```
 
-### 3.2. 引入原生端代码
+### 3.2 引入原生端代码
 
 目前有两种方法：
 
@@ -342,7 +348,7 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 3.3. 配置 CMakeLists 和引入 ImageSequence2Package
+### 3.3 配置 CMakeLists 和引入 ImageSequence2Package
 
 > 若使用的是 <= 0.9.1-0.0.3 版本，请跳过本章。
 
@@ -417,7 +423,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 3.4. 运行
+</details>
+
+## 4. 运行
 
 点击右上角的 `sync` 按钮
 
@@ -430,9 +438,9 @@ ohpm install
 
 然后编译、运行即可。
 
-## 4. 约束与限制
+## 5. 约束与限制
 
-### 4.1. 兼容性
+### 兼容性
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
@@ -442,7 +450,7 @@ ohpm install
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
-## 5. 属性
+## 6. 属性
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
@@ -457,10 +465,10 @@ ohpm install
 | downsampleWidth  | 用于可选降采样的宽度。必须将`downsampleWidth`和`downsampleHeight`都设置为正数才能启用降采样。默认值: -1 | number  | No       | All      | Yes               |
 | downsampleHeight | 用于可选降采样的高度。必须将`downsampleWidth`和`downsampleHeight`都设置为正数才能启用降采样。默认值: -1 | number  | No       | All      | Yes               |
 
-## 6. 遗留问题
+## 7. 遗留问题
 
-## 7. 其他
+## 8. 其他
 
-## 8. 开源协议
+## 9. 开源协议
 
 本项目基于 [The MIT License (MIT)](https://github.com/bwindsor/react-native-image-sequence/blob/aee3d372d7960234721e32d2b02432fb5d0fa98b/LICENSE) ，请自由地享受和参与开源。
