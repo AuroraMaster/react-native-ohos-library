@@ -317,17 +317,23 @@ const styles = StyleSheet.create({
 
 ## 使用 Codegen
 
-Version >= @react-native-ohos/react-native-syan-image-picker@0.5.4，已适配codegen-lib生成桥接代码。
-
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
-Version >= @react-native-ohos/react-native-syan-image-picker@0.5.4，已支持 Autolink，无需手动配置（仍需手动配置的内容已在对应标题处标记），目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | 是否支持autolink | RN框架版本 |
+|--------------------------------------|-----------------|------------|
+| ~0.6.0                               |  No              |  0.77     |
+| ~0.5.4                               |  Yes             |  0.72     |
+| <= 0.5.3-0.0.4@deprecated            |  No              |  0.72     |
 
-此步骤为手动配置原生依赖项的指导。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
+
+首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
 ### 1.在工程根目录的 `oh-package.json5` 添加 overrides 字段
 
@@ -340,7 +346,110 @@ Version >= @react-native-ohos/react-native-syan-image-picker@0.5.4，已支持 A
 }
 ```
 
-### 2.配置Entry（该模块始终需要手动配置）
+### 2. 引入原生端代码
+
+目前有两种方法：
+
+1. 通过 har 包引入（在 IDE 完善相关功能后该方法会被遗弃，目前首选此方法）；
+2. 直接链接源码。
+
+方法一：通过 har 包引入（推荐）
+
+> [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
+
+打开 `entry/oh-package.json5`，添加以下依赖
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-syan-image-picker": "file:../../node_modules/@react-native-ohos/react-native-syan-image-picker/harmony/syan_image_picker.har"
+  }
+```
+
+点击右上角的 `sync` 按钮
+
+或者在终端执行：
+
+```bash
+cd entry
+ohpm install
+```
+
+方法二：直接链接源码
+
+> [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
+
+### 3. 配置 CMakeLists 和引入 SyanImagePickerPackage
+
+> 若使用的是 <= 0.5.3-0.0.4 版本，请跳过本章。
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+...
+
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_END: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-syan-image-picker/src/main/cpp" ./syan_image_picker)
+# RNOH_END: manual_package_linking_1
+
+add_library(rnoh_app SHARED
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_syan_image_picker)
+# RNOH_BEGIN: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
++ #include "SyanImagePickerPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
++        std::make_shared<SyanImagePickerPackage>(ctx)
+}
+```
+
+### 4. 在 ArkTs 侧引入SyanImagePickerPackage
+
+打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
+
+```diff
+  ...
++   import {SyanImagePickerPackage} from '@react-native-ohos/react-native-syan-image-picker/ts';
+
+export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
+  return [
+    new SamplePackage(ctx),
++   new SyanImagePickerPackage(ctx)
+  ];
+}
+```
+</details>
+
+## 必要的配置项
+
+> [!TIP] 该模块的内容无法通过autolink自动生成，始终需要手动配置。
+
+### 配置Entry（该模块始终需要手动配置）
 
 **(1)在 entry/src/main/ets/entryability 下创建 ImageCropAbility.ets**
 
@@ -441,105 +550,7 @@ struct ImageEdit {
 }
 ```
 
-### 3.引入原生端代码
-
-目前有两种方法：
-
-1. 通过 har 包引入（在 IDE 完善相关功能后该方法会被遗弃，目前首选此方法）；
-2. 直接链接源码。
-
-方法一：通过 har 包引入（推荐）
-
-> [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
-
-打开 `entry/oh-package.json5`，添加以下依赖
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-ohos/react-native-syan-image-picker": "file:../../node_modules/@react-native-ohos/react-native-syan-image-picker/harmony/syan_image_picker.har"
-  }
-```
-
-点击右上角的 `sync` 按钮
-
-或者在终端执行：
-
-```bash
-cd entry
-ohpm install
-```
-
-方法二：直接链接源码
-
-> [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
-
-### 4.配置 CMakeLists 和引入 SyanImagePickerPackage
-
-> 若使用的是 <= 0.5.3-0.0.4 版本，请跳过本章。
-
-打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
-
-```diff
-...
-
-project(rnapp)
-cmake_minimum_required(VERSION 3.4.1)
-set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
-+ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
-set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
-
-add_subdirectory("${RNOH_CPP_DIR}" ./rn)
-
-# RNOH_END: manual_package_linking_1
-add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-syan-image-picker/src/main/cpp" ./syan_image_picker)
-# RNOH_END: manual_package_linking_1
-
-add_library(rnoh_app SHARED
-    "./PackageProvider.cpp"
-    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
-)
-
-target_link_libraries(rnoh_app PUBLIC rnoh)
-
-# RNOH_BEGIN: manual_package_linking_2
-target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
-+ target_link_libraries(rnoh_app PUBLIC rnoh_syan_image_picker)
-# RNOH_BEGIN: manual_package_linking_2
-```
-
-打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
-
-```diff
-#include "RNOH/PackageProvider.h"
-+ #include "SyanImagePickerPackage.h"
-
-using namespace rnoh;
-
-std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
-    return {
-+        std::make_shared<SyanImagePickerPackage>(ctx)
-}
-```
-
-### 5.在 ArkTs 侧引入SyanImagePickerPackage
-
-打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
-
-```diff
-  ...
-+   import {SyanImagePickerPackage} from '@react-native-ohos/react-native-syan-image-picker/ts';
-
-export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
-  return [
-    new SamplePackage(ctx),
-+   new SyanImagePickerPackage(ctx)
-  ];
-}
-```
-
-### 6.运行
+## 运行
 
 点击右上角的 `sync` 按钮
 

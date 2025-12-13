@@ -319,17 +319,23 @@ const styles = StyleSheet.create({
 
 ## Use Codegen
 
-Version >= @react-native-ohos/react-native-syan-image-picker@0.5.4, compatible with codegen-lib for generating bridge code.
-
-This repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
+This library has been adapted for `Codegen`. Before using it, you need to proactively generate the bridge code for the third-party library. For details, please refer to the [Codegen Usage Documentation](/en/codegen.md).
 
 ## Link
 
-Version >= @react-native-ohos/react-native-syan-image-picker@0.5.4 now supports Autolink without requiring manual configuration(The content that still needs to be manually configured has been marked in the corresponding title), currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | Is supported autolink | Supported RN Version |
+|--------------------------------------|-----------------------|----------------------|
+| ~0.6.0                               |  No                   |  0.77                |
+| ~0.5.4                              |  Yes                  |  0.72                |
+| <= 0.5.3-0.0.4@deprecated            |  No                   |  0.72                |
 
-This step provides guidance for manually configuring native dependencies.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md.
 
-Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
+
+First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
 ### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
 
@@ -342,7 +348,108 @@ Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 }
 ```
 
-### 2.Configure Entry(This module always requires manual configuration)
+### 2. Introducing Native Code
+
+Currently, two methods are available:
+
+
+Method 1 (recommended): Use the HAR file.
+
+> [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
+
+Open `entry/oh-package.json5` file and add the following dependencies:
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-syan-image-picker": "file:../../node_modules/@react-native-ohos/react-native-syan-image-picker/harmony/syan_image_picker.har"
+  }
+```
+
+Click the `sync` button in the upper right corner.
+
+Alternatively, run the following instruction on the terminal:
+
+```bash
+cd entry
+ohpm install
+```
+
+Method 2: Directly link to the source code.
+
+> [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
+
+### 3. Introducing SyanImagePickerPackage to ArkTS
+
+Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
+
+```diff
+  ...
++   import {SyanImagePickerPackage} from '@react-native-ohos/react-native-syan-image-picker/ts';
+
+export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
+  return [
+    new SamplePackage(ctx),
++   new SyanImagePickerPackage(ctx)
+  ];
+}
+```
+
+### 4. Configuring CMakeLists and Introducing SyanImagePickerPackage
+
+> If you are using version <= 0.5.3-0.0.4, please skip this chapter.
+
+Open `entry/src/main/cpp/CMakeLists.txt`，and add the following code:
+
+```diff
+...
+
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_END: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-syan-image-picker/src/main/cpp" ./syan_image_picker)
+# RNOH_END: manual_package_linking_1
+
+add_library(rnoh_app SHARED
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_syan_image_picker)
+# RNOH_BEGIN: manual_package_linking_2
+```
+
+Open `entry/src/main/cpp/PackageProvider.cpp`，and add the following code:
+
+```diff
+#include "RNOH/PackageProvider.h"
++ #include "SyanImagePickerPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
++        std::make_shared<SyanImagePickerPackage>(ctx)
+}
+```
+</details>
+
+## 必要的配置项
+
+> [!TIP] 该模块的内容无法通过autolink自动生成，始终需要手动配置。
+
+### Configure Entry(This module always requires manual configuration)
 
 **(1)Create ImageCropAbility.ets under entry/src/main/ets/entryability**
 
@@ -443,103 +550,7 @@ struct ImageEdit {
 }
 ```
 
-### 3. Introducing Native Code
-
-Currently, two methods are available:
-
-
-Method 1 (recommended): Use the HAR file.
-
-> [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
-
-Open `entry/oh-package.json5` file and add the following dependencies:
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-ohos/react-native-syan-image-picker": "file:../../node_modules/@react-native-ohos/react-native-syan-image-picker/harmony/syan_image_picker.har"
-  }
-```
-
-Click the `sync` button in the upper right corner.
-
-Alternatively, run the following instruction on the terminal:
-
-```bash
-cd entry
-ohpm install
-```
-
-Method 2: Directly link to the source code.
-
-> [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
-
-### 4. Introducing SyanImagePickerPackage to ArkTS
-
-Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
-
-```diff
-  ...
-+   import {SyanImagePickerPackage} from '@react-native-ohos/react-native-syan-image-picker/ts';
-
-export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
-  return [
-    new SamplePackage(ctx),
-+   new SyanImagePickerPackage(ctx)
-  ];
-}
-```
-
-### 5.Configuring CMakeLists and Introducing SyanImagePickerPackage
-
-> If you are using version <= 0.5.3-0.0.4, please skip this chapter.
-
-Open `entry/src/main/cpp/CMakeLists.txt`，and add the following code:
-
-```diff
-...
-
-project(rnapp)
-cmake_minimum_required(VERSION 3.4.1)
-set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
-+ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
-set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
-
-add_subdirectory("${RNOH_CPP_DIR}" ./rn)
-
-# RNOH_END: manual_package_linking_1
-add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-syan-image-picker/src/main/cpp" ./syan_image_picker)
-# RNOH_END: manual_package_linking_1
-
-add_library(rnoh_app SHARED
-    "./PackageProvider.cpp"
-    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
-)
-
-target_link_libraries(rnoh_app PUBLIC rnoh)
-
-# RNOH_BEGIN: manual_package_linking_2
-target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
-+ target_link_libraries(rnoh_app PUBLIC rnoh_syan_image_picker)
-# RNOH_BEGIN: manual_package_linking_2
-```
-
-Open `entry/src/main/cpp/PackageProvider.cpp`，and add the following code:
-
-```diff
-#include "RNOH/PackageProvider.h"
-+ #include "SyanImagePickerPackage.h"
-
-using namespace rnoh;
-
-std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
-    return {
-+        std::make_shared<SyanImagePickerPackage>(ctx)
-}
-```
-
-### 6. Running
+## Running
 
 Click the `sync` button in the upper right corner.
 

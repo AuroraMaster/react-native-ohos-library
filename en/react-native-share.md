@@ -12,20 +12,21 @@
     </a>
 </p>
 
-This project is based on [react-native-share](https://github.com/react-native-share/react-native-share).
-
-This third-party library has been migrated to Gitee and is now available for direct download from npm, the new package name is:`@react-native-ohos/react-native-share`, The version correspondence details are as follows:
-
-| Version                    | Package Name                          | Repository         | Release                    | Support RN version |
-|----------------------------|---------------------------------------| ------------------ | -------------------------- |--------------------|
-| <=10.2.1-0.0.6@deprecated    | @react-native-oh-tpl/react-native-share Releases(deprecated)  | [Github](https://github.com/react-native-oh-library/react-native-share) | [Github Releases](https://github.com/react-native-oh-library/react-native-share/releases) | 0.72               |
-| 10.2.2                     | @react-native-ohos/react-native-share | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-share) | [Github Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-share/releases) | 0.72               |
-| 12.1.1                      | @react-native-ohos/react-native-share | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-share) | [GitCode Releases]() | 0.77               |
-
+> [!TIP] [Github address](https://github.com/react-native-share/react-native-share)
 
 ## Installation and Usage
 
-Go to the project directory and execute the following instruction:
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| <=10.2.1-0.0.6@deprecated | [@react-native-oh-tpl/react-native-share Releases(deprecated)](https://github.com/react-native-oh-library/react-native-share/releases) | 0.72       |
+| 10.2.2            | [@react-native-ohos/react-native-share Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-share/releases)   | 0.72       |
+| 12.1.1             | [@react-native-ohos/react-native-share Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-share/releases)   | 0.77       |
+
+For older versions not published on npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
+
+Go to the project directory and enter the following command:
 
 <!-- tabs:start -->
 
@@ -86,18 +87,23 @@ export default App;
 
 ## Use Codegen
 
-Version >= @react-native-ohos/react-native-share@10.2.2, compatible with codegen-lib for generating bridge code.
-
-If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/zh-cn/codegen.md).
+This library has been adapted for `Codegen`. Before using it, you need to proactively generate the bridge code for the third-party library. For details, please refer to the [Codegen Usage Documentation](/en/codegen.md).
 
 ## Link
 
-Version >= @react-native-ohos/react-native-share@10.2.2 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
-Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | Is supported autolink | Supported RN Version |
+|--------------------------------------|-----------------------|----------------------|
+| ~12.1.1                               |  No                   |  0.77                |
+| ~10.2.2                              |  Yes                  |  0.72                |
+| <= 10.2.1-0.0.6@deprecated            |  No                   |  0.72                |
 
-This step provides guidance for manually configuring native dependencies.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md.
 
-Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
+
+First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
 ### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
 
@@ -205,8 +211,9 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 +        std::make_shared<RNSharePackage>(ctx)
 }
 ```
+</details>
 
-### 5. Running
+## Running
 
 Click the `sync` button in the upper right corner.
 
