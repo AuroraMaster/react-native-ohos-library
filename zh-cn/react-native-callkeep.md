@@ -24,7 +24,7 @@
 
 | 三方库版本            | 发布信息                                                     | 支持RN版本 |
 |------------------| ------------------------------------------------------------ | ---------- |
-| <= 4.3.14-0.0.1  | [@react-native-oh-tpl/react-native-callkeep Releases(deprecated)](https://github.com/react-native-oh-library/react-native-callkeep/releases) | 0.72       |
+| <= 4.3.14-0.0.1@deprecated  | [@react-native-oh-tpl/react-native-callkeep Releases(deprecated)](https://github.com/react-native-oh-library/react-native-callkeep/releases) | 0.72       |
 | 4.3.15           | [@react-native-ohos/react-native-callkeep Releases](https://github.com/react-native-oh-library/react-native-callkeep/releases)               | 0.72       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
@@ -101,17 +101,22 @@ export function CallKeepExample() {
 ```
 ## 使用 Codegen
 
-Version >= @react-native-ohos/react-native-callkeep@4.3.15，已适配codegen-lib生成桥接代码。
-
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
-Version >= @react-native-ohos/react-native-callkeep@4.3.15，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | 是否支持autolink | RN框架版本 |
+|--------------------------------------|-----------------|------------|
+| ~4.3.15                              |  Yes             |  0.72     |
+| <= 4.3.14-0.0.1@deprecated            |  No              |  0.72     |
 
-此步骤为手动配置原生依赖项的指导。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md。
 
-首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
+
+首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
 ### 在工程根目录的 `oh-package.json5` 添加 overrides字段
 
@@ -221,8 +226,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+</details>
 
-### 5.运行
+## 运行
 
 点击右上角的 `sync` 按钮
 
