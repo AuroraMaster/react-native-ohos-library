@@ -8,11 +8,12 @@
         <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
     </a>
 </p>
-[!TIP] [Github 地址](https://github.com/react-native-oh-library/auto-fill)
 
 auto-fill 基于 HarmonyOS [autoFillManager](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-app-ability-autofillmanager-V5) 模块，提供将表单输入数据保存到历史表单输入中，以供下次自动填充的功能，仅支持 ohos 平台。
 
 <video controls src="https://github.com/user-attachments/assets/19be83fb-2afb-4a31-9e7f-cba3848a5892" title="auto-fill-demo" width="180"></video>
+
+> [!TIP] [Github 地址](https://github.com/react-native-oh-library/auto-fill)
 
 ## 前提条件
 
@@ -55,7 +56,7 @@ yarn add @react-native-ohos/auto-fill
 ```tsx
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet } from 'react-native';
-import AutoFill from '@react-native-ohos/auto-fill';
+import AutoFill from 'auto-fill';
 
 const MyFormComponent = () => {
   const [fullName, setFullName] = useState('');
@@ -141,11 +142,20 @@ React-Native 侧 TextInput 组件接收的 [textContentType](https://reactnative
 
 ### Link
 
-Version >= @react-native-ohos/auto-fill@1.0.2，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | 是否支持autolink | RN框架版本 |
+|--------------------------------------|-----------------|------------|
+| ~1.1.0                               |  No              |  0.77     |
+| ~1.0.2                               |  Yes             |  0.72     |
+| <=1.0.1@deprecated                   |  No              |  0.72     |
 
-此步骤为手动配置原生依赖项的指导。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
+
+首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
 #### 1. 在 harmony 工程根目录的 `oh-package.json5` 添加 overrides 字段
 
@@ -250,8 +260,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+</details>
 
-#### 5.运行
+### 运行
 
 点击右上角的 `sync` 按钮
 

@@ -85,11 +85,20 @@ Keys.secureFor('SECRET_KEY');
 
 ## Link
 
-Version >= @react-native-ohos/react-native-keys@0.7.12，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | 是否支持autolink | RN框架版本 |
+|--------------------------------------|-----------------|------------|
+| ~0.8.0                               |  No              |  0.77     |
+| ~0.7.12                              |  Yes             |  0.72     |
+| <= 0.7.11@deprecated                 |  No              |  0.72     |
 
-此步骤为手动配置原生依赖项的指导。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
+
+首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
 ### 在工程根目录的 `oh-package.json` 添加 overrides字段
 
@@ -211,8 +220,12 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+</details>
 
-### 5.在 DevEco 创建运行前script（生成加解密代码和编译配置文件）
+## 必要的配置项
+
+> [!TIP] 该模块的内容无法通过autolink自动生成，始终需要手动配置。
+### 在 DevEco 创建运行前script（生成加解密代码和编译配置文件）
 
 > [!TIP] 如下步骤中添加配置完成时记得点击Apply按钮让配置生效
 
@@ -222,7 +235,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 3. 配置entry -> Before Lunch，点击加号选择 Run Another Configuration， 选择上一步配置的 Shell Script, 并将配置拖动到Hvigor-Build Make上方  
    ![entry config](../img/rnkeys/entry_config.PNG)
 
-### 6.运行
+## 运行
 
 点击右上角的 `sync` 按钮
 
