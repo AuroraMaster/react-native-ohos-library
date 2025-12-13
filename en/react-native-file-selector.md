@@ -61,18 +61,24 @@ export default App;
 
 ## Use Codegen
 
-Version >= @react-native-ohos/react-native-file-selector@1.0.3, compatible with codegen-lib for generating bridge code.
 
-If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
+This library has been adapted for `Codegen`. Before using it, you need to proactively generate the bridge code for the third-party library. For details, please refer to the [Codegen Usage Documentation](/en/codegen.md).
 
 ## Link
 
-Version >= @react-native-ohos/react-native-file-selector@1.0.3 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
-Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | Is supported autolink | Supported RN Version |
+|--------------------------------------|-----------------------|----------------------|
+| ~1.1.0                               |  No                   |  0.77                |
+| ~1.0.3                               |  Yes                  |  0.72                |
+| <= 1.0.2-0.0.3@deprecated            |  No                   |  0.72                |
 
-This step provides guidance for manually configuring native dependencies.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md.
 
-Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
+
+First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
 ### 1.Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
 
@@ -197,8 +203,9 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
     };
 }
 ```
+</details>
 
-### 5.Running
+## Running
 
 Click the sync button in the upper right corner.
 

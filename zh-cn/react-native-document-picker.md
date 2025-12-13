@@ -249,11 +249,19 @@ const styles = StyleSheet.create({
 
 ```
 
-## 2. Manual Link
+## 2. Link
 
-Version >= @react-native-ohos/react-native-document-picker@9.2.2，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | 是否支持autolink | RN框架版本 |
+|--------------------------------------|------------------|-----------|
+| ~9.3.2                               |  No              |  0.77     |
+| ~9.2.2                               |  Yes             |  0.72     |
+| <= 9.2.0-0.0.2@deprecated            |  No              |  0.72     |
 
-此步骤为手动配置原生依赖项的指导。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md。
+
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
@@ -355,8 +363,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+</details>
 
-### 2.4 运行
+## 3. 运行
 
 点击右上角的 `sync` 按钮
 
@@ -369,8 +378,8 @@ ohpm install
 
 然后编译、运行即可。
 
-## 3. 约束与限制
-### 3.1 兼容性
+## 4. 约束与限制
+### 4.1 兼容性
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
@@ -381,7 +390,7 @@ ohpm install
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 
-## 4. 属性
+## 5. 属性
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
@@ -398,7 +407,7 @@ ohpm install
 | transitionStyle  | Configure the transition style of the picker. Defaults to coverVertical.   | 'coverVertical' \| 'flipHorizontal' \| 'crossDissolve' \| 'partialCurl'  | no | IOS  | no |
 | mode  | Defaults to import. If mode is set to import the document picker imports the file from outside to inside the sandbox, otherwise if mode is set to open the document picker opens the file in-place.   | "import" \| "open"  | no | IOS  | no |
 
-## 5. API
+## 6. API
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
@@ -417,14 +426,14 @@ ohpm install
 | perPlatformTypes       | Different platforms, file type object map   | function | No       | IOS/Android | yes  |
 
 
-## 6. 遗留问题
+## 7. 遗留问题
 
 - [ ]  HarmonyOS 端file picker selectMode设置选文件夹无效: [issue#1](https://github.com/react-native-oh-library/document-picker/issues/1) 
 - [ ] releaseSecureAccess选择沙箱路径外文件无法实现， HarmonyOS 暂无此能力接口: [issue#2](https://github.com/react-native-oh-library/document-picker/issues/2)
 
-## 7. 其他
+## 8. 其他
 - 因权限问题无法读写图库资源，文件管理中从图库选择文件暂不支持。
 
-## 8. 开源协议
+## 9. 开源协议
 
 本项目基于 [The MIT License (MIT)](https://github.com/react-native-documents/document-picker/blob/v9.2.0/LICENSE.md) ，请自由地享受和参与开源。
