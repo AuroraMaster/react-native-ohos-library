@@ -131,6 +131,18 @@ export default App;
 
 ## Link
 
+|                                      | Is supported autolink  | Supported RN Version |
+|--------------------------------------|-----------------------|----------------------|
+| ~1.16.3                               |  No              |  0.77     |
+| ~1.13.3                              |  Yes             |  0.72     |
+| <= 1.13.2-0.0.10@deprecated            |  No              |  0.72     |
+
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md.
+
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
+
 Version >= @react-native-ohos/clipboard1.13.3 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
 Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
@@ -261,8 +273,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 
 ```
+</details>
 
-### 5. Running
+## Running
 
 Click the `sync` button in the upper right corner.
 
