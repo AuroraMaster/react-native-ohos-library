@@ -52,7 +52,7 @@ yarn add @react-native-ohos/react-native-quick-base64
 import React, { useState } from 'react';
 import { Text, View, TextInput, ScrollView, StyleSheet, Button } from 'react-native';
 
-import { byteLength, btoa, atob, toByteArray, fromByteArray, getNative, trimBase64Padding, shim } from '@react-native-ohos/react-native-quick-base64';
+import { byteLength, btoa, atob, toByteArray, fromByteArray, getNative, trimBase64Padding, shim } from 'react-native-quick-base64';
 type FuncBase64ToArrayBuffer = (
   data: string,
   removeLinebreaks?: boolean
@@ -418,9 +418,17 @@ const styles = StyleSheet.create({
 
 ## Link
 
-Version >= @react-native-ohos/react-native-quick-base64@2.1.3，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                    | 是否支持autolink | RN框架版本 |
+|------------------------------------|-----------------|------------|
+| ~2.2.0                             |  No              |  0.77     |
+| ~2.1.3                             |  Yes             |  0.72     |
+| <= 2.1.2-1.0.1@deprecated          |  No              |  0.72     |
 
-此步骤为手动配置原生依赖项的指导。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -543,7 +551,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 5.运行
+</details>
+
+## 运行
 
 点击右上角的 `sync` 按钮
 

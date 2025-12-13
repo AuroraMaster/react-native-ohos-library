@@ -66,7 +66,7 @@ import {
 import performance, {
   PerformanceObserver,
   setResourceLoggingEnabled,
-} from "@react-native-ohos/react-native-performance";
+} from "react-native-performance";
 export function TestNativePerformance() {
   const [result1, setResult1] = React.useState(0);
   const [result2, setResult2] = React.useState("");
@@ -207,18 +207,23 @@ const styles = StyleSheet.create({
 
 ## Use Codegen
 
-Version >= @react-native-ohos/react-native-performance@5.1.3, compatible with codegen-lib for generating bridge code.
-
-If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
+This library has been adapted for `Codegen`. Before using it, you need to proactively generate the bridge code for the third-party library. For details, please refer to the [Codegen Usage Documentation](/en/codegen.md).
 
 ## Link
 
-Version >= @react-native-ohos/react-native-performance@5.1.3 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
-Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | Is supported autolink  | Supported RN Version |
+|--------------------------------------|-----------------------|----------------------|
+| ~5.2.0                               |  No                   |  0.77                |
+| ~5.1.3                              |  Yes                  |  0.72                |
+| <= 5.1.2-0.0.3@deprecated            |  No                   |  0.72                |
 
-This step provides guidance for manually configuring native dependencies.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
+
+First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
 ### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
 
@@ -339,7 +344,9 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 5. Running
+</details>
+
+## Running
 
 Click the `sync` button in the upper right corner.
 
@@ -362,8 +369,6 @@ Then build and run the code.
    1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
    2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
    3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
-
-   ### Permission Requiremen
 
 ## Performance
 
