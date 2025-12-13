@@ -118,9 +118,17 @@ export default function OpSqliteExample() {
 
 ## Link
 
-Version >= @react-native-ohos/op-sqlite@8.0.3，已支持 Autolink，无需手动配置（仍需手动配置的内容已在对应标题处标记），目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | 是否支持autolink       | RN框架版本           |
+|--------------------------------------|-----------------------|----------------------|
+| ~14.0.1                              |  No                   |  0.77                |
+| ~8.0.3                               |  Yes                  |  0.72                |
+| <= 8.0.2-0.0.3@deprecated            |  No                   |  0.72                |
 
-此步骤为手动配置原生依赖项的指导。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -246,8 +254,13 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+</details>
 
-### 5.在ide的工程根目录创建package.json文件,并配置参数（该模块始终需要手动配置）
+## 必要的配置项
+
+> [!TIP] 该模块的内容无法通过autolink自动生成，始终需要手动配置。
+
+### 1.在ide的工程根目录创建package.json文件,并配置参数（该模块始终需要手动配置）
 
 ```diff
 {
@@ -262,7 +275,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 6. 在 ArkTs 侧引入 opSqlitePlugin（该模块始终需要手动配置）
+### 2. 在 ArkTs 侧引入 opSqlitePlugin（该模块始终需要手动配置）
 
 打开 `entry/hvigorfile.ts`，添加：
 
@@ -281,7 +294,7 @@ export default {
 }
 ```
 
-### 7. 运行
+## 运行
 
 点击右上角的 `sync` 按钮
 

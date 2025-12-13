@@ -206,17 +206,23 @@ export default App;
 
 ## 使用 Codegen
 
-Version >= @react-native-ohos/react-native-background-fetch@4.2.6，已适配codegen-lib生成桥接代码。
-
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
-Version >= @react-native-ohos/react-native-background-fetch@4.2.6，已支持 Autolink，无需手动配置（仍需手动配置的内容已在对应标题处标记），目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | 是否支持autolink | RN框架版本 |
+|--------------------------------------|-----------------|------------|
+| ~4.3.0                               |  No              |  0.77     |
+| ~4.2.6                               |  Yes             |  0.72     |
+| <= 4.2.5-0.0.2@deprecated            |  No              |  0.72     |
 
-此步骤为手动配置原生依赖项的指导。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-首先需要使用 DevEco Studio 打开项目里的鸿蒙工程 `harmony`
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
+
+首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
 ### 在工程根目录的 `oh-package.json5` 添加 overrides 字段
 
@@ -336,6 +342,12 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
+</details>
+
+## 必要的配置项
+
+> [!TIP] 该模块的内容无法通过autolink自动生成，始终需要手动配置。
+
 ### 在 ArkTs 侧引入 RNBackgroundFetchExtensionAbility（该模块始终需要手动配置）
 
 1. 打开 `entry/src/main/ets`，新建目录及 ArkTS 文件，新建一个目录并命名为 WorkSchedulerExtension。在 WorkSchedulerExtension 目录下，新建一个 ArkTS 文件并命名为 WorkSchedulerExtension.ets，用以实现延迟任务回调接口。
@@ -373,7 +385,7 @@ export default class MyWorkSchedulerExtensionAbility extends RNBackgroundFetchEx
 }
 ```
 
-### 运行
+## 运行
 
 点击右上角的 `sync` 按钮
 

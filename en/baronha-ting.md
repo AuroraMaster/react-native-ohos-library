@@ -81,17 +81,23 @@ export default App;
 
 ## Using Codegen
 
-Version >= @react-native-ohos/ting@1.2.3, compatible with codegen-lib for generating bridge code.
-
-This library has been adapted for `Codegen`. Before use, you need to actively generate the third-party library bridging code. Please refer to the [Codegen Usage Documentation](/en/codegen.md) for details.
+This library has been adapted for `Codegen`. Before using it, you need to proactively generate the bridge code for the third-party library. For details, please refer to the [Codegen Usage Documentation](/en/codegen.md).
 
 ## Link
 
-Version >= @react-native-ohos/ting@1.2.3 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | Is supported autolink | Supported RN Version |
+|--------------------------------------|-----------------------|----------------------|
+| ~1.3.0                               |  No                   |  0.77                |
+| ~1.2.3                               |  Yes                  |  0.72                |
+| <= 1.2.2-0.0.3@deprecated            |  No                   |  0.72                |
 
-This step provides guidance for manually configuring native dependencies.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md.
 
-First, use DevEco Studio to open the HarmonyOS project `harmony` within your project.
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
+
+First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
 ### 1. Add the overrides field to the root `oh-package.json5`
 
@@ -201,8 +207,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+</details>
 
-### 5. Run
+## Running
 
 Click the `sync` button in the top right corner.
 

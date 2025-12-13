@@ -278,16 +278,21 @@ export default ImageResizerDemo;
 
 ## Use Codegen
 
-Version >= @react-native-ohos/react-native-image-resizer@3.0.10, compatible with codegen-lib for generating bridge code.
-
 This library has been adapted for `Codegen`. Before using it, you need to proactively generate the bridge code for the third-party library. For details, please refer to the [Codegen Usage Documentation](/en/codegen.md).
 
 ## Link
 
-Version >= @react-native-ohos/react-native-image-resizer@3.0.10 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
-Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | Is supported autolink | Supported RN Version |
+|--------------------------------------|-----------------------|----------------------|
+| ~3.1.0                               |  No                   |  0.77                |
+| ~3.0.10                              |  Yes                  |  0.72                |
+| <= 3.0.9-0.0.4@deprecated            |  No                   |  0.72                |
 
-This step provides guidance for manually configuring native dependencies.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md.
+
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
 
 First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
@@ -405,8 +410,9 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
     };
 }
 ```
+</details>
 
-### 5. Running
+## Running
 
 Click the `sync` button in the upper right corner.
 
