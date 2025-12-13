@@ -14,7 +14,9 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-track-player)
 
-Please refer to the Releases page of the third-party library for the corresponding version information:
+## Installation and Usage
+
+Please refer to the Releases page of the third-party library for the corresponding version information
 
 | Third-party Library Version | Release Information                                                     | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
@@ -23,8 +25,6 @@ Please refer to the Releases page of the third-party library for the correspondi
 | 4.2.0      | [@react-native-ohos/react-native-track-player Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-track-player/releases)                        | 0.77       |
 
 For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
-
-## Installation and Usage
 
 Go to the project directory and execute the following instruction:
 
@@ -128,18 +128,23 @@ export default TrackPlayerDemo;
 
 ## Use Codegen
 
-Version >= @react-native-ohos/react-native-track-player@4.1.3, compatible with codegen-lib for generating bridge code.
-
-If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/zh-cn/codegen.md).
+This library has been adapted for `Codegen`. Before using it, you need to proactively generate the bridge code for the third-party library. For details, please refer to the [Codegen Usage Documentation](/en/codegen.md).
 
 ## Link
 
-Version >= @react-native-ohos/react-native-track-player@4.1.3 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
-Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                               | is supporte autolink  | Supported RN Version |
+|-------------------------------|-----------------------|----------------------|
+| ~4.2.0                        |  No                   |  0.77                |
+| ~4.1.3                        |  Yes                  |  0.72                |
+| <= 4.1.2@deprecated           |  No                   |  0.72                |
 
-This step provides guidance for manually configuring native dependencies.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md.
 
-Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
+
+First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
 ### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
 
@@ -258,8 +263,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+</details>
 
-### 5. Running
+## Running
 
 Click the `sync` button in the upper right corner.
 
