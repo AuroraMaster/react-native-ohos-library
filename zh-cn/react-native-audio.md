@@ -6,7 +6,7 @@
 
 > [!TIP] [Github 地址](https://github.com/jsierles/react-native-audio)
 
-## 安装与使用
+## 1. 安装与使用
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
@@ -188,11 +188,19 @@ export default () => {
 }    
 ```
 
-## 2. Manual Link
+## 2.Link
 
-Version >= @react-native-ohos/react-native-audio@4.2.4，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | 是否支持autolink | RN框架版本 |
+|--------------------------------------|-----------------|------------|
+| ~4.3.0                               |  No              |  0.77     |
+| ~4.2.4                              |  Yes             |  0.72     |
+| <= 4.3.1-0.1.0@deprecated            |  No              |  0.72     |
 
-此步骤为手动配置原生依赖项的指导。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
@@ -294,8 +302,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+</details>
 
-### 2.4 运行
+## 3. 运行
 
 点击右上角的 `sync` 按钮
 
@@ -308,9 +317,9 @@ ohpm install
 
 然后编译、运行即可。
 
-## 3. 约束与限制
+## 4. 约束与限制
 
-### 3.1 兼容性
+### 4.1 兼容性
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
@@ -321,7 +330,7 @@ ohpm install
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 
-## 4. API
+## 5. API
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
@@ -337,10 +346,10 @@ ohpm install
 | resumeRecording  | Resume recording  | function  | no | Android/IOS | yes |
 | stopRecording  | stop recording   | function  | no | Android/IOS | yes |
 
-## 5. 遗留问题
+## 6. 遗留问题
 
-## 6. 其他
-### 6.1 不同系统支持的编码格式
+## 7. 其他
+### 7.1 不同系统支持的编码格式
 
 Encodings supported on iOS: lpcm, ima4, aac, MAC3, MAC6, ulaw, alaw, mp1, mp2, alac, amr.
 
@@ -350,6 +359,6 @@ Encodings supported on Harmony: aac.
 
 AudioQuality、MeteringEnabled、MeasurementMode is only for ios now.
 
-## 7. 开源协议
+## 8. 开源协议
 
 本项目基于 [The MIT License (MIT)](https://gitee.com/openharmony-sig/rntpc_react-native-audio/blob/master/LICENSE) ，请自由地享受和参与开源。
