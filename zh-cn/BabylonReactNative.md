@@ -42,6 +42,15 @@ yarn add @react-native-oh-tpl/babylonjs-react-native
 yarn add @react-native-oh-tpl/babylonjs-react-native-harmony
 ```
 
+#### **如果在DevEco Studio里使用BabylonReactNative**
+
+```bash
+在DevEco Studio的终端里执行: git --version，如果查不到git的版本号，依次执行以下步骤:
+1.安装git（git已安装，跳过该步骤）
+2.在系统环境变量Path里加入git可执行文件路径（Path里已存在git可执行文件路径，跳过该步骤）
+3.复位电脑，让环境变量在DevEco Studio里生效
+```
+
 <!-- tabs:end -->
 
 下面的代码展示了这个库的基本使用场景：

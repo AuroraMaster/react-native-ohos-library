@@ -1,32 +1,24 @@
-> Template version: v0.2.2
+> Template version: v0.3.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-gesture-handler</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/software-mansion/react-native-gesture-handler">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-        <a href="https://github.com/software-mansion/react-native-gesture-handler/blob/main/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
 
-> [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-harmony-gesture-handler)
+This project is based on [react-native-gesture-handler](https://github.com/software-mansion/react-native-gesture-handler) 
 
 This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-gesture-handler`, After introducing the new version of the third-party library, The version correspondence details are as follows:
 
-| Version                        | Package Name                                  | Repository                                                   | Release                                                      |
-| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <= 2.14.17@deprecated | @react-native-oh-tpl/react-native-gesture-handler | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-gesture-handler) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-gesture-handler/releases) |
-| >= 2.14.18                        | @react-native-ohos/react-native-gesture-handler       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-gesture-handler) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-gesture-handler/releases) |
+| Version                        | Package Name                                  | Repository                                                   | Release                                                      |Support RN version    |
+| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ----------------               |
+| <= 2.14.17@deprecated | @react-native-oh-tpl/react-native-gesture-handler | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-gesture-handler) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-gesture-handler/releases) |0.72|
+| 2.14.18                       | @react-native-ohos/react-native-gesture-handler       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-gesture-handler) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-gesture-handler/releases) |0.72|
+|  2.23.2                         | @react-native-ohos/react-native-gesture-handler       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-gesture-handler) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-gesture-handler/releases) |0.77|
 
 ## Installation and Usage
 
 Find the matching version information in the release address of a third-party library: [@react-native-ohos/react-native-gesture-handler Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-gesture-handler/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
-
 
 <!-- tabs:start -->
 
@@ -136,11 +128,13 @@ Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
 ### 2. Introducing Native Code
 
-> [!TIP] 引入原生代码之前请确认IDE版本，5.0.3.810及其之后的版本需要在harmony工程中的hvigor-config.json5文件中新增如下配置以解决路径过长导致的编译报错问题
-> "properties":{
->      "ohos.nativeResolver":false
-> }
+> [!TIP] Before introducing native code, please check the IDE version. For version 5.0.3.810 and later, you need to add the following configuration to the hvigor-config.json5 file in the harmony project to solve the compilation error caused by the path being too long.
 
+```json
+"properties":{
+      "ohos.nativeResolver":false
+}
+```
 Currently, two methods are available:
 
 Method 1 (recommended): Use the HAR file.
@@ -472,9 +466,9 @@ Y coordinate, expressed in points, of the current position of the pointer (finge
 
 ## Known Issues
 
-## Others
-
 - [ ] statusbaranimation property is not supported due to the fact that Arkts bar only supports fade-in and fade-out animations, and the RN framework status bar animation is not supported. Issue: [issue#55](https://github.com/react-native-oh-library/react-native-harmony-gesture-handler/issues/55)
+
+## Others
 
 ## License
 
