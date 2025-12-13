@@ -145,11 +145,18 @@ const styles = StyleSheet.create({
 
 ## Link
 
-Version >= @react-native-ohos/react-native-wechat-lib@3.0.6，已支持 Autolink，无需手动配置（仍需手动配置的内容已在对应标题处标记），目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | 是否支持autolink | RN框架版本 |
+|--------------------------------------|-----------------|------------|
+| ~3.1.0                               |  No              |  0.77     |
+| ~3.0.6                               |  Yes             |  0.72     |
 
-此步骤为手动配置原生依赖项的指导。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md。
 
-首先需要使用 DevEco Studio 打开项目里的鸿蒙工程 `harmony`
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
+
+首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
 ### 1.在工程根目录的 `oh-package.json5` 添加 overrides 字段
 
@@ -195,59 +202,7 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 3.配置 EntryAbility（该模块始终需要手动配置）
-
-鸿蒙工程下 EntryAbility，一般位于 `entry\src\main\ets\entryability\EntryAbility.ets`
-
-```diff
-import {RNAbility} from '@rnoh/react-native-openharmony';
-+ import { AbilityConstant, Want } from '@kit.AbilityKit';
-+ import { WechatLibTurboModule } from '@react-native-ohos/react-native-wechat-lib';
-
-export default class EntryAbility extends RNAbility {
-
-+   onCreate(want: Want) {
-+     super.onCreate(want)
-+     this.handleWeChatCallIfNeed(want)
-+   }
-
-  getPagePath() {
-    return 'pages/Index';
-  }
-
-+  onNewWant(want: Want, _launchParam: AbilityConstant.LaunchParam): void {
-+    this.handleWeChatCallIfNeed(want)
-+  }
-
-+  private handleWeChatCallIfNeed(want: Want) {
-+    WechatLibTurboModule.handleWant(want)
-+  }}
-
-```
-
-### 4.配置 module.json5
-
-打开 `entry/src/main/module.json5`，添加：
-
-```diff
-{
-  "module": {
-    "name": "entry",
-    "type": "entry",
-    "description": "$string:module_desc",
-    "mainElement": "EntryAbility",
-    "deviceTypes": [
-      "default"
-    ],
-+   "querySchemes": [
-+     "weixin",
-+   ],
-    ...
-  }
-}
-```
-
-### 5.配置 CMakeLists 和引入 RNWechatLibPackage
+### 3.配置 CMakeLists 和引入 RNWechatLibPackage
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -306,7 +261,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 6.在 ArkTs 侧引入 WechatLibPackage
+### 4.在 ArkTs 侧引入 WechatLibPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
@@ -321,8 +276,65 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+</details>
 
-### 7.运行
+## 必要的配置项
+
+> [!TIP] 该模块的内容无法通过autolink自动生成，始终需要手动配置。
+
+### 1.配置 EntryAbility（该模块始终需要手动配置）
+
+鸿蒙工程下 EntryAbility，一般位于 `entry\src\main\ets\entryability\EntryAbility.ets`
+
+```diff
+import {RNAbility} from '@rnoh/react-native-openharmony';
++ import { AbilityConstant, Want } from '@kit.AbilityKit';
++ import { WechatLibTurboModule } from '@react-native-ohos/react-native-wechat-lib';
+
+export default class EntryAbility extends RNAbility {
+
++   onCreate(want: Want) {
++     super.onCreate(want)
++     this.handleWeChatCallIfNeed(want)
++   }
+
+  getPagePath() {
+    return 'pages/Index';
+  }
+
++  onNewWant(want: Want, _launchParam: AbilityConstant.LaunchParam): void {
++    this.handleWeChatCallIfNeed(want)
++  }
+
++  private handleWeChatCallIfNeed(want: Want) {
++    WechatLibTurboModule.handleWant(want)
++  }}
+
+```
+
+### 2.配置 module.json5（该模块始终需要手动配置）
+
+打开 `entry/src/main/module.json5`，添加：
+
+```diff
+{
+  "module": {
+    "name": "entry",
+    "type": "entry",
+    "description": "$string:module_desc",
+    "mainElement": "EntryAbility",
+    "deviceTypes": [
+      "default"
+    ],
++   "querySchemes": [
++     "weixin",
++   ],
+    ...
+  }
+}
+```
+
+## 运行
 
 点击右上角的 `sync` 按钮
 
