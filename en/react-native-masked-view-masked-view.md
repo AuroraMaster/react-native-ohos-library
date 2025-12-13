@@ -112,12 +112,19 @@ export default MaskedDemo
 
 ## Link
 
-Version >= @react-native-ohos/masked-view@0.2.11 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
-Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | Is supported autolink | Supported RN Ve
+|--------------------------------------|------------------|------------|
+| ~0.3.3                               |  No              |  0.77     |
+| ~0.2.11                              |  Yes             |  0.72     |
+| <= 0.2.9-0.2.2@deprecated            |  No              |  0.72     |
 
-This step provides guidance for manually configuring native dependencies.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
+
+First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
 ### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
 
@@ -137,7 +144,7 @@ Currently, two methods are available:
 
 Method 1 (recommended): Use the HAR file.
 
-> [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
+> [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
@@ -237,8 +244,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+</details>
 
-### 5. Running
+## Running
 
 Click the `sync` button in the upper right corner.
 

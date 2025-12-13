@@ -92,17 +92,24 @@ export default App;
 
 ## 使用 Codegen
 
-Version >= @react-native-ohos/react-native-nfc-manager@3.15.1，已适配codegen-lib生成桥接代码。
-
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
-Version >= @react-native-ohos/react-native-nfc-manager@3.15.1，已支持 Autolink，无需手动配置（仍需手动配置的内容已在对应标题处标记），目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | 是否支持autolink | RN框架版本 |
+|--------------------------------------|-----------------|------------|
+| ~3.16.2                              |  No              |  0.77     |
+| ~3.15.1                              |  Yes             |  0.72     |
+| <= 3.15.0-0.0.4@deprecated           |  No              |  0.72     |
 
-此步骤为手动配置原生依赖项的指导。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 harmony
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
+
+首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
 ```json
 在工程根目录的 oh-package.json 添加 overrides字段
@@ -114,92 +121,7 @@ Version >= @react-native-ohos/react-native-nfc-manager@3.15.1，已支持 Autoli
 }
 ```
 
-## 配置Entry(该模块始终需要手动配置)
-
-本库主要用于操作及管理NFC Tag，提供后台读卡和前台应用优先分发两种读卡模式。后台读卡是指不需要打开应用程序，电子设备通过NFC读取标签卡片后，根据标签卡片的类型匹配到一个或多个应用程序。如果仅匹配到一个，则直接拉起应用程序的读卡页面；如果是多个则弹出应用选择器，让用户选择指定的读卡应用。前台读卡是指提前打开应用程序，并进入对应的NFC读卡页面后读卡，只会把读到的标签卡片信息分发给前台应用程序。
-
-### 后台读卡方式的声明
-**1.应用程序需要支持后台读卡时，需要在应用的属性配置文件中，声明与NFC相关的属性值。比如，在entry/src/main/module.json5文件中，声明下面属性值：**
-```json
-{
-    "module": {
-        // other declared attributes.
-
-        "abilities": [
-            {
-                "skills": [
-                    {
-                        "actions": [
-                            // other declared actions,
-
-                            // add the nfc tag action
-                            "ohos.nfc.tag.action.TAG_FOUND"
-                        ],
-                        "uris": [
-                            {
-                                "type":"tag-tech/NfcA"
-                            },
-                            {
-                                "type":"tag-tech/IsoDep"
-                            }
-                            // Add other technology if neccessary,
-                            // such as: NfcB/NfcF/NfcV/Ndef/MifareClassic/MifareUL/NdefFormatable
-                        ]
-                    }
-                ]
-            }
-        ],
-        "requestPermissions": [
-            {
-                "name": "ohos.permission.NFC_TAG",
-                "reason": "$string:app_name",
-            }
-        ]
-    }
-}
-```
-**2.在对相关Tag类型卡片进行读写之前，必须先获取TagInfo相关属性值，以确认设备读取到的Tag卡片支持哪些技术类型。可以将以下内容添加到EntryAbility**
-
-```js
-import {RNAbility} from 'rnoh';
-import Want from '@ohos.app.ability.Want';
-import AbilityConstant from '@ohos.app.ability.AbilityConstant';
-
-import { RNNfcManagerModule } from '@react-native-ohos/react-native-nfc-manager';
-
-export default class EntryAbility extends RNAbility {
-
-  onCreate(want: Want): void {
-    super.onCreate(want);
-    RNNfcManagerModule.registerAbilityEvents(this.context,'onCreate',want);
-  }
-
-  onForeground(): void {
-    super.onForeground();
-  }
-
-  onBackground(): void {
-    super.onBackground();
-  }
-
-  onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    super.onNewWant(want,launchParam);
-    RNNfcManagerModule.registerAbilityEvents(this.context,'onNewWant',want);
-  }
-
-  getPagePath() {
-    return 'pages/Index';
-  }
-
-  onDestroy(): void {
-    super.onDestroy();
-    RNNfcManagerModule.unRegisterAbilityEvents(this.context);
-  }
-}
-
-```
-
-### 2.引入原生端代码
+### 引入原生端代码
 
 目前有两种方法：
 
@@ -308,8 +230,97 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+</details>
 
-### 5.运行
+## 必要的配置项
+
+> [!TIP] 该模块的内容无法通过autolink自动生成，始终需要手动配置。
+## 配置Entry(该模块始终需要手动配置)
+
+本库主要用于操作及管理NFC Tag，提供后台读卡和前台应用优先分发两种读卡模式。后台读卡是指不需要打开应用程序，电子设备通过NFC读取标签卡片后，根据标签卡片的类型匹配到一个或多个应用程序。如果仅匹配到一个，则直接拉起应用程序的读卡页面；如果是多个则弹出应用选择器，让用户选择指定的读卡应用。前台读卡是指提前打开应用程序，并进入对应的NFC读卡页面后读卡，只会把读到的标签卡片信息分发给前台应用程序。
+
+### 后台读卡方式的声明
+**1.应用程序需要支持后台读卡时，需要在应用的属性配置文件中，声明与NFC相关的属性值。比如，在entry/src/main/module.json5文件中，声明下面属性值：**
+```json
+{
+    "module": {
+        // other declared attributes.
+
+        "abilities": [
+            {
+                "skills": [
+                    {
+                        "actions": [
+                            // other declared actions,
+
+                            // add the nfc tag action
+                            "ohos.nfc.tag.action.TAG_FOUND"
+                        ],
+                        "uris": [
+                            {
+                                "type":"tag-tech/NfcA"
+                            },
+                            {
+                                "type":"tag-tech/IsoDep"
+                            }
+                            // Add other technology if neccessary,
+                            // such as: NfcB/NfcF/NfcV/Ndef/MifareClassic/MifareUL/NdefFormatable
+                        ]
+                    }
+                ]
+            }
+        ],
+        "requestPermissions": [
+            {
+                "name": "ohos.permission.NFC_TAG",
+                "reason": "$string:app_name",
+            }
+        ]
+    }
+}
+```
+**2.在对相关Tag类型卡片进行读写之前，必须先获取TagInfo相关属性值，以确认设备读取到的Tag卡片支持哪些技术类型。可以将以下内容添加到EntryAbility**
+
+```js
+import {RNAbility} from 'rnoh';
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+
+import { RNNfcManagerModule } from '@react-native-ohos/react-native-nfc-manager';
+
+export default class EntryAbility extends RNAbility {
+
+  onCreate(want: Want): void {
+    super.onCreate(want);
+    RNNfcManagerModule.registerAbilityEvents(this.context,'onCreate',want);
+  }
+
+  onForeground(): void {
+    super.onForeground();
+  }
+
+  onBackground(): void {
+    super.onBackground();
+  }
+
+  onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    super.onNewWant(want,launchParam);
+    RNNfcManagerModule.registerAbilityEvents(this.context,'onNewWant',want);
+  }
+
+  getPagePath() {
+    return 'pages/Index';
+  }
+
+  onDestroy(): void {
+    super.onDestroy();
+    RNNfcManagerModule.unRegisterAbilityEvents(this.context);
+  }
+}
+
+```
+
+## 运行
 
 点击右上角的 `sync` 按钮
 

@@ -92,18 +92,23 @@ export default App;
 
 ## Use Codegen
 
-Version >= @react-native-ohos/react-native-nfc-manager@3.15.1, compatible with codegen-lib for generating bridge code.
-
-If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
+This library has been adapted for `Codegen`. Before using it, you need to proactively generate the bridge code for the third-party library. For details, please refer to the [Codegen Usage Documentation](/en/codegen.md).
 
 ## Link
 
-Version >= @react-native-ohos/react-native-nfc-manager@3.15.1 now supports Autolink without requiring manual configuration(The content that still needs to be manually configured has been marked in the corresponding title), currently only supports 72 frameworks.
-Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | Is supported autolink | Supported RN Ve
+|--------------------------------------|------------------|------------|
+| ~3.16.2                              |  No              |  0.77     |
+| ~3.15.1                              |  Yes             |  0.72     |
+| <= 3.15.0-0.0.4@deprecated           |  No              |  0.72     |
 
-This step provides guidance for manually configuring native dependencies.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
+
+First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
 ```
 Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
@@ -111,91 +116,6 @@ Adding the overrides Field to oh-package.json5 File in the Root Directory of the
   ...
   "overrides": {
     "@rnoh/react-native-openharmony" : "./react_native_openharmony"
-  }
-}
-```
-
-## Configuring an Entry(This module always requires manual configuration)
-
-The **tag** module provides APIs for operating and managing NFC tags. The following tag read modes are available: <br>Background mode: The device reads the tag by using NFC without starting any application, and then searches for applications based on the tag type. If only one application is matched, the card reading page of that application will be started. If multiple applications are matched, an application selector will be started, asking the user to select an application. <br>Foreground mode: A foreground application has priority to read the NFC tag discovered.
-
-### Declaring the NFC Tag Background Mode
-
-*1. To enable NFC tags to be read without starting an application, declare NFC-related attributes in the **entry/src/main/module.json5** file: *
-
-```
-{
-    "module": {
-        // other declared attributes.
-
-        "abilities": [
-            {
-                "skills": [
-                    {
-                        "actions": [
-                            // other declared actions,
-
-                            // add the nfc tag action
-                            "ohos.nfc.tag.action.TAG_FOUND"
-                        ],
-                        "uris": [
-                            {
-                                "type":"tag-tech/NfcA"
-                            },
-                            {
-                                "type":"tag-tech/IsoDep"
-                            }
-                            // Add other technology if neccessary,
-                            // such as: NfcB/NfcF/NfcV/Ndef/MifareClassic/MifareUL/NdefFormatable
-                        ]
-                    }
-                ]
-            }
-        ],
-        "requestPermissions": [
-            {
-                "name": "ohos.permission.NFC_TAG",
-                "reason": "$string:app_name",
-            }
-        ]
-    }
-}
-```
-
-2. Before a card with tags is read or written, **TagInfo** must be obtained to determine the tag technologies supported by the card. You can add the following content to **EntryAbility**:
-
-```tsx
-import { RNAbility } from "rnoh";
-import Want from "@ohos.app.ability.Want";
-import { RNNfcManagerModule } from "@react-native-ohos/react-native-nfc-manager";
-import AbilityConstant from "@ohos.app.ability.AbilityConstant";
-
-export default class EntryAbility extends RNAbility {
-  onCreate(want: Want): void {
-    super.onCreate(want);
-    RNNfcManagerModule.registerAbilityEvents(this.context, "onCreate", want);
-  }
-
-  onForeground(): void {
-    super.onForeground();
-  }
-
-  onBackground(): void {
-    super.onBackground();
-  }
-
-  onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    super.onNewWant(want, launchParam);
-    RNNfcManagerModule.registerAbilityEvents(this.context, "onNewWant", want);
-  }
-
-  getPagePath() {
-    return "pages/Index";
-  }
-
-  onDestroy(): void {
-    super.onDestroy();
-    RNNfcManagerModule.unRegisterAbilityEvents(this.context);
   }
 }
 ```
@@ -305,8 +225,97 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+</details>
 
-### 5. Running
+## Necessary configuration items
+
+> [!TIP] The content of this module cannot be automatically generated by autolink and must always be manually configured.
+## Configuring an Entry(This module always requires manual configuration)
+
+The **tag** module provides APIs for operating and managing NFC tags. The following tag read modes are available: <br>Background mode: The device reads the tag by using NFC without starting any application, and then searches for applications based on the tag type. If only one application is matched, the card reading page of that application will be started. If multiple applications are matched, an application selector will be started, asking the user to select an application. <br>Foreground mode: A foreground application has priority to read the NFC tag discovered.
+
+### Declaring the NFC Tag Background Mode
+
+*1. To enable NFC tags to be read without starting an application, declare NFC-related attributes in the **entry/src/main/module.json5** file: *
+
+```
+{
+    "module": {
+        // other declared attributes.
+
+        "abilities": [
+            {
+                "skills": [
+                    {
+                        "actions": [
+                            // other declared actions,
+
+                            // add the nfc tag action
+                            "ohos.nfc.tag.action.TAG_FOUND"
+                        ],
+                        "uris": [
+                            {
+                                "type":"tag-tech/NfcA"
+                            },
+                            {
+                                "type":"tag-tech/IsoDep"
+                            }
+                            // Add other technology if neccessary,
+                            // such as: NfcB/NfcF/NfcV/Ndef/MifareClassic/MifareUL/NdefFormatable
+                        ]
+                    }
+                ]
+            }
+        ],
+        "requestPermissions": [
+            {
+                "name": "ohos.permission.NFC_TAG",
+                "reason": "$string:app_name",
+            }
+        ]
+    }
+}
+```
+
+2. Before a card with tags is read or written, **TagInfo** must be obtained to determine the tag technologies supported by the card. You can add the following content to **EntryAbility**:
+
+```tsx
+import { RNAbility } from "rnoh";
+import Want from "@ohos.app.ability.Want";
+import { RNNfcManagerModule } from "@react-native-ohos/react-native-nfc-manager";
+import AbilityConstant from "@ohos.app.ability.AbilityConstant";
+
+export default class EntryAbility extends RNAbility {
+  onCreate(want: Want): void {
+    super.onCreate(want);
+    RNNfcManagerModule.registerAbilityEvents(this.context, "onCreate", want);
+  }
+
+  onForeground(): void {
+    super.onForeground();
+  }
+
+  onBackground(): void {
+    super.onBackground();
+  }
+
+  onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    super.onNewWant(want, launchParam);
+    RNNfcManagerModule.registerAbilityEvents(this.context, "onNewWant", want);
+  }
+
+  getPagePath() {
+    return "pages/Index";
+  }
+
+  onDestroy(): void {
+    super.onDestroy();
+    RNNfcManagerModule.unRegisterAbilityEvents(this.context);
+  }
+}
+```
+
+## Running
 
 Click the `sync` button in the upper right corner.
 
