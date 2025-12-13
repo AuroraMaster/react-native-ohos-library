@@ -18,11 +18,11 @@
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本                     | 发布信息                                                     | 支持RN版本                                                                                                                    |
-|---------------------------| ------------------------------------------------------------ |---------------------------------------------------------------------------------------------------------------------------|
-| <= 2.6.3 | [@react-native-oh-tpl/picker Releases(deprecated)](https://github.com/react-native-oh-library/picker/releases) | 0.72       |
-| 2.6.4    | [@react-native-ohos/picker Releases](https://gitcode.com/openharmony-sig/rntpc_picker/releases)                | 0.72       |
-| 2.11.2   | [@react-native-ohos/picker Releases](https://gitcode.com/openharmony-sig/rntpc_picker/releases)                | 0.77       |
+| 三方库版本               | 发布信息                                                     | 支持RN版本                                                                                                                    |
+|---------------------| ------------------------------------------------------------ |---------------------------------------------------------------------------------------------------------------------------|
+| <= 2.6.3@deprecated | [@react-native-oh-tpl/picker Releases(deprecated)](https://github.com/react-native-oh-library/picker/releases) | 0.72       |
+| 2.6.4               | [@react-native-ohos/picker Releases](https://gitcode.com/openharmony-sig/rntpc_picker/releases)                | 0.72       |
+| 2.11.2              | [@react-native-ohos/picker Releases](https://gitcode.com/openharmony-sig/rntpc_picker/releases)                | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -50,7 +50,7 @@ yarn add @react-native-ohos/picker
 
 ```js
 import * as React from "react";
-import { Picker } from "@react-native-picker/picker";
+import { Picker } from "picker";
 
 import { View } from "react-native";
 
@@ -72,15 +72,21 @@ export const PickerExample = ()=>{
 
 ## 使用 Codegen
 
-Version >= @react-native-ohos/picker@2.6.4，已适配codegen-lib生成桥接代码。
-
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
-Version >= @react-native-ohos/picker@2.6.4，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | 是否支持autolink | RN框架版本 |
+|--------------------------------------|-----------------|------------|
+| ~2.11.2                              |  No              |  0.77     |
+| ~2.6.4                              |  Yes             |  0.72     |
+| <= 2.6.3@deprecated            |  No              |  0.72     |
 
-此步骤为手动配置原生依赖项的指导。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -243,7 +249,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 5.运行
+</details>
+
+## 运行
 
 点击右上角的 `sync` 按钮
 

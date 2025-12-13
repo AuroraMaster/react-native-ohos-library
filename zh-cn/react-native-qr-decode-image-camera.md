@@ -148,19 +148,25 @@ const styles = StyleSheet.create({
 
 ## 使用 Codegen
 
-Version >= @react-native-ohos/react-native-qr-decode-image-camera@1.1.5，已适配codegen-lib生成桥接代码。
-
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
-Version >= @react-native-ohos/react-native-qr-decode-image-camera@1.1.5，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                | 是否支持autolink | RN框架版本 |
+|--------------------------------|-----------------|------------|
+| ~1.2.0                         |  No              |  0.77     |
+| ~1.1.5                         |  Yes             |  0.72     |
+| <= 1.1.4@deprecated            |  No              |  0.72     |
 
-本库鸿蒙侧实现依赖@react-native-ohos/react-native-vision-camera 的原生端代码，如已在鸿蒙工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
+
+首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
 如未引入请参照[@react-native-ohos/react-native-vision-camera](/zh-cn/react-native-vision-camera.md)进行引入
-
-此步骤为手动配置原生依赖项的指导。
 
 ## 1.在工程根目录的 `oh-package.json5` 添加 overrides 字段
 
@@ -186,15 +192,6 @@ Version >= @react-native-ohos/react-native-qr-decode-image-camera@1.1.5，已支
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- 0.72
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-ohos/react-native-qr-decode-image-camera": "file:../../node_modules/@react-native-ohos/react-native-qr-decode-image-camera/harmony/qr_decode_image_camera.har"
-  }
-```
-
-- 0.77
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -238,9 +235,6 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 ```diff
   ...
-  // 0.72
-+ import { NativeScan } from "@react-native-oh-tpl/react-native-qr-decode-image-camera"
-  // 0.77
 + import { NativeScan } from "@react-native-ohos/react-native-qr-decode-image-camera"
 
 @Builder
@@ -319,7 +313,9 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 6.运行
+</details>
+
+## 运行
 
 点击右上角的 `sync` 按钮
 

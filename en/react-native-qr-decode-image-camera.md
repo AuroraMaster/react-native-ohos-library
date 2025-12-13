@@ -149,20 +149,25 @@ const styles = StyleSheet.create({
 
 ## Use Codegen
 
-Version >= @react-native-ohos/react-native-qr-decode-image-camera@1.1.5，compatible with codegen-lib for generating bridge code.
-
-If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
+This library has been adapted for `Codegen`. Before using it, you need to proactively generate the bridge code for the third-party library. For details, please refer to the [Codegen Usage Documentation](/en/codegen.md).
 
 ## Link
 
-Version >= @react-native-ohos/react-native-qr-decode-image-camera@1.1.5 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
-Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                | Is supported autolink  | Supported RN Version |
+|--------------------------------|-----------------------|----------------------|
+| ~1.2.0                         |  No                   |  0.77                |
+| ~1.1.5                         |  Yes                  |  0.72                |
+| <= 1.1.4@deprecated            |  No                   |  0.72                |
 
-The HarmonyOS implementation of this library depends on the native code from @react-native-ohos/react-native-vision-camera. If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly. 
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-If it is not included, follow the guide provided in @react-native-ohos/react-native-vision-camera to add it to your project.
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
 
-This step provides guidance for manually configuring native dependencies.
+First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
+
+If it is not included, please refer to [@react-native-ohos/react-native-vision-camera](/zh-cn/react-native-vision-camera.md) for instructions on how to include it.
 
 ## 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
 
@@ -230,9 +235,6 @@ Find `function buildCustomRNComponent()`, which is usually located in `entry/src
 
 ```diff
   ...
-  // 0.72
-+ import { NativeScan } from "@react-native-oh-tpl/react-native-qr-decode-image-camera"
-  // 0.77
 + import { NativeScan } from "@react-native-ohos/react-native-qr-decode-image-camera"
 
 
@@ -312,7 +314,9 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 6. Run
+</details>
+
+## Running
 
 Click the `sync` button in the top right corner
 
