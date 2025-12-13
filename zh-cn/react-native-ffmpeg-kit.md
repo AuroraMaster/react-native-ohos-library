@@ -17,31 +17,32 @@
 > [!tip] [Github 地址](https://github.com/react-native-oh-library/ffmpeg-kit)
 
 ## 安装与使用
-| Third-party Library Version | Release Information | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 6.0.3     | [@react-native-oh-tpl/react-native-ffmpeg-kit release](https://github.com/react-native-oh-library/ffmpeg-kit/releases) | 0.72
-| 6.1.0     | [@react-native-ohos/react-native-ffmpeg-kit release](https://github.com/react-native-oh-library/ffmpeg-kit/releases) | 0.77 
 
-Navigate to your project directory and run the following commands:
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本               | 发布信息                                                                                                                                            | 支持RN版本 |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------| ---------- |
+| <= 6.0.3@deprecated | [@react-native-oh-tpl/react-native-ffmpeg-kit Releases(deprecated)](https://github.com/react-native-oh-library/ffmpeg-kit/releases) | 0.72       |
+| 6.0.4               | [@react-native-ohos/react-native-ffmpeg-kit Releases](https://github.com/react-native-oh-library/ffmpeg-kit/releases)              | 0.72       |
+| 6.1.0               | [@react-native-ohos/react-native-ffmpeg-kit Releases](https://github.com/react-native-oh-library/ffmpeg-kit/releases)              | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+
+进入到工程目录并输入以下命令：
+
+<!-- tabs:start -->
 
 #### **npm**
 
 ```bash
-#0.72
-npm install @react-native-oh-tpl/react-native-ffmpeg-kit
-#0.77
 npm install @react-native-ohos/react-native-ffmpeg-kit
 ```
 
 #### **yarn**
 
 ```bash
-#0.72
-yarn add @react-native-oh-tpl/react-native-ffmpeg-kit
-#0.77
 yarn add @react-native-ohos/react-native-ffmpeg-kit
 ```
-
 
 下面的代码展示了这个库的基本使用场景：
 
@@ -280,9 +281,19 @@ const styles = StyleSheet.create({
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+|                     | 是否支持autolink | RN框架版本 |
+|---------------------|-----------------|------------|
+| ~6.1.0              |  No              |  0.77     |
+| ~6.0.4              |  Yes             |  0.72     |
+| <= 6.0.3@deprecated |  No              |  0.72     |
 
-首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
+
+首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
 ### 1.在工程根目录的 `oh-package.json5` 添加 overrides 字段
 
@@ -311,10 +322,6 @@ const styles = StyleSheet.create({
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-
-    //0.72
-    "@react-native-oh-tpl/react-native-ffmpeg-kit": "file:../../node_modules/@react-native-oh-tpl/react-native-ffmpeg-kit/harmony/ffmpeg_kit.har",
-    //0.77
     "@react-native-ohos/react-native-ffmpeg-kit": "file:../../node_modules/@react-native-ohos/react-native-ffmpeg-kit/harmony/ffmpeg_kit.har",
   }
 ```
@@ -333,6 +340,8 @@ ohpm install
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
 ### 3.配置 CMakeLists 和引入 GestureHandlerPackage
+
+> 若使用的是 <= 6.0.3 版本，请跳过本章
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -354,9 +363,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-#0.72
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-ffmpeg-kit/src/main/cpp" ./ffmpeg-kit)
-#0.77
+
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-ffmpeg-kit/src/main/cpp" ./ffmpeg-kit)
 # RNOH_END: manual_package_linking_1
 
@@ -392,14 +399,11 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 4.在 ArkTs 侧引入 Gesture Handler Package
+### 4.在 ArkTs 侧引入 FFmpegKitPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
-//0.72
-+ import { FFmpegKitPackage } from '@react-native-oh-tpl/react-native-ffmpeg-kit/ts';
-//0.77
 + import { FFmpegKitPackage } from '@react-native-ohos/react-native-ffmpeg-kit/ts';
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -409,7 +413,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 5.运行
+</details>
+
+## 运行
 
 点击右上角的 `sync` 按钮
 

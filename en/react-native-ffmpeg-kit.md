@@ -17,28 +17,30 @@
 > [!tip] [Github Address](https://github.com/react-native-oh-library/ffmpeg-kit)
 
 ## Installation & Usage
-| Third-party Library Version | Release Information | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 6.0.3     | [@react-native-oh-tpl/react-native-ffmpeg-kit release](https://github.com/react-native-oh-library/ffmpeg-kit/releases) | 0.72
-| 6.1.0     | [@react-native-ohos/react-native-ffmpeg-kit release](https://github.com/react-native-oh-library/ffmpeg-kit/releases) | 0.77 
 
-Navigate to your project directory and run the following commands:
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information       | Supported RN Version |
+|-----------------------------| ------------------------------------------------------------ | ---------- |
+| <= 6.0.3@deprecated | [@react-native-oh-tpl/react-native-ffmpeg-kit Releases(deprecated)](https://github.com/react-native-oh-library/ffmpeg-kit/releases) | 0.72       |
+| 6.0.4               | [@react-native-ohos/react-native-ffmpeg-kit Releases](https://github.com/react-native-oh-library/ffmpeg-kit/releases)              | 0.72       |
+| 6.1.0               | [@react-native-ohos/react-native-ffmpeg-kit Releases](https://github.com/react-native-oh-library/ffmpeg-kit/releases)              | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+
+Go to the project directory and execute the following instruction:
+
+<!-- tabs:start -->
 
 #### **npm**
 
 ```bash
-#0.72
-npm install @react-native-oh-tpl/react-native-ffmpeg-kit
-#0.77
 npm install @react-native-ohos/react-native-ffmpeg-kit
 ```
 
 #### **yarn**
 
 ```bash
-#0.72
-yarn add @react-native-oh-tpl/react-native-ffmpeg-kit
-#0.77
 yarn add @react-native-ohos/react-native-ffmpeg-kit
 ```
 
@@ -279,9 +281,19 @@ const styles = StyleSheet.create({
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink, so the Link step needs to be configured manually.
+|                     | Is supported autolink  | Supported RN Version |
+|---------------------|-----------------------|----------------------|
+| ~6.1.0              |  No                   |  0.77                |
+| ~6.0.4              |  Yes                  |  0.72                |
+| <= 6.0.3@deprecated |  No                   |  0.72                |
 
-First, you need to open the HarmonyOS project `harmony` in your project using DevEco Studio.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
+
+First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
 ### 1. Add the overrides field to `oh-package.json5` in the project root directory
 
@@ -310,10 +322,6 @@ Open `entry/oh-package.json5` and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-
-    //0.72
-    "@react-native-oh-tpl/react-native-ffmpeg-kit": "file:../../node_modules/@react-native-oh-tpl/react-native-ffmpeg-kit/harmony/ffmpeg_kit.har",
-    //0.77
     "@react-native-ohos/react-native-ffmpeg-kit": "file:../../node_modules/@react-native-ohos/react-native-ffmpeg-kit/harmony/ffmpeg_kit.har",
   }
 ```
@@ -332,6 +340,8 @@ Method 2: Directly link source code
 > [!TIP] If you need to use direct source code linking, please refer to [Direct Link Source Code Instructions](/en/link-source-code.md)
 
 ### 3. Configure CMakeLists and import GestureHandlerPackage
+
+> If you are using version <= 6.0.3, please skip this chapter.
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add:
 
@@ -353,9 +363,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-#0.72
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-ffmpeg-kit/src/main/cpp" ./ffmpeg-kit)
-#0.77
+
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-ffmpeg-kit/src/main/cpp" ./ffmpeg-kit)
 # RNOH_END: manual_package_linking_1
 
@@ -391,14 +399,11 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 4. Import Gesture Handler Package on ArkTs side
+### 4. Import FFmpegKitPackage on ArkTs side
 
 Open `entry/src/main/ets/RNPackagesFactory.ts` and add:
 
 ```diff
-//0.72
-+ import { FFmpegKitPackage } from '@react-native-oh-tpl/react-native-ffmpeg-kit/ts';
-//0.77
 + import { FFmpegKitPackage } from '@react-native-ohos/react-native-ffmpeg-kit/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -409,7 +414,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 5. Run
+</details>
+
+## Running
 
 Click the `sync` button in the upper right corner.
 

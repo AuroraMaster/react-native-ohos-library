@@ -13,16 +13,17 @@
     </a>
 </p>
 
-
-
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-spinkit)
 
-| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
-| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
-| 1.5.1  | @react-native-oh-tpl/react-native-spinkit | [Github](https://github.com/react-native-oh-library/react-native-spinkit) | [Github Releases](https://github.com/react-native-oh-library/react-native-spinkit/releases) | 0.72 |
-| 1.6.0 | @react-native-ohos/react-native-spinkit   | [Github](https://github.com/react-native-oh-library/react-native-spinkit) | [Github Releases](https://github.com/react-native-oh-library/react-native-spinkit/releases) | 0.77 |
-
 ## 安装与使用
+
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本 | 发布信息                | 支持RN版本 |
+|-------| ------------------------------------------------------------ | ---------- |
+| <= 1.5.1-0.0.2@deprecated | [@react-native-oh-tpl/react-native-spinkit Releases(deprecated)](https://github.com/react-native-oh-library/react-native-spinkit/releases) | 0.72       |
+| 1.5.2 | [@react-native-ohos/react-native-spinkit Releases](https://github.com/react-native-oh-library/react-native-spinkit/releases)                        | 0.72       |
+| 1.6.0  | [@react-native-ohos/react-native-spinkit Releases](https://github.com/react-native-oh-library/react-native-spinkit/releases)                        | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -33,20 +34,12 @@
 #### **npm**
 
 ```bash
-# 1.5.1
-npm install @react-native-oh-tpl/react-native-spinkit
-
-# 1.6.0
 npm install @react-native-ohos/react-native-spinkit
 ```
 
 #### **yarn**
 
 ```bash
-# 1.5.1
-yarn add @react-native-oh-tpl/react-native-spinkit
-
-# 1.6.0
 yarn add @react-native-ohos/react-native-spinkit
 ```
 
@@ -81,7 +74,17 @@ export default SpinKit;
 
 ## Link
 
-目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+|                                      | 是否支持autolink | RN框架版本 |
+|--------------------------------------|-----------------|------------|
+| ~1.6.0                               |  No              |  0.77     |
+| ~1.5.2                               |  Yes             |  0.72     |
+| <= 1.5.1-0.0.2@deprecated            |  No              |  0.72     |
+
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -108,14 +111,6 @@ export default SpinKit;
 > [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
 
 打开 `entry/oh-package.json5`，添加以下依赖
-- 1.5.1
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-spinkit": "file:../../node_modules/@react-native-oh-tpl/react-native-spinkit/harmony/spinKit.har"
-  }
-```
-- 1.6.0
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -136,16 +131,73 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 3.在 ArkTs 侧引入 SpinKitView 组件
+### 3.配置 CMakeLists 和引入 SpinKitPackage
+
+> 若使用的是 <= 1.5.1-0.0.2 版本，请跳过本章。
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-spinkit/src/main/cpp" ./spinkit)
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_spinkit)
+# RNOH_END: link_packages
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "SpinKitPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++       std::make_shared<SpinKitPackage>(ctx),
+    };
+}
+```
+
+### 4.在 ArkTs 侧引入 SpinKitView 组件
 
 找到 **function buildCustomComponent()**，一般位于 `entry/src/main/ets/pages/index.ets` 或 `entry/src/main/ets/rn/LoadBundle.ets`，添加：
 
 ```diff
   ...
-  // 1.5.1
-+ import { SpinKitView } from "@react-native-oh-tpl/react-native-spinkit"
-
-  // 1.6.0
 + import { SpinKitView } from "@react-native-ohos/react-native-spinkit"
 
 @Builder
@@ -173,16 +225,12 @@ const arkTsComponentNames: Array<string> = [
 + SpinKitView.NAME
   ];
 ```
-### 4.在 ArkTs 侧引入 SpinKitPackage Package
+### 5.在 ArkTs 侧引入 SpinKitPackage Package
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
   ...
-  // 1.5.1
-+ import { RNSpinKitPackage } from '@react-native-oh-tpl/react-native-spinkit/ts';
-
-  // 1.6.0
 + import { RNSpinKitPackage } from '@react-native-ohos/react-native-spinkit/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -193,7 +241,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 5.运行
+</details>
+
+## 运行
 
 点击右上角的 `sync` 按钮
 
@@ -213,8 +263,9 @@ ohpm install
 
 在以下版本验证通过：
 
-1. RNOH：0.72.96; SDK：HarmonyOS 5.1.1 Release SDK; IDE：DevEco Studio 5.1.1.840; ROM：6.0.0;
-2. RNOH：0.77.18; SDK：HarmonyOS 5.1.1 Release SDK; IDE：DevEco Studio 5.1.1.840; ROM：6.0.0;
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 
 ## 属性
