@@ -65,11 +65,19 @@ export default function CheckBoxExample() {
 }
 ```
 
-## 2. Manual Link
+## 2. Link
 
-Version >= @react-native-ohos/checkbox@0.5.17，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | 是否支持autolink | RN框架版本 |
+|--------------------------------------|-----------------|------------|
+| ~0.6.0                              |  No              |  0.77     |
+| ~0.5.17                              |  Yes             |  0.72     |
+| <= 0.5.16-0.1.0@deprecated            |  No              |  0.72     |
 
-此步骤为手动配置原生依赖项的指导。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md。
+
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
@@ -222,8 +230,9 @@ const arkTsComponentNames: Array<string> = [
 + CHECKBOX_TYPE
   ];
 ```
+</details>
 
-### 2.6. 运行
+## 3. 运行
 
 点击右上角的 `sync` 按钮
 
@@ -236,9 +245,9 @@ ohpm install
 
 然后编译、运行即可。
 
-## 3. 约束与限制
+## 4. 约束与限制
 
-### 3.1. 兼容性
+### 4.1. 兼容性
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
@@ -248,7 +257,7 @@ ohpm install
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
-## 4. 属性
+## 5. 属性
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
@@ -276,7 +285,7 @@ ohpm install
 | `animationDuration` | The duration in seconds of the animations. Defaults to 0.5.                                                                                                                                   | number   | No       | iOS     | No              |
 | `onAnimationType`   | The type of animation to use when the checkbox gets checked. Default to 'stroke'.                                                                                                             | 'stroke' or 'fill' or 'bounce' or 'flat' or 'one-stroke' or 'fade'   | No       | iOS     | No              |
 | `offAnimationType`   | The type of animation to use when the checkbox gets unchecked. 'stroke'.                                                                                                                      | 'stroke' or 'fill' or 'bounce' or 'flat' or 'one-stroke' or 'fade'   | No       | iOS     | No              |
-## 5. 静态方法
+## 6. 静态方法
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
@@ -287,7 +296,7 @@ ohpm install
 | `onChange`      | Invoked on change with the native event.                                                                                                                                                       | function | No       | Android、iOS   | yes               |
 | `onValueChange` | Invoked with the new boolean value when it changes.                                                                                                                                            | function | No       | Android、iOS   | yes               |
 
-## 6. 遗留问题
+## 7. 遗留问题
 - [X] 设置lineWidth属性，该属性用来控制复选框的线条宽度，未实现HarmonyOS化: [issue#3](https://github.com/react-native-oh-library/react-native-checkbox/issues/3)
 - [ ] 设置hideBox属性，该属性用来控制复选框的显示与隐藏，未实现HarmonyOS化: [issue#4](https://github.com/react-native-oh-library/react-native-checkbox/issues/4)
 - [ ] 设置onTintColor属性，该属性用来控制复选框的选中时边框的颜色，未实现HarmonyOS化: [issue#5](https://github.com/react-native-oh-library/react-native-checkbox/issues/5)
@@ -295,8 +304,8 @@ ohpm install
 - [ ] 设置animationDuration属性，该属性用来控制选中和取消选中的动画持续时间，未实现HarmonyOS化: [issue#6](https://github.com/react-native-oh-library/react-native-checkbox/issues/6)
 - [ ] 设置onAnimationType属性，该属性用来控制选中时的动画类型，未实现 HarmonyOS化: [issue#7](https://github.com/react-native-oh-library/react-native-checkbox/issues/7)
 - [ ] 设置offAnimationType属性，该属性用来控制取消选中时的动画类型，未实现 HarmonyOS化: [issue#8](https://github.com/react-native-oh-library/react-native-checkbox/issues/8)
-## 7. 其他
+## 8. 其他
 
-## 8. 开源协议
+## 9. 开源协议
 
 本项目基于 [The MIT License (MIT)](https://github.com/react-native-checkbox/react-native-checkbox/blob/develop/LICENSE) ，请自由地享受和参与开源。

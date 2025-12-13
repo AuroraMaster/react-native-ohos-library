@@ -6,7 +6,7 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/toolbar-android)
 
-## 安装与使用
+## 1.安装与使用
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
@@ -117,13 +117,19 @@ const styles = StyleSheet.create({
 export default App;
 ```
 
-## 2.Manual Link
+## 2. Link
 
-Version >= @react-native-ohos/toolbar-android@0.2.2，已支持 Autolink，无需手动配置，目前只支持72框架。
-Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | 是否支持autolink | RN框架版本 |
+|--------------------------------------|-----------------|------------|
+| ~0.3.0                              |  No              |  0.77     |
+| ~0.2.2                              |  Yes             |  0.72     |
+| <= 0.2.1-0.0.4@deprecated            |  No              |  0.72     |
 
-此步骤为手动配置原生依赖项的指导。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md。
 
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
 ### 2.1.Overrides RN SDK
@@ -278,8 +284,9 @@ const arkTsComponentNames: Array<string> = [
 + RNCToolbarAndroid.NAME
 ];
 ```
+</details>
 
-### 2.6.运行
+## 3. 运行
 
 点击右上角的 `sync` 按钮
 
@@ -292,9 +299,9 @@ ohpm install
 
 然后编译、运行即可。
 
-## 3.约束与限制
+## 4.约束与限制
 
-### 3.1兼容性
+### 4.1兼容性
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
@@ -304,7 +311,7 @@ ohpm install
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
-## 4.属性
+## 5.属性
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
@@ -328,7 +335,7 @@ Inherits [View Props](https://reactnative.dev/docs/view#props).
 | title             | 设置工具栏标题。                                                                                                                       | string                                                                                                        | No        | Android  | Yes               |
 | titleColor        | 设置工具栏标题颜色。                                                                                                                   | string                                                                                                        | No        | Android  | Yes               |
 
-#### 4.1.Props of ImageSource
+#### 5.1.Props of ImageSource
 
 | Name   | Description                                            | Type   | Required | Platform | HarmonyOS Support |
 | ------ | ------------------------------------------------------ | ------ | -------- | -------- | ----------------- |
@@ -336,10 +343,10 @@ Inherits [View Props](https://reactnative.dev/docs/view#props).
 | width  | 图片宽度                                               | number | No       | android  | Yes               |
 | height | 图片高度                                               | number | No       | android  | Yes               |                                | number | No       | android  | Yes               |
 
-## 5.遗留问题
+## 6.遗留问题
 
-## 6.其他
+## 7.其他
 
-## 7.开源协议
+## 8.开源协议
 
 本项目基于 [The MIT License (MIT)](https://gitee.com/openharmony-sig/rntpc_toolbar-android/blob/master/LICENSE) ，请自由地享受和参与开源。

@@ -163,11 +163,19 @@ export const App = () => {
 };
 ```
 
-## 2. Manual Link
+## 2. Link
 
-Version >= @react-native-ohos/push-notification-ios@1.11.2，已支持 Autolink，无需手动配置（仍需手动配置的内容已在对应标题处标记），目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | 是否支持autolink | RN框架版本 |
+|--------------------------------------|-----------------|------------|
+| ~1.12.0                              |  No              |  0.77     |
+| ~1.11.2                              |  Yes             |  0.72     |
+| <= 1.11.0-0.1.3@deprecated            |  No              |  0.72     |
 
-此步骤为手动配置原生依赖项的指导。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md。
+
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
@@ -268,7 +276,13 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 2.5. 在 ArkTs 侧Ability中添加（该模块始终需要手动配置）
+</details>
+
+## 3. 必要的配置项
+
+> [!TIP] 该模块的内容无法通过autolink自动生成，始终需要手动配置。
+
+### 3.1. 在 ArkTs 侧Ability中添加（该模块始终需要手动配置）
 
 打开 `entry/src/main/ets/entryability/EntryAbility.ets`，在onNewWant回调中添加：
 
@@ -281,7 +295,7 @@ onNewWant(want: Want, _launchParam: AbilityConstant.LaunchParam): void {
 }
 ```
 
-### 2.6. 运行
+## 4. 运行
 
 点击右上角的 `sync` 按钮
 
@@ -294,9 +308,9 @@ ohpm install
 
 然后编译、运行即可。
 
-## 3. 约束与限制
+## 5. 约束与限制
 
-### 3.1. 兼容性
+### 5.1. 兼容性
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
@@ -306,7 +320,7 @@ ohpm install
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
-## 4. API
+## 6. API
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
@@ -327,7 +341,7 @@ ohpm install
 | getInitialNotification          | 若应用是通过推送通知启动的，该 Promise 会解析为 PushNotificationIOS 类型的对象；否则解析为 null。 | function | no       | iOS      | no                |
 | getScheduledLocalNotifications  | 获取当前已调度（待发送）的本地通知                           | function | no       | iOS      | no                |
 
-## 5. 属性
+## 7. 属性
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
@@ -357,13 +371,13 @@ _NotificationRequest:_
 | `isTimeZoneAgnostic`  | 若为 true，时区变更时 fireDate 会自动调整（例如闹钟场景）    | boolean | no       | All      | no                |
 | `interruptionLevel`   | 指定通知干扰级别（interruption level）的字符串。有效值为 `'active'`（主动）、`'passive'`（被动）、`'timeSensitive'`（时间敏感）或 `'critical'`（重要） | string  | no       | All      | no                |
 
-## 6. 遗留问题
+## 8. 遗留问题
 
 - [ ] HarmonyOS 的 NotificationManager 的规格和 IOS 不一致，其 NotificationRequest 所含参数，在 HarmonyOS 上部分没有适配对应参数，问题: [issue#1](https://github.com/react-native-oh-library/react-native-push-notification-ios/issues/4)
 - [ ] 原库部分接口在 HarmonyOS 中没有对应接口处理相关逻辑，问题: [issue#2](https://github.com/react-native-oh-library/react-native-push-notification-ios/issues/3)
 
-## 7. 其他
+## 9. 其他
 
-## 8. 开源协议
+## 10. 开源协议
 
 本项目基于 [The MIT License (MIT)](https://github.com/react-native-push-notification/ios/blob/master/LICENSE) ，请自由地享受和参与开源。
