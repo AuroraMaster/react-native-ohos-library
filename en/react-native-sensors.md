@@ -138,14 +138,21 @@ export const App = () => {
 export default App;
 ```
 
-## 2. Manual Link
+## 2. Link
 
-Version >= @react-native-ohos/react-native-sensors@7.2.3 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
-Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | Is supported autolink | Supported RN Version |
+|--------------------------------------|-----------------------|----------------------|
+| ~7.3.7                               |  No                   |  0.77                |
+| ~7.2.3                              |  Yes                  |  0.72                |
+| <= 7.2.1@deprecated            |  No                   |  0.72                |
 
-This step provides guidance for manually configuring native dependencies.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md.
 
-Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
+
+First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
 ### 2.1 Overrides RN SDK
 
@@ -246,8 +253,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+</details>
 
-### 2.5 Running
+## 3. Running
 
 Click the `sync` button in the upper right corner.
 
@@ -260,9 +268,9 @@ ohpm install
 
 Then build and run the code.
 
-## 3. Constraints
+## 4. Constraints
 
-### 3.1 Compatibility
+### 4.1 Compatibility
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
@@ -272,7 +280,7 @@ Verified in the following versions.
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
-### 3.2 Permission Requirements (If Any)
+### 4.2 Permission Requirements (If Any)
 
 Configure the required permissions in module. json 5
 
@@ -280,7 +288,7 @@ accelerometer Required permissions: ohos.permission.ACCELEROMETER
 
 gyroscope Required permissions: ohos.permission.GYROSCOPE
 
-## 4. API
+## 5. API
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
@@ -297,9 +305,9 @@ gyroscope Required permissions: ohos.permission.GYROSCOPE
 | setUpdateIntervalForType | setUpdateIntervalForType     | function   | no       | ios/Android | yes               |
 | setLogLevelForType       | setLogLevelForType | function   | no       | ios/Android | yes               |
 
-## 5. Known Issues
+## 6. Known Issues
 
 
-## 6. License
+## 7. License
 
 This project is licensed under [The MIT License (MIT)](https://github.com/react-native-sensors/react-native-sensors/blob/master/LICENSE), Please enjoy and participate freely in open source.

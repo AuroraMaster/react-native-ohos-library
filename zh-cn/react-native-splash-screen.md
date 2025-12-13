@@ -95,15 +95,21 @@ export default class WelcomePage extends Component {
 
 ## 2. 使用 Codegen
 
-Version >= @react-native-ohos/react-native-splash-screen@3.3.2，已适配codegen-lib生成桥接代码。
-
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
-## 3. Manual Link
+## 3. Link
 
-Version >= @react-native-ohos/react-native-splash-screen@3.3.2，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | 是否支持autolink | RN框架版本 |
+|--------------------------------------|-----------------|------------|
+| ~3.4.0                               |  No              |  0.77     |
+| ~3.3.2                               |  Yes             |  0.72     |
+| <= 3.3.0-0.0.2@deprecated            |  No              |  0.72     |
 
-此步骤为手动配置原生依赖项的指导。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
@@ -219,8 +225,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+</details>
 
-### 3.5. 运行
+## 4. 运行
 
 点击右上角的 `sync` 按钮
 
@@ -262,9 +269,9 @@ export default App;
 
 ```
 
-## 4. 约束与限制
+## 5. 约束与限制
 
-### 4.1. 兼容性
+### 兼容性
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
@@ -274,7 +281,7 @@ export default App;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
-## 5. API
+## 6. API
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
@@ -298,13 +305,13 @@ export default App;
 | backgroundColor | 启动页背景色 | string |
 | pageUrl | 首页路由 | bool |
 
-## 6. 遗留问题
+## 7. 遗留问题
 
-## 7. 其他
+## 8. 其他
 
 - 在 iOS 中，show() 方法的工作原理是： 在入口 application 方法中，首先加载 App 首页，然后使用 while 循环让界面停留在 App 启动屏，此时首页仍然会异步加载，加载完成后，停止 while 循环即可隐藏启动屏，显示首页。
 HarmonyOS 中，在入口 onWindowStageCreate 中调用 windowStage.loadContent 加载首页，如果此时使用 while 循环，首页无法异步加载。
 
-## 8. 开源协议
+## 9. 开源协议
 
 本项目基于 [The MIT License (MIT)](https://github.com/crazycodeboy/react-native-splash-screen/blob/v3.3.0/LICENSE) ，请自由地享受和参与开源。
