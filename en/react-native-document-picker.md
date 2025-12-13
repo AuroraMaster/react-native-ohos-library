@@ -312,14 +312,21 @@ const styles = StyleSheet.create({
 });
 ```
 
-## 2. Manual Link
+## 2. Link
 
-Version >= @react-native-ohos/react-native-document-picker@9.2.2 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
-Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | Is supported autolink | Supported RN Version |
+|--------------------------------------|-----------------------|----------------------|
+| ~9.3.2                               |  No                   |  0.77                |
+| ~9.2.2                               |  Yes                  |  0.72                |
+| <= 9.2.0-0.0.2@deprecated            |  No                   |  0.72                |
 
-This step provides guidance for manually configuring native dependencies.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md.
 
-Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
+
+First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
 ### 2.1 Overrides RN SDK
 
@@ -416,8 +423,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+</details>
 
-### 2.4 Running
+## 3. Running
 
 Click the `sync` button in the upper right corner.
 
@@ -430,8 +438,8 @@ ohpm install
 
 Then build and run the code.
 
-## 3. Constraints
-### 3.1 Compatibility
+## 4. Constraints
+### 4.1 Compatibility
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
@@ -442,7 +450,7 @@ Verified in the following versions.
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 
-## 4. Properties
+## 5. Properties
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
@@ -459,7 +467,7 @@ Parameters of the option pick Method
 | transitionStyle     | Configure the transition style of the picker. Defaults to coverVertical.                                                                                                                            | 'coverVertical' \| 'flipHorizontal' \| 'crossDissolve' \| 'partialCurl' | no       | IOS         | no                |
 | mode                | Defaults to import. If mode is set to import the document picker imports the file from outside to inside the sandbox, otherwise if mode is set to open the document picker opens the file in-place. | "import" \| "open"                                                      | no       | IOS         | no                |
 
-## 5. API
+## 6. API
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
@@ -476,15 +484,15 @@ Parameters of the option pick Method
 | types               | File type object. eg type.images、types.pdf                                                                                                                                                                                                                                                                     | function | No       | IOS/Android | yes               |
 | perPlatformTypes    | Different platforms, file type object map                                                                                                                                                                                                                                                                       | function | No       | IOS/Android | yes               |
 
-## 6. Known Issues
+## 7. Known Issues
 
 - [ ] The **pickerOpt. selectMode** API is invalid when it is set to **FOLDER** on HarmonyOS: [issue#1](https://github.com/react-native-oh-library/document-picker/issues/1).
 - [ ] **releaseSecureAccess** cannot be used to select files outside the sandbox path. This API is not supported on HarmonyOS: [issue#2](https://github.com/react-native-oh-library/document-picker/issues/2).
 
-## 7. Others
+## 8. Others
 
 - The Gallery resources cannot be read or written due to permission issues. Selecting files from the Gallery is not supported in Files.
 
-## 8. License
+## 9. License
 
 This project is licensed under [The MIT License (MIT)](https://github.com/react-native-documents/document-picker/blob/v9.2.0/LICENSE.md).
