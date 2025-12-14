@@ -22,7 +22,7 @@
 | 三方库版本 | 发布信息                | 支持RN版本 |
 |-------| ------------------------------------------------------------ | ---------- |
 | <= 1.5.1-0.0.2@deprecated | [@react-native-oh-tpl/react-native-spinkit Releases(deprecated)](https://github.com/react-native-oh-library/react-native-spinkit/releases) | 0.72       |
-| 1.5.2 | [@react-native-ohos/react-native-spinkit Releases](https://github.com/react-native-oh-library/react-native-spinkit/releases)                        | 0.72       |
+| 1.5.3 | [@react-native-ohos/react-native-spinkit Releases](https://github.com/react-native-oh-library/react-native-spinkit/releases)                        | 0.72       |
 | 1.6.0  | [@react-native-ohos/react-native-spinkit Releases](https://github.com/react-native-oh-library/react-native-spinkit/releases)                        | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
@@ -77,7 +77,7 @@ export default SpinKit;
 |                                      | 是否支持autolink | RN框架版本 |
 |--------------------------------------|-----------------|------------|
 | ~1.6.0                               |  No              |  0.77     |
-| ~1.5.2                               |  Yes             |  0.72     |
+| ~1.5.3                               |  Yes             |  0.72     |
 | <= 1.5.1-0.0.2@deprecated            |  No              |  0.72     |
 
 使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md

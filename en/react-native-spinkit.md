@@ -24,7 +24,7 @@ Please refer to the Releases page of the third-party library for the correspondi
 | Third-party Library Version | Release Information                                                     | Supported RN Version |
 |-------| ------------------------------------------------------------ | ---------- |
 | <= 1.5.1-0.0.2@deprecated | [@react-native-oh-tpl/react-native-spinkit Releases(deprecated)](https://github.com/react-native-oh-library/react-native-spinkit/releases) | 0.72       |
-| 1.5.2 | [@react-native-ohos/react-native-spinkit Releases](https://github.com/react-native-oh-library/react-native-spinkit/releases)                        | 0.72       |
+| 1.5.3 | [@react-native-ohos/react-native-spinkit Releases](https://github.com/react-native-oh-library/react-native-spinkit/releases)                        | 0.72       |
 | 1.6.0  | [@react-native-ohos/react-native-spinkit Releases](https://github.com/react-native-oh-library/react-native-spinkit/releases)                        | 0.77       |
 
 For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
@@ -79,12 +79,13 @@ This library has been adapted for `Codegen`. Before using it, you need to proact
 |                                      | Is supported autolink  | Supported RN Version |
 |--------------------------------------|-----------------------|----------------------|
 | ~1.6.0                               |  No                   |  0.77                |
-| ~1.5.2                              |  Yes                  |  0.72                |
+| ~1.5.3                               |  Yes                  |  0.72                |
 | <= 1.5.1-0.0.2@deprecated            |  No                   |  0.72                |
 
 Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+
 <details>
   <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
 

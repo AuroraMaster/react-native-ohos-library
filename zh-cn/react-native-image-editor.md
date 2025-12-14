@@ -284,7 +284,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 2.4. 在 ArkTs 侧引入 xxx Package
+### 2.4. 在 ArkTs 侧引入 ImageEditorPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 

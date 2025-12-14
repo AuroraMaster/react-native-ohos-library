@@ -234,7 +234,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 2.4.在 ArkTs 侧引入 RNCCheckBoxPackage
+### 2.4.在 ArkTs 侧引入 ToolbarAndroidPackage
 
 > [!TIP] 版本 v0.2.22 及以上需要
 

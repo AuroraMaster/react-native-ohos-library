@@ -236,7 +236,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 2.4. Import RNCCheckBoxPackage on the ArkTS Side
+### 2.4. Import ToolbarAndroidPackage on the ArkTS Side
 
 > [!TIP] Required for version v0.2.22 and above
 
