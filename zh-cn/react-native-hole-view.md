@@ -12,8 +12,6 @@
     </a>
 </p>
 
-
-
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-hole-view)
 
 ## 安装与使用
@@ -29,8 +27,6 @@
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
-
-
 
 <!-- tabs:start -->
 
@@ -148,11 +144,19 @@ export default App;
 
 ## Link
 
-Version >= @react-native-ohos/react-native-hole-view@3.0.1，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                  | 是否支持autolink | RN框架版本 |
+|----------------------------------|-----------------|------------|
+| ~3.1.0                           |  No              |  0.77     |
+| ~3.0.1                           |  Yes             |  0.72     |
+| <= 3.0.0-alpha4-0.0.5@deprecated |  No              |  0.72     |
 
-此步骤为手动配置原生依赖项的指导。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
+
+首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
 ### 1.在工程根目录的 `oh-package.json` 添加 overrides字段
 
@@ -273,8 +277,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+</details>
 
-### 5.运行
+## 运行
 
 点击右上角的 `sync` 按钮
 

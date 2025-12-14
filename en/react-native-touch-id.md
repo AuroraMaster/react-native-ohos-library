@@ -14,16 +14,15 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-touch-id)
 
-
-The repository for this third-party library has been migrated to Gitcode, and it now supports direct download from npm. The new package name is: `@react-native-ohos/react-native-touch-id`. The specific version relationships are as follows:
-
-| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
-| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
-| <= 4.4.1-0.0.3@deprecated  | @react-native-oh-tpl/react-native-touch-id | [Github](https://github.com/react-native-oh-library/react-native-touch-id) | [Github Releases](https://github.com/react-native-oh-library/react-native-touch-id/releases) | 0.72 |
-| 4.4.2 | @react-native-ohos/react-native-touch-id   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-touch-id) | [GitCode Releases]() | 0.72 |
-| 4.5.0 | @react-native-ohos/react-native-touch-id   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-touch-id) | [GitCode Releases]() | 0.77 |
-
 ## Installation and Usage
+
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Version                           | Release Information                        |Supported RN Version  |
+|-----------------------------------|--------------------------------------------| -------------------- |
+| <= 4.4.1-0.0.3@deprecated   | [@react-native-oh-tpl/react-native-touch-id Releases(deprecated)](https://github.com/react-native-oh-library/react-native-touch-id/releases) | 0.72                 |
+| 4.4.2 | [@react-native-ohos/react-native-touch-id Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-touch-id/releases)                        | 0.72       |
+| 4.5.0 | [@react-native-ohos/react-native-touch-id Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-touch-id/releases)                        | 0.77       |
 
 For older versions not published on npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
 
@@ -93,17 +92,23 @@ export default App;
 ```
 ## Use Codegen
 
-Version >= @react-native-ohos/react-native-touch-id@4.4.2, compatible with codegen-lib for generating bridge code.
-
-If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
+This library has been adapted for `Codegen`. Before using it, you need to proactively generate the bridge code for the third-party library. For details, please refer to the [Codegen Usage Documentation](/en/codegen.md).
 
 ## Link
 
-Version >= @react-native-ohos/react-native-touch-id@4.4.2 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | is supporte autolink  | Supported RN Version |
+|--------------------------------------|-----------------------|----------------------|
+| ~4.5.0                               |  No                   |  0.77                |
+| ~4.4.2                               |  Yes                  |  0.72                |
+| <= 4.4.1-0.0.3@deprecated            |  No                   |  0.72                |
 
-This step provides guidance for manually configuring native dependencies.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md.
 
-Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
+
+First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
 ### 1.Open `entry/oh-package.json5` file and add the following dependencies:
 
@@ -224,8 +229,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+</details>
 
-### 5. Running
+## Running
 
 Click the `sync` button in the upper right corner.
 

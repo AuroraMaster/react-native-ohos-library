@@ -15,7 +15,7 @@ Based on the HarmonyOS [autoFillManager](https://developer.huawei.com/consumer/e
 
 <video controls src="https://github.com/user-attachments/assets/19be83fb-2afb-4a31-9e7f-cba3848a5892" title="auto-fill-demo" width="180"></video>
 
-> [!TIP] [ GitHub address](https://github.com/react-native-oh-library/auto-fill)
+> [!TIP] [GitHub address](https://github.com/react-native-oh-library/auto-fill)
 
 ## Prerequisites
 
@@ -58,7 +58,7 @@ yarn add @react-native-ohos/auto-fill
 ```tsx
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet } from 'react-native';
-import AutoFill from '@react-native-ohos/auto-fill';
+import AutoFill from 'auto-fill';
 
 const MyFormComponent = () => {
   const [fullName, setFullName] = useState('');
@@ -144,14 +144,21 @@ The following lists the mapping between [textContentType](https://reactnative.cn
 
 ### Link
 
-Version >= @react-native-ohos/auto-fill@1.0.2 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
-Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | Is supported autolink | Supported RN Ve
+|--------------------------------------|------------------|------------|
+| ~1.1.0                               |  No              |  0.77     |
+| ~1.0.2                               |  Yes             |  0.72     |
+| <=1.0.1@deprecated                   |  No              |  0.72     |
 
-This step provides guidance for manually configuring native dependencies.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-Open the **harmony** directory of the HarmonyOS project in DevEco Studio.
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
 
-#### 1. 1. Adding the **overrides** Field to the **oh-package.json5** File in the Root Directory of the Project
+First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
+
+#### 1. Adding the **overrides** Field to the **oh-package.json5** File in the Root Directory of the Project
 
 ```json
 {
@@ -255,8 +262,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+</details>
 
-#### 5.Running
+## Running
 
 Click the `sync` button in the upper right corner.
 

@@ -117,11 +117,19 @@ const styles = StyleSheet.create({
 export default App;
 ```
 
-## 2. Manual Link
+## 2. Link
 
-Version >= @react-native-ohos/toolbar-android@0.2.2 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | Is supported autolink  | Supported RN Version |
+|--------------------------------------|-----------------------|----------------------|
+| ~0.3.0                              |  No              |  0.77     |
+| ~0.2.2                              |  Yes             |  0.72     |
+| <= 0.2.1-0.0.4@deprecated            |  No              |  0.72     |
 
-This step provides guidance for manually configuring native dependencies.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md.
+
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
 
 First, you need to open the HarmonyOS project `harmony` within your project using DevEco Studio.
 
@@ -277,8 +285,9 @@ const arkTsComponentNames: Array<string> = [
 + RNCToolbarAndroid.NAME
 ];
 ```
+</details>
 
-### 2.6. Run
+## 3. Running
 
 Click the `sync` button in the top right corner.
 
@@ -291,9 +300,9 @@ ohpm install
 
 Then compile and run.
 
-## 3. Constraints & Limitations
+## 4. Constraints & Limitations
 
-### 3.1 Compatibility
+### 4.1 Compatibility
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
@@ -303,7 +312,7 @@ Verified in the following versions.
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
-## 4. Props
+## 5. Props
 
 > [!TIP] The "Platform" column indicates the platforms supported by the original third-party library for that property.
 
@@ -327,7 +336,7 @@ Inherits [View Props](https://reactnative.dev/docs/view#props).
 | title | Sets the toolbar title. | string | No | Android | Yes |
 | titleColor | Sets the toolbar title color. | string | No | Android | Yes |
 
-#### 4.1. Props of ImageSource
+#### 5.1. Props of ImageSource
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 |------|---------------------------------------------------------------------------------------------------------------------------------------|--------|----------|----------|-------------------|
@@ -335,10 +344,10 @@ Inherits [View Props](https://reactnative.dev/docs/view#props).
 | width | the width of the image | number | No | android | Yes |
 | height | the height of the image | number | No | android | Yes |
 
-## 5. Known Issues
+## 6. Known Issues
 
-## 6. Others
+## 7. Others
 
-## 7. License
+## 8. License
 
 This project is based on [The MIT License (MIT)](https://gitee.com/openharmony-sig/rntpc_toolbar-android/blob/master/LICENSE). Feel free to enjoy and contribute to open source.

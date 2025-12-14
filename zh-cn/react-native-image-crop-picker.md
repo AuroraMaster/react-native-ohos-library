@@ -801,16 +801,23 @@ const styles = StyleSheet.create({
 export default ImageCropPickDemo;
 ```
 
-## 2. Manual Link
+## 2. Link
 
-Version >= @react-native-ohos/react-native-image-crop-picker@0.40.5，已支持 Autolink，无需手动配置（仍需手动配置的内容已在对应标题处标记），目前只支持72框架。
-Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                             | 是否支持autolink | RN框架版本 |
+|-----------------------------|-----------------|------------|
+| ~0.50.2                     |  No              |  0.77     |
+| ~0.40.5                     |  Yes             |  0.72     |
+| <= 0.40.3-0.0.14@deprecated |  No              |  0.72     |
 
-此步骤为手动配置原生依赖项的指导。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
-### 2.1. Overrides RN SDK
+### 2.1 Overrides RN SDK
 
 为了让工程依赖同一个版本的 RN SDK，需要在工程根目录的 `oh-package.json5` 添加 overrides 字段，指向工程需要使用的 RN SDK 版本。替换的版本既可以是一个具体的版本号，也可以是一个模糊版本，还可以是本地存在的 HAR 包或源码目录。
 
@@ -826,7 +833,7 @@ Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_nati
 }
 ```
 
-### 2.2. 引入原生端代码
+### 2.2 引入原生端代码
 
 目前有两种方法：
 
@@ -859,7 +866,7 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/link-source-code.md)
 
-### 2.3. 配置 CMakeLists 和引入 ImageCropPickerPackage
+### 2.3 配置 CMakeLists 和引入 ImageCropPickerPackage
 
 > 若使用的是 <= 0.40.3-0.0.14 版本，请跳过本章。
 
@@ -911,7 +918,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 2.4. 在 ArkTs 侧引入 ImageCropPickerPackage
+### 2.4 在 ArkTs 侧引入 ImageCropPickerPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
@@ -927,7 +934,13 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 2.5. 配置Entry(该模块始终需要手动配置)
+</details>
+
+## 3. 必要的配置项
+
+> [!TIP] 该模块的内容无法通过autolink自动生成，始终需要手动配置。
+
+### 配置Entry(该模块始终需要手动配置)
 
 **(1)在 entry/src/main/ets/entryability 下修改 EntryAbility.ets**
 
@@ -1109,7 +1122,7 @@ struct ImageEdit {
 }
 ```
 
-### 2.6. 运行
+## 4. 运行
 
 点击右上角的 `sync` 按钮
 
@@ -1122,9 +1135,9 @@ ohpm install
 
 然后编译、运行即可。
 
-## 3. 约束与限制
+## 5. 约束与限制
 
-### 3.1. 兼容性
+### 兼容性
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
@@ -1134,7 +1147,7 @@ ohpm install
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
-## 4. API
+## 6. API
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
@@ -1148,7 +1161,7 @@ ohpm install
 | cleanSingle | 删除单个缓存文件                                             | function | no       | iOS/Android | yes               |
 | openCamera  | 从相机选择图片                                               | function | no       | iOS/Android | yes               |
 
-## 5. 属性
+## 7. 属性
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
@@ -1198,7 +1211,7 @@ ohpm install
 | cropperCancelColor (iOS only)             | string (default tint `iOS` color )                           | 默认值为 iOS 系统默认的 tint 颜色，[由 TOCropViewController 控制](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2FTimOliver%2FTOCropViewController%2Fblob%2Fa942414508012b13102f776eb65dac655f31cabb%2FObjective-C%2FTOCropViewController%2FViews%2FTOCropToolbar.m%23L433) | no       | iOS      | yes               |
 | cropperRotateButtonsHidden (iOS only)     | bool (default false)                                         | 启用或禁用裁剪器的旋转按钮                                   | no       | iOS      | yes               |
 
-## 6. 遗留问题
+## 8. 遗留问题
 
 - [ ] react-native-image-crop-picker 图像将始终填充蒙版空间 [#4](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/4)
 - [ ] Android Demo中 ActiveWidget 改变颜色 [#5](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/5)
@@ -1217,8 +1230,8 @@ ohpm install
 - [ ] @ohos.multimedia.image无法进行圆形效果裁切 [#46](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/46)
 - [ ] @ohos.multimedia.image中PackingOption无法设置宽高属性 [#47](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/47)
 
-## 7. 其他
+## 9. 其他
 
-## 8. 开源协议
+## 10. 开源协议
 
 本项目基于 [The MIT License (MIT)](https://gitee.com/openharmony-sig/rntpc_react-native-image-crop-picker/blob/master/LICENSE) ，请自由地享受和参与开源。

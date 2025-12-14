@@ -71,12 +71,19 @@ const MyList = () => {
 
 ## Link
 
-Version >= @react-native-ohos/flash-list@1.6.4 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
-Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | Is supported autolink  | Supported RN Version |
+|--------------------------------------|-----------------------|----------------------|
+| ~1.8.3                               |  No                   |  0.77                |
+| ~1.6.4                              |  Yes                  |  0.72                |
+| <= 1.6.3-0.2.9@deprecated            |  No                   |  0.72                |
 
-This step provides guidance for manually configuring native dependencies.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
+
+First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
 ### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
 
@@ -181,7 +188,9 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 4. Running
+</details>
+
+## Running
 
 Click the `sync` button in the upper right corner.
 

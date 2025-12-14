@@ -186,13 +186,21 @@ const styles = StyleSheet.create({
 });
 ```
 
-## 2. Manual Link
+## 2. Link
 
-Version >= @react-native-ohos/image-editor@3.2.1 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                              | Is supported autolink | Supported RN Version |
+|------------------------------|-----------------------|----------------------|
+| ~4.3.1                       | No                    |  0.77                |
+| ~3.2.1                       | Yes                   |  0.72                |
+| <= 3.2.0-nc.0.1.3@deprecated | No                    |  0.72                |
 
-This step provides guidance for manually configuring native dependencies.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
+
+First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
 ### 2.1 Overrides RN SDK
 
@@ -292,7 +300,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 2.5 Running
+</details>
+
+## 3. Running
 
 Click the `sync` button in the upper right corner.
 
@@ -305,9 +315,9 @@ ohpm install
 
 Then build and run the code.
 
-## 3. Constraints
+## 4. Constraints
 
-### 3.1 Compatibility
+### Compatibility
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
@@ -317,7 +327,7 @@ Verified successfully in the following versions:
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
-## 4. Properties 
+## 5. Properties 
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
@@ -332,7 +342,7 @@ Verified successfully in the following versions:
 | `quality`     | A value in range `0.0` - `1.0` specifying compression level of the result image. `1` means no compression (highest quality) and `0` the highest compression (lowest quality)<br/>**Default value**: `0.9` | number | no       | All      | yes               |
 | `format`      | The format of the resulting image.<br/>**Default value**: based on the provided image;<br/>if value determination is not possible, `'jpeg'` will be used as a fallback.         | string | no       | All      | yes               |
 
-## 5. APIs
+## 6. APIs
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
@@ -342,11 +352,11 @@ Verified successfully in the following versions:
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | cropImage | Crop the image specified by the URI param. If URI points to a remote image, it will be downloaded automatically. If the image cannot be loaded/downloaded, the promise will be rejected.<br/><br/>If the cropping process is successful, the resultant cropped image will be stored in the cache path, and the CropResult returned in the promise will point to the image in the cache path. ⚠️ Remember to delete the cropped image from the cache path when you are done with it. | function | yes | ios/Android | yes               |
 
-## 6. Known Issues
+## 7. Known Issues
 
-## 7. Others
+## 8. Others
 
-## 8. License
+## 9. License
 
 This project is licensed under [The MIT License (MIT)](https://gitee.com/openharmony-sig/rntpc_react-native-image-editor/blob/master/LICENSE).
 

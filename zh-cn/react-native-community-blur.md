@@ -207,9 +207,17 @@ const styles = StyleSheet.create({
 
 ## Link
 
-Version >= @react-native-ohos/blur@4.4.2，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | 是否支持autolink | RN框架版本 |
+|--------------------------------------|-----------------|------------|
+| ~4.5.0                               |  No              |  0.77     |
+| ~4.4.2                               |  Yes             |  0.72     |
+| <= 4.4.1@deprecated            |  No              |  0.72     |
 
-此步骤为手动配置原生依赖项的指导。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md。
+
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -310,7 +318,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 4.在 ArkTs 侧引入 BlurView 组件（使用4.4.0-0.1.0及之后的版本忽略这步配置）
+### 4.在 ArkTs 侧引入 BlurView 组件
 
 找到 `function buildCustomRNComponent()`，一般位于 `entry/src/main/ets/pages/index.ets` 或 `entry/src/main/ets/rn/LoadBundle.ets`，添加：
 
@@ -345,8 +353,9 @@ const arkTsComponentNames: Array<string> = [
 + BLUR_TYPE
   ];
 ```
+</details>
 
-### 5.运行
+## 运行
 
 点击右上角的 `sync` 按钮
 

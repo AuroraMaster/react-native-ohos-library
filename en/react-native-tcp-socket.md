@@ -33,7 +33,6 @@ Navigate to your project directory and run the following command:
 #### **npm**
 
 ```bash
-# V0.77
 npm install @react-native-ohos/react-native-tcp-socket
 ```
 
@@ -576,17 +575,23 @@ const styles = StyleSheet.create({
 
 ## Using Codegen
 
-> Version >= @react-native-ohos/react-native-tcp-socket@6.2.1, compatible with codegen-lib for generating bridge code.
-
 This library has been adapted for `Codegen`. Before use, you need to actively execute the command to generate the third-party library bridging code. Please refer to the [Codegen Usage Documentation](/zh-cn/codegen.md) for details.
 
 ## Link
-Version >= @react-native-ohos/react-native-tcp-socket@6.2.1 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
-Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-This step provides guidance for manually configuring native dependencies.
+|                                      | 是否支持autolink | RN框架版本 |
+|--------------------------------------|-----------------|------------|
+| ~6.3.1                               |  No              |  0.77     |
+| ~6.2.1                               |  Yes             |  0.72     |
+| <= 6.2.0-0.0.3@deprecated            |  No              |  0.72     |
 
-First, you need to open the HarmonyOS project `harmony` within your project using DevEco Studio.
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
+
+首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
 ### 1. Add the overrides field to the root `oh-package.json5`
 
@@ -707,8 +712,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+</details>
 
-### 5. Run
+## Running
 
 Click the `sync` button in the top right corner.
 

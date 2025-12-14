@@ -4,7 +4,7 @@
   <h1 align="center"> <code>react-native-splash-screen</code> </h1>
 </p>
 
- [!TIP] [ GitHub address](https://github.com/react-native-oh-library/react-native-splash-screen)
+> [!TIP] [ GitHub address](https://github.com/react-native-oh-library/react-native-splash-screen)
 
 ## 1. Installation and Usage
 
@@ -95,17 +95,23 @@ export default class WelcomePage extends Component {
 
 ## 2. Use Codegen
 
-Version >= @react-native-ohos/react-native-splash-screen@3.3.2, compatible with codegen-lib for generating bridge code.
+This library has been adapted for `Codegen`. Before using it, you need to proactively generate the bridge code for the third-party library. For details, please refer to the [Codegen Usage Documentation](/en/codegen.md).
 
-If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
+## 3. Link
 
-## 3. Manual Link
+|                                      | Is supported autolink | Supported RN Version |
+|--------------------------------------|-----------------------|----------------------|
+| ~3.4.0                               |  No                   |  0.77                |
+| ~3.3.2                              |  Yes                  |  0.72                |
+| <= 3.3.0-0.0.2@deprecated            |  No                   |  0.72                |
 
-Version >= @react-native-ohos/react-native-splash-screen@3.3.2 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks. Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md.
 
-This step provides guidance for manually configuring native dependencies.
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
 
-Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
 ### 3.1. Overrides RN SDK
 
@@ -220,8 +226,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+</details>
 
-### 3.5. Running
+## 4. Running
 
 Click the `sync` button in the upper right corner.
 
@@ -263,9 +270,9 @@ export default App;
 
 ```
 
-## 4. Constraints
+## 5. Constraints
 
-### 4.1. Compatibility
+### Compatibility
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
@@ -275,7 +282,7 @@ Verified in the following versions.
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
-## 5. API
+## 6. API
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
@@ -299,13 +306,13 @@ Verified in the following versions.
 | backgroundColor | 启动页背景色 | string |
 | pageUrl | 首页路由 | bool |
 
-## 6. Known Issues
+## 7. Known Issues
 
-## 7. Others
+## 8. Others
 
 - In iOS, the working principle of the show() method is as follows: In the entry application method, the home page of the App is first loaded, and then a while loop is used to keep the interface on the App's splash screen. During this time, the home page still loads asynchronously. Once the loading is complete, stopping the while loop will hide the splash screen and display the home page.
   In HarmonyOS, the home page is loaded by calling windowStage.loadContent in the entry onWindowStageCreate method. If a while loop is used at this point, the home page cannot be loaded asynchronously.
 
-## 8. License
+## 9. License
 
 This project is licensed under [The MIT License (MIT)](https://github.com/crazycodeboy/react-native-splash-screen/blob/v3.3.0/LICENSE).

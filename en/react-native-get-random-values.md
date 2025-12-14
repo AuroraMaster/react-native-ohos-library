@@ -88,12 +88,19 @@ export const GetRandomValues = () => {
 
 ## Link
 
-Version >= @react-native-ohos/react-native-get-random-values@1.11.1 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
-Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                            | Is supported autolink | Supported RN Version |
+|----------------------------|-----------------------|----------------------|
+| ~1.12.0                    | No                    |  0.77                |
+| ~1.11.1                    | Yes                   |  0.72                |
+| <= 1.11.0-0.0.1@deprecated | No                    |  0.72                |
 
-This step provides guidance for manually configuring native dependencies.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
+
+First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
 ### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
 
@@ -215,7 +222,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 5. Running
+</details>
+
+## Running
 
 Click the `sync` button in the upper right corner.
 

@@ -103,11 +103,19 @@ export default App;
 
 ## Link
 
-Version >= @react-native-ohos/react-native-worklets-core@1.3.4，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | 是否支持autolink | RN框架版本 |
+|--------------------------------------|-----------------|------------|
+| ~1.5.1                               |  No              |  0.77     |
+| ~1.3.4                              |  Yes             |  0.72     |
+| <= 1.3.3-0.0.4@deprecated            |  No              |  0.72     |
 
-此步骤为手动配置原生依赖项的指导。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md。
 
-首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
+
+首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
 ### 1.在工程根目录的 `oh-package.json5` 添加 overrides 字段
 
@@ -225,8 +233,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+</details>
 
-### 5.运行
+## 运行
 
 点击右上角的 `sync` 按钮
 

@@ -12,20 +12,19 @@
     </a>
 </p>
 
-本项目基于 [react-native-share](https://github.com/react-native-share/react-native-share) 开发。
-
-
-该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-share`，具体版本所属关系如下：
-
-| Version                    | Package Name                          | Repository         | Release                    | Support RN version |
-|----------------------------|---------------------------------------| ------------------ | -------------------------- |--------------------|
-| <=10.2.1-0.0.6@deprecated    | @react-native-oh-tpl/react-native-share Releases(deprecated)  | [Github](https://github.com/react-native-oh-library/react-native-share) | [Github Releases](https://github.com/react-native-oh-library/react-native-share/releases) | 0.72               |
-| 10.2.2                     | @react-native-ohos/react-native-share | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-share) | [Github Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-share/releases) | 0.72               |
-| 12.1.1                      | @react-native-ohos/react-native-share | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-share) | [GitCode Releases]() | 0.77               |
-
-
+ [!TIP] [Github 地址](https://github.com/react-native-share/react-native-share)
 
 ## 安装与使用
+
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库版本  | 发布信息                                                  | 支持RN版本 |
+|--------| ------------------------------------------------------------ | ---------- |
+| <=10.2.1-0.0.6@deprecated | [@react-native-oh-tpl/react-native-share Releases(deprecated)](https://github.com/react-native-oh-library/react-native-share/releases) | 0.72       |
+| 10.2.2            | [@react-native-ohos/react-native-share Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-share/releases)   | 0.72       |
+| 12.1.1             | [@react-native-ohos/react-native-share Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-share/releases)   | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -87,17 +86,23 @@ yarn add @react-native-ohos/react-native-share
 
 ## 使用 Codegen
 
-Version >= @react-native-ohos/react-native-share@10.2.2，已适配codegen-lib生成桥接代码。
-
 本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
 
 ## Link
 
-Version >= @react-native-ohos/react-native-share@10.2.2，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | 是否支持autolink | RN框架版本 |
+|--------------------------------------|-----------------|------------|
+| ~12.1.1                               |  No              |  0.77     |
+| ~10.2.2                               |  Yes             |  0.72     |
+| <= 10.2.1-0.0.6@deprecated            |  No              |  0.72     |
 
-此步骤为手动配置原生依赖项的指导。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
+
+首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
 ### 1.在工程根目录的 `oh-package.json` 添加 overrides 字段
 
@@ -219,8 +224,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+</details>
 
-### 5.运行
+## 运行
 
 点击右上角的 `sync` 按钮
 
