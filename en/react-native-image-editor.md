@@ -285,7 +285,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 2.4 Introducing xxx Package to ArkTS
+### 2.4 Introducing ImageEditorPackage to ArkTS
 
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 

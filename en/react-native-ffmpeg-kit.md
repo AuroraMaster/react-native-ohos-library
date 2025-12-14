@@ -339,7 +339,7 @@ Method 2: Directly link source code
 
 > [!TIP] If you need to use direct source code linking, please refer to [Direct Link Source Code Instructions](/en/link-source-code.md)
 
-### 3. Configure CMakeLists and import GestureHandlerPackage
+### 3. Configure CMakeLists and import FFmpegKitPackage
 
 > If you are using version <= 6.0.3, please skip this chapter.
 
