@@ -15,6 +15,14 @@
 
 > [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-code-push)
 
+The repository for this third-party library has been migrated to Gitcode, and it now supports direct download from npm. The new package name is: `@react-native-ohos/react-native-code-push`. The specific version relationships are as follows:
+
+| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
+| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
+| <= 8.2.2-0.0.10@deprecated  |@react-native-oh-tpl/react-native-code-push|[Github](https://github.com/react-native-oh-library/react-native-code-push/releases) | [Github Releases](https://github.com/react-native-oh-library/react-native-code-push/releases) | 0.72       |
+| 8.2.3             | @react-native-ohos/react-native-code-push|[GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-code-push) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-code-push/releases)   | 0.72       |
+| 9.0.2             | @react-native-ohos/react-native-code-push|[GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-code-push) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-code-push/releases)   | 0.77       |
+
 ## Pre-preparation
 
 ### code-push-cli
@@ -34,7 +42,27 @@ code-push app list //List all apps under the account.
 code-push app add <apppname> harmony react-native // Creating an Application
 code-push release <AppName> <bundle.harmony.js> "< version number > "--description "<v1.0.0 test update >" -m //Packet sending command. Add -m to forcibly update the version. The asterisk (*) indicates all versions, for example, code-push release CodePush_Local ./bundle.harmony.js "*" --description "v1.0.0 Test Update"
 ```
+```
+Execute the following commands in the project directory:
 
+code-push login <server_address> // Prerequisite: Server must be started (public network accessible)
+This will open a webpage. Enter account and password (default account: admin, password: 123456)
+Click "Get token"
+Copy the token to the command line window
+Prompt shows login successful
+
+# Ensure the bundle file has minor modifications
+echo "// Force update for 1.0.0 pending fix - $(date)" >> ./bundles/bundle.harmony.js
+
+Modify the characters in "// Force update for 1.0.0 pending fix - $(date)" as needed
+
+# Publish a mandatory update for version 1.0.0
+code-push release MyApp-Harmony ./bundles/bundle.harmony.js 1.0.0 -d Staging --description "Force fix for issues" --mandatory
+
+# Publish a non-mandatory update for version 1.0.0
+code-push release MyApp-Harmony ./bundles/bundle.harmony.js 1.0.0 -d Staging --description "Non-mandatory fix for issues"
+
+```
 ### code-push-server
 
 1. Clone the [code-push-server](https://github.com/react-native-oh-library/code-push-server) to the local host.
@@ -43,16 +71,84 @@ code-push release <AppName> <bundle.harmony.js> "< version number > "--descripti
 4. Modifying the `code-push-server/src/core/config.ts` Configuration File
 5. Run the `npm run dev` command in the code-push-server directory to generate the `bin` directory.
 6. Run the `npm run start` command in the code-push-server directory to start the service.
+```
+Install MySQL
+# Ubuntu/Debian
+sudo apt update
+sudo apt install mysql-server
+# Start service
+sudo systemctl start mysql
+sudo mysql_secure_installation
+# Follow the prompts to set up:
+# 1. Set root password
+# 2. Remove anonymous users
+# 3. Disallow remote root login
+# 4. Remove test database
+# 5. Reload privilege tables
+First enter y/yes for all
+
+# First log in to MySQL (no password required)
+sudo mysql
+# Execute in MySQL command line:
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your_strong_password';
+FLUSH PRIVILEGES;
+EXIT;
+
+# Now log in with password
+mysql -u root -p
+Enter password
+EXIT;
+
+# Edit configuration file
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+# Find bind-address and modify
+# bind-address = 0.0.0.0  
+# Allow all IP access
+# Ctrl+S to save and exit automatically
+# Restart MySQL
+
+sudo systemctl restart mysql
+
+Install Redis
+sudo apt update
+sudo apt install redis-server -y
+
+# Start and enable service
+sudo systemctl start redis-server
+# Test
+redis-cli ping 
+Should reply PONG
+# Edit Redis configuration file
+sudo nano /etc/redis/redis.conf
+
+# Find and modify the following lines:
+# bind 0.0.0.0  # If remote access is needed
+# protected-mode no  # If bind is set to 0.0.0.0, need to turn off protected mode
+# Ctrl+S to save and exit automatically
+# Restart Redis
+sudo systemctl restart redis-server
+```
+
+```
+Modify document sections
+In the code-push-server directory, modify code-push-server/src/core/config.ts  <127.0.0.1>  Change to server address
+
+In code-push-server/src/db.ts, for example:
+    .example(
+        '$0 init --dbname codepush --dbhost localhost (replace with server address) --dbuser root --dbpassword <password> (replace with database password) --dbport 3306 --force',
+        'Initialize code-push-server database',
+    )
+In this file, replace all occurrences of 'localhost' with server address
+
+Create bin directory (might prompt that database codepush is not created)
+npm run dev (prompts that database codepush doesn't exist) Ctrl+C to force exit
+Execute
+npm run init  Success returns "success" and creates database codepush
+Execute
+npm run dev
+```
 
 ## Installation and Usage
-
-Please refer to the Releases page of the third-party library for the corresponding version information
-
-| Third-party Library Version | Release Information       | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| <= 8.2.2-0.0.10@deprecated  | [@react-native-oh-tpl/react-native-code-push Releases(deprecated)](https://github.com/react-native-oh-library/react-native-code-push/releases) | 0.72       |
-| 8.2.3             | [@react-native-ohos/react-native-code-push Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-code-push/releases)   | 0.72       |
-| 9.0.2             | [@react-native-ohos/react-native-code-push Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-code-push/releases)   | 0.77       |
 
 For older versions not published on npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
 
