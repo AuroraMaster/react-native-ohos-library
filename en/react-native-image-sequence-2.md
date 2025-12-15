@@ -40,240 +40,39 @@ The following code shows the basic use scenario of the repository:
 
 > [!WARNING] The name of the imported repository remains unchanged.
 
-TestDemo.tsx
-
-```js
-import React, { useState } from "react";
-import { SafeAreaView, StyleSheet } from "react-native-harmony";
-import { View, Text, Switch, TextInput, Button } from "react-native";
-import TestDemo2 from "./TestDemo2";
-
-const images = [
-  { uri: "https://octodex.github.com/images/stormtroopocat.jpg" },
-  { uri: 'https://octodex.github.com/images/saint_nictocat.jpg' },
-  require("./assets/2.jpg"),
-  require("./assets/3.jpg"),
-  require("./assets/4.jpg"),
-  require("./assets/5.jpg"),
-  require("./assets/6.jpg"),
-];
-
-export interface sequenceType {
-  images: NodeRequire[];
-  loop: boolean;
-  startFrameIndex: number;
-  framesPerSecond: number;
-  downsampleWidth: number;
-  downsampleHeight: number;
-}
-
-const ImageSequenceDemo = (props: any) => {
-  const [loopData, setLoopData] = useState(false);
-  const [isShow, setIsShow] = useState(false);
-  const [winWidth, setWinWidth] = useState(300);
-  const [winHeight, setWinHeight] = useState(200);
-  const [downsampleWidth, setDownSampleWidth] = useState(-1);
-  const [downsampleHeight, setDownSampleHeight] = useState(-1);
-
-  // Set Sampling Width
-  const inputSampleWidth = (value: string) => {
-    if (isNaN(Number(value))) {
-      return;
-    }
-    setDownSampleWidth(Number(value));
-  };
-
-  // Set Sampling Height
-  const inputSampleHeight = (value: string) => {
-    if (isNaN(Number(value))) {
-      return;
-    }
-    setDownSampleHeight(Number(value));
-  };
-
-  // Set Starting Position
-  const [startFrameIndex, setFrameIndex] = useState(0);
-  const inputStartFrameIndex = (value: string) => {
-    if (isNaN(Number(value))) {
-      return;
-    }
-    let _value = Number(value);
-    if (Number(value) > images.length) {
-      _value = 0;
-    }
-    setFrameIndex(_value);
-  };
-
-  // Set Rate
-  const [framesPerSecond, setFramesPerSecond] = useState(24);
-  const inputFramesPerSecond = (value: string) => {
-    if (isNaN(Number(value))) {
-      return;
-    }
-    let _value = Number(value);
-    if (Number(value) <= 0) {
-      _value = 24;
-    }
-    setFramesPerSecond(_value);
-  };
-
-  const buttonIsShow = () => {
-    setIsShow(!isShow);
-  };
-
-  const inputSetWinWidth = (value: string) => {
-    if (isNaN(Number(value))) {
-      return;
-    }
-    setWinWidth(Number(value));
-  };
-
-  const inputSetWinHeight = (value: string) => {
-    if (isNaN(Number(value))) {
-      return;
-    }
-    setWinHeight(Number(value));
-  };
-
-  return (
-    <SafeAreaView>
-      <View>
-        <View>
-          <Text>
-            Current view size:width: {winWidth}, height:{winHeight}
-          </Text>
-          <Text>
-            Activate Loop:<Switch onValueChange={(value) => setLoopData(value)}></Switch>
-          </Text>
-          <View>
-            <Text>Image Width/Height:</Text>
-            <View style={styles.box}>
-              <TextInput
-                style={[styles.input, styles.input1]}
-                onChangeText={(value) => inputSetWinWidth(value)}
-                defaultValue="300"
-                keyboardType="numeric"
-              />
-              <TextInput
-                style={[styles.input, styles.input1]}
-                onChangeText={(value) => inputSetWinHeight(value)}
-                defaultValue="200"
-                keyboardType="numeric"
-              />
-            </View>
-          </View>
-          <Text>Initial Position:</Text>
-          <TextInput
-            style={styles.input}
-            onChangeText={(value) => inputStartFrameIndex(value)}
-            defaultValue="0"
-            keyboardType="numeric"
-          />
-          <Text>Playback Speed:</Text>
-          <TextInput
-            style={styles.input}
-            onChangeText={(value) => inputFramesPerSecond(value)}
-            defaultValue="24"
-            keyboardType="numeric"
-          />
-          <View>
-             <Text>Sampling Width/Height:</Text>
-             <View style={styles.box}>
-                <TextInput style={[styles.input, styles.input1]} onChangeText={value => inputSampleWidth(value)} defaultValue='-1' keyboardType='default' />
-                 <TextInput style={[styles.input, styles.input1]} onChangeText={value => inputSampleHeight(value)} defaultValue='-1' keyboardType='default' />
-              </View>
-           </View>
-        </View>
-        {!isShow ? (
-          <Button title="display" onPress={() => buttonIsShow()} />
-        ) : (
-          <Button title="return" onPress={() => buttonIsShow()} />
-        )}
-        {isShow ? (
-          <TestDemo2
-            loop={loopData}
-            images={images}
-            width={winWidth}
-            height={winHeight}
-            startFrameIndex={startFrameIndex}
-            framesPerSecond={framesPerSecond}
-            downsampleWidth={downsampleWidth}
-            downsampleHeight={downsampleHeight}
-          />
-        ) : null}
-      </View>
-    </SafeAreaView>
-  );
-};
-const styles = StyleSheet.create({
-  continer: {
-    flex: 1,
-    justifyContent: "center",
-    width: "100%",
-    height: "100%",
-  },
-  title: {
-    textAlign: "center",
-    marginVertical: 8,
-  },
-  fixToText: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  separator: {
-    marginVertical: 8,
-    borderBottomColor: "#737373",
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    borderColor: "red",
-    padding: 10,
-    width: 200,
-  },
-  box: {
-    flexDirection: "row",
-    justifyContent: "flex-start",
-  },
-  input1: {
-    width: 100,
-  },
-});
-
-export default ImageSequenceDemo;
-```
-
-TestDemo2.tsx
-
 ```js
 import { StyleSheet, View } from "react-native";
 import ImageSequence from 'react-native-image-sequence-2'
-
-const Separator = () => <View style={styles.separator}/>
-const TestDemo2 = (props: any) => {
+const images = [
+    { uri: "https://octodex.github.com/images/stormtroopocat.jpg" },
+    { uri: 'https://octodex.github.com/images/saint_nictocat.jpg' },
+    require("./assets/2.jpg"),
+    require("./assets/3.jpg"),
+    require("./assets/4.jpg"),
+    require("./assets/5.jpg"),
+    require("./assets/6.jpg"),
+];
+const centerIndex = Math.floor(Math.random() * images.length);
+const TestDemo = () => {
     return (
-        <ImageSequence
-        images={props.images}
-        loop={props.loop}
-        startFrameIndex={props.startFrameIndex}
-        framesPerSecond={props.framesPerSecond}
-        downsampleWidth={props.downsampleWidth}
-        downsampleHeight={props.downsampleHeight}
-        style={{width: props.width, height: props.height}}
-        />
+        <View style={styles.container}>
+            <ImageSequence
+                images={images}
+                startFrameIndex={centerIndex}
+                style={{ width: 200, height: 300 }}
+            />
+        </View>
     )
 }
 const styles = StyleSheet.create({
-    separator: {
-        marginVertical: 8,
-        borderBottomColor: '#737373',
-        borderBottomWidth: StyleSheet.hairlineWidth
-    }
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
 })
 
-export default TestDemo2
+export default TestDemo
 ```
 
 ## 2. Use Codegen
