@@ -74,25 +74,42 @@ import {
 } from '@op-engineering/op-sqlite';
 
 export default function OpSqliteExample() {
-    
+    const [sqliteVersion, setSqliteVersion] = useState<Scalar>('');
+    const handlePress = async () => {
+        try {
+            const db: DB = open({
+                name: 'helloDb.sqlite',
+                encryptionKey: 'test',
+                location: HARMONY_DATABASE_PATH
+            });
+
+            const res = await db.execute('SELECT sqlite_version();');
+            
+            // V8.0.3
+            const version = res.rows?._array[0]['sqlite_version()'];
+            
+            // V14.0.1
+            const version = res.rows[0]['sqlite_version()'];
+            
+            setSqliteVersion(version);
+        } catch (error) {
+            setSqliteVersion('Error getting version');
+        }
+    };
+
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
             <View style={{ flex: 1, backgroundColor: '#fff' }}>
                 <TouchableOpacity
                     style={{ padding: 5 }}
-                    onPress={() => {
-                        let db:DB = open({
-                            name: 'helloDb.sqlite',
-                            encryptionKey: 'test',
-                            location: HARMONY_DATABASE_PATH
-                        });
-                    }}>
+                    onPress={handlePress}
+                >
                     <Text style={{ color: 'red' }}>
-                       tap to {'openDB'}
+                        tap to {'openDB'}
                     </Text>
                 </TouchableOpacity>
+                <Text>{String(sqliteVersion)}</Text>
             </View>
-
         </SafeAreaView>
     );
 }
@@ -328,13 +345,14 @@ Open the `YourProject/entry/src/main/module.json5` file and add the following co
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| getConstants  | Return the corresponding database/file storage sandbox path.         |  () => {IOS_DOCUMENT_PATH,IOS_LIBRARY_PATH,ANDROID_DATABASE_PATH,ANDROID_FILES_PATH,ANDROID_EXTERNAL_FILES_PATH,HARMONY_DATABASE_PATH,HARMONY_FILES_PATH,}  | no | all      | yes |
-| openSync  | Synchronize the local database to the remote database and open the database.         | (options: {url: string;authToken: string;name: string;location?: string;}) => DB; | no | all      | yes |
-| openRemote  | Open the remote database. | (options: { url: string; authToken: string }) => DB;  | no | all      | yes |
-| open  | Open the database.encryptionKey indicates the key string required for using sqlcipher.After sqlcipher is enabled, encryptionKey is supported.         | (options: {name: string;location?: string;encryptionKey?: string;}) => DB;  | no | all      | yes |
-| isSQLCipher  | Whether SQL cipher is enabled.(SQLCipher is an open source SQLite extension that provides transparent 256-bit AES full database encryption.)         | () => boolean;  | no | all      | yes |
-| isLibsql  | Indicates whether to enable isLibsql. After isLibsql is enabled, the remote database and database synchronization interface can be enabled         | () => boolean;  | no | all      | yes |
-| moveAssetsDatabase  | Copy the database to the specified path.         | async (args: {filename: string;path?: string;overwrite?: boolean;}) => Promise<boolean>  | no | all      | yes |
+| `getConstants`  | Return the corresponding database/file storage sandbox path.         |  () => {IOS_DOCUMENT_PATH,IOS_LIBRARY_PATH,ANDROID_DATABASE_PATH,ANDROID_FILES_PATH,ANDROID_EXTERNAL_FILES_PATH,HARMONY_DATABASE_PATH,HARMONY_FILES_PATH,}  | no | all      | yes |
+| `openSync`  | Synchronize the local database to the remote database and open the database.         | (options: {url: string;authToken: string;name: string;location?: string;}) => DB; | no | all      | yes |
+| `openRemote`  | Open the remote database. | (options: { url: string; authToken: string }) => DB;  | no | all      | yes |
+| `open`  | Open the database.encryptionKey indicates the key string required for using sqlcipher.After sqlcipher is enabled, encryptionKey is supported.         | (options: {name: string;location?: string;encryptionKey?: string;}) => DB;  | no | all      | yes |
+| `isSQLCipher`  | Whether SQL cipher is enabled.(SQLCipher is an open source SQLite extension that provides transparent 256-bit AES full database encryption.)         | () => boolean;  | no | all      | yes |
+| `isLibsql`  | Indicates whether to enable isLibsql. After isLibsql is enabled, the remote database and database synchronization interface can be enabled         | () => boolean;  | no | all      | yes |
+| `moveAssetsDatabase`  | Copy the database to the specified path.         | async (args: {filename: string;path?: string;overwrite?: boolean;}) => Promise<boolean>  | no | all      | yes |
+| `isIOSEmbeeded`<sup>14.0.1+</sup> | Using the embedded version, you can never be sure which version is used | () => boolean; | no | all | yes |
 
 ### DB
 
@@ -345,25 +363,25 @@ Open the `YourProject/entry/src/main/module.json5` file and add the following co
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| close  | Shut down the database.         | () => void;  | no | all      | yes |
-| delete  | Deleting a database         | (location?: string) => void;  | no | all      | yes |
-| attach  | Attaching other databases to the primary database by aliasing          | (mainDbName: string,dbNameToAttach: string,alias: string,location?: string) => void;  | no | all      | yes |
-| detach  | Detaching Other Databases from the Primary Database by Alias         | (mainDbName: string, alias: string) => void;  | no | all      | yes |
-| transaction  | Operate through database transactions         | (fn: (tx: Transaction) => Promise<void>) => Promise<void>;  | no | all      | yes |
-| execute  | Execute SQL statements in the database.         | (query: string, params?: any[]) => QueryResult;  | no | all      | yes |
-| executeWithHostObjects  | The database query statement is used to quickly query a large amount of data. However, the return attribute access speed is slow.         | (query: string,params?: any[]) => Promise<QueryResult>;  | no | all      | yes |
-| executeBatch  | Query and execute a large number of statements.         | (commands: SQLBatchTuple[]) => BatchQueryResult;  | no | all      | yes |
-| loadFile  | Load the local SQL file.         | (location: string) => Promise<FileLoadResult>;  | no | all      | yes |
-| updateHook  | Database update hook callback         | (callback?:((params: \{table: string;operation: UpdateHookOperation;row?: any;rowId: number;}) => void) \| null) => void;  | no | all      | yes |
-| commitHook  | Database commit hook callback.         | (callback?: (() => void) \| null) => void;  | no | all      | yes |
-| rollbackHook  | Database rollback hook callback.         | (callback?: (() => void) \| null) => void;  | no | all      | yes |
-| prepareStatement  | You can reuse a query statement, use bind to change parameters, and execute the execution result.        | (query: string) => PreparedStatementObj;  | no | all      | yes |
-| loadExtension  | Load SQL extension.         | (path: string, entryPoint?: string) => void;  | no | all      | yes |
-| executeRaw  | If you do not care about the key, you can use this API to simplify the execution and return a component array.This should be much faster than the normal operation because you don't need to create objects with the same key.         | (query: string,params?: any[]) => Promise<any[]>;  | no | all      | yes |
-| getDbPath  | Obtaining the Database Path.         | (location?: string) => string;  | no | all      | yes |
-| reactiveExecute  | Responsive statement query         | (params: {query: string;arguments: any[];fireOn: {table: string;ids?: number[];}[];callback: (response: any) => void;}) => () => void;  | no | all      | yes |
-| sync  | Database synchronization operation, which is supported after isLibsql is enabled.         | () => void | no | all      | yes |
-
+| `close`  | Shut down the database.         | () => void;  | no | all      | yes |
+| `delete`  | Deleting a database         | (location?: string) => void;  | no | all      | yes |
+| `attach`  | Attaching other databases to the primary database by aliasing          | (mainDbName: string,dbNameToAttach: string,alias: string,location?: string) => void;  | no | all      | yes |
+| `detach`  | Detaching Other Databases from the Primary Database by Alias         | (mainDbName: string, alias: string) => void;  | no | all      | yes |
+| `transaction`  | Operate through database transactions         | (fn: (tx: Transaction) => Promise<void>) => Promise<void>;  | no | all      | yes |
+| `execute`  | Execute SQL statements in the database.         | (query: string, params?: any[]) => QueryResult;  | no | all      | yes |
+| `executeWithHostObjects`  | The database query statement is used to quickly query a large amount of data. However, the return attribute access speed is slow.         | (query: string,params?: any[]) => Promise<QueryResult>;  | no | all      | yes |
+| `executeBatch`  | Query and execute a large number of statements.         | (commands: SQLBatchTuple[]) => BatchQueryResult;  | no | all      | yes |
+| `loadFile`  | Load the local SQL file.         | (location: string) => Promise<FileLoadResult>;  | no | all      | yes |
+| `updateHook`  | Database update hook callback         | (callback?:((params: \{table: string;operation: UpdateHookOperation;row?: any;rowId: number;}) => void) \| null) => void;  | no | all      | yes |
+| `commitHook`  | Database commit hook callback.         | (callback?: (() => void) \| null) => void;  | no | all      | yes |
+| `rollbackHook`  | Database rollback hook callback.         | (callback?: (() => void) \| null) => void;  | no | all      | yes |
+| `prepareStatement`  | You can reuse a query statement, use bind to change parameters, and execute the execution result.        | (query: string) => PreparedStatementObj;  | no | all      | yes |
+| `loadExtension`  | Load SQL extension.         | (path: string, entryPoint?: string) => void;  | no | all      | yes |
+| `executeRaw`  | If you do not care about the key, you can use this API to simplify the execution and return a component array.This should be much faster than the normal operation because you don't need to create objects with the same key.         | (query: string,params?: any[]) => Promise<any[]>;  | no | all      | yes |
+| `getDbPath`  | Obtaining the Database Path.         | (location?: string) => string;  | no | all      | yes |
+| `reactiveExecute`  | Responsive statement query         | (params: {query: string;arguments: any[];fireOn: {table: string;ids?: number[];}[];callback: (response: any) => void;}) => () => void;  | no | all      | yes |
+| `sync`  | Database synchronization operation, which is supported after isLibsql is enabled.         | () => void | no | all      | yes |
+| `executeSync`<sup>14.0.1+</sup> | Execute SQL statements in the database.Not available in transactions and must be used sparingly as it blocks the UI thread | (query: string, params?: Scalar[]) => QueryResult | no | all | yes |
 
 ## Known Issues
 
