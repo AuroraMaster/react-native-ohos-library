@@ -192,7 +192,7 @@ export default App;
 | ~0.6.8                               |  Yes                  |  0.72                |
 | <= 0.6.7-0.2.18@deprecated           |  No                   |  0.72                |
 
-Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
 <details>

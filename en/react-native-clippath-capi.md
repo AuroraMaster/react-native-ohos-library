@@ -77,7 +77,7 @@ export default function index() {
 | ~1.1.9                               |  Yes             |  0.72     |
 | <= 1.1.8-0.1.6@deprecated            |  No              |  0.72     |
 
-Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
 <details>

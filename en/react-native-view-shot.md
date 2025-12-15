@@ -128,7 +128,7 @@ export function ViewShotDemo() {
 | ~3.8.1                             |  Yes                  |  0.72                |
 | <= 3.8.0-0.3.2@deprecated          |  No                   |  0.72                |
 
-Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
 <details>
