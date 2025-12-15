@@ -339,7 +339,7 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 3.配置 CMakeLists 和引入 GestureHandlerPackage
+### 3.配置 CMakeLists 和引入 FFmpegKitPackage
 
 > 若使用的是 <= 6.0.3 版本，请跳过本章
 
