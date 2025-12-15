@@ -65,7 +65,7 @@ import {
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {getCookies, fetch, removeCookieByName} from 'react-native-ssl-pinning';
-import FileSelector from '@react-native-ohos/react-native-file-selector';
+import FileSelector from 'react-native-file-selector';
 function SslPingDemo() : React.JSX.Element{
     return (
         <>
