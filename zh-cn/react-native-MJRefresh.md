@@ -15,16 +15,15 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-MJRefresh)
 
+该第三方库的仓库Github上，且支持直接从 npm 下载，新的包名为：@react-native-ohos/react-native-mjrefresh，具体版本所属关系如下：
+
+| 三方库版本 | 包名                              | 仓库地址 | 发布(Release) | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |  ---------- |  ---------- |
+| <= 0.7.0-0.2.2@deprecated | @react-native-oh-tpl/react-native-mjrefresh | [Github](https://github.com/react-native-oh-library/react-native-MJRefresh/tree/sig)|[Github Releases](https://github.com/react-native-oh-library/react-native-MJRefresh/releases)|0.72       |
+| 0.7.1| @react-native-ohos/react-native-mjrefresh         | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-mjrefresh/tree/br_rnoh0.72) |[GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-mjrefresh/releases) | 0.72       |
+| 0.8.0| @react-native-ohos/react-native-mjrefresh         | [Github](https://github.com/react-native-oh-library/react-native-MJRefresh/tree/br_rnoh0.77) |[Github Releases](https://github.com/react-native-oh-library/react-native-MJRefresh/releases) | 0.77       |
+
 ## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本 | 发布信息                | 支持RN版本 |
-|-------| ------------------------------------------------------------ | ---------- |
-| <= 0.7.0-0.2.2@deprecated | [@react-native-oh-tpl/react-native-MJRefresh Releases(deprecated)](https://github.com/react-native-oh-library/react-native-MJRefresh/releases) | 0.72       |
-| 0.7.1 | [@react-native-ohos/react-native-MJRefresh Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-mjrefresh/releases)                        | 0.72       |
-
-对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -185,7 +184,7 @@ ohpm install
 
 方法二：直接链接源码
 
-> [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
+如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
 ### 3.配置 CMakeLists 和引入 MJRefreshPackge
 
@@ -263,8 +262,6 @@ ohpm install
 ## 约束与限制
 
 ### 兼容性
-
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
 在以下版本验证通过：
 

@@ -15,16 +15,14 @@
 
 > [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-MJRefresh)
 
+The repository of this third-party library Github and supports direct download from npm. The new package name is: @react-native-ohos/react-native-mjrefresh. The specific version ownership relationship is as follows:
+
+| Version  | Package Name                               | Repository  | Release  | Support RN version |
+| ---------- | ------------------------------------------------------------ | ---------- |  ---------- |  ---------- |
+| <= 0.7.0-0.2.2@deprecated| @react-native-oh-tpl/react-native-mjrefresh | [Github](https://github.com/react-native-oh-library/react-native-MJRefresh/tree/sig)|[Github Releases](https://github.com/react-native-oh-library/react-native-MJRefresh/releases)|0.72       |
+| 0.7.1| @react-native-ohos/react-native-mjrefresh         | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-mjrefresh/tree/br_rnoh0.72) |[GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-mjrefresh/releases) | 0.72       |
+| 0.8.0| @react-native-ohos/react-native-mjrefresh         | [Github](https://github.com/react-native-oh-library/react-native-MJRefresh/tree/br_rnoh0.77) |[Github Releases](https://github.com/react-native-oh-library/react-native-MJRefresh/releases) | 0.77       |
 ## Installation and Usage
-
-Please refer to the Releases page of the third-party library for the corresponding version information
-
-| Third-party Library Version | Release Information                                                     | Supported RN Version |
-|-------| ------------------------------------------------------------ | ---------- |
-| <= 0.7.0-0.2.2@deprecated | [@react-native-oh-tpl/react-native-MJRefresh Releases(deprecated)](https://github.com/react-native-oh-library/react-native-MJRefresh/releases) | 0.72       |
-| 0.7.1 | [@react-native-ohos/react-native-MJRefresh Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-mjrefresh/releases)                        | 0.72       |
-
-For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -184,7 +182,7 @@ ohpm install
 
 Method 2: Directly link to the source code.
 
-> [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
+For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
 ### 3. Configuring CMakeLists and Introducing MJRefreshPackge
 
@@ -262,8 +260,6 @@ Then build and run the code.
 ## Constraints
 
 ### Compatibility
-
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
 Verified in the following versions.
 
