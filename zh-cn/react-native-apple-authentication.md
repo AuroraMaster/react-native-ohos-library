@@ -59,6 +59,7 @@ Apple官方配置说明：[Configure Sign in with Apple for the web](https://dev
 
 ```tsx
 import React from 'react';
+import { View } from 'react-native';
 import { appleAuthHarmony, AppleButton } from '@invertase/react-native-apple-authentication';
 
 const AppleAuthenticationDemo: React.FC = (): JSX.Element => {
