@@ -60,6 +60,7 @@ The following code shows the basic use scenario of the repository:
 
 ```tsx
 import React from "react";
+import { View } from 'react-native';
 import {
   appleAuthHarmony,
   AppleButton,
