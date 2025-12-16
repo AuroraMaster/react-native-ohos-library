@@ -57,6 +57,7 @@ import {
   View,
   TextInput,
   StyleSheet,
+  ScrollView 
 } from "react-native";
 import { generateSecureRandom } from "react-native-securerandom";
 

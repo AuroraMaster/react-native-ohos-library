@@ -52,7 +52,7 @@ yarn add @react-native-ohos/react-native-securerandom
 ```tsx
 
 import React, { useState } from "react";
-import { Text, TouchableOpacity, View, TextInput, StyleSheet } from 'react-native';
+import { Text, TouchableOpacity, View, TextInput, StyleSheet, ScrollView } from 'react-native';
 import { generateSecureRandom } from 'react-native-securerandom';
 
 export default function secureRandomDemo(): JSX.Element {
