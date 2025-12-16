@@ -132,7 +132,7 @@ export default ReactNativeThemeSwitchAnimationDemo;
 | ~0.6.1                               |  Yes             |  0.72     |
 | <= 0.6.0-2.1.1@deprecated            |  No              |  0.72     |
 
-使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
 <details>

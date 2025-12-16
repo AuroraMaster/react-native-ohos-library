@@ -9,9 +9,10 @@
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本 | 发布信息                                                                                                                        | 支持RN版本    |
-|---------|-----------------------------------------------------------------------------------------------------------------------------|-----------|
-| 4.3.2   | [@react-native-ohos/react-native-router-flux Releases](https://github.com/react-native-oh-library/react-native-router-flux/releases) | 0.72/0.77 |
+| Version                   | Package Name                     | Repository                                                   | Release                                                      | Supported RN Version |
+| ------------------------- | -------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------- |
+| 4.3.2                    | @react-native-ohos/react-native-router-flux | [Github](https://github.com/react-native-oh-library/react-native-router-flux) | [GitCode Releases](https://github.com/react-native-oh-library/react-native-router-flux/releases) | 0.72/0.77                |
+
 
 ## 1. 安装与使用
 ### 0.72
@@ -399,7 +400,7 @@ Router 管理整个应用的页面导航和转场效果。
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | navigationBarStyle | 导航栏样式 | style | no | iOS/Android | yes |
 | icon | 图标 | object | no | iOS/Android | yes |
-| tintColor | 色调颜色 | string | no | iOS/Android | yes |
+| tintColor | 栈和屏幕组件标题颜色 | string | no | iOS/Android | yes |
 | hideNavBar | 是否隐藏导航栏 | boolean | no | iOS/Android | yes |
 | hideTabBar | 是否隐藏标签栏 | boolean | no | iOS/Android | yes |
 | title | 标题 | string | no | iOS/Android | yes |
@@ -452,7 +453,11 @@ Router 管理整个应用的页面导航和转场效果。
 ## 7. 遗留问题
 
 ## 8. 其他
-
+Router:backAndroidHandler android独有  
+Scene:modal  是否以模态形式显示 源库不支持  
+Actions：popAndPush 返回并推入新场景方法 源库未实现，不支持  
+Actions：addRef      属性是对组件添加引用而内部使用，没有提供对外暴露ref的使用接口。getRef库中没有该定义  
+ActionConstShort：ANDROID_BACK Android返回键动作类型 android独有  
 ## 9. 开源协议
 
 本项目基于 [The MIT License (MIT)](https://github.com/aksonov/react-native-router-flux/blob/master/LICENSE) ，请自由地享受和参与开源。

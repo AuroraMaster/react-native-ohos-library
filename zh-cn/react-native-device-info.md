@@ -169,7 +169,7 @@ export default App;
 | ~11.1.1                              |  Yes             |  0.72     |
 | <= 11.1.0-0.0.8@deprecated           |  No              |  0.72     |
 
-使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
 <details>

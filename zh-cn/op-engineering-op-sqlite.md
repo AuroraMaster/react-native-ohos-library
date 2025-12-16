@@ -82,7 +82,7 @@ export default function OpSqliteExample() {
 
             const res = await db.execute('SELECT sqlite_version();');
             
-            // V8.0.2
+            // V8.0.3
             const version = res.rows?._array[0]['sqlite_version()'];
             
             // V14.0.1
@@ -385,7 +385,6 @@ ohpm install
 | `reactiveExecute` | Responsive statement query         | (params: {query: string;arguments: any[];fireOn: {table: string;ids?: number[];}[];callback: (response: any) => void;}) => () => void;  | no | all      | yes |
 | `sync` | Database synchronization operation, which is supported after isLibsql is enabled.         | () => void | no | all      | yes |
 | `executeSync`<sup>14.0.1+</sup> | Execute SQL statements in the database.Not available in transactions and must be used sparingly as it blocks the UI thread | (query: string, params?: Scalar[]) => QueryResult | no | all | yes |
-| `flushPendingReactiveQueries`<sup>14.0.1+</sup> | Flush pending reactive queries | () => Promise<void> | no | all | yes |
 
 ## 遗留问题
 

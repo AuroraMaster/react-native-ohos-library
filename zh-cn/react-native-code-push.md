@@ -16,6 +16,14 @@
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-code-push)
 
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-code-push`，具体版本所属关系如下：
+
+| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
+| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
+| <= 8.2.2-0.0.10@deprecated  |@react-native-oh-tpl/react-native-code-push|[Github](https://github.com/react-native-oh-library/react-native-code-push/releases) | [Github Releases](https://github.com/react-native-oh-library/react-native-code-push/releases) | 0.72       |
+| 8.2.3             | @react-native-ohos/react-native-code-push|[GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-code-push) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-code-push/releases)   | 0.72       |
+| 9.0.2             | @react-native-ohos/react-native-code-push|[GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-code-push) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-code-push/releases)   | 0.77       |
+
 ## 前期准备
 
 ### code-push-cli
@@ -35,8 +43,31 @@ code-push app list //列出账号下面的所有app
 code-push app add <apppname> harmony react-native //创建应用
 code-push release <AppName> <bundle.harmony.js> "<版本号>" --description "<v1.0.0 测试更新>" -m //发包命令，加-m是强制更新, * 代表所有版本，例如：code-push release CodePush_Local ./bundle.harmony.js "*" --description "v1.0.0 测试更新"
 ```
+```
+在工程目录下执行如下
+
+code-push login <服务器地址> //前提为先启动服务器（公网）
+会拉起网页 输入账户和密码 账户默认为admin 密码123456
+点击获取token
+复制token到命令行窗口
+提示登录成功
+
+# 确保 bundle 文件有微小修改
+echo "// Force update for 1.0.0 pending fix - $(date)" >> ./bundles/bundle.harmony.js
+
+"// Force update for 1.0.0 pending fix - $(date)"修改这里的字符即可
+
+# 发布针对 1.0.0 的强制更新
+code-push release MyApp-Harmony ./bundles/bundle.harmony.js 1.0.0 -d Staging --description "强制解决问题" --mandatory
+
+# 发布针对 1.0.0 的非强制更新
+code-push release MyApp-Harmony ./bundles/bundle.harmony.js 1.0.0 -d Staging --description "非强制解决问题"
+
+```
 
 ### code-push-server
+
+#### 推荐在服务器搭建
 
 1. 克隆 [code-push-server](https://github.com/react-native-oh-library/code-push-server) 到本地
 2. 在 code-push-server 目录下执行 `npm install`
@@ -45,15 +76,83 @@ code-push release <AppName> <bundle.harmony.js> "<版本号>" --description "<v1
 3. 在 code-push-server 目录下执行 `npm run dev`，用于生成 `bin` 目录
 6. 在 code-push-server 目录下执行 `npm run start` 启动服务
 
+```
+安装mysql
+# Ubuntu/Debian
+sudo apt update
+sudo apt install mysql-server
+# 启动服务
+sudo systemctl start mysql
+sudo mysql_secure_installation
+# 按照提示设置：
+# 1. 设置 root 密码
+# 2. 移除匿名用户
+# 3. 禁止远程 root 登录
+# 4. 移除测试数据库
+# 5. 重新加载权限表
+先全部输入y/yes
+
+# 先登录MySQL（不需要密码）
+sudo mysql
+# 在MySQL命令行中执行：
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '你的强密码';
+FLUSH PRIVILEGES;
+EXIT;
+
+# 现在需要用密码登录
+mysql -u root -p
+输入密码
+EXIT;
+
+# 编辑配置文件
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+# 找到 bind-address 并修改
+# bind-address = 0.0.0.0  
+# 允许所有IP访问
+# Ctrl+S 保存并自动退出
+# 重启 MySQL
+
+sudo systemctl restart mysql
+
+安装redis
+sudo apt update
+sudo apt install redis-server -y
+
+# 启动并启用服务
+sudo systemctl start redis-server
+# 测试
+redis-cli ping 
+回复PONG
+# 编辑Redis配置文件
+sudo nano /etc/redis/redis.conf
+
+# 找到并修改以下行：
+# bind 0.0.0.0  # 如果需要远程访问
+# protected-mode no  # 如果设置bind 0.0.0.0，需要关闭保护模式
+# Ctrl+S 保存并自动退出
+# 重启Redis
+sudo systemctl restart redis-server
+```
+
+```
+修改文档部分
+code-push-server目录 code-push-server/src/core/config.ts  <127.0.0.1>  改为服务器地址
+
+code-push-server/src/db.ts 例如 .example(
+        '$0 init --dbname codepush --dbhost localhost（替换为服务器地址） --dbuser root --dbpassword <password>（替换为数据库密码） --dbport 3306 --force',
+        '初始化code-push-server数据库',
+    )
+在该文件中出现 localhost 字符 统一修改为服务器地址
+
+创建bin目录（可能会提示数据库codepush未创建）
+npm run dev （提示没有数据库codepush）Ctrl+C 强制退出
+执行
+npm run init  成功返回 success 创建数据库codepush
+执行
+npm run dev
+```
+
 ## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本  | 发布信息                                                  | 支持RN版本 |
-|--------| ------------------------------------------------------------ | ---------- |
-| <= 8.2.2-0.0.10@deprecated  | [@react-native-oh-tpl/react-native-code-push Releases(deprecated)](https://github.com/react-native-oh-library/react-native-code-push/releases) | 0.72       |
-| 8.2.3             | [@react-native-ohos/react-native-code-push Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-code-push/releases)   | 0.72       |
-| 9.0.2             | [@react-native-ohos/react-native-code-push Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-code-push/releases)   | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -199,7 +298,7 @@ export default CodePush(codePushOptions)(App);
 | ~8.2.3                              |  Yes             |  0.72     |
 | <= 8.2.2-0.0.10@deprecated            |  No              |  0.72     |
 
-使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
 <details>

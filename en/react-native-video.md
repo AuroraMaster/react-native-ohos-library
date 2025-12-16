@@ -464,7 +464,7 @@ export default RNCVideoDemo;
 | ~6.13.2                          |  Yes                  |  0.72                |
 | <= 6.13.1@deprecated             |  No                   |  0.72                |
 
-Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
 <details>
