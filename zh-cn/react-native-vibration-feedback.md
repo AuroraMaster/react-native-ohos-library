@@ -128,7 +128,7 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 3.配置 CMakeLists 和引入 ViewShotPackage
+### 3.配置 CMakeLists 和引入 ReactNativeVibrationFeedbackPackage
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -178,7 +178,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 4.在 ArkTs 侧引入 BlePlxPackage
+### 4.在 ArkTs 侧引入 RNVibrationFeedbackPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
@@ -211,7 +211,7 @@ ohpm install
 
 ### 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+本文档内容基于以下版本验证通过：
 
 1. RNOH：0.72.90; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.112;
 2. RNOH：0.72.90; SDK：HarmonyOS 5.1.0.150 (API Version 12); IDE：DevEco Studio 6.0.0.858; ROM：5.0.0.102;
