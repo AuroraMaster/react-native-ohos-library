@@ -124,7 +124,7 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 3.Configuring CMakeLists and Introducing UnistylesPackage
+### 3.Configuring CMakeLists and Introducing ReactNativeVibrationFeedbackPackage
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
@@ -176,7 +176,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 4.Introducing RNUnistylesPackage to ArkTS
+### 4.Introducing RNVibrationFeedbackPackage to ArkTS
 
 Open `entry/src/main/ets/RNPackagesFactory.ts`，add：
 
