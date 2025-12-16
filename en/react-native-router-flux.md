@@ -9,9 +9,10 @@
 
 Please visit the Releases page of the third-party library to check the corresponding version information:
 
-| Version  | Releases info                                                      | Support RN version |
-|---------|-----------------------------------------------------------------------------------------------------------------------------|-----------|
-| 4.3.2   | [@react-native-ohos/react-native-router-flux Releases](https://github.com/react-native-oh-library/react-native-router-flux/releases) | 0.72/0.77 |
+| Version                   | Package Name                     | Repository                                                   | Release                                                      | Supported RN Version |
+| ------------------------- | -------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------- |
+| 4.3.2                    | @react-native-ohos/react-native-router-flux | [Github](https://github.com/react-native-oh-library/react-native-router-flux) | [GitCode Releases](https://github.com/react-native-oh-library/react-native-router-flux/releases) | 0.72/0.77                 |
+
 
 ## 1. install and use
 ### 0.72
@@ -394,7 +395,7 @@ Defines all configuration options for the stack navigator.
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | navigationBarStyle | Navigation bar style | style | no | iOS/Android | yes |
 | icon | Icon | object | no | iOS/Android | yes |
-| tintColor | Tint color | string | no | iOS/Android | yes |
+| tintColor | Stack and Screen Component Title Color | string | no | iOS/Android | yes |
 | hideNavBar | Whether to hide navigation bar | boolean | no | iOS/Android | yes |
 | hideTabBar | Whether to hide tab bar | boolean | no | iOS/Android | yes |
 | title | Title | string | no | iOS/Android | yes |
@@ -447,7 +448,11 @@ These constants are used to explicitly specify navigation behavior in route conf
 ## 7. Known Issues
 
 ## 8. Others
-
+Router:backAndroidHandler android only  
+Scene:modal         Source library does not support.  
+Actions：popAndPush  Source library does not support.  
+Actions：addRef      The ref attribute is added to components for internal use only and does not expose a public interface. This definition is not present in the getRef library.  
+ActionConstShort：ANDROID_BACK  android only  
 ## 9. License
 
 This project is licensed under [The MIT License (MIT)](https://github.com/aksonov/react-native-router-flux/blob/master/LICENSE).
