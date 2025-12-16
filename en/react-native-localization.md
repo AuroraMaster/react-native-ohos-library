@@ -344,13 +344,13 @@ Verified in the following versions.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | :---------- | ---- | :------: | :------: | :----------------: |
-| setLanguage(languageCode)                 | force manually a particular language                         | void     |   yes    | iOS/Android |        yes        |
-| getLanguage()                             | get the current displayed language                           | string   |   yes    | iOS/Android |        yes        |
-| getInterfaceLanguage()                    | get the current device interface language                    | string   |   yes    | iOS/Android |        yes        |
-| formatString()                            | format the passed string replacing its placeholders with the other arguments strings | string   |   yes    | iOS/Android |        yes        |
-| getAvailableLanguages()                   | get an array of the languages passed in the constructor      | string[] |   yes    | iOS/Android |        yes        |
-| getString(key: string, language?: string) | character information based on the key value | string | yes | iOS/Android | yes |
-| setContent(props: any) | replace the NamedLocalization object without reinstantiating the object | void | yes | iOS/Android | yes |
+| setLanguage(languageCode)                 | force manually a particular language                         | void     |   no    | iOS/Android |        yes        |
+| getLanguage()                             | get the current displayed language                           | string   |   no    | iOS/Android |        yes        |
+| getInterfaceLanguage()                    | get the current device interface language                    | string   |   no    | iOS/Android |        yes        |
+| formatString()                            | format the passed string replacing its placeholders with the other arguments strings | string   |   no    | iOS/Android |        yes        |
+| getAvailableLanguages()                   | get an array of the languages passed in the constructor      | string[] |   no    | iOS/Android |        yes        |
+| getString(key: string, language?: string) | character information based on the key value | string | no | iOS/Android | yes |
+| setContent(props: any) | replace the NamedLocalization object without reinstantiating the object | void | no | iOS/Android | yes |
 
 ## Known Issues
 
