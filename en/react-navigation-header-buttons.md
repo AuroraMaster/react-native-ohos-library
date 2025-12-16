@@ -64,8 +64,11 @@ The following code shows the basic use scenario of the repository:
 > [!WARNING] The name of the imported repository remains unchanged.
 
 ```js
-import * as React from "react";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import * as React from 'react';
+import {Text} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {HeaderButtonsProvider} from 'react-navigation-header-buttons/lib/module/providers/HeaderButtonsProvider';
 import {
   HeaderButtons,
   Item,
@@ -76,41 +79,67 @@ import {
   HiddenItemProps,
   HeaderButtonProps,
   HeaderButton,
-} from "react-navigation-header-buttons/lib/module";
-import { Text } from "react-native";
+} from 'react-navigation-header-buttons/lib/module';
+
+
+const stackType = 'native';
+const Stack = createNativeStackNavigator();
+
+
+export default function HeaderButtonExample() {
+  return (
+    <NavigationContainer>
+      <HeaderButtonsProvider stackType={stackType}>
+        <Stack.Navigator initialRouteName="react-navigation-header-buttons">
+          <Stack.Screen
+            name="UsageWithIcons"
+            component={UsageWithIcons}
+          />
+        </Stack.Navigator>
+      </HeaderButtonsProvider>
+    </NavigationContainer>
+  );
+}
+const MaterialIcons = (props: HeaderButtonProps) => {
+  if(props.name === 'search'){
+    return <Text>Search</Text>
+  }else{
+    return <Text>More</Text>
+  }
+}
 
 const MaterialHeaderButton = (props: HeaderButtonProps) => (
   <HeaderButton IconComponent={MaterialIcons} iconSize={23} {...props} />
 );
 
-const EditItem = ({ onPress }: Pick<ItemProps, "onPress">) => {
+const EditItem = ({ onPress }: Pick<ItemProps, 'onPress'>) => {
   return <Item title="edit" onPress={onPress} />;
 };
 
-const ReusableHiddenItem = ({ onPress }: Pick<HiddenItemProps, "onPress">) => (
+const ReusableHiddenItem = ({ onPress }: Pick<HiddenItemProps, 'onPress'>) => (
   <HiddenItem title="hidden2" onPress={onPress} disabled />
 );
 
 export function UsageWithIcons({ navigation }) {
   React.useLayoutEffect(() => {
     navigation.setOptions({
-      title: "Demo",
+      title: 'Demo',
       headerRight: () => (
         <HeaderButtons HeaderButtonComponent={MaterialHeaderButton}>
           <Item
             title="search"
             iconName="search"
-            onPress={() => alert("search")}
+            onPress={() => alert('search')}
           />
-          <EditItem onPress={() => alert("Edit")} />
+          <EditItem onPress={() => alert('Edit')} />
           <OverflowMenu
             OverflowIcon={({ color }) => (
               <MaterialIcons name="more-horiz" size={23} color={color} />
             )}
           >
-            <HiddenItem title="hidden1" onPress={() => alert("hidden1")} />
+            <HiddenItem title="hidden1" onPress={() => alert('hidden1')} />
             <Divider />
-            <ReusableHiddenItem onPress={() => alert("hidden2")} />
+            <ReusableHiddenItem onPress={() => alert('hidden2')} />
           </OverflowMenu>
         </HeaderButtons>
       ),

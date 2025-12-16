@@ -70,7 +70,10 @@ yarn add react-navigation-header-buttons@13.0.0
 
 ```js
 import * as React from 'react';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {Text} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {HeaderButtonsProvider} from 'react-navigation-header-buttons/lib/module/providers/HeaderButtonsProvider';
 import {
   HeaderButtons,
   Item,
@@ -82,7 +85,33 @@ import {
   HeaderButtonProps,
   HeaderButton,
 } from 'react-navigation-header-buttons/lib/module';
-import { Text } from 'react-native';
+
+
+const stackType = 'native';
+const Stack = createNativeStackNavigator();
+
+
+export default function HeaderButtonExample() {
+  return (
+    <NavigationContainer>
+      <HeaderButtonsProvider stackType={stackType}>
+        <Stack.Navigator initialRouteName="react-navigation-header-buttons">
+          <Stack.Screen
+            name="UsageWithIcons"
+            component={UsageWithIcons}
+          />
+        </Stack.Navigator>
+      </HeaderButtonsProvider>
+    </NavigationContainer>
+  );
+}
+const MaterialIcons = (props: HeaderButtonProps) => {
+  if(props.name === 'search'){
+    return <Text>搜索</Text>
+  }else{
+    return <Text>更多</Text>
+  }
+}
 
 const MaterialHeaderButton = (props: HeaderButtonProps) => (
   <HeaderButton IconComponent={MaterialIcons} iconSize={23} {...props} />
