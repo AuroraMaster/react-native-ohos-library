@@ -209,7 +209,11 @@ const styles = StyleSheet.create({
   }
 
 });
+```
 
+新建utils.ts文件：
+
+```ts
 import {Alert,Platform,} from 'react-native';
 import {InAppBrowser} from 'react-native-inappbrowser-reborn'
 
@@ -548,6 +552,7 @@ ohpm install
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+
 ## API
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
