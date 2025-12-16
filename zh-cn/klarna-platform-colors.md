@@ -84,7 +84,9 @@ module.exports = {
 
 当您需要修改颜色资源时，只需更改`colors`配置，然后再次执行以下命令即可生成最新的颜色资源。
 
-资源文件生成后需要将harmony/AppScope/resources/内的生成的2个color文件复制到harmony工程的对应目录下。
+资源文件生成后需要将harmony/AppScope/resources/内的生成的2个color文件复制到harmony工程的对应目录下:
+- 将 `harmony/AppScope/resources/base/element/color.json` 复制到 `harmony/entry/src/main/resources/base/element/color.json`
+- 将 `harmony/AppScope/resources/dark/element/color.json` 复制到 `harmony/entry/src/main/resources/dark/element/color.json`
 
 ```bash
 npx @react-native-ohos/platform-colors
@@ -360,13 +362,13 @@ ohpm install
 
 | Name       | Description                                                                                                                                                                           | Type   | Required | Platform    | HarmonyOS Support |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | -------- | ----------- | ----------------- |
-| prefix     | We prefix all colors with rnpc\_ by default, you can override that with this option.                                                                                                  | String | No       | iOS/Android | Yes               |
-| colors     | An object where the key is the color name, and the value is either a string or an object containing light and optionally highContrastLight, dark & highContrastDark properties.       | Object | Yes      | iOS/Android | Yes               |
-| ios        | An object containing outputDirectory which should be an .xcassets directory.                                                                                                          | Object | No       | iOS/Android | Yes               |
-| android    | An object containing outputDirectory which should be an Android res directory.                                                                                                        | Object | No       | iOS/Android | Yes               |
-| harmony    | An object containing outputDirectory which should be an Harmony res directory.                                                                                                        | Object | No       | --          | Yes               |
-| css        | An object containing outputDirectory and filename which should be a directory where you store CSS files and if you want to change the default filename from colors.css.               | Object | No       | iOS/Android | Yes               |
-| javascript | An object containing outputDirectory which should be a directory where you store your Type/JavaScript files and typescript which is set to true if you want the output in TypeScript. | Object | No       | iOS/Android | Yes               |
+| prefix     | 默认情况下，我们为所有颜色添加前缀 rnpc\_，您可以使用此选项覆盖它。                                                                                                  | String | No       | iOS/Android | Yes               |
+| colors     | 一个对象，键是颜色名称，值是字符串或包含 light 以及可选的 highContrastLight、dark 和 highContrastDark 属性的对象。       | Object | Yes      | iOS/Android | Yes               |
+| ios        | 包含 outputDirectory 的对象，该目录应为 .xcassets 目录。                                                                                                          | Object | No       | iOS/Android | Yes               |
+| android    | 包含 outputDirectory 的对象，该目录应为 Android res 目录。                                                                                                        | Object | No       | iOS/Android | Yes               |
+| harmony    | 包含 outputDirectory 的对象，该目录应为 Harmony res 目录。                                                                                                        | Object | No       | --          | Yes               |
+| css        | 包含 outputDirectory 和 filename 的对象，用于指定存储 CSS 文件的目录，以及是否要更改默认文件名 colors.css。               | Object | No       | iOS/Android | Yes               |
+| javascript | 包含 outputDirectory 的对象，用于指定存储 Type/JavaScript 文件的目录；如果希望输出 TypeScript 文件，则将 typescript 设置为 true。 | Object | No       | iOS/Android | Yes               |
 
 ## API
 
@@ -376,8 +378,8 @@ ohpm install
 
 | Name             | Description                          | Type     | Required | Platform    | HarmonyOS Support |
 | ---------------- | ------------------------------------ | -------- | -------- | ----------- | ----------------- |
-| resolveColorSync | Getting hex value from dynamic color | Function | No       | iOS/Android | Yes               |
-| resolveColor     | Getting hex value from dynamic color | Function | No       | iOS/Android | Yes               |
+| resolveColorSync | 从动态颜色获取十六进制值 | Function | No       | iOS/Android | Yes               |
+| resolveColor     | 从动态颜色获取十六进制值 | Function | No       | iOS/Android | Yes               |
 
 ### resolveColorSync
 
@@ -387,7 +389,7 @@ resolveColorSync(color: ColorValue): string;
 
 | Name  | Description                                                                                                        | Type             | Required | Platform    | HarmonyOS Support |
 | ----- | ------------------------------------------------------------------------------------------------------------------ | ---------------- | -------- | ----------- | ----------------- |
-| color | Color value obtained through the PlatformColor interface.<br>Example: resolveColorSync(PlatformColor('coloeName')) | React.ColorValue | Yes      | iOS/Android | Yes               |
+| color | 通过 PlatformColor 接口获取的颜色值。<br>示例：resolveColorSync(PlatformColor('coloeName')) | React.ColorValue | Yes      | iOS/Android | Yes               |
 
 ### resolveColor
 
@@ -397,7 +399,7 @@ resolveColor(color: ColorValue): Promise<string>;
 
 | Name  | Description                                                                                                    | Type             | Required | Platform    | HarmonyOS Support |
 | ----- | -------------------------------------------------------------------------------------------------------------- | ---------------- | -------- | ----------- | ----------------- |
-| color | Color value obtained through the PlatformColor interface.<br>Example: resolveColor(PlatformColor('coloeName')) | React.ColorValue | Yes      | iOS/Android | Yes               |
+| color | 通过 PlatformColor 接口获取的颜色值。<br>示例：resolveColor(PlatformColor('coloeName')) | React.ColorValue | Yes      | iOS/Android | Yes               |
 
 ## 遗留问题
 
