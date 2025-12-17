@@ -254,16 +254,16 @@ Verified in the following versions.
 
 | Name          | Description                                | Type     | Required | Platform     | HarmonyOS Support |
 | ------------- | ------------------------------------------ | -------- | -------- | ------------ | ----------------- |
-| get           | Take out key-value pairs                   | function | yes      | Android、iOS | yes               |
-| set           | Set key-value pairs                        | function | yes      | Android、iOS | yes               |
-| clear         | Clear key-value pairs                      | function | yes      | Android、iOS | yes               |
-| getMultiple   | Take out multiple key-value pairs          | function | yes      | Android、iOS | yes               |
-| setMultiple   | Set multiple key-value pairs               | function | yes      | Android、iOS | yes               |
-| clearMultiple | Clear multiple key-value pairs             | function | yes      | Android、iOS | yes               |
+| get           | Take out key-value pairs                   | function | no      | Android、iOS | yes               |
+| set           | Set key-value pairs                        | function | no      | Android、iOS | yes               |
+| clear         | Clear key-value pairs                      | function | no      | Android、iOS | yes               |
+| getMultiple   | Take out multiple key-value pairs          | function | no      | Android、iOS | yes               |
+| setMultiple   | Set multiple key-value pairs               | function | no      | Android、iOS | yes               |
+| clearMultiple | Clear multiple key-value pairs             | function | no      | Android、iOS | yes               |
 | getAll        | Take out all key-value pairs               | function | no       | Android、iOS | yes               |
 | clearAll      | Clear all key-value pairs                  | function | no       | Android、iOS | yes               |
 | getName       | Gets the name of the Preferences instance. | function | no       | Android、iOS | yes               |
-| setName       | Sets the name of the Preferences instance. | function | yes      | Android、iOS | yes               |
+| setName       | Sets the name of the Preferences instance. | function | no      | Android、iOS | yes               |
 
 ## Known Issues
 
