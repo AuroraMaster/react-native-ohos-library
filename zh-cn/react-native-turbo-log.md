@@ -166,12 +166,6 @@ const styles = StyleSheet.create({
 });
 
 ```
-## 使用 Codegen
-
-Version >= @react-native-ohos/react-native-turbo-log@0.6.1，已适配codegen-lib生成桥接代码。
-
-本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
-
 ## Link
 
 此步骤为手动配置原生依赖项的指导。
@@ -272,6 +266,8 @@ target_link_libraries(rnoh_app PUBLIC rnoh_gesture_handler)
 # RNOH_END: manual_package_linking_2
 
 ```
+
+### 4.Import the TurboLogPackage on the ArkTS side
 
 打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
 
