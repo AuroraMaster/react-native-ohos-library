@@ -266,7 +266,6 @@ Verified in the following versions:
 | enableLogcat | Enable/Disable console logs | function | no | iOS/Android | yes |
 | addLogListener | Register real-time log listener | function | no | iOS/Android | yes |
 | removeLogListener | Remove log listener | function | no | iOS/Android | yes |
-| updateSessionCredential | Update session credentials | function | no | iOS/Android | yes |
 | upload | Upload | function | no | iOS/Android | yes |
 | download | Download | function | no | iOS/Android | yes |
 | pause | Pause | function | no | iOS/Android | yes |
@@ -312,8 +311,6 @@ Verified in the following versions:
 | initCustomerDNS | Configure static DNS mapping rules | function | no | iOS/Android | no |
 | getBucketVersioning | Get bucket versioning | function | no | iOS/Android | no |
 | forceInvalidationCredential | Force refresh temporary credentials | function | no | iOS/Android | no |
-| addListener | Add listener | function | no | iOS/Android | yes |
-| removeListeners | Remove listeners | function | no | iOS/Android | yes |
 | getService | Get service instance by name | function | no | iOS/Android | yes |
 | hasService | Check if service instance exists | function | no | iOS/Android | yes |
 | getTransferManger | Get specified transfer manager | function | no | iOS/Android | yes |
