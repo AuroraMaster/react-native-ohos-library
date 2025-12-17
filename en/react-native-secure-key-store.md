@@ -16,15 +16,16 @@
 
 ## Installation and Usage
 
-Please check the release information of the third-party library for the matching version information:
+Please go to the Releases page of the third-party library to check the matching version information:
 
-| Library Version | Release Information | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 2.0.11     | [@react-native-ohos/react-native-secure-key-store Releases](https://github.com/react-native-oh-library/react-native-secure-key-store/releases) | 0.72, 0.77       |
+| Library Version | Release Info | Supported RN Version |
+| --------------- | ------------------------------------------------------------ | -------------------- |
+| 2.0.11     | [@react-native-ohos/react-native-secure-key-store Releases](https://github.com/react-native-oh-library/react-native-secure-key-store/releases/2.0.11-rc.1) | 0.72     |
+| 2.1.0     | [@react-native-ohos/react-native-secure-key-store Releases](https://github.com/react-native-oh-library/react-native-secure-key-store/releases/2.1.0-rc.1) | 0.77     |
 
-For older versions not published to npm, please refer to the [Installation Guide](/en/tgz-usage.md) to install the tgz package.
+For older versions not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
-Go to the project directory and execute the following instruction:
+Enter the project directory and run the following command:
 
 <!-- tabs:start -->
 
@@ -44,7 +45,7 @@ yarn add @react-native-ohos/react-native-secure-key-store
 
 The following code shows the basic usage scenarios of this library:
 
-> [!WARNING] The library name imported remains unchanged.
+> [!WARNING] The library name imported remains unchanged when using.
 
 ```ts
 import React, { useState } from "react";
@@ -187,18 +188,14 @@ const styles = StyleSheet.create({
 });
 
 export default AppDemo;
-
 ```
-## Using Codegen
-Version >= @react-native-ohos/react-native-secure-key-store@2.0.11, which has been adapted to codegen-lib to generate bridge code.
-
-This library has been adapted to Codegen. Before using it, you need to actively execute the generation of third-party library bridge code. For details, please refer to the Codegen Usage Documentation.
-
 ## Link
-This step is a guide for manually configuring native dependencies.
-First, you need to open the HarmonyOS project harmony in the project using DevEco Studio.
 
-### Add overrides field to oh-package.json in the project root directory
+This step is a guide for manually configuring native dependencies.
+
+First, you need to use DevEco Studio to open the HarmonyOS project `harmony` in the project.
+
+### 1. Add overrides field to `oh-package.json` in the project root directory
 
 ```json
 {
@@ -209,6 +206,8 @@ First, you need to open the HarmonyOS project harmony in the project using DevEc
   ...
 }
 ```
+
+### 2. Introduce Native Code
 
 There are currently two methods:
 
@@ -228,23 +227,22 @@ Open the entry/oh-package.json5 file and append the following dependencies:
   }
 ```
 
-Click the sync button at the top right corner.
+Click the `sync` button in the upper right corner.
 
-Or run this command in the terminal:
+Or run in the terminal:
 
 ```bash
 cd entry
 ohpm install
 ```
 
-Method 2: Link the source code directly
+Method 2: Link source code directly
 
-> [!TIP] For direct source code linking, refer to [Direct Source Code Linking Instructions](/zh-cn/link-source-code.md)
+> [!TIP] If you need to use direct source code linking, please refer to [Direct Source Code Linking Description](/en/link-source-code.md)
 
+### 3. Configure CMakeLists and Introduce RTNSecureKeyStorePackage
 
-### 4.Configure CMakeLists and import turbo_log
-
-open entry/src/main/cpp/CMakeLists.txt，add：
+open entry/src/main/cpp/CMakeLists.txt, add:
 
 ```diff
 include(FetchContent)
@@ -288,10 +286,9 @@ target_link_libraries(rnoh_app PUBLIC rnoh)
 target_link_libraries(rnoh_app PUBLIC rnoh_gesture_handler)
 + target_link_libraries(rnoh_app PUBLIC rnoh_secure_key_store)
 # RNOH_END: manual_package_linking_2
-
 ```
 
-打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+Open `entry/src/main/cpp/PackageProvider.cpp`, add:
 
 ```diff
 #include "RNOH/PackageProvider.h"
@@ -310,12 +307,12 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 5.在 ArkTs 侧引入 RNSecureKeyStorePackage
+### 4. Introduce RNSecureKeyStorePackage on ArkTs side
 
-open `entry/src/main/ets/RNPackagesFactory.ts`，add：
+Open `entry/src/main/ets/RNPackagesFactory.ts`, add:
 
 ```diff
-  ...
+...
 + import { RNSecureKeyStorePackage } from "@react-native-ohos/react-native-secure-key-store/ts";
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -326,29 +323,29 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 6.Run
+### 5. Run
 
-Click the sync button in the upper right corner.
+Click the `sync` button in the upper right corner.
 
-Alternatively, execute the following command in the terminal:
-
+Or run in the terminal:
 
 ```bash
 cd entry
 ohpm install
 ```
 
-Then compile and run the project.
+Then compile and run.
 
 ## Constraints
 
 ### Compatibility
 
-To use this library, you need to use the correct React-Native and RNOH versions. In addition, you need to use the matching DevEco Studio and the phone ROM.
+To use this library, you need to use the correct React-Native and RNOH versions. In addition, you need to use the matching DevEco Studio and phone ROM.
 
-PThe content of this document has been verified based on the following versions：
-1. RNOH：0.72.90; SDK：HarmonyOS NEXT Developer DB3; IDE: DevEco Studio: 5.0.5.220; ROM：NEXT.0.0.105;
-2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release; IDE: DevEco Studio 6.0.0.858; ROM：6.0.0.112;
+This document is verified based on the following versions:
+
+1. RNOH: 0.72.90; SDK: HarmonyOS NEXT Developer DB3; IDE: DevEco Studio: 5.0.5.220; ROM: NEXT.0.0.105;
+2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## Technical Implementation
 
@@ -357,18 +354,19 @@ PThe content of this document has been verified based on the following versions�
 The HarmonyOS version uses the following technologies to implement secure storage:
 
 1. **HUKS (HarmonyOS Universal KeyStore)**
+   
    - Uses AES-256-GCM encryption algorithm
    - Keys are stored in a system-level secure area
    - Provides hardware-level security protection
-
 2. **Preferences**
+   
    - Used to store encrypted data
    - Data is stored in JSON format (including cipherText, iv, authTag)
 
 ### Encryption Process
 
 ```
-Raw Data → AES-256-GCM Encryption → Base64 Encoding → Preferences Storage
+Original Data → AES-256-GCM Encryption → Base64 Encoding → Preferences Storage
 ```
 
 ## API
@@ -380,6 +378,7 @@ Raw Data → AES-256-GCM Encryption → Base64 Encoding → Preferences Storage
 | RNSecureKeyStore.remove | Removes the key-value pair.                  | function | yes      | iOS/Android | yes               |
 
 ```typescript
+
 ```
 
 ## Platform Differences
@@ -391,7 +390,7 @@ Raw Data → AES-256-GCM Encryption → Base64 Encoding → Preferences Storage
 | accessible Option |  ❌ Ignored | ✅ Fully Supported | ❌ Ignored |
 | setResetOnAppUninstallTo | ❌ Ignored | ✅ Supported |  ❌ Ignored |
 
-
 ## License
 
-This project is licensed under [The MIT License (MIT)](https://github.com/ovr/react-native-secure-key-store/blob/master/LICENSE).
+This project is based on [The MIT License (MIT)](https://github.com/ovr/react-native-secure-key-store/blob/master/LICENSE), please freely enjoy and participate in open source.
+
