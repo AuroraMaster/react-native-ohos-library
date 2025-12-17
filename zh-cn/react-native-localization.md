@@ -351,13 +351,13 @@ ohpm install
 
 | Name                                      | Description                                                  | Type     | Required |  Platform   | HarmonyOS Support |
 | ----------------------------------------- | :----------------------------------------------------------- | -------- | :------: | :---------: | :---------------: |
-| setLanguage(languageCode)                 | 手动强制设置为特定语言                                       | void     |   yes    | iOS/Android |        yes        |
-| getLanguage()                             | 获取当前显示的语言                                           | string   |   yes    | iOS/Android |        yes        |
-| getInterfaceLanguage()                    | 获取当前设备的系统界面语言                                   | string   |   yes    | iOS/Android |        yes        |
-| formatString()                            | 格式化传入的字符串，用其他参数替换字符串中的占位符。         | string   |   yes    | iOS/Android |        yes        |
-| getAvailableLanguages()                   | 获取在构造函数中传入的语言数组                               | string[] |   yes    | iOS/Android |        yes        |
-| getString(key: string, language?: string) | 根据键（key）获取对应的字符信息。如果指定了 `language`，则获取特定语言的字符信息。 | string   |   yes    | iOS/Android |        yes        |
-| setContent(props: any)                    | 替换 `NamedLocalization` 对象的内容，而无需重新实例化该对象。 | void     |   yes    | iOS/Android |        yes        |
+| setLanguage(languageCode)                 | 手动强制设置为特定语言                                       | void     |   no    | iOS/Android |        yes        |
+| getLanguage()                             | 获取当前显示的语言                                           | string   |   no    | iOS/Android |        yes        |
+| getInterfaceLanguage()                    | 获取当前设备的系统界面语言                                   | string   |   no    | iOS/Android |        yes        |
+| formatString()                            | 格式化传入的字符串，用其他参数替换字符串中的占位符。         | string   |   no   | iOS/Android |        yes        |
+| getAvailableLanguages()                   | 获取在构造函数中传入的语言数组                               | string[] |   no    | iOS/Android |        yes        |
+| getString(key: string, language?: string) | 根据键（key）获取对应的字符信息。如果指定了 `language`，则获取特定语言的字符信息。 | string   |  no    | iOS/Android |        yes        |
+| setContent(props: any)                    | 替换 `NamedLocalization` 对象的内容，而无需重新实例化该对象。 | void     |   no   | iOS/Android |        yes        |
 
 ## 遗留问题
 

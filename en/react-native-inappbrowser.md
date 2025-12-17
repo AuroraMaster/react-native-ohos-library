@@ -233,7 +233,11 @@ const styles = StyleSheet.create({
     paddingRight: 8,
   },
 });
+```
 
+Create a new utils.ts file:
+
+```ts
 import { Alert, Platform } from "react-native";
 import { InAppBrowser } from "react-native-inappbrowser-reborn";
 

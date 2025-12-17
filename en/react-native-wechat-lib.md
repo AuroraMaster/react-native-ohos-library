@@ -305,7 +305,8 @@ export default class EntryAbility extends RNAbility {
 
 +  private handleWeChatCallIfNeed(want: Want) {
 +    WechatLibTurboModule.handleWant(want)
-+  }}
++  }
+}
 
 ```
 
