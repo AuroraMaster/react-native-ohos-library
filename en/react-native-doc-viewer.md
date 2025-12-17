@@ -48,7 +48,7 @@ The following code shows the basic use scenario of the repository:
 
 > [!WARNING] The name of the imported repository remains unchanged.
 
-> [!TIP] This example relies on the @react-native-ohos/react-native-fs library and is introduced with reference to [@react-native-ohos/react-native-fs](react-native-fs.md).
+> This example relies on the @react-native-ohos/react-native-fs library and is introduced with reference to [@react-native-ohos/react-native-fs](react-native-fs.md).
 
 ```js
 import React, { Component } from 'react';
