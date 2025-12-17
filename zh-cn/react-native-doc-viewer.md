@@ -48,6 +48,8 @@ yarn add @react-native-ohos/react-native-doc-viewer
 
 > [!WARNING] 使用时 import 的库名不变。
 
+> [!TIP] 本示例依赖@react-native-ohos/react-native-fs 库，参照[@react-native-ohos/react-native-fs](react-native-fs.md)进行引入。
+
 ```js
 import React, { Component } from 'react';
 import {
