@@ -17,7 +17,16 @@
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-sqlite-storage Releases](https://github.com/react-native-oh-library/react-native-sqlite-storage/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+
+| 三方库版本 | 发布信息                                                     | 支持RN版本 |
+| ---------- | ------------------------------------------------------------ | ---------- |
+| <= 6.0.1-0.1.1@deprecated      | [@react-native-oh-tpl/react-native-sqlite-storage Releases(deprecated)](https://github.com/react-native-oh-library/react-native-sqlite-storage/releases) | 0.72       |
+| 6.0.2      | [@react-native-ohos/react-native-sqlite-storage Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-sqlite-storage/releases)                        | 0.72       |
+| 6.1.0      | [@react-native-ohos/react-native-sqlite-storage Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-sqlite-storage/releases)                        | 0.77       |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -26,13 +35,13 @@
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-sqlite-storage
+npm install @react-native-ohos/react-native-sqlite-storage
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-sqlite-storage
+yarn add @react-native-ohos/react-native-sqlite-storage
 ```
 
 下面的代码展示了这个库的基本使用场景：
@@ -221,56 +230,56 @@ class SQLiteDemo extends Component<{}, State> {
     );
 
     tx.executeSql(
-      'INSERT INTO Offices (name, longtitude, latitude) VALUES ("Denver", 59.8,  34.);',
+      'INSERT INTO Offices (name, longtitude, latitude) VALUES ("ZhangSan", 59.8,  34.);',
       [],
     );
     tx.executeSql(
-      'INSERT INTO Offices (name, longtitude, latitude) VALUES ("Warsaw", 15.7, 54.);',
+      'INSERT INTO Offices (name, longtitude, latitude) VALUES ("Lisi", 15.7, 54.);',
       [],
     );
     tx.executeSql(
-      'INSERT INTO Offices (name, longtitude, latitude) VALUES ("Berlin", 35.3, 12.);',
+      'INSERT INTO Offices (name, longtitude, latitude) VALUES ("Wangwu", 35.3, 12.);',
       [],
     );
     tx.executeSql(
-      'INSERT INTO Offices (name, longtitude, latitude) VALUES ("Paris", 10.7, 14.);',
+      'INSERT INTO Offices (name, longtitude, latitude) VALUES ("Zhaoliu", 10.7, 14.);',
       [],
     );
 
     tx.executeSql(
-      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("Sylvester Stallone", 2, 4, \'{"known": true}\')',
+      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("haha", 2, 4, \'{"known": true}\')',
       [],
     );
     tx.executeSql(
-      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("Elvis Presley", 2, 4, \'{"known": true}\')',
+      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("yueyue", 2, 4, \'{"known": true}\')',
       [],
     );
     tx.executeSql(
-      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("Leslie Nelson", 3, 4, \'{"known": true}\')',
+      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("linlin", 3, 4, \'{"known": true}\')',
       [],
     );
     tx.executeSql(
-      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("Fidel Castro", 3, 3, \'{"known": true}\')',
+      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("huahua", 3, 3, \'{"known": true}\')',
       [],
     );
     tx.executeSql(
-      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("Bill Clinton", 1, 3, \'{"known": false}\')',
+      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("yangyang", 1, 3, \'{"known": false}\')',
       [],
     );
     tx.executeSql(
-      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("Margaret Thatcher", 1, 3, \'{"known": true}\')',
+      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("zaza", 1, 3, \'{"known": true}\')',
       [],
     );
     tx.executeSql(
-      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("Donald Trump", 2, 4, \'{"known": true, "impeached": true}\')',
+      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("lulu", 2, 4, \'{"known": true, "impeached": true}\')',
       [],
     );
     tx.executeSql(
-      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("Dr DRE", 2, 2, \'{"known": true}\')',
+      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("luoluo", 2, 2, \'{"known": true}\')',
       [],
     );
     tx.executeSql(
-      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("Samantha Fox", 2, 1, \'{"known": true}\')',
+      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("bubu", 2, 1, \'{"known": true}\')',
       [],
     );
 
@@ -532,9 +541,19 @@ export default SQLiteDemo;
 
 ## Link
 
-目前HarmonyOS暂不支持 AutoLink，所以 Link 步骤需要手动配置。
+|                                       | 是否支持autolink | RN框架版本 |
+|---------------------------------------|-----------------|------------|
+| ~6.1.0                                |  No              |  0.77     |
+| ~6.0.2                                |  Yes             |  0.72     |
+| <= 6.0.1-0.1.1@deprecated             |  No              |  0.72     |
 
-首先需要使用 DevEco Studio 打开项目里的HarmonyOS工程 `harmony`
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
+
+首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
 ### 1.在工程根目录的 `oh-package.json5` 添加 overrides字段
 
@@ -563,7 +582,7 @@ export default SQLiteDemo;
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-sqlite-storage": "file:../../node_modules/@react-native-oh-tpl/react-native-sqlite-storage/platforms/harmony/sqlite_storage.har"
+    "@react-native-ohos/react-native-sqlite-storage": "file:../../node_modules/@react-native-ohos/react-native-sqlite-storage/harmony/sqlite_storage.har"
   }
 ```
 
@@ -581,13 +600,62 @@ ohpm install
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
 
-### 3.在 ArkTs 侧引入 SQLitePluginPackage
+### 3. 配置 CMakeLists 和引入 SQLitePluginPackage
+
+> 若使用的是 <= 6.0.1-0.1.1 版本，请跳过本章。
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+...
+
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_END: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-sqlite-storage/src/main/cpp" ./sqlite_storage)
+# RNOH_END: manual_package_linking_1
+
+add_library(rnoh_app SHARED
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_sqlite_storage)
+# RNOH_BEGIN: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
++ #include "SQLitePluginPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
++        std::make_shared<SQLitePluginPackage>(ctx)
+}
+```
+
+### 4. 在 ArkTs 侧引入 SQLitePluginPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
   ...
-+ import {SQLitePluginPackage} from '@react-native-oh-tpl/react-native-sqlite-storage/ts';
++ import {SQLitePluginPackage} from '@react-native-ohos/react-native-sqlite-storage/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -597,7 +665,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4.运行
+</details>
+
+## 运行
 
 点击右上角的 `sync` 按钮
 
@@ -614,7 +684,11 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-sqlite-storage Releases](https://github.com/react-native-oh-library/react-native-sqlite-storage/releases)
+在以下版本验证通过：
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 静态方法
 
