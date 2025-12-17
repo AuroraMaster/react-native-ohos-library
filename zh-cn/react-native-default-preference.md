@@ -255,16 +255,16 @@ ohpm install
 
 | Name          | Description                   | Type     | Required | Platform     | HarmonyOS Support |
 | ------------- | ----------------------------- | -------- | -------- | ------------ | ----------------- |
-| get           | 取出键值对                    | function | yes      | Android、iOS | yes               |
-| set           | 设置键值对                    | function | yes      | Android、iOS | yes               |
-| clear         | 清除键值对                    | function | yes      | Android、iOS | yes               |
-| getMultiple   | 取出多个键值对                | function | yes      | Android、iOS | yes               |
-| setMultiple   | 设置多个键值对                | function | yes      | Android、iOS | yes               |
-| clearMultiple | 清除多个键值对                | function | yes      | Android、iOS | yes               |
+| get           | 取出键值对                    | function | no      | Android、iOS | yes               |
+| set           | 设置键值对                    | function | no      | Android、iOS | yes               |
+| clear         | 清除键值对                    | function | no      | Android、iOS | yes               |
+| getMultiple   | 取出多个键值对                | function | no      | Android、iOS | yes               |
+| setMultiple   | 设置多个键值对                | function | no      | Android、iOS | yes               |
+| clearMultiple | 清除多个键值对                | function | no      | Android、iOS | yes               |
 | getAll        | 取出所有键值对                | function | no       | Android、iOS | yes               |
 | clearAll      | 清除所有键值对                | function | no       | Android、iOS | yes               |
 | getName       | 获取 Preferences 实例的名称。 | function | no       | Android、iOS | yes               |
-| setName       | 设置 Preferences 实例的名称。 | function | yes      | Android、iOS | yes               |
+| setName       | 设置 Preferences 实例的名称。 | function | no      | Android、iOS | yes               |
 
 
 ## 遗留问题
