@@ -269,7 +269,6 @@ ohpm install
 | enableLogcat | 启用/禁用控制台日志 | function | no | iOS/Android | yes |
 | addLogListener | 注册实时日志监听器 | function | no | iOS/Android | yes |
 | removeLogListener | 移除日志监听器 | function | no | iOS/Android | yes |
-| updateSessionCredential | 更新会话凭证 | function | no | iOS/Android | yes |
 | upload | 上传 | function | no | iOS/Android | yes |
 | download | 下载 | function | no | iOS/Android | yes |
 | pause | 暂停 | function | no | iOS/Android | yes |
@@ -315,8 +314,6 @@ ohpm install
 | initCustomerDNS | 配置静态 DNS 映射规则 | function | no | iOS/Android | no |
 | getBucketVersioning | 获取桶版本控制 | function | no | iOS/Android | no |
 | forceInvalidationCredential | 强制刷新临时凭证 | function | no | iOS/Android | no |
-| addListener | 添加监听 | function | no | iOS/Android | yes |
-| removeListeners | 移除监听 | function | no | iOS/Android | yes |
 | getService | 获取指定名称的服务实例 | function | no | iOS/Android | yes |
 | hasService | 检查服务实例是否存在 | function | no | iOS/Android | yes |
 | getTransferManger | 获取指定传输管理器 | function | no | iOS/Android | yes |
