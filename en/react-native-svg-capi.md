@@ -608,7 +608,7 @@ For details, see [react-native-svg](https://github.com/software-mansion/react-na
 |   Name    |        Description         |   Type   | Required | Platform | HarmonyOS Support |
 | :-------: | :------------------------: | :------: | :------: | :------: | :---------------: |
 |   parse   | 将 svg 字符串解析成 JsxAST | function |    No    |   All    |        Yes        |
-|    err    |          打印日志          | function |    No    |   All    |        Yes        |
+|    err<sup>15.0.x</sup>    |          打印日志           | function |    No    |   All    |        Yes        |
 | camelCase |    字符串首字母转成大写    | function |    No    |   All    |        Yes        |
 | fetchText | 将 svg 字符串解析成 JsxAST | function |    No    |   All    |        Yes        |
 
