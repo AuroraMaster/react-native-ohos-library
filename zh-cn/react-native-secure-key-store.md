@@ -369,12 +369,15 @@ HarmonyOS 版本使用以下技术实现安全存储：
 ```
 
 ## API
+> [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
+
+> [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
 | Name                    | Description                                  | Type     | Required | Platform    | HarmonyOS Support |
 | ----------------------- | -------------------------------------------- | -------- | -------- | ----------- | ----------------- |
-| RNSecureKeyStore.set    | Securely stores the key-value pair.          | function | yes      | iOS/Android | yes               |
-| RNSecureKeyStore.get    | Retrieves the value for the given key.       | function | yes      | iOS/Android | yes               |
-| RNSecureKeyStore.remove | Removes the key-value pair.                  | function | yes      | iOS/Android | yes               |
+| RNSecureKeyStore.set    | Securely stores the key-value pair.          | function | No      | iOS/Android | yes               |
+| RNSecureKeyStore.get    | Retrieves the value for the given key.       | function | No      | iOS/Android | yes               |
+| RNSecureKeyStore.remove | Removes the key-value pair.                  | function | No      | iOS/Android | yes               |
 
 ```typescript
 
@@ -391,5 +394,5 @@ HarmonyOS 版本使用以下技术实现安全存储：
 
 ## 开源协议
 
-本项目基于 [The MIT License (MIT)](https://github.com/ovr/react-native-secure-key-store/blob/master/LICENSE) ，请自由地享受和参与开源。
+本项目基于 [The MIT License (MIT)](https://github.com/pradeep1991singh/react-native-secure-key-store/blob/master/LICENSE) ，请自由地享受和参与开源。
 

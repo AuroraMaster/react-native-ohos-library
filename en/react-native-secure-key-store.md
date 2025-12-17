@@ -370,12 +370,15 @@ Original Data → AES-256-GCM Encryption → Base64 Encoding → Preferences Sto
 ```
 
 ## API
+> [!TIP] The "Platform" column shows the platforms supported by the original third-party library.
+
+> [!TIP] The "HarmonyOS Support" column: yes means the property is supported on HarmonyOS; no means not supported; partially means partially supported. The usage is the same across platforms, and the behavior aligns with iOS or Android.
 
 | Name                    | Description                                  | Type     | Required | Platform    | HarmonyOS Support |
 | ----------------------- | -------------------------------------------- | -------- | -------- | ----------- | ----------------- |
-| RNSecureKeyStore.set    | Securely stores the key-value pair.          | function | yes      | iOS/Android | yes               |
-| RNSecureKeyStore.get    | Retrieves the value for the given key.       | function | yes      | iOS/Android | yes               |
-| RNSecureKeyStore.remove | Removes the key-value pair.                  | function | yes      | iOS/Android | yes               |
+| RNSecureKeyStore.set    | Securely stores the key-value pair.          | function | no      | iOS/Android | yes               |
+| RNSecureKeyStore.get    | Retrieves the value for the given key.       | function | no      | iOS/Android | yes               |
+| RNSecureKeyStore.remove | Removes the key-value pair.                  | function | no      | iOS/Android | yes               |
 
 ```typescript
 
@@ -392,5 +395,5 @@ Original Data → AES-256-GCM Encryption → Base64 Encoding → Preferences Sto
 
 ## License
 
-This project is based on [The MIT License (MIT)](https://github.com/ovr/react-native-secure-key-store/blob/master/LICENSE), please freely enjoy and participate in open source.
+This project is based on [The MIT License (MIT)](https://github.com/pradeep1991singh/react-native-secure-key-store/blob/master/LICENSE), please freely enjoy and participate in open source.
 
