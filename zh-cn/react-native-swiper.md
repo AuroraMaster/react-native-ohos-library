@@ -13,6 +13,13 @@
 </p>
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-swiper)
+> 
+>请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
+
+| 三方库版本 | 发布信息                                                                                                                           | 支持RN版本 | 
+| ---------- |--------------------------------------------------------------------------------------------------------------------------------|------|
+| 1.6.1 @deprecated    | [@react-native-oh-tpl/react-native-swiper Releases(deprecated)](https://github.com/react-native-oh-library/react-native-swiper/releases) | 0.72 |
+| 1.6.1    | [@react-native-ohos/react-native-swiper](https://github.com/react-native-oh-library/react-native-swiper/releases)                                                                                     | 0.72/0.77 |
 
 ## 安装与使用
 
@@ -21,13 +28,13 @@
 #### **npm**
 
 ```bash
-npm i @react-native-oh-tpl/react-native-swiper --save
+npm i @react-native-ohos/react-native-swiper --save
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-swiper
+yarn add @react-native-ohos/react-native-swiper
 ```
 
 <!-- tabs:end -->
@@ -96,6 +103,7 @@ AppRegistry.registerComponent("myproject", () => SwiperComponent);
 
 1. RNOH：0.72.13; SDK：HarmonyOS NEXT Developer Preview1; IDE：DevEco Studio 4.1.3.500; ROM：2.0.0.58;
 2. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
+3. RNOH：0.77.18; SDK：OpenHarmony 6.0.0.47(API Version 20 Release); IDE：DevEco Studio 6.0.0.47 Releas; 5.1.1.45（SP1C00E45R4P4）;
 
 ## 属性
 
