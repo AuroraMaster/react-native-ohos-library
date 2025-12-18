@@ -817,7 +817,7 @@ export default ImageCropPickDemo;
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
-### 2.1 Overrides RN SDK
+### 2.1 在工程根目录的 `oh-package.json5` 添加 overrides 字段
 
 为了让工程依赖同一个版本的 RN SDK，需要在工程根目录的 `oh-package.json5` 添加 overrides 字段，指向工程需要使用的 RN SDK 版本。替换的版本既可以是一个具体的版本号，也可以是一个模糊版本，还可以是本地存在的 HAR 包或源码目录。
 
@@ -942,74 +942,12 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 ### 配置Entry(该模块始终需要手动配置)
 
-**(1)在 entry/src/main/ets/entryability 下修改 EntryAbility.ets**
-
-```diff
-import {RNAbility} from '@rnoh/react-native-openharmony';
-import { AbilityConstant, Want } from '@kit.AbilityKit';
-import window from '@ohos.window';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-const DOMAIN = 0x0000;
-
-export default class EntryAbility extends RNAbility {
-
-  onCreate(want: Want) {
-    super.onCreate(want)
-  }
-
-  getPagePath() {
-    return 'pages/Index';
-  }
-
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    // Main window is created, set main page for this ability
-    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-
-    windowStage.loadContent('pages/Index', (err) => {
-
-+      let windowClass: window.Window = windowStage.getMainWindowSync()
-+      let isLayoutFullScreen = true
-+      windowClass.setWindowLayoutFullScreen(isLayoutFullScreen).then(() => {
-+        console.info('Succeeded in setting the window layout to full-screen mode.')
-+      }).catch((err: BusinessError) => {
-+       console.error(`Failed to set the window layout to full-screen mode. Code is ${err.code}, message is ${err.message}`)
-+      })
-
-+      let type = window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR;
-+      let avoidArea = windowClass.getWindowAvoidArea(type);
-+      let bottomRectHeight = avoidArea.bottomRect.height; // 获取到导航区域的高度
-+      AppStorage.setOrCreate('bottomRectHeight', bottomRectHeight);
-
-+      type = window.AvoidAreaType.TYPE_SYSTEM;
-+      avoidArea = windowClass.getWindowAvoidArea(type);
-+      let topRectHeight = avoidArea.topRect.height; // 获取状态栏区域高度
-+      AppStorage.setOrCreate('topRectHeight', topRectHeight);
-
-+      windowClass.on('avoidAreaChange', (data) => {
-+        if (data.type === window.AvoidAreaType.TYPE_SYSTEM) {
-+          let topRectHeight = data.area.topRect.height;
-+          AppStorage.setOrCreate('topRectHeight', topRectHeight);
-+        } else if (data.type == window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR) {
-+          let bottomRectHeight = data.area.bottomRect.height;
-+          AppStorage.setOrCreate('bottomRectHeight', bottomRectHeight);
-+        }
-+      });
-
-      if (err.code) {
-        hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
-        return;
-      }
-      hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
-    });
- }
-}
-```
-
-**(2)在 entry/src/main/ets/entryability 下创建 ImageEditAbility.ets**
+**(1)在 entry/src/main/ets/entryability 下创建 ImageEditAbility.ets**
 
 ```
 import UIAbility from '@ohos.app.ability.UIAbility'
 import window from '@ohos.window'
+import { BusinessError } from "@ohos.base";
 
 const TAG = 'ImageEditAbility';
 
@@ -1018,6 +956,34 @@ export default class ImageEditAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     this.setWindowOrientation(windowStage, window.Orientation.PORTRAIT)
     windowStage.loadContent('pages/ImageEdit', (err, data) => {
+      let windowClass: window.Window = windowStage.getMainWindowSync()
+      let isLayoutFullScreen = true
+      windowClass.setWindowLayoutFullScreen(isLayoutFullScreen).then(() => {
+        console.info('Succeeded in setting the window layout to full-screen mode.')
+      }).catch((err: BusinessError) => {
+       console.error(`Failed to set the window layout to full-screen mode. Code is ${err.code}, message is ${err.message}`)
+      })
+
+      let type = window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR;
+      let avoidArea = windowClass.getWindowAvoidArea(type);
+      let bottomRectHeight = avoidArea.bottomRect.height; // 获取到导航区域的高度
+      AppStorage.setOrCreate('bottomRectHeight', bottomRectHeight);
+
+      type = window.AvoidAreaType.TYPE_SYSTEM;
+      avoidArea = windowClass.getWindowAvoidArea(type);
+      let topRectHeight = avoidArea.topRect.height; // 获取状态栏区域高度
+      AppStorage.setOrCreate('topRectHeight', topRectHeight);
+
+      windowClass.on('avoidAreaChange', (data) => {
+        if (data.type === window.AvoidAreaType.TYPE_SYSTEM) {
+          let topRectHeight = data.area.topRect.height;
+          AppStorage.setOrCreate('topRectHeight', topRectHeight);
+        } else if (data.type == window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR) {
+          let bottomRectHeight = data.area.bottomRect.height;
+          AppStorage.setOrCreate('bottomRectHeight', bottomRectHeight);
+        }
+      });
+
       if (err.code) {
         console.info(TAG,'Failed to load the content. Cause: %{public}s',
           JSON.stringify(err) ?? '')
@@ -1054,7 +1020,7 @@ export default class ImageEditAbility extends UIAbility {
 }
 ```
 
-**(3)在 entry/src/main/module.json5 注册 ImageEditAbility**
+**(2)在 entry/src/main/module.json5 注册 ImageEditAbility**
 
 ```
 "abilities":[
@@ -1073,7 +1039,7 @@ export default class ImageEditAbility extends UIAbility {
 
 ```
 
-**(4)在 entry/src/main/ets/pages 下创建 ImageEdit.ets**
+**(3)在 entry/src/main/ets/pages 下创建 ImageEdit.ets**
 
 ```
 import { ImageEditInfo } from '@react-native-ohos/react-native-image-crop-picker';
@@ -1082,10 +1048,6 @@ import { CircleImageInfo } from '@react-native-ohos/react-native-image-crop-pick
 @Component
 struct ImageEdit {
   @State cropperCircleOverlay: boolean = false;
-  @StorageProp('bottomRectHeight')
-  bottomRectHeight: number = 0;
-  @StorageProp('topRectHeight')
-  topRectHeight: number = 0;
 
   aboutToAppear(): void {
     this.cropperCircleOverlay = AppStorage.Get('cropperCircleOverlay') || false
@@ -1101,17 +1063,13 @@ struct ImageEdit {
         }
       }
       .width('100%')
-      .padding({
-        top: this.getUIContext().px2vp(this.topRectHeight),
-        bottom: this.getUIContext().px2vp(this.bottomRectHeight)
-      })
     }
     .height('100%')
   }
 }
 ```
 
-**(5)在 entry/src/main/resources/base/profile/main_pages.json 添加配置**
+**(4)在 entry/src/main/resources/base/profile/main_pages.json 添加配置**
 
 ```
 {
@@ -1167,7 +1125,7 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-**cropData**
+**裁剪配置项**
 
 | Name                                      | Type                                                         | Description                                                  | Required | Platform | HarmonyOS Support |
 | ----------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | -------- | ----------------- |
@@ -1234,4 +1192,4 @@ ohpm install
 
 ## 10. 开源协议
 
-本项目基于 [The MIT License (MIT)](https://gitee.com/openharmony-sig/rntpc_react-native-image-crop-picker/blob/master/LICENSE) ，请自由地享受和参与开源。
+本项目基于 [The MIT License (MIT)](https://github.com/ivpusic/react-native-image-crop-picker/blob/master/LICENSE) ，请自由地享受和参与开源。

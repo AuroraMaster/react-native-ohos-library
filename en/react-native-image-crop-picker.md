@@ -817,7 +817,7 @@ If the version you use supports Autolink and the project has been connected to A
 
 First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
-### 2.1 Overrides RN SDK
+### 2.1 Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
 
 To ensure the project relies on the same version of the RN SDK, you need to add an `overrides` field in the project's root `oh-package.json5` file, specifying the RN SDK version to be used. The replacement version can be a specific version number, a semver range, or a locally available HAR package or source directory.
 
@@ -864,7 +864,7 @@ ohpm install
 
 Method 2: Directly link to the source code.
 
-> [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
+> [!TIP] For details, see [Directly Linking Source Code](https://gitee.com/react-native-oh-library/usage-docs/blob/master/en/link-source-code.md).
 
 ### 2.3 Configuring CMakeLists and Introducing ImageCropPickerPackage
 
@@ -942,74 +942,12 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 ### Configuration Entry(This module always requires manual configuration)
 
-**(1)Change EntryAbility.ets under entry/src/main/ets/entryability**
-
-```diff
-import {RNAbility} from '@rnoh/react-native-openharmony';
-import { AbilityConstant, Want } from '@kit.AbilityKit';
-import window from '@ohos.window';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-const DOMAIN = 0x0000;
-
-export default class EntryAbility extends RNAbility {
-
-  onCreate(want: Want) {
-    super.onCreate(want)
-  }
-
-  getPagePath() {
-    return 'pages/Index';
-  }
-
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    // Main window is created, set main page for this ability
-    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-
-    windowStage.loadContent('pages/Index', (err) => {
-
-+      let windowClass: window.Window = windowStage.getMainWindowSync()
-+      let isLayoutFullScreen = true
-+      windowClass.setWindowLayoutFullScreen(isLayoutFullScreen).then(() => {
-+        console.info('Succeeded in setting the window layout to full-screen mode.')
-+      }).catch((err: BusinessError) => {
-+       console.error(`Failed to set the window layout to full-screen mode. Code is ${err.code}, message is ${err.message}`)
-+      })
-
-+      let type = window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR;
-+      let avoidArea = windowClass.getWindowAvoidArea(type);
-+      let bottomRectHeight = avoidArea.bottomRect.height; // 获取到导航区域的高度
-+      AppStorage.setOrCreate('bottomRectHeight', bottomRectHeight);
-
-+      type = window.AvoidAreaType.TYPE_SYSTEM;
-+      avoidArea = windowClass.getWindowAvoidArea(type);
-+      let topRectHeight = avoidArea.topRect.height; // 获取状态栏区域高度
-+      AppStorage.setOrCreate('topRectHeight', topRectHeight);
-
-+      windowClass.on('avoidAreaChange', (data) => {
-+        if (data.type === window.AvoidAreaType.TYPE_SYSTEM) {
-+          let topRectHeight = data.area.topRect.height;
-+          AppStorage.setOrCreate('topRectHeight', topRectHeight);
-+        } else if (data.type == window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR) {
-+          let bottomRectHeight = data.area.bottomRect.height;
-+          AppStorage.setOrCreate('bottomRectHeight', bottomRectHeight);
-+        }
-+      });
-
-      if (err.code) {
-        hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
-        return;
-      }
-      hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
-    });
- }
-}
-```
-
-**(2)Create ImageEditAbility.ets under entry/src/main/ets/entryability**
+**(1)Create ImageEditAbility.ets under entry/src/main/ets/entryability**
 
 ```
 import UIAbility from '@ohos.app.ability.UIAbility'
 import window from '@ohos.window'
+import { BusinessError } from "@ohos.base";
 
 const TAG = 'ImageEditAbility';
 
@@ -1018,6 +956,34 @@ export default class ImageEditAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     this.setWindowOrientation(windowStage, window.Orientation.PORTRAIT)
     windowStage.loadContent('pages/ImageEdit', (err, data) => {
+      let windowClass: window.Window = windowStage.getMainWindowSync()
+      let isLayoutFullScreen = true
+      windowClass.setWindowLayoutFullScreen(isLayoutFullScreen).then(() => {
+        console.info('Succeeded in setting the window layout to full-screen mode.')
+      }).catch((err: BusinessError) => {
+       console.error(`Failed to set the window layout to full-screen mode. Code is ${err.code}, message is ${err.message}`)
+      })
+
+      let type = window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR;
+      let avoidArea = windowClass.getWindowAvoidArea(type);
+      let bottomRectHeight = avoidArea.bottomRect.height; // 获取到导航区域的高度
+      AppStorage.setOrCreate('bottomRectHeight', bottomRectHeight);
+
+      type = window.AvoidAreaType.TYPE_SYSTEM;
+      avoidArea = windowClass.getWindowAvoidArea(type);
+      let topRectHeight = avoidArea.topRect.height; // 获取状态栏区域高度
+      AppStorage.setOrCreate('topRectHeight', topRectHeight);
+
+      windowClass.on('avoidAreaChange', (data) => {
+        if (data.type === window.AvoidAreaType.TYPE_SYSTEM) {
+          let topRectHeight = data.area.topRect.height;
+          AppStorage.setOrCreate('topRectHeight', topRectHeight);
+        } else if (data.type == window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR) {
+          let bottomRectHeight = data.area.bottomRect.height;
+          AppStorage.setOrCreate('bottomRectHeight', bottomRectHeight);
+        }
+      });
+
       if (err.code) {
         console.info(TAG,'Failed to load the content. Cause: %{public}s',
           JSON.stringify(err) ?? '')
@@ -1054,7 +1020,7 @@ export default class ImageEditAbility extends UIAbility {
 }
 ```
 
-**(3)Register ImageEditAbility in entry/src/main/module.json5.**
+**(2)Register ImageEditAbility in entry/src/main/module.json5.**
 
 ```
 "abilities":[
@@ -1073,7 +1039,7 @@ export default class ImageEditAbility extends UIAbility {
 
 ```
 
-**(4)Create entry/src/main/ets/pages under ImageEdit.ets**
+**(3)Create ImageEdit.ets under entry/src/main/ets/pages**
 
 ```
 import { ImageEditInfo } from '@react-native-ohos/react-native-image-crop-picker';
@@ -1083,10 +1049,6 @@ import { CircleImageInfo } from '@react-native-ohos/react-native-image-crop-pick
 @Component
 struct ImageEdit {
   @State cropperCircleOverlay: boolean = false;
-  @StorageProp('bottomRectHeight')
-  bottomRectHeight: number = 0;
-  @StorageProp('topRectHeight')
-  topRectHeight: number = 0;
 
   build() {
     Row() {
@@ -1098,17 +1060,13 @@ struct ImageEdit {
         }
       }
       .width('100%')
-      .padding({
-        top: this.getUIContext().px2vp(this.topRectHeight),
-        bottom: this.getUIContext().px2vp(this.bottomRectHeight)
-      })
     }
     .height('100%')
   }
 }
 ```
 
-**(5)Add configuration in entry/src/main/resources/base/profile/main_pages.json**
+**(4)Add configuration in entry/src/main/resources/base/profile/main_pages.json**
 
 ```
 {
@@ -1132,7 +1090,7 @@ ohpm install
 
 Then build and run the code.
 
-## 5. Constraints
+## 5. Constraints and Limitations
 
 ### Compatibility
 
@@ -1231,4 +1189,4 @@ Verified in the following versions.
 
 ## 10. License
 
-This project is licensed under [The MIT License (MIT)](https://gitee.com/openharmony-sig/rntpc_react-native-image-crop-picker/blob/master/LICENSE).
+This project is licensed under [The MIT License (MIT)](https://github.com/ivpusic/react-native-image-crop-picker/blob/master/LICENSE).
