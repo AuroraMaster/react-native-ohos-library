@@ -218,7 +218,7 @@ ohpm install
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
 
-### 4.配置 CMakeLists 和引入 turbo_log
+### 3.配置 CMakeLists 和引入 turbo_log
 
 打开 entry/src/main/cpp/CMakeLists.txt，添加：
 
@@ -267,7 +267,7 @@ target_link_libraries(rnoh_app PUBLIC rnoh_gesture_handler)
 
 ```
 
-### 4.Import the TurboLogPackage on the ArkTS side
+### 4. 在ArkTS侧引入TurboLogPackage
 
 打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
 
