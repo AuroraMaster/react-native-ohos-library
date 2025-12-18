@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
 This step is a guide for manually configuring native dependencies.
 First, you need to open the HarmonyOS project harmony in the project using DevEco Studio.
 
-### Add overrides field to oh-package.json in the project root directory
+### 1. Add overrides field to oh-package.json in the project root directory
 
 ```json
 {
@@ -180,7 +180,7 @@ First, you need to open the HarmonyOS project harmony in the project using DevEc
 }
 ```
 
- ### There are currently two methods:
+ ### 2. There are currently two methods:
 
 Import via har package (this method will be deprecated after the IDE improves related functions, and it is the preferred method currently);
 Link source code directly.
