@@ -333,4 +333,4 @@ The content of this document has been verified based on the following versions�
 
 ## Open Source License
 
-This project is based on [The MIT License (MIT)](https://github.com/@react-native-ohos/react-native-turbo-log/blob/master/LICENSE) ，Feel free to enjoy and contribute to the open source project。
+This project is based on [The MIT License (MIT)](https://github.com/mattermost/react-native-turbo-log/blob/master/LICENSE) ，Feel free to enjoy and contribute to the open source project。
