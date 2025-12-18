@@ -13,16 +13,21 @@ Please refer to the Releases page of the third-party library for the matching ve
 
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-turbo-log)
 
+## Installation and Usage
+
+Go to the project directory and execute the following instruction：
+
 ####  npm
 
 ```bash
-npm install @@react-native-ohos/react-native-turbo-log
+npm install @react-native-ohos/react-native-turbo-log
 ```
 
 #### yarn
 
+
 ```bash
-yarn add @@react-native-ohos/react-native-turbo-log
+yarn add @react-native-ohos/react-native-turbo-log
 ```
 
 <!-- tabs:end -->
@@ -159,16 +164,11 @@ const styles = StyleSheet.create({
 });
 
 ```
-## Using Codegen
-Version >= @react-native-ohos/react-native-turbo-log@0.6.1, which has been adapted to codegen-lib to generate bridge code.
-
-This library has been adapted to Codegen. Before using it, you need to actively execute the generation of third-party library bridge code. For details, please refer to the Codegen Usage Documentation.
-
 ## Link
 This step is a guide for manually configuring native dependencies.
 First, you need to open the HarmonyOS project harmony in the project using DevEco Studio.
 
-### Add overrides field to oh-package.json in the project root directory
+### 1. Add overrides field to oh-package.json in the project root directory
 
 ```json
 {
@@ -180,7 +180,7 @@ First, you need to open the HarmonyOS project harmony in the project using DevEc
 }
 ```
 
-There are currently two methods:
+ ### 2. There are currently two methods:
 
 Import via har package (this method will be deprecated after the IDE improves related functions, and it is the preferred method currently);
 Link source code directly.
@@ -194,7 +194,7 @@ Open the entry/oh-package.json5 file and append the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-ohos/react-native-turbo-log": "file:../../node_modules/@@react-native-ohos/react-native-turbo-log/harmony/turbo_log.har"
+    "@react-native-ohos/react-native-turbo-log": "file:../../node_modules/@react-native-ohos/react-native-turbo-log/harmony/turbo_log.har"
   }
 ```
 
@@ -212,7 +212,7 @@ Method 2: Link the source code directly
 > [!TIP] For direct source code linking, refer to [Direct Source Code Linking Instructions](/zh-cn/link-source-code.md)
 
 
-### 4.Configure CMakeLists and import turbo_log
+### 3.Configure CMakeLists and import turbo_log
 
 open entry/src/main/cpp/CMakeLists.txt，add：
 
@@ -260,8 +260,9 @@ target_link_libraries(rnoh_app PUBLIC rnoh_gesture_handler)
 # RNOH_END: manual_package_linking_2
 
 ```
+### 4.Import the TurboLogPackage module on the ArkTS side
 
-打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+open `entry/src/main/cpp/PackageProvider.cpp`，add：
 
 ```diff
 #include "RNOH/PackageProvider.h"

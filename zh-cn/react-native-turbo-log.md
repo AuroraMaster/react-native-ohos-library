@@ -166,12 +166,6 @@ const styles = StyleSheet.create({
 });
 
 ```
-## 使用 Codegen
-
-Version >= @react-native-ohos/react-native-turbo-log@0.6.1，已适配codegen-lib生成桥接代码。
-
-本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
-
 ## Link
 
 此步骤为手动配置原生依赖项的指导。
@@ -224,7 +218,7 @@ ohpm install
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
 
-### 4.配置 CMakeLists 和引入 turbo_log
+### 3.配置 CMakeLists 和引入 turbo_log
 
 打开 entry/src/main/cpp/CMakeLists.txt，添加：
 
@@ -272,6 +266,8 @@ target_link_libraries(rnoh_app PUBLIC rnoh_gesture_handler)
 # RNOH_END: manual_package_linking_2
 
 ```
+
+### 4. 在ArkTS侧引入TurboLogPackage
 
 打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
 

@@ -15,11 +15,13 @@
 > [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-secure-key-store)
 
 ## 安装与使用
+
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
 | 三方库版本 | 发布信息 | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 2.0.11     | [@react-native-ohos/react-native-secure-key-store Releases](https://github.com/react-native-oh-library/react-native-secure-key-store/releases) | 0.72，0.77       |
+| 2.0.11     | [@react-native-ohos/react-native-secure-key-store Releases](https://github.com/react-native-oh-library/react-native-secure-key-store/releases/2.0.11-rc.1) | 0.72     |
+| 2.1.0     | [@react-native-ohos/react-native-secure-key-store Releases](https://github.com/react-native-oh-library/react-native-secure-key-store/releases/2.1.0-rc.1) | 0.77     |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -186,14 +188,7 @@ const styles = StyleSheet.create({
 });
 
 export default AppDemo;
-
 ```
-## 使用 Codegen
-
-Version >= @react-native-ohos/react-native-secure-key-store@2.0.11, 已适配codegen-lib生成桥接代码。
-
-本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
-
 ## Link
 
 此步骤为手动配置原生依赖项的指导。
@@ -214,16 +209,15 @@ Version >= @react-native-ohos/react-native-secure-key-store@2.0.11, 已适配cod
 
 ### 2.引入原生端代码
 
-There are currently two methods:
+当前有两种方式：
 
-Import via har package (this method will be deprecated after the IDE improves related functions, and it is the preferred method currently);
-Link source code directly.
+- 通过 HAR 包导入（IDE 功能完善后将废弃，目前推荐使用此方式）；
+- 直接链接源码。
 
-Method 1: Import via har package (recommended)
+方式一：通过 HAR 包导入（推荐）
+> [!TIP] HAR 包位于三方库安装目录的 harmony 子文件夹中。
 
-> [!TIP] The HAR package can be found in the harmony subfolder of the third-party library's installation directory.
-
-Open the entry/oh-package.json5 file and append the following dependencies:
+打开 entry/oh-package.json5 文件并追加以下依赖项：
 
 ```json
 "dependencies": {
@@ -245,8 +239,7 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-
-### 4.配置 CMakeLists 和引入 RTNSecureKeyStorePackage
+### 3.配置 CMakeLists 和引入 RTNSecureKeyStorePackage
 
 open entry/src/main/cpp/CMakeLists.txt，add：
 
@@ -292,7 +285,6 @@ target_link_libraries(rnoh_app PUBLIC rnoh)
 target_link_libraries(rnoh_app PUBLIC rnoh_gesture_handler)
 + target_link_libraries(rnoh_app PUBLIC rnoh_secure_key_store)
 # RNOH_END: manual_package_linking_2
-
 ```
 
 打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
@@ -314,12 +306,12 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 5.在 ArkTs 侧引入 RNSecureKeyStorePackage
+### 4.在 ArkTs 侧引入 RNSecureKeyStorePackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
-  ...
+...
 + import { RNSecureKeyStorePackage } from "@react-native-ohos/react-native-secure-key-store/ts";
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -330,7 +322,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 6.运行
+### 5.运行
 
 点击右上角的 `sync` 按钮
 
@@ -350,6 +342,7 @@ ohpm install
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
 本文档内容基于以下版本验证通过：
+
 1. RNOH：0.72.90; SDK：HarmonyOS NEXT Developer DB3; IDE: DevEco Studio: 5.0.5.220; ROM：NEXT.0.0.105;
 2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release; IDE: DevEco Studio 6.0.0.858; ROM：6.0.0.112;
 
@@ -360,11 +353,12 @@ ohpm install
 HarmonyOS 版本使用以下技术实现安全存储：
 
 1. **HUKS (HarmonyOS Universal KeyStore)**
+   
    - 使用 AES-256-GCM 加密算法
    - 密钥存储在系统级安全区域
    - 提供硬件级别的安全保护
-
 2. **Preferences**
+   
    - 用于存储加密后的数据
    - 数据以 JSON 格式存储（包含 cipherText, iv, authTag）
 
@@ -375,13 +369,18 @@ HarmonyOS 版本使用以下技术实现安全存储：
 ```
 
 ## API
+> [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
+
+> [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
+
 | Name                    | Description                                  | Type     | Required | Platform    | HarmonyOS Support |
 | ----------------------- | -------------------------------------------- | -------- | -------- | ----------- | ----------------- |
-| RNSecureKeyStore.set    | Securely stores the key-value pair.          | function | yes      | iOS/Android | yes               |
-| RNSecureKeyStore.get    | Retrieves the value for the given key.       | function | yes      | iOS/Android | yes               |
-| RNSecureKeyStore.remove | Removes the key-value pair.                  | function | yes      | iOS/Android | yes               |
+| RNSecureKeyStore.set    | Securely stores the key-value pair.          | function | No      | iOS/Android | yes               |
+| RNSecureKeyStore.get    | Retrieves the value for the given key.       | function | No      | iOS/Android | yes               |
+| RNSecureKeyStore.remove | Removes the key-value pair.                  | function | No      | iOS/Android | yes               |
 
 ```typescript
+
 ```
 
 ## 平台差异
@@ -393,8 +392,7 @@ HarmonyOS 版本使用以下技术实现安全存储：
 | accessible 选项 |  ❌ 忽略 | ✅ 完整支持 | ❌ 忽略 |
 | setResetOnAppUninstallTo | ❌ 忽略 | ✅ 支持 |  ❌ 忽略 |
 
-
 ## 开源协议
 
-本项目基于 [The MIT License (MIT)](https://github.com/ovr/react-native-secure-key-store/blob/master/LICENSE) ，请自由地享受和参与开源。
+本项目基于 [The MIT License (MIT)](https://github.com/pradeep1991singh/react-native-secure-key-store/blob/master/LICENSE) ，请自由地享受和参与开源。
 

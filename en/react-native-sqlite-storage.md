@@ -17,7 +17,15 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library: [@react-native-oh-tpl/react-native-sqlite-storage Releases](https://github.com/react-native-oh-library/react-native-sqlite-storage/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Third-party Library Version | Release Information                                                                                                                                    | Supported RN Version |
+|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------| ---------- |
+| <= 6.0.1-0.1.1@deprecated      | [@react-native-oh-tpl/react-native-sqlite-storage Releases(deprecated)](https://github.com/react-native-oh-library/react-native-sqlite-storage/releases) | 0.72       |
+| 6.0.2      | [@react-native-ohos/react-native-sqlite-storage Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-sqlite-storage/releases)                        | 0.72       |
+| 6.1.0      | [@react-native-ohos/react-native-sqlite-storage Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-sqlite-storage/releases)                        | 0.77       |
+
+For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 
@@ -28,13 +36,13 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-npm install @react-native-oh-tpl/react-native-sqlite-storage
+npm install @react-native-ohos/react-native-sqlite-storage
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-oh-tpl/react-native-sqlite-storage
+yarn add @react-native-ohos/react-native-sqlite-storage
 ```
 
 The following code shows the basic use scenario of the repository:
@@ -223,56 +231,56 @@ class SQLiteDemo extends Component<{}, State> {
     );
 
     tx.executeSql(
-      'INSERT INTO Offices (name, longtitude, latitude) VALUES ("Denver", 59.8,  34.);',
+      'INSERT INTO Offices (name, longtitude, latitude) VALUES ("ZhangSan", 59.8,  34.);',
       [],
     );
     tx.executeSql(
-      'INSERT INTO Offices (name, longtitude, latitude) VALUES ("Warsaw", 15.7, 54.);',
+      'INSERT INTO Offices (name, longtitude, latitude) VALUES ("Lisi", 15.7, 54.);',
       [],
     );
     tx.executeSql(
-      'INSERT INTO Offices (name, longtitude, latitude) VALUES ("Berlin", 35.3, 12.);',
+      'INSERT INTO Offices (name, longtitude, latitude) VALUES ("Wangwu", 35.3, 12.);',
       [],
     );
     tx.executeSql(
-      'INSERT INTO Offices (name, longtitude, latitude) VALUES ("Paris", 10.7, 14.);',
+      'INSERT INTO Offices (name, longtitude, latitude) VALUES ("Zhaoliu", 10.7, 14.);',
       [],
     );
 
     tx.executeSql(
-      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("Sylvester Stallone", 2, 4, \'{"known": true}\')',
+      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("haha", 2, 4, \'{"known": true}\')',
       [],
     );
     tx.executeSql(
-      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("Elvis Presley", 2, 4, \'{"known": true}\')',
+      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("yueyue", 2, 4, \'{"known": true}\')',
       [],
     );
     tx.executeSql(
-      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("Leslie Nelson", 3, 4, \'{"known": true}\')',
+      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("linlin", 3, 4, \'{"known": true}\')',
       [],
     );
     tx.executeSql(
-      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("Fidel Castro", 3, 3, \'{"known": true}\')',
+      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("huahua", 3, 3, \'{"known": true}\')',
       [],
     );
     tx.executeSql(
-      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("Bill Clinton", 1, 3, \'{"known": false}\')',
+      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("yangyang", 1, 3, \'{"known": false}\')',
       [],
     );
     tx.executeSql(
-      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("Margaret Thatcher", 1, 3, \'{"known": true}\')',
+      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("zaza", 1, 3, \'{"known": true}\')',
       [],
     );
     tx.executeSql(
-      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("Donald Trump", 2, 4, \'{"known": true, "impeached": true}\')',
+      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("lulu", 2, 4, \'{"known": true, "impeached": true}\')',
       [],
     );
     tx.executeSql(
-      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("Dr DRE", 2, 2, \'{"known": true}\')',
+      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("luoluo", 2, 2, \'{"known": true}\')',
       [],
     );
     tx.executeSql(
-      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("Samantha Fox", 2, 1, \'{"known": true}\')',
+      'INSERT INTO Employees (name, office, department, custom_info) VALUES ("bubu", 2, 1, \'{"known": true}\')',
       [],
     );
 
@@ -530,13 +538,23 @@ export default SQLiteDemo;
 
 ## Use Codegen
 
-this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
+This library has been adapted for `Codegen`. Before using it, you need to proactively generate the bridge code for the third-party library. For details, please refer to the [Codegen Usage Documentation](/en/codegen.md).
 
 ## Link
 
-Currently, HarmonyOS does not support AutoLink. Therefore, you need to manually configure the linking.
+|                                      | Is supported autolink | Supported RN Version |
+|--------------------------------------|-----------------------|----------------------|
+| ~6.1.0                               |  No                   |  0.77                |
+| ~6.0.2                               |  Yes                  |  0.72                |
+| <= 6.0.1-0.1.1@deprecated            |  No                   |  0.72                |
 
-Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
+
+First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
 ### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
 
@@ -563,7 +581,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-sqlite-storage": "file:../../node_modules/@react-native-oh-tpl/react-native-sqlite-storage/platforms/harmony/sqlite_storage.har"
+    "@react-native-ohos/react-native-sqlite-storage": "file:../../node_modules/@react-native-ohos/react-native-sqlite-storage/harmony/sqlite_storage.har"
   }
 ```
 
@@ -580,14 +598,62 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
+### 3. Configure CMakeLists and import SQLitePluginPackage
 
-### 3. Introducing SQLitePluginPackage to ArkTS
+> If you are using version <= 6.0.1-0.1.1, please skip this chapter.
+
+Open the `entry/src/main/cpp/CMakeLists.txt` file and add the following code:
+
+```diff
+...
+
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_END: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-sqlite-storage/src/main/cpp" ./sqlite_storage)
+# RNOH_END: manual_package_linking_1
+
+add_library(rnoh_app SHARED
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_sqlite_storage)
+# RNOH_BEGIN: manual_package_linking_2
+```
+
+Open the `entry/src/main/cpp/PackageProvider.cpp` file and add the following code:
+
+```diff
+#include "RNOH/PackageProvider.h"
++ #include "SQLitePluginPackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
++        std::make_shared<SQLitePluginPackage>(ctx)
+}
+```
+
+### 4. Introducing SQLitePluginPackage to ArkTS
 
 Open the  `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
 ```diff
   ...
-+ import {SQLitePluginPackage} from '@react-native-oh-tpl/react-native-sqlite-storage/ts';
++ import {SQLitePluginPackage} from '@react-native-ohos/react-native-sqlite-storage/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -597,7 +663,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 4. Running
+</details>
+
+## Running
 
 Click the `sync` button in the upper right corner.
 
@@ -614,7 +682,11 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library:[@react-native-oh-tpl/react-native-sqlite-storage Releases](https://github.com/react-native-oh-library/react-native-sqlite-storage/releases)
+Verified in the following versions.
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## Static Methods
 
