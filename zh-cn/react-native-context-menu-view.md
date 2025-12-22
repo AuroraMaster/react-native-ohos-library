@@ -245,7 +245,7 @@ ohpm install
 | dropdownMenuMode                          | When set to true, the context menu is triggered with a single tap instead of a long press. | boolean  | no       | Android/iOS            | yes               |
 | disabled                                  | Disable menu interaction.                                    | boolean  | no       | Android/iOS            | yes               |
 | onPress                                   | When the popup is opened and the user picks an option.       | callback | no       | Android/iOS            | yes               |
-| onPreviewPress                            | When the context menu preview is tapped.                     | callback | no       | iOS                    | yes               |
+| onPreviewPress                            | When the context menu preview is tapped.                     | callback | no       | iOS                    | no                |
 | onCancel                                  | When the popup is opened and the user cancels.               | callback | no       | Android/iOS            | yes               |
 | fontName<sup>1.19.1+</sup>                | Custom font name to use for menu items.  The font must be available in your app's font resources. | string   | no       | Android                | yes               |
 | borderRadius<sup>1.19.1+</sup>            | Sets the border radius for all corners of  the preview. Can be overridden by individual corner settings. | number   | no       | iOS                    | no                |
