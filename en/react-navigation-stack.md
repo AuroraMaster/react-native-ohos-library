@@ -102,14 +102,14 @@ export default function App() {
 
 ## Link
 This repository depends on the following libraries, please refer to the corresponding documentation:
-+ [@react-navigation/native](/zh-cn/react-navigation-native.md)
-+ [@react-native-oh-tpl/react-native-gesture-handler](/zh-cn/react-native-gesture-handler.md)
-+ [@react-native-oh-library/react-native-safe-area-context](/zh-cn/react-native-safe-area-context.md)
-+ [react-native-screens](/zh-cn/react-native-screens.md)
++ [@react-navigation/native](/en/react-navigation-native.md)
++ [@react-native-ohos/react-native-gesture-handler](/en/react-native-gesture-handler.md)
++ [@react-native-ohos/react-native-safe-area-context](/en/react-native-safe-area-context.md)
++ [react-native-screens](/en/react-native-screens.md)
 
-The HarmonyOS implementation of this library depends on the native code from @react-native-oh-tpl/react-native-gesture-handler、@react-native-oh-library/react-native-safe-area-context. If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly. 
+The HarmonyOS implementation of this library depends on the native code from @react-native-ohos/react-native-gesture-handler、@react-native-ohos/react-native-safe-area-context. If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly.
 
-If it is not included, follow the guide provided in @react-native-oh-tpl/react-native-gesture-handler、@react-native-oh-library/react-native-safe-area-context to add it to your project.
+If it is not included, follow the guide provided in [@react-native-ohos/react-native-gesture-handler](/en/react-native-gesture-handler.md)、[@react-native-ohos/react-native-safe-area-context](/en/react-native-safe-area-context.md) to add it to your project.
 
 ## Constraints
 
