@@ -250,6 +250,8 @@ ohpm install
 | 13.10.5      | [@react-native-ohos/react-native-webview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases)                        | 0.72       |
 | 13.15.1      | [@react-native-ohos/react-native-webview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases)                        | 0.77       |
 
+鸿蒙化react-native-webview版本在13.10.4-rc.4及之后，编译需要DevEco Studio 6.0.0(API20)及以上版本。
+
 ## 属性
 > [!WARNING]ignoreSilentHardwareSwitch需要设置true网页播放才有声音
 
