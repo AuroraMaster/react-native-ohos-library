@@ -331,4 +331,4 @@ rawfile 路径：`entry/src/main/resources/rawfile`
 
 ## 7.开源协议
 
-本项目基于 [The MIT License (MIT)](https://github.com/react-native-oh-library/rive-react-native/blob/sig/LICENSE) ，请自由地享受和参与开源。
+本项目基于 [The MIT License (MIT)](https://github.com/rive-app/rive-react-native/blob/main/LICENSE) ，请自由地享受和参与开源。
