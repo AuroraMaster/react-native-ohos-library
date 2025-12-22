@@ -4,7 +4,7 @@
   <h1 align="center"> <code>rive-react-native</code> </h1>
 </p>
 
-本项目基于 [rive-react-native@v9.7.0](https://github.com/rive-app/rive-react-native/releases/tag/v9.7.0) 开发。
+本项目基于 [rive-react-native@v9.7.0](https://github.com/rive-app/rive-react-native/tree/v9.7.0) 开发。
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
