@@ -24,6 +24,8 @@ Please refer to the Releases page of the third-party library for the correspondi
 | 13.10.5      | [@react-native-ohos/react-native-webview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases)                        | 0.72       |
 | 13.15.1      | [@react-native-ohos/react-native-webview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases)                        | 0.77       |
 
+For the HarmonyOS version of react-native-webview from 13.10.4-rc.4 onward, compilation requires DevEco Studio 6.0.0 (API20) or higher.
+
 For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
