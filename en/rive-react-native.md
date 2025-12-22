@@ -310,4 +310,4 @@ rawfile path：`entry/src/main/resources/rawfile`
 
 ## 7.License
 
-This project is licensed under [The MIT License (MIT)](https://github.com/react-native-oh-library/rive-react-native/blob/sig/LICENSE).
+This project is licensed under [The MIT License (MIT)](https://github.com/rive-app/rive-react-native/blob/main/LICENSE).
