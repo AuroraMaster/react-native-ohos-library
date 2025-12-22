@@ -233,16 +233,16 @@ Verified successfully in the following versions:
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-| Name                   | Description                                                                                | Type     | Required | Platform               | HarmonyOS Support |
-| ---------------------- | ------------------------------------------------------------------------------------------ | -------- | -------- | ---------------------- | ----------------- |
-| title                  | The title above the popup menu.                                                            | string   | no       | Android/iOS            | yes               |
-| actions                | Menu props.                                                                                | array    | no       | Android(partially)/iOS | partially         |
-| previewBackgroundColor | The background color of the preview.                                                       | string   | no       | NA                     | no                |
+| Name                   | Description                                                  | Type     | Required | Platform               | HarmonyOS Support |
+| ---------------------- | ------------------------------------------------------------ | -------- | -------- | ---------------------- | ----------------- |
+| title                  | The title above the popup menu.                              | string   | no       | Android/iOS            | yes               |
+| actions                | Menu props.                                                  | array    | no       | Android(partially)/iOS | partially         |
+| previewBackgroundColor | The background color of the preview.                         | string   | no       | NA                     | no                |
 | dropdownMenuMode       | When set to true, the context menu is triggered with a single tap instead of a long press. | boolean  | no       | Android/iOS            | yes               |
-| disabled               | Disable menu interaction.                                                                  | boolean  | no       | Android/iOS            | yes               |
-| onPress                | When the popup is opened and the user picks an option.                                     | callback | no       | Android/iOS            | yes               |
-| onPreviewPress         | When the context menu preview is tapped.                                                   | callback | no       | iOS                    | yes               |
-| onCancel               | When the popup is opened and the user cancels.                                             | callback | no       | Android/iOS            | yes               |
+| disabled               | Disable menu interaction.                                    | boolean  | no       | Android/iOS            | yes               |
+| onPress                | When the popup is opened and the user picks an option.       | callback | no       | Android/iOS            | yes               |
+| onPreviewPress         | When the context menu preview is tapped.                     | callback | no       | iOS                    | no                |
+| onCancel               | When the popup is opened and the user cancels.               | callback | no       | Android/iOS            | yes               |
 
 ## actions
 
