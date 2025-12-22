@@ -12,7 +12,7 @@ Please refer to the Releases page of the third-party library for the correspondi
 
 | Third-party Library Version | Release Information       | Supported RN Version |
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 2.0.6 | [@react-native-ohos/react-native-rsa-native Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-rsa-native/releases) | 0.72/0.77       |
+| 2.0.6 | [@react-native-ohos/react-native-rsa-native Releases](https://github.com/react-native-oh-library/react-native-rsa-native/releases) | 0.72/0.77       |
 
 For older versions not published on npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
 
@@ -162,6 +162,141 @@ const styles = StyleSheet.create({
 export default RSADemo;
 
 ```
+## 2. Link
+
+This step provides guidance for manually configuring native dependencies.
+
+Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+
+### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
+
+```json
+{
+  ...
+  "overrides": {
+    "@rnoh/react-native-openharmony" : "./react_native_openharmony"
+  }
+}
+```
+
+### 2. Introducing Native Code
+
+Currently, two methods are available:
+
+Method 1 (recommended): Use the HAR file.
+
+> [!TIP] The HAR file is stored in the `harmony` directory in the installation path of the third-party library.
+
+Open `entry/oh-package.json5` file and add the following dependencies:
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-rsa-native": "file:../../node_modules/@react-native-ohos/react-native-rsa-native/harmony/rn_rsa_native.har"
+  }
+```
+
+Click the `sync` button in the upper right corner.
+
+Alternatively, run the following instruction on the terminal:
+
+```bash
+cd entry
+ohpm install
+```
+
+Method 2: Directly link to the source code.
+
+> [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
+
+### 3. Configuring CMakeLists and Introducing RTNRsaNativePackage
+
+Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-rsa-native/src/main/cpp" ./rn_rsa_native)
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_rsa_native)
+# RNOH_END: manual_package_linking_2
+```
+
+Open `entry/src/main/cpp/PackageProvider.cpp` and add the following code:
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "RTNRsaNativePackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++       std::make_shared<RTNRsaNativePackage>(ctx),
+    };
+}
+```
+
+### 4. Introduce the RNRSA Package component on the ArkTs side
+
+Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
+
+```diff
+...
++ import { RNRSAPackage } from '@react-native-ohos/react-native-rsa-native/ts';
+
+export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
+  return [
+    new SamplePackage(ctx),
++   new RNRSAPackage(ctx)
+  ];
+}
+
+```
+
+### 5. Running
+
+Click the `sync` button in the upper right corner.
+
+Alternatively, run the following instruction on the terminal:
+
+```bash
+cd entry
+ohpm install
+```
+
+Then build and run the code.
 
 ## 3. Constraints
 
@@ -217,14 +352,14 @@ Verified in the following versions.
 | sign64WithAlgorithm  | Hardware Base64 specifies algorithm signature          | no | all      | yes |
 | verify  | Hardware signature verification          | no | all      | yes |
 | verifyWithAlgorithm  | Hardware specified algorithm validation          | no | all      | yes |
-| verify64WithAlgorithm  | Hardware specified algorithm Base64 verification          | no | yes      | yes |
-| getPublicKey  | Get public key          | no | yes      | yes |
-| getPublicKeyDER  | Obtain DER format public key          | no | yes      | yes |
-| getPublicKeyRSA  | Obtain RSA format public key          | no | yes      | yes |
+| verify64WithAlgorithm  | Hardware specified algorithm Base64 verification          | no | all      | yes |
+| getPublicKey  | Get public key          | no | all      | yes |
+| getPublicKeyDER  | Obtain DER format public key          | no | all      | yes |
+| getPublicKeyRSA  | Obtain RSA format public key          | no | all      | yes |
 
 ## 5. Others
 
 ## 6. License
 
-This project is licensed under (https://GitCode.com/openharmony-sig/rntpc_react-native-rsa-native/blob/master/LICENSE).
+This project is licensed under [The MIT License (MIT)](https://github.com/amitaymolko/react-native-rsa-native/blob/master/LICENSE).
 

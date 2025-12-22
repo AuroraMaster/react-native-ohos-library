@@ -12,7 +12,7 @@
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 | 
 | ---------- | ------------------------------------------------------------ | ---------- |
-| 2.0.6 | [@react-native-ohos/react-native-rsa-native Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-rsa-native/releases) | 0.72/0.77       |
+| 2.0.6 | [@react-native-ohos/react-native-rsa-native Releases](https://github.com/react-native-oh-library/react-native-rsa-native/releases) | 0.72/0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -164,6 +164,145 @@ export default RSADemo;
 
 ```
 
+## 2. Link
+
+此步骤为手动配置原生依赖项的指导。
+
+首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
+
+### 1.在工程根目录的 `oh-package.json5` 添加 overrides 字段
+
+```json
+{
+  ...
+  "overrides": {
+    "@rnoh/react-native-openharmony" : "./react_native_openharmony"
+  }
+}
+```
+
+### 2.引入原生端代码
+
+目前有两种方法：
+
+1. 通过 har 包引入（在 IDE 完善相关功能后该方法会被遗弃，目前首选此方法）；
+2. 直接链接源码。
+
+方法一：通过 har 包引入（推荐）
+
+> [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
+
+打开 `entry/oh-package.json5`，添加以下依赖
+
+```json
+"dependencies": {
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
+    "@react-native-ohos/react-native-rsa-native": "file:../../node_modules/@react-native-ohos/react-native-rsa-native/harmony/rn_rsa_native.har"
+  }
+```
+
+点击右上角的 `sync` 按钮
+
+或者在终端执行：
+
+```bash
+cd entry
+ohpm install
+```
+
+方法二：直接链接源码
+
+> [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
+
+### 3.配置 CMakeLists 和引入 RTNRsaNativePackage
+
+打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
+
+```diff
+project(rnapp)
+cmake_minimum_required(VERSION 3.4.1)
+set(CMAKE_SKIP_BUILD_RPATH TRUE)
+set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
++ set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
+set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+set(LOG_VERBOSITY_LEVEL 1)
+set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
+set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
+set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
+add_compile_definitions(WITH_HITRACE_SYSTRACE)
+
+add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+
+# RNOH_BEGIN: manual_package_linking_1
+add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-rsa-native/src/main/cpp" ./rn_rsa_native)
+# RNOH_END: manual_package_linking_1
+
+file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
+
+add_library(rnoh_app SHARED
+    ${GENERATED_CPP_FILES}
+    "./PackageProvider.cpp"
+    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
+)
+target_link_libraries(rnoh_app PUBLIC rnoh)
+
+# RNOH_BEGIN: manual_package_linking_2
+target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
++ target_link_libraries(rnoh_app PUBLIC rnoh_rsa_native)
+# RNOH_END: manual_package_linking_2
+```
+
+打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+
+```diff
+#include "RNOH/PackageProvider.h"
+#include "generated/RNOHGeneratedPackage.h"
+#include "SamplePackage.h"
++ #include "RTNRsaNativePackage.h"
+
+using namespace rnoh;
+
+std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
+    return {
+        std::make_shared<RNOHGeneratedPackage>(ctx),
+        std::make_shared<SamplePackage>(ctx),
++       std::make_shared<RTNRsaNativePackage>(ctx),
+    };
+}
+```
+
+### 4.在 ArkTs 侧引入 RNRSA Package
+
+打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
+
+```diff
+...
++ import { RNRSAPackage } from '@react-native-ohos/react-native-rsa-native/ts';
+
+export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
+  return [
+    new SamplePackage(ctx),
++   new RNRSAPackage(ctx)
+  ];
+}
+
+```
+
+### 5.运行
+
+点击右上角的 `sync` 按钮
+
+或者在终端执行：
+
+```bash
+cd entry
+ohpm install
+```
+
+然后编译、运行即可。
+
 ## 3. 约束与限制
 
 ### 3.1 兼容性
@@ -217,15 +356,15 @@ export default RSADemo;
 | signWithAlgorithm  | 硬件指定算法签名          | no | all      | yes |
 | sign64WithAlgorithm  | 硬件Base64指定算法签名          | no | all      | yes |
 | verify  | 硬件签名验证          | no | all      | yes |
-| verifyWithAlgorithm  | 硬件指定算法验证          | no | yes      | yes |
-| verify64WithAlgorithm  | 硬件指定算法Base64验证          | no | yes      | yes |
-| getPublicKey  | 获取公钥          | no | yes      | yes |
-| getPublicKeyDER  | 获取DER格式公钥          | no | yes      | yes |
-| getPublicKeyRSA  | 获取RSA格式公钥          | no | yes      | yes |
+| verifyWithAlgorithm  | 硬件指定算法验证          | no | all      | yes |
+| verify64WithAlgorithm  | 硬件指定算法Base64验证          | no | all      | yes |
+| getPublicKey  | 获取公钥          | no | all      | yes |
+| getPublicKeyDER  | 获取DER格式公钥          | no | all      | yes |
+| getPublicKeyRSA  | 获取RSA格式公钥          | no | all      | yes |
 
 ## 5. 其他
 
 ## 6. 开源协议
 
-本项目基于 [The MIT License (MIT)](https://GitCode.com/openharmony-sig/rntpc_react-native-rsa-native/blob/master/LICENSE) ，请自由地享受和参与开源。
+本项目基于 [The MIT License (MIT)](https://github.com/amitaymolko/react-native-rsa-native/blob/master/LICENSE) ，请自由地享受和参与开源。
 
