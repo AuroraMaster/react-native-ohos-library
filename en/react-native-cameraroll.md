@@ -20,7 +20,7 @@ This third-party library has been migrated to Gitcode and is now available for d
 | ------------------------- | -------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------- |
 | <= 7.8.3-0.1.5@deprecated | @react-native-oh-tpl/camera-roll | [Github(deprecated)](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-cameraroll) | [Github Releases(deprecated)](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Freact-native-oh-library%2Freact-native-cameraroll%2Freleases) | 0.72                 |
 | 7.8.4                     | @react-native-oh-tpl/camera-roll | [Github](https://github.com/react-native-oh-library/react-native-cameraroll) | [GitHub Releases](https://github.com/react-native-oh-library/react-native-cameraroll/releases) | 0.72                 |
-| 7.10.1                    | @react-native-ohos/camera-roll   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-cameraroll) | [GitCode Releases]()                                         | 0.77                 |
+| 7.10.1                    | @react-native-ohos/camera-roll   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-cameraroll) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-cameraroll/release) | 0.77                 |
 
 ## Installation and Usage
 
