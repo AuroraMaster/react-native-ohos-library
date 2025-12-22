@@ -150,8 +150,8 @@ Check the release version information in the release address of the third-party 
 | backdropTransitionOutTiming | The backdrop hide timing (in ms) | `number` | 300 | no | all | yes |
 | customBackdrop | The custom backdrop element | `node` | null | no | all | yes |
 | children | The modal content | `node` | **REQUIRED** | yes | all | yes |
-| deviceHeight | Device height (useful on devices that can hide the navigation bar) | `bool` | null | no | all | yes |
-| deviceWidth | Device width (useful on devices that can hide the navigation bar) | `bool` | null | no | all | yes |
+| deviceHeight | Device height (useful on devices that can hide the navigation bar) | `number` | null | no | all | yes |
+| deviceWidth | Device width (useful on devices that can hide the navigation bar) | `number` | null | no | all | yes |
 | isVisible | Show the modal? | `bool` | **REQUIRED** | yes | all | yes |
 | onBackButtonPress | Called when the Android back button is pressed | `func` | () => null | no | Android | yes |
 | onBackdropPress | Called when the backdrop is pressed | `func` | () => null | no | all | yes |
