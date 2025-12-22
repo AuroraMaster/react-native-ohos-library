@@ -4,7 +4,7 @@
   <h1 align="center"> <code>rive-react-native</code> </h1>
 </p>
 
-This project is based on [rive-react-native@v9.7.0](https://github.com/rive-app/rive-react-native/releases/tag/v9.7.0)。
+This project is based on [rive-react-native@v9.7.0](https://github.com/rive-app/rive-react-native/tree/v9.7.0)。
 
 Please check the corresponding version information in the Releases section of the third-party library's repository:
 
