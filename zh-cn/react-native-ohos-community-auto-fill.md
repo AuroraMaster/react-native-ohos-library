@@ -56,7 +56,7 @@ yarn add @react-native-ohos/auto-fill
 ```tsx
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet } from 'react-native';
-import AutoFill from 'auto-fill';
+import AutoFill from '@react-native-ohos/auto-fill';
 
 const MyFormComponent = () => {
   const [fullName, setFullName] = useState('');
@@ -122,7 +122,10 @@ React-Native 侧 TextInput 组件接收的 [textContentType](https://reactnative
 // key 值为 RN 侧 textContentType 值,
 // value 值为 HarmonyOS 侧 ContentType 值
 
-//说明:textContentType配置项name和（familyName，givenName）不能同时在同一个表单中使用（在护照信息场景中可以同时使用）。
+//说明:
+// 1、textContentType配置项name和（familyName，givenName）不能同时在同一个表单中使用（在护照信息场景中可以同时使用）。
+// 2、nickName、organization、taxId不能保存，可以智能填充，前提是登陆的华为账号需要实名制，并且设置昵称、公司名称、公司税号
+// 3、licensePlate使用的前提是登陆的华为账号需要实名制，并且要先在智能填充的历史表单中添加一条华为账号本人的数据（姓名+邮箱，姓名为实名制中的真实姓名）
 {
     "countryName": COUNTRY_ADDRESS, // 国家
     "fullStreetAddress": FULL_STREET_ADDRESS, // 详细地址
@@ -137,6 +140,12 @@ React-Native 侧 TextInput 组件接收的 [textContentType](https://reactnative
     "passportNumber":PASSPORT_NUMBER,//护照号
     "validity":VALIDITY,//有效期至
     "issueAt":ISSUE_AT,//签发地
+    "nickName":NICKNAME,//昵称
+    "formatAddress":FORMAT_ADDRESS,//全量地址
+    "detailInfoWithoutStreet":DETAIL_INFO_WITHOUT_STREET,//详细地址
+    "licensePlate":LICENSE_PLATE,//车牌号
+    "organization":ORGANIZATION,//公司名称
+    "taxId":TAX_ID,//公司税号
 }
 ```
 

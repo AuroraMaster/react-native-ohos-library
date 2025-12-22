@@ -58,7 +58,7 @@ yarn add @react-native-ohos/auto-fill
 ```tsx
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet } from 'react-native';
-import AutoFill from 'auto-fill';
+import AutoFill from '@react-native-ohos/auto-fill';
 
 const MyFormComponent = () => {
   const [fullName, setFullName] = useState('');
@@ -124,7 +124,10 @@ The following lists the mapping between [textContentType](https://reactnative.cn
 // The key is the value of textContentType in React Native,
 // The value is the value of ContentType in HarmonyOS.
 
-//Explanation: The textContentType configuration item 'name' and ('familyName', 'givenName') cannot be used in the same form at the same time (they can be used simultaneously in the passport information scenario).
+//Instructions:
+// 1. The textContentType configuration item 'name' and ('familyName', 'givenName') cannot be used in the same form at the same time (they can be used together in the passport information scenario).
+// 2. 'nickName', 'organization', and 'taxId' cannot be saved, but they can be autofilled, provided that the logged-in Huawei account is real-name verified and has set a nickname, company name, and company tax ID.
+// 3. The use of 'licensePlate' requires the logged-in Huawei account to be real-name verified, and a record of the Huawei account owner's data (name and email, with the name being the real name in the real-name verification) must be added to the autofill history form first.
 {
     "countryName": COUNTRY_ADDRESS, // Country
     "fullStreetAddress": FULL_STREET_ADDRESS, // Detailed address
@@ -139,6 +142,13 @@ The following lists the mapping between [textContentType](https://reactnative.cn
     "passportNumber":PASSPORT_NUMBER,//passportNumber
     "validity":VALIDITY,//validity
     "issueAt":ISSUE_AT,//issueAt
+    "nickName":NICKNAME,//nickName
+    "formatAddress":FORMAT_ADDRESS,//format address
+    "detailInfoWithoutStreet":DETAIL_INFO_WITHOUT_STREET,//detail info without street
+    "licensePlate":LICENSE_PLATE,//license plate
+    "organization":ORGANIZATION,//organization
+    "taxId":TAX_ID,//tax id
+    
 }
 ```
 
