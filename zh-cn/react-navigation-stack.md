@@ -105,15 +105,13 @@ export default function App() {
 ## Link
 本库依赖以下三方库，请查看对应文档：
 + [@react-navigation/native](/zh-cn/react-navigation-native.md)
-+ [@react-native-oh-tpl/react-native-gesture-handler](/zh-cn/react-native-gesture-handler.md)
-+ [@react-native-oh-library/react-native-safe-area-context](/zh-cn/react-native-safe-area-context.md)
++ [@react-native-ohos/react-native-gesture-handler](/zh-cn/react-native-gesture-handler.md)
++ [@react-native-ohos/react-native-safe-area-context](/zh-cn/react-native-safe-area-context.md)
 + [react-native-screens](/zh-cn/react-native-screens.md)
 
-本库 HarmonyOS 侧实现依赖@react-native-oh-tpl/react-native-gesture-handler、@react-native-oh-library/react-native-safe-area-context 的原生端代码，如已在 HarmonyOS 工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
+本库 HarmonyOS 侧实现依赖@react-native-ohos/react-native-gesture-handler、@react-native-ohos/react-native-safe-area-context 的原生端代码，如已在 HarmonyOS 工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
 
-如未引入请参照[@react-native-oh-tpl/react-native-gesture-handler 文档](/zh-cn/react-native-gesture-handler.md)、[@react-native-oh-library/react-native-safe-area-context 文档](/zh-cn/react-native-safe-area-context.md)进行引入
-
-
+如未引入请参照[@react-native-ohos/react-native-gesture-handler 文档](/zh-cn/react-native-gesture-handler.md)、[@react-native-ohos/react-native-safe-area-context 文档](/zh-cn/react-native-safe-area-context.md)进行引入
 
 ## 约束与限制
 ### 兼容性
