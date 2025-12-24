@@ -328,4 +328,4 @@ Verified in the following versions:
 
 ## License
 
-This project is licensed under [The MIT License (MIT)](https://github.com/react-native-oh-library/react-native-cos-sdk/blob/sig/LICENSE).
+This project is licensed under [The MIT License (MIT)](https://github.com/TencentCloud/cos-sdk-react-native-plugin/blob/main/LICENSE).
