@@ -156,6 +156,33 @@ const styles = StyleSheet.create({
 
 export default App;
 ```
+
+> [!注意事项] 如果调用 getFontScale接口，需要进行以下配置。
+```
+1. harmony/AppScope/resources/base/profile文件夹下面新增configuration.json文件，内容如下：
+
+{
+  "configuration": {
+    "fontSizeScale": "followSystem",
+    "fontSizeMaxScale": "3.2"
+  }
+}
+
+2.在harmony/AppScope/app.json5 文件中配置 "configuration": "$profile:configuration" 如下：
+{
+  "app": {
+    "bundleName": "com.example.test",
+    "vendor": "example",
+    "versionCode": 1000000,
+    "versionName": "1.0.0",
+    "icon": "$media:app_icon",
+    "label": "$string:app_name",
+    "distributedNotificationEnabled": true,
+  + "configuration": "$profile:configuration"
+  }
+}
+```
+
 ## 使用 Codegen
 
 

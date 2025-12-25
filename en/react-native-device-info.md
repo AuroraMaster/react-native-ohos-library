@@ -159,6 +159,32 @@ const styles = StyleSheet.create({
 export default App;
 
 ```
+> [!TIP] if calling the getFontScale interface, the following configuration is required.
+```
+1. add a configurationion.json file to the Harmony/AppScope/resources/base/profile folder, with the following content：
+
+{
+  "configuration": {
+    "fontSizeScale": "followSystem",
+    "fontSizeMaxScale": "3.2"
+  }
+}
+
+2.Configure "configuration" in the Harry/AppScope/app.json5 file as follows: "$profile: configuration"：
+{
+  "app": {
+    "bundleName": "com.example.test",
+    "vendor": "example",
+    "versionCode": 1000000,
+    "versionName": "1.0.0",
+    "icon": "$media:app_icon",
+    "label": "$string:app_name",
+    "distributedNotificationEnabled": true,
+  + "configuration": "$profile:configuration"
+  }
+}
+```
+
 ## Use Codegen
 
 

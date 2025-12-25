@@ -562,4 +562,4 @@ This is a class method (static method).
 
 ## License
 
-This project is based on [The MIT License (MIT)](https://github.com/react-native-oh-library/teaset/blob/master/LICENSE). Feel free to enjoy and contribute to open source.
+This project is based on [The MIT License (MIT)](https://github.com/Meituan-Dianping/beeshell/blob/master/LICENSE). Feel free to enjoy and contribute to open source.
