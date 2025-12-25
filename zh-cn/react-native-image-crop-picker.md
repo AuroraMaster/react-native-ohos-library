@@ -886,13 +886,8 @@ add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-image-crop-picker/src/main/cpp" ./image-crop-picker)
 # RNOH_END: manual_package_linking_1
 
-# 该配置需要手动添加
-+ file(GLOB IMAGE_CROP_PICKER_CPP_FILES "${OH_MODULES}/@react-native-oh-tpl/react-native-image-crop-picker/src/main/cpp/*.cpp")
-
 add_library(rnoh_app SHARED
     ${GENERATED_CPP_FILES}
-# 该配置需要手动添加    
-+  ${IMAGE_CROP_PICKER_CPP_FILES}
     "./PackageProvider.cpp"
     "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
 )
