@@ -691,6 +691,7 @@ FontProps 组件 Properties HarmonyOS 侧支持情况
 - [ ] filter 该组件可以为 SVG 图形添加各种视觉效果 未实现
 - [ ] TextPath 功能未完全实现
 - [ ] Text,TSpan 组件的 rotate,fontFamily,wordSpacingProperties 未实现
+- [ ] Xml 组件中引入 'react-native-svg/src/ReactNativeSVG' 社区库的 err 属性, 社区库此属性对外暴露 未实现 [#2845](https://github.com/software-mansion/react-native-svg/pull/2845)  
 
 ## Others
 

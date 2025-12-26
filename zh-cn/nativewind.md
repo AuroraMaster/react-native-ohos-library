@@ -79,7 +79,7 @@ module.exports = {
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 + content: ["./src/*.{js,jsx,ts,tsx}"],
-+ presets: [require("@react-native-oh-tpl/nativewind/preset")],
++ presets: [require("@react-native-ohos/nativewind/preset")],
   theme: {
     extend: {},
   },
@@ -122,9 +122,9 @@ const config = getDefaultConfig(__dirname)
 + module.exports = withNativeWind(config, { input: './global.css' })
 ```
 
-#### 创建CSS文件 global.css
+#### 在工程根目录下创建CSS文件 global.css
 
-> [!TIP] V4.1.24 创建CSS文件 global.css。
+> [!TIP] >=V4.1.24 创建CSS文件 global.css。
 
 ```
 @tailwind base;
@@ -162,15 +162,17 @@ export default NativewindDemo
 - V4.1.24
 
 ```jsx
-import "./global.css"
-import { Text, View } from "react-native";
+import "../global.css"
+import { Text, View } from 'react-native';
+import { vars } from 'nativewind';
+
  
 export default function App() {
   return (
-    <View className="flex-1 items-center justify-center bg-white">
-      <Text className="text-xl font-bold text-blue-500">
-        Welcome to Nativewind!
-      </Text>
+    <View style={vars({ '--brand-color': 'red' })}>
+        <Text className="text-[--brand-color]" >
+            Welcome to Nativewind!
+        </Text>
     </View>
   );
 }
