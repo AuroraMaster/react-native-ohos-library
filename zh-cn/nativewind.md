@@ -102,9 +102,8 @@ module.exports = {
 
 ```diff
 module.exports = {
-- plugins: [],
-+ plugins: ["@react-native-ohos/nativewind/babel"],
-};
+- presets: [],
++ presets: ['@react-native-ohos/nativewind/babel'],
 ```
 
 <!-- tabs:end -->
