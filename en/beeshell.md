@@ -34,7 +34,6 @@ yarn add @react-native-ohos/beeshell
 
 The sample below demonstrates a basic usage scenario:
 
-**Hello world**  
 Import components from the beeshell package and use them directly:
 ```
 import React, { Component } from 'react';
@@ -83,6 +82,7 @@ The content in this document has been verified under the following environment:
 > [!TIP] The "HarmonyOS Support" column shows HarmonyOS support status: yes, no, or partially. Usage is cross-platform; effects match iOS or Android.
 
 ### 1. Actionsheet - Bottom Action Menu Component
+Inherits all Props and Methods of the SlideModal component.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
@@ -105,6 +105,7 @@ The content in this document has been verified under the following environment:
 | labelStyle | Custom styles for the badge text | TextStyle | no | iOS/Android | yes |
 
 ### 3. BottomModal - Bottom Modal Component
+Inherits all Props and Methods of the SlideModal component.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
@@ -181,6 +182,7 @@ The content in this document has been verified under the following environment:
 | renderItem | Custom function to define the option | 	Function |  no | iOS/Android | yes |
 
 ### 8. DatePicker - Date Picker Component
+Combines the Scrollpicker component and passes through all Props of Scrollpicker.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
@@ -192,6 +194,7 @@ The content in this document has been verified under the following environment:
 
 
 ### 9. Dialog - Dialog Component
+Inherits all Props and Methods of the Modal component.
 
 Used for system prompts, operation confirmations, custom content, etc. Supports multiple style customizations and flexible interaction.
 
@@ -320,6 +323,7 @@ scrollToIndex
 | renderItem | Custom function to render each area | Function | no | iOS/Android | yes |
 
 ### 16. Picker - Filter Picker Component
+Combines the Scrollpicker component and passes through all Props of Scrollpicker.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
@@ -477,6 +481,7 @@ Scrolls to the option specified by the index.
 | textColorInverse | Text inverse color mode | boolean | no | iOS/Android | yes |
 
 ### 27. Timepicker - Time Picker Component
+Combines the Scrollpicker component and passes through all Props of Scrollpicker.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
@@ -488,6 +493,7 @@ Scrolls to the option specified by the index.
 | onChange | Callback for data change | Function| no | iOS/Android | yes |
 
 ### 28. Tip - Tip Component
+Inherits all Props and Methods of the Modal component.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
@@ -532,6 +538,7 @@ This is a class method (static method).
 | direction | Ruler orientation. Supports 'vertical'\|'horizontal' | string | no | iOS/Android | yes |
 
 ### 32. Popover - Popover Component
+Inherits all Props and Methods of the SlideModal component.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
@@ -542,6 +549,8 @@ This is a class method (static method).
 | children | Popover display content | string/ReactChild/ReactChild[] | yes | iOS/Android | yes |
 
 ### 33. Dropdown - Dropdown Select Component
+Inherits all Props and Methods of the SlideModal component, combines the Radio component, and passes through some Props of the Radio component.
+
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | style | Styles | ViewStyle | no | iOS/Android | yes |
@@ -550,9 +559,76 @@ This is a class method (static method).
 | uncheckedIcon | Icon for the unchecked/unselected state | ReactElement | no | iOS/Android | yes |
 | data | Data source | Array | yes | iOS/Android | yes |
 | value | Value of the selected item | any | no | iOS/Android | yes |
-| onOpen | Callback when the dropdown layer opens | Function | no | iOS/Android | yes |
-| onClose | Callback when the dropdown layer closes | Function | no | iOS/Android | yes |
+| open | Callback when the dropdown layer opens | Function | no | iOS/Android | yes |
+| close | Callback when the dropdown layer closes | Function | no | iOS/Android | yes |
 | onChange | Callback when the selected item changes | Function | no | iOS/Android | yes |
+
+### 34. Tree - Tree Structure Handling
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---- | ----------- | ---- | -------- | -------- | ------------------|
+| new Tree(params) | Constructor | Function | yes  | iOS/Android | yes |
+| getData() | Get processed data | Function | no  | iOS/Android | yes |
+
+new Tree Params
+
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---- | ----------- | ---- | -------- | -------- | ------------------|
+| type  | Data structure type: 'nested' or 'flattened' | string | yes  | iOS/Android | yes |
+| data  | Data source | Array | yes  | iOS/Android | yes |
+| idKey | Unique node key, default: 'id' | string | yes  | iOS/Android | yes |
+| pIdKey  | Parent node key, default: 'pId' | string | no  | iOS/Android | yes |
+| childrenKey  | Child nodes key, default: 'children' | string | no  | iOS/Android | yes |
+
+### 35. animations - Animations
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---- | ----------- | ---- | -------- | -------- | ------------------|
+| new FadeAnimated(params?) | Fade animation constructor| Function | yes  | iOS/Android | yes |
+| new SlideAnimated(params?) | Slide animation constructor	 | Function | yes  | iOS/Android | yes |
+| toIn() | Animation enter | Function | no  | iOS/Android | yes |
+| toOut() | Animation exit | Function | no  | iOS/Android | yes |
+
+new FadeAnimated Params
+
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---- | ----------- | ---- | -------- | -------- | ------------------|
+| duration | Animation duration | number | no  | iOS/Android | yes |
+| easing  | Animation curve | EasingFunction | no  | iOS/Android | yes |
+| opacityList | Opacity change array |[number, number] | no | iOS/Android | yes |
+| scale  | Scale change array | [number, number] | no	| iOS/Android | yes |
+| translateXList| X-axis translation array | [number, number] | no | iOS/Android | yes |
+| translateXList| Y-axis translation array| [number, number] | no | iOS/Android | yes |
+
+new SlideAnimated Params
+
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---- | ----------- | ---- | -------- | -------- | ------------------|
+| duration | Animation duration | number | no  | iOS/Android | yes |
+| easing  | Animation curve | EasingFunction | no  | iOS/Android | yes |
+| opacityList | Opacity change array |[number, number] | no | iOS/Android | yes |
+| translateXList| X-axis translation array | [number, number] | no | iOS/Android | yes |
+| translateXList| Y-axis translation array | [number, number] | no | iOS/Android | yes |
+
+### 36. styles - Custom Theme
+The library provides a unified style variable set (used by all components). Users can customize these variables.
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---- | ----------- | ---- | -------- | -------- | ------------------|
+| useTheme | Global custom theme function | Function | no  | iOS/Android | yes |
+
+### 37. utils
+Basic utility functions; refer to the utils file if needed.
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---- | ----------- | ---- | -------- | -------- | ------------------|
+| range | Generate an array of numbers in the specified range | Function | no  | iOS/Android | yes |
+| hexToRgb | Convert hex color to RGB format | Function | no  | iOS/Android | yes |
+| isLeapYear | Check if a year is a leap year | Function | no  | iOS/Android | yes |
+| convert2Digit | Format a number as a string | Function | no  | iOS/Android | yes |
+
+### 38. validator - Validator
+Implemented via functional composition; works with Form components for form validation.
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---- | ----------- | ---- | -------- | -------- | ------------------|
+| dispatch | Generate validation func | Function | no  | iOS/Android | yes |
+| register | Register validation rule	 | Function | yes  | iOS/Android | yes |
 
 ## Known Issues
 
