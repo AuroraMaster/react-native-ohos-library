@@ -33,8 +33,7 @@ yarn add @react-native-ohos/beeshell
 <!-- tabs:end -->
 
 下面的代码展示了该库的基本使用场景：
-
-**Hello world**  
+ 
 从 beeshell 包中 import 组件即可使用
 ```
 import React, { Component } from 'react';
@@ -83,6 +82,7 @@ import Label from 'beeshell/components/Button';
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
 ### 1. Actionsheet - 底部操作菜单组件
+继承 SlideModal 组件的所有 Props、Methods。
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
@@ -105,6 +105,7 @@ import Label from 'beeshell/components/Button';
 | labelStyle | 徽章文本的自定义样式 | TextStyle | no | iOS/Android | yes |
 
 ### 3. BottomModal - 底部弹窗组件
+继承 SlideModal 组件的所有 Props、Methods。
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
@@ -181,6 +182,7 @@ import Label from 'beeshell/components/Button';
 | renderItem | 自行定义选项 | 	Function |  no | iOS/Android | yes |
 
 ### 8. DatePicker - 日期选择组件
+组合使用 Scrollpicker 组件，透传 Scrollpicker 所有 Props
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
@@ -192,6 +194,7 @@ import Label from 'beeshell/components/Button';
 
 
 ### 9. Dialog - 弹框
+继承 Modal 组件的所有 Props、Methods。
 
 用于展示系统提示、操作确认、自定义内容等场景，支持多样式定制与灵活交互。
 
@@ -320,6 +323,7 @@ scrollToIndex 滚动到指定位置
 | renderItem | 自定义每个渲染区域 | Function | no | iOS/Android | yes |
 
 ### 16. Picker - 筛选器
+组合使用 SlideModal 组件，可透传 SlideModal 部分 Props
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
@@ -477,6 +481,7 @@ Methods
 | textColorInverse | 	文本反色 | boolean | no | iOS/Android | yes |
 
 ### 27. Timepicker - 时间选择器
+组合使用 Scrollpicker 组件，透传 Scrollpicker 所有 Props
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
@@ -488,6 +493,7 @@ Methods
 | onChange | 	数据变化回调| Function| no | iOS/Android | yes |
 
 ### 28. Tip - 提示框
+继承 Modal 组件的所有 Props、Methods。
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
@@ -532,6 +538,7 @@ Methods
 | direction |  刻度尺方向,支持'vertical'\|'horizontal' | string | no | iOS/Android | yes |
 
 ### 32. Popover - 弹层组件
+继承 SlideModal 组件的所有 Props、Methods。
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
@@ -542,6 +549,8 @@ Methods
 | children | 弹出框展示内容 | string/ReactChild/ReactChild[] | yes | iOS/Android | yes |
 
 ### 33. Dropdown - 下拉选择组件
+继承 SlideModal 组件的所有 Props、Methods。组合 Radio 组件，透传 Radio 部分 Props
+
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | style | 样式  | ViewStyle | no | iOS/Android | yes |
@@ -550,9 +559,76 @@ Methods
 | uncheckedIcon | 未选中图标 | ReactElement | no | iOS/Android | yes |
 | data | 数据源 | Array | yes | iOS/Android | yes |
 | value | 选中项的值 | any | no | iOS/Android | yes |
-| onOpen | 弹层打开的回调 | Function | no | iOS/Android | yes |
-| onClose | 弹层关闭的回调 | Function | no | iOS/Android | yes |
+| open| 弹层打开的回调 | Function | no | iOS/Android | yes |
+| close | 弹层关闭的回调 | Function | no | iOS/Android | yes |
 | onChange | 选中项变化的回调 | Function | no | iOS/Android | yes |
+
+### 34. Tree - 树形结构处理
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---- | ----------- | ---- | -------- | -------- | ------------------|
+| new Tree(params) | 构造函数 | Function | yes  | iOS/Android | yes |
+| getData() | 获取处理后的数据。 | Function | no  | iOS/Android | yes |
+
+new Tree构造函数参数
+
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---- | ----------- | ---- | -------- | -------- | ------------------|
+| type  | 传入的数据结构类型,支持'nested'和'flattened' | string | yes  | iOS/Android | yes |
+| data  | 数据源 | Array | yes  | iOS/Android | yes |
+| idKey | 节点唯一标志的 key,默认值是 'id' | string | yes  | iOS/Android | yes |
+| pIdKey  | 节点指向父节点的 key，默认值是 'pId' | string | no  | iOS/Android | yes |
+| childrenKey  | 节点的子节点集合的 key，默认值为 'children' | string | no  | iOS/Android | yes |
+
+### 35. animations - 动画
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---- | ----------- | ---- | -------- | -------- | ------------------|
+| new FadeAnimated(params) | 淡入淡出动画构造函数 | Function | yes  | iOS/Android | yes |
+| new SlideAnimated(params) | 滑动动画构造函数 | Function | yes  | iOS/Android | yes |
+| toIn() | 动画进入 | Function | no  | iOS/Android | yes |
+| toOut() | 动画离开 | Function | no  | iOS/Android | yes |
+
+new FadeAnimated构造函数参数
+
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---- | ----------- | ---- | -------- | -------- | ------------------|
+| duration | 动画时长 | number | no  | iOS/Android | yes |
+| easing  | 动画曲线 | EasingFunction | no  | iOS/Android | yes |
+| opacityList | 透明度变化数组 |[number, number] | no | iOS/Android | yes |
+| scale  | 大小变化数组 | [number, number] | no	| iOS/Android | yes |
+| translateXList|  X 轴位移变化 | [number, number] | no | iOS/Android | yes |
+| translateXList| Y 轴位移变化| [number, number] | no | iOS/Android | yes |
+
+new SlideAnimated构造函数参数
+
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---- | ----------- | ---- | -------- | -------- | ------------------|
+| duration | 动画时长 | number | no  | iOS/Android | yes |
+| easing  | 动画曲线 | EasingFunction | no  | iOS/Android | yes |
+| opacityList | 透明度变化数组 |[number, number] | no | iOS/Android | yes |
+| translateXList|  X 轴位移变化 | [number, number] | no | iOS/Android | yes |
+| translateXList| Y 轴位移变化| [number, number] | no | iOS/Android | yes |
+
+### 36. styles - 定制主题
+组件库提供了一套统一的样式变量，所有的组件的实现，都使用统一的样式变量。用户可以定制自己的样式变量。
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---- | ----------- | ---- | -------- | -------- | ------------------|
+| useTheme | 自定义的全局主题函数 | Function | no  | iOS/Android | yes |
+
+### 37. utils
+比较基础的工具函数
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---- | ----------- | ---- | -------- | -------- | ------------------|
+| range | 生成指定范围的数字数组 | Function | no  | iOS/Android | yes |
+| hexToRgb | 将十六进制颜色转换为 RGB 格式 | Function | no  | iOS/Android | yes |
+| isLeapYear | 判断是否为闰年 | Function | no  | iOS/Android | yes |
+| convert2Digit | 将数字格式化为字符串 | Function | no  | iOS/Android | yes |
+
+### 38. validator - 校验器
+使用函数式组合的方式实现，可以配合 Form 组件实现表单校验功能。
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| ---- | ----------- | ---- | -------- | -------- | ------------------|
+| dispatch | 生成校验函数 | Function | no  | iOS/Android | yes |
+| register | 注册校验规则 | Function | yes  | iOS/Android | yes |
 
 ## 遗留问题
 
