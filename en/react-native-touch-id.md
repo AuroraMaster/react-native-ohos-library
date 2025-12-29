@@ -83,6 +83,24 @@ const App = () => {
           })
         }}
       ></Button>
+      <Button title='check whether you have FaceID permission'
+        onPress={() => {
+          TouchID.isSupported({ unifiedErrors: false, useFaceID: true }).then((res: any) => {
+            setResult(res);
+          }).catch((err: any) => {
+            setResult(err.message);
+          });
+        }}
+      ></Button>
+      <Button title='check FaceID'
+        onPress={() => {
+          TouchID.authenticate(undefined, { useFaceID: true }).then(() => {
+            setResult('Authentication successful')
+          }).catch((err: any) => {
+            setResult(err.message);
+          });
+        }}
+      ></Button>
     </View>
   )
 };
@@ -298,12 +316,15 @@ In your `module.json5`
 	| cancelText  | **Android only** - Cancel button text | string  | no | ios/android      | yes |
 	| fallbackLabel  | **iOS only** - By default shows "Show Password" label. If set to empty string, the label will be invisible | string  | no | ios/android      | no |
 	| passcodeFallback  | **iOS only** - Defaults to false. If set to true, will allow fallback to passcode | boolean  | no | ios/android      | no |
+    | unifiedErrors| Returns unified error messages | boolean | no | ios/android      | yes |
+    | useFaceID | Whether to use faceID. Default is false, fingerprint will be used. If set to true, faceID will be used. | boolean | no | no      | yes |
 ### isSupported(config?: IsSupportedConfig): `Promise<BiometryType>`;
 * **config** - Returns a `Promise` that rejects if TouchID is not supported. On iOS, resolves to a `biometryType` string with value `FaceID` or `TouchID`
  * **IsSupportedConfig**:
  	| Name | Description | Type | Required | Platform | HarmonyOS Support  |
 	| ---- | ----------- | ---- | -------- | -------- | ------------------ |
     | unifiedErrors| Returns unified error messages | boolean | no | ios/android      | yes |
+    | useFaceID | Whether to use faceID. Default is false, fingerprint will be used. If set to true, faceID will be used. | boolean | no | no      | yes |
 ## Properties
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
@@ -334,6 +355,8 @@ In your `module.json5`
 - [ ] Error is partially supported.[issue#12](https://gitcode.com/openharmony-sig/rntpc_react-native-touch-id/issues/12)
 
 ## Others
+
+- ios/android does not support the `useFaceID` parameter, which is only applicable to the HarmonyOS platform and is used to control whether the facial recognition feature is enabled.
 
 ## License
 
