@@ -81,6 +81,24 @@ const App = () => {
           })
         }}
       ></Button>
+      <Button title='验证是否有人脸权限'
+        onPress={() => {
+          TouchID.isSupported({ unifiedErrors: false, useFaceID: true }).then((res: any) => {
+            setResult(res);
+          }).catch((err: any) => {
+            setResult(err.message);
+          });
+        }}
+      ></Button>
+      <Button title='校验人脸'
+        onPress={() => {
+          TouchID.authenticate(undefined, { useFaceID: true }).then(() => {
+            setResult('认证成功');
+          }).catch((err: any) => {
+            setResult(err.message);
+          });
+        }}
+      ></Button>
     </View>
   )
 };
@@ -299,12 +317,15 @@ In your `module.json5`
 	| cancelText  | **仅Android** - 取消按钮文字 | string  | no | ios/andriod      | yes |
 	| fallbackLabel  | **仅iOS** - 默认显示"显示密码"标签。如果设置为空字符串，标签将不可见 | string  | no | ios/andriod      | no |
 	| passcodeFallback  | **仅iOS** - 默认设置为false。如果设置为true，将允许使用键盘密码 | boolean  | no | ios/andriod      | no |
+    | unifiedErrors  | 返回统一的错误信息 | boolean  | no | ios/andriod      | no |
+    | useFaceID | 是否使用人脸识别。默认设置为false，表示使用指纹识别，如果设置为true，表示使用人脸识别。 |boolean| no | no      | yes |
 ### isSupported(config?: IsSupportedConfig): `Promise<BiometryType>`;
 * **config** - 返回一个`Promise`，如果TouchID不支持则会拒绝。在iOS上会解析为一个`biometryType`字符串，值为`FaceID`或`TouchID`
  * **IsSupportedConfig**:
  	| Name | Description | Type | Required | Platform | HarmonyOS Support  |
 	| ---- | ----------- | ---- | -------- | -------- | ------------------ |
     | unifiedErrors| 返回统一的错误信息 |boolean| no | ios/andriod      | yes |
+    | useFaceID | 是否使用人脸识别。默认设置为false，表示使用指纹识别，如果设置为true，表示使用人脸识别。 |boolean| no | no      | yes |
 ## 属性
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
@@ -335,6 +356,8 @@ In your `module.json5`
 - [ ] error部分触发。[issue#12](https://gitcode.com/openharmony-sig/rntpc_react-native-touch-id/issues/12)
 
 ## 其他
+
+- ios/android不支持`useFaceID`参数，该参数仅用于鸿蒙平台，用于控制是否使用人脸识别功能。
 
 ## 开源协议
 
