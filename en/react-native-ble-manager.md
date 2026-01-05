@@ -459,23 +459,10 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
-> [!TIP] This library requires two mobile phones to scan and connect to the peer end. Therefore, a .har file (`ble_managerGatt.har` and `ble_managerServers.har`) needs to be installed on each of the two mobile phones for compilation.
-
-the first mobile phone: `ble_managerGatt.har`
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
      "@react-native-oh-tpl/react-native-ble-manager": "file:../../node_modules/@react-native-oh-tpl/react-native-ble-manager/harmony/ble_managerGatt.har",
-  }
-```
-
-the second mobile phone: `ble_managerServers.har`
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-     "@react-native-oh-tpl/react-native-ble-manager": "file:../../node_modules/@react-native-oh-tpl/react-native-ble-manager/harmony/ble_managerServers.har",
   }
 ```
 
@@ -566,7 +553,7 @@ Check the release version information in the release address of the third-party 
 | readDescriptor                               | Read the current value of the specified descriptor, you need to call `retrieveServices` method before             | No       | IOS/Android | Yes               |
 | writeDescriptor                              | Write a value to the specified descriptor, you need to call `retrieveServices` method before                      | No       | IOS/Android | Yes               |
 | requestMTU                                   | Request an MTU size used for a given connection                                                                   | No       | Android     | Yes               |
-| getConnectedPeripherals                      | Return the connected peripherals                                                                                  | No       | IOS/Android | Yes               |
+| getConnectedPeripherals                      | Return the connected peripherals(Effective from API 21)                                                                                  | No       | IOS/Android | Yes               |
 | getBondedPeripherals                         | Return the bonded peripherals                                                                                     | No       | IOS/Android | Yes               |
 | getDiscoveredPeripherals                     | Return the discovered peripherals after a scan                                                                    | No       | IOS/Android | Yes               |
 | removeBond                                   | Remove a paired device                                                                                            | No       | Android     | No                |
@@ -582,7 +569,7 @@ Check the release version information in the release address of the third-party 
 | writeWithoutResponse                         | Write without response to the specified characteristic, you need to call `retrieveServices` method before         | No       | IOS/Android | No                |
 | getMaximumWriteValueLengthForWithoutResponse | Return the maximum value length for WriteWithoutResponse                                                          | No       | IOS         | No                |
 | getMaximumWriteValueLengthForWithResponse    | Return the maximum value length for WriteWithResponse                                                             | No       | IOS         | No                |
-| isPeripheralConnected                        | Check whether a specific peripheral is connected and return `true` or `false`                                     | No       | IOS         | Yes               |
+| isPeripheralConnected                        | Check whether a specific peripheral is connected and return `true` or `false`(Effective from API 21)                                     | No       | IOS         | Yes               |
 | supportsCompanion                            | Check if current device supports companion device manager                                                         | No       | Android     | No                |
 | stopNotification                             | Stop the notification on the specified characteristic                                                             | No       | IOS/Android | No                |
 

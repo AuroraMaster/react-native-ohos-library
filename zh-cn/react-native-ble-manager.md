@@ -465,23 +465,10 @@ const styles = StyleSheet.create({
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
->[!TIP] 因本库需要两台手机去进行对端扫描和连接，所以两台手机各装一个har包编译（`ble_managerGatt.har` 和 `ble_managerServers.har`）
-
-第一台手机：`ble_managerGatt.har`
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
      "@react-native-oh-tpl/react-native-ble-manager": "file:../../node_modules/@react-native-oh-tpl/react-native-ble-manager/harmony/ble_managerGatt.har",
-  }
-```
-
-第二台手机：`ble_managerServers.har`
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-     "@react-native-oh-tpl/react-native-ble-manager": "file:../../node_modules/@react-native-oh-tpl/react-native-ble-manager/harmony/ble_managerServers.har",
   }
 ```
 
@@ -578,7 +565,7 @@ ohpm install
 | readDescriptor                               | Read the current value of the specified descriptor, you need to call `retrieveServices` method before | No       | IOS/Android | Yes               |
 | writeDescriptor                              | Write a value to the specified descriptor, you need to call `retrieveServices` method before | No       | IOS/Android | Yes               |
 | requestMTU                                   | Request an MTU size used for a given connection              | No       | Android     | Yes               |
-| getConnectedPeripherals                      | Return the connected peripherals                             | No       | IOS/Android | Yes               |
+| getConnectedPeripherals                      | Return the connected peripherals(Effective from API 21)                             | No       | IOS/Android | Yes               |
 | getBondedPeripherals                         | Return the bonded peripherals                                | No       | IOS/Android | Yes               |
 | getDiscoveredPeripherals                     | Return the discovered peripherals after a scan               | No       | IOS/Android | Yes               |
 | removeBond                                   | Remove a paired device                                       | No       | Android     | No                |
@@ -594,7 +581,7 @@ ohpm install
 | writeWithoutResponse                         | Write without response to the specified characteristic, you need to call `retrieveServices` method before | No       | IOS/Android | No                |
 | getMaximumWriteValueLengthForWithoutResponse | Return the maximum value length for WriteWithoutResponse     | No       | IOS         | No                |
 | getMaximumWriteValueLengthForWithResponse    | Return the maximum value length for WriteWithResponse        | No       | IOS         | No                |
-| isPeripheralConnected                        | Check whether a specific peripheral is connected and return `true` or `false` | No       | IOS         | Yes               |
+| isPeripheralConnected                        | Check whether a specific peripheral is connected and return `true` or `false`(Effective from API 21) | No       | IOS         | Yes               |
 | supportsCompanion                            | Check if current device supports companion device manager    | No       | Android     | No                |
 | stopNotification                             | Stop the notification on the specified characteristic        | No       | IOS/Android | No                |
 
