@@ -270,7 +270,7 @@ export default App;
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
-    "@react-native-oh-tpl/babylonjs-react-native-harmony": "file:../../node_modules/@react-native-oh-tpl/babylonjs-react-native-harmony/harmony/bl.har"
+    "@react-native-oh-tpl/babylonjs-react-native-harmony": "file:../../node_modules/@react-native-oh-tpl/babylonjs-react-native-harmony/harmony/babylonjs.har"
   }
 ```
 
@@ -310,7 +310,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/babylonjs-react-native-harmony/src/main/cpp" ./bl)
++ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/babylonjs-react-native-harmony/src/main/cpp" ./babylonjs)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
