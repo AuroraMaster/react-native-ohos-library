@@ -12,19 +12,15 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-harmony-svg)
+> [!tip] [Github 地址](https://github.com/react-native-oh-library/react-native-svg)
 
 ## 安装与使用
 
-请到三方库的 Releases 发布地址查看配套的版本信息：
+> [!tip] 本项目为 react-native-svg 的ArkTs版本，现已停止维护。
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| <= 15.0.1@deprecated      | [@react-native-oh-tpl/react-native-svg Releases(deprecated)](https://github.com/react-native-oh-library/react-native-harmony-svg/releases) | 0.72       |
-| 15.0.2      | [@react-native-ohos/react-native-svg Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-svg/releases)                        | 0.72       |
-| 15.12.1    | [@react-native-ohos/react-native-svg Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-svg/releases)                        | 0.77       |
+> [!tip] 如需继续使用请移步至[react-native-svg-capi](/zh-cn/react-native-svg-capi.md) 使用CAPI版本的 react-native-svg。
 
-对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-tpl/react-native-svg Releases](https://github.com/react-native-oh-library/react-native-svg/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -33,13 +29,13 @@
 #### **npm**
 
 ```bash
-npm install @react-native-ohos/react-native-svg
+npm install @react-native-oh-tpl/react-native-svg
 ```
 
 #### **yarn**
 
 ```bash
-yarn add @react-native-ohos/react-native-svg
+yarn add @react-native-oh-tpl/react-native-svg
 ```
 
 <!-- tabs:end -->
@@ -58,10 +54,7 @@ import Svg, { Path } from "react-native-svg";
 
 ## Link
 
-
-Version >= @react-native-ohos/react-native-svg@15.0.2，已支持 Autolink，无需手动配置，目前只支持72框架。 Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
-
-此步骤为手动配置原生依赖项的指导。
+目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -93,7 +86,7 @@ Version >= @react-native-ohos/react-native-svg@15.0.2，已支持 Autolink，无
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
 
-    "@react-native-ohos/svg": "file:../../node_modules/@react-native-ohos/react-native-svg/harmony/svg.har"
+    "@react-native-oh-tpl/svg": "file:../../node_modules/@react-native-oh-tpl/react-native-svg/harmony/svg.har"
   }
 ```
 
@@ -111,8 +104,6 @@ ohpm install
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
 ### 3.配置 CMakeLists 和引入 SVGPackage
-
-> 若使用的是 <= 15.0.1 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -134,7 +125,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-svg/src/main/cpp" ./svg)
++ add_subdirectory("${OH_MODULES}/@react-native-oh-tpl/react-native-svg/src/main/cpp" ./svg)
 # RNOH_END: manual_package_linking_1
 
 file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
@@ -178,7 +169,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 ```diff
 ...
 import { createRNPackages } from '../RNPackagesFactory'
-+ import { SVG_VIEW_TYPE_NAME, SVGView } from "@react-native-ohos/svg"
++ import { SVG_VIEW_TYPE_NAME, SVGView } from "@react-native-oh-tpl/svg"
 
 @Builder
 function buildCustomComponent(ctx: ComponentBuilderContext) {
@@ -230,11 +221,7 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-在以下版本验证通过：
-
-1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
-2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
-3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-oh-tpl/react-native-svg Releases](https://github.com/react-native-oh-library/react-native-svg/releases)
 
 ## 属性
 
@@ -242,9 +229,9 @@ ohpm install
 
 以下为目前已支持的组件属性：
 
-> [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
+> [!tip] "Platform"列表示该属性在原三方库上支持的平台。
 
-> [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
+> [!tip] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
 **Svg**：绘制组件的父组件
 
@@ -305,7 +292,7 @@ ohpm install
 
 **LinearGradient**：用于定义线性渐变
 
-> [!TIP] 注： LinearGradient 目前仅支持 Path、Rect、Circle 组件，只支持在 fill 上使用，不支持 stroke
+> [!tip] 注： LinearGradient 目前仅支持 Path、Rect、Circle 组件，只支持在 fill 上使用，不支持 stroke
 
 | Name |    Description    |      Type       | Required | Platform | HarmonyOS Support |
 | :--: | :---------------: | :-------------: | -------- | -------- | ----------------- |
@@ -324,11 +311,11 @@ ohpm install
 
 **Mask**：定义 alpha 蒙版，用于将当前对象合成到背景中
 
-> [!TIP] 注： Mask 目前自有属性均不支持，仅支持 Path、Rect、Circle 组件的单一组件嵌套，不支持多组件嵌套
+> [!tip] 注： Mask 目前自有属性均不支持，仅支持 Path、Rect、Circle 组件的单一组件嵌套，不支持多组件嵌套
 
 **Use**：该元素可以重复使用 SVG 元素
 
-> [!TIP] 注： Use 目前仅支持 Path、Rect、Circle 组件
+> [!tip] 注： Use 目前仅支持 Path、Rect、Circle 组件
 
 |  Name  |    Description    |      Type       | Required | Platform | HarmonyOS Support |
 | :----: | :---------------: | :-------------: | -------- | -------- | ----------------- |
@@ -337,7 +324,6 @@ ohpm install
 | width  |     元素宽度      | number\| string | No       | All      | Yes               |
 | height |     元素高度      | number\| string | No       | All      | Yes               |
 |  href  |   图像资源引用    | source\| string | Yes      | All      | Yes               |
-
 
 **公共属性**：Common props 组件属性 HarmonyOS 侧支持情况
 

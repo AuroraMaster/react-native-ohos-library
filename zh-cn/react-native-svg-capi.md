@@ -34,7 +34,7 @@
 
 ```bash
 # 0.72
-npm install react-native-svg@15.0.1
+npm install react-native-svg@15.0.0
 npm install @react-native-ohos/react-native-svg
 
 # 0.77
@@ -46,7 +46,7 @@ npm install @react-native-ohos/react-native-svg
 
 ```bash
 # 0.72
-yarn add react-native-svg@15.0.1
+yarn add react-native-svg@15.0.0
 yarn add @react-native-ohos/react-native-svg
 
 # 0.77
