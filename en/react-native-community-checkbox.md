@@ -14,7 +14,7 @@ Please refer to the Releases page of the third-party library for the correspondi
 | ---------- | ------------------------------------------------------------ | ---------- |
 | <= 0.5.16-0.1.0@deprecated     | [@react-native-oh-tpl/checkbox Releases(deprecated)](https://github.com/react-native-oh-library/react-native-checkbox/releases) | 0.72       |
 | 0.5.17      | [@react-native-ohos/checkbox Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-checkbox/releases)     | 0.72       |
-| 0.6.0      | [@react-native-ohos/checkbox Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-checkbox/releases)     | 0.77       |
+| 0.6.0      | [@react-native-ohos/checkbox Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-checkbox/releases)     | 0.77/0.82       |
 
 For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
@@ -256,6 +256,7 @@ Verified in the following versions.
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 5. Properties
 
@@ -269,7 +270,7 @@ Verified in the following versions.
 |---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| -------- | -------- |-------------|------------------|
 | `value`             | The value of the checkbox. If true the checkbox will be turned on. Default value is false.                                                                                                    | boolean  | No       | Android、iOS | yes              |
 | `testID`            | Used to locate this view in end-to-end tests.                                                                                                                                                 | string   | No       | Android、iOS | yes              |
-| `disabled`          | If true the user won't be able to toggle the checkbox. Default value is false.                                                                                                                | bool     | No       | Android、iOS | yes              |
+| `disabled`          | If true the user won't be able to toggle the checkbox. Default value is false.                                                                                                                | boolean     | No       | Android、iOS | yes              |
 | `onCheckColor`      | Color of the check box when it is selected.Defaults to '#007aff'                                                                                                                                                   | Color    | No       | iOS         | yes              |
 | `tintColor`         | Border color of the check box when it is not selected. Defaults to '#aaaaaa'                                                                                                                                        | Color    | No       | iOS         | yes              |
 | `shape` @deprecated             | Sets component shapes, including circles and rounded squares. Default value is 0.                                                                                                             | int      | No       | harmony     | yes              |

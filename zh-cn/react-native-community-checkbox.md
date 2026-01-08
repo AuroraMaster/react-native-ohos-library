@@ -14,7 +14,7 @@
 | ---------- | ------------------------------------------------------------ | ---------- |
 | <= 0.5.16-0.1.0@deprecated     | [@react-native-oh-tpl/checkbox Releases(deprecated)](https://github.com/react-native-oh-library/react-native-checkbox/releases) | 0.72       |
 | 0.5.17      | [@react-native-ohos/checkbox Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-checkbox/releases)     | 0.72       |
-| 0.6.0      | [@react-native-ohos/checkbox Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-checkbox/releases)     | 0.77       |
+| 0.6.0      | [@react-native-ohos/checkbox Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-checkbox/releases)     | 0.77/0.82       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -256,6 +256,7 @@ ohpm install
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 5. 属性
 
@@ -268,23 +269,23 @@ ohpm install
 
 | Name                | Description                                                                                                                                                                                   | Type     | Required | Platform    | HarmonyOS Support |
 |---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| -------- | -------- |-------------|------------------|
-| `value`             | The value of the checkbox. If true the checkbox will be turned on. Default value is false.                                                                                                    | boolean  | No       | Android、iOS | yes              |
-| `testID`            | Used to locate this view in end-to-end tests.                                                                                                                                                 | string   | No       | Android、iOS | yes              |
-| `disabled`          | If true the user won't be able to toggle the checkbox. Default value is false.                                                                                                                | bool     | No       | Android、iOS | yes              |
-| `onCheckColor`      | Color of the check box when it is selected.Defaults to '#007aff'                                                                                                                                                   | Color    | No       | iOS         | yes              |
-| `tintColor`         | Border color of the check box when it is not selected. Defaults to '#aaaaaa'                                                                                                                                        | Color    | No       | iOS         | yes              |
-| `shape` @deprecated             | Sets component shapes, including circles and rounded squares. Default value is 0.                                                                                                             | int      | No       | harmony     | yes              |
-| `markSize`          | Size of the internal mark. The default size is the same as the width of the check box.This parameter cannot be set in percentage. If it is set to an invalid value, the default value is used. | number   | No       | harmony     | yes              |
-| `strokeWidth` @deprecated       | Stroke width of the internal mark. This parameter cannot be set in percentage. If it is set to an invalid value, the default value is used.                                                   | number   | No       | harmony     | yes              |
-| `strokeColor`       | Color of the internal mark.Defaults to '#ffffff'                                                                                                                                                                   | Color    | No       | harmony     | yes              |
-| `lineWidth`         | The width of the lines of the check mark and box. Defaults to 2.0.                                                                                                                            | number    | No       | iOS         | yes               |
-| `hideBox`           | Control if the box should be hidden or not. Defaults to false.                                                                                                                                | boolean    | No       | iOS         | No              |
-| `boxType`              | The type of box to use. Defaults to 'circle'      | 'circle' or 'square'      | No       | iOS     | yes              |
-| `onFillColor`       | The color of the inside of the box when it is On. Defaults to transparent.                                                                                                                    | string      | No       | iOS      | No              |
-| `onTintColor`       | The color of the line around the box when it is On. Defaults to '#007aff'.                                                                                                                    | string   | No       | iOS      | No              |
-| `animationDuration` | The duration in seconds of the animations. Defaults to 0.5.                                                                                                                                   | number   | No       | iOS     | No              |
-| `onAnimationType`   | The type of animation to use when the checkbox gets checked. Default to 'stroke'.                                                                                                             | 'stroke' or 'fill' or 'bounce' or 'flat' or 'one-stroke' or 'fade'   | No       | iOS     | No              |
-| `offAnimationType`   | The type of animation to use when the checkbox gets unchecked. 'stroke'.                                                                                                                      | 'stroke' or 'fill' or 'bounce' or 'flat' or 'one-stroke' or 'fade'   | No       | iOS     | No              |
+| `value`             | 复选框的值。如果为 true，复选框将被选中。默认值为 false。                                                                                                    | boolean  | No       | Android、iOS | yes              |
+| `testID`            | 用于在端到端测试中定位此视图。                                                                                                                                                 | string   | No       | Android、iOS | yes              |
+| `disabled`          | 如果为 true，用户将无法切换复选框。默认值为 false。                                                                                                               | boolean     | No       | Android、iOS | yes              |
+| `onCheckColor`      | 选中时复选框的颜色。默认为 '#007aff'。                                                                                                                                                   | Color    | No       | iOS         | yes              |
+| `tintColor`         | 未选中时复选框的边框颜色。默认为 '#aaaaaa'。                                                                                                                                       | Color    | No       | iOS         | yes              |
+| `shape` @deprecated             | 设置组件形状，包括圆形和圆角方形。默认值为 0。                                                                                                            | int      | No       | harmony     | yes              |
+| `markSize`          | 内部标记的大小。默认大小与复选框宽度相同。此参数不能设置为百分比。如果设置为无效值，则使用默认值。 | number   | No       | harmony     | yes              |
+| `strokeWidth` @deprecated       | 内部标记的描边宽度。此参数不能设置为百分比。如果设置为无效值，则使用默认值。                                                  | number   | No       | harmony     | yes              |
+| `strokeColor`       | 内部标记的颜色。默认为 '#ffffff'。                                                                                                                                                                   | Color    | No       | harmony     | yes              |
+| `lineWidth`         | 选中标记和复选框的线条宽度。默认为 2.0。                                                                                                                            | number    | No       | iOS         | yes               |
+| `hideBox`           | 控制是否隐藏复选框边框。默认为 false。                                                                                                                                | boolean    | No       | iOS         | No              |
+| `boxType`              | 使用的复选框类型。默认为 'circle'。      | 'circle' or 'square'      | No       | iOS     | yes              |
+| `onFillColor`       | 开启状态下复选框内部的颜色。默认为透明。                                                                                                                    | string      | No       | iOS      | No              |
+| `onTintColor`       | 开启状态下复选框周围线条的颜色。默认为 '#007aff'。                                                                                                                    | string   | No       | iOS      | No              |
+| `animationDuration` | 动画持续时间（秒）。默认为 0.5。                                                                                                                                   | number   | No       | iOS     | No              |
+| `onAnimationType`   | 复选框被选中时使用的动画类型。默认为 'stroke'。                                                                                                             | 'stroke' or 'fill' or 'bounce' or 'flat' or 'one-stroke' or 'fade'   | No       | iOS     | No              |
+| `offAnimationType`   | 复选框取消选中时使用的动画类型。'stroke'。                                                                                                                      | 'stroke' or 'fill' or 'bounce' or 'flat' or 'one-stroke' or 'fade'   | No       | iOS     | No              |
 ## 6. 静态方法
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
@@ -293,8 +294,8 @@ ohpm install
 
 | Name            | Description                                                                                                                                                                                    | Type     | Required | Platform      | HarmonyOS Support |
 | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | ------------- | ----------------- |
-| `onChange`      | Invoked on change with the native event.                                                                                                                                                       | function | No       | Android、iOS   | yes               |
-| `onValueChange` | Invoked with the new boolean value when it changes.                                                                                                                                            | function | No       | Android、iOS   | yes               |
+| `onChange`      | 发生变更时调用，带有原生事件。                                                                                                                                                       | function | No       | Android、iOS   | yes               |
+| `onValueChange` | 当值发生变化时调用，带有新的布尔值。                                                                                                                                            | function | No       | Android、iOS   | yes               |
 
 ## 7. 遗留问题
 - [X] 设置lineWidth属性，该属性用来控制复选框的线条宽度，未实现HarmonyOS化: [issue#3](https://github.com/react-native-oh-library/react-native-checkbox/issues/3)
