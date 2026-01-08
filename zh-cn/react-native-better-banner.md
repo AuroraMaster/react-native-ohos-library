@@ -147,7 +147,7 @@ export default App;
 | bannerTitleTextSize               | 每张图片或组件对应的标题的文字大小                           | Number   | 2000                  | All      | Yes               |
 | isAutoScroll                      | 是否开启自动轮播                                             | Boolean  | true                  | All      | Yes               |
 | isSeamlessScroll                  | 是否开启无缝滚动(iOS下正常，安卓某些机型可能出现滚动异常)    | Boolean  | false                 | All      | Yes               |
-| adaptSeamlessScrollValue          | 如果开启无缝滚动在某些机型滚动异常，可针对这些机型设置`true` 或 `false`, 此值实际上是设置是否显示`ScrollView`的`scrollTo`的滚动动画 | Boolean  | false                 | All      | Yes               |
+| adaptSeamlessScrollValue          | 如果开启无缝滚动在某些机型滚动异常，可针对这些机型设置`true` 或 `false`, 此值实际上是设置是否显示`ScrollView`的`scrollTo`的滚动动画 | Boolean  | false                 | All      | No                |
 | indicatorWidth                    | 指示器宽度                                                   | Number   | 10                    | All      | Yes               |
 | indicatorHeight                   | 指示器高度                                                   | Number   | 6                     | All      | Yes               |
 | indicatorColor                    | 指示器颜色                                                   | String   | rgba(255,255,255,0.6) | All      | Yes               |
@@ -163,6 +163,7 @@ export default App;
 
 ## 遗留问题
 - [ ] indicatorStyle属性问题：源码逻辑有问题导致属性失效。[issue#11](https://github.com/react-native-oh-library/better-banner/issues/11)
+- [ ] adaptSeamlessScrollValue属性问题：鸿蒙未发现无缝滚动异常 ，暂不支持该属性。[issue#18](https://github.com/react-native-oh-library/better-banner/issues/18)
 
 ## 其他
 

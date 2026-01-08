@@ -167,7 +167,7 @@ Check the release version information in the release address of the third-party 
 | bannerTitleTextSize               | Title text size of each image or component.                          | Number   | 2000                  | All      | Yes               |
 | isAutoScroll                      | Whether to enable auto scroll.                                            | Boolean  | true                  | All      | Yes               |
 | isSeamlessScroll                  | Whether to enable seamless scroll. (This value is normal on iOS devices but abnormal on some Android devices.)  | Boolean  | false                 | All      | Yes               |
-| adaptSeamlessScrollValue          | If seamless scroll is abnormal on some models, you can set this value to `true` or `false`. This value specifies whether to display the scrolling animation through `scrollTo` of `ScrollView`.| Boolean  | false                 | All      | Yes               |
+| adaptSeamlessScrollValue          | If seamless scroll is abnormal on some models, you can set this value to `true` or `false`. This value specifies whether to display the scrolling animation through `scrollTo` of `ScrollView`.| Boolean  | false                 | All      | No                |
 | indicatorWidth                    | Indicator width.                                                  | Number   | 10                    | All      | Yes               |
 | indicatorHeight                   | Indicator height.                                                  | Number   | 6                     | All      | Yes               |
 | indicatorColor                    | Indicator color.                                                  | String   | rgba(255,255,255,0.6) | All      | Yes               |
@@ -182,6 +182,8 @@ Check the release version information in the release address of the third-party 
 | onScrollEnd()                     | Callback function called when the scrolling of each banner image ends. It is equivalent to `onMomentumScrollEnd` of `ScrollView`.| Function | ()=>{}                | All      | Yes               |
 
 ## Known Issues
+- [ ] indicatorStyle property issue: It's caused by a problem with the source code. [issue#11](https://github.com/react-native-oh-library/better-banner/issues/11)
+- [ ] adaptSeamlessScrollValue:  It's used to repair some android devices scroll exception,harmony phone not exist ,so not support at present . [issue#18](https://github.com/react-native-oh-library/better-banner/issues/18)
 
 ## Others
 
