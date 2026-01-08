@@ -22,7 +22,7 @@ Please refer to the Releases page of the third-party library for the correspondi
 |-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------| ---------- |
 | <= 2.0.3-0.0.2@deprecated   | [@react-native-oh-tpl/react-native-cardview Releases(deprecated)](https://github.com/react-native-oh-library/react-native-cardview/releases) | 0.72                 |
 | 2.0.4                       | [@react-native-ohos/react-native-cardview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-cardview/releases)                | 0.72       |
-| 2.1.0                       | [@react-native-ohos/react-native-cardview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-cardview/releases)                | 0.77       |
+| 2.1.0                       | [@react-native-ohos/react-native-cardview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-cardview/releases)                | 0.77/0.82       |
 
 For older versions not published on npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
 
@@ -240,20 +240,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 4. Introducing CardViewPackage to ArkTS
-
-Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
-
-```diff
-+ import {CardViewPackage} from '@react-native-ohos/react-native-audio-recorder-player/ts';
-
-export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
-  return [
-    new SamplePackage(ctx),
-+   new CardViewPackage(ctx)
-  ];
-}
-```
 </details>
 
 ## Running
@@ -280,6 +266,7 @@ Verified in the following versions.
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## Properties 
 
@@ -291,9 +278,9 @@ Verified in the following versions.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| cornerRadius       | An attribute to set the elevation of the card.                                          | number | No       | iOS/Android      | yes               |
+| cornerRadius       | An attribute to set the radius of the card.                                           | number | No       | iOS/Android      | yes               |
 | cardElevation       | An attribute to support shadow on pre-lollipop device in android.                 | number | No       | iOS/Android      | yes               |
-| cardMaxElevation    | An attribute to set the radius of the card.                                               | number | No       | Android      | yes               |
+| cardMaxElevation    | An attribute to set the elevation of the card.                                             | number | No       | Android      | yes               |
 | useCompatPadding     | CardView adds additional padding to draw shadows on platforms before Lollipop.         | boolean | No       | Android       | no                |
 | cornerOverlap        | On pre-Lollipop platforms, CardView does not clip the bounds of the Card for the rounded corners. | boolean | No   | Android   | no               |
 
