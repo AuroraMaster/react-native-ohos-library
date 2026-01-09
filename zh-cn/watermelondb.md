@@ -33,6 +33,8 @@ yarn add @react-native-ohos/watermelondb
 
 > [!WARNING] 使用时 import 的库名不变。
 
+### watermelondb example
+
 ```js
 //  jsi: false
 import React, { useState } from 'react';
@@ -130,39 +132,34 @@ const validateUserColumns = () => {
   return results;
 };
 
-// ===================== 初始化数据库改为接收表类型参数（核心修改）=====================
-// 初始化数据库（新增tableType参数）
 const initializeDatabase = async (tableType) => {
-  // 根据表类型获取对应表结构
   const targetTableSchema = tableSchemaMap[tableType] || userTableSchema;
   const adapter = new SQLiteAdapter({
-    dbName: `watermelon_${tableType}_db`, // 不同表使用不同数据库名
+    dbName: `watermelon_${tableType}_db`,
     schema: getAppDatabaseSchema(targetTableSchema),
     jsi: false,
     migrations: schemaMigrations({ migrations: [] }),
   });
 
-  await adapter.initializingPromise; // 等待适配器初始化
+  await adapter.initializingPromise; 
   return new Database({ adapter, modelClasses: [] });
 };
 
 const SchemaExample = () => {
   const [validationResult, setValidationResult] = useState(null);
   const [createResult, setCreateResult] = useState(null);
-  const [database, setDatabase] = useState({}); // 修改为对象存储不同表的数据库实例
+  const [database, setDatabase] = useState({}); 
 
-  // 验证字段结构（保留原有）
+
   const handleValidateSchema = () => {
     const results = validateUserColumns();
     setValidationResult(results);
     setCreateResult(null);
   };
 
-  // ===================== 修改创建方法为接收表类型参数（核心修改）=====================
-  // 创建数据库表（新增tableType参数）
   const handleCreateTables = async (tableType) => {
     try {
-      // 检查该表是否已创建
+   
       if (database[tableType]) {
         const tableName = tableSchemaMap[tableType]?.name || userTable;
         setCreateResult({
@@ -174,7 +171,7 @@ const SchemaExample = () => {
       }
 
       const db = await initializeDatabase(tableType);
-      // 存储对应表类型的数据库实例
+   
       setDatabase({ ...database, [tableType]: db });
       const tableName = tableSchemaMap[tableType]?.name || userTable;
       setCreateResult({
@@ -191,11 +188,11 @@ const SchemaExample = () => {
     }
   };
 
-  // 清空页面状态（保留原有）
+
   const handleClear = () => {
     setValidationResult(null);
     setCreateResult(null);
-    setDatabase({}); // 重置为空对象
+    setDatabase({}); 
   };
 
   return (
@@ -203,25 +200,24 @@ const SchemaExample = () => {
       <Text style={styles.title}>WatermelonDB 表创建示例</Text>
 
       <View style={styles.buttons}>
-        {/* 为每个按钮绑定不同的tableType参数 */}
         <Button
           title="使用tableName创建用户表"
-          onPress={() => handleCreateTables('tableName')} // 新增参数
+          onPress={() => handleCreateTables('tableName')} 
           color="#4CAF50"
         />
         <Button
           title="使用columnName创建用户表"
-          onPress={() => handleCreateTables('columnName')} // 新增参数
+          onPress={() => handleCreateTables('columnName')} 
           color="#4CAF50"
         />
         <Button
           title="使用tableSchema创建用户表"
-          onPress={() => handleCreateTables('tableSchema')} // 新增参数
+          onPress={() => handleCreateTables('tableSchema')} 
           color="#4CAF50"
         />
         <Button
           title="使用appSchema创建用户表"
-          onPress={() => handleCreateTables('appSchema')} // 新增参数
+          onPress={() => handleCreateTables('appSchema')} 
           color="#4CAF50"
         />
         <Button
@@ -232,7 +228,7 @@ const SchemaExample = () => {
         <Button title="清空状态" onPress={handleClear} color="#f44336" />
       </View>
 
-      {/* 字段验证结果展示（完全保留原有） */}
+   
       {validationResult && (
         <View style={styles.result}>
           <Text style={styles.resultTitle}>字段验证结果</Text>
@@ -259,7 +255,7 @@ const SchemaExample = () => {
         </View>
       )}
 
-      {/* 创建结果展示（完全保留原有） */}
+
       {createResult && (
         <View style={styles.result}>
           <Text
@@ -287,7 +283,7 @@ const SchemaExample = () => {
   );
 };
 
-// ===================== 样式完全保留原有 =====================
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -351,18 +347,16 @@ import { Database } from '@nozbe/watermelondb';
 import SQLiteAdapter from '@nozbe/watermelondb/adapters/sqlite';
 import { schemaMigrations } from '@nozbe/watermelondb/Schema/migrations';
 
-// ===================== 原有表定义（保留）=====================
-// 使用 tableName 定义表名（带类型）
+
 const userTable = tableName('users');
 
-// 使用 columnName 定义字段名
+
 const userColumns = {
   name: columnName('name'),
   email: columnName('email'),
   age: columnName('age'),
 };
 
-// 定义用户表结构（使用 tableSchema）
 const userTableSchema = tableSchema({
   name: userTable,
   columns: [
@@ -372,8 +366,7 @@ const userTableSchema = tableSchema({
   ],
 });
 
-// ===================== 新增4个不同表的定义（核心新增）=====================
-// 1. 用户信息表（user_info）- 对应columnName按钮
+
 const userInfoTable = tableName('user_info');
 const userInfoColumns = {
   userId: columnName('user_id'),
@@ -389,7 +382,7 @@ const userInfoTableSchema = tableSchema({
   ],
 });
 
-// 2. 订单表（order）- 对应tableSchema按钮
+
 const orderTable = tableName('order');
 const orderTableSchema = tableSchema({
   name: orderTable,
@@ -401,7 +394,7 @@ const orderTableSchema = tableSchema({
   ],
 });
 
-// 3. 商品表（product）- 对应appSchema按钮
+
 const productTable = tableName('product');
 const productTableSchema = tableSchema({
   name: productTable,
@@ -412,7 +405,7 @@ const productTableSchema = tableSchema({
   ],
 });
 
-// 表结构映射 - 用于根据类型获取对应表
+
 const tableSchemaMap = {
   tableName: userTableSchema,
   columnName: userInfoTableSchema,
@@ -420,8 +413,7 @@ const tableSchemaMap = {
   appSchema: productTableSchema,
 };
 
-// ===================== 原有应用schema改为动态生成（仅修改此处）=====================
-// 动态生成appSchema（根据传入的表结构）
+
 const getAppDatabaseSchema = tableSchema => {
   return appSchema({
     version: 1,
@@ -429,10 +421,10 @@ const getAppDatabaseSchema = tableSchema => {
   });
 };
 
-// 验证字段定义（使用 validateColumnSchema）
+
 const validateUserColumns = () => {
   const results = [];
-  // 修复原有错误：columnArray → columns
+ 
   userTableSchema.columnArray.forEach(column => {
     try {
       validateColumnSchema(column);
@@ -445,39 +437,36 @@ const validateUserColumns = () => {
   return results;
 };
 
-// ===================== 初始化数据库改为接收表类型参数（核心修改）=====================
-// 初始化数据库（新增tableType参数）
+
 const initializeDatabase = tableType => {
-  // 根据表类型获取对应表结构
+
   const targetTableSchema = tableSchemaMap[tableType] || userTableSchema;
   const adapter = new SQLiteAdapter({
-    dbName: `watermelonT_${tableType}_db`, // 不同表使用不同数据库名
+    dbName: `watermelonT_${tableType}_db`, 
     schema: getAppDatabaseSchema(targetTableSchema),
     jsi: true,
     migrations: schemaMigrations({ migrations: [] }),
   });
 
-  adapter.initializingPromise; // 等待适配器初始化
+  adapter.initializingPromise; 
   return new Database({ adapter, modelClasses: [] });
 };
 
 const SchemaExampleT = () => {
   const [validationResult, setValidationResult] = useState(null);
   const [createResult, setCreateResult] = useState(null);
-  const [database, setDatabase] = useState({}); // 修改为对象存储不同表的数据库实例
+  const [database, setDatabase] = useState({}); 
 
-  // 验证字段结构（保留原有）
+
   const handleValidateSchema = () => {
     const results = validateUserColumns();
     setValidationResult(results);
     setCreateResult(null);
   };
 
-  // ===================== 修改创建方法为接收表类型参数（核心修改）=====================
-  // 创建数据库表（新增tableType参数）
+
   const handleCreateTables = tableType => {
     try {
-      // 检查该表是否已创建
       if (database[tableType]) {
         const tableName = tableSchemaMap[tableType]?.name || userTable;
         setCreateResult({
@@ -489,7 +478,6 @@ const SchemaExampleT = () => {
       }
 
       const db = initializeDatabase(tableType);
-      // 存储对应表类型的数据库实例
       setDatabase({ ...database, [tableType]: db });
       const tableName = tableSchemaMap[tableType]?.name || userTable;
       setCreateResult({
@@ -506,11 +494,10 @@ const SchemaExampleT = () => {
     }
   };
 
-  // 清空页面状态（保留原有）
   const handleClear = () => {
     setValidationResult(null);
     setCreateResult(null);
-    setDatabase({}); // 重置为空对象
+    setDatabase({}); 
   };
 
   return (
@@ -518,25 +505,24 @@ const SchemaExampleT = () => {
       <Text style={styles.title}>WatermelonDB 表创建示例</Text>
 
       <View style={styles.buttons}>
-        {/* 为每个按钮绑定不同的tableType参数 */}
         <Button
           title="使用tableName创建用户表"
-          onPress={() => handleCreateTables('tableName')} // 新增参数
+          onPress={() => handleCreateTables('tableName')} 
           color="#4CAF50"
         />
         <Button
           title="使用columnName创建用户表"
-          onPress={() => handleCreateTables('columnName')} // 新增参数
+          onPress={() => handleCreateTables('columnName')} 
           color="#4CAF50"
         />
         <Button
           title="使用tableSchema创建用户表"
-          onPress={() => handleCreateTables('tableSchema')} // 新增参数
+          onPress={() => handleCreateTables('tableSchema')} 
           color="#4CAF50"
         />
         <Button
           title="使用appSchema创建用户表"
-          onPress={() => handleCreateTables('appSchema')} // 新增参数
+          onPress={() => handleCreateTables('appSchema')} 
           color="#4CAF50"
         />
         <Button
@@ -547,7 +533,6 @@ const SchemaExampleT = () => {
         <Button title="清空状态" onPress={handleClear} color="#f44336" />
       </View>
 
-      {/* 字段验证结果展示（完全保留原有） */}
       {validationResult && (
         <View style={styles.result}>
           <Text style={styles.resultTitle}>字段验证结果</Text>
@@ -574,7 +559,6 @@ const SchemaExampleT = () => {
         </View>
       )}
 
-      {/* 创建结果展示（完全保留原有） */}
       {createResult && (
         <View style={styles.result}>
           <Text
@@ -602,7 +586,6 @@ const SchemaExampleT = () => {
   );
 };
 
-// ===================== 样式完全保留原有 =====================
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -651,7 +634,7 @@ const styles = StyleSheet.create({
 export default SchemaExampleT;
 ```
 
-## Manual Link
+## 2.Manual Link
 
 此步骤为手动配置原生依赖项的指导。
 
@@ -770,7 +753,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(
 
 ### 4. 在 ArkTs 侧引入 watermelondb 组件
 
-找到 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
+找到 `entry/src/main/ets/RNPackagesFactory.ets`，添加：
 
 ```diff
 ...
@@ -799,7 +782,7 @@ ohpm install
 
 然后编译、运行即可。
 
-## 约束与限制
+## 3.约束与限制
 
 ### 兼容性
 
@@ -834,7 +817,7 @@ ohpm install
 }
 ```
 
-## 属性
+## 4.属性
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
