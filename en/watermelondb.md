@@ -10,9 +10,10 @@ Please go to the Releases page of the third-party library to check the matching 
 
 information:
 
+
 | Third-party library version | Release information                                                                                    | Supported RN version |
 | --------------------------- | ------------------------------------------------------------------------------------------------------ | -------------------- |
-| v0.28.2-rc.1                | [@react-native-ohos/watermelondb Releases](https://gitcode.com/OpenHarmony-RN/rntpc_watermelondb/tags) | 0.72/0.77            |
+| v0.28.2                     | [@react-native-ohos/watermelondb Releases](https://gitcode.com/OpenHarmony-RN/rntpc_watermelondb/tags) | 0.72/0.77            |
 
 ## 1. Installation and Usage
 
@@ -616,12 +617,15 @@ const styles = StyleSheet.create({
 export default SchemaExampleT;
 ```
 
-## Manual Link
+## 2.Manual Link
 
 This step is a guide for manually configuring native dependencies.
 First, you need to open the HarmonyOS project harmony in the project using DevEco Studio.
 
 ### 1.Add overrides field to oh-package.json in the project root directory
+
+In order to make the project depend on the same version of the RN SDK, you need to add an overrides field to the oh-package.json5 file in the root directory of the project, which points to the version of the RN SDK required by the project. The version to be replaced can be either a specific version number, a version range, or a locally existing HAR package or source code directory.
+For the function of this field, please refer to the official documentation.(https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-oh-package-json5-V5#zh-cn_topic_0000001792256137_overrides)：
 
 ```json
 {
@@ -633,8 +637,10 @@ First, you need to open the HarmonyOS project harmony in the project using DevEc
 
 ### 2. There are currently two methods:
 
-Import via har package (this method will be deprecated after the IDE improves related functions, and it is the preferred method currently);
-Link source code directly.
+There are currently two methods available:
+
+1. Import via HAR package (This method will be deprecated after the IDE-related features are fully implemented, but it is the preferred method at present);
+2. Directly link to the source code.
 
 Method 1: Import via har package (recommended)
 
@@ -728,7 +734,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(
 
 ### 4. Import the watermelondb module on the ArkTS side
 
-open `entry/src/main/ets/RNPackagesFactory.ts`，add：
+open `entry/src/main/ets/RNPackagesFactory.ets`，add：
 
 ```diff
 ...
@@ -757,7 +763,7 @@ ohpm install
 
 Then compile and run the project.
 
-## Constraints and Limitations
+## 3.Constraints and Limitations
 
 ### Compatibility Support
 
@@ -765,6 +771,8 @@ The content of this document has been verified based on the following versions�
 
 1. RNOH：0.72.90; SDK：HarmonyOS NEXT Developer DB3; IDE: DevEco Studio: 5.0.5.220; ROM：NEXT.0.0.105;
 2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release; IDE: DevEco Studio 6.0.0.858; ROM：6.0.0.112;
+
+### Permission Requirements
 
 #### Add the reason for applying for the above permissions in the entry directory
 
@@ -790,13 +798,14 @@ Open `entry/src/main/resources/base/element/string.json`，add：
 }
 ```
 
-## Properties
+## 4.Properties
 
 > [!TIP] "Platform"This column shows which platforms the property supports in the original third-party library。
 
 > [!TIP] "HarmonyOS Support"A value of "yes" in this column means the HarmonyOS platform supports the property; "no" means it does not; "partially" means partial support. The usage method is consistent across platforms, and the effect is comparable to that on iOS or Android。
 
 **Collection class**
+
 
 | Name                      | Description                                                                    | Type     | Required | Platform    | HarmonyOS Support |
 | ------------------------- | ------------------------------------------------------------------------------ | -------- | -------- | ----------- | ----------------- |
@@ -806,6 +815,8 @@ Open `entry/src/main/resources/base/element/string.json`，add：
 | create                    | Create and save new records in the collection                                  | function | yes      | iOS/Android | yes               |
 | prepareCreate             | Pre - create a record object without immediately persisting it to the database | function | yes      | iOS/Android | yes               |
 | prepareCreateFromDirtyRaw | Pre - create a record object from raw unvalidated data                         | function | yes      | iOS/Android | yes               |
+| disposableFromDirtyRaw    | Create a one - time temporary record based on raw dirty data                   | function | yes      | iOS/Android | yes               |
+| table                     | Get the name of the database table corresponding to this collection            | function | no       | iOS/Android | yes               |
 | \_fetchQuery              | Execute the SQL query statement and return the complete result set             | function | no       | iOS/Android | no                |
 | \_fetchIds                | Get the list of all record IDs that match the query criteria                   | function | no       | iOS/Android | no                |
 | \_fetchCount              | Count the total number of records that satisfy the query criteria              | function | no       | iOS/Android | no                |
@@ -813,12 +824,11 @@ Open `entry/src/main/resources/base/element/string.json`，add：
 | \_fetchRecord             | Get the complete data content of a single record                               | function | no       | iOS/Android | no                |
 | \_applyChangesToCache     | Apply the data changes to the in-memory cache system                           | function | no       | iOS/Android | no                |
 | \_notify                  | Notify all registered observers that the data has changed                      | function | no       | iOS/Android | no                |
-| disposableFromDirtyRaw    | Create a one - time temporary record based on raw dirty data                   | function | yes      | iOS/Android | yes               |
-| table                     | Get the name of the database table corresponding to this collection            | function | no       | iOS/Android | yes               |
 | schema                    | Get the data table structure definition corresponding to this collection       | function | no       | iOS/Android | yes               |
 | experimentalSubscribe     | Subscribe to collection - level data change notifications                      | function | yes      | iOS/Android | yes               |
 
 **Database class**
+
 
 | Name                       | Description                                                                      | Type     | Required | Platform    | HarmonyOS Support |
 | -------------------------- | -------------------------------------------------------------------------------- | -------- | -------- | ----------- | ----------------- |
@@ -836,6 +846,7 @@ Open `entry/src/main/resources/base/element/string.json`，add：
 
 **Relation class**
 
+
 | Name          | Description                                                                    | Type     | Required | Platform    | HarmonyOS Support |
 | ------------- | ------------------------------------------------------------------------------ | -------- | -------- | ----------- | ----------------- |
 | get id        | Get the unique identifier of the associated target model                       | function | no       | iOS/Android | yes               |
@@ -846,6 +857,7 @@ Open `entry/src/main/resources/base/element/string.json`，add：
 | observe       | Monitor real - time changes in associated model data                           | function | no       | iOS/Android | yes               |
 
 **Model class**
+
 
 | Name                                          | Description                                                                         | Type     | Required | Platform    | HarmonyOS Support |
 | --------------------------------------------- | ----------------------------------------------------------------------------------- | -------- | -------- | ----------- | ----------------- |
@@ -885,6 +897,7 @@ Open `entry/src/main/resources/base/element/string.json`，add：
 
 **Query class**
 
+
 | Name                             | Description                                          | Type     | Required | Platform    | HarmonyOS Support |
 | -------------------------------- | ---------------------------------------------------- | -------- | -------- | ----------- | ----------------- |
 | pipe&lt;T&gt;                    | Perform chain conversion operations on query results | function | no       | iOS/Android | yes               |
@@ -911,6 +924,7 @@ Open `entry/src/main/resources/base/element/string.json`，add：
 
 **Schema class**
 
+
 | Name                             | Description                                                         | Type     | Required | Platform    | HarmonyOS Support |
 | -------------------------------- | ------------------------------------------------------------------- | -------- | -------- | ----------- | ----------------- |
 | tableName&lt;T extends Model&gt; | Define the name of the database table                               | function | yes      | iOS/Android | yes               |
@@ -919,18 +933,18 @@ Open `entry/src/main/resources/base/element/string.json`，add：
 | validateColumnsSchema            | Verify the validity of the field schema definition                  | function | yes      | iOS/Android | yes               |
 | tableSchema                      | Define the structure and field configuration of a single data table | function | yes      | iOS/Android | yes               |
 
-## Pending Issues
+## 5.Pending Issues
 
-- [ ] \_fetchQuery Some parameters of the interface are not supported on HarmonyOS. As an underlying method provided for other modules, it cannot be called directly. [issue#2](https://gitcode.com/OpenHarmony-RN/rntpc_watermelondb/issues/2)
-- [ ] \_fetchIds Some parameters of the interface are not supported on HarmonyOS. As an underlying method provided for other modules, it cannot be called directly. [issue#2](https://gitcode.com/OpenHarmony-RN/rntpc_watermelondb/issues/2)
-- [ ] \_fetchCount Some parameters of the interface are not supported on HarmonyOS. As an underlying method provided for other modules, it cannot be called directly. [issue#2](https://gitcode.com/OpenHarmony-RN/rntpc_watermelondb/issues/2)
-- [ ] \_unsafeFetchRaw Some parameters of the interface are not supported on HarmonyOS. As an underlying method provided for other modules, it cannot be called directly. [issue#2](https://gitcode.com/OpenHarmony-RN/rntpc_watermelondb/issues/2)
-- [ ] \_fetchRecord Some parameters of the interface are not supported on HarmonyOS. As an underlying method provided for other modules, it cannot be called directly. [issue#2](https://gitcode.com/OpenHarmony-RN/rntpc_watermelondb/issues/2)
-- [ ] \_applyChangesToCache Some parameters of the interface are not supported on HarmonyOS. As an underlying method provided for other modules, it cannot be called directly. [issue#2](https://gitcode.com/OpenHarmony-RN/rntpc_watermelondb/issues/2)
-- [ ] \_notify Some parameters of the interface are not supported on HarmonyOS. As an underlying method provided for other modules, it cannot be called directly. [issue#2](https://gitcode.com/OpenHarmony-RN/rntpc_watermelondb/issues/2)
+- [ ]  \_fetchQuery Some parameters of the interface are not supported on HarmonyOS. As an underlying method provided for other modules, it cannot be called directly. [issue#2](https://gitcode.com/OpenHarmony-RN/rntpc_watermelondb/issues/2)
+- [ ]  \_fetchIds Some parameters of the interface are not supported on HarmonyOS. As an underlying method provided for other modules, it cannot be called directly. [issue#2](https://gitcode.com/OpenHarmony-RN/rntpc_watermelondb/issues/2)
+- [ ]  \_fetchCount Some parameters of the interface are not supported on HarmonyOS. As an underlying method provided for other modules, it cannot be called directly. [issue#2](https://gitcode.com/OpenHarmony-RN/rntpc_watermelondb/issues/2)
+- [ ]  \_unsafeFetchRaw Some parameters of the interface are not supported on HarmonyOS. As an underlying method provided for other modules, it cannot be called directly. [issue#2](https://gitcode.com/OpenHarmony-RN/rntpc_watermelondb/issues/2)
+- [ ]  \_fetchRecord Some parameters of the interface are not supported on HarmonyOS. As an underlying method provided for other modules, it cannot be called directly. [issue#2](https://gitcode.com/OpenHarmony-RN/rntpc_watermelondb/issues/2)
+- [ ]  \_applyChangesToCache Some parameters of the interface are not supported on HarmonyOS. As an underlying method provided for other modules, it cannot be called directly. [issue#2](https://gitcode.com/OpenHarmony-RN/rntpc_watermelondb/issues/2)
+- [ ]  \_notify Some parameters of the interface are not supported on HarmonyOS. As an underlying method provided for other modules, it cannot be called directly. [issue#2](https://gitcode.com/OpenHarmony-RN/rntpc_watermelondb/issues/2)
 
-## Others
+## 6.Others
 
-## Open Source License
+## 7.Open Source License
 
 This project is based on [The MIT License (MIT)](https://github.com/Nozbe/WatermelonDB/blob/master/LICENSE) ，Feel free to enjoy and contribute to the open source project。
