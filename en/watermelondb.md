@@ -635,7 +635,7 @@ For the function of this field, please refer to the official documentation.(http
 }
 ```
 
-### 2. There are currently two methods:
+### 2. Integrate native code:
 
 There are currently two methods available:
 
