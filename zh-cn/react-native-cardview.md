@@ -22,7 +22,7 @@
 |------------------|-----------------------------------------------------------------------------------------------------------------------------------------------| ---------- |
 | <= 2.0.3-0.0.2@deprecated | [@react-native-oh-tpl/react-native-cardview Releases(deprecated)](https://github.com/react-native-oh-library/react-native-cardview/releases) | 0.72         |
 | 2.0.4            | [@react-native-ohos/react-native-cardview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-cardview/releases)                 | 0.72       |
-| 2.1.0            | [@react-native-ohos/react-native-cardview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-cardview/releases)                 | 0.77       |
+| 2.1.0            | [@react-native-ohos/react-native-cardview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-cardview/releases)                 | 0.77/0.82      |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -237,21 +237,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
     };
 }
 ```
-
-### 4.在 ArkTs 侧引入 CardViewPackage
-
-打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
-
-```diff
-+ import {CardViewPackage} from '@react-native-ohos/react-native-audio-recorder-player/ts';
-
-export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
-  return [
-    new SamplePackage(ctx),
-+   new CardViewPackage(ctx)
-  ];
-}
-```
 </details>
 
 ## 运行
@@ -278,6 +263,7 @@ ohpm install
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 属性
 
@@ -289,9 +275,9 @@ ohpm install
 
 | 名称 | 描述 | 类型 | 是否必需 | 支持的平台 | 是否支持HarmonyOS  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| cornerRadius       | 用于设置卡片高度的属性。                                          | number | No       | iOS/Android      | yes               |
+| cornerRadius       | 用于设置卡片半径的属性。                                          | number | No       | iOS/Android      | yes               |
 | cardElevation       | 用于在 Android 预 Lollipop 设备上支持阴影的属性                 | number | No       | iOS/Android      | yes               |
-| cardMaxElevation    | 用于设置卡片半径的属性。                                           | number | No       | Android      | yes               |
+| cardMaxElevation    | 用于设置卡片高度的属性。                                           | number | No       | Android      | yes               |
 | useCompatPadding     | CardView 在 Lollipop 之前的平台上会增加额外的内边距以绘制阴影。         | boolean | No       | Android       | no                |
 | cornerOverlap        | 在 Lollipop 之前的平台上，CardView 不会裁剪卡片圆角的边界。 | boolean | No   | Android   | no               |
 

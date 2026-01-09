@@ -367,41 +367,41 @@ ohpm install
 
 | Name                  | Description                                                  | Type                                                         | Required | Platform    | HarmonyOS Support |
 | --------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | ----------- | ----------------- |
-| activeBackgroundColor | 当 TouchableOpacity 处于激活状态（按下时）时应用背景颜色 | string                                                       | no       | iOS/Android | yes               |
-| backgroundColor       | TouchableOpacity 的背景颜色                        | string                                                       | no       | iOS/Android | yes               |
+| activeBackgroundColor | 当 TouchableOpacity 处于激活状态（按下时）时应用背景颜色     | string                                                       | no       | iOS/Android | yes               |
+| backgroundColor       | TouchableOpacity 的背景颜色                                  | string                                                       | no       | iOS/Android | yes               |
 | customValue           | 可传递给 TouchableOpacity 的任意类型自定义值，并在 onPress 回调中接收 | any                                                          | no       | iOS/Android | yes               |
-| onPress               | 按下回调                                            | (props?: TouchableOpacityProps & {event: GestureResponderEvent} \|any) => void | no       | iOS/Android | yes               |
-| recorderTag           | 记录器标签                                                | 'mask'\|'unmask'                                             | no       | iOS/Android | yes               |
-| style                 | 自定义样式                                               | ViewStyle                                                    | no       | iOS/Android | yes               |
-| throttleOptions       | 节流选项                                             | ThrottleOptions                                              | no       | iOS/Android | yes               |
-| throttleTime          | 按下回调的节流时间（毫秒）                    | number                                                       | no       | iOS/Android | yes               |
-| useNative             | 应使用具有额外功能的增强本地实现 | boolean                                                      | no       | iOS/Android | yes               |
-| activeScale           | 将应用缩放按压反馈。这将强制使用 useNative 属性  | number                                                       | no       | iOS/Android | yes               |
+| onPress               | 按下回调                                                     | (props?: TouchableOpacityProps & {event: GestureResponderEvent} \|any) => void | no       | iOS/Android | yes               |
+| recorderTag           | 记录器标签                                                   | 'mask'\|'unmask'                                             | no       | iOS/Android | yes                |
+| style                 | 自定义样式                                                   | ViewStyle                                                    | no       | iOS/Android | yes               |
+| throttleOptions       | 节流选项                                                     | ThrottleOptions                                              | no       | iOS/Android | yes               |
+| throttleTime          | 按下回调的节流时间（毫秒）                                   | number                                                       | no       | iOS/Android | yes               |
+| useNative             | 应使用具有额外功能的增强本地实现                             | boolean                                                      | no       | iOS/Android | yes               |
+| activeScale           | 将应用缩放按压反馈。这将强制使用 useNative 属性              | number                                                       | no       | iOS/Android | yes               |
 
 **View**：容器组件，该组件扩展了[View](https://reactnative.dev/docs/view)属性。
 
-| Name            | Description                                                  | Type             | Required | Platform    | HarmonyOS Support |
-| --------------- | ------------------------------------------------------------ | ---------------- | -------- | ----------- | ----------------- |
-| animated        | 将 Animate.View 用作容器                              | boolean          | no       | iOS/Android | yes               |
-| backgroundColor | 设置背景颜色                                        | string           | no       | iOS/Android | yes               |
-| inaccessible    | 关闭此视图及其子视图的辅助功能 | boolean          | no       | iOS/Android | yes               |
+| Name            | Description                                               | Type             | Required | Platform    | HarmonyOS Support |
+| --------------- | --------------------------------------------------------- | ---------------- | -------- | ----------- | ----------------- |
+| animated        | 将 Animate.View 用作容器                                  | boolean          | no       | iOS/Android | yes               |
+| backgroundColor | 设置背景颜色                                              | string           | no       | iOS/Android | yes               |
+| inaccessible    | 关闭此视图及其子视图的辅助功能                            | boolean          | no       | iOS/Android | yes               |
 | reanimated      | 使用 Animate.View（来自 react-native-reanimated）作为容器 | boolean          | no       | iOS/Android | yes               |
-| recorderTag     | 记录器标签                                                 | 'mask'\|'unmask' | no       | iOS/Android | yes               |
-| renderDelay     | 实验性：以毫秒为单位传递时间以延迟渲染                | number           | no       | iOS/Android | yes               |
+| recorderTag     | 记录器标签                                                | 'mask'\|'unmask' | no       | iOS/Android | yes                |
+| renderDelay     | 实验性：以毫秒为单位传递时间以延迟渲染                    | number           | no       | iOS/Android | yes               |
 | style           | 自定义样式                                                | ViewStyle        | no       | iOS/Android | yes               |
 | useSafeArea     | 如果为true，将呈现为 SafeAreaView                         | boolean          | no       | iOS/Android | yes               |
 
 **ActionBar**：快速操作栏，每个操作都支持按钮组件道具，该组件扩展了[View](https://wix.github.io/react-native-ui-lib/docs/components/basic/View)属性。
 
-| Name            | Description                                                  | Type          | Required | Platform    | HarmonyOS Support |
-| --------------- | ------------------------------------------------------------ | ------------- | -------- | ----------- | ----------------- |
-| actions         | 操作栏的操作                               | ButtonProps[] | no       | iOS/Android | yes               |
-| backgroundColor | 设置背景颜色                                             | string        | no       | iOS/Android | yes               |
-| centered        | 行动是否应同样居中                            | boolean       | no       | iOS/Android | yes               |
-| height          | 高度                                                      | number        | no       | iOS/Android | yes               |
-| keepRelative    | 保持操作栏位置为相对，而不是绝对位置 | boolean       | no       | iOS/Android | yes               |
-| style           | 组件的样式                                            | ViewStyle     | no       | iOS/Android | yes               |
-| useSafeArea     | 在 iOS 中，使用安全区域，以防组件附着到底部 | boolean       | no       | iOS/Android | yes               |
+| Name            | Description                                 | Type          | Required | Platform    | HarmonyOS Support |
+| --------------- | ------------------------------------------- | ------------- | -------- | ----------- | ----------------- |
+| actions         | 操作栏的操作                                | ButtonProps[] | no       | iOS/Android | yes               |
+| backgroundColor | 设置背景颜色                                | string        | no       | iOS/Android | yes               |
+| centered        | 行动是否应同样居中                          | boolean       | no       | iOS/Android | yes               |
+| height          | 高度                                        | number        | no       | iOS/Android | yes               |
+| keepRelative    | 保持操作栏位置为相对，而不是绝对位置        | boolean       | no       | iOS/Android | yes               |
+| style           | 组件的样式                                  | ViewStyle     | no       | iOS/Android | yes               |
+| useSafeArea     | 在 iOS 中，使用安全区域，以防组件附着到底部 | boolean       | no       | iOS/Android | yes                |
 
 **Button**：按钮组件，该组件扩展了[TouchableOpacity](https://wix.github.io/react-native-ui-lib/docs/components/basic/TouchableOpacity)属性。
 
@@ -416,13 +416,13 @@ ohpm install
 | color                    | 按钮文本颜色（继承自文本组件）        | string                                          | no       | iOS/Android | yes               |
 | disabled                 | 禁用组件的交互                      | boolean                                         | no       | iOS/Android | yes               |
 | disabledBackgroundColor  | 禁用按钮背景颜色                      | string                                          | no       | iOS/Android | yes               |
-| enableShadow             | 控制阴影可见性（仅限 iOS）                        | boolean                                         | no       | iOS         | no                |
+| enableShadow             | 控制阴影可见性（仅限 iOS）                        | boolean                                         | no       | iOS         | yes                |
 | fullWidth                | 按钮是否应作为跨屏按钮（无边角圆弧） | boolean                                         | no       | iOS/Android | yes               |
 | getActiveBackgroundColor | 用于获取 activeBackgroundColor 的回调（例如 (calculatedBackgroundColor, prop) => {...}）。最好通过 ThemeManager 设置 | (backgroundColor: string, props: any) => string | no       | iOS/Android | yes               |
 | hyperlink                | 按钮看起来像一个超链接                           | boolean                                         | no       | iOS/Android | yes               |
 | iconOnRight              | 图标应该在标签的右边吗                       | boolean                                         | no       | iOS/Android | yes               |
 | iconProps                | 图标图片属性                                            | Partial<ImageProps>                             | no       | iOS/Android | yes               |
-| iconSource               | 图标图像来源或返回来源的回调函数 | ImageProps['source']|Function                  | no       | iOS/Android | yes               |
+| iconSource               | 图标图像来源或返回来源的回调函数 |Function                  | no       | iOS/Android | yes               |
 | iconStyle                |图标图片样式                                             | ImageStyle                                      | no       | iOS/Android | yes               |
 | label                    | 按钮内显示的文本                               | string                                          | no       | iOS/Android | yes               |
 | labelProps               | 将传递给按钮文本标签的属性。        | TextProps                                       | no       | iOS/Android | yes               |
@@ -435,7 +435,7 @@ ohpm install
 | outlineWidth             | 轮廓宽度                                            | number                                          | no       | iOS/Android | yes               |
 | round                    | 按钮是否是圆形按钮                          | boolean                                         | no       | iOS/Android | yes               |
 | size                     | 按钮的大小 [large, medium, small, xSmall]            | ButtonSize                                      | no       | iOS/Android | yes               |
-| supportRTL               | 图标在 RTL 语言环境下是否应水平翻转      | boolean                                         | no       | iOS/Android | yes               |
+| supportRTL               | 图标在 RTL 语言环境下是否应水平翻转      | boolean                                         | no       | iOS/Android | yes             |
 
 **Checkbox**：复选框组件，该组件扩展了[TouchableOpacity](https://wix.github.io/react-native-ui-lib/docs/components/basic/TouchableOpacity)属性。
 
@@ -517,33 +517,33 @@ ohpm install
 
 | Name                  | Description                                                  | Type                                 | Required | Platform    | HarmonyOS Support |
 | --------------------- | ------------------------------------------------------------ | ------------------------------------ | -------- | ----------- | ----------------- |
-| accessible            | 如果为真，该组件将启用辅助功能 | boolean                              | no       | iOS/Android | yes               |
-| activeThumbStyle      | 按压时的样式                       | ViewStyle                            | no       | iOS/Android | yes               |
-| containerStyle        | 容器样式                                          | ViewStyle                            | no       | iOS/Android | yes               |
-| disableActiveStyling  | 如果为真，滑块在按下时不会改变其样式       | boolean                              | no       | iOS/Android | yes               |
-| disableRTL            | 如果为true，即使应用程序处于从右到左模式，滑块仍将保持从左到右模式 | boolean                              | no       | iOS/Android | yes               |
-| disabled              | 如果为true，滑块将被禁用，并显示为禁用颜色 | boolean                              | no       | iOS/Android | yes               |
-| initialMaximumValue   | 只有当 `useRange` 为 true 时，初始最大值          | number                               | no       | iOS/Android | yes               |
-| initialMinimumValue   | 只有当 `useRange` 为 true 时，初始最小值          | number                               | no       | iOS/Android | yes               |
-| maximumTrackTintColor | 轨道颜色                                            | string                               | no       | iOS/Android | yes               |
-| maximumValue          | 追踪最大值                                          | number                               | no       | iOS/Android | yes               |
-| migrate               | 迁移到滑块的新实现所需的临时属性 | boolean                              | no       | iOS/Android | yes               |
-| minimumTrackTintColor | 用于从最小值到当前值的轨道颜色 | string                               | no       | iOS/Android | yes               |
-| minimumValue          | 追踪最小值                                         | number                               | no       | iOS/Android | yes               |
-| onRangeChange         | onRangeChange 的回调。返回包含最小值和最大值的值对象 | SliderOnRangeChange                  | no       | iOS/Android | yes               |
-| onReset               | 当重置功能被调用时的回调通知   | () => void                           | no       | iOS/Android | yes               |
-| onSeekEnd             | 回调，用于通知滑块拖动已完成      | () => void                           | no       | iOS/Android | yes               |
-| onSeekStart           | 回调，用于通知滑块开始拖动       | () => void                           | no       | iOS/Android | yes               |
-| onValueChange         | onValueChange 的回调                                   | SliderOnValueChange                  | no       | iOS/Android | yes               |
-| renderTrack           | 自定义渲染而不是渲染轨道                 | () => ReactElement \| ReactElement[] | no       | iOS/Android | yes               |
-| step                  | 滑块的步长值。该值应介于 0 与（最大值 - 最小值）之间 | number                               | no       | iOS/Android | yes               |
-| testID                | 组件测试 ID                                      | string                               | no       | iOS/Android | yes               |
-| thumbStyle            | thumb 样式                                            | ViewStyle                            | no       | iOS/Android | yes               |
-| thumbTintColor        | Thumb 颜色                                                 | string                               | no       | iOS/Android | yes               |
-| trackStyle            |  track 样式                                              | ViewStyle                            | no       | iOS/Android | yes               |
-| useGap                | 如果为true，最小值和最大值的滑块将不会重叠              | boolean                              | no       | iOS/Android | yes               |
-| useRange              | 如果为true，滑块将显示用于最小值的第二个滑块按钮 | boolean                              | no       | iOS/Android | yes               |
-| value                 | 初始值                                                | number                               | no       | iOS/Android | yes               |
+| accessible            | 如果为真，该组件将启用辅助功能                               | boolean                              | no       | iOS/Android | yes               |
+| activeThumbStyle      | 按压时的样式                                                 | ViewStyle                            | no       | iOS/Android | yes               |
+| containerStyle        | 容器样式                                                     | ViewStyle                            | no       | iOS/Android | yes               |
+| disableActiveStyling  | 如果为真，滑块在按下时不会改变其样式                         | boolean                              | no       | iOS/Android | yes               |
+| disableRTL            | 如果为true，即使应用程序处于从右到左模式，滑块仍将保持从左到右模式 | boolean                              | no       | iOS/Android | yes                |
+| disabled              | 如果为true，滑块将被禁用，并显示为禁用颜色                   | boolean                              | no       | iOS/Android | yes               |
+| initialMaximumValue   | 只有当 `useRange` 为 true 时，初始最大值                     | number                               | no       | iOS/Android | yes               |
+| initialMinimumValue   | 只有当 `useRange` 为 true 时，初始最小值                     | number                               | no       | iOS/Android | yes               |
+| maximumTrackTintColor | 轨道颜色                                                     | string                               | no       | iOS/Android | yes               |
+| maximumValue          | 追踪最大值                                                   | number                               | no       | iOS/Android | yes               |
+| migrate               | 迁移到滑块的新实现所需的临时属性                             | boolean                              | no       | iOS/Android | yes               |
+| minimumTrackTintColor | 用于从最小值到当前值的轨道颜色                               | string                               | no       | iOS/Android | yes               |
+| minimumValue          | 追踪最小值                                                   | number                               | no       | iOS/Android | yes               |
+| onRangeChange         | onRangeChange 的回调。返回包含最小值和最大值的值对象         | SliderOnRangeChange                  | no       | iOS/Android | yes               |
+| onReset               | 当重置功能被调用时的回调通知                                 | () => void                           | no       | iOS/Android | yes               |
+| onSeekEnd             | 回调，用于通知滑块拖动已完成                                 | () => void                           | no       | iOS/Android | yes               |
+| onSeekStart           | 回调，用于通知滑块开始拖动                                   | () => void                           | no       | iOS/Android | yes               |
+| onValueChange         | onValueChange 的回调                                         | SliderOnValueChange                  | no       | iOS/Android | yes               |
+| renderTrack           | 自定义渲染而不是渲染轨道                                     | () => ReactElement \| ReactElement[] | no       | iOS/Android | yes               |
+| step                  | 滑块的步长值。该值应介于 0 与（最大值 - 最小值）之间         | number                               | no       | iOS/Android | yes               |
+| testID                | 组件测试 ID                                                  | string                               | no       | iOS/Android | yes               |
+| thumbStyle            | thumb 样式                                                   | ViewStyle                            | no       | iOS/Android | yes               |
+| thumbTintColor        | Thumb 颜色                                                   | string                               | no       | iOS/Android | yes               |
+| trackStyle            | track 样式                                                   | ViewStyle                            | no       | iOS/Android | yes               |
+| useGap                | 如果为true，最小值和最大值的滑块将不会重叠                   | boolean                              | no       | iOS/Android | yes               |
+| useRange              | 如果为true，滑块将显示用于最小值的第二个滑块按钮             | boolean                              | no       | iOS/Android | yes               |
+| value                 | 初始值                                                       | number                               | no       | iOS/Android | yes               |
 
 **Switch**：开关切换组件。
 
@@ -622,24 +622,24 @@ ohpm install
 
 | Name                              | Description                                                  | Type                                              | Required | Platform    | HarmonyOS Support |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------- | -------- | ----------- | ----------------- |
-| dateTimeFormatter                 | 用于格式化时间或日期的回调函数               | (value: Date, mode: DateTimePickerMode) => string | no       | iOS/Android | yes               |
-| dialogProps                       | 传递给 Dialog 组件的属性                           | DialogProps                                       | no       | iOS/Android | yes               |
-| display                           | 定义选择器的视觉显示。iOS 上的默认值为"spinner"，Android 上的默认值为"default"。所有可能值的列表包括 Android 上的 default、spinner、calendar 或 clock，以及 iOS 上的 default、spinner、compact 或 inline。完整列表可以在这里找到：[react-native-datetimepicker](https://github.com/react-native-datetimepicker/datetimepicker#display-optional) | string                                            | no       | iOS/Android | yes               |
-| editable                          | 此输入是否应可编辑或禁用                    | boolean                                           | no       | iOS/Android | yes               |
-| headerStyle                       | 应用于 iOS 对话框标题的样式                      | ViewStyle                                         | no       | iOS/Android | yes               |
-| is24Hour                          | 仅限 Android，允许将时间选择器更改为 24 小时格式 | boolean                                           | no       | Android     | no                |
-| locale                            | 仅限 iOS，允许更改组件的区域设置     | string                                            | no       | iOS         | yes               |
-| maximumDate                       | 要使用的最大日期或时间值                        | Date                                              | no       | iOS/Android | yes               |
-| minimumDate                       | 要使用的最小日期或时间值                        | Date                                              | no       | iOS/Android | yes               |
-| minuteInterval                    | 仅限 iOS，可以选择分钟的间隔。可能的值是：1、2、3、4、5、6、10、12、15、20、30 | number                                            | no       | iOS         | yes               |
-| mode                              | 要显示的选择器类型（'date' 或 'time'）             | DATE \|TIME                                       | no       | iOS/Android | yes               |
-| onChange                          | 当日期/时间更改时调用                             | () => Date                                        | no       | iOS/Android | yes               |
-| renderInput                       | 渲染自定义输入                                          | JSX.Element                                       | no       | iOS/Android | yes               |
-| themeVariant                      | 覆盖日期选择器使用的系统主题变体（深色或浅色模式） | LIGHT \|DARK                                      | no       | iOS/Android | yes               |
-| timeZoneOffsetInMinutes           | 仅限 iOS，允许更改日期选择器的时区。默认使用设备的时区 | number                                            | no       | iOS         | yes               |
-| value                             | 默认为设备的日期和时间，设置选择器的初始值 | Date                                              | no       | iOS/Android | yes               |
-| backgroundColor<sup>7.43.1+</sup> | 滚轮选择器的背景颜色                        | string                                            | no       | iOS/Android | yes               |
-| textColor<sup>7.43.1+</sup>       | 滚轮选择器项目的文本颜色                        | string                                            | no       | iOS/Android | no                |
+| dateTimeFormatter                 | 用于格式化时间或日期的回调函数                               | (value: Date, mode: DateTimePickerMode) => string | no       | iOS/Android | yes               |
+| dialogProps                       | 传递给 Dialog 组件的属性                                     | DialogProps                                       | no       | iOS/Android | yes               |
+| display                           | 定义选择器的视觉显示。iOS 上的默认值为"spinner"，Android 上的默认值为"default"。所有可能值的列表包括 Android 上的 default、spinner、calendar 或 clock，以及 iOS 上的 default、spinner、compact 或 inline。完整列表可以在这里找到：[react-native-datetimepicker](https://github.com/react-native-datetimepicker/datetimepicker#display-optional) | string                                            | no       | iOS/Android | partly            |
+| editable                          | 此输入是否应可编辑或禁用                                     | boolean                                           | no       | iOS/Android | yes               |
+| headerStyle                       | 应用于 iOS 对话框标题的样式                                  | ViewStyle                                         | no       | iOS/Android | yes               |
+| is24Hour                          | 仅限 Android，允许将时间选择器更改为 24 小时格式             | boolean                                           | no       | Android     | no                |
+| locale                            | 仅限 iOS，允许更改组件的区域设置                             | string                                            | no       | iOS         | no                |
+| maximumDate                       | 要使用的最大日期或时间值                                     | Date                                              | no       | iOS/Android | yes               |
+| minimumDate                       | 要使用的最小日期或时间值                                     | Date                                              | no       | iOS/Android | yes               |
+| minuteInterval                    | 仅限 iOS，可以选择分钟的间隔。可能的值是：1、2、3、4、5、6、10、12、15、20、30 | number                                            | no       | iOS         | no                |
+| mode                              | 要显示的选择器类型（'date' 或 'time'）                       | DATE \|TIME                                       | no       | iOS/Android | yes               |
+| onChange                          | 当日期/时间更改时调用                                        | () => Date                                        | no       | iOS/Android | yes               |
+| renderInput                       | 渲染自定义输入                                               | JSX.Element                                       | no       | iOS/Android | yes               |
+| themeVariant                      | 覆盖日期选择器使用的系统主题变体（深色或浅色模式）           | LIGHT \|DARK                                      | no       | iOS/Android | no                |
+| timeZoneOffsetInMinutes           | 仅限 iOS，允许更改日期选择器的时区。默认使用设备的时区       | number                                            | no       | iOS         | no                |
+| value                             | 默认为设备的日期和时间，设置选择器的初始值                   | Date                                              | no       | iOS/Android | yes               |
+| backgroundColor<sup>7.43.1+</sup> | 滚轮选择器的背景颜色                                         | string                                            | no       | iOS/Android | yes               |
+| textColor       | 滚轮选择器项目的文本颜色                                     | string                                            | no       | iOS/Android | no                |
 
 **MaskedInput**：掩码输入组件，该组件扩展了[TextInput](https://reactnative.dev/docs/textinput)属性。
 
@@ -668,44 +668,44 @@ ohpm install
 | Name                                     | Description                                                  | Type                                                         | Required | Platform    | HarmonyOS Support |
 | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | ----------- | ----------------- |
 | customPickerProps                        | 自定义选择器属性（使用 renderPicker 时，将应用于按钮包装器） | object                                                       | no       | iOS/Android | yes               |
-| enableModalBlur                          | 仅限 iOS，为选择器模态添加模糊效果                   | boolean                                                      | no       | iOS         | yes               |
-| fieldType                                | 为不同的字段类型 UI 传递（表单、过滤器或设置）  | PickerFieldTypes                                             | no       | iOS/Android | yes               |
-| getLabel                                 | 返回所选 Picker 值要显示的标签的函数 | (value: string \| number) => void                            | no       | iOS/Android | yes               |
-| items                                    | Picker 的数据源                                       | {label: string, value: string \| number}[]                   | no       | iOS/Android | yes               |
+| enableModalBlur                          | 仅限 iOS，为选择器模态添加模糊效果                           | boolean                                                      | no       | iOS         | yes               |
+| fieldType                                | 为不同的字段类型 UI 传递（表单、过滤器或设置）               | PickerFieldTypes                                             | no       | iOS/Android | yes               |
+| getLabel                                 | 返回所选 Picker 值要显示的标签的函数                         | (value: string \| number) => void                            | no       | iOS/Android | yes               |
+| items                                    | Picker 的数据源                                              | {label: string, value: string \| number}[]                   | no       | iOS/Android | yes               |
 | listProps                                | 传递给包装选择器选项的列表组件的属性（允许控制 FlatList 行为） | FlatListProps                                                | no       | iOS/Android | yes               |
-| migrate                                  | 迁移到 Picker 新 API 所需的临时属性    | boolean                                                      | no       | iOS/Android | yes               |
-| mode                                     | 单选模式或多选模式                                    | SINGLE \| MULTI                                              | no       | iOS/Android | yes               |
-| onChange                                 | 当选择器值更改时的回调                        | (value: string \| number) => void                            | no       | iOS/Android | yes               |
-| onPress                                  | 为按下选择器时添加 onPress 回调            | () => void                                                   | no       | iOS/Android | yes               |
-| onSearchChange                           | 选择器模态搜索输入文本更改的回调（仅在传递 showSearch 时） | V7.29.1:<br/>(searchValue: string) => void<br/>V7.43.1:<br/>(searchValue: string, filteredItems?: PickerFilteredItems) => void | no       | iOS/Android | yes               |
-| pickerModalProps                         | 传递给选择器模态的属性                               | ModalProps                                                   | no       | iOS/Android | yes               |
-| renderCustomModal                        | 渲染自定义选择器模态                                   | ({visible, children, toggleModal}) => void)                  | no       | iOS/Android | yes               |
-| renderCustomSearch                       | 渲染自定义搜索输入（仅在传递 showSearch 时）    | (props) => void                                              | no       | iOS/Android | yes               |
-| renderItem                               | 渲染自定义选择器项                                    | (value, {{...props, isSelected}}, itemLabel) => void         | no       | iOS/Android | yes               |
+| migrate <sup>Deprecated v7.43.1+</sup>   | 迁移到 Picker 新 API 所需的临时属性                          | boolean                                                      | no       | iOS/Android | yes               |
+| mode                                     | 单选模式或多选模式                                           | SINGLE \| MULTI                                              | no       | iOS/Android | yes               |
+| onChange                                 | 当选择器值更改时的回调                                       | (value: string \| number) => void                            | no       | iOS/Android | yes               |
+| onPress                                  | 为按下选择器时添加 onPress 回调                              | () => void                                                   | no       | iOS/Android | yes               |
+| onSearchChange                           | 选择器模态搜索输入文本更改的回调（仅在传递 showSearch 时）   | V7.29.1:<br/>(searchValue: string) => void<br/>V7.43.1:<br/>(searchValue: string, filteredItems?: PickerFilteredItems) => void | no       | iOS/Android | yes               |
+| pickerModalProps                         | 传递给选择器模态的属性                                       | ModalProps                                                   | no       | iOS/Android | yes               |
+| renderCustomModal                        | 渲染自定义选择器模态                                         | ({visible, children, toggleModal}) => void)                  | no       | iOS/Android | yes               |
+| renderCustomSearch                       | 渲染自定义搜索输入（仅在传递 showSearch 时）                 | (props) => void                                              | no       | iOS/Android | yes               |
+| renderItem                               | 渲染自定义选择器项                                           | (value, {{...props, isSelected}}, itemLabel) => void         | no       | iOS/Android | yes               |
 | renderPicker                             | 渲染自定义选择器 - 输入将是值（见上文）\示例：\renderPicker = (selectedItem) => {...} | (selectedItem, itemLabel) => void                            | no       | iOS/Android | yes               |
-| searchPlaceholder                        | 搜索输入的占位符文本（仅在传递 showSearch 时） | string                                                       | no       | iOS/Android | yes               |
-| searchStyle                              | 搜索输入的样式对象（仅在传递 showSearch 时） | {color: string, placeholderTextColor: string, selectionColor: string} | no       | iOS/Android | yes               |
-| selectionLimit                           | 限制所选项目的数量                           | number                                                       | no       | iOS/Android | yes               |
-| showSearch                               | 显示搜索输入以按标签过滤选择器项            | boolean                                                      | no       | iOS/Android | yes               |
-| topBarProps                              | 选择器模态顶部栏属性                               | Modal's TopBarProps                                          | no       | iOS/Android | yes               |
-| useSafeArea                              | 在选择器模态视图中添加安全区域                       | boolean                                                      | no       | iOS/Android | yes               |
-| useWheelPicker                           | 使用滚轮选择器而不是列表选择器                    | boolean                                                      | no       | iOS/Android | yes               |
-| value                                    | 选择器当前值                                         | string \| number                                             | no       | iOS/Android | yes               |
-| renderCustomTopElement<sup>7.43.1+</sup> | 渲染自定义顶部元素                                    | (value?: PickerValue) =>  React.ReactElement                 | no       | iOS/Android | yes               |
-| showLoader<sup>7.43.1+</sup>             | 显示加载器（当项目正在加载/获取时）            | boolean                                                      | no       | iOS/Android | yes               |
-| customLoaderElement<sup>7.43.1+</sup>    | 自定义加载器元素                                        | ReactNode                                                    | no       | iOS/Android | yes               |
+| searchPlaceholder                        | 搜索输入的占位符文本（仅在传递 showSearch 时）               | string                                                       | no       | iOS/Android | yes               |
+| searchStyle                              | 搜索输入的样式对象（仅在传递 showSearch 时）                 | {color: string, placeholderTextColor: string, selectionColor: string} | no       | iOS/Android | yes               |
+| selectionLimit                           | 限制所选项目的数量                                           | number                                                       | no       | iOS/Android | yes               |
+| showSearch                               | 显示搜索输入以按标签过滤选择器项                             | boolean                                                      | no       | iOS/Android | yes               |
+| topBarProps                              | 选择器模态顶部栏属性                                         | Modal's TopBarProps                                          | no       | iOS/Android | yes               |
+| useSafeArea                              | 在选择器模态视图中添加安全区域                               | boolean                                                      | no       | iOS/Android | yes               |
+| useWheelPicker                           | 使用滚轮选择器而不是列表选择器                               | boolean                                                      | no       | iOS/Android | yes               |
+| value                                    | 选择器当前值                                                 | string \| number                                             | no       | iOS/Android | yes               |
+| renderCustomTopElement<sup>7.43.1+</sup> | 渲染自定义顶部元素                                           | (value?: PickerValue) =>  React.ReactElement                 | no       | iOS/Android | yes               |
+| showLoader<sup>7.43.1+</sup>             | 显示加载器（当项目正在加载/获取时）                          | boolean                                                      | no       | iOS/Android | yes               |
+| customLoaderElement<sup>7.43.1+</sup>    | 自定义加载器元素                                             | ReactNode                                                    | no       | iOS/Android | yes               |
 
 **Picker.Item**：弹窗选择Item组件，配合Picker组件使用。
 
 | Name              | Description                                                  | Type                                                         | Required | Platform    | HarmonyOS Support |
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | ----------- | ----------------- |
-| disabled          | 项目是否禁用                                         | boolean                                                      | no       | iOS/Android | yes               |
-| getItemLabel      | 项目标签的自定义函数                           | (value: string \| number) => string                          | no       | iOS/Android | yes               |
-| isSelected        | 项目是否被选中                                         | boolean                                                      | no       | iOS/Android | yes               |
+| disabled            | 项目是否禁用                                         | boolean                                                      | no       | iOS/Android | yes               |
+| getItemLabel <sup>Deprecated v7.43.1+</sup>       | 项目标签的自定义函数                           | (value: string \| number) => string                          | no       | iOS/Android | yes               |
+| isSelected <sup>Deprecated v7.43.1+</sup>       | 项目是否被选中                                         | boolean                                                      | no       | iOS/Android | yes               |
 | label             | 项目的标签                                                 | string                                                       | no       | iOS/Android | yes               |
 | labelStyle        | 项目的标签样式                                           | ViewStyle                                                    | no       | iOS/Android | yes               |
 | onPress           | onPress 操作的回调，如果返回 false 将停止选择 | (selected: boolean \| undefined, props: any) => void \| Promise<boolean>; | no       | iOS/Android | yes               |
-| onSelectedLayout  | onLayout 事件的回调                                  | (event: LayoutChangeEvent) => void                           | no       | iOS/Android | yes               |
+| onSelectedLayout <sup>Deprecated v7.43.1+</sup>   | onLayout 事件的回调                                  | (event: LayoutChangeEvent) => void                           | no       | iOS/Android | yes               |
 | selectedIcon      | 传递以更改选中图标                             | string                                                       | no       | iOS/Android | yes               |
 | selectedIconColor | 传递以更改选中图标的颜色                       | ImageSource                                                  | no       | iOS/Android | yes               |
 | value             | 项目的值                                                 | string \| number                                             | no       | iOS/Android | yes               |
@@ -765,66 +765,66 @@ ohpm install
 
 | Name                                     | Description                                                  | Type                                                         | Required | Platform    | HarmonyOS Support |
 | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | ----------- | ----------------- |
-| centered                                 | 是否居中 TextField - 容器和标签        | boolean                                                      | no       | iOS/Android | yes               |
-| charCounterStyle                         | 为字符计数器文本传递自定义样式                  | TextStyle                                                    | no       | iOS/Android | yes               |
-| color                                    | 输入颜色                                                  | ColorType                                                    | no       | iOS/Android | yes               |
-| containerProps                           | 整个组件的容器属性                       | Omit<ViewProps, 'style'>                                     | no       | iOS/Android | yes               |
-| containerStyle                           | 整个组件的容器样式                       | ViewStyle                                                    | no       | iOS/Android | yes               |
-| enableErrors                             | 是否应支持显示验证错误消息              | boolean                                                      | no       | iOS/Android | yes               |
-| fieldStyle                               | 用于设置字段下划线、轮廓和填充颜色的字段容器的内部样式 | ViewStyle \| (context: FieldContextType, props) => ViewStyle | no       | iOS/Android | yes               |
-| floatOnFocus                             | 占位符是否应在聚焦或开始输入时浮动       | boolean                                                      | no       | iOS/Android | yes               |
-| floatingPlaceholder                      | 传递以添加浮动占位符支持                     | boolean                                                      | no       | iOS/Android | yes               |
-| floatingPlaceholderColor                 | 浮动占位符颜色                               | ColorType                                                    | no       | iOS/Android | yes               |
-| floatingPlaceholderStyle                 | 浮动占位符的自定义样式                    | TextStyle                                                    | no       | iOS/Android | yes               |
-| formatter                                | 输入值的自定义格式化器（仅在输入未聚焦时使用） | (value) => string \| undefined                               | no       | iOS/Android | yes               |
-| hint                                     | 聚焦字段时显示的提示文本               | string                                                       | no       | iOS/Android | yes               |
-| label                                    | 字段标签                                                  | string                                                       | no       | iOS/Android | yes               |
+| centered                                 | 是否居中 TextField - 容器和标签                              | boolean                                                      | no       | iOS/Android | yes               |
+| charCounterStyle                         | 为字符计数器文本传递自定义样式                               | TextStyle                                                    | no       | iOS/Android | yes               |
+| color                                    | 输入颜色                                                     | ColorType                                                    | no       | iOS/Android | yes               |
+| containerProps                           | 整个组件的容器属性                                           | Omit<ViewProps, 'style'>                                     | no       | iOS/Android | yes               |
+| containerStyle                           | 整个组件的容器样式                                           | ViewStyle                                                    | no       | iOS/Android | yes               |
+| enableErrors                             | 是否应支持显示验证错误消息                                   | boolean                                                      | no       | iOS/Android | yes               |
+| fieldStyle                               | 用于设置字段下划线、轮廓和填充颜色的字段容器的内部样式       | ViewStyle \| (context: FieldContextType, props) => ViewStyle | no       | iOS/Android | yes               |
+| floatOnFocus                             | 占位符是否应在聚焦或开始输入时浮动                           | boolean                                                      | no       | iOS/Android | yes               |
+| floatingPlaceholder                      | 传递以添加浮动占位符支持                                     | boolean                                                      | no       | iOS/Android | yes               |
+| floatingPlaceholderColor                 | 浮动占位符颜色                                               | ColorType                                                    | no       | iOS/Android | yes               |
+| floatingPlaceholderStyle                 | 浮动占位符的自定义样式                                       | TextStyle                                                    | no       | iOS/Android | yes               |
+| formatter                                | 输入值的自定义格式化器（仅在输入未聚焦时使用）               | (value) => string \| undefined                               | no       | iOS/Android | yes               |
+| hint                                     | 聚焦字段时显示的提示文本                                     | string                                                       | no       | iOS/Android | yes               |
+| label                                    | 字段标签                                                     | string                                                       | no       | iOS/Android | yes               |
 | labelColor                               | 字段标签颜色。可以是字符串或按状态映射的颜色（{default, focus, error, disabled, readonly}） | ColorType                                                    | no       | iOS/Android | yes               |
-| labelProps                               | 为标签文本元素传递额外属性                   | TextProps                                                    | no       | iOS/Android | yes               |
-| labelStyle                               | 字段标签的自定义样式                             | TextStyle                                                    | no       | iOS/Android | yes               |
-| leadingAccessory                         | 传递以渲染前导元素                             | ReactElement                                                 | no       | iOS/Android | yes               |
-| onChangeValidity                         | 当字段有效性更改时的回调                 | (isValid: boolean) => void                                   | no       | iOS/Android | yes               |
-| onValidationFailed                       | 当字段验证失败时的回调                 | (failedValidatorIndex: number) => void                       | no       | iOS/Android | yes               |
-| placeholder                              | 字段的占位符                                | string                                                       | no       | iOS/Android | yes               |
-| placeholderTextColor                     | 占位符文本颜色                                       | ColorType                                                    | no       | iOS/Android | yes               |
-| preset                                   | 用于设置字段样式的预定义预设               | 'default' \| null \|string                                   | no       | iOS/Android | yes               |
-| readonly                                 | 只读状态的 UI 预设                              | boolean                                                      | no       | iOS/Android | yes               |
-| recorderTag                              | 记录器标签                                                 | 'mask' \| 'unmask'                                           | no       | iOS/Android | yes               |
-| retainValidationSpace                    | 即使没有验证消息也保留验证空间 | boolean                                                      | no       | iOS/Android | yes               |
-| showCharCounter                          | 是否应显示字符计数器（仅在使用 maxLength 时有效）  | boolean                                                      | no       | iOS/Android | yes               |
-| showMandatoryIndication                  | 是否显示必填字段指示                 | boolean                                                      | no       | iOS/Android | yes               |
-| trailingAccessory                        | 传递以渲染尾随元素                            | ReactElement                                                 | no       | iOS/Android | yes               |
-| useGestureHandlerInput                   | 为基础 TextInput 使用 react-native-gesture-handler 而不是 react-native | boolean                                                      | no       | iOS/Android | yes               |
+| labelProps                               | 为标签文本元素传递额外属性                                   | TextProps                                                    | no       | iOS/Android | yes               |
+| labelStyle                               | 字段标签的自定义样式                                         | TextStyle                                                    | no       | iOS/Android | yes               |
+| leadingAccessory                         | 传递以渲染前导元素                                           | ReactElement                                                 | no       | iOS/Android | yes               |
+| onChangeValidity                         | 当字段有效性更改时的回调                                     | (isValid: boolean) => void                                   | no       | iOS/Android | yes               |
+| onValidationFailed                       | 当字段验证失败时的回调                                       | (failedValidatorIndex: number) => void                       | no       | iOS/Android | yes               |
+| placeholder                              | 字段的占位符                                                 | string                                                       | no       | iOS/Android | yes               |
+| placeholderTextColor                     | 占位符文本颜色                                               | ColorType                                                    | no       | iOS/Android | yes               |
+| preset                                   | 用于设置字段样式的预定义预设                                 | 'default' \| null \|string                                   | no       | iOS/Android | yes               |
+| readonly                                 | 只读状态的 UI 预设                                           | boolean                                                      | no       | iOS/Android | yes               |
+| recorderTag                              | 记录器标签                                                   | 'mask' \| 'unmask'                                           | no       | iOS/Android | yes             |
+| retainValidationSpace                    | 即使没有验证消息也保留验证空间                               | boolean                                                      | no       | iOS/Android | yes               |
+| showCharCounter                          | 是否应显示字符计数器（仅在使用 maxLength 时有效）            | boolean                                                      | no       | iOS/Android | yes               |
+| showMandatoryIndication                  | 是否显示必填字段指示                                         | boolean                                                      | no       | iOS/Android | yes             |
+| trailingAccessory                        | 传递以渲染尾随元素                                           | ReactElement                                                 | no       | iOS/Android | yes               |
+| useGestureHandlerInput                   | 为基础 TextInput 使用 react-native-gesture-handler 而不是 react-native | boolean                                                      | no       | iOS/Android | yes                |
 | validate                                 | 单个或多个验证器。可以是字符串（required, email）或自定义函数。 | Validator \| Validator []                                    | no       | iOS/Android | yes               |
-| validateOnBlur                           | 是否应在失去 TextField 焦点时验证               | boolean                                                      | no       | iOS/Android | yes               |
-| validateOnChange                         | 是否应在 TextField 值更改时验证             | boolean                                                      | no       | iOS/Android | yes               |
-| validateOnStart                          | 是否应在 TextField 挂载时验证                    | boolean                                                      | no       | iOS/Android | yes               |
-| validationMessage                        | 当字段无效时显示的验证消息（取决于 validate） | string \| string[]                                           | no       | iOS/Android | yes               |
-| validationMessagePosition                | 验证消息的位置（顶部/底部）          | ValidationMessagePosition                                    | no       | iOS/Android | yes               |
-| validationMessageStyle                   | 验证消息的自定义样式                      | TextStyle                                                    | no       | iOS/Android | yes               |
-| validationDebounceTime<sup>7.43.1+</sup> | 发送 validateOnChange 时添加去超时时间         | number                                                       | no       | iOS/Android | yes               |
+| validateOnBlur                           | 是否应在失去 TextField 焦点时验证                            | boolean                                                      | no       | iOS/Android | yes               |
+| validateOnChange                         | 是否应在 TextField 值更改时验证                              | boolean                                                      | no       | iOS/Android | yes               |
+| validateOnStart                          | 是否应在 TextField 挂载时验证                                | boolean                                                      | no       | iOS/Android | yes               |
+| validationMessage                        | 当字段无效时显示的验证消息（取决于 validate）                | string \| string[]                                           | no       | iOS/Android | yes               |
+| validationMessagePosition                | 验证消息的位置（顶部/底部）                                  | ValidationMessagePosition                                    | no       | iOS/Android | yes               |
+| validationMessageStyle                   | 验证消息的自定义样式                                         | TextStyle                                                    | no       | iOS/Android | yes               |
+| validationDebounceTime<sup>7.43.1+</sup> | 发送 validateOnChange 时添加去超时时间                       | number                                                       | no       | iOS/Android | yes               |
 | innerFlexBehavior<sup>7.43.1+</sup>      | 设置内部容器使用 flex 行为来解决使用前导或尾随附件时的文本溢出问题（当字段在行容器内时可能会导致 flex 问题） | boolean                                                      | no       | iOS/Android | yes               |
 
 **WheelPicker**：轮式拾取器组件。
 
 | Name                | Description                                                  | Type                                            | Required | Platform    | HarmonyOS Support |
 | ------------------- | ------------------------------------------------------------ | ----------------------------------------------- | -------- | ----------- | ----------------- |
-| activeTextColor     | 聚焦行的文本颜色                               | string                                          | no       | iOS/Android | yes               |
-| align               | 将内容对齐到中心、右侧或左侧                   | WheelPickerAlign                                | no       | iOS/Android | yes               |
-| flatListProps       | 要发送给 FlatList 的属性。                            | FlatListProps                                   | no       | iOS/Android | yes               |
-| inactiveTextColor   | 其他非聚焦行的文本颜色                       | string                                          | no       | iOS/Android | yes               |
-| initialValue        | 初始值（非受控）                                 | number \| string                                | no       | iOS/Android | yes               |
-| itemHeight          | WheelPicker 中每个项目的高度                       | number                                          | no       | iOS/Android | yes               |
-| items               | WheelPicker 的数据源                                  | WheelPickerItemProps[]                          | no       | iOS/Android | yes               |
-| label               | 在项目文本旁边渲染的额外标签            | string                                          | no       | iOS/Android | yes               |
-| labelProps          | 额外标签的属性                                     | TextProps                                       | no       | iOS/Android | yes               |
-| labelStyle          | 额外标签的样式                                     | TextStyle                                       | no       | iOS/Android | yes               |
-| numberOfVisibleRows | 可见行数                                       | number                                          | no       | iOS/Android | yes               |
-| onChange            | 更改项目事件回调                                   | (item: string \| number, index: number) => void | no       | iOS/Android | yes               |
-| separatorsStyle     | 分隔符的额外样式                               | ViewStyle                                       | no       | iOS/Android | yes               |
+| activeTextColor     | 聚焦行的文本颜色                                             | string                                          | no       | iOS/Android | yes               |
+| align               | 将内容对齐到中心、右侧或左侧                                 | WheelPickerAlign                                | no       | iOS/Android | yes               |
+| flatListProps       | 要发送给 FlatList 的属性。                                   | FlatListProps                                   | no       | iOS/Android | yes               |
+| inactiveTextColor   | 其他非聚焦行的文本颜色                                       | string                                          | no       | iOS/Android | yes               |
+| initialValue        | 初始值（非受控）                                             | number \| string                                | no       | iOS/Android | yes               |
+| itemHeight          | WheelPicker 中每个项目的高度                                 | number                                          | no       | iOS/Android | yes               |
+| items               | WheelPicker 的数据源                                         | WheelPickerItemProps[]                          | no       | iOS/Android | yes               |
+| label               | 在项目文本旁边渲染的额外标签                                 | string                                          | no       | iOS/Android | yes               |
+| labelProps          | 额外标签的属性                                               | TextProps                                       | no       | iOS/Android | yes               |
+| labelStyle          | 额外标签的样式                                               | TextStyle                                       | no       | iOS/Android | yes               |
+| numberOfVisibleRows | 可见行数                                                     | number                                          | no       | iOS/Android | yes               |
+| onChange            | 更改项目事件回调                                             | (item: string \| number, index: number) => void | no       | iOS/Android | yes               |
+| separatorsStyle     | 分隔符的额外样式                                             | ViewStyle                                       | no       | iOS/Android | yes               |
 | style               | 高度根据 itemHeight * numberOfVisibleRows 计算。容器的自定义样式 | ViewStyle                                       | no       | iOS/Android | yes               |
-| testID              | 测试标识符                                              | string                                          | no       | iOS/Android | yes               |
-| textStyle           | 行文本自定义样式                                        | TextStyle                                       | no       | iOS/Android | yes               |
+| testID              | 测试标识符                                                   | string                                          | no       | iOS/Android | yes               |
+| textStyle           | 行文本自定义样式                                             | TextStyle                                       | no       | iOS/Android | yes               |
 
 **Incubator.Dialog**：弹出对话框组件。
 
@@ -863,36 +863,36 @@ ohpm install
 
 | Name                   | Description                                                  | Type                                  | Required | Platform    | HarmonyOS Support |
 | ---------------------- | ------------------------------------------------------------ | ------------------------------------- | -------- | ----------- | ----------------- |
-| accessible             | 如果为 true，组件将启用无障碍功能 | boolean                               | no       | iOS/Android | yes               |
-| activeThumbStyle       | 活动时（按下时）的拇指样式                        | ViewStyle                             | no       | iOS/Android | yes               |
-| containerStyle         | 容器样式                                          | ViewStyle                             | no       | iOS/Android | yes               |
-| disableActiveStyling   | 如果为 true，Slider 在按下时不会改变其样式       | boolean                               | no       | iOS/Android | yes               |
-| disableRTL             | 如果为 true，即使应用程序处于 RTL 模式，Slider 也将保持在 LTR 模式 | boolean                               | no       | iOS/Android | yes               |
-| disabled               | 如果为 true，Slider 将被禁用并以禁用颜色显示 | boolean                               | no       | iOS/Android | yes               |
-| disabledThumbTintColor | 禁用的拇指颜色                                         | string                                | no       | iOS/Android | yes               |
-| enableThumbShadow      | 拇指是否会有阴影（仅在 'migrate' 为 true 时） | boolean                               | no       | iOS/Android | yes               |
-| initialMaximumValue    | 仅当 `useRange` 为 true 时。初始最大值          | number                                | no       | iOS/Android | yes               |
-| initialMinimumValue    | 仅当 `useRange` 为 true 时。初始最小值          | number                                | no       | iOS/Android | yes               |
-| maximumTrackTintColor  | 轨道颜色                                              | string                                | no       | iOS/Android | yes               |
-| maximumValue           | 轨道最大值                                          | number                                | no       | iOS/Android | yes               |
-| minimumTrackTintColor  | 从最小值到当前值的轨道颜色 | string                                | no       | iOS/Android | yes               |
-| minimumValue           | 轨道最小值                                          | number                                | no       | iOS/Android | yes               |
-| onRangeChange          | onRangeChange 的回调。返回包含最小值和最大值的值对象 | SliderOnRangeChange                   | no       | iOS/Android | yes               |
-| onReset                | 当重置功能被调用时通知的回调   | () => void                            | no       | iOS/Android | yes               |
-| onSeekEnd              | 通知滑块寻道已完成时的回调      | () => void                            | no       | iOS/Android | yes               |
-| onSeekStart            | 通知滑块寻道开始时的回调       | () => void                            | no       | iOS/Android | yes               |
-| onValueChange          | onValueChange 的回调                                   | SliderOnValueChange                   | no       | iOS/Android | yes               |
-| renderTrack            | 自定义渲染而不是渲染轨道                 | () => ReactElement  \| ReactElement[] | no       | iOS/Android | yes               |
-| step                   | 滑块的步长值。该值应介于 0 与（最大值 - 最小值）之间 | number                                | no       | iOS/Android | yes               |
-| testID                 | 组件测试 ID                                        | string                                | no       | iOS/Android | yes               |
-| throttleTime           | 控制 onValueChange 和 onRangeChange 回调的节流时间 | number                                | no       | iOS/Android | yes               |
-| thumbHitSlop           | 定义触摸事件可以从拇指开始多远  | number                                | no       | iOS/Android | yes               |
-| thumbStyle             | 拇指样式                                              | ViewStyle                             | no       | iOS/Android | yes               |
-| thumbTintColor         | 拇指颜色                                                  | string                                | no       | iOS/Android | yes               |
-| trackStyle             | 轨道样式                                              | ViewStyle                             | no       | iOS/Android | yes               |
-| useGap                 | 如果为 true，最小值和最大值的拇指将不会重叠              | boolean                               | no       | iOS/Android | yes               |
-| useRange               | 如果为 true，Slider 将显示第二个拇指用于最小值 | boolean                               | no       | iOS/Android | yes               |
-| value                  | 初始值                                                | number                                | no       | iOS/Android | yes               |
+| accessible             | 如果为 true，组件将启用无障碍功能                            | boolean                               | no       | iOS/Android | yes               |
+| activeThumbStyle       | 活动时（按下时）的拇指样式                                   | ViewStyle                             | no       | iOS/Android | yes               |
+| containerStyle         | 容器样式                                                     | ViewStyle                             | no       | iOS/Android | yes               |
+| disableActiveStyling   | 如果为 true，Slider 在按下时不会改变其样式                   | boolean                               | no       | iOS/Android | yes               |
+| disableRTL             | 如果为 true，即使应用程序处于 RTL 模式，Slider 也将保持在 LTR 模式 | boolean                               | no       | iOS/Android | yes                |
+| disabled               | 如果为 true，Slider 将被禁用并以禁用颜色显示                 | boolean                               | no       | iOS/Android | yes               |
+| disabledThumbTintColor | 禁用的拇指颜色                                               | string                                | no       | iOS/Android | yes               |
+| enableThumbShadow      | 拇指是否会有阴影（仅在 'migrate' 为 true 时）                | boolean                               | no       | iOS/Android | yes               |
+| initialMaximumValue    | 仅当 `useRange` 为 true 时。初始最大值                       | number                                | no       | iOS/Android | yes               |
+| initialMinimumValue    | 仅当 `useRange` 为 true 时。初始最小值                       | number                                | no       | iOS/Android | yes               |
+| maximumTrackTintColor  | 轨道颜色                                                     | string                                | no       | iOS/Android | yes               |
+| maximumValue           | 轨道最大值                                                   | number                                | no       | iOS/Android | yes               |
+| minimumTrackTintColor  | 从最小值到当前值的轨道颜色                                   | string                                | no       | iOS/Android | yes               |
+| minimumValue           | 轨道最小值                                                   | number                                | no       | iOS/Android | yes               |
+| onRangeChange          | onRangeChange 的回调。返回包含最小值和最大值的值对象         | SliderOnRangeChange                   | no       | iOS/Android | yes               |
+| onReset                | 当重置功能被调用时通知的回调                                 | () => void                            | no       | iOS/Android | yes               |
+| onSeekEnd              | 通知滑块寻道已完成时的回调                                   | () => void                            | no       | iOS/Android | yes               |
+| onSeekStart            | 通知滑块寻道开始时的回调                                     | () => void                            | no       | iOS/Android | yes               |
+| onValueChange          | onValueChange 的回调                                         | SliderOnValueChange                   | no       | iOS/Android | yes               |
+| renderTrack            | 自定义渲染而不是渲染轨道                                     | () => ReactElement  \| ReactElement[] | no       | iOS/Android | yes               |
+| step                   | 滑块的步长值。该值应介于 0 与（最大值 - 最小值）之间         | number                                | no       | iOS/Android | yes               |
+| testID                 | 组件测试 ID                                                  | string                                | no       | iOS/Android | yes               |
+| throttleTime           | 控制 onValueChange 和 onRangeChange 回调的节流时间           | number                                | no       | iOS/Android | yes               |
+| thumbHitSlop           | 定义触摸事件可以从拇指开始多远                               | number                                | no       | iOS/Android | yes               |
+| thumbStyle             | 拇指样式                                                     | ViewStyle                             | no       | iOS/Android | yes               |
+| thumbTintColor         | 拇指颜色                                                     | string                                | no       | iOS/Android | yes               |
+| trackStyle             | 轨道样式                                                     | ViewStyle                             | no       | iOS/Android | yes               |
+| useGap                 | 如果为 true，最小值和最大值的拇指将不会重叠                  | boolean                               | no       | iOS/Android | yes               |
+| useRange               | 如果为 true，Slider 将显示第二个拇指用于最小值               | boolean                               | no       | iOS/Android | yes               |
+| value                  | 初始值                                                       | number                                | no       | iOS/Android | yes               |
 
 **Incubator.Toast**：非中断式弹窗组件。
 
@@ -922,7 +922,7 @@ ohpm install
 | visible              | 是否显示或隐藏 Toast                            | boolean                                                      | no       | iOS/Android | yes               |
 | zIndex               | Toast 的自定义 zIndex                                      | number                                                       | no       | iOS/Android | yes               |
 
-**Dash**：阔折现组件。
+**Dash**：虚线组件。
 
 | Name           | Description                           | Type      | Required | Platform    | HarmonyOS Support |
 | -------------- | ------------------------------------- | --------- | -------- | ----------- | ----------------- |
@@ -959,7 +959,7 @@ ohpm install
 | Name          | Description                       | Type          | Required | Platform    | HarmonyOS Support |
 | ------------- | --------------------------------- | ------------- | -------- | ----------- | ----------------- |
 | color         | 渐变的颜色         | string        | no       | iOS/Android | yes               |
-| numberOfSteps | 步数               | number        | no       | iOS/Android | yes               |
+| numberOfSteps | 颜色的变化阶梯        | number        | no       | iOS/Android | yes               |
 | style         | 组件的额外样式 | ViewStyle     | no       | iOS/Android | yes               |
 | type          | 色调 \| 亮度 \| 饱和度    | GradientTypes | no       | iOS/Android | yes               |
 
@@ -986,15 +986,15 @@ ohpm install
 
 | Name                | Description                                                  | Type            | Required | Platform    | HarmonyOS Support |
 | ------------------- | ------------------------------------------------------------ | --------------- | -------- | ----------- | ----------------- |
-| addListener         | 为回调添加监听器。globalID（字符串）- 包含 componentID 和事件名称的 ID（例如，如果 componentID='kb1' globalID='kb1.onItemSelected'）callback（函数）- 当所述事件发生时调用的回调 | static function | no       | iOS/Android | yes               |
-| getAllKeyboards     | 获取所有键盘                                            | static function | no       | iOS/Android | yes               |
-| getKeyboard         | 获取特定键盘 componentID（字符串）- 键盘的 ID。 | static function | no       | iOS/Android | yes               |
-| getKeyboards        | 按 ID 获取键盘 componentIDs（字符串[]）- 键盘的 ID。 | static function | no       | iOS/Android | yes               |
-| notifyListeners     | 通知事件已发生。globalID（字符串）- 包含 componentID 和事件名称的 ID（例如，如果 componentID='kb1' globalID='kb1.onItemSelected'）args（对象）- 要发送给监听器的数据。 | static function | no       | iOS/Android | yes               |
-| onItemSelected      | 当键盘上的项目被按下时使用的默认事件。componentID（字符串）- 键盘的 ID。args（对象）- 要发送给监听器的数据。 | static function | no       | iOS/Android | yes               |
-| registerKeyboard    | 注册新键盘。componentID（字符串）- 键盘的 ID。generator（函数）- 用于创建键盘的函数。params（对象）- 在使用其他方法（即 getKeyboards 和 getAllKeyboards）时返回。 | static function | no       | iOS/Android | yes               |
-| removeListeners     | 为回调移除监听器。globalID（字符串）- 包含 componentID 和事件名称的 ID（例如，如果 componentID='kb1' globalID='kb1.onItemSelected'） | static function | no       | iOS/Android | yes               |
-| requestShowKeyboard | 请求显示键盘 componentID（字符串）- 键盘的 ID。 | static function | no       | iOS/Android | yes               |
+| addListener         | 为回调添加监听器。globalID（字符串）- 包含 componentID 和事件名称的 ID（例如，如果 componentID='kb1' globalID='kb1.onItemSelected'）callback（函数）- 当所述事件发生时调用的回调 | static function | no       | iOS/Android | no                |
+| getAllKeyboards     | 获取所有键盘                                                 | static function | no       | iOS/Android | no                |
+| getKeyboard         | 获取特定键盘 componentID（字符串）- 键盘的 ID。              | static function | no       | iOS/Android | no                |
+| getKeyboards        | 按 ID 获取键盘 componentIDs（字符串[]）- 键盘的 ID。         | static function | no       | iOS/Android | no                |
+| notifyListeners     | 通知事件已发生。globalID（字符串）- 包含 componentID 和事件名称的 ID（例如，如果 componentID='kb1' globalID='kb1.onItemSelected'）args（对象）- 要发送给监听器的数据。 | static function | no       | iOS/Android | no                |
+| onItemSelected      | 当键盘上的项目被按下时使用的默认事件。componentID（字符串）- 键盘的 ID。args（对象）- 要发送给监听器的数据。 | static function | no       | iOS/Android | no                |
+| registerKeyboard    | 注册新键盘。componentID（字符串）- 键盘的 ID。generator（函数）- 用于创建键盘的函数。params（对象）- 在使用其他方法（即 getKeyboards 和 getAllKeyboards）时返回。 | static function | no       | iOS/Android | no                |
+| removeListeners     | 为回调移除监听器。globalID（字符串）- 包含 componentID 和事件名称的 ID（例如，如果 componentID='kb1' globalID='kb1.onItemSelected'） | static function | no       | iOS/Android | no                |
+| requestShowKeyboard | 请求显示键盘 componentID（字符串）- 键盘的 ID。              | static function | no       | iOS/Android | no                |
 
 **KeyboardTrackingView**：为该视图及其子视图启用"键盘跟踪"的 UI 组件。通常用于该视图内有 TextField 或 TextInput 的情况，该组件仅适用于iOS。
 
@@ -1016,37 +1016,37 @@ ohpm install
 
 **Overlay**：带类型覆盖视图，为Image组件属性，扩展了[image](https://reactnative.dev/docs/image)组件。
 
-| Name          | Description                                               | Type                                                  | Required | Platform    | HarmonyOS Support |
-| ------------- | --------------------------------------------------------- | ----------------------------------------------------- | -------- | ----------- | ----------------- |
-| color         | 覆盖颜色                                         | string                                                | no       | iOS/Android | yes               |
-| customContent | 在图像顶部渲染的自定义覆盖内容 | JSX.Element                                           | no       | iOS/Android | yes               |
-| intensity     | 渐变的强度。                            | low \|medium \|high                                   | no       | iOS/Android | yes               |
-| type          | 设置在图像顶部的覆盖类型            | vertical \| top  \| bottom \| solid (OverlayTypeType) | no       | iOS/Android | yes               |
+| Name                 | Description                    | Type                                                  | Required | Platform    | HarmonyOS Support |
+| -------------------- | ------------------------------ | ----------------------------------------------------- | -------- | ----------- | ----------------- |
+| overlayColor         | 覆盖颜色                       | string                                                | no       | iOS/Android | yes               |
+| customOverlayContent | 在图像顶部渲染的自定义覆盖内容 | JSX.Element                                           | no       | iOS/Android | yes               |
+| overlayIntensity     | 渐变的强度。                   | low \|medium \|high                                   | no       | iOS/Android | yes               |
+| overlayType          | 设置在图像顶部的覆盖类型       | vertical \| top  \| bottom \| solid (OverlayTypeType) | no       | iOS/Android | yes               |
 
 **Card**：卡片组件，扩展了[TouchableOpacity](https://wix.github.io/react-native-ui-lib/docs/components/basic/TouchableOpacity)组件，依赖[@react-native-community/blur](/zh-cn/react-native-community-blur.md)。
 
 | Name             | Description                                                  | Type                 | Required | Platform    | HarmonyOS Support |
 | ---------------- | ------------------------------------------------------------ | -------------------- | -------- | ----------- | ----------------- |
 | blurOptions      | 根据 @react-native-community/blur 库的模糊效果选项（确保 enableBlur 开启） | object               | no       | iOS/Android | yes               |
-| borderRadius     | 卡片边框半径（将传递给内部 Card.Image 组件） | number               | no       | iOS/Android | yes               |
-| containerStyle   | 卡片容器的额外样式                     | ViewStyle            | no       | iOS/Android | yes               |
-| elevation        | 仅限 Android。高程值                                | number               | no       | Android     | no                |
-| enableBlur       | 仅限 iOS。启用模糊效果                                 | boolean              | no       | iOS         | no                |
-| enableShadow     | 卡片是否应有阴影                   | boolean              | no       | iOS/Android | yes               |
-| height           | 卡片自定义高度                                           | number \| string     | no       | iOS/Android | yes               |
-| onPress          | 卡片按下事件的回调函数                       | function             | no       | iOS/Android | yes               |
-| row              | 内部卡片流动方向是否应为水平               | boolean              | no       | iOS/Android | yes               |
-| selected         | 添加视觉指示表明卡片被选中             | boolean              | no       | iOS/Android | yes               |
-| selectionOptions | 样式化选择指示的自定义选项          | CardSelectionOptions | no       | iOS/Android | yes               |
-| width            | 卡片自定义宽度                                            | number  \| string    | no       | iOS/Android | yes               |
+| borderRadius     | 卡片边框半径（将传递给内部 Card.Image 组件）                 | number               | no       | iOS/Android | yes               |
+| containerStyle   | 卡片容器的额外样式                                           | ViewStyle            | no       | iOS/Android | yes               |
+| elevation        | 仅限 Android。高程值                                         | number               | no       | Android     | no                |
+| enableBlur       | 仅限 iOS。启用模糊效果                                       | boolean              | no       | iOS         | yes               |
+| enableShadow     | 卡片是否应有阴影                                             | boolean              | no       | iOS/Android | yes               |
+| height           | 卡片自定义高度                                               | number \| string     | no       | iOS/Android | yes               |
+| onPress          | 卡片按下事件的回调函数                                       | function             | no       | iOS/Android | yes               |
+| row              | 内部卡片流动方向是否应为水平                                 | boolean              | no       | iOS/Android | yes               |
+| selected         | 添加视觉指示表明卡片被选中                                   | boolean              | no       | iOS/Android | yes               |
+| selectionOptions | 样式化选择指示的自定义选项                                   | CardSelectionOptions | no       | iOS/Android | yes               |
+| width            | 卡片自定义宽度                                               | number  \| string    | no       | iOS/Android | yes               |
 
 **Card.Image**：Card 组件的内部组件（最好是直接子组件），扩展了[Image](https://wix.github.io/react-native-ui-lib/docs/components/media/Image)组件。
 
 | Name     | Description                                                  | Type     | Required | Platform    | HarmonyOS Support |
 | -------- | ------------------------------------------------------------ | -------- | -------- | ----------- | ----------------- |
-| height   | 高度                                                       | number   | no       | iOS/Android | yes               |
-| position | 图像位置，确定图像的适当弹性度和边框半径（对于 Android）如果作为 Card 父组件的直接子组件渲染，则此属性会自动从 Card 父组件派生 | string[] | no       | iOS/Android | yes               |
-| width    | 宽度                                                        | number   | no       | iOS/Android | yes               |
+| height   | 高度                                                         | number   | no       | iOS/Android | yes               |
+| position | 图像位置，确定图像的适当弹性度和边框半径（对于 Android）如果作为 Card 父组件的直接子组件渲染，则此属性会自动从 Card 父组件派生 | string[] | no       | iOS/Android | yes                |
+| width    | 宽度                                                         | number   | no       | iOS/Android | yes                |
 
 **Card.Section**：用于在 Card 组件内轻松渲染内容的内部组件，扩展了[View](https://wix.github.io/react-native-ui-lib/docs/components/basic/View)组件。
 
@@ -1065,27 +1065,27 @@ ohpm install
 
 | Name                      | Description                                                  | Type                                    | Required | Platform    | HarmonyOS Support |
 | ------------------------- | ------------------------------------------------------------ | --------------------------------------- | -------- | ----------- | ----------------- |
-| allowAccessibleLayout     | 是否为无障碍布局 Carousel                 | boolean                                 | no       | iOS/Android | yes               |
-| animated                  | 容器是否应动画化（通过 containerStyle 发送动画样式） | boolean                                 | no       | iOS/Android | yes               |
+| allowAccessibleLayout     | 是否为无障碍布局 Carousel                                    | boolean                                 | no       | iOS/Android | yes               |
+| animated                  | 容器是否应动画化（通过 containerStyle 发送动画样式）         | boolean                                 | no       | iOS/Android | yes               |
 | animatedScrollOffset      | 传递以附加到 ScrollView 的 Animated.event，以便基于 Carousel 滚动偏移动画元素（传递新的 Animated.ValueXY()） | Animated.ValueXY                        | no       | iOS/Android | yes               |
-| autoplay                  | 启用自动在页面之间切换             | boolean                                 | no       | iOS/Android | yes               |
-| autoplayInterval          | 在切换到下一页之前等待的时间（毫秒）（需要启用 'autoplay'） | number                                  | no       | iOS/Android | yes               |
-| containerMarginHorizontal | Carousel 容器的水平边距                 | number                                  | no       | iOS/Android | yes               |
+| autoplay                  | 启用自动在页面之间切换                                       | boolean                                 | no       | iOS/Android | yes               |
+| autoplayInterval          | 在切换到下一页之前等待的时间（毫秒）（需要启用 'autoplay'）  | number                                  | no       | iOS/Android | yes               |
+| containerMarginHorizontal | Carousel 容器的水平边距                                      | number                                  | no       | iOS/Android | yes               |
 | containerPaddingVertical  | Carousel 容器的垂直内边距（有时在 Android 中需要，当有溢出被截断时）。 | number                                  | no       | iOS/Android | yes               |
-| containerStyle            | Carousel 容器样式                                 | ViewStyle                               | no       | iOS/Android | yes               |
-| counterTextStyle          | 计数器的文本样式                                     | ViewStyle                               | no       | iOS/Android | yes               |
-| horizontal                | 页面将水平渲染还是垂直渲染    | boolean                                 | no       | iOS/Android | yes               |
-| initialPage               | 开始的初始页面                                 | number                                  | no       | iOS/Android | yes               |
-| itemSpacings              | 页面之间的间距                                | number                                  | no       | iOS/Android | yes               |
-| loop                      | 如果为 true，将具有无限滚动（仅适用于水平 Carousel） | boolean                                 | no       | iOS/Android | yes               |
-| onChangePage              | 页面更改事件的回调                               | (pageIndex, oldPageIndex, info) => void | no       | iOS/Android | yes               |
-| onScroll                  | 为内部 ScrollView 的 onScroll 事件附加回调 | function                                | no       | iOS/Android | yes               |
-| pageControlPosition       | PageControl 组件的位置 ['over', 'under']，否则不会显示 | PageControlPosition                     | no       | iOS/Android | yes               |
-| pageControlProps          | PageControl 组件属性                                  | PageControlProps                        | no       | iOS/Android | yes               |
-| pageHeight                | 页面高度（所有页面应具有相同的高度）。     | number                                  | no       | iOS/Android | yes               |
+| containerStyle            | Carousel 容器样式                                            | ViewStyle                               | no       | iOS/Android | yes               |
+| counterTextStyle          | 计数器的文本样式                                             | ViewStyle                               | no       | iOS/Android | yes               |
+| horizontal                | 页面将水平渲染还是垂直渲染                                   | boolean                                 | no       | iOS/Android | yes               |
+| initialPage               | 开始的初始页面                                               | number                                  | no       | iOS/Android | yes               |
+| itemSpacings              | 页面之间的间距                                               | number                                  | no       | iOS/Android | yes                |
+| loop                      | 如果为 true，将具有无限滚动（仅适用于水平 Carousel）         | boolean                                 | no       | iOS/Android | yes               |
+| onChangePage              | 页面更改事件的回调                                           | (pageIndex, oldPageIndex, info) => void | no       | iOS/Android | yes               |
+| onScroll                  | 为内部 ScrollView 的 onScroll 事件附加回调                   | function                                | no       | iOS/Android | yes               |
+| pageControlPosition       | PageControl 组件的位置 ['over', 'under']，否则不会显示       | PageControlPosition                     | no       | iOS/Android | yes               |
+| pageControlProps          | PageControl 组件属性                                         | PageControlProps                        | no       | iOS/Android | yes               |
+| pageHeight                | 页面高度（所有页面应具有相同的高度）。                       | number                                  | no       | iOS/Android | yes               |
 | pageWidth                 | 页面宽度（所有页面应具有相同的宽度）。如果传递 'loop' 属性则不起作用 | number                                  | no       | iOS/Android | yes               |
-| pagingEnabled             | 将阻止多页面滚动（如果使用 'pageWidth' 属性则不起作用） | boolean                                 | no       | iOS/Android | yes               |
-| showCounter               | 是否显示页面计数器（如果使用 'pageWidth' 属性则不起作用） | boolean                                 | no       | iOS/Android | yes               |
+| pagingEnabled             | 将阻止多页面滚动（如果使用 'pageWidth' 属性则不起作用）      | boolean                                 | no       | iOS/Android | yes               |
+| showCounter               | 是否显示页面计数器（如果使用 'pageWidth' 属性则不起作用）    | boolean                                 | no       | iOS/Android | yes               |
 
 **LoaderScreen**：全屏显示组件，通常用于页面加载loading，扩展了[Activityindicator](https://reactnative.dev/docs/activityindicator)组件。
 
@@ -1126,32 +1126,32 @@ ohpm install
 
 **Drawer**：抽屉组件，如果您的应用程序与 RNN 配合使用，则您的屏幕必须使用"react-native-gesture-handler"中的gestureHandlerRootHOC 进行包装。请参阅[这里](https://kmagiera.github.io/react-native-gesture-handler/docs/getting-started.html#with-wix-react-native-navigation-https-githubcom-wix-react-native-navigation)。
 
-| Name                 | Description                                                  | Type                                                  | Required | Platform    | HarmonyOS Support |
-| -------------------- | ------------------------------------------------------------ | ----------------------------------------------------- | -------- | ----------- | ----------------- |
-| bounciness           | 抽屉动画的弹性度                              | number                                                | no       | iOS/Android | yes               |
+| Name                 | Description                                      | Type                                                  | Required | Platform    | HarmonyOS Support |
+| -------------------- | ------------------------------------------------ | ----------------------------------------------------- | -------- | ----------- | ----------------- |
+| bounciness           | 抽屉动画的弹性度                                 | number                                                | no       | iOS/Android | yes               |
 | customValue          | 传递给组件并在操作回调中接收的任何类型的自定义值 | any                                                   | no       | iOS/Android | yes               |
-| disableHaptic        | 是否禁用触觉                                | boolean                                               | no       | iOS/Android | yes               |
-| fullLeftThreshold    | 左全滑动的阈值（0-1）                        | number                                                | no       | iOS/Android | yes               |
-| fullRightThreshold   | 右全滑动的阈值（0-1）                       | number                                                | no       | iOS/Android | yes               |
-| fullSwipeLeft        | 是否允许左全滑动                           | boolean                                               | no       | iOS/Android | yes               |
-| fullSwipeRight       | 是否允许右全滑动                          | boolean                                               | no       | iOS/Android | yes               |
-| itemsIconSize        | 项目的图标大小                                         | number                                                | no       | iOS/Android | yes               |
-| itemsMinWidth        | 设置不同的最小宽度                                | number                                                | no       | iOS/Android | yes               |
-| itemsTextStyle       | 项目的文本样式                                        | TextStyle                                             | no       | iOS/Android | yes               |
-| itemsTintColor       | 项目的文本和图标色调的颜色            | string                                                | no       | iOS/Android | yes               |
-| leftItem             | 从左侧打开时出现的底层项目（单个项目） | ItemProps                                             | no       | iOS/Android | yes               |
-| onDragStart          | 当拖动手势开始时调用                              | () => any                                             | no       | iOS/Android | yes               |
-| onFullSwipeLeft      | 左项目全滑动的回调                            | () => void                                            | no       | iOS/Android | yes               |
-| onFullSwipeRight     | 右项目全滑动的回调                           | () => void                                            | no       | iOS/Android | yes               |
-| onSwipeableWillClose | 关闭操作的回调                                    | () => void                                            | no       | iOS/Android | yes               |
-| onSwipeableWillOpen  | 打开操作的回调                                     | () => void                                            | no       | iOS/Android | yes               |
-| onToggleSwipeLeft    | 左项目切换滑动的回调                          | () => {rowWidth, leftWidth, dragX, resetItemPosition} | no       | iOS/Android | yes               |
-| onWillFullSwipeLeft  | 左项目全滑动之前的回调                | () => void                                            | no       | iOS/Android | yes               |
-| onWillFullSwipeRight | 右项目全滑动之前的回调               | () => void                                            | no       | iOS/Android | yes               |
-| rightItems           | 从右侧打开时出现的底层项目 | ItemProps[]                                           | no       | iOS/Android | yes               |
-| style                | 组件的样式                                            | ViewStyle                                             | no       | iOS/Android | yes               |
-| testID               | 用于端到端测试的测试 ID                                    | string                                                | no       | iOS/Android | yes               |
-| useNativeAnimations  | 在本机执行动画                            | boolean                                               | no       | iOS/Android | yes               |
+| disableHaptic        | 是否禁用触觉                                     | boolean                                               | no       | iOS/Android | yes                |
+| fullLeftThreshold    | 左全滑动的阈值（0-1）                            | number                                                | no       | iOS/Android | yes               |
+| fullRightThreshold   | 右全滑动的阈值（0-1）                            | number                                                | no       | iOS/Android | yes               |
+| fullSwipeLeft        | 是否允许左全滑动                                 | boolean                                               | no       | iOS/Android | yes               |
+| fullSwipeRight       | 是否允许右全滑动                                 | boolean                                               | no       | iOS/Android | yes               |
+| itemsIconSize        | 项目的图标大小                                   | number                                                | no       | iOS/Android | yes               |
+| itemsMinWidth        | 设置不同的最小宽度                               | number                                                | no       | iOS/Android | yes               |
+| itemsTextStyle       | 项目的文本样式                                   | TextStyle                                             | no       | iOS/Android | yes               |
+| itemsTintColor       | 项目的文本和图标色调的颜色                       | string                                                | no       | iOS/Android | yes               |
+| leftItem             | 从左侧打开时出现的底层项目（单个项目）           | ItemProps                                             | no       | iOS/Android | yes               |
+| onDragStart          | 当拖动手势开始时调用                             | () => any                                             | no       | iOS/Android | yes               |
+| onFullSwipeLeft      | 左项目全滑动的回调                               | () => void                                            | no       | iOS/Android | yes               |
+| onFullSwipeRight     | 右项目全滑动的回调                               | () => void                                            | no       | iOS/Android | yes               |
+| onSwipeableWillClose | 关闭操作的回调                                   | () => void                                            | no       | iOS/Android | yes               |
+| onSwipeableWillOpen  | 打开操作的回调                                   | () => void                                            | no       | iOS/Android | yes               |
+| onToggleSwipeLeft    | 左项目切换滑动的回调                             | () => {rowWidth, leftWidth, dragX, resetItemPosition} | no       | iOS/Android | yes               |
+| onWillFullSwipeLeft  | 左项目全滑动之前的回调                           | () => void                                            | no       | iOS/Android | yes               |
+| onWillFullSwipeRight | 右项目全滑动之前的回调                           | () => void                                            | no       | iOS/Android | yes               |
+| rightItems           | 从右侧打开时出现的底层项目                       | ItemProps[]                                           | no       | iOS/Android | yes               |
+| style                | 组件的样式                                       | ViewStyle                                             | no       | iOS/Android | yes               |
+| testID               | 用于端到端测试的测试 ID                          | string                                                | no       | iOS/Android | yes               |
+| useNativeAnimations  | 在本机执行动画                                   | boolean                                               | no       | iOS/Android | yes               |
 
 **GridList**：网格列表组件，扩展了[FlatList](https://reactnative.dev/docs/flatlist)组件。
 
@@ -1167,32 +1167,32 @@ ohpm install
 
 **GridListItem**：单个网格视图/列表项组件。
 
-| Name                      | Description                                                 | Type                               | Required | Platform    | HarmonyOS Support |
-| ------------------------- | ----------------------------------------------------------- | ---------------------------------- | -------- | ----------- | ----------------- |
-| alignToStart              | 内容是否应对齐到开始                            | boolean                            | no       | iOS/Android | yes               |
-| containerProps            | 传递给可触摸容器的属性                 | TouchableOpacityProps \| ViewProps | no       | iOS/Android | yes               |
-| containerStyle            | 自定义容器样式                                      | ViewStyle                          | no       | iOS/Android | yes               |
-| description               | 描述内容文本                                    | string \| React.ReactElement       | no       | iOS/Android | yes               |
-| descriptionColor          | 描述内容颜色                                   | string                             | no       | iOS/Android | yes               |
-| descriptionLines          | 描述内容行数                         | number                             | no       | iOS/Android | yes               |
-| descriptionTypography     | 描述内容排版                              | string                             | no       | iOS/Android | yes               |
-| horizontalAlignment       | 内容水平对齐                                | HorizontalAlignment                | no       | iOS/Android | yes               |
-| imageProps                | 用于渲染图像项目的图像属性对象              | ImageProps                         | no       | iOS/Android | yes               |
-| itemSize                  | 项目大小                                               | number \| ImageSize                | no       | iOS/Android | yes               |
-| onPress                   | 项目的操作处理程序                                   | TouchableOpacityProps ['onPress']  | no       | iOS/Android | yes               |
-| overlayText               | 在项目内部渲染标题、副标题和描述 | boolean                            | no       | iOS/Android | yes               |
-| overlayTextContainerStyle | 内联文本的自定义容器样式                    | ViewStyle                          | no       | iOS/Android | yes               |
-| renderCustomItem          | 在 GridView 中渲染的自定义 GridListItem          | () => React.ReactElement           | no       | iOS/Android | yes               |
-| renderOverlay             | 在图像顶部渲染覆盖层                      | () => React.ReactElement           | no       | iOS/Android | yes               |
-| subtitle                  | 副标题内容文本                                       | string \| React.ReactElement       | no       | iOS/Android | yes               |
-| subtitleColor             | 副标题内容颜色                                      | string                             | no       | iOS/Android | yes               |
-| subtitleLines             | 副标题内容行数                            | number                             | no       | iOS/Android | yes               |
-| subtitleTypography        | 副标题内容排版                                 | string                             | no       | iOS/Android | yes               |
-| testID                    | 组件测试 ID                                       | string                             | no       | iOS/Android | yes               |
-| title                     | 标题内容文本                                          | string \| React.ReactElement       | no       | iOS/Android | yes               |
-| titleColor                | 标题内容颜色                                         | string                             | no       | iOS/Android | yes               |
-| titleLines                | 标题内容行数                               | number                             | no       | iOS/Android | yes               |
-| titleTypography           | 标题内容排版                                    | string                             | no       | iOS/Android | yes               |
+| Name                      | Description                             | Type                               | Required | Platform    | HarmonyOS Support |
+| ------------------------- | --------------------------------------- | ---------------------------------- | -------- | ----------- | ----------------- |
+| alignToStart              | 内容是否应对齐到开始                    | boolean                            | no       | iOS/Android | yes                |
+| containerProps            | 传递给可触摸容器的属性                  | TouchableOpacityProps \| ViewProps | no       | iOS/Android | yes               |
+| containerStyle            | 自定义容器样式                          | ViewStyle                          | no       | iOS/Android | yes               |
+| description               | 描述内容文本                            | string \| React.ReactElement       | no       | iOS/Android | yes               |
+| descriptionColor          | 描述内容颜色                            | string                             | no       | iOS/Android | yes               |
+| descriptionLines          | 描述内容行数                            | number                             | no       | iOS/Android | yes               |
+| descriptionTypography     | 描述内容排版                            | string                             | no       | iOS/Android | yes                |
+| horizontalAlignment       | 内容水平对齐                            | HorizontalAlignment                | no       | iOS/Android | yes               |
+| imageProps                | 用于渲染图像项目的图像属性对象          | ImageProps                         | no       | iOS/Android | yes               |
+| itemSize                  | 项目大小                                | number \| ImageSize                | no       | iOS/Android | yes               |
+| onPress                   | 项目的操作处理程序                      | TouchableOpacityProps ['onPress']  | no       | iOS/Android | yes               |
+| overlayText               | 在项目内部渲染标题、副标题和描述        | boolean                            | no       | iOS/Android | yes               |
+| overlayTextContainerStyle | 内联文本的自定义容器样式                | ViewStyle                          | no       | iOS/Android | yes               |
+| renderCustomItem          | 在 GridView 中渲染的自定义 GridListItem | () => React.ReactElement           | no       | iOS/Android | yes               |
+| renderOverlay             | 在图像顶部渲染覆盖层                    | () => React.ReactElement           | no       | iOS/Android | yes               |
+| subtitle                  | 副标题内容文本                          | string \| React.ReactElement       | no       | iOS/Android | yes               |
+| subtitleColor             | 副标题内容颜色                          | string                             | no       | iOS/Android | yes               |
+| subtitleLines             | 副标题内容行数                          | number                             | no       | iOS/Android | yes               |
+| subtitleTypography        | 副标题内容排版                          | string                             | no       | iOS/Android | yes                |
+| testID                    | 组件测试 ID                             | string                             | no       | iOS/Android | yes               |
+| title                     | 标题内容文本                            | string \| React.ReactElement       | no       | iOS/Android | yes               |
+| titleColor                | 标题内容颜色                            | string                             | no       | iOS/Android | yes               |
+| titleLines                | 标题内容行数                            | number                             | no       | iOS/Android | yes               |
+| titleTypography           | 标题内容排版                            | string                             | no       | iOS/Android | yes                |
 
 **GridView**：网格视图组件。
 
@@ -1209,16 +1209,16 @@ ohpm install
 
 **ListItem**：列表中列表项组件，该组件扩展了[TouchableOpacity](https://reactnative.dev/docs/touchableopacity)属性。
 
-| Name             | Description                                | Type                                                         | Required | Platform    | HarmonyOS Support |
-| ---------------- | ------------------------------------------ | ------------------------------------------------------------ | -------- | ----------- | ----------------- |
+| Name             | Description              | Type                                                         | Required | Platform    | HarmonyOS Support |
+| ---------------- | ------------------------ | ------------------------------------------------------------ | -------- | ----------- | ----------------- |
 | containerElement | 包装 ListItem 的容器元素 | React.ComponentType <ListItemProps \| TouchableOpacityProps> | no       | iOS/Android | yes               |
-| containerStyle   | 顶部容器的额外样式    | ViewStyle                                                    | no       | iOS/Android | yes               |
-| height           | 列表项高度                       | ViewStyle['height']                                          | no       | iOS/Android | yes               |
-| onLongPress      | 长按项目时的操作     | () => void                                                   | no       | iOS/Android | yes               |
-| onPress          | 按下项目时的操作          | () => void                                                   | no       | iOS/Android | yes               |
-| style            | 内部元素样式                    | ViewStyle                                                    | no       | iOS/Android | yes               |
-| testID           | 用于端到端测试的测试 ID                  | string                                                       | no       | iOS/Android | yes               |
-| underlayColor    | 内部元素按下时的背景颜色  | string                                                       | no       | iOS/Android | yes               |
+| containerStyle   | 顶部容器的额外样式       | ViewStyle                                                    | no       | iOS/Android | yes                |
+| height           | 列表项高度               | ViewStyle['height']                                          | no       | iOS/Android | yes               |
+| onLongPress      | 长按项目时的操作         | () => void                                                   | no       | iOS/Android | yes               |
+| onPress          | 按下项目时的操作         | () => void                                                   | no       | iOS/Android | yes               |
+| style            | 内部元素样式             | ViewStyle                                                    | no       | iOS/Android | yes               |
+| testID           | 用于端到端测试的测试 ID  | string                                                       | no       | iOS/Android | yes               |
+| underlayColor    | 内部元素按下时的背景颜色 | string                                                       | no       | iOS/Android | yes               |
 
 **ListItem.Part**：用于在 ListItem 内进行布局的子 ListItem 组件。
 
@@ -1246,9 +1246,9 @@ ohpm install
 | ------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | ----------- | ----------------- |
 | data          | 不要在 'onOrderChange' 中更新 'data'（即每次顺序更改时）；仅在更改项目时更新它（即添加和删除项目）。列表的数据，具有 id 属性作为唯一标识符。 | ItemT[] (ItemT extends {id: string})                         | no       | iOS/Android | yes               |
 | enableHaptic  | 是否启用触觉反馈。（请注意，react-native-haptic-feedback 从某个未知版本开始不支持 Android 上的特定触觉类型，您可以使用 1.8.2 使其正常工作） | boolean                                                      | no       | iOS/Android | yes               |
-| itemProps     | 项目的额外属性。                                    | {margins?: {marginTop?: number; marginBottom?: number; marginLeft?: number; marginRight?: number}} | no       | iOS/Android | yes               |
-| onOrderChange | 获取新顺序（或交换项目）的回调。          | (data: ItemT[]) => void                                      | no       | iOS/Android | yes               |
-| scale         | 拖动时缩放项目。                                 | number                                                       | no       | iOS/Android | yes               |
+| itemProps     | 项目的额外属性。                                             | {margins?: {marginTop?: number; marginBottom?: number; marginLeft?: number; marginRight?: number}} | no       | iOS/Android | yes                |
+| onOrderChange | 获取新顺序（或交换项目）的回调。                             | (data: ItemT[]) => void                                      | no       | iOS/Android | yes               |
+| scale         | 拖动时缩放项目。                                             | number                                                       | no       | iOS/Android | yes               |
 
 **Timeline**：时间线组件，该组件扩展了[View](https://reactnative.dev/docs/view)组件属性。
 
@@ -1273,78 +1273,78 @@ ohpm install
 
 **AnimatedScanner**：该组件扩展了[Animated.View](https://reactnative.dev/docs/animated)组件属性。
 
-| Name            | Description                                              | Type                         | Required | Platform    | HarmonyOS Support |
-| --------------- | -------------------------------------------------------- | ---------------------------- | -------- | ----------- | ----------------- |
-| backgroundColor | 背景颜色                                         | string                       | no       | iOS/Android | yes               |
-| containerStyle  | 组件的容器样式                              | ViewStyle                    | no       | iOS/Android | yes               |
+| Name            | Description                              | Type                         | Required | Platform    | HarmonyOS Support |
+| --------------- | ---------------------------------------- | ---------------------------- | -------- | ----------- | ----------------- |
+| backgroundColor | 背景颜色                                 | string                       | no       | iOS/Android | yes               |
+| containerStyle  | 组件的容器样式                           | ViewStyle                    | no       | iOS/Android | yes               |
 | duration        | 当前中断的持续时间（可以在中断之间更改） | number                       | no       | iOS/Android | yes               |
-| hideScannerLine | 是否隐藏扫描线                         | boolean                      | no       | iOS/Android | yes               |
-| onBreakpoint    | 断点回调                                      | ({progress, isDone}) => void | no       | iOS/Android | yes               |
-| opacity         | 不透明度                                                  | number                       | no       | iOS/Android | yes               |
-| progress        | 0 到 100 之间的动画值                         | number                       | no       | iOS/Android | yes               |
-| testID          | 用作测试标识符                             | string                       | no       | iOS/Android | yes               |
+| hideScannerLine | 是否隐藏扫描线                           | boolean                      | no       | iOS/Android | yes                |
+| onBreakpoint    | 断点回调                                 | ({progress, isDone}) => void | no       | iOS/Android | yes               |
+| opacity         | 不透明度                                 | number                       | no       | iOS/Android | yes               |
+| progress        | 0 到 100 之间的动画值                    | number                       | no       | iOS/Android | yes               |
+| testID          | 用作测试标识符                           | string                       | no       | iOS/Android | yes               |
 
 **Avatar**：头像组件，该组件扩展了[TouchableOpacity](https://wix.github.io/react-native-ui-lib/docs/components/basic/TouchableOpacity)，[Image](https://wix.github.io/react-native-ui-lib/docs/components/media/Image)组件属性。
 
 | Name                                 | Description                                                  | Type                                              | Required | Platform    | HarmonyOS Support |
 | ------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------- | -------- | ----------- | ----------------- |
-| animate                              | 当 Avatar 图像加载时添加淡入动画               | boolean                                           | no       | iOS/Android | yes               |
-| autoColorsConfig                     | 发送此项以使用名称推断 backgroundColor         | AutoColorsProps                                   | no       | iOS/Android | yes               |
-| backgroundColor                      | Avatar 的背景颜色                                  | string                                            | no       | iOS/Android | yes               |
-| badgePosition                        | Avatar 上的徽章位置                                     | TOP_RIGHT \|TOP_LEFT \|BOTTOM_RIGHT \|BOTTOM_LEFT | no       | iOS/Android | yes               |
-| badgeProps                           | 传递给 Badge 组件的徽章属性                   | BadgeProps                                        | no       | iOS/Android | yes               |
-| containerStyle                       | 容器的额外间距样式                  | ViewStyle                                         | no       | iOS/Android | yes               |
-| customRibbon                         | 自定义丝带                                                | JSX.Element                                       | no       | iOS/Android | yes               |
-| imageProps                           | 图像属性对象                                           | ImageProps                                        | no       | iOS/Android | yes               |
-| imageStyle                           | 用于通过组件传递额外样式属性的图像样式对象 | ImageStyle                                        | no       | iOS/Android | yes               |
-| isOnline                             | 确定是否显示在线徽章                            | boolean                                           | no       | iOS/Android | yes               |
-| label                                | 可以表示首字母的标签                            | string                                            | no       | iOS/Android | yes               |
-| labelColor                           | 标签颜色                                              | string                                            | no       | iOS/Android | yes               |
+| animate                              | 当 Avatar 图像加载时添加淡入动画                             | boolean                                           | no       | iOS/Android | yes               |
+| autoColorsConfig                     | 发送此项以使用名称推断 backgroundColor                       | AutoColorsProps                                   | no       | iOS/Android | yes               |
+| backgroundColor                      | Avatar 的背景颜色                                            | string                                            | no       | iOS/Android | yes               |
+| badgePosition                        | Avatar 上的徽章位置                                          | TOP_RIGHT \|TOP_LEFT \|BOTTOM_RIGHT \|BOTTOM_LEFT | no       | iOS/Android | yes               |
+| badgeProps                           | 传递给 Badge 组件的徽章属性                                  | BadgeProps                                        | no       | iOS/Android | yes               |
+| containerStyle                       | 容器的额外间距样式                                           | ViewStyle                                         | no       | iOS/Android | yes               |
+| customRibbon                         | 自定义丝带                                                   | JSX.Element                                       | no       | iOS/Android | yes               |
+| imageProps                           | 图像属性对象                                                 | ImageProps                                        | no       | iOS/Android | yes               |
+| imageStyle                           | 用于通过组件传递额外样式属性的图像样式对象                   | ImageStyle                                        | no       | iOS/Android | yes               |
+| isOnline<sup>Deprecated v7.43.1+</sup>                             | 确定是否显示在线徽章                                         | boolean                                           | no       | iOS/Android | yes                |
+| label                                | 可以表示首字母的标签                                         | string                                            | no       | iOS/Android | yes               |
+| labelColor                           | 标签颜色                                                     | string                                            | no       | iOS/Android | yes               |
 | name                                 | 头像用户的名称。如果未提供标签，将从名称生成首字母。autoColorsConfig 将使用名称创建 Avatar 的背景颜色。 | string                                            | no       | iOS/Android | yes               |
 | onImageLoadEnd                       | 当图像的（uri）加载成功或失败时的监听器回调（等同于 Image.onLoadEnd()）。 | ImagePropsBase ['onLoadEnd']                      | no       | iOS/Android | yes               |
-| onImageLoadError                     | 当图像的（uri）加载失败时的监听器回调（等同于 Image.onError()）。 | ImagePropsBase ['onError']                        | no       | iOS/Android | yes               |
+| onImageLoadError                     | 当图像的（uri）加载失败时的监听器回调（等同于 Image.onError()）。 | ImagePropsBase ['onError']                        | no       | iOS/Android | yes                |
 | onImageLoadStart                     | 当图像的（uri）加载开始时的监听器回调（等同于 Image.onLoadStart()）。 | ImagePropsBase ['onLoadStart']                    | no       | iOS/Android | yes               |
-| onPress                              | 按下处理程序                                                | (props: any) => void                              | no       | iOS/Android | yes               |
-| ribbonLabel                          | 在头像上显示的丝带标签                        | string                                            | no       | iOS/Android | yes               |
-| ribbonLabelStyle                     | 丝带标签自定义样式                                    | TextStyle                                         | no       | iOS/Android | yes               |
-| ribbonStyle                          | 丝带自定义样式                                          | ViewStyle                                         | no       | iOS/Android | yes               |
-| size                                 | Avatar 的自定义大小                                   | number                                            | no       | iOS/Android | yes               |
-| source                               | 图像源（外部或来自资源）                   | ImageSourcePropType                               | no       | iOS/Android | yes               |
-| status                               | AWAY、ONLINE、OFFLINE 或 NONE 模式（如果设置为 'NONE' 以外的值，将覆盖 isOnline 属性） | StatusModes                                       | no       | iOS/Android | yes               |
-| testID                               | 测试标识符                                              | string                                            | no       | iOS/Android | yes               |
+| onPress                              | 按下处理程序                                                 | (props: any) => void                              | no       | iOS/Android | yes               |
+| ribbonLabel                          | 在头像上显示的丝带标签                                       | string                                            | no       | iOS/Android | yes               |
+| ribbonLabelStyle                     | 丝带标签自定义样式                                           | TextStyle                                         | no       | iOS/Android | yes               |
+| ribbonStyle                          | 丝带自定义样式                                               | ViewStyle                                         | no       | iOS/Android | yes               |
+| size                                 | Avatar 的自定义大小                                          | number                                            | no       | iOS/Android | yes               |
+| source                               | 图像源（外部或来自资源）                                     | ImageSourcePropType                               | no       | iOS/Android | yes               |
+| status<sup>Deprecated v7.43.1+</sup>                               | AWAY、ONLINE、OFFLINE 或 NONE 模式（如果设置为 'NONE' 以外的值，将覆盖 isOnline 属性） | StatusModes                                       | no       | iOS/Android | yes                |
+| testID                               | 测试标识符                                                   | string                                            | no       | iOS/Android | yes               |
 | useAutoColors                        | 哈希名称（或标签）以获取颜色，因此每个名称将具有特定颜色。默认为 false。 | boolean                                           | no       | iOS/Android | yes               |
-| labelEllipsizeMode<sup>7.43.1+</sup> | 标签的省略号模式，默认为 clip            | TextProps['ellipsizeMode']                        | no       | iOS/Android | yes               |
+| labelEllipsizeMode<sup>7.43.1+</sup> | 标签的省略号模式，默认为 clip                                | TextProps['ellipsizeMode']                        | no       | iOS/Android | yes               |
 
 **Icon**：图标组件，该组件扩展了[Image](https://reactnative.dev/docs/image)组件属性。
 
-| Name        | Description                                              | Type              | Required | Platform    | HarmonyOS Support |
-| ----------- | -------------------------------------------------------- | ----------------- | -------- | ----------- | ----------------- |
-| assetGroup  | 资源组，默认为 icons                        | string            | no       | iOS/Android | yes               |
-| assetName   | 如果提供，图标源将从资源名称驱动   | string            | no       | iOS/Android | yes               |
-| recorderTag | 记录器标签                                             | 'mask' \|'unmask' | no       | iOS/Android | yes               |
-| size        | 图标大小                                            | number            | no       | iOS/Android | yes               |
+| Name        | Description                         | Type              | Required | Platform    | HarmonyOS Support |
+| ----------- | ----------------------------------- | ----------------- | -------- | ----------- | ----------------- |
+| assetGroup  | 资源组，默认为 icons                | string            | no       | iOS/Android | yes               |
+| assetName   | 如果提供，图标源将从资源名称驱动    | string            | no       | iOS/Android | yes               |
+| recorderTag | 记录器标签                          | 'mask' \|'unmask' | no       | iOS/Android | yes               |
+| size        | 图标大小                            | number            | no       | iOS/Android | yes               |
 | supportRTL  | 图像是否应在 RTL 本地环境中水平翻转 | boolean           | no       | iOS/Android | yes               |
-| tintColor   | 图标色调                                            | string            | no       | iOS/Android | yes               |
+| tintColor   | 图标色调                            | string            | no       | iOS/Android | yes               |
 
 **Image**：图片组件，该组件扩展了[Image](https://reactnative.dev/docs/image)组件属性。
 
 | Name                   | Description                                                  | Type                                | Required | Platform    | HarmonyOS Support |
 | ---------------------- | ------------------------------------------------------------ | ----------------------------------- | -------- | ----------- | ----------------- |
-| aspectRatio            | 图像的宽高比                               | number                              | no       | iOS/Android | yes               |
-| assetGroup             | 资源组，默认为 icons                            | string                              | no       | iOS/Android | yes               |
-| assetName              | 如果提供，图像源将从资源名称驱动      | string                              | no       | iOS/Android | yes               |
-| cover                  | 将图像显示为封面，全宽图像（根据宽高比，默认：16:8） | boolean                             | no       | iOS/Android | yes               |
-| customOverlayContent   | 渲染带有自定义内容的覆盖层                        | JSX.Element                         | no       | iOS/Android | yes               |
-| errorSource            | 错误情况下的默认图像源                     | ImageSourcePropType                 | no       | iOS/Android | yes               |
-| imageId                | 可以在 sourceTransformer 逻辑中使用的 imageId       | string                              | no       | iOS/Android | yes               |
-| overlayColor           | 为覆盖层传递自定义颜色                          | string                              | no       | iOS/Android | yes               |
-| overlayIntensity       | 覆盖强度类型                                         | LOW \|MEDIUM \|HIGH                 | no       | iOS/Android | yes               |
-| overlayType            | 图像必须具有适当的大小，设置在图像顶部的覆盖层类型。 | VERTICAL \|TOP \|BOTTOM \|SOLID     | no       | iOS/Android | yes               |
-| recorderTag            | 记录器标签                                                 | 'mask' \| 'unmask'                  | no       | iOS/Android | yes               |
-| sourceTransformer      | 用于操作图像源的自定义源转换处理程序（非常适合大小控制） | (props: any) => ImageSourcePropType | no       | iOS/Android | yes               |
-| supportRTL             | 图像是否应在 RTL 本地环境中水平翻转     | boolean                             | no       | iOS/Android | yes               |
-| tintColor              | 资源色调                                               | string                              | no       | iOS/Android | yes               |
-| useBackgroundContainer | 为图像使用容器，这可以解决在需要对同一视图执行动画时 Android 上的问题；即 Android 上与动画相关的崩溃。 | boolean                             | no       | iOS/Android | yes               |
+| aspectRatio            | 图像的宽高比                                                 | number                              | no       | iOS/Android | yes               |
+| assetGroup             | 资源组，默认为 icons                                         | string                              | no       | iOS/Android | yes               |
+| assetName              | 如果提供，图像源将从资源名称驱动                             | string                              | no       | iOS/Android | yes               |
+| cover                  | 将图像显示为封面，全宽图像（根据宽高比，默认：16:8）         | boolean                             | no       | iOS/Android | yes               |
+| customOverlayContent   | 渲染带有自定义内容的覆盖层                                   | JSX.Element                         | no       | iOS/Android | yes               |
+| errorSource            | 错误情况下的默认图像源                                       | ImageSourcePropType                 | no       | iOS/Android | yes               |
+| imageId                | 可以在 sourceTransformer 逻辑中使用的 imageId                | string                              | no       | iOS/Android | yes               |
+| overlayColor           | 为覆盖层传递自定义颜色                                       | string                              | no       | iOS/Android | yes               |
+| overlayIntensity       | 覆盖强度类型                                                 | LOW \|MEDIUM \|HIGH                 | no       | iOS/Android | yes               |
+| overlayType            | 图像必须具有适当的大小，设置在图像顶部的覆盖层类型。         | VERTICAL \|TOP \|BOTTOM \|SOLID     | no       | iOS/Android | yes               |
+| recorderTag            | 记录器标签                                                   | 'mask' \| 'unmask'                  | no       | iOS/Android | yes               |
+| sourceTransformer      | 用于操作图像源的自定义源转换处理程序（非常适合大小控制）     | (props: any) => ImageSourcePropType | no       | iOS/Android | yes               |
+| supportRTL             | 图像是否应在 RTL 本地环境中水平翻转                          | boolean                             | no       | iOS/Android | yes|
+| tintColor              | 资源色调                                                     | string                              | no       | iOS/Android | yes               |
+| useBackgroundContainer | 为图像使用容器，这可以解决在需要对同一视图执行动画时 Android 上的问题；即 Android 上与动画相关的崩溃。 | boolean                             | no       | iOS/Android | yes                |
 
 **Marquee**：滑动文本组件。
 
@@ -1368,16 +1368,16 @@ ohpm install
 | Name            | Description                                                  | Type                               | Required | Platform    | HarmonyOS Support |
 | --------------- | ------------------------------------------------------------ | ---------------------------------- | -------- | ----------- | ----------------- |
 | color           | 所选页面点和（如果未传递 inactiveColor）未选页面的边框的颜色 | string                             | no       | iOS/Android | yes               |
-| containerStyle  | 顶部容器的额外样式                      | ViewStyle                          | no       | iOS/Android | yes               |
-| currentPage     | 当前页面的从零开始的索引                         | number                             | no       | iOS/Android | yes               |
-| enlargeActive   | 是否放大活动页面指示器。当 limitShownPages 生效时无关。 | boolean                            | no       | iOS/Android | yes               |
-| inactiveColor   | 未选页面点和未选页面的边框的颜色 | string                             | no       | iOS/Android | yes               |
-| limitShownPages | 限制显示的页面指示器数量。\在此状态下 enlargeActive 属性被禁用，当设置为 true 时最多显示 7 个。\仅当 numOfPages > 5 时相关。 | boolean                            | no       | iOS/Android | yes               |
-| numOfPages      | 总页数                                        | number                             | no       | iOS/Android | yes               |
-| onPagePress     | 点击页面指示器的操作处理程序              | (index: number) => void            | no       | iOS/Android | yes               |
+| containerStyle  | 顶部容器的额外样式                                           | ViewStyle                          | no       | iOS/Android | yes               |
+| currentPage     | 当前页面的从零开始的索引                                     | number                             | no       | iOS/Android | yes               |
+| enlargeActive   | 是否放大活动页面指示器。当 limitShownPages 生效时无关。      | boolean                            | no       | iOS/Android | yes               |
+| inactiveColor   | 未选页面点和未选页面的边框的颜色                             | string                             | no       | iOS/Android | yes               |
+| limitShownPages | 限制显示的页面指示器数量。\在此状态下 enlargeActive 属性被禁用，当设置为 true 时最多显示 5 个。\仅当 numOfPages > 5 时相关。 | boolean                            | no       | iOS/Android | yes               |
+| numOfPages      | 总页数                                                       | number                             | no       | iOS/Android | yes               |
+| onPagePress     | 点击页面指示器的操作处理程序                                 | (index: number) => void            | no       | iOS/Android | yes               |
 | size            | 页面指示器的大小。\当设置 limitShownPages 时，中等大小将是 size 的 2/3，小大小将是 size 的 1/3。\另一种选择是发送数组 [smallSize, mediumSize, largeSize]。 | number \| [number, number, number] | no       | iOS/Android | yes               |
-| spacing         | 兄弟页面指示器之间的间距               | number                             | no       | iOS/Android | yes               |
-| testID          | 用于在测试中标识页面控件                    | string                             | no       | iOS/Android | yes               |
+| spacing         | 兄弟页面指示器之间的间距                                     | number                             | no       | iOS/Android | yes               |
+| testID          | 用于在测试中标识页面控件                                     | string                             | no       | iOS/Android | yes               |
 
 **TabController**：具有延迟加载机制的选项卡控制器组件，该组件基于react-native-gesture-handler，使用react-native-navigation时，请确保使用gestureHandlerRootHOC包裹屏幕。
 
@@ -1460,50 +1460,50 @@ ohpm install
 
 | Name                 | Description                                                  | Type                    | Required | Platform    | HarmonyOS Support |
 | -------------------- | ------------------------------------------------------------ | ----------------------- | -------- | ----------- | ----------------- |
-| activeConfig         | 活动步骤的配置（参见 Wizard.Step.propTypes） | WizardStepProps         | no       | iOS/Android | yes               |
-| activeIndex          | 活动步骤的索引                                      | number                  | no       | iOS/Android | yes               |
-| containerStyle       | 添加或覆盖容器的样式                       | ViewStyle               | no       | iOS/Android | yes               |
+| activeConfig         | 活动步骤的配置（参见 Wizard.Step.propTypes）                 | WizardStepProps         | no       | iOS/Android | yes               |
+| activeIndex          | 活动步骤的索引                                               | number                  | no       | iOS/Android | yes               |
+| containerStyle       | 添加或覆盖容器的样式                                         | ViewStyle               | no       | iOS/Android | yes               |
 | onActiveIndexChanged | 当活动步骤更改时调用的回调（即单击了某个步骤）。新的 activeIndex 将是回调的输入 | (index: number) => void | no       | iOS/Android | yes               |
-| testID               | 组件测试 ID                                        | string                  | no       | iOS/Android | yes               |
+| testID               | 组件测试 ID                                                  | string                  | no       | iOS/Android | yes               |
 
 **Wizard.Step**：向导组件中Step组件。
 
-| Name                  | Description                                                  | Type             | Required | Platform    | HarmonyOS Support |
-| --------------------- | ------------------------------------------------------------ | ---------------- | -------- | ----------- | ----------------- |
-| accessibilityInfo     | 在无障碍模式下读取的额外文本                  | string           | no       | iOS/Android | yes               |
-| circleBackgroundColor | 圆圈的背景颜色                                    | string           | no       | iOS/Android | yes               |
-| circleColor           | 圆圈的颜色                                          | string           | no       | iOS/Android | yes               |
-| circleSize            | 步骤的圆圈大小（直径）                            | number           | no       | iOS/Android | yes               |
-| color                 | 步骤索引的颜色（或提供图标时的图标颜色）      | string           | no       | iOS/Android | yes               |
-| connectorStyle        | 连接器的额外样式                          | ViewStyle        | no       | iOS/Android | yes               |
+| Name                  | Description                              | Type             | Required | Platform    | HarmonyOS Support |
+| --------------------- | ---------------------------------------- | ---------------- | -------- | ----------- | ----------------- |
+| accessibilityInfo     | 在无障碍模式下读取的额外文本             | string           | no       | iOS/Android | yes                |
+| circleBackgroundColor | 圆圈的背景颜色                           | string           | no       | iOS/Android | yes               |
+| circleColor           | 圆圈的颜色                               | string           | no       | iOS/Android | yes               |
+| circleSize            | 步骤的圆圈大小（直径）                   | number           | no       | iOS/Android | yes               |
+| color                 | 步骤索引的颜色（或提供图标时的图标颜色） | string           | no       | iOS/Android | yes               |
+| connectorStyle        | 连接器的额外样式                         | ViewStyle        | no       | iOS/Android | yes               |
 | enabled               | 步骤是否应启用                           | boolean          | no       | iOS/Android | yes               |
-| icon                  | 替换（默认）索引的图标                          | ImageProps       | no       | iOS/Android | yes               |
-| indexLabelStyle       | 索引标签的额外样式（当未提供图标时） | TextStyle        | no       | iOS/Android | yes               |
-| label                 | 项目的标签                                        | string           | no       | iOS/Android | yes               |
-| labelStyle            | 标签的额外样式                              | TextStyle        | no       | iOS/Android | yes               |
-| state                 | 步骤的状态（Wizard.States.X）                      | WizardStepStates | no       | iOS/Android | yes               |
+| icon                  | 替换（默认）索引的图标                   | ImageProps       | no       | iOS/Android | yes               |
+| indexLabelStyle       | 索引标签的额外样式（当未提供图标时）     | TextStyle        | no       | iOS/Android | yes               |
+| label                 | 项目的标签                               | string           | no       | iOS/Android | yes               |
+| labelStyle            | 标签的额外样式                           | TextStyle        | no       | iOS/Android | yes               |
+| state                 | 步骤的状态（Wizard.States.X）            | WizardStepStates | no       | iOS/Android | yes               |
 
 **ActionSheet**：弹窗选择组件。
 
 | Name                   | Description                                                  | Type                                                         | Required | Platform    | HarmonyOS Support |
 | ---------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | ----------- | ----------------- |
-| cancelButtonIndex      | 表示取消操作的选项的索引（将显示为分离的底部粗体按钮） | number                                                       | no       | iOS/Android | yes               |
-| containerStyle         | 添加或覆盖操作表的样式（包装标题和操作） | ViewStyle                                                    | no       | iOS/Android | yes               |
-| destructiveButtonIndex | 表示破坏性操作的选项的索引（将显示红色文本。通常用于删除或中止操作） | number                                                       | no       | iOS/Android | yes               |
-| dialogStyle            | 添加或覆盖包装操作表的对话框样式 | ViewStyle                                                    | no       | iOS/Android | yes               |
-| message                | 操作表的消息                                  | string                                                       | no       | iOS/Android | yes               |
-| onDismiss              | 关闭操作表时调用（通常用于将 'visible' 属性设置为 false） | DialogProps['onDismiss']                                     | no       | iOS/Android | yes               |
-| onModalDismissed       | 仅限 iOS，仅模态。模态关闭后调用一次 | DialogProps ['onDialogDismissed']                            | no       | iOS         | no                |
+| cancelButtonIndex      | 表示取消操作的选项的索引（将显示为分离的底部粗体按钮）       | number                                                       | no       | iOS/Android | no                |
+| containerStyle         | 添加或覆盖操作表的样式（包装标题和操作）                     | ViewStyle                                                    | no       | iOS/Android | yes               |
+| destructiveButtonIndex | 表示破坏性操作的选项的索引（将显示红色文本。通常用于删除或中止操作） | number                                                       | no       | iOS/Android | no                |
+| dialogStyle            | 添加或覆盖包装操作表的对话框样式                             | ViewStyle                                                    | no       | iOS/Android | yes               |
+| message                | 操作表的消息                                                 | string                                                       | no       | iOS/Android | no                |
+| onDismiss              | 关闭操作表时调用（通常用于将 'visible' 属性设置为 false）    | DialogProps['onDismiss']                                     | no       | iOS/Android | yes               |
+| onModalDismissed       | 仅限 iOS，仅模态。模态关闭后调用一次                         | DialogProps ['onDialogDismissed']                            | no       | iOS         | yes               |
 | options                | 操作表的选项列表，遵循 Button 属性类型（提供 'label' 字符串和 'onPress' 函数） | Array<ButtonProps>                                           | no       | iOS/Android | yes               |
-| optionsStyle           | 添加或覆盖选项列表的样式                    | ViewStyle                                                    | no       | iOS/Android | yes               |
+| optionsStyle           | 添加或覆盖选项列表的样式                                     | ViewStyle                                                    | no       | iOS/Android | yes               |
 | renderAction           | 您需要调用 'onOptionPress' 以便选项的 'onPress' 被调用。渲染自定义操作 | ( option: ButtonProps, index: number, onOptionPress: ActionSheetOnOptionPress ) => JSX.Element | no       | iOS/Android | yes               |
-| renderTitle            | 渲染自定义标题                                          | () => JSX.Element                                            | no       | iOS/Android | yes               |
-| showCancelButton       | 当传递时（仅与 useNativeIOS 一起使用），将在底部显示取消按钮（覆盖 cancelButtonIndex） | boolean                                                      | no       | iOS/Android | yes               |
-| testID                 | 用于端到端测试的测试 ID                                    | string                                                       | no       | iOS/Android | yes               |
+| renderTitle            | 渲染自定义标题                                               | () => JSX.Element                                            | no       | iOS/Android | yes               |
+| showCancelButton       | 当传递时（仅与 useNativeIOS 一起使用），将在底部显示取消按钮（覆盖 cancelButtonIndex） | boolean                                                      | no       | iOS/Android | no                |
+| testID                 | 用于端到端测试的测试 ID                                      | string                                                       | no       | iOS/Android | yes               |
 | title                  | 如果未传递 'title' 和 'message'，则根本不会渲染标题视图。操作表的标题 | string                                                       | no       | iOS/Android | yes               |
-| useNativeIOS           | 是否应为 iOS 使用原生操作表                   | boolean                                                      | no       | iOS/Android | yes               |
-| useSafeArea            | 在 iOS 中，使用安全区域，以防组件附加到底部 | boolean                                                      | no       | iOS/Android | yes               |
-| visible                | 是否显示操作表                      | boolean                                                      | no       | iOS/Android | yes               |
+| useNativeIOS           | 是否应为 iOS 使用原生操作表                                  | boolean                                                      | no       | iOS/Android | no                |
+| useSafeArea            | 在 iOS 中，使用安全区域，以防组件附加到底部                  | boolean                                                      | no       | iOS/Android | yes               |
+| visible                | 是否显示操作表                                               | boolean                                                      | no       | iOS/Android | yes               |
 
 **Dialog**：弹窗组件。
 
@@ -1527,26 +1527,26 @@ ohpm install
 
 | Name                 | Description                                                  | Type                                      | Required | Platform    | HarmonyOS Support |
 | -------------------- | ------------------------------------------------------------ | ----------------------------------------- | -------- | ----------- | ----------------- |
-| borderColor          | 高亮元素周围边框的颜色           | string                                    | no       | iOS/Android | yes               |
-| borderRadius         | 高亮元素周围边框角的边框半径 | number                                    | no       | iOS/Android | yes               |
-| borderWidth          | 高亮元素周围边框的宽度           | number                                    | no       | iOS/Android | yes               |
-| confirmButtonProps   | 将传递给关闭按钮的属性              | ButtonProps                               | no       | iOS/Android | yes               |
-| getTarget            | 提取要高亮元素的引用的回调 | () => any                                 | no       | iOS/Android | yes               |
-| highlightFrame       | 要高亮区域的框架 {x, y, width, height}         | HighlightFrame                            | no       | iOS/Android | yes               |
+| borderColor          | 高亮元素周围边框的颜色                                       | string                                    | no       | iOS/Android | yes               |
+| borderRadius         | 高亮元素周围边框角的边框半径                                 | number                                    | no       | iOS/Android | yes               |
+| borderWidth          | 高亮元素周围边框的宽度                                       | number                                    | no       | iOS/Android | yes               |
+| confirmButtonProps   | 将传递给关闭按钮的属性                                       | ButtonProps                               | no       | iOS/Android | yes               |
+| getTarget            | 提取要高亮元素的引用的回调                                   | () => any                                 | no       | iOS/Android | yes               |
+| highlightFrame       | 要高亮区域的框架 {x, y, width, height}                       | HighlightFrame                            | no       | iOS/Android | yes               |
 | innerPadding         | 高亮框架围绕高亮元素框架的内边距（仅在 'getTarget' 中传递引用时） | number                                    | no       | iOS/Android | yes               |
-| message              | 要显示的消息                                      | string                                    | no       | iOS/Android | yes               |
-| messageNumberOfLines | 消息的最大行数                                | number                                    | no       | iOS/Android | yes               |
-| messageStyle         | 消息文本样式                                           | TextStyle                                 | no       | iOS/Android | yes               |
+| message              | 要显示的消息                                                 | string                                    | no       | iOS/Android | yes               |
+| messageNumberOfLines | 消息的最大行数                                               | number                                    | no       | iOS/Android | yes               |
+| messageStyle         | 消息文本样式                                                 | TextStyle                                 | no       | iOS/Android | yes               |
 | minimumRectSize      | Android API 21+，并且仅在 'getTarget' 中传递引用时。高亮组件的最小大小 | RectSize                                  | no       | iOS/Android | yes               |
-| onBackgroundPress    | 背景按下时调用                                | TouchableWithoutFeedbackProps ['onPress'] | no       | iOS/Android | yes               |
-| overlayColor         | 内容背景的颜色（通常包括 alpha 透明度） | string                                    | no       | iOS/Android | yes               |
-| pageControlProps     | PageControl 组件的属性                                | PageControlProps                          | no       | iOS/Android | yes               |
+| onBackgroundPress    | 背景按下时调用                                               | TouchableWithoutFeedbackProps ['onPress'] | no       | iOS/Android | yes               |
+| overlayColor         | 内容背景的颜色（通常包括 alpha 透明度）                      | string                                    | no       | iOS/Android | yes               |
+| pageControlProps     | PageControl 组件的属性                                       | PageControlProps                          | no       | iOS/Android | yes               |
 | testID               | 用于端到端测试的测试 ID                                    | string                                    | no       | iOS/Android | yes               |
-| textColor            | 内容文本的颜色                                  | string                                    | no       | iOS/Android | yes               |
-| title                | 要显示的内容标题                         | string                                    | no       | iOS/Android | yes               |
-| titleNumberOfLines   | 标题的最大行数                                  | number                                    | no       | iOS/Android | yes               |
-| titleStyle           | 标题文本样式                                             | TextStyle                                 | no       | iOS/Android | yes               |
-| visible              | 确定是否呈现功能高亮组件     | boolean                                   | no       | iOS/Android | yes               |
+| textColor            | 内容文本的颜色                                               | string                                    | no       | iOS/Android | yes               |
+| title                | 要显示的内容标题                                             | string                                    | no       | iOS/Android | yes               |
+| titleNumberOfLines   | 标题的最大行数                                               | number                                    | no       | iOS/Android | yes               |
+| titleStyle           | 标题文本样式                                                 | TextStyle                                 | no       | iOS/Android | yes               |
+| visible              | 确定是否呈现功能高亮组件                                     | boolean                                   | no       | iOS/Android | yes               |
 
 **FloatingButton**：具有渐变的悬浮按钮。
 
@@ -1567,13 +1567,13 @@ ohpm install
 
 | Name                      | Description                                                  | Type                                   | Required | Platform    | HarmonyOS Support |
 | ------------------------- | ------------------------------------------------------------ | -------------------------------------- | -------- | ----------- | ----------------- |
-| accessibilityLabel        | 覆盖屏幕阅读器在用户与元素交互时读取的文本。\默认情况下，标签是通过遍历所有子项并累积所有由空格分隔的文本节点来构建的。 | string                                 | no       | iOS/Android | yes               |
-| blurView                  | 用作 BlurView 的自定义视图而不是默认视图 | JSX.Element                            | no       | iOS/Android | yes               |
-| enableModalBlur           | 仅限 iOS。透明时模糊模态背景        | boolean                                | no       | iOS         | no                |
-| onBackgroundPress         | 允许在单击其背景时关闭模态     | (event: GestureResponderEvent) => void | no       | iOS/Android | yes               |
-| overlayBackgroundColor    | 覆盖的背景颜色                          | string                                 | no       | iOS/Android | yes               |
-| testID                    | 模态的端到端测试标识符                       | string                                 | no       | iOS/Android | yes               |
-| useGestureHandlerRootView | 仅限 Android。应添加 GestureHandlerRootView            | boolean                                | no       | Android     | no                |
+| accessibilityLabel        | 覆盖屏幕阅读器在用户与元素交互时读取的文本。\默认情况下，标签是通过遍历所有子项并累积所有由空格分隔的文本节点来构建的。 | string                                 | no       | iOS/Android | yes                |
+| blurView                  | 用作 BlurView 的自定义视图而不是默认视图                     | JSX.Element                            | no       | iOS/Android | yes                |
+| enableModalBlur           | 仅限 iOS。透明时模糊模态背景                                 | boolean                                | no       | iOS         | yes               |
+| onBackgroundPress         | 允许在单击其背景时关闭模态                                   | (event: GestureResponderEvent) => void | no       | iOS/Android | yes               |
+| overlayBackgroundColor    | 覆盖的背景颜色                                               | string                                 | no       | iOS/Android | yes               |
+| testID                    | 模态的端到端测试标识符                                       | string                                 | no       | iOS/Android | yes               |
+| useGestureHandlerRootView | 仅限 Android。应添加 GestureHandlerRootView                  | boolean                                | no       | Android     | no                |
 
 **Modal.TopBar**：模态框的TopBar组件。
 
@@ -1717,7 +1717,7 @@ ohpm install
 
 | Name             | Description             | Type                                | Required | Platform    | HarmonyOS Support |
 | ---------------- | ----------------------- | ----------------------------------- | -------- | ----------- | ----------------- |
-| loadTypographies | 设置空间大小变量 | ({ [key: string]: number }) => void | no       | iOS/Android | yes               |
+| loadSpacings | 设置空间大小变量 | ({ [key: string]: number }) => void | no       | iOS/Android | yes               |
 
 ## 遗留问题
 
