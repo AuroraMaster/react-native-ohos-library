@@ -23,6 +23,7 @@
 | <= 4.4.3-0.3.4@deprecated | [@react-native-oh-tpl/slider Releases(deprecated)](https://github.com/react-native-oh-library/react-native-slider/releases) | 0.72       |
 | 4.4.4                     | [@react-native-ohos/slider Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-slider/releases)               | 0.72       |
 | 5.0.1                     | [@react-native-ohos/slider Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-slider/releases)               | 0.77       |
+| 5.1.2                     | [@react-native-ohos/slider Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-slider/releases)               | 0.82       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -74,6 +75,7 @@ export default function SliderExample() {
 
 |                                      | 是否支持autolink | RN框架版本 |
 |--------------------------------------|-----------------|------------|
+| ~5.1.2                              |  No              |  0.82     |
 | ~5.0.1                              |  No              |  0.77     |
 | ~4.4.4                               |  Yes             |  0.72     |
 | <= 4.4.3-0.3.4@deprecated            |  No              |  0.72     |
@@ -238,6 +240,7 @@ ohpm install
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.1 Release SDK; IDE: DevEco Studio 6.0.1 Release; ROM:6.0.0.120 SP7
 
 ## 属性
 
@@ -270,6 +273,20 @@ ohpm install
 | `trackImage`        | 为轨道分配单个图像。仅支持静态图像。图像的中心像素将被拉伸以填充轨道。         | Image<br/>.propTypes<br/>.source         | 否   | iOS      | 否        |
 | `ref`           | 引用对象。 | MutableRefObject                     | 否   | web      | 否        |
 | `View`          | [继承的 `View` 属性...](https://github.com/facebook/react-native-website/blob/master/docs/view.md#props)      |         |      |      |  |
+| `StepMarker`<sup>5.0.1+</sup> | 用于在滑轨上渲染每个刻度的组件，可根据滑块位置动态改变该刻度的样式。 | FC\<MarkerProps\> | 否 | iOS, Android, Windows | 是 |
+| `renderStepNumber`<sup>5.0.1+</sup> | 启用步骤编号显示功能。步骤编号将显示在滑轨下方。 | bool | 否 | iOS, Android, Windows | 是 |
+
+## StepMarker<sup>5.0.1+</sup>
+
+您的自定义组件会渲染到滑块的每一步上，包括滑块的拖动块以及沿滑块全长的其余步骤。该StepMarker属性接受您的自定义组件，并为其提供以下参数：
+
+| Name         | Description                                                  | Type    | Required | Platform              | HarmonyOS Support |
+| ------------ | ------------------------------------------------------------ | ------- | -------- | --------------------- | ----------------- |
+| stepMarked   | 标识当前刻度是否为滑块所在位置。若用户拖动或点击该刻度，滑块将移至此处且stepMarked参数将变为true。可用于区分渲染自定义滑块组件或自定义刻度标记。 | boolean | 否       | iOS, Android, Windows | 是               |
+| currentValue | 包含Slider当前滑块位置的数值。可用于在刻度标记上显示Slider数值，或根据滑块位置渲染不同变体的刻度标记。 | number  | 否       | iOS, Android, Windows | 是               |
+| index        | 当前自定义刻度标记实例的渲染索引号。可用于在刻度标记内显示步骤序号，或根据刻度在滑轨上的位置渲染多种变体。 | number  | 否       | iOS, Android, Windows | 是               |
+| min          | Slider的最小值，与minimumValue属性相同，未设置时采用相同默认值。 | number  | 否       | iOS, Android, Windows | 是               |
+| max          | Slider的最大值，与maximumValue属性相同，未设置时采用相同默认值。 | number  | 否       | iOS, Android, Windows | 是               |
 
 ## 遗留问题
 
