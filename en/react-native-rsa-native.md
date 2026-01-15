@@ -304,6 +304,8 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
+> [!TIP] Versions >=2.0.6 need to run on DevEco Studio 5.1.0(API18) or later.
+
 Verified in the following versions.
 
 1. RNOH: 0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
