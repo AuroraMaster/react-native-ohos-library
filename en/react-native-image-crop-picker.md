@@ -6,15 +6,15 @@
 
 > [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-image-crop-picker)
 
+The repository for this third-party library has been migrated to Gitcode, and it now supports direct download from npm. The new package name is: `react-native-image-crop-picker`. The specific version relationships are as follows:
+| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
+| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
+| <= 0.40.3-0.0.14@deprecated  | @react-native-oh-tpl/react-native-image-crop-picker | [Github](https://github.com/react-native-oh-library/react-native-image-crop-picker) | [Github Releases](https://github.com/react-native-oh-library/react-native-image-crop-picker/releases) | 0.72 |
+| 0.40.5 | @react-native-ohos/react-native-image-crop-picker   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker/releases) | 0.72 |
+| 0.50.2 | @react-native-ohos/react-native-image-crop-picker   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker/releases) | 0.77 |
+| 0.51.2 | @react-native-ohos/react-native-image-crop-picker   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker/releases) | 0.82 |
+
 ## 1.Installation and Usage
-
-Please refer to the Releases page of the third-party library for the corresponding version information:
-
-| Third-party Library Version | Release Information                                                     | Supported RN Version |
-|--------| ------------------------------------------------------------ | ---------- |
-| <= 0.40.3-0.0.14@deprecated | [@react-native-oh-tpl/react-native-image-crop-picker Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-crop-picker/releases) | 0.72       |
-| 0.40.5 | [@react-native-ohos/react-native-image-crop-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker/releases)                        | 0.72       |
-| 0.50.2  | [@react-native-ohos/react-native-image-crop-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker/releases)                        | 0.77       |
 
 For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
@@ -805,6 +805,7 @@ export default ImageCropPickDemo;
 
 |                             | Is supported autolink | Supported RN Version |
 |-----------------------------|-----------------------|----------------------|
+| ~0.51.2                     | No                    |  0.82                |
 | ~0.50.2                     | No                    |  0.77                |
 | ~0.40.5                     | Yes                   |  0.72                |
 | <= 0.40.3-0.0.14@deprecated | No                    |  0.72                |
@@ -1094,12 +1095,13 @@ Then build and run the code.
 ### Compatibility
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
-
+> [!TIP] Versions >=0.51.2 need to run on DevEco Studio 6.0.1 (API 21) or later.
 Verified in the following versions.
 
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.120;
 
 ## 6. API
 
@@ -1134,7 +1136,9 @@ Verified in the following versions.
 | includeExif                               | bool (default false)                                         | Include image exif data in the response                      | no       | All      | yes      |
 | avoidEmptySpaceAroundImage (iOS only)  | bool (default true)                                          | When set to true, the image will always fill the mask space. | no       | iOS   | no       |
 | cropperActiveWidgetColor (Android only) | string (default `"#424242"`)                                 | When cropping image, determines ActiveWidget color.          | no       | Android | no       |
-| cropperStatusBarColor (Android only) | string (default `#424242`)                                   | When cropping image, determines the color of StatusBar.      | no       | Android | no       |
+| cropperStatusBarColor (Android only)<sup>deprecated from 0.51.1</sup> | string (default `#424242`)                                   | When cropping image, determines the color of StatusBar.      | no       | Android | no       |
+| cropperStatusBarLight (Android only)<sup>supported from 0.51.1</sup>       | boolean (default true)                                   | When cropping image, true for light status bar (dark icons), false for dark status bar (light icons).                  | no       | Android  | no                |
+| cropperNavigationBarLight (Android only)<sup>supported from 0.51.1</sup>       | string (boolean false)                                   | When cropping image, true for light navigation bar (dark icons), false for dark navigation bar (light icons).                  | no       | Android  | no                |
 | cropperToolbarColor (Android only) | string (default `#424242`)                                   | When cropping image, determines the color of Toolbar.        | no       | Android | no       |
 | cropperToolbarWidgetColor (Android only) | string (default `darker orange`)                             | When cropping image, determines the color of Toolbar text and buttons. | no       | Android | no       |
 | freeStyleCropEnabled                      | bool (default false)                                         | Enables user to apply custom rectangle area for cropping     | no       | All      | yes      |
@@ -1172,7 +1176,7 @@ Verified in the following versions.
 - [ ] Change the status bar color in Android Demo [#6](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/6)
 - [ ] Change the toolbar color in Android Demo [#7](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/7)
 - [ ] Disable the color picker in the cropping library when cropping images [#8](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/8)
-- [ ] Determine the colors of toolbar text and buttons when cropping images [#9](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/9)
+- [X] Determine the colors of toolbar text and buttons when cropping images [#9](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/9)
 - [ ] Call the ViewController "completion" block, where the Promise will be resolved/rejected; HarmonyOS is not supported [#10](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/10)
 - [ ] iOS support for smart album lists  [#11](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/11)
 - [ ] Presets for video compression on iOS [#12](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/12)
@@ -1181,9 +1185,9 @@ Verified in the following versions.
 - [ ] Cannot set a minimum number of files when using the multiple option  [#39](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/39)
 - [ ] Cannot set whether to display the number of selected assets when using the multiple option [#40](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/40)
 - [ ] photoAccessHelper lacks a loading transition animation effect after selection [#45](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/45)
-- [ ] @ohos.multimedia.image cannot perform circular cropping [#46](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/46)
+- [X] @ohos.multimedia.image cannot perform circular cropping [#46](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/46)
 - [ ] The PackingOption in @ohos.multimedia.image cannot set width and height properties [#47](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/47)
-
+- [ ] In the Android Demo, change the color shade of the navigation bar icons [#48](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker/issues/48)
 ## 9. Others
 
 ## 10. License
