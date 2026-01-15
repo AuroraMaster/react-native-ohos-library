@@ -23,6 +23,7 @@ Please refer to the Releases page of the third-party library for the correspondi
 | <= 4.4.3-0.3.4@deprecated   | [@react-native-oh-tpl/slider Releases(deprecated)](https://github.com/react-native-oh-library/react-native-slider/releases) | 0.72       |
 | 4.4.4                       | [@react-native-ohos/slider Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-slider/releases) | 0.72       |
 | 5.0.1                       | [@react-native-ohos/slider Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-slider/releases) | 0.77       |
+| 5.1.2                     | [@react-native-ohos/slider Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-slider/releases)               | 0.82       |
 
 For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
@@ -73,6 +74,7 @@ export default function SliderExample() {
 
 |                                      | Is supported autolink  | Supported RN Version |
 |--------------------------------------|-----------------------|----------------------|
+| ~5.1.2                              |  No              |  0.82     |
 | ~5.0.1                              |  No              |  0.77     |
 | ~4.4.4                               |  Yes             |  0.72     |
 | <= 4.4.3-0.3.4@deprecated            |  No              |  0.72     |
@@ -238,6 +240,7 @@ Verified successfully in the following versions:
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.1 Release SDK; IDE: DevEco Studio 6.0.1 Release; ROM:6.0.0.120 SP7
 
 ## Properties
 
@@ -270,6 +273,20 @@ Verified successfully in the following versions:
 | `trackImage`        | Assigns a single image for the track. Only static images are supported. The center pixel of the image will be stretched to fill the track.         | Image<br/>.propTypes<br/>.source         | No   | iOS      | no        |
 | `ref`           | Reference object. | MutableRefObject                     | No   | web      | no        |
 | `View`          | [Inherited `View` props...](https://github.com/facebook/react-native-website/blob/master/docs/view.md#props)      |         |      |      |  |
+| `StepMarker`<sup>5.0.1+</sup> | Component to be rendered for each step on the track,<br/> with the possibility to change the styling, when thumb is at that given step. | FC\<MarkerProps\> | No | iOS, Android, Windows | yes |
+| `renderStepNumber`<sup>5.0.1+</sup> | Turns on the displaying of numbers of steps.<br/>Numbers of steps are displayed under the track. | bool | No | iOS, Android, Windows | yes |
+
+## StepMarker<sup>5.0.1+</sup>
+
+Your custom component rendered for every step on the Slider, both the thumb and the rest of steps along the Slider's whole length. This StepMarker prop accepts your custom component and provides it with the following parameters:
+
+| Name         | Description                                                  | Type    | Required | Platform              | HarmonyOS Support |
+| ------------ | ------------------------------------------------------------ | ------- | -------- | --------------------- | ----------------- |
+| stepMarked   | Indicates whether that custom step is the one that the thum is currently on. If user drags or clicks on that step, thumb will be moved there and the stepMarked parameter will be set to true. Use it, to differentiate between rendering your custom thumb component, or your custom step marker. | boolean | No       | iOS, Android, Windows | yes               |
+| currentValue | Contains the `number` type saying at which value of the Slider the thumb currently is. Use it, for example, to render the Slider value on every step marker, or to render different step marker's variant depending on the Thumb position. | number  | No       | iOS, Android, Windows | yes               |
+| index        | Contains the index at which this exact instantiation of your custom step marker was rendered at. Use it if you would like to render step number within the step marker, or, for example, if you want to render many variants of step marker depending on their positions along the Slider's width. | number  | No       | iOS, Android, Windows | yes               |
+| min          | Minimum value of the Slider. It is equal to minimumValue and has the same default if not set. | number  | No       | iOS, Android, Windows | yes               |
+| max          | Maximum value of the Slider. It is equal to maximumValue and has the same default if not set. | number  | No       | iOS, Android, Windows | yes               |
 
 ## Known Issues
 
