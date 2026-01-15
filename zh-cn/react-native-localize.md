@@ -22,6 +22,9 @@
 | <= 3.1.0-0.0.1@deprecated | @react-native-oh-tpl/react-native-localize | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-localize) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-localize/releases) | 0.72 |
 | 3.1.0 | @react-native-ohos/react-native-localize | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-localize) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localize/releases) | 0.72 |
 | 3.4.2                        | @react-native-ohos/react-native-localize       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-localize) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localize/releases) | 0.77 |
+| 3.6.2                        | @react-native-ohos/react-native-localize       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-localize) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localize/releases) | 0.82 |
+
+对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 ## 安装与使用
 
@@ -159,17 +162,6 @@ Version <= @react-native-oh-tpl/react-native-localize@3.1.0-0.0.1@deprecated 暂
 
 打开 `entry/oh-package.json5`，添加以下依赖
 
-- 0.72
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-localize": "file:../../node_modules/@react-native-oh-tpl/react-native-localize/harmony/rn_localize.har"
-  }
-```
-
-- 0.77
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -241,10 +233,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-// 0.72
-+ import { RNLocalizePackage } from '@react-native-oh-tpl/react-native-localize/ts';
-
-// 0.77
 + import { RNLocalizePackage } from '@react-native-ohos/react-native-localize/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -276,6 +264,7 @@ ohpm install
 
 1. RNOH:0.72.28; SDK:HarmonyOS NEXT DB2; IDE:DevEco Studio 5.0.3.500; ROM:3.0.0.28;
 2. RNOH: 0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
+3. RNOH: 0.82.1; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0 Release; ROM:6.0.0.858;
 
 ## 属性
 
@@ -298,9 +287,14 @@ ohpm install
 | usesAutoDateAndTime()                    | 告诉手机是否启用了自动日期和时间设置。仅限Android | No       | Android  | No                |
 | usesAutoTimeZone()                       | 告诉手机是否启用了自动时区设置。仅限Android | No       | Android  | No                |
 | findBestLanguageTag()                    | 返回最佳的语言标签及其阅读方向 | No       | All      | yes               |
+| openAppLanguageSettings<sup>3.4.2+</sup> | 打开应用语言设置              | No       | Android  | No                |
+| ServerLanguagesProvider() | 服务端语言配置提供者组件，用于在服务端渲染场景下注入语言列表              | No       | Web  | No                |
+| useLocalize() | 返回本地化相关的 API 集合              | No       | All  | yes                |
 
 ## 遗留问题
 - [ ]  HarmonyOS 侧无法获取温度及长度单位[issue#2](https://github.com/react-native-oh-library/react-native-localize/issues/2)
+- [ ]  SSR（Web 端专属）相关特性（`ServerLanguagesProvider`/`useLocalize` 的 SSR 逻辑）暂不支持鸿蒙系统[issue#13](https://gitcode.com/openharmony-sig/rntpc_react-native-localize/issues/13)
+- [ ]  react-native-localize 的 Expo 配置插件暂不支持鸿蒙系统，鸿蒙系统未集成 Expo 的构建/配置体系[issue#14](https://gitcode.com/openharmony-sig/rntpc_react-native-localize/issues/14)
 
 ## 其他
 
