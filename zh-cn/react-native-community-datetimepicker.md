@@ -23,6 +23,7 @@
 | <= 7.6.2-0.1.1@deprecated      | [@react-native-oh-tpl/datetimepicker Releases(deprecated)](https://github.com/react-native-oh-library/datetimepicker/releases) | 0.72       |
 | 7.6.3      | [@react-native-ohos/datetimepicker Releases](https://gitcode.com/openharmony-sig/rntpc_datetimepicker/releases) | 0.72       |
 | 8.4.3      | [@react-native-ohos/datetimepicker Releases](https://gitcode.com/openharmony-sig/rntpc_datetimepicker/releases) | 0.77       |
+| 8.6.1      | [@react-native-ohos/datetimepicker Releases](https://gitcode.com/openharmony-sig/rntpc_datetimepicker/releases) | 0.82       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -103,6 +104,7 @@ export const MDatetimepicker = () => {
 
 |                                      | 是否支持autolink | RN框架版本 |
 |--------------------------------------|-----------------|------------|
+| ~8.6.1                               |  No              |  0.82     |
 | ~8.4.3                               |  No              |  0.77     |
 | ~7.6.3                               |  Yes             |  0.72     |
 | <= 7.6.2-0.1.1@deprecated            |  No              |  0.72     |
@@ -283,6 +285,7 @@ ohpm install
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.1 Release SDK; IDE: DevEco Studio 6.0.1 Release; ROM:6.0.0.120 SP7
 
 
 ## 属性
@@ -301,13 +304,13 @@ ohpm install
 | `design` | 定义选择器是否应使用 Material 3 组件或默认选择器。默认值为 "default"。 | string | 否 | Android only | No |
 | `initialInputMode` | 仅当 design 为 "material" 时生效。允许设置选择器的初始输入模式。 | string | 否 | Android only | No |
 | `title` | 仅当 design 为 "material" 时生效。允许设置选择器对话框的标题。 | string | 否 | Android only | No |
-| `fullscreen` | 仅当 design 为 "material" 时生效。允许设置日期选择器对话框全屏显示。 | bool | 否 | Android only | No |
+| `fullscreen` | 仅当 design 为 "material" 时生效。允许设置日期选择器对话框全屏显示。 | boolean | 否 | Android only | No |
 | `onChange` | 日期变更处理程序。 | function | 否 | All | partially (仅支持 type 为 set 类型) |
 | `value` | 定义组件中使用的日期或时间值。 | Date | 是 | All | partially (仅 mode=date 且 <br/>display=spinner 时支持动态设置) |
-| `is24Hour` | 允许将时间选择器更改为 24 小时制格式。 | bool | 否 | Windows and Android only | yes |
+| `is24Hour` | 允许将时间选择器更改为 24 小时制格式。 | boolean | 否 | Windows and Android only | yes |
 | `maximumDate` | 定义可选择的最大日期。 | Date | 否 | All | partially (仅支持在 mode=date 且 <br/>display=spinner 时设置) |
 | `minimumDate` | 定义可选择的最小日期。 | Date | 否 | All | partially (仅支持在 mode=date 且 <br/>display=spinner 时设置) |
-| `disabled` | 如果为 true，用户将无法与该视图交互。 | bool | 否 | IOS only | yes |
+| `disabled` | 如果为 true，用户将无法与该视图交互。 | boolean | 否 | IOS only | yes |
 | `textColor` | 允许更改日期选择器的文本颜色。 | string | 否 | IOS only | partially (仅支持在 mode=date 且 <br/>display=compact 时设置) |
 | `timeZoneName` | 允许更改日期选择器的时区。默认情况下，使用设备的时区。<br/>使用来自 https://en.wikipedia.org/wiki/List_of_tz_database_time_zones 的 IANA (TZDB) 数据库名称中的时区名称。 | string | 否 | iOS and Android only | No |
 | `timeZoneOffsetInMinutes` | 允许更改日期选择器的时区。<br/>默认情况下，使用设备的时区。<br/>我们强烈建议改用 timeZoneName 属性；<br/>此属性在 Android 实现中存在已知问题（例如 #528）。 | number | 否 | iOS and Android only | No |
@@ -325,6 +328,7 @@ ohpm install
 | `testID` | 通常由应用自动化框架使用。<br/>在 iOS 上完全支持。<br/>在 Android 上，仅在 mode="date" 时支持。 | string | 否 | All | Yes |
 | `ViewProps` | 在 iOS 上，您可以将任何 View 属性传递给组件。<br/>鉴于底层组件是原生视图，<br/>不能保证支持所有属性，<br/>但 testID 和 onLayout 是有效的。 | Object | 否 | iOS only | No |
 | `onError` | 当日期选择器原生代码内部发生错误（如 activity 为空）时调用的回调。 | function | 否 | Android only | No |
+| `startOnYearSelection`<sup>8.6.1+</sup> | 如果为 true，日期选择器将优先打开年份选择器。 | boolean | 否 | Android only | partially (仅支持在 mode=date 且display=compact 时设置) |
 
 
 ## 遗留问题
