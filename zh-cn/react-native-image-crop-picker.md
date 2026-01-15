@@ -6,15 +6,16 @@
 
 > [!Tip] [Github 地址](https://github.com/react-native-oh-library/react-native-image-crop-picker)
 
+
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-image-crop-picker`，具体版本所属关系如下：
+| Version                        | Package Name       | Repository          |  Release            |Supported RN Version  |
+| ------------------------------ | ----------------   | ------------------- | ------------------- | -------------------- |
+| <= 0.40.3-0.0.14@deprecated  | @react-native-oh-tpl/react-native-image-crop-picker | [Github](https://github.com/react-native-oh-library/react-native-image-crop-picker) | [Github Releases](https://github.com/react-native-oh-library/react-native-image-crop-picker/releases) | 0.72 |
+| 0.40.5 | @react-native-ohos/react-native-image-crop-picker   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker/releases) | 0.72 |
+| 0.50.2 | @react-native-ohos/react-native-image-crop-picker   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker/releases) | 0.77 |
+| 0.51.2 | @react-native-ohos/react-native-image-crop-picker   | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker/releases) | 0.82 |
+
 ## 1.安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本  | 发布信息                                                     | 支持RN版本 |
-|--------| ------------------------------------------------------------ | ---------- |
-| <= 0.40.3-0.0.14@deprecated | [@react-native-oh-tpl/react-native-image-crop-picker Releases(deprecated)](https://github.com/react-native-oh-library/react-native-image-crop-picker/releases) | 0.72       |
-| 0.40.5 | [@react-native-ohos/react-native-image-crop-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker/releases)                        | 0.72       |
-| 0.50.2  | [@react-native-ohos/react-native-image-crop-picker Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker/releases)                        | 0.77       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -805,6 +806,7 @@ export default ImageCropPickDemo;
 
 |                             | 是否支持autolink | RN框架版本 |
 |-----------------------------|-----------------|------------|
+| ~0.51.2                     |  No              |  0.82     |
 | ~0.50.2                     |  No              |  0.77     |
 | ~0.40.5                     |  Yes             |  0.72     |
 | <= 0.40.3-0.0.14@deprecated |  No              |  0.72     |
@@ -1097,12 +1099,14 @@ ohpm install
 ### 兼容性
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
-
+> [!TIP] version>=0.51.2的版本需要在DevEco StudioDevEco Studio 6.0.1(API21)及以上版本编译。
 在以下版本验证通过：
 
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.120;
+鸿蒙化react-native-image-crop-picker版本在0.51.2及以后，编译需要DevEco Studio 6.0.1(API21)及以上版本。
 
 ## 6. API
 
@@ -1137,7 +1141,9 @@ ohpm install
 | includeExif                               | bool (default false)                                         | 在响应中包含图片的 EXIF 数据                                 | no       | All      | yes               |
 | avoidEmptySpaceAroundImage (iOS only)     | bool (default true)                                          | 设为 true 时，图片将始终填充遮罩区域。                       | no       | iOS      | no                |
 | cropperActiveWidgetColor (Android only)   | string (default `"#424242"`)                                 | 裁剪图片时，指定活动组件（ActiveWidget）的颜色。             | no       | Android  | no                |
-| cropperStatusBarColor (Android only)      | string (default `#424242`)                                   | 裁剪图片时，指定状态栏（StatusBar）的颜色。                  | no       | Android  | no                |
+| cropperStatusBarColor (Android only)<sup>deprecated from 0.51.1</sup>      | string (default `"#424242"`)                                   | 裁剪图片时，指定状态栏（StatusBar）的颜色。                  | no       | Android  | no                |
+| cropperStatusBarLight (Android only)<sup>supported from 0.51.1</sup>      | boolean (default true)                                   | 在裁剪图像时，若状态栏为浅色（图标为浅色），则为真；若状态栏为深色（图标为深色），则为假。                  | no       | Android  | no                |
+| cropperNavigationBarLight (Android only)<sup>supported from 0.51.1</sup>      | string (boolean false)                                   | 在裁剪图像时，若为浅色导航栏（深色图标），则为真；若为深色导航栏（浅色图标），则为假。                  | no       | Android  | no                |
 | cropperToolbarColor (Android only)        | string (default `#424242`)                                   | 裁剪图片时，指定工具栏（Toolbar）的颜色。                    | no       | Android  | no                |
 | cropperToolbarWidgetColor (Android only)  | string (default `darker orange`)                             | 裁剪图片时，指定工具栏文本和按钮的颜色。                     | no       | Android  | no                |
 | freeStyleCropEnabled                      | bool (default false)                                         | 允许用户自定义裁剪区域的矩形范围                             | no       | All      | yes               |
@@ -1150,7 +1156,7 @@ ohpm install
 | smartAlbums (iOS only)                    | array ([supported values](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Fivpusic%2Freact-native-image-crop-picker%2Fblob%2Fmaster%2FREADME.md%23smart-album-types-ios)) (default ['UserLibrary', 'PhotoStream', 'Panoramas', 'Videos', 'Bursts']) | 可选择的智能相册列表                                         | no       | iOS      | no                |
 | useFrontCamera                            | bool (default false)                                         | 打开相机时是否默认使用前置 / 自拍相机。请注意，并非所有 Android 设备都支持此参数，详见 [issue #1058](https://gitee.com/link?target=https%3A%2F%2Fgithub.com%2Fivpusic%2Freact-native-image-crop-picker%2Fissues%2F1058) | no       | All      | yes               |
 | compressVideoPreset (iOS only)            | string (default MediumQuality)                               | 选择视频压缩所使用的预设参数                                 | no       | iOS      | no                |
-| compressImageMaxWidth                     | number (default none)                                        | 选择视频压缩所使用的预设参数                                 | no       | All      | no                |
+| compressImageMaxWidth                     | number (default none)                                        | 按最大宽度压缩图片                                 | no       | All      | no                |
 | compressImageMaxHeight                    | number (default none)                                        | 按最大高度压缩图片                                           | no       | All      | no                |
 | compressImageQuality                      | number (default 1 (Android)/0.8 (iOS))                       | 按指定质量压缩图片（取值范围 0-1，1 为最佳质量）。 在 iOS 上，大多数图片的质量值超过 0.8 后，视觉上的质量提升并不明显；而 0.8 的质量值相比 1 可将文件大小减少约一半或更多。 | no       | All      | yes               |
 | loadingLabelText (iOS only)               | string (default "Processing assets...")                      | 选择器中图片加载时显示的文本                                 | no       | iOS      | no                |
@@ -1175,7 +1181,7 @@ ohpm install
 - [ ] Android Demo中 改变状态栏颜色 [#6](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/6)
 - [ ] Android Demo中 改变工具栏颜色 [#7](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/7)
 - [ ] 裁剪图像时，禁用裁剪库的颜色设置器 [#8](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/8)
-- [ ] 裁剪图像时，确定工具栏文本和按钮的颜色 [#9](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/9)
+- [X] 裁剪图像时，确定工具栏文本和按钮的颜色 [#9](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/9)
 - [ ] 调用ViewController“completion”块，Promise将解析/拒绝， HarmonyOS 不支持 [#10](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/10)
 - [ ] iOS支持智能相册列表  [#11](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/11)
 - [ ] iOS视频压缩的预设 [#12](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/12)
@@ -1184,8 +1190,9 @@ ohpm install
 - [ ] 使用multiple选项时无法设置最小文件数 [#39](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/39)
 - [ ] 使用multiple选项时无法设置是否显示选中的资产数量 [#40](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/40)
 - [ ] photoAccessHelper选取完成之后没有loading过渡动画效果 [#45](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/45)
-- [ ] @ohos.multimedia.image无法进行圆形效果裁切 [#46](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/46)
+- [X] @ohos.multimedia.image无法进行圆形效果裁切 [#46](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/46)
 - [ ] @ohos.multimedia.image中PackingOption无法设置宽高属性 [#47](https://github.com/react-native-oh-library/react-native-image-crop-picker/issues/47)
+- [ ] Android Demo中 改变导航栏图标深浅颜色 [#48](https://gitcode.com/openharmony-sig/rntpc_react-native-image-crop-picker/issues/48)
 
 ## 9. 其他
 
