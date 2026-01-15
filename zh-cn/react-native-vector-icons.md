@@ -13,7 +13,7 @@
     </a>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/oblador/react-native-vector-icons/tree/v10.0.3)
+> [!TIP] [Github 地址](https://github.com/oblador/react-native-vector-icons)
 
 ## 安装与使用
 
@@ -21,6 +21,9 @@
 | ---------- | ---------- |
 | 10.0.3     | 0.72       |
 | 10.2.0     | 0.77       |
+| - | 0.82     |
+> [!TIP] 该库适配0.82的版本已拆分为多个子包，请按需引入，具体版本号见安装命令。
+
 
 进入到工程目录并输入以下命令：
 
@@ -34,6 +37,26 @@ npm install react-native-vector-icons@10.0.3
 
 # 0.77
 npm install react-native-vector-icons@10.2.0
+
+# 0.82
+//使用自带字体
+npm install @react-native-vector-icons/fontawesome5@12.3.0
+npm install @react-native-vector-icons/fontawesome6@12.3.0
+npm install @react-native-vector-icons/fontisto@12.4.0
+npm install @react-native-vector-icons/foundation@12.4.0
+npm install @react-native-vector-icons/ionicons@12.3.0
+npm install @react-native-vector-icons/material-icons@12.4.0
+npm install @react-native-vector-icons/simple-line-icons@12.4.0
+npm install @react-native-vector-icons/octicons@20.4.0
+npm install @react-native-vector-icons/zocial@12.4.0
+npm install @react-native-vector-icons/ant-design@12.4.0
+npm install @react-native-vector-icons/entypo@12.4.0
+npm install @react-native-vector-icons/evil-icons@12.4.0
+npm install @react-native-vector-icons/feather@12.4.0
+npm install @react-native-vector-icons/fontawesome@12.4.0
+npm install @react-native-vector-icons/material-design-icons@12.4.0
+//使用外部字体
+npm install @react-native-vector-icons/common@12.4.0
 ```
 
 #### **yarn**
@@ -44,6 +67,26 @@ yarn add react-native-vector-icons@10.0.3
 
 # 0.77
 yarn add react-native-vector-icons@10.2.0
+
+# 0.82
+//使用自带字体
+yarn add @react-native-vector-icons/fontawesome5@12.3.0
+yarn add @react-native-vector-icons/fontawesome6@12.3.0
+yarn add @react-native-vector-icons/fontisto@12.4.0
+yarn add @react-native-vector-icons/foundation@12.4.0
+yarn add @react-native-vector-icons/ionicons@12.3.0
+yarn add @react-native-vector-icons/material-icons@12.4.0
+yarn add @react-native-vector-icons/simple-line-icons@12.4.0
+yarn add @react-native-vector-icons/octicons@20.4.0
+yarn add @react-native-vector-icons/zocial@12.4.0
+yarn add @react-native-vector-icons/ant-design@12.4.0
+yarn add @react-native-vector-icons/entypo@12.4.0
+yarn add @react-native-vector-icons/evil-icons@12.4.0
+yarn add @react-native-vector-icons/feather@12.4.0
+yarn add @react-native-vector-icons/fontawesome@12.4.0
+yarn add @react-native-vector-icons/material-design-icons@12.4.0
+//使用外部字体
+yarn add @react-native-vector-icons/common@12.4.0
 ```
 
 <!-- tabs:end -->
@@ -67,7 +110,7 @@ yarn add react-native-vector-icons@10.2.0
 - [`Foundation`](http://zurb.com/playground/foundation-icon-fonts-3) by ZURB, Inc. (v3.0 with _283_ icons)
 - [`Ionicons`](https://ionicons.com/) crafted by Ionic (v7.1.0 containing _1338_ icons)
 - [`MaterialIcons`](https://fonts.google.com/icons/) by Google, Inc. (v4.0.0 featuring _2189_ icons)
-- [`MaterialCommunityIcons`](https://materialdesignicons.com/) from MaterialDesignIcons.com (v6.5.95 including _6596_ icons)
+- [`MaterialDesignIcons`](https://materialdesignicons.com/) from MaterialDesignIcons.com (v6.5.95 including _6596_ icons)
 - [`Octicons`](http://octicons.github.com) designed by Github, Inc. (v16.3.1 with _250_ icons)
 - [`Zocial`](http://zocial.smcllns.com/) by Sam Collins (v1.4.0 with _100_ icons)
 - [`SimpleLineIcons`](https://simplelineicons.github.io/) crafted by Sabbir & Contributors (v2.5.5 with _189_ icons)
@@ -77,6 +120,7 @@ yarn add react-native-vector-icons@10.2.0
 > [!ATTENTION] 使用字体时，请确保 entry/src/main/ets/assets/fonts 和 entry/src/main/resource/rawfile/assets/assets/fonts 下同时拥有要使用的 ttf 文件，否则图标不能正常显示
 
 ```js
+// 0.72/0.77
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 <FontAwesome.Button
@@ -84,9 +128,18 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
   backgroundColor="#3b5998"
   size={20}
 ></FontAwesome.Button>;
+
+// 0.82
+import FontAwesome from '@react-native-vector-icons/fontawesome';
+
+<FontAwesome
+  name="glass"
+  color="#3b5998"
+  size={20}
+></FontAwesome>;
 ```
 
-### 外部字体使用
+### 外部字体使用(0.72/0.77)
 
 > [!ATTENTION] 使用外部字体时，请确保 entry/src/main/ets/assets/fonts 和 entry/src/main/resource/rawfile/assets/assets/fonts 下同时拥有要使用的 ttf 文件，否则图标不能正常显示
 > 使用外部字体时，不管是用户自己制作的字体文件还是从网站下载的字体文件，都需要有 _.ttf 和 _.json 文件(文件目录不固定，能引用到就可以了)
@@ -152,12 +205,31 @@ const CustomFontIcoMoon = createIconSetFromIcoMoon(
   size={20}
 ></CustomFontIcoMoon.Button>;
 ```
+### 外部字体使用(0.82)
+
+```js
+import { createIconSet } from "@react-native-vector-icons/common";
+
+const CustomFontIcoMoon = createIconSet({ 
+  "home": 59648 
+  }, 
+  "home", 
+  "home.ttf"
+);
+
+<CustomFontIcoMoon
+  name="home"
+  color="#3b5998"
+  size={20}
+><Text>home</Text></CustomFontIcoMoon>
+```
 
 ### 以下展示了本库的基本用法
 
 > [!WARNING] 使用时 import 的库名不变。
 
 ```js
+//0.72/0.77
 import React from "react";
 import { ScrollView } from "react-native";
 
@@ -310,6 +382,224 @@ export function VectorIconsDemo() {
 }
 ```
 
+```js
+//0.82
+import React from "react";
+import { ScrollView, Text } from "react-native";
+
+//导入原库自带字体
+import FontAwesome5 from '@react-native-vector-icons/fontawesome5';
+import FontAwesome6 from '@react-native-vector-icons/fontawesome6';
+import Fontisto from '@react-native-vector-icons/fontisto';
+import Foundation from '@react-native-vector-icons/foundation';
+import Ionicons from '@react-native-vector-icons/ionicons';
+import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
+import MaterialIcons from '@react-native-vector-icons/material-icons';
+import SimpleLineIcons from '@react-native-vector-icons/simple-line-icons';
+import Octicons from '@react-native-vector-icons/octicons';
+import Zocial from '@react-native-vector-icons/zocial';
+import AntDesign from '@react-native-vector-icons/ant-design';
+import Entypo from '@react-native-vector-icons/entypo';
+import EvilIcons from '@react-native-vector-icons/evil-icons';
+import Feather from '@react-native-vector-icons/feather';
+import FontAwesome from '@react-native-vector-icons/fontawesome';
+
+import { createIconSet } from "@react-native-vector-icons/common";
+
+export function VectorIconsDemo() {
+    //引入用户自制字体
+    const CustomFontIcoMoon = createIconSet(
+        { "home": 59648 }, "home", "home.ttf"
+    );
+
+    const CustomFontello = createIconSet(
+        { "child": 61870 }, "fontello", "fontello.ttf"
+    );
+
+    const Pencil = createIconSet(
+        { "pencil": 59653 }, "pencil", "pencil.ttf"
+    );
+
+    return (
+        <ScrollView style={{ padding: 20 }}>
+            <CustomFontello
+                name="child"
+                color="#3b5998"
+                size={20}
+            ><Text>child</Text></CustomFontello>
+
+            <Pencil
+                name="pencil"
+                color="#3b5998"
+                size={20}
+            ><Text>pencil</Text></Pencil>
+
+            <CustomFontIcoMoon
+                name="home"
+                color="#3b5998"
+                size={20}
+            ><Text>home</Text></CustomFontIcoMoon>
+
+            <AntDesign
+                name="forward"
+                color="#3b5998"
+                size={20}
+            >
+                <Text>AntDesign forward</Text>
+            </AntDesign>
+
+            <Entypo
+                name="app-store"
+                color="#3b5998"
+                size={20}
+            >
+                <Text>Entypo app-store</Text>
+            </Entypo>
+
+            <EvilIcons
+                name="bell"
+                color="#3b5998"
+                size={20}
+            >
+                <Text>EvilIcons bell</Text>
+            </EvilIcons>
+
+            <Feather
+                name="sunrise"
+                color="#3b5998"
+                size={20}
+            >
+                <Text>Feather sunrise</Text>
+            </Feather>
+
+            <FontAwesome
+                name="glass"
+                color="#3b5998"
+                size={20}
+            >
+                <Text>FontAwesome glass</Text>
+            </FontAwesome>
+
+            <FontAwesome5
+                name="angry"
+                color="#3b5998"
+                size={20}
+            >
+                <Text>FontAwesome5_regular angry</Text>
+            </FontAwesome5>
+
+            <FontAwesome5
+                name="adn"
+                color="#3b5998"
+                size={20}
+                iconStyle='brand'
+            >
+                <Text>FontAwesome5_brands adn</Text>
+            </FontAwesome5>
+
+            <FontAwesome5
+                name="ad"
+                color="#3b5998"
+                size={20}
+                iconStyle='solid'
+            >
+                <Text>FontAwesome5_solid ad</Text>
+            </FontAwesome5>
+
+            <FontAwesome6
+                name="adn"
+                color="#3b5998"
+                size={20}
+                iconStyle='brand'
+            >
+                <Text>FontAwesome6_brands adn</Text>
+            </FontAwesome6>
+
+            <FontAwesome6
+                name="bookmark"
+                color="#3b5998"
+                size={20}
+            >
+                <Text>FontAwesome6_regular bookmark</Text>
+            </FontAwesome6>
+
+            <FontAwesome6
+                name="apple-whole"
+                color="#3b5998"
+                size={20}
+                iconStyle="solid"
+            >
+                <Text>FontAwesome6_solid apple-whole</Text>
+            </FontAwesome6>
+
+            <Fontisto
+                name="aws"
+                color="#3b5998"
+                size={20}
+            >
+                <Text>Fontisto aws</Text>
+            </Fontisto>
+
+            <Foundation
+                name="archive"
+                color="#3b5998"
+                size={20}
+            >
+                <Text>Foundation archive</Text>
+            </Foundation>
+
+            <Ionicons
+                name="aperture"
+                color="#3b5998"
+                size={20}
+            >
+                <Text>Ionicons aperture</Text>
+            </Ionicons>
+
+            <MaterialDesignIcons
+                name="zip-box"
+                color="#3b5998"
+                size={20}
+            >
+                <Text>MaterialCommunityIcons zip-box</Text>
+            </MaterialDesignIcons>
+
+            <MaterialIcons
+                name="airplay"
+                color="#3b5998"
+                size={20}
+            >
+                <Text>MaterialIcons airplay</Text>
+            </MaterialIcons>
+
+            <Octicons
+                name="share"
+                color="#3b5998"
+                size={20}
+            >
+                <Text>Octicons share</Text>
+            </Octicons>
+
+            <SimpleLineIcons
+                name="mouse"
+                color="#3b5998"
+                size={20}
+            >
+                <Text>SimpleLineIcons mouse</Text>
+            </SimpleLineIcons>
+
+            <Zocial
+                name="rss"
+                color="#3b5998"
+                size={20}
+            >
+                <Text>Zocial rss</Text>
+            </Zocial>
+        </ScrollView>
+    );
+}
+```
+
 ## Link
 
 目前 HarmonyOS 暂不支持 AutoLink，所以 Link 步骤需要手动配置。
@@ -319,12 +609,16 @@ export function VectorIconsDemo() {
 ### 在 ArkTs 侧引入和注册字体文件
 
 步骤一：
+0.72/0.77：
 复制 `node_modules/react-native-vector-icons/Fonts` 目录下的字体文件到 `entry/src/main/resources/rawfile/fonts` 目录下(如使用了外部字体文件，需要将\*.ttf 文件复制过来)
+0.82：
+只需将外部字体文件复制到 `entry/src/main/resources/rawfile/fonts` 目录下
 
 步骤二：
 打开 `entry/src/main/ets/pages/Index.ets`，添加以下代码
 
 ```ts
+// 0.72/0.77
 RNApp({
   rnInstanceConfig: {
     fontResourceByFontFamily: {
@@ -357,6 +651,40 @@ RNApp({
 })
 ```
 
+```ts
+// 0.82
+RNApp({
+  rnInstanceConfig: {
+    fontResourceByFontFamily: {
+      'AntDesign': $rawfile('assets/node_modules/@react-native-vector-icons/ant-design/fonts/AntDesign.ttf'),
+      'Entypo': $rawfile('assets/node_modules/@react-native-vector-icons/entypo/fonts/Entypo.ttf'),
+      'EvilIcons': $rawfile('assets/node_modules/@react-native-vector-icons/evil-icons/fonts/EvilIcons.ttf'),
+      'Feather': $rawfile('assets/node_modules/@react-native-vector-icons/feather/fonts/Feather.ttf'),
+      'FontAwesome': $rawfile('assets/node_modules/@react-native-vector-icons/fontawesome/fonts/FontAwesome.ttf'),
+      'FontAwesome5Brands-Regular': $rawfile('assets/node_modules/@react-native-vector-icons/fontawesome5/fonts/FontAwesome5_Brands.ttf'),
+      'FontAwesome5Free-Regular': $rawfile('assets/node_modules/@react-native-vector-icons/fontawesome5/fonts/FontAwesome5_Regular.ttf'),
+      'FontAwesome5Free-Solid': $rawfile('assets/node_modules/@react-native-vector-icons/fontawesome5/fonts/FontAwesome5_Solid.ttf'),
+      'FontAwesome6Brands-Regular': $rawfile('assets/node_modules/@react-native-vector-icons/fontawesome6/fonts/FontAwesome6_Brands.ttf'),
+      'FontAwesome6Free-Regular': $rawfile('assets/node_modules/@react-native-vector-icons/fontawesome6/fonts/FontAwesome6_Regular.ttf'),
+      'FontAwesome6Free-Solid': $rawfile('assets/node_modules/@react-native-vector-icons/fontawesome6/fonts/FontAwesome6_Solid.ttf'),
+      'Fontisto': $rawfile('assets/node_modules/@react-native-vector-icons/fontisto/fonts/Fontisto.ttf'),
+      'fontcustom': $rawfile('assets/node_modules/@react-native-vector-icons/foundation/fonts/Foundation.ttf'),
+      'Ionicons': $rawfile('assets/node_modules/@react-native-vector-icons/ionicons/fonts/Ionicons.ttf'),
+      'MaterialDesignIcons': $rawfile('assets/node_modules/@react-native-vector-icons/material-design-icons/fonts/MaterialDesignIcons.ttf'),
+      'MaterialIcons-Regular': $rawfile('assets/node_modules/@react-native-vector-icons/material-icons/fonts/MaterialIcons.ttf'),
+      'Octicons': $rawfile('assets/node_modules/@react-native-vector-icons/octicons/fonts/Octicons.ttf'),
+      'simple-line-icons': $rawfile('assets/node_modules/@react-native-vector-icons/simple-line-icons/fonts/SimpleLineIcons.ttf'),
+      'zocial': $rawfile('assets/node_modules/@react-native-vector-icons/zocial/fonts/Zocial.ttf'),
+      // 以下三种为外部字体，这里是举例说明，以用户实际为准
+      "home": $rawfile('fonts/home.ttf'),
+      "pencil": $rawfile('fonts/pencil.ttf'),
+      "fontello": $rawfile('fonts/fontello.ttf')
+    }
+    // ...
+  }
+})
+```
+
 #### 提醒：自定义字体也需要用同样的方法在此注册
 
 ## 约束与限制
@@ -365,12 +693,40 @@ RNApp({
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请使用 Api 11 及以上版本，低版本会导致 font 注册不成功，图标显示不出来。
+> [!TIP]请使用 Api 11 及以上版本，低版本会导致 font 注册不成功，图标显示不出来。
 
 本文档内容基于以下版本验证通过：
 
 1. RNOH：0.72.33; SDK：OpenHarmony 5.0.0.71(API Version 12 Release); IDE：DevEco Studio 5.0.3.900; ROM：NEXT.0.0.71;
 2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
+3. RNOH：0.82.1; SDK：HarmonyOS 6.0.0.47 (API Version 21); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
+
+## 属性
+
+> [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
+
+> [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。	
+
+
+| 名称 | 描述 | 类型 | 是否必需 | 支持的平台 | 是否支持HarmonyOS  |
+| ---- | ----------- | ---- | -------- | -------- | ------------------ |
+| size       | 图标的尺寸。                                          | number | No       | iOS/Android      | yes               |
+| name       | 要显示的图标                                          | string | Yes       | iOS/Android      | yes               |
+| color       | 图标颜色                 | string | No       | iOS/Android      | yes               |
+
+
+## API
+
+> [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
+
+> [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。	
+
+
+| 名称 | 描述 | 类型 | 是否必需 | 支持的平台 | 是否支持HarmonyOS  |
+| ---- | ----------- | ---- | -------- | -------- | ------------------ |
+| getImageSource       | 将字体文件绘制成 Bitmap 位图供 Image 组件使用                                          | Function | No       | iOS/Android      | No               |
+| getImageSourceSync       | 将字体文件绘制成 Bitmap 位图供 Image 组件使用                                        | Function | No       | iOS/Android      | No               |
+
 
 ## 遗留问题
 
