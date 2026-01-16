@@ -58,6 +58,7 @@ yarn add @react-native-ohos/bottom-sheet
 import React, { useCallback, useRef, useMemo } from "react";
 import { StyleSheet, View, Text, Button } from "react-native";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const App = () => {
   // hooks
@@ -79,7 +80,7 @@ const App = () => {
 
   // render
   return (
-    <View style={styles.container}>
+    <GestureHandlerRootView style={styles.container}>
       <Button title="Snap To 90%" onPress={() => handleSnapPress(2)} />
       <Button title="Snap To 50%" onPress={() => handleSnapPress(1)} />
       <Button title="Snap To 25%" onPress={() => handleSnapPress(0)} />
@@ -93,7 +94,7 @@ const App = () => {
           <Text>Awesome 🔥</Text>
         </BottomSheetView>
       </BottomSheet>
-    </View>
+    </GestureHandlerRootView>
   );
 };
 
@@ -115,6 +116,7 @@ import {
   BottomSheetView,
   BottomSheetModalProvider,
 } from '@gorhom/bottom-sheet';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const App = () => {
   // ref
@@ -133,6 +135,7 @@ const App = () => {
 
   // renders
   return (
+  <GestureHandlerRootView style={{ flex: 1 }}>
     <BottomSheetModalProvider>
       <View style={styles.container}>
         <Button
@@ -152,6 +155,7 @@ const App = () => {
         </BottomSheetModal>
       </View>
     </BottomSheetModalProvider>
+  </GestureHandlerRootView>
   );
 };
 

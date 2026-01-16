@@ -57,10 +57,11 @@ The following code shows the basic use scenario of the repository:
 import React, { useCallback, useRef, useMemo } from "react";
 import { StyleSheet, View, Text, Button } from "react-native";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const App = () => {
   // hooks
-  const sheetRef = useRef < BottomSheet > null;
+  const sheetRef = useRef<BottomSheet>(null);
 
   // variables
   const snapPoints = useMemo(() => ["25%", "50%", "90%"], []);
@@ -78,7 +79,7 @@ const App = () => {
 
   // render
   return (
-    <View style={styles.container}>
+    <GestureHandlerRootView style={styles.container}>
       <Button title="Snap To 90%" onPress={() => handleSnapPress(2)} />
       <Button title="Snap To 50%" onPress={() => handleSnapPress(1)} />
       <Button title="Snap To 25%" onPress={() => handleSnapPress(0)} />
@@ -92,7 +93,7 @@ const App = () => {
           <Text>Awesome 🔥</Text>
         </BottomSheetView>
       </BottomSheet>
-    </View>
+    </GestureHandlerRootView>
   );
 };
 
@@ -114,10 +115,11 @@ import {
   BottomSheetView,
   BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const App = () => {
   // ref
-  const bottomSheetModalRef = useRef < BottomSheetModal > null;
+  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
   // variables
   const snapPoints = useMemo(() => ["25%", "50%"], []);
@@ -132,6 +134,7 @@ const App = () => {
 
   // renders
   return (
+  <GestureHandlerRootView style={{ flex: 1 }}>
     <BottomSheetModalProvider>
       <View style={styles.container}>
         <Button
@@ -151,6 +154,7 @@ const App = () => {
         </BottomSheetModal>
       </View>
     </BottomSheetModalProvider>
+  </GestureHandlerRootView>
   );
 };
 
