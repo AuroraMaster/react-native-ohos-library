@@ -226,6 +226,8 @@ ohpm install
 
 请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[@react-native-ohos/react-native--photo-manipulator Releases](https://github.com/react-native-oh-library/react-native-photo-manipulator/releases)。
 
+> [!TIP] 本库需要在DevEco Studio 5.0.5(API13)及以上版本编译。
+
 ## 4. 属性
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。

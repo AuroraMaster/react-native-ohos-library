@@ -21,6 +21,9 @@ Find the matching version information in the release address of a third-party li
 | <= 3.1.0-0.0.1@deprecated | @react-native-oh-tpl/react-native-localize | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-localize) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-localize/releases) | 0.72 |
 | 3.1.0 | @react-native-ohos/react-native-localize | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-localize) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localize/releases) | 0.72 |
 | 3.4.2                        | @react-native-ohos/react-native-localize       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-localize) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localize/releases) | 0.77 |
+| 3.6.2                        | @react-native-ohos/react-native-localize       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-localize) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-localize/releases) | 0.82 |
+
+For older versions not published on npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
 
 ## Installation and Usage
 
@@ -157,17 +160,6 @@ Method 1 (recommended): Use the HAR file.
 
 Open `entry/oh-package.json5` file and add the following dependencies:
 
-- 0.72
-
-```json
-"dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-oh-tpl/react-native-localize": "file:../../node_modules/@react-native-oh-tpl/react-native-localize/harmony/rn_localize.har"
-  }
-```
-
-- 0.77
-
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
@@ -239,10 +231,6 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 ```diff
   ...
-// 0.72
-+ import { RNLocalizePackage } from '@react-native-oh-tpl/react-native-localize/ts';
-
-// 0.77
 + import { RNLocalizePackage } from '@react-native-ohos/react-native-localize/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
@@ -274,6 +262,7 @@ The following versions have been verified:
 
 1. RNOH:0.72.28; SDK:HarmonyOS NEXT DB2; IDE:DevEco Studio 5.0.3.500; ROM:3.0.0.28;
 2. RNOH: 0.77.1;SDK:HarmonyOS  5.1.1.208 (API Version 19 Release) ;IDE:DevEco Studio:5.1.1.830; ROM: HarmonyOS 6.0.0.112 SP12;
+3. RNOH: 0.82.1; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0 Release; ROM:6.0.0.858;
 
 ## API
 
@@ -296,9 +285,14 @@ The following versions have been verified:
 | usesAutoDateAndTime()                    | Tells if the automatic date & time setting is enabled on the phone. Android only | No       | Android  | No                |
 | usesAutoTimeZone()                       | Tells if the automatic time zone setting is enabled on the phone. Android only | No       | Android  | No                |
 | findBestLanguageTag()                    | Returns the best language tag possible and its reading direction | No       | All      | yes               |
+| openAppLanguageSettings<sup>3.4.2+</sup> | Open the application language settings              | No       | Android  | No                |
+| ServerLanguagesProvider() | Server-side language configuration provider component, used to inject language lists in server-side rendering scenarios              | No       | Web  | No                |
+| useLocalize() | Return the API collection related to localization              | No       | All  | yes                |
 
 ## Known Issues
 - [ ]  Temperature and length units cannot be obtained in HarmonyOS  [issue#2](https://github.com/react-native-oh-library/react-native-localize/issues/2)
+- [ ]  SSR (Web-only) features (`ServerLanguagesProvider`/SSR logic of `useLocalize`) are not supported on HarmonyOS[issue#13](https://gitcode.com/openharmony-sig/rntpc_react-native-localize/issues/13)
+- [ ]  Expo config plugin for react-native-localize is not supported on HarmonyOS. HarmonyOS does not integrate with Expo's build/config system[issue#14](https://gitcode.com/openharmony-sig/rntpc_react-native-localize/issues/14)
 
 ## Others
 

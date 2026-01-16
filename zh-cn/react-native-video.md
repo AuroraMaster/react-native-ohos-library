@@ -650,6 +650,8 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
+> [!TIP] version>=5.2.3的版本需要在DevEco Studio 5.0.1(API13) 及以上版本编译
+
 在以下版本验证通过：
 
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;

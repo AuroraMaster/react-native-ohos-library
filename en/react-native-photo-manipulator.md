@@ -226,6 +226,8 @@ Then build and run the code.
 
 Check the release version information in the release address of the third-party library: [@react-native-ohos/react-native--photo-manipulator Releases](https://github.com/react-native-oh-library/react-native-photo-manipulator/releases).
 
+> [!TIP] This library needs to be compiled in DevEco Studio 5.0.5 (API13) or later.
+
 
 ## 4. Properties (If Any)
 
