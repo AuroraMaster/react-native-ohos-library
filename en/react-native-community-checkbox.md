@@ -69,7 +69,7 @@ export default function CheckBoxExample() {
 
 |                                      | Is supported autolink  | Supported RN Version |
 |--------------------------------------|-----------------------|----------------------|
-| ~0.6.0                              |  No              |  0.77     |
+| ~0.6.0                              |  No              |  0.77/0.82  |
 | ~0.5.17                              |  Yes             |  0.72     |
 | <= 0.5.16-0.1.0@deprecated            |  No              |  0.72     |
 
