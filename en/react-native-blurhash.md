@@ -266,6 +266,7 @@ export default BlurhashDemo
 
 |                                      | Is supported autolink  | Supported RN Version |
 |--------------------------------------|-----------------------|----------------------|
+| ~2.2.0 | No | 0.82 |
 | ~2.1.0                               |  No                   |  0.77                |
 | ~2.0.4                               |  Yes                  |  0.72                |
 | <= 2.0.3-0.0.7@deprecated            |  No                   |  0.72                |
