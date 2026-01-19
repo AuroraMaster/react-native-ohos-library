@@ -37,6 +37,9 @@ yarn add @react-native-ohos/react-native-wifi-reborn
 The following code demonstrates the basic usage scenarios of this library:
 
 > [!WARNING] The library name used in the import remains unchanged.
+
+> [!TIP] # The demo uses third-party library permissions: [react-native-permissions](https://gitee.com/react-native-oh-library/usage-docs/blob/master/en/react-native-permissions.md)
+
 ### wifi-reborn example
 ``` js
 import React, { useState } from 'react';
