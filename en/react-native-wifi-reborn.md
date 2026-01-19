@@ -17,10 +17,9 @@ Please check the release information of the corresponding version at the third-p
 
 Navigate to the project directory and enter the following command:
 
-
 <!-- tabs:start -->
 
-####  npm
+#### npm
 
 ```bash
 npm install @react-native-ohos/react-native-wifi-reborn
@@ -41,7 +40,8 @@ The following code demonstrates the basic usage scenarios of this library:
 > [!TIP] # The demo uses third-party library permissions: [react-native-permissions](https://gitee.com/react-native-oh-library/usage-docs/blob/master/en/react-native-permissions.md)
 
 ### wifi-reborn example
-``` js
+
+```js
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View, TextInput, Alert } from 'react-native';
 import { Tester, TestSuite, TestCase } from '@rnoh/testerino';
@@ -52,8 +52,6 @@ const permissionNormal: Permission[] = [
     'ohos.permission.GET_WIFI_INFO',
     'ohos.permission.SET_WIFI_INFO',
     'ohos.permission.LOCATION',
-    'ohos.permission.MANAGE_WIFI_CONNECTION',
-    'ohos.permission.GET_WIFI_LOCAL_MAC',
     'ohos.permission.APPROXIMATELY_LOCATION',
 ];
 
@@ -378,9 +376,8 @@ const styles = StyleSheet.create({
         fontStyle: 'italic',
     },
 });
-
-
 ```
+
 ## Link
 
 This step provides guidance for manually configuring native dependencies.
@@ -432,8 +429,7 @@ Method 2: Directly link the source code
 
 > [!TIP] If you need to use direct source code linking, refer to [Direct Source Code Linking Instructions](/zh-cn/link-source-code.md)
 
-
-### 4. Configure CMakeLists and introduce turbo_log
+### 3. Configure CMakeLists and introduce turbo_log
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add:
 
@@ -477,12 +473,11 @@ target_link_libraries(rnoh_app PUBLIC rnoh)
 # RNOH_BEGIN: manual_package_linking_2
 + target_link_libraries(rnoh_app PUBLIC rnoh_wifi_reborn)
 # RNOH_END: manual_package_linking_2
-
 ```
 
-### 4.Import the TurboLogPackage on the ArkTS side
+Import the TurboLogPackage on the ArkTS side
 
-打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
+open `entry/src/main/cpp/PackageProvider.cpp`，add：
 
 ```diff
 #include "RNOH/PackageProvider.h"
@@ -499,6 +494,24 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 +       std::make_shared<WifiRebornPackage>(ctx),
     };
 }
+```
+
+### 4. Import the WifiRebornPackage component on the ArkTS side.
+
+open `entry/src/main/ets/RNPackagesFactory.ets`，add：
+
+```diff
+...
+import type {RNPackageContext, RNPackage} from '@rnoh/react-native-openharmony/ts';
++ import { WifiRebornPackage } from '@react-native-ohos/react-native-wifi-reborn';
+
+export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
+return [
++    new WifiRebornPackage(ctx)
+  ];
+ }
+...
+...
 ```
 
 ### 5. Run
@@ -519,6 +532,7 @@ Then compile and run.
 ### Compatibility
 
 The content of this document has been verified with the following versions:
+
 1. RNOH: 0.72.90; SDK: HarmonyOS NEXT Developer DB3; IDE: DevEco Studio: 5.0.5.220; ROM: NEXT.0.0.105;
 2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
@@ -526,7 +540,7 @@ The content of this document has been verified with the following versions:
 
 Among the following permissions, there is a 'system_masic' permission, while the default application permission is' normal ', which can only be used at the' normal 'level. Therefore, when installing the HAP package, an error may occur * * 9568289 * *, please refer to the [document]( https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/bm-tool-V5#ZH -CN_TOPIC_0000001884757326__%E5%AE%89%E8%A3%85hap%E6%97%B6%E6%8F%90%E7%A4%BAcode9568289-error-install-failed-due-to-grant-request-permissions-failed)  Change the application level to 'system_masic'`
 
-####  Add permissions to module.json5 in the entry directory
+#### Add permissions to module.json5 in the entry directory
 
 Open 'entry/src/main/module. json5' and add:
 
@@ -585,24 +599,12 @@ Open 'entry/src/main/resources/base/element/string. json' and add:
       "value": "Need to configure WiFi network to connect to the specified wireless network"
     },
     {
-      "name": "wifi_manage_reason",
-      "value": "Need to manage WiFi connections to provide complete network control functionality"
-    },
-    {
-      "name": "wifi_mac_reason",
-      "value": "Need to obtain WiFi MAC address for network identification"
-    },
-    {
       "name": "location_reason",
       "value": "Location permission is required to scan nearby WiFi networks (system requirement)"
     },
     {
       "name": "location_approx_reason",
       "value": "Need approximate location permission to scan WiFi networks"
-    },
-    {
-      "name": "module_desc",
-      "value": "React Native WiFi Manager - WiFi Network Management Module"
     }
   ]
 }
@@ -642,7 +644,6 @@ Open 'entry/src/main/resources/base/element/string. json' and add:
 | forceWifiUsage | Force the current application's network requests to go through the WIFI channel that the device is already connected to, ignoring mobile data     | function | no       | Android | yes               |
 | forceWifiUsageWithOptions | Force the current application's network requests to go through the WIFI channel that the device is already connected to, ignoring mobile data (which can be passed into the configuration object)     | function | no       | Android | yes               |
 
-
 ## Static method
 
 ## outstanding issues
@@ -652,8 +653,8 @@ Open 'entry/src/main/resources/base/element/string. json' and add:
 •The connectToProtectdSSIDOnce and connectToProtectdSSIDPriorityOnce methods cannot be implemented. These two methods are specifically designed for the iOS platform and use the NEHotspotConfiguring Manager to pass the joinOnce parameter in the iOS system to achieve one-time connection functionality. However, HarmonyOS does not support this feature.
 •setEnabled HarmonyOS only supports jumping to the Wi-Fi settings page
 
-
 ## open source license
 
-
 This project is based on [The MIT License (MIT)]（ https://github.com/JuanSeBestia/react-native-wifi-reborn/blob/master/LICENSE ）Please enjoy and participate freely in open source.
+
+
