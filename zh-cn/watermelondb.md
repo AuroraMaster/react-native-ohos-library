@@ -29,6 +29,26 @@ npm install @react-native-ohos/watermelondb
 yarn add @react-native-ohos/watermelondb
 ```
 
+快速使用：
+babel.config.js文件
+```js
+module.exports = {
+  presets: ["module:metro-react-native-babel-preset"],
+  plugins: [
+    ['@babel/plugin-proposal-decorators', { legacy: true }], ['@babel/plugin-proposal-class-properties', { loose: true }],
+  ],
+};
+```
+
+安装babel相关依赖:
+
+```bash
+
+npm install @babel/plugin-proposal-decorators --save-dev
+
+npm install @babel/plugin-transform-class-properties --save-dev
+```
+
 下面的代码展示了这个库的基本使用场景：
 
 > [!WARNING] 使用时 import 的库名不变。

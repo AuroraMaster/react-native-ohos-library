@@ -31,6 +31,26 @@ npm install @react-native-ohos/watermelondb
 yarn add @react-native-ohos/watermelondb
 ```
 
+Quick Start：
+babel.config.js
+```js
+module.exports = {
+  presets: ["module:metro-react-native-babel-preset"],
+  plugins: [
+    ['@babel/plugin-proposal-decorators', { legacy: true }], ['@babel/plugin-proposal-class-properties', { loose: true }],
+  ],
+};
+```
+
+Install dependencies related to Babel:
+
+```bash
+
+npm install @babel/plugin-proposal-decorators --save-dev
+
+npm install @babel/plugin-transform-class-properties --save-dev
+```
+
 The following code demonstrates the basic usage scenarios of this library:
 
 > [!WARNING] The library name imported remains unchanged during usage.
