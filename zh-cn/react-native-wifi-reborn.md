@@ -17,10 +17,9 @@
 
 进入到工程目录并输入以下命令：
 
-
 <!-- tabs:start -->
 
-####  npm
+#### npm
 
 ```bash
 npm install @react-native-ohos/react-native-wifi-reborn
@@ -41,7 +40,8 @@ yarn add @react-native-ohos/react-native-wifi-reborn
 > [!TIP] # demo使用了权限三方库[react-native-permissions](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-permissions.md)
 
 ### wifi-reborn example
-``` js
+
+```js
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View, TextInput, Alert } from 'react-native';
 import { Tester, TestSuite, TestCase } from '@rnoh/testerino';
@@ -52,8 +52,6 @@ const permissionNormal: Permission[] = [
     'ohos.permission.GET_WIFI_INFO',
     'ohos.permission.SET_WIFI_INFO',
     'ohos.permission.LOCATION',
-    'ohos.permission.MANAGE_WIFI_CONNECTION',
-    'ohos.permission.GET_WIFI_LOCAL_MAC',
     'ohos.permission.APPROXIMATELY_LOCATION',
 ];
 
@@ -378,9 +376,8 @@ const styles = StyleSheet.create({
         fontStyle: 'italic',
     },
 });
-
-
 ```
+
 ## Link
 
 此步骤为手动配置原生依赖项的指导。
@@ -432,8 +429,7 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-
-### 4.配置 CMakeLists 和引入 turbo_log
+### 3.配置 CMakeLists 和引入 wifi_reborn
 
 打开 entry/src/main/cpp/CMakeLists.txt，添加：
 
@@ -477,10 +473,9 @@ target_link_libraries(rnoh_app PUBLIC rnoh)
 # RNOH_BEGIN: manual_package_linking_2
 + target_link_libraries(rnoh_app PUBLIC rnoh_wifi_reborn)
 # RNOH_END: manual_package_linking_2
-
 ```
 
-### 4.Import the TurboLogPackage on the ArkTS side
+Import the TurboLogPackage on the ArkTS side
 
 打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
 
@@ -501,6 +496,24 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
+### 4. 在 ArkTs 侧引入 WifiRebornPackage 组件
+
+找到 `entry/src/main/ets/RNPackagesFactory.ets`，添加：
+
+```diff
+...
+import type {RNPackageContext, RNPackage} from '@rnoh/react-native-openharmony/ts';
++ import { WifiRebornPackage } from '@react-native-ohos/react-native-wifi-reborn';
+
+export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
+return [
++    new WifiRebornPackage (ctx)
+  ];
+ }
+...
+...
+```
+
 ### 5.运行
 
 点击右上角的 `sync` 按钮
@@ -519,6 +532,7 @@ ohpm install
 ### 兼容性
 
 本文档内容基于以下版本验证通过：
+
 1. RNOH：0.72.90; SDK：HarmonyOS NEXT Developer DB3; IDE: DevEco Studio: 5.0.5.220; ROM：NEXT.0.0.105;
 2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release; IDE: DevEco Studio 6.0.0.858; ROM：6.0.0.112;
 
@@ -526,7 +540,7 @@ ohpm install
 
 以下权限中有`system_basic` 权限，而默认的应用权限是 `normal` ，只能使用 `normal` 等级的权限，所以可能会在安装hap包时报错**9568289**，请参考 [文档](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/bm-tool-V5#ZH-CN_TOPIC_0000001884757326__%E5%AE%89%E8%A3%85hap%E6%97%B6%E6%8F%90%E7%A4%BAcode9568289-error-install-failed-due-to-grant-request-permissions-failed) 修改应用等级为 `system_basic`
 
-####  在 entry 目录下的module.json5中添加权限
+#### 在 entry 目录下的module.json5中添加权限
 
 打开 `entry/src/main/module.json5`，添加：
 
@@ -585,24 +599,12 @@ ohpm install
       "value": "需要配置WiFi网络以连接到指定的无线网络"
     },
     {
-      "name": "wifi_manage_reason",
-      "value": "需要管理WiFi连接以提供完整的网络控制功能"
-    },
-    {
-      "name": "wifi_mac_reason",
-      "value": "需要获取WiFi MAC地址用于网络识别"
-    },
-    {
       "name": "location_reason",
       "value": "需要位置权限以扫描附近的WiFi网络（系统要求）"
     },
     {
       "name": "location_approx_reason",
       "value": "需要大致位置权限以扫描WiFi网络"
-    },
-    {
-      "name": "module_desc",
-      "value": "React Native WiFi Manager - WiFi网络管理模块"
     }
   ]
 }
@@ -642,7 +644,6 @@ ohpm install
 | forceWifiUsage | 强制当前应用的网络请求走设备已连接的WIFI通道，忽略移动数据     | function | no       | Android | yes               |
 | forceWifiUsageWithOptions | 强制当前应用的网络请求走设备已连接的WIFI通道，忽略移动数据(可传入配置对象)     | function | no       | Android | yes               |
 
-
 ## 静态方法
 
 ## 遗留问题
@@ -652,7 +653,7 @@ ohpm install
 •connectToProtectedSSIDOnce和connectToProtectedSSIDPrefixOnce方法无法实现，这两个方法是专门为ios平台设计的，在ios系统中使用了NEHotspotConfigurationManager传递joinOnce参数来实现一次连接功能，鸿蒙侧不支持此功能。
 •setEnabled鸿蒙只支持跳转到wifi设置页
 
-
 ## 开源协议
 
 本项目基于 [The MIT License (MIT)](https://github.com/JuanSeBestia/react-native-wifi-reborn/blob/master/LICENSE) ，请自由地享受和参与开源。
+
