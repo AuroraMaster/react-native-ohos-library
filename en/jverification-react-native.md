@@ -40,6 +40,8 @@ npm install @react-native-ohos/jverification-react-native
 yarn add @react-native-ohos/jverification-react-native
 ```
 
+Additionally, the configuration related to Aurora Security Authentication must be completed according to the [Aurora Security Authentication SDK-HarmonyOS Integration Guide](https://docs.jiguang.cn/jverification/client/harmonyos_guide)
+
 <!-- tabs:end -->
 
 The following code shows the basic use scenario of the repository:
@@ -123,8 +125,8 @@ const customConfigParams = {
   /**
    * Privacy Agreement Section
    */
-  privacyOne: ["Privacy Policy 1", "https://www.csdn.net"],
-  privacyTwo: ["Privacy Policy 2", "https://www.baidu.com"],
+  privacyOne: ["Privacy Policy 1", "https://developer.huawei.com/consumer/cn/"],
+  privacyTwo: ["Privacy Policy 2", "https://developer.huawei.com/consumer/cn/support/"],
   privacyColor: ["#bed442ff", "#d61e9fff"],
   privacyText: ["Log in to agree", ", and log in using the local phone number"],
   privacyTextSize: 15,
@@ -155,8 +157,8 @@ const customConfigParamsCM = {
   /**
    * Privacy Agreement Section
    */
-  privacyOne: ["Privacy Policy 1", "https://www.csdn.net"],
-  privacyTwo: ["Privacy Policy 2", "https://www.baidu.com"],
+  privacyOne: ["Privacy Policy 1", "https://developer.huawei.com/consumer/cn/"],
+  privacyTwo: ["Privacy Policy 2", "https://developer.huawei.com/consumer/cn/support/"],
   privacyColor: ["rgb(30,73,216)", "rgb(39,39,9)"],
   privacyText: ["Log in to agree", ", and log in using the local phone number"],
   privacyTextSize: 16,
@@ -640,7 +642,7 @@ The content of this document has been validated based on the following version:
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| enable  |  Whether to automatically close the authorization page      | number | no | iOS/Android      | yes |  
+| enable  |  Whether to automatically close the authorization page      | boolean  | no | iOS/Android      | yes |  
 
 ### addLoginEventListener callback parameter
 
@@ -656,12 +658,11 @@ The content of this document has been validated based on the following version:
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | backgroundImage  | Background image (China Unicom, China Telecom)        | string | no | iOS/Android      | yes |
 | statusBarHidden  | Whether to hide the status bar        | boolean | no | iOS/Android      | no |
-| statusBarMode  | Status bar mode (China Mobile only)       | function | no | iOS/Android      | yes |
+| statusBarMode  | Status bar mode (China Mobile only)       | 'light'&#124;'dark'  | no | iOS/Android      | yes |
 | navHidden | Whether to hide the navigation bar       | boolean | no | iOS/Android      | no |
-| navColor  | Navigation bar color        | number | no | iOS/Android      | no |
 | navTitle  | Navigation bar title        | string | no | iOS/Android      | no |
 |navTitleSize  | Navigation bar title font size        | number | no | iOS/Android      | no |
-| navTitleColor  | Navigation bar title text color (China Mobile only)        | number | no | iOS/Android      | no |
+| navTitleColor  | Navigation bar title text color (China Mobile only)        | string  | no | iOS/Android      | yes |
 | navReturnHidden  | Whether to hide the navigation bar return button        | boolean | no | iOS/Android      | no |
 | navReturnImage  | Navigation bar left return button icon        | string | no | iOS/Android      | no |
 | navReturnX  | Navigation bar left return button icon offset from the top of the screen        | number | no | iOS/Android      | no |
@@ -683,32 +684,32 @@ The content of this document has been validated based on the following version:
 | numberH  | Phone number text height (China Unicom, China Telecom, China Mobile)        | number | no | iOS/Android      | yes |
 | sloganHidden  | Whether to hide slogan        | boolean | no | iOS/Android      | no |
 | sloganTextSize  | Slogan font size (China Unicom, China Telecom)        | number | no | iOS/Android      | yes |
-| sloganTextColor  | Slogan color (China Unicom, China Telecom)        | number | no | iOS/Android      | yes |
+| sloganTextColor  | Slogan color (China Unicom, China Telecom)        | string  | no | iOS/Android      | yes |
 | sloganX  | Slogan x-axis offset (China Unicom, China Telecom)        | number | no | iOS/Android      | yes |
 | sloganY  | Slogan y-axis offset (China Unicom, China Telecom)        | number | no | iOS/Android      | yes |
 | sloganW  | Slogan width        | number | no | iOS/Android      | no |
 | sloganH  | Slogan height        | number | no | iOS/Android      | no |
 | sloganTextBold | Whether slogan is bold (China Unicom, China Telecom)        | boolean | no | -      | yes |
 | loginBtnText | Authorization login button text content (China Unicom, China Telecom, China Mobile)        | string | no | iOS/Android       | yes |
-| loginBtnTextSize | Authorization login button text font size (China Unicom, China Telecom, China Mobile)        | number or string | no | iOS/Android      | yes |
-| loginBtnDisabledTextColor | Authorization login button text color when disabled (China Mobile only)        | number or string | no | -      | yes |
-| loginBtnTextColor | Authorization login button text color (China Unicom, China Telecom, China Mobile)        | number or string | no | iOS/Android      | yes |
+| loginBtnTextSize | Authorization login button text font size (China Unicom, China Telecom, China Mobile)        | number | no | iOS/Android      | yes |
+| loginBtnDisabledTextColor | Authorization login button text color when disabled (China Mobile only)        | string | no | -      | yes |
+| loginBtnTextColor | Authorization login button text color (China Unicom, China Telecom, China Mobile)        | string | no | iOS/Android      | yes |
 | loginBtnTextBold | Whether the authorization login button text is bold (China Unicom, China Telecom)        | boolean | no | -      | yes |
-| loginBtnColor | Authorization login button background color (China Mobile only)        | number or string | no | -      | yes |
-| loginBtnDisabledColor | Authorization login button background color when disabled (China Mobile only)        | number | no | -      | yes |
+| loginBtnColor | Authorization login button background color (China Mobile only)        | string | no | -      | yes |
+| loginBtnDisabledColor | Authorization login button background color when disabled (China Mobile only)        | string | no | -      | yes |
 | loginBtnImage | Authorization login button background image (China Unicom, China Telecom, China Mobile)        | string | no | iOS/Android      | yes |
 | loginBtnNormalImage | Login button normal image        | string | no | iOS/Android      | no |
 | loginBtnDisabledImage | Login button disabled image (China Mobile only)        | string | no | iOS/Android      | yes |
 | loginBtnSelectedImage | Login button pressed image (China Unicom, China Telecom, China Mobile)        | string | no | iOS/Android      | no |
-| loginBtnBorderColor | Authorization login button border color (China Mobile only)        | number | no | -      | yes |
-| loginBtnDisabledBorderColor | Authorization login button border color when disabled (China Mobile only)        | number | no | -      | yes |
-| loginBtnBorderWidth | Authorization login button border width (China Mobile only)        | number | no | -      | yes |
+| loginBtnBorderColor | Authorization login button border color (China Mobile only)        | string  | no | -      | yes |
+| loginBtnDisabledBorderColor | Authorization login button border color when disabled (China Mobile only)        | string  | no | -      | yes |
+| loginBtnBorderWidth | Authorization login button border width (China Mobile only)        | number or string | no | -      | yes |
 | loginBtnDisabledBorderWidth | Authorization login button border width when disabled (China Mobile only)        | number or string | no | -      | yes |
 | loginBtnBorderRadius | Authorization login button border radius (China Mobile only)        | number | no | -      | yes |
-| loginBtnX | Login button x-axis offset relative to the left side of the screen (China Unicom, China Telecom, China Mobile)        | number or string | no | iOS/Android      | yes |
-| loginBtnY | Login button y-axis offset relative to the bottom edge of the title bar (China Unicom, China Telecom, China Mobile)        | number or string | no | iOS/Android      | yes |
-| loginBtnW | Login button width (China Unicom, China Telecom, China Mobile)        | number or string | no | iOS/Android      | yes |
-| loginBtnH | Login button height (China Unicom, China Telecom, China Mobile)        | number or string | no | iOS/Android      | yes |
+| loginBtnX | Login button x-axis offset relative to the left side of the screen (China Unicom, China Telecom, China Mobile)        | number | no | iOS/Android      | yes |
+| loginBtnY | Login button y-axis offset relative to the bottom edge of the title bar (China Unicom, China Telecom, China Mobile)        | number | no | iOS/Android      | yes |
+| loginBtnW | Login button width (China Unicom, China Telecom, China Mobile)        | number | no | iOS/Android      | yes |
+| loginBtnH | Login button height (China Unicom, China Telecom, China Mobile)        | number | no | iOS/Android      | yes |
 | privacyOne | Privacy clause one (China Unicom, China Telecom, China Mobile)        | Array<string> | no | iOS/Android      | yes |
 | privacyTwo | Privacy clause two (China Unicom, China Telecom, China Mobile)        | Array<string> | no | iOS/Android      | yes |
 | privacyColor | Privacy clause color (China Unicom, China Telecom, China Mobile)        | Array<string> | no | iOS/Android      | yes |
@@ -724,10 +725,9 @@ The content of this document has been validated based on the following version:
 | privacyW | Privacy clause width        | number or string | no | iOS/Android      | no |
 | privacyH | Privacy clause height        | number or string | no | iOS/Android      | no |
 | privacyCheckboxHidden | Whether to hide checkBox, default is not hidden        | boolean | no | iOS/Android      | no |
-| privacyCheckEnable | checkBox default state (China Unicom, China Telecom, China Mobile)        | boolean | no | iOS/Android      | yes |
 | privacyCheckedImage | checkBox selected image (China Unicom, China Telecom, China Mobile)        | string | no | iOS/Android      | yes |
 | privacyUncheckedImage | checkBox unselected image (China Unicom, China Telecom, China Mobile)        | string | no | iOS/Android      | yes |
-| privacyCheckboxSize | Set privacy clause checkbox size (China Unicom, China Telecom, China Mobile)        | number or string | no | iOS/Android      | yes |
+| privacyCheckboxSize | Set privacy clause checkbox size (China Unicom, China Telecom, China Mobile)        | number | no | iOS/Android      | yes |
 | privacyCheckEnable | Whether the privacy agreement is checked (China Unicom, China Telecom, China Mobile)        | boolean | no | iOS/Android      | yes |
 | checkBoxX | checkbox x-axis offset (China Mobile only)        | number | no | -      | yes |
 | checkBoxY | checkbox y-axis offset (China Mobile only)        | number | no | -      | yes |
@@ -781,4 +781,4 @@ The content of this document has been validated based on the following version:
 
 ## License
 
-This project is licensed under [The MIT License (MIT)](https://github.com/react-native-oh-library/jverification-react-native/blob/master/LICENSE).
+This project is licensed under [The MIT License (MIT)](https://github.com/jpush/jverification-react-native/blob/master/LICENSE).

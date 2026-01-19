@@ -41,6 +41,8 @@ npm install @react-native-ohos/jverification-react-native
 yarn add @react-native-ohos/jverification-react-native
 ```
 
+另外还需按照[极光安全认证SDK-HarmonyOS集成指南](https://docs.jiguang.cn/jverification/client/harmonyos_guide)完成极光安全认证相关的配置
+
 <!-- tabs:end -->
 
 下面的代码展示了这个库的基本使用场景：
@@ -125,8 +127,8 @@ const customConfigParams = {
   /**
    * 隐私协议部分
    */
-  privacyOne: ["隐私条款1", "https://www.csdn.net"],
-  privacyTwo: ["隐私条款2", "https://www.baidu.com"],
+  privacyOne: ["隐私条款1", "https://developer.huawei.com/consumer/cn/"],
+  privacyTwo: ["隐私条款2", "https://developer.huawei.com/consumer/cn/support/"],
   privacyColor: ["#bed442ff", "#d61e9fff"],
   privacyText: ["登录即同意", "，并使用本机号码登录"],
   privacyTextSize: 15,
@@ -157,8 +159,8 @@ const customConfigParamsCM = {
   /**
    * 隐私协议部分
    */
-  privacyOne: ["自定义协议1", "https://www.csdn.net"],
-  privacyTwo: ["自定义协议2", "https://www.baidu.com"],
+  privacyOne: ["自定义协议1", "https://developer.huawei.com/consumer/cn/"],
+  privacyTwo: ["自定义协议2", "https://developer.huawei.com/consumer/cn/support/"],
   privacyColor: ["rgb(30,73,216)", "rgb(39,39,9)"],
   privacyText: ["登录即同意", "，并使用本机号码登录。"],
   privacyTextSize: 16,
@@ -586,7 +588,7 @@ ohpm install
 | init(params, callback)  | 初始化SDK        | function | no | iOS/Android      | yes |
 | isInitSuccess(callback) | 初始化是否成功        | function | no | iOS/Android      | yes |
 | checkLoginEnable(callback)  | 判断当前网络环境是否可以发起认证       | function | no | iOS/Android      | yes |
-| getToken(time, callback) | 判断当前网络环境是否可以发起认证       | function | no | iOS/Android      | yes |
+| getToken(time, callback) | 获取手机号校验token       | function | no | iOS/Android      | yes |
 | preLogin(time, callback)  | 验证当前运营商网络是否可以进行一键登录操作，该方法会缓存取号信息      | function | no | iOS/Android      | yes |
 | clearPreLoginCache()  | 清除预取号缓存      | function | no | iOS/Android      | yes |
 | login(enable)  | 调起一键登录授权页面      | function | no | iOS/Android      | yes |
@@ -602,7 +604,7 @@ ohpm install
 ### init参数params
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| appkey  | 极光应用唯一标识      | string | no | iOS/Android      | yes |
+| appkey  | 极光应用唯一标识      | string | no | iOS/Android      | yes | 
 
 ### init参数callback
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
@@ -636,26 +638,25 @@ ohpm install
 ### login参数enable
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| enable  |  是否自动关闭授权页      | number | no | iOS/Android      | yes |  
+| enable  |  是否自动关闭授权页      | boolean | no | iOS/Android      | yes |  
 
 ### addLoginEventListener参数callback
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | code  |  状态码      | number | no | iOS/Android      | yes |  
 | msg  |  一键登录事件监听信息      | string | no | iOS/Android      | yes |  
-| operator  |  运营商信息      | string | no | iOS/Android      | yes |  
+| operator  |  运营商信息      | string | no | iOS/Android      | yes |
 
 ### customConfigParams
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
 | backgroundImage  | 背景图片(联通、电信)        | string | no | iOS/Android      | yes |
 | statusBarHidden  | 状态栏是否隐藏        | boolean | no | iOS/Android      | no |
-| statusBarMode  | 状态栏模式（仅移动）       | function | no | iOS/Android      | yes |
+| statusBarMode  | 状态栏模式（仅移动）       | 'light'&#124;'dark' | no | iOS/Android      | yes |
 | navHidden | 导航栏是否隐藏       | boolean | no | iOS/Android      | no |
-| navColor  | 导航栏颜色        | number | no | iOS/Android      | no |
 | navTitle  | 导航栏标题        | string | no | iOS/Android      | no |
 |navTitleSize  | 导航栏标题文字字体大小        | number | no | iOS/Android      | no |
-| navTitleColor  | 导航栏标题文本颜色（仅移动）        | number | no | iOS/Android      | no |
+| navTitleColor  | 导航栏标题文本颜色（仅移动）        | string | no | iOS/Android      | yes |
 | navReturnHidden  | 导航栏返回按钮是否隐藏        | boolean | no | iOS/Android      | no |
 | navReturnImage  | 导航栏左侧返回按钮图标        | string | no | iOS/Android      | no |
 | navReturnX  | 导航栏左侧返回按钮图标距屏幕上端偏移        | number | no | iOS/Android      | no |
@@ -677,32 +678,32 @@ ohpm install
 | numberH  | 手机号文本高度(联通、电信、移动)        | number | no | iOS/Android      | yes |
 | sloganHidden  | slogan是否隐藏        | boolean | no | iOS/Android      | no |
 | sloganTextSize  | slogan字号(联通、电信)        | number | no | iOS/Android      | yes |
-| sloganTextColor  | slogan颜色(联通、电信)        | number | no | iOS/Android      | yes |
+| sloganTextColor  | slogan颜色(联通、电信)        | string | no | iOS/Android      | yes |
 | sloganX  | slogan x轴偏转(联通、电信)        | number | no | iOS/Android      | yes |
 | sloganY  | slogan y轴偏转(联通、电信)        | number | no | iOS/Android      | yes |
 | sloganW  | slogan宽度        | number | no | iOS/Android      | no |
 | sloganH  | slogan宽度        | number | no | iOS/Android      | no |
 | sloganTextBold | slogan是否加粗(联通、电信)        | boolean | no | -      | yes |
 | loginBtnText | 授权登录按钮文本内容(联通、电信、移动)        | string | no | iOS/Android       | yes |
-| loginBtnTextSize | 授权登录按钮文本字号(联通、电信、移动)        | number or string | no | iOS/Android      | yes |
-| loginBtnDisabledTextColor | 授权登录按钮禁用时的文本颜色(仅移动)        | number or string | no | -      | yes |
-| loginBtnTextColor | 授权登录按钮文本颜色(联通、电信、移动)        | number or string | no | iOS/Android      | yes |
+| loginBtnTextSize | 授权登录按钮文本字号(联通、电信、移动)        | number | no | iOS/Android      | yes |
+| loginBtnDisabledTextColor | 授权登录按钮禁用时的文本颜色(仅移动)        | string | no | -      | yes |
+| loginBtnTextColor | 授权登录按钮文本颜色(联通、电信、移动)        | string | no | iOS/Android      | yes |
 | loginBtnTextBold | 授权登录按钮文本是否加粗(联通、电信)        | boolean | no | -      | yes |
-| loginBtnColor | 授权登录按钮背景颜色(仅移动)        | number or string | no | -      | yes |
-| loginBtnDisabledColor | 授权登录按钮禁用时的背景颜色(仅移动)        | number | no | -      | yes |
+| loginBtnColor | 授权登录按钮背景颜色(仅移动)        | string | no | -      | yes |
+| loginBtnDisabledColor | 授权登录按钮禁用时的背景颜色(仅移动)        | string | no | -      | yes |
 | loginBtnImage | 授权登录按钮背景图片(联通、电信、移动)        | string | no | iOS/Android      | yes |
 | loginBtnNormalImage | 登录按钮正常图片        | string | no | iOS/Android      | no |
 | loginBtnDisabledImage | 登录按钮失效图片(仅移动)        | string | no | iOS/Android      | yes |
 | loginBtnSelectedImage | 登录按钮按下图片(联通、电信、移动)        | string | no | iOS/Android      | no |
-| loginBtnBorderColor | 授权登录按钮边框颜色(仅移动)        | number | no | -      | yes |
-| loginBtnDisabledBorderColor | 授权登录按钮禁用时的边框颜色(仅移动)        | number | no | -      | yes |
-| loginBtnBorderWidth | 授权登录按钮边框宽度(仅移动)        | number | no | -      | yes |
+| loginBtnBorderColor | 授权登录按钮边框颜色(仅移动)        | string | no | -      | yes |
+| loginBtnDisabledBorderColor | 授权登录按钮禁用时的边框颜色(仅移动)        | string | no | -      | yes |
+| loginBtnBorderWidth | 授权登录按钮边框宽度(仅移动)        | number or string | no | -      | yes |
 | loginBtnDisabledBorderWidth | 授权登录按钮禁用时的边框宽度(仅移动)        | number or string | no | -      | yes |
 | loginBtnBorderRadius | 授权登录按钮边框颜色(仅移动)        | number | no | -      | yes |
-| loginBtnX | 登录按钮相对于屏幕左边x轴偏移(联通、电信、移动)        | number or string | no | iOS/Android      | yes |
-| loginBtnY | 登录按钮相对于标题栏下边缘y偏移(联通、电信、移动)        | number or string | no | iOS/Android      | yes |
-| loginBtnW | 登录按钮宽度(联通、电信、移动)        | number or string | no | iOS/Android      | yes |
-| loginBtnH | 登录按钮高度(联通、电信、移动)        | number or string | no | iOS/Android      | yes |
+| loginBtnX | 登录按钮相对于屏幕左边x轴偏移(联通、电信、移动)        | number | no | iOS/Android      | yes |
+| loginBtnY | 登录按钮相对于标题栏下边缘y偏移(联通、电信、移动)        | number | no | iOS/Android      | yes |
+| loginBtnW | 登录按钮宽度(联通、电信、移动)        | number | no | iOS/Android      | yes |
+| loginBtnH | 登录按钮高度(联通、电信、移动)        | number | no | iOS/Android      | yes |
 | privacyOne | 隐私条款一(联通、电信、移动)        | Array<string> | no | iOS/Android      | yes |
 | privacyTwo | 隐私条款二(联通、电信、移动)        | Array<string> | no | iOS/Android      | yes |
 | privacyColor | 隐私条款颜色(联通、电信、移动)        | Array<string> | no | iOS/Android      | yes |
@@ -718,10 +719,9 @@ ohpm install
 | privacyW | 隐私条款宽度        | number or string | no | iOS/Android      | no |
 | privacyH | 隐私条款高度        | number or string | no | iOS/Android      | no |
 | privacyCheckboxHidden | checkBox是否隐藏，默认不隐藏        | boolean | no | iOS/Android      | no |
-| privacyCheckEnable | checkBox默认状态(联通、电信、移动)        | boolean | no | iOS/Android      | yes |
 | privacyCheckedImage | checkBox选中时图片(联通、电信、移动)        | string | no | iOS/Android      | yes |
 | privacyUncheckedImage | checkBox未选中时图片(联通、电信、移动)        | string | no | iOS/Android      | yes |
-| privacyCheckboxSize | 设置隐私条款checkbox尺寸(联通、电信、移动)        | number or string | no | iOS/Android      | yes |
+| privacyCheckboxSize | 设置隐私条款checkbox尺寸(联通、电信、移动)        | number | no | iOS/Android      | yes |
 | privacyCheckEnable | 隐私协议是否勾选(联通、电信、移动)        | boolean | no | iOS/Android      | yes |
 | checkBoxX | checkbox x轴偏移(仅移动)        | number | no | -      | yes |
 | checkBoxY | checkbox Y轴偏移(仅移动)        | number | no | -      | yes |
@@ -774,4 +774,4 @@ ohpm install
 
 ## 开源协议
 
-本项目基于 [The MIT License (MIT)](https://github.com/react-native-oh-library/jverification-react-native/blob/master/LICENSE)，请自由地享受和参与开源。
+本项目基于 [The MIT License (MIT)](https://github.com/jpush/jverification-react-native/blob/master/LICENSE)，请自由地享受和参与开源。
