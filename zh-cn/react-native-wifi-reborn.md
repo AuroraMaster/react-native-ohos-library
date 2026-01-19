@@ -37,6 +37,9 @@ yarn add @react-native-ohos/react-native-wifi-reborn
 下面的代码展示了这个库的基本使用场景：
 
 > [!WARNING] 使用时 import 的库名不变。
+
+> [!TIP] # demo使用了权限三方库[react-native-permissions](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-permissions.md)
+
 ### wifi-reborn example
 ``` js
 import React, { useState } from 'react';
