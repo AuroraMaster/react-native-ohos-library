@@ -129,14 +129,23 @@ This repository has been adapted to `Codegen`. You need to actively execute the 
 
 **Note:** 0.77 does not require Codegen execution.
 
+
 ## Link
 
-Version > @react-native-ohos/react-native-localize@3.1.0 now supports Autolink without requiring manual configuration.
-Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+|                                      | Is supported autolink  | Supported RN Version |
+|--------------------------------------|-----------------|------------|
+| ~3.6.2                               |  No              |  0.82     |
+| ~3.4.2                               |  No              |  0.77     |
+| ~3.1.0                              |  Yes             |  0.72     |
+| <= 3.1.0-0.0.1@deprecated            |  No              |  0.72     |
 
-Version <= @react-native-oh-tpl/react-native-localize@3.1.0-0.0.1@deprecated does not support AutoLink. Therefore, you need to manually configure the linking.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-First, open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
+
+First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
 ### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
 
@@ -241,7 +250,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 }
 ```
 
-### 5. Running
+</details>
+
+## Running
 
 Click the `sync` button in the upper right corner.
 
