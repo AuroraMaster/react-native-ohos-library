@@ -174,10 +174,6 @@ const styles = StyleSheet.create({
 export default App;
 ```
 
-## Use Codegen
-
-If this repository has been adapted to `Codegen`, generate the bridge code of the third-party library by using the `Codegen`. For details, see [Codegen Usage Guide](/en/codegen.md).
-
 ## Link
 
 The HarmonyOS implementation of this library depends on the native code from react-native-reanimated and react-native-gesture-handler.If this library is included into your HarmonyOS application, there is no need to include it again; you can skip the steps in this section and use it directly.
