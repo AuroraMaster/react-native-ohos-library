@@ -342,11 +342,12 @@ ohpm install
 | `onLoadEnd?: (event) => void`                    | Function that is invoked when the WebView load succeeds or fails used. | function | No       | All                     | yes               |
 | `onLoadProgress?: (event) => void`               | Function that is invoked when the WebView is loading.        | function | No       | All                     | yes               |
 | `onMessage?: (event) => void`                    | Function that is invoked when the webview calls window.ReactNativeWebView.postMessage. | function | No       | iOS,Android,macOS       | yes               |
-| `onShouldStartLoadWithRequest?: (event) => void` | Function that allows custom handling of any web view requests. | function | No       | iOS,Android,macOS       | yes                |
+| `onShouldStartLoadWithRequest?: (event) => void` | Function that allows custom handling of any web view requests. This feature needs to be used in conjunction with worker threads, and the relevant configuration can be set according to step three of [the worker threads](https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/TurboModule.md#%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89turbomodule%E8%BF%90%E8%A1%8C%E5%9C%A8worker%E7%BA%BF%E7%A8%8B).| function | No       | iOS,Android,macOS       | yes                |
 | `onContentProcessDidTerminate: (event) => void`  | Function that is invoked when the `WebView` content process is terminated. | function | No       | iOS and macOS WKWebView | No                |
 | `renderLoading?`                                 | Function that returns a loading indicator. The `startInLoadingState` prop must be set to `true` in order to use this prop. | function | No       | iOS, Android, macOS     | No                |
 | `onCustomMenuSelection?`                         | Function called when a custom menu item is selected. It receives a Native event, which includes three custom keys: `label`, `key` and `selectedText`. | function | NO       | iOS, Android            | No                |
 | `onNavigationStateChange?: (event) => void`      | Function that is invoked when the WebView loading starts or ends. | function | NO       | iOS, Android            | yes               |
+
 ## 静态方法
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
