@@ -359,7 +359,7 @@ const styles = StyleSheet.create({
   },
   space: {
     flex: 1,
-marginTop: 10
+    marginTop: 10
   }
 });
 
@@ -618,14 +618,14 @@ The content of this document has been validated based on the following version:
 | statusBarMode  | Status bar mode (China Mobile only)       | 'light'&#124;'dark'  | no | iOS/Android      | yes |
 | navHidden | Whether to hide the navigation bar       | boolean | no | iOS/Android      | no |
 | navTitle  | Navigation bar title        | string | no | iOS/Android      | no |
-|navTitleSize  | Navigation bar title font size        | number | no | iOS/Android      | no |
+| navTitleSize  | Navigation bar title font size        | number | no | iOS/Android      | no |
 | navTitleColor  | Navigation bar title text color (China Mobile only)        | string  | no | iOS/Android      | yes |
 | navReturnHidden  | Whether to hide the navigation bar return button        | boolean | no | iOS/Android      | no |
 | navReturnImage  | Navigation bar left return button icon        | string | no | iOS/Android      | no |
-| navReturnX  | Navigation bar left return button icon offset from the top of the screen        | number | no | iOS/Android      | no |
-| navReturnY  | Navigation bar left return button icon offset from the left side of the screen        | number | no | iOS/Android      | no |
-| navReturnW  | Navigation bar left return button icon width        | number | no | iOS/Android      | no |
-| navReturnH  | Navigation bar left return button icon height        | number | no | iOS/Android      | no |
+| navReturnX  | Navigation bar left return button icon offset from the top of the screen        | number | no | Android      | no |
+| navReturnY  | Navigation bar left return button icon offset from the left side of the screen        | number | no | Android      | no |
+| navReturnW  | Navigation bar left return button icon width        | number | no | Android      | no |
+| navReturnH  | Navigation bar left return button icon height        | number | no | Android      | no |
 | logoHidden  | Whether to hide logo (China Unicom, China Telecom)      | boolean | no | iOS/Android      | yes |
 | logoImage  | Logo image (China Unicom, China Telecom)        | string | no | iOS/Android      | yes |
 | logoX  | Logo x-axis offset (China Unicom, China Telecom)       | number | no | iOS/Android      | yes |
@@ -643,15 +643,15 @@ The content of this document has been validated based on the following version:
 | sloganTextColor  | Slogan color (China Unicom, China Telecom)        | string  | no | iOS/Android      | yes |
 | sloganX  | Slogan x-axis offset (China Unicom, China Telecom)        | number | no | iOS/Android      | yes |
 | sloganY  | Slogan y-axis offset (China Unicom, China Telecom)        | number | no | iOS/Android      | yes |
-| sloganW  | Slogan width        | number | no | iOS/Android      | no |
-| sloganH  | Slogan height        | number | no | iOS/Android      | no |
+| sloganW  | Slogan width        | number | no | iOS      | no |
+| sloganH  | Slogan height        | number | no | iOS     | no |
 | loginBtnText | Authorization login button text content (China Unicom, China Telecom, China Mobile)        | string | no | iOS/Android       | yes |
 | loginBtnTextSize | Authorization login button text font size (China Unicom, China Telecom, China Mobile)        | number | no | iOS/Android      | yes |
 | loginBtnTextColor | Authorization login button text color (China Unicom, China Telecom, China Mobile)        | string | no | iOS/Android      | yes |
-| loginBtnImage | Authorization login button background image (China Unicom, China Telecom, China Mobile)        | string | no | iOS/Android      | yes |
-| loginBtnNormalImage | Login button normal image        | string | no | iOS/Android      | no |
-| loginBtnDisabledImage | Login button disabled image (China Mobile only)        | string | no | iOS/Android      | yes |
-| loginBtnSelectedImage | Login button pressed image (China Unicom, China Telecom, China Mobile)        | string | no | iOS/Android      | no |
+| loginBtnImage | Authorization login button background image (China Unicom, China Telecom, China Mobile)        | string | no | Android      | yes |
+| loginBtnNormalImage | Login button normal image        | string | no | iOS      | no |
+| loginBtnDisabledImage | Login button disabled image (China Mobile only)        | string | no | iOS      | yes |
+| loginBtnSelectedImage | Login button pressed image (China Unicom, China Telecom, China Mobile)        | string | no | iOS      | no |
 | loginBtnX | Login button x-axis offset relative to the left side of the screen (China Unicom, China Telecom, China Mobile)        | number | no | iOS/Android      | yes |
 | loginBtnY | Login button y-axis offset relative to the bottom edge of the title bar (China Unicom, China Telecom, China Mobile)        | number | no | iOS/Android      | yes |
 | loginBtnW | Login button width (China Unicom, China Telecom, China Mobile)        | number | no | iOS/Android      | yes |
@@ -670,7 +670,7 @@ The content of this document has been validated based on the following version:
 | privacyCheckboxHidden | Whether to hide checkBox, default is not hidden        | boolean | no | iOS/Android      | no |
 | privacyCheckedImage | checkBox selected image (China Unicom, China Telecom, China Mobile)        | string | no | iOS/Android      | yes |
 | privacyUncheckedImage | checkBox unselected image (China Unicom, China Telecom, China Mobile)        | string | no | iOS/Android      | yes |
-| privacyCheckboxSize | Set privacy clause checkbox size (China Unicom, China Telecom, China Mobile)        | number | no | iOS/Android      | yes |
+| privacyCheckboxSize | Set privacy clause checkbox size (China Unicom, China Telecom, China Mobile)        | number | no | Android      | yes |
 | privacyCheckEnable | Whether the privacy agreement is checked (China Unicom, China Telecom, China Mobile)        | boolean | no | iOS/Android      | yes |
 | privacyWebNavColor | Privacy agreement page navigation bar color (China Unicom, China Telecom, China Mobile)        | number | no | iOS/Android      | yes |
 | privacyWebNavTitleSize | Privacy agreement page navigation bar title font size (China Unicom, China Telecom, China Mobile)        | number | no | iOS/Android      | yes |
@@ -678,19 +678,19 @@ The content of this document has been validated based on the following version:
 | privacyWebNavReturnImage | Privacy agreement page navigation bar return button image (China Unicom, China Telecom)        | string | no | iOS/Android      | yes |
 | navColor | Navigation bar color (China Mobile only)        | number | no | iOS/Android      | yes |
 | showWindow | Whether to show popup window (China Unicom, China Telecom, China Mobile)        | boolean | no | iOS/Android      | yes |
-| logoConstraints | LOGO image layout object      | array | no | iOS/Android      | no |
-| numberConstraints | Phone number bar layout object      | array | no | iOS/Android      | no |
-| sloganConstraints | Slogan layout object      | array | no | iOS/Android      | no |
-| logBtnConstraints | Button layout object      | array | no | iOS/Android      | no |
-| privacyConstraints | Privacy clause layout object      | array | no | iOS/Android      | no |
-| checkViewConstraints | checkBox layout object      | array | no | iOS/Android      | no |
-| loadingConstraints | Loading layout object      | array | no | iOS/Android      | no |
-| windowBackgroundImage | Popup window internal background image      | string | no | iOS/Android      | no |
-| windowBackgroundAlpha | Popup window external transparency      | number | no | iOS/Android      | no |
-| windowCornerRadius | Popup window corner radius value      | number | no | iOS/Android      | no |
-| windowConstraints | Popup window layout object      | array | no | iOS/Android      | no |
-| windowCloseBtnImgs | Popup window close button images      | array | no | iOS/Android      | no |
-| windowCloseBtnConstraints | Popup window close button layout      | array | no | iOS/Android      | no |
+| logoConstraints | LOGO image layout object      | array | no | iOS      | no |
+| numberConstraints | Phone number bar layout object      | array | no | iOS      | no |
+| sloganConstraints | Slogan layout object      | array | no | iOS      | no |
+| logBtnConstraints | Button layout object      | array | no | iOS      | no |
+| privacyConstraints | Privacy clause layout object      | array | no | iOS      | no |
+| checkViewConstraints | checkBox layout object      | array | no | iOS      | no |
+| loadingConstraints | Loading layout object      | array | no | iOS      | no |
+| windowBackgroundImage | Popup window internal background image      | string | no | iOS      | no |
+| windowBackgroundAlpha | Popup window external transparency      | number | no | iOS      | no |
+| windowCornerRadius | Popup window corner radius value      | number | no | iOS      | no |
+| windowConstraints | Popup window layout object      | array | no | iOS      | no |
+| windowCloseBtnImgs | Popup window close button images      | array | no | iOS      | no |
+| windowCloseBtnConstraints | Popup window close button layout      | array | no | iOS      | no |
 
 #### customViewParams
 

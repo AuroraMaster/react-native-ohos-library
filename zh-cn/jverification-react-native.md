@@ -361,7 +361,7 @@ const styles = StyleSheet.create({
   },
   space: {
     flex: 1,
-marginTop: 10
+    marginTop: 10
   }
 });
 
@@ -616,10 +616,10 @@ ohpm install
 | navTitleColor  | 导航栏标题文本颜色（仅移动）        | string | no | iOS/Android      | yes |
 | navReturnHidden  | 导航栏返回按钮是否隐藏        | boolean | no | iOS/Android      | no |
 | navReturnImage  | 导航栏左侧返回按钮图标        | string | no | iOS/Android      | no |
-| navReturnX  | 导航栏左侧返回按钮图标距屏幕上端偏移        | number | no | iOS/Android      | no |
-| navReturnY  | 导航栏左侧返回按钮图标距屏幕左侧偏移        | number | no | iOS/Android      | no |
-| navReturnW  | 导航栏左侧返回按钮图标宽度        | number | no | iOS/Android      | no |
-| navReturnH  | 导航栏左侧返回按钮图标高度        | number | no | iOS/Android      | no |
+| navReturnX  | 导航栏左侧返回按钮图标距屏幕上端偏移        | number | no | Android      | no |
+| navReturnY  | 导航栏左侧返回按钮图标距屏幕左侧偏移        | number | no | Android      | no |
+| navReturnW  | 导航栏左侧返回按钮图标宽度        | number | no | Android      | no |
+| navReturnH  | 导航栏左侧返回按钮图标高度        | number | no | Android      | no |
 | logoHidden  | 是否隐藏logo (联通、电信)      | boolean | no | iOS/Android      | yes |
 | logoImage  | logo图片(联通、电信)        | string | no | iOS/Android      | yes |
 | logoX  | logo的x轴偏移 (联通、电信)       | number | no | iOS/Android      | yes |
@@ -637,15 +637,15 @@ ohpm install
 | sloganTextColor  | slogan颜色(联通、电信)        | string | no | iOS/Android      | yes |
 | sloganX  | slogan x轴偏转(联通、电信)        | number | no | iOS/Android      | yes |
 | sloganY  | slogan y轴偏转(联通、电信)        | number | no | iOS/Android      | yes |
-| sloganW  | slogan宽度        | number | no | iOS/Android      | no |
-| sloganH  | slogan宽度        | number | no | iOS/Android      | no |
+| sloganW  | slogan宽度        | number | no | iOS      | no |
+| sloganH  | slogan高度        | number | no | iOS      | no |
 | loginBtnText | 授权登录按钮文本内容(联通、电信、移动)        | string | no | iOS/Android       | yes |
 | loginBtnTextSize | 授权登录按钮文本字号(联通、电信、移动)        | number | no | iOS/Android      | yes |
 | loginBtnTextColor | 授权登录按钮文本颜色(联通、电信、移动)        | string | no | iOS/Android      | yes |
-| loginBtnImage | 授权登录按钮背景图片(联通、电信、移动)        | string | no | iOS/Android      | yes |
-| loginBtnNormalImage | 登录按钮正常图片        | string | no | iOS/Android      | no |
-| loginBtnDisabledImage | 登录按钮失效图片(仅移动)        | string | no | iOS/Android      | yes |
-| loginBtnSelectedImage | 登录按钮按下图片(联通、电信、移动)        | string | no | iOS/Android      | no |
+| loginBtnImage | 授权登录按钮背景图片(联通、电信、移动)        | string | no | Android      | yes |
+| loginBtnNormalImage | 登录按钮正常图片        | string | no | iOS      | no |
+| loginBtnDisabledImage | 登录按钮失效图片(仅移动)        | string | no | iOS      | yes |
+| loginBtnSelectedImage | 登录按钮按下图片(联通、电信、移动)        | string | no | iOS     | no |
 | loginBtnX | 登录按钮相对于屏幕左边x轴偏移(联通、电信、移动)        | number | no | iOS/Android      | yes |
 | loginBtnY | 登录按钮相对于标题栏下边缘y偏移(联通、电信、移动)        | number | no | iOS/Android      | yes |
 | loginBtnW | 登录按钮宽度(联通、电信、移动)        | number | no | iOS/Android      | yes |
@@ -664,7 +664,7 @@ ohpm install
 | privacyCheckboxHidden | checkBox是否隐藏，默认不隐藏        | boolean | no | iOS/Android      | no |
 | privacyCheckedImage | checkBox选中时图片(联通、电信、移动)        | string | no | iOS/Android      | yes |
 | privacyUncheckedImage | checkBox未选中时图片(联通、电信、移动)        | string | no | iOS/Android      | yes |
-| privacyCheckboxSize | 设置隐私条款checkbox尺寸(联通、电信、移动)        | number | no | iOS/Android      | yes |
+| privacyCheckboxSize | 设置隐私条款checkbox尺寸(联通、电信、移动)        | number | no | Android      | yes |
 | privacyCheckEnable | 隐私协议是否勾选(联通、电信、移动)        | boolean | no | iOS/Android      | yes |
 | privacyWebNavColor | 隐私协议页面导航栏颜色(联通、电信、移动)        | number | no | iOS/Android      | yes |
 | privacyWebNavTitleSize | 隐私协议页面导航栏标题字号(联通、电信、移动)        | number | no | iOS/Android      | yes |
@@ -672,19 +672,19 @@ ohpm install
 | privacyWebNavReturnImage | 隐私协议页面导航栏返回按钮图片(联通、电信)        | string | no | iOS/Android      | yes |
 | navColor | 导航栏颜色(仅移动)        | number | no | iOS/Android      | yes |
 | showWindow | 是否显示弹窗(联通、电信、移动)        | boolean | no | iOS/Android      | yes |
-| logoConstraints | LOGO图片布局对象      | array | no | iOS/Android      | no |
-| numberConstraints | 号码栏布局对象      | array | no | iOS/Android      | no |
-| sloganConstraints | slogan布局对象      | array | no | iOS/Android      | no |
-| logBtnConstraints | 按钮布局对象      | array | no | iOS/Android      | no |
-| privacyConstraints | 隐私条款布局对象      | array | no | iOS/Android      | no |
-| checkViewConstraints | checkBox布局对象      | array | no | iOS/Android      | no |
-| loadingConstraints | loading布局对象      | array | no | iOS/Android      | no |
-| windowBackgroundImage | 弹框内部背景图片      | string | no | iOS/Android      | no |
-| windowBackgroundAlpha | 弹窗外侧透明度      | number | no | iOS/Android      | no |
-| windowCornerRadius | 弹窗圆角数值      | number | no | iOS/Android      | no |
-| windowConstraints | 弹窗布局对象      | array | no | iOS/Android      | no |
-| windowCloseBtnImgs | 弹窗close按钮图片      | array | no | iOS/Android      | no |
-| windowCloseBtnConstraints | 弹窗close按钮布局      | array | no | iOS/Android      | no |
+| logoConstraints | LOGO图片布局对象      | array | no | iOS      | no |
+| numberConstraints | 号码栏布局对象      | array | no | iOS      | no |
+| sloganConstraints | slogan布局对象      | array | no | iOS      | no |
+| logBtnConstraints | 按钮布局对象      | array | no | iOS      | no |
+| privacyConstraints | 隐私条款布局对象      | array | no | iOS      | no |
+| checkViewConstraints | checkBox布局对象      | array | no | iOS      | no |
+| loadingConstraints | loading布局对象      | array | no | iOS      | no |
+| windowBackgroundImage | 弹框内部背景图片      | string | no | iOS      | no |
+| windowBackgroundAlpha | 弹窗外侧透明度      | number | no | iOS      | no |
+| windowCornerRadius | 弹窗圆角数值      | number | no | iOS      | no |
+| windowConstraints | 弹窗布局对象      | array | no | iOS      | no |
+| windowCloseBtnImgs | 弹窗close按钮图片      | array | no | iOS      | no |
+| windowCloseBtnConstraints | 弹窗close按钮布局      | array | no | iOS    | no |
 
 #### customViewParams
 
