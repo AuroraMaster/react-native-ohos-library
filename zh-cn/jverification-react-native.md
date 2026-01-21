@@ -64,21 +64,9 @@ const customConfigParams = {
   showWindow: false,
   dialogWidth: 275, 
   dialogHeight: 400,
-  topSafeAreaHeight: 38,
-  BottomSafeAreaHeight: 38,
-  /**
-   * 返回按钮
-   */
-  returnBtnImgPath: "back",
-  returnBtnHidden: false,
-  returnBtnWidth: 100,
-  returnBtnHeight: 80,
-  returnBtnOffsetX: 10,
-  returnBtnOffsetY: 43,
   /**
    * 手机号样式
    */
-  numberTextBold: true,
   numberSize: 30,
   numberColor: "#B22222",
   numberX: 0,
@@ -91,13 +79,11 @@ const customConfigParams = {
   loginBtnText: "一键登录",
   loginBtnTextSize: 20,
   loginBtnTextColor: "rgb(0,0,0)",
-  loginBtnColor: "rgb(197,34,34)",
   loginBtnImage: "loginBtn",
   loginBtnX: -1,
   loginBtnY: 20,
   loginBtnW: "60%",
   loginBtnH: 56,
-  loginBtnTextBold: true,
   backgroundImage: "background",
   /**
    * 隐私协议页面
@@ -106,7 +92,6 @@ const customConfigParams = {
   privacyWebNavColor: "rgb(202,193,16)",
   privacyWebNavTitleSize: 20,
   privacyWebNavReturnImage: "back",
-  privacyNavTitleTextBold: true,
   /**
    * logo
    */
@@ -123,7 +108,6 @@ const customConfigParams = {
   sloganTextColor: "rgb(216,213,30)",
   sloganX: -1,
   sloganY: 70,
-  sloganTextBold: true,
   /**
    * 隐私协议部分
    */
@@ -140,18 +124,6 @@ const customConfigParams = {
   privacyX: 5,
   privacyY: 5,
   privacyBookSymbolEnable: true,
-  privacyUnderlineText: true,
-  privacyTextBold: true,
-  enableHintToastText: "请勾选隐私协议",
-  privacyCheckboxInCenter: true,
-  privacyMargin: { left: 5, right: 5, bottom: 10 },
-  /**
-   * CM
-   */
-  loginBtnBorderRadius: 45,
-  checkBoxShape: 0,
-  checkTipText: "未勾选提示文案",
-  setClauseNavMarginTop: 10,
 };
 
 const customConfigParamsCM = {
@@ -167,17 +139,11 @@ const customConfigParamsCM = {
   privacyBookSymbolEnable: false,
   privacyX: 40,
   privacyY: 0,
-  privacyTextBold: true,
   privacyTextGravityMode: "center",
   privacyCheckEnable: false,
-  checkBoxShape: 0,
-  checkTipText: "移动未勾选提示文案",
   privacyCheckboxSize: 20,
   privacyCheckedImage: "check",
   privacyUncheckedImage: "unCheck",
-  checkBoxX: 20,
-  checkBoxY: 15,
-  clauseNavMarinTop: 30,
   /**
    * 隐私协议页面
    */
@@ -196,24 +162,15 @@ const customConfigParamsCM = {
   loginBtnText: "一键登录",
   loginBtnTextSize: 20,
   loginBtnTextColor: "rgb(0,0,0)",
-  loginBtnColor: "rgb(197,34,34)",
   loginBtnImage: "loginBtn",
   loginBtnDisabledImage: "background",
   loginBtnX: -1,
   loginBtnY: 335,
   loginBtnW: "60%",
   loginBtnH: 56,
-  loginBtnDisabledTextColor: "rgb(0,0,0)",
-  loginBtnDisabledColor: "rgb(212,24,39)",
-  loginBtnBorderColor: "rgb(197,32,212)",
-  loginBtnDisabledBorderColor: "rgb(0,0,0)",
-  loginBtnBorderWidth: 10,
-  loginBtnDisabledBorderWidth: 2,
-  loginBtnBorderRadius: 45,
   /**
    * 手机号样式
    */
-  numberTextBold: true,
   numberSize: 30,
   numberColor: "rgb(158,19,19)",
   numberX: 160,
@@ -495,7 +452,7 @@ add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
 add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
-+ add_subdirectory("${OH_MODULES}/@react-native-ohos/jverification-react-native/src/main/cpp" ./jverification)
++ add_subdirectory("${OH_MODULES}/@react-native-ohos/jverification-react-native/src/main/cpp" ./jVerification_react_native)
 # RNOH_BEGIN: manual_package_linking_1
 
 add_library(rnoh_app SHARED
@@ -671,7 +628,6 @@ ohpm install
 | logoH  | logo高度 (联通、电信)       | number | no | iOS/Android      | yes |
 | numberSize  | 手机号字体大小(联通、电信、移动)        | number | no | iOS/Android      | yes |
 | numberColor  | 手机号颜色(联通、电信、移动)        | number | no | iOS/Android      | yes |
-| numberTextBold  | 手机号是否加粗(联通、电信、移动)        | boolean | no | -      | yes |
 | numberX  | 手机号x轴偏移(联通、电信、移动)        | number | no | iOS/Android      | yes |
 | numberY  | 手机号y轴偏移(联通、电信、移动)        | number | no | iOS/Android      | yes |
 | numberW  | 手机号文本宽度(联通、电信、移动)        | number | no | iOS/Android      | yes |
@@ -683,23 +639,13 @@ ohpm install
 | sloganY  | slogan y轴偏转(联通、电信)        | number | no | iOS/Android      | yes |
 | sloganW  | slogan宽度        | number | no | iOS/Android      | no |
 | sloganH  | slogan宽度        | number | no | iOS/Android      | no |
-| sloganTextBold | slogan是否加粗(联通、电信)        | boolean | no | -      | yes |
 | loginBtnText | 授权登录按钮文本内容(联通、电信、移动)        | string | no | iOS/Android       | yes |
 | loginBtnTextSize | 授权登录按钮文本字号(联通、电信、移动)        | number | no | iOS/Android      | yes |
-| loginBtnDisabledTextColor | 授权登录按钮禁用时的文本颜色(仅移动)        | string | no | -      | yes |
 | loginBtnTextColor | 授权登录按钮文本颜色(联通、电信、移动)        | string | no | iOS/Android      | yes |
-| loginBtnTextBold | 授权登录按钮文本是否加粗(联通、电信)        | boolean | no | -      | yes |
-| loginBtnColor | 授权登录按钮背景颜色(仅移动)        | string | no | -      | yes |
-| loginBtnDisabledColor | 授权登录按钮禁用时的背景颜色(仅移动)        | string | no | -      | yes |
 | loginBtnImage | 授权登录按钮背景图片(联通、电信、移动)        | string | no | iOS/Android      | yes |
 | loginBtnNormalImage | 登录按钮正常图片        | string | no | iOS/Android      | no |
 | loginBtnDisabledImage | 登录按钮失效图片(仅移动)        | string | no | iOS/Android      | yes |
 | loginBtnSelectedImage | 登录按钮按下图片(联通、电信、移动)        | string | no | iOS/Android      | no |
-| loginBtnBorderColor | 授权登录按钮边框颜色(仅移动)        | string | no | -      | yes |
-| loginBtnDisabledBorderColor | 授权登录按钮禁用时的边框颜色(仅移动)        | string | no | -      | yes |
-| loginBtnBorderWidth | 授权登录按钮边框宽度(仅移动)        | number or string | no | -      | yes |
-| loginBtnDisabledBorderWidth | 授权登录按钮禁用时的边框宽度(仅移动)        | number or string | no | -      | yes |
-| loginBtnBorderRadius | 授权登录按钮边框颜色(仅移动)        | number | no | -      | yes |
 | loginBtnX | 登录按钮相对于屏幕左边x轴偏移(联通、电信、移动)        | number | no | iOS/Android      | yes |
 | loginBtnY | 登录按钮相对于标题栏下边缘y偏移(联通、电信、移动)        | number | no | iOS/Android      | yes |
 | loginBtnW | 登录按钮宽度(联通、电信、移动)        | number | no | iOS/Android      | yes |
@@ -710,10 +656,7 @@ ohpm install
 | privacyText | 隐私条款名称外的文字(联通、电信、移动)        | Array<string> | no | iOS/Android      | yes |
 | privacyTextSize | 隐私条款文字字体大小(联通、电信、移动)        | number | no | iOS/Android      | yes |
 | privacyTextGravityMode | 隐私条款文本对齐方式(联通、电信、移动)        | string | no | iOS/Android      | yes |
-| privacyTextBold | 隐私协议文本是否加粗(联通、电信、移动)        | boolean | no | -      | yes |
 | privacyBookSymbolEnable | 隐私条款是否显示书名号(联通、电信、移动)        | boolean | no | iOS/Android      | yes |
-| privacyUnderlineText | 隐私协议是否增加下划线(联通、电信)        | boolean | no | -      | yes |
-| privacyMargin | 隐私协议边缘距离(联通、电信)        | object | no | -      | yes |
 | privacyX | 隐私条款相对于屏幕左边x轴偏移(仅移动)        | number or string | no | iOS/Android      | yes |
 | privacyY | 隐私条款相对于授权页面底部下边缘y偏移(仅移动)        | number or string | no | iOS/Android      | yes |
 | privacyW | 隐私条款宽度        | number or string | no | iOS/Android      | no |
@@ -723,30 +666,12 @@ ohpm install
 | privacyUncheckedImage | checkBox未选中时图片(联通、电信、移动)        | string | no | iOS/Android      | yes |
 | privacyCheckboxSize | 设置隐私条款checkbox尺寸(联通、电信、移动)        | number | no | iOS/Android      | yes |
 | privacyCheckEnable | 隐私协议是否勾选(联通、电信、移动)        | boolean | no | iOS/Android      | yes |
-| checkBoxX | checkbox x轴偏移(仅移动)        | number | no | -      | yes |
-| checkBoxY | checkbox Y轴偏移(仅移动)        | number | no | -      | yes |
-| privacyCheckboxInCenter | 隐私协议勾选框是否垂直居中(联通、电信)        | boolean | no | -      | yes |
-| checkBoxShape | 隐私协议勾选框类型(仅移动)        | number | no | -      | yes |
-| enableHintToastText | 未勾选隐私协议时点击登录提示文本(联通、电信、移动)        | string | no | -      | yes |
-| clauseAlignRuleOption | 隐私条款相对布局偏移规则(仅移动)        | object | no | -      | yes |
 | privacyWebNavColor | 隐私协议页面导航栏颜色(联通、电信、移动)        | number | no | iOS/Android      | yes |
 | privacyWebNavTitleSize | 隐私协议页面导航栏标题字号(联通、电信、移动)        | number | no | iOS/Android      | yes |
 | privacyWebNavTitleColor | 隐私协议页面导航栏标题颜色(联通、电信、移动)        | number | no | iOS/Android      | yes |
 | privacyWebNavReturnImage | 隐私协议页面导航栏返回按钮图片(联通、电信)        | string | no | iOS/Android      | yes |
-| privacyNavTitleTextBold | 隐私协议页面导航栏标题是否加粗(联通、电信)        | boolean | no | -     | yes |
 | navColor | 导航栏颜色(仅移动)        | number | no | iOS/Android      | yes |
-| clauseNavMarginTop | 隐私协议页面标题栏margin top(仅移动)        | number | no | -      | yes |
 | showWindow | 是否显示弹窗(联通、电信、移动)        | boolean | no | iOS/Android      | yes |
-| maskRect | 弹窗遮蔽层区域(仅移动)        | Rectangle | no | -      | yes |
-| dialogColor | 弹窗背景颜色 (联通、电信、移动)        | number | no | -      | yes |
-| topSafeAreaHeight | 弹窗遮蔽层区域(联通、电信界面)        | number | no | -      | yes |
-| bottomSafeAreaHeight | 底部安全高度(联通、电信界面)        | number | no | -      | yes |
-| returnBtnImgPath | 返回按钮图片(联通、电信)        | string | no | -      | yes |
-| returnBtnHidden | 是否隐藏返回按钮(联通、电信)        | boolean | no | -      | yes |
-| returnBtnWidth | 返回按钮宽度(联通、电信)        | number | no | -      | yes |
-| returnBtnHeight | 返回按钮高度(联通、电信)        | number | no | -      | yes |
-| returnBtnOffsetX | 返回按钮x轴偏移(联通、电信)        | number | no | -      | yes |
-| returnBtnOffsetY | 返回按钮y轴偏移(联通、电信)        | number | no | -      | yes |
 | logoConstraints | LOGO图片布局对象      | array | no | iOS/Android      | no |
 | numberConstraints | 号码栏布局对象      | array | no | iOS/Android      | no |
 | sloganConstraints | slogan布局对象      | array | no | iOS/Android      | no |
