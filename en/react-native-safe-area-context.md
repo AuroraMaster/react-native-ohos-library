@@ -18,11 +18,12 @@
 
 Please refer to the Releases page of the third-party library for the corresponding version information
 
-| Third-party Library Version | Release Information       | Supported RN Version |
-|-----------------------------| ------------------------------------------------------------ | ---------- |
-| <= 4.7.4-0.2.1@deprecated | [@react-native-oh-tpl/react-native-safe-area-context Releases(deprecated)](https://github.com/react-native-oh-library/react-native-safe-area-context/releases) | 0.72       |
-| 4.7.5 | [@react-native-ohos/react-native-safe-area-context Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-area-context/releases)               | 0.72       |
-| 5.1.1 | [@react-native-ohos/react-native-safe-area-context Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-area-context/releases)               | 0.77       |
+| Third-party Library Version | community version | Release Information       | Supported RN Version |
+|-----------------------------| ------------------------------------------------------------ | ---------- | ---------- |
+| 5.6.3                       | 5.6.2                     | [@react-native-ohos/react-native-safe-area-context Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-area-context/releases) | 0.82                 |
+| 5.1.1 | 5.1.0 | [@react-native-ohos/react-native-safe-area-context Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-area-context/releases)               | 0.77       |
+| 4.7.5                       | 4.7.4                     | [@react-native-ohos/react-native-safe-area-context Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-area-context/releases) | 0.72                 |
+| <= 4.7.4-0.2.1@deprecated | 4.7.4 | [@react-native-oh-tpl/react-native-safe-area-context Releases(deprecated)](https://github.com/react-native-oh-library/react-native-safe-area-context/releases) | 0.72 |
 
 For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
@@ -76,6 +77,7 @@ export default App;
 
 |                                      | Is supported autolink  | Supported RN Version |
 |--------------------------------------|-----------------------|----------------------|
+| ~5.6.3 | No | 0.82 |
 | ~5.1.1                               |  No                   |  0.77                |
 | ~4.7.5                              |  Yes                  |  0.72                |
 | <= 4.7.4-0.2.1@deprecated            |  No                   |  0.72                |
@@ -231,11 +233,14 @@ Then compile and run.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
+> [!TIP] Versions >=4.7.4-0.2.1 need to run on DevEco Studio 5.0.2 (API14) or later.
+
 Verified successfully in the following versions:
 
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.1 Release SDK; IDE: DevEco Studio 6.0.1 Release; ROM:6.0.0.120 SP7
 
 ## Props
 
@@ -278,6 +283,7 @@ Note that providers should not be inside a View that is animated with `Animated`
 | `withSafeAreaInsets`<sup>5.1.1+</sup> | Higher order component that provides safe area insets as the `insets` prop.          | function | no       | All      | yes               |
 | `SafeAreaFrameContext`    | React Context with the value of the safe area frame.                                 | object   | no       | All      | yes               |
 | `initialWindowMetrics`    | Insets and frame of the window on initial render. This can be used with the `initialMetrics` from `SafeAreaProvider`. | object   | no       | All      | yes               |
+| SafeAreaListener<sup>5.6.3+</sup> | Monitor changes in the safe area of the rendering location | object | no | All | yes |
 
 ## Known Issues
 
