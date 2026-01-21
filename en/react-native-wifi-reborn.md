@@ -652,6 +652,7 @@ Open 'entry/src/main/resources/base/element/string. json' and add:
 
 •The connectToProtectdSSIDOnce and connectToProtectdSSIDPriorityOnce methods cannot be implemented. These two methods are specifically designed for the iOS platform and use the NEHotspotConfiguring Manager to pass the joinOnce parameter in the iOS system to achieve one-time connection functionality. However, HarmonyOS does not support this feature.
 •setEnabled HarmonyOS only supports jumping to the Wi-Fi settings page
+•connectToProtectSSID,connectToProtectedWifiSSID,connectToProtectedSSIDPrefix,Setting the isWEP parameter to true returns an unsupported prompt message.
 
 ## open source license
 

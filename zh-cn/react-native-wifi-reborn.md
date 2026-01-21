@@ -652,6 +652,7 @@ ohpm install
 
 •connectToProtectedSSIDOnce和connectToProtectedSSIDPrefixOnce方法无法实现，这两个方法是专门为ios平台设计的，在ios系统中使用了NEHotspotConfigurationManager传递joinOnce参数来实现一次连接功能，鸿蒙侧不支持此功能。
 •setEnabled鸿蒙只支持跳转到wifi设置页
+•connectToProtectSSID,connectToProtectedWifiSSID,connectToProtectedSSIDPrefix,参数isWEP值为true的时候会有提示不支持的信息返回
 
 ## 开源协议
 
