@@ -18,11 +18,12 @@
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本 | 发布信息                                                                                                                                            | 支持RN版本 |
-|-------|-------------------------------------------------------------------------------------------------------------------------------------------------| ---------- |
-| <= 4.7.4-0.2.1@deprecated | [@react-native-oh-tpl/react-native-safe-area-context Releases(deprecated)](https://github.com/react-native-oh-library/react-native-safe-area-context/releases) | 0.72       |
-| 4.7.5 | [@react-native-ohos/react-native-safe-area-context Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-area-context/releases)               | 0.72       |
-| 5.1.1 | [@react-native-ohos/react-native-safe-area-context Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-area-context/releases)               | 0.77       |
+| 三方库版本 | 社区版本                                                                                                                                     | 发布信息                                                                                                                                            | 支持RN版本 |
+|-------|-------------------------------------------------------------------------------------------------------------------------------------------------| ---------- | ---------- |
+| 5.6.3                     | 5.6.2                     | [@react-native-ohos/react-native-safe-area-context Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-area-context/releases) | 0.82       |
+| 5.1.1                     | 5.1.0                     | [@react-native-ohos/react-native-safe-area-context Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-area-context/releases) | 0.77       |
+| 4.7.5                     | 4.7.4                     | [@react-native-ohos/react-native-safe-area-context Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-safe-area-context/releases) | 0.72       |
+| <= 4.7.4-0.2.1@deprecated | 4.7.4 | [@react-native-oh-tpl/react-native-safe-area-context Releases(deprecated)](https://github.com/react-native-oh-library/react-native-safe-area-context/releases) | 0.72 |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -76,6 +77,7 @@ export default App;
 
 |                                      | 是否支持autolink | RN框架版本 |
 |--------------------------------------|-----------------|------------|
+| ~5.6.3 | No | 0.82 |
 | ~5.1.1                               |  No              |  0.77     |
 | ~4.7.5                              |  Yes             |  0.72     |
 | <= 4.7.4-0.2.1@deprecated            |  No              |  0.72     |
@@ -231,11 +233,15 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
+> [!TIP] version>=4.7.4-0.2.1的版本需要在DevEco Studio 5.0.2(API14) 及以上版本编译
+
 在以下版本验证通过：
 
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.1 Release SDK; IDE: DevEco Studio 6.0.1 Release; ROM:6.0.0.120 SP7
+
 
 
 ## 属性
@@ -279,6 +285,7 @@ ohpm install
 | withSafeAreaInsets<sup>5.1.1+</sup> | 高阶组件，将安全区域插入（insets）作为 insets 属性提供。 | function | no | All | yes |
 | SafeAreaFrameContext | 提供安全区域 frame 值的 React Context。 | object | no | All | yes |
 | initialWindowMetrics | 初始渲染时窗口的插入（insets）和 frame。这可以与 SafeAreaProvider 的 initialMetrics 一起使用。 | object | no | All | yes |
+| SafeAreaListener<sup>5.6.3+</sup>  | 监听渲染位置的安全区域变化 | object | no | All | yes |
 
 ## 遗留问题
 
