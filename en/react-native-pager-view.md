@@ -20,9 +20,10 @@ Please refer to the Releases page of the third-party library for the correspondi
 
 | Third-party Library Version | Release Information       | Supported RN Version |
 |-----------------------------| ------------------------------------------------------------ | ---------- |
-| <= 6.2.4@deprecated         | [@react-native-oh-tpl/react-native-pager-view Releases(deprecated)](https://github.com/react-native-oh-library/react-native-pager-view/releases) | 0.72       |
-| 6.2.5                       | [@react-native-ohos/react-native-pager-view Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-pager-view/releases)               | 0.72       |
+| 7.0.3                       | [@react-native-ohos/react-native-pager-view Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-pager-view/releases)               | 0.82       |
 | 6.7.2                       | [@react-native-ohos/react-native-pager-view Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-pager-view/releases)               | 0.77       |
+| 6.2.5                       | [@react-native-ohos/react-native-pager-view Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-pager-view/releases)               | 0.72       |
+| <= 6.2.4@deprecated         | [@react-native-oh-tpl/react-native-pager-view Releases(deprecated)](https://github.com/react-native-oh-library/react-native-pager-view/releases) | 0.72       |
 
 For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
@@ -56,10 +57,10 @@ import PagerView from "react-native-pager-view";
 const MyPager = () => {
   return (
     <PagerView style={styles.pagerView} initialPage={0}>
-      <View key="1">
+      <View key="1" style={styles.page}>
         <Text>First page</Text>
       </View>
-      <View key="2">
+      <View key="2" style={styles.page}>
         <Text>Second page</Text>
       </View>
     </PagerView>
@@ -67,16 +68,24 @@ const MyPager = () => {
 };
 
 const styles = StyleSheet.create({
-  pagerView: {
-    flex: 1,
-  },
-});
+	  pagerView: {
+	    flex: 1,
+	  },
+	  page: {
+	    justifyContent: 'center',
+	    alignItems: 'center',
+	    flex: 1,
+	  },
+	});
+	
+export default MyPager;
 ```
 
 ## Link
 
 |                                      | Is supported autolink | Supported RN Ve
 |--------------------------------------|------------------|------------|
+| ~7.0.3                               |  No              |  0.82     |
 | ~6.7.2                               |  No              |  0.77     |
 | ~6.2.5                               |  Yes             |  0.72     |
 | <= 6.2.4@deprecated                  |  No              |  0.72     |
@@ -230,6 +239,7 @@ Verified successfully in the following versions:
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.1 Release SDK; IDE: DevEco Studio 6.0.1 Release; ROM:6.0.0.120;
 
 ## Properties 
 

@@ -20,9 +20,10 @@
 
 | 三方库版本               | 发布信息                                                                                                                                            | 支持RN版本 |
 |---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------| ---------- |
-| <= 6.2.4@deprecated | [@react-native-oh-tpl/react-native-pager-view Releases(deprecated)](https://github.com/react-native-oh-library/react-native-pager-view/releases) | 0.72       |
-| 6.2.5               | [@react-native-ohos/react-native-pager-view Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-pager-view/releases)               | 0.72       |
+| 7.0.3                       | [@react-native-ohos/react-native-pager-view Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-pager-view/releases)       | 0.82       |
 | 6.7.2               | [@react-native-ohos/react-native-pager-view Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-pager-view/releases)               | 0.77       |
+| 6.2.5               | [@react-native-ohos/react-native-pager-view Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-pager-view/releases)               | 0.72       |
+| <= 6.2.4@deprecated | [@react-native-oh-tpl/react-native-pager-view Releases(deprecated)](https://github.com/react-native-oh-library/react-native-pager-view/releases) | 0.72       |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -56,10 +57,10 @@ import PagerView from "react-native-pager-view";
 const MyPager = () => {
   return (
     <PagerView style={styles.pagerView} initialPage={0}>
-      <View key="1">
+      <View key="1" style={styles.page}>
         <Text>First page</Text>
       </View>
-      <View key="2">
+      <View key="2" style={styles.page}>
         <Text>Second page</Text>
       </View>
     </PagerView>
@@ -67,16 +68,24 @@ const MyPager = () => {
 };
 
 const styles = StyleSheet.create({
-  pagerView: {
-    flex: 1,
-  },
-});
+	  pagerView: {
+	    flex: 1,
+	  },
+	  page: {
+	    justifyContent: 'center',
+	    alignItems: 'center',
+	    flex: 1,
+	  },
+	});
+	
+export default MyPager;
 ```
 
 ## Link
 
 |                                      | 是否支持autolink | RN框架版本 |
 |--------------------------------------|-----------------|------------|
+| ~7.0.3                               |  No              |  0.82     |
 | ~6.7.2                               |  No              |  0.77     |
 | ~6.2.5                               |  Yes             |  0.72     |
 | <= 6.2.4@deprecated                  |  No              |  0.72     |
@@ -233,6 +242,7 @@ ohpm install
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.1 Release SDK; IDE: DevEco Studio 6.0.1 Release; ROM:6.0.0.12;
 
 ## 属性
 
@@ -242,21 +252,21 @@ ohpm install
 
 | Name                                     | Description                                                                                                                                                                                                                                                         | Type                           | Required | Platform     | HarmonyOS Support          |
 | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | -------- | ------------ | -------------------------- |
-| initialPage                              | Index of initial page that should be selected                                                                                                                                                                                                                       | number                         | 是       | ios，android | yes                        |
-| scrollEnabled                            | Should pager view scroll, when scroll enabled                                                                                                                                                                                                                       | bool                           | 是       | ios，android | yes                        |
-| onPageScroll                             | Executed when transitioning between pages (ether because the animation for the requested page has changed or when the user is swiping/dragging between pages)                                                                                                       | function                       | 否       | ios，android | yes                        |
-| onPageScrollStateChanged                 | Function called when the page scrolling state has changed                                                                                                                                                                                                           | function                       | 否       | ios，android | yes                        |
-| onPageSelected                           | This callback will be called once the ViewPager finishes navigating to the selected page                                                                                                                                                                            | function                       | 否       | ios，android | yes                        |
-| pageMargin                               | Blank space to be shown between pages                                                                                                                                                                                                                               | number （取值范围:0~屏幕宽度） | 否       | ios，android | 仅支持取 0-368（屏幕宽度） |
-| keyboardDismissMode                      | Determines whether the keyboard gets dismissed in response to a drag                                                                                                                                                                                                | one of 'none' ,'on-drag'       | 否       | ios,android  | yes                        |
-| orientation                              | Set horizontal or vertical scrolling orientation (it does not work dynamically)                                                                                                                                                                                     | one of horizontal vertical     | 否       | ios，android | yes                        |
-| overScrollMode                           | Used to override default value of overScroll mode. Can be auto, always or never. Defaults to auto                                                                                                                                                                   | one of auto, always ,never     | 否       | android      | yes                        |
-| offscreenPageLimit                       | Set the number of pages that should be retained to either side of the currently visible page(s). Pages beyond this limit will be recreated from the adapter when needed. Defaults to RecyclerView's caching strategy. The given value must either be larger than 0. | number                         | 否       | android      | no                         |
-| overdrag                                 | Allows for overscrolling after reaching the end or very beginning or pages. Defaults to false                                                                                                                                                                       | bool                           | 否       | ios          | yes                        |
-| layoutDirection                          | Specifies layout direction. Use ltr or rtl to set explicitly or locale to deduce from the default language script of a locale. Defaults to locale                                                                                                                   | string                         | 否       | android,ios  | yes                        |
-| setPage(index: number)                   | Function to scroll to a specific page in the PagerView. Invalid index is ignored.                                                                                                                                                                                   | function                       | 否       | android,ios  | yes                        |
-| setPageWithoutAnimation(index: number)   | Function to scroll to a specific page in the PagerView. Invalid index is ignored.                                                                                                                                                                                   | function                       | 否       | android,ios  | yes                        |
-| setScrollEnabled(scrollEnabled: boolean) | FA helper function to enable/disable scroll imperatively. The recommended way is using the scrollEnabled prop, however, there might be a case where a imperative solution is more useful (e.g. for not blocking an animation)                                       | function                       | 否       | android,ios  | yes                        |
+| initialPage                              | 被选中的初始页面索引                                                                                                                                                                                                                       | number                         | 是       | ios，android | yes                        |
+| scrollEnabled                            | 当滚动启用时，页面视图是否应该滚动                                                                                                                                                                                                                       | bool                           | 是       | ios，android | yes                        |
+| onPageScroll                             | 在页面之间转换时执行（无论是因为请求页面的动画已更改还是当用户在页面之间滑动/拖动时）                                                                                                       | function                       | 否       | ios，android | yes                        |
+| onPageScrollStateChanged                 | 页面滚动状态发生变化时调用的函数                                                                                                                                                                                                           | function                       | 否       | ios，android | yes                        |
+| onPageSelected                           | 一旦ViewPager完成导航到选定页面，将调用此回调                                                                                                                                                                            | function                       | 否       | ios，android | yes                        |
+| pageMargin                               | 要显示在页面之间的空白空间                                                                                                                                                                                                                               | number （取值范围:0~屏幕宽度） | 否       | ios，android | 仅支持取 0-368（屏幕宽度） |
+| keyboardDismissMode                      | 确定键盘是否会因拖拽而消失                                                                                                                                                                                                | one of 'none' ,'on-drag'       | 否       | ios,android  | yes                        |
+| orientation                              | 设置水平或垂直滚动方向（不能动态工作）                                                                                                                                                                                     | one of horizontal vertical     | 否       | ios，android | yes                        |
+| overScrollMode                           | 用于覆盖过度滚动模式的默认值。可以是auto、always或never。默认为auto                                                                                                                                                                   | one of auto, always ,never     | 否       | android      | yes                        |
+| offscreenPageLimit                       | 设置应保留在当前可见页面两侧的页数。超出此限制的页面将在需要时从适配器重新创建。默认为RecyclerView的缓存策略。给定值必须大于0 | number                         | 否       | android      | no                         |
+| overdrag                                 | 允许在到达页面末尾或开头后继续过度滚动。默认为false                                                                                                                                                                       | bool                           | 否       | ios          | yes                        |
+| layoutDirection                          | 指定布局方向。使用ltr或rtl显式设置，或使用locale从区域设置的默认语言脚本推断。默认为locale                                                                                                                   | string                         | 否       | android,ios  | yes                        |
+| setPage(index: number)                   | 滚动到PagerView中特定页面的函数。无效索引将被忽略                                                                                                                                                                                   | function                       | 否       | android,ios  | yes                        |
+| setPageWithoutAnimation(index: number)   | 滚动到PagerView中特定页面的函数。无效索引将被忽略                                                                                                                                                                                   | function                       | 否       | android,ios  | yes                        |
+| setScrollEnabled(scrollEnabled: boolean) | FA辅助函数，用于命令式地启用/禁用滚动。推荐的方式是使用scrollEnabled属性，但在某些情况下，命令式解决方案可能更有用（例如，不阻止动画）                                       | function                       | 否       | android,ios  | yes                        |
 
 ## 遗留问题
 
