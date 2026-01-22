@@ -12,13 +12,13 @@ This project is based on [原库 npm 名称](原库仓库连接).
 
 This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-linear-gradient`, The version correspondence details are as follows:
 
-| Version | Release Information | Supported RN Version | Supported Autolink | API Version | Community Baseline Version | npm Address     |
-| -------------- | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
-| ~ 3.3.2    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) | 0.82.* | No | API12+ | 3.3.1 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-linear-gradient) | 
-| ~ 3.2.0    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) | >=0.77.33 | No | API20+ | 3.0.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-linear-gradient) | 
-| 3.1.0 - 3.1.5    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) | 0.77.* | No | API12+ | 3.0.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-linear-gradient) | 
-| ~ 3.0.1    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) | 0.72.* | Yes | API12+ | 3.0.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-linear-gradient) | 
-| <= 3.0.0-0.5.0@deprecated | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-linear-gradient/releases) | 0.72.* | No | API12+ | 3.0.0 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-linear-gradient) | 
+| Name | Version | Release Information | Supported RN Version | Supported Autolink | Compile API Version | Community Baseline Version | npm Address     |
+| --------------| -------------- | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
+| @react-native-ohos/react-native-linear-gradient | ~ 3.3.2    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) | 0.82.* | No | API12+ | 3.3.1 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-linear-gradient) | 
+| @react-native-ohos/react-native-linear-gradient | ~ 3.2.0    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) | >=0.77.33 | No | API20+ | 3.0.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-linear-gradient) | 
+| @react-native-ohos/react-native-linear-gradient | 3.1.0 - 3.1.5    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) | 0.77.* | No | API12+ | 3.0.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-linear-gradient) | 
+| @react-native-ohos/react-native-linear-gradient | ~ 3.0.1    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) | 0.72.* | Yes | API12+ | 3.0.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-linear-gradient) | 
+| @react-native-oh-tpl/react-native-linear-gradient | <= 3.0.0-0.5.0@deprecated | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-linear-gradient/releases) | 0.72.* | No | API12+ | 3.0.0 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-linear-gradient) | 
 
 ## 1. Installation and Usage
 
@@ -254,6 +254,11 @@ This document is verified based on the following versions:
 ### 3.2 Permission Requirements (If Any)
 
 (Enter the related permission configuration.)
+### 3.3. API requirements (If Any)
+
+> [!TIP] Third-party libraries have been version-isolated and support running on ROMs with API 12 and above. The following features rely on specific API versions, and running on ROMs with lower API versions may result in limited functionality.
+1. Version 3.2.0 introduced [OH_ArkUI_NodeUtils_GetParentInPag](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/capi-native-node-h#oh_arkui_nodeutils_getparentinpagetree), achieves the xxx functionality (resolves/addresses xxx issue), and this API requires running on a ROM that supports `API14+` to take effect.
+
 
 ## 4. Properties (If Any)
 

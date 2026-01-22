@@ -11,13 +11,13 @@
 本项目基于 [原库 npm 名称](原库仓库连接) 开发。
 
 该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-linear-gradient` 版本所属关系如下：
-| 三方库版本    | 发布信息     | 支持RN版本    | Autolink     | API版本     | 社区基线版本    | npm地址                |
-| -------------- | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
-| ~ 3.3.2    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) | 0.82.* | 否 | API12+ | 3.3.1 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-linear-gradient) | 
-| ~ 3.2.0    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) | >=0.77.33 | 否 | API20+ | 3.0.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-linear-gradient) | 
-| 3.1.0 - 3.1.5    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) | 0.77.* | 否 | API12+ | 3.0.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-linear-gradient) | 
-| ~ 3.0.1    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) | 0.72.* | 是 | API12+ | 3.0.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-linear-gradient) | 
-| <= 3.0.0-0.5.0@deprecated | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-linear-gradient/releases) | 0.72.* | 否 | API12+ | 3.0.0 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-linear-gradient) | 
+| 三方库名称    | 三方库版本    | 发布信息     | 支持RN版本    | Autolink     | 编译API版本     | 社区基线版本    | npm地址                |
+| ------------ | ------------ | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
+| @react-native-ohos/react-native-linear-gradient | ~ 3.3.2    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) | 0.82.* | 否 | API12+ | 3.3.1 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-linear-gradient) | 
+| @react-native-ohos/react-native-linear-gradient | ~ 3.2.0    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) | >=0.77.33 | 否 | API20+ | 3.0.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-linear-gradient) | 
+| @react-native-ohos/react-native-linear-gradient | 3.1.0 - 3.1.5    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) | 0.77.* | 否 | API12+ | 3.0.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-linear-gradient) | 
+| @react-native-ohos/react-native-linear-gradient | ~ 3.0.1    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-linear-gradient/releases) | 0.72.* | 是 | API12+ | 3.0.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-linear-gradient) | 
+| @react-native-oh-tpl/react-native-linear-gradient | <= 3.0.0-0.5.0@deprecated | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-linear-gradient/releases) | 0.72.* | 否 | API12+ | 3.0.0 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-linear-gradient) | 
 
     
 ## 1. 安装与使用
@@ -270,6 +270,12 @@ Needed for Android and HarmonyOS to work properly with assets, iOS will ignore i
 ```
 
 （删除）
+
+### 3.3. 运行API要求（如有）
+
+> [!TIP] 三方库已做版本隔离，支持API12及以上的ROM上运行。以下功能依赖特定版本的API，使用低版本API的ROM运行会导致部分功能受限
+1. 3.2.0版本引入[OH_ArkUI_NodeUtils_GetParentInPag](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/capi-native-node-h#oh_arkui_nodeutils_getparentinpagetree)，实现了xxx功能（解决/xxx问题），此API需要在支持`API14+`的ROM上运行方可生效。
+
 
 ## 4. 属性（如有）
 
