@@ -271,10 +271,12 @@ Needed for Android and HarmonyOS to work properly with assets, iOS will ignore i
 
 （删除）
 
-### 3.3. 运行API要求（如有）
+### 3.3. 编译运行API要求（如有）
 
-> [!TIP] 三方库已做版本隔离，支持API12及以上的ROM上运行。以下功能依赖特定版本的API，使用低版本API的ROM运行会导致部分功能受限
-1. 3.2.0版本引入[OH_ArkUI_NodeUtils_GetParentInPag](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/capi-native-node-h#oh_arkui_nodeutils_getparentinpagetree)，实现了xxx功能（解决/xxx问题），此API需要在支持`API14+`的ROM上运行方可生效。
+> [!TIP] 当前三方库所有版本均已实现版本隔离，支持在 `API12+` 工程编译，及 `API12+` ROM运行。
+
+> [!TIP] 以下功能依赖特定版本的API，使用 `低于指定API版本的工程编译` 或 `低于指定API版本的ROM运行` 均可能导致部分功能受限。
+1. 3.2.0版本引入[OH_ArkUI_NodeUtils_GetParentInPag](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/capi-native-node-h#oh_arkui_nodeutils_getparentinpagetree)，实现了xxx功能（解决/xxx问题），此API需要在支持`API14+`的工程编译，并在支持`API14+`的ROM上运行，方可生效。
 
 
 ## 4. 属性（如有）

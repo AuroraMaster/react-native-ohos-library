@@ -254,10 +254,14 @@ This document is verified based on the following versions:
 ### 3.2 Permission Requirements (If Any)
 
 (Enter the related permission configuration.)
-### 3.3. API requirements (If Any)
+### 3.3. API requirements
 
-> [!TIP] Third-party libraries have been version-isolated and support running on ROMs with API 12 and above. The following features rely on specific API versions, and running on ROMs with lower API versions may result in limited functionality.
-1. Version 3.2.0 introduced [OH_ArkUI_NodeUtils_GetParentInPag](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/capi-native-node-h#oh_arkui_nodeutils_getparentinpagetree), achieves the xxx functionality (resolves/addresses xxx issue), and this API requires running on a ROM that supports `API14+` to take effect.
+> [!TIP] All versions of the current third-party libraries have implemented version isolation, supporting compilation in `API12+` projects and execution on `API12+` ROMs.
+
+> [!TIP] The following features depend on specific API versions. Compiling the project with an API version lower than specified or running the ROM with an API version lower than specified may result in limited functionality.
+
+1. Version 3.2.0 introduced [OH_ArkUI_NodeUtils_GetParentInPag](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/capi-native-node-h#oh_arkui_nodeutils_getparentinpagetree), achieves the xxx functionality (resolves/addresses xxx issue). This API requires compilation in a project that supports `API14+` and must run on a ROM that supports `API14+` to take effect.
+
 
 
 ## 4. Properties (If Any)
