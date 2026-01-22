@@ -414,7 +414,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 ```
 
 
-### Configuring CMakeLists and Introducing ContactsPackage
+### 4. Configuring CMakeLists and Introducing ContactsPackage
 
 > If you are using version <= 7.0.7-0.0.3, please skip this chapter.
 
