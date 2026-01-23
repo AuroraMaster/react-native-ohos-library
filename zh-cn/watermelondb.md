@@ -983,6 +983,8 @@ ohpm install
 - [ ]  _notify 接口部分参数不支持harmonyOS，提供给其他模块的底层方法，无法直接调用[issue#2](https://gitcode.com/OpenHarmony-RN/rntpc_watermelondb/issues/2)
 
 ## 6.其他
+•get id中get为JavaScript基础语法，获取关联目标模型的唯一标识符，通过 .id 形式调用<br>
+•set id中set为JavaScript基础语法，设置关联目标模型的标识符值，通过 .id = 'xxx' 形式调用<br>
 
 ## 7.开源协议
 

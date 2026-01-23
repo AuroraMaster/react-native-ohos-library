@@ -964,6 +964,8 @@ Open `entry/src/main/resources/base/element/string.json`，add：
 - [ ]  \_notify Some parameters of the interface are not supported on HarmonyOS. As an underlying method provided for other modules, it cannot be called directly. [issue#2](https://gitcode.com/OpenHarmony-RN/rntpc_watermelondb/issues/2)
 
 ## 6.Others
+•get id, get is a basic JavaScript syntax used to retrieve the unique identifier of the associated target model, which is invoked in the form of .id.<br>
+•set id, set is a basic JavaScript syntax used to set the value of the identifier for the associated target model, which is invoked in the form of .id = 'xxx'.<br>
 
 ## 7.Open Source License
 
