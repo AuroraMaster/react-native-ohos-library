@@ -650,12 +650,11 @@ Open 'entry/src/main/resources/base/element/string. json' and add:
 
 ## other
 
-•The connectToProtectdSSIDOnce and connectToProtectdSSIDPriorityOnce methods cannot be implemented. These two methods are specifically designed for the iOS platform and use the NEHotspotConfiguring Manager to pass the joinOnce parameter in the iOS system to achieve one-time connection functionality. However, HarmonyOS does not support this feature.
-•setEnabled HarmonyOS only supports jumping to the Wi-Fi settings page
-•connectToProtectSSID,connectToProtectedWifiSSID,connectToProtectedSSIDPrefix,Setting the isWEP parameter to true returns an unsupported prompt message.
+•The connectToProtectdSSIDOnce and connectToProtectdSSIDPriorityOnce methods cannot be implemented. These two methods are specifically designed for the iOS platform and use the NEHotspotConfiguring Manager to pass the joinOnce parameter in the iOS system to achieve one-time connection functionality. However, HarmonyOS does not support this feature.<br>
+•setEnabled HarmonyOS only supports jumping to the Wi-Fi settings page<br>
+•connectToProtectSSID,connectToProtectedWifiSSID,connectToProtectedSSIDPrefix,Setting the isWEP parameter to true returns an unsupported prompt message.<br>
 
 ## open source license
 
 This project is based on [The MIT License (MIT)]（ https://github.com/JuanSeBestia/react-native-wifi-reborn/blob/master/LICENSE ）Please enjoy and participate freely in open source.
-
 

@@ -54,15 +54,17 @@ import { View } from "react-native";
 import PDFView from "react-native-view-pdf";
 
 export function PdfViewExample() {
-  <View style={{ flex: 1 }}>
-    <PDFView
-      style={{ flex: 1 }}
-      resource="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
-      resourceType="url"
-      onLoad={() => {}}
-      onError={(error: any) => {}}
-    ></PDFView>
-  </View>;
+  return (
+    <View style={{ flex: 1 }}>
+      <PDFView
+        style={{ flex: 1 }}
+        resource="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+        resourceType="url"
+        onLoad={() => {}}
+        onError={(error: any) => {}}
+      ></PDFView>
+    </View>
+  );
 }
 ```
 
