@@ -1,36 +1,26 @@
-> 模板版本：v0.2.1
+> 模板版本：v0.4.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-orientation-locker</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/wonday/react-native-orientation-locker">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/wonday/react-native-orientation-locker/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-orientation-locker)
+本项目基于 [react-native-orientation-locker](https://github.com/wonday/react-native-orientation-locker) 开发。
 
-该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-orientation-locker`，具体版本所属关系如下：
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-orientation-locker` 版本所属关系如下：
+| 三方库名称    | 三方库版本    | 发布信息     | 支持RN版本    | Autolink     | 编译API版本     | 社区基线版本    | npm地址                |
+| ------------ | ------------ | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
+| @react-native-ohos/react-native-orientation-locker |  1.8.0   | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-orientation-locker/releases) | 0.77 | 否 | API12+ | 1.7.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-orientation-locker) |
+| @react-native-ohos/react-native-orientation-locker | 1.7.1   | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-orientation-locker/releases) | 0.72 | 否 | API12+ | 1.7.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-orientation-locker) | 
+| @react-native-oh-tpl/react-native-orientation-locker | <= 1.7.0-0.0.7@deprecated    | [Gitcode Releases](https://github.com/react-native-oh-library/react-native-orientation-locker/releases) | 0.72 | 否 | API12+ | 1.7.0 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-orientation-locker) | 
 
-| Version                        | Package Name                                  | Repository                                                   | Release                                                      |
-| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <= 1.7.0-0.0.7@deprecated | @react-native-oh-tpl/react-native-orientation-locker | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-orientation-locker) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-orientation-locker/releases) |
-| > 1.7.0                        | @react-native-ohos/react-native-orientation-locker       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-orientation-locker) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-orientation-locker/releases) |
-
-## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：[@react-native-oh-library/react-native-orientation-locker Releases](https://github.com/react-native-oh-library/react-native-orientation-locker/releases) 。对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+    
+## 1. 安装与使用
 
 进入到工程目录并输入以下命令：
 
-
 <!-- tabs:start -->
 
-####  npm
+#### npm
 
 ```bash
 npm install @react-native-ohos/react-native-orientation-locker
@@ -46,7 +36,7 @@ yarn add @react-native-ohos/react-native-orientation-locker
 
 下面的代码展示了这个库的基本使用场景：
 
->[!WARNING] 使用时 import 的库名不变。
+> [!WARNING] 使用时 import 的库名不变。
 
 ```tsx
 
@@ -214,16 +204,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'grey',
   },
 });
-
-
 ```
 
-## Link
+## 2. Link
 
-|                                      | 是否支持autolink | RN框架版本 |
-|--------------------------------------|-----------------|------------|
-| ~1.7.1                              |  Yes             |  0.72     |
-| <= 1.7.0-0.0.7@deprecated            |  No              |  0.72     |
+|                           | 是否支持autolink | RN框架版本 |
+|---------------------------|--------------|--------|
+| ~1.8.0                     | No           | 0.77   |
+| ~1.7.1                     | Yes          | 0.72   |
+| <= 1.7.0-0.0.7@deprecated | No           | 0.72   |
 
 使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
@@ -231,27 +220,34 @@ const styles = StyleSheet.create({
 <details>
   <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
 
-首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
+首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
-### 1.在工程根目录的 `oh-package.json5` 添加 overrides 字段
+此步骤为手动配置原生依赖项的指导。
+
+首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
+
+### 2.1. Overrides RN SDK
+
+为了让工程依赖同一个版本的 RN SDK，需要在工程根目录的 `oh-package.json5` 添加 overrides 字段，指向工程需要使用的 RN SDK 版本。替换的版本既可以是一个具体的版本号，也可以是一个模糊版本，还可以是本地存在的 HAR 包或源码目录。
+
+关于该字段的作用请阅读[官方说明](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-oh-package-json5-V5#zh-cn_topic_0000001792256137_overrides)
 
 ```json
 {
-  ...
   "overrides": {
-    "@rnoh/react-native-openharmony" : "./react_native_openharmony"
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony"
   }
 }
 ```
 
-### 2.引入原生端代码
+### 2.2. 引入原生端代码
 
 目前有两种方法：
 
-1. 通过 har 包引入（在 IDE 完善相关功能后该方法会被遗弃，目前首选此方法）；
-2. 直接链接源码。
+- 通过 har 包引入；
+- 直接链接源码。
 
-方法一：通过 har 包引入
+方法一：通过 har 包引入（推荐）
 
 > [!TIP] har 包位于三方库安装路径的 `harmony` 文件夹下。
 
@@ -261,12 +257,12 @@ const styles = StyleSheet.create({
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-ohos/react-native-orientation-locker":"file:../../node_modules/@react-native-ohos/react-native-orientation-locker/harmony/orientation_locker.har"
-  }
+}
 ```
 
 点击右上角的 `sync` 按钮
 
-或者在终端执行：
+或者在命令行终端执行：
 
 ```bash
 cd entry
@@ -277,44 +273,20 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 3.配置 CMakeLists 和引入 OrientationLockerPackage
+### 2.3. 配置 CMakeLists 和引入 OrientationLockerPackage
 
 > 若使用的是  <= 1.7.0-0.0.7 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
 ```diff
-project(rnapp)
-cmake_minimum_required(VERSION 3.4.1)
-set(CMAKE_SKIP_BUILD_RPATH TRUE)
-set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
-set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
 + set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
-set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
-set(LOG_VERBOSITY_LEVEL 1)
-set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
-set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
-set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
-add_compile_definitions(WITH_HITRACE_SYSTRACE)
-
-add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
-add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-orientation-locker/src/main/cpp" ./orientation_locker)
 # RNOH_END: manual_package_linking_1
 
-file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
-
-add_library(rnoh_app SHARED
-    ${GENERATED_CPP_FILES}
-    "./PackageProvider.cpp"
-    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
-)
-target_link_libraries(rnoh_app PUBLIC rnoh)
-
 # RNOH_BEGIN: manual_package_linking_2
-target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
 + target_link_libraries(rnoh_app PUBLIC rnoh_orientation_locker)
 # RNOH_END: manual_package_linking_2
 ```
@@ -324,7 +296,6 @@ target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
 ```diff
 #include "RNOH/PackageProvider.h"
 #include "generated/RNOHGeneratedPackage.h"
-#include "SamplePackage.h"
 + #include "OrientationLockerPackage.h"
 
 using namespace rnoh;
@@ -332,33 +303,32 @@ using namespace rnoh;
 std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
     return {
         std::make_shared<RNOHGeneratedPackage>(ctx),
-        std::make_shared<SamplePackage>(ctx),
 +       std::make_shared<OrientationLockerPackage>(ctx),
     };
 }
 ```
 
-### 4.在 ArkTs 侧引入 RNOrientationLockerPackage
+### 2.4. 在 ArkTs 侧引入 RNOrientationLockerPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
 ```diff
   ...
-+ import { RNOrientationLockerPackage } from '@react-native-ohos/react-native-orientation-locker/ts';
++  import { RNOrientationLockerPackage } from '@react-native-ohos/react-native-orientation-locker/ts';
+
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
-    new SamplePackage(ctx),
 +   new RNOrientationLockerPackage(ctx)
   ];
 }
 ```
 </details>
 
-### 运行
+### 2.5. 运行
 
 点击右上角的 `sync` 按钮
 
-或者在终端执行：
+或者在命令行终端执行：
 
 ```bash
 cd entry
@@ -367,19 +337,18 @@ ohpm install
 
 然后编译、运行即可。
 
-## 约束与限制
+## 3. 约束与限制
 
-### 兼容性
+### 3.1. 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
-
-在以下版本验证通过：
+本文档内容基于以下版本验证通过：
 
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
-### 权限要求
+### 3.2. 权限要求
+
 由于此库获取加速度传感器的数据，使用时需要配置对应的权限，权限需配置在entry/src/main目录下module.json5 中添加如下权限:
 
 ```diff
@@ -392,13 +361,11 @@ ohpm install
     ]
 ```
 
-## API
+## 4. API
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
-
-详情请见[react-native-orientation-locker](https://github.com/wonday/react-native-orientation-locker)
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
 | -------------- | ---------------------------------------- | ------ | ------------------------  | ---------------- | ----------------- |
@@ -410,26 +377,28 @@ ohpm install
 | getOrientation  | Get the direction of the current device        | callback | No       | IOS/Android | yes               |
 | getDeviceOrientation  | Obtains the direction of the current device        | callback | No       | IOS/Android | yes               |
 
-## Events
+## 5. Events
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-详情请见[react-native-orientation-locker](https://github.com/wonday/react-native-orientation-locker)
 
 | Name   | Description                              | Type   | Required | Platform    | HarmonyOS Support |
 | -------------- | ---------------------------------------- | ------ | -------- | ----------- | ----------------- |
 | addOrientationListener  | When UI orientation changed, callback function will be called. But if lockToXXX is called , callback function will be not called untill unlockAllOrientations. It can return either PORTRAIT LANDSCAPE-LEFT LANDSCAPE-RIGHT PORTRAIT-UPSIDEDOWN UNKNOWN When lockToXXX/unlockAllOrientations, it will force resend UI orientation changed event.| callback | No       | IOS/Android | yes               |
 | addDeviceOrientationListener  | When device orientation changed, callback function will be called. When lockToXXX is called, callback function also can be called. It can return either PORTRAIT LANDSCAPE-LEFT LANDSCAPE-RIGHT PORTRAIT-UPSIDEDOWN UNKNOWN | callback | No       | IOS/Android | yes               |
-| removeOrientationListener  |    | callback | No       | IOS/Android | yes               |
-| removeDeviceOrientationListener  |         | callback | No       | IOS/Android | yes               |
+| removeOrientationListener  | Remove a previously added screen orientation change listener   | callback | No       | IOS/Android | yes               |
+| removeDeviceOrientationListener  |   Remove the event that monitors physical directional changes of the device      | callback | No       | IOS/Android | yes               |
 | addLockListener  | When call lockToXXX/unlockAllOrientations, callback function will be called. It can return either PORTRAIT LANDSCAPE-LEFT LANDSCAPE-RIGHT UNKNOWN UNKNOWN means not be locked. | callback | No       | IOS/Android | yes               |
-| removeLockListener  |     | callback | No       | IOS/Android | yes              |
-| removeAllListeners  |       | callback | No       | IOS/Android | yes              |
+| removeLockListener  |  Remove the event that monitors changes in screen orientation lock status   | callback | No       | IOS/Android | yes              |
+| removeAllListeners  |  Remove all listening events     | callback | No       | IOS/Android | yes              |
 
-## 其他
 
-## 开源协议
+## 6. 遗留问题
+
+## 7. 其他
+
+## 8. 开源协议
 
 本项目基于 [The MIT License (MIT)](https://github.com/wonday/react-native-orientation-locker/blob/master/LICENSE) ，请自由地享受和参与开源。
