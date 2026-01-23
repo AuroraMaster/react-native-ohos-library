@@ -1,33 +1,22 @@
-> Template version: v0.2.1
+> Template version: v0.4.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-orientation-locker</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/wonday/react-native-orientation-locker">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/wonday/react-native-orientation-locker/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
 
-> [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-orientation-locker)
+This project is based on [react-native-orientation-locker](https://github.com/wonday/react-native-orientation-locker) 。
 
-This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-orientation-locker`, After introducing the new version of the third-party library, The version correspondence details are as follows:
+This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is：`@react-native-ohos/react-native-orientation-locker` The version correspondence details are as follows：
+| Name | Version | Release Information | Supported RN Version | Supported Autolink | Compile API Version | Community Baseline Version | npm Address     |
+| ------------ | ------------ | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
+| @react-native-ohos/react-native-orientation-locker |  1.8.0   | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-orientation-locker/releases) | 0.77 | 否 | API12+ | 1.7.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-orientation-locker) |
+| @react-native-ohos/react-native-orientation-locker | 1.7.1   | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-orientation-locker/releases) | 0.72 | 否 | API12+ | 1.7.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-orientation-locker) |
+| @react-native-oh-tpl/react-native-orientation-locker | <= 1.7.0-0.0.7@deprecated    | [Gitcode Releases](https://github.com/react-native-oh-library/react-native-orientation-locker/releases) | 0.72 | 否 | API12+ | 1.7.0 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-orientation-locker) |
 
-| Version                        | Package Name                                  | Repository                                                   | Release                                                      |
-| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <= 1.7.0-0.0.7@deprecated | @react-native-oh-tpl/react-native-orientation-locker | [Github(deprecated)](https://github.com/react-native-oh-library/react-native-orientation-locker) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-orientation-locker/releases) |
-| > 1.7.0                        | @react-native-ohos/react-native-orientation-locker       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-native-orientation-locker) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-orientation-locker/releases) |
 
-## Installation and Usage
-
-Find the matching version information in the release address of a third-party library: [@react-native-oh-library/react-native-orientation-locker Releases](https://github.com/react-native-oh-library/react-native-orientation-locker/releases). For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+## 1. Installation and Usage
 
 Go to the project directory and execute the following instruction:
-
-
 
 <!-- tabs:start -->
 
@@ -50,6 +39,7 @@ The following code shows the basic use scenario of the repository:
 > [!WARNING] The name of the imported repository remains unchanged.
 
 ```tsx
+
 import {
   Alert,
   Button,
@@ -216,35 +206,42 @@ const styles = StyleSheet.create({
 });
 ```
 
-## Link
+## 2. Manual Link
 
-|                                      | Is supported autolink  | Supported RN Version |
-|--------------------------------------|-----------------------|----------------------|
-| ~1.7.1                              |  Yes             |  0.72     |
-| <= 1.7.0-0.0.7@deprecated            |  No              |  0.72     |
+|                                      | Supported Autolink | Supported RN Version |
+|--------------------------------------|--------------|--------|
+| ~1.8.0                     | No           | 0.77   |
+| ~1.7.1                     | Yes          | 0.72   |
+| <= 1.7.0-0.0.7@deprecated | No           | 0.72   |
 
-Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+Projects using AutoLink need to be configured according to this document, AutoLink framework guide.：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+If the version you are using supports Autolink and the project has integrated Autolink, you can skip the ManualLink configuration.
+
 <details>
-  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
+  <summary>ManualLink: This step provides guidance for manually configuring native dependencies.</summary>
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
-### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
+### 2.1. Overrides RN SDK
 
+To ensure the project relies on the same version of the RN SDK, you need to add an `overrides` field in the project's root `oh-package.json5` file, specifying the RN SDK version to be used. The replacement version can be a specific version number, a semver range, or a locally available HAR package or source directory.
+
+For more information about the purpose of this field, please refer to the [official documentation](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-oh-package-json5-V5#en-us_topic_0000001792256137_overrides).
 ```json
 {
-  ...
   "overrides": {
-    "@rnoh/react-native-openharmony" : "./react_native_openharmony"
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony"
   }
 }
 ```
 
-### 2. Introducing Native Code
+### 2.2. Introducing Native Code
 
 Currently, two methods are available:
+
+- Use the HAR file.
+- Directly link to the source code。
 
 Method 1 (recommended): Use the HAR file.
 
@@ -256,7 +253,7 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-ohos/react-native-orientation-locker":"file:../../node_modules/@react-native-ohos/react-native-orientation-locker/harmony/orientation_locker.har"
-  }
+}
 ```
 
 Click the `sync` button in the upper right corner.
@@ -272,44 +269,20 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 3. Configuring CMakeLists and Introducing OrientationLockerPackage
+### 2.3. Configuring CMakeLists and Introducing OrientationLockerPackage
 
 > If you are using version <= 1.7.0-0.0.7, please skip this chapter.
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
 ```diff
-project(rnapp)
-cmake_minimum_required(VERSION 3.4.1)
-set(CMAKE_SKIP_BUILD_RPATH TRUE)
-set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
-set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
 + set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
-set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
-set(LOG_VERBOSITY_LEVEL 1)
-set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
-set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
-set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
-add_compile_definitions(WITH_HITRACE_SYSTRACE)
-
-add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
-add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-orientation-locker/src/main/cpp" ./orientation_locker)
 # RNOH_END: manual_package_linking_1
 
-file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
-
-add_library(rnoh_app SHARED
-    ${GENERATED_CPP_FILES}
-    "./PackageProvider.cpp"
-    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
-)
-target_link_libraries(rnoh_app PUBLIC rnoh)
-
 # RNOH_BEGIN: manual_package_linking_2
-target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
 + target_link_libraries(rnoh_app PUBLIC rnoh_orientation_locker)
 # RNOH_END: manual_package_linking_2
 ```
@@ -319,7 +292,6 @@ Open `entry/src/main/cpp/PackageProvider.cpp` and add the following code:
 ```diff
 #include "RNOH/PackageProvider.h"
 #include "generated/RNOHGeneratedPackage.h"
-#include "SamplePackage.h"
 + #include "OrientationLockerPackage.h"
 
 using namespace rnoh;
@@ -327,29 +299,28 @@ using namespace rnoh;
 std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
     return {
         std::make_shared<RNOHGeneratedPackage>(ctx),
-        std::make_shared<SamplePackage>(ctx),
 +       std::make_shared<OrientationLockerPackage>(ctx),
     };
 }
 ```
 
-### 4. Introducing RNOrientationLockerPackage to ArkTS
+### 2.4. Introducing RNOrientationLockerPackage to ArkTS
 
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
 ```diff
   ...
-+ import { RNOrientationLockerPackage } from '@react-native-ohos/react-native-orientation-locker/ts';
++  import { RNOrientationLockerPackage } from '@react-native-ohos/react-native-orientation-locker/ts';
+
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
-    new SamplePackage(ctx),
 +   new RNOrientationLockerPackage(ctx)
   ];
 }
 ```
 </details>
 
-###  Running
+### 2.5. Running
 
 Click the `sync` button in the upper right corner.
 
@@ -362,20 +333,19 @@ ohpm install
 
 Then build and run the code.
 
-## Constraints
+## 3. Constraints
 
-### Compatibility
+### 3.1. Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
-
-Verified in the following versions.
+This document is verified based on the following versions:
 
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
-### Permission Requirements
-Due to the fact that this library obtains data from acceleration sensors, corresponding permissions need to be configured when using it. 
+### 3.2. Permission Requirements
+
+Due to the fact that this library obtains data from acceleration sensors, corresponding permissions need to be configured when using it.
 The permissions need to be configured in the entry/src/main directory and added to module.json5 as follows::
 
 ```diff
@@ -388,44 +358,43 @@ The permissions need to be configured in the entry/src/main directory and added 
     ]
 ```
 
-## API
+## 4. API
 
-> [!tip] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
+> [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
-> [!tip] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
+> [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-For details, see [react-native-orientation-locker](https://github.com/wonday/react-native-orientation-locker)
+| Name | Description | Type | Required | Platform | HarmonyOS Support |
+| -------------- | ---------------------------------------- | ------ | ------------------------  | ---------------- | ----------------- |
+| lockToPortrait   |   Lock the orientation of the application to portrait (portrait)         |  function  | No       | IOS/Android | yes               |
+| lockToLandscape  |    Lock the orientation of the application to landscape (landscape)         | function | No       | IOS/Android | yes               |
+| lockToLandscapeLeft  | Lock the orientation of the app to landscape and rotated to the left         | function | No       | IOS/Android | yes               |
+| lockToLandscapeRight  | Lock the orientation of the app to landscape and rotated to the right         | function | No       | IOS/Android | yes               |
+| unlockAllOrientations  | Unlocks the orientation of the app, allowing the device to rotate freely          | function | No       | IOS/Android | yes               |
+| getOrientation  | Get the direction of the current device        | callback | No       | IOS/Android | yes               |
+| getDeviceOrientation  | Obtains the direction of the current device        | callback | No       | IOS/Android | yes               |
 
-| Name                  | Description                                                  | Type     | Required | Platform    | HarmonyOS Support |
-| --------------------- | ------------------------------------------------------------ | -------- | -------- | ----------- | ----------------- |
-| lockToPortrait        | Lock the orientation of the application to portrait (portrait) | function | No       | iOS/Android| yes               |
-| lockToLandscape       | Lock the orientation of the application to landscape (landscape) | function | No       | iOS/Android| yes               |
-| lockToLandscapeLeft   | Lock the orientation of the app to landscape and rotated to the left | function | No       | iOS/Android| yes               |
-| lockToLandscapeRight  | Lock the orientation of the app to landscape and rotated to the right | function | No       | iOS/Android| yes               |
-| unlockAllOrientations | Unlocks the orientation of the app, allowing the device to rotate freely | function | No       | iOS/Android| yes               |
-| getOrientation        | Get the direction of the current device                      | callback | No       | iOS/Android| yes               |
-| getDeviceOrientation  | Obtains the direction of the current device                  | callback | No       | iOS/Android| yes               |
+## 5. Events
 
-## Events
+> [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
-> [!tip] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
+> [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-> [!tip] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
+| Name   | Description                              | Type   | Required | Platform    | HarmonyOS Support |
+| -------------- | ---------------------------------------- | ------ | -------- | ----------- | ----------------- |
+| addOrientationListener  | When UI orientation changed, callback function will be called. But if lockToXXX is called , callback function will be not called untill unlockAllOrientations. It can return either PORTRAIT LANDSCAPE-LEFT LANDSCAPE-RIGHT PORTRAIT-UPSIDEDOWN UNKNOWN When lockToXXX/unlockAllOrientations, it will force resend UI orientation changed event.| callback | No       | IOS/Android | yes               |
+| addDeviceOrientationListener  | When device orientation changed, callback function will be called. When lockToXXX is called, callback function also can be called. It can return either PORTRAIT LANDSCAPE-LEFT LANDSCAPE-RIGHT PORTRAIT-UPSIDEDOWN UNKNOWN | callback | No       | IOS/Android | yes               |
+| removeOrientationListener  | Remove a previously added screen orientation change listener   | callback | No       | IOS/Android | yes               |
+| removeDeviceOrientationListener  |   Remove the event that monitors physical directional changes of the device      | callback | No       | IOS/Android | yes               |
+| addLockListener  | When call lockToXXX/unlockAllOrientations, callback function will be called. It can return either PORTRAIT LANDSCAPE-LEFT LANDSCAPE-RIGHT UNKNOWN UNKNOWN means not be locked. | callback | No       | IOS/Android | yes               |
+| removeLockListener  |  Remove the event that monitors changes in screen orientation lock status   | callback | No       | IOS/Android | yes              |
+| removeAllListeners  |  Remove all listening events     | callback | No       | IOS/Android | yes              |
 
-For details, see [react-native-orientation-locker](https://github.com/wonday/react-native-orientation-locker)
 
-| Name                            | Description                                                  | Type     | Required | Platform    | HarmonyOS Support |
-| ------------------------------- | ------------------------------------------------------------ | -------- | -------- | ----------- | ----------------- |
-| addOrientationListener          | When UI orientation changed, callback function will be called. But if lockToXXX is called , callback function will be not called untill unlockAllOrientations. It can return either PORTRAIT LANDSCAPE-LEFT LANDSCAPE-RIGHT PORTRAIT-UPSIDEDOWN UNKNOWN When lockToXXX/unlockAllOrientations, it will force resend UI orientation changed event. | callback | No       | iOS/Android| yes               |
-| addDeviceOrientationListener    | When device orientation changed, callback function will be called. When lockToXXX is called, callback function also can be called. It can return either PORTRAIT LANDSCAPE-LEFT LANDSCAPE-RIGHT PORTRAIT-UPSIDEDOWN UNKNOWN | callback | No       | iOS/Android| yes               |
-| removeOrientationListener       |                                                              | callback | No       | iOS/Android| yes               |
-| removeDeviceOrientationListener |                                                              | callback | No       | iOS/Android| yes               |
-| addLockListener                 | When call lockToXXX/unlockAllOrientations, callback function will be called. It can return either PORTRAIT LANDSCAPE-LEFT LANDSCAPE-RIGHT UNKNOWN UNKNOWN means not be locked. | callback | No       | iOS/Android| yes               |
-| removeLockListener              |                                                              | callback | No       | iOS/Android| yes               |
-| removeAllListeners              |                                                              | callback | No       | iOS/Android| yes               |
+## 6. Known Issues
 
-## Others
+## 7. Others
 
-## License
+## 8. License
 
 This project is licensed under [The MIT License (MIT)](https://github.com/wonday/react-native-orientation-locker/blob/master/LICENSE).
