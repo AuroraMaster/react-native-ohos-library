@@ -878,7 +878,7 @@ ohpm install
 | read&lt;T&gt;              | 在只读事务中执行数据库查询操作           | function | yes      | iOS/Android | yes               |
 | action&lt;T&gt;            | 执行需要读写权限的数据库动作             | function | yes      | iOS/Android | yes               |
 | withChangesForTables       | 创建监听指定表数据变更的观察者           | function | yes      | iOS/Android | yes               |
-| experimentalSubscribe      | 订阅数据库级别的变更通知                 | function | yes      | iOS/Android | yes               |
+| experimentalSubscribe      | 数据库注册表变更监听变化                 | function | yes      | iOS/Android | yes               |
 | unsafeResetDatabase        | 完全重置数据库并清除所有数据             | function | no       | iOS/Android | yes               |
 | \_ensurelnWtiter           | 确保当前在写入线程中执行操作             | function | yes      | iOS/Android | yes               |
 | \_fataError                | 处理数据库致命错误并终止连接             | function | yes      | iOS/Android | yes               |

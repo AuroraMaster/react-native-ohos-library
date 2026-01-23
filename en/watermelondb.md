@@ -859,7 +859,7 @@ Open `entry/src/main/resources/base/element/string.json`，add：
 | read&lt;T&gt;              | Perform database query operations in a read - only transaction                   | function | yes      | iOS/Android | yes               |
 | action&lt;T&gt;            | Perform database actions that require read and write permissions                 | function | yes      | iOS/Android | yes               |
 | withChangesForTables       | Create an observer that monitors data changes in specified tables                | function | yes      | iOS/Android | yes               |
-| experimentalSubscribe      | Subscribe to database - level change notifications                               | function | yes      | iOS/Android | yes               |
+| experimentalSubscribe      | Database Registration Table Change Monitoring                               | function | yes      | iOS/Android | yes               |
 | unsafeResetDatabase        | Completely reset the database and clear all data                                 | function | no       | iOS/Android | yes               |
 | \_ensurelnWtiter           | Ensure that the current operation is executed in the write thread                | function | yes      | iOS/Android | yes               |
 | \_fataError                | Handle database fatal errors and terminate the connection                        | function | yes      | iOS/Android | yes               |
