@@ -613,7 +613,7 @@ The content of this document has been validated based on the following version:
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| backgroundImage  | Background image (China Unicom, China Telecom)        | string | no | iOS/Android      | yes |
+| backgroundImage  | Background image (China Unicom, China Telecom),Only local images are supported        | string | no | iOS/Android      | yes |
 | statusBarHidden  | Whether to hide the status bar        | boolean | no | iOS/Android      | no |
 | statusBarMode  | Status bar mode (China Mobile only)       | 'light'&#124;'dark'  | no | iOS/Android      | yes |
 | navHidden | Whether to hide the navigation bar       | boolean | no | iOS/Android      | no |
@@ -627,7 +627,7 @@ The content of this document has been validated based on the following version:
 | navReturnW  | Navigation bar left return button icon width        | number | no | Android      | no |
 | navReturnH  | Navigation bar left return button icon height        | number | no | Android      | no |
 | logoHidden  | Whether to hide logo (China Unicom, China Telecom)      | boolean | no | iOS/Android      | yes |
-| logoImage  | Logo image (China Unicom, China Telecom)        | string | no | iOS/Android      | yes |
+| logoImage  | Logo image (China Unicom, China Telecom),Only local images are supported        | string | no | iOS/Android      | yes |
 | logoX  | Logo x-axis offset (China Unicom, China Telecom)       | number | no | iOS/Android      | yes |
 | logoY  | Logo y-axis offset (China Unicom, China Telecom)       | number | no | iOS/Android      | yes |
 | logoW  | Logo width (China Unicom, China Telecom)       | number | no | iOS/Android      | yes |
@@ -648,7 +648,7 @@ The content of this document has been validated based on the following version:
 | loginBtnText | Authorization login button text content (China Unicom, China Telecom, China Mobile)        | string | no | iOS/Android       | yes |
 | loginBtnTextSize | Authorization login button text font size (China Unicom, China Telecom, China Mobile)        | number | no | iOS/Android      | yes |
 | loginBtnTextColor | Authorization login button text color (China Unicom, China Telecom, China Mobile)        | string | no | iOS/Android      | yes |
-| loginBtnImage | Authorization login button background image (China Unicom, China Telecom, China Mobile)        | string | no | Android      | yes |
+| loginBtnImage | Authorization login button background image (China Unicom, China Telecom, China Mobile),China Unicom and China Telecom only support local images        | string | no | Android      | yes |
 | loginBtnNormalImage | Login button normal image        | string | no | iOS      | no |
 | loginBtnDisabledImage | Login button disabled image (China Mobile only)        | string | no | iOS      | yes |
 | loginBtnSelectedImage | Login button pressed image (China Unicom, China Telecom, China Mobile)        | string | no | iOS      | no |
@@ -661,21 +661,21 @@ The content of this document has been validated based on the following version:
 | privacyColor | Privacy clause color (China Unicom, China Telecom, China Mobile)        | Array<string> | no | iOS/Android      | yes |
 | privacyText | Text outside the privacy clause name (China Unicom, China Telecom, China Mobile)        | Array<string> | no | iOS/Android      | yes |
 | privacyTextSize | Privacy clause text font size (China Unicom, China Telecom, China Mobile)        | number | no | iOS/Android      | yes |
-| privacyTextGravityMode | Privacy clause text alignment (China Unicom, China Telecom, China Mobile)        | string | no | iOS/Android      | yes |
+| privacyTextGravityMode | Privacy clause text alignment (China Unicom, China Telecom, China Mobile),Currently only supports left and center        | string | no | iOS/Android      | yes |
 | privacyBookSymbolEnable | Whether to display quotation marks for privacy clause (China Unicom, China Telecom, China Mobile)        | boolean | no | iOS/Android      | yes |
 | privacyX | Privacy clause x-axis offset relative to the left side of the screen (China Mobile only)        | number or string | no | iOS/Android      | yes |
 | privacyY | Privacy clause y-axis offset relative to the bottom edge of the authorization page (China Mobile only)        | number or string | no | iOS/Android      | yes |
 | privacyW | Privacy clause width        | number or string | no | iOS/Android      | no |
 | privacyH | Privacy clause height        | number or string | no | iOS/Android      | no |
 | privacyCheckboxHidden | Whether to hide checkBox, default is not hidden        | boolean | no | iOS/Android      | no |
-| privacyCheckedImage | checkBox selected image (China Unicom, China Telecom, China Mobile)        | string | no | iOS/Android      | yes |
-| privacyUncheckedImage | checkBox unselected image (China Unicom, China Telecom, China Mobile)        | string | no | iOS/Android      | yes |
+| privacyCheckedImage | checkBox selected image (China Unicom, China Telecom, China Mobile),China Unicom and China Telecom only support local images        | string | no | iOS/Android      | yes |
+| privacyUncheckedImage | checkBox unselected image (China Unicom, China Telecom, China Mobile),China Unicom and China Telecom only support local images        | string | no | iOS/Android      | yes |
 | privacyCheckboxSize | Set privacy clause checkbox size (China Unicom, China Telecom, China Mobile)        | number | no | Android      | yes |
 | privacyCheckEnable | Whether the privacy agreement is checked (China Unicom, China Telecom, China Mobile)        | boolean | no | iOS/Android      | yes |
 | privacyWebNavColor | Privacy agreement page navigation bar color (China Unicom, China Telecom, China Mobile)        | number | no | iOS/Android      | yes |
 | privacyWebNavTitleSize | Privacy agreement page navigation bar title font size (China Unicom, China Telecom, China Mobile)        | number | no | iOS/Android      | yes |
 | privacyWebNavTitleColor | Privacy agreement page navigation bar title color (China Unicom, China Telecom, China Mobile)        | number | no | iOS/Android      | yes |
-| privacyWebNavReturnImage | Privacy agreement page navigation bar return button image (China Unicom, China Telecom)        | string | no | iOS/Android      | yes |
+| privacyWebNavReturnImage | Privacy agreement page navigation bar return button image (China Unicom, China Telecom),Only local images are supported        | string | no | iOS/Android      | yes |
 | navColor | Navigation bar color (China Mobile only)        | number | no | iOS/Android      | yes |
 | showWindow | Whether to show popup window (China Unicom, China Telecom, China Mobile)        | boolean | no | iOS/Android      | yes |
 | logoConstraints | LOGO image layout object      | array | no | iOS      | no |
