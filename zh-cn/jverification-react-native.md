@@ -607,7 +607,7 @@ ohpm install
 ### customConfigParams
 | Name | Description | Type | Required | Platform | HarmonyOS Support  |
 | ---- | ----------- | ---- | -------- | -------- | ------------------ |
-| backgroundImage  | 背景图片(联通、电信)        | string | no | iOS/Android      | yes |
+| backgroundImage  | 背景图片(联通、电信)，仅支持本地图片        | string | no | iOS/Android      | yes |
 | statusBarHidden  | 状态栏是否隐藏        | boolean | no | iOS/Android      | no |
 | statusBarMode  | 状态栏模式（仅移动）       | 'light'&#124;'dark' | no | iOS/Android      | yes |
 | navHidden | 导航栏是否隐藏       | boolean | no | iOS/Android      | no |
@@ -621,7 +621,7 @@ ohpm install
 | navReturnW  | 导航栏左侧返回按钮图标宽度        | number | no | Android      | no |
 | navReturnH  | 导航栏左侧返回按钮图标高度        | number | no | Android      | no |
 | logoHidden  | 是否隐藏logo (联通、电信)      | boolean | no | iOS/Android      | yes |
-| logoImage  | logo图片(联通、电信)        | string | no | iOS/Android      | yes |
+| logoImage  | logo图片(联通、电信)，仅支持本地图片        | string | no | iOS/Android      | yes |
 | logoX  | logo的x轴偏移 (联通、电信)       | number | no | iOS/Android      | yes |
 | logoY  | logo的y轴偏移 (联通、电信)       | number | no | iOS/Android      | yes |
 | logoW  | logo宽度 (联通、电信)       | number | no | iOS/Android      | yes |
@@ -642,7 +642,7 @@ ohpm install
 | loginBtnText | 授权登录按钮文本内容(联通、电信、移动)        | string | no | iOS/Android       | yes |
 | loginBtnTextSize | 授权登录按钮文本字号(联通、电信、移动)        | number | no | iOS/Android      | yes |
 | loginBtnTextColor | 授权登录按钮文本颜色(联通、电信、移动)        | string | no | iOS/Android      | yes |
-| loginBtnImage | 授权登录按钮背景图片(联通、电信、移动)        | string | no | Android      | yes |
+| loginBtnImage | 授权登录按钮背景图片(联通、电信、移动)，联通、电信仅支持本地图片        | string | no | Android      | yes |
 | loginBtnNormalImage | 登录按钮正常图片        | string | no | iOS      | no |
 | loginBtnDisabledImage | 登录按钮失效图片(仅移动)        | string | no | iOS      | yes |
 | loginBtnSelectedImage | 登录按钮按下图片(联通、电信、移动)        | string | no | iOS     | no |
@@ -655,21 +655,21 @@ ohpm install
 | privacyColor | 隐私条款颜色(联通、电信、移动)        | Array<string> | no | iOS/Android      | yes |
 | privacyText | 隐私条款名称外的文字(联通、电信、移动)        | Array<string> | no | iOS/Android      | yes |
 | privacyTextSize | 隐私条款文字字体大小(联通、电信、移动)        | number | no | iOS/Android      | yes |
-| privacyTextGravityMode | 隐私条款文本对齐方式(联通、电信、移动)        | string | no | iOS/Android      | yes |
+| privacyTextGravityMode | 隐私条款文本对齐方式(联通、电信、移动)，目前仅支持left、center        | string | no | iOS/Android      | yes |
 | privacyBookSymbolEnable | 隐私条款是否显示书名号(联通、电信、移动)        | boolean | no | iOS/Android      | yes |
 | privacyX | 隐私条款相对于屏幕左边x轴偏移(仅移动)        | number or string | no | iOS/Android      | yes |
 | privacyY | 隐私条款相对于授权页面底部下边缘y偏移(仅移动)        | number or string | no | iOS/Android      | yes |
 | privacyW | 隐私条款宽度        | number or string | no | iOS/Android      | no |
 | privacyH | 隐私条款高度        | number or string | no | iOS/Android      | no |
 | privacyCheckboxHidden | checkBox是否隐藏，默认不隐藏        | boolean | no | iOS/Android      | no |
-| privacyCheckedImage | checkBox选中时图片(联通、电信、移动)        | string | no | iOS/Android      | yes |
-| privacyUncheckedImage | checkBox未选中时图片(联通、电信、移动)        | string | no | iOS/Android      | yes |
+| privacyCheckedImage | checkBox选中时图片(联通、电信、移动)，联通、电信仅支持本地图片        | string | no | iOS/Android      | yes |
+| privacyUncheckedImage | checkBox未选中时图片(联通、电信、移动)，联通、电信仅支持本地图片        | string | no | iOS/Android      | yes |
 | privacyCheckboxSize | 设置隐私条款checkbox尺寸(联通、电信、移动)        | number | no | Android      | yes |
 | privacyCheckEnable | 隐私协议是否勾选(联通、电信、移动)        | boolean | no | iOS/Android      | yes |
 | privacyWebNavColor | 隐私协议页面导航栏颜色(联通、电信、移动)        | number | no | iOS/Android      | yes |
 | privacyWebNavTitleSize | 隐私协议页面导航栏标题字号(联通、电信、移动)        | number | no | iOS/Android      | yes |
 | privacyWebNavTitleColor | 隐私协议页面导航栏标题颜色(联通、电信、移动)        | number | no | iOS/Android      | yes |
-| privacyWebNavReturnImage | 隐私协议页面导航栏返回按钮图片(联通、电信)        | string | no | iOS/Android      | yes |
+| privacyWebNavReturnImage | 隐私协议页面导航栏返回按钮图片(联通、电信)，仅支持本地图片        | string | no | iOS/Android      | yes |
 | navColor | 导航栏颜色(仅移动)        | number | no | iOS/Android      | yes |
 | showWindow | 是否显示弹窗(联通、电信、移动)        | boolean | no | iOS/Android      | yes |
 | logoConstraints | LOGO图片布局对象      | array | no | iOS      | no |
