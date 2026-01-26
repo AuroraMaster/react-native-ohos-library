@@ -671,7 +671,7 @@ ohpm install
 | privacyWebNavTitleColor | 隐私协议页面导航栏标题颜色(联通、电信、移动)        | number | no | iOS/Android      | yes |
 | privacyWebNavReturnImage | 隐私协议页面导航栏返回按钮图片(联通、电信)，仅支持本地图片        | string | no | iOS/Android      | yes |
 | navColor | 导航栏颜色(仅移动)        | number | no | iOS/Android      | yes |
-| showWindow | 是否显示弹窗(联通、电信、移动)        | boolean | no | iOS/Android      | yes |
+| showWindow | 是否显示弹窗(当前仅支持移动)        | boolean | no | iOS/Android      | yes |
 | logoConstraints | LOGO图片布局对象      | array | no | iOS      | no |
 | numberConstraints | 号码栏布局对象      | array | no | iOS      | no |
 | sloganConstraints | slogan布局对象      | array | no | iOS      | no |
@@ -693,7 +693,7 @@ ohpm install
 | customViewParams | 自定义view参数  | object | yes | iOS/Android  | no |
 
 ## 遗留问题
-- [ ] removeListener，getVerifyCode，setCodeTime，addCustomViewsClickCallback，statusBarHidden，navHidden，navColor，navTitle，navTitleSize，navTitleColor，navReturnHidden，navReturnImage，navReturnX，navReturnY，navReturnW，navReturnH，sloganHidden，sloganW，sloganH，loginBtnNormalImage，loginBtnSelectedImage，privacyW，privacyH，privacyCheckboxHidden，logoConstraints，numberConstraints，sloganConstraints，logBtnConstraints，privacyConstraints，checkViewConstraints，loadingConstraints，windowBackgroundImage，windowBackgroundAlpha，windowCornerRadius，windowConstraints，windowCloseBtnImgs，windowCloseBtnConstraints，customViewParams这些接口属性在极光安全认证Harmony SDK中不支持[issue#6](https://github.com/react-native-oh-library/jverification-react-native/issues/6)
+- [ ] removeListener，getVerifyCode，setCodeTime，addCustomViewsClickCallback，statusBarHidden，navHidden，navColor，navTitle，navTitleSize，navTitleColor，navReturnHidden，navReturnImage，navReturnX，navReturnY，navReturnW，navReturnH，sloganHidden，sloganW，sloganH，loginBtnNormalImage，loginBtnSelectedImage，privacyW，privacyH，privacyCheckboxHidden，logoConstraints，numberConstraints，sloganConstraints，logBtnConstraints，privacyConstraints，checkViewConstraints，loadingConstraints，windowBackgroundImage，windowBackgroundAlpha，windowCornerRadius，windowConstraints，windowCloseBtnImgs，windowCloseBtnConstraints，customViewParams，showWindow（联通、电信）这些接口属性在极光安全认证Harmony SDK中不支持[issue#6](https://github.com/react-native-oh-library/jverification-react-native/issues/6)
 
 ## 其他
 
