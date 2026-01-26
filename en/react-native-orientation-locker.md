@@ -9,9 +9,9 @@ This project is based on [react-native-orientation-locker](https://github.com/wo
 This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is：`@react-native-ohos/react-native-orientation-locker` The version correspondence details are as follows：
 | Name | Version | Release Information | Supported RN Version | Supported Autolink | Compile API Version | Community Baseline Version | npm Address     |
 | ------------ | ------------ | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
-| @react-native-ohos/react-native-orientation-locker |  1.8.0   | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-orientation-locker/releases) | 0.77 | 否 | API12+ | 1.7.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-orientation-locker) |
-| @react-native-ohos/react-native-orientation-locker | 1.7.1   | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-orientation-locker/releases) | 0.72 | 否 | API12+ | 1.7.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-orientation-locker) |
-| @react-native-oh-tpl/react-native-orientation-locker | <= 1.7.0-0.0.7@deprecated    | [Gitcode Releases](https://github.com/react-native-oh-library/react-native-orientation-locker/releases) | 0.72 | 否 | API12+ | 1.7.0 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-orientation-locker) |
+| @react-native-ohos/react-native-orientation-locker |  1.8.0   | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-orientation-locker/releases) | 0.77 | No | API12+ | 1.7.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-orientation-locker) |
+| @react-native-ohos/react-native-orientation-locker | 1.7.1   | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-orientation-locker/releases) | 0.72 | Yes | API12+ | 1.7.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-orientation-locker) |
+| @react-native-oh-tpl/react-native-orientation-locker | <= 1.7.0-0.0.7@deprecated    | [Github Releases](https://github.com/react-native-oh-library/react-native-orientation-locker/releases) | 0.72 | No | API12+ | 1.7.0 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-orientation-locker) |
 
 
 ## 1. Installation and Usage

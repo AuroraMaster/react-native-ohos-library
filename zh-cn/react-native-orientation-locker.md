@@ -10,8 +10,8 @@
 | 三方库名称    | 三方库版本    | 发布信息     | 支持RN版本    | Autolink     | 编译API版本     | 社区基线版本    | npm地址                |
 | ------------ | ------------ | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
 | @react-native-ohos/react-native-orientation-locker |  1.8.0   | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-orientation-locker/releases) | 0.77 | 否 | API12+ | 1.7.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-orientation-locker) |
-| @react-native-ohos/react-native-orientation-locker | 1.7.1   | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-orientation-locker/releases) | 0.72 | 否 | API12+ | 1.7.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-orientation-locker) | 
-| @react-native-oh-tpl/react-native-orientation-locker | <= 1.7.0-0.0.7@deprecated    | [Gitcode Releases](https://github.com/react-native-oh-library/react-native-orientation-locker/releases) | 0.72 | 否 | API12+ | 1.7.0 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-orientation-locker) | 
+| @react-native-ohos/react-native-orientation-locker | 1.7.1   | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-orientation-locker/releases) | 0.72 | 是 | API12+ | 1.7.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-orientation-locker) | 
+| @react-native-oh-tpl/react-native-orientation-locker | <= 1.7.0-0.0.7@deprecated    | [Github Releases](https://github.com/react-native-oh-library/react-native-orientation-locker/releases) | 0.72 | 否 | API12+ | 1.7.0 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-orientation-locker) | 
 
     
 ## 1. 安装与使用
@@ -219,10 +219,6 @@ const styles = StyleSheet.create({
 如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
 <details>
   <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
-
-首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
-
-此步骤为手动配置原生依赖项的指导。
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
