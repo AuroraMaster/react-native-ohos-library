@@ -677,7 +677,7 @@ The content of this document has been validated based on the following version:
 | privacyWebNavTitleColor | Privacy agreement page navigation bar title color (China Unicom, China Telecom, China Mobile)        | number | no | iOS/Android      | yes |
 | privacyWebNavReturnImage | Privacy agreement page navigation bar return button image (China Unicom, China Telecom),Only local images are supported        | string | no | iOS/Android      | yes |
 | navColor | Navigation bar color (China Mobile only)        | number | no | iOS/Android      | yes |
-| showWindow | Whether to show popup window (China Unicom, China Telecom, China Mobile)        | boolean | no | iOS/Android      | yes |
+| showWindow | Whether to show popup window (Currently only China Mobile is supported)        | boolean | no | iOS/Android      | yes |
 | logoConstraints | LOGO image layout object      | array | no | iOS      | no |
 | numberConstraints | Phone number bar layout object      | array | no | iOS      | no |
 | sloganConstraints | Slogan layout object      | array | no | iOS      | no |
@@ -699,7 +699,7 @@ The content of this document has been validated based on the following version:
 | customViewParams | Custom view parameters  | object | yes | iOS/Android  | no |
 
 ## Known Issues
-- [ ] removeListener，getVerifyCode，setCodeTime，addCustomViewsClickCallback，statusBarHidden，navHidden，navColor，navTitle，navTitleSize，navTitleColor，navReturnHidden，navReturnImage，navReturnX，navReturnY，navReturnW，navReturnH，sloganHidden，sloganW，sloganH，loginBtnNormalImage，loginBtnSelectedImage，privacyW，privacyH，privacyCheckboxHidden，logoConstraints，numberConstraints，sloganConstraints，logBtnConstraints，privacyConstraints，checkViewConstraints，loadingConstraints，windowBackgroundImage，windowBackgroundAlpha，windowCornerRadius，windowConstraints，windowCloseBtnImgs，windowCloseBtnConstraints，customViewParams These interface properties are not supported in the Aurora Security Authentication Harmony SDK
+- [ ] removeListener，getVerifyCode，setCodeTime，addCustomViewsClickCallback，statusBarHidden，navHidden，navColor，navTitle，navTitleSize，navTitleColor，navReturnHidden，navReturnImage，navReturnX，navReturnY，navReturnW，navReturnH，sloganHidden，sloganW，sloganH，loginBtnNormalImage，loginBtnSelectedImage，privacyW，privacyH，privacyCheckboxHidden，logoConstraints，numberConstraints，sloganConstraints，logBtnConstraints，privacyConstraints，checkViewConstraints，loadingConstraints，windowBackgroundImage，windowBackgroundAlpha，windowCornerRadius，windowConstraints，windowCloseBtnImgs，windowCloseBtnConstraints，customViewParams，showWindow（China Unicom、China Telecom） These interface properties are not supported in the Aurora Security Authentication Harmony SDK
 [issue#6](https://github.com/react-native-oh-library/jverification-react-native/issues/6)
 
 ## Others
