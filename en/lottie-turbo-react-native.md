@@ -44,19 +44,17 @@ yarn add @react-native-ohos/lottie-turbo-react-native
 
 The following code shows the basic use scenario of the repository:
 
-> [!WARNING] The name of the imported repository remains unchanged.
-
 > [!TIP] The following demo uses local files.
 
 ```js
 import React from "react";
 import { View } from "react-native";
-import LottieView from "lottie-react-native";
+import LottieTurboView from '@react-native-ohos/lottie-turbo-react-native';
 
 const App = () => {
   return (
     <View style={{ flex: 1 }}>
-      <LottieView 
+      <LottieTurboView 
         style={{ width: 300, height: 300 }} 
         source={require("./assets/xxx.json")} 
         autoPlay 
@@ -77,9 +75,10 @@ export default App;
 
 Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-If the version you are using supports Autolink and the project is already connected to Autolink, manual configuration can be skipped.
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
 
-The following steps provide guidance for manually configuring native dependencies.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
@@ -124,7 +123,7 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 3. Configuring CMakeLists and Introducing LottieAnimationViewPackage
+### 3. Configuring CMakeLists and Introducing LottieTurboAnimationViewPackage
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
@@ -160,7 +159,7 @@ target_link_libraries(rnoh_app PUBLIC rnoh)
 
 # RNOH_BEGIN: manual_package_linking_2
 target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
-+ target_link_libraries(rnoh_app PUBLIC rnoh_lottie)
++ target_link_libraries(rnoh_app PUBLIC rnoh_lottie_turbo)
 # RNOH_END: manual_package_linking_2
 ```
 
@@ -169,14 +168,14 @@ Open `entry/src/main/cpp/PackageProvider.cpp` and add the following code:
 ```diff
 #include "RNOH/PackageProvider.h"
 #include "SamplePackage.h"
-+ #include "LottieAnimationViewPackage.h"
++ #include "LottieTurboAnimationViewPackage.h"
 
 using namespace rnoh;
 
 std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
     return {
       std::make_shared<SamplePackage>(ctx),
-+     std::make_shared<LottieAnimationViewPackage>(ctx)
++     std::make_shared<LottieTurboAnimationViewPackage>(ctx)
     };
 }
 ```
@@ -185,11 +184,11 @@ Open `entry/src/main/ets/RNPackagesFactory.ts` and add:
 
 ```diff
   ...
-+ import {LottieAnimationViewPackage} from '@react-native-ohos/lottie-turbo-react-native/ts';
++ import { LottieTurboAnimationViewPackage } from '@react-native-ohos/lottie-turbo-react-native/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
-+   new LottieAnimationViewPackage(ctx)
++   new LottieTurboAnimationViewPackage(ctx)
   ];
 }
 ```
@@ -200,13 +199,13 @@ Find `function buildCustomRNComponent()`, which is usually located in `entry/src
 
 ```diff
   ...
-+ import { LottieAnimationView, LOTTIE_TYPE } from "@react-native-ohos/lottie-turbo-react-native"
++ import { LottieTurboAnimationView, LOTTIE_TURBO_TYPE } from "@react-native-ohos/lottie-turbo-react-native"
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
   ...
-+ if (ctx.componentName === LOTTIE_TYPE) {
-+   LottieAnimationView({
++ if (ctx.componentName === LOTTIE_TURBO_TYPE) {
++   LottieTurboAnimationView({
 +     ctx: ctx.rnComponentContext,
 +     tag: ctx.tag
 +   })
@@ -225,11 +224,12 @@ const arkTsComponentNames: Array<string> = [
   SampleView.NAME,
   GeneratedSampleView.NAME,
   PropsDisplayer.NAME,
-+ LOTTIE_TYPE
++ LOTTIE_TURBO_TYPE
   ];
 ```
+</details>
 
-### 5.Running
+## Running
 
 Click the `sync` button in the upper right corner.
 
