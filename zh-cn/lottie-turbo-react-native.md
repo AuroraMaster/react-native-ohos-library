@@ -42,19 +42,17 @@ yarn add @react-native-ohos/lottie-turbo-react-native
 
 下面的代码展示了这个库的基本使用场景：
 
-> [!WARNING] 使用时 import 的库名不变。
-
 > [!TIP] 以下 demo 中使用的是本地文件。
 
 ```js
 import React from "react";
 import { View } from "react-native";
-import LottieView from "lottie-react-native";
+import LottieTurboView from '@react-native-ohos/lottie-turbo-react-native';
 
 const App = () => {
   return (
     <View style={{ flex: 1 }}>
-      <LottieView 
+      <LottieTurboView 
         style={{ width: 300, height: 300 }} 
         source={require("./assets/xxx.json")}   
         autoPlay 
@@ -75,9 +73,10 @@ export default App;
 
 使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过手动配置。
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
 
-以下步骤为手动配置原生依赖项的指导。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -125,7 +124,7 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 3.配置 CMakeLists 和引入 LottieAnimationViewPackage
+### 3.配置 CMakeLists 和引入 LottieTurboAnimationViewPackage
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -161,7 +160,7 @@ target_link_libraries(rnoh_app PUBLIC rnoh)
 
 # RNOH_BEGIN: manual_package_linking_2
 target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
-+ target_link_libraries(rnoh_app PUBLIC rnoh_lottie)
++ target_link_libraries(rnoh_app PUBLIC rnoh_lottie_turbo)
 # RNOH_END: manual_package_linking_2
 ```
 
@@ -170,14 +169,14 @@ target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
 ```diff
 #include "RNOH/PackageProvider.h"
 #include "SamplePackage.h"
-+ #include "LottieAnimationViewPackage.h"
++ #include "LottieTurboAnimationViewPackage.h"
 
 using namespace rnoh;
 
 std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
     return {
       std::make_shared<SamplePackage>(ctx),
-+     std::make_shared<LottieAnimationViewPackage>(ctx)
++     std::make_shared<LottieTurboAnimationViewPackage>(ctx)
     };
 }
 ```
@@ -186,11 +185,11 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-+ import {LottieAnimationViewPackage} from '@react-native-ohos/lottie-turbo-react-native/ts';
++ import { LottieTurboAnimationViewPackage } from '@react-native-ohos/lottie-turbo-react-native/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
-+    new LottieAnimationViewPackage(ctx)
++    new LottieTurboAnimationViewPackage(ctx)
   ];
 }
 ```
@@ -201,13 +200,13 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 ```diff
   ...
-+ import { LottieAnimationView, LOTTIE_TYPE } from "@react-native-ohos/lottie-turbo-react-native"
++ import { LottieTurboAnimationView, LOTTIE_TURBO_TYPE } from "@react-native-ohos/lottie-turbo-react-native"
 
 @Builder
 export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
   ...
-+ if (ctx.componentName === LOTTIE_TYPE) {
-+   LottieAnimationView({
++ if (ctx.componentName === LOTTIE_TURBO_TYPE) {
++   LottieTurboAnimationView({
 +     ctx: ctx.rnComponentContext,
 +     tag: ctx.tag
 +   })
@@ -226,11 +225,12 @@ const arkTsComponentNames: Array<string> = [
   SampleView.NAME,
   GeneratedSampleView.NAME,
   PropsDisplayer.NAME,
-+ LOTTIE_TYPE
++ LOTTIE_TURBO_TYPE
   ];
 ```
+</details>
 
-### 5.运行
+## 运行
 
 点击右上角的 `sync` 按钮
 
