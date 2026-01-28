@@ -18,10 +18,10 @@
 ## 安装与使用
 
 请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
-| 三方库版本 | 发布信息                                                     | 支持RN版本 | 
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 2.4.4     | [@react-native-oh-tpl/react-native-drag-sort Releases](https://github.com/react-native-oh-library/react-native-drag-sort/releases) | 0.72       |
-| 2.5.0   | [@react-native-ohos/react-native-drag-sort Releases]()     | 0.77       |
+| 三方库名称    | 三方库版本    | 发布信息     | 支持RN版本    | Autolink     | 编译API版本     | 社区基线版本    | npm地址                |
+| ------------ | ------------ | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
+| @react-native-ohos/react-native-drag-sort | 2.5.0    | [Gitcode Releases]() | 0.77/0.82 | 否 | API12+ | 2.4.4 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-drag-sort?activeTab=versions) |
+| @react-native-oh-tpl/react-native-drag-sort | 2.4.4    | [Github Releases](https://github.com/react-native-oh-library/react-native-drag-sort/releases) | 0.72 | 否 | API12+ | 2.4.4 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-drag-sort?activeTab=versions) |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -581,17 +581,11 @@ const styles = StyleSheet.create({
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：
-| 三方库版本 | 发布信息                                                     | 支持RN版本 | 
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 2.4.4     | [@react-native-oh-tpl/react-native-drag-sort Releases](https://github.com/react-native-oh-library/react-native-drag-sort/releases) | 0.72       |
-| 2.5.0   | [@react-native-ohos/react-native-drag-sort Releases]()     | 0.77       |
-
 本文档内容基于以下版本验证通过：
 
 1. RNOH: 0.72.98; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.0.3.906; ROM: NEXT.0.0.71;
 2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
-
+3. RNOH: 0.82.1; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 6.0.1 Release; ROM:6.0.0.120 SP7
 
 ## 属性
 

@@ -19,10 +19,10 @@
 
 
 Please refer to the Release page of the corresponding third-party library for version information:
-| Version | Releases                                                     | RN Version | 
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 2.4.4     | [@react-native-oh-tpl/react-native-drag-sort Releases](https://github.com/react-native-oh-library/react-native-drag-sort/releases) | 0.72       |
-| 2.5.0   | [@react-native-ohos/react-native-drag-sort Releases]()     | 0.77       |
+| Name | Version | Release Information | Supported RN Version | Supported Autolink | Compile API Version | Community Baseline Version | npm Address     |
+| ------------ | ------------ | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
+| @react-native-ohos/react-native-drag-sort | 2.5.0    | [Gitcode Releases]() | 0.77/0.82 | No | API12+ | 2.4.4 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-drag-sort?activeTab=versions) |
+| @react-native-oh-tpl/react-native-drag-sort | 2.4.4    | [Github Releases](https://github.com/react-native-oh-library/react-native-drag-sort/releases) | 0.72 | No | API12+ | 2.4.4 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-drag-sort?activeTab=versions) |
 
 For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
@@ -64,46 +64,46 @@ The following code shows the basic use scenario of the repository:
 
 > [!WARNING] The name of the imported repository remains unchanged.
 
-##### DragSortableView组件使用
+##### DragSortableView Component Usage
 
 ```js
 import React, { useState } from "react";
 import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import { DragSortableView } from "react-native-drag-sort";
-//此案例id1、id2不支持拖拽
+//this case does not support dragging for id1 and id2
 const Dragsort = () => {
   const [data, setData] = useState([
     {
       id: 1,
-      title: "固定任务 1",
+      title: "fixed task 1",
     },
     {
       id: 2,
-      title: "固定任务 2",
+      title: "fixed task 2",
     },
     {
       id: 3,
-      title: "任务 3",
+      title: "task 3",
     },
     {
       id: 4,
-      title: "任务 4",
+      title: "task 4",
     },
     {
       id: 5,
-      title: "任务 5",
+      title: "task 5",
     },
     {
       id: 6,
-      title: "任务 6",
+      title: "task 6",
     },
     {
       id: 7,
-      title: "任务 7",
+      title: "task 7",
     },
     {
       id: 8,
-      title: "任务 8",
+      title: "task 8",
     },
   ]);
 
@@ -124,12 +124,12 @@ const Dragsort = () => {
         // onDataChange={setData}
         keyExtractor={(item, index) => item.id}
         onClickItem={(data, item, index) => {
-          console.log("点击了第", index, "个元素");
+          console.log("Clicked on the", index, "an element");
         }}
         onDragStart={() => console.log("Drag started")}
         onDragEnd={() => console.log("Drag end")}
         onDataChange={() => {
-          console.log("数据发生变化");
+          console.log("Data changes");
         }}
         fixedItems={[0, 1]}
         delayLongPress={100}
@@ -182,10 +182,10 @@ const styles = StyleSheet.create({
 export default Dragsort;
 ```
 
-##### AutoDragSortableView组件使用
+##### AutoDragSortableView Component Usage
 
 ```js
-//此案例Item1、Item2不支持拖拽
+//Item 1 and Item 2 in this case do not support dragging and dropping
 import React, { useState } from "react";
 import { View, Text } from "react-native";
 import { AutoDragSortableView } from "react-native-drag-sort";
@@ -224,14 +224,14 @@ const AutoDragSortDemo = () => {
   const renderHeaderView = (
     <View style={{ height: 50, backgroundColor: "#ff4d4d" }}>
       <Text style={{ fontSize: 18, color: "#fff", textAlign: "center" }}>
-        标题
+        Title
       </Text>
     </View>
   );
   const renderBottomView = (
     <View style={{ height: 50, backgroundColor: "#ff4d4d" }}>
       <Text style={{ fontSize: 18, color: "#fff", textAlign: "center" }}>
-        底部
+        Bottom
       </Text>
     </View>
   );
@@ -247,11 +247,11 @@ const AutoDragSortDemo = () => {
       marginChildrenLeft={20}
       marginChildrenRight={20}
       onDataChange={(data) => {
-        console.log("数据发生变化");
+        console.log("Data changes");
       }}
       keyExtractor={(item, index) => item.id}
       onClickItem={(data, item, index) => {
-        console.log("点击了第", index, "个元素");
+        console.log("Clicked on the", index, "an element");
       }}
       renderItem={(item, index) => {
         return (
@@ -269,10 +269,10 @@ const AutoDragSortDemo = () => {
           </View>
         );
       }}
-      scaleDuration={500} //拖拽项缩放效果的持续时间
-      slideDuration={200} //拖拽项滑动效果的持续时间
-      autoThrottle={100} //自动滑动到目的地的间隔时间
-      autoThrottleDuration={500} //自动滑动到目的地的持续时间
+      scaleDuration={500} //The duration of the drag and drop zoom effect
+      slideDuration={200} //The duration of the drag and drop sliding effect
+      autoThrottle={100} //The interval time for automatically sliding to the destination
+      autoThrottleDuration={500} //The duration of automatic sliding to the destination
       sortable={true}
       isDragFreely={false}
       fixedItems={[0, 1]}
@@ -285,10 +285,10 @@ const AutoDragSortDemo = () => {
       renderBottomView={renderBottomView}
       bottomViewHeight={50}
       onScrollListener={(event) => {
-        console.log("滚动事件", event);
+        console.log("Scroll event", event);
       }}
       onScrollRef={(ref) => {
-        console.log("滚动容器", ref);
+        console.log("Rolling container", ref);
       }}
     />
   );
@@ -297,7 +297,7 @@ const AutoDragSortDemo = () => {
 export default AutoDragSortDemo;
 ```
 
-##### AnySizeDragSortableView组件使用
+##### AnySizeDragSortableView Component Usage
 
 ```js
 import React, { createRef } from "react";
@@ -442,7 +442,7 @@ export default class AnySizeDragSortDemo extends React.Component<any, State> {
           onDataChange={(data, callback) => {
             this.setState({ items: data }, () => {
               callback();
-              console.log("移动了");
+              console.log("Moved");
             });
           }}
           renderHeaderView={renderHeaderView}
@@ -586,17 +586,11 @@ const styles = StyleSheet.create({
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-
-Please refer to the Release page of the corresponding third-party library for version information:
-| Version | Releases                                                     | RN Version | 
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 2.4.4     | [@react-native-oh-tpl/react-native-drag-sort Releases](https://github.com/react-native-oh-library/react-native-drag-sort/releases) | 0.72       |
-| 2.5.0   | [@react-native-ohos/react-native-drag-sort Releases]()     | 0.77       |
-
 The content of this document has been verified based on the following versions:
 
 1. RNOH: 0.72.98; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 5.0.3.906; ROM: NEXT.0.0.71;
 2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0.47 (API Version 20); IDE：DevEco Studio 6.0.0.858; ROM：6.0.0.107;
+3. RNOH: 0.82.1; SDK: HarmonyOS-5.0.0(API12); IDE: DevEco Studio 6.0.1 Release; ROM:6.0.0.120 SP7
 
 ## Properties
 
@@ -698,7 +692,7 @@ The content of this document has been verified based on the following versions:
 
 ## Known Issues
 
-- [ ] scrollIndicatorInsets属性不生效: [issue#179](https://github.com/mochixuan/react-native-drag-sort/issues/179)
+- [ ] scrollIndicatorInsets attribute not effective: [issue#179](https://github.com/mochixuan/react-native-drag-sort/issues/179)
 
 ## Others
 
