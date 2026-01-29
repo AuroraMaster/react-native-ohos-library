@@ -45,8 +45,8 @@ yarn add @react-native-ohos/react-native-screen-capture
 > [!WARNING] 使用时 import 的库名不变。
 
 ```js
-import React, { Component, useState } from 'react';
-import { Alert, View, Button, Text } from 'react-native';
+import React from 'react';
+import { View, Button, Text, StyleSheet } from 'react-native';
 import { disallowScreenshot, keepAwake } from 'react-native-screen-capture';
 
 class AppDemo extends React.Component {
@@ -116,13 +116,18 @@ export default AppDemo;
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
-### 1.在工程根目录的 `oh-package.json5` 添加 overrides字段
+### 1. Overrides RN SDK
+
+为了让工程依赖同一个版本的 RN SDK，需要在工程根目录的 `oh-package.json5` 添加 overrides 字段，指向工程需要使用的 RN SDK 版本。替换的版本既可以是一个具体的版本号，也可以是一个模糊版本，还可以是本地存在的 HAR 包或源码目录。
+
+关于该字段的作用请阅读[官方说明](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-oh-package-json5-V5#zh-cn_topic_0000001792256137_overrides)：
 
 ```json
 {
-  ...
   "overrides": {
-    "@rnoh/react-native-openharmony": "./react_native_openharmony"
+    "@rnoh/react-native-openharmony": "^0.72.38" // ohpm 在线版本
+    // "@rnoh/react-native-openharmony" : "./react_native_openharmony.har" // 指向本地 har 包的路径
+    // "@rnoh/react-native-openharmony" : "./react_native_openharmony" // 指向源码路径
   }
 }
 ```

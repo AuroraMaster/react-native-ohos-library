@@ -47,8 +47,8 @@ The following code shows the basic use scenario of the repository:
 > [!WARNING] The name of the imported repository remains unchanged.
 
 ```js
-import React, { Component, useState } from 'react';
-import { Alert, View, Button, Text } from 'react-native';
+import React from 'react';
+import { View, Button, Text, StyleSheet } from 'react-native';
 import { disallowScreenshot, keepAwake } from 'react-native-screen-capture';
 
 class AppDemo extends React.Component {
@@ -118,13 +118,18 @@ export default AppDemo;
 
 First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
-### 1.Open `entry/oh-package.json5` file and add the following dependencies:
+### 1. Overrides RN SDK
+
+To ensure the project relies on the same version of the RN SDK, you need to add an `overrides` field in the project's root `oh-package.json5` file, specifying the RN SDK version to be used. The replacement version can be a specific version number, a semver range, or a locally available HAR package or source directory.
+
+For more information about the purpose of this field, please refer to the [official documentation](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-oh-package-json5-V5#en-us_topic_0000001792256137_overrides).
 
 ```json
 {
-  ...
   "overrides": {
-    "@rnoh/react-native-openharmony": "./react_native_openharmony"
+    "@rnoh/react-native-openharmony": "^0.72.38" // ohpm version
+    // "@rnoh/react-native-openharmony" : "./react_native_openharmony.har" // a locally available HAR package
+    // "@rnoh/react-native-openharmony" : "./react_native_openharmony" // source code directory
   }
 }
 ```
@@ -132,8 +137,6 @@ First, use DevEco Studio to open the HarmonyOS project `harmony` in the project 
 ### 2. Introducing Native Code
 
 Currently, two methods are available:
-
- 
 
 Method 1 (recommended): Use the HAR file.
 
