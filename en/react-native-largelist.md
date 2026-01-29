@@ -5,11 +5,12 @@
 </p>
 
 Please visit the Release release address of the third-party library to view the corresponding version information:
+| Name | Version | Release Information | Supported RN Version | Supported Autolink | Compile API Version | Community Baseline Version | npm Address     |
+| --------------| -------------- | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
+| @react-native-ohos/react-native-largelist | 3.2.0    | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-largelist) | 0.77/0.82 | no | API12+ | 3.1.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-largelist?activeTab=versions) | 
+| @react-native-oh-tpl/react-native-largelist | 3.1.1    | [Github](https://github.com/react-native-oh-library/react-native-largelist) | 0.72 | yes | API12+ | 3.1.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-largelist?activeTab=versions) | 
 
-| Version                        | Package Name                             | Repository                                                   | Release                                                      | RN Version |
-| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -----------
-| 3.1.1 | @react-native-oh-tpl/react-native-largelist  | [Github](https://github.com/react-native-oh-library/react-native-largelist) | [Github Releases](https://github.com/react-native-oh-library/react-native-largelist/releases) | 0.72  |
-| 3.2.0 | @react-native-ohos/react-native-largelist  | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-largelist) | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-largelist/releases) | 0.77  |
+
 
 ## Installation and Usage
 
@@ -125,9 +126,9 @@ For more examples, see [largelistExample](https://github.com/bolan9999/react-nat
 
 ## Link
 
-The implementation of this library depends on the native code of @react-native-oh-tpl/react-native-spring-scrollview . If you have already included this library in your HarmonyOS project, you do not need to include it again. You can skip this section and  use the library directly.
+The implementation of this library depends on the native code of @react-native-ohos/react-native-spring-scrollview . If you have already included this library in your HarmonyOS project, you do not need to include it again. You can skip this section and  use the library directly.
 
-If you have not included it, please refer to the [Linking section of the @react-native-oh-tpl/react-native-spring-scrollview ](/zh-cn/react-native-spring-scrollview.md#link)
+If you have not included it, please refer to the [Linking section of the @react-native-ohos/react-native-spring-scrollview ](/zh-cn/react-native-spring-scrollview.md#link)
 
 ### Running
 
@@ -149,7 +150,7 @@ Then build and run the code.
 This document is verified based on the following versions:
 1. RNOH：0.72.79; SDK：HarmonyOS 5.0.0 Release SDK; IDE: DevEco Studio 5.0.7.210; ROM：5.0.0.135;
 2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release; IDE: DevEco Studio 6.0.0.858; ROM：6.0.0.112;
-
+3. RNOH: 0.82.1; SDK: HarmonyOS 6.0.1 Release SDK; IDE: DevEco Studio 6.0.1 Release; ROM:6.0.0.120 SP7
 ## Properties 
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
