@@ -18,11 +18,12 @@
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本  | 发布信息                                                  | 支持RN版本 |
-|--------| ------------------------------------------------------------ | ---------- |
-| <= 4.1.2-0.1.7@deprecated  | [@react-native-oh-tpl/react-native-permissions Releases(deprecated)](https://github.com/react-native-oh-library/react-native-permissions/releases) | 0.72       |
-| 4.1.3                      | [@react-native-ohos/react-native-permissions Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-permissions/releases)   | 0.72       |
-| 5.3.1                      | [@react-native-ohos/react-native-permissions Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-permissions/releases)   | 0.77       |
+| 三方库名称    | 三方库版本    | 发布信息     | 支持RN版本    | Autolink     | 编译API版本     | 社区基线版本    | npm地址                |
+| ------------ | ------------ | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
+| @react-native-ohos/react-native-permissions | ~ 5.4.3    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-permissions/releases) | 0.82.* | 否 | API12+ | 5.4.2 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-permissions) | 
+| @react-native-ohos/react-native-permissions |  ~ 5.3.1     | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-permissions/releases) | 0.77.* | 否 | API12+ | 5.3.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-permissions) | 
+| @react-native-ohos/react-native-permissions | ~ 4.1.3    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-permissions/releases) | 0.72.* | 是 | API12+ | 4.1.2 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-permissions) | 
+| @react-native-oh-tpl/react-native-permissions | <= 4.1.2-0.1.7@deprecated | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-permissions/releases) | 0.72.* | 否 | API12+ | 4.1.2 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-permissions) | 
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -126,6 +127,7 @@ const styles = StyleSheet.create({
 
 |                                      | 是否支持autolink | RN框架版本 |
 |--------------------------------------|-----------------|------------|
+| ~5.4.3                               |  No              |  0.82     |
 | ~5.3.1                               |  No              |  0.77     |
 | ~4.1.3                              |  Yes             |  0.72     |
 | <= 4.1.2-0.1.7@deprecated            |  No              |  0.72     |
@@ -288,6 +290,8 @@ ohpm install
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.1 Release SDK; IDE: DevEco Studio 6.0.1 Release; ROM:6.0.0.120 SP7;
+
 
 ### 权限申请使用的工作流程
 
@@ -467,6 +471,7 @@ ohos.permission.LOCATION_IN_BACKGROUND 允许应用在后台运行时获取设�
 | checkLocationAccuracy   | 检查设备位置权限  | Function          | no      | iOS         | no(使用 check()查询权限) |
 | requestLocationAccuracy | 请求访问设备位置的权限  | Function          | no      | iOS         | no(使用 request()设置权限) |
 | openPhotoPicker         | 打开图片选择 | Function          | no      | iOS         | yes( iOS 需要在`PhotoLibrary`权限为`limited`才能调用，HarmonyOS不需要任何权限直接调用) |
+| canUseFullScreenIntent  | 检查全屏通知功能是否可用    | Function          | no      | Android     | no 
 
 ## 遗留问题
 
