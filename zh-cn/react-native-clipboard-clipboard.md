@@ -16,11 +16,15 @@
 
 ## 安装与使用
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| <= 1.13.2-0.0.10@deprecated | [@react-native-oh-tpl/clipboard Releases(deprecated)](https://github.com/react-native-oh-library/clipboard/releases) | 0.72         |
-| 1.13.3                | [@react-native-ohos/clipboard Releases](https://gitcode.com/openharmony-sig/rntpc_clipboard/releases) | 0.72       |
-| 1.16.3                | [@react-native-ohos/clipboard Releases](https://gitcode.com/openharmony-sig/rntpc_clipboard/releases) | 0.77       |
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/clipboard` 版本所属关系如下：
+| 三方库名称    | 三方库版本    | 发布信息     | 支持RN版本    | Autolink     | 编译API版本     | 社区基线版本    | npm地址                |
+| ------------ | ------------ | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
+| @react-native-ohos/clipboard | ~ 1.17.0    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_clipboard/releases) | 0.82.* | 否 | API12+ | 1.16.3 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/clipboard) | 
+| @react-native-ohos/clipboard | ~ 1.16.3    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_clipboard/releases) | 0.77.* | 否 | API12+ | 1.16.2 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/clipboard) | 
+| @react-native-ohos/clipboard | ~ 1.13.3    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_clipboard/releases) | 0.72.* | 是 | API12+ | 1.13.2 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/clipboard) | 
+| @react-native-oh-tpl/clipboard | <= 1.13.2-0.0.10@deprecated | [Github Releases(deprecated)](https://github.com/react-native-oh-library/clipboard/releases) | 0.72.* | 否 | API12+ | 1.13.2 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/clipboard) | 
+
+
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -78,7 +82,7 @@ const App = () => {
 export default App;
 ```
 
-**For RN0.77**
+**For RN0.77 & RN0.82**
 
 ```js
 import React, { useState } from 'react';
@@ -131,6 +135,7 @@ export default App;
 
 |                                      | 是否支持autolink | RN框架版本 |
 |--------------------------------------|-----------------|------------|
+| ~1.17.0                               |  No              |  0.82     |
 | ~1.16.3                               |  No              |  0.77     |
 | ~1.13.3                              |  Yes             |  0.72     |
 | <= 1.13.2-0.0.10@deprecated            |  No              |  0.72     |
@@ -292,6 +297,7 @@ ohpm install
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ### 权限要求
 
