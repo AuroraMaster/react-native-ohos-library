@@ -260,7 +260,6 @@ target_link_libraries(rnoh_app PUBLIC rnoh_gesture_handler)
 # RNOH_END: manual_package_linking_2
 
 ```
-### 4.Import the TurboLogPackage module on the ArkTS side
 
 open `entry/src/main/cpp/PackageProvider.cpp`，add：
 
@@ -279,6 +278,21 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 +       std::make_shared<TurboLogPackage>(ctx),
     };
 }
+```
+
+### 4.Import the TurboLogPackage module on the ArkTS side
+
+open entry/src/main/ets/RNPackagesFactory.ets，add：
+
+```diff
+import type {RNPackageContext, RNPackage} from '@rnoh/react-native-openharmony/ts';
++ import { TurboLogPackage } from '@react-native-ohos/react-native-turbo-log/ts';
+
+export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
+return [
++    new TurboLogPackage (ctx)
+  ];
+ }
 ```
 
 ### 5.Run
