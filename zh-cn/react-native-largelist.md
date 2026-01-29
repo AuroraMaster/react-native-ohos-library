@@ -5,10 +5,12 @@
 </p>
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| Version                        | Package Name                             | Repository                                                   | Release                                                      | RN Version |
-| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -----------
-| 3.1.1 | @react-native-oh-tpl/react-native-largelist  | [Github](https://github.com/react-native-oh-library/react-native-largelist) | [Github Releases](https://github.com/react-native-oh-library/react-native-largelist/releases) | 0.72  |
-| 3.2.0 | @react-native-ohos/react-native-largelist  | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-largelist) | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-largelist/releases) | 0.77  |
+| 三方库名称    | 三方库版本    | 发布信息     | 支持RN版本    | Autolink     | 编译API版本     | 社区基线版本    | npm地址                |
+| ------------ | ------------ | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
+| @react-native-ohos/react-native-largelist | 3.2.0    | [Gitcode](https://gitcode.com/openharmony-sig/rntpc_react-native-largelist) | 0.77/0.82 | 否 | API12+ | 3.1.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-largelist?activeTab=versions) | 
+| @react-native-oh-tpl/react-native-largelist | 3.1.1    | [Github](https://github.com/react-native-oh-library/react-native-largelist) | 0.72 | 是 | API12+ | 3.1.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-largelist?activeTab=versions) | 
+
+
 
 ## 安装与使用
 
@@ -122,9 +124,9 @@ const styles = StyleSheet.create({
 
 ## Link
 
-本库 HarmonyOS 侧实现依赖@react-native-oh-tpl/react-native-spring-scrollview 的原生端代码，如已在 HarmonyOS 工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
+本库 HarmonyOS 侧实现依赖@react-native-ohos/react-native-spring-scrollview 的原生端代码，如已在 HarmonyOS 工程中引入过该库，则无需再次引入，可跳过本章节步骤，直接使用。
 
-如未引入请参照[@react-native-oh-tpl/react-native-spring-scrollview 文档的 Link 章节](/zh-cn/react-native-spring-scrollview.md#link)进行引入
+如未引入请参照[@react-native-ohos/react-native-spring-scrollview 文档的 Link 章节](/zh-cn/react-native-spring-scrollview.md#link)进行引入
 
 ### 运行
 
@@ -146,7 +148,7 @@ ohpm install
 本文档内容基于以下版本验证通过：
 1. RNOH：0.72.79; SDK：HarmonyOS 5.0.0 Release SDK; IDE: DevEco Studio 5.0.7.210; ROM：5.0.0.135;
 2. RNOH：0.77.18; SDK：HarmonyOS 6.0.0 Release; IDE: DevEco Studio 6.0.0.858; ROM：6.0.0.112;
-
+3. RNOH: 0.82.1; SDK: HarmonyOS 6.0.1 Release SDK; IDE: DevEco Studio 6.0.1 Release; ROM:6.0.0.120 SP7
 ## 属性
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
