@@ -16,24 +16,37 @@
 
 ## Installation and Usage
 
-Find the matching version information in the release address of a third-party library and download an applicable .tgz package: [@react-native-oh-tpl/react-native-dropdownalert Releases](https://github.com/react-native-oh-library/react-native-dropdownalert/releases).
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Name | Version | Release Information | Supported RN Version | Supported Autolink | Compile API Version | Community Baseline Version | npm Address 
+| ------------ | ------------ | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
+| @react-native-oh-ohos/react-native-dropdownalert | ~ 5.3.0    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-dropdownalert/releases) | 0.82.* | No | API12+ | 5.2.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/rreact-native-dropdownalert) | 
+| @react-native-oh-ohos/react-native-dropdownalert | ~5.2.0    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-dropdownalert/releases) | 0.77.* | No | API12+ | 5.1.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-dropdownalert) | 
+| @react-native-oh-tpl/react-native-dropdownalert | <=5.1.0-0.1.2    | [Github Releases](https://github.com/react-native-oh-library/react-native-dropdownalert/releases) | 0.72.* | No | API12+ | 5.1.0 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-dropdownalert) | 
+
+
+For older versions not published on npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
-
-
 
 <!-- tabs:start -->
 
 #### **npm**
 
 ```bash
+# 0.72
 npm install @react-native-oh-tpl/react-native-dropdownalert
+# 0.77/0.82
+npm install @react-native-ohos/react-native-dropdownalert
 ```
 
 #### **yarn**
 
 ```bash
+# 0.72
 yarn add @react-native-oh-tpl/react-native-dropdownalert
+# 0.77/0.82
+yarn add @react-native-ohos/react-native-dropdownalert
 ```
 
 <!-- tabs:end -->
@@ -249,7 +262,12 @@ export default App;
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Check the release version information in the release address of the third-party library: [@react-native-oh-tpl/react-native-dropdownalert Releases](https://github.com/react-native-oh-library/react-native-dropdownalert/releases)
+Verified in the following versions：
+
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## DropdownAlert
 

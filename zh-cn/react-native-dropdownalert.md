@@ -18,10 +18,11 @@
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 5.1.0      | [@react-native-oh-tpl/react-native-dropdownalert Releases](https://github.com/react-native-oh-library/react-native-dropdownalert/releases) | 0.72       |
-| 5.1.1      | [@react-native-ohos/react-native-dropdownalert Releases]()     | 0.77       |
+| 三方库名称    | 三方库版本    | 发布信息     | 支持RN版本    | Autolink     | 编译API版本     | 社区基线版本    | npm地址                |
+| ------------ | ------------ | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
+| @react-native-oh-ohos/react-native-dropdownalert | ~ 5.3.0    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-dropdownalert/releases) | 0.82.* | 否 | API12+ | 5.2.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/rreact-native-dropdownalert) | 
+| @react-native-oh-ohos/react-native-dropdownalert | ~5.2.0    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-dropdownalert/releases) | 0.77.* | 否 | API12+ | 5.1.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-dropdownalert) | 
+| @react-native-oh-tpl/react-native-dropdownalert | <=5.1.0-0.1.2    | [Github Releases](https://github.com/react-native-oh-library/react-native-dropdownalert/releases) | 0.72.* | 否 | API12+ | 5.1.0 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-dropdownalert) | 
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -32,18 +33,18 @@
 #### **npm**
 
 ```bash
-# 5.1.0
+# 0.72
 npm install @react-native-oh-tpl/react-native-dropdownalert
-# 5.1.1
+# 0.77/0.82
 npm install @react-native-ohos/react-native-dropdownalert
 ```
 
 #### **yarn**
 
 ```bash
-# 5.1.0
+# 0.72
 yarn add @react-native-oh-tpl/react-native-dropdownalert
-# 5.1.1
+# 0.77/0.82
 yarn add @react-native-ohos/react-native-dropdownalert
 ```
 
@@ -260,12 +261,12 @@ export default App;
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库的 Releases 发布地址查看配套的版本信息：
+在以下版本验证通过：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 5.1.0      | [@react-native-oh-tpl/react-native-dropdownalert Releases](https://github.com/react-native-oh-library/react-native-dropdownalert/releases) | 0.72       |
-| 5.1.1      | [@react-native-ohos/react-native-dropdownalert Releases]()     | 0.77       |
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## DropdownAlert
 
