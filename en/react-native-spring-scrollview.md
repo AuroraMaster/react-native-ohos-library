@@ -18,11 +18,14 @@
 
 Please refer to the Releases page of the third-party library for the corresponding version information
 
-| Third-party Library Version | Release Information                                                     | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| <= 3.0.2-0.0.4@deprecated      | [@react-native-oh-tpl/react-native-spring-scrollview Releases(deprecated)](https://github.com/react-native-oh-library/react-native-spring-scrollview/releases) | 0.72       |
-|  3.0.3      | [@react-native-ohos/react-native-spring-scrollview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-spring-scrollview/releases)                        | 0.72       |
-| 3.1.0     | [@react-native-ohos/react-native-spring-scrollview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-spring-scrollview/releases)                        | 0.77       |
+| Name | Version | Release Information | Supported RN Version | Supported Autolink | Compile API Version | Community Baseline Version | npm Address     |
+| --------------| -------------- | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
+|@react-native-ohos/react-native-spring-scrollview| 3.1.0      | [@react-native-ohos/react-native-spring-scrollview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-spring-scrollview/releases) | 0.77/0.82       |no|API12+|3.0.2| [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-spring-scrollview?activeTab=versions)|
+|@react-native-ohos/react-native-spring-scrollview| 3.0.3      | [@react-native-ohos/react-native-spring-scrollview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-spring-scrollview/releases)  | 0.72       |yes|API12+|2.0.22| [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-spring-scrollview?activeTab=versions)|
+|@react-native-oh-tpl/react-native-spring-scrollview| <= 3.0.2-0.0.4@deprecated      | [@react-native-oh-tpl/react-native-spring-scrollview Releases(deprecated)](https://github.com/react-native-oh-library/react-native-spring-scrollview/releases) | 0.72       |yes|API12+|2.0.22| [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-spring-scrollview?activeTab=versions)|
+
+
+
 
 For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
@@ -184,7 +187,7 @@ const styles = StyleSheet.create({
 
 |                                      | Is supported autolink | Supported RN Version |
 |--------------------------------------|-----------------------|----------------------|
-| ~3.1.0                               |  No                   |  0.77                |
+| ~3.1.0                               |  No                   |  0.77/0.82                |
 | ~3.0.3                              |  Yes                  |  0.72                |
 | <= 3.0.2-0.0.4@deprecated            |  No                   |  0.72                |
 
@@ -344,7 +347,7 @@ Verified in the following versions.
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
-
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.1 Release SDK; IDE: DevEco Studio 6.0.1 Release; ROM:6.0.0.120 SP7
 
 ## Properties 
 
