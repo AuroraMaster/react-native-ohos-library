@@ -18,11 +18,12 @@
 
 Please refer to the Releases page of the third-party library for the corresponding version information
 
-| Third-party Library Version | Release Information       | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| <= 4.1.2-0.1.7@deprecated  | [@react-native-oh-tpl/react-native-permissions Releases(deprecated)](https://github.com/react-native-oh-library/react-native-permissions/releases) | 0.72       |
-| 4.1.3                      | [@react-native-ohos/react-native-permissions Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-permissions/releases)   | 0.72       |
-| 5.3.1                      | [@react-native-ohos/react-native-permissions Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-permissions/releases)   | 0.77       |
+| Third-party Library Name | Third-party Library Version | Release Information     | Supported RN Version | Autolink     | Compile API Version     | Community Baseline Version    | npm Address                |
+| ------------ | ------------ | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
+| @react-native-ohos/react-native-permissions | ~ 5.4.3    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-permissions/releases) | 0.82.* | No | API12+ | 5.4.2 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-permissions) | 
+| @react-native-ohos/react-native-permissions |  ~ 5.3.1     | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-permissions/releases) | 0.77.* | No | API12+ | 5.3.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-permissions) | 
+| @react-native-ohos/react-native-permissions | ~ 4.1.3    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-permissions/releases) | 0.72.* | Yes | API12+ | 4.1.2 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-permissions) | 
+| @react-native-oh-tpl/react-native-permissions | <= 4.1.2-0.1.7@deprecated | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-permissions/releases) | 0.72.* | No | API12+ | 4.1.2 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-permissions) |
 
 For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
 
@@ -128,8 +129,9 @@ const styles = StyleSheet.create({
 
 |                                      | Is supported autolink  | Supported RN Version |
 |--------------------------------------|-----------------------|----------------------|
+| ~5.4.3                               |  No                   |  0.82                |
 | ~5.3.1                               |  No                   |  0.77                |
-| ~4.1.3                              |  Yes                  |  0.72                |
+| ~4.1.3                               |  Yes                  |  0.72                |
 | <= 4.1.2-0.1.7@deprecated            |  No                   |  0.72                |
 
 Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
@@ -282,6 +284,7 @@ Verified in the following versions.
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.1 Release SDK; IDE: DevEco Studio 6.0.1 Release; ROM:6.0.0.120 SP7;
 
 ### Applying for and Using a Permission
 
@@ -461,6 +464,7 @@ The permission is granted to the application if the user selects **Always allow*
 | checkLocationAccuracy   | Checks the device location permission.      | Function | no       | iOS         | no (Use **check()** to query permissions.)                                    |
 | requestLocationAccuracy | Requests the permission to access the device location.| Function | no       | iOS         | no (Use **request()** to set permissions.)                                  |
 | openPhotoPicker         | Opens the photo picker.          | Function | no       | iOS         | yes (For iOS, the API can be called only when the `PhotoLibrary` permission is `limited`. For HarmonyOS, the API can be directly called without any permission.)|
+| canUseFullScreenIntent  | Check if the full-screen notification feature is available   | Function          | no      | Android     | no 
 
 ## Known Issues
 

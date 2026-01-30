@@ -18,11 +18,12 @@
 
 Please refer to the Releases page of the third-party library for the corresponding version information:
 
-| Third-party Library Version | Release Information                                                     | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 13.10.4@deprecated      | [@react-native-oh-tpl/react-native-webview Releases(deprecated)](https://github.com/react-native-oh-library/react-native-webview/releases) | 0.72       |
-| 13.10.5      | [@react-native-ohos/react-native-webview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases)                        | 0.72       |
-| 13.15.1      | [@react-native-ohos/react-native-webview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases)                        | 0.77       |
+| Name | Version   | Release Information                                                                         | Supported RN Version | Supported Autolink | Compile API Version | Community Baseline Version | npm Address                      
+| ------------ |-----------|---------------------------------------------------------------------------------------------|----------------------|--------------------|--------------------|----------------------------|----------------------------------|
+|@react-native-ohos/react-native-webview| ~13.16.1  | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases) | 0.82.*                | No                 | API20+                    | 13.16.0  | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-webview)|
+|@react-native-ohos/react-native-webview| ~13.15.1  | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases) | 0.77.*               | No                  | API20+                    | 13.15.0  | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-webview)|
+|@react-native-ohos/react-native-webview| ~13.10.5  | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases)          | 0.72.*               | Yes                |API20+            | 13.10.2   | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-webview)|
+|@react-native-oh-tpl/react-native-webview| <=13.10.4@deprecated  | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-webview/releases) | 0.72.*               | No                  | API12+             | 13.10.2                    | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-webview) |
 
 For the HarmonyOS version of react-native-webview from 13.10.4-rc.4 onward, compilation requires DevEco Studio 6.0.0 (API20) or higher.
 
@@ -63,13 +64,18 @@ export default function WebViewDemo() {
 
 ## Link
 
-Version >= @react-native-ohos/react-native-webview@13.10.5 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
-Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
-The 0.72 branch supports full Autolinking functionality starting from the RNOH 0.72.94 version (corresponding to the @react-native-oh/react-native-harmony-cli version 0.0.40).
+|                                      | Is supported autolink  | Supported RN Version |
+|--------------------------------------|-----------------------|----------------------|
+| ~13.16.1                             |  No              |  0.82     |
+| ~13.15.1                              |  No              |  0.77     |
+| ~13.10.5                             |  Yes             |  0.72     |
+| <= 13.10.4@deprecated            |  No              |  0.72     |
 
-This step provides guidance for manually configuring native dependencies.
+Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+<details>
+  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
 
 ### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
 
@@ -221,8 +227,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+</details>
 
-### 6. Running
+## Running
 
 Click the `sync` button in the upper right corner.
 
@@ -241,13 +248,12 @@ Then build and run the code.
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
-Please refer to the Releases page of the third-party library for the corresponding version information:
+Verified in the following versions:
 
-| Third-party Library Version | Release Information                                                     | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 13.10.4@deprecated      | [@react-native-oh-tpl/react-native-webview Releases(deprecated)](https://github.com/react-native-oh-library/react-native-webview/releases) | 0.72       |
-| 13.10.5      | [@react-native-ohos/react-native-webview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases)                        | 0.72       |
-| 13.15.1      | [@react-native-ohos/react-native-webview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases)                        | 0.77       |
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## Properties
 > [!WARNING] The "ignoreSilentHardwareSwitch" needs to be set to "true" for the web page to have sound when playing.
@@ -321,6 +327,10 @@ For details, see [webview official document](https://github.com/react-native-web
 | `useWebView2?` | Use WinUI WebView2 control instead of WebView control as the native webview. The WebView2 control is a WinUI control that renders web content using the Microsoft Edge (Chromium) rendering engine. Option can be toggled at runtime and supports Fast Refresh. | boolean | NO | Windows | NO                                                                                 |
 | `applicationNameForUserAgent?` | Append to the existing user-agent. Setting `userAgent` will override this. | string | No | All | yes                                                                                |
 | `thirdPartyCookiesEnabled?` | Boolean value to enable third party cookies in the `WebView`. Used on Android Lollipop and above only as third party cookies are enabled by default on Android Kitkat and below and on iOS. The default value is `true`. | boolean | No | All | yes                                                                                |
+| `paymentRequestEnabled<sup>13.15.1+</sup>` | Whether or not the webview has the Payment Request API enabled.The default value is `false`. | boolean | No | Android | No                                                           |
+| `allowsPictureInPictureMediaPlayback<sup>13.15.1+</sup>` | Boolean value that indicates whether HTML5 videos can play Picture in Picture.The default value is `false`. | boolean | No | Android | No |
+| `refreshControlLightMode<sup>13.15.1+</sup>` | (ios only) Boolean value that determines whether the refresh control color is white or not.The default value is `false`. | boolean | No | iOS | No |
+| `indicatorStyle <sup>13.15.1+</sup>` | The colorstyle of the scroll indicator. | string | No | iOS, Android | No |
 
 ##  Event callback
 
@@ -344,6 +354,7 @@ For details, see [webview official document](https://github.com/react-native-web
 | `renderLoading?`                                 | Function that returns a loading indicator. The `startInLoadingState` prop must be set to `true` in order to use this prop. | function | No       | iOS, Android, macOS     | No                |
 | `onCustomMenuSelection?`                         | Function called when a custom menu item is selected. It receives a Native event, which includes three custom keys: `label`, `key` and `selectedText`. | function | NO       | iOS, Android            | No                |
 | `onNavigationStateChange?: (event) => void`      | Function that is invoked when the WebView loading starts or ends. | function | NO       | iOS, Android            | yes               |
+| `onLoadSubResourceError: (event) => void <sup>13.16.1+</sup>`      | Function that is sub resource SSL error handling. | function | NO       | Android            | yes               |
 
 ## Static Methods
 
@@ -367,6 +378,7 @@ For details, see [webview official document](https://github.com/react-native-web
 ## Known Issues
 - [ ]  Some attributes of WebView have not been implemented in HarmonyOS[issue#17](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/issues/17)
 - [ ]  Some attributes of WebView have not been implemented in HarmonyOS[issue#200](https://github.com/react-native-oh-library/react-native-webview/issues/200)
+- [ ] V13.15.1 The new attribute has not been adapted for HarmonyOS[issue#2](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/issues/2)
 - [X]  Chinese garbled text[issue#18](https://github.com/react-native-oh-library/react-native-webview/issues/18)
 
 ## Others

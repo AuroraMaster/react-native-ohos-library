@@ -16,13 +16,14 @@
 
 ## Installation and Usage
 
-Please refer to the Releases page of the third-party library for the corresponding version information
+This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/clipboard`, The version correspondence details are as follows:
 
-| Third-party Library Version | Release Information       | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| <= 1.13.2-0.0.10@deprecated | [@react-native-oh-tpl/clipboard Releases(deprecated)](https://github.com/react-native-oh-library/clipboard/releases) | 0.72                 |
-| 1.13.3                | [@react-native-ohos/clipboard Releases](https://gitcode.com/openharmony-sig/rntpc_clipboard/releases) | 0.72       |
-| 1.16.3                | [@react-native-ohos/clipboard Releases](https://gitcode.com/openharmony-sig/rntpc_clipboard/releases) | 0.77       |
+| Name | Version | Release Information | Supported RN Version | Supported Autolink | Compile API Version | Community Baseline Version | npm Address     |                |
+| ------------ | ------------ | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
+| @react-native-ohos/clipboard | ~ 1.17.0    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_clipboard/releases) | 0.82.* | No | API12+ | 1.16.3 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/clipboard) | 
+| @react-native-ohos/clipboard | ~ 1.16.3    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_clipboard/releases) | 0.77.* | No | API12+ | 1.16.2 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/clipboard) | 
+| @react-native-ohos/clipboard | ~ 1.13.3    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_clipboard/releases) | 0.72.* | Yes | API12+ | 1.13.2 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/clipboard) | 
+| @react-native-oh-tpl/clipboard | <= 1.13.2-0.0.10@deprecated | [Github Releases(deprecated)](https://github.com/react-native-oh-library/clipboard/releases) | 0.72.* | No | API12+ | 1.13.2 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/clipboard) | 
 
 For older versions not published on npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
 
@@ -80,7 +81,7 @@ const App = () => {
 export default App;
 ```
 
-**For RN0.77**
+**For RN0.77 & RN0.82**
 
 ```js
 import React, { useState } from 'react';
@@ -133,6 +134,7 @@ export default App;
 
 |                                      | Is supported autolink  | Supported RN Version |
 |--------------------------------------|-----------------------|----------------------|
+| ~1.17.0                               |  No              |  0.82     |
 | ~1.16.3                               |  No              |  0.77     |
 | ~1.13.3                              |  Yes             |  0.72     |
 | <= 1.13.2-0.0.10@deprecated            |  No              |  0.72     |
@@ -299,6 +301,7 @@ Verified in the following versions.
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ### Permission Requirements
 
