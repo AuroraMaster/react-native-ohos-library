@@ -1,4 +1,4 @@
-> 模板版本：v0.2.2
+> 模板版本：v0.4.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-webview</code> </h1>
@@ -18,11 +18,12 @@
 
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 13.10.4@deprecated      | [@react-native-oh-tpl/react-native-webview Releases(deprecated)](https://github.com/react-native-oh-library/react-native-webview/releases) | 0.72       |
-| 13.10.5      | [@react-native-ohos/react-native-webview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases)                        | 0.72       |
-| 13.15.1      | [@react-native-ohos/react-native-webview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases)                        | 0.77       |
+| 三方库名称 | 三方库版本   | 发布信息                                                                         | 支持RN版本 | Autolink | 编译API版本 | 社区基线版本 | npm地址                      
+| ------------ |---------|---------------------------------------------------------------------------------------------|----------------------|--------------------|-------------------|----------------------------|----------------------------------|
+|@react-native-ohos/react-native-webview| ~13.16.1 | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases) | 0.82.*                | 否                  | API20+                   | 13.16.0  | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-webview)|
+|@react-native-ohos/react-native-webview| ~13.15.1 | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases) | 0.77.*               | 否                  | API20+                   | 13.15.0  | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-webview)|
+|@react-native-ohos/react-native-webview| ~13.10.5 | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases)          | 0.72.*               | 是                  |API20+           | 13.10.2   | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-webview)|
+|@react-native-oh-tpl/react-native-webview| <=13.10.4@deprecated | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-webview/releases) | 0.72.*               | 否                  | API12+            | 13.10.2                    | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-webview) |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -61,11 +62,18 @@ export default function WebViewDemo() {
 
 ## Link
 
-Version >= @react-native-ohos/react-native-webview@13.10.5，已支持 Autolink，无需手动配置，目前只支持72框架。
-Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
-0.72分支从RNOH 0.72.94版本（对应 @react-native-oh/react-native-harmony-cli 版本是0.0.40）开始可使用完整的 Autolinking 功能。
+|                                      | Is supported autolink  | Supported RN Version |
+|--------------------------------------|-----------------------|----------------------|
+| ~13.16.1                             |  No              |  0.82     |
+| ~13.15.1                              |  No              |  0.77     |
+| ~13.10.5                             |  Yes             |  0.72     |
+| <= 13.10.4@deprecated            |  No              |  0.72     |
 
-此步骤为手动配置原生依赖项的指导。
+使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+如您使用的版本支持 Autolink，并且工程已接入 Autolink，可跳过ManualLink配置。
+<details>
+  <summary>ManualLink: 此步骤为手动配置原生依赖项的指导</summary>
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`
 
@@ -222,8 +230,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+</details>
 
-### 6.运行
+## 运行
 
 点击右上角的 `sync` 按钮
 
@@ -242,15 +251,12 @@ ohpm install
 
 要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
 
-请到三方库的 Releases 发布地址查看配套的版本信息：
+在以下版本验证通过：
 
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| 13.10.4@deprecated      | [@react-native-oh-tpl/react-native-webview Releases(deprecated)](https://github.com/react-native-oh-library/react-native-webview/releases) | 0.72       |
-| 13.10.5      | [@react-native-ohos/react-native-webview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases)                        | 0.72       |
-| 13.15.1      | [@react-native-ohos/react-native-webview Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/releases)                        | 0.77       |
-
-鸿蒙化react-native-webview版本在13.10.4-rc.4及之后，编译需要DevEco Studio 6.0.0(API20)及以上版本。
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 属性
 > [!WARNING]ignoreSilentHardwareSwitch需要设置true网页播放才有声音
@@ -324,6 +330,10 @@ ohpm install
 | `useWebView2?` | Use WinUI WebView2 control instead of WebView control as the native webview. The WebView2 control is a WinUI control that renders web content using the Microsoft Edge (Chromium) rendering engine. Option can be toggled at runtime and supports Fast Refresh. | boolean | NO | Windows | NO                                                                                 |
 | `applicationNameForUserAgent?` | Append to the existing user-agent. Setting `userAgent` will override this. | string | No | All | yes                                                                                |
 | `thirdPartyCookiesEnabled?` | Boolean value to enable third party cookies in the `WebView`. Used on Android Lollipop and above only as third party cookies are enabled by default on Android Kitkat and below and on iOS. The default value is `true`. | boolean | No | All | yes                                                                                |
+| `paymentRequestEnabled<sup>13.15.1+</sup>` | Whether or not the webview has the Payment Request API enabled.The default value is `false`. | boolean | No | Android | No                                                           |
+| `allowsPictureInPictureMediaPlayback<sup>13.15.1+</sup>` | Boolean value that indicates whether HTML5 videos can play Picture in Picture.The default value is `false`. | boolean | No | Android | No |
+| `refreshControlLightMode<sup>13.15.1+</sup>` | (ios only) Boolean value that determines whether the refresh control color is white or not.The default value is `false`. | boolean | No | iOS | No |
+| `indicatorStyle <sup>13.15.1+</sup>` | The colorstyle of the scroll indicator. | string | No | iOS, Android | No |
 
 ##  事件回调
 
@@ -331,23 +341,23 @@ ohpm install
 
 > [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
 
-| Name                                             | Description                                                  | Type     | Required | Platform                | HarmonyOS Support |
-| ------------------------------------------------ | ------------------------------------------------------------ | -------- | -------- | ----------------------- |-------------------|
-| `onScroll?: (event) => void`                     | Function that is invoked when the scroll event is fired in the `WebView`. | function | No       | iOS and macOS           | yes               |
-| `onHttpError?: (event) => void`                  | Function that is invoked when the `WebView` receives an http error. | function | No       | yes                     | yes               |
-| `onLoadStart?: (event) => void`                  | Function that is invoked when the `WebView` starts loading.  | function | No       | All                     | yes               |
-| `onLoad?: (event) => void`                       | Function that is invoked when the `WebView` has finished loading. | function | No       | All                     | yes               |
-| `onOpenWindow?`                                  | Function that is invoked when the `WebView` should open a new window. | function | No       | iOS, Android, macOS     | No                |
-| `injectJavaScript?: (script: string) => void`    | Executes the JavaScript string.                              | function | No       | iOS,Android,macOS       | yes               |
-| `onLoadEnd?: (event) => void`                    | Function that is invoked when the WebView load succeeds or fails used. | function | No       | All                     | yes               |
-| `onLoadProgress?: (event) => void`               | Function that is invoked when the WebView is loading.        | function | No       | All                     | yes               |
-| `onMessage?: (event) => void`                    | Function that is invoked when the webview calls window.ReactNativeWebView.postMessage. | function | No       | iOS,Android,macOS       | yes               |
+| Name                                                          | Description                                                  | Type     | Required | Platform                | HarmonyOS Support |
+|---------------------------------------------------------------| ------------------------------------------------------------ | -------- | -------- | ----------------------- |-------------------|
+| `onScroll?: (event) => void`                                  | Function that is invoked when the scroll event is fired in the `WebView`. | function | No       | iOS and macOS           | yes               |
+| `onHttpError?: (event) => void`                               | Function that is invoked when the `WebView` receives an http error. | function | No       | yes                     | yes               |
+| `onLoadStart?: (event) => void`                               | Function that is invoked when the `WebView` starts loading.  | function | No       | All                     | yes               |
+| `onLoad?: (event) => void`                                    | Function that is invoked when the `WebView` has finished loading. | function | No       | All                     | yes               |
+| `onOpenWindow?`                                               | Function that is invoked when the `WebView` should open a new window. | function | No       | iOS, Android, macOS     | No                |
+| `injectJavaScript?: (script: string) => void`                 | Executes the JavaScript string.                              | function | No       | iOS,Android,macOS       | yes               |
+| `onLoadEnd?: (event) => void`                                 | Function that is invoked when the WebView load succeeds or fails used. | function | No       | All                     | yes               |
+| `onLoadProgress?: (event) => void`                            | Function that is invoked when the WebView is loading.        | function | No       | All                     | yes               |
+| `onMessage?: (event) => void`                                 | Function that is invoked when the webview calls window.ReactNativeWebView.postMessage. | function | No       | iOS,Android,macOS       | yes               |
 | `onShouldStartLoadWithRequest?: (event) => void` | Function that allows custom handling of any web view requests. This feature needs to be used in conjunction with worker threads, and the relevant configuration can be set according to step three of [the worker threads](https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/TurboModule.md#%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89turbomodule%E8%BF%90%E8%A1%8C%E5%9C%A8worker%E7%BA%BF%E7%A8%8B).| function | No       | iOS,Android,macOS       | yes                |
-| `onContentProcessDidTerminate: (event) => void`  | Function that is invoked when the `WebView` content process is terminated. | function | No       | iOS and macOS WKWebView | No                |
-| `renderLoading?`                                 | Function that returns a loading indicator. The `startInLoadingState` prop must be set to `true` in order to use this prop. | function | No       | iOS, Android, macOS     | No                |
-| `onCustomMenuSelection?`                         | Function called when a custom menu item is selected. It receives a Native event, which includes three custom keys: `label`, `key` and `selectedText`. | function | NO       | iOS, Android            | No                |
-| `onNavigationStateChange?: (event) => void`      | Function that is invoked when the WebView loading starts or ends. | function | NO       | iOS, Android            | yes               |
-
+| `onContentProcessDidTerminate: (event) => void`               | Function that is invoked when the `WebView` content process is terminated. | function | No       | iOS and macOS WKWebView | No                |
+| `renderLoading?`                                              | Function that returns a loading indicator. The `startInLoadingState` prop must be set to `true` in order to use this prop. | function | No       | iOS, Android, macOS     | No                |
+| `onCustomMenuSelection?`                                      | Function called when a custom menu item is selected. It receives a Native event, which includes three custom keys: `label`, `key` and `selectedText`. | function | NO       | iOS, Android            | No                |
+| `onNavigationStateChange?: (event) => void`                   | Function that is invoked when the WebView loading starts or ends. | function | NO       | iOS, Android            | yes               |
+| `onLoadSubResourceError: (event) => void <sup>13.16.1+</sup>` | Function that is sub resource SSL error handling. | function | NO       | Android            | yes               |
 ## 静态方法
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
@@ -371,6 +381,7 @@ ohpm install
 
 - [ ]  webview 部分属性未实现 HarmonyOS 化[issue#17](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/issues/17)
 - [ ]  webview 部分属性未实现 HarmonyOS 化[issue#200](https://github.com/react-native-oh-library/react-native-webview/issues/200)
+- [ ]  V13.15.1 新增属性未实现 HarmonyOS 化[issue#2](https://gitcode.com/openharmony-sig/rntpc_react-native-webview/issues/2)
 - [X]  中文乱码[issue#18](https://github.com/react-native-oh-library/react-native-webview/issues/18)
 
 ## 其他
