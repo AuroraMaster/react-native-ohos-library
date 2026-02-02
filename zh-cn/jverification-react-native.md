@@ -154,8 +154,6 @@ const customConfigParamsCM = {
    * 导航栏、状态栏
    */
   statusBarMode: "light",
-  navColor: "rgb(63,196,36)",
-  navTitleColor: "rgb(211,208,29)",
   /**
    * login
    */
@@ -193,7 +191,7 @@ class JverificationTest extends React.Component {
           <Button
             title="setLoggerEnable (true)"
             onPress={() => {
-              JVerification.setLoggerEnable(false);
+              JVerification.setLoggerEnable(true);
             }}
           />
         </View>
@@ -613,7 +611,7 @@ ohpm install
 | navHidden | 导航栏是否隐藏       | boolean | no | iOS/Android      | no |
 | navTitle  | 导航栏标题        | string | no | iOS/Android      | no |
 |navTitleSize  | 导航栏标题文字字体大小        | number | no | iOS/Android      | no |
-| navTitleColor  | 导航栏标题文本颜色（仅移动）        | string | no | iOS/Android      | yes |
+| navTitleColor  | 导航栏标题文本颜色（仅移动）        | string | no | iOS/Android      | no |
 | navReturnHidden  | 导航栏返回按钮是否隐藏        | boolean | no | iOS/Android      | no |
 | navReturnImage  | 导航栏左侧返回按钮图标        | string | no | iOS/Android      | no |
 | navReturnX  | 导航栏左侧返回按钮图标距屏幕上端偏移        | number | no | Android      | no |
@@ -670,7 +668,7 @@ ohpm install
 | privacyWebNavTitleSize | 隐私协议页面导航栏标题字号(联通、电信、移动)        | number | no | iOS/Android      | yes |
 | privacyWebNavTitleColor | 隐私协议页面导航栏标题颜色(联通、电信、移动)        | number | no | iOS/Android      | yes |
 | privacyWebNavReturnImage | 隐私协议页面导航栏返回按钮图片(联通、电信)，仅支持本地图片        | string | no | iOS/Android      | yes |
-| navColor | 导航栏颜色(仅移动)        | number | no | iOS/Android      | yes |
+| navColor | 导航栏颜色(仅移动)        | number | no | iOS/Android      | no |
 | showWindow | 是否显示弹窗(当前仅支持移动)        | boolean | no | iOS/Android      | yes |
 | logoConstraints | LOGO图片布局对象      | array | no | iOS      | no |
 | numberConstraints | 号码栏布局对象      | array | no | iOS      | no |

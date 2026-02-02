@@ -152,8 +152,6 @@ const customConfigParamsCM = {
    * Navigation bar, status bar
    */
   statusBarMode: "light",
-  navColor: "rgb(63,196,36)",
-  navTitleColor: "rgb(211,208,29)",
   /**
    * login
    */
@@ -191,7 +189,7 @@ class JverificationTest extends React.Component {
           <Button
             title="setLoggerEnable (true)"
             onPress={() => {
-              JVerification.setLoggerEnable(false);
+              JVerification.setLoggerEnable(true);
             }}
           />
         </View>
@@ -619,7 +617,7 @@ The content of this document has been validated based on the following version:
 | navHidden | Whether to hide the navigation bar       | boolean | no | iOS/Android      | no |
 | navTitle  | Navigation bar title        | string | no | iOS/Android      | no |
 | navTitleSize  | Navigation bar title font size        | number | no | iOS/Android      | no |
-| navTitleColor  | Navigation bar title text color (China Mobile only)        | string  | no | iOS/Android      | yes |
+| navTitleColor  | Navigation bar title text color (China Mobile only)        | string  | no | iOS/Android      | no |
 | navReturnHidden  | Whether to hide the navigation bar return button        | boolean | no | iOS/Android      | no |
 | navReturnImage  | Navigation bar left return button icon        | string | no | iOS/Android      | no |
 | navReturnX  | Navigation bar left return button icon offset from the top of the screen        | number | no | Android      | no |
@@ -676,7 +674,7 @@ The content of this document has been validated based on the following version:
 | privacyWebNavTitleSize | Privacy agreement page navigation bar title font size (China Unicom, China Telecom, China Mobile)        | number | no | iOS/Android      | yes |
 | privacyWebNavTitleColor | Privacy agreement page navigation bar title color (China Unicom, China Telecom, China Mobile)        | number | no | iOS/Android      | yes |
 | privacyWebNavReturnImage | Privacy agreement page navigation bar return button image (China Unicom, China Telecom),Only local images are supported        | string | no | iOS/Android      | yes |
-| navColor | Navigation bar color (China Mobile only)        | number | no | iOS/Android      | yes |
+| navColor | Navigation bar color (China Mobile only)        | number | no | iOS/Android      | no |
 | showWindow | Whether to show popup window (Currently only China Mobile is supported)        | boolean | no | iOS/Android      | yes |
 | logoConstraints | LOGO image layout object      | array | no | iOS      | no |
 | numberConstraints | Phone number bar layout object      | array | no | iOS      | no |
