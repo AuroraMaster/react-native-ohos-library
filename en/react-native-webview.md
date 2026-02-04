@@ -267,6 +267,7 @@ For details, see [webview official document](https://github.com/react-native-web
 | Name                                                     | Description                                                  | Type     | Required | Platform            | HarmonyOS Support                                                                  |
 |----------------------------------------------------------| ------------------------------------------------------------ | -------- |----------|---------------------|------------------------------------------------------------------------------------|
 | `source`                                                 | Loads static HTML or a URI (with optional headers) in the WebView | object   | yes      | All                 | partially (Only of:  **Load uri :** uri  headers  **Static HTML :** html  baseUrl) |
+| `ref`                                                    | Used to get a reference to a component instance | object   | yes      | All                 | yes                                                                                |
 | `injectedJavaScript?`                                    | Set this to provide JavaScript that will be injected into the web page after the document finishes loading | string   | No       | All                 | yes                                                                                |
 | `originWhitelist?`                                       | List of origin strings to allow being navigated to.          | string[] | No       | iOS,Android,macOS   | No                                                                                 |
 | `scalesPageToFit?`                                       | Boolean that controls whether the web content is scaled to fit the view and enables the user to change the scale. | boolean  | No       | Android             | yes                                                                                |
@@ -327,10 +328,10 @@ For details, see [webview official document](https://github.com/react-native-web
 | `useWebView2?` | Use WinUI WebView2 control instead of WebView control as the native webview. The WebView2 control is a WinUI control that renders web content using the Microsoft Edge (Chromium) rendering engine. Option can be toggled at runtime and supports Fast Refresh. | boolean | NO | Windows | NO                                                                                 |
 | `applicationNameForUserAgent?` | Append to the existing user-agent. Setting `userAgent` will override this. | string | No | All | yes                                                                                |
 | `thirdPartyCookiesEnabled?` | Boolean value to enable third party cookies in the `WebView`. Used on Android Lollipop and above only as third party cookies are enabled by default on Android Kitkat and below and on iOS. The default value is `true`. | boolean | No | All | yes                                                                                |
-| `paymentRequestEnabled<sup>13.15.1+</sup>` | Whether or not the webview has the Payment Request API enabled.The default value is `false`. | boolean | No | Android | No                                                           |
-| `allowsPictureInPictureMediaPlayback<sup>13.15.1+</sup>` | Boolean value that indicates whether HTML5 videos can play Picture in Picture.The default value is `false`. | boolean | No | Android | No |
-| `refreshControlLightMode<sup>13.15.1+</sup>` | (ios only) Boolean value that determines whether the refresh control color is white or not.The default value is `false`. | boolean | No | iOS | No |
-| `indicatorStyle <sup>13.15.1+</sup>` | The colorstyle of the scroll indicator. | string | No | iOS, Android | No |
+| `paymentRequestEnabled<sup>13.15.1+</sup>` | Whether or not the webview has the Payment Request API enabled.The default value is `false`. | boolean | No | Android | No                                                                                 |
+| `allowsPictureInPictureMediaPlayback<sup>13.15.1+</sup>` | Boolean value that indicates whether HTML5 videos can play Picture in Picture.The default value is `false`. | boolean | No | Android | No                                                                                 |
+| `refreshControlLightMode<sup>13.15.1+</sup>` | (ios only) Boolean value that determines whether the refresh control color is white or not.The default value is `false`. | boolean | No | iOS | No                                                                                 |
+| `indicatorStyle <sup>13.15.1+</sup>` | The colorstyle of the scroll indicator. | string | No | iOS, Android | No                                                                                 |
 
 ##  Event callback
 
@@ -338,23 +339,24 @@ For details, see [webview official document](https://github.com/react-native-web
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-| Name                                             | Description                                                  | Type     | Required | Platform                | HarmonyOS Support |
-| ------------------------------------------------ | ------------------------------------------------------------ | -------- | -------- | ----------------------- |-------------------|
-| `onScroll?: (event) => void`                     | Function that is invoked when the scroll event is fired in the `WebView`. | function | No       | iOS and macOS           | yes               |
-| `onHttpError?: (event) => void`                  | Function that is invoked when the `WebView` receives an http error. | function | No       | yes                     | yes               |
-| `onLoadStart?: (event) => void`                  | Function that is invoked when the `WebView` starts loading.  | function | No       | All                     | yes               |
-| `onLoad?: (event) => void`                       | Function that is invoked when the `WebView` has finished loading. | function | No       | All                     | yes               |
-| `onOpenWindow?`                                  | Function that is invoked when the `WebView` should open a new window. | function | No       | iOS, Android, macOS     | No                |
-| `injectJavaScript?: (script: string) => void`    | Executes the JavaScript string.                              | function | No       | iOS,Android,macOS       | yes               |
-| `onLoadEnd?: (event) => void`                    | Function that is invoked when the WebView load succeeds or fails used. | function | No       | All                     | yes               |
-| `onLoadProgress?: (event) => void`               | Function that is invoked when the WebView is loading.        | function | No       | All                     | yes               |
-| `onMessage?: (event) => void`                    | Function that is invoked when the webview calls window.ReactNativeWebView.postMessage. | function | No       | iOS,Android,macOS       | yes               |
+| Name                                            | Description                                                  | Type     | Required | Platform                | HarmonyOS Support |
+| ----------------------------------------------- | ------------------------------------------------------------ | -------- | -------- | ----------------------- |-------------------|
+| `onScroll?: (event) => void`                    | Function that is invoked when the scroll event is fired in the `WebView`. | function | No       | iOS and macOS           | yes               |
+| `onHttpError?: (event) => void`                 | Function that is invoked when the `WebView` receives an http error. | function | No       | yes                     | yes               |
+| `onLoadStart?: (event) => void`                 | Function that is invoked when the `WebView` starts loading.  | function | No       | All                     | yes               |
+| `onLoad?: (event) => void`                      | Function that is invoked when the `WebView` has finished loading. | function | No       | All                     | yes               |
+| `onOpenWindow?`                                 | Function that is invoked when the `WebView` should open a new window. | function | No       | iOS, Android, macOS     | No                |
+| `injectJavaScript?: (script: string) => void`   | Executes the JavaScript string.                              | function | No       | iOS,Android,macOS       | yes               |
+| `onLoadEnd?: (event) => void`                   | Function that is invoked when the WebView load succeeds or fails used. | function | No       | All                     | yes               |
+| `onLoadProgress?: (event) => void`              | Function that is invoked when the WebView is loading.        | function | No       | All                     | yes               |
+| `onMessage?: (event) => void`                   | Function that is invoked when the webview calls window.ReactNativeWebView.postMessage. | function | No       | iOS,Android,macOS       | yes               |
 | `onShouldStartLoadWithRequest?: (event) => void` | Function that allows custom handling of any web view requests. This feature needs to be used in conjunction with worker threads, and the relevant configuration can be set according to step three of [the worker threads](https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/TurboModule.md#%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89turbomodule%E8%BF%90%E8%A1%8C%E5%9C%A8worker%E7%BA%BF%E7%A8%8B).| function | No       | iOS,Android,macOS       | yes                |
-| `onContentProcessDidTerminate: (event) => void`  | Function that is invoked when the `WebView` content process is terminated. | function | No       | iOS and macOS WKWebView | No                |
-| `renderLoading?`                                 | Function that returns a loading indicator. The `startInLoadingState` prop must be set to `true` in order to use this prop. | function | No       | iOS, Android, macOS     | No                |
-| `onCustomMenuSelection?`                         | Function called when a custom menu item is selected. It receives a Native event, which includes three custom keys: `label`, `key` and `selectedText`. | function | NO       | iOS, Android            | No                |
-| `onNavigationStateChange?: (event) => void`      | Function that is invoked when the WebView loading starts or ends. | function | NO       | iOS, Android            | yes               |
-| `onLoadSubResourceError: (event) => void <sup>13.16.1+</sup>`      | Function that is sub resource SSL error handling. | function | NO       | Android            | yes               |
+| `onContentProcessDidTerminate: (event) => void` | Function that is invoked when the `WebView` content process is terminated. | function | No       | iOS and macOS WKWebView | No                |
+| `renderLoading?`                                | Function that returns a loading indicator. The `startInLoadingState` prop must be set to `true` in order to use this prop. | function | No       | iOS, Android, macOS     | No                |
+| `onCustomMenuSelection?`                        | Function called when a custom menu item is selected. It receives a Native event, which includes three custom keys: `label`, `key` and `selectedText`. | function | NO       | iOS, Android            | No                |
+| `onNavigationStateChange?: (event) => void`     | Function that is invoked when the WebView loading starts or ends. | function | NO       | iOS, Android            | yes               |
+| `onError: (event) => void`      | Callback function for handling load errors. | function | NO       | iOS,Android            | yes               |
+| `onLoadSubResourceError: (event) => void <sup>13.16.1+</sup>`     | Function that is sub resource SSL error handling. | function | NO       | Android            | yes               |
 
 ## Static Methods
 
