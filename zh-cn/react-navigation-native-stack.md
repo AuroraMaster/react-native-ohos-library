@@ -16,10 +16,11 @@
 
 该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/native-stack`，具体版本所属关系如下：
 
-| Version                        | Package Name                             | Repository                                                   | Release                                                      | Version for RN |
-| ------------------------------ | ---------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
-| 6.9.26 | @react-native-oh-tpl/native-stack  | [Github](https://github.com/react-native-oh-library/react-navigation/tree/sig/packages/native-stack) | [Github Releases](https://github.com/react-native-oh-library/react-navigation/releases) | 0.72       |
-| 7.3.11                        | @react-native-ohos/native-stack | [GitCode](https://gitcode.com/openharmony-sig/rntpc_react-navigation/tree/br_rnoh0.77/packages/native-stack) | [GitCode Releases]() | 0.77       |
+| 三方库名称    | 三方库版本    | 发布信息     | 支持RN版本    | Autolink     | 编译API版本     | 社区基线版本    | npm地址                |
+| ------------ | ------------ | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
+| @react-native-ohos/native-stack | ~7.4.0     | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-navigation/releases) | 0.82 | 否 | API12+ | 7.3.22 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/native-stack) | 
+| @react-native-ohos/native-stack | ~7.3.11    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-navigation/releases) | 0.77 | 否 | API12+ | 7.3.10 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/native-stack) | 
+| @react-native-oh-tpl/native-stack |  6.9.26-0.0.2   | [Github Releases](https://github.com/react-native-oh-library/react-navigation/releases) | 0.72 | 否 | API12+ | 6.9.26 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/native-stack) |
 
 对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
@@ -35,7 +36,7 @@
 # for RN0.72
 npm install @react-native-oh-tpl/native-stack
 
-# for RN0.77
+# for RN0.77/82
 npm install @react-native-ohos/native-stack
 ```
 
@@ -45,7 +46,7 @@ npm install @react-native-ohos/native-stack
 # for RN0.72
 yarn install @react-native-oh-tpl/native-stack
 
-# for RN0.77
+# for RN0.77/82
 yarn install @react-native-ohos/native-stack
 ```
 
@@ -155,6 +156,7 @@ export default function App() {
 
 1. RNOH：0.72.20; SDK：HarmonyOS NEXT Developer Beta1; IDE：DevEco Studio 5.0.3.200; ROM：3.0.0.18;
 2. RNOH：0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio  6.0.0.868; ROM: 6.0.0.112;
+3. RNOH：0.82.1; SDK: HarmonyOS 6.0.1 Release SDK; IDE: DevEco Studio 6.0.1 Release; ROM:6.0.0.120 SP7;
 
 ## 属性
 
@@ -212,8 +214,8 @@ export default function App() {
 | fullScreenGestureEnabled                                    | 关闭手势是否适用于整个屏幕。使用手势来关闭此选项会产生与 simple_push 相同的过渡动画。可以通过设置 customAnimationOnGesture 属性来更改此行为。由于平台限制，无法实现默认的 iOS 动画。默认为 false。 | boolean                                                      | no       | iOS          | no                |
 | gestureEnabled                                              | 是否可以使用手势关闭此屏幕。默认为 true。 | boolean                                                      | no       | iOS          | no                |
 | animationTypeForReplace                                     | 当此屏幕替换另一个屏幕时要使用的动画类型。默认为弹出。 | 'push'&#124;'pop'                                            | no       | Android，iOS | no                |
-| animation                                                   | 按下或弹出时屏幕应如何呈现动画。         | 'default'&#124;'fade'&#124;'fade_from_bottom'&#124;'fade_from_bottom'&#124;'simple_push'&#124;'slide_from_bottom'&#124;'slide_from_right'&#124;'slide_from_left'&#124;'none' | no       | Android,iOS  | no                |
-| presentation                                                | 画面应该如何呈现。                          | 'card'&#124;'modal'&#124;'transparentModal'&#124;'containedModal'&#124;'containedModal'&#124;'fullScreenModal'&#124;'formSheet' | no       | Android，iOS | partially('card'/'transparentModal')         |
+| animation                                                   | 按下或弹出时屏幕应如何呈现动画。         | 'default'&#124;'fade'&#124;'fade_from_bottom'&#124;'simple_push'&#124;'slide_from_bottom'&#124;'slide_from_right'&#124;'slide_from_left'&#124;'none' | no       | Android,iOS  | no                |
+| presentation                                                | 画面应该如何呈现。                          | 'card'&#124;'modal'&#124;'transparentModal'&#124;'containedModal'&#124;'fullScreenModal'&#124;'formSheet' | no       | Android，iOS | partially('card'/'transparentModal')         |
 | orientation                                                 | 屏幕使用的显示方向。               | 'default'&#124;'all'&#124;'portrait'&#124;'portrait_up'&#124;'portrait_down'&#124;'landscape'&#124;'landscape_left'&#124;'landscape_left' | no       | Android，iOS | no                |
 | autoHideHomeIndicator                                       | 指示主页指示器是否应该保持隐藏的布尔值。默认为 false。 | boolean                                                      | no       | iOS          | no                |
 | gestureDirection                                            | 设置滑动以关闭屏幕的方向。 | 'vertical '&#124;'horizontal '                               | no       | iOS          | no                |
