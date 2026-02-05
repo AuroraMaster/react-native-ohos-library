@@ -48,12 +48,10 @@ yarn add @react-native-ohos/react-native-doc-viewer
 
 > [!WARNING] 使用时 import 的库名不变。
 
-> 本示例依赖@react-native-ohos/react-native-fs 库，参照[@react-native-ohos/react-native-fs](react-native-fs.md)进行引入。
-
 ```js
 import React from 'react';
 import { ScrollView, StyleSheet, View, Button } from 'react-native';
-import OpenFile from '@react-native-oh-tpl/react-native-doc-viewer';
+import OpenFile from 'react-native-doc-viewer';
 
 interface FileInfo {
   url?: string; // 本地文件需加 file://
@@ -357,7 +355,7 @@ target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
 #include "RNOH/PackageProvider.h"
 #include "generated/RNOHGeneratedPackage.h"
 #include "SamplePackage.h"
-+ #include "DocViewPackage.h"
++ #include "DocViewerPackage.h"
 
 using namespace rnoh;
 
@@ -365,23 +363,8 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
     return {
       std::make_shared<RNOHGeneratedPackage>(ctx),
       std::make_shared<SamplePackage>(ctx),
-+     std::make_shared<DocViewPackage>(ctx)
++     std::make_shared<DocViewerPackage>(ctx)
     };
-}
-```
-
-### 5.在 ArkTs 侧引入 DocViewPackage
-
-打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
-
-```diff
-+ import {DocViewPackage} from '@react-native-ohos/react-native-audio-recorder-player/ts';
-
-export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
-  return [
-    new SamplePackage(ctx),
-+   new DocViewPackage(ctx)
-  ];
 }
 ```
 </details>

@@ -48,12 +48,10 @@ The following code shows the basic use scenario of the repository:
 
 > [!WARNING] The name of the imported repository remains unchanged.
 
-> This example relies on the @react-native-ohos/react-native-fs library and is introduced with reference to [@react-native-ohos/react-native-fs](react-native-fs.md).
-
 ```js
 import React from 'react';
 import { ScrollView, StyleSheet, View, Button } from 'react-native';
-import OpenFile from '@react-native-oh-tpl/react-native-doc-viewer';
+import OpenFile from 'react-native-doc-viewer';
 
 interface FileInfo {
   url?: string; // Local files need to be appended with file://
@@ -358,7 +356,7 @@ Open `entry/src/main/cpp/PackageProvider.cpp` and add the following code:
 #include "RNOH/PackageProvider.h"
 #include "generated/RNOHGeneratedPackage.h"
 #include "SamplePackage.h"
-+ #include "DocViewPackage.h"
++ #include "DocViewerPackage.h"
 
 using namespace rnoh;
 
@@ -366,22 +364,8 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
     return {
       std::make_shared<RNOHGeneratedPackage>(ctx),
       std::make_shared<SamplePackage>(ctx),
-+     std::make_shared<DocViewPackage>(ctx)
++     std::make_shared<DocViewerPackage>(ctx)
     };
-}
-```
-### 5.Introducing DocViewPackage to ArkTS
-
-Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
-
-```diff
-+ import {DocViewPackage} from '@react-native-ohos/react-native-audio-recorder-player/ts';
-
-export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
-  return [
-    new SamplePackage(ctx),
-+   new DocViewPackage(ctx)
-  ];
 }
 ```
 </details>
