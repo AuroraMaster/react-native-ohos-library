@@ -1,4 +1,4 @@
-> 模板版本：v0.2.2
+> 模板版本：v0.4.0
 
 <p align="center">
   <h1 align="center"> <code>@react-navigation/elements</code> </h1>
@@ -12,16 +12,15 @@
     </a>
 </p>
 
-本项目基于 [@react-navigation/bottom-tabs](https://github.com/react-navigation/react-navigation/tree/6.x/packages/bottom-tabs) 开发。
+本项目基于 [@react-native-ohos/elements](https://github.com/react-navigation/react-navigation/tree/6.x/packages/elements) 开发。
 
 该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/elements`，具体版本所属关系如下：
-
-| Version                   | Package Name                           | Repository         | Release                    |Support RN version|
-| ------------------------- |----------------------------------------| ------------------ | -------------------------- |-------------------|
-| 1.3.21 | @react-native-oh-tpl/elements | [Github](https://github.com/react-native-oh-library/react-navigation/tree/sig/packages/elements) | [Github Releases](https://github.com/react-native-oh-library/react-navigation/tree/sig/packages/elements/releases) |0.72       |
-| 2.3.9    |@react-native-ohos/elements  | [Github](https://gitcode.com/openharmony-sig/rntpc_react-navigation/tree/br_rnoh0.77/packages/elements) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_react-navigation/releases) |0.77       |
-
-## 安装与使用
+| 三方库名称    | 三方库版本    | 发布信息     | 支持RN版本    | Autolink     | 编译API版本     | 社区基线版本    | npm地址                |
+| ------------ | ------------ | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
+| @react-native-ohos/elements | ~2.4.0    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-navigation/releases) | 0.82.* | 否 | API12+ | 2.6.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/elements) | 
+| @react-native-ohos/elements | ~2.3.9    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-navigation/releases) | 0.77.* | 否 | API12+ | 2.3.8 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/elements) ||
+| @react-native-oh-tpl/elements | <=1.3.21-0.1.4 | [Github Releases](https://github.com/react-native-oh-library/react-navigation/tree/sig/packages/elements/releases) | 0.72   |    否 | API12+ | 1.3.20 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/elements) |
+## 1.安装与使用
 
 进入到工程目录并输入以下命令：
 
@@ -33,17 +32,15 @@
 # 0.72
 npm install @react-native-oh-tpl/elements
 
-# 0.77
+# 0.77/0.82
 npm install @react-native-ohos/elements
 ```
-
-#### **yarn**
 
 ```bash
 # 0.72
 yarn add @react-native-oh-tpl/elements
 
-# 0.77
+# 0.77/0.82
 yarn add @react-native-ohos/elements
 ```
 
@@ -89,15 +86,19 @@ export function NavigationElements() {
 
 export default NavigationElements;
 ```
+## 2. 约束与限制
 
-## 兼容性
+### 2.1. 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
+请到三方库相应的 Releases 发布地址查看 Release 配套的版本信息：[ @react-native-ohos/elements Releases](https://gitcode.com/openharmony-sig/rntpc_react-navigation/releases)
+
+本文档内容基于以下版本验证通过：
 
 1. RNOH: 0.72.27; SDK: HarmonyOS 5.1.1 Release SDK; IDE: DevEco Studio 5.1.1 Release; ROM: 5.0.1.120;
 2. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+3. RNOH: 0.82.1;  SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
-## 属性
+## 3.属性
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
@@ -131,7 +132,8 @@ export default NavigationElements;
 | HeaderButton<sup>2.3.8+</sup>           | 用于在标题中显示按钮的组件                                        | function | no | all | yes |
 | Button<sup>2.3.8+</sup>                 | 渲染按钮的组件                                              | function | no | all | yes |
 | Label<sup>2.3.8+</sup>                  | 标签组件用于渲染小段文本                                         | function | no | all | yes |
-
+| HeaderButtonRef<sup>2.6.0+</sup>                 | HeaderButton可以拿到内部的ref本                                         | function | no | all | yes |
+| PlatformPressableRef<sup>2.6.0+</sup>                 | PlatformPressableRef可以拿到内部的ref本                                         | function | no | all | yes |
 
 **Header Components Props**
 
@@ -157,16 +159,14 @@ export default NavigationElements;
 | getHeaderTitle         | 返回标题栏中使用的标题文本的辅助工具 | function | no       | all      | yes               |
 
 
-## 遗留问题
+## 4.遗留问题
 
-## 其他
+## 5.其他
 
 示例代码依赖以下三方库，请查看对应文档：
 + [@react-navigation/stack](/zh-cn/react-navigation-stack.md)
 + [@react-navigation/native](/zh-cn/react-navigation-native.md)
-+ [@react-native-oh-tpl/react-native-gesture-handler](/zh-cn/react-native-gesture-handler.md)
-+ [@react-native-oh-library/react-native-safe-area-context](/zh-cn/react-native-safe-area-context.md)
   
-## 开源协议
+## 6.开源协议
 
 本项目基于 [The MIT License (MIT)](https://github.com/react-navigation/react-navigation/blob/main/packages/elements/LICENSE) ，请自由地享受和参与开源。
