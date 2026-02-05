@@ -1,42 +1,33 @@
-> 模板版本：v0.2.2
+> 模板版本：v0.4.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-device-info</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/react-native-device-info/react-native-device-info">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20Windows%20|%20Web%20|%20visionOS%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/react-native-device-info/react-native-device-info/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-device-info)
+本项目基于 [react-native-device-info](https://github.com/react-native-oh-library/react-native-device-info) 开发。
 
-## 安装与使用
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-device-info` 版本所属关系如下：
+| 三方库名称    | 三方库版本    | 发布信息     | 支持RN版本    | Autolink     | 编译API版本     | 社区基线版本    | npm地址                |
+| ------------ | ------------ | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
+| @react-native-ohos/react-native-device-info |   ~ 14.1.2    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-device-info/releases) | 0.82.* | 否 | API12+ | 14.1.1 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-device-info) |
+| @react-native-ohos/react-native-device-info |   ~ 14.0.5    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-device-info/releases) | 0.77.* | 否 | API12+ | 14.0.4 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-device-info) |
+| @react-native-ohos/react-native-device-info | ~ 11.1.1   | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-device-info/releases) | 0.72.* | 是 | API12+ | 11.1.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-device-info) | 
+| @react-native-oh-tpl/react-native-device-info | <= 11.1.0-0.0.8@deprecated    | [Github Releases](https://github.com/react-native-oh-library/react-native-device-info/releases) | 0.72.* | 否 | API12+ | 11.1.0 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-device-info) | 
 
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本 | 发布信息                | 支持RN版本 |
-|-------| ------------------------------------------------------------ | ---------- |
-| <= 11.1.0-0.0.8@deprecated | [@react-native-oh-tpl/react-native-device-info Releases(deprecated)](https://github.com/react-native-oh-library/react-native-device-info/releases) | 0.72       |
-| 11.1.1 | [@react-native-ohos/react-native-device-info Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-device-info/releases)                        | 0.72       |
-| 14.0.5  | [@react-native-ohos/react-native-device-info Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-device-info/releases)                        | 0.77       |
-
-对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
+    
+## 1. 安装与使用
 
 进入到工程目录并输入以下命令：
 
 <!-- tabs:start -->
 
-#### **npm**
+#### npm
 
 ```bash
 npm install @react-native-ohos/react-native-device-info
 ```
 
-#### **yarn**
+#### yarn
 
 ```bash
 yarn add @react-native-ohos/react-native-device-info
@@ -48,7 +39,8 @@ yarn add @react-native-ohos/react-native-device-info
 
 > [!WARNING] 使用时 import 的库名不变。
 
-```js
+```tsx
+
 import {
   SafeAreaView,
   ScrollView,
@@ -183,18 +175,14 @@ export default App;
 }
 ```
 
-## 使用 Codegen
+## 2. Link
 
-
-本库已经适配了 `Codegen` ，在使用前需要主动执行生成三方库桥接代码，详细请参考[ Codegen 使用文档](/zh-cn/codegen.md)。
-
-## Link
-
-|                                      | 是否支持autolink | RN框架版本 |
-|--------------------------------------|------------------|-----------|
-| ~14.0.5                              |  No              |  0.77     |
-| ~11.1.1                              |  Yes             |  0.72     |
-| <= 11.1.0-0.0.8@deprecated           |  No              |  0.72     |
+|                            | 是否支持autolink | RN框架版本 |
+|----------------------------|--------------|--------|
+| ~14.1.2                    | No           | 0.82   |
+| ~14.0.5                    | No           | 0.77   |
+| ~11.1.1                     | Yes          | 0.72   |
+| <= 11.1.0-0.0.8@deprecated | No           | 0.72   |
 
 使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
@@ -204,23 +192,26 @@ export default App;
 
 首先需要使用 DevEco Studio 打开项目里的 HarmonyOS 工程 `harmony`。
 
-### 1.在工程根目录的 `oh-package.json5` 添加 overrides 字段
+### 2.1. Overrides RN SDK
+
+为了让工程依赖同一个版本的 RN SDK，需要在工程根目录的 `oh-package.json5` 添加 overrides 字段，指向工程需要使用的 RN SDK 版本。替换的版本既可以是一个具体的版本号，也可以是一个模糊版本，还可以是本地存在的 HAR 包或源码目录。
+
+关于该字段的作用请阅读[官方说明](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-oh-package-json5-V5#zh-cn_topic_0000001792256137_overrides)
 
 ```json
 {
-  ...
   "overrides": {
-    "@rnoh/react-native-openharmony" : "./react_native_openharmony"
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony"
   }
 }
 ```
 
-### 2.引入原生端代码
+### 2.2. 引入原生端代码
 
 目前有两种方法：
 
-1. 通过 har 包引入（在 IDE 完善相关功能后该方法会被遗弃，目前首选此方法）；
-2. 直接链接源码。
+- 通过 har 包引入；
+- 直接链接源码。
 
 方法一：通过 har 包引入（推荐）
 
@@ -232,12 +223,12 @@ export default App;
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-ohos/react-native-device-info": "file:../../node_modules/@react-native-ohos/react-native-device-info/harmony/device_info.har"
-  }
+}
 ```
 
 点击右上角的 `sync` 按钮
 
-或者在终端执行：
+或者在命令行终端执行：
 
 ```bash
 cd entry
@@ -248,29 +239,22 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 3.配置 CMakeLists 和引入 RNDeviceInfoPackage
+### 2.3. 配置 CMakeLists 和引入 RNDeviceInfoPackage
 
-> 若使用的是 <= 11.1.0-0.0.8 版本，请跳过本章。
+> 若使用的是  <= 11.1.0-0.0.8 版本，请跳过本章。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
 ```diff
-project(rnapp)
-cmake_minimum_required(VERSION 3.4.1)
-set(CMAKE_CXX_STANDARD 17)
-set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../oh_modules/@rnoh/react-native-openharmony/src/main/cpp")
 + set(REACT_NATIVE_DEVICE_INFO_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules/@react-native-ohos/react-native-device-info/src/main/cpp")
-set(WITH_HITRACE_SYSTRACE 1)
-add_compile_definitions(WITH_HITRACE_SYSTRACE)
 
-add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+# RNOH_BEGIN: manual_package_linking_1
 + add_subdirectory("${REACT_NATIVE_DEVICE_INFO_CPP_DIR}" ./device_info)
+# RNOH_END: manual_package_linking_1
 
-add_library(rnoh_app SHARED
-    "./PackageProvider.cpp"
-    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
-)
+# RNOH_BEGIN: manual_package_linking_2
 + target_link_libraries(rnoh_app PUBLIC device_info)
+# RNOH_END: manual_package_linking_2
 ```
 
 打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
@@ -285,13 +269,12 @@ using namespace rnoh;
 std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
     return {
         std::make_shared<RNOHGeneratedPackage>(ctx),
-        std::make_shared<SamplePackage>(ctx),
 +       std::make_shared<RNDeviceInfoPackage>(ctx),
     };
 }
 ```
 
-### 4.在 ArkTs 侧引入 RNDeviceInfoPackage
+### 2.4. 在 ArkTs 侧引入 RNDeviceInfoPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
@@ -301,18 +284,17 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
-    new SamplePackage(ctx),
 +   new RNDeviceInfoPackage(ctx)
   ];
 }
 ```
 </details>
 
-## 运行
+### 2.5. 运行
 
 点击右上角的 `sync` 按钮
 
-或者在终端执行：
+或者在命令行终端执行：
 
 ```bash
 cd entry
@@ -321,21 +303,17 @@ ohpm install
 
 然后编译、运行即可。
 
-## 约束与限制
+## 3. 约束与限制
 
-### 兼容性
+### 3.1. 兼容性
 
-要使用此库，需要使用正确的 React-Native 和 RNOH 版本。另外，还需要使用配套的 DevEco Studio 和 手机 ROM。
-
-在以下版本验证通过：
+本文档内容基于以下版本验证通过：
 
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
-### 权限要求
-
-#### 在 entry 目录下的module.json5中添加权限
+### 3.2. 权限要求
 
 打开 `entry/src/main/module.json5`，添加：
 
@@ -361,7 +339,14 @@ ohpm install
 ]
 ```
 
-## API
+### 3.3. 编译运行API要求
+
+> [!TIP] 当前三方库所有版本均已实现版本隔离，支持在 `API12+` 工程编译，及 `API12+` ROM运行。
+
+> [!TIP] 以下功能依赖特定版本的API，使用 `低于指定API版本的工程编译` 或 `低于指定API版本的ROM运行` 均可能导致部分功能受限。
+1. 14.0.5-rc.4 版本引入[getFontScale](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-app-ability-configuration#configuration)，实现了获取当前系统的字体缩放比例功能，此API需要在支持`API18+`的工程编译，并在支持`API18+`的ROM上运行，方可生效。
+
+## 4. API
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
@@ -457,7 +442,8 @@ ohpm install
 | getStartupTime<sup>14.0.4+</sup>     | 获取当前应用程序进程启动的时间，单位为毫秒。                                                                                                              | Promise\<number\> | Yes | iOS/Android/visionOS | yes |
 
 
-## 遗留问题
+
+## 5. 遗留问题
 
 - [ ] getDeviceId()接口harmony暂不支持[issue#8](https://github.com/react-native-oh-library/react-native-device-info/issues/8)
 - [ ] getDeviceToken()接口harmony暂不支持[issue#9](https://github.com/react-native-oh-library/react-native-device-info/issues/9)
@@ -475,17 +461,17 @@ ohpm install
 - [ ] getUniqueId()接口harmony暂不支持 [issue#21](https://github.com/react-native-oh-library/react-native-device-info/issues/21)
 - [ ] syncUniqueId()接口harmony暂不支持 [issue#22](https://github.com/react-native-oh-library/react-native-device-info/issues/22)
 - [ ] getUserAgent()接口harmony暂不支持 [issue#23](https://github.com/react-native-oh-library/react-native-device-info/issues/23)
-- [ ] getUserAgentSync()接口harmony暂不支持 [issue#24](https://github.com/react-native-oh-library/react-native-device-info/issues/24) 
+- [ ] getUserAgentSync()接口harmony暂不支持 [issue#24](https://github.com/react-native-oh-library/react-native-device-info/issues/24)
 - [ ] hasNotch()接口harmony暂不支持 [issue#25](https://github.com/react-native-oh-library/react-native-device-info/issues/25)
 - [ ] hasDynamicIsland()接口harmony暂不支持 [issue#26](https://github.com/react-native-oh-library/react-native-device-info/issues/26)
 - [ ] hasSystemFeature()接口harmony暂不支持 [issue#27](https://github.com/react-native-oh-library/react-native-device-info/issues/27)
-- [ ] isEmulator()接口harmony暂不支持 [issue#28](https://github.com/react-native-oh-library/react-native-device-info/issues/28) 
+- [ ] isEmulator()接口harmony暂不支持 [issue#28](https://github.com/react-native-oh-library/react-native-device-info/issues/28)
 - [ ] isDisplayZoomed()接口harmony暂不支持 [issue#29](https://github.com/react-native-oh-library/react-native-device-info/issues/29)
 - [ ] getBrightness()接口harmony暂不支持 [issue#30](https://github.com/react-native-oh-library/react-native-device-info/issues/30)
 - [ ] isAirplaneMode()接口harmony暂不支持 [issue#69](https://github.com/react-native-oh-library/react-native-device-info/issues/69)
 
-## 其他
+## 6. 其他
 
-## 开源协议
+## 7. 开源协议
 
 本项目基于 [The MIT License (MIT)](https://github.com/react-native-device-info/react-native-device-info/blob/master/LICENSE) ，请自由地享受和参与开源。

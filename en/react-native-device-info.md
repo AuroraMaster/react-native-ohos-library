@@ -1,43 +1,33 @@
-> Template version: v0.2.2
+> Template version: v0.4.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-device-info</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/react-native-device-info/react-native-device-info">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20Windows%20|%20Web%20|%20visionOS%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/react-native-device-info/react-native-device-info/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
 
-> [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-device-info)
+This project is based on [react-native-device-info](https://github.com/react-native-oh-library/react-native-device-info) 。
+
+This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is：`@react-native-ohos/react-native-device-info` The version correspondence details are as follows：
+| Name | Version | Release Information | Supported RN Version | Supported Autolink | Compile API Version | Community Baseline Version | npm Address     |
+| ------------ | ------------ | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
+| @react-native-ohos/react-native-device-info |   ~ 14.1.2    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-device-info/releases) | 0.82.* | No | API12+ | 14.1.1 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-device-info) |
+| @react-native-ohos/react-native-device-info |   ~ 14.0.5    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-device-info/releases) | 0.77.* | No | API12+ | 14.0.4 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-device-info) |
+| @react-native-ohos/react-native-device-info | ~ 11.1.1   | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-device-info/releases) | 0.72.* | Yes | API12+ | 11.1.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-device-info) |
+| @react-native-oh-tpl/react-native-device-info | <= 11.1.0-0.0.8@deprecated    | [Github Releases](https://github.com/react-native-oh-library/react-native-device-info/releases) | 0.72.* | No | API12+ | 11.1.0 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-device-info) |
 
 
-## Installation and Usage
-
-Please refer to the Releases page of the third-party library for the corresponding version information
-
-| Third-party Library Version | Release Information                                                     | Supported RN Version |
-|-------| ------------------------------------------------------------ | ---------- |
-| <= 11.1.0-0.0.8@deprecated | [@react-native-oh-tpl/react-native-device-info Releases(deprecated)](https://github.com/react-native-oh-library/react-native-device-info/releases) | 0.72       |
-| 11.1.1 | [@react-native-ohos/react-native-device-info Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-device-info/releases)                        | 0.72       |
-| 14.0.5  | [@react-native-ohos/react-native-device-info Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-device-info/releases)                        | 0.77       |
-
-For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+## 1. Installation and Usage
 
 Go to the project directory and execute the following instruction:
 
 <!-- tabs:start -->
 
-#### **npm**
+#### npm
 
 ```bash
 npm install @react-native-ohos/react-native-device-info
 ```
 
-#### **yarn**
+#### yarn
 
 ```bash
 yarn add @react-native-ohos/react-native-device-info
@@ -49,7 +39,7 @@ The following code shows the basic use scenario of the repository:
 
 > [!WARNING] The name of the imported repository remains unchanged.
 
-```js
+```tsx
 
 import {
   SafeAreaView,
@@ -185,42 +175,43 @@ export default App;
 }
 ```
 
-## Use Codegen
+## 2. Manual Link
 
+|                                      | Supported Autolink | Supported RN Version |
+|--------------------------------------|--------------|--------|
+| ~14.1.2                    | No           | 0.82   |
+| ~14.0.5                    | No           | 0.77   |
+| ~11.1.1                     | Yes          | 0.72   |
+| <= 11.1.0-0.0.8@deprecated | No           | 0.72   |
 
-This library has been adapted for `Codegen`. Before using it, you need to proactively generate the bridge code for the third-party library. For details, please refer to the [Codegen Usage Documentation](/en/codegen.md).
+Projects using AutoLink need to be configured according to this document, AutoLink framework guide.：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-## Link
+If the version you are using supports Autolink and the project has integrated Autolink, you can skip the ManualLink configuration.
 
-|                                      | Is supported autolink | Supported RN Version |
-|--------------------------------------|-----------------------|----------------------|
-| ~14.0.5                              |  No                   |  0.77                |
-| ~11.1.1                              |  Yes                  |  0.72                |
-| <= 11.1.0-0.0.8@deprecated           |  No                   |  0.72                |
-
-Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
-
-If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
 <details>
-  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
+  <summary>ManualLink: This step provides guidance for manually configuring native dependencies.</summary>
 
-First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
+Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
-### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
+### 2.1. Overrides RN SDK
 
+To ensure the project relies on the same version of the RN SDK, you need to add an `overrides` field in the project's root `oh-package.json5` file, specifying the RN SDK version to be used. The replacement version can be a specific version number, a semver range, or a locally available HAR package or source directory.
+
+For more information about the purpose of this field, please refer to the [official documentation](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-oh-package-json5-V5#en-us_topic_0000001792256137_overrides).
 ```json
 {
-  ...
   "overrides": {
-    "@rnoh/react-native-openharmony" : "./react_native_openharmony"
+    "@rnoh/react-native-openharmony": "file:../react_native_openharmony"
   }
 }
 ```
 
-### 2. Introducing Native Code
+### 2.2. Introducing Native Code
 
 Currently, two methods are available:
 
+- Use the HAR file.
+- Directly link to the source code。
 
 Method 1 (recommended): Use the HAR file.
 
@@ -231,8 +222,8 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 ```json
 "dependencies": {
     "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-    "@react-native-ohos/react-native-device-info": "file:../../node_modules/@react-native-ohos/react-native-device-info/harmony/device_info.har"
-  }
+"@react-native-ohos/react-native-device-info": "file:../../node_modules/@react-native-ohos/react-native-device-info/harmony/device_info.har"
+}
 ```
 
 Click the `sync` button in the upper right corner.
@@ -248,29 +239,22 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 3.Configuring CMakeLists and Introducing RNDeviceInfoPackage
+### 2.3. Configuring CMakeLists and Introducing RNDeviceInfoPackage
 
 > If you are using version <= 11.1.0-0.0.8, please skip this chapter.
 
-Open `entry/src/main/cpp/CMakeLists.txt` and add the following code
+Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
 ```diff
-project(rnapp)
-cmake_minimum_required(VERSION 3.4.1)
-set(CMAKE_CXX_STANDARD 17)
-set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../oh_modules/@rnoh/react-native-openharmony/src/main/cpp")
 + set(REACT_NATIVE_DEVICE_INFO_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules/@react-native-ohos/react-native-device-info/src/main/cpp")
-set(WITH_HITRACE_SYSTRACE 1)
-add_compile_definitions(WITH_HITRACE_SYSTRACE)
 
-add_subdirectory("${RNOH_CPP_DIR}" ./rn)
+# RNOH_BEGIN: manual_package_linking_1
 + add_subdirectory("${REACT_NATIVE_DEVICE_INFO_CPP_DIR}" ./device_info)
+# RNOH_END: manual_package_linking_1
 
-add_library(rnoh_app SHARED
-    "./PackageProvider.cpp"
-    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
-)
+# RNOH_BEGIN: manual_package_linking_2
 + target_link_libraries(rnoh_app PUBLIC device_info)
+# RNOH_END: manual_package_linking_2
 ```
 
 Open `entry/src/main/cpp/PackageProvider.cpp` and add the following code:
@@ -285,13 +269,12 @@ using namespace rnoh;
 std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
     return {
         std::make_shared<RNOHGeneratedPackage>(ctx),
-        std::make_shared<SamplePackage>(ctx),
 +       std::make_shared<RNDeviceInfoPackage>(ctx),
     };
 }
 ```
 
-### 4. Introducing RNDeviceInfoPackage to ArkTS
+### 2.4. Introducing RNDeviceInfoPackage to ArkTS
 
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
@@ -301,14 +284,13 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
-    new SamplePackage(ctx),
 +   new RNDeviceInfoPackage(ctx)
   ];
 }
 ```
 </details>
 
-## Running
+### 2.5. Running
 
 Click the `sync` button in the upper right corner.
 
@@ -321,21 +303,17 @@ ohpm install
 
 Then build and run the code.
 
-## Constraints
+## 3. Constraints
 
-### Compatibility
+### 3.1. Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
-
-Verified in the following versions.
+This document is verified based on the following versions:
 
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
-### Permission Requirements
-
-#### Add permissions in the module.json5 file under the entry directory.
+### 3.2. Permission Requirements
 
 Open `entry/src/main/module.json5`, add the following permission：
 
@@ -361,7 +339,15 @@ Open `entry/src/main/module.json5`, add the following permission：
 ]
 ```
 
-## API
+### 3.3. API requirements
+
+> [!TIP] All versions of the current third-party libraries have implemented version isolation, supporting compilation in `API12+` projects and execution on `API12+` ROMs.
+
+> [!TIP] The following features depend on specific API versions. Compiling the project with an API version lower than specified or running the ROM with an API version lower than specified may result in limited functionality.
+
+1. Version 14.0.5-rc.4 introduced [getFontScale](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-app-ability-configuration#configuration), achieves the current system font scaling ratio retrieval functionality. This API requires compilation in a project that supports `API18+` and must run on a ROM that supports `API18+` to take effect.
+
+## 4. API
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
@@ -456,7 +442,7 @@ Open `entry/src/main/module.json5`, add the following permission：
 | getStartupTime<sup>14.0.4+</sup>     | Get the current application process startup time in milliseconds.                                                                                                                                                                                                                                                                                                                               | Promise\<number\> | Yes | iOS/Android/visionOS | yes |
 
 
-## Known Issues
+## 5. Known Issues
 
 - [ ] Does not support getDeviceId() in harmony [issue#8](https://github.com/react-native-oh-library/react-native-device-info/issues/8)
 - [ ] Does not support getDeviceToken() in harmony [issue#9](https://github.com/react-native-oh-library/react-native-device-info/issues/9)
@@ -478,13 +464,13 @@ Open `entry/src/main/module.json5`, add the following permission：
 - [ ] Does not support hasNotch() in harmony [issue#25](https://github.com/react-native-oh-library/react-native-device-info/issues/25)
 - [ ] Does not support hasDynamicIsland() in harmony [issue#26](https://github.com/react-native-oh-library/react-native-device-info/issues/26)
 - [ ] Does not support hasSystemFeature() in harmony [issue#27](https://github.com/react-native-oh-library/react-native-device-info/issues/27)
-- [ ] Does not support isEmulator() in harmony [issue#28](https://github.com/react-native-oh-library/react-native-device-info/issues/28) 
+- [ ] Does not support isEmulator() in harmony [issue#28](https://github.com/react-native-oh-library/react-native-device-info/issues/28)
 - [ ] Does not support isDisplayZoomed() in harmony [issue#29](https://github.com/react-native-oh-library/react-native-device-info/issues/29)
 - [ ] Does not support getBrightness() in harmony [issue#30](https://github.com/react-native-oh-library/react-native-device-info/issues/30)
 - [ ] Does not support isAirplaneMode() in harmony [issue#69](https://github.com/react-native-oh-library/react-native-device-info/issues/69)
 
-## Others
+## 6. Others
 
-## License
+## 7. License
 
 This project is licensed under [The MIT License (MIT)](https://github.com/react-native-device-info/react-native-device-info/blob/master/LICENSE).
