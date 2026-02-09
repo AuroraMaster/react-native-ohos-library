@@ -135,7 +135,7 @@ ohpm install
 
 ### 3.配置 CMakeLists 和引入 FlashListPackage
 
-> 若使用的是 <= 1.6.3-0.2.9 版本，请跳过本章。
+> [!TIP] version>=v2.1.1不涉及原生端代码，可跳过此步骤。
 
 打开 `entry/src/main/cpp/CMakeLists.txt`，添加：
 
@@ -322,8 +322,8 @@ ohpm install
 | prepareForLayoutAnimationRender | 在执行布局动画前调用此方法，例如删除元素时为其添加动画效果。                           | function | No       | All      | Yes               |
 | recordInteraction               | 通知列表已发生交互行为，这将触发可见性计算（例如当waitForInteractions为true且用户未滚动时）。 | function | No       | All      | Yes              |
 | scrollToEnd                     | 滚动至内容末尾。                                                                                                                    | function | No       | All      | Yes               |
-| scrollToIndex                   | 滚动至指定索引位置。                                                                                                                            | function | No       | All      | Yes               |
-| scrollToItem                    | 滚动至指定项目。                                                                                                                               | function | No       | All      | Yes              |
+| scrollToIndex<sup>changed in 2.1.1</sup>                   | 滚动至指定索引位置。v1版本和v2版本对`viewOffset`参数的处理存在差异，具体表现为方向相反                                                                                                                            | function | No       | All      | Yes               |
+| scrollToItem<sup>changed in 2.1.1</sup>                       | 滚动至指定项目。v1版本和v2版本对`viewOffset`参数的处理存在差异，具体表现为方向相反                                                                                                                               | function | No       | All      | Yes              |
 | scrollToOffset                  | 滚动至列表内特定的内容像素偏移量。                                                                                       | function | No       | All      | Yes              |
 | recomputeViewableItems<sup>1.8.3 2.1.1</sup> | 重新触发可见性计算。 | function | No | All | Yes |
 | getLayout | 获取指定索引项目的布局信息，包括 x、y 坐标和宽高等。返回 RVLayout 对象。 | function | No | All | Yes |

@@ -132,7 +132,7 @@ Method 2: Directly link to the source code.
 
 ### 3. Configuring CMakeLists and Introducing FlashListPackage
 
-> If you are using version <= 1.6.3-0.2.9, please skip this chapter.
+> [!TIP] version>=v2.1.1 does not involve native code and this step can be skipped.
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
@@ -318,8 +318,8 @@ Verified in the following versions.
 | prepareForLayoutAnimationRender | Run this method before running layout animations, such as when animating an element when deleting it.                                                         | function | No       | All      | Yes               |
 | recordInteraction               | Tells the list an interaction has occurred, which should trigger viewability calculations, e.g. if waitForInteractions is true and the user has not scrolled. | function | No       | All      | Yes              |
 | scrollToEnd                     | Scrolls to the end of the content.                                                                                                                            | function | No       | All      | Yes               |
-| scrollToIndex                   | Scroll to a given index.                                                                                                                                      | function | No       | All      | Yes               |
-| scrollToItem                    | Scroll to a given item.                                                                                                                                       | function | No       | All      | Yes              |
+| scrollToIndex<sup>changed in 2.1.1</sup>                  | Scroll to a given index. v1 and v2 versions handle the `viewOffset` parameter differently, specifically in opposite directions.                                                                                                                                     | function | No       | All      | Yes               |
+| scrollToItem<sup>changed in 2.1.1</sup>                      | Scroll to a given item. v1 and v2 versions handle the `viewOffset` parameter differently, specifically in opposite directions.                                                                                                                                      | function | No       | All      | Yes              |
 | scrollToOffset                  | Scroll to a specific content pixel offset in the list.                                                                                                        | function | No       | All      | Yes              |
 | recomputeViewableItems<sup>1.8.3 2.1.1</sup> | Retriggers viewability calculations. Useful to imperatively trigger viewability calculations. | function | No | All | Yes |
 | getLayout | Gets layout information for the item at the specified index, including x, y coordinates and dimensions. Returns an RVLayout object. | function | No | All | Yes |
