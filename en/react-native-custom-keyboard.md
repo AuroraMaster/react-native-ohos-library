@@ -1,31 +1,20 @@
 
-> Template version: v0.2.2
+> Template version: v0.4.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-custom-keyboard</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/reactnativecn/react-native-custom-keyboard">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://www.mit-license.org">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
 
-> [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-custom-keyboard)
+This project is based on [react-native-custom-keyboard](https://github.com/reactnativecn/react-native-custom-keyboard) 。
 
-## Installation and Usage
+This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is：`@react-native-ohos/react-native-custom-keyboard` The version correspondence details are as follows：
+| Name | Version | Release Information | Supported RN Version | Supported Autolink | Compile API Version | Community Baseline Version | npm Address     |
+| ------------ | ------------ | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
+| @react-native-ohos/react-native-custom-keyboard | ~1.1.0 | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-custom-keyboard/releases) | 0.77.* | No | API23+ | 1.0.4 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-custom-keyboard) |
+| @react-native-ohos/react-native-custom-keyboard | ~1.0.4 | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-custom-keyboard/releases) | 0.72.* | Yes | API23+ | 1.0.4 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-custom-keyboard) |
+| @react-native-oh-tpl/react-native-custom-keyboard | <= 1.0.3-0.0.2@deprecated | [Github Releases](https://github.com/react-native-oh-library/react-native-custom-keyboard/releases) | 0.72.* | No | API12+ | 1.0.3 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-custom-keyboard) |
 
-The repository of this third-party library has been migrated to Gitcode and supports direct download from npm. The new package name is: @react-native-ohos/react-native-custom-keyboard. The specific version ownership relationship is as follows:
-
-| Third-party Library Version | Release Information                                                                                                                  | Supported RN Version |
-|---------------------------| ------------------------------------------------------------ | ---------- |
-| <= 1.0.3-0.0.2@deprecated | [@react-native-oh-tpl/react-native-custom-keyboard Releases(deprecated)](https://github.com/react-native-oh-library/react-native-custom-keyboard/releases) | 0.72       |
-| 1.0.4                     | [@react-native-ohos/react-native-custom-keyboard Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-custom-keyboard/releases) | 0.72       |
-| 1.1.0                     | [@react-native-ohos/react-native-custom-keyboard Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-custom-keyboard/releases) | 0.77       |
-
-For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+## 1. Installation and Usage
 
 Go to the project directory and execute the following instruction:
 
@@ -157,12 +146,7 @@ const styles = StyleSheet.create({
 });   
 ```
 
-## Use Codegen
-
-
-This library has been adapted for `Codegen`. Before using it, you need to proactively generate the bridge code for the third-party library. For details, please refer to the [Codegen Usage Documentation](/en/codegen.md).
-
-## Link
+## 2. Link
 
 |                                      | Is supported autolink | Supported RN Version |
 |--------------------------------------|-----------------------|----------------------|
@@ -173,24 +157,29 @@ This library has been adapted for `Codegen`. Before using it, you need to proact
 Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
-<details>
+
   <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
 
 First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
 
-### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
+### 2.1. Overrides RN SDK
+
+To ensure the project relies on the same version of the RN SDK, you need to add an `overrides` field in the project's root `oh-package.json5` file, specifying the RN SDK version to be used. The replacement version can be a specific version number, a semver range, or a locally available HAR package or source directory.
+
+For more information about the purpose of this field, please refer to the [official documentation](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-oh-package-json5-V5#en-us_topic_0000001792256137_overrides).
 
 ```json
 {
-  ...
   "overrides": {
-    "@rnoh/react-native-openharmony" : "file:./react_native_openharmony"
+    "@rnoh/react-native-openharmony": "^0.72.38" // ohpm version
+    // "@rnoh/react-native-openharmony" : "./react_native_openharmony.har" // a locally available HAR package
+    // "@rnoh/react-native-openharmony" : "./react_native_openharmony" // source code directory
   }
 }
 ```
 
-### 2. Introducing Native Code
+### 2.2. Introducing Native Code
 
 Currently, two methods are available:
 
@@ -223,7 +212,7 @@ Method 2: Directly link to the source code.
 
 For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 3.Configuring CMakeLists and Introducing RNCustomKeyboardPackage Package
+### 2.3. Configuring CMakeLists and Introducing RNCustomKeyboardPackage Package
 
 > If you are using version <= 1.0.3-0.0.2, please skip this chapter.
 
@@ -285,7 +274,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 4.Introducing RNCustomKeyboardPackage Package to ArkTS 
+### 2.4. Introducing RNCustomKeyboardPackage Package to ArkTS 
 
 Open `entry/src/main/ets/RNPackagesFactory.ts` and add the following code:
 
@@ -301,9 +290,9 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
-</details>
 
-## Running
+
+## 2.5. Running
 
 Click the `sync` button in the upper right corner.
 
@@ -316,19 +305,28 @@ ohpm install
 
 Then build and run the code.
 
-## Constraints
+## 3. Constraints
 
-### Compatibility
+### 3.1 Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
-
-Verified in the following versions.
+This document is verified based on the following versions:
 
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
-## Properties (If Any)
+### 3.2. API requirements
+
+> [!TIP] All versions of the current third-party libraries have implemented version isolation, supporting compilation in `API12+` projects and execution on `API12+` ROMs.
+
+> [!TIP] The following features depend on specific API versions. Compiling the project with an API version lower than specified or running the ROM with an API version lower than specified may result in limited functionality.
+
+1. version >=1.0.4 for 0.72 introduced [setcustomkeyboardcontinuefeature](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-uicontext.md#setcustomkeyboardcontinuefeature23), Implemented the custom keyboard continuation feature (resolved the issue of text hiding when switching custom keyboards).. This API requires compilation in a project that supports `API23+` and must run on a ROM that supports `API23+` to take effect.
+
+2. version >=1.1.0 for 0.77 introduced [setcustomkeyboardcontinuefeature](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-uicontext.md#setcustomkeyboardcontinuefeature23), Implemented the custom keyboard continuation feature (resolved the issue of text hiding when switching custom keyboards).. This API requires compilation in a project that supports `API23+` and must run on a ROM that supports `API23+` to take effect.
+
+
+## 4. Properties (If Any)
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
@@ -338,7 +336,7 @@ Verified in the following versions.
 | ------------------ | --------------------------------- | ------ | -------- | -------- | ----------------- |
 | customKeyboardType | Use a registered custom keyboard. | string | no       | All      | yes               |
 
-## API
+## 5. API
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
@@ -356,10 +354,10 @@ Verified in the following versions.
 | moveRight            | Use in a custom keyboard, move cursor to selection end or move cursor right.                                                                                                                  | function | no       | All      | yes               |
 | switchSystemKeyboard | Use in a custom keyboard. Switch to system keyboard.Next time user press or focus on the TextInput, custom keyboard will appear again. To keep using system keyboard, call uninstall instead. | function | no       | All      | yes               |
 
-## Others
+## 6. Others
 
-## Known Issues
+## 7. Known Issues
 
-## License
+## 8. License
 
 This project is licensed under [The MIT License (MIT)](https://www.mit-license.org).
