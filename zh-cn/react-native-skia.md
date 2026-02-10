@@ -1,32 +1,22 @@
-模板版本：v0.2.2
+> 模板版本：v0.4.0
 
 <p align="center">
-  <h1 align="center"> <code>react-native-skia</code> </h1>
-</p>
-<p align="center">
-    <a href="https://github.com/Shopify/react-native-skia">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/Shopify/react-native-skia/blob/main/LICENSE.md">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-        <!-- <img src="https://img.shields.io/badge/license-Apache-blue.svg" alt="License" /> -->
-    </a>
+  <h1 align="center"> <code>@shopify/react-native-skia</code> </h1>
 </p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-skia)
+本项目基于 [@shopify/react-native-skia](https://github.com/Shopify/react-native-skia) 开发。
+
+该第三方库的仓库在 Github，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-skia` 版本所属关系如下：
+
+| 三方库名称 | 三方库版本   | 发布信息                                                                         | 支持RN版本 | Autolink | 编译API版本 | 社区基线版本 | npm地址                      
+| ------------ |---------|---------------------------------------------------------------------------------------------|----------------------|--------------------|-------------------|----------------------------|----------------------------------|
+|@react-native-ohos/react-native-skia| ~2.0.0 | [Github Releases](https://github.com/react-native-oh-library/react-native-skia/releases) | 0.82.*                | 否                  | API12+                   | 2.4.14  | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-skia)|
+|@react-native-ohos/react-native-skia| ~1.4.0 | [Github Releases](https://github.com/react-native-oh-library/react-native-skia/releases) | 0.77.*               | 否                  | API12+                   | 1.3.7 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-skia)|
+|@react-native-ohos/react-native-skia| ~1.3.9 | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-skia/releases)          | 0.72.*               | 是                  |API12+           | 1.3.7   | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-skia)|
+|@react-native-oh-tpl/react-native-skia| <= 1.3.8@deprecated   | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-skia/releases) | 0.72.*               | 否                  | API12+            | 1.3.7                 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-skia) |
 
 
 ## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| <= 1.3.8@deprecated      | [@react-native-oh-tpl/react-native-skia Releases(deprecated)](https://github.com/react-native-oh-library/react-native-skia/releases) | 0.72       |
-|  1.3.9      | [@react-native-ohos/react-native-skia Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-skia/releases)                        | 0.72       |
-| 1.4.0     | [@react-native-ohos/react-native-skia Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-skia/releases)                        | 0.77       |
-
-对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -79,6 +69,7 @@ export default App;
 
 |                                      | 是否支持autolink | RN框架版本 |
 |--------------------------------------|-----------------|------------|
+| ~2.0.0                               |  No              |  0.82     |
 | ~1.4.0                               |  No              |  0.77     |
 | ~1.3.9                               |  Yes             |  0.72     |
 | <= 1.3.8@deprecated            |  No              |  0.72     |
@@ -205,7 +196,6 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 
 ```diff
   ...
-
 + import { RNCSkiaDomView, SKIA_DOM_VIEW_TYPE } from '@react-native-ohos/react-native-skia';
 
 @Builder
@@ -278,6 +268,7 @@ ohpm install
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## 组件
 
@@ -293,9 +284,12 @@ ohpm install
 | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------ | -------- | ----------- | ----------------- |
 | style    | 视图样式                                                                                                                                             | ViewStyle                | no       | android/ios | yes               |
 | ref      | 指向 SkiaView 对象的引用                                                                                                                       | Ref<SkiaView>            | no       | android/ios | yes               |
-| mode     | 控制重绘频率。默认情况下，仅当绘图树或动画值发生变化时，Canvas 才会更新。当 mode="continuous" 时，Canvas 会在每一帧都重新绘制 | default \| continuous    | no       | android/ios | yes               |
+| mode <sup>deprecated from 2.4.14 </sup>    | 控制重绘频率。默认情况下，仅当绘图树或动画值发生变化时，Canvas 才会更新。当 mode="continuous" 时，Canvas 会在每一帧都重新绘制 | default \| continuous    | no       | android/ios | yes               |
 | onSize   | 与 Canvas 尺寸绑定的 Reanimated 值                                                                                             | SharedValue<Size>        | no       | android/ios | yes               |
-| onLayout | 在挂载时和布局变化时触发的回调函数                                                                                                                 | NativeEvent<LayoutEvent> | no       | android/ios | yes               |
+| onLayout <sup>deprecated from 2.4.14</sup> | 在挂载时和布局变化时触发的回调函数                                                                    | NativeEvent<LayoutEvent> | no       | android/ios | yes               |
+| debug <sup>2.4.14</sup> | 调试开关                                                                                                                 | boolean | no       | android/ios | yes               |
+| colorspace <sup>2.4.14</sup> | 色彩空间                                                                                                                 | "p3"/"srgb" | no       | ios | yes               |
+| opaque <sup>2.4.14</sup> | 控制texture和surface渲染模式之间的切                                                                                                                 | boolean | no       | android | yes               |
 
 ### Group
 
@@ -312,6 +306,7 @@ ohpm install
 | clip       | 用于裁剪子组件的矩形、圆角矩形或路径.                                                                                                                                                     | RectOrRRectOrPath | no       | android/ios | yes               |
 | invertClip | 反转裁剪区域：裁剪区域外的部分将显示，内部部分将被隐藏                                                                                                                | boolean           | no       | android/ios | yes               |
 | layer      | 将子组件绘制为位图，并应用 Paint 提供的效果                                                                                                                                          | RefObject<Paint>  | no       | android/ios | yes               |
+| zIndex <sup>2.4.14</sup>     | 子元素的绘制层级顺序                                                                                                            | number  | no       | android/ios | yes               |
 
 ### Path
 
@@ -326,7 +321,7 @@ ohpm install
 | path   | 要绘制的路径。可以是使用[SVG路径表示法的字符串](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths#line_commands)或者使用 Skia.Path.Make() 创建的对象.                                                         | SkPath`or`string | no       | android/ios | yes               |
 | start  | 裁剪路径的起始位置，取值范围为 [0, 1]，默认值为 0.                                                                                                                                                                      | number           | no       | android/ios | yes               |
 | end    | 裁剪路径的结束位置，取值范围为 [0, 1]，默认值为 1.                                                                                                                                                                        | number           | no       | android/ios | yes               |
-| stroke | 将路径转换为描边效果。如果路径是发丝线（hairline），此操作将失败。StrokeOptions 描述了描边路径的外观，包含三个属性：width（宽度）、strokeMiterLimit（斜接限制）和 precision（精度） | StrokeOptions    | no       | android/ios | yes               |
+| stroke | 将路径转换为描边效果。 | StrokeOptions    | no       | android/ios | yes               |
 
 ### Rect
 
@@ -458,7 +453,7 @@ ohpm install
 | indices   | `number[]`   | 形成三角形的顶点索引数组。如果不提供，将按照顶点顺序连接。使用此属性可以避免重复顶点定义，优化性能. | no       | android/ios | yes               |
 | textures  | `Point[]`.   | [纹理贴图](https://en.wikipedia.org/wiki/Texture_mapping). 纹理映射坐标，纹理由 paint 属性提供的着色器定义.                                                    | yes      | android/ios | yes               |
 | colors    | `string[]`   | 可选属性，与每个顶点关联的颜色数组                                                                                                                       | no       | android/ios | yes               |
-| blendMode | `BlendMode`  | 如果提供了 colors 属性，颜色将使用此混合模式与 paint 进行混合。如果提供了 colors 则默认为 dstOver，否则为 srcOver.                       | no       | android/ios | yes               |
+| blendMode | `BlendMode`  | 如果提供了 colors 属性，颜色将使用此混合模式与 paint 进行混合。                    | no       | android/ios | yes               |
 
 ### Patch
 
@@ -473,7 +468,7 @@ ohpm install
 | patch     | `CubicBezier[4]` | 指定四条立方贝塞尔曲线，从左上角开始按顺时针方向排列，每条曲线共享第四个控制点。最后一条贝塞尔曲线结束于第一条曲线的起点，形成一个闭合的曲面. | yes      | android/ios | yes               |
 | textures  | `Point[]`.       | [纹理贴图](https://en.wikipedia.org/wiki/Texture_mapping). 纹理映射坐标，纹理由 paint 属性提供的着色器定义，用于在曲面上的贴图 | yes      | android/ios | yes               |
 | colors    | `string[]`       | 可选属性，与曲面每个角点关联的颜色数组，用于顶点着色              | no       | android/ios | yes               |
-| blendMode | `BlendMode`      | 如果提供了 colors 属性，颜色将使用此混合模式与 paint 进行混合。如果提供了 colors 则默认为 dstOver，否则为 srcOver | no       | android/ios | yes               |
+| blendMode | `BlendMode`      | 如果提供了 colors 属性，颜色将使用此混合模式与 paint 进行混合。 | no       | android/ios | yes               |
 
 ### Picture
 
@@ -852,6 +847,7 @@ ohpm install
 | -------- | ------------------------------------------ | --------------- | -------- | ----------- | ----------------- |
 | source   | 用作图像过滤器的着色器           | SkRuntimeEffect | yes      | android/ios | yes               |
 | children | 首先应用可选的图像过滤器. | ImageFilter     | no       | android/ios | yes               |
+| uniforms | 传递给着色器程序的动态参数. | Uniforms     | no       | android/ios | yes               |
 
 ### BlurMask
 
@@ -962,6 +958,7 @@ ohpm install
 | width  | 目标图像的宽度.                                                                                                                                        | number  | yes      | android/ios | yes               |
 | height | 目标图像的高度.                                                                                                                                       | number  | yes      | android/ios | yes               |
 | fit    | 图像适应矩形区域的方法，可选值包括：contain、fill、cover、fitHeight、fitWidth、scaleDown 或 none，默认为 contain. | Fit     | no       | android/ios | yes               |
+| sampling <sup>2.4.14</sup> | 图像的采样方法.                                                                                                             | Sampling  | no      | android/ios | yes               |
 
 ### ImageSVG
 
@@ -1076,6 +1073,57 @@ ohpm install
 | ---- | ----------- | ------ | -------- | ----------- | ----------------- |
 | blur | 模糊半径，控制背景内容的模糊程度 | number | yes      | android/ios | yes               |
 
+### Paint
+
+#### 属性
+
+> [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
+
+> [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
+
+| Name | Description | Type   | Required | Platform    | HarmonyOS Support |
+| ---- | ----------- | ------ | -------- | ----------- | ----------------- |
+| color | 颜色 | Color | no      | android/ios | yes               |
+| blendMode | 混合模式 | SkEnum<typeof BlendMode> | no      | android/ios | yes               |
+| style | 绘制样式 | SkEnum<typeof PaintStyle> | no      | android/ios | yes               |
+| strokeWidth | 描边宽度 | number | no      | android/ios | yes               |
+| strokeJoin | 描边拐角样式 | SkEnum<typeof StrokeJoin> | no      | android/ios | yes               |
+| strokeCap | 描边端点样式 | SkEnum<typeof StrokeCap> | no      | android/ios | yes               |
+| strokeMiter | strokeJoin="miter"（尖角拐角）的 “配套限制器” | number | no      | android/ios | yes               |
+| opacity | 透明度 | number | no      | android/ios | yes               |
+| antiAlias | 抗锯齿 | boolean | no      | android/ios | yes               |
+| dither | 抖动 | boolean | no      | android/ios | yes               |
+
+
+### Video <sup>2.4.14</sup>
+
+#### 属性
+
+> [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
+
+> [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
+
+| Name | Description | Type   | Required | Platform    | HarmonyOS Support |
+| ---- | ----------- | ------ | -------- | ----------- | ----------------- |
+| source | 视频资源 | string | yes      | android/ios | yes               |
+| looping | 循环播放 | Animated<boolean> | no      | android/ios | yes               |
+| paused | 暂停 | Animated<boolean> | no      | android/ios | yes               |
+| volume | 音量 | Animated<number> | no      | android/ios | yes       
+
+### Skottie <sup>2.4.14</sup>
+
+#### 属性
+
+> [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
+
+> [!TIP] "HarmonyOS Support"列为 yes 表示 HarmonyOS 平台支持该属性；no 则表示不支持；partially 表示部分支持。使用方法跨平台一致，效果对标 iOS 或 Android 的效果。
+
+| Name | Description | Type   | Required | Platform    | HarmonyOS Support |
+| ---- | ----------- | ------ | -------- | ----------- | ----------------- |
+| animation | 动画 | SkSkottieAnimation | yes      | android/ios | yes               |
+| frame | 帧 | number | yes      | android/ios | yes               |
+
+
 ## RNSkiaModule API
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
@@ -1086,10 +1134,11 @@ ohpm install
 | ------- | ---------------- | -------- | -------- | ----------- | ----------------- |
 | install | 用于初始化 Skia 图形库 | function | yes      | android/ios | yes               |
 
+
 ## 遗留问题
 
 - [x] Text 组件无法使用 问题: [issue#Text 暂不支持](https://github.com/react-native-oh-library/react-native-skia/issues/5)
-- [ ] Video 组件无法使用 问题: [issue#Video 暂不支持](https://github.com/react-native-oh-library/react-native-skia/issues/6)
+- [x] Video 组件无法使用 问题: [issue#Video 暂不支持](https://github.com/react-native-oh-library/react-native-skia/issues/6)
 - [x] Image 组件无法使用 问题: [issue#Image 暂不支持](https://github.com/react-native-oh-library/react-native-skia/issues/7)
 
 ## 其他

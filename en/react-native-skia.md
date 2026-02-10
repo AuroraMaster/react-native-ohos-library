@@ -1,31 +1,21 @@
-Template version: v0.2.2
+Template version: v0.4.0
 
 <p align="center">
-  <h1 align="center"> <code>react-native-skia</code> </h1>
-</p>
-<p align="center">
-    <a href="https://github.com/Shopify/react-native-skia">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/Shopify/react-native-skia/blob/main/LICENSE.md">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-        <!-- <img src="https://img.shields.io/badge/license-Apache-blue.svg" alt="License" /> -->
-    </a>
+  <h1 align="center"> <code>@shopify/react-native-skia</code> </h1>
 </p>
 
-> [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-skia)
+This project is based on [@shopify/react-native-skia](https://github.com/Shopify/react-native-skia).
 
-## Installation and Usage
+The repository of this third-party library is on Github and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-skia`, The version correspondence details are as follows:
 
-Please refer to the Releases page of the third-party library for the corresponding version information:
+| Name | Version | Release Information | Supported RN Version | Supported Autolink | Compile API Version | Community Baseline Version | npm Address |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| @react-native-ohos/react-native-skia | ~2.0.0 | [Github Releases](https://github.com/react-native-oh-library/react-native-skia/releases) | 0.82.*  | NO    | API12+ | 2.4.14  | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-skia) |
+|@react-native-ohos/react-native-skia| ~1.4.0 | [Github Releases](https://github.com/react-native-oh-library/react-native-skia/releases) | 0.77.*               | 否                  | API12+                   | 1.3.7 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-skia)|
+| @react-native-ohos/react-native-skia | ~1.3.9 | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-skia/releases) | 0.72.*  | YES | API12+  | 1.3.7 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-skia) |
+| @react-native-oh-tpl/react-native-skia| <= 1.3.8@deprecated   | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-skia/releases) | 0.72.*               | NO                  | API12+            | 1.3.7                 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-skia) |
 
-| Third-party Library Version | Release Information                                                     | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| <= 1.3.8@deprecated     | [@react-native-oh-tpl/react-native-skia Releases(deprecated)](https://github.com/react-native-oh-library/react-native-skia/releases) | 0.72       |
-| 1.3.9      | [@react-native-ohos/react-native-skia Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-skia/releases)     | 0.72       |
-| 1.4.0      | [@react-native-ohos/react-native-skia Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-skia/releases)     | 0.77       |
-
-For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+## 1. Installation and Usage
 
 Go to the project directory and execute the following instruction:
 
@@ -78,6 +68,7 @@ export default App;
 
 |                                      | Is supported autolink | Supported RN Version |
 |--------------------------------------|-----------------------|----------------------|
+| ~2.0.0                               |  No              |  0.82     |
 | ~1.4.0                               |  No                   |  0.77                |
 | ~1.3.9                              |  Yes                  |  0.72                |
 | <= 1.3.8@deprecated            |  No                   |  0.72                |
@@ -273,6 +264,7 @@ Verified in the following versions.
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
 ## Components
 
@@ -288,9 +280,13 @@ Verified in the following versions.
 > | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------ | -------- | ----------- | ----------------- |
 > | style    | View style                                                                                                                                             | ViewStyle                | no       | android/ios | yes               |
 > | ref      | Reference to the SkiaView object                                                                                                                       | Ref<SkiaView>            | no       | android/ios | yes               |
-> | mode     | By default, the canvas is only updated when the drawing tree or animation values change. With mode="continuous", the canvas will redraw on every frame | default \| continuous       | no       | android/ios | yes               |
+> | mode   <sup>deprecated from 2.4.14</sup>  | By default, the canvas is only updated when the drawing tree or animation values change. With mode="continuous", the canvas will redraw on every frame | default \| continuous       | no       | android/ios | yes               |
 > | onSize   | Reanimated value to which the canvas size will be assigned                                                                                             | SharedValue<Size>        | no       | android/ios | yes               |
-> | onLayout | Invoked on mount and on layout changes                                                                                                                 | NativeEvent<LayoutEvent> | no       | android/ios | yes               |
+> | onLayout <sup>deprecated from 2.4.14</sup> | Invoked on mount and on layout changes                                                                                                                 | NativeEvent<LayoutEvent> | no       | android/ios | yes               |
+> | debug <sup>2.4.14</sup> | debug switch                                                                                                                 | boolean | no       | android/ios | yes               |
+> | colorspace <sup>2.4.14</sup> | color space                                                                                                                 | "p3"/"srgb" | no       | ios | yes               |
+> | opaque <sup>2.4.14</sup> | Control the transition between texture and surface rendering modes                                                                                                                 | boolean | no       | android | yes               |
+
 
 ### Group
 
@@ -308,6 +304,8 @@ Verified in the following versions.
 | invertClip | Invert the clipping region: parts outside the clipping region will be shown and, inside will be hidden.                                                                                                                | boolean           | no       | android/ios | yes               |
 | layer      | Draws the children as a bitmap and applies the effects provided by the paint.                                                                                                                                          | RefObject<Paint>  | no       | android/ios | yes               |
 
+| zIndex <sup>2.4.14</sup>     | The drawing hierarchy order of sub elements                                                                                                            | number  | no       | android/ios | yes               |
+
 ### Path
 
 #### Properties
@@ -321,7 +319,7 @@ Verified in the following versions.
 | path   | Path to draw. Can be a string using the [SVG Path notation](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths#line_commands) or an object created with `Skia.Path.Make()`.                                                         | SkPath`or`string | no       | android/ios | yes               |
 | start  | Trims the start of the path. Value is in the range `[0, 1]` (default is 0).                                                                                                                                                                      | number           | no       | android/ios | yes               |
 | end    | Trims the end of the path. Value is in the range `[0, 1]` (default is 1).                                                                                                                                                                        | number           | no       | android/ios | yes               |
-| stroke | Turns this path into the filled equivalent of the stroked path. This will fail if the path is a hairline. `StrokeOptions` describes how the stroked path should look. It contains three properties: `width`, `strokeMiterLimit` and, `precision` | StrokeOptions    | no       | android/ios | yes               |
+| stroke | Turns this path into the filled equivalent of the stroked path. | StrokeOptions    | no       | android/ios | yes               |
 
 ### Rect
 
@@ -453,7 +451,7 @@ Verified in the following versions.
 | indices   | `number[]`   | Indices of the vertices that form the triangles. If not provided, the order of the vertices will be taken. Using this property enables you not to duplicate vertices. | no       | android/ios | yes               |
 | textures  | `Point[]`.   | [Texture mapping](https://en.wikipedia.org/wiki/Texture_mapping). The texture is the shader provided by the paint.                                                    | yes      | android/ios | yes               |
 | colors    | `string[]`   | Optional colors to be associated to each vertex                                                                                                                       | no       | android/ios | yes               |
-| blendMode | `BlendMode`  | If `colors` is provided, colors are blended with the paint using the blend mode. Default is `dstOver` if colors are provided, `srcOver` if not.                       | no       | android/ios | yes               |
+| blendMode | `BlendMode`  | If `colors` is provided, colors are blended with the paint using the blend mode.                        | no       | android/ios | yes               |
 
 ### Patch
 
@@ -468,7 +466,7 @@ Verified in the following versions.
 | patch     | `CubicBezier[4]` | Specifies four cubic Bezier starting at the top-left corner, in clockwise order, sharing every fourth point. The last cubic Bezier ends at the first point. | yes      | android/ios | yes               |
 | textures  | `Point[]`.       | [Texture mapping](https://en.wikipedia.org/wiki/Texture_mapping). The texture is the shader provided by the paint                                            | yes      | android/ios | yes               |
 | colors    | `string[]`       | Optional colors to be associated to each corner                                                                                                             | no       | android/ios | yes               |
-| blendMode | `BlendMode`      | If `colors` is provided, colors are blended with the paint using the blend mode. Default is `dstOver` if colors are provided, `srcOver` if not              | no       | android/ios | yes               |
+| blendMode | `BlendMode`      | If `colors` is provided, colors are blended with the paint using the blend mode.               | no       | android/ios | yes               |
 
 ### Picture
 
@@ -957,6 +955,9 @@ Verified in the following versions.
 | width  | The width of the destination image.                                                                                                                                        | number  | yes      | android/ios | yes               |
 | height | The height of the destination image.                                                                                                                                       | number  | yes      | android/ios | yes               |
 | fit    | The method used to fit the image into the rectangle. Values can be `contain`, `fill`, `cover`, `fitHeight`, `fitWidth`, `scaleDown`, or `none` (the default is `contain`). | Fit     | no       | android/ios | yes               |
+| sampling <sup>2.4.14</sup> | Sampling method for images.                                                                                                             | Sampling  | no      | android/ios | yes               |
+
+
 
 ### ImageSVG
 
@@ -1071,6 +1072,56 @@ Verified in the following versions.
 | ---- | ----------- | ------ | -------- | ----------- | ----------------- |
 | blur | Blur radius | number | yes      | android/ios | yes               |
 
+
+### Paint
+
+#### Properties
+
+> [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
+
+> [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
+
+| Name | Description | Type   | Required | Platform    | HarmonyOS Support |
+| ---- | ----------- | ------ | -------- | ----------- | ----------------- |
+| color | color | Color | no      | android/ios | yes               |
+| blendMode | hybrid mode | SkEnum<typeof BlendMode> | no      | android/ios | yes               |
+| style | Draw Style | SkEnum<typeof PaintStyle> | no      | android/ios | yes               |
+| strokeWidth | stroke width | number | no      | android/ios | yes               |
+| strokeJoin | Edged corner style | SkEnum<typeof StrokeJoin> | no      | android/ios | yes               |
+| strokeCap | Edged endpoint style | SkEnum<typeof StrokeCap> | no      | android/ios | yes               |
+| strokeMiter | strokeJoin="miter" The "matching limiter" for sharp corners | number | no      | android/ios | yes               |
+| opacity | transparency | number | no      | android/ios | yes               |
+| antiAlias | anti-aliasing | boolean | no      | android/ios | yes               |
+| dither | jitter | boolean | no      | android/ios | yes               |
+
+### Video <sup>2.4.14</sup>
+
+#### Properties
+
+> [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
+
+> [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
+
+| Name | Description | Type   | Required | Platform    | HarmonyOS Support |
+| ---- | ----------- | ------ | -------- | ----------- | ----------------- |
+| source | video resources | string | yes      | android/ios | yes               |
+| looping | loop playback | Animated<boolean> | no      | android/ios | yes               |
+| paused | pause | Animated<boolean> | no      | android/ios | yes               |
+| volume | volume | Animated<number> | no      | android/ios | yes      
+
+### Skottie <sup>2.4.14</sup>
+
+#### Properties
+
+> [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
+
+> [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
+
+| Name | Description | Type   | Required | Platform    | HarmonyOS Support |
+| ---- | ----------- | ------ | -------- | ----------- | ----------------- |
+| animation | animation | SkSkottieAnimation | yes      | android/ios | yes               |
+| frame | frame | number | yes      | android/ios | yes               |
+
 ## RNSkiaModule API
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
@@ -1084,7 +1135,7 @@ Verified in the following versions.
 ## Known Issues
 
 - [x] Text component can't be used Issue: [issue#Text is currently not supported](https://github.com/react-native-oh-library/react-native-skia/issues/5)
-- [ ] Video component can't be used Issue: [issue#Video is currently not supported](https://github.com/react-native-oh-library/react-native-skia/issues/6)
+- [x] Video component can't be used Issue: [issue#Video is currently not supported](https://github.com/react-native-oh-library/react-native-skia/issues/6)
 - [x] Image component can't be used Issue: [issue#Image is currently not supported](https://github.com/react-native-oh-library/react-native-skia/issues/7)
 
 ## Others
