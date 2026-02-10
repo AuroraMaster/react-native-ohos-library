@@ -179,7 +179,7 @@ ohpm install
 
 > [!TIP] 如需使用直接链接源码，请参考[直接链接源码说明](/zh-cn/link-source-code.md)
 
-### 3. 配置 CMakeLists 和引入 RNKeyboardControllerPackage，RNStatusBarManagerCompatPackage
+### 3. 配置 CMakeLists 和引入 RNKeyboardControllerPackage
 
 > 若使用的是 <= 1.12.7-0.0.5 版本，请跳过本章
 
@@ -242,7 +242,25 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 4. 在 ArkTs 侧引入 RNKeyboardControllerPackage，RNStatusBarManagerCompatPackage
+### 4. 在 ArkTs 侧引入 RNKeyboardControllerPackage
+
+打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
+
+```diff
++ import {RNKeyboardControllerPackage} from  "@react-native-ohos/react-native-keyboard-controller/ts";
+
+export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
+  return [
+    new SamplePackage(ctx),
++   new RNKeyboardControllerPackage(ctx)
+  ];
+}
+```
+</details>
+
+## 必要的配置项
+### 在 ArkTs 侧引入 RNKeyboardControllerPackage
+> [!TIP] RNStatusBarManagerCompatPackage无法通过autolink自动生成，始终需要手动配置。
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
@@ -257,7 +275,6 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
-</details>
 
 ## 运行
 
