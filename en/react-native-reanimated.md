@@ -1,4 +1,4 @@
-> Template version: v0.2.2
+> Template version: v0.4.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-reanimated</code> </h1>
@@ -12,19 +12,21 @@
     </a>
 </p>
 
-> [!Tip] [Github address](https://github.com/react-native-oh-library/react-native-harmony-reanimated)
+This project is based on [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated)。
 
-## Installation and Usage
+This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-reanimated`, The version correspondence details are as follows:
 
-Please refer to the Releases page of the third-party library for the corresponding version information
+|Name| Version | Release Information | Supported RN Version |Supported Autolink|Compile API Version|Community Baseline Version|npm Address|
+|-------|-------|-----| ---------- |---------- |---------- |---------- |---------- |
+|@react-native-ohos/react-native-reanimated| ~4.0.0 | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-reanimated/releases)               | 0.82       |No|API12+|4.2.1 |[Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-reanimated)|
+|@react-native-ohos/react-native-reanimated| ~3.18.1 | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-reanimated/releases)               | 0.77       |No|API12+|3.18.0 |[Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-reanimated)|
+|@react-native-ohos/react-native-reanimated| ~3.6.5 | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-reanimated/releases)               | 0.72       |Yes|API12+|3.6.0 |[Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-reanimated)|
+|@react-native-oh-tpl/react-native-reanimated| <= 3.6.4@deprecated | [ Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-harmony-reanimated/releases) | 0.72       | No|API12+| 3.6.0 |[Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-reanimated)|
 
-| Third-party Library Version | Release Information       | Supported RN Version |
-|-----------------------------| ------------------------------------------------------------ | ---------- |
-| <= 3.6.4@deprecated | [@react-native-oh-tpl/react-native-reanimated Releases(deprecated)](https://github.com/react-native-oh-library/react-native-harmony-reanimated/releases) | 0.72       |
-| 3.6.5 | [@react-native-ohos/react-native-reanimated Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-reanimated/releases)               | 0.72       |
-| 3.18.1 | [@react-native-ohos/react-native-reanimated Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-reanimated/releases)               | 0.77       |
+## 1. Installation and Usage
 
-For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+> [!TIP] Attention：
+`react-native-reanimated version >= 4.0.0`, `worklets` has been separated into a standalone library and needs to be imported separately. Refer to the [@react-native-ohos/react-native-worklets documentation](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-worklets.md)
 
 Go to the project directory and execute the following instruction:
 
@@ -33,30 +35,40 @@ Go to the project directory and execute the following instruction:
 #### **npm**
 
 ```bash
-# 0.72
+# RN 0.72
 npm install react-native-reanimated@3.6.0
 npm install @react-native-ohos/react-native-reanimated
 
-# 0.77
+# RN 0.77
 npm install react-native-reanimated@3.18.0
+npm install @react-native-ohos/react-native-reanimated
+
+# RN 0.82
+npm install react-native-reanimated@4.2.1
 npm install @react-native-ohos/react-native-reanimated
 ```
 
 #### **yarn**
 
 ```bash
-# 0.72
+# RN 0.72
 yarn add react-native-reanimated@3.6.0
 yarn add @react-native-ohos/react-native-reanimated
 
-# 0.77
+# RN 0.77
 yarn add react-native-reanimated@3.18.0
+yarn add @react-native-ohos/react-native-reanimated
+
+# RN 0.82
+yarn add react-native-reanimated@4.2.1
 yarn add @react-native-ohos/react-native-reanimated
 ```
 
 <!-- tabs:end -->
 
-Add react-native-reanimated/plugin to `babel.config.js`:
+#### Plugin configuration
+
+Add Plugin to `babel.config.js`:
 
 > [!TIP] Why is this needed? The Reanimated Babel plugin automatically converts special JavaScript functions (called worklets) so that they can be passed and run on the UI thread.
 
@@ -67,7 +79,11 @@ Add react-native-reanimated/plugin to `babel.config.js`:
     ],
     plugins: [
       ...
+      // version < 4.0.0
       'react-native-reanimated/plugin',
+
+      // version >= 4.0.0
+      'react-native-worklets/plugin',
     ],
   };
 ```
@@ -120,10 +136,11 @@ export default function App() {
 }
 ```
 
-## Link
+## 2. Link
 
 |                                      | Is supported autolink  | Supported RN Version |
 |--------------------------------------|-----------------------|----------------------|
+| ~4.0.0                               |  No              |  0.82     |
 | ~3.18.1                               |  No                   |  0.77                |
 | ~3.6.5                              |  Yes                  |  0.72                |
 | <= 3.6.4@deprecated            |  No                   |  0.72                |
@@ -131,25 +148,39 @@ export default function App() {
 Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
 If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+
+[!TIP] version >= 4.0.0.
+This version of HarmonyOS requires native code implementation relying on `@react-native-ohos/react-native-worklets`. If this library has already been imported in the HarmonyOS project, there is no need to re-import it. You can skip the steps in this section and directly use it.
+If it has not been imported, please refer to the [Link section of the @react-native-ohos/react-native-worklets documentation](https://gitee.com/react-native-oh-library/usage-docs/blob/master/zh-cn/react-native-worklets.md) for import instructions.
+
 <details>
   <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
 
 First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
-### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
+### 2.1. Overrides RN SDK
+
+To ensure the project relies on the same version of the RN SDK, you need to add an overrides field in the project's root oh-package.json5 file, specifying the RN SDK version to be used. The replacement version can be a specific version number, a semver range, or a locally available HAR package or source directory.
+
+For more information about the purpose of this field, please refer to the official documentation.
 
 ```json
 {
   ...
   "overrides": {
-    "@rnoh/react-native-openharmony" : "./react_native_openharmony"
+    "@rnoh/react-native-openharmony" : "./react_native_openharmony",
+     // version >= 4.0.0
+    "@react-native-ohos/react-native-worklets": "file:../node_modules/@react-native-ohos/react-native-worklets/harmony/worklets.har"
   }
 }
 ```
 
-### 2.Introducing Native Code
+### 2.2. Introducing Native Code
 
 Currently, two methods are available:
+
+- Use the HAR file.
+- Directly link to the source code。
 
 Method 1 (recommended): Use the HAR file.
 
@@ -178,9 +209,7 @@ Method 2: Directly link to the source code.
 
 For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 3. Configuring CMakeLists and Introducing ReanimatedPackage
-
-> If you are using version <= 3.6.4, please skip this chapter.
+### 2.3. Configuring CMakeLists and Introducing ReanimatedPackage
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
@@ -191,6 +220,9 @@ set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
 + set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
 + set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
 set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
+
+# version >= 4.0.0 If the corresponding SVG Feature flags are enabled, the following configuration is required:
++ add_compile_definitions(REANIMATED_FEATURE_FLAGS='[EXPERIMENTAL_CSS_ANIMATIONS_FOR_SVG_COMPONENTS:true]')
 
 add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
@@ -231,7 +263,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 4. Introducing ReanimatedPackage to ArkTS 
+### 2.4. Introducing ReanimatedPackage to ArkTS 
 
 Open`entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
@@ -249,7 +281,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 </details>
 
-## Running
+### 2.5 Running
 
 Click the `sync` button in the upper right corner.
 
@@ -262,19 +294,65 @@ ohpm install
 
 Then build and run the code.
 
-## Constraints
+## 3. Constraints
 
-### Compatibility
+### 3.1 Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
-
-Verified successfully in the following versions:
+This document is verified based on the following versions:
 
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.7;  SDK: HarmonyOS 6.0.1 Release SDK; IDE: DevEco Studio 6.0.1.260; ROM: 6.0.0.130 SP15;
 
-## API
+### 3.2.Permission requirements (If using sensors, corresponding sensor permissions need to be added)
+
+> [!Tip] To utilize the function of the sensor, a version >= 4.0.0 is required. This function is only effective on the RN 82 version.
+
+Add permissions in the `module.json5` file located in the `entry` directory.
+
+```
+"requestPermissions": [
++  {
++    "name": "ohos.permission.ACCELEROMETER",  // Acceleration sensor permission name
++    "reason": "$string:accele_reason",
++    "usedScene": {
++      "abilities": [
++        "EntryAbility"
++      ],
++      "when":"inuse"
++    }
++  },
++  {
++    "name": "ohos.permission.GYROSCOPE", // Gyroscope sensor permission name
++    "reason": "$string:gyr_reason",
++    "usedScene": {
++      "abilities": [
++        "EntryAbility"
++      ],
++      "when":"inuse"
++    }
++  },
+]
+```
+Add the reasons for requesting the above permissions under the "entry" directory.
+Open `entry/src/main/resources/base/element/string.json`, and add:
+```
+{
+  "string": [
++    {
++      "name": "accele_reason",
++      "value": "Use the acceleration sensor"
++    },
++    {
++      "name": "gyr_reason",
++      "value": "Use the gyroscope sensor"
++    },
+  ]
+}
+```
+
+## 4. API
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
@@ -291,8 +369,8 @@ Verified successfully in the following versions:
 | `useAnimatedRef`   | useAnimatedRef lets you get a reference of a view. Used alongside measure, scrollTo, and useScrollViewOffset functions.                                                                                                    | function | No       | All      | yes               |
 | `useDerivedValue`  | useDerivedValue lets you create new shared values based on existing ones while keeping them reactive.                                                                                                                      | function | No       | All      | yes               |
 | `cancelAnimation`  | cancelAnimation lets you cancel a running animation paired to a shared value.                                                                                                                                              | function | No       | All      | yes               |
-| `runOnJS`          | runOnJS lets you asynchronously run non-workletized functions that could not otherwise run on the UI thread. This applies to most external libraries as they do not have their functions marked with "worklet"; directive. | function | No       | All      | yes               |
-| `runOnUI`          | runOnUI lets you asynchronously run workletized functions on the UI thread.                                                                                                                                                | function | No       | All      | yes               |
+| `runOnJS`<sup>deprecated from 4.0.0</sup>            | runOnJS lets you asynchronously run non-workletized functions that could not otherwise run on the UI thread. This applies to most external libraries as they do not have their functions marked with "worklet"; directive. | function | No       | All      | yes               |
+| `runOnUI`<sup>deprecated from 4.0.0</sup>            | runOnUI lets you asynchronously run workletized functions on the UI thread.                                                                                                                                                | function | No       | All      | yes               |
 | `measure`          | measure lets you synchronously get the dimensions and position of a view on the screen, all on the UI thread.                                                                                                              | function | No       | All      | yes               |
 | `Easing`           | easing set motion trajectory                                                                                                                                                                                               | function | No       | All      | yes               |
 | `useAnimatedKeyboard`           | useAnimatedKeyboard lets you create animations based on state and height of the virtual keyboard.                                                                                                             | function | No       | All      | yes               |
@@ -300,9 +378,15 @@ Verified successfully in the following versions:
 | `makeMutable`<sup>3.18.0+</sup> | makeMutable is a function internally used by the useSharedValue hook to create a shared value | function | No       | All      | yes               |
 | `ReducedMotionConfig`<sup>3.18.0+</sup> | change behavior in response to the device's reduced motion accessibility setting. | function | No       | All      | yes               |
 | `useAnimatedGestureHandler`<sup>deprecated from 3.18.0</sup> | lets you create animations based on gesture handlers. | function | No | All | No |
-| `useScrollViewOffset` | lets you to create animations based on the offset of a ScrollView.<br /><br />3.6.0:useScrollViewOffset(aref: RefObject<Animated.ScrollView>) => [SharedValue\<number\>];<br />3.18.0:useScrollViewOffset(animatedRef: AnimatedRef\<AnimatedScrollView\>, providedOffset?: SharedValue\<number\>): SharedValue\<number\>; | function | No | All | yes |
+| `useScrollViewOffset`<sup> deprecated from 4.0.0 </sup> | lets you to create animations based on the offset of a ScrollView.<br /><br />3.6.0:useScrollViewOffset(aref: RefObject<Animated.ScrollView>) => [SharedValue\<number\>];<br />3.18.0:useScrollViewOffset(animatedRef: AnimatedRef\<AnimatedScrollView\>, providedOffset?: SharedValue\<number\>): SharedValue\<number\>; | function | No | All | yes |
+| `useScrollOffset` <sup> 4.0.0 </sup> | lets you to create animations based on the offset of a scrollable component (e.g. ScrollView, FlatList, FlashList) | function | No | All | yes |
+| `createAnimatedComponent ` |  lets you create an Animated version of any React Native component | function | No | All | yes |
+| `getStaticFeatureFlag` <sup> 4.0.0 </sup> | A function for obtaining static functionality flags (feature flags) | function | No | All | yes |
+| `setDynamicFeatureFlag` <sup> 4.0.0 </sup> | A function for dynamically setting function flags | function | No | All | yes |
+| `reanimatedVersion` <sup> 4.0.0 </sup> | Obtain the version number of the animation library | function | No | All | yes |
+| `useAnimatedProps` | It is a custom Hook in the React Native Reanimated library, used to create animatable component properties | function | No | All | yes |
 
-## Properties
+## 5. Properties
 
 **WithSpringConfig**
 
@@ -343,10 +427,47 @@ Verified successfully in the following versions:
 | ------------------------------------- | ----------------------------------------- | --------------- | -------- | --------------- | ------------------ |
 | itemLayoutAnimation<sup>3.18.0+</sup> | Defines layout transitions for list items | LayoutAnimation | No       | Android and iOS | yes                |
 
-## Known Issues
+**CSS Transitions** <sup>4.0.0+</sup>
+| Name                                  | Description                               | Type            | Required | Platform        | HarmonyOS  Support |
+| ------------------------------------- | ----------------------------------------- | --------------- | -------- | --------------- | ------------------ |
+| transitionProperty | lets you specify the name or names of styles properties to transition. | object  | No       | Android and iOS | yes       |
+| transitionDuration | lets you specify the length of time the transition lasts. |  object |No | Android and iOS | yes       |
+| transitionDelay | lets you specify the length of time to wait before transition starts. | object | No       | Android and iOS | yes       |
+| transitionTimingFunction |  lets you adjust how intermediate values are calculated during the transition. | object | No | Android and iOS | yes  |
+| transitionBehavior |  lets you determine whether the transition is applied to discrete properties. | object | No | Android and iOS | yes  |
 
-## Others
 
-## License
+**CSS Animations** <sup>4.0.0+</sup>
+| Name                                  | Description                               | Type            | Required | Platform        | HarmonyOS  Support |
+| ------------------------------------- | ----------------------------------------- | --------------- | -------- | --------------- | ------------------ |
+| animationName  |  lets you specify keyframes for the animation. | object  | No       | Android and iOS | yes       |
+| animationDuration | lets you specify the length of time the transition lasts. | object  |No    | Android and iOS | yes       |
+| animationDelay | lets you specify the length of time to wait before animation starts. | object | No       | Android and iOS | yes       |
+| animationTimingFunction |  lets you adjust how intermediate values are calculated during the transition. | object | No | Android and iOS | yes  |
+| animationDirection  |  lets you specify which direction the animation should run. | object | No | Android and iOS | yes  |
+| animationIterationCount  |  lets you repeat an animation given number of times or run it indefinitely. | object | No | Android and iOS | yes  |
+| animationFillMode   |  lets you specify how the computed styles will be persisted before the animation runs and after it finishes. | object | No | Android and iOS | yes  |
+| animationPlayState   |  lets you play and pause the animation. | object | No | Android and iOS | yes  |
+
+**Common object**
+| Name                                  | Description                               | Type            | Required | Platform        | HarmonyOS  Support |
+| ------- | --------------------- | --------------- | -------- | --------------- | ------------------ |
+| `GentleSpringConfig ` <sup>4.0.0+</sup> |  It is a predefined spring animation configuration, which creates a smooth and gentle spring effect. | Object | No | All | yes |
+| `GentleSpringConfig ` <sup>4.0.0+</sup> |  It is another form of GentleSpringConfig. It uses the parameters of duration and dampingRatio to define the spring animation. | Object | No | All | yes |
+| `Reanimated3DefaultSpringConfig ` <sup>4.0.0+</sup> |  It will generate an animation that is highly elastic and has obvious oscillations. | Object | No | All | yes |
+| `Reanimated3DefaultSpringConfigWithDuration ` <sup>4.0.0+</sup> | A flexible animation will be generated. | Object | No | All | yes |
+| `SnappySpringConfig ` <sup>4.0.0+</sup> | The configuration defines the "Snappy" (agile) spring animation. | Object | No | All | yes |
+| `SnappySpringConfigWithDuration ` <sup>4.0.0+</sup> | The configuration defines the "Snappy" (quick) spring animation. | Object | No | All | yes |
+| `WigglySpringConfig ` <sup>4.0.0+</sup> | The configuration defines the "Wiggly" (swinging) spring animation, which will produce a distinct swinging/bouncing effect. | Object | No | All | yes |
+| `WigglySpringConfigWithDuration ` <sup>4.0.0+</sup> | The configuration defines the "Wiggly" (swaying) spring animation, which completes the animation within 550ms and will have a distinct oscillation effect (underdamping) | Object | No | All | yes |
+| `EasingFunctionFactory`  | A type definition in the library, serving as a factory function for creating easing functions | object | No | All | yes |
+| `DynamicColorIOS` | designed to be used within Reanimated. It's a way to define colors that automatically adapt to light and dark mode on iOS | object | No |  iOS | no |
+
+
+## 6. Known Issues
+
+## 7. Others
+
+## 8. License
 
 This project is licensed under [The MIT License (MIT)](https://github.com/software-mansion/react-native-reanimated/blob/main/LICENSE).
