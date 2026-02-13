@@ -291,7 +291,7 @@ ohpm install
 | `scheduleOnUI` | ulets you schedule a function to be executed on the UI Runtime.| function | No       | All      | yes               |
 | `createSerializable` | recursively converts JavaScript values into Serializable references that can be passed to different JavaScript Runtimes. | function | No       | All      | yes               |
 | `createSynchronizable ` | creates a new Synchronizable holding the provided initial value. Returns the created Synchronizable. | function | No       | All      | yes               |
-| `isSerializableRef ` | asserts whether a value is a Serializable reference. | function | No       | All      | 
+| `isSerializableRef ` | asserts whether a value is a Serializable reference. | function | No       | All      | yes|
 | `isSynchronizable ` | asserts whether a value is a Synchronizable. | function | No       | All      | yes               |
 | `registerCustomSerializable  ` | lets you register your own pre-serialization and post-deserialization logic. | function | No       | All      | yes               |
 | `getRuntimeKind` | allows you to get the kind of the current runtime.  | function | No       | All      | yes               |
