@@ -1,30 +1,20 @@
-> 模板版本：v0.2.2
+> 模板版本：v0.4.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-calendar-events</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/wmcmahan/react-native-calendar-events">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20windows%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-        <a href="https://github.com/wmcmahan/react-native-calendar-events/blob/master/LICENSE.md">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-calendar-events)
+本项目基于 [react-native-calendar-events](https://github.com/wmcmahan/react-native-calendar-events) 开发。
+
+该第三方库的仓库已迁移至 Gitcode，且支持直接从 npm 下载，新的包名为：`@react-native-ohos/react-native-calendar-events` 版本所属关系如下：
+
+| 三方库名称    | 三方库版本    | 发布信息     | 支持RN版本    | Autolink     | 编译API版本     | 社区基线版本    | npm地址                |
+| ------------ | ------------ | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
+| @react-native-ohos/react-native-calendar-events | ~2.3.0    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-calendar-events/releases) | 0.77.* | 否 | API12+ | 2.2.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-calendar-events?activeTab=versions) |
+| @react-native-ohos/react-native-calendar-events | ~2.2.1    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-calendar-events/releases) | 0.72.* | 是 | API12+ | 2.2.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-calendar-events?activeTab=versions) |
+| @react-native-oh-tpl/react-native-calendar-events | <=2.2.0-0.0.4@deprecated    | [Github Releases](https://github.com/react-native-oh-library/react-native-calendar-events/releases) | 0.72.* | 否 | API12+ | 2.2.0 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-calendar-events?activeTab=versions) |
 
 ## 安装与使用
-
-请到三方库的 Releases 发布地址查看配套的版本信息：
-
-| 三方库版本 | 发布信息                                                     | 支持RN版本 | 
-| ---------- | ------------------------------------------------------------ | ---------- |
-| <=2.2.0-0.0.4@deprecated | [@react-native-oh-tpl/react-native-calendar-events Releases(deprecated)](https://github.com/react-native-oh-library/react-native-calendar-events/releases) | 0.72       |
-| 2.2.1            | [@react-native-ohos/react-native-calendar-events Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-calendar-events/releases) | 0.72       |
-| 2.3.0            | [@react-native-ohos/react-native-calendar-events Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-calendar-events/releases) | 0.77       |
-
-对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -341,14 +331,13 @@ target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
 打开 `entry/src/main/cpp/PackageProvider.cpp`，添加：
 
 ```diff
-#include "RNOH/PackageProvider.h"
-+ #include "CalendarEventPackage.h"
++ #include "CalendarEventsPackage.h"
 
 using namespace rnoh;
 
 std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
     return {
-+        std::make_shared<CalendarEventPackage>(ctx)
++        std::make_shared<CalendarEventsPackage>(ctx)
 }
 ```
 
