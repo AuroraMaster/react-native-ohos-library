@@ -1,34 +1,22 @@
-> Template version: v0.2.2
+> Template version: v0.4.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-calendar-events</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/wmcmahan/react-native-calendar-events">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20windows%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-        <a href="https://github.com/wmcmahan/react-native-calendar-events/blob/master/LICENSE.md">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
-</p>
 
-> [!TIP] [Github address](https://github.com/react-native-oh-library/react-native-calendar-events)
+This project is based on [react-native-calendar-events](https://github.com/wmcmahan/react-native-calendar-events).
+
+This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-calendar-events`, The version correspondence details are as follows:
+
+| Name    | Version    | Release Information     | Supported RN Version    | Supported Autolink     | Compile API Version     | Community Baseline Version    | npm Address                |
+| ------------ | ------------ | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
+| @react-native-ohos/react-native-calendar-events | ~2.3.0    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-calendar-events/releases) | 0.77.* | No | API12+ | 2.2.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-calendar-events?activeTab=versions) |
+| @react-native-ohos/react-native-calendar-events | ~2.2.1    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-calendar-events/releases) | 0.72.* | Yes | API12+ | 2.2.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-calendar-events?activeTab=versions) |
+| @react-native-oh-tpl/react-native-calendar-events | <=2.2.0-0.0.4@deprecated    | [Github Releases](https://github.com/react-native-oh-library/react-native-calendar-events/releases) | 0.72.* | No | API12+ | 2.2.0 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-calendar-events?activeTab=versions) |
 
 ## Installation and Usage
 
-Please refer to the Releases page of the third-party library for the corresponding version information
-
-| Third-party Library Version | Release Information       | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| <=2.2.0-0.0.4@deprecated | [@react-native-oh-tpl/react-native-calendar-events Releases(deprecated)](https://github.com/react-native-oh-library/react-native-calendar-events/releases) | 0.72       |
-| 2.2.1            | [@react-native-ohos/react-native-calendar-events Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-calendar-events/releases) | 0.72       |
-| 2.3.0            | [@react-native-ohos/react-native-calendar-events Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-calendar-events/releases) | 0.77       |
-
-For older versions not published on npm, please refer to the [Installation Guide](/en/tgz-usage-en.md) to install the tgz package.
-
 Go to the project directory and execute the following instruction:
-
-
 
 <!-- tabs:start -->
 
@@ -341,14 +329,13 @@ target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
 Open `entry/src/main/cpp/PackageProvider.cpp` and add:
 
 ```diff
-#include "RNOH/PackageProvider.h"
-+ #include "CalendarEventPackage.h"
++ #include "CalendarEventsPackage.h"
 
 using namespace rnoh;
 
 std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
     return {
-+        std::make_shared<CalendarEventPackage>(ctx)
++        std::make_shared<CalendarEventsPackage>(ctx)
 }
 ```
 
