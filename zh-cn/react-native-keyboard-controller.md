@@ -242,27 +242,10 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
-### 4. 在 ArkTs 侧引入 RNKeyboardControllerPackage
+### 4. 在 ArkTs 侧引入 RNKeyboardControllerPackage，RNStatusBarManagerCompatPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
-
-```diff
-+ import {RNKeyboardControllerPackage} from  "@react-native-ohos/react-native-keyboard-controller/ts";
-
-export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
-  return [
-    new SamplePackage(ctx),
-+   new RNKeyboardControllerPackage(ctx)
-  ];
-}
-```
-</details>
-
-## 必要的配置项
-### 在 ArkTs 侧引入 RNKeyboardControllerPackage
-> [!TIP] RNStatusBarManagerCompatPackage无法通过autolink自动生成，始终需要手动配置。
-
-打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
+> [!TIP] 接入autolink后，RNKeyboardControllerPackage,RNStatusBarManagerCompatPackage合为RNKeyboardControllerPackage类导出，用户侧无需改动。
 
 ```diff
 + import {RNKeyboardControllerPackage,RNStatusBarManagerCompatPackage} from  "@react-native-ohos/react-native-keyboard-controller/ts";
@@ -275,6 +258,8 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   ];
 }
 ```
+</details>
+
 
 ## 运行
 
