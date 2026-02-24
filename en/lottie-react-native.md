@@ -1,33 +1,23 @@
-> Template version: v0.2.2
+> Template version: v0.4.0
 
 <p align="center">
   <h1 align="center"> <code>lottie-react-native</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/lottie-react-native/lottie-react-native">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20windows%20|%20web%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/lottie-react-native/lottie-react-native/blob/master/LICENSE">
-        <img src="https://img.shields.io/npm/l/lottie-react-native.svg" alt="License" />
-    </a>
-</p>
 
-> [!TIP] [GitHub address](https://github.com/react-native-oh-library/lottie-react-native)
+This project is based on [lottie-react-native](https://github.com/lottie-react-native/lottie-react-native).
 
-This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/lottie-react-native`, After introducing the new version of the third-party library, The version correspondence details are as follows:
+This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/lottie-react-native`, The version correspondence details are as follows:
 
-| Version                        | Package Name                                  | Repository                                                   | Release                                                      |
-| ------------------------------ | --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <= 6.4.1-0.1.17@deprecated | @react-native-oh-tpl/lottie-react-native | [Github(deprecated)](https://github.com/react-native-oh-library/lottie-react-native) | [Github Releases(deprecated)](https://github.com/react-native-oh-library/lottie-react-native/releases) |
-| >= 6.4.2                        | @react-native-ohos/lottie-react-native       | [GitCode](https://gitcode.com/openharmony-sig/rntpc_lottie-react-native) | [GitCode Releases](https://gitcode.com/openharmony-sig/rntpc_lottie-react-native/releases) |
+| Name | Version | Release Information | Supported RN Version | Supported Autolink | Compile API Version | Community Baseline Version | npm Address     |
+| --------------| -------------- | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
+| @react-native-ohos/lottie-react-native |  ~ 7.3.0    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_lottie-react-native/releases) | 0.82.* | No | API12+ | 7.3.4 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/lottie-react-native) | 
+| @react-native-ohos/lottie-react-native  | ~ 7.2.3     | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_lottie-react-native/releases) | 0.77.* | No | API12+ | 7.2.2 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/lottie-react-native) | 
+| @react-native-ohos/lottie-react-native  | ~ 6.4.2    | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_lottie-react-native/releases) | 0.72.* | Yes | API12+ | 6.4.1 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/lottie-react-native) | 
+| @react-native-oh-tpl/lottie-react-native  | <= 6.4.1-0.1.17@deprecated | [Github Releases(deprecated)](https://github.com/react-native-oh-library/lottie-react-native/releases) | 0.72.* | No | API12+ | 6.4.1 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/lottie-react-native) | 
 
-## Installation and Usage
-
-Find the matching version information in the release address of a third-party library: [@react-native-ohos/lottie-react-native Releases](https://gitcode.com/openharmony-sig/rntpc_lottie-react-native/releases).For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+## 1. Installation and Usage
 
 Go to the project directory and execute the following instruction:
-
-
 
 <!-- tabs:start -->
 
@@ -49,8 +39,6 @@ The following code shows the basic use scenario of the repository:
 
 > [!WARNING] The name of the imported repository remains unchanged.
 
-> [!TIP] 以下 demo 中使用的是本地文件。
-
 ```js
 import React from "react";
 import { View } from "react-native";
@@ -71,30 +59,46 @@ const App = () => {
 export default App;
 ```
 
-## Link
+## 2. Link
 
-Version >= @react-native-ohos/lottie-react-native@6.4.2 now supports Autolink without requiring manual configuration, currently only supports 72 frameworks.
-Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
-The 0.72 branch supports full Autolinking functionality starting from the RNOH 0.72.94 version (corresponding to the @react-native-oh/react-native-harmony-cli version 0.0.40).
+|                                      | Supported Autolink  | Supported RN Version |
+|--------------------------------------|-----------------|------------|
+| ~ 7.3.0                               |  No              |  0.82     |
+| ~ 7.2.3                               |  No              |  0.77     |
+| ~ 6.4.2                              |  Yes             |  0.72     |
+| <= 6.4.1-0.1.17@deprecated             |  No              |  0.72     |
 
-Currently, Version <= @react-native-oh-tpl/lottie-react-native@6.4.1-0.1.17@deprecated does not support AutoLink. Therefore, you need to manually configure the linking.
+Projects using AutoLink need to be configured according to this document, AutoLink framework guide: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+
+If the version you are using supports Autolink and the project has integrated Autolink, you can skip the ManualLink configuration.
+
+<details>
+  <summary>ManualLink: This step provides guidance for manually configuring native dependencies.</summary>
 
 Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
-### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
+### 2.1. Overrides RN SDK
+
+To ensure the project relies on the same version of the RN SDK, you need to add an `overrides` field in the project's root `oh-package.json5` file, specifying the RN SDK version to be used. The replacement version can be a specific version number, a semver range, or a locally available HAR package or source directory.
+
+For more information about the purpose of this field, please refer to the [official documentation](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-oh-package-json5-V5#en-us_topic_0000001792256137_overrides).
 
 ```json
 {
-  ...
   "overrides": {
-    "@rnoh/react-native-openharmony" : "./react_native_openharmony"
+    "@rnoh/react-native-openharmony": "^0.72.38" // ohpm version
+    // "@rnoh/react-native-openharmony" : "./react_native_openharmony.har" // a locally available HAR package
+    // "@rnoh/react-native-openharmony" : "./react_native_openharmony" // source code directory
   }
 }
 ```
 
-### 2. Introducing Native Code
+### 2.2. Introducing Native Code
 
 Currently, two methods are available:
+
+- Use the HAR file.
+- Directly link to the source code.
 
 Method 1 (recommended): Use the HAR file.
 
@@ -104,7 +108,6 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 
 ```json
 "dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-ohos/lottie-react-native": "file:../../node_modules/@react-native-ohos/lottie-react-native/harmony/lottie.har"
   }
 ```
@@ -122,7 +125,7 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 3. Configuring CMakeLists and Introducing LottieAnimationViewPackage
+### 2.3. Configuring CMakeLists and Introducing LottieAnimationViewPackage
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
@@ -179,8 +182,9 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 }
 ```
 
+### 2.4. Introducing Lottie Component to ArkTS
+
 Open `entry/src/main/ets/RNPackagesFactory.ts` and add:
-> [!TIP] Required for version `6.4.1-0.1.13` and above
 
 ```diff
   ...
@@ -188,14 +192,14 @@ Open `entry/src/main/ets/RNPackagesFactory.ts` and add:
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
-+   new LottieAnimationViewPackage(ctx)
++    new LottieAnimationViewPackage(ctx)
   ];
 }
 ```
 
 ### 4.Introducing Lottie Component to ArkTS
 
-Find `function buildCustomRNComponent()`, which is usually located in `entry/src/main/ets/pages/index.ets` or `entry/src/main/ets/rn/LoadBundle.ets`, and add the following code:
+Find **function buildCustomComponent()**, which is usually located in `entry/src/main/ets/pages/index.ets` or `entry/src/main/ets/rn/LoadBundle.ets`, and add the following code:
 
 ```diff
   ...
@@ -212,10 +216,9 @@ export function buildCustomRNComponent(ctx: ComponentBuilderContext) {
 + }
  ...
 }
-
 ```
 
-> [!TIP] If the repository uses a mixed solution, the component name needs to be added.
+> [!TIP] This library uses a mixed solution, the component name needs to be added.
 
 Find the constant `arkTsComponentNames` in `entry/src/main/ets/pages/index.ets` or `entry/src/main/ets/rn/LoadBundle.ets` and add the component name to the array.
 
@@ -228,7 +231,25 @@ const arkTsComponentNames: Array<string> = [
   ];
 ```
 
-### 5.Running
+### 2.5. Introducing LottieAnimationViewPackage to ArkTS
+
+Open `entry/src/main/ets/RNPackagesFactory.ts` and add:
+
+> [!TIP] Required for version 6.4.1-0.1.13 and above
+
+```diff
+  ...
++ import {LottieAnimationViewPackage} from '@react-native-ohos/lottie-react-native/ts';
+
+export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
+  return [
++    new LottieAnimationViewPackage(ctx)
+  ];
+}
+```
+</details>
+
+### 2.6. Running
 
 Click the `sync` button in the upper right corner.
 
@@ -241,19 +262,22 @@ ohpm install
 
 Then build and run the code.
 
-## Constraints
+## 3. Constraints
 
-### Compatibility
+### 3.1. Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
+This document is verified based on the following versions:
 
-Check the release version information in the release address of the third-party library: [@react-native-ohos/lottie-react-native Releases](https://gitcode.com/openharmony-sig/rntpc_lottie-react-native/releases)
+1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
+3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.1 Release SDK; IDE: DevEco Studio 6.0.1 Release; ROM:6.0.0.120 SP7;
 
-### Permission Requirements
+### 3.2. Permission Requirements
 
-- 如果 source 使用网络 url 应用需要申请网络权限
+- If the source uses a network URL, the application needs to apply for network permissions.
 
-Include applicable permissions in the module.json5 file within the entry directory.
+  Include applicable permissions in the `entry/src/main/module.json5` file within the entry directory.
 
 ```json
 requestPermissions: [
@@ -263,11 +287,11 @@ requestPermissions: [
 ],
 ```
 
-- 如果使用的 json 文件里有依赖图片资源或使用 imageAssetsFolder 属性，需要将资源文件放置到 HarmonyOS 工程 rawfile 下对应的路径中
+- If the JSON file used has dependent image resources or uses the imageAssetsFolder property, the resource files need to be placed in the corresponding path under the HarmonyOS project rawfile directory.
 
-rawfile 路径：`entry/src/main/resources/rawfile`
+rawfile path: `entry/src/main/resources/rawfile`
 
-## Properties
+## 4. Properties
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
@@ -283,6 +307,7 @@ rawfile 路径：`entry/src/main/resources/rawfile`
 | autoPlay           | A boolean flag indicating whether or not the animation should start automatically when mounted. This only affects the imperative API.                                                                                                                                                                                                                          | boolean                                     | false     | No       | All                   | Yes               |
 | resizeMode         | Determines how to resize the animated view when the frame doesn't match the raw image dimensions. Supports cover, contain and center.                                                                                                                                                                                                                          | 'cover'\| 'contain' \| 'center'             | contain   | No       | iOS, Android, Windows | Yes               |
 | style              | Style attributes for the view, as expected in a standard View, aside from border styling                                                                                                                                                                                                                                                                       | StyleProp<ViewStyle>                        | None      | No       | iOS, Android, Windows | Yes               |
+| containerStyle              | Style attributes for the outermost container view, as expected in a standard View. Useful for layout and positioning.                                                                                                                                                                                                                                                                       | StyleProp<ViewStyle>                        | None      | No       | iOS, Android, VisionOS | Yes               |
 | webStyle           | Style attributes for the view, it uses CSSProperties.                                                                                                                                                                                                                                                                                                          | CSSProperties                               | None      | No       | Web                   | No                |
 | imageAssetsFolder  | Needed for Android and HarmonyOS to work properly with assets, iOS will ignore it.                                                                                                                                                                                                                                                                             | string                                      | None      | No       | Android               | Yes               |
 | useNativeLooping   | Only Windows. When enabled, uses platform-level looping to improve smoothness, but onAnimationLoop will not fire and changing the loop prop will reset playback rather than finishing gracefully.                                                                                                                                                              | boolean                                     | false     | No       | Windows               | No                |
@@ -298,7 +323,7 @@ rawfile 路径：`entry/src/main/resources/rawfile`
 | hover              | Only Web, a boolean denoting whether to play on mouse hover.                                                                                                                                                                                                                                                                                                   | boolean                                     | false     | No       | Web                   | No                |
 | direction          | Only Web a number from 1 or -1 denoting playing direction.                                                                                                                                                                                                                                                                                                     | 1\| -1                                      | 1         | No       | Web                   | No                |
 
-## Static Methods
+## 5. Static Methods (Imperative API)
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
@@ -311,12 +336,12 @@ rawfile 路径：`entry/src/main/resources/rawfile`
 | pause  | Pauses the animation.                                                                                                                                                                   | function | No       | All      | Yes               |
 | resume | Resumes the paused animation.                                                                                                                                                           | function | No       | All      | Yes               |
 
-## Known Issues
+## 6. Known Issues
 
-- [ ] 原库部分接口在 HarmonyOS 中没有对应属性及接口处理相关逻辑，问题: [issue#18](https://github.com/react-native-oh-library/lottie-react-native/issues/18)
+- [ ] Some interfaces of the original library do not have corresponding properties and interface handling logic in HarmonyOS: [issue#18](https://github.com/react-native-oh-library/lottie-react-native/issues/18)
 
-## Others
+## 7. Others
 
-## License
+## 8. License
 
 This project is licensed under [Apache License 2.0](https://github.com/lottie-react-native/lottie-react-native/blob/master/LICENSE).
