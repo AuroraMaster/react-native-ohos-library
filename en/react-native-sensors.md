@@ -58,22 +58,34 @@ export const App = () => {
             let sensorsSubscription: Subscription;
             switch (sensors) {
                 case 'accelerometer':
-                    sensorsSubscription = accelerometer.subscribe();
+                    sensorsSubscription = accelerometer.subscribe((data: any) => {
+                        console.log(`accelerometer data: ${JSON.stringify(data)}`);
+                    });
                     break;
                 case 'gyroscope':
-                    sensorsSubscription = gyroscope.subscribe();
+                    sensorsSubscription = gyroscope.subscribe((data: any) => {
+                        console.log(`gyroscope data: ${JSON.stringify(data)}`);
+                    });
                     break;
                 case 'magnetometer':
-                    sensorsSubscription = magnetometer.subscribe();
+                    sensorsSubscription = magnetometer.subscribe((data: any) => {
+                        console.log(`magnetometer data: ${JSON.stringify(data)}`);
+                    });
                     break;
                 case 'barometer':
-                    sensorsSubscription = barometer.subscribe();
+                    sensorsSubscription = barometer.subscribe((data: any) => {
+                        console.log(`barometer data: ${JSON.stringify(data)}`);
+                    });
                     break;
                 case 'orientation':
-                    sensorsSubscription = orientation.subscribe();
+                    sensorsSubscription = orientation.subscribe((data: any) => {
+                        console.log(`orientation data: ${JSON.stringify(data)}`);
+                    });
                     break;
                 case 'gravity':
-                    sensorsSubscription = gravity.subscribe();
+                    sensorsSubscription = gravity.subscribe((data: any) => {
+                        console.log(`gravity data: ${JSON.stringify(data)}`);
+                    });
                     break;
                 default:
             }
