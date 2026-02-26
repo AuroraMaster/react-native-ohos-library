@@ -1,33 +1,23 @@
-> Template version: v0.2.2
+> Template version: v0.4.0
 
 <p align="center">
   <h1 align="center"> <code>react-native-svg(CAPI)</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/software-mansion/react-native-svg">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20windows%20|%20macos%20|%20web%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/software-mansion/react-native-svg/blob/main/LICENSE">
-        <img src="https://img.shields.io/npm/l/react-native-svg.svg" alt="License" />
-    </a>
-</p>
 
-> [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-harmony-svg)
+This project is based on [react-native-svg](https://github.com/software-mansion/react-native-svg) .
 
-## Installation and Usage
+This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/react-native-svg`, The version correspondence details are as follows:
 
-Please refer to the Releases page of the third-party library for the corresponding version information:
+| Name                                  | Version              | Release Information                                          | Supported RN Version | Supported Autolink | Compile API Version | Community Baseline Version | npm Address                                                  |
+| ------------------------------------- | -------------------- | ------------------------------------------------------------ | -------------------- | ------------------ | ------------------- | -------------------------- | ------------------------------------------------------------ |
+| @react-native-ohos/react-native-svg   | ~15.13.0             | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-svg/releases) | 0.82.*               | No                 | API15+              | 15.15.0                    | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-svg) |
+| @react-native-ohos/react-native-svg   | ~15.12.1             | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-svg/releases) | 0.77.*               | No                 | API15+              | 15.12.0                    | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-svg) |
+| @react-native-ohos/react-native-svg   | ~ 15.0.2             | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-svg/releases) | 0.72.*               | Yes                | API15+              | 15.0.0                     | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-svg) |
+| @react-native-oh-tpl/react-native-svg | <= 15.0.1@deprecated | [Github Releases(deprecated)](https://github.com/react-native-oh-library/react-native-harmony-svg/releases) | 0.72.*               | No                 | API12+              | 15.0.0                     | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-svg) |
 
-| Third-party Library Version | Release Information                                                     | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| <= 15.0.1@deprecated      | [@react-native-oh-tpl/react-native-svg Releases(deprecated)](https://github.com/react-native-oh-library/react-native-harmony-svg/releases) | 0.72       |
-| 15.0.2      | [@react-native-ohos/react-native-svg Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-svg/releases)                        | 0.72       |
-| 15.12.1    | [@react-native-ohos/react-native-svg Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-svg/releases)                        | 0.77       |
-
-For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+## 1. Installation and Usage
 
 Go to the project directory and execute the following instruction:
-
 
 <!-- tabs:start -->
 
@@ -41,6 +31,10 @@ npm install @react-native-ohos/react-native-svg
 # 0.77
 npm install react-native-svg@15.12.0
 npm install @react-native-ohos/react-native-svg
+
+# 0.82
+npm install react-native-svg@15.15.0
+npm install @react-native-ohos/react-native-svg
 ```
 
 #### **yarn**
@@ -53,6 +47,10 @@ yarn add @react-native-ohos/react-native-svg
 # 0.77
 yarn add react-native-svg@15.12.0
 yarn add @react-native-ohos/react-native-svg
+
+# 0.82
+yarn add react-native-svg@15.15.0
+yarn add @react-native-ohos/react-native-svg
 ```
 
 <!-- tabs:end -->
@@ -62,9 +60,9 @@ The following code shows the basic use scenario of the repository:
 > [!WARNING] The name of the imported repository remains unchanged.
 
 ```js
-import React from "react";
-import { StyleSheet, SafeAreaView } from "react-native";
-import { Svg, Path } from "react-native-svg";
+import React from 'react';
+import { StyleSheet,SafeAreaView } from 'react-native';
+import { Svg,Path } from 'react-native-svg';
 
 export default function App() {
   return (
@@ -78,42 +76,53 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "grey",
+    flex:1,
+    backgroundColor: 'grey',
   },
 });
 ```
 
-## Link
+## 2. Manual Link
 
 |                                      | Is supported autolink | Supported RN Version |
 |--------------------------------------|-----------------------|----------------------|
+| ~15.13.0 | No | 0.82 |
 | ~15.12.1                               |  No                   |  0.77                |
 | ~15.0.2                              |  Yes                  |  0.72                |
 | <= 15.0.1@deprecated            |  No                   |  0.72                |
 
-Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+Projects using AutoLink need to be configured according to this document, AutoLink framework guide.：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+If the version you are using supports Autolink and the project has integrated Autolink, you can skip the ManualLink configuration.
+
 <details>
-  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
+  <summary>ManualLink: This step provides guidance for manually configuring native dependencies.</summary>
 
-First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
 
-### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
+Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
+
+### 2.1 Overrides RN SDK
+
+To ensure the project relies on the same version of the RN SDK, you need to add an `overrides` field in the project's root `oh-package.json5` file, specifying the RN SDK version to be used. The replacement version can be a specific version number, a semver range, or a locally available HAR package or source directory.
+
+For more information about the purpose of this field, please refer to the [official documentation](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-oh-package-json5-V5#en-us_topic_0000001792256137_overrides).
 
 ```json
 {
-  ...
   "overrides": {
-    "@rnoh/react-native-openharmony" : "./react_native_openharmony"
+    "@rnoh/react-native-openharmony": "^0.72.38" // ohpm version
+    // "@rnoh/react-native-openharmony" : "./react_native_openharmony.har" // a locally available HAR package
+    // "@rnoh/react-native-openharmony" : "./react_native_openharmony" // source code directory
   }
 }
 ```
 
-### 2. Introducing Native Code
+### 2.2 Introducing Native Code
 
 Currently, two methods are available:
+
+- Use the HAR file.
+- Directly link to the source code。
 
 Method 1 (recommended): Use the HAR file.
 
@@ -123,7 +132,6 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 
 ```json
 "dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
     "@react-native-ohos/react-native-svg": "file:../../node_modules/@react-native-ohos/react-native-svg/harmony/svg.har"
   }
 ```
@@ -141,46 +149,22 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 3. Configuring CMakeLists and Introducing SVGPackage
+### 2.3 Configuring CMakeLists and Introducing SVGPackage
 
 > If you are using version <= 15.0.1, please skip this chapter.
 
 Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
 ```diff
-project(rnapp)
-cmake_minimum_required(VERSION 3.4.1)
-set(CMAKE_SKIP_BUILD_RPATH TRUE)
-set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
-set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
 + set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
-set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
-set(LOG_VERBOSITY_LEVEL 1)
-set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
-set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
-set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
-add_compile_definitions(WITH_HITRACE_SYSTRACE)
-
-add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
-add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-svg/src/main/cpp" ./svg)
 # RNOH_END: manual_package_linking_1
 
-file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
-
-add_library(rnoh_app SHARED
-    ${GENERATED_CPP_FILES}
-    "./PackageProvider.cpp"
-    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
-)
-target_link_libraries(rnoh_app PUBLIC rnoh)
-
 # RNOH_BEGIN: manual_package_linking_2
-target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
 + target_link_libraries(rnoh_app PUBLIC rnoh_svg)
-# RNOH_END: link_packages
+# RNOH_END: manual_package_linking_2
 ```
 
 Open `entry/src/main/cpp/PackageProvider.cpp` and add the following code:
@@ -188,7 +172,6 @@ Open `entry/src/main/cpp/PackageProvider.cpp` and add the following code:
 ```diff
 #include "RNOH/PackageProvider.h"
 #include "generated/RNOHGeneratedPackage.h"
-#include "SamplePackage.h"
 + #include "SVGPackage.h"
 
 using namespace rnoh;
@@ -196,13 +179,12 @@ using namespace rnoh;
 std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
     return {
         std::make_shared<RNOHGeneratedPackage>(ctx),
-        std::make_shared<SamplePackage>(ctx),
 +       std::make_shared<SVGPackage>(ctx),
     };
 }
 ```
 
-### 4. Introducing SvgPackage to ArkTS
+### 2.4.  Introducing SvgPackage to ArkTS
 
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
@@ -212,14 +194,13 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
-    new SamplePackage(ctx),
 +   new SvgPackage(ctx),
   ];
 }
 ```
 </details>
 
-## Running
+## 2.5 Running
 
 Click the `sync` button in the upper right corner.
 
@@ -236,7 +217,6 @@ Then build and run the code.
 
 > [!TIP] This item is not mandatory. It only needs to be configured when using the fontFamily Properties property in the Text to specify a custom font.
 
-
 Step 1:
 Copy the font files to the entry/src/main/resources/rawfile/assets/fonts directory (if external font files are used, you need to copy the *.ttf files over).
 
@@ -249,7 +229,7 @@ Open `entry/src/main/ets/pages/Index.ets` and add the following code:
         "HarmonyOS_Sans_Condensed_Regular_Italic": $rawfile("assets/fonts/HarmonyOS_Sans_Condensed_Regular_Italic.ttf")
         "HarmonyOS_Sans_Digit_Medium": $rawfile("assets/fonts/HarmonyOS_Sans_Digit_Medium.ttf")
     }
-
+    
     @Entry
     @Component
     struct Index {
@@ -257,7 +237,7 @@ Open `entry/src/main/ets/pages/Index.ets` and add the following code:
         build() {
             Column(){
                 //...
-
+    
                 RNApp({
                 rnInstanceConfig: {
                     //...
@@ -265,14 +245,14 @@ Open `entry/src/main/ets/pages/Index.ets` and add the following code:
                 },
                 //...
             }
-
+    
         }
         //...
     }
 
-## Constraints
+## 3. Constraints
 
-### Compatibility
+### 3.1 Compatibility
 
 To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
 
@@ -281,421 +261,425 @@ Verified in the following versions.
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
+4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.1 Release SDK; IDE: DevEco Studio 6.0.1 Release; ROM: 6.0.0.120 SP7;
 
+### 3.2. API requirements
+
+> [!TIP] All versions of the current third-party libraries have implemented version isolation, supporting compilation in `API12+` projects and execution on `API12+` ROMs.
+
+> [!TIP] The following features depend on specific API versions. Compiling the project with an API version lower than specified or running the ROM with an API version lower than specified may result in limited functionality.
+
+1. Version >=15.0.2 for 0.72 introduced [OH_ArkUI_CreateSnapshotOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/capi-native-type-h#oh_arkui_createsnapshotoptions)，[OH_ArkUI_SnapshotOptions_SetScale](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/capi-native-type-h#oh_arkui_snapshotoptions_setscale)，[OH_ArkUI_GetNodeSnapshot](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/capi-native-node-h#oh_arkui_getnodesnapshot), achieves the ForeignObject functionality . This API requires compilation in a project that supports `API15+` and must run on a ROM that supports `API15+` to take effect.
+2. Version >=15.12.1 for 0.77 introduced [OH_ArkUI_CreateSnapshotOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/capi-native-type-h#oh_arkui_createsnapshotoptions)，[OH_ArkUI_SnapshotOptions_SetScale](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/capi-native-type-h#oh_arkui_snapshotoptions_setscale)，[OH_ArkUI_GetNodeSnapshot](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/capi-native-node-h#oh_arkui_getnodesnapshot), achieves the ForeignObject functionality . This API requires compilation in a project that supports `API15+` and must run on a ROM that supports `API15+` to take effect.
 
 ## Properties
 
 For details, see [react-native-svg](https://github.com/software-mansion/react-native-svg/blob/main/USAGE.md)
 
-以下为目前已支持的组件 Properties：
+The following are the currently supported component properties：
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-**Svg**：绘制组件的父组件
+**Svg**: Parent component for drawing components
 
-|        Name         |     Description      |      Type       | Required | Platform | HarmonyOS Support |
-| :-----------------: | :------------------: | :-------------: | :------: | :------: | :---------------: |
-|        width        |       组件宽度       | number\| string |   Yes    |   All    |        Yes        |
-|       height        |       组件高度       | number\| string |   Yes    |   All    |        Yes        |
-|       viewBox       |       组件视区       |     string      |    No    |   All    |        Yes        |
-|        color        |         颜色         |     string      |    No    |   All    |        Yes        |
-|        title        |      组件标题名      |     string      |    No    |   All    |        Yes        |
-| preserveAspectRatio | 是否强制进行统一缩放 |     string      |    No    |   All    |        Yes        |
-| style | 用于控制组件的视觉外观和布局 |object |    No    |   All    |        Yes        |
+|        Name         |                        Description                         |      Type       | Required | Platform | HarmonyOS Support |
+| :-----------------: | :--------------------------------------------------------: | :-------------: | :------- | :------- | :---------------- |
+|        width        |                      Component width                       | number\| string | Yes      | All      | Yes               |
+|       height        |                      Component height                      | number\| string | Yes      | All      | Yes               |
+|       viewBox       |                     Component viewport                     |     string      | No       | All      | Yes               |
+|        color        |                           Color                            |     string      | No       | All      | Yes               |
+|        title        |                    Component title name                    |     string      | No       | All      | Yes               |
+| preserveAspectRatio |              Whether to force unified scaling              |     string      | No       | All      | Yes               |
+|        style        | Controls the visual appearance and layout of the component |     object      | No       | All      | Yes               |
 
-**G**：该元素是用于对 Others SVG 元素进行分组的容器
+**G**: A container used to group other SVG elements
 
 |  Name   | Description |      Type       | Required | Platform | HarmonyOS Support |
 | :-----: | :---------: | :-------------: | -------- | -------- | ----------------- |
-| opacity |   透明度    | number\| string | No       | All      | Yes               |
+| opacity |   Opacity   | number\| string | No       | All      | Yes               |
 
-**Path**： 路径绘制组件，根据绘制路径生成封闭的自定义形状
+**Path**: Path drawing component that generates closed custom shapes based on the drawing path
 
-|  Name   |     Description      |  Type  | Required | Platform | HarmonyOS Support |
-| :-----: | :------------------: | :----: | -------- | -------- | ----------------- |
-|    d    | 路径绘制的命令字符串 | string | Yes      | All      | Yes               |
-| opacity |        透明度        | number | No       | All      | Yes               |
+|  Name   |           Description           |  Type  | Required | Platform | HarmonyOS Support |
+| :-----: | :-----------------------------: | :----: | -------- | -------- | ----------------- |
+|    d    | Command string for path drawing | string | Yes      | All      | Yes               |
+| opacity |             Opacity             | number | No       | All      | Yes               |
 
-**Rect**： 矩形绘制组件，根据角位置和宽高生成矩形形状
+**Rect**: Rectangle drawing component that generates rectangular shapes based on corner positions, width and height
 
-|  Name   |    Description    |      Type       | Required | Platform | HarmonyOS Support |
-| :-----: | :---------------: | :-------------: | -------- | -------- | ----------------- |
-|    x    | 在 x 轴上平移距离 | number\| string | No       | All      | Yes               |
-|    y    | 在 y 轴上平移距离 | number\| string | No       | All      | Yes               |
-|  width  |     元素宽度      | number\| string | Yes      | All      | Yes               |
-| height  |     元素高度      | number\| string | Yes      | All      | Yes               |
-|   rx    | 定义 x 轴上的半径 | number\| string | No       | All      | Yes               |
-|   ry    | 定义 y 轴上的半径 | number\| string | No       | All      | Yes               |
-| opacity |      透明度       | number\| string | No       | All      | Yes               |
+|  Name   |            Description             |      Type       | Required | Platform | HarmonyOS Support |
+| :-----: | :--------------------------------: | :-------------: | -------- | -------- | ----------------- |
+|    x    | Translation distance on the x-axis | number\| string | No       | All      | Yes               |
+|    y    | Translation distance on the y-axis | number\| string | No       | All      | Yes               |
+|  width  |           Element width            | number\| string | Yes      | All      | Yes               |
+| height  |           Element height           | number\| string | Yes      | All      | Yes               |
+|   rx    |  Defines the radius on the x-axis  | number\| string | No       | All      | Yes               |
+|   ry    |  Defines the radius on the y-axis  | number\| string | No       | All      | Yes               |
+| opacity |              Opacity               | number\| string | No       | All      | Yes               |
 
-**Image**： 图像元素，支持 JPEG、PNG 格式
+**Image**: Image element that supports JPEG and PNG formats
 
 > [!WARNING]
 >
-> 注： Image 依赖 Canary3 Sp2 以上版本的 SDK 和 ROM。
+> Note: Image depends on SDK and ROM versions higher than Canary3 Sp2.
 
-|        Name         |                Description                 |               Type               | Required | Platform | HarmonyOS Support |
-| :-----------------: | :----------------------------------------: | :------------------------------: | -------- | -------- | ----------------- |
-|          x          |             在 x 轴上平移距离              |         number\| string          | No       | All      | Yes               |
-|          y          |             在 y 轴上平移距离              |         number\| string          | No       | All      | Yes               |
-|        width        |                  元素宽度                  |         number\| string          | Yes      | All      | Yes               |
-|       height        |                  元素高度                  |         number\| string          | Yes      | All      | Yes               |
-|        href         |                图像资源引用                |         source\| string          | Yes      | All      | Yes               |
-|      xlinkHref      |         用于指定要嵌入的图像的 URL         | RNImageProps['source'] \| string | No       | All      | Yes               |
-| preserveAspectRatio | 控制在给定的容器尺寸内如何保持图像的宽高比 |              string              | No       | All      | Yes               |
-|       opacity       |                   透明度                   |         source\| string          | No       | All      | Yes               |
+|        Name         |                         Description                          |               Type               | Required | Platform | HarmonyOS Support |
+| :-----------------: | :----------------------------------------------------------: | :------------------------------: | -------- | -------- | ----------------- |
+|          x          |              Translation distance on the x-axis              |         number\| string          | No       | All      | Yes               |
+|          y          |              Translation distance on the y-axis              |         number\| string          | No       | All      | Yes               |
+|        width        |                        Element width                         |         number\| string          | Yes      | All      | Yes               |
+|       height        |                        Element height                        |         number\| string          | Yes      | All      | Yes               |
+|        href         |                   Image resource reference                   |         source\| string          | Yes      | All      | Yes               |
+|      xlinkHref      |        Used to specify the URL of the image to embed         | RNImageProps['source'] \| string | No       | All      | Yes               |
+| preserveAspectRatio | Controls how to maintain the aspect ratio of the image within the given container size |              string              | No       | All      | Yes               |
+|       opacity       |                           Opacity                            |         source\| string          | No       | All      | Yes               |
 
-**Circle**： 园绘制组件，基于圆心和半径生成园形形状
+**Circle**: Circle drawing component that generates circular shapes based on the center and radius
 
-|  Name   |      Description      |      Type       | Required | Platform | HarmonyOS Support |
-| :-----: | :-------------------: | :-------------: | -------- | -------- | ----------------- |
-|    r    |        园半径         | number\| string | Yes      | All      | Yes               |
-|   cx    | 圆心在 x 轴上平移距离 | number\| string | No       | All      | Yes               |
-|   cy    | 圆心在 y 轴上平移距离 | number\| string | No       | All      | Yes               |
-| opacity |        透明度         |     number      | No       | All      | Yes               |
+|  Name   |                   Description                    |      Type       | Required | Platform | HarmonyOS Support |
+| :-----: | :----------------------------------------------: | :-------------: | -------- | -------- | ----------------- |
+|    r    |                  Circle radius                   | number\| string | Yes      | All      | Yes               |
+|   cx    | Translation distance of the center on the x-axis | number\| string | No       | All      | Yes               |
+|   cy    | Translation distance of the center on the y-axis | number\| string | No       | All      | Yes               |
+| opacity |                     Opacity                      |     number      | No       | All      | Yes               |
 
-**Polygon**： 多边形制组件，用于创建至少包含三条边的图形
+**Polygon**: Polygon drawing component used to create shapes with at least three sides
 
-|  Name   |          Description           |      Type      | Required | Platform | HarmonyOS Support |
-| :-----: | :----------------------------: | :------------: | -------- | -------- | ----------------- |
-| points  | 定义多边形每个角的 x 和 y 坐标 | string\| array | Yes      | All      | Yes               |
-| opacity |             透明度             |     number     | No       | All      | Yes               |
+|  Name   |                         Description                          |      Type      | Required | Platform | HarmonyOS Support |
+| :-----: | :----------------------------------------------------------: | :------------: | -------- | -------- | ----------------- |
+| points  | Defines the x and y coordinates of each corner of the polygon | string\| array | Yes      | All      | Yes               |
+| opacity |                           Opacity                            |     number     | No       | All      | Yes               |
 
-**Polyline**： 多段线组件，用于创建一条线段构成的轨迹
+**Polyline**: Polyline component used to create a trajectory composed of line segments
 
-|  Name   |           Description            |      Type      | Required | Platform | HarmonyOS Support |
-| :-----: | :------------------------------: | :------------: | -------- | -------- | ----------------- |
-| points  | 定义多段线每个端点的 x 和 y 坐标 | string\| array | Yes      | All      | Yes               |
-| opacity |              透明度              |     number     | No       | All      | Yes               |
+|  Name   |                         Description                          |      Type      | Required | Platform | HarmonyOS Support |
+| :-----: | :----------------------------------------------------------: | :------------: | -------- | -------- | ----------------- |
+| points  | Defines the x and y coordinates of each endpoint of the polyline | string\| array | Yes      | All      | Yes               |
+| opacity |                           Opacity                            |     number     | No       | All      | Yes               |
 
-**Defs**：该元素是用于对 Others SVG 元素进行分组的容器
+**Defs**: A container used to group other SVG elements
 
-> 注： 该组件无 Properties
+> Note: This component has no Properties.
 
 | Name | Description | Type | Required | Platform | HarmonyOS Support |
-| :--: | :---------: | :--: | -------- | -------- | ----------------- |
+| :--: | :---------: | :--: | :------- | -------- | ----------------- |
 |  /   |      /      |  /   | /        | All      | Yes               |
 
-**LinearGradient**：用于定义线性渐变
+**LinearGradient**: Used to define linear gradients
 
-|       Name        |              Description               |                  Type                   | Required | Platform | HarmonyOS Support |
-| :---------------: | :------------------------------------: | :-------------------------------------: | -------- | -------- | ----------------- |
-|        x1         |           在 x 轴上平移距离            |             number\| string             | No       | All      | Yes               |
-|        y1         |           在 y 轴上平移距离            |             number\| string             | No       | All      | Yes               |
-|        x2         |           在 x 轴上平移距离            |             number\| string             | No       | All      | Yes               |
-|        y2         |           在 y 轴上平移距离            |             number\| string             | No       | All      | Yes               |
-|   gradientUnits   |    指定元素 Properties 使用的坐标系    | 'userSpaceOnUse' \| 'objectBoundingBox' | No       | All      | Yes               |
-| gradientTransform | 指定从元素当前坐标系到目标坐标系的转换 |  ColumnMajorTransformMatrix \| string   | No       | All      | Yes               |
+|       Name        |                         Description                          |                  Type                   | Required | Platform | HarmonyOS Support |
+| :---------------: | :----------------------------------------------------------: | :-------------------------------------: | -------- | -------- | ----------------- |
+|        x1         |              Translation distance on the x-axis              |             number\| string             | No       | All      | Yes               |
+|        y1         |              Translation distance on the y-axis              |             number\| string             | No       | All      | Yes               |
+|        x2         |              Translation distance on the x-axis              |             number\| string             | No       | All      | Yes               |
+|        y2         |              Translation distance on the y-axis              |             number\| string             | No       | All      | Yes               |
+|   gradientUnits   | Specifies the coordinate system used by the element's Properties | 'userSpaceOnUse' \| 'objectBoundingBox' | No       | All      | Yes               |
+| gradientTransform | Specifies the transformation from the element's current coordinate system to the target coordinate system |  ColumnMajorTransformMatrix \| string   | No       | All      | Yes               |
 
-**RadialGradient**：用于定义线性渐变
+**RadialGradient**: Used to define radial gradients
 
 > [!WARNING]
 >
-> 注： RadialGradient 依赖 Canary3 Sp2 以上版本的 SDK 和 ROM。
+> Note: RadialGradient depends on SDK and ROM versions higher than Canary3 Sp2.
 
-|       Name        |              Description               |                  Type                   | Required | Platform | HarmonyOS Support |
-| :---------------: | :------------------------------------: | :-------------------------------------: | -------- | -------- | ----------------- |
-|        fx         |           起始圆的 x 轴坐标            |             number\| string             | No       | All      | Yes               |
-|        fy         |           起始圆的 y 轴坐标            |             number\| string             | No       | All      | Yes               |
-|        rx         |          终止椭圆的 x 轴半径           |             number\| string             | No       | All      | Yes               |
-|        ry         |          终止椭圆的 y 轴半径           |             number\| string             | No       | All      | Yes               |
-|        cx         |           终止圆的 x 轴坐标            |             number\| string             | No       | All      | Yes               |
-|        cy         |           终止圆的 y 轴坐标            |             number\| string             | No       | All      | Yes               |
-|         r         |              终止圆的半径              |             number\| string             | No       | All      | Yes               |
-|   gradientUnits   |    指定元素 Properties 使用的坐标系    | 'userSpaceOnUse' \| 'objectBoundingBox' | No       | All      | Yes               |
-| gradientTransform | 指定从元素当前坐标系到目标坐标系的转换 |  ColumnMajorTransformMatrix \| string   | No       | All      | Yes               |
+|       Name        |                         Description                          |                  Type                   | Required | Platform | HarmonyOS Support |
+| :---------------: | :----------------------------------------------------------: | :-------------------------------------: | -------- | -------- | ----------------- |
+|        fx         |           X-axis coordinate of the starting circle           |             number\| string             | No       | All      | Yes               |
+|        fy         |           Y-axis coordinate of the starting circle           |             number\| string             | No       | All      | Yes               |
+|        rx         |             X-axis radius of the ending ellipse              |             number\| string             | No       | All      | Yes               |
+|        ry         |             Y-axis radius of the ending ellipse              |             number\| string             | No       | All      | Yes               |
+|        cx         |            X-axis coordinate of the ending circle            |             number\| string             | No       | All      | Yes               |
+|        cy         |            Y-axis coordinate of the ending circle            |             number\| string             | No       | All      | Yes               |
+|         r         |                 Radius of the ending circle                  |             number\| string             | No       | All      | Yes               |
+|   gradientUnits   | Specifies the coordinate system used by the element's Properties | 'userSpaceOnUse' \| 'objectBoundingBox' | No       | All      | Yes               |
+| gradientTransform | Specifies the transformation from the element's current coordinate system to the target coordinate system |  ColumnMajorTransformMatrix \| string   | No       | All      | Yes               |
 
-**Stop**：定义渐变上的颜色坡度
+**Stop**: Defines color stops on a gradient
 
-|    Name     |  Description   |  Type  | Required | Platform | HarmonyOS Support |
-| :---------: | :------------: | :----: | -------- | -------- | ----------------- |
-|  stopColor  |     渐变色     | string | No       | All      | Yes               |
-| stopOpacity |  渐变色透明度  | string | No       | All      | Yes               |
-|   offset    | 渐变色相对位置 | string | No       | All      | Yes               |
+|    Name     |               Description               |  Type  | Required | Platform | HarmonyOS Support |
+| :---------: | :-------------------------------------: | :----: | -------- | -------- | ----------------- |
+|  stopColor  |             Gradient color              | string | No       | All      | Yes               |
+| stopOpacity |         Gradient color opacity          | string | No       | All      | Yes               |
+|   offset    | Relative position of the gradient color | string | No       | All      | Yes               |
 
-**Mask**：定义 alpha 蒙版，用于将当前对象合成到背景中
+**Mask**: Defines an alpha mask used to composite the current object onto the background
 
-|       Name       | Description                                                                                                | Type       | Required | Platform | HarmonyOS Support |
-| :--------------: | ---------------------------------------------------------------------------------------------------------- | ---------- | -------- | -------- | :---------------: |
-|        id        | 唯一标识                                                                                                   | string     | No       | All      |        Yes        |
-|        x         | 左侧顶角横坐标                                                                                             | NumberProp | No       | All      |        Yes        |
-|        y         | 左侧顶角纵坐标                                                                                             | NumberProp | No       | All      |        Yes        |
-|      width       | 元素宽度                                                                                                   | NumberProp | No       | All      |        Yes        |
-|      height      | 元素高度                                                                                                   | NumberProp | No       | All      |        Yes        |
-|    maskUnits     | 定义 x,y,width,height 使用的坐标系，默认值为 objectBoundingBox，可以使用 objectBoundingBox\|userSpaceOnUse | TMaskUnits | No       | All      |        Yes        |
-| maskContentUnits | 定义内容使用的坐标系，默认值为 userSpaceOnUse，可以使用 objectBoundingBox\|userSpaceOnUse                  | TMaskUnits | No       | All      |        Yes        |
+|       Name       |                         Description                          |    Type    | Required | Platform | HarmonyOS Support |
+| :--------------: | :----------------------------------------------------------: | :--------: | -------- | -------- | ----------------- |
+|        id        |                      Unique identifier                       |   string   | No       | All      | Yes               |
+|        x         |         Horizontal coordinate of the top-left corner         | NumberProp | No       | All      | Yes               |
+|        y         |          Vertical coordinate of the top-left corner          | NumberProp | No       | All      | Yes               |
+|      width       |                        Element width                         | NumberProp | No       | All      | Yes               |
+|      height      |                        Element height                        | NumberProp | No       | All      | Yes               |
+|    maskUnits     | Defines the coordinate system used by x, y, width, height (default: objectBoundingBox; values: objectBoundingBox\|userSpaceOnUse) | TMaskUnits | No       | All      | Yes               |
+| maskContentUnits | Defines the coordinate system used by the content (default: userSpaceOnUse; values: objectBoundingBox\|userSpaceOnUse) | TMaskUnits | No       | All      | Yes               |
 
-**Use**：该元素可以重复使用 SVG 元素
+**Use**: This element can reuse SVG elements
 
-|   Name    |                      Description                       |      Type       | Required | Platform | HarmonyOS Support |
-| :-------: | :----------------------------------------------------: | :-------------: | -------- | -------- | ----------------- |
-|     x     |                   在 x 轴上平移距离                    | number\| string | No       | All      | Yes               |
-|     y     |                   在 y 轴上平移距离                    | number\| string | No       | All      | Yes               |
-|   width   |                        元素宽度                        | number\| string | No       | All      | Yes               |
-|  height   |                        元素高度                        | number\| string | No       | All      | Yes               |
-|   href    |                      图像资源引用                      | source\| string | Yes      | All      | Yes               |
-| xlinkHref | 指定了一个 URI，该 URI 指向了 SVG 文档中定义的一个元素 |     string      | No       | All      | Yes               |
-|  opacity  |                         透明度                         | number\| string | No       | All      | Yes               |
+|   Name    |                         Description                          |      Type       | Required | Platform | HarmonyOS Support |
+| :-------: | :----------------------------------------------------------: | :-------------: | -------- | -------- | ----------------- |
+|     x     |              Translation distance on the x-axis              | number\| string | No       | All      | Yes               |
+|     y     |              Translation distance on the y-axis              | number\| string | No       | All      | Yes               |
+|   width   |                        Element width                         | number\| string | No       | All      | Yes               |
+|  height   |                        Element height                        | number\| string | No       | All      | Yes               |
+|   href    |                   Image resource reference                   | source\| string | Yes      | All      | Yes               |
+| xlinkHref | Specifies a URI pointing to an element defined in the SVG document |     string      | No       | All      | Yes               |
+|  opacity  |                           Opacity                            | number\| string | No       | All      | Yes               |
 
-**Ellipse**： 椭圆绘制组件，基于一个中心坐标以及它们的 x 半径和 y 半径
+**Ellipse**: Ellipse drawing component based on a center coordinate and their x-radius and y-radius
 
-|  Name   |      Description      |      Type       | Required | Platform | HarmonyOS Support |
-| :-----: | :-------------------: | :-------------: | -------- | -------- | ----------------- |
-|   cx    | 圆心在 x 轴上平移距离 | number\| string | No       | All      | Yes               |
-|   cy    | 圆心在 y 轴上平移距离 | number\| string | No       | All      | Yes               |
-|   rx    |   定义 x 轴上的半径   | number\| string | No       | All      | Yes               |
-|   ry    |   定义 y 轴上的半径   | number\| string | No       | All      | Yes               |
-| opacity |        透明度         | number\| string | No       | All      | Yes               |
+|  Name   |                   Description                    |      Type       | Required | Platform | HarmonyOS Support |
+| :-----: | :----------------------------------------------: | :-------------: | -------- | -------- | ----------------- |
+|   cx    | Translation distance of the center on the x-axis | number\| string | No       | All      | Yes               |
+|   cy    | Translation distance of the center on the y-axis | number\| string | No       | All      | Yes               |
+|   rx    |         Defines the radius on the x-axis         | number\| string | No       | All      | Yes               |
+|   ry    |         Defines the radius on the y-axis         | number\| string | No       | All      | Yes               |
+| opacity |                     Opacity                      | number\| string | No       | All      | Yes               |
 
-**Symbol**： 该元素用来定义一个图形模板对象，它可以用一个<use>元素实例化
+**ClipPath**: This element defines a clipping path that can be used as the value of the clipPath Property of other elements
 
-|        Name         |     Description      |  Type  | Required | Platform | HarmonyOS Support |
-| :-----------------: | :------------------: | :----: | -------- | -------- | ----------------- |
-| preserveAspectRatio | 是否强制进行统一缩放 | string | No       | All      | Yes               |
-|       viewBox       |       组件视区       | string | No       | All      | Yes               |
+| Name |           Description            |  Type  | Required | Platform | HarmonyOS Support |
+| :--: | :------------------------------: | :----: | -------- | -------- | ----------------- |
+|  id  | Unique identifier of the element | string | No       | All      | Yes               |
 
-**ClipPath**：该元素定义一条剪切路径，可作为 Others 元素的 clipPath Properties 的值
+**Marker**: Used to add markers to drawing components
 
-| Name | Description | Type | Required | Platform | HarmonyOS Support |
-| :--: | :---------: | :--: | -------- | -------- | ----------------- |
-|  id    |      元素的唯一标识符。      |  string   | No       | All   | Yes   |
+|     Name     |                         Description                          |      Type       | Required | Platform | HarmonyOS Support |
+| :----------: | :----------------------------------------------------------: | :-------------: | -------- | -------- | ----------------- |
+|      id      |             Assigns a unique name to the element             |     string      | Yes      | All      | Yes               |
+|   viewBox    |       Position and size of the viewport in user space        |     string      | No       | All      | Yes               |
+|     refX     |          X-coordinate of the marker reference point          | number\| string | No       | All      | Yes               |
+|     refY     |          Y-coordinate of the marker reference point          | number\| string | No       | All      | Yes               |
+| markerUnits  | Coordinate system for the markerWidth and markerHeight Properties, and the content of the marker |     string      | No       | All      | Yes               |
+|    orient    | How to rotate the marker when placing it at the corresponding position on the shape |     string      | No       | All      | Yes               |
+| markerWidth  | Represents the width of the viewport into which the marker is placed | number\| string | No       | All      | Yes               |
+| markerHeight | Represents the height of the viewport into which the marker is placed | number\| string | No       | All      | Yes               |
 
-**Marker**：用于在绘制类组件上添加标记
+**Pattern**: Used to define a graphic object that can be referenced to tile and redraw the graphic object to cover an area
 
-|     Name     |                          Description                          |      Type       | Required | Platform | HarmonyOS Support |
-| :----------: | :-----------------------------------------------------------: | :-------------: | -------- | -------- | ----------------- |
-|      id      |                     为元素分配唯一的名称                      |     string      | Yes      | All      | Yes               |
-|   viewBox    |                 视窗在用户空间中的位置和尺寸                  |     string      | No       | All      | Yes               |
-|     refX     |                      标记参考点的 x 坐标                      | number\| string | No       | All      | Yes               |
-|     refY     |                      标记参考点的 y 坐标                      | number\| string | No       | All      | Yes               |
-| markerUnits  | markerWidth 和 markerHeight Properties 的坐标系以及标记的内容 |     string      | No       | All      | Yes               |
-|    orient    |            将标记放置在形状上的相应位置时如何旋转             |     string      | No       | All      | Yes               |
-| markerWidth  |                   表示标记进入的视窗的宽度                    | number\| string | No       | All      | Yes               |
-| markerHeight |                   表示标记进入的视窗的高度                    | number\| string | No       | All      | Yes               |
+|        Name         |                         Description                          |      Type       | Required | Platform | HarmonyOS Support |
+| :-----------------: | :----------------------------------------------------------: | :-------------: | -------- | -------- | ----------------- |
+|         id          |             Assigns a unique name to the element             |     string      | Yes      | All      | Yes               |
+|          x          |          X-coordinate of the marker reference point          | number\| string | No       | All      | Yes               |
+|          y          |          Y-coordinate of the marker reference point          | number\| string | No       | All      | Yes               |
+|        width        | Represents the width of the viewport into which the marker is placed | number\| string | No       | All      | Yes               |
+|       height        | Represents the height of the viewport into which the marker is placed | number\| string | No       | All      | Yes               |
+|    patternUnits     | Indicates which coordinate system the geometric Properties of the pattern element use |     string      | No       | All      | Yes               |
+| patternContentUnit  | Indicates which coordinate system the geometric Properties of the pattern element use |     string      | No       | All      | Yes               |
+|  patternTransform   | Defines a list of transform definitions applied to the pattern tile |     string      | No       | All      | Yes               |
+|       viewBox       | Defines the position and size of the viewport in user space  |     string      | No       | All      | Yes               |
+| preserveAspectRatio | Indicates how an element with a viewBox providing a given aspect ratio must fit into a viewport with a different aspect ratio |     string      | No       | All      | Yes               |
 
-**Pattern**：用于定义一个图形对象，可以被引用以平铺重绘该图形对象以覆盖某个区域。
+**Symbol**: This element is used to define a graphic template object that can be instantiated by a <use> element
 
-|        Name         |                                Description                                |      Type       | Required | Platform | HarmonyOS Support |
-| :-----------------: | :-----------------------------------------------------------------------: | :-------------: | -------- | -------- | ----------------- |
-|         id          |                           为元素分配唯一的名称                            |     string      | Yes      | All      | Yes               |
-|          x          |                            标记参考点的 x 坐标                            | number\| string | No       | All      | Yes               |
-|          y          |                            标记参考点的 y 坐标                            | number\| string | No       | All      | Yes               |
-|        width        |                         表示标记进入的视窗的宽度                          | number\| string | No       | All      | Yes               |
-|       height        |                         表示标记进入的视窗的高度                          | number\| string | No       | All      | Yes               |
-|    patternUnits     |      Properties 指示 pattern 元素的几何 Properties 使用哪个坐标系。       |     string      | No       | All      | Yes               |
-| patternContentUnit  |      Properties 指示 pattern 元素的几何 Properties 使用哪个坐标系。       |     string      | No       | All      | Yes               |
-|  patternTransform   |                   定义了应用于图案图块的变换定义的列表                    |     string      | No       | All      | Yes               |
-|       viewBox       |                     定义视窗在用户空间中的位置和尺寸                      |     string      | No       | All      | Yes               |
-| preserveAspectRatio | 指示具有提供给定宽高比的 viewBox 的元素必须如何适应具有不同宽高比的视口。 |     string      | No       | All      | Yes               |
+|        Name         |                         Description                          |  Type  | Required | Platform | HarmonyOS Support |
+| :-----------------: | :----------------------------------------------------------: | :----: | -------- | -------- | ----------------- |
+|         id          |             Assigns a unique name to the element             | string | Yes      | All      | Yes               |
+|       viewBox       | Defines the position and size of the viewport in user space  | string | No       | All      | Yes               |
+| preserveAspectRatio | Indicates how an element with a viewBox providing a given aspect ratio must fit into a viewport with a different aspect ratio | string | No       | All      | Yes               |
 
-**Symbol**：用于定义可由 use 元素实例化的图形模板对象。
+**Line**: A basic SVG shape used to create a line connecting two points
 
-|        Name         |                                Description                                |  Type  | Required | Platform | HarmonyOS Support |
-| :-----------------: | :-----------------------------------------------------------------------: | :----: | -------- | -------- | ----------------- |
-|         id          |                           为元素分配唯一的名称                            | string | Yes      | All      | Yes               |
-|       viewBox       |                     定义视窗在用户空间中的位置和尺寸                      | string | No       | All      | Yes               |
-| preserveAspectRatio | 指示具有提供给定宽高比的 viewBox 的元素必须如何适应具有不同宽高比的视口。 | string | No       | All      | Yes               |
+|  Name   |              Description              |      Type       | Required | Platform | HarmonyOS Support |
+| :-----: | :-----------------------------------: | :-------------: | -------- | -------- | ----------------- |
+|   x1    | Start point of the line on the x-axis | number\| string | No       | All      | Yes               |
+|   y1    | Start point of the line on the y-axis | number\| string | No       | All      | Yes               |
+|   x2    |  End point of the line on the x-axis  | number\| string | No       | All      | Yes               |
+|   y2    |  End point of the line on the y-axis  | number\| string | No       | All      | Yes               |
+| opacity |                Opacity                | number\| string | No       | All      | Yes               |
 
-**Line**：SVG 基本形状，用于创建连接两点的线。
+**Text**: Draws graphic elements composed of text
 
-|  Name   |   Description    |      Type       | Required | Platform | HarmonyOS Support |
-| :-----: | :--------------: | :-------------: | -------- | -------- | ----------------- |
-|   x1    | x 轴上线条的起点 | number\| string | No       | All      | Yes               |
-|   y1    | y 轴上的线的起点 | number\| string | No       | All      | Yes               |
-|   x2    | x 轴上的线的末端 | number\| string | No       | All      | Yes               |
-|   y2    | y 轴上的线的末端 | number\| string | No       | All      | Yes               |
-| opacity |      透明度      | number\| string | No       | All      | Yes               |
+|       Name        |                         Description                          |      Type       | Required | Platform | HarmonyOS Support |
+| :---------------: | :----------------------------------------------------------: | :-------------: | -------- | -------- | ----------------- |
+|         x         |        X-coordinate of the start of the text baseline        | number\|string  | No       | All      | Yes               |
+|         y         |        Y-coordinate of the start of the text baseline        | number\|string  | No       | All      | Yes               |
+|        dx         | Horizontally moves the text position from the previous text element | number\|string  | No       | All      | Yes               |
+|        dy         | Vertically moves the text position from the previous text element | number\| string | No       | All      | Yes               |
+|      rotate       |          Direction to rotate each individual glyph           |      array      | No       | All      | Yes               |
+|      opacity      |                           Opacity                            |     number      | No       | All      | Yes               |
+|    inlineSize     |                 Horizontal or vertical size                  |     number      | No       | All      | No                |
+| alignmentBaseline |         Specifies the alignment baseline of the text         |     string      | No       | All      | Yes               |
+|   baselineShift   |              Sets vertical position adjustment               | number\| string | No       | All      | Yes               |
+|   lengthAdjust    |       Adjusts text to fit specific layout constraints        |     string      | No       | All      | Yes               |
+|    textLength     |       Specifies the length the text should be rendered       |     number      | No       | All      | Yes               |
 
-**Text**：绘制由文本组成的图形元素
+**TSpan**: Draws text or sub-text within Text
 
-|       Name        |           Description            |      Type       | Required | Platform | HarmonyOS Support |
-| :---------------: | :------------------------------: | :-------------: | -------- | -------- | ----------------- |
-|         x         |      文本基线起点的 x 坐标       |  number\string  | No       | All      | Yes               |
-|         y         |      文本基线起点的 y 坐标       |  number\string  | No       | All      | Yes               |
-|        dx         | 从前一个文本元素水平移动文本位置 |  number\string  | No       | All      | Yes               |
-|        dy         | 从前一个文本元素垂直移动文本位置 | number\| string | No       | All      | Yes               |
-|      rotate       |      旋转每个单独字形的方向      |      array      | No       | All      | Yes               |
-|      opacity      |              透明度              |     number      | No       | All      | Yes               |
-|    inlineSize     |          水平或垂直尺寸          |     number      | No       | All      | No                |
-| alignmentBaseline |        指定文本的对齐基线        |     string      | NO       | ALL      | Yes               |
-|   baselineShift   |         设置垂直位置调整         | number\| string | No       | All      | Yes               |
-|   lengthAdjust    |   调整文本以适应特定的布局约束   |     string      | No       | All      | Yes               |
-|    textLength     |     指定文本应该被渲染的长度     |     number      | No       | All      | Yes               |
+|    Name    |                         Description                          |      Type       | Required | Platform | HarmonyOS Support |
+| :--------: | :----------------------------------------------------------: | :-------------: | -------- | -------- | ----------------- |
+|     x      |        X-coordinate of the start of the text baseline        | number\|string  | No       | All      | Yes               |
+|     y      |        Y-coordinate of the start of the text baseline        | number\|string  | No       | All      | Yes               |
+|     dx     | Horizontally moves the text position from the previous text element | number\|string  | No       | All      | Yes               |
+|     dy     | Vertically moves the text position from the previous text element | number\| string | No       | All      | Yes               |
+|   rotate   |          Direction to rotate each individual glyph           |      array      | No       | All      | Yes               |
+|  opacity   |                           Opacity                            |     number      | No       | All      | Yes               |
+| inlineSize |                 Horizontal or vertical size                  |     number      | No       | All      | Yes               |
 
-**TSpan**：绘制文本或 Text 内的子文本
+**TextPath**: To render text along a path shape, enclose the text in a TextPath element with an href Property and reference a Path element
 
-|    Name    |           Description            |      Type       | Required | Platform | HarmonyOS Support |
-| :--------: | :------------------------------: | :-------------: | -------- | -------- | ----------------- |
-|     x      |      文本基线起点的 x 坐标       |  number\string  | No       | All      | Yes               |
-|     y      |      文本基线起点的 y 坐标       |  number\string  | No       | All      | Yes               |
-|     dx     | 从前一个文本元素水平移动文本位置 |  number\string  | No       | All      | Yes               |
-|     dy     | 从前一个文本元素垂直移动文本位置 | number\| string | No       | All      | Yes               |
-|   rotate   |      旋转每个单独字形的方向      |      array      | No       | All      | Yes               |
-|  opacity   |              透明度              |     number      | No       | All      | Yes               |
-| inlineSize |          水平或垂直尺寸          |     number      | No       | All      | Yes               |
+|    Name     |                        Description                         |      Type       | Required | Platform | HarmonyOS Support |
+| :---------: | :--------------------------------------------------------: | :-------------: | -------- | -------- | ----------------- |
+|    href     |   URL of the path or basic shape used to render the text   |     string      | No       | All      | No                |
+|  xlinkHref  |   URL of the path or basic shape used to render the text   |     string      | No       | All      | No                |
+|   method    |   Method for rendering individual glyphs along the path    |     string      | No       | All      | No                |
+|   spacing   |              Spacing between drawn characters              |     string      | No       | All      | No                |
+|    side     |   Which side of the path the text should be rendered on    |     string      | No       | All      | No                |
+|   midLine   |                          Midline                           |     string      | No       | All      | No                |
+| startOffset | Offset at which the text starts being drawn along the path | number\| string | No       | All      | No                |
 
-**TextPath**：若要沿路径形状呈现文本，将文本括在具有 href Properties 的 TextPath 元素中，并引用 Path 元素。
+**SvgAst**: This component renders SVG by passing in an AST
 
-|    Name     |            Description             |      Type       | Required | Platform | HarmonyOS Support |
-| :---------: | :--------------------------------: | :-------------: | -------- | -------- | ----------------- |
-|    href     | 用于呈现文本的路径或基本形状的 URL |     string      | No       | All      | No                |
-|  xlinkHref  | 用于呈现文本的路径或基本形状的 URL |     string      | No       | All      | No                |
-|   method    |      沿路径渲染各个字形的方法      |     string      | No       | All      | No                |
-|   spacing   |         绘制字符之间的间距         |     string      | No       | All      | No                |
-|    side     |      文本应呈现在路径的哪一侧      |     string      | No       | All      | No                |
-|   midLine   |                中线                |     string      | No       | All      | No                |
-| startOffset |  文本开始被沿着路径绘制时的偏移量  | number\| string | No       | All      | No                |
+|   Name   |                  Description                  |  Type  | Required | Platform | HarmonyOS Support |
+| :------: | :-------------------------------------------: | :----: | :------- | :------- | :---------------- |
+|   ast    |   AST tree obtained by parsing SVG strings    | JsxAST | Yes      | All      | Yes               |
+| override | Overrides SVG styles (e.g., width and height) | object | No       | All      | Yes               |
 
-**SvgAst**：该组件通过传入 ast 来渲染出 svg
+**SvgFromUri**: This component renders SVG by passing in a URI address
 
-|   Name   |         Description          |  Type  | Required | Platform | HarmonyOS Support |
-| :------: | :--------------------------: | :----: | :------: | :------: | :---------------: |
-|   ast    | 解析 svg 字符串得到的 ast 树 | JsxAST |   Yes    |   All    |        Yes        |
-| override |    覆盖 svg 样式，如宽高     | object |    No    |   All    |        Yes        |
+|   Name   |                  Description                  |  Type  | Required | Platform | HarmonyOS Support |
+| :------: | :-------------------------------------------: | :----: | :------- | :------- | :---------------- |
+|   uri    |             SVG resource address              | string | Yes      | All      | Yes               |
+| override | Overrides SVG styles (e.g., width and height) | object | No       | All      | Yes               |
 
-**SvgFromUri**：该组件通过传入 uri 地址来渲染出 svg
+**SvgFromXml**: This component renders SVG by passing in a string
 
-|   Name   |      Description      |  Type  | Required | Platform | HarmonyOS Support |
-| :------: | :-------------------: | :----: | :------: | :------: | :---------------: |
-|   uri    |     svg 资源地址      | string |   Yes    |   All    |        Yes        |
-| override | 覆盖 svg 样式，如宽高 | object |    No    |   All    |        Yes        |
+|   Name   |                  Description                  |  Type  | Required | Platform | HarmonyOS Support |
+| :------: | :-------------------------------------------: | :----: | :------- | :------- | :---------------- |
+|   xml    |              String of SVG code               | string | Yes      | All      | Yes               |
+| override | Overrides SVG styles (e.g., width and height) | object | No       | All      | Yes               |
 
-**SvgFromXml**：该组件通过传入字符串来渲染出 svg
+**SvgXml**: This component renders SVG by passing in a string
 
-|   Name   |      Description      |  Type  | Required | Platform | HarmonyOS Support |
-| :------: | :-------------------: | :----: | :------: | :------: | :---------------: |
-|   xml    |   svg 代码的字符串    | string |   Yes    |   All    |        Yes        |
-| override | 覆盖 svg 样式，如宽高 | object |    No    |   All    |        Yes        |
+|   Name   |                  Description                  |  Type  | Required | Platform | HarmonyOS Support |
+| :------: | :-------------------------------------------: | :----: | :------- | :------- | :---------------- |
+|   xml    |              String of SVG code               | string | Yes      | All      | Yes               |
+| override | Overrides SVG styles (e.g., width and height) | object | No       | All      | Yes               |
 
-**SvgXml**：该组件通过传入字符串来渲染出 svg
+**SvgUri**: This component renders SVG by passing in a URI address
 
-|   Name   |      Description      |  Type  | Required | Platform | HarmonyOS Support |
-| :------: | :-------------------: | :----: | :------: | :------: | :---------------: |
-|   xml    |   svg 代码的字符串    | string |   Yes    |   All    |        Yes        |
-| override | 覆盖 svg 样式，如宽高 | object |    No    |   All    |        Yes        |
+|   Name   |                  Description                  |   Type   | Required | Platform | HarmonyOS Support |
+| :------: | :-------------------------------------------: | :------: | :------- | :------- | :---------------- |
+|   uri    |             SVG resource address              |  string  | Yes      | All      | Yes               |
+| override | Overrides SVG styles (e.g., width and height) |  object  | No       | All      | Yes               |
+| onError  |              Triggered on error               | function | No       | All      | Yes               |
+|  onLoad  |      Triggered after successful loading       | function | No       | All      | Yes               |
+| fallback |            Element during loading             | function | No       | All      | Yes               |
 
-**SvgUri**：该组件通过传入 uri 地址来渲染出 svg
+**ForeignObject**: This element can nest non-SVG content into SVG
 
-|   Name   |      Description      |   Type   | Required | Platform | HarmonyOS Support |
-| :------: | :-------------------: | :------: | :------: | :------: | :---------------: |
-|   uri    |     svg 资源地址      |  string  |   Yes    |   All    |        Yes        |
-| override | 覆盖 svg 样式，如宽高 |  object  |    No    |   All    |        Yes        |
-| onError  |      错误时触发       | function |    No    |   All    |        Yes        |
-|  onLoad  |    加载成功后触发     | function |    No    |   All    |        Yes        |
-| fallback |      加载中元素       | function |    No    |   All    |        Yes        |
+|            Name             |                 Description                 |      Type       | Required | Platform | HarmonyOS Support |
+| :-------------------------: | :-----------------------------------------: | :-------------: | :------- | :------- | ----------------- |
+|              x              |     Translation distance on the x-axis      | number\| string | No       | All      | Yes               |
+|              y              |     Translation distance on the y-axis      | number\| string | No       | All      | Yes               |
+|            width            |                Element width                | number\| string | No       | All      | Yes               |
+|           height            |               Element height                | number\| string | No       | All      | Yes               |
+| SvgNodeCommonProps.opacity  |                 Set opacity                 |     number      | No       | All      | Yes               |
+|  SvgNodeCommonProps.matrix  |           Set transform animation           |  Array<number>  | No       | All      | Yes               |
+|   SvgNodeCommonProps.mask   | Specify the Mask element for masking effect |     string      | No       | All      | Yes               |
+| SvgNodeCommonProps.clipPath |    Specify and associate a clipping path    |     string      | No       | All      | Yes               |
+| SvgNodeCommonProps.clipRule |              Set clipping rule              |     string      | No       | All      | Yes               |
+|  SvgRenderableCommonProps   |                   Object                    |     object      | No       | All      | No                |
+|     SvgGroupCommonProps     |                   Object                    |     object      | No       | All      | No                |
 
-**ForeignObject**：该元素可以嵌套非SVG内容到SVG中
+**Common Properties**:
 
-|  Name  |    Description    |      Type       | Required | Platform | HarmonyOS Support |
-| :----: | :---------------: | :-------------: | -------- | -------- | ----------------- |
-|   x    | 在 x 轴上平移距离 | number\| string | No       | All      | Yes               |
-|   y    | 在 y 轴上平移距离 | number\| string | No       | All      | Yes               |
-| width  |     元素宽度      | number\| string | No       | All      | Yes               |
-| height |     元素高度      | number\| string | No       | All      | Yes               |
-| SvgNodeCommonProps.opacity | 设置透明度      | number | No       | All      | Yes               |
-| SvgNodeCommonProps.matrix |  设置transform动画 | Array<number> | No       | All      | Yes               |
-| SvgNodeCommonProps.mask |   指定使用 Mask 元素实现遮罩效果  | string | No       | All      | Yes               |
-| SvgNodeCommonProps.clipPath |  指定、关联一条裁剪路径  | string | No       | All      | Yes               |
-| SvgNodeCommonProps.clipRule | 设置裁剪规则       | string | No       | All      | Yes               |
-| SvgRenderableCommonProps |     Object      | object | No       | All      | No          |
-| SvgGroupCommonProps |     Object      | object | No       | All      | No               |
+Support status of Common props component Properties on the HarmonyOS side
+
+|                  Name                  |                         Description                          |          Type          | Default   | Required | Platform |
+| :------------------------------------: | :----------------------------------------------------------: | :--------------------: | --------- | :------- | :------- |
+|                  fill                  |               Sets the color of the fill area                |         string         | '#000'    | No       | All      |
+|              fillOpacity               |              Sets the opacity of the fill area               |         number         | 1         | No       | All      |
+|                fillRule                |                      Sets the fill rule                      |         number         | 1         | No       | All      |
+|                clipRule                |                    Sets the clipping rule                    |         string         | 'evenodd' | No       | All      |
+|                clipPath                |           Specifies and associates a clipping path           |         string         | 'none'    | No       | All      |
+|                 stroke                 |   Sets the border color (no border by default if not set)    |         string         | none      | No       | All      |
+|              strokeWidth               |                    Sets the border width                     |         number         | 1         | No       | All      |
+|             strokeOpacity              |                        Border opacity                        |         number         | 1         | No       | All      |
+|            strokeDasharray             |      Pattern paradigm of dashed lines used for stroking      |         number         | none      | No       | All      |
+|            strokeDashoffset            | Specifies the distance from the start of the path to the dash pattern |         number         | 1         | No       | All      |
+|             strokeLinecap              |          Sets the shape of the two ends of the path          |         string         | 'butt'    | No       | All      |
+|             strokeLinejoin             |     Indicates the shape used at the corners of the path      |         string         | 'miter'   | No       | All      |
+|            strokeMiterlimit            |  Sets a limit on the ratio of miter length to stroke-width   |         number         | 4         | No       | All      |
+|              vectorEffect              |  Indicates the vector effect to use when drawing the object  |         string         | none      | No       | All      |
+|               translate                |                      Sets displacement                       |      numberArray       | [0,0]     | No       | All      |
+|               translateX               |                   Sets x-axis displacement                   |         number         | 0         | No       | All      |
+|               translateY               |                   Sets y-axis displacement                   |         number         | 0         | No       | All      |
+|                 origin                 |     Changes the origin of transformation for an element      |      numberArray       | [0,0]     | No       | All      |
+|                originX                 | Changes the x-coordinate of the origin of transformation for an element (invalid when used alone; must be used with other properties such as rotation) |         number         | 0         | No       | All      |
+|                originY                 | Changes the y-coordinate of the origin of transformation for an element (invalid when used alone; must be used with other properties such as rotation) |         number         | 0         | No       | All      |
+|                 scale                  |                   Defines the scaling size                   |      numberArray       | [1,1]     | No       | All      |
+|                 scaleX                 |               Defines the x-axis scaling size                |         number         | 1         | No       | All      |
+|                 scaleY                 |               Defines the y-axis scaling size                |         number         | 1         | No       | All      |
+|                rotation                |                   Sets the rotation angle                    |         number         | 0         | No       | All      |
+|                   x                    |               Identifies an x-axis coordinate                |         number         | 0         | No       | All      |
+|                   y                    |                Identifies a y-axis coordinate                |         number         | 0         | No       | All      |
+| transform<sup>changed in 15.13.0</sup> | Defines a list of transform rules applied to the element and its child elements,version code < 15.13.0,transform type is string, version code >= 15.13.0 transform type also supports arrry type. | string\|TransformArray | -         | No       | All      |
+|                 marker                 |   Specifies the marker style for all vertices of the path    |         string         | -         | No       | All      |
+|              markerStart               | Specifies the marker style used for the start point of the path |         string         | -         | No       | All      |
+|               markerMid                | Specifies the marker style used for the middle vertices of the path |         string         | -         | No       | All      |
+|               markerEnd                | Specifies the marker style used for the end point of the path |         string         | -         | No       | All      |
+|                  mask                  | Specifies a mask effect for the element using the Mask element |         string         | -         | No       | All      |
+|                   id                   |                       Sets the node id                       |         string         | -         | No       | All      |
+|  opacity  | Sets opacity |         number         | 1         | No       | All      |
+|                display                 |            Controls how the element is displayed             |         string         | 'block'   | No       | All      |
+|             pointerEvents              |        Sets how the element responds to click events         |         string         |           | No       | All      |
+
+**FontProps**: Support status of FontProps component Properties on the HarmonyOS side
+
+|         Name          |                         Description                          |    Type    | Default | Required | Platform |
+| :-------------------: | :----------------------------------------------------------: | :--------: | :------ | :------- | :------- |
+|       fontSize        | Font size from baseline to baseline when setting multi-line text to solid lines in a multi-line layout environment |   string   | medium  | No       | All      |
+|      fontWeight       | Thickness or lightness of the glyph used to render text relative to other fonts in the same font family |   string   | normal  | No       | All      |
+|         font          |                 Sets a font for text layout                  | FontObject | none    | No       | All      |
+|       fontStyle       |                Specifies text rendering style                |   string   | normal  | No       | All      |
+|      fontVariant      |                    Sets text font variant                    |            |         | No       | All      |
+|      fontStretch      |                 Controls font stretch degree                 |   string   | normal  | No       | All      |
+|      fontFamily       |                     Specifies text font                      |   string   | normal  | No       | All      |
+|      textAnchor       | Used to specify the alignment of text relative to its anchor point |   string   | start   | No       | All      |
+|    textDecoration     |                 Sets text decoration effects                 |   string   | -       | No       | All      |
+|     letterSpacing     |           Sets character spacing or letter spacing           |   number   | 1       | No       | All      |
+|      wordSpacing      |           Sets the distance between English words            |   number   | 1       | No       | All      |
+|        kerning        |             Sets the spacing between characters              |   number   | 0       | No       | All      |
+|  fontFeatureSettings  |                     Font feature control                     |   string   | normal  | No       | All      |
+| fontVariantLigatures  |                  Controls ligatures in text                  |   string   | normal  | No       | All      |
+| fontVariationSettings |    Sets the width, height, inclination, etc., of the font    |   string   | normal  | No       | All      |
+
+## 5. Static Methods
+
+> [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
+
+> [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
+
+|         Name         |              Description              |   Type   | Required | Platform | HarmonyOS Support |
+| :------------------: | :-----------------------------------: | :------: | :------: | :------: | :---------------: |
+|        parse         |     Parse SVG string into JsxAST      | function |    No    |   All    |        Yes        |
+| err<sup>15.0.x</sup> |               Print log               | function |    No    |   All    |        Yes        |
+|      camelCase       | Capitalize the first letter of string | function |    No    |   All    |        Yes        |
+|      fetchText       |     Parse SVG string into JsxAST      | function |    No    |   All    |        Yes        |
+
+## 6.Known Issues
+
+- [ ] isPointInFill: Determine whether the point coordinate is inside the fill area **Not implemented**
+- [ ] isPointInStroke: Determine whether the point coordinate is on the stroke **Not implemented**
+- [ ] getTotalLength: Get the total length of the path **Not implemented**
+- [ ] getPointAtLength: Get point coordinate information at a given length along the path **Not implemented**
+- [ ] getBBox: Get the bounding box information of the component **Not implemented**
+- [ ] getCTM: Get the matrix information relative to the parent component **Not implemented**
+- [ ] getScreenCTM: Get the screen matrix information of the component **Not implemented**
+- [ ] getRawResource: Get the resource file on Android **Not implemented**
+- [X] foreignObject: This component allows SVG to use external components **Implemented**
+- [ ] filter: This component can apply various visual effects to SVG graphics **Not implemented**
+- [ ] TextPath: Properties `href`,`xlinkHref`,`startOffset`, `method`, `spacing`, `midLine`, `side` **Not implemented**
+- [ ] Text, TSpan: Properties `rotate`, `fontFamily`, `wordSpacing` **Not implemented**
+- [ ] Xml: The `err` property from the community library `react-native-svg/src/ReactNativeSVG` is referenced but not exposed externally **Not implemented**[#2845](https://github.com/software-mansion/react-native-svg/pull/2845)
 
 
-**函数**
+## 7.Others
 
-|   Name    |        Description         |   Type   | Required | Platform | HarmonyOS Support |
-| :-------: | :------------------------: | :------: | :------: | :------: | :---------------: |
-|   parse   | 将 svg 字符串解析成 JsxAST | function |    No    |   All    |        Yes        |
-|    err<sup>15.0.x</sup>    |          打印日志           | function |    No    |   All    |        Yes        |
-| camelCase |    字符串首字母转成大写    | function |    No    |   All    |        Yes        |
-| fetchText | 将 svg 字符串解析成 JsxAST | function |    No    |   All    |        Yes        |
-
-**公共 Properties**：
-
-Common props 组件 Properties HarmonyOS 侧支持情况
-
-|       Name       |                                       Description                                       |    Type     |  Default  | Required | Platform |
-| :--------------: | :-------------------------------------------------------------------------------------: | :---------: | :-------: | :------: | :------: |
-|       fill       |                                    设置填充区域颜色                                     |   string    |  '#000'   |    No    |   All    |
-|   fillOpacity    |                                   设置填充区域透明度                                    |   number    |     1     |    No    |   All    |
-|     fillRule     |                                      设置填充规则                                       |   number    |     1     |    No    |   All    |
-|     clipRule     |                                      设置裁剪规则                                       |   string    | 'evenodd' |    No    |   All    |
-|     clipPath     |                                 指定、关联一条裁剪路径                                  |   string    |  'none'   |    No    |   All    |
-|      stroke      |                          设置边框颜色，不设置时，默认没有边框                           |   string    |   none    |    No    |   All    |
-|   strokeWidth    |                                      设置边框宽度                                       |   number    |     1     |    No    |   All    |
-|  strokeOpacity   |                                       边框透明度                                        |   number    |     1     |    No    |   All    |
-| strokeDasharray  |                               用来描边的点划线的图案范式                                |   number    |   none    |    No    |   All    |
-| strokeDashoffset |                            指定了 dash 模式到路径开始的距离                             |   number    |     1     |    No    |   All    |
-|  strokeLinecap   |                                   设置路径两端的形状                                    |   string    |   butt    |    No    |   All    |
-|  strokeLinejoin  |                               指明路径的转角处使用的形状                                |   string    |   miter   |    No    |   All    |
-| strokeMiterlimit |                       对斜接长度和 stroke-width 的比率设置极限 值                       |   number    |     4     |    No    |   All    |
-|   vectorEffect   |                             指明绘制对象时要使用的矢量效果                              |   string    |   none    |    No    |   All    |
-|    translate     |                                        设置位移                                         | numberArray |    0,0    |    No    |   All    |
-|    translateX    |                                      设置 x 轴位移                                      |   number    |     0     |    No    |   All    |
-|    translateY    |                                      设置 y 轴位移                                      |   number    |     0     |    No    |   All    |
-|      origin      |                                 更改一个元素变形的原点                                  | numberArray |    0,0    |    No    |   All    |
-|     originX      | 更改一个元素变形的原点 x 坐标（单独使用无效，需配合 OthersProperties 如 rotation 使用） |   number    |     0     |    No    |   All    |
-|     originY      | 更改一个元素变形的原点 y 坐标（单独使用无效，需配合 OthersProperties 如 rotation 使用） |   number    |     0     |    No    |   All    |
-|      scale       |                                      定义缩放大小                                       | numberArray |   1，1    |    No    |   All    |
-|      scaleX      |                                    定义 x 轴缩放大小                                    |   number    |     1     |    No    |   All    |
-|      scaleY      |                                    定义 y 轴缩放大小                                    |   number    |     1     |    No    |   All    |
-|     rotation     |                                      设置旋转角度                                       |   number    |   0，0    |    No    |   All    |
-|        x         |                                    标识一个 x 轴坐标                                    |   number    |     0     |    No    |   All    |
-|        y         |                                    标识一个 y 轴坐标                                    |   number    |     0     |    No    |   All    |
-|    transform     |                         定义应用于元素及其子元素的变换规则列表                          |   string    |     -     |    No    |   All    |
-|      marker      |                               指定路径所有顶点的路标样式                                |   string    |     -     |    No    |   All    |
-|   markerStart    |                              指定路径起点所采用的路标样式                               |   string    |     -     |    No    |   All    |
-|    markerMid     |                            指定路径中间顶点所采用的路标样式                             |   string    |     -     |    No    |   All    |
-|    markerEnd     |                              指定路径终点所采用的路标样式                               |   string    |     -     |    No    |   All    |
-|       mask       |                          给元素指定使用 Mask 元素实现遮罩效果                           |   string    |     -     |    No    |   All    |
-|        id        |                                       设置节点 id                                       |   string    |     -     |    No    |   All    |
-|     opacity      |                                       设置透明度                                        |   number    |     1     |    No    |   All    |
-|    transform     |                         定义应用于元素及其子元素的变换规则列表                          |   string    |     -     |    No    |   All    |
-|     display      |                                   控制元素展示的方式                                    |   string    |   block   |    No    |   All    |
-|  pointerEvents   |                                设置元素如何响应点击事件                                 |   string    |           |    No    |   All    |
-|   vectorEffect   |                             指明绘制对象时要使用的矢量效果                              |     Int     |     0     |    No    |   All    |
-
-FontProps 组件 Properties HarmonyOS 侧支持情况
-
-|         Name          |                          Description                           |        Type        | Default | Required | Platform |
-| :-------------------: | :------------------------------------------------------------: | :----------------: | :-----: | :------: | :------: |
-|       fontSize        | 在多行布局环境中将多行文本设置为实线时，从基线到基线的字体大小 |       string       | medium  |    No    |   All    |
-|      fontWeight       | 用于呈现文本的字形相对于同一字体族中的 Others 字体的粗度或亮度 |       string       | normal  |    No    |   All    |
-|         font          |                   设置一个用于文字布局的字体                   | FontObject（对象） |  none   |    No    |   All    |
-|       fontStyle       |                        指定文本渲染样式                        |       string       | normal  |    No    |   All    |
-|      fontVariant      |                        设置文本字体变体                        |                    |         |    No    |   All    |
-|      fontStretch      |                        控制字体拉伸程度                        |       string       | normal  |    No    |   All    |
-|      fontFamily       |                          指定文本字体                          |       string       | normal  |    No    |   All    |
-|      textAnchor       |               用于指定文本相对于其锚点的对齐方式               |       string       |  start  |    No    |   All    |
-|    textDecoration     |                        设置文本装饰效果                        |       string       |    -    |    No    |   All    |
-|     letterSpacing     |                     设置字符间距或字母间距                     |       number       |    1    |    No    |   All    |
-|      wordSpacing      |                     设置英文单词之间的距离                     |       number       |    1    |    No    |   All    |
-|        kerning        |                       设置字符之间的间距                       |       number       |    0    |    No    |   All    |
-|  fontFeatureSettings  |                          字体特性控制                          |       string       | normal  |    No    |   All    |
-| fontVariantLigatures  |                         控制文本中连字                         |       string       | normal  |    No    |   All    |
-| fontVariationSettings |                 设置字体的宽度、高度、倾斜度等                 |       string       | normal  |    No    |   All    |
-
-## Known Issues
-
-- [ ] isPointInFill 判断点位坐标是否在 fill 上 未实现
-- [ ] isPointInStroke 判断点位坐标是否在 stroke 上 未实现
-- [ ] getTotalLength 获取总 path 的长度 未实现
-- [ ] getPointAtLength 获取点位坐标在 path 上的信息 未实现
-- [ ] getBBox 获取组件的边界信息 未实现
-- [ ] getCTM 获取相对于父组件的 matrix 矩阵信息 未实现
-- [ ] getScreenCTM 获取组件的 matrix 矩阵信息 未实现
-- [ ] getRawResource 获取 android 中的资源文件 未实现
-- [X] foreignObject 该组件允许 svg 使用外部组件 已实现
-- [ ] filter 该组件可以为 SVG 图形添加各种视觉效果 未实现
-- [ ] TextPath 功能未完全实现
-- [ ] Text,TSpan 组件的 rotate,fontFamily,wordSpacingProperties 未实现
-- [ ] Xml 组件中引入 'react-native-svg/src/ReactNativeSVG' 社区库的 err 属性, 社区库此属性对外暴露 未实现 [#2845](https://github.com/software-mansion/react-native-svg/pull/2845)  
-
-## Others
-
-## License
+## 8.License
 
 This project is licensed under [The MIT License (MIT)](https://github.com/react-native-oh-library/react-native-svg/blob/harmony/LICENSE).
 
