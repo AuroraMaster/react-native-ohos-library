@@ -132,8 +132,8 @@ export default NavigationElements;
 | HeaderButton<sup>2.3.8+</sup>           | 用于在标题中显示按钮的组件                                        | function | no | all | yes |
 | Button<sup>2.3.8+</sup>                 | 渲染按钮的组件                                              | function | no | all | yes |
 | Label<sup>2.3.8+</sup>                  | 标签组件用于渲染小段文本                                         | function | no | all | yes |
-| HeaderButtonRef<sup>2.6.0+</sup>                 | HeaderButton可以拿到内部的ref本                                         | function | no | all | yes |
-| PlatformPressableRef<sup>2.6.0+</sup>                 | PlatformPressableRef可以拿到内部的ref本                                         | function | no | all | yes |
+| HeaderButtonRef<sup>2.6.0+</sup>                 | HeaderButton可以拿到内部的ref                                         | function | no | all | yes |
+| PlatformPressableRef<sup>2.6.0+</sup>                 | PlatformPressableRef可以拿到内部的ref                                         | function | no | all | yes |
 
 **Header Components Props**
 
