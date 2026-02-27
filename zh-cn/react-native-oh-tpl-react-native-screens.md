@@ -1,19 +1,18 @@
-> 模板版本：v0.2.2
+> 模板版本：v0.4.0
 
-<p align="center">[react-native-oh-tpl-react-native-screens.md](../en/react-native-oh-tpl-react-native-screens.md)
-  <h1 align="center"> <code>@react-native-oh-tpl/react-native-screens</code> </h1>
-</p>
 <p align="center">
-    <a href="https://github.com/software-mansion/react-native-screens">
-        <img src="https://img.shields.io/badge/platforms-iOS%20|%20Android%20|%20tvOS%20|%20Windows%20|%20Web%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/software-mansion/react-native-screens/blob/main/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
+  <h1 align="center"> <code>@react-native-ohos/react-native-screens</code> </h1>
 </p>
 
+本项目基于 [react-native-screens](https://github.com/software-mansion/react-native-screens) 开发。
 
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-harmony-screens)
+请到三方库的 Releases 发布地址查看配套的版本信息：
+
+| 三方库名称    | 三方库版本  | 发布信息                                                  | 支持RN版本 |  Autolink     | 编译API版本     | 社区基线版本    | npm地址                |
+| ------------ |--------| ------------------------------------------------------------ | ---------- | ------------- |------------------------ | ------------- | ------------- |
+| @react-native-ohos/react-native-screens | ~ 4.8.1              | [@react-native-ohos/react-native-screens Releases](https://github.com/react-native-oh-library/react-native-harmony-screens/releases)   | 0.77.*       | 否 | API12+ | 4.8.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-screens) | 
+| @react-native-ohos/react-native-screens | ~ 3.34.1             | [@react-native-ohos/react-native-screens Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-screens/releases)   | 0.72.*       | 是 | API12+ | 3.34.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-screens) | 
+| @react-native-oh-tpl/react-native-screens | <= 3.34.0-0.0.2@deprecated  | [@react-native-oh-tpl/react-native-screens Releases(deprecated)](https://github.com/react-native-oh-library/react-native-harmony-screens/releases) | 0.72.*      | 否 | API12+ | 3.34.0 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-screens) | 
 
 ## 安装与使用
 ### 3.34.0
@@ -30,15 +29,7 @@
 
 如未引入请参照 [@react-navigation/native 文档的 Link 章节](/zh-cn/react-navigation-native.md) ，[@react-native-ohos/react-native-gesture-handler 文档的 Link 章节](/zh-cn/react-native-gesture-handler.md) ，[@react-native-ohos/react-native-safe-area-context 文档的 Link 章节](/zh-cn/react-native-safe-area-context.md)，[@react-native-ohos/react-native-reanimated 文档的 Link 章节](/zh-cn/react-native-reanimated.md)进行引入。
 
-请到三方库的 Releases 发布地址查看配套的版本信息：
 
-| 三方库版本  | 发布信息                                                  | 支持RN版本 |
-|--------| ------------------------------------------------------------ | ---------- |
-| <= 3.34.0-0.0.2@deprecated  | [@react-native-oh-tpl/react-native-screens Releases(deprecated)](https://github.com/react-native-oh-library/react-native-harmony-screens/releases) | 0.72       |
-| 3.34.1             | [@react-native-ohos/react-native-screens Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-screens/releases)   | 0.72       |
-| 4.8.1              | [@react-native-ohos/react-native-screens Releases](https://github.com/react-native-oh-library/react-native-harmony-screens/releases)   | 0.77       |
-
-对于未发布到npm的旧版本，请参考[安装指南](/zh-cn/tgz-usage.md)安装tgz包。
 
 进入到工程目录并输入以下命令：
 
@@ -48,10 +39,12 @@
 # 0.72
 npm install @react-native-ohos/react-native-screens@3.34.1-X.X.X
 npm install @react-navigation/native-stack@6.9.13
+npm install @react-native-screens@3.34.0
 
 # 0.77
 npm install @react-native-ohos/react-native-screens@4.8.1-X.X.X
 npm install @react-navigation/native-stack@7.2.0
+npm install @react-native-screens@4.8.0
 ```
 
 #### **yarn**
@@ -60,10 +53,12 @@ npm install @react-navigation/native-stack@7.2.0
 # 0.72
 yarn add @react-native-ohos/react-native-screens@3.34.1-X.X.X
 yarn add @react-navigation/native-stack@6.9.13
+yarn add @react-native-screens@3.34.0
 
 # 0.77
 yarn add @react-native-ohos/react-native-screens@4.8.1-X.X.X
 yarn add @react-navigation/native-stack@7.2.0
+yarn add @react-native-screens@4.8.0
 ```
 
 下面的代码展示了这个库的基本使用场景：

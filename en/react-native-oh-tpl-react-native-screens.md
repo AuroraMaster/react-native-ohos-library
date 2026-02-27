@@ -1,19 +1,18 @@
-> Template version: v0.2.2
+> Template version: v0.4.0
 
 <p align="center">
-  <h1 align="center"> <code>@react-native-oh-tpl/react-native-screens</code> </h1>
-</p>
-<p align="center">
-    <a href="https://github.com/software-mansion/react-native-screens">
-        <img src="https://img.shields.io/badge/platforms-iOS%20|%20Android%20|%20tvOS%20|%20Windows%20|%20Web%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/software-mansion/react-native-screens/blob/main/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
-    </a>
+  <h1 align="center"> <code>@react-native-ohos/react-native-screens</code> </h1>
 </p>
 
+This project is based on [react-native-screens](https://github.com/software-mansion/react-native-screens).
 
-> [!TIP] [GitHub address](https://github.com/react-native-oh-library/react-native-harmony-screens)
+Please refer to the Releases page of the third-party library for the corresponding version information
+
+| Name | Version | Release Information       | Supported RN Version | Supported Autolink | Compile API Version | Community Baseline Version | npm Address     |
+| --------------| ---------- | ------------------------------------------------------------ | ---------- | ------------- |------------------------ | ------------- | ------------- |
+| @react-native-ohos/react-native-screens | ~ 4.8.1              | [@react-native-ohos/react-native-screens Releases](https://github.com/react-native-oh-library/react-native-harmony-screens/releases)   | 0.77.*       | No | API12+ | 4.8.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-screens) | 
+| @react-native-ohos/react-native-screens | ~ 3.34.1             | [@react-native-ohos/react-native-screens Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-screens/releases)   | 0.72.*       | Yes | API12+ | 3.34.0 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-screens) | 
+| @react-native-oh-tpl/react-native-screens | <= 3.34.0-0.0.2@deprecated  | [@react-native-oh-tpl/react-native-screens Releases(deprecated)](https://github.com/react-native-oh-library/react-native-harmony-screens/releases) | 0.72.*       | No | API12+ | 3.34.0 | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/react-native-screens) | 
 
 ## Installation and Usage
 
@@ -31,15 +30,7 @@ Note: If the `@react-native-oh-tpl/native-stack，@react-native-ohos/native-stac
 
 If it is not included, follow the guide provided in [@react-navigation/native](/en/react-navigation-native.md) and [@react-native-ohos/react-native-safe-area-context](/en/react-native-safe-area-context.md) and [@react-native-ohos/react-native-gesture-handler](/en/react-native-gesture-handler.md)  and [@react-native-ohos/react-native-reanimated](/en/react-native-reanimated.md) to add it to your project.
 
-Please refer to the Releases page of the third-party library for the corresponding version information
 
-| Third-party Library Version | Release Information       | Supported RN Version |
-| ---------- | ------------------------------------------------------------ | ---------- |
-| <= 3.34.0-0.0.2@deprecated  | [@react-native-oh-tpl/react-native-screens Releases(deprecated)](https://github.com/react-native-oh-library/react-native-harmony-screens/releases) | 0.72       |
-| 3.34.1             | [@react-native-ohos/react-native-screens Releases](https://gitcode.com/openharmony-sig/rntpc_react-native-screens/releases)   | 0.72       |
-| 4.8.1              | [@react-native-ohos/react-native-screens Releases](https://github.com/react-native-oh-library/react-native-harmony-screens/releases)   | 0.77       |
-
-For older versions not published on npm, please refer to the [Installation Guide](/zh-cn/tgz-usage.md) to install the tgz package.
 
 Go to the project directory and execute the following instruction:
 #### **npm**
@@ -48,10 +39,12 @@ Go to the project directory and execute the following instruction:
 # 0.72
 npm install @react-native-ohos/react-native-screens@3.34.1-X.X.X
 npm install @react-navigation/native-stack@6.9.13
+npm install @react-native-screens@3.34.0
 
 # 0.77
 npm install @react-native-ohos/react-native-screens@4.8.1-X.X.X
 npm install @react-navigation/native-stack@7.2.0
+npm install @react-native-screens@4.8.0
 ```
 
 #### **yarn**
@@ -60,10 +53,12 @@ npm install @react-navigation/native-stack@7.2.0
 # 0.72
 yarn add @react-native-ohos/react-native-screens@3.34.1-X.X.X
 yarn add @react-navigation/native-stack@6.9.13
+yarn add @react-native-screens@3.34.0
 
 # 0.77
 yarn add @react-native-ohos/react-native-screens@4.8.1-X.X.X
 yarn add @react-navigation/native-stack@7.2.0
+yarn add @react-native-screens@4.8.0
 ```
 
 The following code shows the basic use scenario of the repository:
