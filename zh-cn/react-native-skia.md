@@ -847,7 +847,7 @@ ohpm install
 | -------- | ------------------------------------------ | --------------- | -------- | ----------- | ----------------- |
 | source   | 用作图像过滤器的着色器           | SkRuntimeEffect | yes      | android/ios | yes               |
 | children | 首先应用可选的图像过滤器. | ImageFilter     | no       | android/ios | yes               |
-| uniforms | 传递给着色器程序的动态参数. | Uniforms     | no       | android/ios | yes               |
+| uniforms <sup>2.4.14</sup> | 传递给着色器程序的动态参数. | Uniforms     | no       | android/ios | yes               |
 
 ### BlurMask
 
@@ -1073,7 +1073,7 @@ ohpm install
 | ---- | ----------- | ------ | -------- | ----------- | ----------------- |
 | blur | 模糊半径，控制背景内容的模糊程度 | number | yes      | android/ios | yes               |
 
-### Paint
+### Paint <sup>2.4.14</sup>
 
 #### 属性
 
