@@ -4,14 +4,14 @@
   <h1 align="center"> <code>react-native-wifi-reborn</code> </h1>
 </p>
 
+本项目基于 [react-native-wifi-reborn](https://github.com/JuanSeBestia/react-native-wifi-reborn) 开发。
+
 请到三方库的 Releases 发布地址查看配套的版本信息：
 
 | 三方库版本 | 发布信息                                                     | 支持RN版本 |
 | ---------- | ------------------------------------------------------------ | ---------- |
 | 0.6.1      | [@react-native-ohos/react-native-wifi-reborn Releases](https://gitcode.com/OpenHarmony-RN/rntpc_react-native-wifi-reborn) | 0.72       |
 | 0.7.0     | [@react-native-ohos/react-native-wifi-reborn Releases](https://gitcode.com/OpenHarmony-RN/rntpc_react-native-wifi-reborn) | 0.77       |
-
-> [!TIP] [Github 地址](https://github.com/react-native-oh-library/react-native-wifi-reborn)
 
 ## 安装与使用
 
