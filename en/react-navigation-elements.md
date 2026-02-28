@@ -131,12 +131,12 @@ The following props have been verified. For more details, see [react-navigation/
 | headerTransparent                       | Defaults to false. If true, the header will not have a background unless you explicitly provide it with headerBackground.  | boolean             | no       | all      | yes               |
 | headerBackground                        | Function which returns a React Element to render as the background of the header.                                          | function            | no       | all      | yes               |
 | headerStatusBarHeight                   | Extra padding to add at the top of header to account for translucent status bar.                                           | number              | no       | all      | yes               |
-| headerSearchBarOptions<sup>2.3.8+</sup> | Options for the search bar in the header.                                                                                  | object              | no       | all      | yes               |
-| HeaderButton<sup>2.3.8+</sup>           | A component used to show a button in header.                                                                               | function            | no       | all      | yes               |
-| Button<sup>2.3.8+</sup>                 | A component that renders a button.                                                                                         | function            | no       | all      | yes               |
-| Label<sup>2.3.8+</sup>                  | The Label component is used to render small text.                                                                          | function            | no       | all      | yes               |
-| HeaderButtonRef<sup>2.6.0+</sup>                         | HeaderButton can get the internal ref                                                                                      | function            | no       | all      | yes               |
-| PlatformPressableRef<sup>2.6.0+</sup>                    | PlatformPressableRef can get the internal ref                                                                                 | function            | no       | all      | yes               |
+| headerSearchBarOptions<sup>2.3.9+</sup> | Options for the search bar in the header.                                                                                  | object              | no       | all      | yes               |
+| HeaderButton<sup>2.3.9+</sup>           | A component used to show a button in header.                                                                               | function            | no       | all      | yes               |
+| Button<sup>2.3.9+</sup>                 | A component that renders a button.                                                                                         | function            | no       | all      | yes               |
+| Label<sup>2.3.9+</sup>                  | The Label component is used to render small text.                                                                          | function            | no       | all      | yes               |
+| HeaderButtonRef<sup>2.4.0+</sup>                         | HeaderButton can get the internal ref                                                                                      | function            | no       | all      | yes               |
+| PlatformPressableRef<sup>2.4.0+</sup>                    | PlatformPressableRef can get the internal ref                                                                                 | function            | no       | all      | yes               |
 
 **Header Components Props**
 
