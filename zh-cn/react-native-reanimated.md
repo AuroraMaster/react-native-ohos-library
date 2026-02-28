@@ -381,11 +381,11 @@ ohpm install
 | `ReducedMotionConfig`<sup>3.18.0+</sup> | change behavior in response to the device's reduced motion accessibility setting. | function | No       | All      | yes               |
 | `useAnimatedGestureHandler`<sup>deprecated from 3.18.0</sup> | lets you create animations based on gesture handlers. | function | No | All | No |
 | `useScrollViewOffset` <sup> deprecated from 4.0.0 </sup> | lets you to create animations based on the offset of a ScrollView.<br /><br />3.6.0:useScrollViewOffset(aref: RefObject<Animated.ScrollView>) => [SharedValue\<number\>];<br />3.18.0:useScrollViewOffset(animatedRef: AnimatedRef\<AnimatedScrollView\>, providedOffset?: SharedValue\<number\>): SharedValue\<number\>; | function | No | All | yes |
-| `useScrollOffset` <sup> 4.0.0 </sup> | lets you to create animations based on the offset of a scrollable component (e.g. ScrollView, FlatList, FlashList) | function | No | All | yes |
+| `useScrollOffset` <sup> 4.0.0+ </sup> | lets you to create animations based on the offset of a scrollable component (e.g. ScrollView, FlatList, FlashList) | function | No | All | yes |
 | `createAnimatedComponent ` |  lets you create an Animated version of any React Native component | function | No | All | yes |
-| `getStaticFeatureFlag` <sup> 4.0.0 </sup> | A function for obtaining static functionality flags (feature flags) | function | No | All | yes |
-| `setDynamicFeatureFlag` <sup> 4.0.0 </sup> | A function for dynamically setting function flags | function | No | All | yes |
-| `reanimatedVersion` <sup> 4.0.0 </sup> | Obtain the version number of the animation library | function | No | All | yes |
+| `getStaticFeatureFlag` <sup> 4.0.0+ </sup> | A function for obtaining static functionality flags (feature flags) | function | No | All | yes |
+| `setDynamicFeatureFlag` <sup> 4.0.0+ </sup> | A function for dynamically setting function flags | function | No | All | yes |
+| `reanimatedVersion` <sup> 4.0.0+ </sup> | Obtain the version number of the animation library | function | No | All | yes |
 | `useAnimatedProps` | It is a custom Hook in the React Native Reanimated library, used to create animatable component properties | function | No | All | yes |
 
 ## 5. 属性
@@ -456,7 +456,7 @@ ohpm install
 | Name                                  | Description                               | Type            | Required | Platform        | HarmonyOS  Support |
 | ------- | --------------------- | --------------- | -------- | --------------- | ------------------ |
 | `GentleSpringConfig ` <sup>4.0.0+</sup> |  It is a predefined spring animation configuration, which creates a smooth and gentle spring effect. | Object | No | All | yes |
-| `GentleSpringConfig ` <sup>4.0.0+</sup> |  It is another form of GentleSpringConfig. It uses the parameters of duration and dampingRatio to define the spring animation. | Object | No | All | yes |
+| `GentleSpringConfigWithDuration ` <sup>4.0.0+</sup> |  It is another form of GentleSpringConfig. It uses the parameters of duration and dampingRatio to define the spring animation. | Object | No | All | yes |
 | `Reanimated3DefaultSpringConfig ` <sup>4.0.0+</sup> |  It will generate an animation that is highly elastic and has obvious oscillations. | Object | No | All | yes |
 | `Reanimated3DefaultSpringConfigWithDuration ` <sup>4.0.0+</sup> | A flexible animation will be generated. | Object | No | All | yes |
 | `SnappySpringConfig ` <sup>4.0.0+</sup> | The configuration defines the "Snappy" (agile) spring animation. | Object | No | All | yes |
