@@ -128,12 +128,12 @@ export default NavigationElements;
 | headerTransparent                       | 默认为 false，若为 true，标题将没有背景，除非通过 headerBackground 显式提供 | boolean             | no       | all      | yes               |
 | headerBackground                        | 返回用作标题背景的 React 元素的函数                                | function            | no       | all      | yes               |
 | headerStatusBarHeight                   | 为适配半透明状态栏在标题顶部添加的额外内边距                               | number              | no       | all      | yes               |
-| headerSearchBarOptions<sup>2.3.8+</sup> | 标题搜索栏的选项                                             | object | no | all | yes |
-| HeaderButton<sup>2.3.8+</sup>           | 用于在标题中显示按钮的组件                                        | function | no | all | yes |
-| Button<sup>2.3.8+</sup>                 | 渲染按钮的组件                                              | function | no | all | yes |
-| Label<sup>2.3.8+</sup>                  | 标签组件用于渲染小段文本                                         | function | no | all | yes |
-| HeaderButtonRef<sup>2.6.0+</sup>                 | HeaderButton可以拿到内部的ref                                         | function | no | all | yes |
-| PlatformPressableRef<sup>2.6.0+</sup>                 | PlatformPressableRef可以拿到内部的ref                                         | function | no | all | yes |
+| headerSearchBarOptions<sup>2.3.9+</sup> | 标题搜索栏的选项                                             | object | no | all | yes |
+| HeaderButton<sup>2.3.9+</sup>           | 用于在标题中显示按钮的组件                                        | function | no | all | yes |
+| Button<sup>2.3.9+</sup>                 | 渲染按钮的组件                                              | function | no | all | yes |
+| Label<sup>2.3.9+</sup>                  | 标签组件用于渲染小段文本                                         | function | no | all | yes |
+| HeaderButtonRef<sup>2.4.0+</sup>                 | HeaderButton可以拿到内部的ref                                         | function | no | all | yes |
+| PlatformPressableRef<sup>2.4.0+</sup>                 | PlatformPressableRef可以拿到内部的ref                                         | function | no | all | yes |
 
 **Header Components Props**
 
