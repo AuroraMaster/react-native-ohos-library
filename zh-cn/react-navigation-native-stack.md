@@ -172,9 +172,9 @@ export default function App() {
 | id                                | 为导航器设置一个可选的唯一标识符。该 ID 可用于在子导航器中通过 navigation.getParent 方法引用此导航器 | string | no       | all      | yes               |
 | initialRouteName                  | 指定导航器首次加载时要渲染的初始路由名称. | string | no       | all      | yes               |
 | screenOptions                     | 为此导航器中所有屏幕配置默认的选项对象，用于统一设置屏幕的呈现方式.     | object | no       | all      | yes               |
-| layout<sup>7.3.10+</sup>          | 布局是一个包裹导航器的包装器。它可以通过包装器为导航器增强额外的用户界面。与手动在导航器外部添加包装器不同，布局回调中的代码可以访问导航器的状态、配置选项等信息。 | object | no       | all      | yes               |
-| screenLayout<sup>7.3.10+</sup>    | 屏幕布局是导航器中每个屏幕的包装器。它可以更便捷地为导航器中的所有屏幕提供错误边界和 Suspense 回退内容，或者为每个屏幕包裹额外的用户界面。 | object | no       | all      | yes               |
-| screenListeners<sup>7.3.10+</sup> | 你可以向导航器组件传递一个名为 screenListeners 的属性，在此处可以为此导航器中所有屏幕的事件指定监听器。 | object | no       | all      | yes               |
+| layout<sup>7.3.11+</sup>          | 布局是一个包裹导航器的包装器。它可以通过包装器为导航器增强额外的用户界面。与手动在导航器外部添加包装器不同，布局回调中的代码可以访问导航器的状态、配置选项等信息。 | object | no       | all      | yes               |
+| screenLayout<sup>7.3.11+</sup>    | 屏幕布局是导航器中每个屏幕的包装器。它可以更便捷地为导航器中的所有屏幕提供错误边界和 Suspense 回退内容，或者为每个屏幕包裹额外的用户界面。 | object | no       | all      | yes               |
+| screenListeners<sup>7.3.11+</sup> | 你可以向导航器组件传递一个名为 screenListeners 的属性，在此处可以为此导航器中所有屏幕的事件指定监听器。 | object | no       | all      | yes               |
 
 **Options & screenOptions**
 
@@ -210,7 +210,7 @@ export default function App() {
 | statusBarColor                                              | 设置状态栏颜色（类似于 StatusBar 组件）。默认为初始状态栏颜色。 | string                                                       | no       | Android      | no                |
 | statusBarTranslucent                                        | 设置状态栏的半透明度（类似于StatusBar组件）。默认为 false. | boolean                                                      | no       | Android      | no                |
 | contentStyle                                                | 场景内容的样式对象.                          | object                                                       | no       | all          | yes               |
-| customAnimationOnGesture<sup>deprecated from 7.3.10 </sup>> | 关闭手势是否应使用提供给动画道具的动画。默认为 false | boolean                                                      | no       | iOS          | no                |
+| customAnimationOnGesture<sup>deprecated from 7.3.11 </sup> | 关闭手势是否应使用提供给动画道具的动画。默认为 false | boolean                                                      | no       | iOS          | no                |
 | fullScreenGestureEnabled                                    | 关闭手势是否适用于整个屏幕。使用手势来关闭此选项会产生与 simple_push 相同的过渡动画。可以通过设置 customAnimationOnGesture 属性来更改此行为。由于平台限制，无法实现默认的 iOS 动画。默认为 false。 | boolean                                                      | no       | iOS          | no                |
 | gestureEnabled                                              | 是否可以使用手势关闭此屏幕。默认为 true。 | boolean                                                      | no       | iOS          | no                |
 | animationTypeForReplace                                     | 当此屏幕替换另一个屏幕时要使用的动画类型。默认为弹出。 | 'push'&#124;'pop'                                            | no       | Android，iOS | no                |
@@ -223,14 +223,14 @@ export default function App() {
 | navigationBarColor                                          | 设置导航栏颜色。默认为初始状态栏颜色。 | string                                                       | no       | Android      | no                |
 | navigationBarHidden                                         | 指示是否应隐藏导航栏的布尔值。默认为 false。 | boolean                                                      | no       | Android      | no                |
 | freezeOnBlur                                                | 布尔值，指示是否阻止非活动屏幕重新渲染。默认为 false。当react-native-screens包中的enableFreeze()在应用程序顶部运行时，默认为true。 | boolean                                                      | no       | Android,iOS  | no                |
-| headerBackButtonDisplayMode<sup>7.3.10+</sup>               | 后退按钮如何显示图标和标题。                 | 'default' \| 'generic' \| 'minimal '                         | no       | iOS          | yes               |
-| animationMatchesGesture<sup>7.3.10+</sup>                   | 要解除的手势是否应使用提供给动画道具的动画。默认为false。不会影响以模式呈现的屏幕的行为。 | boolean                                                      | no       | iOS          | no                |
-| sheetElevation<sup>7.3.10+</sup>                            | 仅当演示文稿设置为formSheet时才有效。<br/>描述底部工作表阴影高度的整数值，影响底部工作表的阴影高度 | number                                                       | no       | Android      | no                |
-| sheetExpandsWhenScrolledToEdge<sup>7.3.10+</sup>            | 仅当演示文稿设置为formSheet时才有效。<br/>控制工作表在滚动时是否应展开到更大的悬停位置。 | boolean                                                      | no       | iOS          | no                |
-| sheetCornerRadius<sup>7.3.10+</sup>                         | 仅当演示文稿设置为formSheet时才有效。<br/>工作表尝试渲染时使用的圆角半径。 | number                                                       | no       | Android,iOS  | no                |
-| sheetInitialDetentIndex<sup>7.3.10+</sup>                   | 仅当演示文稿设置为formSheet时才有效。<br/>工作表打开后应展开到的悬停位置的索引。 | number                                                       | no       | Android,iOS  | no                |
-| sheetGrabberVisible<sup>7.3.10+</sup>                       | 仅当演示文稿设置为formSheet时才有效。<br/>布尔值，指示工作表顶部是否显示抓取器。 | boolean                                                      | no       | iOS          | no                |
-| sheetLargestUndimmedDetentIndex<sup>7.3.10+</sup>           | 仅当演示文稿设置为formSheet时才有效。<br/>工作表下方视图不会被调暗的最大悬停位置索引。 | 'none' \| 'last'                                             | no       | Android,iOS  | no                |
+| headerBackButtonDisplayMode<sup>7.3.11+</sup>               | 后退按钮如何显示图标和标题。                 | 'default' \| 'generic' \| 'minimal '                         | no       | iOS          | yes               |
+| animationMatchesGesture<sup>7.3.11+</sup>                   | 要解除的手势是否应使用提供给动画道具的动画。默认为false。不会影响以模式呈现的屏幕的行为。 | boolean                                                      | no       | iOS          | no                |
+| sheetElevation<sup>7.3.11+</sup>                            | 仅当演示文稿设置为formSheet时才有效。<br/>描述底部工作表阴影高度的整数值，影响底部工作表的阴影高度 | number                                                       | no       | Android      | no                |
+| sheetExpandsWhenScrolledToEdge<sup>7.3.11+</sup>            | 仅当演示文稿设置为formSheet时才有效。<br/>控制工作表在滚动时是否应展开到更大的悬停位置。 | boolean                                                      | no       | iOS          | no                |
+| sheetCornerRadius<sup>7.3.11+</sup>                         | 仅当演示文稿设置为formSheet时才有效。<br/>工作表尝试渲染时使用的圆角半径。 | number                                                       | no       | Android,iOS  | no                |
+| sheetInitialDetentIndex<sup>7.3.11+</sup>                   | 仅当演示文稿设置为formSheet时才有效。<br/>工作表打开后应展开到的悬停位置的索引。 | number                                                       | no       | Android,iOS  | no                |
+| sheetGrabberVisible<sup>7.3.11+</sup>                       | 仅当演示文稿设置为formSheet时才有效。<br/>布尔值，指示工作表顶部是否显示抓取器。 | boolean                                                      | no       | iOS          | no                |
+| sheetLargestUndimmedDetentIndex<sup>7.3.11+</sup>           | 仅当演示文稿设置为formSheet时才有效。<br/>工作表下方视图不会被调暗的最大悬停位置索引。 | 'none' \| 'last'                                             | no       | Android,iOS  | no                |
 
 **Events**
 
@@ -239,7 +239,7 @@ export default function App() {
 | transitionStart | 当当前屏幕的过渡动画开始时，会触发此事件。 | function | no       | all      | no                |
 | transitionEnd   | 当当前屏幕的过渡动画结束时，会触发此事件。   | function | no       | all      | no                |
 
-**Hooks<sup>7.3.10+</sup>**
+**Hooks<sup>7.3.11+</sup>**
 
 | Name                    | Description                                                  | Type     | Required | Platform | HarmonyOS Support |
 | ----------------------- | ------------------------------------------------------------ | -------- | -------- | -------- | ----------------- |
@@ -248,8 +248,8 @@ export default function App() {
 ## 遗留问题
 
 - [ ] react-native-screens功能缺失，导致headerSearchBarOptions等属性功能无法实现：[issue#25](https://github.com/react-native-oh-library/react-navigation/issues/25)
-- [ ] V7.3.10 鸿蒙侧未实现formSheet，导致presentation的formSheet未鸿蒙化：[issue#2](https://gitcode.com/openharmony-sig/rntpc_react-navigation/issues/2)
-- [ ] V7.3.10 animationMatchesGesture 因依赖三方库react-native-screens而未实现鸿蒙化: [issue#3](https://gitcode.com/openharmony-sig/rntpc_react-navigation/issues/3)
+- [ ] V7.3.11 鸿蒙侧未实现formSheet，导致presentation的formSheet未鸿蒙化：[issue#2](https://gitcode.com/openharmony-sig/rntpc_react-navigation/issues/2)
+- [ ] V7.3.11 animationMatchesGesture 因依赖三方库react-native-screens而未实现鸿蒙化: [issue#3](https://gitcode.com/openharmony-sig/rntpc_react-navigation/issues/3)
 
 ## 其他
 
