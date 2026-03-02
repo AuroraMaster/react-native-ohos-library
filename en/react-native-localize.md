@@ -189,7 +189,7 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 3. Configuring CMakeLists and Introducing RNLocalizePackage (Only for 0.77)
+### 3. Configuring CMakeLists and Introducing RNLocalizePackage
 
 ```diff
 ...
