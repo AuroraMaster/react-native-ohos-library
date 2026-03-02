@@ -4,14 +4,13 @@
   <h1 align="center"> <code>react-native-wifi-reborn</code> </h1>
 </p>
 
-Please check the release information of the corresponding version at the third-party library's Releases page:
+This project is based on [react-native-wifi-reborn](https://github.com/JuanSeBestia/react-native-wifi-reborn)
 
 | Third-Party Library Version | Release Information                                              | Supported RN Version |
 | --------------------------- | --------------------------------------------------------------- | -------------------- |
 | 0.6.1                       | [@react-native-ohos/react-native-wifi-reborn Releases](https://gitcode.com/OpenHarmony-RN/rntpc_react-native-wifi-reborn) | 0.72                 |
 | 0.7.0                       | [@react-native-ohos/react-native-wifi-reborn Releases](https://gitcode.com/OpenHarmony-RN/rntpc_react-native-wifi-reborn) | 0.77                 |
 
-> [!TIP] [GitHub Address](https://github.com/react-native-oh-library/react-native-wifi-reborn)
 
 ## Installation and Usage
 
