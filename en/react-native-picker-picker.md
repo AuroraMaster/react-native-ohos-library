@@ -1,31 +1,21 @@
-> Template version: v0.2.2
+> Template version: v0.4.0
 
 <p align="center">
   <h1 align="center"> <code>@react-native-picker/picker</code> </h1>
 </p>
-<p align="center">
-    <a href="https://github.com/react-native-picker/picker">
-        <img src="https://img.shields.io/badge/platforms-android%20|%20ios%20|%20windows%20|%20macos%20|%20harmony%20-lightgrey.svg" alt="Supported platforms" />
-    </a>
-    <a href="https://github.com/react-native-picker/picker/blob/master/LICENSE">
-        <img src="https://img.shields.io/npm/l/@react-native-picker/picker.svg" alt="License" />
-    </a>
-</p>
 
-> [!TIP] [GitHub address](https://github.com/react-native-oh-library/picker)
+This project is based on[@react-native-picker/picker](https://github.com/react-native-picker/picker).
 
-## Installation and Usage
+This third-party library has been migrated to Gitcode and is now available for direct download from npm, the new package name is: `@react-native-ohos/picker`, The version correspondence details are as follows:
 
-Find the matching version information in the release address of a third-party library:
+| Name                        | Version             | Release Information                                          | Supported RN Version | Supported Autolink | Compile API Version | Community Baseline Version | npm Address                                                  |
+| --------------------------- | ------------------- | ------------------------------------------------------------ | -------------------- | ------------------ | ------------------- | -------------------------- | ------------------------------------------------------------ |
+| @react-native-ohos/picker   | ~ 2.12.0            | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_picker/releases) | 0.82.*               | No                 | API12+              | 2.11.4                     | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/picker) |
+| @react-native-ohos/picker   | ~2.11.2             | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_picker/releases) | 0.77.*               | No                 | API12+              | 2.11.1                     | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/picker) |
+| @react-native-ohos/picker   | ~ 2.6.4             | [Gitcode Releases](https://gitcode.com/openharmony-sig/rntpc_picker/releases) | 0.72.*               | Yes                | API12+              | 2.6.1                      | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/picker) |
+| @react-native-oh-tpl/picker | <= 2.6.3@deprecated | [Github Releases(deprecated)](https://github.com/react-native-oh-library/picker) | 0.72.*               | No                 | API12+              | 2.6.1                      | [Npm Address](https://www.npmjs.com/package/@react-native-oh-tpl/picker) |
 
-| Third-party Library Version | Release Information                                                                                                                  | Supported RN Version |
-|---------------------------| ------------------------------------------------------------ |---------------------------------------------------------------------------------------------------------------------------|
-| <= 2.6.3@deprecated  | [@react-native-oh-tpl/picker Releases(deprecated)](https://github.com/react-native-oh-library/picker/releases) | 0.72       |
-| 2.6.4     | [@react-native-ohos/picker Releases](https://gitcode.com/openharmony-sig/rntpc_picker/releases)                | 0.72       |
-| 2.11.2    | [@react-native-ohos/picker Releases](https://gitcode.com/openharmony-sig/rntpc_picker/releases)                | 0.77 |
-| 2.11.4 | [@react-native-ohos/picker Releases](https://gitcode.com/openharmony-sig/rntpc_picker/releases) | 0.82 |
-
-For older versions that are not published to npm, please refer to the [installation guide](/en/tgz-usage-en.md) to install the tgz package.
+## 1. Installation and Usage
 
 Go to the project directory and execute the following instruction:
 
@@ -70,41 +60,46 @@ export const PickerExample = ()=>{
 }
 ```
 
-## Use Codegen
+## 2. Link
 
-This library has been adapted for `Codegen`. Before using it, you need to proactively generate the bridge code for the third-party library. For details, please refer to the [Codegen Usage Documentation](/en/codegen.md).
-
-## Link
-
-|                                | Is supported autolink  | Supported RN Version |
+|                                | Supported Autolink | Supported RN Version |
 |--------------------------------|-----------------------|----------------------|
-| ~2.11.4 | No | 0.82 |
+| ~2.12.0 | No | 0.82 |
 | ~2.11.2                        |  No                   |  0.77           |
 | ~2.6.4                         |  Yes                  |  0.72                |
 | <= 2.6.3@deprecated            |  No                   |  0.72                |
 
-Using AutoLink need to be configured according to this document, Autolink Framework Guide Documentation: https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+Projects using AutoLink need to be configured according to this document, AutoLink framework guide.：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
-If the version you use supports Autolink and the project has been connected to Autolink, skip the ManualLink configuration.
+If the version you are using supports Autolink and the project has integrated Autolink, you can skip the ManualLink configuration.
+
 <details>
-  <summary>ManualLink: this step is a guide to manually configure native dependencies.</summary>
+  <summary>ManualLink: This step provides guidance for manually configuring native dependencies.</summary>
 
-First, use DevEco Studio to open the HarmonyOS project `harmony` in the project directory.
+Open the `harmony` directory of the HarmonyOS project in DevEco Studio.
 
-### 1. Adding the overrides Field to oh-package.json5 File in the Root Directory of the Project
+### 2.1 Overrides RN SDK
+
+To ensure the project relies on the same version of the RN SDK, you need to add an `overrides` field in the project's root `oh-package.json5` file, specifying the RN SDK version to be used. The replacement version can be a specific version number, a semver range, or a locally available HAR package or source directory.
+
+For more information about the purpose of this field, please refer to the [official documentation](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-oh-package-json5-V5#en-us_topic_0000001792256137_overrides).
 
 ```json
 {
-  ...
   "overrides": {
-    "@rnoh/react-native-openharmony" : "./react_native_openharmony"
+    "@rnoh/react-native-openharmony": "^0.72.38" // ohpm version
+    // "@rnoh/react-native-openharmony" : "./react_native_openharmony.har" // a locally available HAR package
+    // "@rnoh/react-native-openharmony" : "./react_native_openharmony" // source code directory
   }
 }
 ```
 
-### 2. Introducing Native Code
+### 2.2 Introducing Native Code
 
 Currently, two methods are available:
+
+- Use the HAR file.
+- Directly link to the source code。
 
 Method 1 (recommended): Use the HAR file.
 
@@ -114,14 +109,13 @@ Open `entry/oh-package.json5` file and add the following dependencies:
 
 ```json
 "dependencies": {
-    "@rnoh/react-native-openharmony": "file:../react_native_openharmony",
-
     "@react-native-ohos/picker": "file:../../node_modules/@react-native-ohos/picker/harmony/picker.har",
   }
 ```
-Click the `sync` button in the top-right corner.
+Click the `sync` button in the upper right corner.
 
-Or, run the following in your terminal:
+Alternatively, run the following instruction on the terminal:
+
 ```bash
 cd entry
 ohpm install
@@ -131,71 +125,42 @@ Method 2: Directly link to the source code.
 
 > [!TIP] For details, see [Directly Linking Source Code](/en/link-source-code.md).
 
-### 3. Configuring CMakeLists and Introducing PickerPackge
+### 2.3 Configuring CMakeLists and Introducing PickerPackage
 
 > If you are using version <= 2.6.3, please skip this chapter.
 
-Open the `entry/src/main/cpp/CMakeLists.txt`, add the following code:
+Open `entry/src/main/cpp/CMakeLists.txt` and add the following code:
 
 ```diff
-project(rnapp)
-cmake_minimum_required(VERSION 3.4.1)
-set(CMAKE_SKIP_BUILD_RPATH TRUE)
-set(RNOH_APP_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
-set(NODE_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../node_modules")
 + set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
-set(RNOH_CPP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../../../../react-native-harmony/harmony/cpp")
-set(LOG_VERBOSITY_LEVEL 1)
-set(CMAKE_ASM_FLAGS "-Wno-error=unused-command-line-argument -Qunused-arguments")
-set(CMAKE_CXX_FLAGS "-fstack-protector-strong -Wl,-z,relro,-z,now,-z,noexecstack -s -fPIE -pie")
-set(WITH_HITRACE_SYSTRACE 1) # for other CMakeLists.txt files to use
-add_compile_definitions(WITH_HITRACE_SYSTRACE)
-
-add_subdirectory("${RNOH_CPP_DIR}" ./rn)
 
 # RNOH_BEGIN: manual_package_linking_1
-add_subdirectory("../../../../sample_package/src/main/cpp" ./sample-package)
 + add_subdirectory("${OH_MODULES}/@react-native-ohos/picker/src/main/cpp" ./picker)
-
 # RNOH_END: manual_package_linking_1
 
-file(GLOB GENERATED_CPP_FILES "./generated/*.cpp")
-
-add_library(rnoh_app SHARED
-    ${GENERATED_CPP_FILES}
-    "./PackageProvider.cpp"
-    "${RNOH_CPP_DIR}/RNOHAppNapiBridge.cpp"
-)
-target_link_libraries(rnoh_app PUBLIC rnoh)
-
 # RNOH_BEGIN: manual_package_linking_2
-target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
 + target_link_libraries(rnoh_app PUBLIC rnoh_picker)
 # RNOH_END: manual_package_linking_2
 ```
 
-Open the `entry/src/main/cpp/PackageProvider.cpp`, add the following code:
+Open `entry/src/main/cpp/PackageProvider.cpp` and add the following code:
 
 ```diff
 #include "RNOH/PackageProvider.h"
 #include "generated/RNOHGeneratedPackage.h"
-#include "SamplePackage.h"
 + #include "PickerPackage.h"
 
 using namespace rnoh;
 
 std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
     return {
-      std::make_shared<RNOHGeneratedPackage>(ctx),
-      std::make_shared<SamplePackage>(ctx),
-+     std::make_shared<PickerPackage>(ctx)
+        std::make_shared<RNOHGeneratedPackage>(ctx),
++       std::make_shared<PickerPackage>(ctx)
     };
 }
 ```
 
-
-
-### 4. Introducing picker Component to ArkTS
+### 2.4. Introducing picker Component to ArkTS
 
 Find `function buildCustomRNComponent()`, which is usually located in `entry/src/main/ets/pages/index.ets` or `entry/src/main/ets/rn/LoadBundle.ets`, and add the following code:
 
@@ -217,20 +182,16 @@ Find `function buildCustomRNComponent()`, which is usually located in `entry/src
 ...
 ```
 
-> [!TIP] If the repository uses a mixed solution, the component name needs to be added.
-
 Find the constant `arkTsComponentNames` in `entry/src/main/ets/pages/index.ets` or `entry/src/main/ets/rn/LoadBundle.ets` and add the component name to the array.
 
 ```diff
 const arkTsComponentNames: Array<string> = [
   SampleView.NAME,
-  GeneratedSampleView.NAME,
-  PropsDisplayer.NAME,
 + PICKER_TYPE
   ];
 ```
 
-### 5. Introducing RNCPickerPackage to ArkTS
+### 2.5 Introducing RNCPickerPackage to ArkTS
 
 Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following code:
 
@@ -240,7 +201,6 @@ Open the `entry/src/main/ets/RNPackagesFactory.ts` file and add the following co
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
-    new SamplePackage(ctx),
 +   new RNCPickerPackage(ctx)
   ];
 }
@@ -248,7 +208,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 </details>
 
-## Running
+### 2.6 Running
 
 Click the `sync` button in the upper right corner.
 
@@ -261,20 +221,18 @@ ohpm install
 
 Then build and run the code.
 
-## Constraints
+## 3. Constraints
 
-### Compatibility
+### 3.1 Compatibility
 
-To use this repository, you need to use the correct React-Native and RNOH versions. In addition, you need to use DevEco Studio and the ROM on your phone.
-
-Verified in the following versions.
+This document is verified based on the following versions:
 
 1. RNOH: 0.72.96; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 4. RNOH: 0.82.1; SDK: HarmonyOS 6.0.1 Release SDK; IDE: DevEco Studio 6.0.1 Release; ROM: 6.0.0.120 SP7;
 
-## Properties
+## 4. Properties
 
 > [!TIP] The **Platform** column indicates the platform where the properties are supported in the original third-party library.
 
@@ -312,7 +270,7 @@ Verified in the following versions.
 | `enabled`            | If set to false, the specific item will be disabled, i.e. the user will not be able to make a selection. | boolean       | No       | Android  | No                |
 | `contentDescription` | Sets the content description to the Picker Item.                                                         | string        | No       | Android  | No                |
 
-## Static Methods
+## 5. Static Methods
 
 
 | Name    | Description                     | Type     | Required | Platform | HarmonyOS Support |
@@ -320,15 +278,17 @@ Verified in the following versions.
 | `blur`  | Programmatically closes picker. | function | No       | Android  | No                |
 | `focus` | Programmatically opens picker.  | function | No       | Android  | No                |
 
-## Known Issues
+## 6. APIs
 
-- [ ] numberOfLines 属性不支持[issue#2](https://github.com/react-native-oh-library/picker/issues/2)
-- [ ] PickerItemProps 的 color 和 fontFamily 不支持（OH 的 Picker 组件不支持单独设置 PickerItem 的样式） [issue#21](https://github.com/react-native-oh-library/picker/issues/21)
-- [ ] themeVariant 属性不支持[issue#22](https://github.com/react-native-oh-library/picker/issues/22)
-- [ ] itemStyle 不支持设置 textAlign（OH 的 Picker 不支持设置）[issue#23](https://github.com/react-native-oh-library/picker/issues/23)
+## 7. Known Issues
 
-## Others
+- [ ] The `numberOfLines` property is not supported.[issue#2](https://github.com/react-native-oh-library/picker/issues/2)
+- [ ] `color` and `fontFamily` in `PickerItemProps` are not supported.(OpenHarmony's Picker component does not support styling individual `PickerItem` separately.) [issue#21](https://github.com/react-native-oh-library/picker/issues/21)
+- [ ] The `themeVariant` property is not supported. [issue#22](https://github.com/react-native-oh-library/picker/issues/22)
+- [ ] `itemStyle` does not support setting `textAlign`.(Not supported by OpenHarmony's Picker.)[issue#23](https://github.com/react-native-oh-library/picker/issues/23)
 
-## License
+## 8. Others
 
-This project is licensed under [The MIT License (MIT)](https://github.com/react-native-picker/picker/blob/master/LICENSE).
+## 9. License
+
+This project is licensed under [The MIT License (MIT)](https://gitcode.com/openharmony-sig/rntpc_picker/blob/master/LICENSE).
