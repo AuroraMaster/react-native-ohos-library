@@ -280,12 +280,12 @@ Verified in the following versions.
 > | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------ | -------- | ----------- | ----------------- |
 > | style    | View style                                                                                                                                             | ViewStyle                | no       | android/ios | yes               |
 > | ref      | Reference to the SkiaView object                                                                                                                       | Ref<SkiaView>            | no       | android/ios | yes               |
-> | mode   <sup>deprecated from 2.4.14</sup>  | By default, the canvas is only updated when the drawing tree or animation values change. With mode="continuous", the canvas will redraw on every frame | default \| continuous       | no       | android/ios | yes               |
+> | mode   <sup>deprecated from 2.0.0</sup>  | By default, the canvas is only updated when the drawing tree or animation values change. With mode="continuous", the canvas will redraw on every frame | default \| continuous       | no       | android/ios | yes               |
 > | onSize   | Reanimated value to which the canvas size will be assigned                                                                                             | SharedValue<Size>        | no       | android/ios | yes               |
-> | onLayout <sup>deprecated from 2.4.14</sup> | Invoked on mount and on layout changes                                                                                                                 | NativeEvent<LayoutEvent> | no       | android/ios | yes               |
-> | debug <sup>2.4.14</sup> | debug switch                                                                                                                 | boolean | no       | android/ios | yes               |
-> | colorspace <sup>2.4.14</sup> | color space                                                                                                                 | "p3"/"srgb" | no       | ios | yes               |
-> | opaque <sup>2.4.14</sup> | Control the transition between texture and surface rendering modes                                                                                                                 | boolean | no       | android | yes               |
+> | onLayout <sup>deprecated from 2.0.0</sup> | Invoked on mount and on layout changes                                                                                                                 | NativeEvent<LayoutEvent> | no       | android/ios | yes               |
+> | debug <sup>2.0.0</sup> | debug switch                                                                                                                 | boolean | no       | android/ios | yes               |
+> | colorspace <sup>2.0.0</sup> | color space                                                                                                                 | "p3"/"srgb" | no       | ios | yes               |
+> | opaque <sup>2.0.0</sup> | Control the transition between texture and surface rendering modes                                                                                                                 | boolean | no       | android | yes               |
 
 
 ### Group
@@ -303,8 +303,7 @@ Verified in the following versions.
 | clip       | Rectangle, rounded rectangle, or Path to use to clip the children.                                                                                                                                                     | RectOrRRectOrPath | no       | android/ios | yes               |
 | invertClip | Invert the clipping region: parts outside the clipping region will be shown and, inside will be hidden.                                                                                                                | boolean           | no       | android/ios | yes               |
 | layer      | Draws the children as a bitmap and applies the effects provided by the paint.                                                                                                                                          | RefObject<Paint>  | no       | android/ios | yes               |
-
-| zIndex <sup>2.4.14</sup>     | The drawing hierarchy order of sub elements                                                                                                            | number  | no       | android/ios | yes               |
+| zIndex <sup>2.0.0</sup>  | The drawing hierarchy order of sub elements                                                                                                            | number  | no       | android/ios | yes               |
 
 ### Path
 
@@ -841,11 +840,11 @@ Verified in the following versions.
 
 > [!TIP] If the value of **HarmonyOS Support** is **yes**, it means that the HarmonyOS platform supports this property; **no** means the opposite; **partially** means some capabilities of this property are supported. The usage method is the same on different platforms and the effect is the same as that of iOS or Android.
 
-| Name     | Description                                | Type            | Required | Platform    | HarmonyOS Support |
-| -------- | ------------------------------------------ | --------------- | -------- | ----------- | ----------------- |
-| source   | Shader to use as an image filter           | SkRuntimeEffect | yes      | android/ios | yes               |
-| children | Optional image filter to be applied first. | ImageFilter     | no       | android/ios | yes               |
-
+| Name                       | Description                                | Type            | Required | Platform    | HarmonyOS Support |
+|----------------------------|--------------------------------------------|-----------------| -------- | ----------- | ----------------- |
+| source                     | Shader to use as an image filter           | SkRuntimeEffect | yes      | android/ios | yes               |
+| children                   | Optional image filter to be applied first. | ImageFilter     | no       | android/ios | yes               |
+| uniforms <sup>2.0.0</sup> | Dynamic parameters passed to the Shader    | Uniforms        | no       | android/ios | yes               |
 ### BlurMask
 
 #### Properties
@@ -955,7 +954,7 @@ Verified in the following versions.
 | width  | The width of the destination image.                                                                                                                                        | number  | yes      | android/ios | yes               |
 | height | The height of the destination image.                                                                                                                                       | number  | yes      | android/ios | yes               |
 | fit    | The method used to fit the image into the rectangle. Values can be `contain`, `fill`, `cover`, `fitHeight`, `fitWidth`, `scaleDown`, or `none` (the default is `contain`). | Fit     | no       | android/ios | yes               |
-| sampling <sup>2.4.14</sup> | Sampling method for images.                                                                                                             | Sampling  | no      | android/ios | yes               |
+| sampling <sup>2.0.0</sup> | Sampling method for images.                                                                                                             | Sampling  | no      | android/ios | yes               |
 
 
 
@@ -1073,7 +1072,7 @@ Verified in the following versions.
 | blur | Blur radius | number | yes      | android/ios | yes               |
 
 
-### Paint
+### Paint <sup>2.0.0</sup>
 
 #### Properties
 
@@ -1094,7 +1093,7 @@ Verified in the following versions.
 | antiAlias | anti-aliasing | boolean | no      | android/ios | yes               |
 | dither | jitter | boolean | no      | android/ios | yes               |
 
-### Video <sup>2.4.14</sup>
+### Video <sup>2.0.0</sup>
 
 #### Properties
 
@@ -1109,7 +1108,7 @@ Verified in the following versions.
 | paused | pause | Animated<boolean> | no      | android/ios | yes               |
 | volume | volume | Animated<number> | no      | android/ios | yes      
 
-### Skottie <sup>2.4.14</sup>
+### Skottie <sup>2.0.0</sup>
 
 #### Properties
 

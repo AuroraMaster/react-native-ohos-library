@@ -470,6 +470,13 @@ The permission is granted to the application if the user selects **Always allow*
 
 ## Others
 
+1. Device discovery and connection 
+
+   Starting from API 13, the original "Bluetooth", "Starflash", and "Multi-Device Collaboration" permission groups will no longer be used. The relevant permissions will be uniformly authorized and operated through the "Device Discovery and Connection" permission group.
+    * ohos.permission.ACCESS_BLUETOOTH
+    * ohos.permission.ACCESS_NEARLINK
+    * ohos.permission.DISTRIBUTED_DATASYNC
+
 ## License
 
 This project is licensed under [The MIT License (MIT)](https://github.com/zoontek/react-native-permissions/blob/master/LICENSE).
