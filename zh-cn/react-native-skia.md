@@ -284,12 +284,12 @@ ohpm install
 | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------ | -------- | ----------- | ----------------- |
 | style    | 视图样式                                                                                                                                             | ViewStyle                | no       | android/ios | yes               |
 | ref      | 指向 SkiaView 对象的引用                                                                                                                       | Ref<SkiaView>            | no       | android/ios | yes               |
-| mode <sup>deprecated from 2.4.14 </sup>    | 控制重绘频率。默认情况下，仅当绘图树或动画值发生变化时，Canvas 才会更新。当 mode="continuous" 时，Canvas 会在每一帧都重新绘制 | default \| continuous    | no       | android/ios | yes               |
+| mode <sup>deprecated from 2.0.0 </sup>    | 控制重绘频率。默认情况下，仅当绘图树或动画值发生变化时，Canvas 才会更新。当 mode="continuous" 时，Canvas 会在每一帧都重新绘制 | default \| continuous    | no       | android/ios | yes               |
 | onSize   | 与 Canvas 尺寸绑定的 Reanimated 值                                                                                             | SharedValue<Size>        | no       | android/ios | yes               |
-| onLayout <sup>deprecated from 2.4.14</sup> | 在挂载时和布局变化时触发的回调函数                                                                    | NativeEvent<LayoutEvent> | no       | android/ios | yes               |
-| debug <sup>2.4.14</sup> | 调试开关                                                                                                                 | boolean | no       | android/ios | yes               |
-| colorspace <sup>2.4.14</sup> | 色彩空间                                                                                                                 | "p3"/"srgb" | no       | ios | yes               |
-| opaque <sup>2.4.14</sup> | 控制texture和surface渲染模式之间的切                                                                                                                 | boolean | no       | android | yes               |
+| onLayout <sup>deprecated from 2.0.0</sup> | 在挂载时和布局变化时触发的回调函数                                                                    | NativeEvent<LayoutEvent> | no       | android/ios | yes               |
+| debug <sup>2.0.0</sup> | 调试开关                                                                                                                 | boolean | no       | android/ios | yes               |
+| colorspace <sup>2.0.0</sup> | 色彩空间                                                                                                                 | "p3"/"srgb" | no       | ios | yes               |
+| opaque <sup>2.0.0</sup> | 控制texture和surface渲染模式之间的切                                                                                                                 | boolean | no       | android | yes               |
 
 ### Group
 
@@ -306,7 +306,7 @@ ohpm install
 | clip       | 用于裁剪子组件的矩形、圆角矩形或路径.                                                                                                                                                     | RectOrRRectOrPath | no       | android/ios | yes               |
 | invertClip | 反转裁剪区域：裁剪区域外的部分将显示，内部部分将被隐藏                                                                                                                | boolean           | no       | android/ios | yes               |
 | layer      | 将子组件绘制为位图，并应用 Paint 提供的效果                                                                                                                                          | RefObject<Paint>  | no       | android/ios | yes               |
-| zIndex <sup>2.4.14</sup>     | 子元素的绘制层级顺序                                                                                                            | number  | no       | android/ios | yes               |
+| zIndex <sup>2.0.0</sup>     | 子元素的绘制层级顺序                                                                                                            | number  | no       | android/ios | yes               |
 
 ### Path
 
@@ -847,7 +847,7 @@ ohpm install
 | -------- | ------------------------------------------ | --------------- | -------- | ----------- | ----------------- |
 | source   | 用作图像过滤器的着色器           | SkRuntimeEffect | yes      | android/ios | yes               |
 | children | 首先应用可选的图像过滤器. | ImageFilter     | no       | android/ios | yes               |
-| uniforms <sup>2.4.14</sup> | 传递给着色器程序的动态参数. | Uniforms     | no       | android/ios | yes               |
+| uniforms <sup>2.0.0</sup> | 传递给着色器程序的动态参数. | Uniforms     | no       | android/ios | yes               |
 
 ### BlurMask
 
@@ -958,7 +958,7 @@ ohpm install
 | width  | 目标图像的宽度.                                                                                                                                        | number  | yes      | android/ios | yes               |
 | height | 目标图像的高度.                                                                                                                                       | number  | yes      | android/ios | yes               |
 | fit    | 图像适应矩形区域的方法，可选值包括：contain、fill、cover、fitHeight、fitWidth、scaleDown 或 none，默认为 contain. | Fit     | no       | android/ios | yes               |
-| sampling <sup>2.4.14</sup> | 图像的采样方法.                                                                                                             | Sampling  | no      | android/ios | yes               |
+| sampling <sup>2.0.0</sup> | 图像的采样方法.                                                                                                             | Sampling  | no      | android/ios | yes               |
 
 ### ImageSVG
 
@@ -1073,7 +1073,7 @@ ohpm install
 | ---- | ----------- | ------ | -------- | ----------- | ----------------- |
 | blur | 模糊半径，控制背景内容的模糊程度 | number | yes      | android/ios | yes               |
 
-### Paint <sup>2.4.14</sup>
+### Paint <sup>2.0.0</sup>
 
 #### 属性
 
@@ -1095,7 +1095,7 @@ ohpm install
 | dither | 抖动 | boolean | no      | android/ios | yes               |
 
 
-### Video <sup>2.4.14</sup>
+### Video <sup>2.0.0</sup>
 
 #### 属性
 
@@ -1110,7 +1110,7 @@ ohpm install
 | paused | 暂停 | Animated<boolean> | no      | android/ios | yes               |
 | volume | 音量 | Animated<number> | no      | android/ios | yes       
 
-### Skottie <sup>2.4.14</sup>
+### Skottie <sup>2.0.0</sup>
 
 #### 属性
 
