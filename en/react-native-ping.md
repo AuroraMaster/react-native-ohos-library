@@ -10,7 +10,7 @@ This third-party library has been migrated to Gitcode and is now available for d
 
 | Name | Version | Release Information | Supported RN Version | Supported Autolink | Compile API Version | Community Baseline Version | npm Address     |
 | --------------| -------------- | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
-| @react-native-ohos/react-native-ping | ~ 1.3.0    | [Github Releases](https://github.com/react-native-oh-library/react-native-ping/releases) | 0.72.*/0.77.*/0.82.* | yes | API20+ | 1.2.8 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-ping) | 
+| @react-native-ohos/react-native-ping | ~ 1.0.0    | [Github Releases](https://github.com/react-native-oh-library/react-native-ping/releases) | 0.72.*/0.77.*/0.82.* | partially(0.72) | API20+ | 1.2.8 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-ping) |
 
 ## 1. Installation and Usage
 
@@ -390,7 +390,7 @@ export default ReactNativePingDemo;
 
 |                                      | Supported Autolink | Supported RN Version |
 |--------------------------------------|------------------|-----------|
-| ~1.3.0                               |  Yes             |  0.72/0.77/0.82     |
+| ~1.0.0                               |  partially(0.72) |  0.72/0.77/0.82     |
 
 Projects using AutoLink need to be configured according to this document, AutoLink framework guide.：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
@@ -542,7 +542,7 @@ open `entry/src/main/resources/base/element/string.json` and add：
 > [!TIP] All versions of the current third-party libraries supporting compilation in `API20+` projects and execution on `API20+` ROMs.
 
 > [!TIP] The following features depend on specific API versions. Compiling the project with an API version lower than specified or running the ROM with an API version lower than specified may result in limited functionality.
-1. Version 1.3.0 introduced [NetConn_ProbeResultInfo](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/capi-netconnection-netconn-proberesultinfo) to define the detection result information returned in the `ping` function. `NetConn_ProbeResultInfo` needs to be compiled in a project that supports `API20+` and run on a ROM that supports `API20+`. Running it on lower versions will result in the ping function in the `start` method being unavailable.
+1. Version 1.0.0 introduced [NetConn_ProbeResultInfo](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/capi-netconnection-netconn-proberesultinfo) to define the detection result information returned in the `ping` function. `NetConn_ProbeResultInfo` needs to be compiled in a project that supports `API20+` and run on a ROM that supports `API20+`. Running it on lower versions will result in the ping function in the `start` method being unavailable.
 
 ## 4. APIs
 

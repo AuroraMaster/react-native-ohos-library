@@ -9,7 +9,7 @@
 该第三方库支持直接从 npm 下载，包名为：`@react-native-ohos/react-native-ping` 版本所属关系如下：
 | 三方库名称    | 三方库版本    | 发布信息     | 支持RN版本    | Autolink     | 编译API版本     | 社区基线版本    | npm地址                |
 | ------------ | ------------ | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
-| @react-native-ohos/react-native-ping | ~ 1.3.0    | [Github Releases](https://github.com/react-native-oh-library/react-native-ping/releases) | 0.72.*/0.77.*/0.82.* | 是 | API20+ | 1.2.8 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-ping) |  
+| @react-native-ohos/react-native-ping | ~ 1.0.0    | [Github Releases](https://github.com/react-native-oh-library/react-native-ping/releases) | 0.72.*/0.77.*/0.82.* | partially(0.72) | API20+ | 1.2.8 | [Npm Address](https://www.npmjs.com/package/@react-native-ohos/react-native-ping) |  
 
 ## 1. 安装与使用
 
@@ -393,7 +393,7 @@ export default ReactNativePingDemo;
 
 |                                      | 是否支持autolink | RN框架版本 |
 |--------------------------------------|------------------|-----------|
-| ~1.3.0                               |  Yes             |  0.72/0.77/0.82     |
+| ~1.0.0                               |  partially(0.72) |  0.72/0.77/0.82     |
 
 使用AutoLink的工程需要根据该文档配置，Autolink框架指导文档：https://gitcode.com/openharmony-sig/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
 
@@ -548,7 +548,7 @@ ohpm install
 > [!TIP] 当前三方库支持在 `API20+` 工程编译，及 `API20+` ROM运行。
 
 > [!TIP] 以下功能依赖特定版本的API，使用 `低于指定API版本的工程编译` 或 `低于指定API版本的ROM运行` 均可能导致部分功能受限。
-1. 1.3.0版本引入[NetConn_ProbeResultInfo](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/capi-netconnection-netconn-proberesultinfo)，来定义ping功能中返回的探测结果信息，NetConn_ProbeResultInfo需要在支持`API20+`的工程编译，并在支持`API20+`的ROM上运行，低版本上运行将会导致start方法中的ping功能不可用。
+1. 1.0.0版本引入[NetConn_ProbeResultInfo](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/capi-netconnection-netconn-proberesultinfo)，来定义ping功能中返回的探测结果信息，NetConn_ProbeResultInfo需要在支持`API20+`的工程编译，并在支持`API20+`的ROM上运行，低版本上运行将会导致start方法中的ping功能不可用。
 
 ## 6. API
 
