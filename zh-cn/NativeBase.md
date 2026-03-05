@@ -145,10 +145,6 @@ const styles = StyleSheet.create({
 **Center**: 布局组件中心对齐
 [继承了React Native中View参数](https://reactnative.dev/docs/view#props)
 
-|   Name    |                       Description                        |  Type   | Required | Platform | HarmonyOS Support |
-| :-------: | :------------------------------------------------------: | :-----: | :------: | :------: | :---------------: |
-| focusable | 使用非触控输入设备（例如通过硬件键盘）来对该视图进行聚焦 | Boolean |    No    | Android  |        No         |
-
 **Container**: 容器根据当前断点限制内容的宽度，同时保持尺寸的流动性。
 [Container实现了Box的功能，所以所有Box的属性都能传给Container]
 

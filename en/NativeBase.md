@@ -131,10 +131,6 @@ The following component attributes are currently supported:
 **Center**: Center aligns its contents to the center within itself. It is a layout component.
 [Center implements View](https://reactnative.dev/docs/view#props)
 
-|   Name    |                         Description                          |  Type   | Required | Platform | HarmonyOS Support |
-| :-------: | :----------------------------------------------------------: | :-----: | :------: | :------: | :---------------: |
-| focusable | Use a non-touch input device (such as ahardware keyboard) to focus on this view | Boolean |    No    | Android  |        No         |
-
 **Container**: The Container restricts a content's width according to current breakpoint, while keeping the size fluid.
 [The container implements the functions of the box. Therefore, all attributes of the box can be transferred to the container.]
 
