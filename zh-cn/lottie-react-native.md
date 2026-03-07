@@ -322,7 +322,7 @@ rawfile 路径：`entry/src/main/resources/rawfile`
 ## 6. 遗留问题
 
 - [ ] 原库部分接口在 HarmonyOS 中没有对应属性及接口处理相关逻辑，问题: [issue#18](https://github.com/react-native-oh-library/lottie-react-native/issues/18)
-- [ ] 调用 play() 或 reset() 函数时没有对onAnimationFinish回调函数接收参数isCancelled处理相关逻辑，问题: [issue#27](https://gitcode.com/openharmony-sig/rntpc_lottie-react-native/issues/27)
+
 
 ## 7. 其他
 

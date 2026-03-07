@@ -324,7 +324,7 @@ rawfile path: `entry/src/main/resources/rawfile`
 ## 6. Known Issues
 
 - [ ] Some interfaces of the original library do not have corresponding properties and interface handling logic in HarmonyOS: [issue#18](https://github.com/react-native-oh-library/lottie-react-native/issues/18)
-- [ ] There is no logic for handling the `isCancelled` parameter received by the `onAnimationFinish` callback function when calling the `play()` or `reset()` functions.: [issue#27](https://gitcode.com/openharmony-sig/rntpc_lottie-react-native/issues/27)
+
 
 ## 7. Others
 
