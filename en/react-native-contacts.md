@@ -559,8 +559,8 @@ Open the `entry/src/main/module.json5` file and add the following code:
 | getContactsMatchingString(str: string): Promise<Contact[]>   | where string is any string to match a name (first, middle, family) to | function | no       | Android,iOS | yes               |
 | getContactsByPhoneNumber(phoneNumber: string): Promise<Contact[]> | where string is a phone number to match to.                  | function | no       | Android,iOS | yes               |
 | getContactsByEmailAddress(emailAddress: string): Promise<Contact[]> | where string is an email address to match to.                | function | no       | Android,iOS | yes               |
-| checkPermission(): Promise<'authorized' \| 'denied' \| 'undefined'>; | checks permission to access Contacts ios only                | function | no       | iOS         | yes               |
-| requestPermission(): Promise<'authorized' \| 'denied' \| 'undefined'> | request permission to access Contacts ios only               | function | no       | iOS         | yes               |
+| checkPermission(): Promise<'authorized' \| 'denied' \| 'undefined' \| 'limited'> | checks permission to access Contacts ios only                | function | no       | iOS         | partially               |
+| requestPermission(): Promise<'authorized' \| 'denied' \| 'undefined' \| 'limited'> | request permission to access Contacts ios only               | function | no       | iOS         | partially               |
 | writePhotoToPath(contactId: string, file: string): Promise<boolean> | writes the contact photo to a given path android only        | function | no       | Android     | no                |
 
 **Contacts**
@@ -643,9 +643,11 @@ Open the `entry/src/main/module.json5` file and add the following code:
 - [ ] **writePhotoToPath**: The system contact application does not support this API. [issue#1](https://github.com/react-native-oh-library/react-native-contacts/issues/1)
 - [ ] **openExistingContact**: At present, no relevant interface is provided to open the edit mode for existing contacts. The current behavior is that it opens in view mode. If the existing contact does not exist, a blank page will be returned. [issue#9](https://gitcode.com/openharmony-sig/rntpc_react-native-contacts/issues/9)
 - [ ] **viewExistingContact**: If the existing contact does not exist, a blank page will be returned. [issue#9](https://gitcode.com/openharmony-sig/rntpc_react-native-contacts/issues/9)
-- [ ] state, department and isStarred these fields are not supported at present.[issue#9](https://gitcode.com/openharmony-sig/rntpc_react-native-contacts/issues/9)
+- [ ] **state, department and isStarred**: These fields are not supported at present.[issue#9](https://gitcode.com/openharmony-sig/rntpc_react-native-contacts/issues/9)
 
 ## Others
+
+- [ ] **checkPermission&requestPermission**: The result of these two interfaces can only in authorized and denied，limited is not supported at present.
 
 ## License
 
