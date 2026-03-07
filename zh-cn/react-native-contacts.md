@@ -557,8 +557,8 @@ ohpm install
 | getContactsMatchingString(str: string): Promise<Contact[]>   | where string is any string to match a name (first, middle, family) to | function | no       | Android,iOS  | yes               |
 | getContactsByPhoneNumber(phoneNumber: string): Promise<Contact[]> | where string is a phone number to match to.                  | function | no       | Android,iOS  | yes               |
 | getContactsByEmailAddress(emailAddress: string): Promise<Contact[]> | where string is an email address to match to.                | function | no       | Android,iOS  | yes               |
-| checkPermission(): Promise<'authorized' \| 'denied' \| 'undefined'>; | checks permission to access Contacts ios only                | function | no       | iOS       | yes               |
-| requestPermission(): Promise<'authorized' \| 'denied' \| 'undefined'> | request permission to access Contacts ios only               | function | no       | iOS       | yes               |
+| checkPermission(): Promise<'authorized' \| 'denied' \| 'undefined' \| 'limited'> | checks permission to access Contacts ios only                | function | no       | iOS       | partially               |
+| requestPermission(): Promise<'authorized' \| 'denied' \| 'undefined' \| 'limited'> | request permission to access Contacts ios only               | function | no       | iOS       | partially               |
 | writePhotoToPath(contactId: string, file: string): Promise<boolean> | writes the contact photo to a given path android only        | function | no       | Android | no                |
 
 
@@ -646,6 +646,8 @@ ohpm install
 - [ ] state(州)，department(部门)，isStarred(重点联系人标记)三个字段目前不支持[issue#9](https://gitcode.com/openharmony-sig/rntpc_react-native-contacts/issues/9)
 
 ## 其他
+
+- [ ] checkPermission跟requestPermission：鸿蒙获取的权限目前支持authorized跟denied，不支持部分权限limited.
 
 ## 开源协议
 
