@@ -48,7 +48,7 @@ import {
   ActivityIndicator,
   Alert,
 } from 'react-native';
-import Ping from '@react-native-ohos/react-native-ping';
+import Ping from 'react-native-ping';
 
 const TestCase = ({
   title,
@@ -524,17 +524,14 @@ This document is verified based on the following versions:
 ### 3.2 Permission Requirements
 
 (Enter the related permission configuration.)
-open `entry/src/main/resources/base/element/string.json` and add：
+  Add in ` entry/src/main/module. json 5 `
 
-```diff
-...
-{
-  "string": [
-+    {
-+      "name": "ohos.permission.INTERNET",
-+    },
-  ]
-}
+```json
+requestPermissions: [
+  {
+    name: "ohos.permission.INTERNET",
+  },
+],
 ```
 
 ### 3.3. API requirements
@@ -564,13 +561,20 @@ open `entry/src/main/resources/base/element/string.json` and add：
 | receivedNetworkTotal  | Download Total | string  | yes | ALL | yes          |
 | sendNetworkTotal      | Upload Total | string  | yes | ALL | yes          |
 
+### errors
+
+| Name     | Description  |   Type   |   default   | platform | HarmonyOS Support |
+| :------- | :----------- | :------: | :---------: | -------- | ----------------- |
+| PingUtil_Message_Timeout                    | timeout            | `string` | `0` | iOS,Android | NO |
+| PingUtil_Message_PreviousPingIsStillRunning | running            | `string` | `1` | /           | NO |
+| PingUtil_Message_HostErrorNotSetHost        | not set host       | `string` | `2` | iOS,Android | YES |
+| PingUtil_Message_HostErrorUnknown           | host error unknown | `string` | `3` | iOS,Android | YES |
+| PingUtil_Message_HostErrorHostNotFound      | host not found     | `string` | `4` | Only iOS    | NO |
+| PingUtil_Message_Unknown                    | nnknown            | `string` | `5` | Only iOS    | NO |
+
 ## 5. Known Issues
 
 - [ ]  The options configuration for the start method is not taking effect
 - [ ]  The error code only supports PingUtil_Message_HostErrorNotSetHost and PingUtil_Message_HostErrorUnknown; others are not supported
 
 ## 6. Others
-
-## 7. License
-
-This project is licensed under [MIT License (MIT)]().

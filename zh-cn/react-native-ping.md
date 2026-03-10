@@ -51,7 +51,7 @@ import {
   ActivityIndicator,
   Alert,
 } from 'react-native';
-import Ping from '@react-native-ohos/react-native-ping';
+import Ping from 'react-native-ping';
 
 const TestCase = ({
   title,
@@ -527,20 +527,17 @@ ohpm install
 
 1. RNOH: 0.72.59/0.77.18-1/0.82.7; SDK: HarmonyOS-6.0.0(API20); IDE: DevEco Studio 6.0.1.260; ROM: NEXT.0.0.71。
 
-### 3.2. 权限要求（如有）
+### 3.2. 权限要求
 
 （填入相关权限配置）
-打开 `entry/src/main/resources/base/element/string.json`，添加：
+  在`entry/src/main/module.json5`中添加
 
-```diff
-...
-{
-  "string": [
-+    {
-+      "name": "ohos.permission.INTERNET",
-+    },
-  ]
-}
+```json
+requestPermissions: [
+  {
+    name: "ohos.permission.INTERNET",
+  },
+],
 ```
 
 ### 3.3. 编译运行API要求
@@ -550,7 +547,7 @@ ohpm install
 > [!TIP] 以下功能依赖特定版本的API，使用 `低于指定API版本的工程编译` 或 `低于指定API版本的ROM运行` 均可能导致部分功能受限。
 1. 1.0.0版本引入[NetConn_ProbeResultInfo](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/capi-netconnection-netconn-proberesultinfo)，来定义ping功能中返回的探测结果信息，NetConn_ProbeResultInfo需要在支持`API20+`的工程编译，并在支持`API20+`的ROM上运行，低版本上运行将会导致start方法中的ping功能不可用。
 
-## 6. API
+## 4. API
 
 > [!TIP] "Platform"列表示该属性在原三方库上支持的平台。
 
@@ -570,25 +567,20 @@ ohpm install
 | receivedNetworkTotal  | 接收总量 | string  | yes | ALL | yes          |
 | sendNetworkTotal      | 发送总量 | string  | yes | ALL | yes          |
 
-## 7. 错误码
+### 错误码
 
 | Name     | Description  |   Type   |   default   | platform | HarmonyOS Support |
 | :------- | :----------- | :------: | :---------: | -------- | ----------------- |
-| PingUtil_Message_Timeout                    | 超时                | `string` | `0` | iOS,Android | NO |
+| PingUtil_Message_Timeout                    | 超时               | `string` | `0` | iOS,Android | NO |
 | PingUtil_Message_PreviousPingIsStillRunning | 正在运行            | `string` | `1` | /           | NO |
 | PingUtil_Message_HostErrorNotSetHost        | 未设置ip            | `string` | `2` | iOS,Android | YES |
 | PingUtil_Message_HostErrorUnknown           | host未知错误        | `string` | `3` | iOS,Android | YES |
-| PingUtil_Message_HostErrorHostNotFound      | host错误、host找不到| `string` | `4` | Only iOS    | NO |
+| PingUtil_Message_HostErrorHostNotFound      | host找不到          | `string` | `4` | Only iOS    | NO |
 | PingUtil_Message_Unknown                    | 未知错误            | `string` | `5` | Only iOS    | NO |
 
-## 7. 遗留问题
+## 5. 遗留问题
 
 - [ ]  start方法的options配置不生效
 - [ ]  错误码只支持PingUtil_Message_HostErrorNotSetHost和PingUtil_Message_HostErrorUnknown，其他不支持
 
-## 8. 其他
-
-
-## 9. 开源协议
-
-本项目基于 [MIT License (MIT)]() ，请自由地享受和参与开源。
+## 6. 其他
