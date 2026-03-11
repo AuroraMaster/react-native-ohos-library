@@ -381,19 +381,19 @@ ohpm install
 ```diff
 #include "RNOH/PackageProvider.h"
 #include "generated/RNOHGeneratedPackage.h"
-+ #include "AmapGeolocationPackage.h"
++ #include "AMapGeolocationPackage.h"
 
 using namespace rnoh;
 
 std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
     return {
         std::make_shared<RNOHGeneratedPackage>(ctx),
-+       std::make_shared<AmapGeolocationPackage>(ctx),
++       std::make_shared<AMapGeolocationPackage>(ctx),
     };
 }
 ```
 
-### 4.在 ArkTs 侧引入 AmapGeolocationPackage
+### 4.在 ArkTs 侧引入 AMapGeolocationPackage
 
 打开 `entry/src/main/ets/RNPackagesFactory.ts`，添加：
 
