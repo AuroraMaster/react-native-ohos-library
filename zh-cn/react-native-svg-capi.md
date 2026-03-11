@@ -588,64 +588,64 @@ ohpm install
 
 Common props 组件属性 HarmonyOS 侧支持情况
 
-|       Name       |                 Description                 |    Type     |  Default  | Required | Platform |
-| :--------------: | :-----------------------------------------: | :---------: | :-------: | :------: | :------: |
-|       fill       |              设置填充区域颜色               |   string    |  '#000'   |    No    |   All    |
-|   fillOpacity    |             设置填充区域透明度              |   number    |     1     |    No    |   All    |
-|     fillRule     |                设置填充规则                 |   number    |     1     |    No    |   All    |
-|     clipRule     |                设置裁剪规则                 |   string    | 'evenodd' |    No    |   All    |
-|     clipPath     |           指定、关联一条裁剪路径            |   string    |  'none'   |    No    |   All    |
-|      stroke      |    设置边框颜色，不设置时，默认没有边框     |   string    |   none    |    No    |   All    |
-|   strokeWidth    |                设置边框宽度                 |   number    |     1     |    No    |   All    |
-|  strokeOpacity   |                 边框透明度                  |   number    |     1     |    No    |   All    |
-| strokeDasharray  |         用来描边的点划线的图案范式          |   number    |   none    |    No    |   All    |
-| strokeDashoffset |      指定了 dash 模式到路径开始的距离       |   number    |     1     |    No    |   All    |
-|  strokeLinecap   |             设置路径两端的形状              |   string    |   butt    |    No    |   All    |
-|  strokeLinejoin  |         指明路径的转角处使用的形状          |   string    |   miter   |    No    |   All    |
-| strokeMiterlimit | 对斜接长度和 stroke-width 的比率设置极限 值 |   number    |     4     |    No    |   All    |
-|   vectorEffect   |       指明绘制对象时要使用的矢量效果        |   string    |   none    |    No    |   All    |
-|    translate     |                  设置位移                   | numberArray |    0,0    |    No    |   All    |
-|    translateX    |                设置 x 轴位移                |   number    |     0     |    No    |   All    |
-|    translateY    |                设置 y 轴位移                |   number    |     0     |    No    |   All    |
-|      origin      |           更改一个元素变形的原点            | numberArray |    0,0    |    No    |   All    |
-|     originX      |        更改一个元素变形的原点 x 坐标（单独使用无效，需配合其他属性如 rotation 使用）        |   number    |     0     |    No    |   All    |
-|     originY      |        更改一个元素变形的原点 y 坐标（单独使用无效，需配合其他属性如 rotation 使用）       |   number    |     0     |    No    |   All    |
-|      scale       |                定义缩放大小                 | numberArray |   1，1    |    No    |   All    |
-|      scaleX      |              定义 x 轴缩放大小              |   number    |     1     |    No    |   All    |
-|      scaleY      |              定义 y 轴缩放大小              |   number    |     1     |    No    |   All    |
-|     rotation     |                设置旋转角度                 |   number    |   0，0    |    No    |   All    |
-|        x         |              标识一个 x 轴坐标              |   number    |     0     |    No    |   All    |
-|        y         |              标识一个 y 轴坐标              |   number    |     0     |    No    |   All    |
-|    transform<sup>changed in 15.13.0</sup>     |   定义应用于元素及其子元素的变换规则列表, 小于15.13.0 版本，transform 属性类型仅支持string类型, 15.13.0 版本及以后版本，transform 属性同时支持string类型及Transform Object 数组    |   string\|TransformArray    |     -     |    No    |   All    |
-|      marker      |         指定路径所有顶点的路标样式          |   string    |     -     |    No    |   All    |
-|   markerStart    |        指定路径起点所采用的路标样式         |   string    |     -     |    No    |   All    |
-|    markerMid     |      指定路径中间顶点所采用的路标样式       |   string    |     -     |    No    |   All    |
-|    markerEnd     |        指定路径终点所采用的路标样式         |   string    |     -     |    No    |   All    |
-|       mask       |    给元素指定使用 Mask 元素实现遮罩效果     |   string    |     -     |    No    |   All    |
-|        id        |                 设置节点 id                 |   string    |     -     |    No    |   All    |
-|     opacity      |                 设置透明度                  |   number    |     1     |    No    |   All    |
-|     display      |             控制元素展示的方式              |   string    |   block   |    No    |   All    |
-|  pointerEvents   |          设置元素如何响应点击事件           |   string    |           |    No    |   All    |
+|       Name       |                 Description                 |    Type     |  Default  | Required | Platform | HarmonyOS Support | Tags Support |
+| :--------------: | :-----------------------------------------: | :---------: | :-------: | :------: | :------: | -------- | -------- |
+|       fill       |              设置填充区域颜色               |   string    |  '#000'   |    No    |   All    |   Yes | Circle、Ellipse、G、Path、Polygon、Polyline、Rect、Svg、TSpan、Text |
+|   fillOpacity    |             设置填充区域透明度              |   number    |     1     |    No    |   All    |   Yes | Circle、Ellipse、G、Path、Polygon、Polyline、Rect、Svg、TSpan、Text |
+|     fillRule     |                设置填充规则                 |   number    |     1     |    No    |   All    |   Yes | Path、Polygon、Polyline |
+|     clipRule     |                设置裁剪规则                 |   string    | 'evenodd' |    No    |   All    |   Yes |  Path |
+|     clipPath     |           指定、关联一条裁剪路径            |   string    |  'none'   |    No    |   All    |   Yes |  Rect |
+|      stroke      |    设置边框颜色，不设置时，默认没有边框     |   string    |   none    |    No    |   All    |   Yes | Circle、Ellipse、G、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|   strokeWidth    |                设置边框宽度                 |   number    |     1     |    No    |   All    |   Yes | Circle、Ellipse、G、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|  strokeOpacity   |                 边框透明度                  |   number    |     1     |    No    |   All    |   Yes | Circle、Ellipse、G、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+| strokeDasharray  |         用来描边的点划线的图案范式          |   number    |   none    |    No    |   All    |   Yes | Circle、Ellipse、G、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+| strokeDashoffset |      指定了 dash 模式到路径开始的距离       |   number    |     1     |    No    |   All    |   Yes | Circle、Ellipse、G、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|  strokeLinecap   |             设置路径两端的形状              |   string    |   butt    |    No    |   All    |   Yes |  Line |
+|  strokeLinejoin  |         指明路径的转角处使用的形状          |   string    |   miter   |    No    |   All    |   Yes | Path、TSpan、Text |
+| strokeMiterlimit | 对斜接长度和 stroke-width 的比率设置极限 值 |   number    |     4     |    No    |   All    |  No |       |
+|   vectorEffect   |       指明绘制对象时要使用的矢量效果        |   string    |   none    |    No    |   All    |   Yes | Circle、Ellipse、Path、Rect |
+|    translate     |                  设置位移                   | numberArray |    0,0    |    No    |   All    |   Yes | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|    translateX    |                设置 x 轴位移                |   number    |     0     |    No    |   All    |   Yes | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|    translateY    |                设置 y 轴位移                |   number    |     0     |    No    |   All    |   Yes | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|      origin      |           更改一个元素变形的原点            | numberArray |    0,0    |    No    |   All    |   Yes | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|     originX      |        更改一个元素变形的原点 x 坐标（单独使用无效，需配合其他属性如 rotation 使用）        |   number    |     0     |    No    |   All    |   Yes | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|     originY      |        更改一个元素变形的原点 y 坐标（单独使用无效，需配合其他属性如 rotation 使用）       |   number    |     0     |    No    |   All    |   Yes | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|      scale       |                定义缩放大小                 | numberArray |   1，1    |    No    |   All    |   Yes | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|      scaleX      |              定义 x 轴缩放大小              |   number    |     1     |    No    |   All    |   Yes | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|      scaleY      |              定义 y 轴缩放大小              |   number    |     1     |    No    |   All    |   Yes | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|     rotation     |                设置旋转角度                 |   number    |   0，0    |    No    |   All    |   Yes | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|        x         |              标识一个 x 轴坐标              |   number    |     0     |    No    |   All    |   Yes | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|        y         |              标识一个 y 轴坐标              |   number    |     0     |    No    |   All    |   Yes | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|    transform<sup>changed in 15.13.0</sup>     |   定义应用于元素及其子元素的变换规则列表, 小于15.13.0 版本，transform 属性类型仅支持string类型, 15.13.0 版本及以后版本，transform 属性同时支持string类型及Transform Object 数组    |   string\|TransformArray    |     -     |    No    |   All    |   Yes | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|      marker      |         指定路径所有顶点的路标样式          |   string    |     -     |    No    |   All    |   Yes |  Line |
+|   markerStart    |        指定路径起点所采用的路标样式         |   string    |     -     |    No    |   All    |   Yes | Circle、Ellipse、Path、Rect |
+|    markerMid     |      指定路径中间顶点所采用的路标样式       |   string    |     -     |    No    |   All    |   Yes | Circle、Ellipse、Rect |
+|    markerEnd     |        指定路径终点所采用的路标样式         |   string    |     -     |    No    |   All    |   Yes | Circle、Ellipse、Line、Path、Rect |
+|       mask       |    给元素指定使用 Mask 元素实现遮罩效果     |   string    |     -     |    No    |   All    |   Yes | Circle、Rect |
+|        id        |                 设置节点 id                 |   string    |     -     |    No    |   All    |   Yes | ClipPath、Circle、Ellipse、G、LinearGradient、Mask、Marker、Rect、Pattern、Symbol、Path |
+|     opacity      |                 设置透明度                  |   number    |     1     |    No    |   All    |   Yes | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|     display      |             控制元素展示的方式              |   string    |   inline   |    No    |   All    |   Yes | Circle、Ellipse、Path、Polygon、Polyline、Rect |
+|  pointerEvents   |          设置元素如何响应点击事件           |   string    |           |    No    |   All    |   Yes |   Svg |
 
 FontProps 组件属性 HarmonyOS 侧支持情况
 
-|         Name          |                          Description                           |        Type        | Default | Required | Platform |
-| :-------------------: | :------------------------------------------------------------: | :----------------: | :-----: | :------: | :------: |
-|       fontSize        | 在多行布局环境中将多行文本设置为实线时，从基线到基线的字体大小 |       string       | medium  |    No    |   All    |
-|      fontWeight       |   用于呈现文本的字形相对于同一字体族中的其他字体的粗度或亮度   |       string       | normal  |    No    |   All    |
-|         font          |                   设置一个用于文字布局的字体                   | FontObject（对象） |  none   |    No    |   All    |
-|       fontStyle       |                        指定文本渲染样式                        |       string       | normal  |    No    |   All    |
-|      fontVariant      |                        设置文本字体变体                        |                    |         |    No    |   All    |
-|      fontStretch      |                        控制字体拉伸程度                        |       string       | normal  |    No    |   All    |
-|      fontFamily       |                          指定文本字体                          |       string       | normal  |    No    |   All    |
-|      textAnchor       |               用于指定文本相对于其锚点的对齐方式               |       string       |  start  |    No    |   All    |
-|    textDecoration     |                        设置文本装饰效果                        |       string       |    -    |    No    |   All    |
-|     letterSpacing     |                     设置字符间距或字母间距                     |       number       |    1    |    No    |   All    |
-|      wordSpacing      |                     设置英文单词之间的距离                     |       number       |    1    |    No    |   All    |
-|        kerning        |                       设置字符之间的间距                       |       number       |    0    |    No    |   All    |
-|  fontFeatureSettings  |                          字体特性控制                          |       string       | normal  |    No    |   All    |
-| fontVariantLigatures  |                         控制文本中连字                         |       string       | normal  |    No    |   All    |
-| fontVariationSettings |                 设置字体的宽度、高度、倾斜度等                 |       string       | normal  |    No    |   All    |
+|         Name          |                         Description                          |        Type        | Default | Required | Platform | HarmonyOS Support | Tags Support |
+| :-------------------: | :----------------------------------------------------------: | :----------------: | :-----: | :------: | :------: | ----------------- | ------------ |
+|         font          |                  设置一个用于文字布局的字体                  | FontObject（对象） |  none   |    No    |   All    | Partially         | Text、TSpan  |
+|       fontSize        | 在多行布局环境中将多行文本设置为实线时，从基线到基线的字体大小 |       string       | medium  |    No    |   All    | Yes               | Text、TSpan  |
+|      fontWeight       |  用于呈现文本的字形相对于同一字体族中的其他字体的粗度或亮度  |       string       | normal  |    No    |   All    | Yes               | Text、TSpan  |
+|       fontStyle       |                       指定文本渲染样式                       |       string       | normal  |    No    |   All    | Yes               | Text、TSpan  |
+|      fontVariant      |                       设置文本字体变体                       |                    |         |    No    |   All    | No                |              |
+|      fontStretch      |                       控制字体拉伸程度                       |       string       | normal  |    No    |   All    | No                |              |
+|      fontFamily       |                         指定文本字体                         |       string       | normal  |    No    |   All    | Partially         | Text、TSpan  |
+|      textAnchor       |              用于指定文本相对于其锚点的对齐方式              |       string       |  start  |    No    |   All    | Yes               | Text、TSpan  |
+|    textDecoration     |                       设置文本装饰效果                       |       string       |    -    |    No    |   All    | No                |              |
+|     letterSpacing     |                    设置字符间距或字母间距                    |       number       |    1    |    No    |   All    | Yes               | Text、TSpan  |
+|      wordSpacing      |                    设置英文单词之间的距离                    |       number       |    1    |    No    |   All    | Yes               | Text、TSpan  |
+|        kerning        |                      设置字符之间的间距                      |       number       |    0    |    No    |   All    | No                |              |
+|  fontFeatureSettings  |                         字体特性控制                         |       string       | normal  |    No    |   All    | No                |              |
+| fontVariantLigatures  |                        控制文本中连字                        |       string       | normal  |    No    |   All    | No                |              |
+| fontVariationSettings |                设置字体的宽度、高度、倾斜度等                |       string       | normal  |    No    |   All    | No                |              |
 
 ## 5. 静态方法
 
