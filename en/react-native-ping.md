@@ -563,14 +563,14 @@ requestPermissions: [
 
 ### errors
 
-| Name     | Description  |   Type   |   default   | platform | HarmonyOS Support |
-| :------- | :----------- | :------: | :---------: | -------- | ----------------- |
-| PingUtil_Message_Timeout                    | timeout            | `string` | `0` | iOS,Android | NO |
-| PingUtil_Message_PreviousPingIsStillRunning | running            | `string` | `1` | /           | NO |
-| PingUtil_Message_HostErrorNotSetHost        | not set host       | `string` | `2` | iOS,Android | YES |
-| PingUtil_Message_HostErrorUnknown           | host error unknown | `string` | `3` | iOS,Android | YES |
-| PingUtil_Message_HostErrorHostNotFound      | host not found     | `string` | `4` | Only iOS    | NO |
-| PingUtil_Message_Unknown                    | nnknown            | `string` | `5` | Only iOS    | NO |
+| Name     | Description  |   Type   | platform | HarmonyOS Support |
+| :------- | :----------- | :------: | -------- | ----------------- |
+| PingUtil_Message_Timeout                    | timeout            | `string` | iOS,Android | NO |
+| PingUtil_Message_PreviousPingIsStillRunning | running            | `string` | /           | NO |
+| PingUtil_Message_HostErrorNotSetHost        | not set host       | `string` | iOS,Android | YES|
+| PingUtil_Message_HostErrorUnknown           | host error unknown | `string` | iOS,Android | YES|
+| PingUtil_Message_HostErrorHostNotFound      | host not found     | `string` | Only iOS    | NO |
+| PingUtil_Message_Unknown                    | nnknown            | `string` | Only iOS    | NO |
 
 ## 5. Known Issues
 
