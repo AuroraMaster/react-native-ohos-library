@@ -310,13 +310,13 @@ target_link_libraries(rnoh_app PUBLIC rnoh_sample_package)
 
 ```diff
 #include "RNOH/PackageProvider.h"
-+ #include "RNTTSPackage.h"
++ #include "TtsPackage.h"
 
 using namespace rnoh;
 
 std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Context ctx) {
     return {
-+        std::make_shared<RNTTSPackage>(ctx)
++        std::make_shared<TtsPackage>(ctx)
 }
 ```
 </details>

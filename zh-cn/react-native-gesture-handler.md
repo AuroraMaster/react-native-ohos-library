@@ -472,7 +472,12 @@ ReactButton 属性
 
 ## 其他
 
-
+- 当使用框架 release 包时（react_native_openharmony_release.har），因为手势库用到了 deviceinfo 接口，需要在工程的 cmake 配置导入libdeviceinfo_ndk.z.so
+```diff
+# CMakeLists.txt
+target_link_libraries(cpplib PUBLIC libace_napi.z.so 
++ libdeviceinfo_ndk.z.so)
+```
 ## 开源协议
 
 本项目基于 [The MIT License (MIT)](https://github.com/react-native-oh-library/react-native-linear-gradient/blob/harmony/LICENSE) ，请自由地享受和参与开源。
