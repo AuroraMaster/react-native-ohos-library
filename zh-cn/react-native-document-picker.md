@@ -389,6 +389,12 @@ ohpm install
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
+### 4.2. 编译运行API要求
+> [!TIP] 当前三方库所有版本均已实现版本隔离，支持在 `API12+` 工程编译，及 `API12+` ROM运行。
+> 
+> [!TIP] 以下功能依赖特定版本的API，使用 `低于API20版本的工程编译` 或 `低于API20版本的ROM运行` 均可能导致部分功能受限。
+1. 本库引入[createStreamSync](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-file-fs#fscreatestreamsync)，实现以同步方法基于文件路径创建文件流，此API需要在支持`API20+`的工程编译，并在支持`API20+`的ROM上运行，方可生效。
+
 
 ## 5. 属性
 

@@ -449,6 +449,14 @@ Verified in the following versions.
 2. RNOH: 0.72.33; SDK: HarmonyOS NEXT B1; IDE: DevEco Studio: 5.0.3.900; ROM: Next.0.0.71;
 3. RNOH: 0.77.18; SDK: HarmonyOS 6.0.0 Release SDK; IDE: DevEco Studio 6.0.0.858; ROM: 6.0.0.112;
 
+### 4.2 API requirements
+
+> [!TIP] All versions of the current third-party libraries have implemented version isolation, supporting compilation in `API12+` projects and execution on `API12+` ROMs.
+
+> [!TIP] The following features depend on specific API versions. Compiling the project with an API version lower than specified or running the ROM with an API version lower than specified may result in limited functionality.
+
+1. the project introduced [createStreamSync](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-file-fs#fscreatestreamsync), achieves Create file stream. This API requires compilation in a project that supports `API20+` and must run on a ROM that supports `API20+` to take effect.
+
 
 ## 5. Properties
 
