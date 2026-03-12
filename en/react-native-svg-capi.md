@@ -588,64 +588,64 @@ The following are the currently supported component properties：
 
 Support status of Common props component Properties on the HarmonyOS side
 
-|                  Name                  |                         Description                          |          Type          | Default   | Required | Platform |
-| :------------------------------------: | :----------------------------------------------------------: | :--------------------: | --------- | :------- | :------- |
-|                  fill                  |               Sets the color of the fill area                |         string         | '#000'    | No       | All      |
-|              fillOpacity               |              Sets the opacity of the fill area               |         number         | 1         | No       | All      |
-|                fillRule                |                      Sets the fill rule                      |         number         | 1         | No       | All      |
-|                clipRule                |                    Sets the clipping rule                    |         string         | 'evenodd' | No       | All      |
-|                clipPath                |           Specifies and associates a clipping path           |         string         | 'none'    | No       | All      |
-|                 stroke                 |   Sets the border color (no border by default if not set)    |         string         | none      | No       | All      |
-|              strokeWidth               |                    Sets the border width                     |         number         | 1         | No       | All      |
-|             strokeOpacity              |                        Border opacity                        |         number         | 1         | No       | All      |
-|            strokeDasharray             |      Pattern paradigm of dashed lines used for stroking      |         number         | none      | No       | All      |
-|            strokeDashoffset            | Specifies the distance from the start of the path to the dash pattern |         number         | 1         | No       | All      |
-|             strokeLinecap              |          Sets the shape of the two ends of the path          |         string         | 'butt'    | No       | All      |
-|             strokeLinejoin             |     Indicates the shape used at the corners of the path      |         string         | 'miter'   | No       | All      |
-|            strokeMiterlimit            |  Sets a limit on the ratio of miter length to stroke-width   |         number         | 4         | No       | All      |
-|              vectorEffect              |  Indicates the vector effect to use when drawing the object  |         string         | none      | No       | All      |
-|               translate                |                      Sets displacement                       |      numberArray       | [0,0]     | No       | All      |
-|               translateX               |                   Sets x-axis displacement                   |         number         | 0         | No       | All      |
-|               translateY               |                   Sets y-axis displacement                   |         number         | 0         | No       | All      |
-|                 origin                 |     Changes the origin of transformation for an element      |      numberArray       | [0,0]     | No       | All      |
-|                originX                 | Changes the x-coordinate of the origin of transformation for an element (invalid when used alone; must be used with other properties such as rotation) |         number         | 0         | No       | All      |
-|                originY                 | Changes the y-coordinate of the origin of transformation for an element (invalid when used alone; must be used with other properties such as rotation) |         number         | 0         | No       | All      |
-|                 scale                  |                   Defines the scaling size                   |      numberArray       | [1,1]     | No       | All      |
-|                 scaleX                 |               Defines the x-axis scaling size                |         number         | 1         | No       | All      |
-|                 scaleY                 |               Defines the y-axis scaling size                |         number         | 1         | No       | All      |
-|                rotation                |                   Sets the rotation angle                    |         number         | 0         | No       | All      |
-|                   x                    |               Identifies an x-axis coordinate                |         number         | 0         | No       | All      |
-|                   y                    |                Identifies a y-axis coordinate                |         number         | 0         | No       | All      |
-| transform<sup>changed in 15.13.0</sup> | Defines a list of transform rules applied to the element and its child elements,version code < 15.13.0,transform type is string, version code >= 15.13.0 transform type also supports arrry type. | string\|TransformArray | -         | No       | All      |
-|                 marker                 |   Specifies the marker style for all vertices of the path    |         string         | -         | No       | All      |
-|              markerStart               | Specifies the marker style used for the start point of the path |         string         | -         | No       | All      |
-|               markerMid                | Specifies the marker style used for the middle vertices of the path |         string         | -         | No       | All      |
-|               markerEnd                | Specifies the marker style used for the end point of the path |         string         | -         | No       | All      |
-|                  mask                  | Specifies a mask effect for the element using the Mask element |         string         | -         | No       | All      |
-|                   id                   |                       Sets the node id                       |         string         | -         | No       | All      |
-|  opacity  | Sets opacity |         number         | 1         | No       | All      |
-|                display                 |            Controls how the element is displayed             |         string         | 'block'   | No       | All      |
-|             pointerEvents              |        Sets how the element responds to click events         |         string         |           | No       | All      |
+|                  Name                  |                         Description                          |          Type          | Default   | Required | Platform | HarmonyOS Support | Tags Support |
+| :------------------------------------: | :----------------------------------------------------------: | :--------------------: | --------- | :------- | :------- | -------- | -------- |
+|                  fill                  |               Sets the color of the fill area                |         string         | '#000'    | No       | All      | Yes   | Circle、Ellipse、G、Path、Polygon、Polyline、Rect、Svg、TSpan、Text |
+|              fillOpacity               |              Sets the opacity of the fill area               |         number         | 1         | No       | All      | Yes   | Circle、Ellipse、G、Path、Polygon、Polyline、Rect、Svg、TSpan、Text |
+|                fillRule                |                      Sets the fill rule                      |         number         | 1         | No       | All      | Yes   | Path、Polygon、Polyline |
+|                clipRule                |                    Sets the clipping rule                    |         string         | 'evenodd' | No       | All      | Yes   | Path  |
+|                clipPath                |           Specifies and associates a clipping path           |         string         | 'none'    | No       | All      | Yes   | Rect  |
+|                 stroke                 |   Sets the border color (no border by default if not set)    |         string         | none      | No       | All      | Yes   | Circle、Ellipse、G、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|              strokeWidth               |                    Sets the border width                     |         number         | 1         | No       | All      | Yes   | Circle、Ellipse、G、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|             strokeOpacity              |                        Border opacity                        |         number         | 1         | No       | All      | Yes   | Circle、Ellipse、G、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|            strokeDasharray             |      Pattern paradigm of dashed lines used for stroking      |         number         | none      | No       | All      | Yes   | Circle、Ellipse、G、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|            strokeDashoffset            | Specifies the distance from the start of the path to the dash pattern |         number         | 1         | No       | All      | Yes   | Circle、Ellipse、G、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|             strokeLinecap              |          Sets the shape of the two ends of the path          |         string         | 'butt'    | No       | All      | Yes   | Line  |
+|             strokeLinejoin             |     Indicates the shape used at the corners of the path      |         string         | 'miter'   | No       | All      | Yes   | Path、TSpan、Text |
+|            strokeMiterlimit            |  Sets a limit on the ratio of miter length to stroke-width   |         number         | 4         | No       | All      | No    |       |
+|              vectorEffect              |  Indicates the vector effect to use when drawing the object  |         string         | none      | No       | All      | Yes   | Circle、Ellipse、Path、Rect |
+|               translate                |                      Sets displacement                       |      numberArray       | [0,0]     | No       | All      | Yes   | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|               translateX               |                   Sets x-axis displacement                   |         number         | 0         | No       | All      | Yes   | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|               translateY               |                   Sets y-axis displacement                   |         number         | 0         | No       | All      | Yes   | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|                 origin                 |     Changes the origin of transformation for an element      |      numberArray       | [0,0]     | No       | All      | Yes   | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|                originX                 | Changes the x-coordinate of the origin of transformation for an element (invalid when used alone; must be used with other properties such as rotation) |         number         | 0         | No       | All      | Yes   | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|                originY                 | Changes the y-coordinate of the origin of transformation for an element (invalid when used alone; must be used with other properties such as rotation) |         number         | 0         | No       | All      | Yes   | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|                 scale                  |                   Defines the scaling size                   |      numberArray       | [1,1]     | No       | All      | Yes   | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|                 scaleX                 |               Defines the x-axis scaling size                |         number         | 1         | No       | All      | Yes   | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|                 scaleY                 |               Defines the y-axis scaling size                |         number         | 1         | No       | All      | Yes   | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|                rotation                |                   Sets the rotation angle                    |         number         | 0         | No       | All      | Yes   | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|                   x                    |               Identifies an x-axis coordinate                |         number         | 0         | No       | All      | Yes   | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|                   y                    |                Identifies a y-axis coordinate                |         number         | 0         | No       | All      | Yes   | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+| transform<sup>changed in 15.13.0</sup> | Defines a list of transform rules applied to the element and its child elements,version code < 15.13.0,transform type is string, version code >= 15.13.0 transform type also supports arrry type. | string\|TransformArray | -         | No       | All      | Yes   | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|                 marker                 |   Specifies the marker style for all vertices of the path    |         string         | -         | No       | All      | Yes   | Line  |
+|              markerStart               | Specifies the marker style used for the start point of the path |         string         | -         | No       | All      | Yes   | Circle、Ellipse、Path、Rect |
+|               markerMid                | Specifies the marker style used for the middle vertices of the path |         string         | -         | No       | All      | Yes   | Circle、Ellipse、Rect |
+|               markerEnd                | Specifies the marker style used for the end point of the path |         string         | -         | No       | All      | Yes   | Circle、Ellipse、Line、Path、Rect |
+|                  mask                  | Specifies a mask effect for the element using the Mask element |         string         | -         | No       | All      | Yes   | Circle、Rect |
+|                   id                   |                       Sets the node id                       |         string         | -         | No       | All      | Yes   | ClipPath、Circle、Ellipse、G、LinearGradient、Mask、Marker、Rect、Pattern、Symbol、Path |
+|  opacity  | Sets opacity |         number         | 1         | No       | All      | Yes   | Circle、Ellipse、G、Image、Line、Path、Polygon、Polyline、Rect、TSpan、Text |
+|                display                 |            Controls how the element is displayed             |         string         | 'inline' | No       | All      | Yes   | Circle、Ellipse、Path、Polygon、Polyline、Rect |
+|             pointerEvents              |        Sets how the element responds to click events         |         string         |           | No       | All      | Yes   | Svg   |
 
 **FontProps**: Support status of FontProps component Properties on the HarmonyOS side
 
-|         Name          |                         Description                          |    Type    | Default | Required | Platform |
-| :-------------------: | :----------------------------------------------------------: | :--------: | :------ | :------- | :------- |
-|       fontSize        | Font size from baseline to baseline when setting multi-line text to solid lines in a multi-line layout environment |   string   | medium  | No       | All      |
-|      fontWeight       | Thickness or lightness of the glyph used to render text relative to other fonts in the same font family |   string   | normal  | No       | All      |
-|         font          |                 Sets a font for text layout                  | FontObject | none    | No       | All      |
-|       fontStyle       |                Specifies text rendering style                |   string   | normal  | No       | All      |
-|      fontVariant      |                    Sets text font variant                    |            |         | No       | All      |
-|      fontStretch      |                 Controls font stretch degree                 |   string   | normal  | No       | All      |
-|      fontFamily       |                     Specifies text font                      |   string   | normal  | No       | All      |
-|      textAnchor       | Used to specify the alignment of text relative to its anchor point |   string   | start   | No       | All      |
-|    textDecoration     |                 Sets text decoration effects                 |   string   | -       | No       | All      |
-|     letterSpacing     |           Sets character spacing or letter spacing           |   number   | 1       | No       | All      |
-|      wordSpacing      |           Sets the distance between English words            |   number   | 1       | No       | All      |
-|        kerning        |             Sets the spacing between characters              |   number   | 0       | No       | All      |
-|  fontFeatureSettings  |                     Font feature control                     |   string   | normal  | No       | All      |
-| fontVariantLigatures  |                  Controls ligatures in text                  |   string   | normal  | No       | All      |
-| fontVariationSettings |    Sets the width, height, inclination, etc., of the font    |   string   | normal  | No       | All      |
+|         Name          |                         Description                          |    Type    | Default | Required | Platform | HarmonyOS Support | Tags Support |
+| :-------------------: | :----------------------------------------------------------: | :--------: | :------ | :------- | :------- | ----------------- | ------------ |
+|         font          |                 Sets a font for text layout                  | FontObject | none    | No       | All      | Partially         | Text、TSpan  |
+|       fontSize        | Font size from baseline to baseline when setting multi-line text to solid lines in a multi-line layout environment |   string   | medium  | No       | All      | Yes               | Text、TSpan  |
+|      fontWeight       | Thickness or lightness of the glyph used to render text relative to other fonts in the same font family |   string   | normal  | No       | All      | Yes               | Text、TSpan  |
+|       fontStyle       |                Specifies text rendering style                |   string   | normal  | No       | All      | Yes               | Text、TSpan  |
+|      fontVariant      |                    Sets text font variant                    |            |         | No       | All      | No                |              |
+|      fontStretch      |                 Controls font stretch degree                 |   string   | normal  | No       | All      | No                |              |
+|      fontFamily       |                     Specifies text font                      |   string   | normal  | No       | All      | Partially         | Text、TSpan  |
+|      textAnchor       | Used to specify the alignment of text relative to its anchor point |   string   | start   | No       | All      | Yes               | Text、TSpan  |
+|    textDecoration     |                 Sets text decoration effects                 |   string   | -       | No       | All      | No                |              |
+|     letterSpacing     |           Sets character spacing or letter spacing           |   number   | 1       | No       | All      | Yes               | Text、TSpan  |
+|      wordSpacing      |           Sets the distance between English words            |   number   | 1       | No       | All      | Yes               | Text、TSpan  |
+|        kerning        |             Sets the spacing between characters              |   number   | 0       | No       | All      | No                |              |
+|  fontFeatureSettings  |                     Font feature control                     |   string   | normal  | No       | All      | No                |              |
+| fontVariantLigatures  |                  Controls ligatures in text                  |   string   | normal  | No       | All      | No                |              |
+| fontVariationSettings |    Sets the width, height, inclination, etc., of the font    |   string   | normal  | No       | All      | No                |              |
 
 ## 5. Static Methods
 

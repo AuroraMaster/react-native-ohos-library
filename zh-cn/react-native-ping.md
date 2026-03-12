@@ -569,14 +569,14 @@ requestPermissions: [
 
 ### 错误码
 
-| Name     | Description  |   Type   |   default   | platform | HarmonyOS Support |
-| :------- | :----------- | :------: | :---------: | -------- | ----------------- |
-| PingUtil_Message_Timeout                    | 超时               | `string` | `0` | iOS,Android | NO |
-| PingUtil_Message_PreviousPingIsStillRunning | 正在运行            | `string` | `1` | /           | NO |
-| PingUtil_Message_HostErrorNotSetHost        | 未设置ip            | `string` | `2` | iOS,Android | YES |
-| PingUtil_Message_HostErrorUnknown           | host未知错误        | `string` | `3` | iOS,Android | YES |
-| PingUtil_Message_HostErrorHostNotFound      | host找不到          | `string` | `4` | Only iOS    | NO |
-| PingUtil_Message_Unknown                    | 未知错误            | `string` | `5` | Only iOS    | NO |
+| Name     | Description  |   Type   | platform | HarmonyOS Support |
+| :------- | :----------- | :------: | -------- | ----------------- |
+| PingUtil_Message_Timeout                    | 超时               | `string` | iOS,Android | NO |
+| PingUtil_Message_PreviousPingIsStillRunning | 正在运行            | `string` | /           | NO |
+| PingUtil_Message_HostErrorNotSetHost        | 未设置ip            | `string` | iOS,Android | YES |
+| PingUtil_Message_HostErrorUnknown           | host未知错误        | `string` | iOS,Android | YES |
+| PingUtil_Message_HostErrorHostNotFound      | host找不到          | `string` | Only iOS    | NO |
+| PingUtil_Message_Unknown                    | 未知错误            | `string` | Only iOS    | NO |
 
 ## 5. 遗留问题
 
