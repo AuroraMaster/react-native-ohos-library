@@ -1,5 +1,10 @@
 > [!WARNING] 本文档仅用于三方库使用指导，不涉及任何 React Native OpenHarmony 框架的信息，且会随着 React Native OpenHarmony 框架持续迭代更新，当前版本不代表最终展示版本。
 
+# 迁移
+
+迁移公告：为便于集中维护与协作，本项目的使用文档计划在近期迁移至 [usage-docs](https://gitcode.com/OpenHarmony-RN/usage-docs)。迁移完成后，本仓库的文档内容将不再更新，请在新地址查阅最新版本。
+
+
 # 简介
 
 > 如果你在找如何搭建环境的文档，请移步开发文档的 [搭建开发环境](https://gitee.com/openharmony-sig/ohos_react_native/blob/7284558e030998b113b1437ab8cad597e2e0213a/docs/zh-cn/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.md) 章节。
