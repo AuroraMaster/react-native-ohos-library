@@ -1,4 +1,8 @@
-> [!WARNING] This document is intended solely for guidance on using third-party libraries and does not cover any information related to the React Native OpenHarmony framework. It will be updated continuously alongside the React Native OpenHarmony framework, and the current version does not represent the final version.
+> [!WARNING] This document is intended solely for guidance on using third-party libraries and does not cover any information related to the React Native OpenHarmony framework. It will be updated continuously alongside the React Native OpenHarmony framework, and the current version does not represent the final version. 
+
+# Migration
+
+Migration announcement: To centralize maintenance and collaboration, this project's usage documentation will be migrated soon to [usage-docs](https://gitcode.com/OpenHarmony-RN/usage-docs). After the migration is complete, the documentation in this repository will no longer be updated—please refer to the new location for the latest version. For historical documents, check this repository's branches or releases.
 
 # Introduction
 
